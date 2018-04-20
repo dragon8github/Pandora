@@ -45,22 +45,32 @@ Return
 
 ; ____________ Common _______________
 
+::html::
+    SendInput,
+(
+<{!}DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+)
+Return
+
 >^d::
     SendInput, debugger{;}
 Return
 
 ::$each::
-    SendInput, 
-(
-$.each(function (i, e) {{}{}})`;{left 3}{enter} console.log(i, e)`;
-)
+    SendInput, $.each(function (i, e) {{}{}})`;{left 3}{enter} console.log(i, e)`;
 Return
 
 ::each::
-    SendInput, 
-(
-[1,2,3,4].forEach(function (e, i) {{}{}})`;{left 3}{enter} console.log(i, e)`;
-)
+    SendInput, [1,2,3,4].forEach(function (e, i) {{}{}})`;{left 3}{enter} console.log(i, e)`;
 Return
 
 ::dg::
@@ -92,7 +102,7 @@ Return
 Return
 
 !f::
-    SendInput, for (var i = 0; i < Things.length; i++) {{}{}}{left}{enter}Things[i]{left 3}^+{left}!{F3}
+    Send, for (var i = 0; i < Things.length; i++) {{}{}}{left}{enter}Things[i]{left 3}^+{left}!{F3}
 Return
 
 ::$create::
