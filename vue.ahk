@@ -1,26 +1,26 @@
 ; ____________ CDN _______________
 ::cdn-jquery3::
-    Send, <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    SendInput, <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 Return
 
 ::cdn-jquery1.9::
-    Send, <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    SendInput, <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 Return
 
 ::cdn-jquery::
-    Send, <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    SendInput, <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 Return
 
 ::cdn-jq::
-    Send, <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    SendInput, <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 Return
 
 ::cdn-vue::
-    Send, <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    SendInput, <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 Return
 
 ::cdn-bs::
-    Send,
+    SendInput,
 (
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -28,7 +28,7 @@ Return
 Return
 
 ::cdn-bootstrap::
-    Send,
+    SendInput,
 (
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -36,7 +36,7 @@ Return
 Return
 
 ::cdn-layui::
-    Send,
+    SendInput,
 (
 <link rel="stylesheet" href="http://res.layui.com/layui/dist/css/layui.css?t=1522709297490" media="all">
 <script src="http://res.layui.com/layui/dist/layui.js?t=1522709297490"></script>
@@ -45,26 +45,30 @@ Return
 
 ; ____________ Common _______________
 
+>^d::
+    SendInput, debugger{;}
+Return
+
 ::$each::
-    Send, 
+    SendInput, 
 (
 $.each(function (i, e) {{}{}})`;{left 3}{enter} console.log(i, e)`;
 )
 Return
 
 ::each::
-    Send, 
+    SendInput, 
 (
 [1,2,3,4].forEach(function (e, i) {{}{}})`;{left 3}{enter} console.log(i, e)`;
 )
 Return
 
 ::dg::
-    Send, document.getElementById('')`;{left 3}
+    SendInput, document.getElementById('')`;{left 3}
 Return
 
 ::ds::
-    Send, document.querySelectorAll('')`;{left 3}
+    SendInput, document.querySelectorAll('')`;{left 3}
 Return
 
 >^j::
@@ -72,27 +76,27 @@ Return
 Return
 
 >^c:: 
-    Send, console.log('')`;{left 3}
+    SendInput, console.log('')`;{left 3}
 Return
 
-:*:.then:: 
-    Send, .then(){left} _=> {{}{}}{left}{enter}// ...
+::.then:: 
+    SendInput, .then(){left} _=> {{}{}}{left}{enter}// ...
 Return
 
-:*:throw::
-    Send, throw new Error(e.message){left}^+{left}^+{left}
+::throw::
+    SendInput, throw new Error(e.message){left}^+{left}^+{left}
 Return
 
 >!f::
-    Send, for (var i = 0; i < Things.length; i++) {{}{}}{left}{enter}Things[i]{left 3}^+{left}!{F3}
+    SendInput, for (var i = 0; i < Things.length; i++) {{}{}}{left}{enter}Things[i]{left 3}^+{left}!{F3}
 Return
 
-+f::
-    Send, for (var i = 0; i < Things.length; i++) {{}{}}{left}{enter}Things[i]{left 3}^+{left}!{F3}
+!f::
+    SendInput, for (var i = 0; i < Things.length; i++) {{}{}}{left}{enter}Things[i]{left 3}^+{left}!{F3}
 Return
 
 ::$create::
-    Send, 
+    SendInput, 
 (
 var wrap = document.createElement("div");
 var first = document.body.firstChild;
@@ -101,7 +105,7 @@ var wraphtml = document.body.insertBefore(wrap,first);
 Return
 
 >^a::
-    Send,
+    SendInput,
 (
 $.ajax({{}
 url: "http://localhost:8089/index.php",
@@ -114,53 +118,53 @@ Return
 ;_______________ Vue ______________________
 
 >^b:: 
-    Send, beforeMount () {{}{}}{left}{enter}
+    SendInput, beforeMount () {{}{}}{left}{enter}
 Return
 
 >^r:: 
-    Send, this.$router.push(''){left 2}
+    SendInput, this.$router.push(''){left 2}
 Return
 
 >^p:: 
-    Send, this.$router.push(''){left 2}
+    SendInput, this.$router.push(''){left 2}
 Return
 
 >^s:: 
-    Send, this.$store.state
+    SendInput, this.$store.state
 Return
 
->^d:: 
-    Send, this.$store.dispatch('').then(_ => {{} {}}){left 2}{enter 2}{up}{tab} // ...
+::dispatch:: 
+    SendInput, this.$store.dispatch('').then(_ => {{} {}}){left 2}{enter 2}{up}{tab} // ...
 Return
 
 >^f::
-    Send, v-for='(item, index) in items' :key='index'
+    SendInput, v-for='(item, index) in items' :key='index'
 Return
 
-:*:v-for::
-    Send, v-for='(item, index) in items' :key='index'
+::v-for::
+    SendInput, v-for='(item, index) in items' :key='index'
 Return
 
 ;____________________ CSS __________________
 
 ::wh::
-    Send,
+    SendInput,
 (
 width: px`;
 height: px`;^!{up}^{left}
 )
 Return
 
-+w::
-    Send, width: px;^{left}
+::w::
+    SendInput, width: px;^{left}
 Return
 
-+h::
-    Send, height: px;^{left}
+::h::
+    SendInput, height: px;^{left}
 Return
 
 ::lh::
-    Send, 
+    SendInput, 
 (
 height: px;
 line-height: px;^!{up}^{left}
@@ -168,55 +172,55 @@ line-height: px;^!{up}^{left}
 Return
 
 ::text-a::
-    Send, text-align: center`;
+    SendInput, text-align: center`;
 Return
 
 ::ta::
-    Send, text-align: center`;
+    SendInput, text-align: center`;
 Return
 
 ::fl::
-    Send, float: left`;
+    SendInput, float: left`;
 Return
 
 ::fr::
-    Send, float: right`;
+    SendInput, float: right`;
 Return
 
 ::mb::
-    Send, margin-bottom: px`;{left 3}
+    SendInput, margin-bottom: px`;{left 3}
 Return
 
 ::mt::
-    Send, margin-top: px`;{left 3}
+    SendInput, margin-top: px`;{left 3}
 Return
 
 ::ml::
-    Send, margin-left: px`;{left 3}
+    SendInput, margin-left: px`;{left 3}
 Return
 
 ::mr::
-    Send, margin-right: px`;{left 3}
+    SendInput, margin-right: px`;{left 3}
 Return
 
 ::pb::
-    Send, padding-bottom: px`;{left 3}
+    SendInput, padding-bottom: px`;{left 3}
 Return
 
 ::pt::
-    Send, padding-top: px`;{left 3}
+    SendInput, padding-top: px`;{left 3}
 Return
 
 ::pl::
-    Send, padding-left: px`;{left 3}
+    SendInput, padding-left: px`;{left 3}
 Return
 
 ::pr::
-    Send, padding-right: px`;{left 3}
+    SendInput, padding-right: px`;{left 3}
 Return
 
 ::abs::
-    Send, 
+    SendInput, 
 (
 position: absolute`;
 top: 0px`;
@@ -227,39 +231,39 @@ left: 0px`;
 Return
 
 ::b-t::
-    Send, border-top: 1px solid {#}ccc`;
+    SendInput, border-top: 1px solid {#}ccc`;
 Return
 
 ::b-r::
-    Send, border-right: 1px solid {#}ccc`;
+    SendInput, border-right: 1px solid {#}ccc`;
 Return
 
 ::b-b::
-    Send, border-bottom: 1px solid {#}ccc`;
+    SendInput, border-bottom: 1px solid {#}ccc`;
 Return
 
 ::b-l::
-    Send, border-left: 1px solid {#}ccc`;
+    SendInput, border-left: 1px solid {#}ccc`;
 Return
 
 ::t-a::
-    Send, text-align:center`;
+    SendInput, text-align:center`;
 Return
 
 ::t-c::
-    Send, text-align:center`;
+    SendInput, text-align:center`;
 Return
 
 ::t-r::
-    Send, text-align:right`;
+    SendInput, text-align:right`;
 Return
 
 ::t-l::
-    Send, text-align:left`;
+    SendInput, text-align:left`;
 Return
 
 ::flexc::
-    Send,
+    SendInput,
 (
 display: flex`;
 justify-content: center`;
@@ -267,7 +271,7 @@ justify-content: center`;
 Return
 
 ::flexa::
-    Send, 
+    SendInput, 
 (
 display: flex`;
 justify-content: space-around`;
@@ -275,7 +279,7 @@ justify-content: space-around`;
 Return
 
 ::flexs::
-    Send, 
+    SendInput, 
 (
 display: flex`;
 justify-content: flex-start`;
@@ -283,7 +287,7 @@ justify-content: flex-start`;
 Return
 
 ::flexe::
-    Send, 
+    SendInput, 
 (
 display: flex`;
 justify-content: flex-end`;
@@ -291,7 +295,7 @@ justify-content: flex-end`;
 Return
 
 ::flexcc::
-    Send, 
+    SendInput, 
 (
 display: flex`;
 justify-content: center`;
@@ -300,7 +304,7 @@ align-items: center`;
 Return
 
 ::flexac::
-    Send, 
+    SendInput, 
 (
 display: flex`;
 justify-content: space-around`;
@@ -309,7 +313,7 @@ align-items: center`;
 Return
 
 ::flexss::
-    Send, 
+    SendInput, 
 (
 display: flex`;
 justify-content: flex-start`;
@@ -318,7 +322,7 @@ align-items: flex-start`;
 Return
 
 ::flexee::
-    Send, 
+    SendInput, 
 (
 display: flex`;
 justify-content: flex-end`;
@@ -327,7 +331,7 @@ align-items: flex-end`;
 Return
 
 ::before::
-    Send,
+    SendInput,
 (
 ::before {{}{}}{left}
 content: " "`;
@@ -337,7 +341,7 @@ position:absolute`;
 Return
 
 ::after::
-    Send,
+    SendInput,
 (
 ::after {{}{}}{left}
 content: " "`;
@@ -347,7 +351,7 @@ position:absolute`;
 Return
 
 ::center::
-    Send, 
+    SendInput, 
 (
 position: absolute`;
 left: 50`%`;
@@ -357,7 +361,7 @@ transform: translate(-50`%, -50`%)`;
 Return
 
 ::xcenter::
-    Send, 
+    SendInput, 
 (
 position: absolute`;
 left: 50`%`;
@@ -366,7 +370,7 @@ transform: translateX(-50`%)`;
 Return
 
 ::ycenter::
-    Send, 
+    SendInput, 
 (
 position: absolute`;
 top: 50`%`;
