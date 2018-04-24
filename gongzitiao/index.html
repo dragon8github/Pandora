@@ -6,12 +6,12 @@
     <title></title>
 </head>
 <style>
+    /* 这样写性能较差，但性价比高，所以无关紧要 */
     *, :after, :before {
         box-sizing: border-box;
     }
 
     body, html {
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
         -webkit-tap-highlight-color: none;
         font-family: "Microsoft Yahei","PingFang SC",SimSun,"Helvetica Neue",Helvetica,Arial,sans-serif,Tahoma;
         background-color: #eee;
@@ -41,6 +41,7 @@
         line-height: 78px;
         box-shadow: 0 7px 10px rgb(228, 222, 222);
     }
+
         .header__title {
             display: flex;
             justify-content: flex-start;
@@ -74,7 +75,7 @@
     .card {
         position: relative;
         margin: 0 auto;
-        padding-bottom: 100px;
+        padding-bottom: 100px; /* 解决 .card__footer fixed 物理高度问题 */
 
         background-color: #fff;
         width: 750px;
@@ -153,7 +154,6 @@
                 padding: 13px;
             }
 
-
         .card__footer {
             display: flex;
             justify-content: space-around;
@@ -176,19 +176,23 @@
                 font-size: 18px;
             }
 
+        /* 移动设备断点 */
         @media (max-width: 768px) {
+            /* 移动端下高度铺满 */
             .header__title, 
             .header__logo, 
             .card {
                 width: 100%;
             }
 
+            /* 移动端溢出用...隐藏 */
             .card__li--left {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }
 
+            /* 部分内容适当隐藏 */
             .header__line,
             .header__name {
                 display:none;
