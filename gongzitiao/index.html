@@ -141,13 +141,10 @@
                 flex: 1;
                 padding: 0 20px;
 
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-
                 color: rgba(80,80,80,.65);
                 padding: 13px;
                 text-align: left;
+                white-space: nowrap;
             }
 
             .card__li--right {
@@ -184,6 +181,12 @@
             .header__logo, 
             .card {
                 width: 100%;
+            }
+
+            .card__li--left {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
 
             .header__line,
