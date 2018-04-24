@@ -20,6 +20,10 @@
         color: rgba(80,80,80,.65);
     }
 
+    .is-bold {
+        font-weight: bold;
+    }
+
     .header {
         position: fixed;
         left: 0;
@@ -63,12 +67,16 @@
 
     .card {
         position: relative;
-        margin: auto;
+        margin: 0 auto 50px;
+        padding-bottom: 100px;
 
         background-color: #fff;
-        width: 600px;
+        width: 750px;
         height: auto;
-        min-height: 700px;
+        min-height: 650px;
+        border-radius: 4px;
+        border: 1px solid #f2f2f2;
+        box-shadow: 0 10px 10px rgba(218, 198, 198, 0.2);
     }
 
         .card__header {
@@ -77,17 +85,62 @@
             align-items: center;
 
             height: 100px;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid #f2f2f2;
             padding: 20px;
         }
 
             .card__header--title {
                 font-size: 18px;
+                line-height: 35px;
             }
 
             .card__header--text {
                 font-size: 20px;
             }
+
+        .card__body {
+            padding: 20px;
+        }
+
+            .card__ul {
+                margin: 0;
+                padding: 0;
+            }
+
+            .card__li {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                height: 36px;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            .card__li:nth-child(odd) {
+                background-color: #ffffff;
+            }
+
+            .card__li:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            .card__li--left {
+                flex: 1;
+                padding: 0 20px;
+
+                overflow: hidden;
+                -o-text-overflow:ellipsis;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                color: rgba(80,80,80,.65);
+            }
+
+            .card__li--right {
+                flex: 1;
+            }
+
 
         .card__footer {
             display: flex;
@@ -97,10 +150,10 @@
             position: absolute;
             bottom: 0;
 
-            height: 90px;
+            height: 100px;
             padding: 20px;
             width: 100%;
-            border-top: 1px solid #ccc;
+            border-top: 1px solid #f2f2f2;
         }
 
             .card__foter--title {
@@ -132,14 +185,134 @@
                     <div class="card__header--text">4423.60</div>
                 </div>
             </div>
-           <!--  <div class="card__body">
+            <div class="card__body">
                 <ul class="card__ul">
                     <li class="card__li">
-                        <span class="card__li--left">迟到扣款-其它应扣</span>
+                        <span class="card__li--left" title="序号">序号</span>
+                        <span class="card__li--right">1</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="基本工资-应发工资">基本工资-应发工资</span>
+                        <span class="card__li--right">2130</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="加班工资-应发工资">加班工资-应发工资</span>
+                        <span class="card__li--right">800</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="津贴-应发工资">津贴-应发工资</span>
+                        <span class="card__li--right">200</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="绩效-应发工资">绩效-应发工资</span>
+                        <span class="card__li--right">1300</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="小计-应发工资">小计-应发工资</span>
+                        <span class="card__li--right">4430</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="全勤奖-其它应发">全勤奖-其它应发</span>
+                        <span class="card__li--right">200</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="加班补贴-其它应发">加班补贴-其它应发</span>
+                        <span class="card__li--right">180</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="小计-其它应发">小计-其它应发</span>
+                        <span class="card__li--right">380</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="工资合计">工资合计</span>
+                        <span class="card__li--right">4810</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="缺勤扣款-其它应扣">缺勤扣款-其它应扣</span>
+                        <span class="card__li--right">0</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="请假扣款-其它应扣">请假扣款-其它应扣</span>
+                        <span class="card__li--right">0</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="迟到扣款-其它应扣">迟到扣款-其它应扣</span>
+                        <span class="card__li--right">0</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="小计-其它应扣">小计-其它应扣</span>
+                        <span class="card__li--right">0</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="养老保险-代扣代缴部分（个人承担社会保险部分）">养老保险-代扣代缴部分（个人承担社会保险部分）</span>
                         <span class="card__li--right">170.4</span>
                     </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="医疗保险-代扣代缴部分（个人承担社会保险部分）">医疗保险-代扣代缴部分（个人承担社会保险部分）</span>
+                        <span class="card__li--right">42.6</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="失业保险-代扣代缴部分（个人承担社会保险部分）">失业保险-代扣代缴部分（个人承担社会保险部分）</span>
+                        <span class="card__li--right">10.65</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="工伤保险-代扣代缴部分（个人承担社会保险部分）">工伤保险-代扣代缴部分（个人承担社会保险部分）</span>
+                        <span class="card__li--right">10.65</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="生育保险-代扣代缴部分（个人承担社会保险部分）">生育保险-代扣代缴部分（个人承担社会保险部分）</span>
+                        <span class="card__li--right">17.04</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="住房公积金-代扣代缴部分（个人承担社会保险部分）">住房公积金-代扣代缴部分（个人承担社会保险部分）</span>
+                        <span class="card__li--right">106.5</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="小计-代扣代缴部分（个人承担社会保险部分）">小计-代扣代缴部分（个人承担社会保险部分）</span>
+                        <span class="card__li--right">357.84</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="应计个税工资">应计个税工资</span>
+                        <span class="card__li--right">952.16</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="应扣个税">应扣个税</span>
+                        <span class="card__li--right">28.56</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="实发工资">实发工资</span>
+                        <span class="card__li--right">4423.6</span>
+                    </li>
+
+                    <li class="card__li">
+                        <span class="card__li--left" title="备注">备注</span>
+                        <span class="card__li--right">0</span>
+                    </li>
                 </ul>
-            </div> -->
+            </div>
             <div class="card__footer">
                 <div class="card__foter--title">公告：</div>
                 <div class="card__foter--text is-gray">工资条属敏感内容，请注意保密。</div>
