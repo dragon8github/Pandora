@@ -10,10 +10,13 @@
         box-sizing: border-box;
     }
 
-    body {
+    body, html {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: none;
         font-family: "Microsoft Yahei","PingFang SC",SimSun,"Helvetica Neue",Helvetica,Arial,sans-serif,Tahoma;
         background-color: #eee;
         color: #505050;
+        margin: 0;
     }
 
     .is-gray {
@@ -36,22 +39,25 @@
         width: 100%;
         height: 78px;
         line-height: 78px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+        box-shadow: 0 7px 10px rgb(228, 222, 222);
     }
         .header__title {
             display: flex;
             justify-content: flex-start;
             align-items: center;
             margin: auto;
-
+    
             font-size: 20px;
             width: 1300px;
+            height: 100%;
         }
 
         .header__logo {
             display: flex;
             justify-content: center;
             align-items: center;    
+            
+            height: 100%;
         }
 
         .header__line {
@@ -62,12 +68,12 @@
         }
 
     .body {
-        margin-top: 116px;
+        margin: 100px 10px 30px;
     }
 
     .card {
         position: relative;
-        margin: 0 auto 50px;
+        margin: 0 auto;
         padding-bottom: 100px;
 
         background-color: #fff;
@@ -119,10 +125,16 @@
 
             .card__li:nth-child(odd) {
                 background-color: #ffffff;
+                border-bottom: 1px solid #ddd;
             }
 
             .card__li:nth-child(even) {
                 background-color: #f2f2f2;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .card__li:last-child {
+                border-bottom: 0;
             }
 
             .card__li--left {
@@ -130,15 +142,18 @@
                 padding: 0 20px;
 
                 overflow: hidden;
-                -o-text-overflow:ellipsis;
                 text-overflow: ellipsis;
                 white-space: nowrap;
 
                 color: rgba(80,80,80,.65);
+                padding: 13px;
+                text-align: left;
             }
 
             .card__li--right {
                 flex: 1;
+                text-align: right;
+                padding: 13px;
             }
 
 
@@ -164,6 +179,18 @@
                 font-size: 18px;
             }
 
+        @media (max-width: 768px) {
+            .header__title, 
+            .header__logo, 
+            .card {
+                width: 100%;
+            }
+
+            .header__line,
+            .header__name {
+                display:none;
+            }
+        }
 </style>
 <body>
     <div class="header">
