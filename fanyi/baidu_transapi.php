@@ -1,5 +1,5 @@
 <?php
-
+header("Content-type: text/html; charset=utf-8");
 define("CURL_TIMEOUT",   20); 
 define("URL",            "http://api.fanyi.baidu.com/api/trans/vip/translate"); 
 define("APP_ID",         "20180425000150484"); //替换为您的APPID
@@ -148,8 +148,15 @@ function getEn2 ($str) {
 }
 
 if ($_GET["text"]) {
-    // 调用有道API
-    $ret = translate($_GET["text"], "zh", "en");
+    $from = "zh";
+    $to = 'en';
+    // 判断入参是是否为英文，如果是英文的话，那么转换一下
+    if (preg_match('/[\w]+/', $_GET['text'])) {
+        $from = 'en';
+        $to = "zh";
+    }
+    // 调用百度API
+    $ret = translate($_GET["text"], $from , $to);
     // 获取结果
     $data = $ret['trans_result'][0]['dst'];
     // 先小写再说
