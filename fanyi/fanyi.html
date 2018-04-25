@@ -1,0 +1,38 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<div>可打开浏览器控制台查看结果</div>
+<script src="http://shared.ydstatic.com/js/jquery/jquery-3.1.1.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script type="text/javascript">
+var appKey = '69ab873bf6b202ef';
+var key = 'mnJjOaydLZzB60HNfP60peuVvhPUoQgr';//注意：暴露appSecret，有被盗用造成损失的风险
+var salt = (new Date).getTime();
+var query = '手册';
+// 多个query可以用\n连接  如 query='apple\norange\nbanana\npear'
+var from = 'zh-CHS';
+var to = 'en';
+var str1 = appKey + query + salt +key;
+var sign = md5(str1);
+console.log(md5(123));
+$.ajax({
+    url: 'http://openapi.youdao.com/api',
+    type: 'post',
+    dataType: 'jsonp',
+    data: {
+        q: query,
+        appKey: appKey,
+        salt: salt,
+        from: from,
+        to: to,
+        sign: sign
+    },
+    success: function (data) {
+        console.log(data);
+    } 
+});
+
+</script>
+</body>
