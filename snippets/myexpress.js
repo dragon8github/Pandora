@@ -5,27 +5,27 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-// ÓÃÀ´½âÎö request ÖĞ bodyµÄ urlencoded×Ö·û
+// ç”¨æ¥è§£æ request ä¸­ bodyçš„ urlencodedå­—ç¬¦
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// ½âÎö application/json ÇëÇó
+// è§£æ application/json è¯·æ±‚
 app.use(bodyParser.json());
 
-// ÉèÖÃ¿çÓò·ÃÎÊ
+// è®¾ç½®è·¨åŸŸè®¿é—®
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    // Õâ¸öÖ»ÊÇÒ»ÖÖ¶Ô¿Í»§¶ËµÄ·´À¡ËµÃ÷£¬²»ÄÜÓÃÀ´×èÖ¹¹ıÂËÇëÇóµÄ·¢ËÍ£¬ËùÒÔ²Å»áÓĞOPTIONÔ¤ÇëÇóÀ´¿´¿´·şÎñ¶ËÖ§³ÖÊ²Ã´
-    // ¾ÍËãÄãÕâÀïËµÎÒ²»Ö§³Öpost£¬µ«Êµ¼ÊÉÏ¿Í»§¶ËÒÀÈ»¿É·¢ËÍpostÇëÇóµÄ¡£
+    // è¿™ä¸ªåªæ˜¯ä¸€ç§å¯¹å®¢æˆ·ç«¯çš„åé¦ˆè¯´æ˜ï¼Œä¸èƒ½ç”¨æ¥é˜»æ­¢è¿‡æ»¤è¯·æ±‚çš„å‘é€ï¼Œæ‰€ä»¥æ‰ä¼šæœ‰OPTIONé¢„è¯·æ±‚æ¥çœ‹çœ‹æœåŠ¡ç«¯æ”¯æŒä»€ä¹ˆ
+    // å°±ç®—ä½ è¿™é‡Œè¯´æˆ‘ä¸æ”¯æŒpostï¼Œä½†å®é™…ä¸Šå®¢æˆ·ç«¯ä¾ç„¶å¯å‘é€postè¯·æ±‚çš„ã€‚
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     res.header("Content-Type", "application/json;charset=utf-8");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, token");
     next();
 });
 
-// ĞÂ½¨Ò»¸öÂ·ÓÉ
+// æ–°å»ºä¸€ä¸ªè·¯ç”±
 var router = express.Router();
 
-// ×Ô¶¨ÒåÖĞ¼ä¼ş
+// è‡ªå®šä¹‰ä¸­é—´ä»¶
 router.use(function (req, res, next) {
   console.log('Time: ', Date.now())
   next()
@@ -33,19 +33,19 @@ router.use(function (req, res, next) {
 
 // whether using GET, POST, PUT, DELETE, or any other HTTP request method
 router.all('/', function (req, res) {
-  // OPTIONSÇëÇóÖ±½Ó·µ»Ø³É¹¦
+  // OPTIONSè¯·æ±‚ç›´æ¥è¿”å›æˆåŠŸ
   if (req.method == 'OPTIONS') {
       return res.end('ok');
   }
-  // »ñÈ¡ post ²ÎÊı
+  // è·å– post å‚æ•°
   console.log(req.body);
-  // »ñÈ¡ rest api Â·ÓÉ²ÎÊı
+  // è·å– rest api è·¯ç”±å‚æ•°
   console.log(req.params);
-  // »ñÈ¡ get ²ÎÊı
+  // è·å– get å‚æ•°
   console.log(req.query);
-  // »ñÈ¡ header ÇëÇóÍ··Ç²ÎÊı
+  // è·å– header è¯·æ±‚å¤´éå‚æ•°
   console.log(req.headers);
-  // ·µ»Ø½á¹û
+  // è¿”å›ç»“æœ
   res.end('ok');
 })
 
