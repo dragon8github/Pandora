@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- normalize -->
+	<link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+
+	<!-- Vue -->
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+
+	<!-- layer -->
+	<link rel="stylesheet" href="http://res.layui.com/layui/dist/css/layui.css">
+	<script src="http://res.layui.com/layui/release/layer/dist/layer.js?v=3111"></script>
+	
+	<!-- jquery -->
+	<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+	
+	<!-- bootstrap 3.3.6 -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+	<!-- layui -->
+	<link rel="stylesheet" href="http://res.layui.com/layui/dist/css/layui.css?t=1522709297490" media="all">
+	<script src="http://res.layui.com/layui/dist/layui.js?t=1522709297490"></script>
+</head>
+<style>
+	
+</style>
+<body>
+	<div id="app"></div>
+</body>
+<script>
+	// jquery
+	$(function(){
+		console.log('hello world');
+	});
+
+	// Vue
+	new Vue({
+		el: '#app',
+		data: {
+			title: 'hello world',
+		},
+		methods: {
+			clickHandle: function () {
+				console.log('hello world');		
+			}
+		}
+	})
+</script>
+</html>
