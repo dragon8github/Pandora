@@ -22,21 +22,16 @@ app.all('*', function(req, res, next) {
     next();
 });
 
-// 新建一个路由
-var router = express.Router();
-
 // 自定义中间件
-router.use(function (req, res, next) {
+app.use(function (req, res, next) {
   console.log('Time: ', Date.now())
   next()
 })
 
-// whether using GET, POST, PUT, DELETE, or any other HTTP request method
-router.all('/', function (req, res) {
+// 这里用all也可以，好像没什么区别，api十分强大，但也很让人迷茫。譬如app和router的api几乎一致
+app.use('/', function (req, res) {
   // OPTIONS请求直接返回成功
-  if (req.method == 'OPTIONS') {
-      return res.end('ok');
-  }
+  if (req.method == 'OPTIONS') return res.end('ok');
   // 获取 post 参数
   console.log(req.body);
   // 获取 rest api 路由参数
@@ -47,10 +42,7 @@ router.all('/', function (req, res) {
   console.log(req.headers);
   // 返回结果
   res.end('ok');
-})
-
-// 这种方法适用于一个app实例下有多个路由的情况，显然这里是大材小用了。但可以学习router的语法和app结合的实战语法
-app.use('/', router);
+});
 
 app.listen('3000', function(err){
     console.log('start');
