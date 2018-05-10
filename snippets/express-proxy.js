@@ -70,3 +70,21 @@ app.use('/', router);
 app.listen('3000', function(err){
     console.log('start');
 });
+
+// 前端ajax示例
+//  $.ajax({
+//     url: 'http://localhost:3000/',
+//     type: "POST",
+//     data: JSON.stringify({"userName":"admin-salary","password":"123456"}),
+//     headers: {
+//         app: 'PMS',
+//         'X-Requested-With': 'XMLHttpRequest',
+//         url: 'http://172.16.200.110:30111/uaa/auth/login',
+//         type: 'POST'
+//     },
+//     dataType: 'json',
+//     contentType: 'application/json;charset=utf-8',
+//     success: function (data) {
+//         console.log(data);
+//     }
+// })
