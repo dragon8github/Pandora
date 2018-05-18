@@ -1,10 +1,13 @@
 <template>
+    <div class="test">
+
+    </div>
 </template>
 
 <script>
 export default {
 
-  name: 'vue_template',
+  name: 'test',
 
   data () {
     return {
@@ -15,4 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.test {
+    
+}
 </style>
