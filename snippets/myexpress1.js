@@ -18,7 +18,7 @@ app.all('*', function(req, res, next) {
     // 就算你这里说我不支持post，但实际上客户端依然可发送post请求的。
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     res.header("Content-Type", "application/json;charset=utf-8");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, token");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, token, app");
     next();
 });
 
@@ -46,7 +46,11 @@ router.all('/', function (req, res) {
   // 获取 header 请求头非参数
   console.log(req.headers);
   // 返回结果
-  res.end('ok');
+  res.end(JSON.stringify({
+      msg: 'success',
+      data: {result: '1'},
+      code: '200'
+  }));
 })
 
 // 这种方法适用于一个app实例下有多个路由的情况，显然这里是大材小用了。但可以学习router的语法和app结合的实战语法

@@ -18,7 +18,7 @@ app.all('*', function(req, res, next) {
     // 就算你这里说我不支持post，但实际上客户端依然可发送post请求的。
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     res.header("Content-Type", "application/json;charset=utf-8");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, token");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, token, app");
     next();
 });
 
@@ -41,7 +41,11 @@ app.use('/', function (req, res) {
   // 获取 header 请求头非参数
   console.log(req.headers);
   // 返回结果
-  res.end('ok');
+  res.end(JSON.stringify({
+      msg: 'success',
+      data: {result: '1'},
+      code: '200'
+  }));
 });
 
 app.listen('3000', function(err){
