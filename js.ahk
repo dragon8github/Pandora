@@ -1,0 +1,548 @@
+>^r::
+    SendRaw, npm run dev
+return
+
+
+!i::
+Var = 
+(
+if (condition) {
+    
+}
+)
+code(Var)
+return
+
+>!i::
+Var = 
+(
+if (condition) {
+
+} else if (condition) {
+
+} else {
+    
+}
+)
+code(Var)
+return
+
+::addevent::
+Var = 
+(
+document.body.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.keyCode == 13) {
+        console.log(123);
+    }
+})
+)
+code(Var)
+return
+
+::getparams::
+Var = 
+(
+var qy = $.GetQueryString = function (name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return "";
+};
+)
+code(Var)
+return
+
+::req::
+    Send, require('');{left 3}
+return
+
+::node-http::
+Var = 
+(
+var http = require('http');
+
+var server = http.createServer(function (req, rep) {
+    rep.writeHead(200, {"Content-Type": "text/plain"});
+    rep.end("Hello World!!");
+})
+
+server.listen(3000, function (err) {
+     console.log('start');
+});
+)
+code(Var)
+Return
+
+>^d::
+    SendInput, debugger{;}
+Return
+
+>^c:: 
+    SendInput, console.log(arguments)`;{left 2}
+Return
+
+::con:: 
+    SendInput, console.log()`;{left 2}
+Return
+
+::log:: 
+    SendInput, console.log()`;{left 2}
+Return
+
+::console:: 
+    SendInput, console.log(arguments)`;{left 2}
+Return
+
+::ret::
+	SendInput, return
+Return 
+
+::pro::
+    SendInput, prototype
+return
+
+::args::
+	SendInput, arguments
+Return
+
+::json.p::
+    SendInput, JSON.parse(){left}
+Return
+
+::json.s::
+    SendInput, JSON.stringify(){left}
+Return
+
+::/json::
+    SendRaw, application/json;charset=utf-8
+Return
+
+::json/::
+    SendRaw, application/json;charset=utf-8
+Return
+
+::/form::
+    SendRaw, application/x-www-form-urlencoded;charset=utf-8
+Return
+
+::_::
+Var = 
+(
+_ => {}
+)
+code(Var)
+SendInput, {left}{enter}
+Return
+
+::=>::
+Var = 
+(
+=> {}
+)
+code(Var)
+SendInput, {left}{enter}
+Return
+
+::func::
+Var = 
+(
+function () {}
+)
+code(Var)
+SendInput, {left}{enter}
+Return
+
+::f::
+Var = 
+(
+function () {}
+)
+code(Var)
+SendInput, {left}{enter}
+Return
+
+::()()::
+Var = 
+(
+(function(){
+	
+}());
+)
+code(Var)
+SendInput, {up}{tab}
+Return
+
+::$click::
+Var = 
+(
+$(".object").click(function () {
+	
+});
+)
+code(Var)
+SendInput, {up}{tab}
+Return
+
+::$change::
+Var = 
+(
+$(".object").change(function () {
+
+});
+)
+code(Var)
+SendInput, {up}{tab}
+Return
+
+::`:?::
+	SendInput, foo === bar ? true `: false`;
+Return
+
+::sett::
+Var = 
+(
+setTimeout(function () {
+        
+}, 1000);
+)
+code(Var)
+SendInput, {up}{tab}
+Return
+
+::setti::
+Var = 
+(
+setInterval(function () {
+    
+}, 1000);
+)
+code(Var)
+SendInput, {up}{tab}
+Return
+
+::ctimer::
+Var = 
+(
+var timer = setTimeout(function () {
+    clearTimeout(timer);
+}, 1000);
+)
+code(Var)
+Return
+
+::ctimeri::
+Var = 
+(
+var timer = setInterval(function () {
+    clearInterval(timer);
+}, 1000);
+)
+code(Var)
+Return
+
+::$each::
+Var = 
+(
+$.each($('.object'), function (i, e) {
+    console.log(i, e);
+});
+)
+code(Var)
+Return
+
+::.each::
+Var = 
+(
+.each(function (i, e) {
+    console.log(i, e);
+});
+)
+code(Var)
+Return
+
+::foreach::
+Var = 
+(
+[1,2,3,4].forEach(function (e, i) {
+     console.log(i, e);
+});
+)
+code(Var)
+Return
+
+::dg::
+    SendInput, document.getElementById('')`;{left 3}
+Return
+
+::ds::
+    SendInput, document.querySelectorAll('')`;{left 3}
+Return
+
+::.then::
+    SendInput, .then(_ => {{}{}}).catch(err => {{}{}})`;{left 3}{enter 2}{UP 2}{Home}{right 12}{enter 2}{up}{tab}
+Return
+
+::throw::
+    SendInput, throw new Error(e.message){left}^+{left}^+{left}
+Return
+
+>!f::
+Var = 
+(
+for (var i = Things.length - 1; i >= 0; i--) {
+	Things[i]
+}
+)
+code(Var)
+Return
+
+!f::
+Var = 
+(
+for (var i = 0; i < Things.length; i++) {
+    Things[i]
+}
+)
+code(Var)
+Return
+
+::forin::
+    SendInput, for (var property in source) {{}{}}{left}{enter}console.log(source[property]);
+Return
+
+::switch::
+    SendInput,
+(
+switch (data) {{}{}}{left}{enter 2}{up}{tab}case 0`:
+  break`;
+case 1`:
+  break`;
+default`:
+  
+)
+return
+
+::date::
+Var = 
+(
+var date = new date();
+var year = date.getFullYear();
+var month = date.getMonth() + 1;
+var day = date.getate();
+var hour = date.getHours();
+var minutes = date.getMinutes();
+var seconds= date.getSeconds();
+console.log(year + "/" + month + "/" + day + "/ " + hour + ":" + minutes + ":" + seconds);
+console.log(year + "年" + month + "月" + day + "日 " + hour + "时" + minutes + "分" + seconds + "秒");
+)
+code(Var)
+return
+
+::cdate::
+	SendInput, var mydate = new Date(time.replace(/\-/g, "/"))`;
+Return
+
+::date.y::
+	SendInput, new Date().getFullYear()`;
+Return
+
+::datey::
+	SendInput, new Date().getFullYear()`;
+Return
+
+::date.year::
+	SendInput, new Date().getFullYear()`;
+Return
+
+::date.m::
+	SendInput, new Date().getMonth() {+} 1`;
+Return
+
+::date.month::
+	SendInput, new Date().getMonth() {+} 1`;
+Return
+
+::datem::
+	SendInput, new Date().getMonth() {+} 1`;
+Return
+
+::date.d::
+	SendInput, new Date().getDate()`;
+Return
+
+::dated::
+	SendInput, new Date().getDate()`;
+Return
+
+::date.day::
+	SendInput, new Date().getDate()`;
+Return
+
+::date.h::
+	SendInput, new Date().getHours()`;
+Return
+
+::dateh::
+	SendInput, new Date().getHours()`;
+Return
+
+::date.hour::
+	SendInput, new Date().getHours()`;
+Return
+
+::date.mm::
+	SendInput, new Date().getMinutes()`;
+Return
+
+::datemm::
+	SendInput, new Date().getMinutes()`;
+Return
+
+::date.s::
+	SendInput, new Date().getSeconds()`;
+Return
+
+::date.ss::
+    SendInput, new Date().getSeconds()`;
+Return
+
+::$create::
+    SendInput, 
+(
+var wrap = document.createElement("div");
+var first = document.body.firstChild;
+var wraphtml = document.body.insertBefore(wrap,first);
+)
+Return
+
+::random::
+    SendInput, parseInt(Math.random() * 10 {+} 1); // 获取 1 - 10 到随机数
+Return
+
+::rand::
+    SendInput, parseInt(Math.random() * 10 {+} 1); // 获取 1 - 10 到随机数
+Return
+
+::repeat::
+    SendRaw, Array.prototype.join.call({length: i + 1}, '你确定？')
+Return
+
+!/::
+Var = 
+(
+/**
+ * say something ...
+ */
+)
+code(Var)
+Return
+
++!/::
+Var = 
+(
+/**
+ * say something ...
+ * @param {*} 参数 说明
+ */
+)
+code(Var)
+return
+
+::getuuid::
+Var = 
+(
+function getUUID () {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    return (c === 'x' ? (Math.random() * 16 | 0) : ('r&0x3' | '0x8')).toString(16)
+  })
+}
+)
+code(Var)
+return
+
+
+
+::extend::
+Var = 
+(
+// 拷贝集成
+var extend = function (destination, source) {
+    for (var property in source)
+    destination[prototype] = source[prototype]
+    return destination
+}
+)
+code(Var)
+Return
+    
+::gettop::
+Var = 
+(
+// 获取距离顶部的相对距离
+function getElementTop(element){
+    try {
+　  　　　var actualTop = element.offsetTop;
+　  　　　var current = element.offsetParent;
+　  　　　while (current !== null){
+　  　　　　　actualTop += current.offsetTop;
+　  　　　　　current = current.offsetParent;
+　  　　　}
+　  　　　return actualTop;
+    } catch (e) {}
+}
+)
+code(Var)
+Return
+
+::pad::
+Var = 
+(
+// 补全
+function pad (target, n) {
+    var zero = new Array(n).join('0');
+    var str = zero + target;
+    var result = str.substr(-n);
+    return result;
+}
+)
+code(Var)
+Return
+
+::goTop::
+Var = 
+(
+var timer = null;
+var goTop = function() {
+    cancelAnimationFrame(timer);
+    timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+            document.body.scrollTop = document.documentElement.scrollTop = oTop - 500;
+            timer = requestAnimationFrame(fn);
+        } else {
+            cancelAnimationFrame(timer);
+        }
+    });
+}
+)
+code(Var)
+Return
+
+::uniqueArray::
+Var = 
+(
+/**
+ * 只用 Array
+ * 如果是 es6 推荐： return Array.from(new Set(arr));
+ */
+function uniqueArray(arr) {
+    var retArray = [];
+    for (var i = 0; i < arr.length; i) {
+        retArray.push(arr[i]);
+    }
+    Return retArray;
+}
+)
+code(Var)
+return
+
