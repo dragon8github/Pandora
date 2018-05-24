@@ -163,7 +163,7 @@ Return
 ::()()::
 Var = 
 (
-(function(){
+;(function(){
 	
 }());
 )
@@ -459,8 +459,6 @@ function getUUID () {
 code(Var)
 return
 
-
-
 ::extend::
 Var = 
 (
@@ -527,7 +525,7 @@ var goTop = function() {
 code(Var)
 Return
 
-::uniqueArray::
+::unique::
 Var = 
 (
 /**
@@ -585,3 +583,100 @@ return
 ::is-email::
     SendRaw, /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(s)
 Return
+
+::is-array::
+    SendRaw, Object.prototype.toString.call(foo) === '[object Array]' /* Array.isArray([]) */
+return
+
+::is-object::
+    SendRaw, Object.prototype.toString.call(foo) === '[object Object]'
+return
+
+::is-Null::
+    SendRaw, Object.prototype.toString.call(Null) === '[object Null]'
+return
+
+::is-Undefined::
+    SendRaw, Object.prototype.toString.call(Undefined) === '[object Undefined]'
+return
+
+::is-string::
+    SendRaw, Object.prototype.toString.call(String) === '[object String]'
+return
+
+::is-number::
+    SendRaw, Object.prototype.toString.call(Number) === '[object Number]'
+return
+
+::is-bool::
+    SendRaw, Object.prototype.toString.call(Boolean) === '[object Boolean]'
+return
+
+::is-date::
+    SendRaw, Object.prototype.toString.call(Date) === '[object Date]'
+return
+
+::is-NaN::
+Var = 
+(
+function isNaN(obj) {
+    return obj !== obj
+}
+)
+code(Var)
+return
+
+::shuffle::
+Var = 
+(
+function shuffle(target) {
+    var j, x, i = target.length;
+    for (; i > 0; j = parseInt(Math.random() * i), x = target[--i], target[i] = target[j], target[j] = x) {}
+    return target
+}
+)
+code(Var)
+return
+
+::array_random::
+Var = 
+(
+function array_random(target) {
+    return target[Math.floor(Math.random() * target.length)];
+}
+)
+code(Var)
+return
+
+::removeAt::
+Var = 
+(
+function removeAt(target, index) {
+    return !!target.splice(index, 1).length
+}
+)
+code(Var)
+return
+
+::remove::
+Var = 
+(
+function remove(target, item) {
+    var index = target.indexOf(item);
+    return ~index ? removeAt(target, index) : false
+}
+)
+code(Var)
+return
+
+::compact::
+Var = 
+(
+function compact(target) {
+    return target.filter(function(el) {
+        return el != null
+    })
+}
+)
+code(Var)
+return

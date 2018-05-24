@@ -1,13 +1,10 @@
 ; ALT + R 重启脚本
 !r::
-    Send, ^s
+    if WinActive("ahk_class SciTEWindow")
+        Send, ^s
     reload
 Return
 
-; Alt + F11 重启脚本
-~!F11::
-    reload
-return
 
 !q::
     ; 第一步，将当前剪切板的内容保存起来，然后清空
