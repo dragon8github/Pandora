@@ -715,7 +715,7 @@ function max(target) {
 code(Var)
 return
 
-::forentries::
+::foren::
 Var = 
 (
 // 对象遍历
@@ -726,6 +726,17 @@ for (let [key, ele] of Object.entries(aa)) {
 // 数组遍历
 for (let [index, value] of [1, 2, 3].entries()) {
     console.log(index, value)
+}
+)
+code(Var)
+return
+
+
+::forof::
+Var = 
+(
+for (const a of gen) {
+    console.log(a);
 }
 )
 code(Var)

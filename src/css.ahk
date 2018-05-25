@@ -332,12 +332,57 @@ align-items: center`;
 )
 Return
 
+::flexcs::
+    SendInput, 
+(
+display: flex`;
+justify-content: center`;
+align-items: flex-start`;
+)
+Return
+
 ::flexac::
     SendInput, 
 (
 display: flex`;
 justify-content: space-around`;
 align-items: center`;
+)
+Return
+
+::flexae::
+    SendInput, 
+(
+display: flex`;
+justify-content: space-around`;
+align-items: flex-end`;
+)
+Return
+
+::flexce::
+    SendInput, 
+(
+display: flex`;
+justify-content: center`;
+align-items: flex-end`;
+)
+Return
+
+::flexse::
+    SendInput, 
+(
+display: flex`;
+justify-content: flex-start`;
+align-items: flex-end`;
+)
+Return
+
+::flexee::
+    SendInput, 
+(
+display: flex`;
+justify-content: flex-end`;
+align-items: flex-end`;
 )
 Return
 
@@ -386,6 +431,24 @@ return
 (
 display: flex`;
 justify-content: flex-start`;
+align-items: flex-start`;
+)
+Return
+
+::flexes::
+    SendInput, 
+(
+display: flex`;
+justify-content: flex-end`;
+align-items: flex-start`;
+)
+Return
+
+::flexas::
+    SendInput, 
+(
+display: flex`;
+justify-content: space-around`;
 align-items: flex-start`;
 )
 Return
@@ -571,12 +634,7 @@ input:-webkit-autofill {
 code(Var)
 return
 
-::forof::
-Var = 
-(
-for (const a of gen) {
-    console.log(a);
-}
-)
-code(Var)
-return
+
+
+
+
