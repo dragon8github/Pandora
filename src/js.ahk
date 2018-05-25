@@ -529,10 +529,10 @@ Return
 Var = 
 (
 /**
- * 只用 Array
+ * 只能用于数组
  * 如果是 es6 推荐： return Array.from(new Set(arr));
  */
-function uniqueArray(arr) {
+function unique(arr) {
     var retArray = [];
     for (var i = 0; i < arr.length; i) {
         retArray.push(arr[i]);
@@ -558,6 +558,8 @@ return
 Var = 
 (
 /^([0-9]{3,4}-)?[0-9]{7,8}$/.test(s)
+/^[1][3,4,5,7,8][0-9]{9}$/.test(s)
+/^1\d{10}$/.test(s)
 )
 code(Var)
 return
@@ -676,6 +678,54 @@ function compact(target) {
     return target.filter(function(el) {
         return el != null
     })
+}
+)
+code(Var)
+return
+
+::jiaoji::
+Var = 
+(
+function intersect(target, array) {
+    return target.filter(function (n) {
+        return ~array.indexOf(n);
+    });
+}
+)
+code(Var)
+return
+
+::min::
+Var = 
+(
+function min(target) {
+    return Math.min.apply(null, target);
+}
+)
+code(Var)
+return
+
+::max::
+Var = 
+(
+function max(target) {
+    return Math.max.apply(null, target);
+}
+)
+code(Var)
+return
+
+::forentries::
+Var = 
+(
+// 对象遍历
+for (let [key, ele] of Object.entries(aa)) {
+    console.log(key, ele)
+}
+
+// 数组遍历
+for (let [index, value] of [1, 2, 3].entries()) {
+    console.log(index, value)
 }
 )
 code(Var)

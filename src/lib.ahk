@@ -1,3 +1,27 @@
+; 下载内容
+ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
+{
+    whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+    whr.Open("GET", url, true)
+    whr.Send()
+    if (text != "") {
+        TrayTip, 请稍后, % text, 20, 17
+    }   
+    whr.WaitForResponse()
+    
+    
+    if (q==false) {
+        if (whr.ResponseText) {
+            TrayTip, 下载成功, （づ￣3￣）づ╭?～ , 20, 17
+        } else {
+            TrayTip, 无内容返回, (￣ε(#￣)☆╰╮o(￣皿￣///) , 20, 17
+        }
+    }
+    
+    return  whr.ResponseText
+}
+
+
 ; 关闭输入法
 ; 使用示例：SwitchIME(0x08040804)
 ; 使用示例：SwitchIME(0x04090409)

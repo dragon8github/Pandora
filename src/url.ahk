@@ -5,15 +5,9 @@
     run, https://github.com/opendigg/awesome-github-vue
 return
 
-
->^l::
-    SendRaw, http://localhost:8080
-return
-
 ::baidu::
     SendRaw, http://www.baidu.com
 return
-
 
 >^e::
     run, http://element-cn.eleme.io/#/zh-CN/component/radio
@@ -22,22 +16,18 @@ return
     run, http://elemefe.github.io/mint-ui/#/
 return
 
-
 >^f::
     run, http://fontawesome.dashgame.com/
 return
-
 
 >^b::
     RUN, http://www.cnblogs.com/cylee
 Return
 
-
 ^g::
     RUN, https://www.github.com/
     RUN, https://legacy.gitbook.com/
 Return
-
 
 ; ¿ìËÙËÑË÷ÒôÀÖ
 >^m::
@@ -62,7 +52,6 @@ return
         RUN, https://www.baidu.com/s?wd=%OutputVar%
     }
 Return
-
 
 >^j::
     RUN, http://youmightnotneedjquery.com/
