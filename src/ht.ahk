@@ -1,4 +1,3 @@
-
 ::ht.loading::
 Var = 
 (
@@ -99,77 +98,142 @@ return
 Var = 
 (
 <!-- http://element-cn.eleme.io/#/zh-CN/component/table -->
-<el-table :data='myData' class='hongte-table' v-loading='loading'>
-   <el-table-column fixed prop='businessId' label='业务编号' width='220'></el-table-column>
-   <el-table-column prop='districtName' label='地区' width='120'> </el-table-column>
-   <el-table-column prop='companyName' label='分公司' width='120'> </el-table-column>
-   <el-table-column prop='customerName' label='客户名称' width='150'> </el-table-column>
-   <el-table-column prop='licensePlateNumber' label='车牌号' width='120'> </el-table-column>
-   <el-table-column prop='model' label='车辆型号' width='180'> </el-table-column>
-   <el-table-column prop='borrowMoney' label='借款金额' width='120'  :formatter="borrowMoneyFormatter"> </el-table-column>
-   <el-table-column prop='evaluationAmount' label='评估价' width='120' :formatter="evaluationAmountFormatter"> </el-table-column>
-   <el-table-column prop='repaidAmount' label='已还金额' width='120' :formatter="repaidAmountFormatter"> </el-table-column>
-   <el-table-column prop='evaluationDate' label='评估日期' width='120'> </el-table-column>
-   <el-table-column prop='trailerDate' label='拖车日期' width='120'> </el-table-column>
-   <el-table-column prop='status' label='状态' width='120'> </el-table-column>
-   <el-table-column fixed='right' label='操作' width='250' class-name="hongte-table-align">
-          <template slot-scope='scope'>
-              <el-dropdown trigger='click' @command='handleCommand(arguments[0], scope.$index, scope.row)'>
-                   <el-button size='mini'type='success'><i class="fa fa-navicon fa-lg"></i> 详情</el-button>
-                   <el-dropdown-menu slot='dropdown'>
-                      <el-dropdown-item command='发起拍卖'> 发起拍卖 </el-dropdown-item>
-                      <el-dropdown-item command='转公车申请'> 转公车申请 </el-dropdown-item>
-                      <el-dropdown-item command='拍卖记录查看'> 拍卖记录查看 </el-dropdown-item>
-                      <el-dropdown-item command='车辆归还登记'> 车辆归还登记 </el-dropdown-item>
-                      <el-dropdown-item command='重新评估'> 重新评估 </el-dropdown-item>
-                      <el-dropdown-item command='附件上传及查看'> 附件上传及查看 </el-dropdown-item>
-                      <el-dropdown-item command='查看信贷附件'> 查看信贷附件 </el-dropdown-item>
-                      <el-dropdown-item command='拍卖延时'> 拍卖延时 </el-dropdown-item>
-                   </el-dropdown-menu>
-              </el-dropdown>
+<el-table border :data='myData' class='hongte-table' v-loading='loading'>
+      <el-table-column fixed prop='businessId' label='业务编号' width='220'></el-table-column>
+      <el-table-column prop='districtName' label='地区' width='120'> </el-table-column>
+      <el-table-column prop='companyName' label='分公司' width='120'> </el-table-column>
+      <el-table-column prop='customerName' label='客户名称' width='150'> </el-table-column>
+      <el-table-column prop='borrowMoney' label='借款金额' width='120'  :formatter="borrowMoneyFormatter"> </el-table-column>
+      <el-table-column prop='evaluationAmount' label='评估价' width='120' :formatter="evaluationAmountFormatter"> </el-table-column>
+      <el-table-column prop='repaidAmount' label='已还金额' width='120' :formatter="repaidAmountFormatter"> </el-table-column>
+      <el-table-column prop='model' label='车辆型号' width='250'> </el-table-column>
+      <el-table-column prop='evaluationAmount' label='评估价' width='120'> </el-table-column>
+      <el-table-column prop='evaluationDate' label='评估日期' width='120'> </el-table-column>
+      <el-table-column prop='trailerDate' label='拖车日期' width='120'> </el-table-column>
+      <el-table-column prop='status' label='状态' width='120'> </el-table-column>
+      <el-table-column fixed='right' label='操作' width='250' class-name="hongte-table-align">
+           <template slot-scope='scope'>
+               <el-dropdown trigger='click' @command='handleCommand(arguments[0], scope.$index, scope.row)'>
+                    <el-button size='mini'type='success'><i class="fa fa-navicon fa-lg"></i> 详情</el-button>
+                    <el-dropdown-menu slot='dropdown'>
+                       <el-dropdown-item command='发起拍卖'> 发起拍卖 </el-dropdown-item>
+                       <el-dropdown-item command='转公车申请'> 转公车申请 </el-dropdown-item>
+                       <el-dropdown-item command='拍卖记录查看'> 拍卖记录查看 </el-dropdown-item>
+                       <el-dropdown-item command='车辆归还登记'> 车辆归还登记 </el-dropdown-item>
+                       <el-dropdown-item command='重新评估'> 重新评估 </el-dropdown-item>
+                       <el-dropdown-item command='附件上传及查看'> 附件上传及查看 </el-dropdown-item>
+                       <el-dropdown-item command='查看信贷附件'> 查看信贷附件 </el-dropdown-item>
+                       <el-dropdown-item command='拍卖延时'> 拍卖延时 </el-dropdown-item>
+                    </el-dropdown-menu>
+               </el-dropdown> 
               <el-button size='mini' @click='handleEdit(scope.$index, scope.row)'><i class="fa fa-pencil fa-lg"></i>编辑</el-button>
               <el-button size='mini' type='danger' @click='handleDelete(scope.$index, scope.row)'><i class="fa fa-trash-o fa-lg"></i> 删除</el-button>
-         </template>
-   </el-table-column>
-</el-table>
+           </template>
+      </el-table-column>
+ </el-table>
 
-// 数据列表
-myData: [],
-// loading
-loading: true,
+ <div class='hongte-Pagination'>
+      <el-pagination
+             background
+            @current-change='handleCurrentChange'
+            @size-change="handleSizeChange"
+            :current-page='currentPage'
+            :page-sizes="[10, 20, 30, 40]"
+            :page-size="pageSize"
+            :total='total'
+            layout='total, prev, pager, next, jumper, sizes'>
+      </el-pagination>
+ </div>
 
-// 获取数据
-getData (page = 1) {
+ <el-dialog class="hongte-dialog" :visible.sync='dialogFormVisible' title='发起拍卖' >
+     <auctionApplication></auctionApplication>
+ </el-dialog>
 
-},
-// dropdown
-handleCommand () {
-  console.log(arguments);
-  this.dialogFormVisible = true
-},
-// 编辑行
-handleEdit () {
 
-},
-// 删除行
-handleDelete () {
+ import { moneyFormatter } from '@utils'
+ import auctionApplication from '@htComponents/carLoanManagement/auctionApplication.vue'
 
-},
-// 借款金额
-borrowMoneyFormatter (row, column, content, index) {
- return moneyFormatter(content)
-},
-// 评估价
-evaluationAmountFormatter (row, column, content, index) {
-  return moneyFormatter(content)
-},
-// 已还金额
-repaidAmountFormatter (row, column, content, index) {
-  return moneyFormatter(content)
-}
-beforeMount () {
-    this.getData(1)
-}
+ // 数据列表
+ myData: [],
+ // loading
+ loading: true,
+ // 当前分页
+ currentPage: 1,
+ // 每页显示条数
+ pageSize: 10,        
+ // 分页总数
+ total: 0,
+ // dialog
+ dialogFormVisible: false,
+
+ // 获取数据
+ getData () {
+     this.loading = true
+     // axios
+     this.$http.get('/alms/core/car/carList', {
+         params: Object.assign({}, {
+           'page': this.currentPage,
+           'limit': this.pageSize
+         }, this.where)
+     }).then(result => {
+         this.loading = false
+         if (result.code == 0) {
+           this.total = result.count
+           this.myData = result.data
+         } else {
+           this.$message.error(result.msg);
+         }
+     }).catch(err => {
+         this.$message.error(err.message);
+     })
+ },
+ // 每页显示的页数发生变化的时候
+ handleSizeChange (size) {
+     this.pageSize = size;
+     this.getData()
+ },
+ // 翻页
+ handleCurrentChange (page) {
+     this.currentPage = page;
+     this.getData()
+ },
+ // 编辑行
+ handleEdit () {
+
+ },
+ // 删除行
+ handleDelete () {
+     this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+       confirmButtonText: '确定',
+       cancelButtonText: '取消',
+       type: 'warning'
+     }).then(() => {
+         this.myData.splice(index, 1)
+     }).catch(() => {
+
+     });
+ },
+ // 借款金额  
+ borrowMoneyFormatter (row, column, content, index) {
+     return moneyFormatter(content)
+ },
+ // 评估价
+ evaluationAmountFormatter (row, column, content, index) {
+     return moneyFormatter(content)
+ },
+ // 已还金额
+ repaidAmountFormatter (row, column, content, index) {
+     return moneyFormatter(content)
+ },
+ // dropdown
+ handleCommand () {
+     this.dialogFormVisible = true
+ },
+
+
+ beforeMount () {
+     this.getData()
+ }
 )
 code(Var)
 return
@@ -178,8 +242,10 @@ return
 Var = 
 (
 <el-dialog class="hongte-dialog" :visible.sync='dialogFormVisible' title='发起拍卖' >
-   ...
+    <auctionApplication></auctionApplication>
 </el-dialog>
+
+import auctionApplication from '@htComponents/carLoanManagement/auctionApplication.vue'
 
  // dialog
 dialogFormVisible: false,
@@ -232,7 +298,7 @@ Var =
         </el-select>
     </el-form-item>
 </el-form>
-import { shortcuts, moneyFormatter } from '@utils'  
+import { shortcuts } from '@utils'  
  // 时间选择器
 pickerOptions: {
     shortcuts
@@ -269,35 +335,36 @@ return
 ::ht.page::
 Var = 
 (
-<!-- http://element-cn.eleme.io/#/zh-CN/component/pagination -->
 <div class='hongte-Pagination'>
      <el-pagination
             background
            @current-change='handleCurrentChange'
+           @size-change="handleSizeChange"
            :current-page='currentPage'
-           :page-size='10'
+           :page-sizes="[10, 20, 30, 40]"
+           :page-size="pageSize"
            :total='total'
-           layout='total, prev, pager, next, jumper'>
+           layout='total, prev, pager, next, jumper, sizes'>
      </el-pagination>
 </div>
-<script>
-export default {
-    data () {
-        return {
-            // 当前分页
-            currentPage: 1,
-            // 分页总数
-            total: 0,
-        }
-    },
-    methods: {
-        // 翻页
-        handleCurrentChange (page) {
-          this.getData(page)
-        },
-    }
-}
-</script>
+
+// 当前分页
+currentPage: 1,
+// 每页显示条数
+pageSize: 10,
+// 分页总数
+total: 0,
+
+// 每页显示的页数发生变化的时候
+handleSizeChange (size) {
+   this.pageSize = size;
+   this.getData()
+},
+// 翻页
+handleCurrentChange (page) {
+   this.currentPage = page;
+   this.getData()
+},
 )
 code(Var)
 return
