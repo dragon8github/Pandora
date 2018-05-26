@@ -1,10 +1,18 @@
-
-::vue_template::
-    MsgBox, % A_ThisHotkey
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/vue_template.vue"))
+; _____________ Html ________________
+::hover-nav::
+     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Html/hover-nav.html"))
 Return
 
-::aop::
+::myhtml::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Html/myhtml.html"))
+return
+
+::glass::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Html/glass.html"))
+return
+
+; _____________ JavaScript ________________
+::AOP::
     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/AOP.js"))
 Return
 
@@ -12,53 +20,48 @@ Return
     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/__EVENT__.js"))
 Return
 
+; _____________ Css ________________
+
 ::normalize::
     code(ajax("https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css"))
 Return
 
 ::fuck-rem::
-     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/rem.scss"))
+     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Css/rem.scss"))
 Return
 
-::hover-nav::
-     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/hover-nav.html"))
-Return
 
-::myhtml::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/myhtml.html"))
-return
+; _____________ Nodejs ________________
 
 ::myexpress::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/myexpress1.js"))
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/myexpress1.js"))
 return
 
 ::myexpress2::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/myexpress1.js"))
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/myexpress1.js"))
 return
 
 ::express-proxy::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/express-proxy.js"))
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express-proxy.js"))
 return
 
 ::proxy::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/express-proxy.js"))
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express-proxy.js"))
 return
 
 ::node-nginx::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/express-proxy.js"))
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express-proxy.js"))
 return
 
 ::node-nginx2::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/node-nginx.js"))
-return
-
-::glass::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/glass.html"))
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/node-nginx.js"))
 return
 
 ::ht.mock::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/mock.js"))
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/mock.js"))
 return
+
+; ______________ Template ___________________
 
 ::layui::
     run, https://github.com/dragon8github/ahk/blob/master/template/layui_template.zip?raw=true
