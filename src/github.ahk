@@ -13,11 +13,15 @@ return
 
 ; _____________ JavaScript ________________
 ::AOP::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/AOP.js"))
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/JavaScript/AOP.js"))
 Return
 
 ::__EVENT__::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/__EVENT__.js"))
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/JavaScript/__EVENT__.js"))
+Return
+
+::after.js::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/JavaScript/after.js"))
 Return
 
 ; _____________ Css ________________
