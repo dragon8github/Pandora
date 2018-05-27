@@ -1,8 +1,8 @@
 Function.prototype.after = function(fn) {
     var self = this;
     /**
-	 * ÈÏÖª1£ºÕâÀïµÄ function »áÖ´ÐÐÁ½´Î¡£ÎªÊ²Ã´£¿£¨ÌáÊ¾£ºÁ½¸öafter£©
-	 * ÈÏÖª2£ºÕâÀïµÄÁ½¸ö arguments ¶¼ÊÇorderº¯ÊýµÄÈë²Î¡£ÎªÊ²Ã´£¿£¨ÌáÊ¾£ºreturn function(){}£©
+	 * è®¤çŸ¥1ï¼šè¿™é‡Œçš„ function ä¼šæ‰§è¡Œä¸¤æ¬¡ã€‚ä¸ºä»€ä¹ˆï¼Ÿï¼ˆæç¤ºï¼šä¸¤ä¸ªafterï¼‰
+	 * è®¤çŸ¥2ï¼šè¿™é‡Œçš„ä¸¤ä¸ª arguments éƒ½æ˜¯orderå‡½æ•°çš„å…¥å‚ã€‚ä¸ºä»€ä¹ˆï¼Ÿï¼ˆæç¤ºï¼šreturn function(){}ï¼‰
 	 */
     return function() {
         var ret = self.apply(this, arguments);  
@@ -14,25 +14,25 @@ Function.prototype.after = function(fn) {
 
 var order500yuan = function(orderType, pay, stock) {
     if (orderType === 1 && pay === true) {
-        console.log('500 Ôª¶¨½ðÔ¤¹º£¬µÃµ½ 100 ÓÅ»ÝÈ¯');
+        console.log('500 å…ƒå®šé‡‘é¢„è´­ï¼Œå¾—åˆ° 100 ä¼˜æƒ åˆ¸');
     } else {
-        return 'next'; // ÎÒ²»ÖªµÀÏÂÒ»¸ö½ÚµãÊÇË­£¬·´Õý°ÑÇëÇóÍùºóÃæ´«µÝ
+        return 'next'; // æˆ‘ä¸çŸ¥é“ä¸‹ä¸€ä¸ªèŠ‚ç‚¹æ˜¯è°ï¼Œåæ­£æŠŠè¯·æ±‚å¾€åŽé¢ä¼ é€’
     }
 };
 
 var order200yuan = function(orderType, pay, stock) {
     if (orderType === 2 && pay === true) {
-        console.log('200 Ôª¶¨½ðÔ¤¹º£¬µÃµ½ 50 ÓÅ»ÝÈ¯');
+        console.log('200 å…ƒå®šé‡‘é¢„è´­ï¼Œå¾—åˆ° 50 ä¼˜æƒ åˆ¸');
     } else {
-        return 'next'; // ÎÒ²»ÖªµÀÏÂÒ»¸ö½ÚµãÊÇË­£¬·´Õý°ÑÇëÇóÍùºóÃæ´«µÝ
+        return 'next'; // æˆ‘ä¸çŸ¥é“ä¸‹ä¸€ä¸ªèŠ‚ç‚¹æ˜¯è°ï¼Œåæ­£æŠŠè¯·æ±‚å¾€åŽé¢ä¼ é€’
     }
 };
 
 var orderNormal = function(orderType, pay, stock) {
     if (stock > 0) {
-        console.log('ÆÕÍ¨¹ºÂò£¬ÎÞÓÅ»ÝÈ¯');
+        console.log('æ™®é€šè´­ä¹°ï¼Œæ— ä¼˜æƒ åˆ¸');
     } else {
-        console.log('ÊÖ»ú¿â´æ²»×ã');
+        console.log('æ‰‹æœºåº“å­˜ä¸è¶³');
     }
 };
 
