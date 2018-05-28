@@ -31,6 +31,11 @@ class Person {
 }
 )
 code(Var)
+return
+
+>!b::
+	SendRaw, npm run build
+return
 
 >^r::
     SendRaw, npm run dev
@@ -293,6 +298,16 @@ Var =
 code(Var)
 Return
 
+::.foreach::
+Var = 
+(
+.forEach(function (e, i) {
+     console.log(i, e);
+});
+)
+code(Var)
+Return
+
 ::foreach::
 Var = 
 (
@@ -379,10 +394,6 @@ Return
 	SendInput, new Date().getFullYear()`;
 Return
 
-::datey::
-	SendInput, new Date().getFullYear()`;
-Return
-
 ::date.year::
 	SendInput, new Date().getFullYear()`;
 Return
@@ -395,15 +406,7 @@ Return
 	SendInput, new Date().getMonth() {+} 1`;
 Return
 
-::datem::
-	SendInput, new Date().getMonth() {+} 1`;
-Return
-
 ::date.d::
-	SendInput, new Date().getDate()`;
-Return
-
-::dated::
 	SendInput, new Date().getDate()`;
 Return
 
@@ -415,19 +418,12 @@ Return
 	SendInput, new Date().getHours()`;
 Return
 
-::dateh::
-	SendInput, new Date().getHours()`;
-Return
 
 ::date.hour::
 	SendInput, new Date().getHours()`;
 Return
 
 ::date.mm::
-	SendInput, new Date().getMinutes()`;
-Return
-
-::datemm::
 	SendInput, new Date().getMinutes()`;
 Return
 
@@ -599,11 +595,11 @@ code(Var)
 return
     
 ::is-pwd:: 
-    SendRaw, /[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/.test('123456a@') ; /* 必须同时包含数字和字母,支持非法符号 */
-Return 
+    SendRaw, /[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/.test('123456a@') // 必须同时包含数字和字母,支持非法符号
+return
 
 ::is-user:: 
-    SendRaw, /^[a-zA-Z0-9-_]*$/.test(''); /* 由6-16位数字、 字母、 '_'、 '-'组成，不含特殊字符*/
+    SendRaw, /^[a-zA-Z0-9-_]*$/.test('') // 由6-16位数字、 字母、 '_'、 '-'组成，不含特殊字符
 Return 
 
 ::is-id::

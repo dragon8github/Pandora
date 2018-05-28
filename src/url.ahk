@@ -11,7 +11,7 @@ return
     run, https://github.com/opendigg/awesome-github-vue
 return
 
-::baidu::
+::bd::
     SendRaw, http://www.baidu.com
 return
 
