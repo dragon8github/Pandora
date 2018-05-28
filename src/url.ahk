@@ -16,6 +16,10 @@ return
     run, http://elemefe.github.io/mint-ui/#/
 return
 
+::chandao::
+    Send, http://28f.bujidele.com:81/zentao/user-login-L3plbnRhby9teS5odG1s.html
+return
+
 >^f::
     run, http://fontawesome.dashgame.com/
 return

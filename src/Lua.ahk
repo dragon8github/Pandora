@@ -2,7 +2,7 @@
 ; 获取指定位置的数值
 FileRead, key, C:\Users\lizhaohong\Desktop\keypressed.txt
 
-; b 百度
+; b 博客园
 if (key == 66) {
     RUN, http://www.cnblogs.com/cylee
 }
@@ -10,17 +10,17 @@ if (key == 66) {
 input(V, select := false) {
     if (select == true) {
         Sleep 50
-        SendInput, ^a
+        SendRaw, ^a
     }
     SendRaw, % V
-    SendInput, {tab}
+    Send, {tab}
     Sleep 50
 }
 
 ; 输入R，redis的账号密码
 if (key == 82) {
     input("sit")
-    input("172.16.50.113")
+    input("172.16.200.113")
     input("6379")
     input("hongte888")
 }
@@ -39,85 +39,52 @@ if (key == 98) {
     SendInput, {enter}
 }
 
-; 3 代表输入薪资系统的账号密码
+; 【3】 代表输入薪资系统的账号密码
 if (key == 99) {
     input("HX-04397")
     input("123456")
     SendInput, {enter}
 }
 
-; 9 代表输入博客园的账号密码
+; 【9】 代表输入博客园的账号密码
 if (key == 105) {
     input("贝尔塔猫")
     input("202063sb_")
     SendInput, {enter}
 }
 
-; 8 代表输入UC的账号密码
+; 【8】 代表输入UC的账号密码
 if (key == 104) {
     input("admin-uc")
     input("hongte123")
     SendInput, {enter}
 }
 
-; 1 代表测试相关的，输入[身份确认]的资料
+; 【1】 代表测试相关的，输入[身份确认]的资料
 if (key == 49) {
     input("石明志",true)
     input("340321197506109897")
     input("13800138005")
 }
 
-; 1 代表测试相关的，输入[身份确认]的资料
+; 【3】 代表测试相关的，输入[身份确认]的资料
 if (key == 51) {
     input("梁愿华",true)
     input("321315345553213123")
     input("张鑫")
     input("450203198605050730")
-    input("1382126500")
+    input("13821262000")
 }
 
-; 2 代表测试相关的，输入[登录]
+; 【2】 代表测试相关的，输入[登录]
 if (key == 50) {
-    SendInput, ^a
-    SwitchIME(0x08040804)
-    SendInput, 13794942971
-    SendInput, {tab}
-    Sleep 50
-    SendRaw, 123456.a
+    input("13794942971", true)
+    input("123456.a")
 }
 
 ; 【d】跳转到贷后系统
 if (key == 68) {
     RUN, http://172.16.50.112:30601/index
-}
-
-; 【p】发送post代码
-if (key == 80) {
-Var = 
-(
-this.$http.post('/uaa/auth/login', {
-    "userName": "admin-salary",
-    "password": "123456"
-}).then(result => {
-    console.log(result);
-}).catch(err => {
-    this.$message.error('接口异常：' + err.message);
-})
-)
-code(Var)
-}
-
-; 【p】发送post代码
-if (key == 71) {
-Var = 
-(
-this.$http.get('/uc/auth/loadMenu').then(result => {
-    console.log(result);
-}).catch(err => {
-    this.$message.error('接口异常：' + err.message);
-})
-)
-code(Var)
 }
 
 ; 打开本地链接localhost
@@ -147,9 +114,9 @@ if (key == 69) {
     run, http://elemefe.github.io/mint-ui/#/
 }
 
-; 按下[d]，打开贷后系统
+; 按下[x]，打开贷后系统
 if (key == 88) {
-    run, http://172.16.50.106:8083/
+    run, http://172.16.200.106:8092/
 }
 
 ; 按下[s]，打开薪资系统

@@ -5,7 +5,6 @@
     reload
 Return
 
-
 !q::
     ; 第一步，将当前剪切板的内容保存起来，然后清空
     tmp := Clipboard
