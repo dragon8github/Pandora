@@ -1,3 +1,37 @@
+::gouzao::
+	Send, constructor
+return
+
+
+::class::
+Var = 
+(
+class Person {
+	constructor (name, age) {
+		 // super(); // ¼Ì³Ğ
+		 this._name = name;
+		 this._age = age;
+	}
+	
+	static classMethod () {
+		return 'hello';
+	}
+	
+	getVersion () {
+        console.log("1.0");
+    }
+	
+	get prop() {
+		return 'getter';
+	}
+  
+	set prop(value) {
+		console.log('setter: '+value);
+	}	
+}
+)
+code(Var)
+
 >^r::
     SendRaw, npm run dev
 return

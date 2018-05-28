@@ -2,7 +2,7 @@ Function.prototype.after = function(fn) {
     var self = this;
     /**
 	 * 认知1：这里的 function 会执行两次。为什么？（提示：两个after）
-	 * 认知2：这里的两个 arguments 都是order函数的入参。为什么？（提示：return function(){}）
+	 * 认知2：这里的两个 arguments 都是order函数的入参。为什么？（提示：参数是一层一层的由右往左传递进去的）
 	 */
     return function() {
         var ret = self.apply(this, arguments);  
