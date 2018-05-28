@@ -12,11 +12,11 @@ return
 return
 
 ; _____________ JavaScript ________________
-::AOP::
+::aop::
     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/JavaScript/AOP.js"))
 Return
 
-::__EVENT__::
+::__event__::
     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/JavaScript/__EVENT__.js"))
 Return
 
@@ -34,14 +34,14 @@ return
     code(ajax("https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css"))
 Return
 
-::fuck-rem::
+::myrem::
      code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Css/rem.scss"))
 Return
 
 
 ; _____________ Nodejs ________________
 
-::myexpress::
+::express::
     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/myexpress1.js"))
 return
 
@@ -65,7 +65,7 @@ return
     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/node-nginx.js"))
 return
 
-::ht.mock::
+::mymock::
     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/mock.js"))
 return
 

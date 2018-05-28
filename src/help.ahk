@@ -133,7 +133,7 @@ SendInput, % time
 return
 
 ::git::
-    SendInput,  rm -rf *.bak && git add . && git commit -m '' && git push -u origin master{LEFT 30}
+    SendInput,  rm -rf src/*.bak && git add . && git commit -m '' && git push -u origin master{LEFT 30}
 Return
 
 ::auth::

@@ -1,3 +1,9 @@
+>!l::
+    run, http://layer.layui.com/
+    run, http://www.layui.com/doc/
+    run, http://www.layui.com/demo/
+return
+
 >^v::
     run, http://vuejs.org/
     run, http://vuex.vuejs.org
