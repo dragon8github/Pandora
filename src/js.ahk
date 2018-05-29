@@ -1,3 +1,48 @@
+>^a::
+Var = 
+(
+$.ajax({
+    url: "http://localhost:3000",
+    type: "post",
+    data: JSON.stringify({
+        test: 123
+    }),
+    headers: {
+        token: '123'
+    },
+    dataType: 'json',
+    contentType: 'application/json;charset=utf-8',
+    success: function (data) {
+        console.log(data);
+    }
+})
+)
+code(Var)
+Return
+
+::ajax::
+Var = 
+(
+$.ajax({
+    url: "http://localhost:8089/index.php",
+    type: "post",
+    data: {},
+    headers: {
+        token: '123'
+    },
+    dataType: 'json',
+    contentType: 'application/json;charset=utf-8',
+    success: function (data) {
+        console.log(data);
+    },
+    error: function(e, m){
+       console.log('数据接口请求异常', e, m);
+    }
+})
+)
+code(Var)
+Return
+
 ; 构造函数的拼音老是记不得，以后就用联想来拼写好了
 ::gz::
     Send, constructor
@@ -50,7 +95,7 @@ class Person {
 code(Var)
 return
 
->!b::
+>^b::
 	SendRaw, npm run build
 return
 

@@ -1,3 +1,7 @@
+::cu::
+    Send, cursor: pointer;
+return
+
 ::scrollbar::
 Var = 
 (

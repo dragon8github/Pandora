@@ -38,7 +38,7 @@ return
     run, http://fontawesome.dashgame.com/
 return
 
->^b::
+!b::
     RUN, http://www.cnblogs.com/cylee
 Return
 

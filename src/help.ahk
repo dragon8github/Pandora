@@ -1,3 +1,7 @@
+::@info::
+    Send, lizhaohong@hongte.info
+return
+
 ; ALT + R ÷ÿ∆ÙΩ≈±æ
 !r::
     if WinActive("ahk_class SciTEWindow")
