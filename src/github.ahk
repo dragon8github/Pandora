@@ -41,12 +41,12 @@ Return
 
 ; _____________ Nodejs ________________
 
-::express1::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express1.js"))
+::express::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express2.js"))
 return
 
-::express2::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express2.js"))
+::express-router::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express-router.js"))
 return
 
 ::express-proxy::
