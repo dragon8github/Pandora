@@ -23,6 +23,9 @@ return
 >^e::
     run, http://element-cn.eleme.io/#/zh-CN/component/radio
     run, https://github.com/ElemeFE/element/blob/dev/packages/
+return
+
+>^m::
     run, https://github.com/ElemeFE/mint-ui
     run, http://elemefe.github.io/mint-ui/#/
 return
@@ -43,18 +46,6 @@ Return
     RUN, https://www.github.com/
     RUN, https://legacy.gitbook.com/
 Return
-
-; ¿ìËÙËÑË÷ÒôÀÖ
->^m::
-    InputBox, OutputVar, title, enter a music name?
-    if (OutputVar != "") 
-    {
-        RUN, http://music.163.com/#/search/m/?s=%OutputVar%
-        RUN, https://y.qq.com/portal/search.html#w=%OutputVar%
-        RUN, https://www.xiami.com/search?key=%OutputVar%
-        RUN, http://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord=%OutputVar%
-    }
-return
 
 !space::
     InputBox, OutputVar, title, what's your Q?
