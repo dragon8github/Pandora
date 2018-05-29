@@ -1,7 +1,19 @@
-::gouzao::
-	Send, constructor
+; 构造函数的拼音老是记不得，以后就用联想来拼写好了
+::gz::
+    Send, constructor
 return
 
+; insert jquery 的意思
+::ijq::
+Var = 
+(
+var o = document.createElement('script');
+o.src = 'https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js';
+document.documentElement.childNodes[0].appendChild(o);
+console.log(jQuery.fn.jquery);
+)
+code(Var)
+return
 
 ::class::
 Var = 

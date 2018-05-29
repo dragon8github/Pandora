@@ -1,3 +1,32 @@
+::scrollbar::
+Var = 
+(
+/**
+ * ¹ö¶¯ÌõĞŞÊÎ
+ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background-color: #e2e2e2;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background-color: #e2e2e2;
+}
+)
+code(Var)
+return
+
 >^p::
 Var = 
 (
