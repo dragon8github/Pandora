@@ -3,7 +3,7 @@
     Send, constructor
 return
 
-; insert jquery 的意思
+; insert jquery 的意思，也有爱jquery的意思，为没有jquery的网站添加jq插件
 ::ijq::
 Var = 
 (
@@ -13,6 +13,11 @@ document.documentElement.childNodes[0].appendChild(o);
 console.log(jQuery.fn.jquery);
 )
 code(Var)
+return
+
+; 打印出jQuery的版本
+::$.v::
+    Send, console.log(jQuery.fn.jquery);
 return
 
 ::class::
