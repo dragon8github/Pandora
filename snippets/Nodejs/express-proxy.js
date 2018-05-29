@@ -32,7 +32,7 @@ router.use(function (req, res, next) {
 })
 
 // whether using GET, POST, PUT, DELETE, or any other HTTP request method
-router.all('/', function (req, res) {
+router.all('/*', function (req, res) {
     // OPTIONS请求直接返回成功
     if (req.method == 'OPTIONS') {
         // 也可以返回ok，任意文本。反正ajax不会对option预请求进行处理。所以option预请求应该是浏览器的行为
@@ -47,15 +47,16 @@ router.all('/', function (req, res) {
     // console.log(req.query);
     // 获取 header 请求头非参数
     // console.log(req.headers);
-
-    var url = req.headers.url;
-    var type = req.headers.type;
-    delete req.headers.url;
-    delete req.headers.type;
+    // 请求参数
+    // console.log(req.url);
+    // var url = req.headers.url;
+    // var type = req.headers.type;
+    // delete req.headers.url;
+    // delete req.headers.type;
 
     request({
-        method: type || 'POST',
-        uri: url,
+        method: req.method,
+        uri: 'http://192.168.14.100:31401' + req.url,
         headers: req.headers,
         body: JSON.stringify(req.body)
     }, function (err, _res, body) {
@@ -71,20 +72,19 @@ app.listen('3000', function(err){
     console.log('start');
 });
 
-// 前端ajax示例
-//  $.ajax({
-//     url: 'http://localhost:3000/',
-//     type: "POST",
-//     data: JSON.stringify({"userName":"admin-salary","password":"123456"}),
-//     headers: {
-//         app: 'PMS',
-//         'X-Requested-With': 'XMLHttpRequest',
-//         url: 'http://172.16.200.110:30111/uaa/auth/login',
-//         type: 'POST'
-//     },
-//     dataType: 'json',
-//     contentType: 'application/json;charset=utf-8',
-//     success: function (data) {
-//         console.log(data);
-//     }
-// })
+
+/**
+ * 前端代码示例
+ * $.ajax({
+    url: 'http://localhost:3000/carAuction/selectAuctionsPage',
+    type: "POST",
+    data: JSON.stringify({"userName":"admin-salary","password":"123456"}),
+    headers: {
+        'Content-Type':  'application/json;charset=utf-8'
+    },
+    dataType: 'json',
+    success: function (data) {
+        console.log(data);
+    }
+})
+ */

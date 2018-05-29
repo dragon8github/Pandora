@@ -41,32 +41,20 @@ Return
 
 ; _____________ Nodejs ________________
 
-::express::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/myexpress1.js"))
+::express1::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express1.js"))
 return
 
-::myexpress2::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/myexpress1.js"))
+::express2::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express2.js"))
 return
 
 ::express-proxy::
     code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express-proxy.js"))
 return
 
-::proxy::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express-proxy.js"))
-return
-
-::node-nginx::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express-proxy.js"))
-return
-
-::node-nginx2::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/node-nginx.js"))
-return
-
-::mymock::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/mock.js"))
+::express-mock::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/ahk/master/snippets/Nodejs/express-mock.js"))
 return
 
 ; ______________ Template ___________________

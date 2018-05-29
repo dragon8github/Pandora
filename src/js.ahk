@@ -43,6 +43,14 @@ $.ajax({
 code(Var)
 Return
 
+::walert::
+    Send, window.alert('123');{left 2}{shift down}{left 5}{shift up}
+return
+
+::wa::
+    Send, window.alert('123');{left 2}{shift down}{left 5}{shift up}
+return
+
 ; 构造函数的拼音老是记不得，以后就用联想来拼写好了
 ::gz::
     Send, constructor
