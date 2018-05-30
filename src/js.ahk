@@ -1,3 +1,7 @@
+::eval::
+    SendRaw, eval('(' + options + ')')
+return
+
 >^a::
 Var = 
 (

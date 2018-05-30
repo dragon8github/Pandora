@@ -98,19 +98,18 @@ return
 Var = 
 (
 <!-- http://element-cn.eleme.io/#/zh-CN/component/table -->
-<el-table border :data='myData' class='hongte-table' v-loading='loading'>
-      <el-table-column fixed prop='businessId' label='业务编号' width='220'></el-table-column>
-      <el-table-column prop='districtName' label='地区' width='120'> </el-table-column>
-      <el-table-column prop='companyName' label='分公司' width='120'> </el-table-column>
-      <el-table-column prop='customerName' label='客户名称' width='150'> </el-table-column>
-      <el-table-column prop='borrowMoney' label='借款金额' width='120'  :formatter="borrowMoneyFormatter"> </el-table-column>
-      <el-table-column prop='evaluationAmount' label='评估价' width='120' :formatter="evaluationAmountFormatter"> </el-table-column>
-      <el-table-column prop='repaidAmount' label='已还金额' width='120' :formatter="repaidAmountFormatter"> </el-table-column>
-      <el-table-column prop='model' label='车辆型号' width='250'> </el-table-column>
-      <el-table-column prop='evaluationAmount' label='评估价' width='120'> </el-table-column>
-      <el-table-column prop='evaluationDate' label='评估日期' width='120'> </el-table-column>
-      <el-table-column prop='trailerDate' label='拖车日期' width='120'> </el-table-column>
-      <el-table-column prop='status' label='状态' width='120'> </el-table-column>
+<el-table border :data='myData' :row-key="rowKey" class='hongte-table' ref="myTable" @sort-change="sortChange" v-loading='loading' highlight-current-row @current-change="handleCurrentRowChange">
+      <el-table-column fixed sortable prop='businessId' label='业务编号' width='220'></el-table-column>
+      <el-table-column sortable prop='districtName' label='地区' width='120'> </el-table-column>
+      <el-table-column sortable prop='companyName' label='分公司' width='120'> </el-table-column>
+      <el-table-column sortable prop='customerName' label='客户名称' width='150'> </el-table-column>
+      <el-table-column sortable prop='borrowMoney' label='借款金额' width='120'  :formatter="borrowMoneyFormatter"> </el-table-column>
+      <el-table-column sortable prop='evaluationAmount' label='评估价' width='120' :formatter="evaluationAmountFormatter"> </el-table-column>
+      <el-table-column sortable prop='repaidAmount' label='已还金额' width='150' :formatter="repaidAmountFormatter"> </el-table-column>
+      <el-table-column sortable prop='model' label='车辆型号' width='250'> </el-table-column>
+      <el-table-column sortable prop='evaluationDate' label='评估日期' width='120'> </el-table-column>
+      <el-table-column sortable prop='trailerDate' label='拖车日期' width='120'> </el-table-column>
+      <el-table-column sortable prop='status' label='状态' width='120'> </el-table-column>
       <el-table-column fixed='right' label='操作' width='250' class-name="hongte-table-align">
            <template slot-scope='scope'>
                <el-dropdown trigger='click' @command='handleCommand(arguments[0], scope.$index, scope.row)'>
@@ -186,6 +185,15 @@ Var =
      }).catch(err => {
          this.$message.error(err.message);
      })
+ },
+ rowKey (row) {
+    return row.businessId
+ },
+ // 选中 table 当前行时触发的事件，可以获取当前行所有数据，美滋滋~
+ handleCurrentRowChange (currentRow, oldCurrentRow) {
+   if (currentRow == null) {
+     console.log("当前没有选中任何行");
+   }
  },
  // 每页显示的页数发生变化的时候
  handleSizeChange (size) {
