@@ -1,4 +1,3 @@
-
 >!v::
 Var = 
 (
@@ -49,29 +48,33 @@ computed: {
     ...mapGetters([
         'menuList'
     ]),
+    // 也可以这样
     ...mapGetters({
         menuList: 'menuList'
     })
 },
 )
+code(Var)
 return
 
 ::mapmutations::
 Var = 
 (
-// https://vuex.vuejs.org/en/getters.html
+// https://vuex.vuejs.org/guide/mutations.html
 import { mapMutations } from 'vuex'
 methods: {
     ...mapMutations([
         'SET_MENU',
         'SET_USERINFO'
     ]),
+    // 也可以这样
     ...mapMutations({
         SET_MENU： 'SET_MENU',
         SET_USERINFO： 'SET_USERINFO'
     }),
 },
 )
+code(Var)
 return
 
 ::dispatch:: 

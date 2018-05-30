@@ -1,3 +1,7 @@
+::$remove::
+    Send, el.parentNode.removeChild(el)
+return
+
 ::eval::
     SendRaw, eval('(' + options + ')')
 return

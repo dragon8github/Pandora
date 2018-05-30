@@ -9,12 +9,11 @@ if (key == 66) {
 
 input(V, select := false) {
     if (select == true) {
-        Sleep 50
-        SendRaw, ^a
+        Send, ^a
     }
     SendRaw, % V
     Send, {tab}
-    Sleep 50
+    Sleep 200
 }
 
 ; ÊäÈëR£¬redisµÄÕËºÅÃÜÂë
