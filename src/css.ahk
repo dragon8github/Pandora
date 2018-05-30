@@ -2,6 +2,10 @@
     Send, cursor: pointer;
 return
 
+::white::
+    Send, white-space: nowrap;
+return
+
 ::scrollbar::
 Var = 
 (
@@ -226,22 +230,6 @@ Return
 
 ::fr::
     SendInput, float: right`;
-Return
-
-::border-t::
-    SendInput, border-top: 1px solid {#}ccc`;
-Return
-
-::border-r::
-    SendInput, border-right: 1px solid {#}ccc`;
-Return
-
-::border-b::
-    SendInput, border-bottom: 1px solid {#}ccc`;
-Return
-
-::border-l::
-    SendInput, border-left: 1px solid {#}ccc`;
 Return
 
 ::bt::
