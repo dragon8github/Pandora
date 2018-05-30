@@ -1,3 +1,19 @@
+::changearr::
+Var = 
+(
+var a = [1,4,6,43,5,9,0,23,45];
+var changeArr = function (arr, k, j) {
+    var tmp = arr[k];
+    arr[k] = arr[j];
+    arr[j] = tmp;
+    return arr;
+}
+a = change(a,3,7);
+console.log(a);
+)
+code(Var)
+return
+
 ::$remove::
     Send, el.parentNode.removeChild(el)
 return
