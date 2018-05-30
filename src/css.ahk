@@ -188,10 +188,6 @@ line-height: px;^!{up}^{left}
 )
 Return
 
-::text-a::
-    SendInput, text-align: center`;
-Return
-
 ::ta::
     SendInput, text-align: center`;
 Return
@@ -206,22 +202,6 @@ Return
 
 ::tr::
     SendInput, text-align: right`;
-Return
-
-::t-a::
-    SendInput, text-align: center`;
-Return
-
-::t-c::
-    SendInput, text-align: center`;
-Return
-
-::t-r::
-    SendInput, text-align: right`;
-Return
-
-::t-l::
-    SendInput, text-align: left`
 Return
 
 ::fl::

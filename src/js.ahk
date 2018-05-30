@@ -1,3 +1,33 @@
+::ready::
+Var = 
+(
+function ready(fn) {
+  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+)
+code(Var)
+return
+
+::setattr::
+    send, el.setAttribute('tabindex', 3);
+return
+
+::getattr::
+    send, el.getAttribute('tabindex');
+return
+
+::getstyle::
+    Send, getComputedStyle(el)[ruleName];
+return
+
+::setstyle::
+    Send, el.style.borderWidth = '20px';
+return
+
 ::exchange::
 Var = 
 (
@@ -255,19 +285,18 @@ return
 	SendInput, arguments
 Return
 
+::jsonp::
 ::json.p::
     SendInput, JSON.parse(){left}
 Return
 
+::jsons::
 ::json.s::
     SendInput, JSON.stringify(){left}
 Return
 
-::/json::
-    SendRaw, application/json;charset=utf-8
-Return
-
 ::json/::
+::/json::
     SendRaw, application/json;charset=utf-8
 Return
 
@@ -423,7 +452,7 @@ Return
 ::foreach::
 Var = 
 (
-[1,2,3,4].forEach(function (e, i) {
+array.forEach(function (e, i) {
      console.log(i, e);
 });
 )
@@ -782,7 +811,9 @@ function shuffle(target) {
 code(Var)
 return
 
-::array_random::
+
+::randarr::
+::randomarr::
 Var = 
 (
 function array_random(target) {
@@ -792,6 +823,7 @@ function array_random(target) {
 code(Var)
 return
 
+::removeindex::
 ::removeAt::
 Var = 
 (
@@ -813,7 +845,7 @@ function remove(target, item) {
 code(Var)
 return
 
-::compact::
+::filterarr::
 Var = 
 (
 function compact(target) {
