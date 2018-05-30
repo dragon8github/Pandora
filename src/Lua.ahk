@@ -84,7 +84,7 @@ if (key == 50) {
 
 ; 【d】跳转到贷后系统
 if (key == 68) {
-    RUN, http://172.16.50.112:30601/index
+    RUN, http://172.16.200.112:30601/index
 }
 
 ; 打开本地链接localhost

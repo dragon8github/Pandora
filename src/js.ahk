@@ -43,6 +43,24 @@ $.ajax({
 code(Var)
 Return
 
+::is-ios::
+Var = 
+(
+;(function(){
+      var u = navigator.userAgent, app = navigator.appVersion;
+      var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+      var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios÷’∂À
+      if (isAndroid) {
+        
+      } 
+      if (isIOS) {
+       
+      }
+}());
+)
+code(Var)
+return
+
 ::walert::
     Send, window.alert('123');{left 2}{shift down}{left 5}{shift up}
 return

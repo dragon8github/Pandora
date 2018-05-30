@@ -28,6 +28,7 @@ return
 >^m::
     run, https://github.com/ElemeFE/mint-ui
     run, http://elemefe.github.io/mint-ui/#/
+    run, http://mint-ui.github.io/docs/#/
 return
 
 ::chandao::
