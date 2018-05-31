@@ -62,3 +62,8 @@ return
 ::layui::
     run, https://github.com/dragon8github/ahk/blob/master/template/layui_template.zip?raw=true
 return
+
+::mint::
+::mint-ui::
+    run, https://github.com/dragon8github/ahk/blob/master/template/mint-ui.zip?raw=true
+return
