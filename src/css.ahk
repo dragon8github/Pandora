@@ -1,3 +1,17 @@
+::yuan::
+    SendRaw, border-radius: 50`%;
+return
+
+::bbr::
+    SendRaw, border-radius: 4px;
+return
+
+>+p::
+    Send, ^c
+    Send, pxToRem(){left 1}
+    Send, ^v{right 1}
+return
+
 ::cu::
     Send, cursor: pointer;
 return

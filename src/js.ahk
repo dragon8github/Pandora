@@ -265,13 +265,6 @@ Return
     SendInput, console.log()`;{left 2}
 Return
 
-::log:: 
-    SendInput, console.log()`;{left 2}
-Return
-
-::console:: 
-    SendInput, console.log(arguments)`;{left 2}
-Return
 
 ::ret::
 	SendInput, return
@@ -302,33 +295,6 @@ Return
 
 ::/form::
     SendRaw, application/x-www-form-urlencoded;charset=utf-8
-Return
-
-::_::
-Var = 
-(
-_ => {}
-)
-code(Var)
-SendInput, {left}{enter}
-Return
-
-::=>::
-Var = 
-(
-=> {}
-)
-code(Var)
-SendInput, {left}{enter}
-Return
-
-::func::
-Var = 
-(
-function () {}
-)
-code(Var)
-SendInput, {left}{enter}
 Return
 
 ::f::
@@ -618,6 +584,92 @@ Var =
 code(Var)
 return
 
+
+::is-cn::
+Var = 
+(
+if (!/^[\u4e00-\u9fa5]+$/.test('李钊鸿')) {
+      throw new Error('请输入中文汉字')
+}
+)
+code(Var)
+return
+
+::is-phone::
+Var = 
+(
+/^([0-9]{3,4}-)?[0-9]{7,8}$/.test(s)
+/^[1][3,4,5,7,8][0-9]{9}$/.test(s)
+/^1\d{10}$/.test(s)
+)
+code(Var)
+return
+    
+::is-pwd:: 
+    SendRaw, /[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/.test('123456a@') // 必须同时包含数字和字母,支持非法符号
+return
+
+::is-user:: 
+    SendRaw, /^[a-zA-Z0-9-_]*$/.test('') // 由6-16位数字、 字母、 '_'、 '-'组成，不含特殊字符
+Return 
+
+::is-id::
+Var = 
+(
+if (!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test('445222199307100337')){
+    throw new Error('非法身份证')
+}
+)
+code(Var)
+return
+
+::is-email::
+    SendRaw, /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(s)
+Return
+
+::is-array::
+    SendRaw, Object.prototype.toString.call(foo) === '[object Array]' /* Array.isArray([]) */
+return
+
+::is-object::
+    SendRaw, Object.prototype.toString.call(foo) === '[object Object]'
+return
+
+::is-Null::
+    SendRaw, Object.prototype.toString.call(Null) === '[object Null]'
+return
+
+::is-Undefined::
+    SendRaw, Object.prototype.toString.call(Undefined) === '[object Undefined]'
+return
+
+::is-string::
+    SendRaw, Object.prototype.toString.call(String) === '[object String]'
+return
+
+::is-number::
+    SendRaw, Object.prototype.toString.call(Number) === '[object Number]'
+return
+
+::is-bool::
+    SendRaw, Object.prototype.toString.call(Boolean) === '[object Boolean]'
+return
+
+::is-date::
+    SendRaw, Object.prototype.toString.call(Date) === '[object Date]'
+return
+
+::is-NaN::
+Var = 
+(
+function isNaN(obj) {
+    return obj !== obj
+}
+)
+code(Var)
+return
+
+
 ::getuuid::
 Var = 
 (
@@ -714,106 +766,24 @@ function unique(arr) {
 code(Var)
 return
 
-
-::is-cn::
-Var = 
-(
-if (!/^[\u4e00-\u9fa5]+$/.test('李钊鸿')) {
-      throw new Error('请输入中文汉字')
-}
-)
-code(Var)
-return
-
-::is-phone::
-Var = 
-(
-/^([0-9]{3,4}-)?[0-9]{7,8}$/.test(s)
-/^[1][3,4,5,7,8][0-9]{9}$/.test(s)
-/^1\d{10}$/.test(s)
-)
-code(Var)
-return
-    
-::is-pwd:: 
-    SendRaw, /[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/.test('123456a@') // 必须同时包含数字和字母,支持非法符号
-return
-
-::is-user:: 
-    SendRaw, /^[a-zA-Z0-9-_]*$/.test('') // 由6-16位数字、 字母、 '_'、 '-'组成，不含特殊字符
-Return 
-
-::is-id::
-Var = 
-(
-if (!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test('445222199307100337')){
-    throw new Error('非法身份证')
-}
-)
-code(Var)
-return
-
-::is-email::
-    SendRaw, /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(s)
-Return
-
-::is-array::
-    SendRaw, Object.prototype.toString.call(foo) === '[object Array]' /* Array.isArray([]) */
-return
-
-::is-object::
-    SendRaw, Object.prototype.toString.call(foo) === '[object Object]'
-return
-
-::is-Null::
-    SendRaw, Object.prototype.toString.call(Null) === '[object Null]'
-return
-
-::is-Undefined::
-    SendRaw, Object.prototype.toString.call(Undefined) === '[object Undefined]'
-return
-
-::is-string::
-    SendRaw, Object.prototype.toString.call(String) === '[object String]'
-return
-
-::is-number::
-    SendRaw, Object.prototype.toString.call(Number) === '[object Number]'
-return
-
-::is-bool::
-    SendRaw, Object.prototype.toString.call(Boolean) === '[object Boolean]'
-return
-
-::is-date::
-    SendRaw, Object.prototype.toString.call(Date) === '[object Date]'
-return
-
-::is-NaN::
-Var = 
-(
-function isNaN(obj) {
-    return obj !== obj
-}
-)
-code(Var)
-return
-
 ::shuffle::
 Var = 
 (
+// 费雪耶兹（Fisher–Yates） 也被称作高纳德（ Knuth）随机置乱算法
 function shuffle(target) {
     var j, x, i = target.length;
     for (; i > 0; j = parseInt(Math.random() * i), x = target[--i], target[i] = target[j], target[j] = x) {}
     return target
 }
+
+const arr = [0, 1, 2, 3, 4];
+arr.sort(() => Math.random() > .5);
 )
 code(Var)
 return
 
 
-::randarr::
-::randomarr::
+::randgetone::
 Var = 
 (
 function array_random(target) {

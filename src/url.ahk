@@ -1,3 +1,7 @@
+::cdn::
+    Send, http://www.bootcdn.cn/
+return
+
 ::nojq::
     Send, http://youmightnotneedjquery.com/
 return

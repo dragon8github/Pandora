@@ -1,3 +1,19 @@
+::cdn-animate::
+Var = 
+(
+<!-- https://github.com/daneden/animate.css -->
+<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+)
+return
+
+::cdn-iview::
+Var = 
+(
+<script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+)
+code(Var)
+return
 
 ::cdn-font::
     SendRaw, <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
