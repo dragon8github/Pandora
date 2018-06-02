@@ -1,4 +1,6 @@
-<p align="center" style="background: #813825;">
+
+
+<p align="center" style="background-color: #813825;" bgcolor="#813825" >
   <a href="https://nodejs.org/">
     <img
       src="https://github.com/dragon8github/ahk/raw/master/static/pandora.png"
