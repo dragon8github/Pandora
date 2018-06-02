@@ -1,8 +1,9 @@
-<p align="center">
+<p align="center" style="background: #813825;">
   <a href="https://nodejs.org/">
     <img
       src="https://github.com/dragon8github/ahk/raw/master/static/pandora.png"
-      width="400"
+      width="480"
+      height="380"
     />
   </a>
 </p>
