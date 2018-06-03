@@ -2,8 +2,8 @@
   <a href="https://nodejs.org/">
     <img
       src="https://github.com/dragon8github/ahk/raw/master/static/Pandorabg.png"
-      width="1419"
-      height="617"
+      width="100%"
+      height="390"
     />
   </a>
 </p>
