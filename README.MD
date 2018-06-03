@@ -17,3 +17,15 @@
 
 在我尝试推广该工具的时候，某些人因不恰当的使用而造成混乱，误将该工具认为是“灾难”，从此避而远之，甚至唾弃和埋汰。却看不到名为“希望”的力量隐藏其中。或许只有有智慧的人，才能看到盒子中隐藏的能够拯救程序员的“希望之力”吧！ —— Pandora 命名的起源
 
+
+
+
+
+### Links
+
+AutoHotKey 下载：[https://autohotkey.com/download/](https://autohotkey.com/download/)
+中文官网：[https://wyagd001.github.io/zh-cn/docs/Tutorial.htm](https://wyagd001.github.io/zh-cn/docs/Tutorial.htm)
+AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit.htm\#Editors](https://wyagd001.github.io/zh-cn/docs/commands/Edit.htm#Editors)
+常量列表，十分实用：[https://wyagd001.github.io/zh-cn/docs/Variables.htm\#DD](https://wyagd001.github.io/zh-cn/docs/Variables.htm#DD)
+特殊键解决方案（实用）：[https://blog.csdn.net/liuyukuan/article/details/5924137](https://blog.csdn.net/liuyukuan/article/details/5924137)
+将ahk编译成exe：[http://ahkcn.sourceforge.net/docs/Scripts.htm\#ahk2exe](http://ahkcn.sourceforge.net/docs/Scripts.htm#ahk2exe)
