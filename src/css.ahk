@@ -1,3 +1,15 @@
+::clear::
+Var = 
+(
+.clear::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+)
+code(Var)
+return
+
 ::yuan::
     SendRaw, border-radius: 50`%;
 return
