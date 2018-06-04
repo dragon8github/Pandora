@@ -1,3 +1,11 @@
+~^c::
+	Clipboard := 
+	Send, ^c
+	ClipWait
+	time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
+	FileAppend, __________________%time%__________________`n`n%Clipboard%`n`n, ./tmp.txt
+return
+
 ::@info::
     Send, lizhaohong@hongte.info
 return
