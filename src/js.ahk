@@ -1,3 +1,13 @@
+::$.load::
+Var = 
+(
+$("#app").load('http://www.baidu.com', function (data, status) {
+    console.log(arguments);
+})
+)
+code(Var)
+return
+
 ::ready::
 Var = 
 (
@@ -265,12 +275,12 @@ Return
     SendInput, console.log()`;{left 2}
 Return
 
-
 ::ret::
 	SendInput, return
 Return 
 
 ::pro::
+::prote::
     SendInput, prototype
 return
 
