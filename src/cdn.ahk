@@ -1,9 +1,10 @@
 ::cdn-animate::
 Var = 
 (
-<!-- https://github.com/daneden/animate.css -->
+<!-- https://github.com/daneden/animate.css | https://daneden.github.io/animate.css/ | <h1 class="bounce animated">Example</h1> -->
 <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
 )
+code(Var)
 return
 
 ::cdn-iview::
@@ -15,6 +16,7 @@ Var =
 code(Var)
 return
 
+::cdn-fa::
 ::cdn-font::
     SendRaw, <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 return
@@ -40,14 +42,8 @@ Var =
 code(Var)
 Return
 
+::cdn-jq::
 ::cdn-jquery1.9::
-Var = 
-(
-<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-)
-code(Var)
-Return
-
 ::cdn-jquery::
 Var = 
 (
@@ -56,13 +52,6 @@ Var =
 code(Var)
 Return
 
-::cdn-jq::
-Var = 
-(
-<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-)
-code(Var)
-Return
 
 ::cdn-vue::
 Var = 
@@ -93,7 +82,7 @@ Return
 ::cdn-reset::
 Var = 
 (
-<link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
 )
 code(Var)
 return
