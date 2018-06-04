@@ -25,6 +25,11 @@ return
 		run, %A_WorkingDir%\tmp.txt
 return
 
+::cmd::
+    run, cmd
+return
+
+
 ::@info::
     Send, lizhaohong@hongte.info
 return

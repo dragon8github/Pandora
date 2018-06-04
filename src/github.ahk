@@ -34,7 +34,7 @@ return
     code(ajax("https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css"))
 Return
 
-::myrem::
+::rem::
      code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Css/rem.scss"))
 Return
 
