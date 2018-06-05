@@ -44,7 +44,7 @@ Return
     ; 第二步，复制当前选中内容
     SendInput, ^c
     ClipWait, 2
-    if (StrLen(Clipboard) >= 10) {
+    if (StrLen(Clipboard) >= 20) {
         MsgBox, 请不要把此功能当做翻译机
         return 
     }
@@ -67,7 +67,7 @@ Return
     ; 第二步，复制当前选中内容
     SendInput, ^c
     ClipWait, 2
-    if (StrLen(Clipboard) >= 10) {
+    if (StrLen(Clipboard) >= 20) {
         MsgBox, 请不要把此功能当做翻译机
         return 
     }
@@ -89,6 +89,10 @@ Return
     ; 第二步，复制当前选中内容
     SendInput, ^c
     ClipWait, 2
+    if (StrLen(Clipboard) >= 20) {
+        MsgBox, 请不要把此功能当做翻译机
+        return 
+    }
     ; 百度翻译API
     Var := ajax("http://119.23.22.136:6634/baidu_transapi.php?text=" . Clipboard . "&type=_", true)
     TrayTip, 翻译成功, 翻译结果为： %Var%, 20, 17

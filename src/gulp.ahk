@@ -5,10 +5,7 @@ return
 
 ::gulp`#4.0::
 ::gulp`#4::
-    SendRaw,
-(
-npm i -g gulpjs/gulp#4.0 && npm i gulpjs/gulp#4.0 -S
-)
+    SendRaw, npm i -g gulpjs/gulp#4.0 && npm i gulpjs/gulp#4.0 -S
 return
 
 ::gulp`#css::
