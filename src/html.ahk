@@ -1,8 +1,7 @@
-
-::div::
+::#app::
 Var = 
 (
-<div></div>
+<div id="app"></div>
 )
 code(Var)
 Send, {left 6}

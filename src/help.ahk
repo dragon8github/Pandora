@@ -100,8 +100,6 @@ Return
     Clipboard := Var
 Return
 
-
-
 ; ×¥È¡²Ëµ¥
 +!c::  
     SendInput, ^c  ;^a

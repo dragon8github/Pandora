@@ -1,3 +1,54 @@
+Menu, StatusMenu, add
+
+ColorArrayMenuHandler:
+    SendRaw, % A_ThisMenuItem
+return
+
+!s:: 
+    ColorArray := ["default", "primary", "success", "info", "warning", "danger"]
+    Loop % ColorArray.MaxIndex() {
+        this_color := ColorArray[a_index]
+        Menu, StatusMenu, Add, %this_color%, ColorArrayMenuHandler
+    }
+    Menu, StatusMenu, Show
+return
+
+::ht.btn::
+::ht.button::
+Var = 
+(
+<el-button>默认按钮</el-button>
+<el-button type="primary">主要按钮</el-button>
+<el-button type="success">成功按钮</el-button>
+<el-button type="info">信息按钮</el-button>
+<el-button type="warning">警告按钮</el-button>
+<el-button type="danger">危险按钮</el-button>
+)
+code(Var)
+return
+
+::ht.buttongroup::
+::ht.btngroup::
+Var = 
+(
+<el-button-group >
+    <el-button type="primary" icon="el-icon-edit"></el-button>
+    <el-button type="primary" icon="el-icon-share"></el-button>
+    <el-button type="primary" icon="el-icon-delete"></el-button>
+</el-button-group>
+)
+code(Var)
+return
+
+::ht.tree::
+Var = 
+(
+<el-tree :data="treeData" :default-expanded-keys="[1, 2, 3, 4]" node-key="id"></el-tree>
+treeData: [{id: 1, label: '一级 1', children: [{id: 4, label: '二级 1-1', children: [{id: 9, label: '三级 1-1-1'}, {id: 10, label: '三级 1-1-2'}] }] }, {id: 2, label: '一级 2', children: [{id: 5, label: '二级 2-1'}, {id: 6, label: '二级 2-2'}] }, {id: 3, label: '一级 3', children: [{id: 7, label: '二级 3-1'}, {id: 8, label: '二级 3-2'}] }],
+)
+code(Var)
+return
+
 ::ht.loading::
 Var = 
 (
