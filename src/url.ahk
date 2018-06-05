@@ -1,3 +1,7 @@
+::base64::
+    Send, data:image/png;base64,
+return
+
 ::cdn::
     Send, http://www.bootcdn.cn/
 return
