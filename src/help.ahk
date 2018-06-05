@@ -1,6 +1,6 @@
 ~^c::
 ~^x::
-    filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".tmp"
+    filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"
     Var := Clipboard
 	Clipboard := 
 	ClipWait
@@ -11,8 +11,9 @@
 return
 
 !t::
-	if FileExist("tmp.txt")
-		run, %A_WorkingDir%\tmp.txt
+    filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"
+	if FileExist(filename)
+		run, %filename%
 return
 
 !d::

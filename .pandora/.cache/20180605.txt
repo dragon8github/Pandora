@@ -1,0 +1,14 @@
+﻿__________________2018/06/05 09:17:43__________________
+
+
+if !FileExist(".pandora")
+	FileCreateDir, .pandora
+	if !FileExist(".pandora/.cache")
+		FileCreateDir, .pandora/.cache
+
+
+__________________2018/06/05 09:19:01__________________
+
+
+FileDelete, tmp.txt
+
