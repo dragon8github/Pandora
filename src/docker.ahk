@@ -2,7 +2,7 @@ DockerMenuHandler:
 	; 检查当前剪切板是否纯洁，譬如不要超出10个字，而且要先清除换行符。
 	Clipboard := StrReplace(Clipboard, "`r`n")
 	Var := A_ThisMenuItem
-	if (StrLen(Clipboard) < 10) {
+	if (StrLen(Clipboard) < 15) {
 		Var := StrReplace(A_ThisMenuItem, "<container>", Clipboard)
 	}
 	SendRaw, % Var
