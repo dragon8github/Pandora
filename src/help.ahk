@@ -20,7 +20,6 @@ return
     run, %A_WorkingDir%
 return
 
-
 ::cmd::
     run, cmd
 return
@@ -49,9 +48,9 @@ Return
         return 
     }
     ; 有道翻译API（暂废弃）
-    ; Var := ajax("http://119.23.22.136:6634/index.php?text=" . Clipboard . "&type=_")
+    ; Var := ajax("http://119.23.22.136:6635/index.php?text=" . Clipboard . "&type=_")
     ; 百度翻译API
-    Var := ajax("http://119.23.22.136:6634/baidu_transapi.php?text=" . Clipboard . "&type=_")
+    Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=_")
     ; 切换到英文（关闭中文输入法）
     SwitchIME(0x08040804)
     ; 黏贴结果
@@ -72,7 +71,7 @@ Return
         return 
     }
     ; 百度翻译API
-    Var := ajax("http://119.23.22.136:6634/baidu_transapi.php?text=" . Clipboard . "&type=tuofeng")
+    Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=tuofeng")
     ; 切换到英文
     SwitchIME(0x08040804)
     ; 黏贴结果
@@ -94,7 +93,7 @@ Return
         return 
     }
     ; 百度翻译API
-    Var := ajax("http://119.23.22.136:6634/baidu_transapi.php?text=" . Clipboard . "&type=_", true)
+    Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=_", true)
     TrayTip, 翻译成功, 翻译结果为： %Var%, 20, 17
     ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
     Clipboard := Var

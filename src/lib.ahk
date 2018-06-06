@@ -37,7 +37,7 @@ code(code)
     ; MsgBox,  %code%
     tmp := Clipboard
     Clipboard := code
-    SendInput, ^v
+    SendInput, ^+v
     ; 这里至少需要等待50m
     sleep, 50 
     Clipboard := tmp
