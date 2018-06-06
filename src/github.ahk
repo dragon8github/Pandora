@@ -42,13 +42,14 @@ Return
 ; _____________ Nodejs ________________
 
 ::express::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Nodejs/express2.js"))
+    code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Nodejs/express.js"))
 return
 
 ::express-router::
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Nodejs/express-router.js"))
 return
 
+::express-nginx::
 ::express-proxy::
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Nodejs/express-proxy.js"))
 return

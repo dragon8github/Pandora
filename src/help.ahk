@@ -1,3 +1,19 @@
+Menu, StatusMenu, add
+
+ColorArrayMenuHandler:
+    SendRaw, % A_ThisMenuItem
+return
+
+!s:: 
+    ColorArray := ["default", "primary", "success", "info", "warning", "danger"]
+    Loop % ColorArray.MaxIndex() {
+        this_color := ColorArray[a_index]
+        Menu, StatusMenu, Add, %this_color%, ColorArrayMenuHandler
+    }
+    Menu, StatusMenu, Show
+return
+
+
 ~^c::
 ~^x::
     filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"

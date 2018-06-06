@@ -1,17 +1,3 @@
-Menu, StatusMenu, add
-
-ColorArrayMenuHandler:
-    SendRaw, % A_ThisMenuItem
-return
-
-!s:: 
-    ColorArray := ["default", "primary", "success", "info", "warning", "danger"]
-    Loop % ColorArray.MaxIndex() {
-        this_color := ColorArray[a_index]
-        Menu, StatusMenu, Add, %this_color%, ColorArrayMenuHandler
-    }
-    Menu, StatusMenu, Show
-return
 
 ::ht.btn::
 ::ht.button::
