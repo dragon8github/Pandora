@@ -246,22 +246,7 @@ return
     Send, require('');{left 3}
 return
 
-::node-http::
-Var = 
-(
-var http = require('http');
 
-var server = http.createServer(function (req, rep) {
-    rep.writeHead(200, {"Content-Type": "text/plain"});
-    rep.end("Hello World!!");
-})
-
-server.listen(3000, function (err) {
-     console.log('start');
-});
-)
-code(Var)
-Return
 
 >^d::
     SendInput, debugger{;}
@@ -306,6 +291,16 @@ Return
 ::/form::
     SendRaw, application/x-www-form-urlencoded;charset=utf-8
 Return
+
+::ff::
+Var = 
+(
+_ => {
+    
+}
+)
+code(Var)
+return
 
 ::f::
 Var = 
@@ -469,10 +464,6 @@ for (var i = 0; i < Things.length; i++) {
 }
 )
 code(Var)
-Return
-
-::forin::
-    SendInput, for (var property in source) {{}{}}{left}{enter}console.log(source[property]);
 Return
 
 ::switch::
@@ -869,6 +860,7 @@ function max(target) {
 code(Var)
 return
 
+
 ::foren::
 Var = 
 (
@@ -895,3 +887,13 @@ for (const a of gen) {
 )
 code(Var)
 return
+
+::forin::
+Var = 
+(
+for (var property in source) {
+    console.log(source[property]);
+}
+)
+code(Var)
+Return

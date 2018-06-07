@@ -8,6 +8,7 @@ if (key == 66) {
 }
 
 input(V, select := false) {
+    SwitchIME(0x08040804)
     if (select == true) {
         Send, ^a
     }

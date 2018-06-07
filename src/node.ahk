@@ -29,3 +29,20 @@ return
 ::env::
     SendRaw, process.env.NODE_ENV === 'production|development'
 return
+
+::node-http::
+Var = 
+(
+var http = require('http');
+
+var server = http.createServer(function (req, rep) {
+    rep.writeHead(200, {"Content-Type": "text/plain"});
+    rep.end("Hello World!!");
+})
+
+server.listen(3000, function (err) {
+     console.log('start');
+});
+)
+code(Var)
+Return
