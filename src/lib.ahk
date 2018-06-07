@@ -38,8 +38,8 @@ code(code)
     tmp := Clipboard
     Clipboard := code
     SendInput, ^+v
-    ; 这里至少需要等待50m
-    sleep, 50 
+    ; 这里至少需要等待100m
+    sleep, 100
     Clipboard := tmp
 }
 

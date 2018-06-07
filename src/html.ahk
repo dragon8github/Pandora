@@ -7,6 +7,10 @@ code(Var)
 Send, {left 6}
 return
 
+::a::
+	SendRaw, <a href="http://www.baidu.com" target='_blank'>百度一下</a>
+return
+
 ::html`:5::
 Var = 
 (
