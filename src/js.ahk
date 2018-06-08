@@ -243,6 +243,7 @@ return
     Send, require('');{left 3}
 return
 
+AppsKey & d::
 >^d::
     SendInput, debugger{;}
 Return
