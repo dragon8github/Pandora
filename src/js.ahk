@@ -243,12 +243,11 @@ return
     Send, require('');{left 3}
 return
 
-
-
 >^d::
     SendInput, debugger{;}
 Return
 
+AppsKey & c::
 >^c:: 
     SendInput, console.log(arguments)`;{left 2}
 Return
