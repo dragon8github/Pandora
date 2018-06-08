@@ -39,7 +39,7 @@ code(code)
     Clipboard := code
     SendInput, ^+v
     ; 这里至少需要等待100m
-    sleep, 100
+    sleep, 150
     Clipboard := tmp
 }
 

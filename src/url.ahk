@@ -6,6 +6,9 @@ return
     Send, http://www.bootcdn.cn/
 return
 
+::youmight::
+::might::
+::notjq::
 ::nojq::
     Send, http://youmightnotneedjquery.com/
 return

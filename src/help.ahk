@@ -1,25 +1,41 @@
 Menu, StatusMenu, add
+Menu, LifeMenu, add
+Menu, MyMenu, add
 
-ColorArrayMenuHandler:
+MenuHandler:
     SendRaw, % A_ThisMenuItem
-return
+Return  
 
 !s:: 
     ColorArray := ["default", "primary", "success", "info", "warning", "danger"]
     Loop % ColorArray.MaxIndex() {
         this_color := ColorArray[a_index]
-        Menu, StatusMenu, Add, %this_color%, ColorArrayMenuHandler
+        Menu, StatusMenu, Add, %this_color%, MenuHandler
     }
     Menu, StatusMenu, Show
 return
 
+!l:: 
+    ColorArray := ["beforeCreate", "created", "beforeMount", "mounted", "activated"]
+    Loop % ColorArray.MaxIndex() {
+        this_color := ColorArray[a_index]
+        Menu, StatusMenu, Add, %this_color%, MenuHandler
+    }
+    Menu, StatusMenu, Show
+return
 
 !d::
     run, %A_WorkingDir%
 return
 
+>!c::
 ::cmd::
     run, cmd
+return
+
+>!n::
+::cmd::
+    run, notepad
 return
 
 
@@ -99,9 +115,11 @@ Return
 
 ; 抓取菜单
 +!c::  
-    SendInput, ^c  ;^a
-    Sleep, 150 
+    ; 必须add一下才可以使用DeletaAll
+    Menu, MyMenu, add
     Menu, MyMenu, DeleteAll
+    SendInput, ^c
+    Sleep, 150 
     MyVar := clipboard
     clipboard := ""
     RegExMatch(MyVar, "i)(\b\w+\b)(?CCallout)") 
@@ -121,9 +139,6 @@ Return
         Menu, MyMenu, Add, %this_color%, MenuHandler
     }
     TrayTip, 生成成功, （づ￣3￣）づ╭?～ 按下 Ctrl + x 可以启动, 20, 17
-    MenuHandler:
-        SendRaw, % A_ThisMenuItem
-    Return  
 return
 
 !x::
@@ -132,6 +147,7 @@ Return
 
 ; 获取当前ip，分为1234四个网卡
 ::ip1::
+::ip::
     SendInput, % A_IPAddress1
 return
 
