@@ -582,6 +582,9 @@ Var =
 code(Var)
 return
 
+::is-code::
+    SendRaw, /^[0-9]{6}$/.test(100000)
+return
 
 ::is-cn::
 Var = 
@@ -599,6 +602,7 @@ Var =
 /^([0-9]{3,4}-)?[0-9]{7,8}$/.test(s)
 /^[1][3,4,5,7,8][0-9]{9}$/.test(s)
 /^1\d{10}$/.test(s)
+/^((1)3(\d){9}$)|(^(1)4[5-9](\d){8}$)|(^(1)5[^4]{9}$)|(^(1)66(\d){8}$)|(^(1)7[0-8](\d){8}$)|(^(1)8(\d){9}$)|(^(1)9[8-9](\d){8}$)/.test(16961121989)
 )
 code(Var)
 return
@@ -656,6 +660,7 @@ return
 ::is-date::
     SendRaw, Object.prototype.toString.call(Date) === '[object Date]'
 return
+
 
 ::is-NaN::
 Var = 

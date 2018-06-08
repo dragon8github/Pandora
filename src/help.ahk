@@ -28,6 +28,12 @@ return
     run, %A_WorkingDir%
 return
 
+!t::
+    filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"
+	if FileExist(filename)
+		run, %filename%
+return
+
 >!c::
 ::cmd::
     run, cmd
@@ -38,9 +44,25 @@ return
     run, notepad
 return
 
-
 ::@info::
     Send, lizhaohong@hongte.info
+return
+
+; «¯øÈ◊¢ Õ 
+AppsKey & /::
+>^/::
+Clipboard := 
+Send, ^c
+ClipWait 2
+if (Clipboard) {
+Var = 
+(
+/*
+%Clipboard%
+*/
+)
+code(Var)
+}
 return
 
 ; ALT + R ÷ÿ∆ÙΩ≈±æ
