@@ -7,7 +7,7 @@ MenuHandler:
 Return  
 
 !s:: 
-    ColorArray := ["default", "primary", "success", "info", "warning", "danger"]
+    ColorArray := ["primary", "success", "info", "warning", "danger"]
     Loop % ColorArray.MaxIndex() {
         this_color := ColorArray[a_index]
         Menu, StatusMenu, Add, %this_color%, MenuHandler
@@ -185,17 +185,20 @@ return
     SendInput, % A_IPAddress4
 return
 
+AppsKey & l::
 >^l::
     Var := "http://" . A_IPAddress2 . ":8080"
     SendRaw, % Var
 return
 
 ; 我阿里云的ip，方便我记忆
+AppsKey & i::
 >^i::
     SendRaw, 119.23.22.136
 return
 
 
+AppsKey & t::
 >^t::
 time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 SendInput, % time
@@ -205,13 +208,18 @@ return
     SendInput, git add . && git commit -m '' && git push -u origin master{LEFT 30}
 Return
 
+::git-push::
+::gitpush::
 ::git push::
     SendInput, git push -u origin master
 return
 
+::git-pull::
+::gitpull::
 ::git pull::
     SendInput, git pull origin master
 return
+
 
 ::auth::
     SendInput, Authorization

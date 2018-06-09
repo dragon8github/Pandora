@@ -20,6 +20,7 @@ return
     run, http://www.layui.com/demo/
 return
 
+AppsKey & v::
 >^v::
     run, http://vuejs.org/
     run, http://vuex.vuejs.org
@@ -31,11 +32,13 @@ return
     SendRaw, http://www.baidu.com
 return
 
+AppsKey & e::
 >^e::
     run, http://element-cn.eleme.io/#/zh-CN/component/radio
     run, https://github.com/ElemeFE/element/blob/dev/packages/
 return
 
+AppsKey & m::
 >^m::
     run, https://github.com/ElemeFE/mint-ui
     run, http://elemefe.github.io/mint-ui/#/
@@ -46,6 +49,7 @@ return
     Send, http://28f.bujidele.com:81/zentao/user-login-L3plbnRhby9teS5odG1s.html
 return
 
+AppsKey & f::
 >^f::
     run, http://fontawesome.dashgame.com/
 return
@@ -71,6 +75,7 @@ Return
     }
 Return
 
+AppsKey & j::
 >^j::
     RUN, http://youmightnotneedjquery.com/
     RUN, https://wyagd001.github.io/zh-cn/docs/Tutorial.htm

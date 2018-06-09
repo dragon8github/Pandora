@@ -62,6 +62,7 @@ return
     SendRaw, eval('(' + options + ')')
 return
 
+AppsKey & a::
 >^a::
 Var = 
 (
@@ -182,10 +183,12 @@ class Person {
 code(Var)
 return
 
+AppsKey & b::
 >^b::
 	SendRaw, npm run build
 return
 
+AppsKey & r::
 >^r::
     SendRaw, npm run dev
 return
@@ -248,7 +251,7 @@ AppsKey & d::
     SendInput, debugger{;}
 Return
 
-AppsKey & c::
+AppsKey & c:: 
 >^c:: 
     SendInput, console.log(arguments)`;{left 2}
 Return

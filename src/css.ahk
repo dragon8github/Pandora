@@ -61,6 +61,7 @@ Var =
 code(Var)
 return
 
+AppsKey & p::
 >^p::
 Var = 
 (
