@@ -15,6 +15,10 @@ Return
     Menu, StatusMenu, Show
 return
 
+!BackSpace::
+    Send, {Del}
+return
+
 !l:: 
     ColorArray := ["beforeCreate", "created", "beforeMount", "mounted", "activated"]
     Loop % ColorArray.MaxIndex() {
@@ -22,6 +26,22 @@ return
         Menu, StatusMenu, Add, %this_color%, MenuHandler
     }
     Menu, StatusMenu, Show
+return
+
+!Up::
+    Send, {PGUP}
+return
+
++!Up::
+    Send, +{PGUP}
+return
+
+!Down::
+    Send, {PGDN}
+return
+
++!Down::
+    Send, +{PGDN}
 return
 
 !Right::
@@ -35,6 +55,7 @@ return
 !Left::
     SendInput, {Home}
 return
+
 +!Left::
     SendInput, +{Home}
 return
@@ -43,7 +64,6 @@ return
 	FileSelectFolder, OutputVar,,3
 	Clipboard := OutputVar
 return
-
 
 !d::
     run, %A_WorkingDir%/src
