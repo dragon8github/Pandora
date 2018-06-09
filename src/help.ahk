@@ -24,8 +24,29 @@ return
     Menu, StatusMenu, Show
 return
 
+!Right::
+    SendInput, {end} 
+return
+
++!Right::
+    SendInput, +{end} 
+return
+
+!Left::
+    SendInput, {Home}
+return
++!Left::
+    SendInput, +{Home}
+return
+
+!p::
+	FileSelectFolder, OutputVar,,3
+	Clipboard := OutputVar
+return
+
+
 !d::
-    run, %A_WorkingDir%
+    run, %A_WorkingDir%/src
 return
 
 !t::

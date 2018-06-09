@@ -481,16 +481,16 @@ return
 ::date::
 Var = 
 (
- var date = new Date();
- var year = date.getFullYear();
- var month = date.getMonth() + 1;
- var day = date.getDate();
- var hours = date.getHours();
- var minu = date.getMinutes();
- var second = date.getSeconds(); //ÅÐ¶ÏÊÇ·ñÂú10 
- var arr = [month, day, hours, minu, second];
- arr.forEach(item => { item < 10 ? "0" + item : item; })
- console.log(year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4])
+var date = new Date();
+var year = date.getFullYear();
+var month = date.getMonth() + 1;
+var day = date.getDate();
+var hours = date.getHours();
+var minu = date.getMinutes();
+var second = date.getSeconds(); //ÅÐ¶ÏÊÇ·ñÂú10 
+var arr = [month, day, hours, minu, second];
+arr.forEach(item => { item < 10 ? "0" + item : item; })
+console.log(year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4])
 )
 code(Var)
 return
@@ -773,6 +773,7 @@ function unique(arr) {
 code(Var)
 return
 
+::randarr::
 ::shuffle::
 Var = 
 (
@@ -841,6 +842,32 @@ function intersect(target, array) {
     return target.filter(function (n) {
         return ~array.indexOf(n);
     });
+}
+)
+code(Var)
+return
+
+::sort::
+::sortArr::
+Var = 
+(
+// ½«arrÉýÐòÅÅÁÐ,Èç¹ûÊÇµ¹Ðòreturn -(a-b)
+var orderArr = function (arr) { 
+    arr.sort((a, b) => { return a - b }) 
+}
+)
+code(Var)
+return
+
+::sortobj::
+Var = 
+(
+const orderArr = (arr) => { 
+    arr.sort((a, b) => { 
+         let value1 = a[property]; 
+         let value2 = b[property]; 
+         return value1 - value2; 
+    }) 
 }
 )
 code(Var)
