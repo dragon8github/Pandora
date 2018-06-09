@@ -51,10 +51,12 @@ return
 
 ::express-nginx::
 ::express-proxy::
+::node-proxy::
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Nodejs/express-proxy.js"))
 return
 
 ::express-mock::
+::node-mock::
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Nodejs/express-mock.js"))
 return
 
