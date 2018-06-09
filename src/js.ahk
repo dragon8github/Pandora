@@ -481,15 +481,16 @@ return
 ::date::
 Var = 
 (
-var date = new date();
-var year = date.getFullYear();
-var month = date.getMonth() + 1;
-var day = date.getate();
-var hour = date.getHours();
-var minutes = date.getMinutes();
-var seconds= date.getSeconds();
-console.log(year + "/" + month + "/" + day + "/ " + hour + ":" + minutes + ":" + seconds);
-console.log(year + "年" + month + "月" + day + "日 " + hour + "时" + minutes + "分" + seconds + "秒");
+ var date = new Date();
+ var year = date.getFullYear();
+ var month = date.getMonth() + 1;
+ var day = date.getDate();
+ var hours = date.getHours();
+ var minu = date.getMinutes();
+ var second = date.getSeconds(); //判断是否满10 
+ var arr = [month, day, hours, minu, second];
+ arr.forEach(item => { item < 10 ? "0" + item : item; })
+ console.log(year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4])
 )
 code(Var)
 return

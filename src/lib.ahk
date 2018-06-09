@@ -53,12 +53,13 @@ SwitchIME(dwLayout){
 ; 复制黏贴大段文本
 code(code)
 {
-    ; MsgBox,  %code%
     tmp := Clipboard
     Clipboard := code
+    ; 这里也需要等待，否则有几率出现黏贴不出的情况，如果出现黏贴不出的情况，就尝试调大这里的数值把
+    Sleep, 40
     SendInput, ^+v
-    ; 这里至少需要等待100m
-    sleep, 150
+    ; 这里至少需要等待100m，原因不详
+    sleep, 100
     Clipboard := tmp
 }
 

@@ -260,3 +260,14 @@ return
         RUN, http://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord=%OutputVar%
     }
 return
+
+::desk::
+::desktop::
+    SendRaw, %A_Desktop%
+return
+
+::desk/::
+::desktop/::
+    Var := StrReplace(A_Desktop, "\", "/")
+    SendRaw, %Var%
+return
