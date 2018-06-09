@@ -205,6 +205,14 @@ return
     SendInput, git add . && git commit -m '' && git push -u origin master{LEFT 30}
 Return
 
+::git push::
+    SendInput, git push -u origin master
+return
+
+::git pull::
+    SendInput, git pull origin master
+return
+
 ::auth::
     SendInput, Authorization
 return
