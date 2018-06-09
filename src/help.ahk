@@ -28,6 +28,11 @@ return
     Menu, StatusMenu, Show
 return
 
+AppsKey & s::
+>^s::
+    run, %A_Desktop%\sublime_text.exe.lnk
+return
+
 !Up::
     Send, {PGUP}
 return
