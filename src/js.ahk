@@ -929,3 +929,31 @@ for (var property in source) {
 )
 code(Var)
 Return
+
+::escapeHTML::
+Var = 
+(
+var escapeHTML = function(target){  
+    return target.replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, '&quot;')
+                 .replace(/'/g, "&#39;")
+};
+)
+code(Var)
+return
+
+::unescapeHTML::
+Var = 
+(
+var escapeHTML = function(target){  
+    return target.replace(/&lt;/g, "<")
+                 .replace(/&gt;/g, ">")
+                 .replace(/&amp;/g, "&")
+                 .replace(/&quot;/g, '"')
+                 .replace(/&#39;/g, "'")
+};
+)
+code(Var)
+return
