@@ -957,3 +957,21 @@ var escapeHTML = function(target){
 )
 code(Var)
 return
+
+::promise.finally::
+Var = 
+(
+// Ïò Promise.prototype Ôö¼Ó finally()
+Promise.prototype.finally = function(onFinally) {
+    return this.then(
+        /* onFulfilled */
+        res => Promise.resolve(onFinally()).then(() => res),
+        /* onRejected */
+        err => Promise.resolve(onFinally()).then(() => {
+            throw err;
+        })
+    `);
+};
+)
+code(Var)
+return

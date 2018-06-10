@@ -16,6 +16,8 @@ Return
 return
 
 !BackSpace::
+    Send, {end}
+    Send, +{Home}
     Send, {Del}
 return
 
