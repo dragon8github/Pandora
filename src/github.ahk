@@ -28,6 +28,11 @@ Return
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/JavaScript/dom.js"))
 return
 
+::urlcode::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/JavaScript/urlcode.js"))
+return
+
+
 ; _____________ Css ________________
 
 ::normalize::

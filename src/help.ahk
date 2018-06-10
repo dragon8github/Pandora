@@ -33,6 +33,21 @@ AppsKey & s::
     run, %A_Desktop%\sublime_text.exe.lnk
 return
 
+!j::
+    WinGetTitle, title, A
+    if (InStr(title, "Sublime Text") == 0) {
+        tmp := Clipboard
+        Clipboard :=
+        Send, ^c
+        ClipWait 1
+        Clipboard := StrReplace(Clipboard, "`r`n")  
+        Send, ^v
+        Clipboard := tmp
+    } else {
+        Send, ^j
+    }
+return
+
 !Up::
     Send, {PGUP}
 return
@@ -213,9 +228,16 @@ return
      Menu, MyMenu, Show
 Return
 
+::ip::
+if (A_IPAddress2 == "0.0.0.0") {
+    SendInput, % A_IPAddress1
+} else { 
+    SendInput, % A_IPAddress2
+}
+return
+
 ; 获取当前ip，分为1234四个网卡
 ::ip1::
-::ip::
     SendInput, % A_IPAddress1
 return
 
@@ -230,6 +252,7 @@ return
 ::ip4::
     SendInput, % A_IPAddress4
 return
+
 
 AppsKey & l::
 >^l::

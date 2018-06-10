@@ -17,6 +17,8 @@ ClipChanged(Type) {
     }
 }
 
+
+
 ; 下载内容
 ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
 {
@@ -40,6 +42,42 @@ ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
     return  whr.ResponseText
 }
 
+
+; 下载内容
+post(url, data, q:=false, text:="正在为你下载代码，请保持网络顺畅")
+{
+    whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+    whr.Open("POST", url, true)
+    whr.SetRequestHeader("Content-Type", "application/json;charset=utf-8")
+    whr.Send(data)
+    if (text != "") {
+        TrayTip, 请稍后, % text, 20, 17
+    }   
+    whr.WaitForResponse()
+    
+    if (q==false) {
+        
+        if (whr.ResponseText) {
+            TrayTip, 下载成功, （づ￣3￣）づ╭?～ , 20, 17
+        } else {
+            TrayTip, 无内容返回, (￣ε(#￣)☆╰╮o(￣皿￣///) , 20, 17
+        }
+    }
+    
+    return  whr.ResponseText
+}
+
+
+; if ('this_is'==/an_example/){of_beautifier();}else{var a=b?(c%d):e[f];}
+^!f::
+    Clipboard := 
+    Send, ^c
+    ClipWait
+    a := Trim(StrReplace(Clipboard, "`r`n"))
+    code = {"text":"%a%"}
+    Var := post("http://119.23.22.136:3000", code)
+    code(Var)
+return
 
 ; 关闭输入法
 ; 使用示例：SwitchIME(0x08040804)
