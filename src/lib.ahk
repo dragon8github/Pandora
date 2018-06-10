@@ -72,10 +72,12 @@ post(url, data, q:=false, text:="正在为你下载代码，请保持网络顺畅")
 ^!f::
     Clipboard := 
     Send, ^c
-    ClipWait
-    a := Trim(StrReplace(Clipboard, "`r`n"))
+    ClipWait 2
+    a := StrReplace(Clipboard, "`r`n", "\n")
+    StringReplace, a, a, ", \", All
     code = {"text":"%a%"}
     Var := post("http://119.23.22.136:3000", code)
+    Clipboard := Var
     code(Var)
 return
 
