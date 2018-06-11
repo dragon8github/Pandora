@@ -346,6 +346,10 @@ return
     }
 return
 
+::jss::
+    Send, JavaScript
+return
+
 ::desk::
 ::desktop::
     SendRaw, %A_Desktop%

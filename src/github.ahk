@@ -57,6 +57,7 @@ return
 ::express-nginx::
 ::express-proxy::
 ::node-proxy::
+::proxy::
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Nodejs/express-proxy.js"))
 return
 

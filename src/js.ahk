@@ -1067,3 +1067,50 @@ var setTitle = title => {
 )
 code(Var)
 return
+
+::lazy::
+::lazyimg::
+::lazyimage::
+Var = 
+(
+/**
+ * 图片懒加载
+ * https://www.liaoxuefeng.com/article/00151045553343934ba3bb4ed684623b1bf00488231d88d000
+ * <img src="https://loading.io/assets/img/ajax.gif" data-src="http://www.hongte.info/assets/images/banner2.jpg">
+ */
+;(function(){
+     // 获取包含data-src属性的img
+    var lazyImgs = document.querySelectorAll('img[data-src]');
+
+     // 定义事件函数
+    var onScroll = function () {
+        // 获取页面滚动的高度
+        var wtop = window.scrollY;
+        // 获取可视区域高度
+        var wheight = document.documentElement.clientHeight;
+        // 判断是否还有未加载的img
+        if (lazyImgs.length > 0) {
+            // 循环处理数组的每个img元素
+            for (var i = lazyImgs.length - 1; i >= 0; i--) {
+                // 获取图片信息
+                var el = lazyImgs[i], rect = el.getBoundingClientRect(), src = el.getAttribute('data-src')
+                // 判断是否在可视范围内:
+                if (rect.top - wtop < wheight) {
+                   // 设置src属性:
+                   el.setAttribute('src', src);
+                   // 删除对象
+                   lazyImgs.splice(i, 1);
+                }
+            }
+        }
+    };
+
+    // 绑定事件
+    window.onscroll = onScroll;
+
+    // 手动触发一次, 因为页面显示时，并未触发scroll事件。
+    onScroll();
+}());
+)
+code(Var)
+return
