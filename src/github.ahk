@@ -32,6 +32,10 @@ return
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/JavaScript/urlcode.js"))
 return
 
+::cookie::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/JavaScript/cookie.js"))
+return
+
 
 ; _____________ Css ________________
 
