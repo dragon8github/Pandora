@@ -62,6 +62,14 @@ return
     Send, {PGDN}
 return
 
+!Home::
+    Send, {PGUP 10}
+return
+
+!End::
+    Send, {PGDN 10}
+return
+
 +!Down::
     Send, +{PGDN}
 return
@@ -258,7 +266,13 @@ return
 
 AppsKey & l::
 >^l::
-    Var := "http://" . A_IPAddress2 . ":8080"
+    ip := A_IPAddress1
+    if (A_IPAddress2 == "0.0.0.0") {
+       ip := A_IPAddress1
+    } else { 
+       ip := A_IPAddress2
+    }
+    Var := "http://" . ip . ":8080"
     SendRaw, % Var
 return
 

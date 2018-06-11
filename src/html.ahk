@@ -2,7 +2,6 @@
 	SendRaw, <a href="http://www.baidu.com" target='_blank'>百度一下</a>
 return
 
-::html::
 ::html5::
 ::html`:5::
 Var = 

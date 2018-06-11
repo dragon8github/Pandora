@@ -975,3 +975,95 @@ Promise.prototype.finally = function(onFinally) {
 )
 code(Var)
 return
+
+::getPath::
+Var = 
+(
+var getPath = function(){
+    var jsPath = doc.currentScript ? doc.currentScript.src : function(){
+      var js = doc.scripts
+      ,last = js.length - 1
+      ,src;
+      for(var i = last; i > 0; i--){
+        if(js[i].readyState === 'interactive'){
+          src = js[i].src;
+          break;
+        }
+      }
+      return src || js[last].src;
+    }();
+    return jsPath.substring(0, jsPath.lastIndexOf('/') + 1);
+}()
+)
+code(Var)
+return
+
+::onscriptload::
+Var = 
+(
+/**
+ * 加载script并且执行回调
+ * @param {String} url 资源地址
+ * @param {Function} cb 回调方法
+ * https://www.cnblogs.com/_franky/archive/2010/06/20/1761370.html
+ */
+var onscriptload = function (url, cb) {
+  var node = document.createElement("script")
+  var head = document.getElementsByTagName('head')[0]
+  var timeID
+  var supportLoad = "onload" in node
+  var onEvent = supportLoad ? "onload" : "onreadystatechange"
+  node[onEvent] = function onLoad() {
+      if (!supportLoad && !timeID && /complete|loaded/.test(node.readyState)) {
+          timeID = setTimeout(onLoad)
+          return
+      }
+      if (supportLoad || timeID) {
+          clearTimeout(timeID)
+          cb && cb()
+      }
+  }
+  head.insertBefore(node, head.firstChild)
+  node.src = url
+}
+
+onscriptload('https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js', function () {
+   console.log(jQuery.fn.jquery);
+})
+
+)
+code(Var)
+return
+
+::is-ie::
+Var = 
+(
+(function(){ //ie版本
+    var agent = navigator.userAgent.toLowerCase();
+    return (!!window.ActiveXObject || "ActiveXObject" in window) ? (
+      (agent.match(/msie\s(\d+)/) || [])[1] || '11' //由于ie11并没有msie的标识
+    `) : false;
+}())
+)
+code(Var)
+return
+
+::settitle::
+Var = 
+(
+// 解决微信、QQ、闪银等内置浏览器单页应用无法刷新title的问题
+var setTitle = title => {
+    var i = document.createElement('iframe');
+    i.src = 'https://www.baidu.com/favicon.ico';
+    i.style.display = 'none';
+    i.onload = function() {
+        setTimeout(function(){
+            i.remove();
+        }, 9)
+    }
+    document.title = title;
+    document.body.appendChild(i);
+}
+)
+code(Var)
+return
