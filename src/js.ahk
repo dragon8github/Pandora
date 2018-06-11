@@ -1364,7 +1364,7 @@ code(Var)
 return
 
 ::url2obj::
-::geturlparams::
+::geturlparamsobj::
 Var = 
 (
 /**
@@ -1380,6 +1380,39 @@ function parseQueryString(url) {
         return {}
     }
     return JSON.parse('{"' + decodeURIComponent(search).replace(/"/ g, '\\"').replace(/&/ g, '","').replace(/=/ g, '":"') + '"}')
+}
+)
+code(Var)
+return
+
+
+::geturlparams::
+Var = 
+(
+ /**
+ * @func
+ * @desc - 从url地址中根据参数获取指定的值
+ * @param {string} name - 参数
+ * @param {string} url - url
+ */
+var getUrlParam = function (name, url) {
+    if (!url) url = location.href;
+    var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+    var returnValue;
+    for (var i = 0; i < paraString.length; i++) {
+        var tempParas = paraString[i].split('=')[0];
+        var parasValue = paraString[i].split('=')[1];
+        if (tempParas === name)
+            returnValue = parasValue;
+    }
+    if (!returnValue) {
+        return "";
+    } else {
+        if (returnValue.indexOf("#") != -1) {
+            returnValue = returnValue.split("#")[0];
+        }
+        return returnValue;
+    }
 }
 )
 code(Var)
@@ -1412,3 +1445,49 @@ function stringfyQueryString(obj) {
 )
 code(Var)
 return
+
+::date100::
+Var = 
+(
+/**
+ * 获取100天后的日子
+ * 用来做计划是极好的
+ */
+var d = new Date() 
+d.setDate(d.getDate() + 100)
+console.log(d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate())
+)
+code(Var)
+return
+
+::jsonp::
+Var = 
+(
+/**
+ * @func
+ * @desc jsonp的基本使用函数
+ * @params {object} urlObj
+ * @params {string} urlObj.url - jsonp的请求地址
+ * @params {string} urlObj.jsonpCallback - jsonp的回调函数命名
+ * @params {function} callback - 要执行的回调函数
+ */
+function jsonp(urlObj, callback) {
+    let url = urlObj.url;
+    let callbackName = urlObj.jsonpCallback;
+
+    // 先定义一个全局函数，供jsonp调用
+    window[callbackName] = function(data) {
+        window[callbackName] = undefined;
+        document.body.removeChild(script);
+        callback(data);
+    };
+
+    // jsonp的原理，插入一个script标签，并且执行上面的全局函数
+    let script = document.createElement('script');
+    script.src = url;
+    document.body.appendChild(script);
+}
+)
+code(Var)
+return
+
