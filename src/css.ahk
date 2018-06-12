@@ -1,3 +1,53 @@
+::full-bg::
+::fullbg::
+Var = 
+(
+html { 
+    background: url('images/bg.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+)
+code(Var)
+return
+
+::toum::
+::touming::
+Var = 
+(
+.transparent {
+    filter: alpha(opacity=50); /* internet explorer */
+    -khtml-opacity: 0.5;      /* khtml, old safari */
+    -moz-opacity: 0.5;       /* mozilla, netscape */
+    opacity: 0.5;           /* fx, safari, opera */
+}
+)
+code(Var)
+return
+
+::loading...::
+Var = 
+(
+.loading:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    animation: ellipsis 2s infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+}
+@keyframes ellipsis {    from {
+        width: 2px;
+    }
+    to {
+        width: 15px;
+    }
+}
+)
+code(Var)
+return
+
 ::clear::
 Var = 
 (

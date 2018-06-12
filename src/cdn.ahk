@@ -1,3 +1,14 @@
+::cdn-eruda::
+::cdn-vconsole::
+::cdn-console::
+Var = 
+(
+<script src="//cdn.bootcss.com/eruda/1.4.2/eruda.min.js"></script>
+<script>eruda.init();</script>
+)
+code(Var)
+return
+
 ::cdn-animate::
 Var = 
 (

@@ -8,16 +8,18 @@ if !FileExist(".pandora")
 ; 其实不应该放在这里的，但不知道为啥必须放在这里才生效
 OnClipboardChange("ClipChanged")
 ClipChanged(Type) {
-    if (type == 1) {
-        filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"
-        if (Var != Clipboard and StrLen(Trim(StrReplace(Clipboard, "`r`n"))) != 0) {
-            time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
-            FileAppend, __________________%time%__________________`r`n`r`n%Clipboard%`r`n`r`n, *%filename%
-        }
+    try {
+       if (type == 1) {
+            filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"
+            if (Var != Clipboard and StrLen(Trim(StrReplace(Clipboard, "`r`n"))) != 0) {
+                time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
+                FileAppend, __________________%time%__________________`r`n`r`n%Clipboard%`r`n`r`n, *%filename%
+            }
+        }  
+    } catch e {
+        
     }
 }
-
-
 
 ; 下载内容
 ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
@@ -77,7 +79,6 @@ post(url, data, q:=false, text:="正在为你下载代码，请保持网络顺畅")
     StringReplace, a, a, ", \", All
     code = {"text":"%a%"}
     Var := post("http://119.23.22.136:3000", code)
-    Clipboard := Var
     code(Var)
 return
 
