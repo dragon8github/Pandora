@@ -79,6 +79,7 @@ AppsKey & j::
 >^j::
     RUN, http://youmightnotneedjquery.com/
     RUN, https://wyagd001.github.io/zh-cn/docs/Tutorial.htm
+    RUN, http://e.xitu.io/
 Return
 
 >!d::

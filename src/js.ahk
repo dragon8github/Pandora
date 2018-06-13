@@ -1,9 +1,64 @@
+::checkpwdlevel::
+Var = 
+(
+var checkPwdLevel = function (str) {
+    let nowLv = 0;
+    if (str.length < 6) {
+        return nowLv
+    }
+    //把规则整理成数组，再进行循环判断
+    let rules=[/[0-9]/,/[a-z]/,/[A-Z]/,/[\.|-|_]/];
+    for(let i=0;i<rules.length;i++){
+        if(rules[i].test(str)){
+            nowLv++;
+        }
+    }
+    return nowLv;
+}
+)
+code(Var)
+return
+
 ::$.load::
 Var = 
 (
 $("#app").load('http://www.baidu.com', function (data, status) {
     console.log(arguments);
 })
+)
+code(Var)
+return
+
+::focusinput::
+::inputfoucs::
+Var = 
+(
+function getElementTop(element){
+    try {
+　  　　　var actualTop = element.offsetTop;
+　  　　　var current = element.offsetParent;
+　  　　　while (current !== null){
+　  　　　　　actualTop += current.offsetTop;
+　  　　　　　current = current.offsetParent;
+　  　　　}
+　  　　　return actualTop;
+    } catch (e) {}
+　  　}
+
+setTimeout(() => {
+    window.scrollTo(0, getElementTop(e.target));
+}, 150)
+)
+code(Var)
+return
+
+::$siblings::
+Var = 
+(
+var list = Array.prototype.filter.call(el.parentNode.children, function(child){
+  return child !== el;
+});
+console.log(list);
 )
 code(Var)
 return
@@ -233,7 +288,7 @@ return
 ::addevent::
 Var = 
 (
-document.body.addEventListener('keydown', function (event) {
+addEventListener('keydown', function (event) {
     if (event.ctrlKey && event.keyCode == 13) {
         console.log(123);
     }

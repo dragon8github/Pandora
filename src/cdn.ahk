@@ -1,6 +1,10 @@
 ::cdn-eruda::
 ::cdn-vconsole::
 ::cdn-console::
+::cdn-log::
+::cdn-debug::
+::cdn-debugger::
+::vconsole::
 Var = 
 (
 <script src="//cdn.bootcss.com/eruda/1.4.2/eruda.min.js"></script>

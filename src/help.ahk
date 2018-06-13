@@ -346,10 +346,6 @@ return
     }
 return
 
-^Enter::    
-    Send, {End}{Enter}
-return
-
 ::jss::
     Send, JavaScript
 return
