@@ -1,3 +1,11 @@
+::cdn-store::
+Var = 
+(
+<!-- https://github.com/marcuswestin/store.js -->
+<script src="https://cdn.bootcss.com/store.js/1.3.20/store.min.js"></script>
+)
+return
+
 ::cdn-eruda::
 ::cdn-vconsole::
 ::cdn-console::

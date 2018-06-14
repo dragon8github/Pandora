@@ -1,3 +1,10 @@
+^!f::
+    RUN, http://jsbeautifier.org/
+    RUN, http://tool.oschina.net/codeformat/html
+    RUN, https://tool.lu/html/
+    RUN, http://tool.chinaz.com/Tools/urlencode.aspx
+return
+
 ::base64::
     Send, data:image/png;base64,
 return
@@ -56,6 +63,8 @@ return
 
 !b::
     RUN, http://www.cnblogs.com/cylee
+    RUN, https://www.bilibili.com/
+    RUN, http://www.dilidili.wang/
 Return
 
 ^g::
@@ -67,10 +76,12 @@ Return
     InputBox, OutputVar, title, what's your Q?
     if (ErrorLevel == 0)
     {
+        /*
         RUN, https://www.zhihu.com/search?type=content&q=%OutputVar%
         RUN, https://segmentfault.com/search?q=%OutputVar%
         RUN, https://www.google.com/search?q=%OutputVar%
         RUN, https://stackoverflow.com/search?q=%OutputVar%
+        */
         RUN, https://www.baidu.com/s?wd=%OutputVar%
     }
 Return
