@@ -6,6 +6,16 @@ MenuHandler:
     SendRaw, % A_ThisMenuItem
 Return  
 
+!o::
+    tmp := Clipboard
+    Clipboard := 
+    Send, ^c
+    ClipWait, 2
+    RUN, % Clipboard
+    Sleep, 200
+    Clipboard := tmp
+return
+
 !s:: 
     ColorArray := ["primary", "success", "info", "warning", "danger"]
     Loop % ColorArray.MaxIndex() {
@@ -22,12 +32,12 @@ return
 return
 
 !l:: 
-    ColorArray := ["beforeCreate", "created", "beforeMount", "mounted", "activated"]
-    Loop % ColorArray.MaxIndex() {
-        this_color := ColorArray[a_index]
-        Menu, StatusMenu, Add, %this_color%, MenuHandler
+    lifeArray := ["beforeCreate", "created", "beforeMount", "mounted", "activated"]
+    Loop % lifeArray.MaxIndex() {
+        this_life := lifeArray[a_index]
+        Menu, LifeMenu, Add, %this_life%, MenuHandler
     }
-    Menu, StatusMenu, Show
+    Menu, LifeMenu, Show
 return
 
 AppsKey & s::
