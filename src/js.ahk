@@ -30,8 +30,20 @@ console.log(Color);
 code(Var)
 return
 
-::echo::
 ::$echo::
+Var = 
+(
+var button = document.createElement('button');
+button.textContent = "Say Hello";
+button.onclick = function() {
+    window.alert('Hello');
+}
+document.body.appendChild(button);
+)
+code(Var)
+return
+
+::echo::
     Send, document.body.innerHTML = "Hello World";
     Send, {left}{Shift Down}{left 13}{Shift Up}
 return
