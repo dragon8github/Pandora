@@ -1,3 +1,47 @@
+::$bind::
+Var = 
+(
+Function.prototype.bind = function() {
+    var self = this, // 保存原函数
+        context = [].shift.call(arguments), // 需要绑定的 this 上下文
+        args = [].slice.call(arguments); // 剩余的参数转成数组
+    return function() { // 返回一个新的函数
+        return self.apply(context, [].concat.call(args, [].slice.call(arguments)));
+        // 执行新的函数的时候，会把之前传入的 context 当作新函数体内的 this
+        // 并且组合两次分别传入的参数，作为新函数的参数
+    }
+};
+)
+code(Var)
+return
+
+
+::enum::
+Var = 
+(
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 1] = "Red";
+    Color[Color["Green"] = 2] = "Green";
+    Color[Color["Blue"] = 4] = "Blue";
+})(Color || (Color = {}));
+console.log(Color);
+)
+code(Var)
+return
+
+::echo::
+::$echo::
+    Send, document.body.innerHTML = "Hello World";
+    Send, {left}{Shift Down}{left 13}{Shift Up}
+return
+
+::args2arr::
+::2arr::
+::args2::
+    Send, [].slice.call(arguments)
+return
+
 ::checkpwdlevel::
 Var = 
 (
@@ -514,6 +558,7 @@ Return
     SendInput, throw new Error(e.message){left}^+{left}^+{left}
 Return
 
+::for::
 >!f::
 Var = 
 (

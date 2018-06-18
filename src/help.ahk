@@ -84,7 +84,7 @@ return
     Send, +{PGDN}
 return
 
-!Right::
+~!Right::
     SendInput, {end} 
 return
 
@@ -92,7 +92,7 @@ return
     SendInput, +{end} 
 return
 
-!Left::
+~!Left::
     SendInput, {Home}
 return
 
@@ -113,6 +113,10 @@ return
     filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"
 	if FileExist(filename)
 		run, %filename%
+return
+
+>!t::
+    RUN, https://www.tslang.cn/docs/handbook/basic-types.html
 return
 
 >!c::
