@@ -72,19 +72,6 @@ Return
     RUN, https://legacy.gitbook.com/
 Return
 
-!space::
-    InputBox, OutputVar, title, what's your Q?
-    if (ErrorLevel == 0)
-    {
-        /*
-        RUN, https://www.zhihu.com/search?type=content&q=%OutputVar%
-        RUN, https://segmentfault.com/search?q=%OutputVar%
-        RUN, https://www.google.com/search?q=%OutputVar%
-        RUN, https://stackoverflow.com/search?q=%OutputVar%
-        */
-        RUN, https://www.baidu.com/s?wd=%OutputVar%
-    }
-Return
 
 AppsKey & j::
 >^j::

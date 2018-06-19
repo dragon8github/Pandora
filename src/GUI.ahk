@@ -3,6 +3,7 @@ Gui, Add, Checkbox, gMySubroutine Checked HwndMyEditHwnd vbd, 百度
 Gui, Add, Checkbox, vgoogle, Google
 Gui, Add, Checkbox, vgithub, Github
 Gui, Add, Checkbox, vso, Stack Overflow
+Gui, Add, Checkbox, vsegmentfault, SegmentFault
 
 Gui, Add, Text, gAllSearchB W120 ym, 翻译类:
 Gui, Add, Checkbox, vbdfy, 百度翻译   
@@ -20,20 +21,31 @@ Gui, Add, Checkbox, vjuejin, 掘金
 Gui, Add, Checkbox, vjianshu, 简书
 Gui, Add, Checkbox, vcsdn, CSDN
 Gui, Add, Checkbox, vzhihu, 知乎
-Gui, Add, Checkbox, vsegmentfault, SegmentFault
 
-Gui, Add, Text, gAllSearchE W120 ym, 购物类:
+
+Gui, Add, Text, gAllSearchE W80 ym, 购物类:
 Gui, Add, Checkbox, vtaobao, 淘宝
-Gui, Add, Checkbox, vtianmao, 天猫
 Gui, Add, Checkbox, vjingdong, 京东
 Gui, Add, Checkbox, vdangdang, 当当
+Gui, Add, Checkbox, vamazon, 亚马逊
+Gui, Add, Checkbox, vsuning, 苏宁易购
+
 
 ; ym 可以 y轴换列，有点类似float:left ，而 xm可以换行,有点类似clear:both
-Gui, Add, Edit, r9 vSearchContent w300 Limit50 ym , 
+Gui, Add, Edit, vSearchContent w600 Limit50 xs y+20, 
 Gui, Color, E6FFE6
 Gui, Margin, 10, 10
-Gui, Add, Button, w300 h30, OK
-Gui, Show,, Simple Input Example
+Gui, Add, Button, w600 h30 Default, OK
+
+
+GuiEscape:
+GuiClose:
+	Gui,Hide
+return
+
+
+!space::
+	Gui, Show,, Simple Input Example
 return 
 
 ; +g 其实就是添加吧
@@ -52,11 +64,13 @@ AllSearchA:
 		GuiControl,, google, 1 
 		GuiControl,, so, 1 
 		GuiControl,, github, 1 
+		GuiControl,, segmentfault, 1 
 	} else {
 		GuiControl,, bd, 0
 		GuiControl,, google, 0
 		GuiControl,, so, 0
 		GuiControl,, github, 0
+		GuiControl,, segmentfault, 0
 	}
 return
 
@@ -98,13 +112,11 @@ AllSearchD:
 		GuiControl,, jianshu, 1 
 		GuiControl,, csdn, 1 
 		GuiControl,, zhihu, 1 
-		GuiControl,, segmentfault, 1 
 	} else {
 		GuiControl,, juejin, 0
 		GuiControl,, jianshu, 0
 		GuiControl,, csdn, 0
 		GuiControl,, zhihu, 0
-		GuiControl,, segmentfault, 0
 	}
 return
 
@@ -116,19 +128,21 @@ AllSearchE:
 		GuiControl,, tianmao, 1 
 		GuiControl,, jingdong, 1 
 		GuiControl,, dangdang, 1 
+		GuiControl,, amazon, 1 
+		GuiControl,, suning, 1 
 	} else {
 		GuiControl,, taobao, 0
 		GuiControl,, tianmao, 0
 		GuiControl,, jingdong, 0
 		GuiControl,, dangdang, 0
+		GuiControl,, amazon, 0 
+		GuiControl,, suning, 0
 	}
 return
 
 
-GuiClose:
 ButtonOK:
 Gui, Submit
-
 ; 百度
 if (bd == 1) {
 	RUN, https://www.baidu.com/s?wd=%SearchContent%
@@ -136,96 +150,101 @@ if (bd == 1) {
 
 ; Google
 if (google == 1) {
-	RUN, http://
+	RUN, https://www.google.com/search?q=%SearchContent%
 }
 
 ; Github
 if (github == 1) {
-	RUN, http://
+	RUN, https://github.com/search?q=%SearchContent%
 }
 
-; Stack Overfl
+; Stack Overflow
 if (so == 1) {
-	RUN, http://
-}
-
-; 百度翻译   
-if (bdfy == 1) {
-	RUN, http://
-}
-
-; 有道翻译
-if (youdaofy == 1) {
-	RUN, http://
-}
-
-; Google翻译
-if (googlefanyi == 1) {
-	RUN, http://
-}
-
-; 网易云音乐   
-if (wy == 1) {
-	RUN, http://
-}
-
-; QQ音乐
-if (qq == 1) {
-	RUN, http://
-}
-
-; 酷狗音乐
-if (dog == 1) {
-	RUN, http://
-}
-
-; 虾米音乐
-if (xiami == 1) {
-	RUN, http://
-}
-
-; 掘金
-if (juejin == 1) {
-	RUN, http://
-}
-
-; 简书
-if (jianshu == 1) {
-	RUN, http://
-}
-
-; CSDN
-if (csdn == 1) {
-	RUN, http://
-}
-
-; 知乎
-if (zhihu == 1) {
-	RUN, http://
+	RUN, https://stackoverflow.com/search?q=%SearchContent%
 }
 
 ; SegmentFault
 if (segmentfault == 1) {
-	RUN, http://
+	RUN, https://segmentfault.com/search?q=%SearchContent%
+}
+
+; 百度翻译   
+if (bdfy == 1) {
+	RUN, http://fanyi.baidu.com/translate?aldtype=16047&query=%SearchContent%&keyfrom=baidu&smartresult=dict&lang=auto2zh#zh/en/%SearchContent%
+}
+
+; 有道翻译
+if (youdaofy == 1) {
+	RUN, http://dict.youdao.com/w/eng/%SearchContent%/#keyfrom=dict2.index
+}
+
+; Google翻译
+if (googlefanyi == 1) {
+	RUN, https://translate.google.cn/#auto/en/%SearchContent%
+}
+
+; 网易云音乐   
+if (wy == 1) {
+	RUN, http://music.163.com/#/search/m/?s=%SearchContent%
+}
+
+; QQ音乐
+if (qq == 1) {
+	RUN, https://y.qq.com/portal/search.html#w=%SearchContent%
+}
+
+; 酷狗音乐
+if (dog == 1) {
+	RUN, http://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord=%SearchContent%
+}
+
+; 虾米音乐
+if (xiami == 1) {
+	RUN, https://www.xiami.com/search?key=%SearchContent%
+}
+
+; 掘金
+if (juejin == 1) {
+	RUN, https://juejin.im/search?query=%SearchContent%
+}
+
+; 简书
+if (jianshu == 1) {
+	RUN, https://www.jianshu.com/search?q=%SearchContent%&page=1&type=note
+}
+
+; CSDN
+if (csdn == 1) {
+	RUN, https://so.csdn.net/so/search/s.do?q=%SearchContent%
+}
+
+; 知乎
+if (zhihu == 1) {
+	RUN, https://www.zhihu.com/search?type=content&q=%SearchContent%
 }
 
 ; 淘宝
 if (taobao == 1) {
-	RUN, http://
-}
-
-; 天猫
-if (tianmao == 1) {
-	RUN, http://
+	RUN, https://s.taobao.com/search?q=%SearchContent%
 }
 
 ; 京东
 if (jingdong == 1) {
-	RUN, http://
+	RUN, https://search.jd.com/Search?keyword=%SearchContent%&enc=utf-8&wq=%SearchContent%
+}
+
+; 亚马逊
+if (amazon == 1) {
+	RUN, https://www.amazon.cn/s/ref=nb_sb_noss?field-keywords=%SearchContent%
+}
+
+; 苏宁易购
+if (suning == 1) {
+	RUN, https://search.suning.com/%SearchContent%/
 }
 
 ; 当当
 if (dangdang == 1) {
-	RUN, http://
+	RUN, http://search.dangdang.com/?key=%SearchContent%
 }
 return
