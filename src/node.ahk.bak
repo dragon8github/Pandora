@@ -1,15 +1,3 @@
-::node-mkdir::
-::fs-mkdir::
-Var = 
-(
-var mkdirp = require('mkdirp');
-mkdirp(path.join(__dirname,`/data/`), function (err) {
-    if (err) console.error(err)
-})
-)
-code(Var)
-return
-
 ::node-delete::
 ::node-rm::
 ::node.delete::
