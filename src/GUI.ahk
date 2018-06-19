@@ -48,6 +48,16 @@ return
 	Gui, Show,, Simple Input Example
 return 
 
+!m::
+	isAllSearchC := true
+	GuiControl,,bd, 0
+	GuiControl,, wy, 1 
+	GuiControl,, qq, 1 
+	GuiControl,, dog, 1 
+	GuiControl,, xiami, 1 
+	Gui, Show,, Simple Input Example
+return 
+
 ; +g 其实就是添加吧
 MySubroutine:
 	/*

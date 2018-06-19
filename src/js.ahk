@@ -1,3 +1,17 @@
+::$once::
+Var = 
+(
+const once = fn => {
+	let done = false;
+
+	return function () {
+		return done ? undefined : ((done = true), fn.apply(this, arguments))
+	}
+}
+)
+code(Var)
+return
+
 ::$bind::
 Var = 
 (
@@ -469,7 +483,12 @@ SendInput, {up}{tab}
 Return
 
 ::`:?::
-	SendInput, foo === bar ? true `: false`;
+Var = 
+(
+var result = (a[property] < b[property]) ? -1 : 
+             (a[property] > b[property]) ?  1 : 0;
+)
+code(Var)
 Return
 
 ::sett::
@@ -1005,6 +1024,7 @@ return
 ::sortobj::
 Var = 
 (
+// 将arr升序排列,如果是倒序return -(value1 - value2)
 const orderArr = (arr) => { 
     arr.sort((a, b) => { 
          let value1 = a[property]; 
@@ -1012,6 +1032,36 @@ const orderArr = (arr) => {
          return value1 - value2; 
     }) 
 }
+)
+code(Var)
+return
+
+::jiecheng::
+Var = 
+(
+var factorial = n => {
+	if (n === 0) {
+		return 1;
+	}
+	// 这是一个递归
+	return n * factorial(n -1);
+}
+)
+code(Var)
+return
+
+::sortby::
+Var = 
+(
+const sortBy = (property) => {
+	return (a, b) => {
+		var result = (a[property] < b[property]) ? -1 : 
+					 (a[property] > b[property]) ?  1 : 0;
+		return result;
+	}
+}
+
+people.sort(sortBy("lastname"))
 )
 code(Var)
 return
@@ -1603,3 +1653,54 @@ function jsonp(urlObj, callback) {
 code(Var)
 return
 
+::cachemethod::
+::cachefunc::
+::cachefunction::
+::memoized::
+Var = 
+(
+const memoized = fn => {
+	const lookupTable = {};
+	// setInterval( () => console.log(lookupTable) , 1000); // 可以通过解释这个来观察缓存的变化
+	return arg => lookupTable[arg] || (lookupTable[arg] = fn(arg));
+}
+
+// 阶乘的demo
+let fastFactorial = memoized(n => {
+	if (n === 0) {
+		return 1;
+	}
+	// 这是一个递归，并且每一次递归都具有缓存过程
+	return n * fastFactorial(n -1);
+});
+
+fastFactorial(5)
+)
+code(Var)
+return
+
+::$map::
+Var = 
+(
+const map = (array, fn) => {
+	let results = []
+	for (const value of array) 
+	    results.push(fn(value))
+	return results;
+}
+)
+code(Var)
+return
+
+::$filter::
+Var = 
+(
+const filter = (array, fn) => {
+	let results = []
+ 	for (const value of array) 
+       (fn(value)) ? results.push(value) : undefined;   	   
+	return results
+}
+)
+code(Var)
+return
