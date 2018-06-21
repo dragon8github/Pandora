@@ -1,9 +1,10 @@
-Gui, Add, Text, gAllSearchA W120, 搜索引擎类:
+Gui, Add, Text, gAllSearchA W120 ym, 搜索引擎类:
 Gui, Add, Checkbox, gMySubroutine Checked HwndMyEditHwnd vbd, 百度
 Gui, Add, Checkbox, vgoogle, Google
 Gui, Add, Checkbox, vgithub, Github
 Gui, Add, Checkbox, vso, Stack Overflow
 Gui, Add, Checkbox, vsegmentfault, SegmentFault
+Gui, Add, Checkbox, vcylee, cnblogs
 
 Gui, Add, Text, gAllSearchB W120 ym, 翻译类:
 Gui, Add, Checkbox, vbdfy, 百度翻译   
@@ -22,7 +23,6 @@ Gui, Add, Checkbox, vjianshu, 简书
 Gui, Add, Checkbox, vcsdn, CSDN
 Gui, Add, Checkbox, vzhihu, 知乎
 
-
 Gui, Add, Text, gAllSearchE W80 ym, 购物类:
 Gui, Add, Checkbox, vtaobao, 淘宝
 Gui, Add, Checkbox, vjingdong, 京东
@@ -31,10 +31,13 @@ Gui, Add, Checkbox, vamazon, 亚马逊
 Gui, Add, Checkbox, vsuning, 苏宁易购
 
 
-; ym 可以 y轴换列，有点类似float:left ，而 xm可以换行,有点类似clear:both
-Gui, Add, Edit, vSearchContent w600 Limit50 xs y+20, 
+; 搜索框
+Gui, Add, Edit, vSearchContent w600 Limit50 y+30 xs, 
+; 背景色
 Gui, Color, E6FFE6
+; margin 布局
 Gui, Margin, 10, 10
+; submit 按钮
 Gui, Add, Button, w600 h30 Default, OK
 
 
@@ -43,9 +46,8 @@ GuiClose:
 	Gui,Hide
 return
 
-
 !space::
-	Gui, Show,, Simple Input Example
+	Gui, Show, W620, Simple Input Example
 return 
 
 !m::
@@ -152,9 +154,13 @@ return
 
 
 ButtonOK:
-
 ; 保存用户的输入到每个控件的关联变量中.
 Gui, Submit, NoHide 
+
+; 贝尔塔猫'博客园
+if (cylee == 1) {
+	RUN, https://zzk.cnblogs.com/my/s/blogpost-p?Keywords=%SearchContent%
+}
 
 ; 百度
 if (bd == 1) {
