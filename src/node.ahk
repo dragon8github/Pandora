@@ -1,3 +1,97 @@
+::request.proxy::
+Var = 
+(
+ request({
+    method: 'GET',
+    url: 'http://ip.chinaz.com/getip.aspx',
+    timeout: 8000,
+    encoding: null,
+    proxy: 'http://91.205.239.120:8080'
+}, function (err, _res, body) {
+    if (err) throw new Error(err)
+    body = body.toString();
+    console.log(body);
+})
+)
+code(Var)
+return
+
+::http.request::
+// http://nodejs.cn/api/http.html#http_http_request_options_callback
+// http://yijiebuyi.com/blog/8221eb14c8482e7efd1868946e99ea7c.html
+Var = 
+(
+var postData = JSON.stringify({
+        'Phone': mobile,
+        'Code': code,
+        'Pwd': pwd,
+        'Share': share
+});
+
+const opt = {
+    // host: '119.10.67.144', // 这里放代理服务器的ip或者域名，千万不能加http
+    // port: '808', // 这里放代理服务器的端口号
+    method: 'POST',
+    path: 'http://192.168.0.102',
+    timeout: 30000,
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Length': postData.length
+    },
+};
+
+const req = http.request(opt, function (res) {
+    console.log(``状态码: ${res.statusCode}``);
+    console.log(``响应头: ${JSON.stringify(res.headers)}``);
+
+    res.setEncoding('utf8');
+
+    res.on('data', function (data) {
+          console.log(``响应主体: ${data}``);
+    });
+
+    res.on('end', () => {
+        console.log('响应中已无数据。');
+    });
+});
+
+req.on('error', (e) => {
+    console.error('err', e.message);
+});
+
+req.write(postData);
+req.end();
+)
+code(Var)
+return
+
+::request::
+Var = 
+(
+request({
+    method: 'POST',
+    url: 'http://192.168.0.102',
+    headers: {
+        // 'Content-Type': 'application/json',
+        // 'X-Requested-With': 'XMLHttpRequest',
+    },
+    // 请求和回发的数据自动转变成了 json 对象
+    // 不需要在header中设置'Content-Type': 'application/json',也不需要手动JSON.stringify()转义Body postdata
+    json: true, 
+    body: {
+        'Phone': mobile,
+        'Code': code,
+        'Pwd': pwd,
+        'Share': share
+    },
+}, function (err, response, body) {
+    console.log(body);
+})
+)
+code(Var)
+return
+
 ::node-mkdir::
 ::fs-mkdir::
 Var = 
@@ -89,6 +183,7 @@ return
 return
 
 ::node-http::
+::node-server::
 Var = 
 (
 var http = require('http');

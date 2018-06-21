@@ -1,29 +1,3 @@
-::request::
-Var = 
-(
-request({
-    method: 'POST',
-    url: 'http://192.168.0.102',
-    headers: {
-        // 'Content-Type': 'application/json',
-        // 'X-Requested-With': 'XMLHttpRequest',
-    },
-    // 请求和回发的数据自动转变成了 json 对象
-    // 不需要在header中设置'Content-Type': 'application/json',也不需要手动JSON.stringify()转义Body postdata
-    json: true, 
-    body: {
-        'Phone': mobile,
-        'Code': code,
-        'Pwd': pwd,
-        'Share': share
-    },
-}, function (err, response, body) {
-    console.log(body);
-})
-)
-code(Var)
-return
-
 ::user-agents::
 ::user-agent::
 ::userAgents::
