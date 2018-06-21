@@ -139,23 +139,6 @@ return
     Send, lizhaohong@hongte.info
 return
 
-; «¯øÈ◊¢ Õ 
-AppsKey & /::
->^/::
-Clipboard := 
-Send, ^c
-ClipWait 2
-if (Clipboard) {
-Var = 
-(
-/*
-%Clipboard%
-*/
-)
-code(Var)
-}
-return
-
 ; ALT + R ÷ÿ∆ÙΩ≈±æ
 !r::
     if WinActive("ahk_class SciTEWindow")
