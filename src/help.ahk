@@ -12,6 +12,19 @@ Return
     Send, 928532756@qq.com
 return
 
+
+
+^+/::
+Var = 
+(
+/**
+ * say something ...
+ * @param {*} 参数 参数说明
+ */
+)
+code(Var)
+return
+
 !o::
     tmp := Clipboard
     Clipboard := 

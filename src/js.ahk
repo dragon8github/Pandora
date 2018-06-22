@@ -1854,3 +1854,14 @@ getProxyList().then(function (proxyList) {
 )
 code(Var)
 return
+
+::new promise::
+::promise::
+Var = 
+(
+return new Promise((resolve, reject) => {
+    resolve('success') // reject('fail')
+}
+)
+code(Var)
+return

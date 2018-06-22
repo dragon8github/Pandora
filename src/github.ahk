@@ -12,6 +12,12 @@ return
 return
 
 ; _____________ JavaScript ________________
+
+::node-progress::
+::node.progress::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/JavaScript/progress-bar.js"))
+return
+
 ::aop::
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/JavaScript/AOP.js"))
 Return
