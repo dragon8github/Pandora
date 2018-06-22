@@ -30,7 +30,7 @@ code(Var)
 return
 
 ::match::
-    Send, body.match(/\d{4,}/)[0]
+    Send, body.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,4}/g);
 return
 
 ::lunxun::
@@ -804,6 +804,10 @@ if (!/^[\u4e00-\u9fa5]+$/.test('李钊鸿')) {
 }
 )
 code(Var)
+return
+
+::is-ip::
+    SendRaw, body.match(/\d\.\d\.\d\.\d:\d/g);
 return
 
 ::is-phone::
@@ -1763,6 +1767,90 @@ const filter = (array, fn) => {
        (fn(value)) ? results.push(value) : undefined;   	   
 	return results
 }
+)
+code(Var)
+return
+
+::looks_like_html::
+::like_html::
+::likehtml::
+Var = 
+(
+ function looks_like_html(source) {
+    // <foo> - looks like html
+    // <!--\nalert('foo!');\n--> - doesn't look like html
+
+    var trimmed = source.replace(/^[ \t\n\r]+/, '');
+    var comment_mark = '<' + '!-' + '-';
+    return (trimmed && (trimmed.substring(0, 1) === '<' && trimmed.substring(0, 4) !== comment_mark));
+}
+)
+code(Var)
+return
+
+::getproxylist::
+Var = 
+(
+function getProxyList() {
+    // http://www.66ip.cn/nm.html
+    var apiURL = 'http://www.66ip.cn/nmtq.php?getnum=100&isp=0&anonymoustype=0&start=&ports=&export=&ipaddress=&area=0&proxytype=0&api=66ip';
+    return new Promise((resolve, reject) => {
+        var options = {
+            method: 'GET',
+            url: apiURL,
+            gzip: true,
+            encoding: null,
+            headers: {
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Encoding': 'gzip, deflate',
+                'Accept-Language': 'zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4',
+                'User-Agent': 'Mozilla/8.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36',
+                'referer': 'http://www.66ip.cn/'
+            },
+        };
+        request(options, function (error, response, body) {
+            try {
+                if (error) throw error;
+                if (/meta.*(charset=gb2312|charset=GBK)/.test(body)) {
+                    body = iconv.decode(body, 'gbk');
+                }
+                var ret = body.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,4}/g);
+                resolve(ret);
+            } catch (e) {
+                return reject(e);
+            }
+        });
+    })
+}
+
+getProxyList().then(function (proxyList) {
+    proxyList.forEach(function (proxyurl) {
+        request({
+            method: 'GET',
+            url: 'http://ip.chinaz.com/getip.aspx',
+            timeout: 30000,
+            encoding: null,
+            proxy: 'http://' + proxyurl
+        }, function (err, _res, body) {
+            if (err) {
+                console.error("fail", err.message) 
+            } else {
+                try {
+                    // 将 buffer 转化为字符串
+                    body = body.toString();
+                    // 序列化
+                    body = eval('(' + body + ')')
+                    console.log("success", body.address, proxyurl);
+                } catch(err) {
+                    console.log('fail page');
+                } 
+            }
+        })
+    });
+}).catch(e => {
+    console.log(e);
+})
+
 )
 code(Var)
 return

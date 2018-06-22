@@ -169,7 +169,7 @@ Var =
 (
 var fs = require('fs');
 var path = require('path');
-fs.writeFile(path.join(__dirname,'/data/test.json'), '这是追加的数据', { flag:"a" }, function (err) {
+fs.writeFile(path.join(__dirname,'/test.json'), '这是追加的数据', { flag:"a" }, function (err) {
     if(err) console.error("文件写入失败");
     else console.log("文件写入成功");
 })

@@ -1,4 +1,4 @@
-Gui, Add, Text, gAllSearchA W120 ym, 搜索引擎类:
+Gui, Add, Text, gAllSearchA W120, 搜索引擎类:
 Gui, Add, Checkbox, gMySubroutine Checked HwndMyEditHwnd vbd, 百度
 Gui, Add, Checkbox, vgoogle, Google
 Gui, Add, Checkbox, vgithub, Github
@@ -30,9 +30,8 @@ Gui, Add, Checkbox, vdangdang, 当当
 Gui, Add, Checkbox, vamazon, 亚马逊
 Gui, Add, Checkbox, vsuning, 苏宁易购
 
-
 ; 搜索框
-Gui, Add, Edit, vSearchContent w600 Limit50 y+30 xs, 
+Gui, Add, Edit, vSearchContent w600 Limit50 y400 xs, 
 ; 背景色
 Gui, Color, E6FFE6
 ; margin 布局
@@ -47,7 +46,7 @@ GuiClose:
 return
 
 !space::
-	Gui, Show, W620, Simple Input Example
+	Gui, Show, W620 H500, Simple Input Example
 return 
 
 !m::
