@@ -6,13 +6,11 @@ MenuHandler:
     SendRaw, % A_ThisMenuItem
 Return  
 
+::@::
 ::@qq::
-::@qq.com::
 ::@qq.com::
     Send, 928532756@qq.com
 return
-
-
 
 ^+/::
 Var = 
