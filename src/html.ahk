@@ -1,5 +1,9 @@
 ::a::
-	SendRaw, <a href="http://www.baidu.com" target='_blank'>百度一下</a>
+Var = 
+(
+<a href="http://www.baidu.com" target='_blank'>百度一下</a>
+)
+code(Var)
 return
 
 ::html5::

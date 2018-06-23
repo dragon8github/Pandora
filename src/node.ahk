@@ -17,10 +17,10 @@ code(Var)
 return
 
 ::http.request::
-// http://nodejs.cn/api/http.html#http_http_request_options_callback
-// http://yijiebuyi.com/blog/8221eb14c8482e7efd1868946e99ea7c.html
 Var = 
 (
+// http://nodejs.cn/api/http.html#http_http_request_options_callback
+// http://yijiebuyi.com/blog/8221eb14c8482e7efd1868946e99ea7c.html
 var postData = JSON.stringify({
         'Phone': mobile,
         'Code': code,

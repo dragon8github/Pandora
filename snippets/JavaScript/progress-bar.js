@@ -1,4 +1,5 @@
 // 这里用到一个很实用的 npm 模块，用以在同一行打印文本
+// https://segmentfault.com/a/1190000009152318
 var slog = require('single-line-log').stdout;
 
 // 封装的 ProgressBar 工具
@@ -37,25 +38,25 @@ module.exports = ProgressBar;
 
 /**
  * 使用示例
- * 
- // 引入工具模块
- var ProgressBar = require('./progress-bar');
-
- // 初始化一个进度条长度为 50 的 ProgressBar 实例
- var pb = new ProgressBar('下载进度', 50);
-
- // 这里只是一个 pb 的使用示例，不包含任何功能
- var num = 0, total = 200;
- function downloading() {
-   if (num <= total) {
-     // 更新进度条
-     pb.render({ completed: num, total: total });
-
-     num++;
-     setTimeout(function (){
-       downloading();
-     }, 500)
-   }
- }
- downloading();
  */
+var ProgressBar = require('./progress-bar');
+
+/**
+* 实例化进度条
+* @param {string} 命令行开头的文字信息
+* @param {int} 进度条的长度(单位：字符)，默认设为 25
+**/
+var pb = new ProgressBar('下载进度', 50);
+
+var num = 0, total = 200;
+function downloading() {
+ if (num <= total) {
+   // 更新进度条（重点）
+   pb.render({ completed: num, total: total });
+   num++;
+   setTimeout(function (){
+     downloading();
+   }, 100)
+ }
+}
+downloading();
