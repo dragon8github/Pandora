@@ -37,7 +37,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 
 
 ## Demo
-<p>通过快捷键呼出常用代码</p>
+<p>通过快捷键呼出常用代码，分别演示了 右ctrl + c、 右ctrl + d、 右ctrl + a、</p>
 <p align="center">
   <a href="https://nodejs.org/">
     <img
@@ -46,7 +46,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>智能补全代码</p>
+<p>智能补全代码，根据自己的联想设置关键字，然后按下回车显示全文</p>
 <p align="center">
   <a href="https://nodejs.org/">
     <img
@@ -55,7 +55,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>云代码</p>
+<p>云代码，将代码部署在github上，该功能有利于团队效率开发。建立真正意义上的云代码库</p>
 <p align="center">
   <a href="https://nodejs.org/">
     <img
@@ -64,7 +64,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>自动翻译命名</p>
+<p>自动翻译命名，程序员梦寐以求的神器功能！</p>
 <p align="center">
   <a href="https://nodejs.org/">
     <img
@@ -73,11 +73,11 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>GUI用户交互界面</p>
+<p>GUI用户交互界面，AHK还支持开发UI界面，这里我模仿Wow和alfred开发了属于自己的高效工具。持续迭代</p>
 <p align="center">
   <a href="https://nodejs.org/">
     <img
-      src="https://github.com/dragon8github/ahk/raw/master/static/GUI.gif"
+      src="https://github.com/dragon8github/ahk/raw/master/static/GUI.png"
     />
   </a>
 </p>
