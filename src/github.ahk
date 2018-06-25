@@ -3,15 +3,15 @@
      code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Html/hover-nav.html"))
 Return
 
-::myhtml::
-    code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Html/myhtml.html"))
-return
-
 ::glass::
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Html/glass.html"))
 return
 
 ; _____________ JavaScript ________________
+
+::gulpfile::
+    code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/JavaScript/gulpfile.js"))
+return
     
 ::node-progress::
 ::node.progress::
@@ -48,11 +48,6 @@ return
 ::normalize::
     code(ajax("https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css"))
 Return
-
-::rem::
-     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Css/rem.scss"))
-Return
-
 
 ; _____________ Nodejs ________________
 

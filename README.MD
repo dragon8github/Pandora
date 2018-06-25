@@ -33,3 +33,51 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 特殊键解决方案（实用）：[https://blog.csdn.net/liuyukuan/article/details/5924137](https://blog.csdn.net/liuyukuan/article/details/5924137)
 
 将ahk编译成exe：[http://ahkcn.sourceforge.net/docs/Scripts.htm\#ahk2exe](http://ahkcn.sourceforge.net/docs/Scripts.htm#ahk2exe)
+
+
+
+## Demo
+<p>通过快捷键呼出常用代码</p>
+<p align="center">
+  <a href="https://nodejs.org/">
+    <img
+      src="https://github.com/dragon8github/ahk/raw/master/static/通过快捷键呼出常用代码.gif"
+    />
+  </a>
+</p>
+
+<p>智能补全代码</p>
+<p align="center">
+  <a href="https://nodejs.org/">
+    <img
+      src="https://github.com/dragon8github/ahk/raw/master/static/智能补全代码.gif"
+    />
+  </a>
+</p>
+
+<p>云代码</p>
+<p align="center">
+  <a href="https://nodejs.org/">
+    <img
+      src="https://github.com/dragon8github/ahk/raw/master/static/云代码.gif"
+    />
+  </a>
+</p>
+
+<p>自动翻译命名</p>
+<p align="center">
+  <a href="https://nodejs.org/">
+    <img
+      src="https://github.com/dragon8github/ahk/raw/master/static/自动翻译命名.gif"
+    />
+  </a>
+</p>
+
+<p>GUI用户交互界面</p>
+<p align="center">
+  <a href="https://nodejs.org/">
+    <img
+      src="https://github.com/dragon8github/ahk/raw/master/static/GUI.gif"
+    />
+  </a>
+</p>

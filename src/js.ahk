@@ -1,3 +1,55 @@
+::orderby::
+Var = 
+(
+const orderBy = (arr, props, orders) =>
+    [...arr].sort((a, b) =>
+    props.reduce((acc, prop, i) => {
+      if (acc === 0) {
+        const [p1, p2] = orders && orders[i] === 'desc' ? [b[prop], a[prop]] : [a[prop], b[prop]];
+        acc = p1 > p2 ? 1 : p1 < p2 ? -1 : 0;
+      }
+      return acc;
+    }, 0));
+const users = [{ name: 'fred', age: 48 }, { name: 'barney', age: 36 }, { name: 'fred', age: 40 }];
+orderBy(users, ['name', 'age'], ['asc', 'desc']); // [{name: 'barney', age: 36}, {name: 'fred', age: 48}, {name: 'fred', age: 40}]
+orderBy(users, ['name', 'age']); // [{name: 'barney', age: 36}, {name: 'fred', age: 40}, {name: 'fred', age: 48}]
+)
+code(Var)
+return
+
+::is::
+Var = 
+(
+// https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets/curry.md
+const is = (type, val) => ![, null].includes(val) && val.constructor === type;
+is(Array, [1]); // true
+is(ArrayBuffer, new ArrayBuffer()); // true
+is(Map, new Map()); // true
+is(RegExp, /./g); // true
+is(Set, new Set()); // true
+is(WeakMap, new WeakMap()); // true
+is(WeakSet, new WeakSet()); // true
+is(String, ''); // true
+is(String, new String('')); // true
+is(Number, 1); // true
+is(Number, new Number(1)); // true
+is(Boolean, true); // true
+is(Boolean, new Boolean(true)); // true
+)
+code(Var)
+return
+
+::uuid::
+Var = 
+(
+const UUIDGeneratorBrowser = () =>
+  ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+    (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));
+  UUIDGeneratorBrowser(); // '7982fcfe-5721-4632-bede-6000885be57d'
+)
+code(Var)
+return
+
 ::user-agents::
 ::user-agent::
 ::userAgents::
@@ -964,6 +1016,7 @@ code(Var)
 Return
 
 ::goTop::
+::scrollToTop::
 Var = 
 (
 var timer = null;
@@ -979,6 +1032,14 @@ var goTop = function() {
         }
     });
 }
+// es6
+const scrollToTop = () => {
+  const c = document.documentElement.scrollTop || document.body.scrollTop;
+  if (c > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    window.scrollTo(0, c - c / 8);
+  }
+};
 )
 code(Var)
 Return

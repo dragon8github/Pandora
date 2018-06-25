@@ -1,3 +1,35 @@
+::fuckrem::
+::fuck-rem::
+::myrem::
+::my-rem::
+Var = 
+(
+// rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推
+$vw_fontsize: 75; // iPhone 6尺寸的根元素大小基准值
+@function rem($px) {
+    @return ($px / $vw_fontsize ) * 1rem;
+}
+// 根元素大小使用 vw 单位
+$vw_design: 750;
+html {
+    font-size: ($vw_fontsize / ($vw_design / 2)) * 100vw;?
+    // 同时，通过Media Queries 限制根元素最大最小值
+    @media screen and (max-width: 320px) {
+        font-size: 64px;
+    }
+    @media screen and (min-width: 540px) {
+        font-size: 108px;
+    }
+}
+// body 也增加最大最小宽度限制，避免默认100`%宽度的 block 元素跟随 body 而过大过小
+body {
+    max-width: 540px;
+    min-width: 320px;
+}
+)
+code(Var)
+return
+
 ::full-bg::
 ::fullbg::
 Var = 
@@ -68,12 +100,6 @@ return
     SendRaw, border-radius: 4px;
 return
 
->+p::
-    Send, ^c
-    Send, pxToRem(){left 1}
-    Send, ^v{right 1}
-return
-
 ::cu::
     Send, cursor: pointer;
 return
@@ -127,8 +153,8 @@ return
 ::@bg::
 SendInput,
 (
-width: 100px`;
-height: 100px`;
+width: 44px`;
+height: 44px`;
 background: url('https://iph.href.lu/100x100') center / 100`% 100`% no-repeat`;
 display: inline-block`;
 )
@@ -143,7 +169,7 @@ height: px`;
 return
 
 ::fs::
-    SendInput, font-size: 14px`;{left 3}+{left 2}
+    SendInput, font-size: 16px`;{left 3}+{left 2}
 Return
 
 ::bg::
@@ -337,8 +363,17 @@ Return
 	SendInput, padding-right: px`;{left 3}
 Return
 
+::db::
+    SendRaw, display: block;
+return
+
 ::posa::
-    SendRaw, position: absolute;
+Var = 
+(
+position: absolute;
+top: 0; right: 0; bottom: 0; left: 0;
+)
+code(Var)
 Return
 
 ::posr::
@@ -662,6 +697,9 @@ return
     SendInput, <link rel="stylesheet" media="(max-width: 640px)" href="app640.css">
 Return
 
+
+::1px::
+::1px-border::
 ::border-1px::
 Var = 
 (

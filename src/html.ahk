@@ -14,10 +14,14 @@ Var =
 	<html lang="en">
 	<head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 	<title>Document</title>
 </head>
 <style>
+	body {
+		max-width: 540px;
+        min-width: 320px;
+	}
 </style>
 <body>
 	

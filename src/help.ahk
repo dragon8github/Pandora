@@ -6,11 +6,14 @@ MenuHandler:
     SendRaw, % A_ThisMenuItem
 Return  
 
-::@::
-::@qq::
-::@qq.com::
+!h::
+    Run, mspaint 
+return
+
+:*:@qq::
     Send, 928532756@qq.com
 return
+
 
 ^+/::
 Var = 
@@ -81,6 +84,11 @@ return
     Send, {PGUP}
 return
 
+^!Up::
+#Up::
+    Send, {PGUP 10}
+return
+
 +!Up::
     Send, +{PGUP}
 return
@@ -89,13 +97,11 @@ return
     Send, {PGDN}
 return
 
-!Home::
-    Send, {PGUP 10}
-return
-
-!End::
+^!Down::
+#Down::
     Send, {PGDN 10}
 return
+
 
 +!Down::
     Send, +{PGDN}

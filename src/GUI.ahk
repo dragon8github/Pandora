@@ -1,4 +1,4 @@
-Gui, Add, Text, gAllSearchA W120, 搜索引擎类:
+Gui, Add, Text, gAllSearchA W120 yp+10, 搜索引擎类:
 Gui, Add, Checkbox, gMySubroutine Checked HwndMyEditHwnd vbd, 百度
 Gui, Add, Checkbox, vgoogle, Google
 Gui, Add, Checkbox, vgithub, Github
@@ -30,16 +30,36 @@ Gui, Add, Checkbox, vdangdang, 当当
 Gui, Add, Checkbox, vamazon, 亚马逊
 Gui, Add, Checkbox, vsuning, 苏宁易购
 
-
 Gui, Add, Text,  W120 Section xs yp+50, 常用导航:
 Gui, Add, Link,, <a href="https://github.com">github</a>
 Gui, Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
 Gui, Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
-Gui, Add, Link,, <a href="http://youmightnotneedjquery.com/">NOT-NEED-JQUERY</a>
+Gui, Add, Link,, <a href="http://e.xitu.io/">掘金前端</a>
+
+Gui, Add, Text,  W120 ys, 其他:
+Gui, Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</a>
 Gui, Add, Link,, <a href="chrome://inspect/#devices">安卓调试</a>
 Gui, Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AHK官网</a>
+Gui, Add, Link,, <a href="http://babeljs.io/repl">Babel</a>
 
-Gui, Add, Text,  W120 ys, layer / layui：
+Gui, Add, Text,  W120 ys, 娱乐:
+Gui, Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
+Gui, Add, Link,, <a href="http://www.dilidili.wang/">嘀哩嘀哩</a>
+Gui, Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
+Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lion大帝魔兽</a>
+
+Gui, Add, Text,  W120 ys, 代理:
+Gui, Add, Link,, <a href="http://www.xicidaili.com/nn">西刺</a>
+Gui, Add, Link,, <a href="https://proxy.l337.tech/txt">l337</a>
+Gui, Add, Link,, <a href="http://www.66ip.cn/nm.html">66ip</a>
+
+Gui, Add, Text, W120 ys, 站长工具：
+Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/html">代码格式化</a>
+Gui, Add, Link,, <a href="https://tool.lu/html/">代码美化</a>
+Gui, Add, Link,, <a href="http://jsbeautifier.org/">jsbeautifier</a>
+Gui, Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
+
+Gui, Add, Text,  W120 Section xs yp+40, layer/layui：
 Gui, Add, Link,, <a href="http://layer.layui.com/">layer</a>
 Gui, Add, Link,, <a href="http://www.layui.com/doc/">layui文档</a>
 Gui, Add, Link,, <a href="http://www.layui.com/demo/">layer示例</a>
@@ -49,39 +69,25 @@ Gui, Add, Text,  W120 ys, Vue：
 Gui, Add, Link,, <a href="http://vuejs.org/">vue</a>
 Gui, Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
 Gui, Add, Link,, <a href="http://router.vuejs.org ">vue-router</a>
-Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">awesome</a>
+Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 
 Gui, Add, Text,  W120 ys, ElementUI：
 Gui, Add, Link,, <a href="http://element-cn.eleme.io/#/zh-CN/component/radio">ElementUI</a>
 Gui, Add, Link,, <a href="https://github.com/ElemeFE/element/blob/dev/packages/">Element-github</a>
 
-Gui, Add, Text, W120 yp+30, mint-ui：
+Gui, Add, Text, W120 ys, mint-ui：
 Gui, Add, Link,, <a href="http://elemefe.github.io/mint-ui/#/">mint-ui</a>
 Gui, Add, Link,, <a href="http://mint-ui.github.io/docs/#/">mint-ui-github</a>
-
-Gui, Add, Text, W120 ys, 站长工具：
-Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/html">代码格式化</a>
-Gui, Add, Link,, <a href="https://tool.lu/html/">代码美化</a>
-Gui, Add, Link,, <a href="http://jsbeautifier.org/">jsbeautifier</a>
-Gui, Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
-
-Gui, Add, Text,  W120 Section xs yp+90, 娱乐:
-Gui, Add, Link,, <a href="http://e.xitu.io/">掘金前端</a>
-Gui, Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
-Gui, Add, Link,, <a href="http://www.dilidili.wang/">嘀哩嘀哩</a>
-Gui, Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
-
-Gui, Add, Text,  W120 ys, 代理:
-Gui, Add, Link,, <a href="http://www.xicidaili.com/nn">西刺</a>
-Gui, Add, Link,, <a href="https://proxy.l337.tech/txt">l337</a>
-Gui, Add, Link,, <a href="http://www.66ip.cn/nm.html">66ip</a>
 
 Gui, Add, Text,  W120 ys, 最近浏览:
 Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss</a>
 Gui, Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">易码</a>
+Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">满币网</a>
+Gui, Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
+
 
 ; 搜索框
-Gui, Add, Edit, vSearchContent w650 Limit50 yp+80 Section xs, 
+Gui, Add, Edit, vSearchContent w650 Limit50 yp+40 Section xs, 
 ; 背景色
 Gui, Color, E6FFE6
 ; margin 布局
