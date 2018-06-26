@@ -1,35 +1,42 @@
-// cnpm i -g gulpjs/gulp#4.0 && npm i gulpjs/gulp#4.0 gulp-sass gulp-autoprefixer gulp-sourcemaps browser-sync gulp-ejs gulp-babel babel-core babel-preset-env babel-preset-stage-2 babel-plugin-transform-runtime -S
+﻿// cnpm i -g gulpjs/gulp#4.0 && cnpm i gulpjs/gulp#4.0 gulp-sass gulp-autoprefixer gulp-sourcemaps browser-sync gulp-ejs gulp-rename gulp-babel babel-core babel-preset-env babel-preset-stage-2 gulp-typescript typescript -S
 const gulp         = require('gulp')
-const babel        = require('gulp-babel');
+const babel        = require('gulp-babel')
+const ts           = require('gulp-typescript')
 const sass         = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
-const sourcemaps   = require('gulp-sourcemaps');
-const rename       = require('gulp-rename');
-var browserSync    = require('browser-sync').create();
-var reload         = browserSync.reload;
+const sourcemaps   = require('gulp-sourcemaps')
+const rename       = require('gulp-rename')
+const browserSync  = require('browser-sync').create()
+
+// 编译typescript
+gulp.task('ts', function () {
+    return gulp.src('./src/js/*.ts')
+               .pipe(ts({
+                  'noImplicitAny': true,
+                  'declaration': true,
+                  'target': 'es5'
+               }))
+               .js.pipe(gulp.dest('./dist/js/'))
+})
 
 // 编译babel
 gulp.task('babel', function () {
-    return gulp.src('./components/**/src/*.js')
+    return gulp.src('./components/**/src/*.es')
                .pipe(sourcemaps.init())
                .pipe(babel({
                   presets: [
                       [
-                        "env",
+                        'env',
                         {
-                          "targets": {
-                            "browsers": ["last 5 versions", "ie >= 8"]
+                          'targets': {
+                            'browsers': ['last 5 versions', 'ie >= 8']
                           }
                         }
                       ],
-                      "babel-preset-stage-2"
-                  ],
-                  plugins: [
-                      'transform-runtime'
+                      'babel-preset-stage-2'
                   ]
                }))
-               .pipe(sourcemaps.write('./map')) 
-               .pipe(rename(function (path) {
+               .pipe(sourcemaps.write('./map'))
                .pipe(gulp.dest('./dist/assets/js'))
 
 })
@@ -46,17 +53,29 @@ gulp.task('sass', function () {
         .pipe(sass().on('error', sass.logError))
         .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest('./dist/assets/css'))
-});
+})
 
-
-// 静态服务器
-gulp.task('dev', ['sass'], function() {
-    browserSync.init({
+// watch
+gulp.task('watch', function () {
+    // 监听重载文件
+    var files = [
+        'src/html/*.html',
+        'src/css/*.css',
+        'src/js/*.es',
+        'src/js/*.ts',
+        'src/sprite/*.png'
+    ]
+    browserSync.init(files, {
         server: {
-            baseDir: "./src/html/"
+            baseDir: './src/html/',
         }
-    });
-    gulp.watch("./src/sass/*.scss", ['sass']);
-    gulp.watch("./src/sass/*.js", ['babel'])
-    gulp.watch("./index.html").on('change', reload);
-});
+    })
+    gulp.watch('./src/sass/*.scss', gulp.series('sass'))
+    gulp.watch('./src/js/*.es', gulp.series('babel'))
+    gulp.watch('./src/js/*.js', gulp.series('babel'))
+    gulp.watch('./src/html/*.html').on('change', browserSync.reload)
+})
+
+
+// 开发环境
+gulp.task('dev', gulp.series(gulp.parallel('sass', 'babel', 'ts'), 'watch'))
