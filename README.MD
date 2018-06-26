@@ -32,8 +32,8 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 
 
 ## Demo
-<p>通过快捷键呼出常用代码，分别演示了 右ctrl + c、 右ctrl + d、 右ctrl + a、</p>
-<p align="center">
+<p>一、通过快捷键呼出常用代码，分别演示了 右ctrl + c、 右ctrl + d、 右ctrl + a、</p>
+<p>
   <a href="https://nodejs.org/">
     <img
       src="https://github.com/dragon8github/ahk/raw/master/static/通过快捷键呼出常用代码.gif"
@@ -41,8 +41,8 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>智能补全代码，根据自己的联想设置关键字，然后按下回车显示全文</p>
-<p align="center">
+<p>二、智能补全代码，根据自己的联想设置关键字，然后按下回车显示全文</p>
+<p>
   <a href="https://nodejs.org/">
     <img
       src="https://github.com/dragon8github/ahk/raw/master/static/智能补全代码.gif"
@@ -50,8 +50,8 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>云代码，将代码部署在github上，该功能有利于团队效率开发。建立真正意义上的云代码库</p>
-<p align="center">
+<p>三、云代码，将代码部署在github上，该功能有利于团队效率开发。建立真正意义上的云代码库</p>
+<p>
   <a href="https://nodejs.org/">
     <img
       src="https://github.com/dragon8github/ahk/raw/master/static/云代码.gif"
@@ -59,8 +59,8 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>自动翻译命名，程序员梦寐以求的神器功能！</p>
-<p align="center">
+<p>四、自动翻译命名，程序员梦寐以求的神器功能！</p>
+<p>
   <a href="https://nodejs.org/">
     <img
       src="https://github.com/dragon8github/ahk/raw/master/static/自动翻译命名.gif"
@@ -68,8 +68,8 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>GUI用户交互界面，AHK还支持开发UI界面，这里我模仿Wow和alfred开发了属于自己的高效工具。持续迭代</p>
-<p align="center">
+<p>五、GUI用户交互界面，AHK还支持开发UI界面，这里我模仿Wow和alfred开发了属于自己的高效工具。持续迭代</p>
+<p>
   <a href="https://nodejs.org/">
     <img
       src="https://github.com/dragon8github/ahk/raw/master/static/GUI.png"
@@ -77,7 +77,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>免费制作宏键盘</p>
+<p>六、免费制作宏键盘</p>
 <p>
   演示略，请观看该视频介绍（6分钟开始是重点演示），原理在于 Ahk + Lua（luamacros） + second_keyboard.lua + 你的第二键盘（硬件）：
   https://www.youtube.com/watch?v=Arn8ExQ2Gjg&feature=youtu.be&t=362
