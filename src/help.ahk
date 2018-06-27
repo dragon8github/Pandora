@@ -46,7 +46,6 @@ return
 return
 
 !BackSpace::
-    Send, {end}
     Send, +{Home}
     Send, {Del}
 return
@@ -326,6 +325,7 @@ return
 return
 
 ::gitig::
+::.git::
 ::gitignore::
 Var = 
 (

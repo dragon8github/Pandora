@@ -1,3 +1,23 @@
+::activehtml::
+Var = 
+(
+var hiddenProperty = 'hidden' in document ? 'hidden' : 
+					'webkitHidden' in document ? 'webkitHidden' :
+					'mozHidden' in document ? 'mozHidden' : 
+					null;
+var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
+var onVisibilityChange = function() {
+    if (document[hiddenProperty]) {
+        window.alert('页面非激活');
+    } else {
+        window.alert('页面激活')
+    }
+}
+document.addEventListener(visibilityChangeEvent, onVisibilityChange);
+)
+code(Var)
+return
+
 ::orderby::
 Var = 
 (
@@ -1922,7 +1942,7 @@ Var =
 (
 return new Promise((resolve, reject) => {
     resolve('success') // reject('fail')
-}
+})
 )
 code(Var)
 return
