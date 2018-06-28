@@ -41,7 +41,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>二、智能补全代码，根据自己的联想设置关键字，然后按下回车显示全文</p>
+<p>二、联想代码补全，根据自己的联系预设置的关键字，然后按下回车显示全文</p>
 <p>
   <a href="https://nodejs.org/">
     <img
