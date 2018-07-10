@@ -51,7 +51,7 @@ return
 return
 
 !l:: 
-    lifeArray := ["beforeCreate", "created", "beforeMount", "mounted", "activated"]
+    lifeArray := ["beforeCreate", "created", "beforeMount", "mounted", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate"]
     Loop % lifeArray.MaxIndex() {
         this_life := lifeArray[a_index]
         Menu, LifeMenu, Add, %this_life%, MenuHandler
@@ -61,7 +61,10 @@ return
 
 AppsKey & s::
 >^s::
-    run, %A_Desktop%\sublime_text.exe.lnk
+    try {
+        run, %A_Desktop%\Sublime Text.lnk
+        run, %A_Desktop%\sublime_text.exe.lnk
+    }
 return
 
 !j::
@@ -114,7 +117,8 @@ return
     SendInput, +{end} 
 return
 
-~!Left::
+; ~!Left::
+!Left::
     SendInput, {Home}
 return
 
