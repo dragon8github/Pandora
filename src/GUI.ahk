@@ -40,7 +40,7 @@ Gui, Add, Text,  W140 ys, 其他:
 Gui, Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</a>
 Gui, Add, Link,, <a href="chrome://inspect/#devices">安卓调试</a>
 Gui, Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AHK官网</a>
-Gui, Add, Link,, <a href="http://babeljs.io/repl">Babel</a>
+Gui, Add, Link,, <a href="http://babeljs.io/repl">Babel在线转换</a>
 
 Gui, Add, Text,  W140 ys, 娱乐:
 Gui, Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
@@ -48,7 +48,7 @@ Gui, Add, Link,, <a href="http://www.dilidili.wang/">嘀哩嘀哩</a>
 Gui, Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
 Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lion大帝魔兽</a>
 
-Gui, Add, Text,  W140 ys, 代理:
+Gui, Add, Text,  W140 ys, 代理IP:
 Gui, Add, Link,, <a href="http://www.xicidaili.com/nn">西刺</a>
 Gui, Add, Link,, <a href="https://proxy.l337.tech/txt">l337</a>
 Gui, Add, Link,, <a href="http://www.66ip.cn/nm.html">66ip</a>
@@ -79,17 +79,18 @@ Gui, Add, Link,, <a href="http://mint-ui.github.io/docs/#/">mint-ui-github</a>
 
 Gui, Add, Text,  W140 ys, Ant-Design:
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design/">Ant-Design-Github</a>
-Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design 文档与示例</a>
+Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design 文档</a>
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro/">Ant-Design 示例项目</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
 
 
 Gui, Add, Text,  W140 ys, DvaJS:
-Gui, Add, Link,, <a href="https://github.com/dvajs/dva">DvaJS Github</a>
-Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS API与示例</a>
+Gui, Add, Link,, <a href="https://github.com/dvajs/dva">DvaJS-Github</a>
+Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS 入门指引</a>
+Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS API</a>
 
 
-Gui, Add, Text, W140 Section xs yp+100, 在线工具：
+Gui, Add, Text, W140 Section xs yp+80, 在线工具：
 Gui, Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
 Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 
@@ -98,15 +99,25 @@ Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss
 Gui, Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">易码</a>
 Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">满币网</a>
 
+Gui, Add, Text,  W140 ys, 最近学习：
+Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react 掘金小册</a>
+Gui, Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React 小书</a>
+Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-design精选插件</a>
+Gui, Add, Link,, <a href="https://ant.design/components/table-cn/">Ant-design-table</a>
+
+Gui, Add, Text,  W140 ys, React：
+Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react 官网</a>
+Gui, Add, Link,, <a href="https://reacttraining.com/react-router/web/api/Route/component">React-router</a>
+Gui, Add, Link,, <a href="https://redux.js.org/basics/usage-with-react">React-redux</a>
 
 ; 搜索框
-Gui, Add, Edit, vSearchContent w650 Limit50 yp+60 Section xs, 
+Gui, Add, Edit, vSearchContent w740 Limit50 yp+60 Section xs, 
 ; 背景色
 Gui, Color, E6FFE6
 ; margin 布局
 Gui, Margin, 10, 10
 ; submit 按钮
-Gui, Add, Button, w650 h30 Default, OK
+Gui, Add, Button, w740 h30 Default, OK
 
 
 GuiEscape:

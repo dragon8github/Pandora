@@ -1,10 +1,3 @@
-^!f::
-    RUN, http://jsbeautifier.org/
-    RUN, http://tool.oschina.net/codeformat/html
-    RUN, https://tool.lu/html/
-    RUN, http://tool.chinaz.com/Tools/urlencode.aspx
-return
-
 ::base64::
     Send, data:image/png;base64,
 return

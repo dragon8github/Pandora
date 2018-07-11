@@ -531,10 +531,14 @@ Return
 
 AppsKey & c:: 
 >^c:: 
-    SendInput, console.log(arguments)`;{left 2}
+    t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+    SendInput, console.log(%t%, )`;{left 2}
 Return
 
+::c::
 ::con:: 
+::console:: 
+::log::
     SendInput, console.log()`;{left 2}
 Return
 
@@ -1065,6 +1069,7 @@ code(Var)
 Return
 
 ::unique::
+::norepeat::
 Var = 
 (
 /**
@@ -1073,10 +1078,10 @@ Var =
  */
 function unique(arr) {
     var retArray = [];
-    for (var i = 0; i < arr.length; i) {
-        retArray.push(arr[i]);
+    for (var i = 0; i < arr.length; i++) {
+       !~retArray.indexOf(arr[i]) && retArray.push(arr[i]);
     }
-    Return retArray;
+    return retArray;
 }
 )
 code(Var)
@@ -1339,6 +1344,8 @@ code(Var)
 return
 
 ::onscriptload::
+::jsread::
+::jsready::
 Var = 
 (
 /**
@@ -1943,6 +1950,95 @@ Var =
 return new Promise((resolve, reject) => {
     resolve('success') // reject('fail')
 })
+)
+code(Var)
+return
+
+::maopao::
+::maopaopaixu::
+Var = 
+(
+// 冒泡排序 O(N^2 )
+// 待排序的数组
+var arr = [8, 5,5,3,2]
+
+// 最外部的循环其实没什么参与什么作为。
+// 至于为什么要-1 其实很容易理解。因为最后一次的时候是不需要与自己比较的。所以绕过了
+// 当然你减不减好像也没什么区别。只是减少次数来优化罢了
+for (var i = 0;i < arr.length - 1; i++) {
+    // 重点想清楚这里为什么要-i。其实也很简单，每一次轮回，都会把最大（小）数塞到最后。
+    // 所以下次就不必去比较最后一位了。同理，你减不减都无所谓。只是优化而已。但这个优化的幅度比较大
+    for (var j = 0; j < arr.length - i; j++) {
+        // 这里的比大小判断决定排序是倒序还是正序
+        if (arr[j] > arr[j+1]) {
+            // 以下代码只是普通的交换变量逻辑。没什么好说的。
+            // 如果真要说的话，只能说无论临时变量存储的是j的值还是j + 1的值都是可以的
+            var temp = arr[j + 1]
+            arr[j + 1] = arr[j]
+            arr[j] = temp
+　　　　　　　// [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]] // ES6d的语法，可直接代替上面3行代码
+        }
+    }
+}
+
+console.log(arr)
+
+/*
+该排序法名为：冒泡排序法
+思路而言几乎没有难点，人人都能理解。但真要动手写的时候，却总有写不出或者想不出的情况。
+原因就在于没有多写，写完也要看看套路。
+双重循环，以及那些可有可无的-1 和 -i
+以及注意外层的循环没有参与计算的作为。只有内存的j循环进行了比较或交换而已
+*/
+)
+code(Var)
+return
+
+::kuaisupaixu::
+::fastpaixu::
+Var = 
+(
+// 待排序的数组
+var a = [8, 5,5,3,2, 11,35,23,9]
+
+function quicksort (left_index, right_index) {
+    // 异常情况
+    if (left_index > right_index) return;
+
+    // 基准数，其实就是把数组中最左边的数拿来判断没什么
+    var temp = a[left_index];
+
+    var i = left_index;
+    var j = right_index;
+
+    // 一直循环，直到它们碰面
+    while (i != j) {
+        // j哨兵由右往左前行，为了寻找比基准数小的值
+        while (a[j] >= temp && i < j) j--;
+        // i哨兵由左往右前行，为了寻找比基准数大的值
+        while (a[i] <= temp && i < j) i++;
+
+        // 这里重要的两点是：
+        // 1、必须是右往左先走。
+        // 2、i必须小于j。如果他们碰面的话（i===j）按照游戏规则必须停止前行。
+        if (i < j) {
+            var t = a[i];
+            a[i] = a[j];
+            a[j] = t;
+        }
+    }
+    // 交换基准数和碰面的位置的数值
+    a[left_index] = a[i]; // 其实这里a[i]或者a[j]都可以。 反正就是要和基准数交换位置。这也是本排序最关键的地方
+    a[i] = temp;                
+
+    // 递归继续同样的游戏规则,下面还是一样，用i和j都可以，反正他们碰面了位置是一样的
+    quicksort(left_index, i - 1);
+    quicksort(i+1, right_index);
+}
+
+quicksort(0, a.length - 1)
+
+console.log(a)
 )
 code(Var)
 return

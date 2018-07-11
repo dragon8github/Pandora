@@ -6,6 +6,17 @@ MenuHandler:
     SendRaw, % A_ThisMenuItem
 Return  
 
+MenuHandlerlifeArray:
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =  
+(
+%A_ThisMenuItem% () {
+    
+}
+)
+code(Var)
+return
+
 !h::
     Run, mspaint 
 return
@@ -54,7 +65,7 @@ return
     lifeArray := ["beforeCreate", "created", "beforeMount", "mounted", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate"]
     Loop % lifeArray.MaxIndex() {
         this_life := lifeArray[a_index]
-        Menu, LifeMenu, Add, %this_life%, MenuHandler
+        Menu, LifeMenu, Add, %this_life%, MenuHandlerlifeArray
     }
     Menu, LifeMenu, Show
 return
@@ -313,7 +324,7 @@ SendInput, % time
 return
 
 ::git::
-    SendInput, git add . && git commit -m '' && git push -u origin master{LEFT 30}
+    SendInput, git add . && git commit -m '' --no-verify && git push -u origin master{LEFT 42}
 Return
 
 ::git-push::
