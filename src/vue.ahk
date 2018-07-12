@@ -39,6 +39,18 @@ code(Var)
 return
 
 
+::vstyle::
+::vuestyle::
+Var = 
+(
+<style lang="scss" scoped>
+    
+</style>
+)
+code(Var)
+return
+
+
 ::mapgetters::
 Var = 
 (

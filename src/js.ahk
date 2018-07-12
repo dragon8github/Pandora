@@ -1,3 +1,20 @@
+::try::
+Var = 
+(
+try {
+    
+} catch (err) {
+    
+}
+)
+code(Var)
+return
+
+::udf::
+::undefin::
+    Send, undefined
+return
+
 ::activehtml::
 Var = 
 (

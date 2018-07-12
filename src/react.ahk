@@ -13,7 +13,7 @@ export default class test extends Component {
 	}
 
 	componentDidMount () {
-		console.log(arguments);
+		console.log(this.state.color);
 	}
 	
 	handleSubmit = e => {
@@ -23,7 +23,7 @@ export default class test extends Component {
 	render () {
 		const { text } = this.props
 		return (
-			<div onClick={this.handleSubmit}>test</div>
+			<div style={{width: 500, height: 500}} onClick={this.handleSubmit}>test {this.state.color}</div>
 		`)
 	}
 }
@@ -66,7 +66,7 @@ export default class test extends Component {
 	}
 
 	componentDidMount () {
-		console.log(arguments);
+		console.log(this.state.color);
 	}
 	
 	handleSubmit = e => {
@@ -76,7 +76,7 @@ export default class test extends Component {
 	render () {
 		const { text } = this.props
 		return (
-			<div onClick={this.handleSubmit}>test</div>
+			<div  style={{width: 500, height: 500}} onClick={this.handleSubmit}>test {this.state.color}</div>
 		`)
 	}
 }

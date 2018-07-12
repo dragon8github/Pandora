@@ -667,16 +667,6 @@ Var =
 code(Var)
 Return
 
-::style::
-Var = 
-(
-<style lang="scss" scoped>
-    
-</style>
-)
-code(Var)
-return
-
 ::`!imp::
     SendRaw, !important
 return

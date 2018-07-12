@@ -198,3 +198,50 @@ return
 ::img::
     SendInput, <img src="https://iph.href.lu/400x400" alt="..." />{left 14}{ShiftDown}{left 7}{ShiftUp}
 Return
+
+
+::vuehtml::
+::vhtml::
+::vue.html::
+::vue-html::
+Var = 
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <style>
+    </style>
+    <body>
+        <div id="app">
+            {{ title }}
+            <mybutton></mybutton>
+        </div>
+    </body>
+    <script>
+        // 局部注册组件
+        var mybutton = Vue.extend({
+              template: ``
+                <div><button @click="handle">fuck title</button></div>
+              `,
+              methods: {
+                handle () {
+                    vue.title = 'fuck'
+                }
+              }
+        });
+        Vue.component('mybutton', mybutton)
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                title: '123'
+            }
+        })
+    </script>
+</html>
+)
+code(Var)
+return
