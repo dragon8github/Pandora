@@ -87,6 +87,7 @@ Return
 
 
 ::vcmp::
+::vmp::
 ::vcomponent::
 ::vcomponents::
 ::vue-radio::
@@ -126,7 +127,7 @@ Var =
                 value: '',
                 text: ''
               },     
-              template: `
+              template: ``
                 <label>
                     <input type="radio" id="two" :value="text" v-model="currentValue">
                     <label for="two">{{ text }}</label>
@@ -154,6 +155,64 @@ Var =
     </script>
 
 </html>
+)
+code(Var)
+return
+
+::new vue::
+::newvue::
+::newv::
+Var = 
+(
+var vue = new Vue({
+    el: '#app',
+    data: {
+        title: '123'
+    },
+    beforeMount () {
+        console.log('hello world');
+    },
+    methods: {
+        handleClick: function () {
+            
+        }
+    }
+})
+)
+code(Var)
+return
+
+::vextend::
+::vextends::
+::vueextend::
+::vue-extend::
+::vue.extend::
+::vue.extends::
+Var = 
+(
+var mybutton = Vue.extend({
+    template: ``
+        <div></div>
+    `,
+    data: {
+        title: '123'
+    },
+    methods: {
+        handleClick: function () {
+            
+        }
+    },
+    props: {
+        text: ''
+    },
+    watch: {
+        
+    },
+    beforeMount () {
+        console.log('hello world');
+    },
+});
+Vue.component('mybutton', mybutton)
 )
 code(Var)
 return
