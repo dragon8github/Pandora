@@ -1,4 +1,5 @@
-Gui, Add, Text, gAllSearchA W140 yp+10, 搜索引擎类:
+Gui, Add, Button, gCancelSelect w740 h30 yp+10, 取消选中
+Gui, Add, Text, gAllSearchA W140 Section xs yp+40, 搜索引擎类:
 Gui, Add, Checkbox, gMySubroutine Checked HwndMyEditHwnd vbd, 百度
 Gui, Add, Checkbox, vgoogle, Google
 Gui, Add, Checkbox, vgithub, Github
@@ -84,7 +85,6 @@ Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro/">Ant-Design 示例项目</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
 
-
 Gui, Add, Text,  W140 ys, DvaJS:
 Gui, Add, Link,, <a href="https://github.com/dvajs/dva">DvaJS-Github</a>
 Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS 入门指引</a>
@@ -102,6 +102,8 @@ Gui, Add, Text,  W140 ys, 最近浏览:
 Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss</a>
 Gui, Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">易码</a>
 Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">满币网</a>
+Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer?utm_source=gold_browser_extension">puppeteer</a>
+
 
 Gui, Add, Text,  W140 ys, 最近学习：
 Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react 掘金小册</a>
@@ -121,7 +123,7 @@ Gui, Color, E6FFE6
 ; margin 布局
 Gui, Margin, 10, 10
 ; submit 按钮
-Gui, Add, Button, w740 h30 Default, OK
+Gui, Add, Button, w740 h30 Default, FUCK
 
 
 GuiEscape:
@@ -144,6 +146,37 @@ return
 	Gui, Show,, Simple Input Example
 return 
 
+CancelSelect:
+	GuiControl,, bd, 1
+	GuiControl,, google, 0
+	GuiControl,, so, 0
+	GuiControl,, github, 0
+	GuiControl,, segmentfault, 0
+	GuiControl,, cylee, 0
+	
+	GuiControl,, bdfy, 0
+	GuiControl,, youdaofy, 0
+	GuiControl,, googlefanyi, 0
+
+	GuiControl,, wy, 0
+	GuiControl,, qq, 0
+	GuiControl,, dog, 0
+	GuiControl,, xiami, 0
+	GuiControl,, kuwo, 0 
+
+	GuiControl,, juejin, 0
+	GuiControl,, jianshu, 0
+	GuiControl,, csdn, 0
+	GuiControl,, zhihu, 0
+
+	GuiControl,, taobao, 0
+	GuiControl,, tianmao, 0
+	GuiControl,, jingdong, 0
+	GuiControl,, dangdang, 0
+	GuiControl,, amazon, 0 
+	GuiControl,, suning, 0
+return
+
 ; +g 其实就是添加吧
 MySubroutine:
 	/*
@@ -161,12 +194,14 @@ AllSearchA:
 		GuiControl,, so, 1 
 		GuiControl,, github, 1 
 		GuiControl,, segmentfault, 1 
+		GuiControl,, cylee, 1 
 	} else {
 		GuiControl,, bd, 0
 		GuiControl,, google, 0
 		GuiControl,, so, 0
 		GuiControl,, github, 0
 		GuiControl,, segmentfault, 0
+		GuiControl,, cylee, 0
 	}
 return
 
@@ -240,7 +275,7 @@ AllSearchE:
 return
 
 
-ButtonOK:
+ButtonFUCK:
 ; 保存用户的输入到每个控件的关联变量中.
 Gui, Submit, NoHide 
 
