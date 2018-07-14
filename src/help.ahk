@@ -25,6 +25,9 @@ return
     Send, 928532756@qq.com
 return
 
+::gg::
+    Send, google.com
+return
 
 ^+/::
 Var = 
@@ -35,6 +38,15 @@ Var =
  */
 )
 code(Var)
+return
+
+::base64::
+    Send, data:image/png;base64,
+return
+
+
+::bd::
+    SendRaw, http://www.baidu.com
 return
 
 !o::
@@ -193,7 +205,7 @@ Return
     ; 百度翻译API
     Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=_")
     ; 切换到英文（关闭中文输入法）
-    SwitchIME(0x08040804)
+    ; SwitchIME(0x08040804)
     ; 黏贴结果
     SendInput, % Var
     ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
@@ -214,7 +226,7 @@ Return
     ; 百度翻译API
     Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=tuofeng")
     ; 切换到英文
-    SwitchIME(0x08040804)
+    ; SwitchIME(0x08040804)
     ; 黏贴结果
     SendInput, % Var
     ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧

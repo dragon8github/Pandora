@@ -1,8 +1,5 @@
-::base64::
-    Send, data:image/png;base64,
-return
-
 ::cdn::
+::boot::
     Send, http://www.bootcdn.cn/
 return
 
@@ -28,9 +25,6 @@ AppsKey & v::
     run, https://github.com/opendigg/awesome-github-vue
 return
 
-::bd::
-    SendRaw, http://www.baidu.com
-return
 
 AppsKey & e::
 >^e::

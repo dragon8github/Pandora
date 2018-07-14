@@ -1,3 +1,8 @@
+::gzhs::
+::const::
+    Send, constructor
+return
+
 ::try::
 Var = 
 (
@@ -2056,6 +2061,24 @@ function quicksort (left_index, right_index) {
 quicksort(0, a.length - 1)
 
 console.log(a)
+)
+code(Var)
+return
+
+::omit::
+Var = 
+(
+// omit({ name: 'Benjy', age: 18 }, [ 'name' ]); // => { age: 18 }
+function omit(obj, fields) {
+  const shallowCopy = {
+    ...obj,
+  };
+  for (let i = 0; i < fields.length; i++) {
+    const key = fields[i];
+    delete shallowCopy[key];
+  }
+  return shallowCopy;
+}
 )
 code(Var)
 return

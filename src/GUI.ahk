@@ -16,6 +16,7 @@ Gui, Add, Checkbox, vwy, 网易云音乐
 Gui, Add, Checkbox, vqq, QQ音乐
 Gui, Add, Checkbox, vdog, 酷狗音乐
 Gui, Add, Checkbox, vxiami, 虾米音乐
+Gui, Add, Checkbox, vkuwo, 酷我音乐
 
 Gui, Add, Text, gAllSearchD W140 ys, 社区类:
 Gui, Add, Checkbox, vjuejin, 掘金
@@ -88,11 +89,14 @@ Gui, Add, Text,  W140 ys, DvaJS:
 Gui, Add, Link,, <a href="https://github.com/dvajs/dva">DvaJS-Github</a>
 Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS 入门指引</a>
 Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS API</a>
+Gui, Add, Link,, <a href="https://dvajs.com/guide/examples-and-boilerplates.html#官方">DvaJS Demo</a>
 
 
-Gui, Add, Text, W140 Section xs yp+80, 在线工具：
+Gui, Add, Text, W140 Section xs yp+60, 在线工具：
 Gui, Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
 Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
+Gui, Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
+Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
 
 Gui, Add, Text,  W140 ys, 最近浏览:
 Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss</a>
@@ -136,6 +140,7 @@ return
 	GuiControl,, qq, 1 
 	GuiControl,, dog, 1 
 	GuiControl,, xiami, 1 
+	GuiControl,, kuwo, 1 
 	Gui, Show,, Simple Input Example
 return 
 
@@ -187,11 +192,14 @@ AllSearchC:
 		GuiControl,, qq, 1 
 		GuiControl,, dog, 1 
 		GuiControl,, xiami, 1 
+		GuiControl,, kuwo, 1 
 	} else {
 		GuiControl,, wy, 0
 		GuiControl,, qq, 0
 		GuiControl,, dog, 0
 		GuiControl,, xiami, 0
+		GuiControl,, kuwo, 0 
+		
 	}
 return
 
@@ -299,6 +307,10 @@ if (dog == 1) {
 ; 虾米音乐
 if (xiami == 1) {
 	RUN, https://www.xiami.com/search?key=%SearchContent%
+}
+
+if (kuwo == 1) {
+	RUN, http://sou.kuwo.cn/ws/NSearch?type=all&key=%SearchContent%
 }
 
 ; 掘金

@@ -194,6 +194,7 @@ var vue = new Vue({
 code(Var)
 return
 
+::vext::
 ::vextend::
 ::vextends::
 ::vueextend::
