@@ -1,3 +1,22 @@
+::phpmatch::
+::php_match::
+::preg_match::
+::php-match::
+Var = 
+(
+// 过滤中文
+function getEn2 ($str) {
+    // 如果存在中文，那么只取英文并且返回
+    if (preg_match('~[\x{4e00}-\x{9fa5}]+~u', $str)) {
+        preg_match('/\[(.+?)\](\s|_)([a-zA-Z]+)/', $str, $pat_array);
+        return $pat_array[count($pat_array) - 1];
+    }   
+    return $str;
+}
+)
+code(Var)
+return
+
 ::php_post::
 ::php.post::
 ::phppost::

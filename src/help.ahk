@@ -169,8 +169,7 @@ return
 return
 
 >!c::
-::cmd::
-    run, cmd
+    run, PowerShell ; cmd
 return
 
 >!n::
