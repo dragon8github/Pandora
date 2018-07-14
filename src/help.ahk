@@ -203,10 +203,8 @@ Return
     ; Var := ajax("http://119.23.22.136:6635/index.php?text=" . Clipboard . "&type=_")
     ; 百度翻译API
     Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=_")
-    ; 切换到英文（关闭中文输入法）
-    ; SwitchIME(0x08040804)
     ; 黏贴结果
-    SendInput, % Var
+    code(Var)
     ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
     Clipboard := Var
 Return
@@ -224,10 +222,8 @@ Return
     }
     ; 百度翻译API
     Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=tuofeng")
-    ; 切换到英文
-    ; SwitchIME(0x08040804)
     ; 黏贴结果
-    SendInput, % Var
+    code(Var)
     ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
     Clipboard := Var
 Return

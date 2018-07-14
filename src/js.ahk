@@ -2172,3 +2172,28 @@ function removeCookie(name) {
 )
 code(Var)
 return
+
+::daojishi::
+::countdown::
+Var = 
+(
+//開始倒計時
+function countDown ($dom) {
+	var countdown = getCookieValue("secondsremained_login") ? getCookieValue("secondsremained_login") : 0;
+	(function settime () {
+		if (countdown == 0) {
+		    $dom.removeAttr("disabled");
+		    $dom.val("獲取驗證碼 | Get SMS Code");
+		    return;
+		} else {
+		    $dom.attr("disabled", true);
+		    $dom.val(countdown + "秒後重發 | Waiting " + countdown + "s");
+		    countdown--;
+		    editCookie("secondsremained_login", countdown, countdown + 1);
+		}
+		setTimeout(function() { settime($dom) },1000) //每1000毫秒執行壹次
+	}());
+}
+)
+code(Var)
+return
