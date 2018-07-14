@@ -471,7 +471,13 @@ return
 return
 
 ::$Append::
-    SendRaw, document.body.appendChild(el);
+Var = 
+(
+var el = document.createElement("div");
+el.id = "fuck";
+var wraphtml = document.body.appendChild(el);
+)
+code(Var)
 return
 
 ::class::
@@ -2177,19 +2183,44 @@ return
 ::countdown::
 Var = 
 (
-//開始倒計時
+/**
+ * 開始倒計時
+ * http://candy.dragonvein.io/frontend/web/site/signup
+ * @param {jQuery DOM} $dom
+ * <input type='button' id='second' value = '獲取驗證碼 | Get SMS Code'/>
+ */
+$(function () {
+	// 触发按钮
+	$("#second").click(function () {
+	    sendCode();
+	});
+	// 獲取cookie值
+	v = getCookie("secondsremained_login") ? getCookie("secondsremained_login") : 0;
+	if (v > 0) {
+		 // 開始倒計時
+	    countDown($("#second")); 
+	}
+})
+
+function sendCode () {
+	// 设置默认时间
+	setCookie('secondsremained_login', '60', 60)
+	// 開始倒計時
+    countDown($("#second")); 
+}
+
 function countDown ($dom) {
-	var countdown = getCookieValue("secondsremained_login") ? getCookieValue("secondsremained_login") : 0;
+	var countdown = getCookie('secondsremained_login') ? getCookie('secondsremained_login') : 0;
 	(function settime () {
 		if (countdown == 0) {
-		    $dom.removeAttr("disabled");
-		    $dom.val("獲取驗證碼 | Get SMS Code");
+		    $dom.removeAttr('disabled');
+		    $dom.val('獲取驗證碼 | Get SMS Code');
 		    return;
 		} else {
-		    $dom.attr("disabled", true);
-		    $dom.val(countdown + "秒後重發 | Waiting " + countdown + "s");
+		    $dom.attr('disabled', true);
+		    $dom.val(countdown + '秒後重發 | Waiting ' + countdown + 's');
 		    countdown--;
-		    editCookie("secondsremained_login", countdown, countdown + 1);
+		    editCookie('secondsremained_login', countdown, countdown + 1);
 		}
 		setTimeout(function() { settime($dom) },1000) //每1000毫秒執行壹次
 	}());
