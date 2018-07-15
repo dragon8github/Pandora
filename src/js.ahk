@@ -584,12 +584,14 @@ AppsKey & c::
     SendInput, console.log(%t%, )`;{left 2}
 Return
 
+/*
 ::c::
 ::con:: 
 ::console:: 
 ::log::
     SendInput, console.log()`;{left 2}
 Return
+*/
 
 ::ret::
 	SendInput, return
@@ -759,12 +761,24 @@ Return
 ::foreach::
 Var = 
 (
-array.forEach(function (e, i) {
+// Array.form
+[...document.querySelectorAll('#content_left .result')].forEach(function (e, i) {
      console.log(i, e);
 });
 )
 code(Var)
 Return
+
+!.::
+!9::
+!=::
+Var = 
+(
+() => {}
+)
+code(Var)
+Send, {left 1}{Enter 1}
+return
 
 ::dg::
     SendInput, document.getElementById('')`;{left 3}

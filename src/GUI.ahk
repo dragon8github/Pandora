@@ -102,7 +102,6 @@ Gui, Add, Text,  W140 ys, ×î½üä¯ÀÀ:
 Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss</a>
 Gui, Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">Ò×Âë</a>
 Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">Âú±ÒÍø</a>
-Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer?utm_source=gold_browser_extension">puppeteer</a>
 Gui, Add, Link,, <a href="http://candy.dragonvein.io/frontend/web/site/signup">dragonvein</a>
 
 
@@ -117,8 +116,15 @@ Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react ¹ÙÍø<
 Gui, Add, Link,, <a href="https://reacttraining.com/react-router/web/api/Route/component">React-router</a>
 Gui, Add, Link,, <a href="https://redux.js.org/basics/usage-with-react">React-redux</a>
 
+Gui, Add, Text,  W140 ys, puppeteer£º
+Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer?utm_source=gold_browser_extension">puppeteer ¹ÙÍø</a>
+Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md">puppeteer API</a>
+Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer">puppeteer-Github</a>
+Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree/master/examples/">puppeteer-Ê¾Àı</a>
+
+
 ; ËÑË÷¿ò
-Gui, Add, Edit, vSearchContent w740 Limit50 yp+100 Section xs, 
+Gui, Add, Edit, vSearchContent w740 Limit50 yp+60 Section xs, 
 ; ±³¾°É«
 Gui, Color, E6FFE6
 ; margin ²¼¾Ö
@@ -148,7 +154,7 @@ return
 return 
 
 CancelSelect:
-	GuiControl,, bd, 1
+	GuiControl,, bd, 0
 	GuiControl,, google, 0
 	GuiControl,, so, 0
 	GuiControl,, github, 0

@@ -1,3 +1,11 @@
+::div::
+    Send, <div></div>{left 6}
+return
+
+::span::
+    Send, <span></span>{left 7}
+return
+
 ::a::
 Var = 
 (

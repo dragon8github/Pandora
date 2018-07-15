@@ -54,7 +54,12 @@ return
     Clipboard := 
     Send, ^c
     ClipWait, 2
-    RUN, % Clipboard
+    If(InStr(Clipboard, "http://") || InStr(Clipboard, "https://") || InStr(Clipboard, "www.") || InStr(Clipboard, ".com")) {
+        RUN, % Clipboard
+    } else {
+        RUN, https://www.baidu.com/s?wd=%Clipboard%
+    }
+    
     Sleep, 200
     Clipboard := tmp
 return
@@ -66,6 +71,10 @@ return
         Menu, StatusMenu, Add, %this_color%, MenuHandler
     }
     Menu, StatusMenu, Show
+return
+
++BackSpace::
+    Send, {Del}
 return
 
 !BackSpace::
@@ -188,27 +197,6 @@ return
     reload
 Return
 
-!q::
-    ; 第一步，将当前剪切板的内容保存起来，然后清空
-    tmp := Clipboard
-    Clipboard =
-    ; 第二步，复制当前选中内容
-    SendInput, ^c
-    ClipWait, 2
-    if (StrLen(Clipboard) >= 20) {
-        MsgBox, 请不要把此功能当做翻译机
-        return 
-    }
-    ; 有道翻译API（暂废弃）
-    ; Var := ajax("http://119.23.22.136:6635/index.php?text=" . Clipboard . "&type=_")
-    ; 百度翻译API
-    Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=_")
-    ; 黏贴结果
-    code(Var)
-    ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
-    Clipboard := Var
-Return
-
 ^!q::
     ; 第一步，将当前剪切板的内容保存起来，然后清空
     tmp := Clipboard
@@ -228,8 +216,7 @@ Return
     Clipboard := Var
 Return
 
-
-+!q::
+!q::
     ; 第一步，将当前剪切板的内容保存起来，然后清空
     tmp := Clipboard
     Clipboard =
@@ -423,4 +410,18 @@ return
     } else {
         WinMaximize, A
     }
+return
+
+::ahkvar::
+Var = 
+(
+::ahkvar::
+Var = 
+(
+
+`)
+code(Var)
+return
+)
+code(Var)
 return

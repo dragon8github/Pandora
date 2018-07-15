@@ -231,3 +231,33 @@ export default class BasicLayout extends React.PureComponent {
 )
 code(Var)
 return
+
+::rfa::
+::rfater::
+Var = 
+(
+import React, { Component } from 'react';
+
+// 无状态函数/组件 
+function ListItem({ value }) {
+	return (
+		<li>
+			<span>{value}</span>
+		</li>
+	`)
+}
+
+function List({ list, title }) {
+	return (
+		<div>
+			<ul>
+				{this.props.list.map((entry, index) => {
+					<ListItem key={index} value={entry.text}></ListItem>
+				})}
+			</ul>
+		</div>
+	`)
+}
+)
+code(Var)
+return
