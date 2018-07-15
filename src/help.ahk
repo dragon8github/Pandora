@@ -409,13 +409,11 @@ return
 ::ahkvar::
 Var = 
 (
-::ahkvar::
 Var = 
 (
 
 `)
 code(Var)
-return
 )
 code(Var)
 return

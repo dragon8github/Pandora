@@ -1,11 +1,97 @@
 Menu, ReactMenu, add
 
 ReactMenuHandler:
-    SendRaw, % A_ThisMenuItem
+if (A_ThisMenuItem == "this.porps") {
+Var = 
+(
+this.porps.
+)
+code(Var)
+}
+
+if (A_ThisMenuItem == "class List extends Components") {
+Var = 
+(
+class List extends Components {}
+)
+code(Var)
+Send, {left}{enter}
+}
+
+if (A_ThisMenuItem == "static defaultProps") {
+Var =
+(
+static defaultProps = {
+  list: [],
+  handleItemChange: () => {
+   
+  }
+ }
+)
+code(Var)
+}
+
+if (A_ThisMenuItem == "constructor") {
+Var =
+(
+constructor (props) {
+	super(props);
+	this.state = {
+	list: this.props.list.map(entry => {
+		text: entry.text,
+		checked: entry.checked,
+	})
+	}
+ }
+)
+code(Var)
+}
+
+if (A_ThisMenuItem == "render") {
+Var =
+(
+render () {
+  return (
+   <div>
+    
+   </div>
+  `)
+ }
+)
+code(Var)
+}
+
+if (A_ThisMenuItem == "this.setState") {
+Var =
+(
+this.setState({
+	list: list.map(_ => {
+		text: _.text,
+		checked: _.text === entry.text ? !_.checked : _.checked
+	})
+})
+)
+code(Var)
+}
+
+if (A_ThisMenuItem == "this.state.list.map") {
+Var =
+(
+{this.state.list.map((entry, index) => {
+	<ListItem>
+		key = {index}
+		value = {entry.text}
+		checked = {entry.checked}
+		onChange = {() => { this.onItemChange(entry) }}
+	</ListItem>
+ })}
+)
+code(Var)
+}
 Return  
 
 !t::
-	lifeArray := ["this.porps.xxxx", "class List extends Components", "static defaultProps", "constructor ", "render ", "this.setState", "this.state.list.map"]
+	lifeArray := ["this.porps", "class List extends Components", "static defaultProps", "constructor ", "render", "this.setState", "this.state.list.map"]
 	Loop % lifeArray.MaxIndex() {
 		this_life := lifeArray[a_index]
 		Menu, LifeMenu, Add, %this_life%, ReactMenuHandler
