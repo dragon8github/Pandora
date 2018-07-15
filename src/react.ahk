@@ -94,16 +94,51 @@ if (A_ThisMenuItem == "handleClick") {
 Var =
 (
 handleClick (e) {
-	console.log(e.target.value);
+	this.setState({
+		name: event.target.value
+	})
 }
 )
 code(Var)
 }
 
+if (A_ThisMenuItem == "WrappedComponent"){
+Var =
+(
+const MyContainer = (WrappedComponent) => {
+	class extends Component {
+		constructor (props) {
+			super(props);
+
+			this.state = {
+				name: ''
+			}
+		}
+		
+		handleChange (e) {
+			this.setState({
+				name: event.target.value
+			})
+		}
+
+		render () {
+			const newProps = {
+				value: this.state.name,
+				onChange: () => this.handleChange
+			}
+			return <WrappedComponent {...this.props} {...newProps} />;
+		}
+	}
+}
+)
+code(Var)
+}
+
+
 Return  
 
 !t::
-	lifeArray := ["this.porps", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "handleClick"]
+	lifeArray := ["this.porps", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "handleClick", "WrappedComponent"]
 	Loop % lifeArray.MaxIndex() {
 		this_life := lifeArray[a_index]
 		Menu, LifeMenu, Add, %this_life%, ReactMenuHandler
