@@ -785,10 +785,18 @@ code(Var)
 Send, {left 1}{Enter 1}
 return
 
+!=::
+!.::
+Var = 
+(
+=> {}
+)
+code(Var)
+Send, {left 1}{Enter 1}
+return
 
 !9::
 !0::
-!=::
 Var = 
 (
 () => {}

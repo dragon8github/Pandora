@@ -266,14 +266,6 @@ height: px`;^!{up}^{left}
 )
 Return
 
-::w::
-    SendInput, width: px;{left 3}
-Return
-
-::h::
-    SendInput, height: px;{left 3}
-Return
-
 ::ell::
     SendInput,
 (
