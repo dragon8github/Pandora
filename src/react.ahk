@@ -411,7 +411,7 @@ class App extends Component {
 code(Var)
 return
 
-::rselect::
+::rcheckbox::
 Var = 
 (
 class App extends Component {
@@ -448,6 +448,42 @@ class App extends Component {
 				<label> <input type="checkbox" value="CafeMocha" checked={~coffee.indexOf('CafeMocha')} onChange={() => this.handleChange} /> </label>
 				<label> <input type="checkbox" value="CaffeLatte" checked={~coffee.indexOf('CaffeLatte')} onChange={() => this.handleChange} /> </label>
 				<label> <input type="checkbox" value="Machiatto" checked={~coffee.indexOf('Machiatto')} onChange={() => this.handleChange} /> </label>
+			</div>
+		`)
+	}
+}
+)
+code(Var)
+return
+
+::rselect::
+Var = 
+(
+class App extends Component {
+	constructor(props) {
+	    super(props);
+
+	    this.state = {
+	    	area: ''
+	    }
+	}
+
+	handleChange(e) {
+		this.setState = ({
+			area: e.target.value,
+		});
+	}
+
+
+	render () {
+		const { area } = this.state;
+		return (
+			<div>
+				<select value={area} onChange={() => {this.handleChange}}>
+					<option value="beijing">北京</option>
+					<option value="shanghai">上海</option>
+					<option value="hangzhou">杭州</option>
+				</select>
 			</div>
 		`)
 	}
