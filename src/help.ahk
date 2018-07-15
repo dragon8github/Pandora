@@ -167,12 +167,6 @@ return
     run, %A_WorkingDir%/src
 return
 
-!t::
-    filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"
-	if FileExist(filename)
-		run, %filename%
-return
-
 >!t::
     RUN, https://www.tslang.cn/docs/handbook/basic-types.html
 return
@@ -362,11 +356,14 @@ return
     SendInput, Authorization
 return
 
-!a::
-    MouseGetPos, MouseX, MouseY
-    PixelGetColor, color, %MouseX%, %MouseY%, RGB  
-    Clipboard := SubStr(color, 3) ; 考虑在前面加上，但我就算了，实战的时候发现这个东西有点多余"#" . 
-    TrayTip, my title, current color is `n %Clipboard%, 20, 17
+~!a::
+    if !WinActive("神武3")  {
+       MouseGetPos, MouseX, MouseY
+        PixelGetColor, color, %MouseX%, %MouseY%, RGB  
+        Clipboard := SubStr(color, 3) ; 考虑在前面加上，但我就算了，实战的时候发现这个东西有点多余"#" . 
+        TrayTip, my title, current color is `n %Clipboard%, 20, 17
+    }
+    
 return
 
 ^+d::
