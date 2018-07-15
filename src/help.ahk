@@ -21,6 +21,10 @@ return
     Run, mspaint 
 return
 
+::@de::
+    Send, @Decorator
+return
+
 :*:@qq::
     Send, 928532756@qq.com
 return

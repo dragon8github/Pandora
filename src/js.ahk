@@ -826,13 +826,10 @@ return
 ::.then::
 Var =
 (
-.then(data => { 
-    // ...
-}).catch(err => {  
-    throw new Error(err.message)
-});
+.then(data => { }).catch(err => { throw new Error(err.message) });
 )
 code(Var)
+Send, {left 50}{enter 2}{up}{tab}
 Return
 
 ::throw::
@@ -2050,6 +2047,7 @@ getProxyList().then(function (proxyList) {
 code(Var)
 return
 
+::return promise::
 ::new promise::
 ::promise::
 Var = 

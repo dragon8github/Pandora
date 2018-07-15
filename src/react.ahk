@@ -110,7 +110,7 @@ handleClick (e) {
 code(Var)
 }
 
-if (A_ThisMenuItem == "WrappedComponent + @MyContainer"){
+if (A_ThisMenuItem == "WrappedComponent + @Decorator"){
 Var =
 (
 const fuckDecorator = (WrappedComponent) => {
