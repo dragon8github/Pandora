@@ -9,6 +9,14 @@ this.porps.
 code(Var)
 }
 
+if (A_ThisMenuItem == "this.state") {
+Var = 
+(
+this.state.
+)
+code(Var)
+}
+
 if (A_ThisMenuItem == "class App extends Component") {
 Var = 
 (
@@ -102,10 +110,10 @@ handleClick (e) {
 code(Var)
 }
 
-if (A_ThisMenuItem == "WrappedComponent"){
+if (A_ThisMenuItem == "WrappedComponent + @MyContainer"){
 Var =
 (
-const MyContainer = (WrappedComponent) => {
+const fuckDecorator = (WrappedComponent) => {
 	class extends Component {
 		constructor (props) {
 			super(props);
@@ -123,27 +131,66 @@ const MyContainer = (WrappedComponent) => {
 
 		render () {
 			const newProps = {
-				value: this.state.name,
-				onChange: () => this.handleChange
+				fuck: {
+					value: this.state.name,
+					onChange: () => this.handleChange
+				}
 			}
 			return <WrappedComponent {...this.props} {...newProps} />;
 		}
+	}
+}
+
+@fuckDecorator
+class App extends Component {
+	render () {
+		return <input type="text" {...this.props.fuck}/>
 	}
 }
 )
 code(Var)
 }
 
+if (A_ThisMenuItem == "const { ... } = this.props") {
+Var =
+(
+const { ... } = this.props;
+)
+code(Var)
+Send, {left 16}+{left 3}
+}
 
+if (A_ThisMenuItem == "const { ... } = this.state") {
+Var =
+(
+const { ... } = this.state;
+)
+code(Var)
+Send, {left 16}+{left 3}
+}
+
+if (A_ThisMenuItem == "WrappedComponent") {
+Var =
+(
+const Decorator = WrappedComponent => {
+	class extends Component {
+		render () {
+			return <WrappedComponent {...this.props} />;
+		}
+	}
+}
+)
+code(Var)
+}
 Return  
 
 !t::
-	lifeArray := ["this.porps", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "handleClick", "WrappedComponent"]
-	Loop % lifeArray.MaxIndex() {
-		this_life := lifeArray[a_index]
-		Menu, LifeMenu, Add, %this_life%, ReactMenuHandler
+	reactArray := ["this.porps", "this.state", "const { ... } = this.props", "const { ... } = this.state", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "handleClick", "WrappedComponent", "WrappedComponent + @Decorator"]
+	Loop % reactArray.MaxIndex() {
+		this_life := reactArray[a_index]
+		Menu, reactArray, Add, %this_life%, ReactMenuHandler
 	}
-	Menu, LifeMenu, Show
+	Menu, reactArray, Show
 return
 
 ::rclass::

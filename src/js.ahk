@@ -3,6 +3,11 @@
     Send, if (err) throw new Error(err.message);
 return
 
+::ph::
+::place::
+    Send, placeholder
+return
+
 ::pup::
     Send, puppeteer
 return
@@ -782,7 +787,7 @@ Var =
 _ => {}
 )
 code(Var)
-Send, {left 1}{Enter 1}
+Send, {left 1}
 return
 
 !=::
@@ -792,7 +797,7 @@ Var =
 => {}
 )
 code(Var)
-Send, {left 1}{Enter 1}
+Send, {left 1}
 return
 
 !9::
@@ -802,7 +807,7 @@ Var =
 () => {}
 )
 code(Var)
-Send, {left 1}{Enter 1}
+Send, {left 1}
 return
 
 ::dg::
@@ -819,7 +824,15 @@ Return
 return
 
 ::.then::
-    SendInput, .then(_ => {{}{}}).catch(err => {{}{}})`;{left 3}{enter 2}{UP 2}{Home}{right 12}{enter 2}{up}{tab}
+Var =
+(
+.then(data => { 
+    // ...
+}).catch(err => {  
+    throw new Error(err.message)
+});
+)
+code(Var)
 Return
 
 ::throw::
