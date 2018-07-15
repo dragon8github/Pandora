@@ -1,3 +1,18 @@
+Menu, ReactMenu, add
+
+ReactMenuHandler:
+    SendRaw, % A_ThisMenuItem
+Return  
+
+!t::
+	lifeArray := ["this.porps.xxxx", "class List extends Components", "static defaultProps", "constructor ", "render ", "this.setState", "this.state.list.map"]
+	Loop % lifeArray.MaxIndex() {
+		this_life := lifeArray[a_index]
+		Menu, LifeMenu, Add, %this_life%, ReactMenuHandler
+	}
+	Menu, LifeMenu, Show
+return
+
 ::rclass::
 Var = 
 (
