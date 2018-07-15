@@ -9,10 +9,10 @@ this.porps.
 code(Var)
 }
 
-if (A_ThisMenuItem == "class List extends Components") {
+if (A_ThisMenuItem == "class App extends Component") {
 Var = 
 (
-class List extends Components {}
+class App extends Component {}
 )
 code(Var)
 Send, {left}{enter}
@@ -37,17 +37,17 @@ Var =
 constructor (props) {
 	super(props);
 	this.state = {
-	list: this.props.list.map(entry => {
-		text: entry.text,
-		checked: entry.checked,
-	})
+		list: this.props.list.map(entry => {
+			text: entry.text,
+			checked: entry.checked,
+		})
 	}
  }
 )
 code(Var)
 }
 
-if (A_ThisMenuItem == "render") {
+if (A_ThisMenuItem == "render () {}") {
 Var =
 (
 render () {
@@ -88,10 +88,22 @@ Var =
 )
 code(Var)
 }
+
+
+if (A_ThisMenuItem == "handleClick") {
+Var =
+(
+handleClick (e) {
+	console.log(e.target.value);
+}
+)
+code(Var)
+}
+
 Return  
 
 !t::
-	lifeArray := ["this.porps", "class List extends Components", "static defaultProps", "constructor ", "render", "this.setState", "this.state.list.map"]
+	lifeArray := ["this.porps", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "handleClick"]
 	Loop % lifeArray.MaxIndex() {
 		this_life := lifeArray[a_index]
 		Menu, LifeMenu, Add, %this_life%, ReactMenuHandler
@@ -384,7 +396,7 @@ function ListItem({ value }) {
 	`)
 }
 
-class List extends Components {
+class List extends Component {
 	static defaultProps = {
 		list: [],
 		handleItemChange: () => {
@@ -589,6 +601,53 @@ class App extends Component {
 		`)
 	}
 }
+)
+code(Var)
+return
+
+::ri::
+::rimport::
+Var = 
+(
+import React, { Component } from 'react';
+)
+code(Var)
+return
+
+::rref::
+::rrefs::
+Var =
+(
+import React, { Component } from 'react';
+
+class App extends Component {
+	constructor (props) {
+		super(props);
+	}
+
+	handleClick (e) {
+		if (this.myTextInput £¡= null) {
+			this.myTextInput.focus();
+		}
+	}
+
+	render () {
+		return (
+			<div>
+				<input type="text" ref={(ref) => this.myTextInput = ref}/>
+				<input type="button" value="Focus the text input" onClick={() => this.handleClick}/>
+			</div>
+		`)
+	}
+}
+)
+code(Var)
+return
+
+::rr::
+Var =
+(
+ref = { (ref) => this.myTextInput = ref }
 )
 code(Var)
 return
