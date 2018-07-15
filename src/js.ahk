@@ -8,8 +8,15 @@ return
 return
 
 ::gzhs::
+::gz::
 ::const::
-    Send, constructor
+Var = 
+(
+constructor(props) {
+    super(props)
+}
+)
+code(Var)
 return
 
 ::try::
@@ -769,8 +776,18 @@ Var =
 code(Var)
 Return
 
-!.::
+!-::
+Var = 
+(
+_ => {}
+)
+code(Var)
+Send, {left 1}{Enter 1}
+return
+
+
 !9::
+!0::
 !=::
 Var = 
 (
@@ -982,6 +999,7 @@ if (!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test('445222199307100337')){
 )
 code(Var)
 return
+
 
 ::is-email::
     SendRaw, /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(s)

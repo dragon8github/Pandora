@@ -261,3 +261,197 @@ function List({ list, title }) {
 )
 code(Var)
 return
+
+::rchild::
+::rch::
+::rchildren::
+Var = 
+(
+import React, { Component } from 'react';
+
+// 无状态函数/组件
+function ListItem({ value }) {
+	static defaultProps = {
+		text: '',
+		checked: false
+	}
+	return (
+		<li>
+			<input type="checkbox" checked = {this.props.checked} onChange = {this.props.onChange}/>
+			<span>{this.props.value}</span>
+		</li>
+	`)
+}
+
+class List extends Components {
+	static defaultProps = {
+		list: [],
+		handleItemChange: () => {
+
+		}
+	}
+
+	constructor (props) {
+		super(props);
+
+		this.state = {
+			list: this.props.list.map(entry => {
+				text: entry.text,
+				checked: entry.checked,
+			})
+		}
+	}
+
+	onItemChange (entry) {
+		const { list } = this.state;
+
+		this.setState({
+			list: list.map(_ => {
+				text: _.text,
+				checked: _.text === entry.text ? !_.checked : _.checked
+			})
+		})
+	}
+
+	render () {
+		return (
+			<div>
+				<ul>
+					{this.state.list.map((entry, index) => {
+						<ListItem>
+							key = {index}
+							value = {entry.text}
+							checked = {entry.checked}
+							onChange = {() => { this.onItemChange(entry) }}
+						</ListItem>
+					})}
+				</ul>
+			</div>
+		`)
+	}
+}
+)
+code(Var)
+return
+
+::rtext::
+::rinput::
+::rtextarea::
+Var = 
+(
+class App extends Component {
+	constructor(props) {
+	    super(props);
+
+	    this.state = {
+	    	inputValue : '',
+	    	textareaValue: ''
+	    }
+	}
+
+	handleInputChange(e) {
+		this.setState({
+			inputValue: e.target.value
+		})
+	}
+
+	handleTextareaChange(e) {
+		this.setState({
+			textareaValue: e.target.value
+		})
+	}
+
+	render () {
+		const { inputValue, textareaValue } = this.state;
+		return (
+			<div>
+				<input type="text" value = { inputValue } onChange = {() => this.handleInputChange} />
+				<textarea value = { textareaValue } onChange = {() => this.handleTextareaChange} />
+			</div>
+		`)
+	}
+}
+)
+code(Var)
+return
+
+::rradio::
+Var = 
+(
+class App extends Component {
+	constructor(props) {
+	    super(props);
+
+	    this.state = {
+	    	radioValue: ''
+	    }
+	}
+
+	handleChange(e) {
+		this.setState({
+			radioValue: e.target.value
+		})
+	}
+
+
+	render () {
+		const { radioValue } = this.state;
+		return (
+			<div>
+				<p>gender:</p>
+				<label>
+					male: <input type="radio" value='male' checked={radioValue === 'male'} onChange={() => this.handleChange} />
+					female: <input type="radio" value='male' checked={radioValue === 'female'} onChange={() => this.handleChange} />
+				</label>
+			</div>
+		`)
+	}
+}
+)
+code(Var)
+return
+
+::rselect::
+Var = 
+(
+class App extends Component {
+	constructor(props) {
+	    super(props);
+
+	    this.state = {
+	    	coffee: []
+	    }
+	}
+
+	handleChange(e) {
+		const { checked, value } = e.target;
+		let { coffee } = this.state;
+
+		if (checked && coffee.indexOf(value) === -1) {
+			coffee.push(value);
+		} else {
+			coffee = coffee.filter(i => i !== value);
+		}
+
+		this.setState = ({
+			coffee,
+		});
+	}
+
+
+	render () {
+		const { coffee } = this.state;
+		return (
+			<div>
+				<p>请选择你最喜欢的咖啡:</p>
+				<label> <input type="checkbox" value="Cappuccino" checked={~coffee.indexOf('Cappuccino')} onChange={() => this.handleChange} /> </label>
+				<label> <input type="checkbox" value="CafeMocha" checked={~coffee.indexOf('CafeMocha')} onChange={() => this.handleChange} /> </label>
+				<label> <input type="checkbox" value="CaffeLatte" checked={~coffee.indexOf('CaffeLatte')} onChange={() => this.handleChange} /> </label>
+				<label> <input type="checkbox" value="Machiatto" checked={~coffee.indexOf('Machiatto')} onChange={() => this.handleChange} /> </label>
+			</div>
+		`)
+	}
+}
+)
+code(Var)
+return
