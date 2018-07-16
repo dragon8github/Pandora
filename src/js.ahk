@@ -1,3 +1,12 @@
+::toup::
+    Send, toUpperCase()
+return
+
+::tolo::
+::tolow::
+    Send, toLocaleLowerCase()
+return
+
 ::err::
 ::iferr::
     Send, if (err) throw new Error(err.message);
@@ -2053,7 +2062,9 @@ return
 Var = 
 (
 return new Promise((resolve, reject) => {
-    resolve('success') // reject('fail')
+   setTimeout(function () {
+        resolve('success') // reject('fail')
+   }, 1000);
 })
 )
 code(Var)
@@ -2276,6 +2287,39 @@ function countDown ($dom) {
 		setTimeout(function() { settime($dom) },1000) //Ã¿1000ºÁÃëˆÌĞĞÒ¼´Î
 	}());
 }
+)
+code(Var)
+return
+
+::hanzi::
+::maybe::
+Var =
+(
+var MayBe = function (val) {
+	this.value = val;
+}
+
+MayBe.of = function (val) {
+	return new MayBe(val);
+}
+
+MayBe.prototype.isNothing = function () {
+	return (this.value === null || this.value === undefined);
+}
+
+MayBe.prototype.map = function (fn) {
+	return this.isNothing() ? MayBe.of(null) : MayBe.of(fn(this.value));
+}
+
+// demo1£º MayBe?{value: "Mr. GOOGLE"}
+MayBe.of('Google')
+     .map(_ => _.toUpperCase())
+     .map(_ => "Mr. " + _)
+
+// demo2£º MayBe?{value: null}
+MayBe.of('Google')
+     .map(_ => undefined)
+     .map(_ => "Mr. " + _)
 )
 code(Var)
 return
