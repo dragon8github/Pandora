@@ -187,7 +187,7 @@ return
 
 >!n::
 ::cmd::
-    run, notepad
+    run, cmd
 return
 
 ::@info::

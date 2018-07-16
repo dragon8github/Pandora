@@ -1,9 +1,13 @@
 ::toup::
+::todaxie::
+::toda::
     Send, toUpperCase()
 return
 
 ::tolo::
 ::tolow::
+::toxiaoxie::
+::toxiao::
     Send, toLocaleLowerCase()
 return
 
@@ -2315,6 +2319,121 @@ MayBe.of('Google')
 MayBe.of('Google')
      .map(_ => undefined)
      .map(_ => "Mr. " + _)
+)
+code(Var)
+return
+
+::gen::
+::gen5::
+::gensync::
+::gen.sync::
+Var =
+(
+let gen;
+
+let getDataOne = () => {
+	setTimeout(function () {
+		gen.next('one')
+	}, 1000);
+}
+
+let getDataTwo = () => {
+	setTimeout(function () {
+		gen.next('two')
+	}, 1000);
+}
+
+function *main() {
+	let dataone = yield getDataOne();
+	let datatwo = yield getDataTwo();
+	console.log(dataone, datatwo);
+}
+
+gen = main();
+gen.next();  // {value: undefined, done: false}
+// 1秒后输出： one two
+)
+code(Var)
+return
+
+::gen1::
+Var =
+(
+function *gen() {
+    return 'first generator';
+}
+
+// 有点类似类的实例化过程
+let generatorResult = gen()
+
+// 核心方法next
+generatorResult.next() // {value: "first generator", done: true}
+
+// Generator 如同一个序列：一旦序列中的值被消费，你就不能再次消费它。
+generatorResult.next() // undefined
+)
+code(Var)
+return
+
+::gen2::
+Var =
+(
+function *gen() {
+    yield 'fitst';
+    yield 'second';
+    yield 'third';
+}
+
+let genResult = gen();
+genResult.next().value // first
+genResult.next().value // second
+genResult.next().value // third
+)
+code(Var)
+return
+
+::gen3::
+Var =
+(
+function *gen() {
+    yield 'fitst';
+    yield 'second';
+    yield 'third';
+}
+
+for (const value of gen()) {
+   console.log(value);
+}
+
+// fitst
+// second
+// third
+)
+code(Var)
+return
+
+::gen4::
+Var =
+(
+function *gen() {
+    var firstname = yield;
+    var secondname = yield;
+    console.log(firstname + secondname);
+}
+
+var genResult = gen()
+genResult.next()
+genResult.next('Mr. ')
+genResult.next('Right') // Mr. Right
+
+// 解释一下，由于yield可以理解为暂停器。
+// 当第一次调用 next 时，代码将返回并且暂停于此：    var firstname = yield;
+// 有趣的事情发生在第二次调用 next 时： genResult.next('Mr. ')。
+// 此时我们向 next 调用传入了值！Generator将从上一次暂停中恢复，并且 yield将被 "Mr. " 替换。因此firstname的值变成'Mr. '
+// 然后继续执行，而又遇到yield处再次暂停： genResult.next('Right')
+// 第三次调用 next： genResult.next('Right') 
+// 同前面一样，传入的 'Right' 将替换 yield，并在赋值完后继续执行。
+// 由于没有yield了。所以正常执行了: genResult.next('Right') // Mr. Right
 )
 code(Var)
 return
