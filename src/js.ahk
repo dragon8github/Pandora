@@ -2444,7 +2444,7 @@ Var =
 // 科里化是把一个多参数函数转化为一个嵌套的一元函数的过程。
 // 简单的说就是将函数的参数，变为多次入参。
 const curry = (fn, ...args) => fn.length <= args.length ? fn(...args) : curry.bind(null, fn, ...args);
-// 其实原理很容易看得懂，就是在参数未搜集完善之前，执行的都是curry 函数本身，而核心就是在搜集函数的过程。这个过程就是靠bind来实现的搜集，结合...args的特性来迭代。
+// 其实原理很容易看得懂，就是在参数未搜集完善之前，执行的都是 curry 函数本身，而curry函数核心目的就是在搜集原函数的参数的过程。这个过程就是靠bind来实现的搜集，结合...args的特性来迭代。rgs的特性来迭代。
 // const multiply = (x, y, z) => x * y * z
 // multiply.bind(null, 1, 2)(3) // 6
 // 当搜集完成时，就可以执行原函数了。
@@ -2456,6 +2456,7 @@ curryadd(4)(4); // 8
 const multiply = (x, y, z) => x * y * z
 const currymultiply = curry(multiply);
 currymultiply(1)(2)(3); // 6
+
 )
 code(Var)
 return
