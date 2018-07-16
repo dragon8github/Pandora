@@ -338,6 +338,7 @@ code(Var)
 return
 
 ::ready::
+::$ready::
 Var = 
 (
 function ready(fn) {
@@ -578,14 +579,62 @@ code(Var)
 return
 
 ::getparams::
+::getparam::
+::geturlparams::
+::geturlparam::
 Var = 
 (
-var qy = $.GetQueryString = function (name) {
+/**
+ * @desc   从当前url中获取指定参数
+ * @param  {String} name 参数
+ * @return {String}
+ */
+var qy = function (name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]);
     return "";
 };
+
+/**
+ * @desc   url参数转对象
+ * @param  {String} url  default: window.location.href
+ * @return {Object}
+ */
+function parseQueryString(url) {
+    url = url == null ? window.location.href : url
+    var search = url.substring(url.lastIndexOf('?') + 1)
+    if (!search) {
+        return {}
+    }
+    return JSON.parse('{"' + decodeURIComponent(search).replace(/"/ g, '\\"').replace(/&/ g, '","').replace(/=/ g, '":"') + '"}')
+}
+
+ /**
+ * @func
+ * @desc - 从url地址中根据参数获取指定的值
+ * @param {string} name - 参数
+ * @param {string} url - url
+ */
+var getUrlParam = function (name, url) {
+    if (!url) url = location.href;
+    var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+    var returnValue;
+    for (var i = 0; i < paraString.length; i++) {
+        var tempParas = paraString[i].split('=')[0];
+        var parasValue = paraString[i].split('=')[1];
+        if (tempParas === name)
+            returnValue = parasValue;
+    }
+    if (!returnValue) {
+        return "";
+    } else {
+        if (returnValue.indexOf("#") != -1) {
+            returnValue = returnValue.split("#")[0];
+        }
+        return returnValue;
+    }
+}
 )
 code(Var)
 return
@@ -1792,60 +1841,6 @@ function formatRemainTime(endTime) {
 code(Var)
 return
 
-::url2obj::
-::geturlparamsobj::
-Var = 
-(
-/**
- * 
- * @desc   url参数转对象
- * @param  {String} url  default: window.location.href
- * @return {Object} 
- */
-function parseQueryString(url) {
-    url = url == null ? window.location.href : url
-    var search = url.substring(url.lastIndexOf('?') + 1)
-    if (!search) {
-        return {}
-    }
-    return JSON.parse('{"' + decodeURIComponent(search).replace(/"/ g, '\\"').replace(/&/ g, '","').replace(/=/ g, '":"') + '"}')
-}
-)
-code(Var)
-return
-
-
-::geturlparams::
-Var = 
-(
- /**
- * @func
- * @desc - 从url地址中根据参数获取指定的值
- * @param {string} name - 参数
- * @param {string} url - url
- */
-var getUrlParam = function (name, url) {
-    if (!url) url = location.href;
-    var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
-    var returnValue;
-    for (var i = 0; i < paraString.length; i++) {
-        var tempParas = paraString[i].split('=')[0];
-        var parasValue = paraString[i].split('=')[1];
-        if (tempParas === name)
-            returnValue = parasValue;
-    }
-    if (!returnValue) {
-        return "";
-    } else {
-        if (returnValue.indexOf("#") != -1) {
-            returnValue = returnValue.split("#")[0];
-        }
-        return returnValue;
-    }
-}
-)
-code(Var)
-return
 
 ::obj2form::
 Var = 

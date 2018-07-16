@@ -21,6 +21,12 @@ return
     Run, mspaint 
 return
 
+::githubimg::
+::github-img::
+::github.img::
+    SendRaw, ![](./showImages/index.jpg)
+return
+
 ::@de::
     Send, @Decorator
 return
