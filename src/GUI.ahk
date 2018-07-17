@@ -40,7 +40,7 @@ Gui, Add, Link,, <a href="http://e.xitu.io/">掘金前端</a>
 
 Gui, Add, Text,  W140 ys, 其他:
 Gui, Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</a>
-Gui, Add, Link,, <a href="chrome://inspect/#devices">安卓调试</a>
+Gui, Add, Link, gInspect ,  <a>安卓/Nodejs调试</a>
 Gui, Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AHK官网</a>
 Gui, Add, Link,, <a href="http://babeljs.io/repl">Babel在线转换</a>
 
@@ -190,6 +190,11 @@ MySubroutine:
 		MsgBox, %MyEditHwnd%
 		MsgBox, %A_EventInfo%, %A_GuiEvent%, %A_GuiControl%, %A_Gui%
 	*/
+return
+
+Inspect:
+	Var = chrome://inspect/#devices
+	Clipboard := Var
 return
 
 isAllSearchA := false

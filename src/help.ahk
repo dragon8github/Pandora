@@ -182,11 +182,6 @@ return
 return
 
 >!c::
-    run, PowerShell ; cmd
-return
-
->!n::
-::cmd::
     run, cmd
 return
 

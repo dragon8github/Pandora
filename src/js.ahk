@@ -2460,3 +2460,28 @@ currymultiply(1)(2)(3); // 6
 )
 code(Var)
 return
+
+::async::
+::await::
+Var =
+(
+class Person {
+    async getVersion () {
+        return new Promise((resolve, reject) => {
+           setTimeout(function () {
+                resolve('1.0'); // reject('fail')
+           }, 1000);
+        })
+    }
+}
+
+const start = async () => {
+   var p = new Person();
+   const data = await p.getVersion();
+   console.log(20180716090040, data); 
+}
+
+start(); // 20180716090040 "1.0"
+)
+code(Var)
+return

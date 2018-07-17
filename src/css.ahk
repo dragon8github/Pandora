@@ -80,7 +80,7 @@ Var =
 code(Var)
 return
 
-::clear::
+::.clear::
 Var = 
 (
 .clear::after {
