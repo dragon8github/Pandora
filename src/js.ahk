@@ -2485,3 +2485,66 @@ start(); // 20180716090040 "1.0"
 )
 code(Var)
 return
+
+::changan::
+::longpress::
+::longtap::
+::longtouch::
+::changtouch::
+Var =
+(
+/**
+ * 绑定长按事件，同时支持绑定点击事件
+ * @param {dom} dom 需要绑定的dom元素
+ * @param {fn} longPressCallBack 长按事件执行的方法
+ * @param {fn} touchCallBack 点击事件执行的方法
+ */
+var longPress = function (dom, longPressCallBack, touchCallBack) {
+	var timer = undefined;
+	var isLongPress = false;
+
+    var setEvent = function (e) {
+          e.addEventListener('touchstart', function(event) {
+              	timer = setTimeout(function () {
+              	  isLongPress = true
+	              longPressCallBack && longPressCallBack(e);
+	            }, 500);
+          }, false);
+
+          e.addEventListener('touchmove', function(event) {
+             	clearTimeout(timer);
+          }, false);
+
+          e.addEventListener('touchend', function(event) {
+          		if (!isLongPress) touchCallBack && touchCallBack()
+              	clearTimeout(timer); 
+              	isLongPress = false;
+          }, false);
+    }
+
+    if (dom.length) {
+	    // 支持绑定多个元素
+	  	for (var i = 0; i < dom.length; i++) {
+	        setEvent(dom[i])
+        }
+    } else {
+    	setEvent(dom)
+    }
+}
+
+longPress(document.getElementById('longPress'), function () {
+	console.log('longPress')
+}, function () {
+	console.log('touch');
+});
+
+[...document.querySelectorAll('.longPress')].forEach(function (e, i) {
+    longPress(e, function () {
+		console.log('longPress')
+	}, function () {
+		console.log('touch');
+	});
+});
+)
+code(Var)
+return
