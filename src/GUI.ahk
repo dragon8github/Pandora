@@ -74,7 +74,7 @@ Gui, Add, Link,, <a href="http://router.vuejs.org ">vue-router</a>
 Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 
 Gui, Add, Text,  W140 ys, ¶öÁËÃ´UI£º
-Gui, Add, Link,, <a href="http://element-cn.eleme.io/#/zh-CN/component/radio">ElementUI</a>
+Gui, Add, Link,, <a href="http://element-cn.eleme.io/#/zh-CN/component/radio">Element-UI</a>
 Gui, Add, Link,, <a href="https://github.com/ElemeFE/element/blob/dev/packages/">Element-github</a>
 Gui, Add, Link,, <a href="http://elemefe.github.io/mint-ui/#/">mint-ui</a>
 Gui, Add, Link,, <a href="https://github.com/ElemeFE/mint-ui/blob/master/packages/radio/src/radio.vue">mint-ui-github</a>

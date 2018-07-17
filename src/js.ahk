@@ -1510,6 +1510,9 @@ code(Var)
 return
 
 ::onscriptload::
+::onscriptready::
+::scriptread::
+::scriptready::
 ::jsread::
 ::jsready::
 Var = 
