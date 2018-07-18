@@ -288,120 +288,120 @@ return
 
 
 ButtonFUCK:
-; 保存用户的输入到每个控件的关联变量中.
-Gui, Submit, NoHide 
+	; 保存用户的输入到每个控件的关联变量中.
+	Gui, Submit, NoHide 
 
-; 贝尔塔猫'博客园
-if (cylee == 1) {
-	RUN, https://zzk.cnblogs.com/my/s/blogpost-p?Keywords=%SearchContent%
-}
+	; 贝尔塔猫'博客园
+	if (cylee == 1) {
+		RUN, https://zzk.cnblogs.com/my/s/blogpost-p?Keywords=%SearchContent%
+	}
 
-; 百度
-if (bd == 1) {
-	RUN, https://www.baidu.com/s?wd=%SearchContent%
-}
+	; 百度
+	if (bd == 1) {
+		RUN, https://www.baidu.com/s?wd=%SearchContent%
+	}
 
-; Google
-if (google == 1) {
-	RUN, https://www.google.com/search?q=%SearchContent%
-}
+	; Google
+	if (google == 1) {
+		RUN, https://www.google.com/search?q=%SearchContent%
+	}
 
-; Github
-if (github == 1) {
-	RUN, https://github.com/search?q=%SearchContent%
-}
+	; Github
+	if (github == 1) {
+		RUN, https://github.com/search?q=%SearchContent%
+	}
 
-; Stack Overflow
-if (so == 1) {
-	RUN, https://stackoverflow.com/search?q=%SearchContent%
-}
+	; Stack Overflow
+	if (so == 1) {
+		RUN, https://stackoverflow.com/search?q=%SearchContent%
+	}
 
-; SegmentFault
-if (segmentfault == 1) {
-	RUN, https://segmentfault.com/search?q=%SearchContent%
-}
+	; SegmentFault
+	if (segmentfault == 1) {
+		RUN, https://segmentfault.com/search?q=%SearchContent%
+	}
 
-; 百度翻译   
-if (bdfy == 1) {
-	RUN, http://fanyi.baidu.com/translate?aldtype=16047&query=%SearchContent%&keyfrom=baidu&smartresult=dict&lang=auto2zh#zh/en/%SearchContent%
-}
+	; 百度翻译   
+	if (bdfy == 1) {
+		RUN, http://fanyi.baidu.com/translate?aldtype=16047&query=%SearchContent%&keyfrom=baidu&smartresult=dict&lang=auto2zh#zh/en/%SearchContent%
+	}
 
-; 有道翻译
-if (youdaofy == 1) {
-	RUN, http://dict.youdao.com/w/eng/%SearchContent%/#keyfrom=dict2.index
-}
+	; 有道翻译
+	if (youdaofy == 1) {
+		RUN, http://dict.youdao.com/w/eng/%SearchContent%/#keyfrom=dict2.index
+	}
 
-; Google翻译
-if (googlefanyi == 1) {
-	RUN, https://translate.google.cn/#auto/en/%SearchContent%
-}
+	; Google翻译
+	if (googlefanyi == 1) {
+		RUN, https://translate.google.cn/#auto/en/%SearchContent%
+	}
 
-; 网易云音乐   
-if (wy == 1) {
-	RUN, http://music.163.com/#/search/m/?s=%SearchContent%
-}
+	; 网易云音乐   
+	if (wy == 1) {
+		RUN, http://music.163.com/#/search/m/?s=%SearchContent%
+	}
 
-; QQ音乐
-if (qq == 1) {
-	RUN, https://y.qq.com/portal/search.html#w=%SearchContent%
-}
+	; QQ音乐
+	if (qq == 1) {
+		RUN, https://y.qq.com/portal/search.html#w=%SearchContent%
+	}
 
-; 酷狗音乐
-if (dog == 1) {
-	RUN, http://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord=%SearchContent%
-}
+	; 酷狗音乐
+	if (dog == 1) {
+		RUN, http://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord=%SearchContent%
+	}
 
-; 虾米音乐
-if (xiami == 1) {
-	RUN, https://www.xiami.com/search?key=%SearchContent%
-}
+	; 虾米音乐
+	if (xiami == 1) {
+		RUN, https://www.xiami.com/search?key=%SearchContent%
+	}
 
-if (kuwo == 1) {
-	RUN, http://sou.kuwo.cn/ws/NSearch?type=all&key=%SearchContent%
-}
+	if (kuwo == 1) {
+		RUN, http://sou.kuwo.cn/ws/NSearch?type=all&key=%SearchContent%
+	}
 
-; 掘金
-if (juejin == 1) {
-	RUN, https://juejin.im/search?query=%SearchContent%
-}
+	; 掘金
+	if (juejin == 1) {
+		RUN, https://juejin.im/search?query=%SearchContent%
+	}
 
-; 简书
-if (jianshu == 1) {
-	RUN, https://www.jianshu.com/search?q=%SearchContent%&page=1&type=note
-}
+	; 简书
+	if (jianshu == 1) {
+		RUN, https://www.jianshu.com/search?q=%SearchContent%&page=1&type=note
+	}
 
-; CSDN
-if (csdn == 1) {
-	RUN, https://so.csdn.net/so/search/s.do?q=%SearchContent%
-}
+	; CSDN
+	if (csdn == 1) {
+		RUN, https://so.csdn.net/so/search/s.do?q=%SearchContent%
+	}
 
-; 知乎
-if (zhihu == 1) {
-	RUN, https://www.zhihu.com/search?type=content&q=%SearchContent%
-}
+	; 知乎
+	if (zhihu == 1) {
+		RUN, https://www.zhihu.com/search?type=content&q=%SearchContent%
+	}
 
-; 淘宝
-if (taobao == 1) {
-	RUN, https://s.taobao.com/search?q=%SearchContent%
-}
+	; 淘宝
+	if (taobao == 1) {
+		RUN, https://s.taobao.com/search?q=%SearchContent%
+	}
 
-; 京东
-if (jingdong == 1) {
-	RUN, https://search.jd.com/Search?keyword=%SearchContent%&enc=utf-8&wq=%SearchContent%
-}
+	; 京东
+	if (jingdong == 1) {
+		RUN, https://search.jd.com/Search?keyword=%SearchContent%&enc=utf-8&wq=%SearchContent%
+	}
 
-; 亚马逊
-if (amazon == 1) {
-	RUN, https://www.amazon.cn/s/ref=nb_sb_noss?field-keywords=%SearchContent%
-}
+	; 亚马逊
+	if (amazon == 1) {
+		RUN, https://www.amazon.cn/s/ref=nb_sb_noss?field-keywords=%SearchContent%
+	}
 
-; 苏宁易购
-if (suning == 1) {
-	RUN, https://search.suning.com/%SearchContent%/
-}
+	; 苏宁易购
+	if (suning == 1) {
+		RUN, https://search.suning.com/%SearchContent%/
+	}
 
-; 当当
-if (dangdang == 1) {
-	RUN, http://search.dangdang.com/?key=%SearchContent%
-}
+	; 当当
+	if (dangdang == 1) {
+		RUN, http://search.dangdang.com/?key=%SearchContent%
+	}
 return

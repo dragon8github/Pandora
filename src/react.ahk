@@ -1,4 +1,4 @@
-Menu, ReactMenu, add
+
 
 ReactMenuHandler:
 if (A_ThisMenuItem == "this.porps") {

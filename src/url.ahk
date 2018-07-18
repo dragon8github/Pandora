@@ -10,12 +10,14 @@ return
     Send, http://youmightnotneedjquery.com/
 return
 
+/*
 >!l::
     run, https://github.com/sentsin/layui/
     run, http://layer.layui.com/
     run, http://www.layui.com/doc/
     run, http://www.layui.com/demo/
 return
+*/
 
 AppsKey & v::
 >^v::

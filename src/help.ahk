@@ -1,7 +1,3 @@
-Menu, StatusMenu, add
-Menu, LifeMenu, add
-Menu, MyMenu, add
-
 MenuHandler:
     SendRaw, % A_ThisMenuItem
 Return  
@@ -99,6 +95,8 @@ return
         Menu, LifeMenu, Add, %this_life%, MenuHandlerlifeArray
     }
     Menu, LifeMenu, Show
+    ; 不然每次都会添加白线
+    Menu, LifeMenu, DeleteAll
 return
 
 AppsKey & s::
@@ -168,10 +166,12 @@ return
     SendInput, +{Home}
 return
 
+/*
 !p::
 	FileSelectFolder, OutputVar,,3
 	Clipboard := OutputVar
 return
+*/
 
 !d::
     run, %A_WorkingDir%/src
