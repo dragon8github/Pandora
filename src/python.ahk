@@ -47,7 +47,7 @@
 	Menu, magic1, Add, 全局注释, PythonHandler
 	Menu, magic1, Add, 类注释, PythonHandler
 	Menu, magic1, Add, 获取类的详情信息, PythonHandler
-	Menu, magic1, Add, 获取函数名/类名, PythonHandler
+	Menu, magic1, Add, 获取函数名 / 类名, PythonHandler
 
 	; try 异常处理
 	Menu, try1, Add, 捕获异常, PythonHandler
@@ -99,7 +99,6 @@ print(b, info2[b])
 showme("Lee", 1,2,3,4,age=12,sex='女')
 )
 }
-
 
 if (v == "获取参数数据类型") {
 Var = 
@@ -157,35 +156,35 @@ Var =
 )
 }
 
-if (v == "字典定义json版") {
+if (v == "字典定义 json 版") {
 Var = 
 (
 
 )
 }
 
-if (v == "字典定义dict版") {
+if (v == "字典定义 dict 版") {
 Var = 
 (
 
 )
 }
 
-if (v == "字典for循环") {
+if (v == "字典 for 循环") {
 Var = 
 (
 
 )
 }
 
-if (v == "构造函数（__init__）+静态函数（@staticmethod）+实例函数") {
+if (v == "构造函数（__init__） + 静态函数（@staticmethod） + 实例函数") {
 Var = 
 (
 
 )
 }
 
-if (v == "值类型/引用类型") {
+if (v == "值类型 / 引用类型") {
 Var = 
 (
 
@@ -199,63 +198,63 @@ Var =
 )
 }
 
-if (v == "from<模块>import<方法>") {
+if (v == "from <模块> import <方法>") {
 Var = 
 (
 
 )
 }
 
-if (v == "importfunctions") {
+if (v == "import functions") {
 Var = 
 (
 
 )
 }
 
-if (v == "使用all控制函数的导出") {
+if (v == "使用 all 控制函数的导出") {
 Var = 
 (
 
 )
 }
 
-if (v == "range+for") {
+if (v == "range + for") {
 Var = 
 (
 
 )
 }
 
-if (v == "range+倒序for") {
+if (v == "range + 倒序 for") {
 Var = 
 (
 
 )
 }
 
-if (v == "range+list") {
+if (v == "range + list") {
 Var = 
 (
 
 )
 }
 
-if (v == "range+for高阶操作") {
+if (v == "range + for 高阶操作") {
 Var = 
 (
 
 )
 }
 
-if (v == "range+for+if高阶操作") {
+if (v == "range + for + if 高阶操作") {
 Var = 
 (
 
 )
 }
 
-if (v == "range+for+if+函数高阶操作") {
+if (v == "range + for + if + 函数高阶操作") {
 Var = 
 (
 
@@ -318,7 +317,7 @@ Var =
 )
 }
 
-if (v == "获取函数名/类名") {
+if (v == "获取函数名 / 类名") {
 Var = 
 (
 
