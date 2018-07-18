@@ -1,5 +1,4 @@
-﻿Gui, Add, Button, gCancelSelect w900 h30 yp+10, 取消选中
-Gui, Add, Text, gAllSearchA W140 Section xs yp+40, 搜索引擎类:
+﻿Gui, Add, Text, gAllSearchA W140 Section xs yp+10, 搜索引擎类:
 Gui, Add, Checkbox, gMySubroutine Checked HwndMyEditHwnd vbd, 百度
 Gui, Add, Checkbox, vgoogle, Google
 Gui, Add, Checkbox, vgithub, Github
@@ -32,7 +31,19 @@ Gui, Add, Checkbox, vdangdang, 当当
 Gui, Add, Checkbox, vamazon, 亚马逊
 Gui, Add, Checkbox, vsuning, 苏宁易购
 
-Gui, Add, Text,  W140 Section xs yp+50, 常用导航:
+; 搜索框
+Gui, Add, Edit, vSearchContent w780  Limit50 yp+60 Section xs, 
+; 背景色
+Gui, Color, E6FFE6
+; margin 布局
+Gui, Margin, 10, 10
+Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
+; submit 按钮
+Gui, Add, Button, w780 h30 Default, FUCK
+
+Gui, Add, Tab3, w780 h400 Choose1, 常用 | 框架 | 库 
+Gui, Tab, 1
+Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
 Gui, Add, Link,, <a href="https://github.com">github</a>
 Gui, Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
 Gui, Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
@@ -50,20 +61,40 @@ Gui, Add, Link,, <a href="http://www.dilidili.wang/">嘀哩嘀哩</a>
 Gui, Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
 Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lion大帝魔兽</a>
 
-Gui, Add, Text,  W140 ys, 高德地图：
-Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/summary">高德地图-JavaScript</a>
-Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/map/map-show">高德地图-Demo</a>
-Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/reference/core">高德地图-API</a>
-Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/abc/quickstart">高德地图-快速上手</a>
+Gui, Add, Text,  W140 ys, 代理IP:
+Gui, Add, Link,, <a href="http://www.xicidaili.com/nn">西刺</a>
+Gui, Add, Link,, <a href="https://proxy.l337.tech/txt">l337</a>
+Gui, Add, Link,, <a href="http://www.66ip.cn/nm.html">66ip</a>
 
-Gui, Add, Text,  W140 ys, 百度地图：
-Gui, Add, Link,, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0">百度地图-JavaScript</a>
-Gui, Add, Link,, <a href="http://lbsyun.baidu.com/jsdemo.htm#canvaslayer">百度地图-Demo</a>
-Gui, Add, Link,, <a href="http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html">百度地图-API</a>
-Gui, Add, Link,, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/openlibrary">百度地图-开源库</a>
-Gui, Add, Link,, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/helloworld">百度地图-快速上手</a>
+Gui, Add, Text, W140 ys, 站长工具：
+Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/js">代码格式化</a>
+Gui, Add, Link,, <a href="https://tool.lu/html/">代码美化</a>
+Gui, Add, Link,, <a href="http://jsbeautifier.org/">jsbeautifier</a>
+Gui, Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
 
-Gui, Add, Text,  W140 Section xs yp+40, layer/layui：
+Gui, Add, Text, W140 Section xs yp+40, 在线工具：
+Gui, Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
+Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
+Gui, Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
+Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
+
+Gui, Add, Text,  W140 ys, 最近浏览:
+Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss</a>
+Gui, Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">易码</a>
+Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">满币网</a>
+Gui, Add, Link,, <a href="http://candy.dragonvein.io/frontend/web/site/signup">dragonvein</a>
+
+
+Gui, Add, Text,  W140 ys, 最近学习：
+Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react 掘金小册</a>
+Gui, Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React 小书</a>
+Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-design精选插件</a>
+Gui, Add, Link,, <a href="https://ant.design/components/table-cn/">Ant-design-table</a>
+
+
+
+Gui, Tab, 2
+Gui, Add, Text,  W140  Section, layer/layui：
 Gui, Add, Link,, <a href="http://layer.layui.com/">layer</a>
 Gui, Add, Link,, <a href="http://www.layui.com/doc/">layui文档</a>
 Gui, Add, Link,, <a href="http://www.layui.com/demo/">layui示例</a>
@@ -93,44 +124,10 @@ Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS 入门指引</a>
 Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS API</a>
 Gui, Add, Link,, <a href="https://dvajs.com/guide/examples-and-boilerplates.html#官方">DvaJS Demo</a>
 
-
-Gui, Add, Text,  W140 ys, React：
+Gui, Add, Text,  W140 Section xs yp+40, React：
 Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react 官网</a>
 Gui, Add, Link,, <a href="https://reacttraining.com/react-router/web/api/Route/component">React-router</a>
 Gui, Add, Link,, <a href="https://redux.js.org/basics/usage-with-react">React-redux</a>
-
-Gui, Add, Text, W140 Section xs yp+60, 在线工具：
-Gui, Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
-Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
-Gui, Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
-Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
-
-Gui, Add, Text,  W140 ys, 最近浏览:
-Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss</a>
-Gui, Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">易码</a>
-Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">满币网</a>
-Gui, Add, Link,, <a href="http://candy.dragonvein.io/frontend/web/site/signup">dragonvein</a>
-
-
-Gui, Add, Text,  W140 ys, 最近学习：
-Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react 掘金小册</a>
-Gui, Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React 小书</a>
-Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-design精选插件</a>
-Gui, Add, Link,, <a href="https://ant.design/components/table-cn/">Ant-design-table</a>
-
-Gui, Add, Text,  W140 ys, 代理IP:
-Gui, Add, Link,, <a href="http://www.xicidaili.com/nn">西刺</a>
-Gui, Add, Link,, <a href="https://proxy.l337.tech/txt">l337</a>
-Gui, Add, Link,, <a href="http://www.66ip.cn/nm.html">66ip</a>
-
-
-Gui, Add, Text, W140 ys, 站长工具：
-Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/js">代码格式化</a>
-Gui, Add, Link,, <a href="https://tool.lu/html/">代码美化</a>
-Gui, Add, Link,, <a href="http://jsbeautifier.org/">jsbeautifier</a>
-Gui, Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
-
-
 
 Gui, Add, Text,  W140 ys, puppeteer：
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer?utm_source=gold_browser_extension">puppeteer 官网</a>
@@ -139,15 +136,21 @@ Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer">puppeteer-G
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree/master/examples/">puppeteer-示例</a>
 
 
-; 搜索框
-Gui, Add, Edit, vSearchContent w900 Limit50 yp+60 Section xs, 
-; 背景色
-Gui, Color, E6FFE6
-; margin 布局
-Gui, Margin, 10, 10
-; submit 按钮
-Gui, Add, Button, w900 h30 Default, FUCK
+Gui, Tab, 3
+Gui, Add, Text,  W140 Section, 高德地图：
+Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/summary">高德地图-JavaScript</a>
+Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/map/map-show">高德地图-Demo</a>
+Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/reference/core">高德地图-API</a>
+Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/abc/quickstart">高德地图-快速上手</a>
 
+Gui, Add, Text,  W140 ys, 百度地图：
+Gui, Add, Link,, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0">百度地图-JavaScript</a>
+Gui, Add, Link,, <a href="http://lbsyun.baidu.com/jsdemo.htm#canvaslayer">百度地图-Demo</a>
+Gui, Add, Link,, <a href="http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html">百度地图-API</a>
+Gui, Add, Link,, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/openlibrary">百度地图-开源库</a>
+Gui, Add, Text, W140 ys,
+Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/helloworld">百度地图-快速上手</a>
+return
 
 GuiEscape:
 GuiClose:

@@ -189,7 +189,8 @@ Var =
 var http = require('http');
 
 var server = http.createServer(function (req, rep) {
-    rep.writeHead(200, {"Content-Type": "text/plain"});
+    // application/json;charset=utf-8
+    rep.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin": '*'});
     rep.end("Hello World!!");
 })
 
