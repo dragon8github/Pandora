@@ -1,5 +1,5 @@
-DockerMenuHandler:
-	; ¼ì²éµ±Ç°¼ôÇĞ°åÊÇ·ñ´¿½à£¬Æ©Èç²»Òª³¬³ö10¸ö×Ö£¬¶øÇÒÒªÏÈÇå³ı»»ĞĞ·û¡£
+ï»¿DockerMenuHandler:
+	; æ£€æŸ¥å½“å‰å‰ªåˆ‡æ¿æ˜¯å¦çº¯æ´ï¼Œè­¬å¦‚ä¸è¦è¶…å‡º10ä¸ªå­—ï¼Œè€Œä¸”è¦å…ˆæ¸…é™¤æ¢è¡Œç¬¦ã€‚
 	Clipboard := StrReplace(Clipboard, "`r`n")
 	Var := A_ThisMenuItem
 	if (StrLen(Clipboard) < 15) {
@@ -16,21 +16,21 @@ return
 	Menu, DockerMenu, Add, docker stop <container> && docker rm <container>, DockerMenuHandler
 	Menu, DockerMenu, Add, docker images, DockerMenuHandler
 	Menu, DockerMenu, Add, docker rmi <IMAGE>, DockerMenuHandler
-	Menu, DockerMenu, Add  ; Ìí¼Ó·Ö¸ôÏß.
-	Menu, DockerMenu, Add  ; Ìí¼Ó·Ö¸ôÏß.
-	Menu, DockerMenu, Add  ; Ìí¼Ó·Ö¸ôÏß.
-	Menu, DockerMenu, Add  ; Ìí¼Ó·Ö¸ôÏß.
+	Menu, DockerMenu, Add  ; æ·»åŠ åˆ†éš”çº¿.
+	Menu, DockerMenu, Add  ; æ·»åŠ åˆ†éš”çº¿.
+	Menu, DockerMenu, Add  ; æ·»åŠ åˆ†éš”çº¿.
+	Menu, DockerMenu, Add  ; æ·»åŠ åˆ†éš”çº¿.
 	Menu, DockerMenu, Add, docker cp /root/php/www/index.html ca798fee7920:/var/www/, DockerMenuHandler
 	Menu, DockerMenu, Add, docker cp ca798fee7920:/var/www/ /root/php/, DockerMenuHandler
-	Menu, DockerMenu, Add  ; Ìí¼Ó·Ö¸ôÏß.
-	Menu, DockerMenu, Add  ; Ìí¼Ó·Ö¸ôÏß.
-	Menu, DockerMenu, Add  ; Ìí¼Ó·Ö¸ôÏß.
-	Menu, DockerMenu, Add  ; Ìí¼Ó·Ö¸ôÏß.
+	Menu, DockerMenu, Add  ; æ·»åŠ åˆ†éš”çº¿.
+	Menu, DockerMenu, Add  ; æ·»åŠ åˆ†éš”çº¿.
+	Menu, DockerMenu, Add  ; æ·»åŠ åˆ†éš”çº¿.
+	Menu, DockerMenu, Add  ; æ·»åŠ åˆ†éš”çº¿.
 	Menu, DockerMenu, Add, docker exec -i -t <container> /bin/bash, DockerMenuHandler
 	Menu, DockerMenu, Add, docker exec <container> echo 123, DockerMenuHandler
 	Menu, DockerMenu, Add, docker run --privileged -d -p 8080:80 --name myhttpd -v /root/myweb:/var/www/html centos:httpd /usr/sbin/init, DockerMenuHandler
 	Menu, DockerMenu, Add, docker run --name mynginx --privileged -p 9090:80 -v /root/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v /root/nginx/www/:/usr/share/nginx/html/ -d centos:nginx, DockerMenuHandler
 	Menu, DockerMenu, Show
-	Menu, DockerMenu, DeleteAll ; ½â¾öÖØ¸´äÖÈ¾µÄ·Ö¸îÏßµÄbug
+	Menu, DockerMenu, DeleteAll ; è§£å†³é‡å¤æ¸²æŸ“çš„åˆ†å‰²çº¿çš„bug
 return
 

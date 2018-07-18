@@ -1,7 +1,7 @@
-::a::
+ï»¿::a::
 Var = 
 (
-<a href="http://www.baidu.com" target='_blank'>°Ù¶ÈÒ»ÏÂ</a>
+<a href="http://www.baidu.com" target='_blank'>ç™¾åº¦ä¸€ä¸‹</a>
 )
 code(Var)
 return
@@ -136,38 +136,38 @@ Return
 Var = 
 (
 <meta charset="UTF-8">
-<!-- ½ûÖ¹Ëõ·Å -->
+<!-- ç¦æ­¢ç¼©æ”¾ -->
 <meta name="viewport"content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-<!-- ÉèÖÃËõ·Å -->
+<!-- è®¾ç½®ç¼©æ”¾ -->
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
-<!-- ¿ÉÒş²ØµØÖ·À¸£¬½öÕë¶ÔIOSµÄSafari£¨×¢£ºIOS7.0°æ±¾ÒÔºó£¬safariÉÏÒÑ¿´²»µ½Ğ§¹û£© -->
+<!-- å¯éšè—åœ°å€æ ï¼Œä»…é’ˆå¯¹IOSçš„Safariï¼ˆæ³¨ï¼šIOS7.0ç‰ˆæœ¬ä»¥åï¼Œsafariä¸Šå·²çœ‹ä¸åˆ°æ•ˆæœï¼‰ -->
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<!-- ½öÕë¶ÔIOSµÄSafari¶¥¶Ë×´Ì¬ÌõµÄÑùÊ½£¨¿ÉÑ¡default/black/black-translucent £© -->
+<!-- ä»…é’ˆå¯¹IOSçš„Safarié¡¶ç«¯çŠ¶æ€æ¡çš„æ ·å¼ï¼ˆå¯é€‰default/black/black-translucent ï¼‰ -->
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-<!-- IOSÖĞ½ûÓÃ½«Êı×ÖÊ¶±ğÎªµç»°ºÅÂë/ºöÂÔAndroidÆ½Ì¨ÖĞ¶ÔÓÊÏäµØÖ·µÄÊ¶±ğ -->
+<!-- IOSä¸­ç¦ç”¨å°†æ•°å­—è¯†åˆ«ä¸ºç”µè¯å·ç /å¿½ç•¥Androidå¹³å°ä¸­å¯¹é‚®ç®±åœ°å€çš„è¯†åˆ« -->
 <meta name="format-detection"content="telephone=no, email=no" />
-ÆäËûmeta±êÇ©
-<!-- ÆôÓÃ360ä¯ÀÀÆ÷µÄ¼«ËÙÄ£Ê½(webkit) -->
+å…¶ä»–metaæ ‡ç­¾
+<!-- å¯ç”¨360æµè§ˆå™¨çš„æé€Ÿæ¨¡å¼(webkit) -->
 <meta name="renderer" content="webkit">
-<!-- ±ÜÃâIEÊ¹ÓÃ¼æÈİÄ£Ê½ -->
+<!-- é¿å…IEä½¿ç”¨å…¼å®¹æ¨¡å¼ -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- Õë¶ÔÊÖ³ÖÉè±¸ÓÅ»¯£¬Ö÷ÒªÊÇÕë¶ÔÒ»Ğ©ÀÏµÄ²»Ê¶±ğviewportµÄä¯ÀÀÆ÷£¬±ÈÈçºÚİ® -->
+<!-- é’ˆå¯¹æ‰‹æŒè®¾å¤‡ä¼˜åŒ–ï¼Œä¸»è¦æ˜¯é’ˆå¯¹ä¸€äº›è€çš„ä¸è¯†åˆ«viewportçš„æµè§ˆå™¨ï¼Œæ¯”å¦‚é»‘è“ -->
 <meta name="HandheldFriendly" content="true">
-<!-- Î¢ÈíµÄÀÏÊ½ä¯ÀÀÆ÷ -->
+<!-- å¾®è½¯çš„è€å¼æµè§ˆå™¨ -->
 <meta name="MobileOptimized" content="320">
-<!-- ucÇ¿ÖÆÊúÆÁ -->
+<!-- ucå¼ºåˆ¶ç«–å± -->
 <meta name="screen-orientation" content="portrait">
-<!-- QQÇ¿ÖÆÊúÆÁ -->
+<!-- QQå¼ºåˆ¶ç«–å± -->
 <meta name="x5-orientation" content="portrait">
-<!-- UCÇ¿ÖÆÈ«ÆÁ -->
+<!-- UCå¼ºåˆ¶å…¨å± -->
 <meta name="full-screen" content="yes">
-<!-- QQÇ¿ÖÆÈ«ÆÁ -->
+<!-- QQå¼ºåˆ¶å…¨å± -->
 <meta name="x5-fullscreen" content="true">
-<!-- UCÓ¦ÓÃÄ£Ê½ -->
+<!-- UCåº”ç”¨æ¨¡å¼ -->
 <meta name="browsermode" content="application">
-<!-- QQÓ¦ÓÃÄ£Ê½ -->
+<!-- QQåº”ç”¨æ¨¡å¼ -->
 <meta name="x5-page-mode" content="app">
-<!-- windows phone µã»÷ÎŞ¸ß¹â -->
+<!-- windows phone ç‚¹å‡»æ— é«˜å…‰ -->
 <meta name="msapplication-tap-highlight" content="no">
 )
 code(Var)
@@ -194,7 +194,7 @@ return
     SendRaw, vertical-align: middle;
 return
 
-; https://tool.lu/imageholder/ ÆäÊµÍêÈ«¿ÉÒÔ×Ô¼ºÊµÏÖ¡£ËãÁË£¬ÍøÉÏÓĞµÄÊÇÕâÖÖ·şÎñ
+; https://tool.lu/imageholder/ å…¶å®å®Œå…¨å¯ä»¥è‡ªå·±å®ç°ã€‚ç®—äº†ï¼Œç½‘ä¸Šæœ‰çš„æ˜¯è¿™ç§æœåŠ¡
 ::img::
     SendInput, <img src="https://iph.href.lu/400x400" alt="..." />{left 14}{ShiftDown}{left 7}{ShiftUp}
 Return
@@ -222,7 +222,7 @@ Var =
         </div>
     </body>
     <script>
-        // ¾Ö²¿×¢²á×é¼ş
+        // å±€éƒ¨æ³¨å†Œç»„ä»¶
         var mybutton = Vue.extend({
               template: ``
                 <div><button @click="handle">fuck title</button></div>

@@ -1,79 +1,79 @@
-Gui, Add, Button, gCancelSelect w740 h30 yp+10, È¡ÏûÑ¡ÖĞ
-Gui, Add, Text, gAllSearchA W140 Section xs yp+40, ËÑË÷ÒıÇæÀà:
-Gui, Add, Checkbox, gMySubroutine Checked HwndMyEditHwnd vbd, °Ù¶È
+ï»¿Gui, Add, Button, gCancelSelect w740 h30 yp+10, å–æ¶ˆé€‰ä¸­
+Gui, Add, Text, gAllSearchA W140 Section xs yp+40, æœç´¢å¼•æ“ç±»:
+Gui, Add, Checkbox, gMySubroutine Checked HwndMyEditHwnd vbd, ç™¾åº¦
 Gui, Add, Checkbox, vgoogle, Google
 Gui, Add, Checkbox, vgithub, Github
 Gui, Add, Checkbox, vso, Stack Overflow
 Gui, Add, Checkbox, vsegmentfault, SegmentFault
-Gui, Add, Checkbox, vcylee, ²©¿ÍÔ°
+Gui, Add, Checkbox, vcylee, åšå®¢å›­
 
-Gui, Add, Text, gAllSearchB W140 ys, ·­ÒëÀà:
-Gui, Add, Checkbox, vbdfy, °Ù¶È·­Òë   
-Gui, Add, Checkbox, vyoudaofy, ÓĞµÀ·­Òë
-Gui, Add, Checkbox, vgooglefanyi, Google·­Òë
+Gui, Add, Text, gAllSearchB W140 ys, ç¿»è¯‘ç±»:
+Gui, Add, Checkbox, vbdfy, ç™¾åº¦ç¿»è¯‘   
+Gui, Add, Checkbox, vyoudaofy, æœ‰é“ç¿»è¯‘
+Gui, Add, Checkbox, vgooglefanyi, Googleç¿»è¯‘
 
-Gui, Add, Text, gAllSearchC W140 ys, ÒôÀÖÀà:
-Gui, Add, Checkbox, vwy, ÍøÒ×ÔÆÒôÀÖ   
-Gui, Add, Checkbox, vqq, QQÒôÀÖ
-Gui, Add, Checkbox, vdog, ¿á¹·ÒôÀÖ
-Gui, Add, Checkbox, vxiami, ÏºÃ×ÒôÀÖ
-Gui, Add, Checkbox, vkuwo, ¿áÎÒÒôÀÖ
+Gui, Add, Text, gAllSearchC W140 ys, éŸ³ä¹ç±»:
+Gui, Add, Checkbox, vwy, ç½‘æ˜“äº‘éŸ³ä¹   
+Gui, Add, Checkbox, vqq, QQéŸ³ä¹
+Gui, Add, Checkbox, vdog, é…·ç‹—éŸ³ä¹
+Gui, Add, Checkbox, vxiami, è™¾ç±³éŸ³ä¹
+Gui, Add, Checkbox, vkuwo, é…·æˆ‘éŸ³ä¹
 
-Gui, Add, Text, gAllSearchD W140 ys, ÉçÇøÀà:
-Gui, Add, Checkbox, vjuejin, ¾ò½ğ
-Gui, Add, Checkbox, vjianshu, ¼òÊé
+Gui, Add, Text, gAllSearchD W140 ys, ç¤¾åŒºç±»:
+Gui, Add, Checkbox, vjuejin, æ˜é‡‘
+Gui, Add, Checkbox, vjianshu, ç®€ä¹¦
 Gui, Add, Checkbox, vcsdn, CSDN
-Gui, Add, Checkbox, vzhihu, Öªºõ
+Gui, Add, Checkbox, vzhihu, çŸ¥ä¹
 
-Gui, Add, Text, gAllSearchE W140 ys, ¹ºÎïÀà:
-Gui, Add, Checkbox, vtaobao, ÌÔ±¦
-Gui, Add, Checkbox, vjingdong, ¾©¶«
-Gui, Add, Checkbox, vdangdang, µ±µ±
-Gui, Add, Checkbox, vamazon, ÑÇÂíÑ·
-Gui, Add, Checkbox, vsuning, ËÕÄşÒ×¹º
+Gui, Add, Text, gAllSearchE W140 ys, è´­ç‰©ç±»:
+Gui, Add, Checkbox, vtaobao, æ·˜å®
+Gui, Add, Checkbox, vjingdong, äº¬ä¸œ
+Gui, Add, Checkbox, vdangdang, å½“å½“
+Gui, Add, Checkbox, vamazon, äºšé©¬é€Š
+Gui, Add, Checkbox, vsuning, è‹å®æ˜“è´­
 
-Gui, Add, Text,  W140 Section xs yp+50, ³£ÓÃµ¼º½:
+Gui, Add, Text,  W140 Section xs yp+50, å¸¸ç”¨å¯¼èˆª:
 Gui, Add, Link,, <a href="https://github.com">github</a>
 Gui, Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
-Gui, Add, Link,, <a href="https://www.cnblogs.com/cylee">²©¿ÍÔ°</a>
-Gui, Add, Link,, <a href="http://e.xitu.io/">¾ò½ğÇ°¶Ë</a>
+Gui, Add, Link,, <a href="https://www.cnblogs.com/cylee">åšå®¢å›­</a>
+Gui, Add, Link,, <a href="http://e.xitu.io/">æ˜é‡‘å‰ç«¯</a>
 
-Gui, Add, Text,  W140 ys, ÆäËû:
+Gui, Add, Text,  W140 ys, å…¶ä»–:
 Gui, Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</a>
-Gui, Add, Link, gInspect ,  <a>°²×¿/Nodejsµ÷ÊÔ</a>
-Gui, Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AHK¹ÙÍø</a>
-Gui, Add, Link,, <a href="http://babeljs.io/repl">BabelÔÚÏß×ª»»</a>
+Gui, Add, Link, gInspect ,  <a>å®‰å“/Nodejsè°ƒè¯•</a>
+Gui, Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AHKå®˜ç½‘</a>
+Gui, Add, Link,, <a href="http://babeljs.io/repl">Babelåœ¨çº¿è½¬æ¢</a>
 
-Gui, Add, Text,  W140 ys, ÓéÀÖ:
-Gui, Add, Link,, <a href="https://www.bilibili.com/">ßÙÁ¨ßÙÁ¨</a>
-Gui, Add, Link,, <a href="http://www.dilidili.wang/">àÖÁ¨àÖÁ¨</a>
-Gui, Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">TedÄ§ÊŞ</a>
-Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lion´óµÛÄ§ÊŞ</a>
+Gui, Add, Text,  W140 ys, å¨±ä¹:
+Gui, Add, Link,, <a href="https://www.bilibili.com/">å“”å“©å“”å“©</a>
+Gui, Add, Link,, <a href="http://www.dilidili.wang/">å˜€å“©å˜€å“©</a>
+Gui, Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Tedé­”å…½</a>
+Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lionå¤§å¸é­”å…½</a>
 
-Gui, Add, Text,  W140 ys, ´úÀíIP:
-Gui, Add, Link,, <a href="http://www.xicidaili.com/nn">Î÷´Ì</a>
+Gui, Add, Text,  W140 ys, ä»£ç†IP:
+Gui, Add, Link,, <a href="http://www.xicidaili.com/nn">è¥¿åˆº</a>
 Gui, Add, Link,, <a href="https://proxy.l337.tech/txt">l337</a>
 Gui, Add, Link,, <a href="http://www.66ip.cn/nm.html">66ip</a>
 
-Gui, Add, Text, W140 ys, Õ¾³¤¹¤¾ß£º
-Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/js">´úÂë¸ñÊ½»¯</a>
-Gui, Add, Link,, <a href="https://tool.lu/html/">´úÂëÃÀ»¯</a>
+Gui, Add, Text, W140 ys, ç«™é•¿å·¥å…·ï¼š
+Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/js">ä»£ç æ ¼å¼åŒ–</a>
+Gui, Add, Link,, <a href="https://tool.lu/html/">ä»£ç ç¾åŒ–</a>
 Gui, Add, Link,, <a href="http://jsbeautifier.org/">jsbeautifier</a>
 Gui, Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
 
-Gui, Add, Text,  W140 Section xs yp+40, layer/layui£º
+Gui, Add, Text,  W140 Section xs yp+40, layer/layuiï¼š
 Gui, Add, Link,, <a href="http://layer.layui.com/">layer</a>
-Gui, Add, Link,, <a href="http://www.layui.com/doc/">layuiÎÄµµ</a>
-Gui, Add, Link,, <a href="http://www.layui.com/demo/">layuiÊ¾Àı</a>
+Gui, Add, Link,, <a href="http://www.layui.com/doc/">layuiæ–‡æ¡£</a>
+Gui, Add, Link,, <a href="http://www.layui.com/demo/">layuiç¤ºä¾‹</a>
 Gui, Add, Link,, <a href="https://github.com/sentsin/layui/">layui-github</a>
 
-Gui, Add, Text,  W140 ys, Vue£º
+Gui, Add, Text,  W140 ys, Vueï¼š
 Gui, Add, Link,, <a href="http://vuejs.org/">vue</a>
 Gui, Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
 Gui, Add, Link,, <a href="http://router.vuejs.org ">vue-router</a>
 Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 
-Gui, Add, Text,  W140 ys, ¶öÁËÃ´UI£º
+Gui, Add, Text,  W140 ys, é¥¿äº†ä¹ˆUIï¼š
 Gui, Add, Link,, <a href="http://element-cn.eleme.io/#/zh-CN/component/radio">Element-UI</a>
 Gui, Add, Link,, <a href="https://github.com/ElemeFE/element/blob/dev/packages/">Element-github</a>
 Gui, Add, Link,, <a href="http://elemefe.github.io/mint-ui/#/">mint-ui</a>
@@ -81,55 +81,55 @@ Gui, Add, Link,, <a href="https://github.com/ElemeFE/mint-ui/blob/master/package
 
 Gui, Add, Text,  W140 ys, Ant-Design:
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design/">Ant-Design-Github</a>
-Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design ÎÄµµ</a>
-Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro/">Ant-Design Ê¾ÀıÏîÄ¿</a>
-Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">Í¶±êÑİÊ¾¹¤³Ì</a>
+Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design æ–‡æ¡£</a>
+Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro/">Ant-Design ç¤ºä¾‹é¡¹ç›®</a>
+Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">æŠ•æ ‡æ¼”ç¤ºå·¥ç¨‹</a>
 
 Gui, Add, Text,  W140 ys, DvaJS:
 Gui, Add, Link,, <a href="https://github.com/dvajs/dva">DvaJS-Github</a>
-Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS ÈëÃÅÖ¸Òı</a>
+Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS å…¥é—¨æŒ‡å¼•</a>
 Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS API</a>
-Gui, Add, Link,, <a href="https://dvajs.com/guide/examples-and-boilerplates.html#¹Ù·½">DvaJS Demo</a>
+Gui, Add, Link,, <a href="https://dvajs.com/guide/examples-and-boilerplates.html#å®˜æ–¹">DvaJS Demo</a>
 
 
-Gui, Add, Text, W140 Section xs yp+60, ÔÚÏß¹¤¾ß£º
-Gui, Add, Link,, <a href="https://wx.qq.com/">Î¢ĞÅÍøÒ³°æ</a>
-Gui, Add, Link,, <a href="http://naotu.baidu.com/home">°Ù¶ÈÄÔÍ¼</a>
+Gui, Add, Text, W140 Section xs yp+60, åœ¨çº¿å·¥å…·ï¼š
+Gui, Add, Link,, <a href="https://wx.qq.com/">å¾®ä¿¡ç½‘é¡µç‰ˆ</a>
+Gui, Add, Link,, <a href="http://naotu.baidu.com/home">ç™¾åº¦è„‘å›¾</a>
 Gui, Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
 
-Gui, Add, Text,  W140 ys, ×î½üä¯ÀÀ:
+Gui, Add, Text,  W140 ys, æœ€è¿‘æµè§ˆ:
 Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss</a>
-Gui, Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">Ò×Âë</a>
-Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">Âú±ÒÍø</a>
+Gui, Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">æ˜“ç </a>
+Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">æ»¡å¸ç½‘</a>
 Gui, Add, Link,, <a href="http://candy.dragonvein.io/frontend/web/site/signup">dragonvein</a>
 
 
-Gui, Add, Text,  W140 ys, ×î½üÑ§Ï°£º
-Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react ¾ò½ğĞ¡²á</a>
-Gui, Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React Ğ¡Êé</a>
-Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-design¾«Ñ¡²å¼ş</a>
+Gui, Add, Text,  W140 ys, æœ€è¿‘å­¦ä¹ ï¼š
+Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react æ˜é‡‘å°å†Œ</a>
+Gui, Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React å°ä¹¦</a>
+Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-designç²¾é€‰æ’ä»¶</a>
 Gui, Add, Link,, <a href="https://ant.design/components/table-cn/">Ant-design-table</a>
 
-Gui, Add, Text,  W140 ys, React£º
-Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react ¹ÙÍø</a>
+Gui, Add, Text,  W140 ys, Reactï¼š
+Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react å®˜ç½‘</a>
 Gui, Add, Link,, <a href="https://reacttraining.com/react-router/web/api/Route/component">React-router</a>
 Gui, Add, Link,, <a href="https://redux.js.org/basics/usage-with-react">React-redux</a>
 
-Gui, Add, Text,  W140 ys, puppeteer£º
-Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer?utm_source=gold_browser_extension">puppeteer ¹ÙÍø</a>
+Gui, Add, Text,  W140 ys, puppeteerï¼š
+Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer?utm_source=gold_browser_extension">puppeteer å®˜ç½‘</a>
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md">puppeteer API</a>
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer">puppeteer-Github</a>
-Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree/master/examples/">puppeteer-Ê¾Àı</a>
+Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree/master/examples/">puppeteer-ç¤ºä¾‹</a>
 
 
-; ËÑË÷¿ò
+; æœç´¢æ¡†
 Gui, Add, Edit, vSearchContent w740 Limit50 yp+60 Section xs, 
-; ±³¾°É«
+; èƒŒæ™¯è‰²
 Gui, Color, E6FFE6
-; margin ²¼¾Ö
+; margin å¸ƒå±€
 Gui, Margin, 10, 10
-; submit °´Å¥
+; submit æŒ‰é’®
 Gui, Add, Button, w740 h30 Default, FUCK
 
 
@@ -184,7 +184,7 @@ CancelSelect:
 	GuiControl,, suning, 0
 return
 
-; +g ÆäÊµ¾ÍÊÇÌí¼Ó°É
+; +g å…¶å®å°±æ˜¯æ·»åŠ å§
 MySubroutine:
 	/*
 		MsgBox, %MyEditHwnd%
@@ -288,15 +288,15 @@ return
 
 
 ButtonFUCK:
-	; ±£´æÓÃ»§µÄÊäÈëµ½Ã¿¸ö¿Ø¼şµÄ¹ØÁª±äÁ¿ÖĞ.
+	; ä¿å­˜ç”¨æˆ·çš„è¾“å…¥åˆ°æ¯ä¸ªæ§ä»¶çš„å…³è”å˜é‡ä¸­.
 	Gui, Submit, NoHide 
 
-	; ±´¶ûËşÃ¨'²©¿ÍÔ°
+	; è´å°”å¡”çŒ«'åšå®¢å›­
 	if (cylee == 1) {
 		RUN, https://zzk.cnblogs.com/my/s/blogpost-p?Keywords=%SearchContent%
 	}
 
-	; °Ù¶È
+	; ç™¾åº¦
 	if (bd == 1) {
 		RUN, https://www.baidu.com/s?wd=%SearchContent%
 	}
@@ -321,37 +321,37 @@ ButtonFUCK:
 		RUN, https://segmentfault.com/search?q=%SearchContent%
 	}
 
-	; °Ù¶È·­Òë   
+	; ç™¾åº¦ç¿»è¯‘   
 	if (bdfy == 1) {
 		RUN, http://fanyi.baidu.com/translate?aldtype=16047&query=%SearchContent%&keyfrom=baidu&smartresult=dict&lang=auto2zh#zh/en/%SearchContent%
 	}
 
-	; ÓĞµÀ·­Òë
+	; æœ‰é“ç¿»è¯‘
 	if (youdaofy == 1) {
 		RUN, http://dict.youdao.com/w/eng/%SearchContent%/#keyfrom=dict2.index
 	}
 
-	; Google·­Òë
+	; Googleç¿»è¯‘
 	if (googlefanyi == 1) {
 		RUN, https://translate.google.cn/#auto/en/%SearchContent%
 	}
 
-	; ÍøÒ×ÔÆÒôÀÖ   
+	; ç½‘æ˜“äº‘éŸ³ä¹   
 	if (wy == 1) {
 		RUN, http://music.163.com/#/search/m/?s=%SearchContent%
 	}
 
-	; QQÒôÀÖ
+	; QQéŸ³ä¹
 	if (qq == 1) {
 		RUN, https://y.qq.com/portal/search.html#w=%SearchContent%
 	}
 
-	; ¿á¹·ÒôÀÖ
+	; é…·ç‹—éŸ³ä¹
 	if (dog == 1) {
 		RUN, http://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord=%SearchContent%
 	}
 
-	; ÏºÃ×ÒôÀÖ
+	; è™¾ç±³éŸ³ä¹
 	if (xiami == 1) {
 		RUN, https://www.xiami.com/search?key=%SearchContent%
 	}
@@ -360,12 +360,12 @@ ButtonFUCK:
 		RUN, http://sou.kuwo.cn/ws/NSearch?type=all&key=%SearchContent%
 	}
 
-	; ¾ò½ğ
+	; æ˜é‡‘
 	if (juejin == 1) {
 		RUN, https://juejin.im/search?query=%SearchContent%
 	}
 
-	; ¼òÊé
+	; ç®€ä¹¦
 	if (jianshu == 1) {
 		RUN, https://www.jianshu.com/search?q=%SearchContent%&page=1&type=note
 	}
@@ -375,32 +375,32 @@ ButtonFUCK:
 		RUN, https://so.csdn.net/so/search/s.do?q=%SearchContent%
 	}
 
-	; Öªºõ
+	; çŸ¥ä¹
 	if (zhihu == 1) {
 		RUN, https://www.zhihu.com/search?type=content&q=%SearchContent%
 	}
 
-	; ÌÔ±¦
+	; æ·˜å®
 	if (taobao == 1) {
 		RUN, https://s.taobao.com/search?q=%SearchContent%
 	}
 
-	; ¾©¶«
+	; äº¬ä¸œ
 	if (jingdong == 1) {
 		RUN, https://search.jd.com/Search?keyword=%SearchContent%&enc=utf-8&wq=%SearchContent%
 	}
 
-	; ÑÇÂíÑ·
+	; äºšé©¬é€Š
 	if (amazon == 1) {
 		RUN, https://www.amazon.cn/s/ref=nb_sb_noss?field-keywords=%SearchContent%
 	}
 
-	; ËÕÄşÒ×¹º
+	; è‹å®æ˜“è´­
 	if (suning == 1) {
 		RUN, https://search.suning.com/%SearchContent%/
 	}
 
-	; µ±µ±
+	; å½“å½“
 	if (dangdang == 1) {
 		RUN, http://search.dangdang.com/?key=%SearchContent%
 	}

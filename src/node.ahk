@@ -1,4 +1,4 @@
-::request.proxy::
+ï»¿::request.proxy::
 Var = 
 (
  request({
@@ -29,8 +29,8 @@ var postData = JSON.stringify({
 });
 
 const opt = {
-    // host: '119.10.67.144', // ÕâÀï·Å´úÀí·şÎñÆ÷µÄip»òÕßÓòÃû£¬Ç§Íò²»ÄÜ¼Óhttp
-    // port: '808', // ÕâÀï·Å´úÀí·şÎñÆ÷µÄ¶Ë¿ÚºÅ
+    // host: '119.10.67.144', // è¿™é‡Œæ”¾ä»£ç†æœåŠ¡å™¨çš„ipæˆ–è€…åŸŸåï¼Œåƒä¸‡ä¸èƒ½åŠ http
+    // port: '808', // è¿™é‡Œæ”¾ä»£ç†æœåŠ¡å™¨çš„ç«¯å£å·
     method: 'POST',
     path: 'http://192.168.0.102',
     timeout: 30000,
@@ -42,17 +42,17 @@ const opt = {
 };
 
 const req = http.request(opt, function (res) {
-    console.log(``×´Ì¬Âë: ${res.statusCode}``);
-    console.log(``ÏìÓ¦Í·: ${JSON.stringify(res.headers)}``);
+    console.log(``çŠ¶æ€ç : ${res.statusCode}``);
+    console.log(``å“åº”å¤´: ${JSON.stringify(res.headers)}``);
 
     res.setEncoding('utf8');
 
     res.on('data', function (data) {
-          console.log(``ÏìÓ¦Ö÷Ìå: ${data}``);
+          console.log(``å“åº”ä¸»ä½“: ${data}``);
     });
 
     res.on('end', () => {
-        console.log('ÏìÓ¦ÖĞÒÑÎŞÊı¾İ¡£');
+        console.log('å“åº”ä¸­å·²æ— æ•°æ®ã€‚');
     });
 });
 
@@ -76,8 +76,8 @@ request({
         // 'Content-Type': 'application/json',
         // 'X-Requested-With': 'XMLHttpRequest',
     },
-    // ÇëÇóºÍ»Ø·¢µÄÊı¾İ×Ô¶¯×ª±ä³ÉÁË json ¶ÔÏó
-    // ²»ĞèÒªÔÚheaderÖĞÉèÖÃ'Content-Type': 'application/json',Ò²²»ĞèÒªÊÖ¶¯JSON.stringify()×ªÒåBody postdata
+    // è¯·æ±‚å’Œå›å‘çš„æ•°æ®è‡ªåŠ¨è½¬å˜æˆäº† json å¯¹è±¡
+    // ä¸éœ€è¦åœ¨headerä¸­è®¾ç½®'Content-Type': 'application/json',ä¹Ÿä¸éœ€è¦æ‰‹åŠ¨JSON.stringify()è½¬ä¹‰Body postdata
     json: true, 
     body: {
         'Phone': mobile,
@@ -141,7 +141,7 @@ Var =
 var fs = require('fs');
 var files = fs.rename('./test.txt','./test/test.txt',function(err){
      if(err) console.log("err");
-     console.log("ÎÄ¼ş²Ù×÷³É¹¦");
+     console.log("æ–‡ä»¶æ“ä½œæˆåŠŸ");
 })
 )
 code(Var)
@@ -169,9 +169,9 @@ Var =
 (
 var fs = require('fs');
 var path = require('path');
-fs.writeFile(path.join(__dirname,'/test.json'), 'ÕâÊÇ×·¼ÓµÄÊı¾İ', { flag:"a" }, function (err) {
-    if(err) console.error("ÎÄ¼şĞ´ÈëÊ§°Ü");
-    else console.log("ÎÄ¼şĞ´Èë³É¹¦");
+fs.writeFile(path.join(__dirname,'/test.json'), 'è¿™æ˜¯è¿½åŠ çš„æ•°æ®', { flag:"a" }, function (err) {
+    if(err) console.error("æ–‡ä»¶å†™å…¥å¤±è´¥");
+    else console.log("æ–‡ä»¶å†™å…¥æˆåŠŸ");
 })
 )
 code(Var)

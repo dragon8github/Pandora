@@ -1,4 +1,4 @@
->!v::
+ï»¿>!v::
 Var = 
 (
 <template>
@@ -60,7 +60,7 @@ computed: {
     ...mapGetters([
         'menuList'
     ]),
-    // Ò²¿ÉÒÔÕâÑù
+    // ä¹Ÿå¯ä»¥è¿™æ ·
     ...mapGetters({
         menuList: 'menuList'
     })
@@ -79,10 +79,10 @@ methods: {
         'SET_MENU',
         'SET_USERINFO'
     ]),
-    // Ò²¿ÉÒÔÕâÑù
+    // ä¹Ÿå¯ä»¥è¿™æ ·
     ...mapMutations({
-        SET_MENU£º 'SET_MENU',
-        SET_USERINFO£º 'SET_USERINFO'
+        SET_MENUï¼š 'SET_MENU',
+        SET_USERINFOï¼š 'SET_USERINFO'
     }),
 },
 )
@@ -128,7 +128,7 @@ Var =
     </body>
     <script>
     
-        // ¾Ö²¿×¢²á×é¼ş
+        // å±€éƒ¨æ³¨å†Œç»„ä»¶
         var myradio = Vue.extend({
               data: function () {
                     return {

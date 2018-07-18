@@ -1,4 +1,4 @@
-::toup::
+ï»¿::toup::
 ::todaxie::
 ::toda::
     Send, toUpperCase()
@@ -64,9 +64,9 @@ var hiddenProperty = 'hidden' in document ? 'hidden' :
 var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
 var onVisibilityChange = function() {
     if (document[hiddenProperty]) {
-        window.alert('Ò³Ãæ·Ç¼¤»î');
+        window.alert('é¡µé¢éæ¿€æ´»');
     } else {
-        window.alert('Ò³Ãæ¼¤»î')
+        window.alert('é¡µé¢æ¿€æ´»')
     }
 }
 document.addEventListener(visibilityChangeEvent, onVisibilityChange);
@@ -158,7 +158,7 @@ code(Var)
 return
 
 ::match::
-    Send, body.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,4}/g); // ÍÆ¼öÊ¹ÓÃexec¿ÉÒÔÄÃµ½¶à¸öÊı×é
+    Send, body.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,4}/g); // æ¨èä½¿ç”¨execå¯ä»¥æ‹¿åˆ°å¤šä¸ªæ•°ç»„
 return
 
 ::exec::
@@ -184,18 +184,18 @@ const getsms = (mobile) => {
             uri: `http://api.fxhyd.cn/UserInterface.aspx?action=getsms&token=${token}&itemid=${itemid}&mobile=${mobile}&release=1`
         }, function (err, _res, body) {
             if (err) throw new Error(err)
-            // Èç¹û¶ÌĞÅÎ´ÊÕµ½
+            // å¦‚æœçŸ­ä¿¡æœªæ”¶åˆ°
             if (body == '3001' && count <= 60) {
-                // ¹Ù·½ÍÆ¼ö5ÃëÖ®ºóÔÙÇëÇó
+                // å®˜æ–¹æ¨è5ç§’ä¹‹åå†è¯·æ±‚
                 setTimeout(function () {
                     count += 5
-                    console.log("¶ÌĞÅÎ´ÊÕµ½£¬ÕıÔÚÖØĞÂ»ñÈ¡...", count);
+                    console.log("çŸ­ä¿¡æœªæ”¶åˆ°ï¼Œæ­£åœ¨é‡æ–°è·å–...", count);
                     _getsms()
                 }, 5000);
             } else {
-                // ½ØÈ¡ÑéÖ¤Âë
+                // æˆªå–éªŒè¯ç 
                 var code = body.match(/\d{4,}/)[0]
-                console.log("»ñÈ¡ÁËÑéÖ¤Âë", code);
+                console.log("è·å–äº†éªŒè¯ç ", code);
                 register(mobile, code)
             }
         })
@@ -224,13 +224,13 @@ return
 Var = 
 (
 Function.prototype.bind = function() {
-    var self = this, // ±£´æÔ­º¯Êı
-        context = [].shift.call(arguments), // ĞèÒª°ó¶¨µÄ this ÉÏÏÂÎÄ
-        args = [].slice.call(arguments); // Ê£ÓàµÄ²ÎÊı×ª³ÉÊı×é
-    return function() { // ·µ»ØÒ»¸öĞÂµÄº¯Êı
+    var self = this, // ä¿å­˜åŸå‡½æ•°
+        context = [].shift.call(arguments), // éœ€è¦ç»‘å®šçš„ this ä¸Šä¸‹æ–‡
+        args = [].slice.call(arguments); // å‰©ä½™çš„å‚æ•°è½¬æˆæ•°ç»„
+    return function() { // è¿”å›ä¸€ä¸ªæ–°çš„å‡½æ•°
         return self.apply(context, [].concat.call(args, [].slice.call(arguments)));
-        // Ö´ĞĞĞÂµÄº¯ÊıµÄÊ±ºò£¬»á°ÑÖ®Ç°´«ÈëµÄ context µ±×÷ĞÂº¯ÊıÌåÄÚµÄ this
-        // ²¢ÇÒ×éºÏÁ½´Î·Ö±ğ´«ÈëµÄ²ÎÊı£¬×÷ÎªĞÂº¯ÊıµÄ²ÎÊı
+        // æ‰§è¡Œæ–°çš„å‡½æ•°çš„æ—¶å€™ï¼Œä¼šæŠŠä¹‹å‰ä¼ å…¥çš„ context å½“ä½œæ–°å‡½æ•°ä½“å†…çš„ this
+        // å¹¶ä¸”ç»„åˆä¸¤æ¬¡åˆ†åˆ«ä¼ å…¥çš„å‚æ•°ï¼Œä½œä¸ºæ–°å‡½æ•°çš„å‚æ•°
     }
 };
 )
@@ -284,7 +284,7 @@ var checkPwdLevel = function (str) {
     if (str.length < 6) {
         return nowLv
     }
-    //°Ñ¹æÔòÕûÀí³ÉÊı×é£¬ÔÙ½øĞĞÑ­»·ÅĞ¶Ï
+    //æŠŠè§„åˆ™æ•´ç†æˆæ•°ç»„ï¼Œå†è¿›è¡Œå¾ªç¯åˆ¤æ–­
     let rules=[/[0-9]/,/[a-z]/,/[A-Z]/,/[\.|-|_]/];
     for(let i=0;i<rules.length;i++){
         if(rules[i].test(str)){
@@ -313,15 +313,15 @@ Var =
 (
 function getElementTop(element){
     try {
-¡¡  ¡¡¡¡¡¡var actualTop = element.offsetTop;
-¡¡  ¡¡¡¡¡¡var current = element.offsetParent;
-¡¡  ¡¡¡¡¡¡while (current !== null){
-¡¡  ¡¡¡¡¡¡¡¡¡¡actualTop += current.offsetTop;
-¡¡  ¡¡¡¡¡¡¡¡¡¡current = current.offsetParent;
-¡¡  ¡¡¡¡¡¡}
-¡¡  ¡¡¡¡¡¡return actualTop;
+ã€€  ã€€ã€€ã€€var actualTop = element.offsetTop;
+ã€€  ã€€ã€€ã€€var current = element.offsetParent;
+ã€€  ã€€ã€€ã€€while (current !== null){
+ã€€  ã€€ã€€ã€€ã€€ã€€actualTop += current.offsetTop;
+ã€€  ã€€ã€€ã€€ã€€ã€€current = current.offsetParent;
+ã€€  ã€€ã€€ã€€}
+ã€€  ã€€ã€€ã€€return actualTop;
     } catch (e) {}
-¡¡  ¡¡}
+ã€€  ã€€}
 
 setTimeout(() => {
     window.scrollTo(0, getElementTop(e.target));
@@ -435,7 +435,7 @@ $.ajax({
         console.log(data);
     },
     error: function(e, m){
-       console.log('Êı¾İ½Ó¿ÚÇëÇóÒì³£', e, m);
+       console.log('æ•°æ®æ¥å£è¯·æ±‚å¼‚å¸¸', e, m);
     }
 })
 )
@@ -448,7 +448,7 @@ Var =
 ;(function(){
       var u = navigator.userAgent, app = navigator.appVersion;
       var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
-      var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //iosÖÕ¶Ë
+      var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //iosç»ˆç«¯
       if (isAndroid) {
         
       } 
@@ -465,12 +465,12 @@ return
     Send, window.alert('123');{left 2}{shift down}{left 5}{shift up}
 return
 
-; ¹¹Ôìº¯ÊıµÄÆ´ÒôÀÏÊÇ¼Ç²»µÃ£¬ÒÔºó¾ÍÓÃÁªÏëÀ´Æ´Ğ´ºÃÁË
+; æ„é€ å‡½æ•°çš„æ‹¼éŸ³è€æ˜¯è®°ä¸å¾—ï¼Œä»¥åå°±ç”¨è”æƒ³æ¥æ‹¼å†™å¥½äº†
 ::gz::
     Send, constructor
 return
 
-; insert jquery µÄÒâË¼£¬Ò²ÓĞ°®jqueryµÄÒâË¼£¬ÎªÃ»ÓĞjqueryµÄÍøÕ¾Ìí¼Ójq²å¼ş
+; insert jquery çš„æ„æ€ï¼Œä¹Ÿæœ‰çˆ±jqueryçš„æ„æ€ï¼Œä¸ºæ²¡æœ‰jqueryçš„ç½‘ç«™æ·»åŠ jqæ’ä»¶
 ::ijq::
 Var = 
 (
@@ -482,7 +482,7 @@ console.log(jQuery.fn.jquery);
 code(Var)
 return
 
-; ´òÓ¡³öjQueryµÄ°æ±¾
+; æ‰“å°å‡ºjQueryçš„ç‰ˆæœ¬
 ::$.v::
 ::$.version::
     Send, console.log(jQuery.fn.jquery);
@@ -511,7 +511,7 @@ Var =
 (
 class Person {
 	constructor (name, age) {
-		 // super(); // ¼Ì³Ğ
+		 // super(); // ç»§æ‰¿
 		 this._name = name;
 		 this._age = age;
 	}
@@ -589,8 +589,8 @@ return
 Var = 
 (
 /**
- * @desc   ´Óµ±Ç°urlÖĞ»ñÈ¡Ö¸¶¨²ÎÊı
- * @param  {String} name ²ÎÊı
+ * @desc   ä»å½“å‰urlä¸­è·å–æŒ‡å®šå‚æ•°
+ * @param  {String} name å‚æ•°
  * @return {String}
  */
 var qy = function (name) {
@@ -601,7 +601,7 @@ var qy = function (name) {
 };
 
 /**
- * @desc   url²ÎÊı×ª¶ÔÏó
+ * @desc   urlå‚æ•°è½¬å¯¹è±¡
  * @param  {String} url  default: window.location.href
  * @return {Object}
  */
@@ -616,8 +616,8 @@ function parseQueryString(url) {
 
  /**
  * @func
- * @desc - ´ÓurlµØÖ·ÖĞ¸ù¾İ²ÎÊı»ñÈ¡Ö¸¶¨µÄÖµ
- * @param {string} name - ²ÎÊı
+ * @desc - ä»urlåœ°å€ä¸­æ ¹æ®å‚æ•°è·å–æŒ‡å®šçš„å€¼
+ * @param {string} name - å‚æ•°
  * @param {string} url - url
  */
 var getUrlParam = function (name, url) {
@@ -940,7 +940,7 @@ var month = date.getMonth() + 1;
 var day = date.getDate();
 var hours = date.getHours();
 var minu = date.getMinutes();
-var second = date.getSeconds(); //ÅĞ¶ÏÊÇ·ñÂú10 
+var second = date.getSeconds(); //åˆ¤æ–­æ˜¯å¦æ»¡10 
 var arr = [month, day, hours, minu, second];
 arr.forEach(item => { item < 10 ? "0" + item : item; })
 console.log(year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4])
@@ -1007,15 +1007,15 @@ var wraphtml = document.body.insertBefore(wrap,first);
 Return
 
 ::random::
-    SendInput, parseInt(Math.random() * 10 {+} 1); // »ñÈ¡ 1 - 10 µ½Ëæ»úÊı
+    SendInput, parseInt(Math.random() * 10 {+} 1); // è·å– 1 - 10 åˆ°éšæœºæ•°
 Return
 
 ::rand::
-    SendInput, parseInt(Math.random() * 10 {+} 1); // »ñÈ¡ 1 - 10 µ½Ëæ»úÊı
+    SendInput, parseInt(Math.random() * 10 {+} 1); // è·å– 1 - 10 åˆ°éšæœºæ•°
 Return
 
 ::repeat::
-    SendRaw, Array.prototype.join.call({length: i + 1}, 'ÄãÈ·¶¨£¿')
+    SendRaw, Array.prototype.join.call({length: i + 1}, 'ä½ ç¡®å®šï¼Ÿ')
 Return
 
 !/::
@@ -1027,7 +1027,7 @@ Var =
 (
 /**
  * say something ...
- * @param {*} ²ÎÊı ËµÃ÷
+ * @param {*} å‚æ•° è¯´æ˜
  */
 )
 code(Var)
@@ -1040,8 +1040,8 @@ return
 ::is-cn::
 Var = 
 (
-if (!/^[\u4e00-\u9fa5]+$/.test('ÀîîÈºè')) {
-      throw new Error('ÇëÊäÈëÖĞÎÄºº×Ö')
+if (!/^[\u4e00-\u9fa5]+$/.test('æé’Šé¸¿')) {
+      throw new Error('è¯·è¾“å…¥ä¸­æ–‡æ±‰å­—')
 }
 )
 code(Var)
@@ -1063,18 +1063,18 @@ code(Var)
 return
     
 ::is-pwd:: 
-    SendRaw, /[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/.test('123456a@') // ±ØĞëÍ¬Ê±°üº¬Êı×ÖºÍ×ÖÄ¸,Ö§³Ö·Ç·¨·ûºÅ
+    SendRaw, /[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/.test('123456a@') // å¿…é¡»åŒæ—¶åŒ…å«æ•°å­—å’Œå­—æ¯,æ”¯æŒéæ³•ç¬¦å·
 return
 
 ::is-user:: 
-    SendRaw, /^[a-zA-Z0-9-_]*$/.test('') // ÓÉ6-16Î»Êı×Ö¡¢ ×ÖÄ¸¡¢ '_'¡¢ '-'×é³É£¬²»º¬ÌØÊâ×Ö·û
+    SendRaw, /^[a-zA-Z0-9-_]*$/.test('') // ç”±6-16ä½æ•°å­—ã€ å­—æ¯ã€ '_'ã€ '-'ç»„æˆï¼Œä¸å«ç‰¹æ®Šå­—ç¬¦
 Return 
 
 ::is-id::
 Var = 
 (
 if (!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test('445222199307100337')){
-    throw new Error('·Ç·¨Éí·İÖ¤')
+    throw new Error('éæ³•èº«ä»½è¯')
 }
 )
 code(Var)
@@ -1175,16 +1175,16 @@ Return
 ::gettop::
 Var = 
 (
-// »ñÈ¡¾àÀë¶¥²¿µÄÏà¶Ô¾àÀë
+// è·å–è·ç¦»é¡¶éƒ¨çš„ç›¸å¯¹è·ç¦»
 function getElementTop(element){
     try {
-¡¡  ¡¡¡¡¡¡var actualTop = element.offsetTop;
-¡¡  ¡¡¡¡¡¡var current = element.offsetParent;
-¡¡  ¡¡¡¡¡¡while (current !== null){
-¡¡  ¡¡¡¡¡¡¡¡¡¡actualTop += current.offsetTop;
-¡¡  ¡¡¡¡¡¡¡¡¡¡current = current.offsetParent;
-¡¡  ¡¡¡¡¡¡}
-¡¡  ¡¡¡¡¡¡return actualTop;
+ã€€  ã€€ã€€ã€€var actualTop = element.offsetTop;
+ã€€  ã€€ã€€ã€€var current = element.offsetParent;
+ã€€  ã€€ã€€ã€€while (current !== null){
+ã€€  ã€€ã€€ã€€ã€€ã€€actualTop += current.offsetTop;
+ã€€  ã€€ã€€ã€€ã€€ã€€current = current.offsetParent;
+ã€€  ã€€ã€€ã€€}
+ã€€  ã€€ã€€ã€€return actualTop;
     } catch (e) {}
 }
 )
@@ -1194,7 +1194,7 @@ Return
 ::pad::
 Var = 
 (
-// ²¹È«
+// è¡¥å…¨
 function pad (target, n) {
     var zero = new Array(n).join('0');
     var str = zero + target;
@@ -1239,8 +1239,8 @@ Return
 Var = 
 (
 /**
- * Ö»ÄÜÓÃÓÚÊı×é
- * Èç¹ûÊÇ es6 ÍÆ¼ö£º return Array.from(new Set(arr));
+ * åªèƒ½ç”¨äºæ•°ç»„
+ * å¦‚æœæ˜¯ es6 æ¨èï¼š return Array.from(new Set(arr));
  */
 function unique(arr) {
     var retArray = [];
@@ -1257,7 +1257,7 @@ return
 ::shuffle::
 Var = 
 (
-// ·ÑÑ©Ò®×È£¨Fisher¨CYates£© Ò²±»³Æ×÷¸ßÄÉµÂ£¨ Knuth£©Ëæ»úÖÃÂÒËã·¨
+// è´¹é›ªè€¶å…¹ï¼ˆFisherâ€“Yatesï¼‰ ä¹Ÿè¢«ç§°ä½œé«˜çº³å¾·ï¼ˆ Knuthï¼‰éšæœºç½®ä¹±ç®—æ³•
 function shuffle(target) {
     var j, x, i = target.length;
     for (; i > 0; j = parseInt(Math.random() * i), x = target[--i], target[i] = target[j], target[j] = x) {}
@@ -1331,7 +1331,7 @@ return
 ::sortArr::
 Var = 
 (
-// ½«arrÉıĞòÅÅÁĞ,Èç¹ûÊÇµ¹Ğòreturn -(a-b)
+// å°†arrå‡åºæ’åˆ—,å¦‚æœæ˜¯å€’åºreturn -(a-b)
 var orderArr = function (arr) { 
     arr.sort((a, b) => { return a - b }) 
 }
@@ -1342,7 +1342,7 @@ return
 ::sortobj::
 Var = 
 (
-// ½«arrÉıĞòÅÅÁĞ,Èç¹ûÊÇµ¹Ğòreturn -(value1 - value2)
+// å°†arrå‡åºæ’åˆ—,å¦‚æœæ˜¯å€’åºreturn -(value1 - value2)
 const orderArr = (arr) => { 
     arr.sort((a, b) => { 
          let value1 = a[property]; 
@@ -1361,7 +1361,7 @@ var factorial = n => {
 	if (n === 0) {
 		return 1;
 	}
-	// ÕâÊÇÒ»¸öµİ¹é
+	// è¿™æ˜¯ä¸€ä¸ªé€’å½’
 	return n * factorial(n -1);
 }
 )
@@ -1407,12 +1407,12 @@ return
 ::foren::
 Var = 
 (
-// ¶ÔÏó±éÀú
+// å¯¹è±¡éå†
 for (let [key, ele] of Object.entries(aa)) {
     console.log(key, ele)
 }
 
-// Êı×é±éÀú
+// æ•°ç»„éå†
 for (let [index, value] of [1, 2, 3].entries()) {
     console.log(index, value)
 }
@@ -1472,7 +1472,7 @@ return
 ::promise.finally::
 Var = 
 (
-// Ïò Promise.prototype Ôö¼Ó finally()
+// å‘ Promise.prototype å¢åŠ  finally()
 Promise.prototype.finally = function(onFinally) {
     return this.then(
         /* onFulfilled */
@@ -1518,9 +1518,9 @@ return
 Var = 
 (
 /**
- * ¼ÓÔØscript²¢ÇÒÖ´ĞĞ»Øµ÷
- * @param {String} url ×ÊÔ´µØÖ·
- * @param {Function} cb »Øµ÷·½·¨
+ * åŠ è½½scriptå¹¶ä¸”æ‰§è¡Œå›è°ƒ
+ * @param {String} url èµ„æºåœ°å€
+ * @param {Function} cb å›è°ƒæ–¹æ³•
  * https://www.cnblogs.com/_franky/archive/2010/06/20/1761370.html
  */
 var onscriptload = function (url, cb) {
@@ -1554,10 +1554,10 @@ return
 ::is-ie::
 Var = 
 (
-(function(){ //ie°æ±¾
+(function(){ //ieç‰ˆæœ¬
     var agent = navigator.userAgent.toLowerCase();
     return (!!window.ActiveXObject || "ActiveXObject" in window) ? (
-      (agent.match(/msie\s(\d+)/) || [])[1] || '11' //ÓÉÓÚie11²¢Ã»ÓĞmsieµÄ±êÊ¶
+      (agent.match(/msie\s(\d+)/) || [])[1] || '11' //ç”±äºie11å¹¶æ²¡æœ‰msieçš„æ ‡è¯†
     `) : false;
 }())
 )
@@ -1567,7 +1567,7 @@ return
 ::settitle::
 Var = 
 (
-// ½â¾öÎ¢ĞÅ¡¢QQ¡¢ÉÁÒøµÈÄÚÖÃä¯ÀÀÆ÷µ¥Ò³Ó¦ÓÃÎŞ·¨Ë¢ĞÂtitleµÄÎÊÌâ
+// è§£å†³å¾®ä¿¡ã€QQã€é—ªé“¶ç­‰å†…ç½®æµè§ˆå™¨å•é¡µåº”ç”¨æ— æ³•åˆ·æ–°titleçš„é—®é¢˜
 var setTitle = title => {
     var i = document.createElement('iframe');
     i.src = 'https://www.baidu.com/favicon.ico';
@@ -1590,42 +1590,42 @@ return
 Var = 
 (
 /**
- * Í¼Æ¬ÀÁ¼ÓÔØ
+ * å›¾ç‰‡æ‡’åŠ è½½
  * https://www.liaoxuefeng.com/article/00151045553343934ba3bb4ed684623b1bf00488231d88d000
  * <img src="https://loading.io/assets/img/ajax.gif" data-src="http://www.hongte.info/assets/images/banner2.jpg">
  */
 ;(function(){
-    // »ñÈ¡°üº¬data-srcÊôĞÔµÄimg
+    // è·å–åŒ…å«data-srcå±æ€§çš„img
     var lazyImgs = document.querySelectorAll('img[data-src]')
-    // ½«Node-List×ª»¯³ÉÊı×éÀàĞÍ
+    // å°†Node-Listè½¬åŒ–æˆæ•°ç»„ç±»å‹
     lazyImgs = [].slice.apply(lazyImgs);
-     // ¶¨ÒåÊÂ¼şº¯Êı
+     // å®šä¹‰äº‹ä»¶å‡½æ•°
     var onScroll = function () {
-        // »ñÈ¡Ò³Ãæ¹ö¶¯µÄ¸ß¶È
+        // è·å–é¡µé¢æ»šåŠ¨çš„é«˜åº¦
         var wtop = window.scrollY;
-        // »ñÈ¡¿ÉÊÓÇøÓò¸ß¶È
+        // è·å–å¯è§†åŒºåŸŸé«˜åº¦
         var wheight = document.documentElement.clientHeight;
-        // ÅĞ¶ÏÊÇ·ñ»¹ÓĞÎ´¼ÓÔØµÄimg
+        // åˆ¤æ–­æ˜¯å¦è¿˜æœ‰æœªåŠ è½½çš„img
         if (lazyImgs.length > 0) {
-            // Ñ­»·´¦ÀíÊı×éµÄÃ¿¸öimgÔªËØ
+            // å¾ªç¯å¤„ç†æ•°ç»„çš„æ¯ä¸ªimgå…ƒç´ 
             for (var i = lazyImgs.length - 1; i >= 0; i--) {
-                // »ñÈ¡Í¼Æ¬ĞÅÏ¢
+                // è·å–å›¾ç‰‡ä¿¡æ¯
                 var el = lazyImgs[i], rect = el.getBoundingClientRect(), src = el.getAttribute('data-src')
-                // ÅĞ¶ÏÊÇ·ñÔÚ¿ÉÊÓ·¶Î§ÄÚ:
+                // åˆ¤æ–­æ˜¯å¦åœ¨å¯è§†èŒƒå›´å†…:
                 if (rect.top - wtop < wheight) {
-                   // ÉèÖÃsrcÊôĞÔ:
+                   // è®¾ç½®srcå±æ€§:
                    el.setAttribute('src', src);
-                   // É¾³ı¶ÔÏó
+                   // åˆ é™¤å¯¹è±¡
                    Array.prototype.splice.call(lazyImgs, i, 1);
                 }
             }
         }
     };
 
-    // °ó¶¨ÊÂ¼ş
+    // ç»‘å®šäº‹ä»¶
     window.onscroll = onScroll;
 
-    // ÊÖ¶¯´¥·¢Ò»´Î, ÒòÎªÒ³ÃæÏÔÊ¾Ê±£¬²¢Î´´¥·¢scrollÊÂ¼ş¡£
+    // æ‰‹åŠ¨è§¦å‘ä¸€æ¬¡, å› ä¸ºé¡µé¢æ˜¾ç¤ºæ—¶ï¼Œå¹¶æœªè§¦å‘scrolläº‹ä»¶ã€‚
     onScroll();
 }());
 )
@@ -1664,7 +1664,7 @@ Var =
 (
 /**
  * 
- * @desc ÅĞ¶ÏÁ½¸öÊı×éÊÇ·ñÏàµÈ
+ * @desc åˆ¤æ–­ä¸¤ä¸ªæ•°ç»„æ˜¯å¦ç›¸ç­‰
  * @param {Array} arr1 
  * @param {Array} arr2 
  * @return {Boolean}
@@ -1685,7 +1685,7 @@ return
 Var = 
 (
 /**
- * @desc »ñÈ¡ä¯ÀÀÆ÷ÀàĞÍºÍ°æ±¾
+ * @desc è·å–æµè§ˆå™¨ç±»å‹å’Œç‰ˆæœ¬
  * @return {String} 
  */
 function getExplore() {
@@ -1693,7 +1693,7 @@ function getExplore() {
         ua = navigator.userAgent.toLowerCase(),
         s;
     (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? sys.ie = s[1]: (s = ua.match(/msie ([\d\.]+)/)) ? sys.ie = s[1] : (s = ua.match(/edge\/([\d\.]+)/)) ? sys.edge = s[1] : (s = ua.match(/firefox\/([\d\.]+)/)) ? sys.firefox = s[1] : (s = ua.match(/(?:opera|opr).([\d\.]+)/)) ? sys.opera = s[1] : (s = ua.match(/chrome\/([\d\.]+)/)) ? sys.chrome = s[1] : (s = ua.match(/version\/([\d\.]+).*safari/)) ? sys.safari = s[1] : 0;
-    // ¸ù¾İ¹ØÏµ½øĞĞÅĞ¶Ï
+    // æ ¹æ®å…³ç³»è¿›è¡Œåˆ¤æ–­
     if (sys.ie) return ('IE: ' + sys.ie)
     if (sys.edge) return ('EDGE: ' + sys.edge)
     if (sys.firefox) return ('Firefox: ' + sys.firefox)
@@ -1712,7 +1712,7 @@ return
 Var = 
 (
 /**
- * @desc »ñÈ¡²Ù×÷ÏµÍ³ÀàĞÍ
+ * @desc è·å–æ“ä½œç³»ç»Ÿç±»å‹
  * @return {String} 
  */
 function getOS() {
@@ -1735,7 +1735,7 @@ Var =
 (
  keyCodeMap = {8: 'Backspace', 9: 'Tab', 13: 'Enter', 16: 'Shift', 17: 'Ctrl', 18: 'Alt', 19: 'Pause', 20: 'Caps Lock', 27: 'Escape', 32: 'Space', 33: 'Page Up', 34: 'Page Down', 35: 'End', 36: 'Home', 37: 'Left', 38: 'Up', 39: 'Right', 40: 'Down', 42: 'Print Screen', 45: 'Insert', 46: 'Delete', 48: '0', 49: '1', 50: '2', 51: '3', 52: '4', 53: '5', 54: '6', 55: '7', 56: '8', 57: '9', 65: 'A', 66: 'B', 67: 'C', 68: 'D', 69: 'E', 70: 'F', 71: 'G', 72: 'H', 73: 'I', 74: 'J', 75: 'K', 76: 'L', 77: 'M', 78: 'N', 79: 'O', 80: 'P', 81: 'Q', 82: 'R', 83: 'S', 84: 'T', 85: 'U', 86: 'V', 87: 'W', 88: 'X', 89: 'Y', 90: 'Z', 91: 'Windows', 93: 'Right Click', 96: 'Numpad 0', 97: 'Numpad 1', 98: 'Numpad 2', 99: 'Numpad 3', 100: 'Numpad 4', 101: 'Numpad 5', 102: 'Numpad 6', 103: 'Numpad 7', 104: 'Numpad 8', 105: 'Numpad 9', 106: 'Numpad *', 107: 'Numpad +', 109: 'Numpad -', 110: 'Numpad .', 111: 'Numpad /', 112: 'F1', 113: 'F2', 114: 'F3', 115: 'F4', 116: 'F5', 117: 'F6', 118: 'F7', 119: 'F8', 120: 'F9', 121: 'F10', 122: 'F11', 123: 'F12', 144: 'Num Lock', 145: 'Scroll Lock', 182: 'My Computer', 183: 'My Calculator', 186: ';', 187: '=', 188: ',', 189: '-', 190: '.', 191: '/', 192: '`', 219: '[', 220: '\\', 221: ']', 222: '\''};
  /**
- * @desc ¸ù¾İkeycode»ñµÃ¼üÃû
+ * @desc æ ¹æ®keycodeè·å¾—é”®å
  * @param  {Number} keycode 
  * @return {String}
  */
@@ -1759,21 +1759,21 @@ Var =
 (
 /**
  * 
- * @desc   ÏÖ½ğ¶î×ª´óĞ´
+ * @desc   ç°é‡‘é¢è½¬å¤§å†™
  * @param  {Number} n 
  * @return {String}
  */
 function digitUppercase(n) {
-    var fraction = ['½Ç', '·Ö'];
-    var digit = ['Áã', 'Ò¼', '·¡', 'Èş', 'ËÁ', 'Îé', 'Â½', 'Æâ', '°Æ', '¾Á'];
-    var unit = [['Ôª', 'Íò', 'ÒÚ'], ['', 'Ê°', '°Û', 'Çª']];
-    var head = n < 0 ? 'Ç·' : '';
+    var fraction = ['è§’', 'åˆ†'];
+    var digit = ['é›¶', 'å£¹', 'è´°', 'å', 'è‚†', 'ä¼', 'é™†', 'æŸ’', 'æŒ', 'ç–'];
+    var unit = [['å…ƒ', 'ä¸‡', 'äº¿'], ['', 'æ‹¾', 'ä½°', 'ä»Ÿ']];
+    var head = n < 0 ? 'æ¬ ' : '';
     n = Math.abs(n);
     var s = '';
     for (var i = 0; i < fraction.length; i++) {
-        s += (digit[Math.floor(n * 10 * Math.pow(10, i)) `% 10] + fraction[i]).replace(/Áã./, '');
+        s += (digit[Math.floor(n * 10 * Math.pow(10, i)) `% 10] + fraction[i]).replace(/é›¶./, '');
     }
-    s = s || 'Õû';
+    s = s || 'æ•´';
     n = Math.floor(n);
     for (var i = 0; i < unit[0].length && n > 0; i++) {
         var p = '';
@@ -1781,9 +1781,9 @@ function digitUppercase(n) {
             p = digit[n `% 10] + unit[1][j] + p;
             n = Math.floor(n / 10);
         }
-        s = p.replace(/(Áã.)*Áã$/, '').replace(/^$/, 'Áã') + unit[0][i] + s;
+        s = p.replace(/(é›¶.)*é›¶$/, '').replace(/^$/, 'é›¶') + unit[0][i] + s;
     }
-    return head + s.replace(/(Áã.)*ÁãÔª/, 'Ôª').replace(/(Áã.)+/g, 'Áã').replace(/^Õû$/, 'ÁãÔªÕû');
+    return head + s.replace(/(é›¶.)*é›¶å…ƒ/, 'å…ƒ').replace(/(é›¶.)+/g, 'é›¶').replace(/^æ•´$/, 'é›¶å…ƒæ•´');
 };
 )
 code(Var)
@@ -1793,7 +1793,7 @@ return
 Var = 
 (
 /**
- * @desc   ¸ñÊ½»¯${startTime}¾àÏÖÔÚµÄÒÑ¹ıÊ±¼ä
+ * @desc   æ ¼å¼åŒ–${startTime}è·ç°åœ¨çš„å·²è¿‡æ—¶é—´
  * @param  {Date} startTime 
  * @return {String}
  */
@@ -1805,12 +1805,12 @@ function formatPassTime(startTime) {
         min = parseInt(time / (1000 * 60)),
         month = parseInt(day / 30),
         year = parseInt(month / 12);
-    if (year) return year + "ÄêÇ°"
-    if (month) return month + "¸öÔÂÇ°"
-    if (day) return day + "ÌìÇ°"
-    if (hour) return hour + "Ğ¡Ê±Ç°"
-    if (min) return min + "·ÖÖÓÇ°"
-    else return '¸Õ¸Õ'
+    if (year) return year + "å¹´å‰"
+    if (month) return month + "ä¸ªæœˆå‰"
+    if (day) return day + "å¤©å‰"
+    if (hour) return hour + "å°æ—¶å‰"
+    if (min) return min + "åˆ†é’Ÿå‰"
+    else return 'åˆšåˆš'
 }
 )
 code(Var)
@@ -1821,17 +1821,17 @@ Var =
 (
 /**
  * 
- * @desc   ¸ñÊ½»¯ÏÖÔÚ¾à${endTime}µÄÊ£ÓàÊ±¼ä
+ * @desc   æ ¼å¼åŒ–ç°åœ¨è·${endTime}çš„å‰©ä½™æ—¶é—´
  * @param  {Date} endTime  
  * @return {String}
  */
 function formatRemainTime(endTime) {
     var startDate = new Date();
-    //¿ªÊ¼Ê±¼ä
+    //å¼€å§‹æ—¶é—´
     var endDate = new Date(endTime);
-    //½áÊøÊ±¼ä
+    //ç»“æŸæ—¶é—´
     var t = endDate.getTime() - startDate.getTime();
-    //Ê±¼ä²î
+    //æ—¶é—´å·®
     var d = 0,
         h = 0,
         m = 0,
@@ -1842,7 +1842,7 @@ function formatRemainTime(endTime) {
         m = Math.floor(t / 1000 / 60 `% 60);
         s = Math.floor(t / 1000 `% 60);
     }
-    return d + "Ìì " + h + "Ğ¡Ê± " + m + "·ÖÖÓ " + s + "Ãë";
+    return d + "å¤© " + h + "å°æ—¶ " + m + "åˆ†é’Ÿ " + s + "ç§’";
 }
 )
 code(Var)
@@ -1854,7 +1854,7 @@ Var =
 (
 /**
  * 
- * @desc   ¶ÔÏóĞòÁĞ»¯
+ * @desc   å¯¹è±¡åºåˆ—åŒ–
  * @param  {Object} obj 
  * @return {String}
  */
@@ -1881,8 +1881,8 @@ return
 Var = 
 (
 /**
- * »ñÈ¡100ÌìºóµÄÈÕ×Ó
- * ÓÃÀ´×ö¼Æ»®ÊÇ¼«ºÃµÄ
+ * è·å–100å¤©åçš„æ—¥å­
+ * ç”¨æ¥åšè®¡åˆ’æ˜¯æå¥½çš„
  */
 var d = new Date() 
 d.setDate(d.getDate() + 100)
@@ -1896,24 +1896,24 @@ Var =
 (
 /**
  * @func
- * @desc jsonpµÄ»ù±¾Ê¹ÓÃº¯Êı
+ * @desc jsonpçš„åŸºæœ¬ä½¿ç”¨å‡½æ•°
  * @params {object} urlObj
- * @params {string} urlObj.url - jsonpµÄÇëÇóµØÖ·
- * @params {string} urlObj.jsonpCallback - jsonpµÄ»Øµ÷º¯ÊıÃüÃû
- * @params {function} callback - ÒªÖ´ĞĞµÄ»Øµ÷º¯Êı
+ * @params {string} urlObj.url - jsonpçš„è¯·æ±‚åœ°å€
+ * @params {string} urlObj.jsonpCallback - jsonpçš„å›è°ƒå‡½æ•°å‘½å
+ * @params {function} callback - è¦æ‰§è¡Œçš„å›è°ƒå‡½æ•°
  */
 function jsonp(urlObj, callback) {
     let url = urlObj.url;
     let callbackName = urlObj.jsonpCallback;
 
-    // ÏÈ¶¨ÒåÒ»¸öÈ«¾Öº¯Êı£¬¹©jsonpµ÷ÓÃ
+    // å…ˆå®šä¹‰ä¸€ä¸ªå…¨å±€å‡½æ•°ï¼Œä¾›jsonpè°ƒç”¨
     window[callbackName] = function(data) {
         window[callbackName] = undefined;
         document.body.removeChild(script);
         callback(data);
     };
 
-    // jsonpµÄÔ­Àí£¬²åÈëÒ»¸öscript±êÇ©£¬²¢ÇÒÖ´ĞĞÉÏÃæµÄÈ«¾Öº¯Êı
+    // jsonpçš„åŸç†ï¼Œæ’å…¥ä¸€ä¸ªscriptæ ‡ç­¾ï¼Œå¹¶ä¸”æ‰§è¡Œä¸Šé¢çš„å…¨å±€å‡½æ•°
     let script = document.createElement('script');
     script.src = url;
     document.body.appendChild(script);
@@ -1930,16 +1930,16 @@ Var =
 (
 const memoized = fn => {
 	const lookupTable = {};
-	// setInterval( () => console.log(lookupTable) , 1000); // ¿ÉÒÔÍ¨¹ı½âÊÍÕâ¸öÀ´¹Û²ì»º´æµÄ±ä»¯
+	// setInterval( () => console.log(lookupTable) , 1000); // å¯ä»¥é€šè¿‡è§£é‡Šè¿™ä¸ªæ¥è§‚å¯Ÿç¼“å­˜çš„å˜åŒ–
 	return arg => lookupTable[arg] || (lookupTable[arg] = fn(arg));
 }
 
-// ½×³ËµÄdemo
+// é˜¶ä¹˜çš„demo
 let fastFactorial = memoized(n => {
 	if (n === 0) {
 		return 1;
 	}
-	// ÕâÊÇÒ»¸öµİ¹é£¬²¢ÇÒÃ¿Ò»´Îµİ¹é¶¼¾ßÓĞ»º´æ¹ı³Ì
+	// è¿™æ˜¯ä¸€ä¸ªé€’å½’ï¼Œå¹¶ä¸”æ¯ä¸€æ¬¡é€’å½’éƒ½å…·æœ‰ç¼“å­˜è¿‡ç¨‹
 	return n * fastFactorial(n -1);
 });
 
@@ -2039,9 +2039,9 @@ getProxyList().then(function (proxyList) {
                 console.error("fail", err.message) 
             } else {
                 try {
-                    // ½« buffer ×ª»¯Îª×Ö·û´®
+                    // å°† buffer è½¬åŒ–ä¸ºå­—ç¬¦ä¸²
                     body = body.toString();
-                    // ĞòÁĞ»¯
+                    // åºåˆ—åŒ–
                     body = eval('(' + body + ')')
                     console.log("success", body.address, proxyurl);
                 } catch(err) {
@@ -2076,25 +2076,25 @@ return
 ::maopaopaixu::
 Var = 
 (
-// Ã°ÅİÅÅĞò O(N^2 )
-// ´ıÅÅĞòµÄÊı×é
+// å†’æ³¡æ’åº O(N^2 )
+// å¾…æ’åºçš„æ•°ç»„
 var arr = [8, 5,5,3,2]
 
-// ×îÍâ²¿µÄÑ­»·ÆäÊµÃ»Ê²Ã´²ÎÓëÊ²Ã´×÷Îª¡£
-// ÖÁÓÚÎªÊ²Ã´Òª-1 ÆäÊµºÜÈİÒ×Àí½â¡£ÒòÎª×îºóÒ»´ÎµÄÊ±ºòÊÇ²»ĞèÒªÓë×Ô¼º±È½ÏµÄ¡£ËùÒÔÈÆ¹ıÁË
-// µ±È»Äã¼õ²»¼õºÃÏñÒ²Ã»Ê²Ã´Çø±ğ¡£Ö»ÊÇ¼õÉÙ´ÎÊıÀ´ÓÅ»¯°ÕÁË
+// æœ€å¤–éƒ¨çš„å¾ªç¯å…¶å®æ²¡ä»€ä¹ˆå‚ä¸ä»€ä¹ˆä½œä¸ºã€‚
+// è‡³äºä¸ºä»€ä¹ˆè¦-1 å…¶å®å¾ˆå®¹æ˜“ç†è§£ã€‚å› ä¸ºæœ€åä¸€æ¬¡çš„æ—¶å€™æ˜¯ä¸éœ€è¦ä¸è‡ªå·±æ¯”è¾ƒçš„ã€‚æ‰€ä»¥ç»•è¿‡äº†
+// å½“ç„¶ä½ å‡ä¸å‡å¥½åƒä¹Ÿæ²¡ä»€ä¹ˆåŒºåˆ«ã€‚åªæ˜¯å‡å°‘æ¬¡æ•°æ¥ä¼˜åŒ–ç½¢äº†
 for (var i = 0;i < arr.length - 1; i++) {
-    // ÖØµãÏëÇå³şÕâÀïÎªÊ²Ã´Òª-i¡£ÆäÊµÒ²ºÜ¼òµ¥£¬Ã¿Ò»´ÎÂÖ»Ø£¬¶¼»á°Ñ×î´ó£¨Ğ¡£©ÊıÈûµ½×îºó¡£
-    // ËùÒÔÏÂ´Î¾Í²»±ØÈ¥±È½Ï×îºóÒ»Î»ÁË¡£Í¬Àí£¬Äã¼õ²»¼õ¶¼ÎŞËùÎ½¡£Ö»ÊÇÓÅ»¯¶øÒÑ¡£µ«Õâ¸öÓÅ»¯µÄ·ù¶È±È½Ï´ó
+    // é‡ç‚¹æƒ³æ¸…æ¥šè¿™é‡Œä¸ºä»€ä¹ˆè¦-iã€‚å…¶å®ä¹Ÿå¾ˆç®€å•ï¼Œæ¯ä¸€æ¬¡è½®å›ï¼Œéƒ½ä¼šæŠŠæœ€å¤§ï¼ˆå°ï¼‰æ•°å¡åˆ°æœ€åã€‚
+    // æ‰€ä»¥ä¸‹æ¬¡å°±ä¸å¿…å»æ¯”è¾ƒæœ€åä¸€ä½äº†ã€‚åŒç†ï¼Œä½ å‡ä¸å‡éƒ½æ— æ‰€è°“ã€‚åªæ˜¯ä¼˜åŒ–è€Œå·²ã€‚ä½†è¿™ä¸ªä¼˜åŒ–çš„å¹…åº¦æ¯”è¾ƒå¤§
     for (var j = 0; j < arr.length - i; j++) {
-        // ÕâÀïµÄ±È´óĞ¡ÅĞ¶Ï¾ö¶¨ÅÅĞòÊÇµ¹Ğò»¹ÊÇÕıĞò
+        // è¿™é‡Œçš„æ¯”å¤§å°åˆ¤æ–­å†³å®šæ’åºæ˜¯å€’åºè¿˜æ˜¯æ­£åº
         if (arr[j] > arr[j+1]) {
-            // ÒÔÏÂ´úÂëÖ»ÊÇÆÕÍ¨µÄ½»»»±äÁ¿Âß¼­¡£Ã»Ê²Ã´ºÃËµµÄ¡£
-            // Èç¹ûÕæÒªËµµÄ»°£¬Ö»ÄÜËµÎŞÂÛÁÙÊ±±äÁ¿´æ´¢µÄÊÇjµÄÖµ»¹ÊÇj + 1µÄÖµ¶¼ÊÇ¿ÉÒÔµÄ
+            // ä»¥ä¸‹ä»£ç åªæ˜¯æ™®é€šçš„äº¤æ¢å˜é‡é€»è¾‘ã€‚æ²¡ä»€ä¹ˆå¥½è¯´çš„ã€‚
+            // å¦‚æœçœŸè¦è¯´çš„è¯ï¼Œåªèƒ½è¯´æ— è®ºä¸´æ—¶å˜é‡å­˜å‚¨çš„æ˜¯jçš„å€¼è¿˜æ˜¯j + 1çš„å€¼éƒ½æ˜¯å¯ä»¥çš„
             var temp = arr[j + 1]
             arr[j + 1] = arr[j]
             arr[j] = temp
-¡¡¡¡¡¡¡¡¡¡¡¡¡¡// [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]] // ES6dµÄÓï·¨£¬¿ÉÖ±½Ó´úÌæÉÏÃæ3ĞĞ´úÂë
+ã€€ã€€ã€€ã€€ã€€ã€€ã€€// [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]] // ES6dçš„è¯­æ³•ï¼Œå¯ç›´æ¥ä»£æ›¿ä¸Šé¢3è¡Œä»£ç 
         }
     }
 }
@@ -2102,11 +2102,11 @@ for (var i = 0;i < arr.length - 1; i++) {
 console.log(arr)
 
 /*
-¸ÃÅÅĞò·¨ÃûÎª£ºÃ°ÅİÅÅĞò·¨
-Ë¼Â·¶øÑÔ¼¸ºõÃ»ÓĞÄÑµã£¬ÈËÈË¶¼ÄÜÀí½â¡£µ«ÕæÒª¶¯ÊÖĞ´µÄÊ±ºò£¬È´×ÜÓĞĞ´²»³ö»òÕßÏë²»³öµÄÇé¿ö¡£
-Ô­Òò¾ÍÔÚÓÚÃ»ÓĞ¶àĞ´£¬Ğ´ÍêÒ²Òª¿´¿´Ì×Â·¡£
-Ë«ÖØÑ­»·£¬ÒÔ¼°ÄÇĞ©¿ÉÓĞ¿ÉÎŞµÄ-1 ºÍ -i
-ÒÔ¼°×¢ÒâÍâ²ãµÄÑ­»·Ã»ÓĞ²ÎÓë¼ÆËãµÄ×÷Îª¡£Ö»ÓĞÄÚ´æµÄjÑ­»·½øĞĞÁË±È½Ï»ò½»»»¶øÒÑ
+è¯¥æ’åºæ³•åä¸ºï¼šå†’æ³¡æ’åºæ³•
+æ€è·¯è€Œè¨€å‡ ä¹æ²¡æœ‰éš¾ç‚¹ï¼Œäººäººéƒ½èƒ½ç†è§£ã€‚ä½†çœŸè¦åŠ¨æ‰‹å†™çš„æ—¶å€™ï¼Œå´æ€»æœ‰å†™ä¸å‡ºæˆ–è€…æƒ³ä¸å‡ºçš„æƒ…å†µã€‚
+åŸå› å°±åœ¨äºæ²¡æœ‰å¤šå†™ï¼Œå†™å®Œä¹Ÿè¦çœ‹çœ‹å¥—è·¯ã€‚
+åŒé‡å¾ªç¯ï¼Œä»¥åŠé‚£äº›å¯æœ‰å¯æ— çš„-1 å’Œ -i
+ä»¥åŠæ³¨æ„å¤–å±‚çš„å¾ªç¯æ²¡æœ‰å‚ä¸è®¡ç®—çš„ä½œä¸ºã€‚åªæœ‰å†…å­˜çš„jå¾ªç¯è¿›è¡Œäº†æ¯”è¾ƒæˆ–äº¤æ¢è€Œå·²
 */
 )
 code(Var)
@@ -2116,40 +2116,40 @@ return
 ::fastpaixu::
 Var = 
 (
-// ´ıÅÅĞòµÄÊı×é
+// å¾…æ’åºçš„æ•°ç»„
 var a = [8, 5,5,3,2, 11,35,23,9]
 
 function quicksort (left_index, right_index) {
-    // Òì³£Çé¿ö
+    // å¼‚å¸¸æƒ…å†µ
     if (left_index > right_index) return;
 
-    // »ù×¼Êı£¬ÆäÊµ¾ÍÊÇ°ÑÊı×éÖĞ×î×ó±ßµÄÊıÄÃÀ´ÅĞ¶ÏÃ»Ê²Ã´
+    // åŸºå‡†æ•°ï¼Œå…¶å®å°±æ˜¯æŠŠæ•°ç»„ä¸­æœ€å·¦è¾¹çš„æ•°æ‹¿æ¥åˆ¤æ–­æ²¡ä»€ä¹ˆ
     var temp = a[left_index];
 
     var i = left_index;
     var j = right_index;
 
-    // Ò»Ö±Ñ­»·£¬Ö±µ½ËüÃÇÅöÃæ
+    // ä¸€ç›´å¾ªç¯ï¼Œç›´åˆ°å®ƒä»¬ç¢°é¢
     while (i != j) {
-        // jÉÚ±øÓÉÓÒÍù×óÇ°ĞĞ£¬ÎªÁËÑ°ÕÒ±È»ù×¼ÊıĞ¡µÄÖµ
+        // jå“¨å…µç”±å³å¾€å·¦å‰è¡Œï¼Œä¸ºäº†å¯»æ‰¾æ¯”åŸºå‡†æ•°å°çš„å€¼
         while (a[j] >= temp && i < j) j--;
-        // iÉÚ±øÓÉ×óÍùÓÒÇ°ĞĞ£¬ÎªÁËÑ°ÕÒ±È»ù×¼Êı´óµÄÖµ
+        // iå“¨å…µç”±å·¦å¾€å³å‰è¡Œï¼Œä¸ºäº†å¯»æ‰¾æ¯”åŸºå‡†æ•°å¤§çš„å€¼
         while (a[i] <= temp && i < j) i++;
 
-        // ÕâÀïÖØÒªµÄÁ½µãÊÇ£º
-        // 1¡¢±ØĞëÊÇÓÒÍù×óÏÈ×ß¡£
-        // 2¡¢i±ØĞëĞ¡ÓÚj¡£Èç¹ûËûÃÇÅöÃæµÄ»°£¨i===j£©°´ÕÕÓÎÏ·¹æÔò±ØĞëÍ£Ö¹Ç°ĞĞ¡£
+        // è¿™é‡Œé‡è¦çš„ä¸¤ç‚¹æ˜¯ï¼š
+        // 1ã€å¿…é¡»æ˜¯å³å¾€å·¦å…ˆèµ°ã€‚
+        // 2ã€iå¿…é¡»å°äºjã€‚å¦‚æœä»–ä»¬ç¢°é¢çš„è¯ï¼ˆi===jï¼‰æŒ‰ç…§æ¸¸æˆè§„åˆ™å¿…é¡»åœæ­¢å‰è¡Œã€‚
         if (i < j) {
             var t = a[i];
             a[i] = a[j];
             a[j] = t;
         }
     }
-    // ½»»»»ù×¼ÊıºÍÅöÃæµÄÎ»ÖÃµÄÊıÖµ
-    a[left_index] = a[i]; // ÆäÊµÕâÀïa[i]»òÕßa[j]¶¼¿ÉÒÔ¡£ ·´Õı¾ÍÊÇÒªºÍ»ù×¼Êı½»»»Î»ÖÃ¡£ÕâÒ²ÊÇ±¾ÅÅĞò×î¹Ø¼üµÄµØ·½
+    // äº¤æ¢åŸºå‡†æ•°å’Œç¢°é¢çš„ä½ç½®çš„æ•°å€¼
+    a[left_index] = a[i]; // å…¶å®è¿™é‡Œa[i]æˆ–è€…a[j]éƒ½å¯ä»¥ã€‚ åæ­£å°±æ˜¯è¦å’ŒåŸºå‡†æ•°äº¤æ¢ä½ç½®ã€‚è¿™ä¹Ÿæ˜¯æœ¬æ’åºæœ€å…³é”®çš„åœ°æ–¹
     a[i] = temp;                
 
-    // µİ¹é¼ÌĞøÍ¬ÑùµÄÓÎÏ·¹æÔò,ÏÂÃæ»¹ÊÇÒ»Ñù£¬ÓÃiºÍj¶¼¿ÉÒÔ£¬·´ÕıËûÃÇÅöÃæÁËÎ»ÖÃÊÇÒ»ÑùµÄ
+    // é€’å½’ç»§ç»­åŒæ ·çš„æ¸¸æˆè§„åˆ™,ä¸‹é¢è¿˜æ˜¯ä¸€æ ·ï¼Œç”¨iå’Œjéƒ½å¯ä»¥ï¼Œåæ­£ä»–ä»¬ç¢°é¢äº†ä½ç½®æ˜¯ä¸€æ ·çš„
     quicksort(left_index, i - 1);
     quicksort(i+1, right_index);
 }
@@ -2183,14 +2183,14 @@ return
 Var = 
 (
 /**
- * @desc  ÉèÖÃCookie
+ * @desc  è®¾ç½®Cookie
  * @param {String} name
  * @param {String} value
  * @param {Number} expires
  */
 function setCookie(name, value, expires) {
     var cookieString = name + "=" + escape(value);
-    //ÅĞ”àÊÇ·ñÔOÖÃß^ÆÚ•rég,0´ú±íêPé]gÓ[Æ÷•rÊ§Ğ§
+    //åˆ¤æ–·æ˜¯å¦è¨­ç½®éæœŸæ™‚é–“,0ä»£è¡¨é—œé–‰ç€è¦½å™¨æ™‚å¤±æ•ˆ
     if (expires > 0) {
         var date = new Date();
         date.setTime(date.getTime() + expires * 1000);
@@ -2200,7 +2200,7 @@ function setCookie(name, value, expires) {
 }
 
 /**
- * @desc ¸ù¾İname¶ÁÈ¡cookie
+ * @desc æ ¹æ®nameè¯»å–cookie
  * @param  {String} name
  * @return {String}
  */
@@ -2216,7 +2216,7 @@ function getCookie(name) {
 }
 
 /**
- * @desc ¸ù¾İnameĞŞ¸Äcookie
+ * @desc æ ¹æ®nameä¿®æ”¹cookie
  * @param  {String} name
  * @param  {String} value
  * @param  {Number} expires 
@@ -2232,11 +2232,11 @@ function editCookie(name, value, expires){
 }
 
 /**
- * @desc ¸ù¾İnameÉ¾³ıcookie
+ * @desc æ ¹æ®nameåˆ é™¤cookie
  * @param  {String} name
  */
 function removeCookie(name) {
-    // ÉèÖÃÒÑ¹ıÆÚ£¬ÏµÍ³»áÁ¢¿ÌÉ¾³ıcookie
+    // è®¾ç½®å·²è¿‡æœŸï¼Œç³»ç»Ÿä¼šç«‹åˆ»åˆ é™¤cookie
     setCookie(name, '1', -1);
 }
 )
@@ -2248,28 +2248,28 @@ return
 Var = 
 (
 /**
- * é_Ê¼µ¹Ó‹•r
+ * é–‹å§‹å€’è¨ˆæ™‚
  * http://candy.dragonvein.io/frontend/web/site/signup
  * @param {jQuery DOM} $dom
- * <input type='button' id='second' value = '«@È¡ò×C´a | Get SMS Code'/>
+ * <input type='button' id='second' value = 'ç²å–é©—è­‰ç¢¼ | Get SMS Code'/>
  */
 $(function () {
-	// ´¥·¢°´Å¥
+	// è§¦å‘æŒ‰é’®
 	$("#second").click(function () {
 	    sendCode();
 	});
-	// «@È¡cookieÖµ
+	// ç²å–cookieå€¼
 	v = getCookie("secondsremained_login") ? getCookie("secondsremained_login") : 0;
 	if (v > 0) {
-		 // é_Ê¼µ¹Ó‹•r
+		 // é–‹å§‹å€’è¨ˆæ™‚
 	    countDown($("#second")); 
 	}
 })
 
 function sendCode () {
-	// ÉèÖÃÄ¬ÈÏÊ±¼ä
+	// è®¾ç½®é»˜è®¤æ—¶é—´
 	setCookie('secondsremained_login', '60', 60)
-	// é_Ê¼µ¹Ó‹•r
+	// é–‹å§‹å€’è¨ˆæ™‚
     countDown($("#second")); 
 }
 
@@ -2278,15 +2278,15 @@ function countDown ($dom) {
 	(function settime () {
 		if (countdown == 0) {
 		    $dom.removeAttr('disabled');
-		    $dom.val('«@È¡ò×C´a | Get SMS Code');
+		    $dom.val('ç²å–é©—è­‰ç¢¼ | Get SMS Code');
 		    return;
 		} else {
 		    $dom.attr('disabled', true);
-		    $dom.val(countdown + 'ÃëááÖØ°l | Waiting ' + countdown + 's');
+		    $dom.val(countdown + 'ç§’å¾Œé‡ç™¼ | Waiting ' + countdown + 's');
 		    countdown--;
 		    editCookie('secondsremained_login', countdown, countdown + 1);
 		}
-		setTimeout(function() { settime($dom) },1000) //Ã¿1000ºÁÃëˆÌĞĞÒ¼´Î
+		setTimeout(function() { settime($dom) },1000) //æ¯1000æ¯«ç§’åŸ·è¡Œå£¹æ¬¡
 	}());
 }
 )
@@ -2313,12 +2313,12 @@ MayBe.prototype.map = function (fn) {
 	return this.isNothing() ? MayBe.of(null) : MayBe.of(fn(this.value));
 }
 
-// demo1£º MayBe?{value: "Mr. GOOGLE"}
+// demo1ï¼š MayBe?{value: "Mr. GOOGLE"}
 MayBe.of('Google')
      .map(_ => _.toUpperCase())
      .map(_ => "Mr. " + _)
 
-// demo2£º MayBe?{value: null}
+// demo2ï¼š MayBe?{value: null}
 MayBe.of('Google')
      .map(_ => undefined)
      .map(_ => "Mr. " + _)
@@ -2354,7 +2354,7 @@ function *main() {
 
 gen = main();
 gen.next();  // {value: undefined, done: false}
-// 1ÃëºóÊä³ö£º one two
+// 1ç§’åè¾“å‡ºï¼š one two
 )
 code(Var)
 return
@@ -2366,13 +2366,13 @@ function *gen() {
     return 'first generator';
 }
 
-// ÓĞµãÀàËÆÀàµÄÊµÀı»¯¹ı³Ì
+// æœ‰ç‚¹ç±»ä¼¼ç±»çš„å®ä¾‹åŒ–è¿‡ç¨‹
 let generatorResult = gen()
 
-// ºËĞÄ·½·¨next
+// æ ¸å¿ƒæ–¹æ³•next
 generatorResult.next() // {value: "first generator", done: true}
 
-// Generator ÈçÍ¬Ò»¸öĞòÁĞ£ºÒ»µ©ĞòÁĞÖĞµÄÖµ±»Ïû·Ñ£¬Äã¾Í²»ÄÜÔÙ´ÎÏû·ÑËü¡£
+// Generator å¦‚åŒä¸€ä¸ªåºåˆ—ï¼šä¸€æ—¦åºåˆ—ä¸­çš„å€¼è¢«æ¶ˆè´¹ï¼Œä½ å°±ä¸èƒ½å†æ¬¡æ¶ˆè´¹å®ƒã€‚
 generatorResult.next() // undefined
 )
 code(Var)
@@ -2429,14 +2429,14 @@ genResult.next()
 genResult.next('Mr. ')
 genResult.next('Right') // Mr. Right
 
-// ½âÊÍÒ»ÏÂ£¬ÓÉÓÚyield¿ÉÒÔÀí½âÎªÔİÍ£Æ÷¡£
-// µ±µÚÒ»´Îµ÷ÓÃ next Ê±£¬´úÂë½«·µ»Ø²¢ÇÒÔİÍ£ÓÚ´Ë£º    var firstname = yield;
-// ÓĞÈ¤µÄÊÂÇé·¢ÉúÔÚµÚ¶ş´Îµ÷ÓÃ next Ê±£º genResult.next('Mr. ')¡£
-// ´ËÊ±ÎÒÃÇÏò next µ÷ÓÃ´«ÈëÁËÖµ£¡Generator½«´ÓÉÏÒ»´ÎÔİÍ£ÖĞ»Ö¸´£¬²¢ÇÒ yield½«±» "Mr. " Ìæ»»¡£Òò´ËfirstnameµÄÖµ±ä³É'Mr. '
-// È»ºó¼ÌĞøÖ´ĞĞ£¬¶øÓÖÓöµ½yield´¦ÔÙ´ÎÔİÍ££º genResult.next('Right')
-// µÚÈı´Îµ÷ÓÃ next£º genResult.next('Right') 
-// Í¬Ç°ÃæÒ»Ñù£¬´«ÈëµÄ 'Right' ½«Ìæ»» yield£¬²¢ÔÚ¸³ÖµÍêºó¼ÌĞøÖ´ĞĞ¡£
-// ÓÉÓÚÃ»ÓĞyieldÁË¡£ËùÒÔÕı³£Ö´ĞĞÁË: genResult.next('Right') // Mr. Right
+// è§£é‡Šä¸€ä¸‹ï¼Œç”±äºyieldå¯ä»¥ç†è§£ä¸ºæš‚åœå™¨ã€‚
+// å½“ç¬¬ä¸€æ¬¡è°ƒç”¨ next æ—¶ï¼Œä»£ç å°†è¿”å›å¹¶ä¸”æš‚åœäºæ­¤ï¼š    var firstname = yield;
+// æœ‰è¶£çš„äº‹æƒ…å‘ç”Ÿåœ¨ç¬¬äºŒæ¬¡è°ƒç”¨ next æ—¶ï¼š genResult.next('Mr. ')ã€‚
+// æ­¤æ—¶æˆ‘ä»¬å‘ next è°ƒç”¨ä¼ å…¥äº†å€¼ï¼Generatorå°†ä»ä¸Šä¸€æ¬¡æš‚åœä¸­æ¢å¤ï¼Œå¹¶ä¸” yieldå°†è¢« "Mr. " æ›¿æ¢ã€‚å› æ­¤firstnameçš„å€¼å˜æˆ'Mr. '
+// ç„¶åç»§ç»­æ‰§è¡Œï¼Œè€Œåˆé‡åˆ°yieldå¤„å†æ¬¡æš‚åœï¼š genResult.next('Right')
+// ç¬¬ä¸‰æ¬¡è°ƒç”¨ nextï¼š genResult.next('Right') 
+// åŒå‰é¢ä¸€æ ·ï¼Œä¼ å…¥çš„ 'Right' å°†æ›¿æ¢ yieldï¼Œå¹¶åœ¨èµ‹å€¼å®Œåç»§ç»­æ‰§è¡Œã€‚
+// ç”±äºæ²¡æœ‰yieldäº†ã€‚æ‰€ä»¥æ­£å¸¸æ‰§è¡Œäº†: genResult.next('Right') // Mr. Right
 )
 code(Var)
 return
@@ -2444,13 +2444,13 @@ return
 ::curry::
 Var =
 (
-// ¿ÆÀï»¯ÊÇ°ÑÒ»¸ö¶à²ÎÊıº¯Êı×ª»¯ÎªÒ»¸öÇ¶Ì×µÄÒ»Ôªº¯ÊıµÄ¹ı³Ì¡£
-// ¼òµ¥µÄËµ¾ÍÊÇ½«º¯ÊıµÄ²ÎÊı£¬±äÎª¶à´ÎÈë²Î¡£
+// ç§‘é‡ŒåŒ–æ˜¯æŠŠä¸€ä¸ªå¤šå‚æ•°å‡½æ•°è½¬åŒ–ä¸ºä¸€ä¸ªåµŒå¥—çš„ä¸€å…ƒå‡½æ•°çš„è¿‡ç¨‹ã€‚
+// ç®€å•çš„è¯´å°±æ˜¯å°†å‡½æ•°çš„å‚æ•°ï¼Œå˜ä¸ºå¤šæ¬¡å…¥å‚ã€‚
 const curry = (fn, ...args) => fn.length <= args.length ? fn(...args) : curry.bind(null, fn, ...args);
-// ÆäÊµÔ­ÀíºÜÈİÒ×¿´µÃ¶®£¬¾ÍÊÇÔÚ²ÎÊıÎ´ËÑ¼¯ÍêÉÆÖ®Ç°£¬Ö´ĞĞµÄ¶¼ÊÇ curry º¯Êı±¾Éí£¬¶øcurryº¯ÊıºËĞÄÄ¿µÄ¾ÍÊÇÔÚËÑ¼¯Ô­º¯ÊıµÄ²ÎÊıµÄ¹ı³Ì¡£Õâ¸ö¹ı³Ì¾ÍÊÇ¿¿bindÀ´ÊµÏÖµÄËÑ¼¯£¬½áºÏ...argsµÄÌØĞÔÀ´µü´ú¡£rgsµÄÌØĞÔÀ´µü´ú¡£
+// å…¶å®åŸç†å¾ˆå®¹æ˜“çœ‹å¾—æ‡‚ï¼Œå°±æ˜¯åœ¨å‚æ•°æœªæœé›†å®Œå–„ä¹‹å‰ï¼Œæ‰§è¡Œçš„éƒ½æ˜¯ curry å‡½æ•°æœ¬èº«ï¼Œè€Œcurryå‡½æ•°æ ¸å¿ƒç›®çš„å°±æ˜¯åœ¨æœé›†åŸå‡½æ•°çš„å‚æ•°çš„è¿‡ç¨‹ã€‚è¿™ä¸ªè¿‡ç¨‹å°±æ˜¯é bindæ¥å®ç°çš„æœé›†ï¼Œç»“åˆ...argsçš„ç‰¹æ€§æ¥è¿­ä»£ã€‚rgsçš„ç‰¹æ€§æ¥è¿­ä»£ã€‚
 // const multiply = (x, y, z) => x * y * z
 // multiply.bind(null, 1, 2)(3) // 6
-// µ±ËÑ¼¯Íê³ÉÊ±£¬¾Í¿ÉÒÔÖ´ĞĞÔ­º¯ÊıÁË¡£
+// å½“æœé›†å®Œæˆæ—¶ï¼Œå°±å¯ä»¥æ‰§è¡ŒåŸå‡½æ•°äº†ã€‚
   
 const add = (x, y) => x + y;
 const curryadd = curry(add);
@@ -2497,10 +2497,10 @@ return
 Var =
 (
 /**
- * °ó¶¨³¤°´ÊÂ¼ş£¬Í¬Ê±Ö§³Ö°ó¶¨µã»÷ÊÂ¼ş
- * @param {dom} dom ĞèÒª°ó¶¨µÄdomÔªËØ
- * @param {fn} longPressCallBack ³¤°´ÊÂ¼şÖ´ĞĞµÄ·½·¨
- * @param {fn} touchCallBack µã»÷ÊÂ¼şÖ´ĞĞµÄ·½·¨
+ * ç»‘å®šé•¿æŒ‰äº‹ä»¶ï¼ŒåŒæ—¶æ”¯æŒç»‘å®šç‚¹å‡»äº‹ä»¶
+ * @param {dom} dom éœ€è¦ç»‘å®šçš„domå…ƒç´ 
+ * @param {fn} longPressCallBack é•¿æŒ‰äº‹ä»¶æ‰§è¡Œçš„æ–¹æ³•
+ * @param {fn} touchCallBack ç‚¹å‡»äº‹ä»¶æ‰§è¡Œçš„æ–¹æ³•
  */
 var longPress = function (dom, longPressCallBack, touchCallBack) {
 	var timer = undefined;
@@ -2526,7 +2526,7 @@ var longPress = function (dom, longPressCallBack, touchCallBack) {
     }
 
     if (dom.length) {
-	    // Ö§³Ö°ó¶¨¶à¸öÔªËØ
+	    // æ”¯æŒç»‘å®šå¤šä¸ªå…ƒç´ 
 	  	for (var i = 0; i < dom.length; i++) {
 	        setEvent(dom[i])
         }

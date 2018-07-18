@@ -1,12 +1,12 @@
-::phpmatch::
+ï»¿::phpmatch::
 ::php_match::
 ::preg_match::
 ::php-match::
 Var = 
 (
-// ¹ıÂËÖĞÎÄ
+// è¿‡æ»¤ä¸­æ–‡
 function getEn2 ($str) {
-    // Èç¹û´æÔÚÖĞÎÄ£¬ÄÇÃ´Ö»È¡Ó¢ÎÄ²¢ÇÒ·µ»Ø
+    // å¦‚æœå­˜åœ¨ä¸­æ–‡ï¼Œé‚£ä¹ˆåªå–è‹±æ–‡å¹¶ä¸”è¿”å›
     if (preg_match('~[\x{4e00}-\x{9fa5}]+~u', $str)) {
         preg_match('/\[(.+?)\](\s|_)([a-zA-Z]+)/', $str, $pat_array);
         return $pat_array[count($pat_array) - 1];
@@ -90,7 +90,7 @@ return
 Var = 
 (
 define("CURL_TIMEOUT",   20); 
-//·¢ÆğÍøÂçÇëÇó
+//å‘èµ·ç½‘ç»œè¯·æ±‚
 function call($url, $args=null, $method="post", $testflag = 0, $timeout = CURL_TIMEOUT, $headers=array())
 {/*{{{*/
     $ret = false;

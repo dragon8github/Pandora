@@ -1,11 +1,11 @@
-; ´´½¨×¨ÊôÄ¿Â¼
+ï»¿; åˆ›å»ºä¸“å±ç›®å½•
 if !FileExist(".pandora")
 	FileCreateDir, .pandora
-	; ´´½¨»º´æÄ¿Â¼
+	; åˆ›å»ºç¼“å­˜ç›®å½•
 	if !FileExist(".pandora/.cache")
 		FileCreateDir, .pandora/.cache
 
-; ÆäÊµ²»Ó¦¸Ã·ÅÔÚÕâÀïµÄ£¬µ«²»ÖªµÀÎªÉ¶±ØĞë·ÅÔÚÕâÀï²ÅÉúĞ§
+; å…¶å®ä¸åº”è¯¥æ”¾åœ¨è¿™é‡Œçš„ï¼Œä½†ä¸çŸ¥é“ä¸ºå•¥å¿…é¡»æ”¾åœ¨è¿™é‡Œæ‰ç”Ÿæ•ˆ
 OnClipboardChange("ClipChanged")
 ClipChanged(Type) {
     try {
@@ -21,23 +21,23 @@ ClipChanged(Type) {
     }
 }
 
-; ÏÂÔØÄÚÈİ
-ajax(url, q:=false, text:="ÕıÔÚÎªÄãÏÂÔØ´úÂë£¬Çë±£³ÖÍøÂçË³³©")
+; ä¸‹è½½å†…å®¹
+ajax(url, q:=false, text:="æ­£åœ¨ä¸ºä½ ä¸‹è½½ä»£ç ï¼Œè¯·ä¿æŒç½‘ç»œé¡ºç•…")
 {
     whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
     whr.Open("GET", url, true)
     whr.Send()
     if (text != "") {
-        TrayTip, ÇëÉÔºó, % text, 20, 17
+        TrayTip, è¯·ç¨å, % text, 20, 17
     }   
     whr.WaitForResponse()
     
     
     if (q==false) {
         if (whr.ResponseText) {
-            TrayTip, ÏÂÔØ³É¹¦, £¨¤Å£ş3£ş£©¤Å¨q?¡« , 20, 17
+            TrayTip, ä¸‹è½½æˆåŠŸ, ï¼ˆã¥ï¿£3ï¿£ï¼‰ã¥â•­?ï½ , 20, 17
         } else {
-            TrayTip, ÎŞÄÚÈİ·µ»Ø, (£ş¦Å(#£ş)¡î¨t¨ro(£şÃó£ş///) , 20, 17
+            TrayTip, æ— å†…å®¹è¿”å›, (ï¿£Îµ(#ï¿£)â˜†â•°â•®o(ï¿£çš¿ï¿£///) , 20, 17
         }
     }
     
@@ -45,24 +45,24 @@ ajax(url, q:=false, text:="ÕıÔÚÎªÄãÏÂÔØ´úÂë£¬Çë±£³ÖÍøÂçË³³©")
 }
 
 
-; ÏÂÔØÄÚÈİ
-post(url, data, q:=false, text:="ÕıÔÚÎªÄãÏÂÔØ´úÂë£¬Çë±£³ÖÍøÂçË³³©")
+; ä¸‹è½½å†…å®¹
+post(url, data, q:=false, text:="æ­£åœ¨ä¸ºä½ ä¸‹è½½ä»£ç ï¼Œè¯·ä¿æŒç½‘ç»œé¡ºç•…")
 {
     whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
     whr.Open("POST", url, true)
     whr.SetRequestHeader("Content-Type", "application/json;charset=utf-8")
     whr.Send(data)
     if (text != "") {
-        TrayTip, ÇëÉÔºó, % text, 20, 17
+        TrayTip, è¯·ç¨å, % text, 20, 17
     }   
     whr.WaitForResponse()
     
     if (q==false) {
         
         if (whr.ResponseText) {
-            TrayTip, ÏÂÔØ³É¹¦, £¨¤Å£ş3£ş£©¤Å¨q?¡« , 20, 17
+            TrayTip, ä¸‹è½½æˆåŠŸ, ï¼ˆã¥ï¿£3ï¿£ï¼‰ã¥â•­?ï½ , 20, 17
         } else {
-            TrayTip, ÎŞÄÚÈİ·µ»Ø, (£ş¦Å(#£ş)¡î¨t¨ro(£şÃó£ş///) , 20, 17
+            TrayTip, æ— å†…å®¹è¿”å›, (ï¿£Îµ(#ï¿£)â˜†â•°â•®o(ï¿£çš¿ï¿£///) , 20, 17
         }
     }
     
@@ -71,35 +71,35 @@ post(url, data, q:=false, text:="ÕıÔÚÎªÄãÏÂÔØ´úÂë£¬Çë±£³ÖÍøÂçË³³©")
 
 
 
-; ¹Ø±ÕÊäÈë·¨
-; Ê¹ÓÃÊ¾Àı£ºSwitchIME(0x08040804)
-; Ê¹ÓÃÊ¾Àı£ºSwitchIME(0x04090409)
+; å…³é—­è¾“å…¥æ³•
+; ä½¿ç”¨ç¤ºä¾‹ï¼šSwitchIME(0x08040804)
+; ä½¿ç”¨ç¤ºä¾‹ï¼šSwitchIME(0x04090409)
 SwitchIME(dwLayout){
     HKL:=DllCall("LoadKeyboardLayout", Str, dwLayout, UInt, 1)
     ControlGetFocus,ctl,A
     SendMessage,0x50,0,HKL,%ctl%,A
 }
 
-; ¸´ÖÆğ¤Ìù´ó¶ÎÎÄ±¾
+; å¤åˆ¶é»è´´å¤§æ®µæ–‡æœ¬
 code(code)
 {
     tmp := Clipboard
     Clipboard := code
-    ; ÕâÀïÒ²ĞèÒªµÈ´ı£¬·ñÔòÓĞ¼¸ÂÊ³öÏÖğ¤Ìù²»³öµÄÇé¿ö£¬Èç¹û³öÏÖğ¤Ìù²»³öµÄÇé¿ö£¬¾Í³¢ÊÔµ÷´óÕâÀïµÄÊıÖµ°Ñ
+    ; è¿™é‡Œä¹Ÿéœ€è¦ç­‰å¾…ï¼Œå¦åˆ™æœ‰å‡ ç‡å‡ºç°é»è´´ä¸å‡ºçš„æƒ…å†µï¼Œå¦‚æœå‡ºç°é»è´´ä¸å‡ºçš„æƒ…å†µï¼Œå°±å°è¯•è°ƒå¤§è¿™é‡Œçš„æ•°å€¼æŠŠ
     Sleep, 40
     SendInput, ^+v
-    ; ÕâÀïÖÁÉÙĞèÒªµÈ´ı100m£¬Ô­Òò²»Ïê
+    ; è¿™é‡Œè‡³å°‘éœ€è¦ç­‰å¾…100mï¼ŒåŸå› ä¸è¯¦
     sleep, 100
     Clipboard := tmp
 }
 
-; »ñÈ¡µ±Ç°´°¿ÚµÄid£¬Ê¹ÓÃÊÇif WinActive("ahk_id 0x3d1362")
+; è·å–å½“å‰çª—å£çš„idï¼Œä½¿ç”¨æ˜¯if WinActive("ahk_id 0x3d1362")
 ; https://wyagd001.github.io/zh-cn/docs/misc/WinTitle.htm#ActiveWindow
 ::winid::
      Send, % WinExist("A")
 return
 
-; »ñÈ¡µ±Ç°´°¿ÚµÄclass£¬Ê¹ÓÃ·¶Î§½Ï¹ã
+; è·å–å½“å‰çª—å£çš„classï¼Œä½¿ç”¨èŒƒå›´è¾ƒå¹¿
 ; https://wyagd001.github.io/zh-cn/docs/commands/WinGetClass.htm
 ::winclass::
     WinGetClass, class, A

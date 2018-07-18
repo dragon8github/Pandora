@@ -1,4 +1,4 @@
-MenuHandler:
+ï»¿MenuHandler:
     SendRaw, % A_ThisMenuItem
 Return  
 
@@ -40,7 +40,7 @@ Var =
 (
 /**
  * say something ...
- * @param {*} ²ÎÊı ²ÎÊıËµÃ÷
+ * @param {*} å‚æ•° å‚æ•°è¯´æ˜
  */
 )
 code(Var)
@@ -95,7 +95,7 @@ return
         Menu, LifeMenu, Add, %this_life%, MenuHandlerlifeArray
     }
     Menu, LifeMenu, Show
-    ; ²»È»Ã¿´Î¶¼»áÌí¼Ó°×Ïß
+    ; ä¸ç„¶æ¯æ¬¡éƒ½ä¼šæ·»åŠ ç™½çº¿
     Menu, LifeMenu, DeleteAll
 return
 
@@ -189,7 +189,7 @@ return
     Send, lizhaohong@hongte.info
 return
 
-; ALT + R ÖØÆô½Å±¾
+; ALT + R é‡å¯è„šæœ¬
 !r::
     if WinActive("ahk_class SciTEWindow")
         Send, ^s
@@ -197,45 +197,45 @@ return
 Return
 
 ^!q::
-    ; µÚÒ»²½£¬½«µ±Ç°¼ôÇĞ°åµÄÄÚÈİ±£´æÆğÀ´£¬È»ºóÇå¿Õ
+    ; ç¬¬ä¸€æ­¥ï¼Œå°†å½“å‰å‰ªåˆ‡æ¿çš„å†…å®¹ä¿å­˜èµ·æ¥ï¼Œç„¶åæ¸…ç©º
     tmp := Clipboard
     Clipboard =
-    ; µÚ¶ş²½£¬¸´ÖÆµ±Ç°Ñ¡ÖĞÄÚÈİ
+    ; ç¬¬äºŒæ­¥ï¼Œå¤åˆ¶å½“å‰é€‰ä¸­å†…å®¹
     SendInput, ^c
     ClipWait, 2
     if (StrLen(Clipboard) >= 20) {
-        MsgBox, Çë²»Òª°Ñ´Ë¹¦ÄÜµ±×ö·­Òë»ú
+        MsgBox, è¯·ä¸è¦æŠŠæ­¤åŠŸèƒ½å½“åšç¿»è¯‘æœº
         return 
     }
-    ; °Ù¶È·­ÒëAPI
+    ; ç™¾åº¦ç¿»è¯‘API
     Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=tuofeng")
-    ; ğ¤Ìù½á¹û
+    ; é»è´´ç»“æœ
     code(Var)
-    ; ÕâÀï¿¼ÂÇ¼ôÇĞ°åÒªtmpµÄÊı¾İ£¬»¹ÊÇ·­ÒëµÄÊı¾İ¡£ÔİÊ±±£´æ·­Òë½á¹û°É
+    ; è¿™é‡Œè€ƒè™‘å‰ªåˆ‡æ¿è¦tmpçš„æ•°æ®ï¼Œè¿˜æ˜¯ç¿»è¯‘çš„æ•°æ®ã€‚æš‚æ—¶ä¿å­˜ç¿»è¯‘ç»“æœå§
     Clipboard := Var
 Return
 
 !q::
-    ; µÚÒ»²½£¬½«µ±Ç°¼ôÇĞ°åµÄÄÚÈİ±£´æÆğÀ´£¬È»ºóÇå¿Õ
+    ; ç¬¬ä¸€æ­¥ï¼Œå°†å½“å‰å‰ªåˆ‡æ¿çš„å†…å®¹ä¿å­˜èµ·æ¥ï¼Œç„¶åæ¸…ç©º
     tmp := Clipboard
     Clipboard =
-    ; µÚ¶ş²½£¬¸´ÖÆµ±Ç°Ñ¡ÖĞÄÚÈİ
+    ; ç¬¬äºŒæ­¥ï¼Œå¤åˆ¶å½“å‰é€‰ä¸­å†…å®¹
     SendInput, ^c
     ClipWait, 2
     if (StrLen(Clipboard) >= 20) {
-        MsgBox, Çë²»Òª°Ñ´Ë¹¦ÄÜµ±×ö·­Òë»ú
+        MsgBox, è¯·ä¸è¦æŠŠæ­¤åŠŸèƒ½å½“åšç¿»è¯‘æœº
         return 
     }
-    ; °Ù¶È·­ÒëAPI
+    ; ç™¾åº¦ç¿»è¯‘API
     Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=_", true)
-    TrayTip, ·­Òë³É¹¦, ·­Òë½á¹ûÎª£º %Var%, 20, 17
-    ; ÕâÀï¿¼ÂÇ¼ôÇĞ°åÒªtmpµÄÊı¾İ£¬»¹ÊÇ·­ÒëµÄÊı¾İ¡£ÔİÊ±±£´æ·­Òë½á¹û°É
+    TrayTip, ç¿»è¯‘æˆåŠŸ, ç¿»è¯‘ç»“æœä¸ºï¼š %Var%, 20, 17
+    ; è¿™é‡Œè€ƒè™‘å‰ªåˆ‡æ¿è¦tmpçš„æ•°æ®ï¼Œè¿˜æ˜¯ç¿»è¯‘çš„æ•°æ®ã€‚æš‚æ—¶ä¿å­˜ç¿»è¯‘ç»“æœå§
     Clipboard := Var
 Return
 
-; ×¥È¡²Ëµ¥
+; æŠ“å–èœå•
 +!c::  
-    ; ±ØĞëaddÒ»ÏÂ²Å¿ÉÒÔÊ¹ÓÃDeletaAll
+    ; å¿…é¡»addä¸€ä¸‹æ‰å¯ä»¥ä½¿ç”¨DeletaAll
     Menu, MyMenu, add
     Menu, MyMenu, DeleteAll
     SendInput, ^c
@@ -251,14 +251,14 @@ Return
     }
     MyVar := clipboard
     Sort MyVar, U D,
-    ; DÄ¬ÈÏÊ¹ÓÃ¶ººÅ×÷Îª·Ö¸ô·û£¬UÒÆ³ıÖØ¸´Ïî
+    ; Dé»˜è®¤ä½¿ç”¨é€—å·ä½œä¸ºåˆ†éš”ç¬¦ï¼ŒUç§»é™¤é‡å¤é¡¹
     Sort MyVar, U D,
     ColorArray := StrSplit(MyVar, ",")
     Loop % ColorArray.MaxIndex() {
         this_color := ColorArray[a_index]
         Menu, MyMenu, Add, %this_color%, MenuHandler
     }
-    TrayTip, Éú³É³É¹¦, £¨¤Å£ş3£ş£©¤Å¨q?¡« °´ÏÂ Ctrl + x ¿ÉÒÔÆô¶¯, 20, 17
+    TrayTip, ç”ŸæˆæˆåŠŸ, ï¼ˆã¥ï¿£3ï¿£ï¼‰ã¥â•­?ï½ æŒ‰ä¸‹ Ctrl + x å¯ä»¥å¯åŠ¨, 20, 17
 return
 
 !x::
@@ -273,7 +273,7 @@ if (A_IPAddress2 == "0.0.0.0") {
 }
 return
 
-; »ñÈ¡µ±Ç°ip£¬·ÖÎª1234ËÄ¸öÍø¿¨
+; è·å–å½“å‰ipï¼Œåˆ†ä¸º1234å››ä¸ªç½‘å¡
 ::ip1::
     SendInput, % A_IPAddress1
 return
@@ -303,7 +303,7 @@ AppsKey & l::
     SendRaw, % Var
 return
 
-; ÎÒ°¢ÀïÔÆµÄip£¬·½±ãÎÒ¼ÇÒä
+; æˆ‘é˜¿é‡Œäº‘çš„ipï¼Œæ–¹ä¾¿æˆ‘è®°å¿†
 AppsKey & i::
 >^i::
     SendRaw, 119.23.22.136
@@ -364,7 +364,7 @@ return
 ~!a::
     MouseGetPos, MouseX, MouseY
     PixelGetColor, color, %MouseX%, %MouseY%, RGB  
-    Clipboard := SubStr(color, 3) ; ¿¼ÂÇÔÚÇ°Ãæ¼ÓÉÏ£¬µ«ÎÒ¾ÍËãÁË£¬ÊµÕ½µÄÊ±ºò·¢ÏÖÕâ¸ö¶«Î÷ÓĞµã¶àÓà"#" . 
+    Clipboard := SubStr(color, 3) ; è€ƒè™‘åœ¨å‰é¢åŠ ä¸Šï¼Œä½†æˆ‘å°±ç®—äº†ï¼Œå®æˆ˜çš„æ—¶å€™å‘ç°è¿™ä¸ªä¸œè¥¿æœ‰ç‚¹å¤šä½™"#" . 
     TrayTip, my title, current color is `n %Clipboard%, 20, 17
 return
 
@@ -373,12 +373,12 @@ return
     if (OutputVar != "") {
         text := ajax(OutputVar)
         RUN, notepad
-        WinWaitActive, ÎŞ±êÌâ - ¼ÇÊÂ±¾, , 2
+        WinWaitActive, æ— æ ‡é¢˜ - è®°äº‹æœ¬, , 2
         if ErrorLevel {
             MsgBox, WinWait timed out.
         }
         else {
-            ; ÕâÀïĞèÒª¾Û½¹Ò»ÏÂ
+            ; è¿™é‡Œéœ€è¦èšç„¦ä¸€ä¸‹
             Winactivate
             code(text)
         }

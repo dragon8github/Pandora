@@ -1,60 +1,77 @@
-!p::
-	; def º¯Êı
-	Menu, def1, Add, Item1, PythonHandler
-	Menu, def1, Add, Item2, PythonHandler
+ï»¿!p::
+	; def å‡½æ•°
+	Menu, def1, Add, ä¸å®šæ•°å‚æ•° , PythonHandler
+	Menu, def1, Add, å…³é”®å­—å‚æ•° , PythonHandler
+	Menu, def1, Add, è·å–å‚æ•°æ•°æ®ç±»å‹ , PythonHandler
 
-	; List ÁĞ±í
+	; List åˆ—è¡¨
 	Menu, List1, Add, Item1, PythonHandler
 	Menu, List1, Add, Item2, PythonHandler
 
-	; dict ×Öµä
+	; dict å­—å…¸
 	Menu, dict1, Add, Item1, PythonHandler
 	Menu, dict1, Add, Item2, PythonHandler
 
-	; class Àà
+	; class ç±»
 	Menu, class1, Add, Item1, PythonHandler
 	Menu, class1, Add, Item2, PythonHandler
 
-	; package Ä£¿é
+	; package æ¨¡å—
 	Menu, package1, Add, Item1, PythonHandler
 	Menu, package1, Add, Item2, PythonHandler
 
-	; range ·½·¨
+	; range æ–¹æ³•
 	Menu, range1, Add, Item1, PythonHandler
 	Menu, range1, Add, Item2, PythonHandler
 
-	; os Ä£¿é
+	; os æ¨¡å—
 	Menu, os1, Add, Item1, PythonHandler
 	Menu, os1, Add, Item2, PythonHandler
 
-	; __Ä§Á¦º¯Êı__
+	; __é­”åŠ›å‡½æ•°__
 	Menu, magic1, Add, Item1, PythonHandler
 	Menu, magic1, Add, Item2, PythonHandler
 
-	; try Òì³£´¦Àí
+	; try å¼‚å¸¸å¤„ç†
 	Menu, try1, Add, Item1, PythonHandler
 	Menu, try1, Add, Item2, PythonHandler
 
-	; ÔÓÏî / Óï·¨ÌØĞÔ
+	; æ‚é¡¹ / è¯­æ³•ç‰¹æ€§
 	Menu, other1, Add, Item1, PythonHandler
 	Menu, other1, Add, Item2, PythonHandler
 
-	Menu, PythonMenu, Add, def º¯Êı, :def1
-	Menu, PythonMenu, Add, List ÁĞ±í, :List1
-	Menu, PythonMenu, Add, dict ×Öµä, :dict1
-	Menu, PythonMenu, Add, class Àà, :class1
-	Menu, PythonMenu, Add, package Ä£¿é, :package1
-	Menu, PythonMenu, Add, range ·½·¨, :range1
-	Menu, PythonMenu, Add, os Ä£¿é, :os1
-	Menu, PythonMenu, Add, __Ä§Á¦º¯Êı__, :magic1
-	Menu, PythonMenu, Add, try Òì³£´¦Àí, :try1
-	Menu, PythonMenu, Add, ÔÓÏî / Óï·¨ÌØĞÔ, :other1
+	Menu, PythonMenu, Add, def å‡½æ•°, :def1
+	Menu, PythonMenu, Add, List åˆ—è¡¨, :List1
+	Menu, PythonMenu, Add, dict å­—å…¸, :dict1
+	Menu, PythonMenu, Add, class ç±», :class1
+	Menu, PythonMenu, Add, package æ¨¡å—, :package1
+	Menu, PythonMenu, Add, range æ–¹æ³•, :range1
+	Menu, PythonMenu, Add, os æ¨¡å—, :os1
+	Menu, PythonMenu, Add, __é­”åŠ›å‡½æ•°__, :magic1
+	Menu, PythonMenu, Add, try å¼‚å¸¸å¤„ç†, :try1
+	Menu, PythonMenu, Add, æ‚é¡¹ / è¯­æ³•ç‰¹æ€§, :other1
 	
 	Menu, PythonMenu, Show
 	Menu, PythonMenu, DeleteAll
 return
 
 PythonHandler:
-	MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.
+	; MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.
+	%A_ThisMenuItem%()
 return
+
+ä¸å®šæ•°å‚æ•°(){
+Var =
+(
+#-*- coding: utf-8 -*-
+def showme(name, *info):
+print(name)
+
+for a in info:
+print(a)
+
+showme("Lee", 1,2,3,4)
+)
+code(Var)
+}
 

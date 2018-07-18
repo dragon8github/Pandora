@@ -1,14 +1,14 @@
-
+ï»¿
 ::ht.btn::
 ::ht.button::
 Var = 
 (
-<el-button>Ä¬ÈÏ°´Å¥</el-button>
-<el-button type="primary">Ö÷Òª°´Å¥</el-button>
-<el-button type="success">³É¹¦°´Å¥</el-button>
-<el-button type="info">ĞÅÏ¢°´Å¥</el-button>
-<el-button type="warning">¾¯¸æ°´Å¥</el-button>
-<el-button type="danger">Î£ÏÕ°´Å¥</el-button>
+<el-button>é»˜è®¤æŒ‰é’®</el-button>
+<el-button type="primary">ä¸»è¦æŒ‰é’®</el-button>
+<el-button type="success">æˆåŠŸæŒ‰é’®</el-button>
+<el-button type="info">ä¿¡æ¯æŒ‰é’®</el-button>
+<el-button type="warning">è­¦å‘ŠæŒ‰é’®</el-button>
+<el-button type="danger">å±é™©æŒ‰é’®</el-button>
 )
 code(Var)
 return
@@ -30,7 +30,7 @@ return
 Var = 
 (
 <el-tree :data="treeData" :default-expanded-keys="[1, 2, 3, 4]" node-key="id"></el-tree>
-treeData: [{id: 1, label: 'Ò»¼¶ 1', children: [{id: 4, label: '¶ş¼¶ 1-1', children: [{id: 9, label: 'Èı¼¶ 1-1-1'}, {id: 10, label: 'Èı¼¶ 1-1-2'}] }] }, {id: 2, label: 'Ò»¼¶ 2', children: [{id: 5, label: '¶ş¼¶ 2-1'}, {id: 6, label: '¶ş¼¶ 2-2'}] }, {id: 3, label: 'Ò»¼¶ 3', children: [{id: 7, label: '¶ş¼¶ 3-1'}, {id: 8, label: '¶ş¼¶ 3-2'}] }],
+treeData: [{id: 1, label: 'ä¸€çº§ 1', children: [{id: 4, label: 'äºŒçº§ 1-1', children: [{id: 9, label: 'ä¸‰çº§ 1-1-1'}, {id: 10, label: 'ä¸‰çº§ 1-1-2'}] }] }, {id: 2, label: 'ä¸€çº§ 2', children: [{id: 5, label: 'äºŒçº§ 2-1'}, {id: 6, label: 'äºŒçº§ 2-2'}] }, {id: 3, label: 'ä¸€çº§ 3', children: [{id: 7, label: 'äºŒçº§ 3-1'}, {id: 8, label: 'äºŒçº§ 3-2'}] }],
 )
 code(Var)
 return
@@ -57,7 +57,7 @@ this.$http.post('/uaa/auth/login', {
 }).then(result => {
     console.log(result);
 }).catch(err => {
-    this.$message.error('½Ó¿ÚÒì³££º' + err.message);
+    this.$message.error('æ¥å£å¼‚å¸¸ï¼š' + err.message);
 })
 )
 code(Var)
@@ -70,7 +70,7 @@ Var =
 this.$http.get('/uc/auth/loadMenu').then(result => {
     console.log(result);
 }).catch(err => {
-    this.$message.error('½Ó¿ÚÒì³££º' + err.message);
+    this.$message.error('æ¥å£å¼‚å¸¸ï¼š' + err.message);
 })
 )
 code(Var)
@@ -107,15 +107,15 @@ Var =
 <!-- http://element-cn.eleme.io/#/zh-CN/component/card -->
 <el-card class="hongte-query-card">
     <div slot='header' class='hongte-card-header'>
-          <span><i class='fa fa-search'></i> ËÑË÷Ìõ¼ş </span>
+          <span><i class='fa fa-search'></i> æœç´¢æ¡ä»¶ </span>
           <el-button-group>
-              <el-button type='primary' icon='el-icon-search' @click='getData(1)'>²éÑ¯</el-button>
-              <el-button type='primary' icon='el-icon-refresh' @click='resetWhere'>ÖØÖÃ</el-button>
-              <el-button type='primary' icon='el-icon-download'>µ¼³ö</el-button>
+              <el-button type='primary' icon='el-icon-search' @click='getData(1)'>æŸ¥è¯¢</el-button>
+              <el-button type='primary' icon='el-icon-refresh' @click='resetWhere'>é‡ç½®</el-button>
+              <el-button type='primary' icon='el-icon-download'>å¯¼å‡º</el-button>
           </el-button-group>
     </div>
     <div v-for="o in 4" :key="o" class="text item">
-      {{'ÁĞ±íÄÚÈİ ' + o }}
+      {{'åˆ—è¡¨å†…å®¹ ' + o }}
     </div>
 </el-card>
 )
@@ -126,7 +126,7 @@ return
 Var = 
 (
 <!-- http://element-cn.eleme.io/#/zh-CN/component/input -->
-ĞÕÃû£º <el-input placeholder="ÇëÊäÈëÄãµÄĞÕÃû" suffix-icon="el-icon-date" v-model="input"> </el-input>
+å§“åï¼š <el-input placeholder="è¯·è¾“å…¥ä½ çš„å§“å" suffix-icon="el-icon-date" v-model="input"> </el-input>
 )
 code(Var)
 return
@@ -136,34 +136,34 @@ Var =
 (
 <!-- http://element-cn.eleme.io/#/zh-CN/component/table -->
 <el-table border :data='myData' :row-key="rowKey" class='hongte-table' ref="myTable" @sort-change="sortChange" v-loading='loading' highlight-current-row @current-change="handleCurrentRowChange">
-      <el-table-column fixed sortable prop='businessId' label='ÒµÎñ±àºÅ' width='220'></el-table-column>
-      <el-table-column sortable prop='districtName' label='µØÇø' width='120'> </el-table-column>
-      <el-table-column sortable prop='companyName' label='·Ö¹«Ë¾' width='120'> </el-table-column>
-      <el-table-column sortable prop='customerName' label='¿Í»§Ãû³Æ' width='150'> </el-table-column>
-      <el-table-column sortable prop='borrowMoney' label='½è¿î½ğ¶î' width='120'  :formatter="borrowMoneyFormatter"> </el-table-column>
-      <el-table-column sortable prop='evaluationAmount' label='ÆÀ¹À¼Û' width='120' :formatter="evaluationAmountFormatter"> </el-table-column>
-      <el-table-column sortable prop='repaidAmount' label='ÒÑ»¹½ğ¶î' width='150' :formatter="repaidAmountFormatter"> </el-table-column>
-      <el-table-column sortable prop='model' label='³µÁ¾ĞÍºÅ' width='250'> </el-table-column>
-      <el-table-column sortable prop='evaluationDate' label='ÆÀ¹ÀÈÕÆÚ' width='120'> </el-table-column>
-      <el-table-column sortable prop='trailerDate' label='ÍÏ³µÈÕÆÚ' width='120'> </el-table-column>
-      <el-table-column sortable prop='status' label='×´Ì¬' width='120'> </el-table-column>
-      <el-table-column fixed='right' label='²Ù×÷' width='250' class-name="hongte-table-align">
+      <el-table-column fixed sortable prop='businessId' label='ä¸šåŠ¡ç¼–å·' width='220'></el-table-column>
+      <el-table-column sortable prop='districtName' label='åœ°åŒº' width='120'> </el-table-column>
+      <el-table-column sortable prop='companyName' label='åˆ†å…¬å¸' width='120'> </el-table-column>
+      <el-table-column sortable prop='customerName' label='å®¢æˆ·åç§°' width='150'> </el-table-column>
+      <el-table-column sortable prop='borrowMoney' label='å€Ÿæ¬¾é‡‘é¢' width='120'  :formatter="borrowMoneyFormatter"> </el-table-column>
+      <el-table-column sortable prop='evaluationAmount' label='è¯„ä¼°ä»·' width='120' :formatter="evaluationAmountFormatter"> </el-table-column>
+      <el-table-column sortable prop='repaidAmount' label='å·²è¿˜é‡‘é¢' width='150' :formatter="repaidAmountFormatter"> </el-table-column>
+      <el-table-column sortable prop='model' label='è½¦è¾†å‹å·' width='250'> </el-table-column>
+      <el-table-column sortable prop='evaluationDate' label='è¯„ä¼°æ—¥æœŸ' width='120'> </el-table-column>
+      <el-table-column sortable prop='trailerDate' label='æ‹–è½¦æ—¥æœŸ' width='120'> </el-table-column>
+      <el-table-column sortable prop='status' label='çŠ¶æ€' width='120'> </el-table-column>
+      <el-table-column fixed='right' label='æ“ä½œ' width='250' class-name="hongte-table-align">
            <template slot-scope='scope'>
                <el-dropdown trigger='click' @command='handleCommand(arguments[0], scope.$index, scope.row)'>
-                    <el-button size='mini'type='success'><i class="fa fa-navicon fa-lg"></i> ÏêÇé</el-button>
+                    <el-button size='mini'type='success'><i class="fa fa-navicon fa-lg"></i> è¯¦æƒ…</el-button>
                     <el-dropdown-menu slot='dropdown'>
-                       <el-dropdown-item command='·¢ÆğÅÄÂô'> ·¢ÆğÅÄÂô </el-dropdown-item>
-                       <el-dropdown-item command='×ª¹«³µÉêÇë'> ×ª¹«³µÉêÇë </el-dropdown-item>
-                       <el-dropdown-item command='ÅÄÂô¼ÇÂ¼²é¿´'> ÅÄÂô¼ÇÂ¼²é¿´ </el-dropdown-item>
-                       <el-dropdown-item command='³µÁ¾¹é»¹µÇ¼Ç'> ³µÁ¾¹é»¹µÇ¼Ç </el-dropdown-item>
-                       <el-dropdown-item command='ÖØĞÂÆÀ¹À'> ÖØĞÂÆÀ¹À </el-dropdown-item>
-                       <el-dropdown-item command='¸½¼şÉÏ´«¼°²é¿´'> ¸½¼şÉÏ´«¼°²é¿´ </el-dropdown-item>
-                       <el-dropdown-item command='²é¿´ĞÅ´û¸½¼ş'> ²é¿´ĞÅ´û¸½¼ş </el-dropdown-item>
-                       <el-dropdown-item command='ÅÄÂôÑÓÊ±'> ÅÄÂôÑÓÊ± </el-dropdown-item>
+                       <el-dropdown-item command='å‘èµ·æ‹å–'> å‘èµ·æ‹å– </el-dropdown-item>
+                       <el-dropdown-item command='è½¬å…¬è½¦ç”³è¯·'> è½¬å…¬è½¦ç”³è¯· </el-dropdown-item>
+                       <el-dropdown-item command='æ‹å–è®°å½•æŸ¥çœ‹'> æ‹å–è®°å½•æŸ¥çœ‹ </el-dropdown-item>
+                       <el-dropdown-item command='è½¦è¾†å½’è¿˜ç™»è®°'> è½¦è¾†å½’è¿˜ç™»è®° </el-dropdown-item>
+                       <el-dropdown-item command='é‡æ–°è¯„ä¼°'> é‡æ–°è¯„ä¼° </el-dropdown-item>
+                       <el-dropdown-item command='é™„ä»¶ä¸Šä¼ åŠæŸ¥çœ‹'> é™„ä»¶ä¸Šä¼ åŠæŸ¥çœ‹ </el-dropdown-item>
+                       <el-dropdown-item command='æŸ¥çœ‹ä¿¡è´·é™„ä»¶'> æŸ¥çœ‹ä¿¡è´·é™„ä»¶ </el-dropdown-item>
+                       <el-dropdown-item command='æ‹å–å»¶æ—¶'> æ‹å–å»¶æ—¶ </el-dropdown-item>
                     </el-dropdown-menu>
                </el-dropdown> 
-              <el-button size='mini' @click='handleEdit(scope.$index, scope.row)'><i class="fa fa-pencil fa-lg"></i>±à¼­</el-button>
-              <el-button size='mini' type='danger' @click='handleDelete(scope.$index, scope.row)'><i class="fa fa-trash-o fa-lg"></i> É¾³ı</el-button>
+              <el-button size='mini' @click='handleEdit(scope.$index, scope.row)'><i class="fa fa-pencil fa-lg"></i>ç¼–è¾‘</el-button>
+              <el-button size='mini' type='danger' @click='handleDelete(scope.$index, scope.row)'><i class="fa fa-trash-o fa-lg"></i> åˆ é™¤</el-button>
            </template>
       </el-table-column>
  </el-table>
@@ -181,7 +181,7 @@ Var =
       </el-pagination>
  </div>
 
- <el-dialog class="hongte-dialog" :visible.sync='dialogFormVisible' title='·¢ÆğÅÄÂô' >
+ <el-dialog class="hongte-dialog" :visible.sync='dialogFormVisible' title='å‘èµ·æ‹å–' >
      <auctionApplication></auctionApplication>
  </el-dialog>
 
@@ -189,20 +189,20 @@ Var =
  import { moneyFormatter } from '@utils'
  import auctionApplication from '@htComponents/carLoanManagement/auctionApplication.vue'
 
- // Êı¾İÁĞ±í
+ // æ•°æ®åˆ—è¡¨
  myData: [],
  // loading
  loading: true,
- // µ±Ç°·ÖÒ³
+ // å½“å‰åˆ†é¡µ
  currentPage: 1,
- // Ã¿Ò³ÏÔÊ¾ÌõÊı
+ // æ¯é¡µæ˜¾ç¤ºæ¡æ•°
  pageSize: 10,        
- // ·ÖÒ³×ÜÊı
+ // åˆ†é¡µæ€»æ•°
  total: 0,
  // dialog
  dialogFormVisible: false,
 
- // »ñÈ¡Êı¾İ
+ // è·å–æ•°æ®
  getData () {
      this.loading = true
      // axios
@@ -226,31 +226,31 @@ Var =
  rowKey (row) {
     return row.businessId
  },
- // Ñ¡ÖĞ table µ±Ç°ĞĞÊ±´¥·¢µÄÊÂ¼ş£¬¿ÉÒÔ»ñÈ¡µ±Ç°ĞĞËùÓĞÊı¾İ£¬ÃÀ×Ì×Ì~
+ // é€‰ä¸­ table å½“å‰è¡Œæ—¶è§¦å‘çš„äº‹ä»¶ï¼Œå¯ä»¥è·å–å½“å‰è¡Œæ‰€æœ‰æ•°æ®ï¼Œç¾æ»‹æ»‹~
  handleCurrentRowChange (currentRow, oldCurrentRow) {
    if (currentRow == null) {
-     console.log("µ±Ç°Ã»ÓĞÑ¡ÖĞÈÎºÎĞĞ");
+     console.log("å½“å‰æ²¡æœ‰é€‰ä¸­ä»»ä½•è¡Œ");
    }
  },
- // Ã¿Ò³ÏÔÊ¾µÄÒ³Êı·¢Éú±ä»¯µÄÊ±ºò
+ // æ¯é¡µæ˜¾ç¤ºçš„é¡µæ•°å‘ç”Ÿå˜åŒ–çš„æ—¶å€™
  handleSizeChange (size) {
      this.pageSize = size;
      this.getData()
  },
- // ·­Ò³
+ // ç¿»é¡µ
  handleCurrentChange (page) {
      this.currentPage = page;
      this.getData()
  },
- // ±à¼­ĞĞ
+ // ç¼–è¾‘è¡Œ
  handleEdit () {
 
  },
- // É¾³ıĞĞ
+ // åˆ é™¤è¡Œ
  handleDelete () {
-     this.$confirm('´Ë²Ù×÷½«ÓÀ¾ÃÉ¾³ı¸ÃÎÄ¼ş, ÊÇ·ñ¼ÌĞø?', 'ÌáÊ¾', {
-       confirmButtonText: 'È·¶¨',
-       cancelButtonText: 'È¡Ïû',
+     this.$confirm('æ­¤æ“ä½œå°†æ°¸ä¹…åˆ é™¤è¯¥æ–‡ä»¶, æ˜¯å¦ç»§ç»­?', 'æç¤º', {
+       confirmButtonText: 'ç¡®å®š',
+       cancelButtonText: 'å–æ¶ˆ',
        type: 'warning'
      }).then(() => {
          this.myData.splice(index, 1)
@@ -258,15 +258,15 @@ Var =
 
      });
  },
- // ½è¿î½ğ¶î  
+ // å€Ÿæ¬¾é‡‘é¢  
  borrowMoneyFormatter (row, column, content, index) {
      return moneyFormatter(content)
  },
- // ÆÀ¹À¼Û
+ // è¯„ä¼°ä»·
  evaluationAmountFormatter (row, column, content, index) {
      return moneyFormatter(content)
  },
- // ÒÑ»¹½ğ¶î
+ // å·²è¿˜é‡‘é¢
  repaidAmountFormatter (row, column, content, index) {
      return moneyFormatter(content)
  },
@@ -286,7 +286,7 @@ return
 ::ht.dialog::
 Var = 
 (
-<el-dialog class="hongte-dialog" :visible.sync='dialogFormVisible' title='·¢ÆğÅÄÂô' >
+<el-dialog class="hongte-dialog" :visible.sync='dialogFormVisible' title='å‘èµ·æ‹å–' >
     <auctionApplication></auctionApplication>
 </el-dialog>
 
@@ -303,52 +303,52 @@ Var =
 (
 <!-- http://element-cn.eleme.io/#/zh-CN/component/form -->
 <el-form :inline='true' label-position="right" label-width="120px" :model='where' class='hongte-query-form'>
-    <el-form-item label='ÒµÎñ±àºÅ£º'><el-input v-model='where.businessId' placeholder='ÒµÎñ±àºÅ'></el-input></el-form-item>
-    <el-form-item label='¿Í»§ĞÕÃû£º'><el-input v-model='where.customerName' placeholder='¿Í»§ĞÕÃû'></el-input></el-form-item>
-    <el-form-item label='³µÅÆºÅ£º'><el-input v-model='where.licensePlateNumber' placeholder='³µÅÆºÅ'></el-input></el-form-item>
-    <el-form-item label='³µÁ¾ĞÍºÅ£º'><el-input v-model='where.model' placeholder='³µÁ¾ĞÍºÅ'></el-input></el-form-item>
+    <el-form-item label='ä¸šåŠ¡ç¼–å·ï¼š'><el-input v-model='where.businessId' placeholder='ä¸šåŠ¡ç¼–å·'></el-input></el-form-item>
+    <el-form-item label='å®¢æˆ·å§“åï¼š'><el-input v-model='where.customerName' placeholder='å®¢æˆ·å§“å'></el-input></el-form-item>
+    <el-form-item label='è½¦ç‰Œå·ï¼š'><el-input v-model='where.licensePlateNumber' placeholder='è½¦ç‰Œå·'></el-input></el-form-item>
+    <el-form-item label='è½¦è¾†å‹å·ï¼š'><el-input v-model='where.model' placeholder='è½¦è¾†å‹å·'></el-input></el-form-item>
 
-    <el-form-item label='ÇøÓò£º'>
-        <el-select v-model='where.areaId' placeholder='ÇøÓò'>
-            <el-option label='ÇøÓòÒ»' value='shanghai'></el-option>
-            <el-option label='ÇøÓò¶ş' value='beijing'></el-option>
+    <el-form-item label='åŒºåŸŸï¼š'>
+        <el-select v-model='where.areaId' placeholder='åŒºåŸŸ'>
+            <el-option label='åŒºåŸŸä¸€' value='shanghai'></el-option>
+            <el-option label='åŒºåŸŸäºŒ' value='beijing'></el-option>
         </el-select>
     </el-form-item>
 
-    <el-form-item label='·Ö¹«Ë¾£º'>
-        <el-select v-model='where.companyId' placeholder='·Ö¹«Ë¾'>
-            <el-option label='ÉÏº£' value='shanghai'></el-option>
-            <el-option label='±±¾©' value='beijing'></el-option>
-            <el-option label='ÉîÛÚ' value='shenzhen'></el-option>
+    <el-form-item label='åˆ†å…¬å¸ï¼š'>
+        <el-select v-model='where.companyId' placeholder='åˆ†å…¬å¸'>
+            <el-option label='ä¸Šæµ·' value='shanghai'></el-option>
+            <el-option label='åŒ—äº¬' value='beijing'></el-option>
+            <el-option label='æ·±åœ³' value='shenzhen'></el-option>
         </el-select>
     </el-form-item>
 
-    <el-form-item label='ÍÏ³µÈÕÆÚ£º'>
+    <el-form-item label='æ‹–è½¦æ—¥æœŸï¼š'>
         <el-date-picker
             v-model='where.trailerStartDate'
             :picker-options='pickerOptions'
             type='daterange'
             align='right'
             unlink-panels
-            range-separator='ÖÁ'
-            start-placeholder='¿ªÊ¼ÈÕÆÚ'
-            end-placeholder='½áÊøÈÕÆÚ'>
+            range-separator='è‡³'
+            start-placeholder='å¼€å§‹æ—¥æœŸ'
+            end-placeholder='ç»“æŸæ—¥æœŸ'>
         </el-date-picker>
     </el-form-item>
 
-    <el-form-item label='×´Ì¬£º'>
-        <el-select v-model='where.status' placeholder='×´Ì¬'>
-            <el-option label='ÓâÆÚ' value='shanghai'></el-option>
-            <el-option label='ÒÑ»¹¿î' value='beijing'></el-option>
+    <el-form-item label='çŠ¶æ€ï¼š'>
+        <el-select v-model='where.status' placeholder='çŠ¶æ€'>
+            <el-option label='é€¾æœŸ' value='shanghai'></el-option>
+            <el-option label='å·²è¿˜æ¬¾' value='beijing'></el-option>
         </el-select>
     </el-form-item>
 </el-form>
 import { shortcuts } from '@utils'  
- // Ê±¼äÑ¡ÔñÆ÷
+ // æ—¶é—´é€‰æ‹©å™¨
 pickerOptions: {
     shortcuts
 },
-// ²éÑ¯Ìõ¼ş
+// æŸ¥è¯¢æ¡ä»¶
 where: {
     businessId: '',
     customerName: '',
@@ -358,7 +358,7 @@ where: {
     status: '',
 },
 
-// ÖØÖÃËÑË÷Ìõ¼ş
+// é‡ç½®æœç´¢æ¡ä»¶
 resetWhere () {
     this.where = {
       businessId: '',
@@ -374,7 +374,7 @@ code(Var)
 return
 
 ::ht.msg::
-    SendRaw, this.$message.error('½Ó¿ÚÒì³££º' + err.message);
+    SendRaw, this.$message.error('æ¥å£å¼‚å¸¸ï¼š' + err.message);
 return
 
 ::ht.page::
@@ -393,19 +393,19 @@ Var =
      </el-pagination>
 </div>
 
-// µ±Ç°·ÖÒ³
+// å½“å‰åˆ†é¡µ
 currentPage: 1,
-// Ã¿Ò³ÏÔÊ¾ÌõÊı
+// æ¯é¡µæ˜¾ç¤ºæ¡æ•°
 pageSize: 10,
-// ·ÖÒ³×ÜÊı
+// åˆ†é¡µæ€»æ•°
 total: 0,
 
-// Ã¿Ò³ÏÔÊ¾µÄÒ³Êı·¢Éú±ä»¯µÄÊ±ºò
+// æ¯é¡µæ˜¾ç¤ºçš„é¡µæ•°å‘ç”Ÿå˜åŒ–çš„æ—¶å€™
 handleSizeChange (size) {
    this.pageSize = size;
    this.getData()
 },
-// ·­Ò³
+// ç¿»é¡µ
 handleCurrentChange (page) {
    this.currentPage = page;
    this.getData()
@@ -418,47 +418,47 @@ return
 Var = 
 (
 <el-form ref="form" :model="form" label-width="80px">
-  <el-form-item label="»î¶¯Ãû³Æ">
+  <el-form-item label="æ´»åŠ¨åç§°">
     <el-input v-model="form.name"></el-input>
   </el-form-item>
-  <el-form-item label="»î¶¯ÇøÓò">
-    <el-select v-model="form.region" placeholder="ÇëÑ¡Ôñ»î¶¯ÇøÓò">
-      <el-option label="ÇøÓòÒ»" value="shanghai"></el-option>
-      <el-option label="ÇøÓò¶ş" value="beijing"></el-option>
+  <el-form-item label="æ´»åŠ¨åŒºåŸŸ">
+    <el-select v-model="form.region" placeholder="è¯·é€‰æ‹©æ´»åŠ¨åŒºåŸŸ">
+      <el-option label="åŒºåŸŸä¸€" value="shanghai"></el-option>
+      <el-option label="åŒºåŸŸäºŒ" value="beijing"></el-option>
     </el-select>
   </el-form-item>
-  <el-form-item label="»î¶¯Ê±¼ä">
+  <el-form-item label="æ´»åŠ¨æ—¶é—´">
     <el-col :span="11">
-      <el-date-picker type="date" placeholder="Ñ¡ÔñÈÕÆÚ" v-model="form.date1" style="width: 100`%;"></el-date-picker>
+      <el-date-picker type="date" placeholder="é€‰æ‹©æ—¥æœŸ" v-model="form.date1" style="width: 100`%;"></el-date-picker>
     </el-col>
     <el-col class="line" :span="2">-</el-col>
     <el-col :span="11">
-      <el-time-picker type="fixed-time" placeholder="Ñ¡ÔñÊ±¼ä" v-model="form.date2" style="width: 100`%;"></el-time-picker>
+      <el-time-picker type="fixed-time" placeholder="é€‰æ‹©æ—¶é—´" v-model="form.date2" style="width: 100`%;"></el-time-picker>
     </el-col>
   </el-form-item>
-  <el-form-item label="¼´Ê±ÅäËÍ">
+  <el-form-item label="å³æ—¶é…é€">
     <el-switch v-model="form.delivery"></el-switch>
   </el-form-item>
-  <el-form-item label="»î¶¯ĞÔÖÊ">
+  <el-form-item label="æ´»åŠ¨æ€§è´¨">
     <el-checkbox-group v-model="form.type">
-      <el-checkbox label="ÃÀÊ³/²ÍÌüÏßÉÏ»î¶¯" name="type"></el-checkbox>
-      <el-checkbox label="µØÍÆ»î¶¯" name="type"></el-checkbox>
-      <el-checkbox label="ÏßÏÂÖ÷Ìâ»î¶¯" name="type"></el-checkbox>
-      <el-checkbox label="µ¥´¿Æ·ÅÆÆØ¹â" name="type"></el-checkbox>
+      <el-checkbox label="ç¾é£Ÿ/é¤å…çº¿ä¸Šæ´»åŠ¨" name="type"></el-checkbox>
+      <el-checkbox label="åœ°æ¨æ´»åŠ¨" name="type"></el-checkbox>
+      <el-checkbox label="çº¿ä¸‹ä¸»é¢˜æ´»åŠ¨" name="type"></el-checkbox>
+      <el-checkbox label="å•çº¯å“ç‰Œæ›å…‰" name="type"></el-checkbox>
     </el-checkbox-group>
   </el-form-item>
-  <el-form-item label="ÌØÊâ×ÊÔ´">
+  <el-form-item label="ç‰¹æ®Šèµ„æº">
     <el-radio-group v-model="form.resource">
-      <el-radio label="ÏßÉÏÆ·ÅÆÉÌÔŞÖú"></el-radio>
-      <el-radio label="ÏßÏÂ³¡µØÃâ·Ñ"></el-radio>
+      <el-radio label="çº¿ä¸Šå“ç‰Œå•†èµåŠ©"></el-radio>
+      <el-radio label="çº¿ä¸‹åœºåœ°å…è´¹"></el-radio>
     </el-radio-group>
   </el-form-item>
-  <el-form-item label="»î¶¯ĞÎÊ½">
+  <el-form-item label="æ´»åŠ¨å½¢å¼">
     <el-input type="textarea" v-model="form.desc"></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="onSubmit">Á¢¼´´´½¨</el-button>
-    <el-button>È¡Ïû</el-button>
+    <el-button type="primary" @click="onSubmit">ç«‹å³åˆ›å»º</el-button>
+    <el-button>å–æ¶ˆ</el-button>
   </el-form-item>
 </el-form>
 
@@ -483,9 +483,9 @@ return
 ::ht.confirm::
 Var = 
 (
-this.$confirm('´Ë²Ù×÷½«ÓÀ¾ÃÉ¾³ı¸ÃÎÄ¼ş, ÊÇ·ñ¼ÌĞø?', 'ÌáÊ¾', {
-  confirmButtonText: 'È·¶¨',
-  cancelButtonText: 'È¡Ïû',
+this.$confirm('æ­¤æ“ä½œå°†æ°¸ä¹…åˆ é™¤è¯¥æ–‡ä»¶, æ˜¯å¦ç»§ç»­?', 'æç¤º', {
+  confirmButtonText: 'ç¡®å®š',
+  cancelButtonText: 'å–æ¶ˆ',
   type: 'warning'
 }).then(() => {
     this.myData.splice(index, 1)
@@ -500,16 +500,16 @@ return
 Var = 
 (
 <el-dropdown trigger='click' @command='handleCommand(arguments[0], scope.$index, scope.row)'>
-     <el-button size='mini'type='success'><i class="fa fa-navicon fa-lg"></i> ÏêÇé</el-button>
+     <el-button size='mini'type='success'><i class="fa fa-navicon fa-lg"></i> è¯¦æƒ…</el-button>
      <el-dropdown-menu slot='dropdown'>
-        <el-dropdown-item command='·¢ÆğÅÄÂô'> ·¢ÆğÅÄÂô </el-dropdown-item>
-        <el-dropdown-item command='×ª¹«³µÉêÇë'> ×ª¹«³µÉêÇë </el-dropdown-item>
-        <el-dropdown-item command='ÅÄÂô¼ÇÂ¼²é¿´'> ÅÄÂô¼ÇÂ¼²é¿´ </el-dropdown-item>
-        <el-dropdown-item command='³µÁ¾¹é»¹µÇ¼Ç'> ³µÁ¾¹é»¹µÇ¼Ç </el-dropdown-item>
-        <el-dropdown-item command='ÖØĞÂÆÀ¹À'> ÖØĞÂÆÀ¹À </el-dropdown-item>
-        <el-dropdown-item command='¸½¼şÉÏ´«¼°²é¿´'> ¸½¼şÉÏ´«¼°²é¿´ </el-dropdown-item>
-        <el-dropdown-item command='²é¿´ĞÅ´û¸½¼ş'> ²é¿´ĞÅ´û¸½¼ş </el-dropdown-item>
-        <el-dropdown-item command='ÅÄÂôÑÓÊ±'> ÅÄÂôÑÓÊ± </el-dropdown-item>
+        <el-dropdown-item command='å‘èµ·æ‹å–'> å‘èµ·æ‹å– </el-dropdown-item>
+        <el-dropdown-item command='è½¬å…¬è½¦ç”³è¯·'> è½¬å…¬è½¦ç”³è¯· </el-dropdown-item>
+        <el-dropdown-item command='æ‹å–è®°å½•æŸ¥çœ‹'> æ‹å–è®°å½•æŸ¥çœ‹ </el-dropdown-item>
+        <el-dropdown-item command='è½¦è¾†å½’è¿˜ç™»è®°'> è½¦è¾†å½’è¿˜ç™»è®° </el-dropdown-item>
+        <el-dropdown-item command='é‡æ–°è¯„ä¼°'> é‡æ–°è¯„ä¼° </el-dropdown-item>
+        <el-dropdown-item command='é™„ä»¶ä¸Šä¼ åŠæŸ¥çœ‹'> é™„ä»¶ä¸Šä¼ åŠæŸ¥çœ‹ </el-dropdown-item>
+        <el-dropdown-item command='æŸ¥çœ‹ä¿¡è´·é™„ä»¶'> æŸ¥çœ‹ä¿¡è´·é™„ä»¶ </el-dropdown-item>
+        <el-dropdown-item command='æ‹å–å»¶æ—¶'> æ‹å–å»¶æ—¶ </el-dropdown-item>
      </el-dropdown-menu>
 </el-dropdown>
 

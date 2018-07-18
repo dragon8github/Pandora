@@ -1,4 +1,4 @@
-::cdn::
+﻿::cdn::
 ::boot::
     Send, http://www.bootcdn.cn/
 return

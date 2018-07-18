@@ -1,4 +1,4 @@
-
+ï»¿
 
 ReactMenuHandler:
 if (A_ThisMenuItem == "this.porps") {
@@ -288,13 +288,13 @@ return
 Var = 
 (
 /**
- * Ò»¡¢index.js µ÷ÓÃÊ¾Àı
+ * ä¸€ã€index.js è°ƒç”¨ç¤ºä¾‹
     handleClick () {
         const { dispatch } = this.props
         dispatch({ type: 'todo/save' }
     }
 
-    ¶ş¡¢async func Ê¾Àı
+    äºŒã€async func ç¤ºä¾‹
     export async function saveTodoToServer(codetype) {
         return request(`/api/framework/sys/code/list?codetype=` + codetype);
     }
@@ -303,19 +303,19 @@ Var =
 export default {
 	namespace: 'todo',
 
-	state: {}, // Ò²¿ÉÒÔÊÇÊı×é£º []
+	state: {}, // ä¹Ÿå¯ä»¥æ˜¯æ•°ç»„ï¼š []
 
 	effects: {
 		*save({ payload, callback }, { put, call }) {
-	      // µ÷ÓÃ async func saveTodoToServer
+	      // è°ƒç”¨ async func saveTodoToServer
 	      yield call(saveTodoToServer, todo);
-          // µ÷ÓÃ reducers ¸üĞÂ state ¿ÉÒÔ×ÔÓÉ´«µİÈÎºÎ²ÎÊı£¬±ØĞë±£Áôtype
+          // è°ƒç”¨ reducers æ›´æ–° state å¯ä»¥è‡ªç”±ä¼ é€’ä»»ä½•å‚æ•°ï¼Œå¿…é¡»ä¿ç•™type
 	      yield put({ type: 'add', title: payload.title, text: payload: text, time: payload: time });
 	    },
 	},
 
 	reducers: {
-		// ±È½ÏÍÆ¼öes6µÄÕâÑùĞ´£ºadd(state, { title, text, time })
+		// æ¯”è¾ƒæ¨èes6çš„è¿™æ ·å†™ï¼šadd(state, { title, text, time })
 	    add(state, action) {
 	      const title = action.title
           const text = action.text
@@ -324,7 +324,7 @@ export default {
               text: action.text, 
               time: action.time 
           }
-	      // ±£´æÊı¾İµ½ state
+	      // ä¿å­˜æ•°æ®åˆ° state
 	      return {...state, todo};
 	    },
   	},
@@ -342,7 +342,7 @@ Var =
 	<meta charset="UTF-8">
 	<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.production.min.js"></script>
 	<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.production.min.js"></script>
-	<!-- babel6.0ÒÔÉÏÒÑ¾­²»Ö§³ÖÁËä¯ÀÀÆ÷ÁË -->
+	<!-- babel6.0ä»¥ä¸Šå·²ç»ä¸æ”¯æŒäº†æµè§ˆå™¨äº† -->
 	<script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
 	<title>Document</title>
 </head>
@@ -356,14 +356,14 @@ Var =
 	<div id="Welcome"></div>
 </body>
 
-<!-- ±ØĞë±êÊ¶Îª type="text/babel" -->
+<!-- å¿…é¡»æ ‡è¯†ä¸º type="text/babel" -->
 <script type="text/babel">
     ReactDOM.render(
       <h1>Hello, world!</h1>,
       document.getElementById('app')
 	`);
 
-	var nav_li=['×îĞÂµçÓ°', '×îĞÂÆÀÂÛ'];
+	var nav_li=['æœ€æ–°ç”µå½±', 'æœ€æ–°è¯„è®º'];
     ReactDOM.render(
 	     <ul>
 	     {
@@ -398,7 +398,7 @@ return
 ::react.connect::
 Var = 
 (
-// ½« model ºÍ component ´®ÁªÆğÀ´
+// å°† model å’Œ component ä¸²è”èµ·æ¥
 export default connect(({ user, login, global = {}, loading }) => ({
 	currentUser: user.currentUser,
 	menuData: login.menuData,
@@ -433,7 +433,7 @@ Var =
 (
 import React, { Component } from 'react';
 
-// ÎŞ×´Ì¬º¯Êı/×é¼ş 
+// æ— çŠ¶æ€å‡½æ•°/ç»„ä»¶ 
 function ListItem({ value }) {
 	return (
 		<li>
@@ -464,7 +464,7 @@ Var =
 (
 import React, { Component } from 'react';
 
-// ÎŞ×´Ì¬º¯Êı/×é¼ş
+// æ— çŠ¶æ€å‡½æ•°/ç»„ä»¶
 function ListItem({ value }) {
 	static defaultProps = {
 		text: '',
@@ -638,7 +638,7 @@ class App extends Component {
 		const { coffee } = this.state;
 		return (
 			<div>
-				<p>ÇëÑ¡ÔñÄã×îÏ²»¶µÄ¿§·È:</p>
+				<p>è¯·é€‰æ‹©ä½ æœ€å–œæ¬¢çš„å’–å•¡:</p>
 				<label> <input type="checkbox" value="Cappuccino" checked={~coffee.indexOf('Cappuccino')} onChange={() => this.handleChange} /> </label>
 				<label> <input type="checkbox" value="CafeMocha" checked={~coffee.indexOf('CafeMocha')} onChange={() => this.handleChange} /> </label>
 				<label> <input type="checkbox" value="CaffeLatte" checked={~coffee.indexOf('CaffeLatte')} onChange={() => this.handleChange} /> </label>
@@ -675,9 +675,9 @@ class App extends Component {
 		return (
 			<div>
 				<select value={area} onChange={() => {this.handleChange}}>
-					<option value="beijing">±±¾©</option>
-					<option value="shanghai">ÉÏº£</option>
-					<option value="hangzhou">º¼Öİ</option>
+					<option value="beijing">åŒ—äº¬</option>
+					<option value="shanghai">ä¸Šæµ·</option>
+					<option value="hangzhou">æ­å·</option>
 				</select>
 			</div>
 		`)
@@ -708,7 +708,7 @@ class App extends Component {
 	}
 
 	handleClick (e) {
-		if (this.myTextInput £¡= null) {
+		if (this.myTextInput ï¼= null) {
 			this.myTextInput.focus();
 		}
 	}

@@ -1,4 +1,4 @@
-::cdn-store::
+﻿::cdn-store::
 Var = 
 (
 <!-- https://github.com/marcuswestin/store.js -->
