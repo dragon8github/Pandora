@@ -73,39 +73,292 @@
 return
 
 PythonHandler:
-	; MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.
-	%A_ThisMenuItem%()
-return
-
-不定数参数(){
-Var =
+; MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.
+v := A_ThisMenuItem
+Var := 
+if (v == "不定数参数") {
+Var = 
 (
 #-*- coding: utf-8 -*-
 def showme(name, *info):
 print(name)
-
 for a in info:
 print(a)
-
 showme("Lee", 1,2,3,4)
 )
-code(Var)
 }
 
-关键字参数() {
-Var =
+if (v == "关键字参数") {
+Var = 
 (
 #-*- coding: utf-8 -*-
 def showme(name, *info, **info2):
 print(name, info)
-
 for b in info2:
 print(b, info2[b])
-
-
 showme("Lee", 1,2,3,4,age=12,sex='女')
 )
-code(Var)
 }
+
+
+if (v == "获取参数数据类型") {
+Var = 
+(
+
+)
+}
+
+if (v == "定义List列表") {
+Var = 
+(
+
+)
+}
+
+if (v == "count") {
+Var = 
+(
+
+)
+}
+
+if (v == "index") {
+Var = 
+(
+
+)
+}
+
+if (v == "reverse") {
+Var = 
+(
+
+)
+}
+
+if (v == "append") {
+Var = 
+(
+
+)
+}
+
+if (v == "sort") {
+Var = 
+(
+
+)
+}
+
+if (v == "pop") {
+Var = 
+(
+
+)
+}
+
+if (v == "字典定义json版") {
+Var = 
+(
+
+)
+}
+
+if (v == "字典定义dict版") {
+Var = 
+(
+
+)
+}
+
+if (v == "字典for循环") {
+Var = 
+(
+
+)
+}
+
+if (v == "构造函数（__init__）+静态函数（@staticmethod）+实例函数") {
+Var = 
+(
+
+)
+}
+
+if (v == "值类型/引用类型") {
+Var = 
+(
+
+)
+}
+
+if (v == "类的生命周期") {
+Var = 
+(
+
+)
+}
+
+if (v == "from<模块>import<方法>") {
+Var = 
+(
+
+)
+}
+
+if (v == "importfunctions") {
+Var = 
+(
+
+)
+}
+
+if (v == "使用all控制函数的导出") {
+Var = 
+(
+
+)
+}
+
+if (v == "range+for") {
+Var = 
+(
+
+)
+}
+
+if (v == "range+倒序for") {
+Var = 
+(
+
+)
+}
+
+if (v == "range+list") {
+Var = 
+(
+
+)
+}
+
+if (v == "range+for高阶操作") {
+Var = 
+(
+
+)
+}
+
+if (v == "range+for+if高阶操作") {
+Var = 
+(
+
+)
+}
+
+if (v == "range+for+if+函数高阶操作") {
+Var = 
+(
+
+)
+}
+
+if (v == "文件读取") {
+Var = 
+(
+
+)
+}
+
+if (v == "获得系统环境变量") {
+Var = 
+(
+
+)
+}
+
+if (v == "当前python脚本工作路径") {
+Var = 
+(
+
+)
+}
+
+if (v == "当前进程ID") {
+Var = 
+(
+
+)
+}
+
+if (v == "父进程ID") {
+Var = 
+(
+
+)
+}
+
+if (v == "全局注释") {
+Var = 
+(
+
+)
+}
+
+if (v == "类注释") {
+Var = 
+(
+
+)
+}
+
+if (v == "获取类的详情信息") {
+Var = 
+(
+
+)
+}
+
+if (v == "获取函数名/类名") {
+Var = 
+(
+
+)
+}
+
+if (v == "捕获异常") {
+Var = 
+(
+
+)
+}
+
+if (v == "withas") {
+Var = 
+(
+
+)
+}
+
+if (v == "is") {
+Var = 
+(
+
+)
+}
+
+if (v == "id()") {
+Var = 
+(
+
+)
+}
+
+if (Var) {
+	code(Var)
+} else {
+	MsgBox, 未找到定义代码块
+}
+return
+
 
 
