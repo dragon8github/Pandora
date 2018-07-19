@@ -2,7 +2,50 @@
 >^p::
 ;pxToRem
     t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-    SendInput, print(%t%, )`{left 2}
+    SendInput, print(%t%, )`{left 1}
+return
+
+::pytry::
+Var =
+(
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+try:
+    fh = open('testfile', 'w')
+    fh.write('这是一个测试文件，用于测试异常!!')
+except Exception as e:
+   print('Exception 万能异常' + e.message)
+else:
+    print('没有发生异常的话执行这里：内容写入文件成功')
+    fh.close()
+finally:
+	print('退出try时总会执行')
+)
+code(Var)
+return
+
+::pyfor::
+Var =
+(
+for i in range(5):
+	print('Jimmy Five Times (' + str(i) + ')')
+)
+code(Var)
+return
+
+::pyif::
+Var =
+(
+if name == 'Alice':
+	print('Hi, Alice')
+elif age < 12
+	print('you are not Alice, kiddo.')
+else:
+	print('you are neither Alice nor a little kid.')
+`)
+)
+code(Var)
 return
 
 ::pyclass::
@@ -93,7 +136,7 @@ return
 	Menu, magic1, Add, 获取函数名 / 类名, PythonHandler
 
 	; try 异常处理
-	Menu, try1, Add, 捕获异常, PythonHandler
+	Menu, try1, Add, try / except, PythonHandler
 
 	; 杂项 / 语法特性
 	Menu, other1, Add, with as, PythonHandler
@@ -498,10 +541,22 @@ Var =
 )
 }
 
-if (v == "捕获异常") {
+if (v == "try / except") {
 Var = 
 (
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 
+try:
+    fh = open('testfile', 'w')
+    fh.write('这是一个测试文件，用于测试异常!!')
+except Exception as e:
+   print('Exception 万能异常' + e.message)
+else:
+    print('没有发生异常的话执行这里：内容写入文件成功')
+    fh.close()
+finally:
+	print('退出try时总会执行')
 )
 }
 

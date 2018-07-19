@@ -47,6 +47,7 @@ Return
 ; _____________ Nodejs ________________
 
 ::express::
+::node-express::
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Nodejs/express.js"))
 return
 

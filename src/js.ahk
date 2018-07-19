@@ -1,4 +1,9 @@
-﻿::toup::
+﻿::/plain::
+::plain/::
+    Send, text/plain
+return
+
+::toup::
 ::todaxie::
 ::toda::
     Send, toUpperCase()

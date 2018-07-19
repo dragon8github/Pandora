@@ -290,7 +290,6 @@ return
     SendInput, % A_IPAddress4
 return
 
-
 AppsKey & l::
 >^l::
     ip := A_IPAddress1

@@ -1,4 +1,5 @@
-﻿; 创建专属目录
+﻿/* （已废弃。将来再考虑重启。必须放在最外面才有效）
+; 创建专属目录
 if !FileExist(".pandora")
 	FileCreateDir, .pandora
 	; 创建缓存目录
@@ -8,6 +9,7 @@ if !FileExist(".pandora")
 ; 其实不应该放在这里的，但不知道为啥必须放在这里才生效
 OnClipboardChange("ClipChanged")
 ClipChanged(Type) {
+	MsgBox, 123
     try {
        if (type == 1) {
             filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"
@@ -18,6 +20,42 @@ ClipChanged(Type) {
         }  
     } catch e {
         
+    }
+}
+*/
+
+; (获取当前输入法的代码， 注册表位置： HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\  https://blog.csdn.net/liuyukuan/article/details/53836287)
+/*
+#z::
+SetFormat, Integer, H 
+WinID:=WinActive("A")
+ThreadID:=DllCall("GetWindowThreadProcessId", "UInt", WinID, "UInt", 0) 
+InputLocaleID:=DllCall("GetKeyboardLayout", "UInt", ThreadID, "UInt") 
+Clipboard:=InputLocaleID
+MsgBox, %InputLocaleID% 
+return
+*/
+
+#z::
+    MsgBox, % A_LoopRegSubKey
+return
+
+fuck(name)
+{ 
+    Loop, HKLM, SYSTEM/CurrentControlSet/Control/Keyboard Layouts,1,1
+    { 
+        IfEqual,A_LoopRegName,Layout Text
+        { 
+            RegRead,Value
+            IfInString,value,%name%
+            { 
+                RegExMatch(A_LoopRegSubKey,"[^//]+$",dwLayout)
+                HKL:=DllCall("LoadKeyboardLayout", Str, dwLayout, UInt, 1)
+                ControlGetFocus,ctl,A
+                SendMessage,0x50,0,HKL,%ctl%,A
+                Break
+            }
+        }
     }
 }
 

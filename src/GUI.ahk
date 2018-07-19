@@ -150,6 +150,14 @@ Gui, Add, Link,, <a href="http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_refe
 Gui, Add, Link,, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/openlibrary">百度地图-开源库</a>
 Gui, Add, Text, W140 ys,
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/helloworld">百度地图-快速上手</a>
+Gui, Add, Link, W140, <a href="http://api.map.baidu.com/lbsapi/getpoint/">拾取坐标系统</a>
+Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#k0_2">主题定制</a>
+Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/custom/">地图皮肤制作</a>
+Gui, Add, Text, W140 ys,
+Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_16">设置点的新图标</a>
+Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_9">百度线面教程</a>
+Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_5">沿线运动教程（马里奥）</a>
+
 return
 
 GuiEscape:

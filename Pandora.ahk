@@ -8,6 +8,8 @@ FileDelete, *.bak
 FileDelete, .\src\*.bak
 
 
+
+
 #include src/GUI.ahk		 ; GUI系列 
 #Include src/lib.ahk         ; 公共函数
 #Include src/help.ahk        ; 辅助功能  
