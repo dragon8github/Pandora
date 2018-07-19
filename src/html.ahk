@@ -400,6 +400,7 @@ Var =
     </div>
 </body>
 <script>
+    // https://cloud.tencent.com/developer/article/1006169
     Vue.component('user-item', {
       props: ['email', 'name'],
       template: ``<div>
