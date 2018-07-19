@@ -137,14 +137,6 @@ Var =
 code(Var)
 return
 
-AppsKey & p::
->^p::
-Var = 
-(
-pxToRem
-)
-code(Var)
-return
 
 ::bg-cover::
     SendRaw, background: url(img/tiger.jpg) 0 / cover;

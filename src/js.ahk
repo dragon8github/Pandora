@@ -655,7 +655,7 @@ Return
 AppsKey & c:: 
 >^c:: 
     t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-    SendInput, console.log(%t%, )`;{left 2}
+    SendInput, console.log(%t%, )`{left 1}
 Return
 
 /*

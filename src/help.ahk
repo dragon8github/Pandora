@@ -412,6 +412,7 @@ return
 return
 
 ::ahkvar::
+::varahk::
 Var = 
 (
 Var = 

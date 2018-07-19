@@ -1,4 +1,15 @@
-﻿>!v::
+﻿::$nextTick::
+::$next::
+Var =
+(
+this.$nextTick(() => {
+    
+})
+)
+code(Var)
+return
+
+>!v::
 Var = 
 (
 <template>
