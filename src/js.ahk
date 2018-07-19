@@ -1246,6 +1246,7 @@ Var =
 /**
  * 只能用于数组
  * 如果是 es6 推荐： return Array.from(new Set(arr));
+ * 补充： return [...new Set(arr)]
  */
 function unique(arr) {
     var retArray = [];
