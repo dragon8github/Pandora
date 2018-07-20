@@ -488,6 +488,29 @@ code(Var)
 Clipboard := "console.log(jQuery.fn.jquery);"
 return
 
+::myheight::
+::fuckheight::
+Var =
+(
+/*
+- 可视高度 document.documentElement.clientHeight / widow.innerHeight
+- 滚动高度 window.scrollY;
+- 相对窗口的距离 el.getBoundingClientRect().top
+
+height, innerheight, outerheight, outerheight 四大高度的区别：
+1、height元素本身高度
+2、innerheight包含padding的高度
+3、outerheight包含padding、border的高度
+4、outerheight（true）包含padding、border、margin的高度
+
+offset 系列的意义：
+offsetHeight/offsetWidth：获取对象的宽高，与style.widtht的区别是：若对象的宽度设定值为百分百宽度，无论页面变大或变小，style.width都返回此百分比；而offsetWidth则返回页面中对象的宽度值而不是百分比。
+offsetLeft/offsetTop：表示当前元素对象相对于其定位元素的垂直/水平偏移量
+*/
+)
+code(Var)
+return
+
 ; 打印出jQuery的版本
 ::$.v::
 ::$.version::
@@ -1438,6 +1461,7 @@ return
 
 ::sort::
 ::sortArr::
+::Arrsort::
 Var = 
 (
 // 将arr升序排列,如果是倒序return -(a-b)
