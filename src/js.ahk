@@ -685,7 +685,88 @@ return
 	SendInput, arguments
 Return
 
+::getphone::
+::getphonedata::
+::getphoneinfo::
+::guishudi::
+Var =
+(
+/**
+     * @func
+     * @desc - 获取手机归属地信息
+     * @param {string} phoneNo - 手机号码
+     * @param {string} callback - 回调函数
+     */
+    var getPhoneData = function(phoneNo, callback) {
+        $.ajax({
+            url: 'http://tcc.taobao.com/cc/json/mobile_tel_segment.htm',
+            type: 'get',
+            data: {
+                tel: phoneNo
+            },
+            success: function(result) {
+                if (result) {
+                    var _data = result.split('=')[1]
+                    _data = _data.replace(/\s+/g, "").replace(/<\/?.+?>/g, "").replace(/[\r\n]/g, "").replace(/\'/g, '"').replace(/\:/g, '":').replace(/\,/g, ',"').replace('{', '{"')
+                    var phoneData = JSON.parse(_data);
+                    console.log(phoneData)
+                    if (phoneData.catName === '中国移动') {
+                        applyData.PhoneType = 1;
+                    } else if (phoneData.catName === '中国联通') {
+                        applyData.PhoneType = 2
+                    } else if (phoneData.catName === '中国电信') {
+                        applyData.PhoneType = 3
+                    } else {
+                        applyData.PhoneType = 0
+                    }
+                    applyData.PhoneAddress = phoneData.province
+                }
+            },
+            error: function(result) {
+                console.info('无法获取手机归属地信息');
+            },
+            complete: function() {
+                typeof callback === 'function' && submitApply();
+            }
+        })
+    }
+)
+code(Var)
+return
+
 ::jsonp::
+Var =
+(
+/**
+  * @func
+  * @desc jsonp的基本使用函数
+  * @params {object} urlObj
+  * @params {string} urlObj.url - jsonp的请求地址
+  * @params {string} urlObj.jsonpCallback - jsonp的回调函数命名
+  * @params {function} callback - 要执行的回调函数
+  */
+function jsonp(urlObj, callback) {
+	let url = urlObj.url;
+	let callbackName = urlObj.jsonpCallback;
+
+	// 先定义一个全局函数，供jsonp调用
+	window[callbackName] = function(data) {
+	window[callbackName] = undefined;
+	document.body.removeChild(script);
+	callback(data);
+	};
+
+	// jsonp的原理，插入一个script标签，并且执行上面的全局函数
+	let script = document.createElement('script');
+	script.src = url;
+	document.body.appendChild(script);
+}
+
+jsonpp
+)
+code(Var)
+return
+
 ::json.p::
     SendInput, JSON.parse(){left}
 Return
@@ -1011,12 +1092,33 @@ var wraphtml = document.body.insertBefore(wrap,first);
 )
 Return
 
-::random::
-    SendInput, parseInt(Math.random() * 10 {+} 1); // 获取 1 - 10 到随机数
-Return
+::randomcolor::
+::randcolor::
+::suijiyanse::
+Var =
+(
+fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)',
+)
+code(Var)
+return
+
+::feifafuhao::
+Var =
+(
+let n = s.toString().replace(/[\`~!@#$^&*()=\-\|{}':;'\\,\[\].<>\?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]/g, '')
+)
+code(Var)
+return
 
 ::rand::
-    SendInput, parseInt(Math.random() * 10 {+} 1); // 获取 1 - 10 到随机数
+::random::
+Var =
+(
+// ~~(0 + Math.random() * 51) // 0-50
+// parseInt(Math.random() * 5) // 0-4 
+parseInt(Math.random() * 10 + 1);  // 获取 1 - 10 到随机数
+)
+code(Var)
 Return
 
 ::repeat::

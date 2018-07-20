@@ -158,6 +158,11 @@ Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_16">设置�
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_9">百度线面教程</a>
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_5">沿线运动教程（马里奥）</a>
 
+Gui, Add, Text, W140 ys, mapv：
+Gui, Add, Link, W140, <a href="http://mapv.baidu.com/">mapv官网</a>
+Gui, Add, Link, W140, <a href="http://mapv.baidu.com/examples/#csv-car.html">mapv-example</a>
+Gui, Add, Link, W140, <a href="https://github.com/huiyan-fe/mapv/blob/master/API.md">百度线面教程</a>
+Gui, Add, Link, W140, <a href="https://github.com/huiyan-fe/mapv/#readme">ampv-github</a>
 
 GuiEscape:
 GuiClose:
