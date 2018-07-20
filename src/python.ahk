@@ -1,4 +1,32 @@
-﻿AppsKey & p::
+﻿::pyerfenfa::
+::pyerfen::
+::pybinary::
+Var =
+(
+def binary_search(list, target):
+	low = 0
+	high = len(list)
+
+	while not (low > high):
+		mid = int((low + high) / 2)
+		guess = list[mid]
+
+		if guess == target:
+			return mid
+		if guess > target:
+			high = mid - 1
+		else:
+			low = mid + 1
+
+	return None
+
+print(binary_search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5))
+input()
+)
+code(Var)
+return
+
+AppsKey & p::
 >^p::
 ;pxToRem
     t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec

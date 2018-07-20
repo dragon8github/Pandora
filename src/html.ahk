@@ -1,4 +1,6 @@
-﻿::a::
+﻿::aa::
+::alink::
+::ahref::
 Var = 
 (
 <a href="http://www.baidu.com" target='_blank'>百度一下</a>
