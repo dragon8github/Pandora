@@ -2690,3 +2690,190 @@ longPress(document.getElementById('longPress'), function () {
 )
 code(Var)
 return
+
+::erfenfa::
+::jserfenfa::
+::jsbinary::
+Var =
+(
+// var count = 4000000000
+// var current = 2
+// var time = 0
+// while(!(current >= count)) {
+// 	current = current * 2
+// 	++time
+// }
+// console.log(`使用二分法计算${count}，最多只需要的： ${++time}次` )
+
+// 使用二分法的前提是，必须是有序数组
+var binary_search = function (list, target) {
+	var low = 0
+	var high = list.length
+
+	while(!(low > high)) {
+		var mid = parseInt((low + high) / 2)
+		var guess = list[mid]
+		if (guess === target) {
+			return mid
+		} else if (guess > target){
+			high = mid - 1
+		} else {
+			low = mid + 1
+		}
+	}
+	return null
+}
+
+console.log(binary_search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5))
+)
+code(Var)
+return
+
+::jsstack::
+::jszhan::
+::jszhange::
+Var =
+(
+// 栈Sstack）：站着的书堆，后进先出
+export default class Stack {
+  constructor() {
+    this.count = 0;
+    this.items = {};
+  }
+  push(element) {
+    this.items[this.count] = element;
+    this.count++;
+  }
+  pop() {
+    if (this.isEmpty()) {
+      return undefined;
+    }
+    this.count--;
+    const result = this.items[this.count];
+    delete this.items[this.count];
+    return result;
+  }
+  peek() {
+    if (this.isEmpty()) {
+      return undefined;
+    }
+    return this.items[this.count - 1];
+  }
+  isEmpty() {
+    return this.count === 0;
+  }
+  size() {
+    return this.count;
+  }
+  clear() {
+    /* while (!this.isEmpty()) { this.pop();} */
+    this.items = {};
+    this.count = 0;
+  }
+  toString() {
+    if (this.isEmpty()) {
+      return '';
+    }
+    let objString = `${this.items[0]}`;
+    for (let i = 1; i < this.count; i++) {
+      objString = `${objString},${this.items[i]}`;
+    }
+    return objString;
+  }
+}
+)
+code(Var)
+return
+
+::jserjinzhi::
+::erjinzhi::
+Var =
+(
+function decimalToBinary(decNumber) {
+  let remStack = [];
+  let binaryString = '';
+
+  while (decNumber > 0) {
+    let rem = Math.floor(decNumber `% 2);
+    remStack.push(rem);
+    decNumber = Math.floor(decNumber / 2);
+  }
+
+  while (!(remStack.length === 0)) {
+    binaryString += remStack.pop().toString();
+  }
+
+  return binaryString;
+}
+)
+code(Var)
+return
+
+::jsqueue::
+::queue::
+Var =
+(
+// 队列，排队的中国人，先进先出
+// 高级版：https://github.com/loiane/javascript-datastructures-algorithms/issues/25 | https://github.com/trekhleb/javascript-algorithms/blob/master/src/data-structures/queue/Queue.js
+export default class Queue {
+  constructor() {
+    this.items = []
+  }
+  // 向尾部添加书籍
+  enqueue(element) {
+    this.items.push(element)
+  }
+  // 移出队列第一位
+  dequeue() {
+    this.items.shift();
+  }
+  // 查看第一位
+  front() {
+    return this.items[0];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  size() {
+    return this.items.length
+  }
+
+  print() {
+    console.log(this.item.toString())
+  }
+}
+)
+code(Var)
+return
+
+::jsjinzhi::
+::jinzhizhuanhuan::
+::jsjinzhizhuanhuan::
+Var =
+(
+function baseConverter(decNumber, base) {
+  const remStack = [];
+  const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let baseString = '';
+
+  if (!(base >= 2 && base <= 36)) {
+    return '';
+  }
+
+  while (decNumber > 0) {
+    let rem = Math.floor(decNumber `% base);
+    remStack.push(rem);
+    decNumber = Math.floor(decNumber / base);
+  }
+
+  while (!(remStack.length === 0)) {
+    baseString += digits[remStack.pop()];
+  }
+
+  return baseString;
+}
+)
+code(Var)
+return

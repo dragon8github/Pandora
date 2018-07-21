@@ -77,6 +77,8 @@ Gui, Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
 Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
+Gui, Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
+
 
 Gui, Add, Text,  W140 ys, 最近浏览:
 Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss</a>
