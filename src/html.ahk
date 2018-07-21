@@ -1,4 +1,83 @@
-﻿::aa::
+﻿::bs.time::
+::bs-time::
+::bs.date::
+::bs-date::
+::bs.datepick::
+::bs-datepick::
+::bootstrap.time::
+::bootstrap.date::
+::bootstrap:datetime::
+::bootstrap-datepick::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- bootstrap-datepicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <style>
+    </style>
+<body>
+   
+<div id="sandbox-container">
+    <div class="input-group date">
+        <input type="text" class="form-control">
+        <div class="input-group-addon">
+            <span class="glyphicon glyphicon-th"></span>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    
+    var today = (function(){
+        var date = new Date()
+        var year = date.getFullYear()
+        var month = date.getMonth() + 1
+        var day = date.getDate()
+        var hours = date.getHours()
+        var minu = date.getMinutes()
+        var second = date.getSeconds()
+        var arr = [month, day, hours, minu, second]
+        arr.forEach((item, index) => { arr[index] = item < 10 ? "0" + item : item; })
+        return year + '/' + arr[0] + '/' + arr[1]
+    }());
+    
+    /**
+     * github: https://github.com/uxsolutions/bootstrap-datepicker
+     * 在线配置：https://uxsolutions.github.io/bootstrap-datepicker/
+     * 文档地址：https://bootstrap-datepicker.readthedocs.io/en/latest/
+     */
+    $('#sandbox-container input').val(today).datepicker({
+        //...
+        format: 'yyyy/mm/dd',
+        language: 'zh-CN',
+        todayBtn: true,
+        todayHighlight: true,
+    }).on('changeDate', function(e) {
+        console.log('当前值为：', $(e.target).datepicker('getFormattedDate'))
+    });
+</script>
+</html>
+)
+code(Var)
+return
+
+::aa::
 ::alink::
 ::ahref::
 Var = 

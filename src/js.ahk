@@ -1042,6 +1042,7 @@ default`:
 return
 
 ::date::
+::today::
 Var = 
 (
 var date = new Date();
@@ -1050,9 +1051,9 @@ var month = date.getMonth() + 1;
 var day = date.getDate();
 var hours = date.getHours();
 var minu = date.getMinutes();
-var second = date.getSeconds(); //判断是否满10 
+var second = date.getSeconds(); 
 var arr = [month, day, hours, minu, second];
-arr.forEach(item => { item < 10 ? "0" + item : item; })
+arr.forEach((item, index) => { arr[index] = item < 10 ? "0" + item : item; }) // 判断是否满10 
 console.log(year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4])
 )
 code(Var)
@@ -1062,49 +1063,33 @@ return
 	SendInput, var mydate = new Date(time.replace(/\-/g, "/"))`;
 Return
 
-::date.y::
-	SendInput, new Date().getFullYear()`;
-Return
-
 ::date.year::
-	SendInput, new Date().getFullYear()`;
-Return
-
-::date.m::
-	SendInput, new Date().getMonth() {+} 1`;
+::date.y::
+	SendInput, new Date().getFullYear()
 Return
 
 ::date.month::
-	SendInput, new Date().getMonth() {+} 1`;
-Return
-
-::date.d::
-	SendInput, new Date().getDate()`;
+::date.m::
+	SendInput, new Date().getMonth() {+} 1
 Return
 
 ::date.day::
-	SendInput, new Date().getDate()`;
+::date.d::
+	SendInput, new Date().getDate()
 Return
-
-::date.h::
-	SendInput, new Date().getHours()`;
-Return
-
 
 ::date.hour::
-	SendInput, new Date().getHours()`;
+::date.h::
+	SendInput, new Date().getHours()
 Return
 
 ::date.mm::
-	SendInput, new Date().getMinutes()`;
-Return
-
-::date.s::
-	SendInput, new Date().getSeconds()`;
+	SendInput, new Date().getMinutes()
 Return
 
 ::date.ss::
-    SendInput, new Date().getSeconds()`;
+::date.s::
+	SendInput, new Date().getSeconds()
 Return
 
 ::$create::
