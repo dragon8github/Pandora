@@ -343,7 +343,7 @@ Return
 	SendInput, padding-left: px`;{left 3}
 Return
 
-::pr::
+::prp::
 	SendInput, padding-right: px`;{left 3}
 Return
 

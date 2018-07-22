@@ -1,4 +1,29 @@
-﻿::pyerfenfa::
+﻿::pyfastsort::
+::pykuaisipaixu::
+::pyquicksort::
+Var =
+(
+# 快速排序
+def quicksort(array):
+	# 这不是废话吗？如果数组中只剩下1个或没有成员，那就不需要排序了
+	if len(array) <= 1:
+		return array
+	else:
+		# 随机选出一个作为排序对比时的【基准数】，这里就取第一个好了最简单了
+		pivot = array[0]
+		# 将比基准数小的放在一个数组中（记得除外基准数，也就是[1:]）
+		less = [i for i in array[1:] if i <= pivot]
+		# 把基准数大的放在另外一个数组中（记得除外基准数，也就是[1:]）
+		greater = [i for i in array[1:] if i > pivot]
+		# 然后把三个数组合并，这就是快速排序的精华所在:递归
+		return quicksort(less) + [pivot] + quicksort(greater)
+
+print(quicksort([10, 5, 2, 3])) # [2, 3, 5, 10]
+)
+code(Var)
+return
+
+::pyerfenfa::
 ::pyerfen::
 ::pybinary::
 Var =
@@ -96,6 +121,11 @@ me.show() # Lee
 Me.version() # 1.0
 )
 code(Var)
+return
+
+::pr::
+	t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+    SendInput, print(%t%, )`{left 1}
 return
 
 !p::

@@ -2862,3 +2862,32 @@ function baseConverter(decNumber, base) {
 )
 code(Var)
 return
+
+::jsquicksort::
+::jsfastsort::
+::jskuaisupaixu::
+::kuaisupaixu::
+::jssort::
+Var =
+(
+// 快速排序
+const quicksort = array => {
+	// 这不是废话吗？如果数组中只剩下1个或没有成员，那就不需要排序了
+	if (array.length <= 1) 
+		return array
+	else {
+		// 随机选出一个作为排序对比时的【基准数】，这里就取第一个好了最简单了
+		const pivot = array.shift()
+		// 将比基准数小的放在一个数组中（记得除外基准数，也就是[1:]）
+		const less = array.filter(_ => _ <= pivot)
+		// 把基准数大的放在另外一个数组中（记得除外基准数，也就是[1:]）
+		const greater = array.filter(_ => _ > pivot)
+		// 然后把三个数组合并，这就是快速排序的精华所在:递归
+		return [...quicksort(less), pivot, ...quicksort(greater)]
+	}
+}
+
+console.log(quicksort([10, 5, 2, 3])) // [2, 3, 5, 10]
+)
+code(Var)
+return
