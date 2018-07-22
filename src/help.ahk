@@ -27,7 +27,8 @@ return
     Send, @Decorator
 return
 
-:*:@qq::
+::@qq::
+::@qq.com::
     Send, 928532756@qq.com
 return
 

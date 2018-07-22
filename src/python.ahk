@@ -5,7 +5,7 @@ Var =
 (
 # 快速排序
 def quicksort(array):
-	# 这不是废话吗？如果数组中只剩下1个或没有成员，那就不需要排序了
+	# 这不是废话吗？如果数组中只有1个成员或没有成员，那还排个屁序！！
 	if len(array) <= 1:
 		return array
 	else:

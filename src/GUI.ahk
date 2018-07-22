@@ -32,7 +32,7 @@ Gui, Add, Checkbox, vamazon, 亚马逊
 Gui, Add, Checkbox, vsuning, 苏宁易购
 
 ; 搜索框
-Gui, Add, Edit, vSearchContent w780  Limit50 yp+60 Section xs, 
+Gui, Add, Edit, vSearchContent w780 Limit50 yp+60 Section xs, 
 ; 背景色
 Gui, Color, E6FFE6
 ; margin 布局
@@ -41,7 +41,7 @@ Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 ; submit 按钮
 Gui, Add, Button, w780 h30 Default, FUCK
 
-Gui, Add, Tab3, w780 h400 Choose1, 常用 | 框架 | 库 
+Gui, Add, Tab3, w780 h400 Choose1, 常用 | 框架 | 地图 
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
 Gui, Add, Link,, <a href="https://github.com">github</a>
@@ -118,22 +118,33 @@ Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro/">Ant-Design 示例项目</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
 
-Gui, Add, Text,  W140 ys, DvaJS:
-Gui, Add, Link,, <a href="https://github.com/dvajs/dva">DvaJS-Github</a>
-Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS 入门指引</a>
-Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS API</a>
-Gui, Add, Link,, <a href="https://dvajs.com/guide/examples-and-boilerplates.html#官方">DvaJS Demo</a>
+Gui, Add, Text,  W140 ys, Bootstrap:
+Gui, Add, Link,, <a href="https://v3.bootcss.com/css/#grid-options">全局 css 样式</a>
+Gui, Add, Link,, <a href="https://v3.bootcss.com/components/">全局 js 组件</a>
+Gui, Add, Link,, <a href="https://github.com/twbs/bootstrap">Bootstrap-github</a>
+Gui, Add, Link,, <a href="http://www.youzhan.org/">示例网站</a>
 
 Gui, Add, Text,  W140 Section xs yp+60, React：
 Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react 官网</a>
 Gui, Add, Link,, <a href="https://reacttraining.com/react-router/web/api/Route/component">React-router</a>
 Gui, Add, Link,, <a href="https://redux.js.org/basics/usage-with-react">React-redux</a>
 
+Gui, Add, Text,  W140 ys, DvaJS:
+Gui, Add, Link,, <a href="https://github.com/dvajs/dva">DvaJS-Github</a>
+Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS 入门指引</a>
+Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS API</a>
+Gui, Add, Link,, <a href="https://dvajs.com/guide/examples-and-boilerplates.html#官方">DvaJS Demo</a>
+
 Gui, Add, Text,  W140 ys, puppeteer：
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer?utm_source=gold_browser_extension">puppeteer 官网</a>
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md">puppeteer API</a>
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer">puppeteer-Github</a>
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree/master/examples/">puppeteer-示例</a>
+
+Gui, Add, Text,  W140 ys, Bootstrap第三方插件：
+Gui, Add, Link,, <a href="https://github.com/1000hz/bootstrap-validator">表单验证插件</a>
+Gui, Add, Link,, <a href="https://github.com/uxsolutions/bootstrap-datepicker">datepicker时间插件</a>
+
 
 Gui, Tab, 3
 Gui, Add, Text,  W140 Section, 高德地图：

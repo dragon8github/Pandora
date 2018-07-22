@@ -2717,6 +2717,7 @@ return
 ::jsstack::
 ::jszhan::
 ::jszhange::
+::stack::
 Var =
 (
 // 栈Sstack）：站着的书堆，后进先出
@@ -2872,15 +2873,15 @@ Var =
 (
 // 快速排序
 const quicksort = array => {
-	// 这不是废话吗？如果数组中只剩下1个或没有成员，那就不需要排序了
+	// 这不是废话吗？如果数组中只有1个成员或没有成员，那还排个屁序！！
 	if (array.length <= 1) 
 		return array
 	else {
 		// 随机选出一个作为排序对比时的【基准数】，这里就取第一个好了最简单了
 		const pivot = array.shift()
-		// 将比基准数小的放在一个数组中（记得除外基准数，也就是[1:]）
+		// 将比基准数小的放在一个数组中
 		const less = array.filter(_ => _ <= pivot)
-		// 把基准数大的放在另外一个数组中（记得除外基准数，也就是[1:]）
+		// 把基准数大的放在另外一个数组中
 		const greater = array.filter(_ => _ > pivot)
 		// 这就是快速排序的精华所在:递归, 然后把三个数据合并
 		return [...quicksort(less), pivot, ...quicksort(greater)]

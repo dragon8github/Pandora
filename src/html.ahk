@@ -1,4 +1,96 @@
-﻿::bs.time::
+﻿::bootstrap-validate::
+::bs.validate::
+::bs.validator::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <!-- bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- validator：http://1000hz.github.io/bootstrap-validator/#validator-usage -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
+    <style>
+
+    </style>
+
+    <body>
+        <div id="app">
+            <form data-toggle="validator" role="form" id="myForm">
+                <div class="form-group">
+                    <label for="inputName" class="control-label" >Name</label>
+                    <input type="text" class="form-control" v-model="join.name" id="inputName" placeholder="Cina Saffary" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="control-label">Email</label>
+                    <input type="email" v-model="join.email" class="form-control" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+                <div class="form-group">
+                    <input type="button" id="fuck" class="btn btn-primary" @click="handleClick" value="清空数据">
+                </div>
+
+                <div class="form-group">
+                    <input type="button" id="fuck" class="btn btn-primary" @click="handleClick2" value="添加数据">
+                </div>
+            </form>
+        </div>
+    </body>
+    <script>
+    $(function() {
+    	// 手动调用
+        // $('#myForm').validator()
+    })
+
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            join: {
+            	name: '',
+            	email: '',
+            }
+        },
+        beforeMount() {
+            console.log('hello world');
+        },
+        methods: {
+            handleClick2: function() {
+            	this.join = {
+            		name: 123,
+            		email: '928532756@qq.com'
+            	}
+            	// 这个的意思是，等数据绑定到UI后，渲染完成之后才触发
+            	this.$nextTick(() => {
+            		// 原来重置表单是这个API，而不是Update
+            		$('#myForm').validator('validate')
+            	})
+            },
+            handleClick: function() {
+            	this.join = {}
+            }
+        }
+    })
+    </script>
+
+</html>
+)
+code(Var)
+return
+
+::bs.time::
 ::bs-time::
 ::bs.date::
 ::bs-date::
