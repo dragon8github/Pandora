@@ -2882,7 +2882,7 @@ const quicksort = array => {
 		const less = array.filter(_ => _ <= pivot)
 		// 把基准数大的放在另外一个数组中（记得除外基准数，也就是[1:]）
 		const greater = array.filter(_ => _ > pivot)
-		// 然后把三个数组合并，这就是快速排序的精华所在:递归
+		// 这就是快速排序的精华所在:递归, 然后把三个数据合并
 		return [...quicksort(less), pivot, ...quicksort(greater)]
 	}
 }
