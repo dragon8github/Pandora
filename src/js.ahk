@@ -1,4 +1,16 @@
-﻿::/plain::
+﻿::class.toggle::
+::classtoggle::
+::class-toggle::
+Var =
+(
+// 如果你曾经通过 if 条件语句为元素添加 class，那就应该赶紧改用这种做法。
+// 正确的方式是为 toggle 方法传入第二个参数，如果该参数返回 true ，则指定的 class 就会添加至元素上。
+el.classList.toggle('some-orange-class', theme === 'orange');
+)
+code(Var)
+return
+
+::/plain::
 ::plain/::
     Send, text/plain
 return
@@ -1709,6 +1721,7 @@ code(Var)
 return
 
 ::lazy::
+::lazyload::
 ::lazyimg::
 ::lazyimage::
 Var = 
@@ -1717,6 +1730,7 @@ Var =
  * 图片懒加载
  * https://www.liaoxuefeng.com/article/00151045553343934ba3bb4ed684623b1bf00488231d88d000
  * <img src="https://loading.io/assets/img/ajax.gif" data-src="http://www.hongte.info/assets/images/banner2.jpg">
+ * <div style="margin-top: 1000px;"></div>
  */
 ;(function(){
     // 获取包含data-src属性的img
@@ -1724,7 +1738,7 @@ Var =
     // 将Node-List转化成数组类型
     lazyImgs = [].slice.apply(lazyImgs);
      // 定义事件函数
-    var onScroll = function () {
+    var lazyload = function () {
         // 获取页面滚动的高度
         var wtop = window.scrollY;
         // 获取可视区域高度
@@ -1746,11 +1760,16 @@ Var =
         }
     };
 
+    // 懒加载优化：滚动节流策略
+    var __SCROLLTIMER__ = null
     // 绑定事件
-    window.onscroll = onScroll;
+    window.onscroll = function () {
+        clearTimeout(__SCROLLTIMER__);
+        __SCROLLTIMER__ = setTimeout(lazyload, 150);    
+    }
 
     // 手动触发一次, 因为页面显示时，并未触发scroll事件。
-    onScroll();
+    lazyload();
 }());
 )
 code(Var)
@@ -2889,6 +2908,144 @@ const quicksort = array => {
 }
 
 console.log(quicksort([10, 5, 2, 3])) // [2, 3, 5, 10]
+)
+code(Var)
+return
+
+::hanshujieliu::
+::throttle::
+Var =
+(
+// 函数节流（throttle）：让函数在指定的时间段内周期性地间断执行
+var throttle = function(func, wait, options) {
+    var timeout, context, args, result;
+    // 标记时间戳
+    var previous = 0;
+    // options可选属性 leading: true/false 表示第一次事件马上触发回调/等待wait时间后触发
+    // options可选属性 trailing: true/false 表示最后一次回调触发/最后一次回调不触发
+    if (!options) options = {};
+
+    var later = function() {
+      previous = options.leading === false ? 0 : +(new Date());
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+
+    var throttled = function() {
+      // 记录当前时间戳
+      var now = +(new Date());
+      // 如果是第一次触发且选项设置不立即执行回调
+      if (!previous && options.leading === false)
+      // 将记录的上次执行的时间戳置为当前
+      previous = now;
+      // 距离下次触发回调还需等待的时间
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+
+      // 等待时间 <= 0或者不科学地 > wait（异常情况）
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+            // 清除定时器
+          clearTimeout(timeout);
+          // 解除引用
+          timeout = null;
+        }
+        // 将记录的上次执行的时间戳置为当前
+        previous = now;
+
+        // 触发回调
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      }
+      // 在定时器不存在且选项设置最后一次触发需要执行回调的情况下
+      // 设置定时器，间隔remaining时间后执行later
+      else if (!timeout && options.trailing !== false)    {
+        timeout = setTimeout(later, remaining);
+      }
+     return result;
+    };
+
+    throttled.cancel = function() {
+      clearTimeout(timeout);
+      previous = 0;
+      timeout = context = args = null;
+    };
+
+    return throttled;
+};
+)
+code(Var)
+return
+
+
+::hanshuqudou::
+::debounce::
+Var =
+(
+
+// 函数去抖（debounce）：让函数只有在过完一段时间后再执行，并且该段时间内不被调用才会被执行
+var debounce = function(func, wait, immediate) {
+    var timeout, result;
+
+     // 定时器设置的回调，清除定时器，执行回调函数func
+    var later = function(context, args) {
+      timeout = null;
+      if (args) result = func.apply(context, args);
+    };
+
+    var restArgs = function(func, startIndex) {
+      startIndex = startIndex == null ? func.length - 1 : +startIndex;
+      return function() {
+        var length = Math.max(arguments.length - startIndex, 0);
+        var rest = Array(length);
+        for (var index = 0; index < length; index++) {
+          rest[index] = arguments[index + startIndex];
+        }
+        switch (startIndex) {
+          case 0: return func.call(this, rest);
+          case 1: return func.call(this, arguments[0], rest);
+          case 2: return func.call(this, arguments[0], arguments[1], rest);
+        }
+        var args = Array(startIndex + 1);
+        for (index = 0; index < startIndex; index++) {
+          args[index] = arguments[index];
+        }
+        args[startIndex] = rest;
+        return func.apply(this, args);
+      };
+    };
+
+    var delay = restArgs(function(func, wait, args) {
+      return setTimeout(function(){
+        return func.apply(null, args);
+      }, wait);
+    });
+
+     // restArgs函数将传入的func的参数改造成Rest Parameters —— 一个参数数组
+    var debounced = restArgs(function(args) {
+      if (timeout) clearTimeout(timeout);
+      if (immediate) {
+        // 立即触发的条件：immediate为true且timeout为空
+        var callNow = !timeout;
+        timeout = setTimeout(later, wait);
+        if (callNow) result = func.apply(this, args);
+      } else {
+        // _.delay方法实际上是setTimeout()包裹了一层参数处理的逻辑
+        timeout = delay(later, wait, this, args);
+      }
+
+      return result;
+    });
+
+    debounced.cancel = function() {
+      clearTimeout(timeout);
+      timeout = null;
+    };
+
+    return debounced;
+};
 )
 code(Var)
 return

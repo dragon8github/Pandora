@@ -85,6 +85,8 @@ Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss
 Gui, Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">易码</a>
 Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">满币网</a>
 Gui, Add, Link,, <a href="http://candy.dragonvein.io/frontend/web/site/signup">dragonvein</a>
+Gui, Add, Link,, <a href="https://www.aliyun.com/">阿里云</a>
+
 
 Gui, Add, Text,  W140 ys, 最近学习：
 Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react 掘金小册</a>
