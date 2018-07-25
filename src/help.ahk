@@ -168,11 +168,13 @@ return
 return
 
 /*
-!p::
-	FileSelectFolder, OutputVar,,3
+^!p::
+    ; FileSelectFile / FileSelectFolder
+	FileSelectFile, OutputVar,,3 
 	Clipboard := OutputVar
 return
 */
+
 
 !d::
     run, %A_WorkingDir%/src

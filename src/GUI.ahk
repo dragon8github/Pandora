@@ -117,7 +117,7 @@ Gui, Add, Link,, <a href="https://github.com/ElemeFE/mint-ui/blob/master/package
 Gui, Add, Text,  W140 ys, Ant-Design:
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design/">Ant-Design-Github</a>
 Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design 文档</a>
-Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro/">Ant-Design 示例项目</a>
+Gui, Add, Link,, <a href="https://preview.pro.ant.design/#/dashboard/analysis">Ant-Design 示例项目</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
 
 Gui, Add, Text,  W140 ys, Bootstrap:

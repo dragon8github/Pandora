@@ -497,7 +497,6 @@ o.src = 'https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js';
 document.documentElement.appendChild(o); // console.log(jQuery.fn.jquery);
 )
 code(Var)
-Clipboard := "console.log(jQuery.fn.jquery);"
 return
 
 ::myheight::
@@ -1639,6 +1638,9 @@ var getPath = function(){
 code(Var)
 return
 
+::addjs::
+::addscript::
+::onscript::
 ::onscriptload::
 ::onscriptready::
 ::scriptread::

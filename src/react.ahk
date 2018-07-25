@@ -1,4 +1,89 @@
-﻿
+﻿::rfor::
+::reactfor::
+Var =
+(
+render () {
+	const { getCount, addInput } = this.props
+	let listInput = () => {
+		let result = []
+		for (let i = 1; i <= 10; i++) {
+		   result.push(<div key = { i }>输入框: <input type='text'/></div>)
+		}
+		return result
+	}
+
+	return <div>
+		{ listInput() }
+		<input type = 'button' onClick = { addInput }  value = '添加'/>
+	</div>
+}
+)
+code(Var)
+return
+
+::ant.model::
+::ant-modal::
+Var =
+(
+const CreateForm = Form.create()(props => {
+  const { modalVisible, form, handleAdd, handleModalVisible } = props;
+  const okHandle = () => {
+    form.validateFields((err, fieldsValue) => {
+      if (err) return;
+      form.resetFields();
+      handleAdd(fieldsValue);
+    });
+  };
+  return (
+    <Modal
+      title="新建规则"
+      visible={modalVisible}
+      onOk={okHandle}
+      onCancel={() => handleModalVisible(false)}
+    >
+      <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 19 }} label="描述">
+        {form.getFieldDecorator('desc', {
+          rules: [{ required: true, message: 'Please input some description...' }],
+        })(<Input placeholder="请输入" />)}
+      </FormItem>
+    </Modal>
+  `);
+});
+
+
+handleModalVisible = flag => {
+	this.setState({
+	  modalVisible: !!flag,
+	});
+};
+
+handleAdd = fields => {
+	const { dispatch } = this.props;
+	dispatch({
+	  type: 'rule/add',
+	  payload: {
+		description: fields.desc,
+	  },
+});
+
+message.success('添加成功');
+	this.setState({
+	  modalVisible: false,
+	});
+};
+
+const parentMethods = {
+  handleAdd: this.handleAdd,
+  handleModalVisible: this.handleModalVisible,
+};
+
+
+const { modalVisible } = this.state;
+
+<CreateForm {...parentMethods} modalVisible={modalVisible} />
+)
+code(Var)
+return
 
 ReactMenuHandler:
 if (A_ThisMenuItem == "this.porps") {
@@ -86,7 +171,7 @@ if (A_ThisMenuItem == "this.state.list.map") {
 Var =
 (
 {this.state.list.map((entry, index) => {
-	<ListItem>
+	return <ListItem>
 		key = {index}
 		value = {entry.text}
 		checked = {entry.checked}
@@ -151,6 +236,31 @@ class App extends Component {
 code(Var)
 }
 
+
+
+if (A_ThisMenuItem == "react for") {
+Var =
+(
+render () {
+	const { getCount, addInput } = this.props
+	let listInput = () => {
+		let result = []
+		for (let i = 1; i <= 10; i++) {
+		   result.push(<div key = { i }>输入框: <input type='text'/></div>)
+		}
+		return result
+	}
+
+	return <div>
+		{ listInput() }
+		<input type = 'button' onClick = { addInput }  value = '添加'/>
+	</div>
+}
+)
+code(Var)
+}
+
+
 if (A_ThisMenuItem == "const { ... } = this.props") {
 Var =
 (
@@ -185,7 +295,7 @@ code(Var)
 Return  
 
 !t::
-	reactArray := ["this.porps", "this.state", "const { ... } = this.props", "const { ... } = this.state", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "handleClick", "WrappedComponent", "WrappedComponent + @Decorator"]
+	reactArray := ["this.porps", "this.state", "const { ... } = this.props", "const { ... } = this.state", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "react for" ,"handleClick", "WrappedComponent", "WrappedComponent + @Decorator"]
 	Loop % reactArray.MaxIndex() {
 		this_life := reactArray[a_index]
 		Menu, reactArray, Add, %this_life%, ReactMenuHandler
@@ -291,7 +401,7 @@ Var =
  * 一、index.js 调用示例
     handleClick () {
         const { dispatch } = this.props
-        dispatch({ type: 'todo/save' }
+        dispatch({ type: 'todo/save' })
     }
 
     二、async func 示例
