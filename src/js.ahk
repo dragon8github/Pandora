@@ -884,7 +884,7 @@ Return
 ::sett::
 Var = 
 (
-setTimeout(function () {
+setTimeout(() => {
         
 }, 1000);
 )
@@ -893,9 +893,10 @@ SendInput, {up}{tab}
 Return
 
 ::setti::
+::seti::
 Var = 
 (
-setInterval(function () {
+setInterval(() => {
     
 }, 1000);
 )
@@ -906,7 +907,7 @@ Return
 ::ctimer::
 Var = 
 (
-var timer = setTimeout(function () {
+var timer = setTimeout(() => {
     clearTimeout(timer);
 }, 1000);
 )
@@ -916,7 +917,7 @@ Return
 ::ctimeri::
 Var = 
 (
-var timer = setInterval(function () {
+var timer = setInterval(() => {
     clearInterval(timer);
 }, 1000);
 )

@@ -179,6 +179,8 @@ Var =
 code(Var)
 return
 
+::vuehtml::
+::vue.html::
 ::html-all::
 ::html`:all::
 ::html.all::
@@ -240,7 +242,9 @@ Var =
 
             <hr>
 
+            <!-- select绑定v-model时，默认取option的value属性值，如果option没有value属性，那就取Option的text属性。  -->
             <select v-model="selected">
+              <!-- 必须设置value = '' 才会展示text -->
               <option disabled value="">Please select one</option>
               <option>A</option>
               <option>B</option>

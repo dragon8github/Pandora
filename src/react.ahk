@@ -294,8 +294,18 @@ code(Var)
 }
 Return  
 
+
+if (A_ThisMenuItem == "this.forceUpdate()") {
+Var =
+(
+this.forceUpdate()
+)
+code(Var)
+}
+Return  
+
 !t::
-	reactArray := ["this.porps", "this.state", "const { ... } = this.props", "const { ... } = this.state", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "react for" ,"handleClick", "WrappedComponent", "WrappedComponent + @Decorator"]
+	reactArray := ["this.porps", "this.state", "const { ... } = this.props", "const { ... } = this.state", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "react for" ,"handleClick", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
 	Loop % reactArray.MaxIndex() {
 		this_life := reactArray[a_index]
 		Menu, reactArray, Add, %this_life%, ReactMenuHandler

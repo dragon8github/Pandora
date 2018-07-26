@@ -41,7 +41,7 @@ Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 ; submit 按钮
 Gui, Add, Button, w780 h30 Default, FUCK
 
-Gui, Add, Tab3, w780 h400 Choose1, 常用 | 框架 | 地图 
+Gui, Add, Tab3, w780 h400 Choose1, 常用 | 框架 | 地图 | PHP
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
 Gui, Add, Link,, <a href="https://github.com">github</a>
@@ -57,7 +57,7 @@ Gui, Add, Link,, <a href="http://babeljs.io/repl">Babel在线转换</a>
 
 Gui, Add, Text,  W140 ys, 娱乐:
 Gui, Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
-Gui, Add, Link,, <a href="http://www.dilidili.wang/">嘀哩嘀哩</a>
+Gui, Add, Link,, <a href="http://www.dilidili.wang/">无名小站</a>
 Gui, Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
 Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lion大帝魔兽</a>
 
@@ -178,6 +178,33 @@ Gui, Add, Link, W140, <a href="http://mapv.baidu.com/">mapv官网</a>
 Gui, Add, Link, W140, <a href="http://mapv.baidu.com/examples/#csv-car.html">mapv-example</a>
 Gui, Add, Link, W140, <a href="https://github.com/huiyan-fe/mapv/blob/master/API.md">百度线面教程</a>
 Gui, Add, Link, W140, <a href="https://github.com/huiyan-fe/mapv/#readme">ampv-github</a>
+
+Gui, Tab, 4
+Gui, Add, Text,  W140 Section, Thinkphp：
+Gui, Add, Link, W140, <a href="https://github.com/top-think/thinkphp">Thinkphp3.2-github</a>
+Gui, Add, Link, W140, <a href="https://github.com/top-think/think">Thinkphp5-github</a>
+Gui, Add, Link, W140, <a href="http://www.thinkphp.cn/">Thinkphp 官网</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/special/thinkphp5_quickstart">Thinkphp 官方教程</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478269">Thinkphp5 快速入门</a>
+
+Gui, Add, Text, W140 ys, PHP官方：
+Gui, Add, Link, W140, <a href="http://php.net/manual/zh/language.oop5.php">官方文档 - 类与对象</a>
+Gui, Add, Link, W140, <a href="http://php.net/manual/zh/language.namespaces.php">官方文档 - 命名空间</a>
+Gui, Add, Link, W140, <a href="http://www.php.cn/xiazai/gongju/1351">vc9-vc14运行库合集</a>
+
+
+Gui, Add, Text, W140 ys, Composer：
+Gui, Add, Link, W140, <a href="https://getcomposer.org/Composer-Setup.exe">Window 下载</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/composer">Composer 中文版本</a>
+Gui, Add, Link, W140, <a href="https://getcomposer.org/doc/">Composer 官方文档</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478269">Composer 使用教程</a>
+
+Gui, Add, Text, W140 ys, Thinkphp 开源项目：
+Gui, Add, Link, W140, <a href="https://github.com/zoujingli/ThinkAdmin">ThinkAdmin</a>
+Gui, Add, Link, W140, <a href="https://github.com/ijry/lyadmin">lyadmin</a>
+Gui, Add, Link, W140, <a href="https://github.com/baijunyao/thinkphp-bjyblog">thinkphp-bjyblog</a>
+Gui, Add, Link, W140, <a href="https://github.com/lea21st/leacmf-thinkphp">leacmf-thinkphp</a>
+
 
 GuiEscape:
 GuiClose:

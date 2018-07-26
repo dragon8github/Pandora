@@ -1,4 +1,14 @@
-﻿::$nextTick::
+﻿::$refs::
+::$ref::
+Var =
+(
+// <select ref="myselect"></select>
+this.$refs.myselect
+)
+code(Var)
+return
+
+::$nextTick::
 ::$next::
 Var =
 (
