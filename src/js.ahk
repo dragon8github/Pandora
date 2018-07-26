@@ -1007,6 +1007,18 @@ Return
     SendInput, document.querySelector('')`;{left 3}
 return
 
+::dgt::
+    SendInput, document.getElementsByTagName('')`;{left 3} 
+return
+
+::dgc::
+    SendInput, document.getElementsByClassName('')`;{left 3} 
+return
+
+::dgn::
+    SendInput, document.getElementsByName('')`;{left 3} 
+return
+
 ::.then::
 Var =
 (

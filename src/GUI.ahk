@@ -122,7 +122,7 @@ Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign"
 
 Gui, Add, Text,  W140 ys, Bootstrap:
 Gui, Add, Link,, <a href="https://v3.bootcss.com/css/#grid-options">全局 css 样式</a>
-Gui, Add, Link,, <a href="https://v3.bootcss.com/components/">全局 js 组件</a>
+Gui, Add, Link,, <a href="https://v3.bootcss.com/components/#jumbotron">全局 js 组件</a>
 Gui, Add, Link,, <a href="https://github.com/twbs/bootstrap">Bootstrap-github</a>
 Gui, Add, Link,, <a href="http://www.youzhan.org/">示例网站</a>
 

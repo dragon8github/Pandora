@@ -377,46 +377,64 @@ return
 Return
 
 
-::vuehtml::
-::vhtml::
-::vue.html::
-::vue-html::
+::vuehtml2::
 Var = 
 (
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Document</title>
-<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
-<style>
-</style>
-<body>
-    <div id="app">
-        {{ title }}
-        <mybutton></mybutton>
-    </div>
-</body>
-<script>
-    // 局部注册组件
-    var mybutton = Vue.extend({
-          template: `
-            <div><button @click="handle">fuck title</button></div>
-          `,
-          methods: {
-            handle () {
-                vue.title = 'fuck'
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <body>
+        <div id="app">
+            <div v-for="(v,i) in list">
+                <input v-model="list[i].a"></input>
+                <select v-model="list[i].b">
+                    <option disabled value="">Please select one</option>
+                    <option value='1'>A</option>
+                    <option value='2'>B</option>
+                    <option value='3'>C</option>
+                </select>
+                <button @click="handleDel"> X </button>
+            </div>
+            <button @click="handleClick">添加一行</button>
+            <button @click="handleSublimt">提交</button>
+        </div>
+    </body>
+    <script>
+        // Vue
+        new Vue({
+            el: '#app',
+            data: {
+                selected: '',
+                list: [
+                  {a: '', b: ''},
+                  {a: '', b: ''},
+                  {a: '', b: ''}
+                ]
+            },
+            methods: {
+                handleClick () {
+                    this.list.push({a: '', b: ''})
+                },
+                handleSublimt () {
+                    console.log(20180726102759, this.list)
+                },
+                handleDel (e) {
+                    // 这就是使用jquery的好处，这里看情况，不一定只是parent，也可能是parents(xxxx)
+                    var index = $(e.target).parent().index()
+                    // 删除索引
+                    this.list.splice(index, 1)
+                }
             }
-          }
-    });
-    Vue.component('mybutton', mybutton)
-    var vue = new Vue({
-        el: '#app',
-        data: {
-            title: '123'
-        }
-    })
-</script>
+        })
+    </script>
+
 </html>
 )
 code(Var)

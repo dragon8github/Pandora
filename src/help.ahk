@@ -2,6 +2,28 @@
     SendRaw, % A_ThisMenuItem
 Return  
 
+MenuHandlerStatus:
+    if (A_ThisMenuItem == "xs —— 超小屏幕 手机 (<768px)") {
+        SendRaw, xs
+    }
+    
+    else if (A_ThisMenuItem == "sm —— 小屏幕 平板 (≥768px)") {
+        SendRaw, sm
+    }
+    
+    else if (A_ThisMenuItem == "md —— 中等屏幕 桌面显示器 (≥992px)") {
+        SendRaw, md
+    }
+    
+    else if (A_ThisMenuItem == "lg —— 大屏幕 大桌面显示器 (≥1200px)") {
+        SendRaw, lg
+    }
+    else {
+        SendRaw, % A_ThisMenuItem
+    }
+    
+Return  
+
 MenuHandlerlifeArray:
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =  
@@ -72,12 +94,13 @@ return
 return
 
 !s:: 
-    ColorArray := ["primary", "success", "info", "warning", "danger"]
+    ColorArray := ["primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥992px)", "lg —— 大屏幕 大桌面显示器 (≥1200px)"]
     Loop % ColorArray.MaxIndex() {
         this_color := ColorArray[a_index]
-        Menu, StatusMenu, Add, %this_color%, MenuHandler
+        Menu, StatusMenu, Add, %this_color%, MenuHandlerStatus
     }
     Menu, StatusMenu, Show
+    Menu, StatusMenu, DeleteAll
 return
 
 +BackSpace::

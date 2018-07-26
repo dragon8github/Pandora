@@ -1,4 +1,22 @@
-﻿::fuckrem::
+﻿::@shanlan::
+::@shange::
+::@lanshan::
+::@wangge::
+::shanlan::
+::shange::
+::lanshan::
+::wangge::
+Var =
+(
+xs —— 超小屏幕 手机 (<768px) 
+sm —— 小屏幕 平板 (≥768px)
+md —— 中等屏幕 桌面显示器 (≥992px)
+lg —— 大屏幕 大桌面显示器 (≥1200px)
+)
+code(Var)
+return
+
+::fuckrem::
 ::fuck-rem::
 ::myrem::
 ::my-rem::
