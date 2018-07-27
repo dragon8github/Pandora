@@ -36,6 +36,25 @@ MsgBox, %InputLocaleID%
 return
 */
 
+RunBy(name) {
+    myIdea := "C:\Program Files\Sublime Text 3\sublime_text3.exe"
+    if (!FileExist(myIdea)) {
+        myIdea := "notepad"
+    }
+    Run, %myIdea% %name%
+}
+
+; a := RunWaitOne("node -v")
+; MsgBox, % a
+RunWaitOne(command) {
+    ; WshShell 对象: http://msdn.microsoft.com/en-us/library/aew9yb99
+    shell := ComObjCreate("WScript.Shell")
+    ; 通过 cmd.exe 执行单条命令
+    exec := shell.Exec(ComSpec " /C " command)
+    ; 读取并返回命令的输出
+	return exec.StdOut.ReadAll()
+}
+
 #z::
     MsgBox, % A_LoopRegSubKey
 return

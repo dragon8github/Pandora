@@ -25,14 +25,7 @@ MenuHandlerStatus:
 Return  
 
 MenuHandlerlifeArray:
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-Var =  
-(
-%A_ThisMenuItem% () {
-    
-}
-)
-code(Var)
+    Send, % A_ThisMenuItem
 return
 
 !h::
@@ -94,7 +87,7 @@ return
 return
 
 !s:: 
-    ColorArray := ["primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥992px)", "lg —— 大屏幕 大桌面显示器 (≥1200px)"]
+    ColorArray := ["primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥992px)", "lg —— 大屏幕 大桌面显示器 (≥1200px)" "", "", "",  "public", "private", "protected"]
     Loop % ColorArray.MaxIndex() {
         this_color := ColorArray[a_index]
         Menu, StatusMenu, Add, %this_color%, MenuHandlerStatus
@@ -173,7 +166,7 @@ return
     Send, +{PGDN}
 return
 
-~!Right::
+!Right::
     SendInput, {end} 
 return
 

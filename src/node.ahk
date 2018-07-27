@@ -1,4 +1,23 @@
-﻿::request.proxy::
+﻿::node.pachong::
+::node.jquery::
+::nodepachong::
+::nodejquery::
+::node.$::
+Var =
+(
+// npm i request cheerio
+const request = require('request');
+const cheerio = require('cheerio');
+
+request('http://candy.dragonvein.io/frontend/web/site/signup', function (err, response, body) {
+    if (err) throw new Error(err.message);
+    let $ = cheerio.load(response.body)
+});
+)
+code(Var)
+return
+
+::request.proxy::
 Var = 
 (
  request({

@@ -41,7 +41,7 @@ Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 ; submit 按钮
 Gui, Add, Button, w780 h30 Default, FUCK
 
-Gui, Add, Tab3, w780 h400 Choose1, 常用 | 框架 | 地图 | PHP
+Gui, Add, Tab3, w780 h400 Choose1, 常用 | 框架 | 地图 | PHP | 工作坊
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
 Gui, Add, Link,, <a href="https://github.com">github</a>
@@ -93,7 +93,7 @@ Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react
 Gui, Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React 小书</a>
 Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-design精选插件</a>
 Gui, Add, Link,, <a href="https://ant.design/components/table-cn/">Ant-design-table</a>
-
+Gui, Add, Link,, <a href="https://github.com/alibaba/ice">淘宝飞冰ice</a>
 
 Gui, Tab, 2
 Gui, Add, Text,  W140  Section, layer/layui：
@@ -118,6 +118,7 @@ Gui, Add, Text,  W140 ys, Ant-Design:
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design/">Ant-Design-Github</a>
 Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design 文档</a>
 Gui, Add, Link,, <a href="https://preview.pro.ant.design/#/dashboard/analysis">Ant-Design 示例项目</a>
+Gui, Add, Link,, <a href="http://antv.alipay.com/zh-cn/index.html">antv可视化图表</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
 
 Gui, Add, Text,  W140 ys, Bootstrap:
@@ -126,7 +127,7 @@ Gui, Add, Link,, <a href="https://v3.bootcss.com/components/#jumbotron">全局 j
 Gui, Add, Link,, <a href="https://github.com/twbs/bootstrap">Bootstrap-github</a>
 Gui, Add, Link,, <a href="http://www.youzhan.org/">示例网站</a>
 
-Gui, Add, Text,  W140 Section xs yp+60, React：
+Gui, Add, Text,  W140 Section xs yp+80, React：
 Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react 官网</a>
 Gui, Add, Link,, <a href="https://reacttraining.com/react-router/web/api/Route/component">React-router</a>
 Gui, Add, Link,, <a href="https://redux.js.org/basics/usage-with-react">React-redux</a>
@@ -143,9 +144,14 @@ Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/blob/master/
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer">puppeteer-Github</a>
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree/master/examples/">puppeteer-示例</a>
 
+
 Gui, Add, Text,  W140 ys, Bootstrap第三方插件：
 Gui, Add, Link,, <a href="https://github.com/1000hz/bootstrap-validator">表单验证插件</a>
 Gui, Add, Link,, <a href="https://github.com/uxsolutions/bootstrap-datepicker">datepicker时间插件</a>
+
+Gui, Add, Text,  W140 ys, echart:
+Gui, Add, Link,, <a href="http://echarts.baidu.com/index.html">echart官网</a>
+Gui, Add, Link,, <a href="http://echarts.baidu.com/theme-builder/">echart主题构建</a>
 
 
 Gui, Tab, 3
@@ -205,6 +211,20 @@ Gui, Add, Link, W140, <a href="https://github.com/ijry/lyadmin">lyadmin</a>
 Gui, Add, Link, W140, <a href="https://github.com/baijunyao/thinkphp-bjyblog">thinkphp-bjyblog</a>
 Gui, Add, Link, W140, <a href="https://github.com/lea21st/leacmf-thinkphp">leacmf-thinkphp</a>
 
+Gui, Add, Text, W140 ys, phpstorm：
+Gui, Add, Link, W140, <a href="http://www.jetbrains.com/phpstorm/">phpstorm 下载</a>
+Gui, Add, Link, W140, <a href="https://www.jianshu.com/p/133af2e4fe3f">phpstorm 破解</a>
+
+Gui, Add, Text, W140 Section xs yp+140, Thinkphp 备忘录：
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478275">控制器</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478276">视图</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478277">读取数据库</a>
+
+Gui, Tab, 5
+Gui, Add, Text, gNewIndexHtml W140 Section y+20, 新建index.html
+Gui, Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板
+
+
 
 GuiEscape:
 GuiClose:
@@ -225,6 +245,124 @@ return
 	GuiControl,, kuwo, 1 
 	Gui, Show,, Simple Input Example
 return 
+
+NewNodePachong:
+name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+filename := name . "/index.js"
+FileCreateDir, %name%
+FileAppend,
+(
+// npm i request cheerio
+const request = require('request');
+const cheerio = require('cheerio');
+
+request('http://candy.dragonvein.io/frontend/web/site/signup', function (err, response, body) {
+	if (err) throw new Error(err.message);
+	let $ = cheerio.load(response.body)
+});
+), %filename%
+RunWaitOne("cd " . name . " && npm init -y && npm i request cheerio")
+run, %name%
+RunBy(filename)
+return
+
+NewIndexHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- normalize -->
+    <link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+
+    <!-- Vue -->
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+    </style>
+
+    <body>
+        <div id="app">
+          <!--   <input type="radio" id="one" value="One" v-model="picked">
+            <label for="one">One</label>
+            <br>
+            <input type="radio" id="two" value="Two" v-model="picked">
+            <label for="two">Two</label> -->
+
+            <div v-for='(item, index) in items' :key='index'>
+                <input type="radio" id="two" :value="item" v-model="picked">
+                <label for="two">{{ item }}</label>
+            </div>
+
+            <br>
+            <span>Picked: {{ picked }}</span>
+
+            <hr />
+
+            <div id='example-3'>
+                  <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+                  <label for="jack">Jack</label>
+                  <input type="checkbox" id="john" value="John" v-model="checkedNames">
+                  <label for="john">John</label>
+                  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+                  <label for="mike">Mike</label>
+                  <br>
+                  <span>Checked names: {{ checkedNames }}</span>
+            </div>
+
+            <hr>
+
+            <!-- select绑定v-model时，默认取option的value属性值，如果option没有value属性，那就取Option的text属性。  -->
+            <select v-model="selected">
+              <!-- 必须设置value = '' 才会展示text -->
+              <option disabled value="">Please select one</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+    </body>
+    <script>
+        // jquery
+        $(function () {
+            console.log('hello world');
+        });
+
+         // Vue
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'hello world',
+                picked: 'Three',
+                checkedNames: [],
+                selected: '',
+                items: ['One', 'Two', 'Three']
+            },
+            methods: {
+                clickHandle: function () {
+                    console.log('hello world');
+                }
+            }
+        })
+    </script>
+
+</html>
+),  %name%
+RunBy(name)
+return
 
 CancelSelect:
 	GuiControl,, bd, 0
