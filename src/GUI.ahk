@@ -219,6 +219,7 @@ Gui, Add, Text, W140 Section xs yp+140, Thinkphp 备忘录：
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478275">控制器</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478276">视图</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478277">读取数据库</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478282">路由规则</a>
 
 Gui, Tab, 5
 Gui, Add, Text, gNewIndexHtml W140 Section y+20, 新建index.html

@@ -16,6 +16,7 @@ FileDelete, .\src\*.bak
 #Include src/vue.ahk         ; Vue   
 #Include src/TypeScript.ahk  ; TypeScript
 #Include src/js.ahk          ; JavaScript   
+#Include src/tp.ahk		 	 ; thinkphp
 #Include src/node.ahk        ; nodejs    
 #Include src/react.ahk       ; React
 #Include src/cdn.ahk         ; CDN   
