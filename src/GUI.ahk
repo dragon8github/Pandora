@@ -197,10 +197,11 @@ Gui, Add, Text, W140 ys, PHP官方：
 Gui, Add, Link, W140, <a href="http://php.net/manual/zh/language.oop5.php">官方文档 - 类与对象</a>
 Gui, Add, Link, W140, <a href="http://php.net/manual/zh/language.namespaces.php">官方文档 - 命名空间</a>
 Gui, Add, Link, W140, <a href="http://www.php.cn/xiazai/gongju/1351">vc9-vc14运行库合集</a>
-
+Gui, Add, Link, W140, <a href="http://www.jetbrains.com/phpstorm/">phpstorm 下载</a>
+Gui, Add, Link, W140, <a href="https://www.jianshu.com/p/133af2e4fe3f">phpstorm 破解</a>
 
 Gui, Add, Text, W140 ys, Composer：
-Gui, Add, Link, W140, <a href="https://getcomposer.org/Composer-Setup.exe">Window 下载</a>
+Gui, Add, Link, W140, <a href="https://getcomposer.org/Composer-Setup.exe">Windows 下载</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/composer">Composer 中文版本</a>
 Gui, Add, Link, W140, <a href="https://getcomposer.org/doc/">Composer 官方文档</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478269">Composer 使用教程</a>
@@ -211,15 +212,16 @@ Gui, Add, Link, W140, <a href="https://github.com/ijry/lyadmin">lyadmin</a>
 Gui, Add, Link, W140, <a href="https://github.com/baijunyao/thinkphp-bjyblog">thinkphp-bjyblog</a>
 Gui, Add, Link, W140, <a href="https://github.com/lea21st/leacmf-thinkphp">leacmf-thinkphp</a>
 
-Gui, Add, Text, W140 ys, phpstorm：
-Gui, Add, Link, W140, <a href="http://www.jetbrains.com/phpstorm/">phpstorm 下载</a>
-Gui, Add, Link, W140, <a href="https://www.jianshu.com/p/133af2e4fe3f">phpstorm 破解</a>
-
-Gui, Add, Text, W140 Section xs yp+140, Thinkphp 备忘录：
+Gui, Add, Text, W140 ys, Thinkphp 备忘录：
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478275">控制器</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478276">视图</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478277">读取数据库</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478282">路由规则</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478286">$request请求</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478287">$response响应</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478289">think\Db 数据库</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478291">CURD/切换数据库</a>
+
 
 Gui, Tab, 5
 Gui, Add, Text, gNewIndexHtml W140 Section y+20, 新建index.html
