@@ -177,6 +177,18 @@ Var =
 // 事务支持：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478294
 namespace app\index\controller;
 use think\Db;
+/**
+CREATE TABLE IF NOT EXISTS ``think_data``(
+``id`` int(8) unsigned NOT NULL AUTO_INCREMENT,
+``name`` varchar(255) NOT NULL COMMENT '名称',
+``status`` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
+PRIMARY KEY (``id``)
+`) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
+INSERT INTO ``think_data``(``id``,``name``,``status``) VALUES
+(1,'thinkphp',1),
+(2,'onethink',1),
+(3,'topthink',1);
+*/
 class Index
 {
     public function hello($name = '')
@@ -275,6 +287,18 @@ Var =
 // 各种查询语言表达式：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478295
 namespace app\index\controller;
 use think\Db;
+/**
+CREATE TABLE IF NOT EXISTS ``think_data``(
+``id`` int(8) unsigned NOT NULL AUTO_INCREMENT,
+``name`` varchar(255) NOT NULL COMMENT '名称',
+``status`` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
+PRIMARY KEY (``id``)
+`) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
+INSERT INTO ``think_data``(``id``,``name``,``status``) VALUES
+(1,'thinkphp',1),
+(2,'onethink',1),
+(3,'topthink',1);
+*/
 class Index
 {
     // 表达式                含义
@@ -308,7 +332,7 @@ class Index
         // 或者：$result = Db::name('data')->where('id', 'between', [5, 8]) ->select();
         dump($result);
 
-        // 使用多个查询条件
+        // 使用多次where
         $result = Db::name('data')
             // id 在 1到3之间的
             ->where('id', 'between', [1, 3])
@@ -320,6 +344,304 @@ class Index
         // 如果要查询某个字段是否为NULL，可以使用：(必须将字段设计为允许null，然后将值右键设置为null才可以测试哦)
         $result = Db::name('data') ->where('name', 'null') ->select();
         dump($result);
+
+        // 使用一次where，多个查询条件
+        $result = Db::name('data')
+            ->where([
+                'id'   => ['between', '1,3'],
+                'name' => ['like', '%think%'],
+            ])->select();
+        dump($result);
+
+        // 一些复杂的用法，使用OR和AND混合条件查询
+        $result = Db::name('data')
+            ->where('name', 'like', '%think%')
+            ->where('id', ['in', [1, 2, 3]], ['between', '5,8'], 'or')
+            ->limit(10)
+            ->select();
+        dump($result);
+
+        // 多个字段需要使用相同的查询条件，可以使用快捷查询
+        $result = Db::name('data')
+            // 例如，我们要查询id和status都大于0的数据，等价于：SELECT * FROM `think_data` WHERE ( `id` > 0 AND `status` > 0 ) LIMIT 10
+            ->where('id&status', '>', 0)
+            ->limit(10)
+            ->select();
+        dump($result);
+
+        // 也可以使用or，等价于：SELECT * FROM `think_data` WHERE ( `id` > 0 OR `status` > 0 ) LIMIT 10
+        $result = Db::name('data')
+            ->where('id|status', '>', 0)
+            ->limit(10)
+            ->select();
+        dump($result);
+
+        // find() 和 select() 方法可以直接使用闭包查询（其实就是省略最后的->select()和->find()）
+        $result = Db::name('data')->select(function ($query) {
+            $query->where('name', 'like', '%think%')
+                ->where('id', 'in', '1,2,3')
+                ->limit(10);
+        });
+        dump($result);
+
+        // 获取列数据，使用column方法
+        $list = Db::name('data')
+            ->where('status', 1)
+            ->column('name');
+        dump($list);
+
+        // 聚合查询：count、max、min、avg、sum
+        // 统计data表的数据
+        $count = Db::name('data')
+            ->where('status', 1)
+            ->count();
+        dump($count);
+
+        // 统计user表的最高分
+        $max = Db::name('user')
+            ->where('status', 1)
+            ->max('score');
+        dump($max);
+
+        // where 参数注入
+        $result = Db::name('data')
+            ->where('id > :id AND name IS NOT NULL', ['id' => 10])
+            ->select();
+        dump($result);
+    }
+}
+)
+code(Var)
+return
+
+::tp.model::
+::tpmodel::
+Var =
+(
+<?php
+namespace app\index\model;
+
+use think\Model;
+
+/**
+    CREATE TABLE IF NOT EXISTS ``think_user``(
+    ``id`` int(8) unsigned NOT NULL AUTO_INCREMENT,
+    ``nickname`` varchar(50) NOT NULL COMMENT '昵称',
+    ``email`` varchar(255) NULL DEFAULT NULL COMMENT '邮箱',
+    ``birthday`` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT '生日',
+    ``status`` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
+    ``create_time`` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT '注册时间',
+    ``update_time`` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT '更新时间',
+    PRIMARY KEY (``id``)
+    `) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+ **/
+class User extends Model
+{
+    // 设置数据表（不含前缀），如果想自动包含前缀，可以定义$name： protected $name = 'user';
+    protected $table = 'think_user';
+}
+)
+code(Var)
+return
+
+::tpconnect::
+::tp.connect::
+::tp.$connect::
+::tp.model.connect::
+::tp.model.$connect::
+Var =
+(
+// 设置单独的数据库连接
+protected $connection = [
+	// 数据库类型
+	'type'        => 'mysql',
+	// 服务器地址
+	'hostname'    => '127.0.0.1',
+	// 数据库名
+	'database'    => 'test',
+	// 数据库用户名
+	'username'    => 'root',
+	// 数据库密码
+	'password'    => '',
+	// 数据库连接端口
+	'hostport'    => '',
+	// 数据库连接参数
+	'params'      => [],
+	// 数据库编码默认采用utf8
+	'charset'     => 'utf8',
+	// 数据库表前缀
+	'prefix'      => 'think_',
+	// 数据库调试模式
+	'debug'       => true,
+];
+)
+code(Var)
+return
+
+::tp.model.controler::
+::tp.modelcontroler::
+::tp.modelc::
+::tp.model.use::
+::tp.modeluse::
+::tp.model.fuck::
+::tp.modelfuck::
+Var =
+(
+<?php
+namespace app\index\controller;
+// https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/147285
+// 为了避免和当前类重名，可以使用 as 重命名来解决： use app\index\model\User as UserModel; $user  = new UserModel;
+use app\index\model\User;
+
+// tp5.com/index/index/add
+class Index
+{
+    // 新增用户数据
+    // User::create(array $user)
+    public function add()
+    {
+        $user           = new User;
+        $user->nickname = '李钊鸿';
+        $user->email    = 'thinkphp@qq.com';
+        $user->birthday = strtotime('1977-07-10');
+        // 默认是insert操作
+        if ($user->save()) {
+            return '用户[ ' . $user->nickname . ':' . $user->id . ' ]新增成功';
+        } else {
+            return $user->getError();
+        }
+    }
+
+    // 批量新增用户数据
+    public function addList()
+    {
+        $user = new User;
+        $list = [
+            ['nickname' => '张三', 'email' => 'zhanghsan@qq.com', 'birthday' => strtotime('1988-01-15')],
+            ['nickname' => '李四', 'email' => 'lisi@qq.com', 'birthday' => strtotime('1990-09-19')],
+        ];
+        if ($user->saveAll($list)) {
+            return '用户批量新增成功';
+        } else {
+            return $user->getError();
+        }
+    }
+
+    // 读取用户数据
+    // http://tp5.com/index/index/read/id/1
+    public function read($id='')
+    {
+        // 可以通过getByAttr 语法来获取指定的字段，如根据Email字段来获取数据：$user = User::getByEmail('thinkphp@qq.com');
+        // 也可以通过传入数组查询条件：$user = User::get(['nickname'=>'流年']);
+        // 还可以使用闭包 + 查询构建器：$user = User::get(function($query){ $query->where('nickname', '流年')->where('id', '>', 10)->order('id','desc'); });
+        $user = User::get($id);
+        echo $user->nickname . '<br/>';
+        echo $user->email . '<br/>';
+        echo date('Y/m/d', $user->birthday) . '<br/>';
+    }
+
+    // 查询多个数据
+    public function readList() {
+        // 可以直接传入数组条件查询
+        // 依然可以使用闭包 + 构造器：$list = User::all(function ($query) { $query->where('id', '<', 3)->order('id', 'desc'); });
+        $list = User::all(['status' => 0]);
+        foreach ($list as $user) {
+            echo $user->nickname . '<br/>';
+            echo $user->email . '<br/>';
+            echo date('Y/m/d', $user->birthday) . '<br/>';
+            echo '----------------------------------<br/>';
+        }
+    }
+
+    // 更新用户数据
+    // http://tp5.com/index/index/update/id/1
+    // User::update(array $user);
+    public function update($id)
+    {
+        $user           = User::get($id);
+        $user->nickname = '刘晨';
+        $user->email    = 'liu21st@gmail.com';
+        $user->save();
+        return '更新用户成功';
+    }
+
+    // 删除用户数据
+    // http://tp5.com/index/index/delete/id/4
+    // User::destroy(int $id);
+    public function delete($id)
+    {
+        $user = User::get($id);
+        if ($user) {
+            $user->delete();
+            return '删除用户成功';
+        } else {
+            return '删除的用户不存在';
+        }
+    }
+}
+)
+code(Var)
+return
+
+::tp.reader::
+::tp.setter::
+::tp.set::
+::tp.read::
+::tpread::
+::tpreader::
+::tpmodelattr::
+::tpmodelget::
+::tpmodelgetter::
+::tpgetter::
+::tpsetter::
+::tp.model.read::
+::tp.model.reader::
+::tp.model.attr::
+::tp.model.get::
+::tp.model.getter::
+::tp.model.setter:
+Var =
+(
+<?php
+namespace app\index\model;
+
+use think\Model;
+
+/**
+    CREATE TABLE IF NOT EXISTS ``think_user``(
+    ``id`` int(8) unsigned NOT NULL AUTO_INCREMENT,
+    ``nickname`` varchar(50) NOT NULL COMMENT '昵称',
+    ``email`` varchar(255) NULL DEFAULT NULL COMMENT '邮箱',
+    ``birthday`` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT '生日',
+    ``status`` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
+    ``create_time`` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT '注册时间',
+    ``update_time`` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT '更新时间',
+    PRIMARY KEY (``id``)
+    `) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+ **/
+class User extends Model
+{
+    // 设置数据表（不含前缀），如果想自动包含前缀，可以定义$name： protected $name = 'user';
+    protected $table = 'think_user';
+
+    // birthday读取器（getter）
+    protected function getBirthdayAttr($birthday)
+    {
+        return date('Y-m-d', $birthday);
+    }
+
+    // 读取器还可以定义读取数据表中不存在的属性，譬如以下这个 user_birthday 读取器
+    protected function getUserBirthdayAttr($value,$data)
+    {
+        // 这里的读取器方法使用了第二个参数，表示传入所有的属性数据。因为原始的user_birthday属性数据是不存在的，所以我们需要通过data参数获取。
+        return date('Y/m/d', $data['birthday']);
+    }
+
+    // birthday修改器（setter）
+    protected function setBirthdayAttr($value)
+    {
+        // 由于birthday属性是时间戳（整型）格式的，因此我们必须在写入数据前进行时间戳转换
+        return strtotime($value);
     }
 }
 )
