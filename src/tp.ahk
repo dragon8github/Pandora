@@ -2,28 +2,6 @@
 ::tprequest::
 ::tp.req::
 ::tpreq::
-Var =
-(
-<?php
-namespace app\index\controller;
-
-use think\Request;
-
-class Index
-{
-	// request参数是系统自动注入的
-    public function hello(Request $request, $name = 'World')
-    {
-        // 获取当前URL地址 不含域名
-		// 也可以不使用注入的$request，直接使用 $this->request->url()，甚至可以使用tp内置函数助手 request()->url()
-        echo 'url: ' . $request->url() . '<br/>';
-        return 'Hello,' . $name . '！';
-    }
-}
-)
-code(Var)
-return
-
 ::tp.param::
 ::tp.params::
 ::tpparam::
@@ -31,6 +9,7 @@ return
 Var =
 (
 <?php
+// https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478286
 namespace app\index\controller;
 
 use think\Request;
@@ -119,6 +98,7 @@ return
 Var =
 (
 <?php
+// https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478287
 namespace app\index\controller;
 
 class Index
@@ -142,7 +122,7 @@ return
 Var =
 (
 <?php
-<?php
+// https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478287
 namespace app\index\controller;
 
 class Index
@@ -181,9 +161,20 @@ return
 ::tpCURD::
 ::tpdb::
 ::tpdatabase::
+::tp.orm::
+::tprom::
+::tpshiwu::
+::tp.shiwu::
+::tptrans::
+::tp.trans::
+::tptransaction::
+::tp.transaction::
 Var =
 (
 <?php
+// 原生sql操作：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478291
+// ORM：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478292
+// 事务支持：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478294
 namespace app\index\controller;
 use think\Db;
 class Index
@@ -216,13 +207,118 @@ class Index
         dump($result);
 
         // 参数绑定之占位符（个人不推荐）
+        Db::execute('delete from think_data where id = ?', [8]);
         Db::execute('insert into think_data (id, name ,status) values (?, ?, ?)', [8, 'thinkphp', 1]);
         $result = Db::query('select * from think_data where id = ?', [8]);
         dump($result);
 
         // 参数绑定之命名占位符（强烈推荐）
+        Db::execute('delete from think_data where id = ?', [10]);
         Db::execute('insert into think_data (id, name , status) values (:id, :name, :status)', ['id' => 10, 'name' => 'thinkphp', 'status' => 1]);
         $result = Db::query('select * from think_data where id=:id', ['id' => 10]);
+        dump($result);
+
+
+        // 由于配置了数据表的前缀为think_，所以这里简写为db('data')，而且也必须是这样。
+        $db = db('data');
+        // 插入记录
+        $db->insert(['id' => 18, 'name' => 'thinkphp', 'status' => 1]);
+        // 更新记录
+        $db->where('id', 18)->update(['name' => "hello"]);
+        // 查询数据
+        $list = $db->field('name,status')->where('id', 18)->select();
+        // 删除数据
+        $db->where('id', 18)->delete();
+
+        // 数据库复杂查询链式操作：查询十个满足条件的数据 并按照id倒序排列
+        $list = Db::name('data')
+            ->where('status', 1)
+            ->field('id,name')
+            ->order('id', 'desc')
+            ->limit(10)
+            ->select();
+        dump($list);
+
+        // 事务支持（由于需要用到事务的功能，请先修改数据表的类型为InnoDB，而不是MyISAM。）
+        // 对于事务的支持，最简单的方法就是使用transaction方法
+        Db::transaction(function () {
+            Db::table('think_data')->delete(1);
+            // 这条语句会因为重复的key报错，所以会回滚操作，上面的delete操作也会失效
+            Db::table('think_data')->insert(['id' => 8, 'name' => 'thinkphp', 'status' => 1]);
+        });
+
+        // 也可以手动控制事务的提交，而且try...catch...的好处是不会引发报错。
+        Db::startTrans();
+        try {
+            Db::table('think_data')->delete(1);
+            Db::table('think_data')->insert(['id' => 28, 'name' => 'thinkphp', 'status' => 1]);
+            // 提交事务
+            Db::commit();
+        } catch (\Exception $e) {
+            // 回滚事务
+            Db::rollback();
+        }
+    }
+}
+)
+code(Var)
+return
+
+::tp.query::
+::tpquery::
+Var =
+(
+<?php
+// 原生sql操作：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478291
+// ORM：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478292
+// 事务支持：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478294
+// 各种查询语言表达式：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478295
+namespace app\index\controller;
+use think\Db;
+class Index
+{
+    // 表达式                含义
+    // EQ、=                等于（=）
+    // NEQ、<>              不等于（<>）
+    // GT、>                大于（>）
+    // EGT、>=              大于等于（>=）
+    // LT、<                小于（<）
+    // ELT、<=              小于等于（<=）
+    // LIKE                模糊查询
+    // [NOT] BETWEEN       （不在）区间查询
+    // [NOT] IN            （不在）IN 查询
+    // [NOT] NULL          查询字段是否（不）是NULL
+    // [NOT] EXISTS        EXISTS查询
+    // EXP                 表达式查询，支持SQL语法
+    public function hello($name = '')
+    {
+        // 由于配置了数据表的前缀为think_，所以这里简写为db('data')，而且也必须是这样。
+        $db = Db::name('data');
+        // 默认表达式为“=”，也就等同于：$result = Db::name('data') ->where('id', '=', 1) ->find();
+        $result = $db->where('id', 1)->find();
+        dump($result);
+
+        // 如果使用EXP条件表达式的话，表示后面是原生的SQL语句表达式
+        // select方法用于查询数据集，如果查询成功，返回的是一个二维数组
+        $result = Db::name('data') ->where('id', 'exp', '>= 1') ->limit(10) ->select();
+        dump($result);
+
+        // 如果要查询id的范围，可以使用：
+        $result = Db::name('data')->where('id', 'in', [1, 2, 3]) ->select();
+        // 或者：$result = Db::name('data')->where('id', 'between', [5, 8]) ->select();
+        dump($result);
+
+        // 使用多个查询条件
+        $result = Db::name('data')
+            // id 在 1到3之间的
+            ->where('id', 'between', [1, 3])
+            // name 中包含think
+            ->where('name', 'like', '%think%')
+            ->select();
+        dump($result);
+
+        // 如果要查询某个字段是否为NULL，可以使用：(必须将字段设计为允许null，然后将值右键设置为null才可以测试哦)
+        $result = Db::name('data') ->where('name', 'null') ->select();
         dump($result);
     }
 }

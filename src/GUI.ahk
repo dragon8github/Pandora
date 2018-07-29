@@ -212,21 +212,27 @@ Gui, Add, Link, W140, <a href="https://github.com/ijry/lyadmin">lyadmin</a>
 Gui, Add, Link, W140, <a href="https://github.com/baijunyao/thinkphp-bjyblog">thinkphp-bjyblog</a>
 Gui, Add, Link, W140, <a href="https://github.com/lea21st/leacmf-thinkphp">leacmf-thinkphp</a>
 
-Gui, Add, Text, W140 ys, Thinkphp 备忘录：
-Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478275">控制器</a>
-Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478276">视图</a>
-Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478277">读取数据库</a>
-Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478282">路由规则</a>
+Gui, Add, Text, W140 ys, Thinkphp MVC：
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478275">控制器Control</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478276">视图View</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478282">路由规则route</a>
+
+
+Gui, Add, Text,  W140 Section xs yp+100, Think 数据库：
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478286">$request请求</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478287">$response响应</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478289">think\Db 数据库</a>
-Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478291">CURD/切换数据库</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478291">CURD/切换数据库/占位符</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478292">ORM 数据层操作</a>
 
+
+Gui, Add, Link, W140 ys, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478293">数据库复杂查询链式操作</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478294">事务支持</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478295">各种查询表达式</a>
 
 Gui, Tab, 5
 Gui, Add, Text, gNewIndexHtml W140 Section y+20, 新建index.html
 Gui, Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板
-
 
 
 GuiEscape:
