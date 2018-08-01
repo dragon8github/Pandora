@@ -52,7 +52,7 @@ Gui, Add, Link,, <a href="http://e.xitu.io/">掘金前端</a>
 Gui, Add, Text,  W140 ys, 其他:
 Gui, Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</a>
 Gui, Add, Link, gInspect ,  <a>安卓/Nodejs调试</a>
-Gui, Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AHK官网</a>
+Gui, Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AutoHotkey官网</a>
 Gui, Add, Link,, <a href="http://babeljs.io/repl">Babel在线转换</a>
 
 Gui, Add, Text,  W140 ys, 娱乐:
@@ -95,6 +95,10 @@ Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-d
 Gui, Add, Link,, <a href="https://ant.design/components/table-cn/">Ant-design-table</a>
 Gui, Add, Link,, <a href="https://github.com/alibaba/ice">淘宝飞冰ice</a>
 
+
+Gui, Add, Text,  W140 ys, 工作：
+Gui, Add, Link,, <a href="http://47.106.185.185:8080/api/swagger-ui.html#/">swagger-ui</a>
+
 Gui, Tab, 2
 Gui, Add, Text,  W140  Section, layer/layui：
 Gui, Add, Link,, <a href="http://layer.layui.com/">layer</a>
@@ -108,18 +112,16 @@ Gui, Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
 Gui, Add, Link,, <a href="http://router.vuejs.org ">vue-router</a>
 Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 
+Gui, Add, Text,  W140 ys, React:
+Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react 官网</a>
+Gui, Add, Link,, <a href="https://reacttraining.com/react-router/web/api/Route/component">React-router</a>
+Gui, Add, Link,, <a href="https://redux.js.org/basics/usage-with-react">React-redux</a>
+
 Gui, Add, Text,  W140 ys, 饿了么UI：
 Gui, Add, Link,, <a href="http://element-cn.eleme.io/#/zh-CN/component/radio">Element-UI</a>
 Gui, Add, Link,, <a href="https://github.com/ElemeFE/element/blob/dev/packages/">Element-github</a>
 Gui, Add, Link,, <a href="http://elemefe.github.io/mint-ui/#/">mint-ui</a>
 Gui, Add, Link,, <a href="https://github.com/ElemeFE/mint-ui/blob/master/packages/radio/src/radio.vue">mint-ui-github</a>
-
-Gui, Add, Text,  W140 ys, Ant-Design:
-Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design/">Ant-Design-Github</a>
-Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design 文档</a>
-Gui, Add, Link,, <a href="https://preview.pro.ant.design/#/dashboard/analysis">Ant-Design 示例项目</a>
-Gui, Add, Link,, <a href="http://antv.alipay.com/zh-cn/index.html">antv可视化图表</a>
-Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
 
 Gui, Add, Text,  W140 ys, Bootstrap:
 Gui, Add, Link,, <a href="https://v3.bootcss.com/css/#grid-options">全局 css 样式</a>
@@ -127,10 +129,13 @@ Gui, Add, Link,, <a href="https://v3.bootcss.com/components/#jumbotron">全局 j
 Gui, Add, Link,, <a href="https://github.com/twbs/bootstrap">Bootstrap-github</a>
 Gui, Add, Link,, <a href="http://www.youzhan.org/">示例网站</a>
 
-Gui, Add, Text,  W140 Section xs yp+80, React：
-Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react 官网</a>
-Gui, Add, Link,, <a href="https://reacttraining.com/react-router/web/api/Route/component">React-router</a>
-Gui, Add, Link,, <a href="https://redux.js.org/basics/usage-with-react">React-redux</a>
+Gui, Add, Text,  W140 Section xs yp+40, Ant-Design：
+Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design/">Ant-Design-Github</a>
+Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design 文档</a>
+Gui, Add, Link,, <a href="https://preview.pro.ant.design/#/dashboard/analysis">Ant-Design 示例项目</a>
+Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro">Ant-Design-github</a>
+Gui, Add, Link,, <a href="http://antv.alipay.com/zh-cn/index.html">antv可视化图表</a>
+Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
 
 Gui, Add, Text,  W140 ys, DvaJS:
 Gui, Add, Link,, <a href="https://github.com/dvajs/dva">DvaJS-Github</a>
@@ -191,7 +196,7 @@ Gui, Add, Link, W140, <a href="https://github.com/top-think/thinkphp">Thinkphp3.
 Gui, Add, Link, W140, <a href="https://github.com/top-think/think">Thinkphp5-github</a>
 Gui, Add, Link, W140, <a href="http://www.thinkphp.cn/">Thinkphp 官网</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/special/thinkphp5_quickstart">Thinkphp 官方教程</a>
-Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478269">Thinkphp5 快速入门</a>
+Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/147289">Thinkphp5 快速入门</a>
 
 Gui, Add, Text, W140 ys, PHP官方：
 Gui, Add, Link, W140, <a href="http://php.net/manual/zh/language.oop5.php">官方文档 - 类与对象</a>

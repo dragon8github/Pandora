@@ -584,6 +584,7 @@ code(Var)
 return
 
 ::tp.reader::
+::tp.getter::
 ::tp.setter::
 ::tp.set::
 ::tp.read::
@@ -644,6 +645,38 @@ class User extends Model
         return strtotime($value);
     }
 }
+)
+code(Var)
+return
+
+::tp.controler::
+::tp.c::
+Var =
+(
+<?php
+namespace app\index\controller;
+
+class User
+{
+    // 创建用户数据页面
+    public function create()
+    {
+        return view('user/create');
+    }
+}
+)
+code(Var)
+return
+
+::tp.autotime::
+::tp.autofinish::
+::tp.aotu::
+::tp.model.autotime::
+::tp.model.autofinish::
+::tp.model.aotu::
+Var =
+(
+
 )
 code(Var)
 return

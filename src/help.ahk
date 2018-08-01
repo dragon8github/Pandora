@@ -1,4 +1,12 @@
-﻿MenuHandler:
+﻿::swa::
+Var =
+(
+http://47.106.185.185:8080/api/swagger-ui.html#/
+)
+code(Var)
+return
+
+MenuHandler:
     SendRaw, % A_ThisMenuItem
 Return  
 
@@ -28,8 +36,9 @@ MenuHandlerlifeArray:
     Send, % A_ThisMenuItem
 return
 
+; Run, mspaint 
 !h::
-    Run, mspaint 
+
 return
 
 ::githubimg::

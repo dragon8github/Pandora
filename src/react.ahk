@@ -292,7 +292,6 @@ const Decorator = WrappedComponent => {
 )
 code(Var)
 }
-Return  
 
 
 if (A_ThisMenuItem == "this.forceUpdate()") {
@@ -302,10 +301,19 @@ this.forceUpdate()
 )
 code(Var)
 }
+
+if (A_ThisMenuItem == "React runtime") {
+	Run, https://stackblitz.com/fork/react
+}
+
 Return  
 
+
+
+
+
 !t::
-	reactArray := ["this.porps", "this.state", "const { ... } = this.props", "const { ... } = this.state", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "react for" ,"handleClick", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
+	reactArray := ["React runtime", "this.porps", "this.state", "const { ... } = this.props", "const { ... } = this.state", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "react for" ,"handleClick", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
 	Loop % reactArray.MaxIndex() {
 		this_life := reactArray[a_index]
 		Menu, reactArray, Add, %this_life%, ReactMenuHandler
@@ -454,6 +462,10 @@ code(Var)
 return
 
 ::rhtml::
+::reacthtml::
+::react.html::
+ Run, https://stackblitz.com/fork/react
+/*
 Var = 
 (
 <!DOCTYPE html>
@@ -509,6 +521,7 @@ Var =
 </html>
 )
 code(Var)
+*/
 return
 
 ::rconnect::

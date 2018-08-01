@@ -576,6 +576,15 @@ class Person {
 code(Var)
 return
 
+/*
+::c::
+Send, {Text}console.log('');
+Send, {left 2}{click 2}
+
+return
+
+*/
+
 AppsKey & b::
 >^b::
 	SendRaw, npm run build
@@ -684,40 +693,54 @@ code(Var)
 return
 
 ::req::
-    Send, require('');{left 3}
+Var =
+(
+require('');
+)
+code(Var)
+Send, {left 3}
 return
 
 AppsKey & d::
 >^d::
-    SendInput, debugger{;}
+Var =
+(
+debugger;
+)
+code(Var)
 Return
+
 
 AppsKey & c:: 
 >^c:: 
-    t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-    SendInput, console.log(%t%, )`{left 1}
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =
+(
+console.log(%t%, )
+)
+code(Var)
+Send, {left 1}
 Return
-
-/*
-::c::
-::con:: 
-::console:: 
-::log::
-    SendInput, console.log()`;{left 2}
-Return
-*/
 
 ::ret::
-	SendInput, return
+    Send, {text}return
 Return 
 
 ::pro::
 ::prote::
-    SendInput, prototype
+Var =
+(
+prototype
+)
+code(Var)
 return
 
 ::args::
-	SendInput, arguments
+Var =
+(
+arguments
+)
+code(Var)
 Return
 
 ::getphone::
@@ -803,21 +826,39 @@ code(Var)
 return
 
 ::json.p::
-    SendInput, JSON.parse(){left}
+Var =
+(
+JSON.parse()
+)
+code(Var)
+Send, {left}
 Return
 
 ::jsons::
 ::json.s::
-    SendInput, JSON.stringify(){left}
+Var =
+(
+JSON.stringify()
+)
+code(Var)
+Send, {left}
 Return
 
 ::json/::
 ::/json::
-    SendRaw, application/json;charset=utf-8
+Var =
+(
+application/json;charset=utf-8
+)
+code(Var)
 Return
 
 ::/form::
-    SendRaw, application/x-www-form-urlencoded;charset=utf-8
+Var =
+(
+application/x-www-form-urlencoded;charset=utf-8
+)
+code(Var)
 Return
 
 ::ff::
@@ -993,30 +1034,59 @@ Var =
 code(Var)
 Send, {left 1}
 return
-
 ::dg::
-    SendInput, document.getElementById('')`;{left 3}
+Var =
+(
+document.getElementById('')
+)
+code(Var)
+Send, {left 2}
 Return
 
 ::ds::
-    SendInput, document.querySelectorAll('')`;{left 3}
+Var =
+(
+document.querySelectorAll('')
+)
+code(Var)
+Send, {left 2}
 Return
 
 ::dsa::
 ::dss::
-    SendInput, document.querySelector('')`;{left 3}
+Var =
+(
+document.querySelector('')
+)
+code(Var)
+Send, {left 2}
 return
 
 ::dgt::
-    SendInput, document.getElementsByTagName('')`;{left 3} 
+Var =
+(
+document.getElementsByTagName('')
+)
+code(Var)
+Send, {left 2} 
 return
 
 ::dgc::
-    SendInput, document.getElementsByClassName('')`;{left 3} 
+Var =
+(
+document.getElementsByClassName('')
+)
+code(Var)
+Send, {left 2} 
 return
 
 ::dgn::
-    SendInput, document.getElementsByName('')`;{left 3} 
+Var =
+(
+document.getElementsByName('')
+)
+code(Var)
+Send, {left 2} 
 return
 
 ::.then::
