@@ -1,4 +1,16 @@
-﻿::swa::
+﻿^1::
+    SendInput, {text}lizhaohong
+return
+
+^2::
+    SendInput, {text}123456
+return
+
+::hosts::
+    SendInput, {text}C:\Windows\System32\drivers\etc
+return
+
+::swa::
 Var =
 (
 http://47.106.185.185:8080/api/swagger-ui.html#/

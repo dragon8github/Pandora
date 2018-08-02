@@ -41,6 +41,7 @@ return
 ; _____________ Css ________________
 
 ::normalize::
+::reset.css::
     code(ajax("https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css"))
 Return
 

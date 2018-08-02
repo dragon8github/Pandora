@@ -30,6 +30,7 @@ Gui, Add, Checkbox, vjingdong, 京东
 Gui, Add, Checkbox, vdangdang, 当当
 Gui, Add, Checkbox, vamazon, 亚马逊
 Gui, Add, Checkbox, vsuning, 苏宁易购
+Gui, Add, Checkbox, vkongzi, 孔夫子二手书
 
 ; 搜索框
 Gui, Add, Edit, vSearchContent w780 Limit50 yp+60 Section xs, 
@@ -68,7 +69,7 @@ Gui, Add, Link,, <a href="http://www.66ip.cn/nm.html">66ip</a>
 
 Gui, Add, Text, W140 ys, 站长工具：
 Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/js">代码格式化</a>
-Gui, Add, Link,, <a href="https://tool.lu/html/">代码美化</a>
+Gui, Add, Link,, <a href="https://tool.lu/html/">tool.lu</a>
 Gui, Add, Link,, <a href="http://jsbeautifier.org/">jsbeautifier</a>
 Gui, Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
 
@@ -98,6 +99,7 @@ Gui, Add, Link,, <a href="https://github.com/alibaba/ice">淘宝飞冰ice</a>
 
 Gui, Add, Text,  W140 ys, 工作：
 Gui, Add, Link,, <a href="http://47.106.185.185:8080/api/swagger-ui.html#/">swagger-ui</a>
+
 
 Gui, Tab, 2
 Gui, Add, Text,  W140  Section, layer/layui：
@@ -631,5 +633,10 @@ ButtonFUCK:
 	; 当当
 	if (dangdang == 1) {
 		RUN, http://search.dangdang.com/?key=%SearchContent%
+	}
+	
+	; 孔夫子二手书
+	if (kongzi == 1) {
+		RUN, http://search.kongfz.com/product_result/?key=%SearchContent%
 	}
 return
