@@ -1,8 +1,10 @@
 ﻿^1::
+!1::
     SendInput, {text}lizhaohong
 return
 
 ^2::
+!2::
     SendInput, {text}123456
 return
 

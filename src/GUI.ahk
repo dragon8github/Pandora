@@ -69,7 +69,7 @@ Gui, Add, Link,, <a href="http://www.66ip.cn/nm.html">66ip</a>
 
 Gui, Add, Text, W140 ys, 站长工具：
 Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/js">代码格式化</a>
-Gui, Add, Link,, <a href="https://tool.lu/html/">tool.lu</a>
+Gui, Add, Link,, <a href="https://tool.lu/html/">tool.lu压缩</a>
 Gui, Add, Link,, <a href="http://jsbeautifier.org/">jsbeautifier</a>
 Gui, Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
 
@@ -99,7 +99,8 @@ Gui, Add, Link,, <a href="https://github.com/alibaba/ice">淘宝飞冰ice</a>
 
 Gui, Add, Text,  W140 ys, 工作：
 Gui, Add, Link,, <a href="http://47.106.185.185:8080/api/swagger-ui.html#/">swagger-ui</a>
-
+Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
+Gui, Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen">大数据屏幕</a>
 
 Gui, Tab, 2
 Gui, Add, Text,  W140  Section, layer/layui：
@@ -131,13 +132,13 @@ Gui, Add, Link,, <a href="https://v3.bootcss.com/components/#jumbotron">全局 j
 Gui, Add, Link,, <a href="https://github.com/twbs/bootstrap">Bootstrap-github</a>
 Gui, Add, Link,, <a href="http://www.youzhan.org/">示例网站</a>
 
-Gui, Add, Text,  W140 Section xs yp+40, Ant-Design：
+Gui, Add, Text,  W140 Section xs yp+60, Ant-Design：
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design/">Ant-Design-Github</a>
 Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design 文档</a>
 Gui, Add, Link,, <a href="https://preview.pro.ant.design/#/dashboard/analysis">Ant-Design 示例项目</a>
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro">Ant-Design-github</a>
 Gui, Add, Link,, <a href="http://antv.alipay.com/zh-cn/index.html">antv可视化图表</a>
-Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
+
 
 Gui, Add, Text,  W140 ys, DvaJS:
 Gui, Add, Link,, <a href="https://github.com/dvajs/dva">DvaJS-Github</a>
