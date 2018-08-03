@@ -1,4 +1,43 @@
-﻿::tp.route::
+﻿!h::
+
+    ; M层
+	Menu, M1, Add, getter / setter, TpHandler
+    
+    ; V层
+	Menu, V1, Add, volist, TpHandler
+    Menu, V1, Add, includes, TpHandler
+    Menu, V1, Add, layout, TpHandler
+    
+    ; C层
+	Menu, C1, Add, $request, TpHandler
+    Menu, C1, Add, $request, TpHandler
+    Menu, C1, Add, curd / orm / transaction, TpHandler
+    Menu, C1, Add, query, TpHandler
+    Menu, C1, Add, 聚合查询（count、max、min、avg、sum）, TpHandler
+    
+
+    Menu, TpMenu, Add, M层, :M1
+    Menu, TpMenu, Add, V层, :V1
+    Menu, TpMenu, Add, C层, :C1
+       
+    Menu, TpMenu, Show
+    Menu, TpMenu, DeleteAll
+return
+
+TpHandler:
+v := A_ThisMenuItem
+
+if (v == "$request") {
+Var = 
+(
+
+)
+}
+
+code(Var)
+return
+
+::tp.route::
 ::tp.router::
 Var =
 (
@@ -14,6 +53,7 @@ return [
 code(Var)
 return
 
+::tp.$request::
 ::tp.request::
 ::tprequest::
 ::tp.req::
@@ -105,6 +145,7 @@ class Index
 code(Var)
 return
 
+::tp.$response::
 ::tp.response::
 ::tpresponse::
 ::tp.res::
@@ -126,7 +167,9 @@ class Index
         // 指定头信息：return json($data, 201, ['Cache-control' => 'no-cache,must-revalidate']);
         // 也可以这样指定头信息：return json($data)->code(201)->header(['Cache-control' => 'no-cache,must-revalidate']);
         // 当然还可以使用各种数据类型：xml、jsonp、json、view、redirect
-        return xml($data);
+        // return redirect('http://thinkphp.cn');
+        // return xml($data);
+        return json($data);
     }
 }
 )
@@ -172,6 +215,7 @@ code(Var)
 return
 
 ::tp.CURD::
+::tp.ZSGC::
 ::tp.db::
 ::tp.database::
 ::tpCURD::
@@ -185,6 +229,10 @@ return
 ::tp.trans::
 ::tptransaction::
 ::tp.transaction::
+::tp.event::
+::tp.shiwu::
+::tp:roll::
+::tp.shiwuhuigun::
 Var =
 (
 <?php

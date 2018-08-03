@@ -79,6 +79,7 @@ code(Var)
 return
 
 ::pyfor::
+::py.for::
 Var =
 (
 for i in range(5):
@@ -88,6 +89,7 @@ code(Var)
 return
 
 ::pyif::
+::py.if::
 Var =
 (
 if name == 'Alice':
@@ -102,6 +104,7 @@ code(Var)
 return
 
 ::pyclass::
+::py.class::
 Var =
 (
 class Me:

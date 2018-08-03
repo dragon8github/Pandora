@@ -50,10 +50,6 @@ MenuHandlerlifeArray:
     Send, % A_ThisMenuItem
 return
 
-; Run, mspaint 
-!h::
-
-return
 
 ::githubimg::
 ::github-img::
