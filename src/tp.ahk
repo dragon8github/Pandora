@@ -1,4 +1,20 @@
-﻿::tp.request::
+﻿::tp.route::
+::tp.router::
+Var =
+(
+<?php
+use think\Route;
+Route::get(':version/user/:id','api/:version.User/read');
+
+return [
+    'hello/[:name]' => 'index/index/hello'
+];
+
+)
+code(Var)
+return
+
+::tp.request::
 ::tprequest::
 ::tp.req::
 ::tpreq::
@@ -649,6 +665,28 @@ class User extends Model
 code(Var)
 return
 
+::tp.v::
+::tp.volist::
+Var =
+(
+<!-- 子组件使用变量： <title>[title]</title> -->
+{include file="user/header" title="$title"  /}
+{volist name="list" id="user"}
+ID：{$user.id}<br/>
+昵称：{$user.nickname}<br/>
+邮箱：{$user.email}<br/>
+生日：{$user.birthday}<br/>
+------------------------<br/>
+{/volist}
+<h1>只有 $list = UserModel::paginate(3); 才可以使用以下API</h1>
+<h2>总数（{$list->total()}）</h2>
+bootstrap分页：{$list->render()}
+{include file="user/footer" /}
+)
+code(Var)
+return
+
+
 ::tp.controler::
 ::tp.c::
 Var =
@@ -656,12 +694,18 @@ Var =
 <?php
 namespace app\index\controller;
 
-class User
+use app\index\model\User as UserModel;
+use think\Controller;
+class User extends Controller
 {
-    // 创建用户数据页面
-    public function create()
+    // 获取用户数据列表并输出
+    public function index()
     {
-        return view('user/create');
+        // $list = UserModel::paginate(3); // 分页
+        $list = UserModel::all();  
+        $this->assign('list', $list);
+        $this->assign('count', count($list));
+        return $this->fetch();  // view('user/index');
     }
 }
 )
