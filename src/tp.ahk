@@ -1,24 +1,42 @@
 ﻿!h::
-
     ; M层
-	Menu, M1, Add, getter / setter, TpHandler
+    Menu, M1, Add, M, TpHandler
+	Menu, M1, Add, 属性读取器getter / 属性修改器setter, TpHandler
+    Menu, M1, Add, $type 类型转换, TpHandler
+    Menu, M1, Add, auto_timestamp 自动时间戳, TpHandler
+    Menu, M1, Add, 自动完成的属性（结合属性读取器getter / 属性修改器setter）, TpHandler
     
     ; V层
+    Menu, V1, Add, V, TpHandler
 	Menu, V1, Add, volist, TpHandler
     Menu, V1, Add, includes, TpHandler
     Menu, V1, Add, layout, TpHandler
     
     ; C层
+    Menu, C1, Add, C, TpHandler
 	Menu, C1, Add, $request, TpHandler
-    Menu, C1, Add, $request, TpHandler
-    Menu, C1, Add, curd / orm / transaction, TpHandler
+    Menu, C1, Add, $response, TpHandler
+    Menu, C1, Add, sql / CURD / ORM / transaction, TpHandler
     Menu, C1, Add, query, TpHandler
     Menu, C1, Add, 聚合查询（count、max、min、avg、sum）, TpHandler
+    Menu, C1, Add, 时间（日期）查询, TpHandler
     
+    
+    Menu, other1, Add, Session, TpHandler
+    Menu, other1, Add, Cookie, TpHandler
+    Menu, other1, Add, 验证码, TpHandler
+    Menu, other1, Add, 图片上传, TpHandler
+    Menu, other1, Add, 单元测试, TpHandler
+    
+    
+    ; API
+    Menu, API1, Add, API, TpHandler
 
     Menu, TpMenu, Add, M层, :M1
     Menu, TpMenu, Add, V层, :V1
     Menu, TpMenu, Add, C层, :C1
+    Menu, TpMenu, Add, API, :API1
+    Menu, TpMenu, Add, 杂项, :other1
        
     Menu, TpMenu, Show
     Menu, TpMenu, DeleteAll
@@ -28,9 +46,515 @@ TpHandler:
 v := A_ThisMenuItem
 
 if (v == "$request") {
+Var =
+(
+<?php
+// https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478286
+namespace app\index\controller;
+
+use think\Request;
+
+class Index
+{
+    public function hello(Request $request)
+    {
+        echo '请求参数：';
+        // 或者可以使用助手函数input: dump(input());/input('name');
+        dump($request->param());
+        echo 'name:'.$request->param('name');
+
+        // 支持过滤（参数，默认值，过滤方法）
+        echo 'name:'.$request->param('name','World','strtoupper');
+        echo '<br/>test:'.$request->param('test','thinkphp','strtolower');
+
+        // 其他获取参数的方法
+        echo 'GET参数：';
+        dump($request->get());
+        echo 'GET参数：name';
+        dump($request->get('name'));
+        echo 'POST参数：name';
+        dump($request->post('name'));
+        echo 'cookie参数：name';
+        dump($request->cookie('name'));
+        echo '上传文件信息：image';
+        dump($request->file('image'));
+
+        // 获取请求参数
+        echo '请求方法：' . $request->method() . '<br/>';
+        echo '资源类型：' . $request->type() . '<br/>';
+        echo '访问IP：' . $request->ip() . '<br/>';
+        echo '是否AJax请求：' . var_export($request->isAjax(), true) . '<br/>';
+        echo '请求参数：';
+        dump($request->param());
+        echo '请求参数：仅包含name';
+        dump($request->only(['name']));
+        echo '请求参数：排除name';
+        dump($request->except(['name']));
+
+        // 获取URL信息
+        // 获取当前域名
+        echo 'domain: ' . $request->domain() . '<br/>';
+        // 获取当前入口文件
+        echo 'file: ' . $request->baseFile() . '<br/>';
+        // 获取当前URL地址 不含域名
+        echo 'url: ' . $request->url() . '<br/>';
+        // 获取包含域名的完整URL地址
+        echo 'url with domain: ' . $request->url(true) . '<br/>';
+        // 获取当前URL地址 不含QUERY_STRING
+        echo 'url without query: ' . $request->baseUrl() . '<br/>';
+        // 获取URL访问的ROOT地址
+        echo 'root:' . $request->root() . '<br/>';
+        // 获取URL访问的ROOT地址
+        echo 'root with domain: ' . $request->root(true) . '<br/>';
+        // 获取URL地址中的PATH_INFO信息
+        echo 'pathinfo: ' . $request->pathinfo() . '<br/>';
+        // 获取URL地址中的PATH_INFO信息 不含后缀
+        echo 'pathinfo: ' . $request->path() . '<br/>';
+        // 获取URL地址中的后缀信息
+        echo 'ext: ' . $request->ext() . '<br/>';
+
+        // 获取当前模块/控制器/操作信息
+        echo '模块：'.$request->module();
+        echo '<br/>控制器：'.$request->controller();
+        echo '<br/>操作：'.$request->action();
+
+        // 获取路由和调度信息
+        echo '路由信息：';
+        dump($request->routeInfo());
+        echo '调度信息：';
+        dump($request->dispatch());
+    }
+}
+)
+}
+
+if (v == "$response") {
+Var =
+(
+<?php
+// https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478287
+namespace app\index\controller;
+
+class Index
+{
+    public function hello()
+    {
+        $data = ['name' => 'thinkphp', 'status' => '1'];
+        // 指定状态码：return json($data, 201);
+        // 指定头信息：return json($data, 201, ['Cache-control' => 'no-cache,must-revalidate']);
+        // 也可以这样指定头信息：return json($data)->code(201)->header(['Cache-control' => 'no-cache,must-revalidate']);
+        // 当然还可以使用各种数据类型：xml、jsonp、json、view、redirect
+        // return redirect('http://thinkphp.cn');
+        // return xml($data);
+        return json($data);
+    }
+}
+)
+}
+
+if (v == "sql / CURD / ORM / transaction") {
+Var =
+(
+<?php
+// 原生sql操作：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478291
+// ORM：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478292
+// 事务支持：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478294
+namespace app\index\controller;
+use think\Db;
+/**
+CREATE TABLE IF NOT EXISTS ``think_data``(
+``id`` int(8) unsigned NOT NULL AUTO_INCREMENT,
+``name`` varchar(255) NOT NULL COMMENT '名称',
+``status`` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
+PRIMARY KEY (``id``)
+`) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
+INSERT INTO ``think_data``(``id``,``name``,``status``) VALUES
+(1,'thinkphp',1),
+(2,'onethink',1),
+(3,'topthink',1);
+*/
+class Index
+{
+    public function hello($name = '')
+    {
+        // 插入记录
+        $result = Db::execute('insert into think_data (id, name ,status) values (5, "thinkphp",1)');
+        // int(1)
+        dump($result);
+
+        // 更新记录
+        $result = Db::execute('update think_data set name = "framework" where id = 5 ');
+        // int(1)
+        dump($result);
+
+        // 查询数据
+        $result = Db::query('select * from think_data where id = 5');
+        // array
+        dump($result);
+
+        // 删除数据
+        $result = Db::execute('delete from think_data where id = 5 ');
+        // int(1)
+        dump($result);
+
+        // 显示数据库列表
+        $result = Db::query('show tables from tp');
+        // array
+        dump($result);
+
+        // 参数绑定之占位符（个人不推荐）
+        Db::execute('delete from think_data where id = ?', [8]);
+        Db::execute('insert into think_data (id, name ,status) values (?, ?, ?)', [8, 'thinkphp', 1]);
+        $result = Db::query('select * from think_data where id = ?', [8]);
+        dump($result);
+
+        // 参数绑定之命名占位符（强烈推荐）
+        Db::execute('delete from think_data where id = ?', [10]);
+        Db::execute('insert into think_data (id, name , status) values (:id, :name, :status)', ['id' => 10, 'name' => 'thinkphp', 'status' => 1]);
+        $result = Db::query('select * from think_data where id=:id', ['id' => 10]);
+        dump($result);
+
+
+        // 由于配置了数据表的前缀为think_，所以这里简写为db('data')，而且也必须是这样。
+        $db = db('data');
+        // 插入记录
+        $db->insert(['id' => 18, 'name' => 'thinkphp', 'status' => 1]);
+        // 更新记录
+        $db->where('id', 18)->update(['name' => "hello"]);
+        // 查询数据
+        $list = $db->field('name,status')->where('id', 18)->select();
+        // 删除数据
+        $db->where('id', 18)->delete();
+
+        // 数据库复杂查询链式操作：查询十个满足条件的数据 并按照id倒序排列
+        $list = Db::name('data')
+            ->where('status', 1)
+            ->field('id,name')
+            ->order('id', 'desc')
+            ->limit(10)
+            ->select();
+        dump($list);
+
+        // 事务支持（由于需要用到事务的功能，请先修改数据表的类型为InnoDB，而不是MyISAM。）
+        // 对于事务的支持，最简单的方法就是使用transaction方法
+        Db::transaction(function () {
+            Db::table('think_data')->delete(1);
+            // 这条语句会因为重复的key报错，所以会回滚操作，上面的delete操作也会失效
+            Db::table('think_data')->insert(['id' => 8, 'name' => 'thinkphp', 'status' => 1]);
+        });
+
+        // 也可以手动控制事务的提交，而且try...catch...的好处是不会引发报错。
+        Db::startTrans();
+        try {
+            Db::table('think_data')->delete(1);
+            Db::table('think_data')->insert(['id' => 28, 'name' => 'thinkphp', 'status' => 1]);
+            // 提交事务
+            Db::commit();
+        } catch (\Exception $e) {
+            // 回滚事务
+            Db::rollback();
+        }
+    }
+}
+)
+}
+
+if (v == "query") {
+Var =
+(
+<?php
+// 原生sql操作：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478291
+// ORM：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478292
+// 事务支持：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478294
+// 各种查询语言表达式：https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478295
+namespace app\index\controller;
+use think\Db;
+/**
+CREATE TABLE IF NOT EXISTS ``think_data``(
+``id`` int(8) unsigned NOT NULL AUTO_INCREMENT,
+``name`` varchar(255) NOT NULL COMMENT '名称',
+``status`` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
+PRIMARY KEY (``id``)
+`) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
+INSERT INTO ``think_data``(``id``,``name``,``status``) VALUES
+(1,'thinkphp',1),
+(2,'onethink',1),
+(3,'topthink',1);
+*/
+class Index
+{
+    // 表达式                含义
+    // EQ、=                等于（=）
+    // NEQ、<>              不等于（<>）
+    // GT、>                大于（>）
+    // EGT、>=              大于等于（>=）
+    // LT、<                小于（<）
+    // ELT、<=              小于等于（<=）
+    // LIKE                模糊查询
+    // [NOT] BETWEEN       （不在）区间查询
+    // [NOT] IN            （不在）IN 查询
+    // [NOT] NULL          查询字段是否（不）是NULL
+    // [NOT] EXISTS        EXISTS查询
+    // EXP                 表达式查询，支持SQL语法
+    public function hello($name = '')
+    {
+        // 由于配置了数据表的前缀为think_，所以这里简写为db('data')，而且也必须是这样。
+        $db = Db::name('data');
+        // 默认表达式为“=”，也就等同于：$result = Db::name('data') ->where('id', '=', 1) ->find();
+        $result = $db->where('id', 1)->find();
+        dump($result);
+
+        // 如果使用EXP条件表达式的话，表示后面是原生的SQL语句表达式
+        // select方法用于查询数据集，如果查询成功，返回的是一个二维数组
+        $result = Db::name('data') ->where('id', 'exp', '>= 1') ->limit(10) ->select();
+        dump($result);
+
+        // 如果要查询id的范围，可以使用：
+        $result = Db::name('data')->where('id', 'in', [1, 2, 3]) ->select();
+        // 或者：$result = Db::name('data')->where('id', 'between', [5, 8]) ->select();
+        dump($result);
+
+        // 使用多次where
+        $result = Db::name('data')
+            // id 在 1到3之间的
+            ->where('id', 'between', [1, 3])
+            // name 中包含think
+            ->where('name', 'like', '')
+            ->select();
+        dump($result);
+
+        // 如果要查询某个字段是否为NULL，可以使用：(必须将字段设计为允许null，然后将值右键设置为null才可以测试哦)
+        $result = Db::name('data') ->where('name', 'null') ->select();
+        dump($result);
+
+        // 使用一次where，多个查询条件
+        $result = Db::name('data')
+            ->where([
+                'id'   => ['between', '1,3'],
+                'name' => ['like', ''],
+            ])->select();
+        dump($result);
+
+        // 一些复杂的用法，使用OR和AND混合条件查询
+        $result = Db::name('data')
+            ->where('name', 'like', '')
+            ->where('id', ['in', [1, 2, 3]], ['between', '5,8'], 'or')
+            ->limit(10)
+            ->select();
+        dump($result);
+
+        // 多个字段需要使用相同的查询条件，可以使用快捷查询
+        $result = Db::name('data')
+            // 例如，我们要查询id和status都大于0的数据，等价于：SELECT * FROM 	hink_data WHERE ( id > 0 AND status > 0 ) LIMIT 10
+            ->where('id&status', '>', 0)
+            ->limit(10)
+            ->select();
+        dump($result);
+
+        // 也可以使用or，等价于：SELECT * FROM 	hink_data WHERE ( id > 0 OR status > 0 ) LIMIT 10
+        $result = Db::name('data')
+            ->where('id|status', '>', 0)
+            ->limit(10)
+            ->select();
+        dump($result);
+
+        // find() 和 select() 方法可以直接使用闭包查询（其实就是省略最后的->select()和->find()）
+        $result = Db::name('data')->select(function ($query) {
+            $query->where('name', 'like', '')
+                ->where('id', 'in', '1,2,3')
+                ->limit(10);
+        });
+        dump($result);
+
+        // 获取列数据，使用column方法
+        $list = Db::name('data')
+            ->where('status', 1)
+            ->column('name');
+        dump($list);
+
+        // 聚合查询：count、max、min、avg、sum
+        // 统计data表的数据
+        $count = Db::name('data')
+            ->where('status', 1)
+            ->count();
+        dump($count);
+
+        // 统计user表的最高分
+        $max = Db::name('user')
+            ->where('status', 1)
+            ->max('score');
+        dump($max);
+
+        // where 参数注入
+        $result = Db::name('data')
+            ->where('id > :id AND name IS NOT NULL', ['id' => 10])
+            ->select();
+        dump($result);
+    }
+}
+)
+}
+
+if (v == "聚合查询（count、max、min、avg、sum）") {
+Var =
+(
+// 聚合查询：count、max、min、avg、sum
+// 统计data表的数据
+$count = Db::name('data')
+    ->where('status', 1)
+    ->count();
+dump($count);
+
+// 统计user表的最高分
+$max = Db::name('user')
+    ->where('status', 1)
+    ->max('score');
+dump($max);
+)
+}
+
+if (v == "时间（日期）查询") {
+Var =
+(
+// 查询创建时间大于2016-1-1的数据
+$result = Db::name('data')
+    ->whereTime('create_time', '>', '2016-1-1')
+    ->select();
+dump($result);
+
+// 查询本周添加的数据
+$result = Db::name('data')
+    ->whereTime('create_time', '>', 'this week')
+    ->select();
+dump($result);
+
+// 查询最近两天添加的数据
+$result = Db::name('data')
+    ->whereTime('create_time', '>', '-2 days')
+    ->select();
+dump($result);
+
+// 查询创建时间在2016-1-1~2016-7-1的数据
+$result = Db::name('data')
+    ->whereTime('create_time', 'between', ['2016-1-1', '2016-7-1'])
+    ->select();
+dump($result);
+
+// 获取今天的数据
+$result = Db::name('data')
+    ->whereTime('create_time', 'today')
+    ->select();
+dump($result);  
+
+// 获取昨天的数据
+$result = Db::name('data')
+    ->whereTime('create_time', 'yesterday')
+    ->select();
+dump($result);  
+
+// 获取本周的数据
+$result = Db::name('data')
+    ->whereTime('create_time', 'week')
+    ->select();   
+dump($result);      
+
+// 获取上周的数据
+$result = Db::name('data')
+    ->whereTime('create_time', 'last week')
+    ->select(); 
+dump($result);    
+)
+}
+
+
+
+if (v == "M") {
 Var = 
 (
+<?php
+namespace app\index\model;
 
+use think\Model;
+
+/**
+    CREATE TABLE IF NOT EXISTS ``think_user``(
+    ``id`` int(8) unsigned NOT NULL AUTO_INCREMENT,
+    ``nickname`` varchar(50) NOT NULL COMMENT '昵称',
+    ``email`` varchar(255) NULL DEFAULT NULL COMMENT '邮箱',
+    ``birthday`` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT '生日',
+    ``status`` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
+    ``create_time`` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT '注册时间',
+    ``update_time`` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT '更新时间',
+    PRIMARY KEY (``id``)
+    `) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+ **/
+class User extends Model
+{
+    // 设置数据表（不含前缀），如果想自动包含前缀，可以定义$name： protected $name = 'user';
+    protected $table = 'think_user';
+
+    // birthday读取器（getter）
+    protected function getBirthdayAttr($birthday)
+    {
+        return date('Y-m-d', $birthday);
+    }
+
+    // 读取器还可以定义读取数据表中不存在的属性，譬如以下这个 user_birthday 读取器
+    protected function getUserBirthdayAttr($value,$data)
+    {
+        // 这里的读取器方法使用了第二个参数，表示传入所有的属性数据。因为原始的user_birthday属性数据是不存在的，所以我们需要通过data参数获取。
+        return date('Y/m/d', $data['birthday']);
+    }
+
+    // birthday修改器（setter）
+    protected function setBirthdayAttr($value)
+    {
+        // 由于birthday属性是时间戳（整型）格式的，因此我们必须在写入数据前进行时间戳转换
+        return strtotime($value);
+    }
+}
+)
+}
+
+if (v == "V") {
+Var = 
+(
+<!-- 子组件使用变量： <title>[title]</title> -->
+{include file="user/header" title="$title"  /}
+{volist name="list" id="user"}
+ID：{$user.id}<br/>
+昵称：{$user.nickname}<br/>
+邮箱：{$user.email}<br/>
+生日：{$user.birthday}<br/>
+------------------------<br/>
+{/volist}
+<h1>只有 $list = UserModel::paginate(3); 才可以使用以下API</h1>
+<h2>总数（{$list->total()}）</h2>
+bootstrap分页：{$list->render()}
+{include file="user/footer" /}
+)
+}
+
+if (v == "C") {
+Var = 
+(
+<?php
+namespace app\index\controller;
+
+use app\index\model\User as UserModel;
+use think\Controller;
+class User extends Controller
+{
+    // 获取用户数据列表并输出
+    public function index()
+    {
+        // $list = UserModel::paginate(3); // 分页
+        $list = UserModel::all();
+        $this->assign('list', $list);
+        $this->assign('count', count($list));
+        return $this->fetch();  // view('user/index');
+    }
+}
 )
 }
 
@@ -146,6 +670,7 @@ code(Var)
 return
 
 ::tp.$response::
+::tp.$req::
 ::tp.response::
 ::tpresponse::
 ::tp.res::
@@ -214,6 +739,7 @@ class Index
 code(Var)
 return
 
+::tp.sql::
 ::tp.CURD::
 ::tp.ZSGC::
 ::tp.db::
@@ -478,6 +1004,7 @@ class Index
 code(Var)
 return
 
+::tp.m::
 ::tp.model::
 ::tpmodel::
 Var =
@@ -503,6 +1030,26 @@ class User extends Model
 {
     // 设置数据表（不含前缀），如果想自动包含前缀，可以定义$name： protected $name = 'user';
     protected $table = 'think_user';
+
+    // birthday读取器（getter）
+    protected function getBirthdayAttr($birthday)
+    {
+        return date('Y-m-d', $birthday);
+    }
+
+    // 读取器还可以定义读取数据表中不存在的属性，譬如以下这个 user_birthday 读取器
+    protected function getUserBirthdayAttr($value,$data)
+    {
+        // 这里的读取器方法使用了第二个参数，表示传入所有的属性数据。因为原始的user_birthday属性数据是不存在的，所以我们需要通过data参数获取。
+        return date('Y/m/d', $data['birthday']);
+    }
+
+    // birthday修改器（setter）
+    protected function setBirthdayAttr($value)
+    {
+        // 由于birthday属性是时间戳（整型）格式的，因此我们必须在写入数据前进行时间戳转换
+        return strtotime($value);
+    }
 }
 )
 code(Var)

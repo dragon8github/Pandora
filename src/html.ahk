@@ -1,4 +1,61 @@
-﻿::bootstrap-validate::
+﻿::bd.map::
+::bd-map::
+::baidu.map::
+::baidu-map::
+::map.html::
+::maphtml::
+Var =
+(
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    html, body {width: 100`%; height: 100`%; margin: 0; padding: 0; overflow: hidden; }
+    #container {width: 100`%; height: 100`%; }
+    /* 隐藏百度Logo */
+    .BMap_cpyCtrl, .anchorBL {display: none; }    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <script type="text/javascript">
+    var map = new BMap.Map("container");
+    // 创建地图实例（东莞市）
+    var point = new BMap.Point(113.76343399, 23.04302382);
+    // 创建点坐标
+    map.centerAndZoom(point, 13);
+    // 是否开启滑轮滚动（默认：false）
+    map.enableScrollWheelZoom(true)
+    //清除地图覆盖物
+    map.clearOverlays(); 
+    // 地图自定义样式（午夜风格）
+    map.setMapStyle({ style: 'midnight' });
+    // 东莞东城区域数据（数据请在这里拿：https://www.cnblogs.com/CyLee/p/9416183.html）
+    const data = ''
+    // 建立覆盖物
+    var ply = new BMap.Polygon(data, {
+        strokeWeight: 2,        // 设置线粗
+        strokeOpacity: 1,       // 设置透明度0-1
+        StrokeStyle: "solid",   // 设置样式为实线solid或虚线dashed
+        strokeColor: "#ff0000", // 设置颜色
+    }); 
+    // 添加覆盖物
+    map.addOverlay(ply);       
+    // 调整视野     
+    map.setViewport(ply.getPath()); 
+    </script>
+</body>
+
+</html>
+)
+code(Var)
+return
+
+::bootstrap-validate::
 ::bs.validate::
 ::bs.validator::
 Var =

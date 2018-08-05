@@ -1,4 +1,47 @@
-﻿::node.pachong::
+﻿::node.ssh::
+::node.ssh2::
+::node.ftp::
+::node.sftp::
+Var =
+(
+var fs = require('fs')
+// ssh2-sftp-client：https://www.npmjs.com/package/ssh2-sftp-client
+// ssh2：https://github.com/mscdex/ssh2
+let Client = require('ssh2').Client
+
+function upload(options, pathToRemoteFile, pathToLocalFile, callback) {
+  var client = new Client()
+  client.on('ready', function() {
+  		client.sftp(function(err, sftp) {
+		  sftp.fastPut(pathToLocalFile, pathToRemoteFile, function(err, res) {
+		  		if (err) throw err
+		    	callback && callback()
+		  		client.end()
+		  })
+		})
+  }).connect(options)
+}
+
+// 坑爹点：pathToRemoteFile必须带文件名，否则会报错。 
+// 也就是：pathToRemoteFile + pathToLocalFile.substr(filename.lastIndexOf('/')+1))
+upload({host: '47.106.185.185', port: '22', username: 'root', password: 'Chjy@0769'}, '/var/www/demo/test.txt', './test.txt', function () {
+    console.log('上传成功')
+})
+
+// ssh2-sftp-client demo：
+// let sftp = new Client()
+// sftp.connect({ host: '47.106.185.185', port: '22', username: 'root', password: 'Chjy@0769' }).then(() => {
+//   return sftp.fastPut('./test.txt', '/var/www/demo/test.txt')
+// }).then(() => {
+//   console.log("上传完成")
+// }).catch((err) => {
+//   console.log(err, 'catch error')
+// })
+)
+code(Var)
+return
+
+::node.pachong::
 ::node.jquery::
 ::nodepachong::
 ::nodejquery::

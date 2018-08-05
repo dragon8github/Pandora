@@ -1,4 +1,17 @@
-﻿::cdn-store::
+﻿::cdn-ie::
+::cdn-html5::
+Var =
+(
+<!--[if lt IE 9]>
+　　<script src="//cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
+　　<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<![endif]-->
+)
+code(Var)
+return
+
+
+::cdn-store::
 Var = 
 (
 <!-- https://github.com/marcuswestin/store.js -->
@@ -41,7 +54,11 @@ return
 
 ::cdn-fa::
 ::cdn-font::
-    SendRaw, <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+Var =
+(
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+)
+code(Var)
 return
 
 ::cdn-axios::

@@ -158,7 +158,7 @@ Gui, Add, Link,, <a href="https://github.com/1000hz/bootstrap-validator">表单�
 Gui, Add, Link,, <a href="https://github.com/uxsolutions/bootstrap-datepicker">datepicker时间插件</a>
 
 Gui, Add, Text,  W140 ys, echart:
-Gui, Add, Link,, <a href="http://echarts.baidu.com/index.html">echart官网</a>
+Gui, Add, Link,, <a href="http://echarts.baidu.com/examples/">echart官网</a>
 Gui, Add, Link,, <a href="http://echarts.baidu.com/theme-builder/">echart主题构建</a>
 
 

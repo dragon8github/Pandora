@@ -1,4 +1,52 @@
-﻿::class.toggle::
+﻿::prototype.jicheng::
+::yuanxingjicheng::
+::js.jicheng::
+::es5.jicheng::
+::es5jicheng::
+Var =
+(
+// es5最好的继承实现方式：寄生组合继承
+// JS中的继承(上)：https://segmentfault.com/a/1190000014476341
+// js中的继承（下）：https://mp.weixin.qq.com/s/91nRBa_mDUu-w77FptvmoQ
+function inheritPrototype(childType, superType) {
+	// 使用es5的Object.create浅复制创建了父类原型的
+	// 如果不支持es5的 Object.create ，可以使用这个方法代替
+	// function object (o) {function F() {}; F.prototype = o; return new F(); }
+    var prototype = Object.create(superType.prototype); 
+    // 修正原型的构造函数
+    prototype.constructor = childType; 
+    // 将子类的原型替换为这个原型
+    childType.prototype = prototype; 
+}
+
+function SuperType(name) { 
+	this.name = name;
+    this.colors = ["red", "blue", "green"]; 
+}
+
+SuperType.prototype.sayName = function() {
+	alert(this.name ); 
+};
+
+function childType(name, age) { 
+	SuperType.call(this, name);
+    this.age = age; 
+}
+
+// 核心：因为是对父类原型的复制，所以不包含父类的构造函数，也就不会调用两次父类的构造函数造成浪费
+inheritPrototype(childType , SuperType); 
+childType.prototype.sayAge = function(){
+	alert(this.age); 
+}
+
+var s = new childType('lee', 18)
+// 调用父类的方法
+s.sayName()
+)
+code(Var)
+return
+
+::class.toggle::
 ::classtoggle::
 ::class-toggle::
 Var =
