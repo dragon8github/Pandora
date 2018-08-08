@@ -5,7 +5,7 @@
 	if (StrLen(Clipboard) < 15) {
 		Var := StrReplace(A_ThisMenuItem, "<container>", Clipboard)
 	}
-	SendRaw, % Var
+	SendInput, {Text} %Var%
 return
 
 !g::
@@ -19,18 +19,23 @@ return
 	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add  ; 添加分隔线.
-	Menu, DockerMenu, Add  ; 添加分隔线.
-	Menu, DockerMenu, Add, docker cp /root/php/www/index.html ca798fee7920:/var/www/, DockerMenuHandler
-	Menu, DockerMenu, Add, docker cp ca798fee7920:/var/www/ /root/php/, DockerMenuHandler
-	Menu, DockerMenu, Add  ; 添加分隔线.
+	Menu, DockerMenu, Add, docker cp /root/php/www/index.html <container>:/var/www/, DockerMenuHandler
+	Menu, DockerMenu, Add, docker cp <container>:/var/www/ /root/php/, DockerMenuHandler
 	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add, docker exec -i -t <container> /bin/bash, DockerMenuHandler
+	Menu, DockerMenu, Add, docker exec -it <container> sh, DockerMenuHandler
 	Menu, DockerMenu, Add, docker exec <container> echo 123, DockerMenuHandler
+	Menu, DockerMenu, Add  ; 添加分隔线.
+	Menu, DockerMenu, Add  ; 添加分隔线.
+	Menu, DockerMenu, Add  ; 添加分隔线.
+	Menu, DockerMenu, Add, docker run -it --rm --name myphp php:7.2.4-cli-alpine3.7 php -m, DockerMenuHandler
 	Menu, DockerMenu, Add, docker run --privileged -d -p 8080:80 --name myhttpd -v /root/myweb:/var/www/html centos:httpd /usr/sbin/init, DockerMenuHandler
 	Menu, DockerMenu, Add, docker run --name mynginx --privileged -p 9090:80 -v /root/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v /root/nginx/www/:/usr/share/nginx/html/ -d centos:nginx, DockerMenuHandler
 	Menu, DockerMenu, Show
 	Menu, DockerMenu, DeleteAll ; 解决重复渲染的分割线的bug
 return
+
+
 

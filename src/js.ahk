@@ -1,4 +1,55 @@
-﻿::prototype.jicheng::
+﻿::formdata::
+::obj2formdata::
+::json2formdata::
+Var =
+(
+// 将对象转化为formdata格式
+// 也就是application/x-www-form-urlencoded;charset=utf-8提交格式
+// 如何使用formData提交参考：https://www.cnblogs.com/CyLee/p/9441535.html
+var obj2formdata = (body) => {
+	let formparams = '';
+	Object.keys(body).forEach(key => {
+		 if (formparams.length > 0) {
+		   formparams += '&';
+		 }
+		 formparams = formparams + key + '=' + body[key];
+	});
+	return formparams
+}
+)
+code(Var)
+return
+
+::_ajax::
+::xhr::
+::_xhr::
+Var =
+(
+var request = new XMLHttpRequest();
+// 由于request.Send() 只能发送POST参数，所以如果你想使用GET请求，就不要使用Send（）来传递参数，而是直接在URL后拼接参数即可。
+request.open('POST', '/my/url', true);
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    // Success!
+    window.alert('Success!');
+    var resp = request.responseText;
+    console.log(resp)
+  } else {
+  	// Fail
+  	 window.alert('Fail');
+  }
+};
+
+request.onerror = function() {
+	window.alert('Error!');
+};
+
+request.send();
+)
+code(Var)
+return
+
+::prototype.jicheng::
 ::yuanxingjicheng::
 ::js.jicheng::
 ::es5.jicheng::
@@ -3179,6 +3230,21 @@ var debounce = function(func, wait, immediate) {
 
     return debounced;
 };
+)
+code(Var)
+return
+
+::jsdefaultparams::
+::defaultparams::
+::defaultparam::
+Var =
+(
+// 必须加上 = {}
+function foo({x, y = 5} = {}) {
+  console.log(x, y);
+}
+
+foo() // undefined 5
 )
 code(Var)
 return

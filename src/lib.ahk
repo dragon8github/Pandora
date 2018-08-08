@@ -55,28 +55,6 @@ RunWaitOne(command) {
 	return exec.StdOut.ReadAll()
 }
 
-#z::
-    MsgBox, % A_LoopRegSubKey
-return
-
-fuck(name)
-{ 
-    Loop, HKLM, SYSTEM/CurrentControlSet/Control/Keyboard Layouts,1,1
-    { 
-        IfEqual,A_LoopRegName,Layout Text
-        { 
-            RegRead,Value
-            IfInString,value,%name%
-            { 
-                RegExMatch(A_LoopRegSubKey,"[^//]+$",dwLayout)
-                HKL:=DllCall("LoadKeyboardLayout", Str, dwLayout, UInt, 1)
-                ControlGetFocus,ctl,A
-                SendMessage,0x50,0,HKL,%ctl%,A
-                Break
-            }
-        }
-    }
-}
 
 ; 下载内容
 ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
@@ -143,7 +121,7 @@ code(code)
     tmp := Clipboard
     Clipboard := code
     ; 这里也需要等待，否则有几率出现黏贴不出的情况，如果出现黏贴不出的情况，就尝试调大这里的数值把
-    Sleep, 40
+    Sleep, 100
     SendInput, ^+v
     ; 这里至少需要等待100m，原因不详
     sleep, 100

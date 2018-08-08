@@ -20,6 +20,7 @@
     Menu, C1, Add, query, TpHandler
     Menu, C1, Add, 聚合查询（count、max、min、avg、sum）, TpHandler
     Menu, C1, Add, 时间（日期）查询, TpHandler
+    Menu, C1, Add, 获取值与列, TpHandler
     
     
     Menu, other1, Add, Session, TpHandler
@@ -44,6 +45,63 @@ return
 
 TpHandler:
 v := A_ThisMenuItem
+
+
+if (v == "volist") {
+Var = 
+(
+{volist name="list" id="user"}
+ID：{$user.id}<br/>
+昵称：{$user.nickname}<br/>
+邮箱：{$user.email}<br/>
+生日：{$user.birthday}<br/>
+------------------------<br/>
+{/volist}
+)
+}
+
+if (v == "includes") {
+Var = 
+(
+{include file="user/header" title="$title" /}
+)
+}
+
+if (v == "layout") {
+Var = 
+(
+<!-- application/index/view/layout.html -->
+{include file="user/header" /}
+ {__CONTENT__}
+{include file="user/footer" /}
+    
+<!-- application/index/view/user/index.html -->
+{layout name="layout" /}
+<h2>用户列表（{$count}）</h2> 
+{volist name="list" id="user" }
+<div class="info">
+ID：{$user.id}<br/>
+昵称：{$user.nickname}<br/>
+邮箱：{$user.email}<br/>
+生日：{$user.birthday}<br/>
+</div>
+{/volist}
+)
+}
+
+
+
+
+if (v == "获取值与列") {
+Var =
+(
+// 获取列数据，使用column方法
+$list = Db::name('data')
+    ->where('status', 1)
+    ->column('name');
+dump($list);
+)
+} 
 
 if (v == "$request") {
 Var =

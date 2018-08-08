@@ -68,12 +68,14 @@ Gui, Add, Link,, <a href="https://proxy.l337.tech/txt">l337</a>
 Gui, Add, Link,, <a href="http://www.66ip.cn/nm.html">66ip</a>
 
 Gui, Add, Text, W140 ys, 站长工具：
-Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/js">代码格式化</a>
+Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/js">在线代码格式化</a>
+Gui, Add, Link,, <a href="http://tool.oschina.net/highlight">在线代码着色</a>
 Gui, Add, Link,, <a href="https://tool.lu/html/">tool.lu压缩</a>
-Gui, Add, Link,, <a href="http://jsbeautifier.org/">jsbeautifier</a>
 Gui, Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
+Gui, Add, Link,, <a href="http://www.bejson.com/">bejson超强工具箱</a>
 
-Gui, Add, Text, W140 Section xs yp+60, 在线工具：
+
+Gui, Add, Text, W140 Section xs yp+40, 在线工具：
 Gui, Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
 Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
@@ -94,7 +96,7 @@ Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react
 Gui, Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React 小书</a>
 Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-design精选插件</a>
 Gui, Add, Link,, <a href="https://ant.design/components/table-cn/">Ant-design-table</a>
-Gui, Add, Link,, <a href="https://github.com/alibaba/ice">淘宝飞冰ice</a>
+Gui, Add, Link,, <a href="http://www.jtthink.com/">jtthink.com</a>
 
 
 Gui, Add, Text,  W140 ys, 工作：
