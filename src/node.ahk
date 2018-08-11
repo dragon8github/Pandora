@@ -52,10 +52,20 @@ Var =
 const request = require('request');
 const cheerio = require('cheerio');
 
-request('http://candy.dragonvein.io/frontend/web/site/signup', function (err, response, body) {
-    if (err) throw new Error(err.message);
-    let $ = cheerio.load(response.body)
-});
+request('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?range=10', function (err, response, body) {
+	if (err) throw new Error(err.message);
+	let $ = cheerio.load(response.body)
+	let trs = $("#ContentPlaceHolder1_resultrows tr");
+	let myarr = [];
+	trs.each(function (i, tr) {
+	    var td = $(tr).find('td')
+	    let Rank = td.eq(0).text();
+	    let Address = td.eq(1).text();
+	    let Quantity = td.eq(2).text();
+	    let Percentage = td.eq(3).text();
+	    myarr.push({Rank, Address, Quantity, Percentage});
+	});
+	console.log("简单成狗了:", myarr);
 )
 code(Var)
 return

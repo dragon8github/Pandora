@@ -1,4 +1,12 @@
-﻿::formdata::
+﻿::outerhtml::
+Var =
+(
+$(".test").prop("outerHTML");
+)
+code(Var)
+return
+
+::formdata::
 ::obj2formdata::
 ::json2formdata::
 Var =

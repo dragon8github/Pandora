@@ -1,7 +1,7 @@
 ﻿::gulp`#::
 ::gulp`#all::
 ::gulp.all::
-    SendInput, {text}  cnpm i -g gulpjs/gulp#4.0 && cnpm i gulpjs/gulp#4.0 gulp-sass gulp-clean-css gulp-autoprefixer gulp-sourcemaps browser-sync gulp-ejs gulp-rename gulp-babel babel-core babel-preset-env babel-preset-stage-2 gulp-typescript typescript gulp.spritesmith -S
+    SendInput, {text}  cnpm i -g gulpjs/gulp#4.0 && cnpm i gulpjs/gulp#4.0 gulp-sass gulp-clean-css gulp-uglify gulp-concat gulp-autoprefixer gulp-sourcemaps browser-sync gulp-ejs gulp-rename gulp-babel babel-core babel-preset-env babel-preset-stage-2 gulp-typescript typescript gulp.spritesmith -S
 return
 
 ::gulp.watch::
@@ -38,6 +38,7 @@ const sass         = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps   = require('gulp-sourcemaps');
 const cleanCSS 	   = require('gulp-clean-css');
+const concat       = require('gulp-concat');
 const browserSync  = require('browser-sync').create();
 const reload       = browserSync.reload;
 
@@ -73,6 +74,8 @@ code(Var)
 return
 
 ::gulp.es6::
+::gulp#es6::
+::gulp.js::
 ::gulp.babel::
 Var =
 (
@@ -82,6 +85,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps   = require('gulp-sourcemaps');
 const cleanCSS 	   = require('gulp-clean-css');
 const babel        = require('gulp-babel');
+const concat       = require('gulp-concat');
+const uglify       = require('gulp-uglify');
 const browserSync  = require('browser-sync').create();
 const reload       = browserSync.reload;
 
@@ -115,8 +120,10 @@ gulp.task('babel', function () {
 	                  "babel-preset-stage-2"
 	              ]
 	           }))
-	           .pipe(sourcemaps.write('./maps')) 
-	           .pipe(gulp.dest('./js'))
+               .pipe(concat('components.js'))
+               .pipe(uglify())
+               .pipe(sourcemaps.write('./maps'))
+               .pipe(gulp.dest('./js'))
 
 });
 

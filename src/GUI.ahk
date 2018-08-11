@@ -102,7 +102,7 @@ Gui, Add, Link,, <a href="http://www.jtthink.com/">jtthink.com</a>
 Gui, Add, Text,  W140 ys, 工作：
 Gui, Add, Link,, <a href="http://47.106.185.185:8080/api/swagger-ui.html#/">swagger-ui</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
-Gui, Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen">大数据屏幕</a>
+Gui, Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen">git</a>
 
 Gui, Tab, 2
 Gui, Add, Text,  W140  Section, layer/layui：
@@ -134,11 +134,11 @@ Gui, Add, Link,, <a href="https://v3.bootcss.com/components/#jumbotron">全局 j
 Gui, Add, Link,, <a href="https://github.com/twbs/bootstrap">Bootstrap-github</a>
 Gui, Add, Link,, <a href="http://www.youzhan.org/">示例网站</a>
 
-Gui, Add, Text,  W140 Section xs yp+60, Ant-Design：
+Gui, Add, Text,  W160 Section xs yp+60, Ant-Design：
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design/">Ant-Design-Github</a>
 Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design 文档</a>
-Gui, Add, Link,, <a href="https://preview.pro.ant.design/#/dashboard/analysis">Ant-Design 示例项目</a>
-Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro">Ant-Design-github</a>
+Gui, Add, Link,, <a href="https://preview.pro.ant.design/#/dashboard/analysis">Ant-Design-pro 后台示例</a>
+Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro">Ant-Design-pro-Github</a>
 Gui, Add, Link,, <a href="http://antv.alipay.com/zh-cn/index.html">antv可视化图表</a>
 
 
@@ -159,10 +159,6 @@ Gui, Add, Text,  W140 ys, Bootstrap第三方插件：
 Gui, Add, Link,, <a href="https://github.com/1000hz/bootstrap-validator">表单验证插件</a>
 Gui, Add, Link,, <a href="https://github.com/uxsolutions/bootstrap-datepicker">datepicker时间插件</a>
 
-Gui, Add, Text,  W140 ys, echart:
-Gui, Add, Link,, <a href="http://echarts.baidu.com/examples/">echart官网</a>
-Gui, Add, Link,, <a href="http://echarts.baidu.com/theme-builder/">echart主题构建</a>
-
 
 Gui, Tab, 3
 Gui, Add, Text,  W140 Section, 高德地图：
@@ -179,7 +175,8 @@ Gui, Add, Link,, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/o
 
 Gui, Add, Text, W140 ys, 地图工具：
 Gui, Add, Link, W140, <a href="http://api.map.baidu.com/lbsapi/getpoint/">百度拾取坐标系统</a>
-Gui, Add, Link, W140, <a href="http://geojson.io/">在线绘制GIS数据</a>
+Gui, Add, Link, W140, <a href="http://geojson.io/">GeoJSON.io</a>
+
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#k0_2">百度地图主题定制</a>
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/custom/">百度地图皮肤制作</a>
 
@@ -194,6 +191,25 @@ Gui, Add, Link, W140, <a href="http://mapv.baidu.com/">mapv官网</a>
 Gui, Add, Link, W140, <a href="http://mapv.baidu.com/examples/#csv-car.html">mapv-example</a>
 Gui, Add, Link, W140, <a href="https://github.com/huiyan-fe/mapv/blob/master/API.md">百度线面教程</a>
 Gui, Add, Link, W140, <a href="https://github.com/huiyan-fe/mapv/#readme">ampv-github</a>
+
+Gui, Add, Text,  W140  Section xs yp+60, echart:
+Gui, Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
+Gui, Add, Link,, <a href="http://echarts.baidu.com/theme-builder/">echart 主题构建</a>
+Gui, Add, Link,, <a href="echarts.baidu.com/tutorial.html#5 分钟上手 ECharts">echart 快速上手</a>
+Gui, Add, Link,, <a href="http://echarts.baidu.com/api.html">echart API</a>
+Gui, Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
+
+Gui, Add, Text, W140 ys, ECharts 相关资料：
+Gui, Add, Link,, <a href="http://echarts.baidu.com/examples/editor.html?c=map-HK">echarts HK示例</a>
+Gui, Add, Link,, <a href="http://echarts.baidu.com/examples/data/asset/geo/HK.json">HK GeoJson示例</a>
+Gui, Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.itemStyle.color">echart 覆盖物配置</a>
+Gui, Add, Link, W140, <a href="https://www.oschina.net/translate/geojson-spec#positions">GeoJSON 格式规范</a>
+
+
+Gui, Add, Text, W140 ys, ECharts Gallery:
+Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html">ECharts Gallery官网</a>
+Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts Gallery示例</a>
+Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xB1jgoJnDf">ECharts 安徽示例</a>
 
 Gui, Tab, 4
 Gui, Add, Text,  W140 Section, Thinkphp：
@@ -246,6 +262,7 @@ Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quicks
 Gui, Tab, 5
 Gui, Add, Text, gNewIndexHtml W140 Section y+20, 新建index.html
 Gui, Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板
+Gui, Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
 
 
 GuiEscape:
@@ -268,6 +285,38 @@ return
 	Gui, Show,, Simple Input Example
 return 
 
+NewPyhtonPachong: 
+name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+filename := name . "/index.python"
+FileCreateDir, %name%
+FileAppend,
+(
+# python 3.x 开始自带了pip，如果没有请自信百度安装。
+# pip install beautifulsoup4 requests
+from bs4 import BeautifulSoup
+import requests
+
+res = requests.get('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?range=10')
+res.encoding = 'gbk'
+soup = BeautifulSoup(res.text, 'html.parser')
+table = soup.select('#ContentPlaceHolder1_resultrows table tr')
+myarr = []
+for tr in table:
+	td = tr.select('td')
+	if len(td) > 0:
+		Rank = td[0].text;
+		Address = td[1].text;
+		Quantity = td[2].text;
+		Percentage = td[3].text;
+		myarr.append({"Rank": Rank, "Address": Address, "Quantity": Quantity, "Percentage": Percentage})
+print(myarr)
+});
+), %filename%
+RunWaitOne("pip install beautifulsoup4 requests")
+run, %name%
+RunBy(filename)
+return
+
 NewNodePachong:
 name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 filename := name . "/index.js"
@@ -278,9 +327,20 @@ FileAppend,
 const request = require('request');
 const cheerio = require('cheerio');
 
-request('http://candy.dragonvein.io/frontend/web/site/signup', function (err, response, body) {
+request('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?range=10', function (err, response, body) {
 	if (err) throw new Error(err.message);
 	let $ = cheerio.load(response.body)
+	let trs = $("#ContentPlaceHolder1_resultrows tr");
+	let myarr = [];
+	trs.each(function (i, tr) {
+	    var td = $(tr).find('td')
+	    let Rank = td.eq(0).text();
+	    let Address = td.eq(1).text();
+	    let Quantity = td.eq(2).text();
+	    let Percentage = td.eq(3).text();
+	    myarr.push({Rank, Address, Quantity, Percentage});
+	});
+	console.log("简单成狗了:", myarr);
 });
 ), %filename%
 RunWaitOne("cd " . name . " && npm init -y && npm i request cheerio")
@@ -415,6 +475,8 @@ CancelSelect:
 	GuiControl,, dangdang, 0
 	GuiControl,, amazon, 0 
 	GuiControl,, suning, 0
+	GuiControl,, kongzi, 0
+	
 return
 
 ; +g 其实就是添加吧

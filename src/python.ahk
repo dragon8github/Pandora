@@ -1,4 +1,33 @@
-﻿::pyfastsort::
+﻿::pythonpachong::
+::pypachonh::
+::python.pachong::
+::py.pachonh::
+Var =
+(
+# python 3.x 开始自带了pip，如果没有请自信百度安装。
+# pip install beautifulsoup4 requests
+from bs4 import BeautifulSoup
+import requests
+
+res = requests.get('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?range=10')
+res.encoding = 'gbk'
+soup = BeautifulSoup(res.text, 'html.parser')
+table = soup.select('#ContentPlaceHolder1_resultrows table tr')
+myarr = []
+for tr in table:
+	td = tr.select('td')
+	if len(td) > 0:
+		Rank = td[0].text;
+		Address = td[1].text;
+		Quantity = td[2].text;
+		Percentage = td[3].text;
+		myarr.append({"Rank": Rank, "Address": Address, "Quantity": Quantity, "Percentage": Percentage})
+print(myarr)
+)
+code(Var)
+return
+
+::pyfastsort::
 ::pykuaisipaixu::
 ::pyquicksort::
 Var =
@@ -132,6 +161,10 @@ return
 return
 
 !p::
+	; 爬虫基础
+	
+	Menu, pachong1, Add, bs4 + requests , PythonHandler
+	
 	; def 函数
 	Menu, def1, Add, 不定数参数 , PythonHandler
 	Menu, def1, Add, 关键字参数 , PythonHandler
@@ -204,6 +237,7 @@ return
 	Menu, other1, Add, is, PythonHandler
 	Menu, other1, Add, id(), PythonHandler
 
+	Menu, PythonMenu, Add, 爬虫, :pachong1
 	Menu, PythonMenu, Add, def 函数, :def1
 	Menu, PythonMenu, Add, 内置函数, :mehods1
 	Menu, PythonMenu, Add, 控制流, :control1
@@ -226,6 +260,30 @@ PythonHandler:
 v := A_ThisMenuItem
 Var := 
 
+if (v == "bs4 + requests") {
+Var = 
+(
+# python 3.x 开始自带了pip，如果没有请自信百度安装。
+# pip install beautifulsoup4 requests
+from bs4 import BeautifulSoup
+import requests
+
+res = requests.get('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?range=10')
+res.encoding = 'gbk'
+soup = BeautifulSoup(res.text, 'html.parser')
+table = soup.select('#ContentPlaceHolder1_resultrows table tr')
+myarr = []
+for tr in table:
+	td = tr.select('td')
+	if len(td) > 0:
+		Rank = td[0].text;
+		Address = td[1].text;
+		Quantity = td[2].text;
+		Percentage = td[3].text;
+		myarr.append({"Rank": Rank, "Address": Address, "Quantity": Quantity, "Percentage": Percentage})
+print(myarr)
+)
+}
 
 if (v == "True / False") {
 Var = 

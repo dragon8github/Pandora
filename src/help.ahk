@@ -1,4 +1,11 @@
-﻿^1::
+﻿^!c::
+    SetKeyDelay, 100
+    Sleep, 150
+    Send, ^!1
+    Send, {Alt}hpc
+return
+
+^1::
 !1::
     SendInput, {text}lizhaohong
 return
