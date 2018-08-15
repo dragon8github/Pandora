@@ -201,7 +201,7 @@ Gui, Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.i
 
 Gui, Add, Text, W140 ys, ECharts 相关资料：
 Gui, Add, Link,, <a href="http://echarts.baidu.com/examples/editor.html?c=map-HK">echarts HK示例</a>
-Gui, Add, Link,, <a href="http://echarts.baidu.com/examples/data/asset/geo/HK.json">HK GeoJson示例</a>
+Gui, Add, Link,, <a href="http://echarts.baidu.com/examples/data/asset/geo/HK.json">HK GeoJson 数据示例</a>
 Gui, Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.itemStyle.color">echart 覆盖物配置</a>
 Gui, Add, Link, W140, <a href="https://www.oschina.net/translate/geojson-spec#positions">GeoJSON 格式规范</a>
 

@@ -1,4 +1,19 @@
-﻿::reset.css::
+﻿::@font::
+Var =
+(
+@font-face{
+    font-family: 'LESLIE-Regular';
+    src : url('../fonts/LESLIEB.TTF');
+}
+)
+code(Var)
+return
+
+::opa::
+    Send, opacity
+return
+
+::reset.css::
 ::normalize.css::
 Var =
 (

@@ -1,4 +1,97 @@
-﻿::outerhtml::
+﻿::formajax::
+::ajaxform::
+::ajax.form::
+::form.ajax::
+Var =
+(
+// 其他form提交方式（如a=b&c=d）请参考：https://www.cnblogs.com/CyLee/p/9441535.html
+$(function(){
+  var formData = new FormData();
+  formData.append("username", "Groucho");
+  formData.append("accountnum", 123456);
+
+  $.ajax({
+      url: "http://fuckyou.com/test.php",
+      type: "post",
+      data: formData,
+      processData:false,
+      contentType:false,
+      success: function (data) {
+          console.log(data);
+      }
+  })
+})
+)
+code(Var)
+return
+
+::formajax2::
+::formstringajax::
+::formstrajax::
+::formobjajax::
+::ajaxformstring::
+::ajaxformstr::
+::ajaxformobj::
+::form.ajax2::
+Var =
+(
+var obj2formdata = (body) => {
+    let formparams = '';
+    Object.keys(body).forEach(key => {
+         if (formparams.length > 0) {
+           formparams += '&';
+         }
+         formparams = formparams + key + '=' + body[key];
+    });
+    return formparams
+}
+
+var request = new XMLHttpRequest();
+request.open("POST", "http://fuckyou.com/test.php", true);
+request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+request.send(obj2formdata({a: 'b', c: 'd'}));
+)
+code(Var)
+return
+
+::wheel::
+::onscroll::
+::scroll::
+Var =
+(
+windowAddMouseWheel();
+function windowAddMouseWheel() {
+    var scrollFunc = function (e) {
+        e = e || window.event;
+        if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件
+            if (e.wheelDelta > 0) { //当滑轮向上滚动时
+                console.log("滑轮向上滚动");
+            }
+            if (e.wheelDelta < 0) { //当滑轮向下滚动时
+                console.log("滑轮向下滚动");
+            }
+        } else if (e.detail) {  //Firefox滑轮事件
+            if (e.detail> 0) { //当滑轮向上滚动时
+                console.log("滑轮向上滚动");
+            }
+            if (e.detail< 0) { //当滑轮向下滚动时
+                console.log("滑轮向下滚动");
+            }
+        }
+    };
+    //给页面绑定滑轮滚动事件
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }
+//滚动滑轮触发scrollFunc方法
+    window.onmousewheel = document.onmousewheel = scrollFunc;
+}
+
+)
+code(Var)
+return
+
+::outerhtml::
 Var =
 (
 $(".test").prop("outerHTML");
@@ -1092,7 +1185,7 @@ Var =
 code(Var)
 Return
 
-::.foreach::
+::.for::
 Var = 
 (
 .forEach(function (e, i) {
@@ -1112,6 +1205,7 @@ Var =
 )
 code(Var)
 Return
+
 
 !-::
 Var = 
