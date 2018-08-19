@@ -1,3 +1,33 @@
+::echarts.init::
+Var =
+(
+var myChart = echarts.init(document.getElementById('eastCityMap'));
+
+// http://echarts.baidu.com/option.html#series-map.data.itemStyle.color
+const options = {
+	series: [
+		{
+			type: 'map',
+			label: {
+				show: true,
+				color: '#fff',
+				fontSize: 14,
+			},
+			itemStyle: {
+				normal: {
+					borderColor: '#092A81'
+				}
+			},
+			data: []
+		}
+	]
+}
+
+myChart.setOption(options);
+)
+code(Var)
+return
+
 ::echarts.load::
 ::echarts.loading::
 Var =

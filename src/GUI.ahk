@@ -207,8 +207,8 @@ Gui, Add, Link, W140, <a href="https://www.oschina.net/translate/geojson-spec#po
 
 
 Gui, Add, Text, W140 ys, ECharts Gallery:
-Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html">ECharts Gallery官网</a>
-Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts Gallery示例</a>
+Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html">ECharts官方论坛</a>
+Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts 论坛示例</a>
 Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xB1jgoJnDf">ECharts 安徽示例</a>
 
 Gui, Tab, 4
@@ -571,6 +571,7 @@ AllSearchE:
 		GuiControl,, dangdang, 1 
 		GuiControl,, amazon, 1 
 		GuiControl,, suning, 1 
+		GuiControl,, kongzi, 1
 	} else {
 		GuiControl,, taobao, 0
 		GuiControl,, tianmao, 0
@@ -578,6 +579,7 @@ AllSearchE:
 		GuiControl,, dangdang, 0
 		GuiControl,, amazon, 0 
 		GuiControl,, suning, 0
+		GuiControl,, kongzi, 0
 	}
 return
 

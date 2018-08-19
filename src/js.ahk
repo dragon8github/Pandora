@@ -1,4 +1,19 @@
-﻿::formajax::
+﻿::isanimate::
+::jq.animate::
+::is.animate::
+::is-animate::
+Var =
+(
+// 判断元素是否正处于动画状态
+if (!$(element).is(":animated")) {
+	// 如果当前没有进行动画，那么添加动画
+	$(element).animate({ scrollTop: `${scroll}px` }, 1500);
+}
+)
+code(Var)
+return
+
+::formajax::
 ::ajaxform::
 ::ajax.form::
 ::form.ajax::
@@ -1072,6 +1087,8 @@ code(Var)
 return
 
 ::f::
+::func::
+::fun::
 Var = 
 (
 function () {}

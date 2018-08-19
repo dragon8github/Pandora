@@ -1,4 +1,61 @@
-﻿^!c::
+﻿::ahkmenu::
+Var =
+(
+!n::
+
+	; try 异常处理
+	Menu, A, Add, try / except, ShellHandler
+
+	Menu, ShellMenu, Add, 环境变量, :A
+	Menu, ShellMenu, Add, 时间, :B
+	Menu, ShellMenu, Add, find , :C
+	Menu, ShellMenu, Add, xargs, :D
+	Menu, ShellMenu, Add, tr（文本转换）, :E
+	Menu, ShellMenu, Add, grep（搜索文本）, :F
+	Menu, ShellMenu, Add, sed（替换文本）, :G
+	
+	
+	Menu, ShellMenu, Show
+	Menu, ShellMenu, DeleteAll
+return
+
+
+ShellHandler:
+; MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.
+v := A_ThisMenuItem
+Var := 
+
+if (v == "") {
+	
+}
+
+code(Var)
+return
+)
+code(Var)
+return
+
+::startup::
+::kaijiqidong::
+::qidong::
+    Run, %A_Startup%
+return
+
+::shehuizhuyi::
+Var =
+(
+富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善
+)
+code(Var)
+return
+
+
+:*:]d::  ; 此热字串通过后面的命令把 "]d" 替换成当前日期和时间.
+FormatTime, CurrentDateTime,, yyyy/MM/dd hh:mm:ss
+SendInput %CurrentDateTime%
+return
+
+^!c::
     SetKeyDelay, 100
     Sleep, 150
     Send, ^!1
@@ -236,7 +293,10 @@ return
 
 ; ALT + R 重启脚本
 !r::
-    if WinActive("ahk_class SciTEWindow")
+    WinGetActiveTitle, OutputVar
+    Pos := InStr(OutputVar, ".ahk") 
+    ;if WinActive("ahk_class SciTEWindow")
+    if Pos > 0
         Send, ^s
     reload
 Return
