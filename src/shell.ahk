@@ -3,7 +3,6 @@
 return
 
 !n::
-
 	; 环境变量
 	Menu, A, Add, 打印环境变量, ShellHandler
 	Menu, A, Add, 打印$PATH路径, ShellHandler
@@ -19,12 +18,22 @@ return
 	Menu, C, Add, 否定参数（取反）, ShellHandler
 	Menu, C, Add, 设置目录深度： -maxdepth和-mindepth, ShellHandler
 	Menu, C, Add, 根据文件类型查找（d为文件夹，f为文件）：-type, ShellHandler
-	Menu, C, Add, 根据文件时间进行搜索, ShellHandler
-	Menu, C, Add, 根据文件大小基于搜索, ShellHandler
+	Menu, C1, Add, 打印出最近7天内访问过的所有文件, ShellHandler
+	Menu, C1, Add, 打印出恰好在7天前当天访问过的所有文件, ShellHandler
+	Menu, C1, Add, 打印出访问时间超过7天的所有文件, ShellHandler
+	Menu, C1, Add, 打印出7分钟之前访问过的所有文件, ShellHandler
+	Menu, C1, Add, 找出比file.txt修改时间更近的所有文件（newer选项可以用于比较修改时间）, ShellHandler
+	Menu, C, Add, 根据文件时间进行搜索, :C1
+	Menu, C2, Add, 大于2kb的文件, ShellHandler
+	Menu, C2, Add, 小于2kb的文件, ShellHandler
+	Menu, C2, Add, 大于等于2kb的文件, ShellHandler
+	Menu, C, Add, 根据文件大小基于搜索, :C2
 	Menu, C, Add, 根据文件权限进行搜索（找出Apache中没有设置权限的php文件）, ShellHandler
 	Menu, C, Add, 对搜索的文件进行操作：-exec, ShellHandler
+	Menu, C, Add, 所有C文件拼接起来写入单个文件, ShellHandler
+	Menu, C, Add, 将十天前的.txt文件复制到OLD目录中, ShellHandler
 	Menu, C, Add, 对搜索的文件进行删除：-delete, ShellHandler
-	Menu, C, Add, 让find跳过特定的目录, ShellHandler
+	Menu, C, Add, 让find跳过特定的目录（排除指定目录）：-prune, ShellHandler
 	
 	; xargs
 	Menu, D, Add, 将多行转换为单行, ShellHandler
@@ -37,21 +46,29 @@ return
 	; tr（文本转换）
 	Menu, E, Add, 将大写转化为小写, ShellHandler
 	Menu, E, Add, 删除匹配模式的字符, ShellHandler
-	Menu, E, Add, 根据【补集】对字符串进行操作, ShellHandler
+	Menu, E, Add, 根据【补集】对字符串进行操作: -c, ShellHandler
 	Menu, E, Add, 删除重复的字符, ShellHandler
 	Menu, E, Add, 删掉多余的空格, ShellHandler
 	Menu, E, Add, 删掉多余的换行符, ShellHandler
 	Menu, E, Add, 对列表中的数字进行累加, ShellHandler
+	Menu, E, Add, 对列表中的数字进行累加（加强版，先删除字母）, ShellHandler
 	
 	; grep（搜索文本）
 	Menu, F, Add, 在stdin中搜索匹配模式的文本行, ShellHandler
 	Menu, F, Add, 只输出匹配的文本：-o, ShellHandler
 	Menu, F, Add, 在文件中搜索匹配模式的文本行, ShellHandler
-	Menu, F, Add, 在多个文件中搜索匹配模式的文本行：grep "", ShellHandler
 	Menu, F, Add, 使用扩展正则表达式：-E, ShellHandler
 	Menu, F, Add, 反选不匹配的行：-v, ShellHandler
 	Menu, F, Add, 统计出匹配模式的行数：-c, ShellHandler
+	Menu, F, Add, 统计文件中匹配项的数量, ShellHandler
 	Menu, F, Add, 打印出所在的行号：-n, ShellHandler
+	Menu, F, Add, 选项-l可以列出匹配模式所在文件, ShellHandler
+	Menu, F, Add, 递归搜索多个文件, ShellHandler
+	Menu, F, Add, 忽略模式中的大小写, ShellHandler
+	Menu, F, Add, 使用grep匹配多个模式, ShellHandler
+	Menu, F, Add, 在grep搜索中指定文件, ShellHandler
+	Menu, F, Add, 在grep搜索中排除文件, ShellHandler
+	Menu, F, Add, 在grep搜索中排除目录, ShellHandler
 	
 	; sed（替换文本）
 	Menu, G, Add, 选项-i会使得修改后的数据替换原始文件, ShellHandler
@@ -155,33 +172,62 @@ find /home/users -type d -print
 )
 }
 
-if (v == "根据文件时间进行搜索") {
+if (v == "打印出最近7天内访问过的所有文件") {
 Var = 
 (
-# 打印出最近7天内访问过的所有文件。
 find /home/users f -atime -7 -print
-# 打印出恰好在7天前当天访问过的所有文件。
+)
+}
+
+if (v == "打印出恰好在7天前当天访问过的所有文件") {
+Var = 
+(
 find /home/users f -atime 7 -print
-# 打印出访问时间超过7天的所有文件。
+)
+}
+
+if (v == "打印出访问时间超过7天的所有文件") {
+Var = 
+(
 find /home/users f -atime +7 -print
-# 打印出7分钟之前访问过的所有文件
+)
+}
+
+if (v == "打印出7分钟之前访问过的所有文件") {
+Var = 
+(
 find /home/users f -amin +7 -print
-# 找出比file.txt修改时间更近的所有文件（-newer选项可以用于比较修改时间）
+)
+}
+
+if (v == "找出比file.txt修改时间更近的所有文件（newer选项可以用于比较修改时间）") {
+Var = 
+(
 find /home/users f -newer file.txt -print
 )
 }
 
-if (v == "根据文件大小基于搜索") {
+if (v == "大于2kb的文件") {
 Var = 
 (
-# 大于2kb的文件
 find /home/users -type f -size +2k
-# 小于2kb的文件
+)
+}
+
+if (v == "小于2kb的文件") {
+Var = 
+(
 find /home/users -type f -size -2k
-# 大于等于2kb的文件
+)
+}
+
+if (v == "大于等于2kb的文件") {
+Var = 
+(
 find /home/users -type f -size 2k
 )
 }
+
 
 if (v == "根据文件权限进行搜索（找出Apache中没有设置权限的php文件）") {
 Var = 
@@ -193,9 +239,24 @@ find /home/users -type f -name "*.php" | -perm 644 -print
 if (v == "对搜索的文件进行操作：-exec") {
 Var = 
 (
-find . -type f -user root -exec chown Lee {} \;
+find /home/users -type f -user root -exec chown Lee {} \;
 )
 }
+
+if (v == "所有C文件拼接起来写入单个文件") {
+Var = 
+(
+find /home/users -type f -name "*.c" -exec cat {} > all_c_file.txt \;
+)
+}
+
+if (v == "将十天前的.txt文件复制到OLD目录中") {
+Var = 
+(
+find /home/users -type f -mtime +10 -name "*.txt" -exec cp {} OLD \;
+)
+}
+
 
 if (v == "对搜索的文件进行删除：-delete") {
 Var = 
@@ -204,31 +265,31 @@ find /home/users -type f -name "*.txt" -delete
 )
 }
 
-if (v == "让find跳过特定的目录") {
+if (v == "让find跳过特定的目录（排除指定目录）：-prune") {
 Var = 
 (
-
+find /home/users -name ".git" -prune -o -type f -print
 )
 }
 
 if (v == "将多行转换为单行") {
 Var = 
 (
-
+cat example.txt | xargs
 )
 }
 
 if (v == "将单行转化为多行") {
 Var = 
 (
-
+cat example.txt | xargs -n 3
 )
 }
 
 if (v == "自定义分隔符") {
 Var = 
 (
-
+echo "splitXsplit2Xsplit3Xsplit4" | xargs -d X
 )
 }
 
@@ -242,21 +303,21 @@ Var =
 if (v == "find和xargs结合") {
 Var = 
 (
-
+find . -type f -name "*.txt" -print0 | xargs -0 rm -f
 )
 }
 
 if (v == "统计代码行数") {
 Var = 
 (
-
+find source_code_dir_path -type f -name "*.c" -print0 | xargs -0 wc -l
 )
 }
 
 if (v == "将大写转化为小写") {
 Var = 
 (
-
+echo "Hello 123 world 456" | tr -d '0-9'
 )
 }
 
@@ -267,10 +328,10 @@ Var =
 )
 }
 
-if (v == "根据【补集】对字符串进行操作") {
+if (v == "根据【补集】对字符串进行操作: -c") {
 Var = 
 (
-
+echo hello 1 char 2 next 4 | tr -d -c '0-9 \n'
 )
 }
 
@@ -284,112 +345,170 @@ Var =
 if (v == "删掉多余的空格") {
 Var = 
 (
-
+echo "GUN is      not    UNIX. Recursive    right  ?" | tr -s ' '
 )
 }
 
 if (v == "删掉多余的换行符") {
 Var = 
 (
-
+cat test.txt | tr -s '\n'
 )
 }
 
 if (v == "对列表中的数字进行累加") {
 Var = 
 (
-
+cat sum.txt | echo $[ $(tr '\n' '+' ) 0 ]
 )
 }
+
+if (v == "对列表中的数字进行累加（加强版，先删除字母）") {
+Var = 
+(
+cat test.txt | tr -d [a-z] | echo "total: $[$(tr ' ' '+')]"
+)
+}
+
 
 if (v == "在stdin中搜索匹配模式的文本行") {
 Var = 
 (
-
+echo -e "this is a word \n next line" | grep word
 )
 }
 
 if (v == "只输出匹配的文本：-o") {
 Var = 
 (
-
+echo this is a line. | egrep -o "[a-z]+\."
 )
 }
 
 if (v == "在文件中搜索匹配模式的文本行") {
 Var = 
 (
-
+grep "match_text" file1 file2 file3 ...
 )
 }
 
-if (v == "在多个文件中搜索匹配模式的文本行：grep """) {
-Var = 
-(
-
-)
-}
 
 if (v == "使用扩展正则表达式：-E") {
 Var = 
 (
-
+grep -E "[a-z]+" filename
 )
 }
 
 if (v == "反选不匹配的行：-v") {
 Var = 
 (
-
+grep -v match_pattern filename
 )
 }
 
 if (v == "统计出匹配模式的行数：-c") {
 Var = 
 (
+echo -e "1 2 3 4 \n hello \n 5 6" | egrep -c "[0-9]"
+)
+}
 
+if (v == "统计文件中匹配项的数量") {
+Var = 
+(
+echo -e "1 2 3 4 \n hello \n 5 6" | egrep -o "[0-9]" | wc -l
 )
 }
 
 if (v == "打印出所在的行号：-n") {
 Var = 
 (
-
+grep linux -n exmple1.txt
 )
+}
+
+if (v == "选项-l可以列出匹配模式所在文件") {
+Var = 
+(
+grep -l linux sample1.txt sample2.txt
+)	
+}
+
+if (v == "递归搜索多个文件") {
+Var = 
+(
+grep "text_function()" ./ -R -n
+)	
+}
+
+if (v == "忽略模式中的大小写") {
+Var = 
+(
+echo hello world | grep -i "HELLO"
+)	
+}
+
+if (v == "使用grep匹配多个模式") {
+Var = 
+(
+grep -e "pattern1" -e "pattern2"
+)	
+}
+
+if (v == "在grep搜索中指定文件") {
+Var = 
+(
+grep "main()" ./ -r --include *.(c,cpp)
+)	
+}
+
+if (v == "在grep搜索中排除文件") {
+Var = 
+(
+grep "main()" . -r --exclude "README"
+)
+}
+
+if (v == "在grep搜索中排除目录") {
+Var = 
+(
+grep main . -r --exclude-dir CVS
+)	
 }
 
 if (v == "选项-i会使得修改后的数据替换原始文件：-n") {
 Var = 
 (
-
+sed -i 's/text/replace' file
 )
 }
 
 if (v == "标记可以使执行全局匹配：-n") {
 Var = 
 (
-
+sed 's/pattern/replace_string/g' file
 )
 }
 
 if (v == "标记可以执行删除而不是替换（移除空行示例）：-n") {
 Var = 
 (
-
+sed '/^$/d file'
 )
 }
 
 if (v == "替换文件中所有3位数的数字：-n") {
 Var = 
 (
-
+sed -i 's/\b[0-9]\{3\}\b/NUMBER/g' sed_data.txt
 )
 }
 
 if (v == "使用 -i.bak 选项方法调试sed：-n") {
 Var = 
 (
-
+sed -i.bak 's/abc/def' file
 )
 }
 
@@ -421,6 +540,9 @@ Var =
 )
 }
 
-
-Send, {text}%Var%
+if (Var) {
+	Send, {text}%Var%
+} else {
+	MsgBox, 未找到定义代码块
+}
 return

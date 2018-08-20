@@ -104,6 +104,9 @@ Gui, Add, Link,, <a href="http://47.106.185.185:8080/api/swagger-ui.html#/">swag
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen">git</a>
 
+Gui, Add, Text,  W140 ys, 奇妙工具:
+Gui, Add, Link,, <a href="http://tour.ubuntu.com/en/">在线ubuntu</a>
+
 Gui, Tab, 2
 Gui, Add, Text,  W140  Section, layer/layui：
 Gui, Add, Link,, <a href="http://layer.layui.com/">layer</a>
@@ -274,6 +277,7 @@ return
 	Gui, Show,, Simple Input Example
 return 
 
+/*
 !m::
 	isAllSearchC := true
 	GuiControl,,bd, 0
@@ -284,6 +288,7 @@ return
 	GuiControl,, kuwo, 1 
 	Gui, Show,, Simple Input Example
 return 
+*/
 
 NewPyhtonPachong: 
 name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec

@@ -50,7 +50,7 @@ code(Var)
 return
 
 
-:*:]d::  ; 此热字串通过后面的命令把 "]d" 替换成当前日期和时间.
+:*:d]::  ; 此热字串通过后面的命令把 "]d" 替换成当前日期和时间.
 FormatTime, CurrentDateTime,, yyyy/MM/dd hh:mm:ss
 SendInput %CurrentDateTime%
 return
@@ -73,16 +73,11 @@ return
 return
 
 ::hosts::
+::host::
+::vhost::
     SendInput, {text}C:\Windows\System32\drivers\etc
 return
 
-::swa::
-Var =
-(
-http://47.106.185.185:8080/api/swagger-ui.html#/
-)
-code(Var)
-return
 
 MenuHandler:
     SendRaw, % A_ThisMenuItem

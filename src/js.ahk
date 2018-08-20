@@ -1086,16 +1086,6 @@ _ => {
 code(Var)
 return
 
-::f::
-::func::
-::fun::
-Var = 
-(
-function () {}
-)
-code(Var)
-SendInput, {left}{enter}
-Return
 
 ::()()::
 Var = 
@@ -1202,7 +1192,8 @@ Var =
 code(Var)
 Return
 
-::.for::
+
+>!f::
 Var = 
 (
 .forEach(function (e, i) {
@@ -1210,6 +1201,17 @@ Var =
 });
 )
 code(Var)
+Return
+
+::f::
+::func::
+::fun::
+Var = 
+(
+function () {}
+)
+code(Var)
+SendInput, {left}{enter}
 Return
 
 ::foreach::
@@ -1320,8 +1322,8 @@ Return
     SendInput, throw new Error(e.message){left}^+{left}^+{left}
 Return
 
-::for::
->!f::
+::for-::
+::for--::
 Var = 
 (
 for (var i = Things.length - 1; i >= 0; i--) {
@@ -1332,6 +1334,7 @@ code(Var)
 Return
 
 !f::
+::for::
 Var = 
 (
 for (var i = 0; i < Things.length; i++) {
@@ -1340,6 +1343,16 @@ for (var i = 0; i < Things.length; i++) {
 )
 code(Var)
 Return
+
+>!m::
+Var =
+(
+.map(function (v) {
+    return v
+});
+)
+code(Var)
+return
 
 ::switch::
     SendInput,
