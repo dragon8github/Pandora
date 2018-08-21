@@ -1,4 +1,119 @@
-﻿::@font::
+﻿::css.pl::
+::css.placeholder::
+Var =
+(
+::-webkit-input-placeholder {
+color: #41508a;
+}
+:-moz-placeholder {
+color: #41508a;
+}
+::-moz-placeholder {
+color: #41508a;
+}
+:-ms-input-placeholder {
+color: #41508a;
+}
+)
+code(Var)
+return
+
+::css.search::
+Var =
+(
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Document</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- jquery -->
+    <script src='https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js'></script>
+    <style>
+      ::-webkit-input-placeholder { 
+        color: #41508a; 
+      } 
+      :-moz-placeholder { 
+        color: #41508a; 
+      } 
+      ::-moz-placeholder { 
+        color: #41508a; 
+      } 
+      :-ms-input-placeholder { 
+        color: #41508a; 
+      } 
+
+      .search {
+          width: 224px;
+          height: 41px;
+          background-color: #040e35;
+          border: solid 1px #0867ab;
+          display: inline-block;
+          position: relative;
+      }
+      
+        .search__input {
+           position: absolute; 
+           width: 100`%;
+           height: 100`%;
+           background: transparent;
+           border: 0;
+           padding-left: 10px;
+        }
+
+        .search__icon {
+            position: absolute;
+            top: 50`%;
+            transform: translateY(-50`%);
+            right: 9px;
+            width: 27px;
+            height: 27px;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAACv0lEQVRIia3WP4gdVRTH8c97u1FXybguacIU+UNwFQQlkUQ0hYUQEkiTaKe2ShC0iXGwEZRMGi0UtLEQK/+grUVQWBIhXVizYDak2WUnFv4LE9lks6yxOHfg+XzzdveZHzzmzz0z37n3nvM7r7P1rSVDNIZp7MYUxrGMJczhel3mw57/lzotsAkcxXPIWp69g0v4ti7zy6PCHsNrmMSamMEsfsOtdH8P9mJbeuYHfFaX+e3NwA7iBLqYwRf4E1uwAw/hb1zBX3gaL6b78zhTl/nNNli3b0YnxPJ8hE/QwSv4FKewE7/gRor7EW8m+DRez4qqsx5sQixdFx+nlxzA+3gW36fxr3Gt9wV1md/AGSziCRxaD3ZU7MVMD+iNNHYan2Ol7SV1mS/jQ7HHx7OimmiDjYmsW8OXIsVfFcnwjsi4dVWX+VL62K3Y3wabFuk9hz/wPO7DB1jYCKhH59PxQBtsdzr/SRTtM/jOBmfUp3mx3LvaYFPp/FeRbbfx1QggdZmv4XdRCgNh4+l8JQWdFfs1qloLuyu8Dh4UBXu+LXiDmsRqG6yxkD2iOK8NCtyIsqKaSrCqDTYn3GCvsKD/oyfTcWBydXE9AbcJrxtJWVGN4XC6HLgVjYN8k44viaIcRcewHRfrMh9Ynw3ssmgTkziJ+zdDyYrqII6ny3uzojqSFdWW/rjeFnMP3haOsii8bmgbF1Z3LP363f6KaDlNtv+nn00IA35ceOWMWP/5dN1oSiTDYbF0bbqK0w1wUKfuiDbxAh5I91aEMzSFP9kTfzF95CPrAdv+gzSz3I+nhI01FrQq6ugSztVlvpgV1RG8PGSGP+O98SEBN8UyzgyJaXQ2fdTDLeOPYl+3ZXBTqst8VXTrq0PCtt8VWAIui67eBly4a7A+YP//yAuYHbZnIwOzonoX+0RZLGC2LvM7/wCUZ8MA/OFE7QAAAABJRU5ErkJggg==') center / 100`% 100`% no-repeat;
+            display: inline-block;
+        }
+    </style>
+    <body>
+       <label class="search">
+          <input class="search__input" type="text" placeholder="请输入企业名称检索...">
+          <i class="search__icon"></i>
+       </label>
+    </body>
+    <script>
+      
+    </script>
+</html>
+)
+code(Var)
+return
+
+::css.yuandian::
+::css.radio::
+::css.yuan::
+Var =
+(
+content: '';
+position: absolute;
+top: 50`%;
+transform: translateY(-50`%);
+left: -8px;
+width: 6px;
+height: 7px;
+background-color: #0b76c3;
+border-radius: 50`%;
+)
+code(Var)
+return
+
+::wh::
+Var =
+(
+width: px;
+height: px;
+)
+code(Var)
+return
+
+::@font::
 Var =
 (
 @font-face{

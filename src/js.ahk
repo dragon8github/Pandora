@@ -1,4 +1,30 @@
-﻿::isanimate::
+﻿::wl::
+::wls::
+Var =
+(
+window.localStorage.setItem('key', 'value')
+)
+code(Var)
+return
+
+::wlg::
+Var =
+(
+window.localStorage.getItem('key')
+)
+code(Var)
+return
+
+::next::
+::next()::
+Var =
+(
+nextElementSibling
+)
+code(Var)
+return
+
+::isanimate::
 ::jq.animate::
 ::is.animate::
 ::is-animate::
@@ -1086,6 +1112,15 @@ _ => {
 code(Var)
 return
 
+::$()::
+::$()()::
+Var =
+(
+$(function () {})
+
+)
+code(Var)
+return
 
 ::()()::
 Var = 
@@ -1153,6 +1188,9 @@ SendInput, {up}{tab}
 Return
 
 ::ctimer::
+::cleartimer::
+::settc::
+::cleart::
 Var = 
 (
 var timer = setTimeout(() => {
@@ -1163,6 +1201,9 @@ code(Var)
 Return
 
 ::ctimeri::
+::cleartimeri::
+::settic::
+::clearti::
 Var = 
 (
 var timer = setInterval(() => {
