@@ -1,4 +1,134 @@
-﻿::css.pl::
+﻿::flex::
+
+	; try 异常处理
+    Menu, A, Add, flex-start , flexHandler
+    Menu, A, Add, center , flexHandler
+    Menu, A, Add, flex-end, flexHandler
+    Menu, A, Add, space-around, flexHandler
+	Menu, A, Add, space-between, flexHandler
+
+    Menu, B, Add, flex-start, flexHandler
+    Menu, B, Add, flex-end, flexHandler
+    Menu, B, Add, center, flexHandler
+    Menu, B, Add, stretch, flexHandler
+    Menu, B, Add, baseline, flexHandler
+    
+    Menu, C, Add, row(默认)：从左到右, flexHandler
+    Menu, C, Add, column：从上到下, flexHandler
+	
+
+    Menu, flexMenu, Add, justify-content, :A
+    Menu, flexMenu, Add, align-items, :B
+    Menu, flexMenu, Add, flex-direction, :C
+    Menu, flexMenu, Add, flex-wrap, flexHandler
+
+	Menu, flexMenu, Show
+	Menu, flexMenu, DeleteAll
+return
+
+
+flexHandler:
+; MsgBox You selected  from the menu .
+v := A_ThisMenuItem
+Var :=
+
+if (v == "flex-start") {
+Var = 
+(
+justify-content: flex-start;
+)
+}
+
+if (v == "center") {
+Var = 
+(
+justify-content: center;
+)
+}
+
+if (v == "flex-end") {
+Var = 
+(
+justify-content: flex-end;
+)
+}
+
+if (v == "space-around") {
+Var = 
+(
+justify-content: space-around;
+)
+}
+
+if (v == "space-between") {
+Var = 
+(
+justify-content: space-between;
+)
+}
+
+if (v == "flex-start") {
+Var = 
+(
+align-items: flex-start;
+)
+}
+
+if (v == "flex-end") {
+Var = 
+(
+align-items: flex-end;
+)
+}
+
+if (v == "center") {
+Var = 
+(
+align-items: center;
+)
+}
+
+if (v == "stretch") {
+Var = 
+(
+align-items: stretch;
+)
+}
+
+if (v == "baseline") {
+Var = 
+(
+align-items: baseline;
+)
+}
+
+if (v == "row(默认)：从左到右") {
+Var = 
+(
+flex-direction: row;
+)
+}
+
+if (v == "column：从上到下") {
+Var = 
+(
+flex-direction: column;
+)
+}
+
+if (v == "flex-wrap") {
+Var = 
+(
+flex-wrap: wrap;
+)
+}
+
+
+code(Var)
+Menu, flexMenu, Show
+return
+
+::css.pl::
 ::css.placeholder::
 Var =
 (
