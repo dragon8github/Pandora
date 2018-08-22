@@ -1,4 +1,13 @@
-﻿::ahkmenu::
+﻿::git push::
+::gitpush::
+Var =
+(
+git push -u origin master
+)
+Send, {text}%Var%
+return
+
+::ahkmenu::
 Var =
 (
 !n::

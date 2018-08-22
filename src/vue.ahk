@@ -1,4 +1,12 @@
-﻿::$refs::
+﻿::v-clo::
+Var =
+(
+v-cloak
+)
+code(Var)
+return
+
+::$refs::
 ::$ref::
 Var =
 (

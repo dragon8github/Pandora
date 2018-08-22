@@ -787,7 +787,9 @@ var wraphtml = document.body.appendChild(el);
 code(Var)
 return
 
-::class::
+::es6.class::
+::es.class::
+::js.class::
 Var = 
 (
 class Person {

@@ -1,4 +1,23 @@
-﻿::flex::
+﻿::css.shu::
+::css.zhu::
+::css.link::
+::css.line::
+::css.xian::
+Var =
+(
+content: '';
+position: absolute;
+left: 50`%;
+top: 50`%;
+transform: translate(-50`%, -50`%);
+width: 1px;
+height: 60px;
+background-color: rgba(255,255,255, .38);
+)
+code(Var)
+return
+
+::flex::
 
 	; try 异常处理
     Menu, A, Add, flex-start , flexHandler
@@ -631,6 +650,10 @@ Return
 
 ::pl::
 	SendInput, padding-left: px`;{left 3}
+Return
+
+::prr::
+	SendInput, padding-right: px`;{left 3}
 Return
 
 ::prp::

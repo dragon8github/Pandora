@@ -42,7 +42,7 @@ Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 ; submit 按钮
 Gui, Add, Button, w780 h30 Default, FUCK
 
-Gui, Add, Tab3, w780 h400 Choose1, 常用 | 框架 | 地图 | PHP | 工作坊
+Gui, Add, Tab3, w780 h430 Choose1, 常用 | 框架 | 地图 | PHP | 工作坊
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
 Gui, Add, Link,, <a href="https://github.com">github</a>
@@ -119,6 +119,8 @@ Gui, Add, Link,, <a href="http://vuejs.org/">vue</a>
 Gui, Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
 Gui, Add, Link,, <a href="http://router.vuejs.org ">vue-router</a>
 Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
+Gui, Add, Link,, <a href="https://github.com/PanJiaChen/vue-element-admin">vue-element-admin</a>
+
 
 Gui, Add, Text,  W140 ys, React:
 Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react 官网</a>
@@ -137,7 +139,7 @@ Gui, Add, Link,, <a href="https://v3.bootcss.com/components/#jumbotron">全局 j
 Gui, Add, Link,, <a href="https://github.com/twbs/bootstrap">Bootstrap-github</a>
 Gui, Add, Link,, <a href="http://www.youzhan.org/">示例网站</a>
 
-Gui, Add, Text,  W160 Section xs yp+60, Ant-Design：
+Gui, Add, Text,  W160 Section xs yp+80, Ant-Design：
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design/">Ant-Design-Github</a>
 Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design 文档</a>
 Gui, Add, Link,, <a href="https://preview.pro.ant.design/#/dashboard/analysis">Ant-Design-pro 后台示例</a>
