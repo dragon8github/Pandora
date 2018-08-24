@@ -1,4 +1,16 @@
-﻿::git push::
+﻿::git commit::
+::git c::
+::gitc::
+Var =
+(
+git commit -m ""
+)
+Send, {text}%Var%
+Send, {left}
+return
+
+
+::git push::
 ::gitpush::
 Var =
 (
@@ -73,12 +85,12 @@ return
 
 ^1::
 !1::
-    SendInput, {text}lizhaohong
+    Send, {text}lizhaohong
 return
 
 ^2::
 !2::
-    SendInput, {text}123456
+    Send, {text}123456
 return
 
 ::hosts::
@@ -312,7 +324,7 @@ Return
     ; 第二步，复制当前选中内容
     SendInput, ^c
     ClipWait, 2
-    if (StrLen(Clipboard) >= 20) {
+    if (StrLen(Clipboard) >= 30) {
         MsgBox, 请不要把此功能当做翻译机
         return 
     }
@@ -331,7 +343,7 @@ Return
     ; 第二步，复制当前选中内容
     SendInput, ^c
     ClipWait, 2
-    if (StrLen(Clipboard) >= 20) {
+    if (StrLen(Clipboard) >= 30) {
         MsgBox, 请不要把此功能当做翻译机
         return 
     }

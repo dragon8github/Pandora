@@ -15,6 +15,25 @@ window.localStorage.getItem('key')
 code(Var)
 return
 
+::ajax.get::
+::ajaxget::
+::getajax::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =
+(
+$.ajax({
+    url: getPostUrl('http://192.168.8.199:8080') + "/api/dcfda/catering/fdaCateringOrder/searchDTO",
+    type: "get",
+    dataType: 'json',
+    contentType: 'application/json;charset=utf-8',
+    success: function (data) {
+        console.log(%t%, data)
+    }
+})
+)
+code(Var)
+return
+
 ::next::
 ::next()::
 Var =
@@ -630,6 +649,23 @@ return
     Send, el.style.borderWidth = '20px';
 return
 
+
+::dianjikongbaichu::
+::kongbaichu::
+Var =
+(
+$('.keySupervision__layer').css({ left, top }).show(300, function () {
+      window.addEventListener('mouseup', function cancelFade(e) {
+         if (!e.target.className.includes('keySupervision__layer')) {
+             $('.keySupervision__layer').hide();
+             window.removeEventListener('mouseup', cancelFade);
+         }
+      })
+})
+)
+code(Var)
+return
+
 ::exchange::
 Var = 
 (
@@ -656,6 +692,7 @@ return
 
 AppsKey & a::
 >^a::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
 $.ajax({
@@ -670,7 +707,7 @@ $.ajax({
     dataType: 'json',
     contentType: 'application/json;charset=utf-8',
     success: function (data) {
-        console.log(data);
+        console.log(%t%, data);
     }
 })
 )
@@ -1390,8 +1427,8 @@ Return
 >!m::
 Var =
 (
-.map(function (v) {
-    return v
+.map(function (v, index, array) {
+        return v
 });
 )
 code(Var)

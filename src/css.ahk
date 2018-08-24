@@ -1,4 +1,18 @@
-﻿::css.shu::
+﻿::css.fugaiwu::
+Var =
+(
+position: absolute;
+top: 0; left: 0;
+width: 180px;
+height: 60px;
+cursor: pointer;
+opacity: 0;
+z-index: 9999;
+)
+code(Var)
+return
+
+::css.shu::
 ::css.zhu::
 ::css.link::
 ::css.line::
@@ -566,14 +580,23 @@ Var =
 code(Var)
 return
 
+::curp::
+Var =
+(
+cursor: pointer;
+)
+code(Var)
+return
 
 ::ell::
-    SendInput,
+::shengluehao::
+Var =
 (
-overflow: hidden`;
-text-overflow: ellipsis`;
-white-space: nowrap`;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
 )
+code(Var)
 Return
 
 ::lh::

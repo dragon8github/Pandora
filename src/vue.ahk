@@ -208,11 +208,7 @@ Var =
 var vue = new Vue({
     el: '#app',
     data: {
-        title: '123',
         items: []
-    },
-    beforeMount () {
-        console.log('hello world');
     },
     methods: {
         handleClick: function () {
