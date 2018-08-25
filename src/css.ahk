@@ -1,4 +1,6 @@
-﻿::css.fugaiwu::
+﻿
+
+::css.fugaiwu::
 Var =
 (
 position: absolute;

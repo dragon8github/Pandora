@@ -212,7 +212,7 @@ Gui, Add, Link, W140, <a href="https://www.oschina.net/translate/geojson-spec#po
 
 
 Gui, Add, Text, W140 ys, ECharts Gallery:
-Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html">ECharts官方论坛</a>
+Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html">ECharts 官方论坛</a>
 Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts 论坛示例</a>
 Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xB1jgoJnDf">ECharts 安徽示例</a>
 

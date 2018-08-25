@@ -1,4 +1,23 @@
-﻿::git commit::
+﻿::git2::
+::gitt::
+Var =
+(
+git add components/ && git commit -m "迭代" && git push -u origin master
+)
+SendInput, %Var%{left 30}
+return
+
+::ahktime::
+::ahknow::
+::ahkdate::
+Var =
+(
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+)
+code(Var)
+return
+
+::git commit::
 ::git c::
 ::gitc::
 Var =

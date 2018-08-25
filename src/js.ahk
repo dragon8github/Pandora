@@ -43,6 +43,44 @@ nextElementSibling
 code(Var)
 return
 
+::$.scroll::
+::$.onscroll::
+Var =
+(
+$('.trajectoryTable').scroll(function (e) {
+    console.log(20180825190354, e.currentTarget.scrollTop)
+})
+)
+code(Var)
+return
+
+::morencanshu::
+::defaultopt::
+::defaultoptions::
+::defaultoption::
+::es6.morencanshu::
+::js.morencanshu::
+::es.morencanshu::
+Var =
+(
+var a = function (opt = {a: 1, c: 2}) {
+	console.log(20180825191248, opt)
+}
+)
+code(Var)
+return
+
+::animate::
+::animated::
+::$.animate::
+::$.animated::
+Var =
+(
+$('#trajectoryUl').animate({ scrollTop: '40px' }, 1500);
+)
+code(Var)
+return
+
 ::isanimate::
 ::jq.animate::
 ::is.animate::
@@ -1293,6 +1331,17 @@ function () {}
 code(Var)
 SendInput, {left}{enter}
 Return
+
+::fe::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =
+(
+function (e) {
+    console.log(%t%, e)
+}
+)
+code(Var)
+return
 
 ::foreach::
 Var = 
