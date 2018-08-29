@@ -54,6 +54,57 @@ $('.trajectoryTable').scroll(function (e) {
 code(Var)
 return
 
+::aotuscroll::
+::$.autoscroll::
+Var =
+(
+ ;$.fn.extend({  
+    autoScroll (opt = {speed: 1500, size: 4, height: 40, time: 1000}) {  
+        // jQuery对象
+        var $el = this;
+        // 核心函数
+        var _autoScroll = function () {
+            // 自动滚动
+            var timer =  setInterval(() => {
+                // 滚动的速度
+                const speed = opt.speed
+                // 每次滚动多少条
+                const size = opt.size;
+                // 每条的高度是多少
+                const height = opt.height;
+                // 每次滚动的距离
+                const distance = size * height;
+                // 当前滚动的高度
+                const currentScrollTop = $el.scrollTop()
+                // 底部位置
+                const bottom = $el.prop('scrollHeight') - $el.height()
+                // 如果已经滚到底了
+                if (currentScrollTop === bottom) {
+                    // 滚回头部
+                    $el.animate({ scrollTop: 0 }, 0);
+                } else {
+                    // 余数
+                    const remainder = currentScrollTop `% height
+                    // 下一次滚动的位置 = 当前位置 + 每次滚动的位置 - 余数
+                    const nextScrollTop = currentScrollTop + distance - remainder
+                    // 开始滚动
+                    $el.animate({ scrollTop: nextScrollTop + 'px' }, speed);
+                }
+            // 滚动间隔
+            }, opt.time + opt.speed);
+            // 鼠标移入的时候，删除自动滚动, 鼠标移出的时候，自动滚动
+            $el.one('mouseover', _ => clearInterval(timer)).one('mouseleave', _autoScroll)
+        }
+        // 开始滚动
+        _autoScroll()
+    }
+});
+
+$('.trajectoryTable').autoScroll()
+)
+code(Var)
+return
+
 ::morencanshu::
 ::defaultopt::
 ::defaultoptions::
@@ -66,6 +117,22 @@ Var =
 var a = function (opt = {a: 1, c: 2}) {
 	console.log(20180825191248, opt)
 }
+)
+code(Var)
+return
+
+::$.fn::
+::$.plugin::
+::$.fn.extend::
+Var =
+(
+$.fn.extend({  
+    autoScroll: function(value) {  
+        console.log(20180825204054, this, value)
+    }  
+});  
+
+$('.trajectoryTable').autoScroll('fuckyou')
 )
 code(Var)
 return
@@ -3426,6 +3493,7 @@ return
 
 
 ::hanshuqudou::
+::hanshufangdou::
 ::debounce::
 Var =
 (
@@ -3506,6 +3574,96 @@ function foo({x, y = 5} = {}) {
 }
 
 foo() // undefined 5
+)
+code(Var)
+return
+
+::__lock__::
+::lockfn::
+::lockanimate::
+::lock::
+::js.lock::
+::jslock::
+Var =
+(
+// （超简易拿来无封装版）使用函数加锁器
+// var lockAnimate = (function(){
+// 	var __LOCK__ = false
+// 	return function (scrollTop) {
+// 		if (!__LOCK__) {
+// 			__LOCK__ = true
+// 			$('#trajectoryUl').animate({ scrollTop: scrollTop + 'px' }, 1500, function () {
+// 				// 解锁
+// 				__LOCK__ = false
+// 			});
+// 		}
+// 	}
+// }());
+// lockAnimate(40 * 1)
+// lockAnimate(40 * 2)
+// lockAnimate(40 * 3)
+
+
+// 函数加锁器
+const lockFn = function (fn) {
+	// 锁
+	let __LOCK__ = false
+
+	// 加锁器
+	let lock = function () {
+		__LOCK__ = true
+	}
+
+	// 解锁器
+	let unlock = function () {
+		__LOCK__ = false
+	}
+
+	// 检锁器
+	let islock = function () {
+		return __LOCK__ === true
+	}
+
+	return function (...args) {
+		// 如果没锁的话则执行
+		if (!islock()) {
+			// 加锁
+			lock()
+			// 执行并且把锁交给它
+			return fn && fn.call(this, unlock, args)
+		}
+	}
+};
+
+// 自定义函数
+const myanimate = (unlock, scrollTop) => {
+	$('#trajectoryUl').animate({ scrollTop: scrollTop + 'px' }, 1500, function () {
+		// 解锁
+		unlock()
+	});
+}
+
+// 使用函数加锁器
+const lockAnimate = lockFn(myanimate);
+lockAnimate(40 * 1)
+lockAnimate(40 * 2)
+lockAnimate(40 * 3)
+
+)
+code(Var)
+return
+
+::proload::
+::proloadimg::
+Var =
+(
+const preLoadImages = (imgs) => {
+  var imgWrap = [];
+  imgs.forEach(function (path) {
+       new Image().src = path;
+  });
+}
+preLoadImages(['./bg.png', './bg2.png', './bigBtn_1.svg', './bigBtn_2.svg', './bigBtn_3.svg', './bigBtn_4.svg', './blue_dashed.png', './border.png', './business.svg', './circleBg.png', './companyBg.svg', './dian.png', './dingwei.png', './dingwei2.png', './favicon.png', './green_dashed.png', './k.png', './k.svg', './kuang_leftbottom.png', './kuang_rightbottom.png', './kuang_righttop.png', './layer.png', './logo.svg', './longHeader.svg', './missionCompletionRate.svg', './moshitu_03.png', './numberOfCompletedTasks.svg', './people.png', './regulatoryModel.svg', './search.png', './shortHeader.svg', './totalAnnualTasks.svg', './up.svg',])
 )
 code(Var)
 return

@@ -1,4 +1,28 @@
-﻿
+﻿::css.i::
+::css.yuan2::
+::css.num::
+::css.biaoji::
+::css.badge::
+::css.unread::
+::css.kuai::
+Var =
+(
+.unread {
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 16px;
+    background-color: red;
+    border-radius: 50`%;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: normal;
+}
+)
+code(Var)
+return
 
 ::css.fugaiwu::
 Var =

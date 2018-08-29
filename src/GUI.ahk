@@ -106,6 +106,7 @@ Gui, Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen"
 
 Gui, Add, Text,  W140 ys, 奇妙工具:
 Gui, Add, Link,, <a href="http://tour.ubuntu.com/en/">在线ubuntu</a>
+Gui, Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
 
 Gui, Tab, 2
 Gui, Add, Text,  W140  Section, layer/layui：
@@ -265,6 +266,7 @@ Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quicks
 
 
 Gui, Tab, 5
+Gui, Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
 Gui, Add, Text, gNewIndexHtml W140 Section y+20, 新建index.html
 Gui, Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板
 Gui, Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
@@ -353,6 +355,45 @@ request('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f
 RunWaitOne("cd " . name . " && npm init -y && npm i request cheerio")
 run, %name%
 RunBy(filename)
+return
+
+NewPureIndexHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+    html, body{ 
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+      
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+$(function() {
+    console.log('hello world');
+});
+</script>
+</html>
+),  %name%
+RunBy(name)
 return
 
 NewIndexHtml:

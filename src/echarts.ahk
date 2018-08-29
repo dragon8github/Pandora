@@ -3,7 +3,12 @@ Var =
 (
 var myChart = echarts.init(document.getElementById('eastCityMap'));
 
-// http://echarts.baidu.com/option.html#series-map.data.itemStyle.color
+// 获取默认配置
+var getDeafaultOption = () => {
+    return $.extend(true, {}, options)
+}
+
+// 不可变动的配置
 const options = {
 	series: [
 		{

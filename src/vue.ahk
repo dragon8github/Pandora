@@ -18,6 +18,7 @@ return
 
 ::$nextTick::
 ::$next::
+::$.next::
 Var =
 (
 this.$nextTick(() => {
