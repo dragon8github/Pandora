@@ -1,8 +1,31 @@
 ﻿::readline::
+::sh.read::
+::bashread::
+::bash.read::
 	Send, read -p "Enter a number"
 return
 
+::shfor::
+::bashfor::
+::shellfor::
+Var =
+(
+#!/bin/bash
+count=1;
+for img in `find ./ -iname '*.png' -o -iname '*.jpg' -type f -maxdepth 1`
+do
+	echo "$count"
+	let count++
+done
+
+read -p "Enter a number"
+)
+code(Var)
+return
+
 !n::
+
+
 	; 环境变量
 	Menu, A, Add, 打印环境变量, ShellHandler
 	Menu, A, Add, 打印$PATH路径, ShellHandler
@@ -80,7 +103,15 @@ return
 	Menu, G, Add, 子匹配标记（\1\2\3\n）, ShellHandler
 	Menu, G, Add, 组合多个sed表达式, ShellHandler
 	Menu, G, Add, sed表达式中使用变量, ShellHandler
-
+	
+	; 强大的#（从左到右）操作符和`%（从右到做）操作符
+	Menu, H, Add, `% 获取文件名和后缀示例, ShellHandler
+	Menu, H, Add, #（从左到右）操作符, ShellHandler
+	Menu, H, Add, `%（从右到做）操作符, ShellHandler
+	
+	
+	Menu, ShellMenu, Add, #!/bin/bash, ShellHandler
+	Menu, ShellMenu, Add, for循环, ShellHandler
 	Menu, ShellMenu, Add, 环境变量, :A
 	Menu, ShellMenu, Add, 时间, :B
 	Menu, ShellMenu, Add, find , :C
@@ -88,6 +119,7 @@ return
 	Menu, ShellMenu, Add, tr（文本转换）, :E
 	Menu, ShellMenu, Add, grep（搜索文本）, :F
 	Menu, ShellMenu, Add, sed（替换文本）, :G
+	Menu, ShellMenu, Add, 强大的 ## 操作符和 `%`% 操作符, :H
 	
 	Menu, ShellMenu, Show
 	Menu, ShellMenu, DeleteAll
@@ -99,12 +131,76 @@ ShellHandler:
 v := A_ThisMenuItem
 Var := 
 
+
+if (v == "#!/bin/bash") {
+Var = 
+(
+#!/bin/bash
+)
+}
+
+if (v == "% 获取文件名和后缀示例") {
+Var = 
+(
+file_name="sample.jpg"
+name=${file_name`%.*}
+echo $name  # sample
+
+file_name="sample.jpg"
+ext=${file_name#*.}
+echo $ext   # jpg
+
+read -p "Enter a number"
+)
+}
+
+if (v == "#（从左到右）操作符") {
+Var = 
+(
+VAR=hack.fun.book.txt
+echo ${VAR#*.} # fun.book.txt
+
+VAR=hack.fun.book.txt
+echo ${VAR##*.} # txt
+
+read -p "Enter a number"
+)
+}
+
+if (v == "%（从右到做）操作符") {
+Var = 
+(
+VAR=hack.fun.book.txt
+echo ${VAR`%.*} # hack.fun.book
+
+VAR=hack.fun.book.txt
+echo ${VAR`%`%.*} # hack
+
+read -p "Enter a number"
+)
+}
+
 if (v == "打印环境变量") {
 Var = 
 (
 env
 )
 }
+
+if (v == "for循环") {
+Var = 
+(
+#!/bin/bash
+count=1;
+for img in ``find ./ -iname '*.png' -o -iname '*.jpg' -type f -maxdepth 1``
+do
+	echo "$count"
+	let count++
+done
+read -p "Enter a number"
+)
+}
+
 
 
 
@@ -147,7 +243,7 @@ find /home/users \( -name '*.txt' -o -name '*.pdf' \) -print
 if (v == "正则表达式：-regex/-iregex") {
 Var = 
 (
-find /home/users -iregex '.*\.(py\|sh\)$'
+find ./ -iregex '.*\.\(png\|svg\)$'
 )
 }
 
@@ -541,8 +637,8 @@ Var =
 }
 
 if (Var) {
-	Send, {text}%Var%
-} else {
+	code(Var)
+}else {
 	MsgBox, 未找到定义代码块
 }
 return

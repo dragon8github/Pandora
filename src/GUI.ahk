@@ -103,6 +103,8 @@ Gui, Add, Text,  W140 ys, 工作：
 Gui, Add, Link,, <a href="http://47.106.185.185:8080/api/swagger-ui.html#/">swagger-ui</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen">git</a>
+Gui, Add, Link,, <a href="http://120.77.146.174:82/">大数据屏幕演示</a>
+
 
 Gui, Add, Text,  W140 ys, 奇妙工具:
 Gui, Add, Link,, <a href="http://tour.ubuntu.com/en/">在线ubuntu</a>
@@ -269,6 +271,8 @@ Gui, Tab, 5
 Gui, Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
 Gui, Add, Text, gNewIndexHtml W140 Section y+20, 新建index.html
 Gui, Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板
+Gui, Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
+Gui, Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
 Gui, Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
 
 
@@ -322,6 +326,77 @@ print(myarr)
 });
 ), %filename%
 RunWaitOne("pip install beautifulsoup4 requests")
+run, %name%
+RunBy(filename)
+return
+
+NewNodegbkPachong:
+name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+filename := name . "/index.js"
+FileCreateDir, %name%
+FileAppend,
+(
+// npm i request cheerio iconv-lite
+const request = require('request');
+const cheerio = require('cheerio');
+const iconv = require('iconv-lite');
+
+request({
+	url: 'http://roll.mil.news.sina.com.cn/col/zgjq/index.shtml',
+	encoding : null // raw buffer
+}, function (err, response, body) {
+	if (err) throw new Error(err.message);
+	var buffer = response.body;
+	var str = iconv.decode(buffer, 'GBK').toString();
+	let $ = cheerio.load(str)
+	let lis = $(".linkNews li");
+	let myarr = [];
+	lis.each(function (i, li) {
+	    var a = $(li).find('a')
+	    var title = a.text()
+	    myarr.push({ title });
+	});
+	console.log("简单成狗了:", myarr);
+});
+), %filename%
+RunWaitOne("cd " . name . " && npm init -y && npm i request cheerio iconv-lite")
+run, %name%
+RunBy(filename)
+return
+
+NewNodefengzhuangPachong:
+name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+filename := name . "/index.js"
+FileCreateDir, %name%
+FileAppend,
+(
+// npm i request cheerio iconv-lite
+const request = require('request');
+const cheerio = require('cheerio');
+const iconv = require('iconv-lite');
+
+const _request = (url, cb, charset = 'utf8') => {
+	request({ url: url, encoding : null }, function (err, response, body) {
+		if (err) throw new Error(err.message);
+		var buffer = response.body;
+		var str = iconv.decode(buffer, charset).toString();
+		let $ = cheerio.load(str)
+		cb && cb($);
+	});
+}
+
+_request('http://roll.mil.news.sina.com.cn/col/zgjq/index.shtml', function ($) {
+	let lis = $(".linkNews li");
+	let myarr = [];
+	lis.each(function (i, li) {
+	    var a = $(li).find('a')
+	    var title = a.text()
+	    myarr.push({ title });
+	});
+	console.log(myarr);
+}, 'GBK')
+), %filename%
+RunWaitOne("cd " . name . " && npm init -y && npm i request cheerio")
 run, %name%
 RunBy(filename)
 return

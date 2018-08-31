@@ -1,4 +1,49 @@
-﻿::node.ssh::
+﻿::node.dir::
+::node.ls::
+Var =
+(
+var fs = require('fs');
+fs.readdir('./',function(err,files){
+    if(err) console.log('失败');
+    else console.log(files);
+})
+)
+code(Var)
+return
+
+::node.gbk::
+::node.gb2312::
+::node.jquery.gbk::
+::node.jquery.gb2312::
+Var =
+(
+// npm i request cheerio iconv-lite
+const request = require('request');
+const cheerio = require('cheerio');
+const iconv = require('iconv-lite');
+
+request({
+	url: 'http://roll.mil.news.sina.com.cn/col/zgjq/index.shtml',
+	encoding : null // raw buffer
+}, function (err, response, body) {
+	if (err) throw new Error(err.message);
+	var buffer = response.body;
+	var str = iconv.decode(buffer, 'GBK').toString();
+	let $ = cheerio.load(str)
+	let lis = $(".linkNews li");
+	let myarr = [];
+	lis.each(function (i, li) {
+	    var a = $(li).find('a')
+	    var title = a.text()
+	    myarr.push({ title });
+	});
+	console.log("简单成狗了:", myarr);
+});
+)
+code(Var)
+return
+
+::node.ssh::
 ::node.ssh2::
 ::node.ftp::
 ::node.sftp::

@@ -1,8 +1,37 @@
-﻿::wl::
+﻿::unshift::
+Var =
+(
+var unshift = function (arr, index) {
+    var v = arr.splice(step, 1)
+    arr.unshift(v[0])
+    return arr
+}
+)
+code(Var)
+return
+
+
+::wl::
 ::wls::
 Var =
 (
 window.localStorage.setItem('key', 'value')
+)
+code(Var)
+return
+
+::time2time::
+::date2date::
+Var =
+(
+// 转化为年月日
+const time2time = (time) => {
+    var date = new Date(time.replace(/-/g, '/'));
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    return year + '/' + month + '/' + day
+}
 )
 code(Var)
 return
