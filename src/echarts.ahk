@@ -1,4 +1,3 @@
-
 ::echarts.options::
 ::echarts.option::
 ::ehcarts.opts::

@@ -259,3 +259,38 @@ Vue.component('mybutton', mybutton)
 )
 code(Var)
 return
+
+::v-animate::
+::vue-animate::
+::vue-tran::
+::v-tran::
+::vue-trans::
+::v-trans::
+Var =
+(
+<transition-group name="cell" tag="div" class="kitchenBright__list--items transition-group" tag='ul'>
+    <li v-for='(item, index) in items' :key='item' 
+    	class='cell kitchenBright__list--item'
+    	:class="{active: index === 0 && step !== -1}"
+    	:title='item.schoolName'
+    	@click='handleClick(index)'>
+        	{{ item.schoolName }}
+    </li>
+</transition-group>
+
+.cell-enter-active, .cell-leave-active {
+  transition: all 1s;
+}
+
+.cell-enter, .cell-leave-to /* .cell-leave-active below version 2.1.8 */ {
+  /*opacity: 0;*/
+  transform: translateY(300px);
+}
+
+/* 动画钩子 */
+.cell-move {
+  transition: transform 1s ease;
+}
+)
+code(Var)
+return

@@ -1,4 +1,190 @@
-﻿::unshift::
+﻿::fn.after::
+::__after__::
+::after.js::
+Var =
+(
+Function.prototype.after = function(fn) {
+    var self = this;
+    /**
+	 * 认知1：这里的 function 会执行两次。为什么？（提示：两个after）
+	 * 认知2：这里的两个 arguments 都是order函数的入参。为什么？（提示：参数是一层一层的由右往左传递进去的）
+	 */
+    return function() {
+        var ret = self.apply(this, arguments);  
+        if (ret === 'next') {
+            return fn.apply(this.arguments);
+        }
+    }
+}
+
+var order500yuan = function(orderType, pay, stock) {
+    if (orderType === 1 && pay === true) {
+        console.log('500 元定金预购，得到 100 优惠券');
+    } else {
+        return 'next'; // 我不知道下一个节点是谁，反正把请求往后面传递
+    }
+};
+
+var order200yuan = function(orderType, pay, stock) {
+    if (orderType === 2 && pay === true) {
+        console.log('200 元定金预购，得到 50 优惠券');
+    } else {
+        return 'next'; // 我不知道下一个节点是谁，反正把请求往后面传递
+    }
+};
+
+var orderNormal = function(orderType, pay, stock) {
+    if (stock > 0) {
+        console.log('普通购买，无优惠券');
+    } else {
+        console.log('手机库存不足');
+    }
+};
+
+var order = order500yuan.after( order200yuan ).after( orderNormal );
+order( 1, true, 500 )
+order( 2, true, 500 );
+order( 1, false, 500 );
+)
+code(Var)
+return
+
+
+::aop::
+::__AOP__::
+Var =
+(
+// （A）定义原始函数
+var func = function() {
+    console.log(2);
+};
+
+Function.prototype.before = function(beforefn) {
+    // 保存原始函数（A）的引用
+    var __self = this;
+
+    // （B）
+    return function() { 
+        // 执行 before 函数
+        beforefn.apply(this, arguments); 
+
+        // 执行原始函数（A）
+        return __self.apply(this, arguments);
+    }
+};
+
+Function.prototype.after = function(afterfn) {
+    // 保存函数（B）的引用
+    var __self = this;
+
+    // （C）
+    return function() {
+        // 执行函数（B）并获取执行结果，而实际上函数（B）的返回的是原始函数（A）的执行结果
+        var ret = __self.apply(this, arguments);
+
+        // 执行 after 函数
+        afterfn.apply(this, arguments);
+
+        // 返回原函数（A）的执行结果
+        return ret;
+    }
+};
+
+func = func.before(function() {
+    console.log(1);
+}).after(function() {
+    console.log(3);
+});
+
+// 执行函数（C）
+func();
+)
+code(Var)
+return
+
+::__event::
+::__event__::
+Var =
+(
+// 1、发布 — 订阅的功能
+window.__EVENT__ = {
+     // 缓存列表
+     clientList: [],
+     listen: function(key, fn) {
+         if (!this.clientList[key]) {
+             this.clientList[key] = [];
+         }
+         // 订阅的消息添加进缓存列表
+         this.clientList[key].push(fn); 
+     },
+     trigger: function() {
+         var key = Array.prototype.shift.call(arguments),
+             fns = this.clientList[key];
+         // 如果没有绑定对应的消息
+         if (!fns || fns.length === 0) { 
+             return false;
+         }
+         for (var i = 0, fn; fn = fns[i++];) {
+             // arguments 是 trigger 时带上的参数
+             fn.apply(this, arguments);
+         }
+     }
+};
+
+// 2、取消订阅的事件
+__EVENT__.remove = function(key, fn) {
+     var fns = this.clientList[key];
+     if (!fns) { // 如果 key 对应的消息没有被人订阅，则直接返回
+         return false;
+     }
+     if (!fn) { // 如果没有传入具体的回调函数，表示需要取消 key 对应消息的所有订阅
+         fns && (fns.length = 0);
+     } else {
+         for (var l = fns.length - 1; l >= 0; l--) { // 反向遍历订阅的回调函数列表
+             var _fn = fns[l];
+             if (_fn === fn) {
+                 fns.splice(l, 1); // 删除订阅者的回调函数
+             }
+         }
+     }
+};
+)
+code(Var)
+return
+
+::delay::
+Var =
+(
+var upload = function (id) {
+	console.log('开始同步文件, id为'： id)
+}
+
+var proxySync = ;(function(){
+	var cache = [], // 一定时间内需要同步的id
+			 timer;	// 定时器
+
+	return function (id) {
+		// 塞入缓存，等待上传
+		cache.push(id)
+
+		// 保证不会覆盖已经启动的定时器
+		if ( timer ) {
+			return;
+		}
+
+		timer = setTimeout(() => {
+			// 上传
+			upload( cache.join(',') )
+			// 清空
+			clearTimeout(timer); timer = null; cache.length = 0;
+		}, 2000);
+	}
+}());
+)
+code(Var)
+return
+
+::unshift::
 Var =
 (
 var unshift = function (arr, index) {
