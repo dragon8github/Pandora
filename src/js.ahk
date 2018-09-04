@@ -1552,9 +1552,7 @@ Return
 ::cleart::
 Var = 
 (
-var timer = setTimeout(() => {
-    clearTimeout(timer);
-}, 1000);
+clearTimeout(timer);
 )
 code(Var)
 Return
@@ -1565,9 +1563,7 @@ Return
 ::clearti::
 Var = 
 (
-var timer = setInterval(() => {
-    clearInterval(timer);
-}, 1000);
+clearInterval(timer);
 )
 code(Var)
 Return
@@ -1995,6 +1991,8 @@ return
 
 ::$.extend::
 ::extend::
+::deep::
+::deepcopy::
 Var = 
 (
 var deepExtend = function(out) {

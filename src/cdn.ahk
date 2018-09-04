@@ -1,4 +1,12 @@
-﻿::cdn-ie::
+﻿::cdn-redux::
+Var =
+(
+<script src="https://cdn.bootcss.com/redux/4.0.0/redux.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-ie::
 ::cdn-html5::
 Var =
 (

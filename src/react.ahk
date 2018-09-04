@@ -1,4 +1,73 @@
-﻿::rfor::
+﻿::js.redux::
+::reduex.html::
+::redux-html::
+::redux.demo::
+::redux-demo::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/redux/4.0.0/redux.min.js"></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <label class='num'></label>
+        <button class='like'>like</button>
+        <button class='unlike'>unlike</button>
+    </div>
+</body>
+<script>
+    const reducer = (previousState = 0, action) => {
+        switch (action.type) {
+            case 'LIKE':
+                return previousState + 1;
+            case 'UNLIKE':
+                return previousState - 1;
+            default:
+                return previousState
+        }
+    }
+
+    const render = () => {
+        document.querySelector('.num').innerText = store.getState()
+    }
+
+    document.querySelector('.like').addEventListener('click', function (event) {
+        store.dispatch({ type: 'LIKE' })
+    })
+
+    document.querySelector('.unlike').addEventListener('click', function (event) {
+        store.dispatch({ type: 'UNLIKE' })
+    })
+
+    const store = Redux.createStore(reducer);
+
+    store.subscribe(render);
+
+    render()
+
+</script>
+</html>
+)
+code(Var)
+return
+
+::rfor::
 ::reactfor::
 Var =
 (
