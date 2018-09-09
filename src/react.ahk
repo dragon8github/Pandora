@@ -1,6 +1,7 @@
 ﻿::js.redux::
-::reduex.html::
+::redux.html::
 ::redux-html::
+::react.redux::
 ::redux.demo::
 ::redux-demo::
 Var =

@@ -62,9 +62,9 @@ ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
     whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
     whr.Open("GET", url, true)
     whr.Send()
-    if (text != "") {
-        TrayTip, 请稍后, % text, 20, 17
-    }   
+    ;if (text != "") {
+    ;    TrayTip, 请稍后, % text, 20, 17
+    ;}   
     whr.WaitForResponse()
     
     
@@ -87,9 +87,9 @@ post(url, data, q:=false, text:="正在为你下载代码，请保持网络顺�
     whr.Open("POST", url, true)
     whr.SetRequestHeader("Content-Type", "application/json;charset=utf-8")
     whr.Send(data)
-    if (text != "") {
-        TrayTip, 请稍后, % text, 20, 17
-    }   
+    ;if (text != "") {
+    ;    TrayTip, 请稍后, % text, 20, 17
+    ;}   
     whr.WaitForResponse()
     
     if (q==false) {

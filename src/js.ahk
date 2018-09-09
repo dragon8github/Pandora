@@ -1,4 +1,22 @@
-﻿::fn.after::
+﻿::udf::
+Var =
+(
+undefined
+)
+code(Var)
+return
+
+::object.a::
+::obj.a::
+Var =
+(
+Object.assign({}, )
+)
+code(Var)
+Send, {left 1}
+return
+
+::fn.after::
 ::__after__::
 ::after.js::
 Var =

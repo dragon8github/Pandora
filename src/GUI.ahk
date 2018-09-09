@@ -116,6 +116,8 @@ Gui, Add, Link,, <a href="http://layer.layui.com/">layer</a>
 Gui, Add, Link,, <a href="http://www.layui.com/doc/">layui文档</a>
 Gui, Add, Link,, <a href="http://www.layui.com/demo/">layui示例</a>
 Gui, Add, Link,, <a href="https://github.com/sentsin/layui/">layui-github</a>
+Gui, Add, Link,, <a href="https://www.layui.com/admin/std/dist/views/">layui-admin</a>
+
 
 Gui, Add, Text,  W140 ys, Vue：
 Gui, Add, Link,, <a href="http://vuejs.org/">vue</a>
@@ -284,7 +286,7 @@ Gui, Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板
 Gui, Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
 Gui, Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
 Gui, Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
-
+Gui, Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
 
 GuiEscape:
 GuiClose:
@@ -307,6 +309,72 @@ return
 	Gui, Show,, Simple Input Example
 return 
 */
+
+NewreduxIndexHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/redux/4.0.0/redux.min.js"></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <label class='num'></label>
+        <button class='like'>like</button>
+        <button class='unlike'>unlike</button>
+    </div>
+</body>
+<script>
+    const reducer = (previousState = 0, action) => {
+        switch (action.type) {
+            case 'LIKE':
+                return previousState + 1;
+            case 'UNLIKE':
+                return previousState - 1;
+            default:
+                return previousState
+        }
+    }
+
+    const render = () => {
+        document.querySelector('.num').innerText = store.getState()
+    }
+
+    document.querySelector('.like').addEventListener('click', function (event) {
+        store.dispatch({ type: 'LIKE' })
+    })
+
+    document.querySelector('.unlike').addEventListener('click', function (event) {
+        store.dispatch({ type: 'UNLIKE' })
+    })
+
+    const store = Redux.createStore(reducer);
+
+    store.subscribe(render);
+
+    render()
+
+</script>
+</html>
+),  %name%
+RunBy(name)
+return
 
 NewPyhtonPachong: 
 name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
