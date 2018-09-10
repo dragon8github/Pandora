@@ -143,8 +143,10 @@ Gui, Add, Link,, <a href="https://v3.bootcss.com/css/#grid-options">全局 css �
 Gui, Add, Link,, <a href="https://v3.bootcss.com/components/#jumbotron">全局 js 组件</a>
 Gui, Add, Link,, <a href="https://github.com/twbs/bootstrap">Bootstrap-github</a>
 Gui, Add, Link,, <a href="http://www.youzhan.org/">示例网站</a>
+Gui, Add, Link,, <a href="https://github.com/1000hz/bootstrap-validator">表单验证插件</a>
+Gui, Add, Link,, <a href="https://github.com/uxsolutions/bootstrap-datepicker">datepicker时间插件</a>
 
-Gui, Add, Text,  W160 Section xs yp+80, Ant-Design：
+Gui, Add, Text,  W160 Section xs yp+40, Ant-Design：
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design/">Ant-Design-Github</a>
 Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design 文档</a>
 Gui, Add, Link,, <a href="https://preview.pro.ant.design/#/dashboard/analysis">Ant-Design-pro 后台示例</a>
@@ -165,10 +167,20 @@ Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer">puppeteer-G
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree/master/examples/">puppeteer-示例</a>
 
 
-Gui, Add, Text,  W140 ys, Bootstrap第三方插件：
-Gui, Add, Link,, <a href="https://github.com/1000hz/bootstrap-validator">表单验证插件</a>
-Gui, Add, Link,, <a href="https://github.com/uxsolutions/bootstrap-datepicker">datepicker时间插件</a>
+Gui, Add, Text,  W140 ys, vue ssr nuxt：
+Gui, Add, Link,, <a href="https://nuxtjs.org/">nuxt官网</a>
+Gui, Add, Link,, <a href="https://nuxtjs.org/guide/installation">nuxt install</a>
+Gui, Add, Link,, <a href="https://nuxtjs.org/api">nuxt api</a>
+Gui, Add, Link,, <a href="https://nuxtjs.org/examples">nuxt example</a>
+Gui, Add, Link,, <a href="https://github.com/nuxt">nuxt github</a>
 
+
+Gui, Add, Text,  W140 ys, react ssr next：
+Gui, Add, Link,, <a href="https://nextjs.org/">next官网</a>
+Gui, Add, Link,, <a href="https://nextjs.org/docs/#setup">nuxt setup</a>
+Gui, Add, Link,, <a href="https://nextjs.org/docs">nuxt doc</a>
+Gui, Add, Link,, <a href="https://nextjs.org/learn/">nuxt learn</a>
+Gui, Add, Link,, <a href="https://github.com/zeit/next.js/tree/master">next github</a>
 
 Gui, Tab, 3
 Gui, Add, Text,  W140 Section, 高德地图：

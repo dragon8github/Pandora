@@ -7,7 +7,9 @@ code(Var)
 return
 
 ::object.a::
+::object.as::
 ::obj.a::
+::obj.as::
 Var =
 (
 Object.assign({}, )
