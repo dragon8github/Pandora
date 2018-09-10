@@ -10,6 +10,7 @@ return
 ::object.as::
 ::obj.a::
 ::obj.as::
+::objas::
 Var =
 (
 Object.assign({}, )

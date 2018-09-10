@@ -79,6 +79,7 @@ Gui, Add, Text, W140 Section xs yp+40, 在线工具：
 Gui, Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
 Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
+Gui, Add, Link,, <a href="https://www.cdnjs.net/">百度cdn</a>
 Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
 Gui, Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 
@@ -353,17 +354,7 @@ FileAppend,
     </div>
 </body>
 <script>
-    const reducer = (previousState = 0, action) => {
-        switch (action.type) {
-            case 'LIKE':
-                return previousState + 1;
-            case 'UNLIKE':
-                return previousState - 1;
-            default:
-                return previousState
-        }
-    }
-
+    
     const render = () => {
         document.querySelector('.num').innerText = store.getState()
     }
@@ -376,10 +367,25 @@ FileAppend,
         store.dispatch({ type: 'UNLIKE' })
     })
 
+    // redux的核心方法： reducer
+    const reducer = (previousState = 0, action) => {
+        switch (action.type) {
+            case 'LIKE':
+                return previousState + 1;
+            case 'UNLIKE':
+                return previousState - 1;
+            default:
+                return previousState
+        }
+    }
+
+    // 创建redux的核心：store
     const store = Redux.createStore(reducer);
 
+    // 订阅更新渲染
     store.subscribe(render);
 
+    // 首次渲染
     render()
 
 </script>

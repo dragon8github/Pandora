@@ -1,4 +1,16 @@
-﻿::cdn-redux::
+﻿::cdn-upload::
+::cdn-webupload::
+Var =
+(
+<!-- https://www.bootcdn.cn/webuploader/ -->
+<script src="https://cdn.bootcss.com/webuploader/0.1.1/webuploader.min.js"></script>
+<link href="https://cdn.bootcss.com/webuploader/0.1.1/webuploader.css" rel="stylesheet">
+)
+code(Var)
+return
+
+
+::cdn-redux::
 Var =
 (
 <script src="https://cdn.bootcss.com/redux/4.0.0/redux.min.js"></script>

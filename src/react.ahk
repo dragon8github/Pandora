@@ -33,17 +33,7 @@ Var =
     </div>
 </body>
 <script>
-    const reducer = (previousState = 0, action) => {
-        switch (action.type) {
-            case 'LIKE':
-                return previousState + 1;
-            case 'UNLIKE':
-                return previousState - 1;
-            default:
-                return previousState
-        }
-    }
-
+    
     const render = () => {
         document.querySelector('.num').innerText = store.getState()
     }
@@ -56,10 +46,25 @@ Var =
         store.dispatch({ type: 'UNLIKE' })
     })
 
+    // redux的核心方法： reducer
+    const reducer = (previousState = 0, action) => {
+        switch (action.type) {
+            case 'LIKE':
+                return previousState + 1;
+            case 'UNLIKE':
+                return previousState - 1;
+            default:
+                return previousState
+        }
+    }
+
+    // 创建redux的核心：store
     const store = Redux.createStore(reducer);
 
+    // 订阅更新渲染
     store.subscribe(render);
 
+    // 首次渲染
     render()
 
 </script>
