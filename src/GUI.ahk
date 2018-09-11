@@ -42,12 +42,13 @@ Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 ; submit 按钮
 Gui, Add, Button, w780 h30 Default, FUCK
 
-Gui, Add, Tab3, w780 h430 Choose1, 常用 | 框架 | 地图 | PHP | 微信 | 工作坊
+Gui, Add, Tab3, w780 h460 Choose1, 常用 | 框架 | 地图 | PHP | 微信 | 工作坊
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
 Gui, Add, Link,, <a href="https://github.com">github</a>
 Gui, Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
 Gui, Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
+Gui, Add, Link,, <a href="http://www.cnblogs.com/cylee">技术淘宝</a>
 Gui, Add, Link,, <a href="http://e.xitu.io/">掘金前端</a>
 
 Gui, Add, Text,  W140 ys, 其他:
@@ -131,7 +132,10 @@ Gui, Add, Link,, <a href="https://github.com/PanJiaChen/vue-element-admin">vue-e
 Gui, Add, Text,  W140 ys, React:
 Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react 官网</a>
 Gui, Add, Link,, <a href="https://reacttraining.com/react-router/web/api/Route/component">React-router</a>
+Gui, Add, Link,, <a href="https://github.com/reduxjs/redux">redux</a>
 Gui, Add, Link,, <a href="https://redux.js.org/basics/usage-with-react">React-redux</a>
+Gui, Add, Link,, <a href="https://github.com/facebook/create-react-app">create-react-app</a>
+
 
 Gui, Add, Text,  W140 ys, 饿了么UI：
 Gui, Add, Link,, <a href="http://element-cn.eleme.io/#/zh-CN/component/radio">Element-UI</a>
@@ -174,7 +178,7 @@ Gui, Add, Link,, <a href="https://nuxtjs.org/guide/installation">nuxt install</a
 Gui, Add, Link,, <a href="https://nuxtjs.org/api">nuxt api</a>
 Gui, Add, Link,, <a href="https://nuxtjs.org/examples">nuxt example</a>
 Gui, Add, Link,, <a href="https://github.com/nuxt">nuxt github</a>
-
+Gui, Add, Link,, <a href="https://github.com/nuxt-community/create-nuxt-app">create-nuxt-app</a>
 
 Gui, Add, Text,  W140 ys, react ssr next：
 Gui, Add, Link,, <a href="https://nextjs.org/">next官网</a>
@@ -182,6 +186,7 @@ Gui, Add, Link,, <a href="https://nextjs.org/docs/#setup">nuxt setup</a>
 Gui, Add, Link,, <a href="https://nextjs.org/docs">nuxt doc</a>
 Gui, Add, Link,, <a href="https://nextjs.org/learn/">nuxt learn</a>
 Gui, Add, Link,, <a href="https://github.com/zeit/next.js/tree/master">next github</a>
+Gui, Add, Link,, <a href="https://github.com/segmentio/create-next-app">create-next-app</a>
 
 Gui, Tab, 3
 Gui, Add, Text,  W140 Section, 高德地图：
