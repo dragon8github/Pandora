@@ -42,7 +42,7 @@ Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 ; submit 按钮
 Gui, Add, Button, w780 h30 Default, FUCK
 
-Gui, Add, Tab3, w780 h460 Choose1, 常用 | 框架 | 地图 | PHP | 微信 | 工作坊
+Gui, Add, Tab3, w780 h460 Choose1, 常用 | 框架 | UI框架 | 地图 | PHP | 微信 | 工作坊
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
 Gui, Add, Link,, <a href="https://github.com">github</a>
@@ -113,21 +113,20 @@ Gui, Add, Link,, <a href="http://tour.ubuntu.com/en/">在线ubuntu</a>
 Gui, Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
 
 Gui, Tab, 2
-Gui, Add, Text,  W140  Section, layer/layui：
-Gui, Add, Link,, <a href="http://layer.layui.com/">layer</a>
-Gui, Add, Link,, <a href="http://www.layui.com/doc/">layui文档</a>
-Gui, Add, Link,, <a href="http://www.layui.com/demo/">layui示例</a>
-Gui, Add, Link,, <a href="https://github.com/sentsin/layui/">layui-github</a>
-Gui, Add, Link,, <a href="https://www.layui.com/admin/std/dist/views/">layui-admin</a>
-
-
-Gui, Add, Text,  W140 ys, Vue：
+Gui, Add, Text,  W140 Section, Vue：
 Gui, Add, Link,, <a href="http://vuejs.org/">vue</a>
 Gui, Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
 Gui, Add, Link,, <a href="http://router.vuejs.org ">vue-router</a>
 Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 Gui, Add, Link,, <a href="https://github.com/PanJiaChen/vue-element-admin">vue-element-admin</a>
 
+Gui, Add, Text,  W140 ys, vue ssr nuxt：
+Gui, Add, Link,, <a href="https://nuxtjs.org/">nuxt官网</a>
+Gui, Add, Link,, <a href="https://nuxtjs.org/guide/installation">nuxt install</a>
+Gui, Add, Link,, <a href="https://nuxtjs.org/api">nuxt api</a>
+Gui, Add, Link,, <a href="https://nuxtjs.org/examples">nuxt example</a>
+Gui, Add, Link,, <a href="https://github.com/nuxt">nuxt github</a>
+Gui, Add, Link,, <a href="https://github.com/nuxt-community/create-nuxt-app">create-nuxt-app</a>
 
 Gui, Add, Text,  W140 ys, React:
 Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react 官网</a>
@@ -136,6 +135,42 @@ Gui, Add, Link,, <a href="https://github.com/reduxjs/redux">redux</a>
 Gui, Add, Link,, <a href="https://redux.js.org/basics/usage-with-react">React-redux</a>
 Gui, Add, Link,, <a href="https://github.com/facebook/create-react-app">create-react-app</a>
 
+Gui, Add, Text,  W140 ys, react ssr next：
+Gui, Add, Link,, <a href="https://nextjs.org/">next官网</a>
+Gui, Add, Link,, <a href="https://nextjs.org/docs/#setup">nuxt setup</a>
+Gui, Add, Link,, <a href="https://nextjs.org/docs">nuxt doc</a>
+Gui, Add, Link,, <a href="https://nextjs.org/learn/">nuxt learn</a>
+Gui, Add, Link,, <a href="https://github.com/zeit/next.js/tree/master">next github</a>
+Gui, Add, Link,, <a href="https://github.com/segmentio/create-next-app">create-next-app</a>
+
+Gui, Add, Text,  W160 ys, DvaJS:
+Gui, Add, Link,, <a href="https://github.com/dvajs/dva">DvaJS-Github</a>
+Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS 入门指引</a>
+Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS API</a>
+Gui, Add, Link,, <a href="https://dvajs.com/guide/examples-and-boilerplates.html#官方">DvaJS Demo</a>
+
+Gui, Add, Text,  W140 Section xs yp+100, umi:
+Gui, Add, Link,, <a href="https://github.com/umijs/umi">umi github</a>
+Gui, Add, Link,, <a href="https://umijs.org/">umi 官网</a>
+Gui, Add, Link,, <a href="https://umijs.org/guide/#features">umi 入门指引</a>
+Gui, Add, Link,, <a href="https://umijs.org/api/">umi api</a>
+Gui, Add, Link,, <a href="https://umijs.org/config/">umi config</a>
+
+
+Gui, Add, Text,  W140 ys, puppeteer：
+Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer?utm_source=gold_browser_extension">puppeteer 官网</a>
+Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md">puppeteer API</a>
+Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer">puppeteer-Github</a>
+Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree/master/examples/">puppeteer-示例</a>
+
+
+Gui, Tab, 3
+Gui, Add, Text,  W140  Section, layer/layui：
+Gui, Add, Link,, <a href="http://layer.layui.com/">layer</a>
+Gui, Add, Link,, <a href="http://www.layui.com/doc/">layui文档</a>
+Gui, Add, Link,, <a href="http://www.layui.com/demo/">layui示例</a>
+Gui, Add, Link,, <a href="https://github.com/sentsin/layui/">layui-github</a>
+Gui, Add, Link,, <a href="https://www.layui.com/admin/std/dist/views/">layui-admin</a>
 
 Gui, Add, Text,  W140 ys, 饿了么UI：
 Gui, Add, Link,, <a href="http://element-cn.eleme.io/#/zh-CN/component/radio">Element-UI</a>
@@ -151,44 +186,14 @@ Gui, Add, Link,, <a href="http://www.youzhan.org/">示例网站</a>
 Gui, Add, Link,, <a href="https://github.com/1000hz/bootstrap-validator">表单验证插件</a>
 Gui, Add, Link,, <a href="https://github.com/uxsolutions/bootstrap-datepicker">datepicker时间插件</a>
 
-Gui, Add, Text,  W160 Section xs yp+40, Ant-Design：
+Gui, Add, Text,  W160 ys, Ant-Design：
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design/">Ant-Design-Github</a>
 Gui, Add, Link,, <a href="https://ant.design/docs/react/introduce-cn">Ant-Design 文档</a>
 Gui, Add, Link,, <a href="https://preview.pro.ant.design/#/dashboard/analysis">Ant-Design-pro 后台示例</a>
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro">Ant-Design-pro-Github</a>
 Gui, Add, Link,, <a href="http://antv.alipay.com/zh-cn/index.html">antv可视化图表</a>
 
-
-Gui, Add, Text,  W140 ys, DvaJS:
-Gui, Add, Link,, <a href="https://github.com/dvajs/dva">DvaJS-Github</a>
-Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS 入门指引</a>
-Gui, Add, Link,, <a href="https://dvajs.com/guide/">DvaJS API</a>
-Gui, Add, Link,, <a href="https://dvajs.com/guide/examples-and-boilerplates.html#官方">DvaJS Demo</a>
-
-Gui, Add, Text,  W140 ys, puppeteer：
-Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer?utm_source=gold_browser_extension">puppeteer 官网</a>
-Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md">puppeteer API</a>
-Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer">puppeteer-Github</a>
-Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree/master/examples/">puppeteer-示例</a>
-
-
-Gui, Add, Text,  W140 ys, vue ssr nuxt：
-Gui, Add, Link,, <a href="https://nuxtjs.org/">nuxt官网</a>
-Gui, Add, Link,, <a href="https://nuxtjs.org/guide/installation">nuxt install</a>
-Gui, Add, Link,, <a href="https://nuxtjs.org/api">nuxt api</a>
-Gui, Add, Link,, <a href="https://nuxtjs.org/examples">nuxt example</a>
-Gui, Add, Link,, <a href="https://github.com/nuxt">nuxt github</a>
-Gui, Add, Link,, <a href="https://github.com/nuxt-community/create-nuxt-app">create-nuxt-app</a>
-
-Gui, Add, Text,  W140 ys, react ssr next：
-Gui, Add, Link,, <a href="https://nextjs.org/">next官网</a>
-Gui, Add, Link,, <a href="https://nextjs.org/docs/#setup">nuxt setup</a>
-Gui, Add, Link,, <a href="https://nextjs.org/docs">nuxt doc</a>
-Gui, Add, Link,, <a href="https://nextjs.org/learn/">nuxt learn</a>
-Gui, Add, Link,, <a href="https://github.com/zeit/next.js/tree/master">next github</a>
-Gui, Add, Link,, <a href="https://github.com/segmentio/create-next-app">create-next-app</a>
-
-Gui, Tab, 3
+Gui, Tab, 4
 Gui, Add, Text,  W140 Section, 高德地图：
 Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/summary">高德地图-JavaScript</a>
 Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/map/map-show">高德地图-Demo</a>
@@ -239,7 +244,7 @@ Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html">EChart
 Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts 论坛示例</a>
 Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xB1jgoJnDf">ECharts 安徽示例</a>
 
-Gui, Tab, 4
+Gui, Tab, 5
 Gui, Add, Text,  W140 Section, Thinkphp：
 Gui, Add, Link, W140, <a href="https://github.com/top-think/thinkphp">Thinkphp3.2-github</a>
 Gui, Add, Link, W140, <a href="https://github.com/top-think/think">Thinkphp5-github</a>
@@ -286,7 +291,7 @@ Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quicks
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478303">where 参数注入</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478304">分批/分块查询</a>
 
-Gui, Tab, 5
+Gui, Tab, 6
 Gui, Add, Text,  W140 Section, 微信小程序：
 Gui, Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html">微信小程序开发工具</a>
 Gui, Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/">微信内置API</a>
@@ -297,7 +302,7 @@ Gui, Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framewo
 Gui, Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/custom-component/component.html">Component构造器</a>
 Gui, Add, Link, W140, <a href="https://legacy.gitbook.com/book/dragon8github/fuck/edit#/edit/master/README.md?_k=pfi687">我的gitbook</a>
 
-Gui, Tab, 6
+Gui, Tab, 7
 Gui, Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
 Gui, Add, Text, gNewIndexHtml W140 Section y+20, 新建index.html
 Gui, Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板

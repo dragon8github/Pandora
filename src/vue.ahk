@@ -1,4 +1,156 @@
-﻿::v-clo::
+﻿::newvuex::
+::new vuex::
+::vuex.template::
+::vuex.tmp::
+::fuck.vuex::
+::vuex.modules::
+::vuex.module::
+Var =
+(
+let state = {
+    AppData: {}
+}
+
+const actions = {
+  setAppData ({ commit, state, dispatch }, data) {
+	commit('setUserData', data.userInfo)
+  }
+}
+
+const mutations = {
+	setUserData (state, userInfo) {
+	  return state.AppData = userInfo
+	}
+},
+
+const getters = {
+  AppData (state) {
+    return state.AppData;
+  }
+}
+
+export default {
+  state,
+  mutations,
+  actions,
+  getters,
+}
+)
+code(Var)
+return
+
+::vuex.init::
+::vuexinit::
+::vuex.index::
+::vuex.store::
+::vuex.demo::
+::vuexdemo::
+Var =
+(
+import Vue from 'vue'
+import Vuex from 'vuex'
+import user from './modules/user'
+import mutations from './mutations.js'
+import * as actions from './actions'
+import * as getters from './getters'
+import * as state from './state.js'
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  strict: false,
+  state,
+  getters,
+  actions,
+  mutations,
+  modules: {
+    user
+  },
+})
+
+export default store
+)
+code(Var)
+return
+
+::vuex2::
+::vuex2.init2::
+::vuexinit2::
+::vuex.demo2::
+::vuexdemo2::
+::vuex.index2::
+::vuex.store2::
+Var =
+(
+import Vuex from 'vuex'
+import users from './users'
+
+const createStore = () => {
+  // 新建 Store
+  return new Vuex.Store({
+    // false：非严格模式
+    strict: false,
+    // 状态
+    state: {
+      counter: 0
+    },
+    // 在非严格模式下，action是可以直接修改state，但不推荐这样做。所以我们约定： 
+    // 1、 action为异步而生： 只有需要异步操作才定义和使用action，否则外部直接调用mutations来更新state即可；
+    // 2、 action不能操作state：在进行完异步操作之后，只能通过commit调用mutations来更新state。自己不能操作state
+    actions: {
+        nuxtServerInit ({ commit }, data) {
+          // 使用commit调用mutation
+          commit('user', data.req.session.user)
+        },
+        // 异步action示例
+        async nuxtServerInit({ dispatch }) {
+          // 继续调用其他action
+          await dispatch('core/load')
+        },
+    },
+    // 在非严格模式下，外部其实可以直接获取state，这个getters实际上是冗余的。
+    getters: {
+      AppData (state) {
+         return state.AppData;
+       }
+    },
+    // 同步更新state
+    mutations: {
+      increment (state) {
+        state.counter++
+      }
+    },
+    modules: {
+      users,
+      todos: {
+        state: {
+          list: []
+        },
+        mutations: {
+          add (state, { text }) {
+            state.list.push({
+              text,
+              done: false
+            })
+          },
+          remove (state, { todo }) {
+            state.list.splice(state.list.indexOf(todo), 1)
+          },
+          toggle (state, { todo }) {
+            todo.done = !todo.done
+          }
+        }
+      }
+    }
+  })
+}
+
+export default createStore
+)
+code(Var)
+return
+
+::v-clo::
 Var =
 (
 v-cloak
@@ -128,6 +280,8 @@ Return
 Return
 
 
+::vue.components::
+::vuecomponents::
 ::vcmp::
 ::vmp::
 ::vcomponent::
@@ -203,7 +357,6 @@ return
 
 ::new vue::
 ::newvue::
-::newv::
 Var = 
 (
 var vue = new Vue({
