@@ -199,7 +199,7 @@ return
     Clipboard := 
     Send, ^c
     ClipWait, 2
-    If(InStr(Clipboard, "http://") || InStr(Clipboard, "https://") || InStr(Clipboard, "www.") || InStr(Clipboard, ".com")) {
+    If(InStr(Clipboard, "http://") || InStr(Clipboard, "https://") || InStr(Clipboard, "www.") || InStr(Clipboard, ".com") || InStr(Clipboard, "C:") || InStr(Clipboard, "D:") || InStr(Clipboard, "E:")  || InStr(Clipboard, "F:")  || InStr(Clipboard, "F:")  || InStr(Clipboard, "G:")  || InStr(Clipboard, "H:") ) {
         RUN, % Clipboard
     } else {
         RUN, https://www.baidu.com/s?wd=%Clipboard%
