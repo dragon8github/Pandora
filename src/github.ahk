@@ -77,3 +77,11 @@ return
 ::mint-ui::
     run, https://github.com/dragon8github/Pandora/blob/master/template/mint-ui.zip?raw=true
 return
+
+::jqGrid::
+Var =
+(
+    run, https://github.com/dragon8github/Pandora/blob/master/template/jQGrid.zip?raw=true
+)
+code(Var)
+return

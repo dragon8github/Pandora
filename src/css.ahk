@@ -358,6 +358,8 @@ return
 ::fuck-rem::
 ::myrem::
 ::my-rem::
+::rem.css::
+::rem.scss::
 Var = 
 (
 // rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推

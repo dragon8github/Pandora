@@ -1,10 +1,10 @@
 ﻿Gui, Add, Text, gAllSearchA W140 Section xs yp+10, 搜索引擎类:
+Gui, Add, Checkbox, vcylee, 博客园
 Gui, Add, Checkbox, gMySubroutine Checked HwndMyEditHwnd vbd, 百度
 Gui, Add, Checkbox, vgoogle, Google
 Gui, Add, Checkbox, vgithub, Github
 Gui, Add, Checkbox, vso, Stack Overflow
 Gui, Add, Checkbox, vsegmentfault, SegmentFault
-Gui, Add, Checkbox, vcylee, 博客园
 
 Gui, Add, Text, gAllSearchB W140 ys, 翻译类:
 Gui, Add, Checkbox, vbdfy, 百度翻译   
@@ -45,10 +45,10 @@ Gui, Add, Button, w780 h30 Default, FUCK
 Gui, Add, Tab3, w780 h460 Choose1, 常用 | 框架 | UI框架 | 地图 | PHP | 微信 | 工作坊
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
-Gui, Add, Link,, <a href="https://github.com">github</a>
-Gui, Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
 Gui, Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
 Gui, Add, Link,, <a href="http://www.cnblogs.com/cylee">技术淘宝</a>
+Gui, Add, Link,, <a href="https://github.com">github</a>
+Gui, Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
 Gui, Add, Link,, <a href="http://e.xitu.io/">掘金前端</a>
 
 Gui, Add, Text,  W140 ys, 其他:
@@ -101,16 +101,16 @@ Gui, Add, Link,, <a href="http://www.jtthink.com/">jtthink.com</a>
 
 Gui, Add, Text,  W140 ys, 工作：
 Gui, Add, Link,, <a href="http://47.106.185.185:8080/api/swagger-ui.html#/">swagger-ui</a>
-Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">投标演示工程</a>
-Gui, Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen">git</a>
+Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">油气管道 git</a>
+Gui, Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen">大数据屏幕 git</a>
+Gui, Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/antd-dgedu-consult-g">g端 git</a>
 Gui, Add, Link,, <a href="http://120.77.146.174:82/">大数据屏幕演示</a>
 
 
 Gui, Add, Text,  W140 ys, 奇妙工具:
-Gui, Add, Link,, <a href="http://tour.ubuntu.com/en/">在线ubuntu</a>
 Gui, Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
 Gui, Add, Link,, <a href="https://sketch2code.azurewebsites.net/">Microsoft sketch2code</a>
-
+Gui, Add, Link,, <a href="http://blog.mn886.net/jqGrid/">jQGrid 中文文档</a>
 
 Gui, Tab, 2
 Gui, Add, Text,  W140 Section, Vue：
