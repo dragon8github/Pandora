@@ -1,4 +1,30 @@
-﻿::js.redux::
+﻿::ant.time::
+::ant.pickdate::
+Var =
+(
+import { DatePicker } from 'antd';
+
+const RangePicker = DatePicker.RangePicker;
+
+<FormItem {...formItemLayout} label="生效时间">
+  {form.getFieldDecorator('createTime', {
+    rules: [{ required: false }],
+    initialValue: createTime,
+  })(
+    <RangePicker placeholder={['开始日期', '结束日期']} style={{ width: '100`%' }} />
+  `)}
+</FormItem>
+
+if (fieldsValue.le_endTime && fieldsValue.le_endTime.length >= 2) {
+	values.ge_startTime = fieldsValue.le_endTime[0].format('YYYY-MM-DD HH:mm:ss')
+	values.le_endTime = fieldsValue.le_endTime[1].format('YYYY-MM-DD HH:mm:ss')
+}
+	  
+)
+code(Var)
+return
+
+::js.redux::
 ::redux.html::
 ::redux-html::
 ::react.redux::

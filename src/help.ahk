@@ -109,7 +109,7 @@ return
 
 ^1::
 !1::
-    Send, {text}lizhaohong
+    Send, {text}dgeduc-g
 return
 
 ^2::
@@ -199,12 +199,12 @@ return
     Clipboard := 
     Send, ^c
     ClipWait, 2
-    If(InStr(Clipboard, "http://") || InStr(Clipboard, "https://") || InStr(Clipboard, "www.") || InStr(Clipboard, ".com") || InStr(Clipboard, "C:") || InStr(Clipboard, "D:") || InStr(Clipboard, "E:")  || InStr(Clipboard, "F:")  || InStr(Clipboard, "F:")  || InStr(Clipboard, "G:")  || InStr(Clipboard, "H:") ) {
-        RUN, % Clipboard
+    str := Trim(Clipboard)
+    If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") ) {
+        RUN, % str
     } else {
-        RUN, https://www.baidu.com/s?wd=%Clipboard%
+        RUN, https://www.baidu.com/s?wd=%str%
     }
-    
     Sleep, 200
     Clipboard := tmp
 return
@@ -443,7 +443,7 @@ AppsKey & l::
     } else { 
        ip := A_IPAddress2
     }
-    Var := "http://" . ip . ":8080"
+    Var := "http://" . ip . ":3000"
     SendRaw, % Var
 return
 

@@ -1907,6 +1907,8 @@ return
 return
 
 ::is-cn::
+::is-ch::
+::is-zhongwen::
 Var = 
 (
 if (!/^[\u4e00-\u9fa5]+$/.test('李钊鸿')) {
