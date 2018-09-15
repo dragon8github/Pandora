@@ -284,14 +284,23 @@ code(Var)
 }
 
 
-if (A_ThisMenuItem == "handleClick") {
+if (A_ThisMenuItem == "箭头函数点击事件handleClick") {
 Var =
 (
-handleClick (e) {
+handleClick: (e) => {
 	this.setState({
 		name: event.target.value
 	})
 }
+)
+code(Var)
+}
+
+
+if (A_ThisMenuItem == "style={{ display: this.state.expandForm ? 'block' : 'none' }}") {
+Var =
+(
+style={{ display: this.state.expandForm ? 'block' : 'none' }}
 )
 code(Var)
 }
@@ -409,12 +418,8 @@ if (A_ThisMenuItem == "React runtime") {
 
 Return  
 
-
-
-
-
 !t::
-	reactArray := ["React runtime", "this.porps", "this.state", "const { ... } = this.props", "const { ... } = this.state", "class App extends Component", "static defaultProps", "constructor", "render () {}", "this.setState", "this.state.list.map", "react for" ,"handleClick", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
+	reactArray := ["React runtime", "constructor", "this.porps", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
 	Loop % reactArray.MaxIndex() {
 		this_life := reactArray[a_index]
 		Menu, reactArray, Add, %this_life%, ReactMenuHandler

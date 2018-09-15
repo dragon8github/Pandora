@@ -1,4 +1,19 @@
-﻿::newvuex::
+﻿::webpack.router::
+::webpack.route::
+::webpack.require::
+::webpack.ensure::
+::ensure::
+::luyouqiege::
+::webpack.luyouqiege::
+::require.ensure::
+Var =
+(
+const Login = r => require.ensure([], () => r(require('@/views/User/Login')), 'Login')
+)
+code(Var)
+return
+
+::newvuex::
 ::new vuex::
 ::vuex.template::
 ::vuex.tmp::
@@ -194,7 +209,8 @@ export default {
   name: 'test',
   data () {
     return {
-        myData: []
+        items: [],
+        title: 'HelloWorld'
     }
   },
   methods: {
@@ -276,7 +292,7 @@ return
 Return
 
 ::v-for::
-    SendInput, v-for='(item, index) in items' :key='index'
+    SendInput, v-for='(item, index) in items' :key='item'
 Return
 
 
@@ -419,6 +435,12 @@ return
 ::v-tran::
 ::vue-trans::
 ::v-trans::
+::v.animate::
+::vue.animate::
+::vue.tran::
+::v.tran::
+::vue.trans::
+::v.trans::
 Var =
 (
 <transition-group name="cell" tag="div" class="kitchenBright__list--items transition-group" tag='ul'>

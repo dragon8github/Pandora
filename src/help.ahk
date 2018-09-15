@@ -450,6 +450,8 @@ return
 ; 我阿里云的ip，方便我记忆
 AppsKey & i::
 >^i::
+::aliip::
+::ip5::
     SendRaw, 119.23.22.136
 return
 

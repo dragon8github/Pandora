@@ -857,6 +857,9 @@ return
 
 
 ::enum::
+::js.enum::
+::meiju::
+::js.meiju::
 Var = 
 (
 var Color;
