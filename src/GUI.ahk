@@ -55,7 +55,8 @@ Gui, Add, Text,  W140 ys, 其他:
 Gui, Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</a>
 Gui, Add, Link, gInspect ,  <a>安卓/Nodejs调试</a>
 Gui, Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AutoHotkey官网</a>
-Gui, Add, Link,, <a href="http://babeljs.io/repl">Babel在线转换</a>
+BabelUrl := "http://babeljs.io/repl#?babili=true&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=true&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cbabili&prettier=false&targets=&version=6.26.0"
+Gui, Add, Link,, <a href="%BabelUrl%">Babel在线转换</a>
 
 Gui, Add, Text,  W140 ys, 娱乐:
 Gui, Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
@@ -312,6 +313,8 @@ Gui, Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
 Gui, Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
 Gui, Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
 Gui, Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
+Gui, Add, Text, gNewreactbabelHtml ys, 新建react.babel.html
+
 
 GuiEscape:
 GuiClose:
@@ -334,6 +337,10 @@ return
 	Gui, Show,, Simple Input Example
 return 
 */
+
+NewreactbabelHtml:
+	run, https://github.com/dragon8github/Pandora/blob/master/template/babeltest.zip?raw=true
+return
 
 NewreduxIndexHtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
