@@ -1,4 +1,15 @@
-﻿::cdn-upload::
+﻿::cdn-prop::
+::cdn-propTypes::
+::cdn-propType::
+Var =
+(
+<!-- https://github.com/facebook/prop-types -->
+<script src="https://cdn.bootcss.com/prop-types/15.6.1/prop-types.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-upload::
 ::cdn-webupload::
 Var =
 (

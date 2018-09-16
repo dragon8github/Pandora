@@ -430,10 +430,21 @@ if (A_ThisMenuItem == "React runtime") {
 	Run, https://stackblitz.com/fork/react
 }
 
+if (A_ThisMenuItem == "ReactDOM.render") {
+Var =
+(
+ReactDOM.render(
+　　 <h1> Hello, world! < /h1>,
+    document.getElementById('app')
+`);
+)
+code(Var)
+}
+
 Return  
 
 !t::
-	reactArray := ["新建create-react-app", "新建react-redux.html", "React runtime", "constructor", "this.porps", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
+	reactArray := ["新建create-react-app", "新建react-redux.html", "React runtime", "ReactDOM.render",  "constructor", "this.porps", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
 	Loop % reactArray.MaxIndex() {
 		this_life := reactArray[a_index]
 		Menu, reactArray, Add, %this_life%, ReactMenuHandler
