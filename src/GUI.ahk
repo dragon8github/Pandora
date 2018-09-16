@@ -307,7 +307,7 @@ Gui, Add, Link, W140, <a href="https://legacy.gitbook.com/book/dragon8github/fuc
 
 Gui, Tab, 7
 Gui, Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
-Gui, Add, Text, gNewIndexHtml W140 Section y+20, 新建index.html
+Gui, Add, Text, gNewIndexHtml W140, 新建index.html
 Gui, Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板
 Gui, Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
 Gui, Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板

@@ -186,6 +186,8 @@ const { modalVisible } = this.state;
 code(Var)
 return
 
+
+
 ReactMenuHandler:
 if (A_ThisMenuItem == "this.porps") {
 Var = 
@@ -194,6 +196,12 @@ this.porps.
 )
 code(Var)
 }
+
+
+if (A_ThisMenuItem == "新建react-redux.html") {
+	run, https://github.com/dragon8github/Pandora/blob/master/template/layui_template.zip?raw=true
+}
+
 
 if (A_ThisMenuItem == "this.state") {
 Var = 
@@ -419,7 +427,7 @@ if (A_ThisMenuItem == "React runtime") {
 Return  
 
 !t::
-	reactArray := ["React runtime", "constructor", "this.porps", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
+	reactArray := ["新建react-redux.html", "React runtime", "constructor", "this.porps", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
 	Loop % reactArray.MaxIndex() {
 		this_life := reactArray[a_index]
 		Menu, reactArray, Add, %this_life%, ReactMenuHandler
