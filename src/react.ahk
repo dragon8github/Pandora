@@ -197,6 +197,12 @@ this.porps.
 code(Var)
 }
 
+if (A_ThisMenuItem == "新建create-react-app") {
+	name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+	FileCreateDir, %name%
+	RunWaitOne("cd " . name . " && npm install -g create-react-app && create-react-app my-app && cd my-app && npm start")
+}
+
 
 if (A_ThisMenuItem == "新建react-redux.html") {
 	run, https://github.com/dragon8github/Pandora/blob/master/template/layui_template.zip?raw=true
@@ -427,7 +433,7 @@ if (A_ThisMenuItem == "React runtime") {
 Return  
 
 !t::
-	reactArray := ["新建react-redux.html", "React runtime", "constructor", "this.porps", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
+	reactArray := ["新建create-react-app", "新建react-redux.html", "React runtime", "constructor", "this.porps", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
 	Loop % reactArray.MaxIndex() {
 		this_life := reactArray[a_index]
 		Menu, reactArray, Add, %this_life%, ReactMenuHandler

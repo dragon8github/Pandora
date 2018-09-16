@@ -314,6 +314,7 @@ Gui, Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模
 Gui, Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
 Gui, Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
 Gui, Add, Text, gNewreactbabelHtml ys, 新建react.babel.html
+Gui, Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
 
 
 GuiEscape:
@@ -337,6 +338,12 @@ return
 	Gui, Show,, Simple Input Example
 return 
 */
+
+Newcreateareactapp:
+	name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+	FileCreateDir, %name%
+	RunWaitOne("cd " . name . " && npm install -g create-react-app && create-react-app my-app && cd my-app && npm start")
+return
 
 NewreactbabelHtml:
 	run, https://github.com/dragon8github/Pandora/blob/master/template/babeltest.zip?raw=true
