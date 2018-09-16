@@ -242,6 +242,7 @@ return
 ::html`:all::
 ::html.all::
 ::htmlall::
+::allhtml::
 ::myhtml::
 Var = 
 (

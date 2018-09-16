@@ -1740,14 +1740,34 @@ code(Var)
 Send, {left 2} 
 return
 
+::fetch::
+Var =
+(
+fetch('https://api.github.com/users/gaearon/gists')
+    .then(response => response.json())
+    .then(data => console.log(20180916201855, data))
+    .catch(err => { throw new Error(err.message) });
+)
+code(Var)
+return
+
 ::.then::
 Var =
 (
-.then(data => { }).catch(err => { throw new Error(err.message) });
+.then(response => { 
+	return response.json()	
+})
 )
 code(Var)
-Send, {left 50}{enter 2}{up}{tab}
 Return
+
+::.catch::
+Var =
+(
+.catch(err => { throw new Error(err.message) });
+)
+code(Var)
+return
 
 ::throw::
     SendInput, throw new Error(e.message){left}^+{left}^+{left}
