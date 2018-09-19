@@ -106,7 +106,7 @@ Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign"
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen">大数据屏幕 git</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/antd-dgedu-consult-g">g端 git</a>
 Gui, Add, Link,, <a href="http://120.77.146.174:82/">大数据屏幕演示</a>
-
+Gui, Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">dg12345-vue</a>
 
 Gui, Add, Text,  W140 ys, 奇妙工具:
 Gui, Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
@@ -231,7 +231,7 @@ Gui, Add, Link, W140, <a href="https://github.com/huiyan-fe/mapv/#readme">ampv-g
 Gui, Add, Text,  W140  Section xs yp+60, echart:
 Gui, Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
 Gui, Add, Link,, <a href="http://echarts.baidu.com/theme-builder/">echart 主题构建</a>
-Gui, Add, Link,, <a href="echarts.baidu.com/tutorial.html#5 分钟上手 ECharts">echart 快速上手</a>
+Gui, Add, Link,, <a href="http://echarts.baidu.com/tutorial.html#5 分钟上手 ECharts">echart 快速上手</a>
 Gui, Add, Link,, <a href="http://echarts.baidu.com/api.html">echart API</a>
 Gui, Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
 

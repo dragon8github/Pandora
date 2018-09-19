@@ -1,4 +1,13 @@
-﻿::cdn-prop::
+﻿::cdn-echarts::
+::cdn-echart::
+Var =
+(
+<script src="https://cdn.bootcss.com/echarts/4.1.0/echarts.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-prop::
 ::cdn-propTypes::
 ::cdn-propType::
 Var =

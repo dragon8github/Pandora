@@ -1,4 +1,28 @@
-﻿::git2::
+﻿^!l::
+    tmp := Clipboard
+    Clipboard = 
+    Send, ^c
+    ClipWait 2
+    if (StrLen(Clipboard) > 0) {
+        StringLower, String1, Clipboard
+        code(String1)
+    }
+    Clipboard := tmp
+return
+
+^!u::
+    tmp := Clipboard
+    Clipboard = 
+    Send, ^c
+    ClipWait 2
+    if (StrLen(Clipboard) > 0) {
+        StringUpper, String1, Clipboard
+        code(String1)
+    }
+    Clipboard := tmp
+return
+
+::git2::
 ::gitt::
 Var =
 (
@@ -348,7 +372,7 @@ Return
     ; 第二步，复制当前选中内容
     SendInput, ^c
     ClipWait, 2
-    if (StrLen(Clipboard) >= 30) {
+    if (StrLen(Clipboard) >= 50) {
         MsgBox, 请不要把此功能当做翻译机
         return 
     }
@@ -367,7 +391,7 @@ Return
     ; 第二步，复制当前选中内容
     SendInput, ^c
     ClipWait, 2
-    if (StrLen(Clipboard) >= 30) {
+    if (StrLen(Clipboard) >= 50) {
         MsgBox, 请不要把此功能当做翻译机
         return 
     }

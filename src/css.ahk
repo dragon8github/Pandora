@@ -1,4 +1,12 @@
-﻿::css.i::
+﻿::@import::
+Var =
+(
+@import "~@/scss/functions.scss";
+)
+code(Var)
+return
+
+::css.i::
 ::css.yuan2::
 ::css.num::
 ::css.biaoji::
@@ -60,11 +68,11 @@ return
 ::flex::
 
 	; try 异常处理
-    Menu, A, Add, flex-start , flexHandler
-    Menu, A, Add, center , flexHandler
-    Menu, A, Add, flex-end, flexHandler
-    Menu, A, Add, space-around, flexHandler
-	Menu, A, Add, space-between, flexHandler
+    Menu, A, Add, justify-content: flex-start , flexHandler
+    Menu, A, Add, justify-content: center , flexHandler
+    Menu, A, Add, justify-content: flex-end, flexHandler
+    Menu, A, Add, justify-content: space-around, flexHandler
+	Menu, A, Add, justify-content: space-between, flexHandler
 
     Menu, B, Add, flex-start, flexHandler
     Menu, B, Add, flex-end, flexHandler
@@ -91,28 +99,28 @@ flexHandler:
 v := A_ThisMenuItem
 Var :=
 
-if (v == "flex-start") {
+if (v == "justify-content: flex-start") {
 Var = 
 (
 justify-content: flex-start;
 )
 }
 
-if (v == "center") {
+if (v == "justify-content: center") {
 Var = 
 (
 justify-content: center;
 )
 }
 
-if (v == "flex-end") {
+if (v == "justify-content: flex-end") {
 Var = 
 (
 justify-content: flex-end;
 )
 }
 
-if (v == "space-around") {
+if (v == "justify-content: space-around") {
 Var = 
 (
 justify-content: space-around;
