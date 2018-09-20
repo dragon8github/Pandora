@@ -1,4 +1,12 @@
-﻿::@import::
+﻿::border::
+Var =
+(
+border:1px solid #ccc;
+)
+code(Var)
+return
+
+::@import::
 Var =
 (
 @import "~@/scss/functions.scss";

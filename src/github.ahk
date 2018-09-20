@@ -1,4 +1,11 @@
-﻿; _____________ Html ________________
+﻿; __________VUEX___________
+::vuex.store::
+::vuex.tmp::
+::vuex.template::
+    run, https://github.com/dragon8github/Pandora/blob/master/template/vuex.zip?raw=true
+return
+
+; _____________ Html ________________
 ::hover-nav::
      code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Html/hover-nav.html"))
 Return

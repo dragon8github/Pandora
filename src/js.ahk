@@ -1,4 +1,21 @@
-﻿::udf::
+﻿::date2::
+Var =
+(
+var date = new Date()
+var year = date.getFullYear()
+var month = date.getMonth() + 1
+var day = date.getDate()
+var hours = date.getHours()
+var minu = date.getMinutes()
+var second = date.getSeconds()
+var week = ['', '星期一','星期二','星期三','星期四','星期五','星期六','星期七'][date.getDay()]
+var arr = [hours, minu, second].map(item => item < 10 ? "0" + item : item)
+console.log(``${year}年${month}月${day}日 ${week} ${arr[0]}:${arr[1]}:${arr[2]}``)
+)
+code(Var)
+return
+
+::udf::
 Var =
 (
 undefined
