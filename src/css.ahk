@@ -422,6 +422,7 @@ return
 
 ::full-bg::
 ::fullbg::
+::full.bg::
 Var = 
 (
 html { 

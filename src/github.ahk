@@ -11,6 +11,8 @@ return
 Return
 
 ::glass::
+::gloass::
+::maobili::
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/Html/glass.html"))
 return
 
