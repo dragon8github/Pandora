@@ -1,4 +1,23 @@
-﻿::date2::
+﻿::reduce::
+::reduces::
+Var =
+(
+// 获取完整的面包屑标题
+const getCompleteTitleBymatched = (matched) => {
+	// 使用 reduce 时，请注意使用末参来初始化 previousValue 的值
+	return matched.reduce((previousValue, currentValue, index, array) => {
+        console.log(20180923065400, previousValue, currentValue, index, array)
+		// 累计标题
+		const title = previousValue + currentValue.meta.title
+		// 如果是最后一级目录，那么不需要 > 符号，也不需要灰色字体
+		return index === array.length - 1 ? title : `<span class='is-gray'>${title} > </span>`
+	}, '')
+}
+)
+code(Var)
+return
+
+::date2::
 Var =
 (
 var date = new Date()

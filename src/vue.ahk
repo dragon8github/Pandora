@@ -197,6 +197,7 @@ code(Var)
 return
 
 >!v::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
 <template>
@@ -223,7 +224,7 @@ export default {
 
   },
   beforeMount () {
-      console.log('test');
+      console.log(%t%, 'test');
   }
 }
 </script>
