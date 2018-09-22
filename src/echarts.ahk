@@ -246,24 +246,41 @@ Var =
 {
     "type": "FeatureCollection",
     "features": [
-	    {
-	        "type": "Feature", "properties": {"name": "what the fuck"},
-	        "geometry": {
-	            "type": "Polygon",
-	            "coordinates": [
-	                []
-	            ]
-	        }
-	    },
-	    {
-	        "type": "Feature", "properties": {"name": "holy shit"},
-	        "geometry": {
-	            "type": "Polygon",
-	            "coordinates": [
-	                []
-	            ]
-	        }
-	    },
+      {
+          "type": "Feature", "properties": {"name": "东莞市"},
+          "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                  [
+                    [114.25967371414019,22.91052307097266],
+                    // ... Polygon就是一个三维数组，也就是网格（块）
+                    // 需要注意的是，第一个坐标和最后一个坐标必须一致才可以围起来嘛。
+                    // 注意删掉这段注释，json是不支持注释的。
+                    // 最好到http://geojson.io/中测试一下。刷新的时候选择false可以重置。
+                    // 黏贴到【Json】栏目去正常就可以显示，如果没显示就要看错误提示了
+                    [114.21042989104119,22.80255398178911]
+                  ]
+              ]
+          }
+      },
+      {
+            "type": "Feature", "properties": {"name": "这是其他网格"},
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        []
+                    ]
+                }
+            },
+            {
+                "type": "Feature", "properties": {"name": "这是其他网格"},
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        []
+                    ]
+                }
+            },
     ]
 }
 )

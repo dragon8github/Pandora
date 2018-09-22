@@ -13,11 +13,8 @@ const Login = r => require.ensure([], () => r(require('@/views/User/Login')), 'L
 code(Var)
 return
 
-::newvuex::
-::new vuex::
-::vuex.template::
+::vuex.new::
 ::vuex.tmp::
-::fuck.vuex::
 ::vuex.modules::
 ::vuex.module::
 Var =
@@ -28,12 +25,12 @@ let state = {
 
 const actions = {
   setAppData ({ commit, state, dispatch }, data) {
-	commit('setUserData', data.userInfo)
+	   commit('SET_APP_DATA', data.userInfo)
   }
 }
 
 const mutations = {
-	setUserData (state, userInfo) {
+	SET_APP_DATA (state, userInfo) {
 	  return state.AppData = userInfo
 	}
 },
@@ -43,7 +40,6 @@ const getters = {
     return state.AppData;
   }
 }
-
 export default {
   state,
   mutations,
@@ -60,6 +56,8 @@ return
 ::vuex.store::
 ::vuex.demo::
 ::vuexdemo::
+::vuex tmp::
+::vuextmp::
 Var =
 (
 import Vue from 'vue'
@@ -175,6 +173,9 @@ return
 
 ::$refs::
 ::$ref::
+::ref::
+::v-ref::
+::v-refs::
 Var =
 (
 // <select ref="myselect"></select>

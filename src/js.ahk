@@ -1351,7 +1351,6 @@ debugger;
 code(Var)
 Return
 
-
 AppsKey & c:: 
 >^c:: 
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec

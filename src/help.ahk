@@ -1,4 +1,29 @@
-﻿^!l::
+﻿
+^!r::
+	Clipboard :=
+	Send, ^c
+	ClipWait
+	tmp := Trim(Clipboard)
+	_array := StrSplit(tmp, "`r`n")
+	myarr := []
+	if (_array.Length() > 1) {
+		For key, value in _array {
+			if (!arrincludes(myarr, value)) {
+				myarr.push(value)
+			}
+		}
+	}
+	tmp2 := 
+	For index, value in myarr {
+		tmp2 .= value
+		if (index != myarr.Length()) {
+			tmp2.= "`r`n"
+		}
+	}
+	code(tmp2)
+return
+
+^!l::
     tmp := Clipboard
     Clipboard = 
     Send, ^c

@@ -36,6 +36,17 @@ MsgBox, %InputLocaleID%
 return
 */
 
+arrincludes(myarr, v) {
+	b := false
+	For key, value in myarr {
+		if (value == v) {
+			b := true
+			break
+		}
+	}
+	return b
+}
+
 RunBy(name) {
     myIdea := "C:\Program Files\Sublime Text 3\sublime_text3.exe"
     if (!FileExist(myIdea)) {

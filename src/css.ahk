@@ -23,6 +23,7 @@ code(Var)
 return
 
 ::@import::
+::@i::
 Var =
 (
 @import "~@/scss/functions.scss";

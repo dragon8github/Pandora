@@ -1,4 +1,14 @@
-﻿::cdn-echarts::
+﻿::cdn-bd::
+::cd-bdmap::
+Var =
+(
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+<script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+)
+code(Var)
+return
+
+::cdn-echarts::
 ::cdn-echart::
 Var =
 (
