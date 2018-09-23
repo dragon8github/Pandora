@@ -9,7 +9,8 @@ FileDelete, .\src\*.bak
 
 #include src/GUI.ahk		 ; GUI系列 
 #Include src/lib.ahk         ; 公共函数
-#Include src/help.ahk        ; 辅助功能  
+#Include src/help.ahk        ; 辅助功能
+#Include src/makedown.ahk    ; makedown
 #Include src/html.ahk        ; HTML    
 #Include src/vue.ahk         ; Vue
 #include src/css.ahk         ; css   

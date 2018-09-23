@@ -1,4 +1,13 @@
-﻿::readline::
+﻿::sh.tree::
+::tree::
+Var =
+(
+find ./ -maxdepth 2 -name ".git" -prune -o -name ".gitignore" -prune -o -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g' > FUCK.MD
+)
+code(Var)
+return
+
+::readline::
 ::sh.read::
 ::bashread::
 ::bash.read::
@@ -364,7 +373,7 @@ find /home/users -type f -name "*.txt" -delete
 if (v == "让find跳过特定的目录（排除指定目录）：-prune") {
 Var = 
 (
-find /home/users -name ".git" -prune -o -type f -print
+find ./ -name ".git" -prune -o -name ".gitignore" -prune -o -print
 )
 }
 
