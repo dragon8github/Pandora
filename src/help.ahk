@@ -1,11 +1,37 @@
 ﻿~^+c::
-~+c::
-    tmp := Clipboard
+    str := Clipboard
     Clipboard := 
-    Send, ^c
-    ClipWait, 2
-    Clipboard := tmp . "`r`n" . Clipboard
+    Send, {Ctrl Down}c{Ctrl Up}
+    ClipWait
+    Clipboard := str . "`r`n" . Clipboard
 return
+
+~^+l::
+Clipboard := 
+Send, ^c
+ClipWait
+MyVar := Clipboard
+V := ""
+Loop, parse, MyVar, `n, `r
+{
+	if (StrLen(A_LoopField) and InStr(A_LoopField, "class")) {
+		; 获取class值
+		RegExMatch(A_LoopField, "mi`a)class\s*=\s*['|""]{1}(.+?)['|""]{1}", OutputVar)
+		; 获取缩进
+		RegExMatch(A_LoopField, "^(.+?)<", spaceValue)
+		
+		; MsgBox, %spaceValue1%
+		; MsgBox, %OutputVar1%
+		
+		V .= spaceValue1 . "." . OutputVar1 . " {" . "`r`n"
+		V .= spaceValue1 . "`t" . "`r`n"
+		V .= spaceValue1 . "}" . "`r`n`r`n"
+	}
+}
+Clipboard := V
+TrayTip, 生成完毕, 已将生成代码加入到剪切板中
+return
+
 
 ^!r::
 	Clipboard :=
