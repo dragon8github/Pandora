@@ -1,4 +1,13 @@
-﻿^!r::
+﻿~^+c::
+~+c::
+    tmp := Clipboard
+    Clipboard := 
+    Send, ^c
+    ClipWait, 2
+    Clipboard := tmp . "`r`n" . Clipboard
+return
+
+^!r::
 	Clipboard :=
 	Send, ^c
 	ClipWait
