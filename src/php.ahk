@@ -1,4 +1,16 @@
-﻿::phpmatch::
+﻿::jsonphp::
+::phpjson::
+Var =
+(
+header("Access-Control-Allow-Origin:*"); 
+header('Access-Control-Allow-Headers:x-requested-with,content-type'); 
+$rws_post = $GLOBALS['HTTP_RAW_POST_DATA'];
+var_dump($rws_post);
+)
+code(Var)
+return
+
+::phpmatch::
 ::php_match::
 ::preg_match::
 ::php-match::

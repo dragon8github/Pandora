@@ -1,4 +1,40 @@
-﻿::sh.tree::
+﻿::sh.curl::
+::shell.curl::
+::bash.curl::
+Var =
+(
+# post 请求 application/json
+curl -H "Content-type: application/json" -X POST -d '{"user": "admin", "passwd":"12345678"}' http://127.0.0.1/index.php
+
+# post Form 请求 
+# <?php 
+# header("Access-Control-Allow-Origin:*"); 
+# header('Access-Control-Allow-Headers:x-requested-with,content-type'); 
+# $rws_post = $GLOBALS['HTTP_RAW_POST_DATA'];
+# var_dump($rws_post);
+curl -H "Content-type: application/x-www-form-urlencoded" -d "user=admin&passwd=12345678" http://127.0.0.1:8080/login
+
+# get 请求
+curl http://127.0.0.1:8080/login?admin&passwd=12345678
+)
+code(Var)
+return
+
+::sh.wc::
+::shell.wc::
+::bash.wc::
+::wc::
+Var =
+(
+find . -name "*.json" -prune -o -path "./assets/*" -o -iname "*.MD"  -prune -o -type f -print | xargs wc -l
+find ./ -iregex '.*\.\(js\|vue\|scss\)$' | xargs wc -l
+)
+code(Var)
+return
+
+::sh.tree::
+::bash.tree::
+::shell.tree::
 ::tree::
 Var =
 (
@@ -44,7 +80,8 @@ return
 	Menu, B, Add, 当前时间, ShellHandler
 	
 	; find
-	Menu, C, Add, 根据文件名或者正则来查找：name/iname, ShellHandler
+	Menu, C, Add, 根据文件名：name/iname, ShellHandler
+	Menu, C, Add, 限制匹配的路径及名称：-path, ShellHandler
 	Menu, C, Add, 支持逻辑操作符：-a/-and 和 -o/-or, ShellHandler
 	Menu, C, Add, 正则表达式：-regex/-iregex , ShellHandler
 	Menu, C, Add, 否定参数（取反）, ShellHandler
@@ -235,10 +272,18 @@ date "+`%Y/`%m/`%d `%H:`%M:`%S"
 )
 }
 
-if (v == "根据文件名或者正则来查找：name/iname") {
+if (v == "根据文件名：name/iname") {
 Var = 
 (
 find /home/users -iname '*.txt' -print
+)
+}
+
+
+if (v == "限制匹配的路径及名称：-path") {
+Var = 
+(
+find . -path "./assets/*" -name '*.png' # 使用 -path 时，不需要 -o 或 -a 就可以直接使用 -name，据我所知也就-path可以这样用
 )
 }
 
