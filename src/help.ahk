@@ -6,7 +6,7 @@
     Clipboard := str . "`r`n" . Clipboard
 return
 
-~^+l::
+~!+l::
 Clipboard := 
 Send, ^c
 ClipWait
@@ -14,12 +14,12 @@ MyVar := Clipboard
 V := ""
 Loop, parse, MyVar, `n, `r
 {
-	if (StrLen(A_LoopField) and InStr(A_LoopField, "class")) {
+	if (StrLen(A_LoopField) and InStr(A_LoopField, " class")) {
 		; 获取class值
 		RegExMatch(A_LoopField, "mi`a)class\s*=\s*['|""]{1}(.+?)['|""]{1}", OutputVar)
 		; 获取缩进
-		RegExMatch(A_LoopField, "^(.+?)<", spaceValue)
-		
+		RegExMatch(A_LoopField, "^(\s*)(.*)<", spaceValue)
+
 		; MsgBox, %spaceValue1%
 		; MsgBox, %OutputVar1%
 		
