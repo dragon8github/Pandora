@@ -1,4 +1,12 @@
-﻿::css.after::
+﻿::oh::
+Var =
+(
+overflow: hidden;
+)
+code(Var)
+return
+
+::css.after::
 ::css.before::
 Var =
 (

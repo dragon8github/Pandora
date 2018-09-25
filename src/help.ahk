@@ -428,6 +428,7 @@ return
     Send, lizhaohong@hongte.info
 return
 
+
 ; ALT + R 重启脚本
 !r::
     WinGetActiveTitle, OutputVar
