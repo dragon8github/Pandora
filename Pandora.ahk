@@ -7,6 +7,7 @@ FileEncoding, UTF-8
 FileDelete, *.bak 
 FileDelete, .\src\*.bak
 
+
  
 #include src/GUI.ahk		; GUI系列 
 #Include src/lib.ahk        ; 公共函数
@@ -30,3 +31,4 @@ FileDelete, .\src\*.bak
 #Include src/docker.ahk     ; docker
 #Include src/python.ahk		; python
 #Include src/echarts.ahk	; echarts
+#include src/prehosting.ahk	; 预设置的快捷键

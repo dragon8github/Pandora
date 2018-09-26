@@ -1066,11 +1066,22 @@ return
 return
 
 ::trans::
-    SendInput, transition
+Var =
+(
+transition: .3s all;
+)
+code(Var)
 return
 
 ::transf::
-    SendInput, transform
+::tranf::
+Var =
+(
+transition: .3s all;
+transform: translateY(0); 
+transform: rotate(180deg);
+)
+code(Var)
 return
 
 ::link-media::

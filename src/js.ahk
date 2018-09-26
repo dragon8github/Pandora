@@ -1,4 +1,23 @@
-﻿::reduce::
+﻿::umd::
+Var =
+(
+(function (name, context, definition) {
+  if (typeof module != 'undefined' && module.exports) module.exports = definition()
+  else if (typeof define == 'function' && define.amd) define(definition)
+  else context[name] = definition()
+})('你挂在到全局的模块名，譬如jQuery', this, function () {
+	
+	// ... 这里写上比的代码
+
+	return {
+		...
+	}
+}, this);
+)
+code(Var)
+return
+
+::reduce::
 ::reduces::
 Var =
 (
