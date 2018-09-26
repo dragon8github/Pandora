@@ -1,4 +1,113 @@
-﻿::bd.map::
+﻿::wuxianping::
+::wuxianp::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <style>
+      b { font-size: 24px; }
+    </style>
+    <body>
+       <div id="app">
+          <p>alpha(z): 手机在水平面上旋转的角度，当设备的顶部指向正北时其值为 0°。 当设备逆时针旋转时值增加。【0 -360】: <b>{{ alpha }}</b></p>
+          <p>beta(x): 围绕x轴上下翻转的角度，当设备的顶部和底部与地球表面等距时其值为 0。【向上翻为负值，-180 - 180】: <b>{{ beta }}</b></p>
+          <p>gamma(y): 围绕y轴左右翻转的角度，当设备的左侧和右侧与地球表面等距时 其值为 0。【向左翻为负值， -180 - 180】: <b>{{ gamma }}</b></p>
+       </div>
+    </body>
+    <script>
+      // 函数节流（throttle）
+      var throttle = function(func, wait, options) {
+          var timeout, context, args, result;
+          // 标记时间戳
+          var previous = 0;
+          // options可选属性 leading: true/false 表示第一次事件马上触发回调/等待wait时间后触发
+          // options可选属性 trailing: true/false 表示最后一次回调触发/最后一次回调不触发
+          if (!options) options = {};
+
+          var later = function() {
+            previous = options.leading === false ? 0 : +(new Date());
+            timeout = null;
+            result = func.apply(context, args);
+            if (!timeout) context = args = null;
+          };
+
+          var throttled = function() {
+            // 记录当前时间戳
+            var now = +(new Date());
+            // 如果是第一次触发且选项设置不立即执行回调
+            if (!previous && options.leading === false)
+            // 将记录的上次执行的时间戳置为当前
+            previous = now;
+            // 距离下次触发回调还需等待的时间
+            var remaining = wait - (now - previous);
+            context = this;
+            args = arguments;
+
+            // 等待时间 <= 0或者不科学地 > wait（异常情况）
+            if (remaining <= 0 || remaining > wait) {
+              if (timeout) {
+                  // 清除定时器
+                clearTimeout(timeout);
+                // 解除引用
+                timeout = null;
+              }
+              // 将记录的上次执行的时间戳置为当前
+              previous = now;
+
+              // 触发回调
+              result = func.apply(context, args);
+              if (!timeout) context = args = null;
+            }
+            // 在定时器不存在且选项设置最后一次触发需要执行回调的情况下
+            // 设置定时器，间隔remaining时间后执行later
+            else if (!timeout && options.trailing !== false)    {
+              timeout = setTimeout(later, remaining);
+            }
+           return result;
+          };
+
+          throttled.cancel = function() {
+            clearTimeout(timeout);
+            previous = 0;
+            timeout = context = args = null;
+          };
+
+          return throttled;
+      };
+
+      var vue = new Vue({
+          el: '#app',
+          data: {
+              alpha: "",
+              beta: "",
+              gamma: "",
+          },
+          methods: {
+            render (orientData) {
+                this.alpha = orientData.alpha || 'null';
+                this.beta =  orientData.beta || 'null';
+                this.gamma = orientData.gamma || 'null';
+            }
+          },
+          beforeMount: function () {
+              const throttle_render = throttle(this.render, 1000);
+              window.addEventListener('deviceorientation', throttle_render);
+          }
+      })
+    </script>
+</html>
+)
+code(Var)
+return
+
+::bd.map::
 ::bd-map::
 ::baidu.map::
 ::baidu-map::

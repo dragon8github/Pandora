@@ -1,6 +1,7 @@
 ﻿::umd::
 Var =
 (
+// 方式一
 (function (name, context, definition) {
   if (typeof module != 'undefined' && module.exports) module.exports = definition()
   else if (typeof define == 'function' && define.amd) define(definition)
@@ -13,9 +14,31 @@ Var =
 		...
 	}
 }, this);
+
+// 方式二
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as anonymous module.
+    define(['jquery'], factory);
+  } else if (typeof exports === 'object') {
+    // Node/CommonJS.
+    module.exports = factory(require('jquery'));
+  } else {
+    // Browser globals.
+    factory(jQuery);
+  }
+}(function (jQuery) {
+
+  "use strict";
+
+  // your code...
+}));
+
 )
 code(Var)
 return
+
+
 
 ::reduce::
 ::reduces::
@@ -3771,65 +3794,69 @@ return
 ::throttle::
 Var =
 (
-// 函数节流（throttle）：让函数在指定的时间段内周期性地间断执行
+// 函数节流（throttle）
 var throttle = function(func, wait, options) {
-    var timeout, context, args, result;
-    // 标记时间戳
-    var previous = 0;
-    // options可选属性 leading: true/false 表示第一次事件马上触发回调/等待wait时间后触发
-    // options可选属性 trailing: true/false 表示最后一次回调触发/最后一次回调不触发
-    if (!options) options = {};
+  var timeout, context, args, result;
+  // 标记时间戳
+  var previous = 0;
+  // options可选属性 leading: true/false 表示第一次事件马上触发回调/等待wait时间后触发
+  // options可选属性 trailing: true/false 表示最后一次回调触发/最后一次回调不触发
+  if (!options) options = {};
 
-    var later = function() {
-      previous = options.leading === false ? 0 : +(new Date());
-      timeout = null;
-      result = func.apply(context, args);
-      if (!timeout) context = args = null;
-    };
+  var later = function() {
+    previous = options.leading === false ? 0 : +(new Date());
+    timeout = null;
+    result = func.apply(context, args);
+    if (!timeout) context = args = null;
+  };
 
-    var throttled = function() {
-      // 记录当前时间戳
-      var now = +(new Date());
-      // 如果是第一次触发且选项设置不立即执行回调
-      if (!previous && options.leading === false)
+  var throttled = function() {
+    // 记录当前时间戳
+    var now = +(new Date());
+    // 如果是第一次触发且选项设置不立即执行回调
+    if (!previous && options.leading === false)
+    // 将记录的上次执行的时间戳置为当前
+    previous = now;
+    // 距离下次触发回调还需等待的时间
+    var remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+
+    // 等待时间 <= 0或者不科学地 > wait（异常情况）
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+          // 清除定时器
+        clearTimeout(timeout);
+        // 解除引用
+        timeout = null;
+      }
       // 将记录的上次执行的时间戳置为当前
       previous = now;
-      // 距离下次触发回调还需等待的时间
-      var remaining = wait - (now - previous);
-      context = this;
-      args = arguments;
 
-      // 等待时间 <= 0或者不科学地 > wait（异常情况）
-      if (remaining <= 0 || remaining > wait) {
-        if (timeout) {
-            // 清除定时器
-          clearTimeout(timeout);
-          // 解除引用
-          timeout = null;
-        }
-        // 将记录的上次执行的时间戳置为当前
-        previous = now;
+      // 触发回调
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+    // 在定时器不存在且选项设置最后一次触发需要执行回调的情况下
+    // 设置定时器，间隔remaining时间后执行later
+    else if (!timeout && options.trailing !== false)    {
+      timeout = setTimeout(later, remaining);
+    }
+   return result;
+  };
 
-        // 触发回调
-        result = func.apply(context, args);
-        if (!timeout) context = args = null;
-      }
-      // 在定时器不存在且选项设置最后一次触发需要执行回调的情况下
-      // 设置定时器，间隔remaining时间后执行later
-      else if (!timeout && options.trailing !== false)    {
-        timeout = setTimeout(later, remaining);
-      }
-     return result;
-    };
+  throttled.cancel = function() {
+    clearTimeout(timeout);
+    previous = 0;
+    timeout = context = args = null;
+  };
 
-    throttled.cancel = function() {
-      clearTimeout(timeout);
-      previous = 0;
-      timeout = context = args = null;
-    };
-
-    return throttled;
+  return throttled;
 };
+// demo
+var fn = (data) => console.log(20180926160742, data);
+const fn2 = throttle(fn, 3000);
+fn2(123) // 请手动不停的执行这个函数
 )
 code(Var)
 return
