@@ -1957,9 +1957,19 @@ Return
 ::randomcolor::
 ::randcolor::
 ::suijiyanse::
+::rendcolor::
+::rendercolor::
 Var =
 (
 fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)',
+
+// 比较浅色的rgb，适合白色字体
+randcolor () {
+    const r = 100 + ~~(Math.random() * 100);
+    const g = 100 + ~~(Math.random() * 100);
+    const b = 100 + ~~(Math.random() * 100);
+    return `rgb(${r}, ${g}, ${b})`
+}
 )
 code(Var)
 return
@@ -3791,6 +3801,7 @@ code(Var)
 return
 
 ::hanshujieliu::
+::jieliu::
 ::throttle::
 Var =
 (
@@ -3853,9 +3864,12 @@ var throttle = function(func, wait, options) {
 
   return throttled;
 };
+
 // demo
 var fn = (data) => console.log(20180926160742, data);
-const fn2 = throttle(fn, 3000);
+// leading 为 true时，第一次执行立即触发，这比setTimeout好多了
+// trailing 为 fasle时，不会触发最后一次。这样比较符合直觉。
+const fn2 = throttle(fn, 3000, { leading: true, trailing: false });
 fn2(123) // 请手动不停的执行这个函数
 )
 code(Var)

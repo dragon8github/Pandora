@@ -97,7 +97,7 @@ Var =
             }
           },
           beforeMount: function () {
-              const throttle_render = throttle(this.render, 1000);
+              const throttle_render = throttle(this.render, 150, { leading: true, trailing: false });
               window.addEventListener('deviceorientation', throttle_render);
           }
       })
