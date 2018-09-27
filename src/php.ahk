@@ -47,6 +47,8 @@ Var =
 code(Var)
 return
 
+::php.header::
+::header.php::
 ::header::
 Var = 
 (
@@ -60,6 +62,7 @@ code(Var)
 Return
 
 ::header-utf8::
+::header.utf8::
     SendRaw, header("Content-type: text/html; charset=utf-8");
 Return
 

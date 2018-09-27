@@ -1,4 +1,20 @@
-﻿::webpack.router::
+﻿::vue.nginx::
+::nginx.vue::
+::nginx.config::
+Var =
+(
+location / {
+   try_files $uri /index.html;
+}
+
+location ^~ /api/ {
+  proxy_pass  http://192.168.8.184:8080/api/;
+}
+)
+code(Var)
+return
+
+::webpack.router::
 ::webpack.route::
 ::webpack.require::
 ::webpack.ensure::

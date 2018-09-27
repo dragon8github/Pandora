@@ -120,6 +120,7 @@ Gui, Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
 Gui, Add, Link,, <a href="http://router.vuejs.org ">vue-router</a>
 Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 Gui, Add, Link,, <a href="https://github.com/PanJiaChen/vue-element-admin">vue-element-admin</a>
+Gui, Add, Link,, <a href="https://ssr.vuejs.org/zh/">vue-ssr </a>
 
 Gui, Add, Text,  W140 ys, vue ssr nuxt：
 Gui, Add, Link,, <a href="https://nuxtjs.org/">nuxt官网</a>
