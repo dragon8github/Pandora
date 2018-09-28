@@ -1,4 +1,14 @@
-﻿::arrm::
+﻿::nicescroll::
+::jquery.scroll::
+Var =
+(
+$('.drapdown__ul').niceScroll({ cursorcolor: 'rgba(0,0,0,0.2)', autohidemode: false });
+setTimeout(() => $('.drapdown__ul').getNiceScroll().resize(), 0);
+)
+code(Var)
+return
+
+::arrm::
 	Menu, ShellMenu, Add,  for i++, ForHandler
 	Menu, ShellMenu, Add,  for i--, ForHandler
 	Menu, ShellMenu, Add,  for in, ForHandler
@@ -1267,8 +1277,12 @@ return
 
 ::dianjikongbaichu::
 ::kongbaichu::
+::shijianmaopao::
+::mouseup::
+::eventmaopao::
 Var =
 (
+// jQuery版本
 $('.keySupervision__layer').css({ left, top }).show(300, function () {
       window.addEventListener('mouseup', function cancelFade(e) {
          if (!e.target.className.includes('keySupervision__layer')) {
@@ -1277,6 +1291,31 @@ $('.keySupervision__layer').css({ left, top }).show(300, function () {
          }
       })
 })
+
+// vue版本
+data () {
+    return {
+        // <div class="msgbox" v-show="value">
+        value: false
+    }
+},
+methods: {
+  hideListener (e) {
+    if (!e.target.className.includes('msgbox')) {
+        this.value = false
+    }
+  },
+  // 可以给关闭按钮绑定，如<a class="msgbox__header--close" @click='value = !value'>×</a>
+  show () {
+    if (!this.value) this.value = true
+  }
+},
+watch: {
+value (newV) {
+  newV === true && window.addEventListener('click', this.hideListener)
+  newV === false && window.removeEventListener('click', this.hideListener);
+}
+},
 )
 code(Var)
 return

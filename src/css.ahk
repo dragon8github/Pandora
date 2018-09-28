@@ -1,4 +1,112 @@
-﻿::oh::
+﻿::css.scroll::
+::css.scrollbar::
+Var =
+(
+.dropUl::-webkit-scrollbar {
+    width: 5px;     
+    height: 0;
+}
+.dropUl::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.2);
+    background: #d1d4db;
+}
+.dropUl::-webkit-scrollbar-track {
+    -webkit-box-shadow: none;
+    border-radius: 0px;
+    background: #EDEDED;
+}
+)
+code(Var)
+return
+
+::css.table::
+Var =
+(
+<table class='dgtable' cellspacing = '0'>
+  <thead class='dgtable__thead'>
+    <tr>
+      <th></th>
+      <th>诉求标题</th>
+      <th>处理部门</th>
+      <th>镇街</th>
+      <th>事项</th>
+      <th>事项二级分类</th>
+      <th>红黄牌</th>
+      <th>满意度</th>
+      <th>诉求类型</th>
+      <th>受理时间</th>
+    </tr>
+  </thead>
+  <tbody class='dgtable__tbody'>
+      <tr v-for='(item, index) in items' :key='index'>
+          <td>{{ index }}</td>
+          <td>从事城市生活垃圾经营性</td>
+          <td>市环保局</td>
+          <td>虎门</td>
+          <td>环境保护类</td>
+          <td>大气污染 </td>
+          <td><div :class="['is-red', 'is-yellow', 'is-warning'][index `% 3]"></div></td>
+          <td>非常满意</td>
+          <td>投诉</td>
+          <td>2018-08-12 14:12:32</td>
+      </tr>        
+  </tbody>
+</table>
+
+.dgtable {
+    margin-top: 17px;
+    text-align: center;
+    width: 100`%;
+    border: solid 1px #e4e4e4;
+ }
+
+     .dgtable__thead {
+        background-image: linear-gradient(0deg, rgba(212, 212, 212, 0.03) 0`%, rgba(238, 238, 238, 0.03) 100`%), linear-gradient(#ededed, #ededed);
+        background-blend-mode: normal, normal;
+        font-size: 18px;
+
+        tr {
+          height: 58px;
+        }
+
+        th {
+          font-weight: normal;
+        }
+
+        th + th {
+          border-left: 1px solid #d0d0d0;
+        }
+     }
+
+     .dgtable__tbody {
+        font-size: 16px;
+
+        td {
+          border-top: solid 1px #d1d1d1;
+        }
+
+        tr {
+          height: 40px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f1f1;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        td + td {
+          border-left: 1px solid #d0d0d0;
+        }
+     }
+)
+code(Var)
+return
+
+::oh::
 Var =
 (
 overflow: hidden;
@@ -595,6 +703,8 @@ code(Var)
 return
 
 ::arrow-top::
+::arrow.top::
+::arrowtop::
 Var = 
 (
 .triangle {
@@ -609,6 +719,8 @@ code(Var)
 return
 
 ::arrow-right::
+::arrow.right::
+::arrowright::
 Var = 
 (
 .triangle {
@@ -623,6 +735,8 @@ code(Var)
 return
 
 ::arrow-bottom::
+::arrow.bottom::
+::arrowbottom::
 Var = 
 (
 .triangle {
@@ -637,6 +751,8 @@ code(Var)
 return
 
 ::arrow-left::
+::arrow.left::
+::arrowleft::
 Var = 
 (
 .triangle {

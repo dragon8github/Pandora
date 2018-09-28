@@ -1,4 +1,4 @@
-﻿~^+c::
+﻿~!+c::
     str := Clipboard
     Clipboard := 
     Send, {Ctrl Down}c{Ctrl Up}
@@ -476,6 +476,7 @@ Return
     Clipboard := Var
 Return
 
+/**
 ; 抓取菜单
 +!c::  
     ; 必须add一下才可以使用DeletaAll
@@ -507,6 +508,7 @@ return
 !x::
      Menu, MyMenu, Show
 Return
+*/
 
 ::ip::
 if (A_IPAddress2 == "0.0.0.0") {

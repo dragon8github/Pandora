@@ -485,6 +485,36 @@ Var =
 .cell-move {
   transition: transform 1s ease;
 }
+
+
+
+<transition name="msgbox-bounce">
+    <div class="msgbox" v-show="value">
+    
+    </div>
+</transition>
+
+.msgbox {
+    @include center;
+    width: 835px;
+    z-index: 199307100337;
+    /* 切记添加transition，除非你在钩子中添加 */
+    transition: .3s all;
+}
+
+.msgbox-bounce-enter {
+   opacity: 0;
+   transform: translate3d(-50`%, -50`%, 0) scale(0.7);
+}
+
+.msgbox-bounce-leave-active {
+   opacity: 0;
+   transform: translate3d(-50`%, -50`%, 0) scale(0.9);
+}
+
+
+
+
 )
 code(Var)
 return

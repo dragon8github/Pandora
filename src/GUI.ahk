@@ -112,6 +112,7 @@ Gui, Add, Text,  W140 ys, 奇妙工具:
 Gui, Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
 Gui, Add, Link,, <a href="https://sketch2code.azurewebsites.net/">Microsoft sketch2code</a>
 Gui, Add, Link,, <a href="http://blog.mn886.net/jqGrid/">jQGrid 中文文档</a>
+Gui, Add, Link,, <a href="http://www.hanhande.com/">憨憨电影</a>
 
 Gui, Tab, 2
 Gui, Add, Text,  W140 Section, Vue：

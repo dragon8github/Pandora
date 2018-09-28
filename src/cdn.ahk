@@ -1,4 +1,15 @@
-﻿::cdn-bd::
+﻿::cdn-scroll::
+::cdn-nicescroll::
+Var =
+(
+<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<!-- https://github.com/inuyaksa/jquery.nicescroll -->
+<script src="https://cdn.bootcss.com/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-bd::
 ::cdn-bdmap::
 ::cdn-echartbd::
 ::cdn-echartsbd::
