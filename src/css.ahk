@@ -1235,6 +1235,8 @@ code(Var)
 Return
 
 ::box-shadow::
+::css.shadow::
+::shadow::
     SendRaw, box-shadow: 0 2px 12px 0 rgba(212, 212, 212, 0.1);
 return
 

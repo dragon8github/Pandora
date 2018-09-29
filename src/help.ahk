@@ -1,10 +1,62 @@
-﻿~!+c::
+﻿::api.open::
+::api.sw::
+::apisw::
+Var =
+(
+function copyToClipboard (text) {
+    if(text.indexOf('-') !== -1) {
+        let arr = text.split('-');
+        text = arr[0] + arr[1];
+    }
+    var textArea = document.createElement("textarea");
+      textArea.style.position = 'fixed';
+      textArea.style.top = '0';
+      textArea.style.left = '0';
+      textArea.style.width = '2em';
+      textArea.style.height = '2em';
+      textArea.style.padding = '0';
+      textArea.style.border = 'none';
+      textArea.style.outline = 'none';
+      textArea.style.boxShadow = 'none';
+      textArea.style.background = 'transparent';
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+
+      try {
+        var successful = document.execCommand('copy');
+      } catch (err) {
+        console.log('该浏览器不支持点击复制到剪贴板');
+      }
+      document.body.removeChild(textArea);
+}
+
+document.querySelectorAll('.opblock-tag, .models h4').forEach(function (e, i) {
+     e.click()
+});
+
+document.querySelectorAll('.nostyle[href]').forEach(function (e, i) {
+    e.removeAttribute('href')
+});
+
+document.querySelectorAll('.opblock-summary').forEach(function (e, i) {
+    e.addEventListener('click', function (event) {
+	    console.log(20180929161401, e.querySelector('.opblock-summary-path').innerText)
+	    copyToClipboard(e.querySelector('.opblock-summary-path').innerText.trim())
+	})
+});
+)
+code(Var)
+return
+
++c::    
     str := Clipboard
     Clipboard := 
-    Send, {Ctrl Down}c{Ctrl Up}
+    Send, ^c
     ClipWait
     Clipboard := str . "`r`n" . Clipboard
 return
+
 
 ~!+l::
 Clipboard := 

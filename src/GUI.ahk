@@ -181,6 +181,7 @@ Gui, Add, Link,, <a href="http://element-cn.eleme.io/#/zh-CN/component/radio">El
 Gui, Add, Link,, <a href="https://github.com/ElemeFE/element/blob/dev/packages/">Element-github</a>
 Gui, Add, Link,, <a href="http://elemefe.github.io/mint-ui/#/">mint-ui</a>
 Gui, Add, Link,, <a href="https://github.com/ElemeFE/mint-ui/blob/master/packages/radio/src/radio.vue">mint-ui-github</a>
+Gui, Add, Link,, <a href="https://github.com/PanJiaChen/vue-element-admin">vue-element-admin</a>
 
 Gui, Add, Text,  W140 ys, Bootstrap:
 Gui, Add, Link,, <a href="https://v3.bootcss.com/css/#grid-options">全局 css 样式</a>

@@ -1553,10 +1553,20 @@ if (condition) {
 code(Var)
 return
 
+::removee::
+::removeevent::
+Var =
+(
+e.removeEventListener('click', _copyToClipboard);
+)
+code(Var)
+return
+
 ::addevent::
+::adde::
 Var = 
 (
-addEventListener('keydown', function (event) {
+addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.keyCode == 13) {
         console.log(123);
     }
@@ -1957,8 +1967,7 @@ return
 ::foreach::
 Var = 
 (
-// Array.form
-[...document.querySelectorAll('#content_left .result')].forEach(function (e, i) {
+.forEach(function (e, i) {
      console.log(i, e);
 });
 )
@@ -2868,25 +2877,33 @@ return
 ::clip::
 Var = 
 (
-// https://codepen.io/SitePoint/pen/vNvEwE/
-(function() {
-  document.body.addEventListener('click', copy, true);
-	function copy(e) {
-	    var t = e.target, c = t.dataset.copytarget, inp = (c ? document.querySelector(c) : null); 
-	    if (inp && inp.select) {
-	      inp.select();
-	      try {
-	        document.execCommand('copy');
-	        inp.blur();
-	        t.classList.add('copied');
-	        setTimeout(function() { t.classList.remove('copied'); }, 1500);
-	      }
-	      catch (err) {
-	        alert('please press Ctrl/Cmd+C to copy');
-	      }
-	    }
-	}
-})();
+function copyToClipboard (text) {
+    if(text.indexOf('-') !== -1) {
+        let arr = text.split('-');
+        text = arr[0] + arr[1];
+    }
+    var textArea = document.createElement("textarea");
+      textArea.style.position = 'fixed';
+      textArea.style.top = '0';
+      textArea.style.left = '0';
+      textArea.style.width = '2em';
+      textArea.style.height = '2em';
+      textArea.style.padding = '0';
+      textArea.style.border = 'none';
+      textArea.style.outline = 'none';
+      textArea.style.boxShadow = 'none';
+      textArea.style.background = 'transparent';
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+
+      try {
+        var successful = document.execCommand('copy');
+      } catch (err) {
+        console.log('该浏览器不支持点击复制到剪贴板');
+      }
+      document.body.removeChild(textArea);
+}
 )
 code(Var)
 return
@@ -3159,6 +3176,8 @@ return
 ::cachefunc::
 ::cachefunction::
 ::memoized::
+::js.cache::
+::cache::
 Var = 
 (
 const memoized = fn => {
