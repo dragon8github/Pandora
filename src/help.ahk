@@ -277,7 +277,7 @@ MenuHandler:
     SendRaw, % A_ThisMenuItem
 Return  
 
-MenuHandlerStatus:
+MenuHandlerlifeArray:
     if (A_ThisMenuItem == "xs —— 超小屏幕 手机 (<768px)") {
         SendRaw, xs
     }
@@ -293,13 +293,6 @@ MenuHandlerStatus:
     else if (A_ThisMenuItem == "lg —— 大屏幕 大桌面显示器 (≥1200px)") {
         SendRaw, lg
     }
-    else {
-        SendRaw, % A_ThisMenuItem
-    }
-    
-Return  
-
-MenuHandlerlifeArray:
     Send, % A_ThisMenuItem
 return
 
@@ -358,16 +351,6 @@ return
     Clipboard := tmp
 return
 
-!s:: 
-    ColorArray := ["primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥992px)", "lg —— 大屏幕 大桌面显示器 (≥1200px)" "", "", "",  "public", "private", "protected"]
-    Loop % ColorArray.MaxIndex() {
-        this_color := ColorArray[a_index]
-        Menu, StatusMenu, Add, %this_color%, MenuHandlerStatus
-    }
-    Menu, StatusMenu, Show
-    Menu, StatusMenu, DeleteAll
-return
-
 +BackSpace::
     Send, {Del}
 return
@@ -377,8 +360,9 @@ return
     Send, {Del}
 return
 
+
 !l:: 
-    lifeArray := ["beforeCreate", "created", "beforeMount", "mounted", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate"]
+    lifeArray := ["beforeCreate", "created", "beforeMount", "mounted", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate", "", "", "primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥992px)", "lg —— 大屏幕 大桌面显示器 (≥1200px)" "", "", "",  "public", "private", "protected"]
     Loop % lifeArray.MaxIndex() {
         this_life := lifeArray[a_index]
         Menu, LifeMenu, Add, %this_life%, MenuHandlerlifeArray

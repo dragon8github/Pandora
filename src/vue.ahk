@@ -1,4 +1,18 @@
-﻿::vue.nginx::
+﻿::vue.mixin::
+::vue.mixins::
+Var =
+(
+// 全局Mixin，任何一个组件都会被影响，无论是页面、入口、还是组件
+Vue.mixin({
+  created: function () {
+    console.log(20180929205251, 123)
+  }
+})
+)
+code(Var)
+return
+
+::vue.nginx::
 ::nginx.vue::
 ::nginx.config::
 Var =

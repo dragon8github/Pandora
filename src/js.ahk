@@ -1,4 +1,16 @@
-﻿::nicescroll::
+﻿::addclick::
+::onclick::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =
+(
+.addEventListener('click', (e) => {
+    console.log(%t%, e.target)
+})
+)
+code(Var)
+return
+
+::nicescroll::
 ::jquery.scroll::
 Var =
 (
@@ -9,12 +21,13 @@ code(Var)
 return
 
 ::arrm::
+>!a::
 	Menu, ShellMenu, Add,  for i++, ForHandler
+    Menu, ShellMenu, Add,  foreach, ForHandler
 	Menu, ShellMenu, Add,  for i--, ForHandler
 	Menu, ShellMenu, Add,  for in, ForHandler
 	Menu, ShellMenu, Add,  for of, ForHandler
 	Menu, ShellMenu, Add,  for entries, ForHandler
-	Menu, ShellMenu, Add,  foreach, ForHandler
 	Menu, ShellMenu, Add,  map, ForHandler
 	Menu, ShellMenu, Add,  reduce, ForHandler
 	Menu, ShellMenu, Add,  some, ForHandler
@@ -1101,6 +1114,33 @@ const getsms = (mobile) => {
     }
     _getsms();
 };
+
+ // 适合轮询条件查找执行
+;(function fuck(i){
+    const name = router.history.current.name
+    // 先把需要轮询的条件写出来：如果找不到元素，并且次数小于
+    if (document.querySelectorAll(`.${name} [data-title]`).length <= 0) {
+        // 再把最多循环的次数写出来：最多5次，间隔也可以动态，我这里是100/200/300/400/500，也就是一共才1500秒。
+        i < 5 && window.setTimeout(_ => fuck(++i), i * 100 + 100);
+    } else {
+        // 条件成立的放在这里执行
+        document.querySelectorAll(`.${name} [data-title]`).forEach(function (e, i) {
+            const rootname = e.getAttribute('class')
+            const classname = e.querySelector('div').getAttribute('class')
+            const vuename = `${classname}.vue`
+            const title = `【${rootname.substring(0, rootname.indexOf('__'))}】 ${e.getAttribute('data-title')} 【${vuename}】`
+            e.setAttribute('title', title)
+            const _copyToClipboard = () => {copyToClipboard(vuename); Message('复制成功：' + vuename); }
+            e.removeEventListener('click', _copyToClipboard)
+            e.addEventListener('click', _copyToClipboard) 
+        }); 
+        document.querySelector('.header__title').addEventListener('click', (e) => {
+            const indexvuename = `${name}/index.vue`
+            copyToClipboard(indexvuename); 
+            Message('复制成功：' + indexvuename);
+        })
+    }
+}(0));
 )
 code(Var)
 return
@@ -1245,6 +1285,7 @@ return
 
 ::ready::
 ::$ready::
+::onready::
 Var = 
 (
 function ready(fn) {
@@ -1262,8 +1303,14 @@ return
     send, el.setAttribute('tabindex', 3);
 return
 
+::el.getattr::
 ::getattr::
     send, el.getAttribute('tabindex');
+return
+
+::el.setattr::
+::setattr::
+    send, el.setAttribute('tabindex', '1');
 return
 
 ::getstyle::
