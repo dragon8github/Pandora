@@ -1,4 +1,19 @@
-﻿::addclick::
+﻿::arr2str::
+::array2str::
+Var =
+(
+var array2str = (arr) => {
+	var str = ""
+	arr.forEach(function (e, i) {
+    	 str += e.join()
+	});
+	return str
+}
+)
+code(Var)
+return
+
+::addclick::
 ::onclick::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
@@ -12,6 +27,9 @@ return
 
 ::nicescroll::
 ::jquery.scroll::
+::js.nice::
+::jq.nice::
+::nice::
 Var =
 (
 $('.drapdown__ul').niceScroll({ cursorcolor: 'rgba(0,0,0,0.2)', autohidemode: false });
@@ -119,14 +137,10 @@ if (v == "reduce") {
 Var = 
 (
 // 获取完整的面包屑标题
-const getCompleteTitleBymatched = (matched) => {
-	// 使用 reduce 时，请注意使用末参来初始化 previousValue 的值
-	return matched.reduce((previousValue, currentValue, index, array) => {
-        console.log(20180923065400, previousValue, currentValue, index, array)
-		// 累计标题
-		const title = previousValue + currentValue.meta.title
-		// 如果是最后一级目录，那么不需要 > 符号，也不需要灰色字体
-		return index === array.length - 1 ? title : <span class='is-gray'>${title} > </span>
+const getCompleteTitleBymatched = (arr) => {
+    // 使用 reduce 时，请注意使用末参来初始化 previousValue 的值
+	return arr.reduce((previousValue, currentValue, index, array) => {
+        return currentValue.join()
 	}, '')
 }
 )
@@ -261,14 +275,10 @@ return
 Var =
 (
 // 获取完整的面包屑标题
-const getCompleteTitleBymatched = (matched) => {
-	// 使用 reduce 时，请注意使用末参来初始化 previousValue 的值
-	return matched.reduce((previousValue, currentValue, index, array) => {
-        console.log(20180923065400, previousValue, currentValue, index, array)
-		// 累计标题
-		const title = previousValue + currentValue.meta.title
-		// 如果是最后一级目录，那么不需要 > 符号，也不需要灰色字体
-		return index === array.length - 1 ? title : `<span class='is-gray'>${title} > </span>`
+const getCompleteTitleBymatched = (arr) => {
+    // 使用 reduce 时，请注意使用末参来初始化 previousValue 的值
+	return arr.reduce((previousValue, currentValue, index, array) => {
+        return currentValue.join()
 	}, '')
 }
 )

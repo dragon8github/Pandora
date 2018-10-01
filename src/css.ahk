@@ -452,6 +452,9 @@ code(Var)
 return
 
 ::@font::
+::css.font::
+::fontfamily::
+::font.family::
 Var =
 (
 @font-face{
