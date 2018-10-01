@@ -346,7 +346,7 @@ Var =
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
     <style>
     </style>
     

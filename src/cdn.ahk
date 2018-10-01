@@ -2,9 +2,9 @@
 ::cdn-nicescroll::
 Var =
 (
-<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <!-- https://github.com/inuyaksa/jquery.nicescroll -->
-<script src="https://cdn.bootcss.com/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 )
 code(Var)
 return
@@ -25,7 +25,7 @@ return
 ::cdn-echart::
 Var =
 (
-<script src="https://cdn.bootcss.com/echarts/4.1.0/echarts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
 )
 code(Var)
 return
@@ -36,7 +36,7 @@ return
 Var =
 (
 <!-- https://github.com/facebook/prop-types -->
-<script src="https://cdn.bootcss.com/prop-types/15.6.1/prop-types.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.1/prop-types.min.js"></script>
 )
 code(Var)
 return
@@ -46,8 +46,8 @@ return
 Var =
 (
 <!-- https://www.bootcdn.cn/webuploader/ -->
-<script src="https://cdn.bootcss.com/webuploader/0.1.1/webuploader.min.js"></script>
-<link href="https://cdn.bootcss.com/webuploader/0.1.1/webuploader.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webuploader/0.1.1/webuploader.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/webuploader/0.1.1/webuploader.css" rel="stylesheet">
 )
 code(Var)
 return
@@ -56,7 +56,7 @@ return
 ::cdn-redux::
 Var =
 (
-<script src="https://cdn.bootcss.com/redux/4.0.0/redux.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0/redux.min.js"></script>
 )
 code(Var)
 return
@@ -78,7 +78,7 @@ return
 Var = 
 (
 <!-- https://github.com/marcuswestin/store.js -->
-<script src="https://cdn.bootcss.com/store.js/1.3.20/store.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/store.js/1.3.20/store.min.js"></script>
 )
 return
 
@@ -101,7 +101,7 @@ return
 Var = 
 (
 <!-- https://github.com/daneden/animate.css | https://daneden.github.io/animate.css/ | <h1 class="bounce animated">Example</h1> -->
-<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
 )
 code(Var)
 return
@@ -119,20 +119,20 @@ return
 ::cdn-font::
 Var =
 (
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 )
 code(Var)
 return
 
 ::cdn-axios::
-    SendRaw, <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+    SendRaw, <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 Return
 
 ::cdn-swiper::
 Var = 
 (
-<link href="https://cdn.bootcss.com/Swiper/4.2.2/css/swiper.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/Swiper/4.2.2/js/swiper.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.2/css/swiper.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.2/js/swiper.min.js"></script>
 )
 code(Var)
 Return
@@ -140,7 +140,7 @@ Return
 ::cdn-jquery3::
 Var = 
 (
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 )
 code(Var)
 Return
@@ -150,7 +150,7 @@ Return
 ::cdn-jquery::
 Var = 
 (
-<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 )
 code(Var)
 Return
@@ -159,7 +159,7 @@ Return
 ::cdn-vue::
 Var = 
 (
-<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
 )
 code(Var)
 Return
@@ -167,8 +167,8 @@ Return
 ::cdn-bs::
 Var = 
 (
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 )
 code(Var)
 Return
@@ -176,8 +176,8 @@ Return
 ::cdn-bootstrap::
 Var = 
 (
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 )
 code(Var)
 Return
@@ -185,7 +185,7 @@ Return
 ::cdn-reset::
 Var = 
 (
-<link href="https://cdn.bootcss.com/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
 )
 code(Var)
 return
@@ -193,7 +193,7 @@ return
 ::cdn-normalize::
 Var = 
 (
-<link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" rel="stylesheet">
 )
 code(Var)
 return
