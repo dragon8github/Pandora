@@ -2264,7 +2264,7 @@ fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + 
 // 比较浅色的rgb，适合白色字体
 randcolor () {
     const r = 100 + ~~(Math.random() * 100);
-    const g = 100 + ~~(Math.random() * 100);
+    const g = 135 + ~~(Math.random() * 100);
     const b = 100 + ~~(Math.random() * 100);
     return `rgb(${r}, ${g}, ${b})`
 }

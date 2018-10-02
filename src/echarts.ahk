@@ -1,3 +1,245 @@
+::echarts.pin::
+::echarts::yuan::
+Var =
+(
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+myChart.setOption({
+	title: {
+		text: '经营占道',
+		x: 'center',
+		y: 'bottom'
+	},
+	series: [{
+		name: '经营占道类型',
+		type: 'pie',
+		radius: '55`%',
+		center: ['50`%', '60`%'],
+		labelLine: {
+			normal: {
+				// 引导线的长度
+				length: 1
+			}
+		},
+		data: [
+			{ value: 1210, name: '店外经营占道' },
+			{ value: 1030, name: '流动经营占道' }
+		],
+		itemStyle: {
+			emphasis: {
+				shadowBlur: 10,
+				shadowOffsetX: 0,
+				shadowColor: 'rgba(0, 0, 0, 0.5)'
+			},
+			// normal 是图形在默认状态下的样式；emphasis是图形在高亮状态下的样式，比如在鼠标悬浮或者图例联动高亮时。
+			normal: {
+				// 饼图图形上的文本标签
+				label: { show: true },
+				// 标签的视觉引导线样式
+				labelLine: { show: true }
+			}
+		}
+	}],
+	color: ['#e76660', '#df4547']
+});
+)
+code(Var)
+return
+
+::echarts.bar::
+::echarts.zhu::
+::echarts.zhuzi::
+Var =
+(
+var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption({
+        title: {
+            text: '占用道路问题结构',
+            x: 'center',
+            align: 'right'
+        },
+        xAxis: {
+            data: ["经营占道", "垃圾占道", "车辆占道", "霸占车位", "其他占道"],
+            axisLine: {
+                lineStyle: {
+                    color: 'black',
+                    width: 0.5
+                }
+            },
+            axisLabel: {
+                interval: 0,
+                textStyle: {
+                    color: 'black',
+                    fontSize: 18
+                }
+            }
+        },
+        yAxis: {
+            splitLine: {
+                show: true
+            },
+            type: 'value',
+            axisLine: {
+                lineStyle: {
+                    width: 0
+                }
+            },
+            axisLabel: {
+                interval: 0,
+                textStyle: {
+                    color: 'black',
+                    fontSize: 14
+                }
+            }
+        },
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [2240, 1768, 1547, 600, 31],
+            barWidth: 25,
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        var colorList = ['#00a0e9', '#00a0e9 ', '#00a0e9 ', '#00a0e9 ', '#00a0e9'];
+                        return colorList[params.dataIndex]
+                    },
+                    label: {
+                        show: true,
+                        position: 'top',
+                        color: 'black',
+                        fontSize: 14,
+                        formatter: '{c}'
+                    },
+                    opacity: 0.4
+                },
+            },
+        }]
+    });
+)
+code(Var)
+return
+
+::echarts.line::
+::echarts.xian::
+Var =
+(
+var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        grid: { left: '12`%', right: '3`%', bottom: '35px', top: '35px', },
+        xAxis: [{
+            type: 'category',
+            axisTick: { show: false },
+            axisLine: { show: false, },
+            axisLabel: {
+                textStyle: {
+                    color: '#444444',
+                    fontSize: '16'
+                }
+            },
+            data: ['1月', '2月', '3月', '4月', '5月', '6月']
+        }],
+        yAxis: [{
+            type: 'value',
+            splitLine: {
+                lineStyle: {
+                    color: 'rgba(52,73,94, .23)',
+                    type: 'dashed'
+                },
+            },
+            axisTick: { show: false },
+            axisLine: { show: false, },
+            axisLabel: {
+                margin: '10',
+                textStyle: {
+                    color: '#444444',
+                    fontSize: '16',
+                    align: 'right',
+                    baseline: 'bottom'
+                }
+            }
+        }],
+        series: [{
+            type: 'line',
+            symbol: 'emptyCircle',
+            symbolSize: 7,
+            itemStyle: {
+                normal: {
+                    color: '#118cfe',
+                    lineStyle: {
+                        color: '#118cfe'
+                    }
+                }
+            },
+            label: {
+                show: true,
+                position: 'top',
+                distance: 8,
+                textStyle: {
+                    color: '#444444',
+                    fontSize: 18
+                }
+            },
+            data: [1020, 324, 1132, 1389, 1288, 1358],
+        }, ]
+    };
+    myChart.setOption(option);
+)
+code(Var)
+return
+
+
+::echarts.rose::
+::echarts.rosepin::
+Var =
+(
+var myChart = echarts.init(document.getElementById('main'));
+var data = [
+	{ value: 10, name: '就业保障类' },
+	{ value: 5, name: '其他类' },
+	{ value: 15, name: '城市建设类' },
+	{ value: 25, name: '民政救济类' },
+	{ value: 20, name: '市场监管类' },
+	{ value: 35, name: '市容城管类' },
+	{ value: 30, name: '公共安全类' },
+	{ value: 40, name: '公安消防类' }
+];
+var category = [];
+for (var i = 0; i < data.length; i++) {
+	category.push(data[i].name);
+}
+var option = {
+	legend: {
+		x: 'center',
+		y: 'bottom',
+		data: category
+	},
+	series: [{
+		type: 'pie',
+		radius: [25, 95],
+		center: ['50`%', 140],
+		roseType: 'area',
+		clockWise: false,
+		itemStyle: {
+			normal: {
+				label: {
+					formatter: [
+						'{b}', '占比{d}`%'
+					].join('\n'),
+					textStyle: {
+						color: '#000000',
+						fontSize: 16
+					}
+				},
+			}
+		},
+		data: data
+	}]
+};
+myChart.setOption(option);
+)
+code(Var)
+return
+
 ::echarts.options::
 ::echarts.option::
 ::ehcarts.opts::
