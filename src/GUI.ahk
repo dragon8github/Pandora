@@ -329,6 +329,7 @@ Gui, Add, Text, gNewNodePachong W140 ys x+40, 新建nodejs爬虫模板
 Gui, Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
 Gui, Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
 Gui, Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
+Gui, Add, Text, gNewNodejsSequelize W190, 新建nodejs-sequelize-mysql模板
 
 
 GuiEscape:
@@ -352,6 +353,63 @@ return
 	Gui, Show,, Simple Input Example
 return 
 */
+
+NewNodejsSequelize:
+name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+filename := name . "/index.js"
+FileCreateDir, %name%
+FileAppend,
+(
+// http://docs.sequelizejs.com/manual/installation/getting-started.html#setting-up-a-connection
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize('database', 'username', 'password', {
+    host: 'localhost',
+    port: 3306,
+    dialect: 'mysql',
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    },
+});
+
+sequelize.authenticate().then(() => {
+    console.log('Connection has been established successfully.');
+})
+.catch(err => {
+    console.error('Unable to connect to the database:', err);
+});
+
+
+const User = sequelize.define('user', {
+    firstName: { type: Sequelize.STRING },
+    lastName: { type: Sequelize.STRING },
+}, {
+	// 省略 createdAt 和 updateAt
+	timestamps: false
+});
+
+sequelize.sync({
+    force: true
+}).then(() => {
+	return User.create({
+        firstName: 'John',
+        lastName: 'Hancock'
+    })
+}).then(() => {
+    return User.find({
+        where: {
+            firstName: 'John'
+        }
+    })
+}).then(console.log)
+), %filename%
+RunWaitOne("cd " . name . " && npm init -y && npm i sequelize mysql2 -S")
+run, %name%
+RunBy(filename)
+return
 
 Newcreateareactapp:
 	name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec

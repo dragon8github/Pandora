@@ -15,11 +15,11 @@ FileDelete, .\src\*.bak
 #Include src/makedown.ahk   ; makedown
 #Include src/html.ahk       ; HTML    
 #Include src/vue.ahk        ; Vue
+#Include src/node.ahk       ; nodejs 
 #include src/css.ahk        ; css   
 #Include src/TypeScript.ahk ; TypeScript
 #Include src/tp.ahk		 	; thinkphp
 #Include src/js.ahk         ; JavaScript   
-#Include src/node.ahk       ; nodejs    
 #Include src/react.ahk      ; React
 #Include src/cdn.ahk        ; CDN   
 #Include src/php.ahk        ; php   

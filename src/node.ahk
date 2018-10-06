@@ -1,4 +1,69 @@
-﻿::node.dir::
+﻿::sequelize.create::
+::sequelize.define::
+::sequelize.sync::
+::sequelize.user::
+Var =
+(
+// 模型定义API：http://docs.sequelizejs.com/manual/tutorial/models-definition.html
+const User = sequelize.define('user', {
+    firstName: { type: Sequelize.STRING },
+    lastName: { type: Sequelize.STRING },
+}, {
+	// 省略 createdAt 和 updateAt
+	timestamps: false
+});
+
+sequelize.sync({
+    force: true
+}).then(() => {
+	return User.create({
+        firstName: 'John',
+        lastName: 'Hancock'
+    })
+}).then(() => {
+    return User.find({
+        where: {
+            firstName: 'John'
+        }
+    })
+}).then(console.log)
+)
+code(Var)
+return
+
+::node.db::
+::node.mysql::
+::node.mysql2::
+::node.sequelize::
+::sequelize.init::
+::sequelize.connect::
+Var =
+(
+const Sequelize = require('sequelize');
+
+const connect = new Sequelize('database', 'username', 'password', {
+    host: 'localhost',
+    port: 3306,
+    dialect: 'mysql',
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    },
+});
+
+connect.authenticate().then(() => {
+    console.log('Connection has been established successfully.');
+})
+.catch(err => {
+    console.error('Unable to connect to the database:', err);
+});
+)
+code(Var)
+return
+
+::node.dir::
 ::node.ls::
 Var =
 (
