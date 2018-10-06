@@ -1,4 +1,27 @@
-﻿::cdn-scroll::
+﻿::cdn-3d::
+::cdn-three::
+::cdn-threejs::
+Var =
+(
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
+)
+code(Var)
+return
+
+
+::cdn-req::
+::cdn-require::
+::cdn-requirejs::
+::cdn-require.js::
+Var =
+(
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+)
+code(Var)
+return
+
+
+::cdn-scroll::
 ::cdn-nicescroll::
 Var =
 (
@@ -11,12 +34,16 @@ return
 
 ::cdn-bd::
 ::cdn-bdmap::
+::cdn-bmap::
 ::cdn-echartbd::
 ::cdn-echartsbd::
 Var =
 (
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
 <script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+<!-- 聚合图相关的插件 -->
+<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
 )
 code(Var)
 return

@@ -1,3 +1,41 @@
+::echarts.dian::
+::echarts.sandian::
+Var =
+(
+const createPoints = (data, name) => {
+   // 散点基本配置
+   const config = {
+      type: 'effectScatter',
+      coordinateSystem: 'geo',
+      // symbol: 'diamond',
+      zlevel: 2, 
+      showEffectOn: 'render',
+      hoverAnimation: true,
+      symbolSize: 8,
+      // rippleEffect: {
+      //   period: 15, scale: 6, brushType: 'fill'
+      // },
+      itemStyle: {
+          normal: {
+              color: function(params){
+                  return levelColorMap[params.value && params.value.length >= 3 && params.value[3] || 'C'];
+              },
+              shadowBlur: 10,
+              shadowColor: '#333'
+          }
+      },
+      data: data
+  }
+  if (name) {
+      config.name = name
+  }
+  // 返回配置
+  return config;
+}
+)
+code(Var)
+return
+
 ::echarts.pin::
 ::echarts::yuan::
 Var =
