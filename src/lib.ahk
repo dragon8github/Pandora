@@ -50,7 +50,10 @@ arrincludes(myarr, v) {
 RunBy(name) {
     myIdea := "C:\Program Files\Sublime Text 3\sublime_text3.exe"
     if (!FileExist(myIdea)) {
-        myIdea := "notepad"
+        myIdea := "C:\Program Files\Sublime Text 3\sublime_text.exe"
+         if (!FileExist(myIdea)) {
+            myIdea := "notepad"
+         }
     }
     Run, %myIdea% %name%
 }

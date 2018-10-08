@@ -155,7 +155,7 @@ Me.version() # 1.0
 code(Var)
 return
 
-::pr::
+::prr::
 	t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
     SendInput, print(%t%, )`{left 1}
 return

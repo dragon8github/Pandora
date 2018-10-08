@@ -1,4 +1,21 @@
-﻿::vue.js::
+﻿::vue.cw::
+Var =
+(
+computed: {
+    reportType () {
+        return this.$store.state.reportType
+    }
+},
+watch: {
+    reportType (newV, oldV) {
+        this.go()
+    }
+},
+)
+code(Var)
+return
+
+::vue.js::
 ::vue.instance::
 Var =
 (
@@ -295,6 +312,12 @@ export default {
   },
   components: {
 
+  },
+  computed: {
+  
+  },
+  watch: {
+  
   },
   beforeMount () {
       console.log(%t%, 'test');

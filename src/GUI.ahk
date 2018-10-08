@@ -382,7 +382,7 @@ sequelize.authenticate().then(() => {
     console.error('Unable to connect to the database:', err);
 });
 
-
+// 第一次没有表的时候需要同步来创建
 const User = sequelize.define('user', {
     firstName: { type: Sequelize.STRING },
     lastName: { type: Sequelize.STRING },
@@ -481,6 +481,7 @@ FileAppend,
 </html>
 ),  %name%
 RunBy(name)	
+run, % name
 return
 
 NewEchartsBarHtml:
@@ -572,6 +573,7 @@ FileAppend,
 </html>
 ),  %name%
 RunBy(name)	
+run, % name
 return
 
 NewEchartsLineHtml: 
@@ -659,6 +661,7 @@ FileAppend,
 </html>
 ),  %name%
 RunBy(name)	
+run, % name
 return
 
 NewEchartsPinHtml:
@@ -729,6 +732,7 @@ FileAppend,
 </html>
 ),  %name%
 RunBy(name)
+run, % name
 return
 
 NewreactbabelHtml:
@@ -977,6 +981,7 @@ $(function() {
 </html>
 ),  %name%
 RunBy(name)
+run, % name
 return
 
 NewIndexHtml:
@@ -1075,6 +1080,7 @@ FileAppend,
 </html>
 ),  %name%
 RunBy(name)
+run, % name
 return
 
 CancelSelect:

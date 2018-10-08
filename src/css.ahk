@@ -874,7 +874,7 @@ Return
 	SendInput, padding-left: px`;{left 3}
 Return
 
-::prr::
+::pr::
 	SendInput, padding-right: px`;{left 3}
 Return
 

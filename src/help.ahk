@@ -58,12 +58,15 @@ return
 return
 
 
+
 ~!+l::
+
 Clipboard := 
 Send, ^c
 ClipWait
 MyVar := Clipboard
 V := ""
+repeatArr := []
 Loop, parse, MyVar, `n, `r
 {
 	if (StrLen(A_LoopField) and InStr(A_LoopField, " class")) {
@@ -74,10 +77,22 @@ Loop, parse, MyVar, `n, `r
 
 		; MsgBox, %spaceValue1%
 		; MsgBox, %OutputVar1%
-		
-		V .= spaceValue1 . "." . OutputVar1 . " {" . "`r`n"
-		V .= spaceValue1 . "`t" . "`r`n"
-		V .= spaceValue1 . "}" . "`r`n`r`n"
+        
+        ; 如果没有重复的话
+        if (arrincludes(repeatArr, OutputVar1) == false) {
+            ; 先加入到数组中
+            repeatArr.Push(OutputVar1)
+            
+            ; 先去掉左右空白符
+            data := Trim(OutputVar1)
+            s := StrSplit(data, A_Space)
+            Loop % s.MaxIndex() {
+                D := s[a_index]
+                V .= spaceValue1 . "." . D . " {" . "`r`n"
+                V .= spaceValue1 . "`t" . "`r`n"
+                V .= spaceValue1 . "}" . "`r`n`r`n"
+            }
+        }
 	}
 }
 Clipboard := V
@@ -362,7 +377,7 @@ return
 
 
 !l:: 
-    lifeArray := ["beforeCreate", "created", "beforeMount", "mounted", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate", "", "", "primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥992px)", "lg —— 大屏幕 大桌面显示器 (≥1200px)" "", "", "",  "public", "private", "protected"]
+    lifeArray := ["beforeMount", "beforeCreate", "created", "mounted", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate", "", "", "primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥992px)", "lg —— 大屏幕 大桌面显示器 (≥1200px)" "", "", "",  "public", "private", "protected"]
     Loop % lifeArray.MaxIndex() {
         this_life := lifeArray[a_index]
         Menu, LifeMenu, Add, %this_life%, MenuHandlerlifeArray

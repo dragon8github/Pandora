@@ -1,5 +1,7 @@
 ﻿::sequelize.create::
+::sequelize.createmodel::
 ::sequelize.define::
+::sequelize.definemodel::
 ::sequelize.sync::
 ::sequelize.user::
 Var =
@@ -13,6 +15,9 @@ const User = sequelize.define('user', {
 	timestamps: false
 });
 
+// 第一次没有表的时候需要同步来创建
+// http://docs.sequelizejs.com/manual/tutorial/instances.html
+// 官方还有两种额外的做法，一种是先build一个实例，然后save()，一种是直接create
 sequelize.sync({
     force: true
 }).then(() => {

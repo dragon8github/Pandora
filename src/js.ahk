@@ -13,6 +13,28 @@ var array2str = (arr) => {
 code(Var)
 return
 
+::xiaoshudian::
+::douhao::
+Var =
+(
+function toThousands(num) {
+    var result = [],
+        counter = 0;
+    num = (num || 0).toString().split('');
+    for (var i = num.length - 1; i >= 0; i--) {
+        counter++;
+        result.unshift(num[i]);
+        if (!(counter `% 3) && i != 0) { result.unshift(','); }
+    }
+    return result.join('');
+}
+
+// 保留小數點后2位
+Number((这里是你的值).toString().match(/^\d+(?:\.\d{0,2})?/))
+)
+code(Var)
+return
+
 ::addclick::
 ::onclick::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
@@ -286,6 +308,8 @@ code(Var)
 return
 
 ::date2::
+::date.week::
+::date.all::
 Var =
 (
 var date = new Date()
@@ -295,7 +319,7 @@ var day = date.getDate()
 var hours = date.getHours()
 var minu = date.getMinutes()
 var second = date.getSeconds()
-var week = ['', '星期一','星期二','星期三','星期四','星期五','星期六','星期七'][date.getDay()]
+var week = ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'][date.getDay()]
 var arr = [hours, minu, second].map(item => item < 10 ? "0" + item : item)
 console.log(``${year}年${month}月${day}日 ${week} ${arr[0]}:${arr[1]}:${arr[2]}``)
 )
@@ -2171,6 +2195,7 @@ code(Var)
 Return
 
 >!m::
+::.map::
 Var =
 (
 .map(function (v, index, array) {
