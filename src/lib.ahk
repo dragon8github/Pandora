@@ -36,6 +36,22 @@ MsgBox, %InputLocaleID%
 return
 */
 
+tip(title="", content="") {
+    TrayTip, %title%, %content%,,16
+    Sleep, 3000
+    HideTrayTip()
+}
+
+; Copy this function into your script to use it.
+HideTrayTip() {
+    TrayTip  ; Attempt to hide it the normal way.
+    if SubStr(A_OSVersion,1,3) = "10." {
+        Menu Tray, NoIcon
+        Sleep 200  ; It may be necessary to adjust this sleep.
+        Menu Tray, Icon
+    }
+}
+
 arrincludes(myarr, v) {
 	b := false
 	For key, value in myarr {
@@ -84,9 +100,9 @@ ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
     
     if (q==false) {
         if (whr.ResponseText) {
-            TrayTip, 下载成功, （づ￣3￣）づ╭?～ , 20, 17
+            tip("下载成功")
         } else {
-            TrayTip, 无内容返回, (￣ε(#￣)☆╰╮o(￣皿￣///) , 20, 17
+            tip("无内容返回")
         }
     }
     

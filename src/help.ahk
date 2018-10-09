@@ -60,7 +60,6 @@ return
 
 
 ~!+l::
-
 Clipboard := 
 Send, ^c
 ClipWait
@@ -96,7 +95,7 @@ Loop, parse, MyVar, `n, `r
 	}
 }
 Clipboard := V
-TrayTip, 生成完毕, 已将生成代码加入到剪切板中
+tip("生成完毕", "已将生成代码加入到剪切板中")
 return
 
 
@@ -351,6 +350,15 @@ return
     SendRaw, http://www.baidu.com
 return
 
+^!o::
+    str := Trim(Clipboard)
+    If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") ) {
+        RUN, % str
+    } else {
+        RUN, https://www.baidu.com/s?wd=%str%
+    }
+return
+
 !o::
     tmp := Clipboard
     Clipboard := 
@@ -521,8 +529,8 @@ Return
         return 
     }
     ; 百度翻译API
-    Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=_", true)
-    TrayTip, 翻译成功, 翻译结果为： %Var%, 20, 17
+    Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=_")
+    tip("翻译成功", "翻译结果为： " . Var)
     ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
     Clipboard := Var
 Return
