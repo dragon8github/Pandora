@@ -571,9 +571,9 @@ Return
 
 ::ip::
 if (A_IPAddress2 == "0.0.0.0") {
-    SendInput, % A_IPAddress1
+    code(A_IPAddress1)
 } else { 
-    SendInput, % A_IPAddress2
+    code(A_IPAddress2)
 }
 return
 
@@ -695,15 +695,18 @@ return
     Send, JavaScript
 return
 
+; 不知道从什么时候开始，大写的C盘写不出来了。这里我用小写吧无所谓，反正window不区分大小写
 ::desk::
 ::desktop::
-    SendRaw, %A_Desktop%
+    StringLower, str, A_Desktop
+    SendInput, %str%
 return
 
 ::desk/::
 ::desktop/::
     Var := StrReplace(A_Desktop, "\", "/")
-    SendRaw, %Var%
+    StringLower, str, Var
+    SendRaw, %str%
 return
 
 
