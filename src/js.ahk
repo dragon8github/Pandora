@@ -158,13 +158,10 @@ Var =
 if (v == "reduce") {
 Var = 
 (
-// 获取完整的面包屑标题
-const getCompleteTitleBymatched = (arr) => {
-    // 使用 reduce 时，请注意使用末参来初始化 previousValue 的值
-	return arr.reduce((previousValue, currentValue, index, array) => {
-        return currentValue.join()
-	}, '')
-}
+.reduce((previousValue, currentValue, index, array) => {
+    return previousValue + currentValue
+// 请注意使用末参来初始化 previousValue 的值
+}, 0)
 )
 }
 
@@ -291,18 +288,15 @@ code(Var)
 return
 
 
-
+::.reduce::
 ::reduce::
 ::reduces::
 Var =
 (
-// 获取完整的面包屑标题
-const getCompleteTitleBymatched = (arr) => {
-    // 使用 reduce 时，请注意使用末参来初始化 previousValue 的值
-	return arr.reduce((previousValue, currentValue, index, array) => {
-        return currentValue.join()
-	}, '')
-}
+.reduce((previousValue, currentValue, index, array) => {
+    return previousValue + currentValue
+// 请注意使用末参来初始化 previousValue 的值
+}, 0)
 )
 code(Var)
 return
@@ -3657,8 +3651,28 @@ function countDown ($dom) {
 code(Var)
 return
 
-::hanzi::
 ::maybe::
+Var =
+(
+var maybe = (fn, n) => { 
+   try { 
+      return fn() || n 
+   } catch (err) {
+      return n 
+   }
+}
+
+var obj = {
+ a: 123
+}
+maybe(_=> obj.a, 0); // 123
+maybe(_=> obj.b, 0); // 0
+maybe(_=> obj.a.b.s.w.holy.shit.fuck.god, 0); // 0
+)
+code(Var)
+return
+
+::hanzi::
 Var =
 (
 var MayBe = function (val) {

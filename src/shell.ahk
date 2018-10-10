@@ -39,6 +39,8 @@ return
 Var =
 (
 find ./ -maxdepth 2 -name ".git" -prune -o -name ".gitignore" -prune -o -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g' > FUCK.MD
+# 过滤了一些不需要打印的东西
+find ./ -iregex './\.\(.*\)'  -prune -o -iregex '\./node_modules'  -prune -o -iregex '.*\.\(md\|png\|jpg\|gif\|otf\|TTF)' -prune -o -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g' > FUCK.MD
 )
 code(Var)
 return
@@ -298,6 +300,11 @@ if (v == "正则表达式：-regex/-iregex") {
 Var = 
 (
 find ./ -iregex '.*\.\(png\|svg\)$'
+# 请注意点：
+# 1、 一定要输入路径符号 "." 或者 "./"
+# 2、 一些正则符号如 () 或 | 都需要反斜杠转义
+# 3、以下demo查询条件分别是： （1）所有.开头的文件，(2) ./node_modules文件夹 （3） md和图片文件
+find ./ -maxdepth 1 -iregex './\.\(.*\)' -o -iregex '\./node_modules' -o -iregex '.*\.\(md\|png\|jpg\|gif\|otf\|TTF)'
 )
 }
 

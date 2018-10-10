@@ -1,4 +1,16 @@
-﻿::vue.cw::
+﻿::vue.c::
+Var =
+(
+computed: {
+    hotcounselling () {
+      return this.$store.state.departmental.hotcounselling
+    }
+},
+)
+code(Var)
+return
+
+::vue.cw::
 Var =
 (
 computed: {
@@ -64,8 +76,14 @@ Var =
 (
 // 全局Mixin，任何一个组件都会被影响，无论是页面、入口、还是组件
 Vue.mixin({
-  created: function () {
-    console.log(20180929205251, 123)
+  methods: {
+	maybe () {
+		try { 
+		   return fn() || n 
+		} catch (err) {
+		   return n 
+		}
+	}
   }
 })
 )
