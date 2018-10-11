@@ -825,20 +825,36 @@ return
 ::formdata::
 ::obj2formdata::
 ::json2formdata::
+::obj2form::
 Var =
 (
+// https://github.com/github/fetch#file-upload
+// fetch('/avatars', { method: 'POST', body: data })
+export const obj2formdata = (json) => {
+  var data = new FormData()
+  if (json) {
+    Object.keys(json).forEach(function (key) {
+        data.append(key, json[key])
+    });
+  } 
+  return data
+}
+
 // 将对象转化为formdata格式
 // 也就是application/x-www-form-urlencoded;charset=utf-8提交格式
 // 如何使用formData提交参考：https://www.cnblogs.com/CyLee/p/9441535.html
-var obj2formdata = (body) => {
-	let formparams = '';
-	Object.keys(body).forEach(key => {
-		 if (formparams.length > 0) {
-		   formparams += '&';
-		 }
-		 formparams = formparams + key + '=' + body[key];
-	});
-	return formparams
+export const obj2formdatastr = (body) => {
+  if (body) {
+      let formparams = '';
+      Object.keys(body).forEach(key => {
+         if (formparams.length > 0) {
+           formparams += '&';
+         }
+         formparams = formparams + key + '=' + body[key];
+      });
+      return formparams
+  }
+  return ''
 }
 )
 code(Var)
@@ -2145,10 +2161,12 @@ code(Var)
 return
 
 ::.then::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
-.then(response => { 
-	return response.json()	
+.then(response => {
+	// console.log(%t%, response.json())
+    return response.json()
 })
 )
 code(Var)
@@ -3169,35 +3187,6 @@ function formatRemainTime(endTime) {
         s = Math.floor(t / 1000 `% 60);
     }
     return d + "天 " + h + "小时 " + m + "分钟 " + s + "秒";
-}
-)
-code(Var)
-return
-
-
-::obj2form::
-Var = 
-(
-/**
- * 
- * @desc   对象序列化
- * @param  {Object} obj 
- * @return {String}
- */
-function stringfyQueryString(obj) {
-    if (!obj) return '';
-    var pairs = [];
-    for (var key in obj) {
-        var value = obj[key];
-        if (value instanceof Array) {
-            for (var i = 0; i < value.length; ++i) {
-                pairs.push(encodeURIComponent(key + '[' + i + ']') + '=' + encodeURIComponent(value[i]));
-            }
-            continue;
-        }
-        pairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]));
-    }
-    return pairs.join('&');
 }
 )
 code(Var)

@@ -36,20 +36,14 @@ MsgBox, %InputLocaleID%
 return
 */
 
-tip(title="", content="") {
-    TrayTip, %title%, %content%,,16
-    Sleep, 3000
-    HideTrayTip()
+
+tip(title=" ", content=" ") {
+    TrayTip, %title%, %content%, 20 ,16
+    SetTimer, _HideTrayTip, 1500
 }
 
-; Copy this function into your script to use it.
-HideTrayTip() {
-    TrayTip  ; Attempt to hide it the normal way.
-    if SubStr(A_OSVersion,1,3) = "10." {
-        Menu Tray, NoIcon
-        Sleep 200  ; It may be necessary to adjust this sleep.
-        Menu Tray, Icon
-    }
+_HideTrayTip() {  ; NOTE: For Windows 10, replace this function with the one defined above.
+    TrayTip
 }
 
 arrincludes(myarr, v) {

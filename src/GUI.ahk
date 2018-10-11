@@ -61,10 +61,10 @@ Gui, Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
 
 Gui, Add, Text,  W140 ys, 娱乐:
 Gui, Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
-Gui, Add, Link,, <a href="http://www.dilidili.wang/">无名小站</a>
 Gui, Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
 Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lion大帝魔兽</a>
 Gui, Add, Link,, <a href="http://www.hanhande.com/">憨憨电影</a>
+Gui, Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
 
 Gui, Add, Text,  W140 ys, 代理IP:
 Gui, Add, Link,, <a href="http://www.xicidaili.com/nn">西刺</a>

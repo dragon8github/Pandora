@@ -529,8 +529,8 @@ Return
         return 
     }
     ; 百度翻译API
-    Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=_")
-    tip("翻译成功", "翻译结果为： " . Var)
+    Var := ajax("http://119.23.22.136:6635/baidu_transapi.php?text=" . Clipboard . "&type=_", true)
+    tip("翻译成功", "【" . Clipboard . "】 的翻译结果为： " . Var)
     ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
     Clipboard := Var
 Return

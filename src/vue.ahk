@@ -1,4 +1,17 @@
-﻿::vue.c::
+﻿::vue.style::
+Var =
+(
+<style lang='scss' scoped>
+@import '~@/scss/functions.scss';
+.test {
+    
+}
+</style>
+)
+code(Var)
+return
+
+::vue.c::
 Var =
 (
 computed: {
@@ -132,7 +145,7 @@ let state = {
 }
 
 const actions = {
-  setAppData ({ commit, state, dispatch }, data) {
+  setAppData ({ commit, state, dispatch, rootState }, data) {
 	   commit('SET_APP_DATA', data.userInfo)
   }
 }
