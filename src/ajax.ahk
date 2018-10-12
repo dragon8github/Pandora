@@ -1,6 +1,6 @@
+ï»¿::ajax::
 AppsKey & a::
 >^a::
-::ajax::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
@@ -19,7 +19,7 @@ $.ajax({
         console.log(%t%, data);
     },
     error: function(e, m){
-       console.log('Êı¾İ½Ó¿ÚÇëÇóÒì³£', e, m);
+       console.log('æ•°æ®æ¥å£è¯·æ±‚å¼‚å¸¸', e, m);
     }
 })
 )
@@ -27,13 +27,11 @@ code(Var)
 Return
 
 ::xhrajax::
-::_ajax::
 ::xhr::
-::_xhr::
 Var =
 (
 var request = new XMLHttpRequest();
-// ÓÉÓÚrequest.Send() Ö»ÄÜ·¢ËÍPOST²ÎÊı£¬ËùÒÔÈç¹ûÄãÏëÊ¹ÓÃGETÇëÇó£¬¾Í²»ÒªÊ¹ÓÃSend£¨£©À´´«µİ²ÎÊı£¬¶øÊÇÖ±½ÓÔÚURLºóÆ´½Ó²ÎÊı¼´¿É¡£
+// ç”±äºrequest.Send() åªèƒ½å‘é€POSTå‚æ•°ï¼Œæ‰€ä»¥å¦‚æœä½ æƒ³ä½¿ç”¨GETè¯·æ±‚ï¼Œå°±ä¸è¦ä½¿ç”¨Sendï¼ˆï¼‰æ¥ä¼ é€’å‚æ•°ï¼Œè€Œæ˜¯ç›´æ¥åœ¨URLåæ‹¼æ¥å‚æ•°å³å¯ã€‚
 request.open('POST', '/my/url', true);
 request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
@@ -83,37 +81,36 @@ return
 ::postform::
 Var =
 (
-// ÆäËûformÌá½»·½Ê½£¨Èça=b&c=d£©Çë²Î¿¼£ºhttps://www.cnblogs.com/CyLee/p/9441535.html
-$(function(){
-  var formData = new FormData();
-  formData.append("username", "Groucho");
-  formData.append("accountnum", 123456);
+// æ›´å¤šformæäº¤æ–¹å¼ï¼Œè¯·å‚è€ƒï¼šhttps://www.cnblogs.com/CyLee/p/9441535.html
 
-  $.ajax({
-      url: "http://fuckyou.com/test.php",
-      type: "post",
-      data: formData,
-      processData:false,
-      contentType:false,
-      success: function (data) {
-          console.log(data);
-      }
-  })
+// FormDataçš„æäº¤æ–¹å¼
+var formData = new FormData();
+formData.append("username", "Groucho");
+formData.append("accountnum", 123456);
+
+// å¦‚æœæ˜¯ä¸€ä¸ªå¯¹è±¡éœ€è¦è½¬åŒ–æˆFormDataä¹Ÿå¯ä»¥ä½¿ç”¨è¿™ç§
+const obj2formdata = (json) => {
+  var data = new FormData()
+  if (json) {
+    Object.keys(json).forEach(function (key) {
+        data.append(key, json[key])
+    });
+  }
+  return data
+}
+
+$.ajax({
+  url: "http://fuckyou.com/test.php",
+  type: "post",
+  data: formData,
+  processData:false,
+  contentType:false,
+  success: function (data) {
+	  console.log(data);
+  }
 })
-)
-code(Var)
-return
 
-::formajax2::
-::formstringajax::
-::formstrajax::
-::formobjajax::
-::ajaxformstring::
-::ajaxformstr::
-::ajaxformobj::
-::form.ajax2::
-Var =
-(
+// å‚æ•°ä¸ºå­—ç¬¦ä¸²ï¼Œå¦‚ï¼ša=b&c=d æ–¹å¼çš„æäº¤æ–¹å¼ã€‚
 var obj2formdata = (body) => {
     let formparams = '';
     Object.keys(body).forEach(key => {
