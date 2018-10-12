@@ -24,6 +24,7 @@ code(Var)
 return
 
 ::vue.cw::
+::vue.wc::
 Var =
 (
 computed: {

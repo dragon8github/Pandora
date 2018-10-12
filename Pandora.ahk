@@ -15,11 +15,13 @@ FileDelete, .\src\*.bak
 #Include src/makedown.ahk   ; makedown
 #Include src/html.ahk       ; HTML    
 #Include src/vue.ahk        ; Vue
+#Include src/shell.ahk      ; shell
 #Include src/node.ahk       ; nodejs 
 #include src/css.ahk        ; css   
 #Include src/TypeScript.ahk ; TypeScript
 #Include src/tp.ahk		 	; thinkphp
 #Include src/js.ahk         ; JavaScript   
+#Include src/ajax.ahk         ; ajax   
 #Include src/react.ahk      ; React
 #Include src/cdn.ahk        ; CDN   
 #Include src/php.ahk        ; php   
@@ -27,7 +29,6 @@ FileDelete, .\src\*.bak
 #Include src/ht.ahk         ; ht-elementUI库   
 #Include src/Lua.ahk        ; secondkey_board  
 #Include src/gulp.ahk       ; gulp
-#Include src/shell.ahk      ; shell
 #Include src/docker.ahk     ; docker
 #Include src/python.ahk		; python
 #Include src/echarts.ahk	; echarts
