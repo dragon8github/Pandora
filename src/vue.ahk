@@ -1,4 +1,179 @@
-﻿::vue.style::
+﻿!v::
+
+  Menu, VueMenu, Add, vuex.init, VueHandler
+  Menu, VueMenu, Add, vuex.modules, VueHandler
+  Menu, VueMenu, Add, this.$store.dispatch, VueHandler
+  Menu, VueMenu, Add, this.$store.state.departmental, VueHandler
+  Menu, VueMenu, Add, vue.computed, VueHandler
+  Menu, VueMenu, Add, vue.watch, VueHandler
+  Menu, VueMenu, Add, vue.watch-vuex, VueHandler
+  Menu, VueMenu, Add, vue.data, VueHandler
+  Menu, VueMenu, Add, vue.style, VueHandler
+  Menu, VueMenu, Add, this.$store.dispatch, VueHandler
+  Menu, VueMenu, Add, this.$router.push('index'), VueHandler
+
+
+	Menu, VueMenu, Show
+	Menu, VueMenu, DeleteAll
+return
+
+VueHandler:
+; MsgBox You selected  from the menu .
+v := A_ThisMenuItem
+Var :=
+
+if (v == "") {
+
+}
+
+if (v == "vuex.init") {
+Var = 
+(
+import Vue from 'vue'
+import Vuex from 'vuex'
+import user from './modules/user'
+import mutations from './mutations.js'
+import * as actions from './actions'
+import * as getters from './getters'
+import * as state from './state.js'
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  strict: false,
+  state,
+  getters,
+  actions,
+  mutations,
+  modules: {
+    user
+  },
+})
+
+export default store
+)
+}
+if (v == "vuex.modules") {
+Var = 
+(
+let state = {
+    AppData: {}
+}
+
+const actions = {
+  setAppData ({ commit, state, dispatch, rootState }, data) {
+     commit('SET_APP_DATA', data.userInfo)
+  }
+}
+
+const mutations = {
+  SET_APP_DATA (state, userInfo) {
+    return state.AppData = userInfo
+  }
+},
+
+const getters = {
+  AppData (state) {
+    return state.AppData;
+  }
+}
+export default {
+  namespaced: true,
+  state,
+  mutations,
+  actions,
+  getters,
+}
+)
+}
+
+if (v == "this.$store.dispatch") {
+Var = 
+(
+this.$store.dispatch
+)
+}
+if (v == "this.$store.state.departmental") {
+Var = 
+(
+this.$store.state.departmental
+)
+}
+if (v == "vue.computed") {
+Var = 
+(
+computed: {
+  departmentalProblemRanking () {
+    return this.$store.state.overallSituation.departmentalProblemRanking
+  }
+},
+)
+}
+if (v == "vue.watch") {
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var = 
+(
+watch: {
+    proportionofclassificationproblem (newV, oldV) {
+        console.log(%t%, newV)
+    }
+},
+)
+}
+if (v == "vue.watch-vuex") {
+Var = 
+(
+computed: {
+    reportType () {
+        return this.$store.state.reportType
+    }
+},
+watch: {
+    reportType (newV, oldV) {
+        this.go()
+    }
+},
+)
+}
+if (v == "vue.data") {
+Var = 
+(
+data () {
+  return {
+      items: [],
+      title: 'HelloWorld'
+  }
+},
+)
+}
+if (v == "vue.style") {
+Var = 
+(
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.test {
+
+}
+</style>
+)
+}
+if (v == "this.$router.push('index')") {
+Var = 
+(
+this.$router.push('index')
+)
+}
+if (v == "this.$store.dispatch") {
+Var = 
+(
+this.$store.dispatch('deparmental/departmentalProblemRanking')
+)
+}
+
+code(Var)
+return
+
+::vue.style::
 Var =
 (
 <style lang='scss' scoped>
