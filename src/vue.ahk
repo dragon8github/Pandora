@@ -4,11 +4,13 @@
   Menu, VueMenu, Add, vuex.modules, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$store.state.departmental, VueHandler
+  Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, vue.computed, VueHandler
   Menu, VueMenu, Add, vue.watch, VueHandler
   Menu, VueMenu, Add, vue.watch-vuex, VueHandler
   Menu, VueMenu, Add, vue.data, VueHandler
   Menu, VueMenu, Add, vue.style, VueHandler
+  Menu, VueMenu, Add, v-for, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$router.push('index'), VueHandler
 
@@ -24,6 +26,62 @@ Var :=
 
 if (v == "") {
 
+}
+
+if (v == "vue.init") {
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var = 
+(
+<template>
+    <div class="%OutputVar%">
+        test
+    </div>
+</template>
+
+<script>
+export default {
+  name: '%OutputVar%',
+  data () {
+    return {
+        items: [],
+        title: 'HelloWorld'
+    }
+  },
+  methods: {
+      go () {
+          console.log('go');
+      }
+  },
+  components: {
+
+  },
+  computed: {
+  
+  },
+  watch: {
+  
+  },
+  beforeMount () {
+      console.log(%t%, '%OutputVar%');
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.%OutputVar% {
+
+}
+</style>
+)
+}
+
+if (v == "v-for") {
+Var = 
+(
+v-for='(item, index) in items' :key='item'
+)
 }
 
 if (v == "vuex.init") {
@@ -495,18 +553,19 @@ code(Var)
 return
 
 >!v::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
 <template>
-    <div class="test">
+    <div class="%OutputVar%">
         test
     </div>
 </template>
 
 <script>
 export default {
-  name: 'test',
+  name: '%OutputVar%',
   data () {
     return {
         items: [],
@@ -528,14 +587,14 @@ export default {
   
   },
   beforeMount () {
-      console.log(%t%, 'test');
+      console.log(%t%, '%OutputVar%');
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "~@/scss/functions.scss";
-.test {
+.%OutputVar% {
 
 }
 </style>

@@ -1,4 +1,14 @@
-﻿::api.open::
+﻿::ahk.enter::
+::ahk.input::
+::ahk.msgbox::
+Var =
+(
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+)
+code(Var)
+return
+
+::api.open::
 ::api.sw::
 ::apisw::
 Var =

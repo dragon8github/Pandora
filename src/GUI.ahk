@@ -53,6 +53,7 @@ Gui, Add, Link,, <a href="http://e.xitu.io/">掘金前端</a>
 Gui, Add, Link,, <a href="https://www.aliyun.com/">阿里云</a>
 
 Gui, Add, Text,  W140 ys, 其他:
+Gui, Add, Link,, <a href="http://www.baidu.com">百度</a>
 Gui, Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</a>
 Gui, Add, Link, gInspect ,  <a>安卓/Nodejs调试</a>
 Gui, Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AutoHotkey官网</a>
@@ -67,7 +68,7 @@ Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lion大帝魔兽</
 Gui, Add, Link,, <a href="http://www.hanhande.com/">憨憨电影</a>
 Gui, Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
 
-Gui, Add, Text, W140 ys, 站长工具：
+Gui, Add, Text, W160 ys, 常用工具：
 Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/js">在线代码格式化</a>
 Gui, Add, Link,, <a href="http://tool.oschina.net/highlight">在线代码着色</a>
 Gui, Add, Link,, <a href="https://tool.lu/html/">tool.lu压缩</a>
@@ -79,8 +80,10 @@ Gui, Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
 Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
+Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">Vue 资源大全</a>
 
-Gui, Add, Text, W140 Section xs yp+120, cdn：
+
+Gui, Add, Text, W140 Section xs yp+80, cdn：
 Gui, Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Add, Link,, <a href="https://www.cdnjs.net/">百度cdn</a>
 Gui, Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
@@ -176,6 +179,10 @@ Gui, Add, Link,, <a href="https://preview.pro.ant.design/#/dashboard/analysis">A
 Gui, Add, Link,, <a href="https://github.com/ant-design/ant-design-pro">Ant-Design-pro-Github</a>
 Gui, Add, Link,, <a href="http://antv.alipay.com/zh-cn/index.html">antv可视化图表</a>
 Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-design精选插件</a>
+
+Gui, Add, Text,  W160 ys, vuetifyjs
+Gui, Add, Link,, <a href="https://github.com/vuetifyjs/vuetify">vuetify</a>
+Gui, Add, Link,, <a href="https://github.com/vuetifyjs/nuxt">vuetifyjs/nuxt</a>
 
 Gui, Tab, 4
 Gui, Add, Text,  W140 Section, 高德地图：
