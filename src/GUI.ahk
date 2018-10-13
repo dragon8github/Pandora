@@ -42,7 +42,7 @@ Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 ; submit 按钮
 Gui, Add, Button, w780 h30 Default, FUCK
 
-Gui, Add, Tab3, w780 h460 Choose1, 常用 | 框架 | UI框架 | 地图 | PHP | 微信 | 工作坊 | 工作相关
+Gui, Add, Tab3, w780 h460 Choose1, 常用 | 前端框架 | UI框架 | 地图 | PHP | 微信 | 工作坊 | 创慧教育 | 爬虫 | 鸡肋
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
 Gui, Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
@@ -50,6 +50,7 @@ Gui, Add, Link,, <a href="http://www.cnblogs.com/cylee">技术淘宝</a>
 Gui, Add, Link,, <a href="https://github.com">github</a>
 Gui, Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
 Gui, Add, Link,, <a href="http://e.xitu.io/">掘金前端</a>
+Gui, Add, Link,, <a href="https://www.aliyun.com/">阿里云</a>
 
 Gui, Add, Text,  W140 ys, 其他:
 Gui, Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</a>
@@ -66,11 +67,6 @@ Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lion大帝魔兽</
 Gui, Add, Link,, <a href="http://www.hanhande.com/">憨憨电影</a>
 Gui, Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
 
-Gui, Add, Text,  W140 ys, 代理IP:
-Gui, Add, Link,, <a href="http://www.xicidaili.com/nn">西刺</a>
-Gui, Add, Link,, <a href="https://proxy.l337.tech/txt">l337</a>
-Gui, Add, Link,, <a href="http://www.66ip.cn/nm.html">66ip</a>
-
 Gui, Add, Text, W140 ys, 站长工具：
 Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/js">在线代码格式化</a>
 Gui, Add, Link,, <a href="http://tool.oschina.net/highlight">在线代码着色</a>
@@ -78,35 +74,23 @@ Gui, Add, Link,, <a href="https://tool.lu/html/">tool.lu压缩</a>
 Gui, Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
 Gui, Add, Link,, <a href="http://www.bejson.com/">bejson超强工具箱</a>
 
+Gui, Add, Text,  W140 ys, 奇妙工具:
+Gui, Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
+Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
+Gui, Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
+Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
 
-Gui, Add, Text, W140 Section xs yp+60, cdn：
+Gui, Add, Text, W140 Section xs yp+120, cdn：
 Gui, Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Add, Link,, <a href="https://www.cdnjs.net/">百度cdn</a>
 Gui, Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
 Gui, Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
 
 
-Gui, Add, Text,  W140 ys, 最近浏览:
-Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss</a>
-Gui, Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">易码</a>
-Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">满币网</a>
-Gui, Add, Link,, <a href="http://candy.dragonvein.io/frontend/web/site/signup">dragonvein</a>
-Gui, Add, Link,, <a href="https://www.aliyun.com/">阿里云</a>
-
-
 Gui, Add, Text,  W140 ys, 最近学习：
 Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react 掘金小册</a>
 Gui, Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React 小书</a>
 Gui, Add, Link,, <a href="http://www.jtthink.com/">jtthink.com</a>
-
-
-Gui, Add, Text,  W140 ys, 奇妙工具:
-Gui, Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
-Gui, Add, Link,, <a href="http://blog.mn886.net/jqGrid/">jQGrid 中文文档</a>
-Gui, Add, Link,, <a href="https://sketch2code.azurewebsites.net/">Microsoft sketch2code</a>
-Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
-Gui, Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
-Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
 
 Gui, Tab, 2
 Gui, Add, Text,  W140 Section, Vue：
@@ -341,9 +325,28 @@ Gui, Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/login.jspx">
 
 
 Gui, Add, Text,  W140 ys, 12345
-Gui, Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">油气管道swagger-ui</a>
+Gui, Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">swagger-ui</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">dg12345-vue git</a>
 
+
+Gui, Tab, 9
+Gui, Add, Text,  W100 Section, 代理IP:
+Gui, Add, Link,, <a href="http://www.xicidaili.com/nn">西刺</a>
+Gui, Add, Link,, <a href="https://proxy.l337.tech/txt">l337</a>
+Gui, Add, Link,, <a href="http://www.66ip.cn/nm.html">66ip</a>
+
+Gui, Add, Text,  W140 ys, 目标网站:
+Gui, Add, Link,, <a href="http://guss.one/guss/register.html?code=ec19c0ca">guss</a>
+Gui, Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">易码</a>
+Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">满币网</a>
+Gui, Add, Link,, <a href="http://candy.dragonvein.io/frontend/web/site/signup">dragonvein</a>
+
+Gui, Tab, 10
+Gui, Add, Text,  W140 Section, 食之无用:
+Gui, Add, Link,, <a href="http://blog.mn886.net/jqGrid/">jQGrid 中文文档</a>
+
+Gui, Add, Text,  W140 ys, 弃之可惜:
+Gui, Add, Link,, <a href="https://sketch2code.azurewebsites.net/">Microsoft sketch2code</a>
 
 GuiEscape:
 GuiClose:
