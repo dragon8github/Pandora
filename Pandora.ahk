@@ -1,7 +1,7 @@
 ﻿; #IfWinNotActive 神武3
 ; #InstallKeybdHook
 #Persistent ; 让脚本持续运行, 直到用户退出.
-Hotstring("EndChars", "`n")  ; 设置为回车键作为终止符
+Hotstring("EndChars", "`n`t")  ; 设置为回车键作为终止符
 
 FileEncoding, UTF-8
 FileDelete, *.bak 
@@ -22,6 +22,7 @@ FileDelete, .\src\*.bak
 #Include src/TypeScript.ahk ; TypeScript
 #Include src/tp.ahk		 	; thinkphp
 #Include src/js.ahk         ; JavaScript   
+#Include src/arr.ahk        ; arr
 #Include src/ajax.ahk         ; ajax   
 #Include src/react.ahk      ; React
 #Include src/cdn.ahk        ; CDN   
