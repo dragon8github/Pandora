@@ -14,7 +14,7 @@ FileDelete, .\src\*.bak
 #Include src/help.ahk       ; 辅助功能
 #Include src/makedown.ahk   ; makedown
 #Include src/html.ahk       ; HTML    
-#Include src/three.ahk       ; THREE    
+#Include src/three.ahk      ; THREE    
 #Include src/vue.ahk        ; Vue
 #Include src/shell.ahk      ; shell
 #Include src/node.ahk       ; nodejs 

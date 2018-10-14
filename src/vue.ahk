@@ -1,4 +1,54 @@
-﻿!v::
+﻿::vue.init::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var = 
+(
+<template>
+    <div class="%OutputVar%">
+        test
+    </div>
+</template>
+
+<script>
+export default {
+  name: '%OutputVar%',
+  data () {
+    return {
+        items: [],
+        title: 'HelloWorld'
+    }
+  },
+  methods: {
+      go () {
+          console.log('go');
+      }
+  },
+  components: {
+
+  },
+  computed: {
+  
+  },
+  watch: {
+  
+  },
+  beforeMount () {
+      console.log(%t%, '%OutputVar%');
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.%OutputVar% {
+
+}
+</style>
+)
+code(Var)
+return
+
+!v::
 
   Menu, VueMenu, Add, vuex.init, VueHandler
   Menu, VueMenu, Add, vuex.modules, VueHandler
