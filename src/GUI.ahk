@@ -96,6 +96,8 @@ Gui, Add, Text,  W140 ys, 最近学习：
 Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react 掘金小册</a>
 Gui, Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React 小书</a>
 Gui, Add, Link,, <a href="http://www.jtthink.com/">jtthink.com</a>
+Gui, Add, Link,, <a href="https://gitbook.cn/gitchat/geekbooks">极客书单</a>
+
 
 Gui, Tab, 2
 Gui, Add, Text,  W140 Section, Vue：

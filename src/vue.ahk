@@ -5,7 +5,7 @@ Var =
 (
 <template>
     <div class="%OutputVar%">
-        test
+        %OutputVar%
     </div>
 </template>
 
@@ -85,7 +85,7 @@ Var =
 (
 <template>
     <div class="%OutputVar%">
-        test
+        %OutputVar%
     </div>
 </template>
 
