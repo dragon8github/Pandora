@@ -1,4 +1,4 @@
-﻿; #IfWinNotActive 神武3
+﻿#IfWinNotActive 神武3
 ; #InstallKeybdHook
 #Persistent ; 让脚本持续运行, 直到用户退出.
 Hotstring("EndChars", "`n`t")  ; 设置为回车键作为终止符

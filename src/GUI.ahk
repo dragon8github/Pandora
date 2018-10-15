@@ -67,6 +67,8 @@ Gui, Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
 Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lion大帝魔兽</a>
 Gui, Add, Link,, <a href="http://www.hanhande.com/">憨憨电影</a>
 Gui, Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
+Gui, Add, Link,, <a href="http://www.tan8.com/lesson3-category-1.html">蛐蛐钢琴网</a>
+
 
 Gui, Add, Text, W160 ys, 常用工具：
 Gui, Add, Link,, <a href="http://tool.oschina.net/codeformat/js">在线代码格式化</a>
@@ -80,7 +82,7 @@ Gui, Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
 Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
-Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">Vue 资源大全</a>
+Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">Vue-awesome</a>
 
 
 Gui, Add, Text, W140 Section xs yp+80, cdn：
@@ -299,18 +301,16 @@ Gui, Add, Link, W140, <a href="https://legacy.gitbook.com/book/dragon8github/fuc
 Gui, Tab, 7
 Gui, Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
 Gui, Add, Text, gNewIndexHtml W140, 新建index.html
-
-
-Gui, Add, Text, gNewreactbabelHtml ys, 新建react.babel.html
+Gui, Add, Text, gNewreactbabelHtml W140, 新建react.babel.html
 Gui, Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
 Gui, Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
 
-Gui, Add, Text, gNewEchartsPinHtml  ys x+50, 新建echarts.pin.html(玫瑰饼图)
+Gui, Add, Text, gNewEchartsPinHtml  ys x+80, 新建echarts.pin.html(玫瑰饼图)
 Gui, Add, Text, gNewEchartsLineHtml ,新建echats.Line.html（折线图）
 Gui, Add, Text, gNewEchartsBarHtml ,新建echats.Bar.html（柱状图）
 Gui, Add, Text, gNewEchartsPurePinHtml ,新建echats.Pin.html（纯圆饼图）
 
-Gui, Add, Text, gNewNodePachong W140 ys x+30, 新建nodejs爬虫模板
+Gui, Add, Text, gNewNodePachong W140 ys x+50, 新建nodejs爬虫模板
 Gui, Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
 Gui, Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
 Gui, Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
@@ -330,10 +330,13 @@ Gui, Add, Text,  W140 ys, 教育咨询g端
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/antd-dgedu-consult-g">g端 git</a>
 Gui, Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/login.jspx">前端菜单配置</a>
 
-
 Gui, Add, Text,  W140 ys, 12345
 Gui, Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">swagger-ui</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">dg12345-vue git</a>
+
+
+Gui, Add, Text,  W140 ys, 东莞课外教育网
+Gui, Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
 
 
 Gui, Tab, 9

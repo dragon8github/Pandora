@@ -1,4 +1,134 @@
-﻿
+﻿::animatenum::
+Var =
+(
+// 这是js代码
+$.fn.extend({
+    'animateNums': function(opts){
+        function AnimateNums(ele){
+            this.opts = $.extend(true, {}, AnimateNums.DEFAULTS, opts);
+
+            this.$ele = $(ele);
+            this._init();
+        }
+
+        AnimateNums.DEFAULTS = {
+            html: '<i><div>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br></div></i>'
+        };
+
+        /**
+         * 初始化入口
+         * @private
+         */
+        AnimateNums.prototype._init = function(){
+            var $ele = this.$ele;
+            var amount = $ele.attr('data-num').replace(/\B(?=(?:\d{3})+(?!\d))/g, ',').split(',');
+            var amountStr = amount.map(function(val){
+                return '<span class="amount-span" data-animatenum="'+ val +'"></span>'
+            }).join(',');
+            if($ele.find('i').length != $ele.attr('data-num').length){
+                $ele.html(amountStr);
+            }else{
+                var $span = $ele.children('span');
+                for(var i = 0,len = $span.length; i < len; i++){
+                    $span.eq(i).attr('data-animatenum', amount[i]);
+                }
+            }
+
+            this.scrollNum($ele.children('.amount-span'), $ele.attr('data-height'));
+        };
+
+        AnimateNums.prototype.scrollNum = function(ele, lineHeight){
+            var opts = this.opts;
+
+            ele.each(function(){
+                var $me = $(this);
+                var num = $me.attr('data-animatenum');
+
+                $me.find('div').stop();
+
+                var it = $me.children('i');     //i
+                var len = String(num).length;
+
+                for(var i = 0; i < len; i++){
+                    if(it.length <= i){
+                        $me.append(opts['html']);
+                    }
+
+                    var number = String(num).charAt(i);
+                    var y;
+                    try{
+                        y = - parseInt(number) * lineHeight;
+                    }catch (err){
+                        console.log('"data-height"只能是数字');
+                    }
+
+                    $me.children('i').eq(i).children('div').animate({ top: y + 'px'}, 1000);
+                }
+
+            });
+        };
+
+
+        return this.each(function(){
+            new AnimateNums(this);
+        })
+    }
+})
+
+// 这是html
+<div class='overallSituationOfTheProblem__core--num animatenum' data-height="79" :data-num="toThousands(overallSituationOfTheProblemLeft.rows[0].count)"></div>
+
+
+this.$nextTick(() => {
+  // 这是调用的js
+  $('.animatenum').animateNums();
+})
+
+// 这是基础scss
+@mixin animatenum ($w, $h, $f) {
+&.animatenum {
+    font-family: 'LESLIE-Regular';
+    display:inline-block;
+    height:$h;
+    line-height:$h; 
+    font-size: $f;
+    color:#FFF;
+}
+
+    &.animatenum  span.amount-span{
+        display:inline-block;
+        vertical-align:middle;
+    }
+
+    &.animatenum  i{
+        font-style:normal;
+        width: $w;
+        height: $h;
+        float:left;
+        position:relative;
+        overflow:hidden;
+    }
+
+    &.animatenum  div{
+        line-height:$h;
+        position:absolute;
+    }
+}
+
+
+<style lang="scss">
+@import "~@/scss/functions.scss";
+.overallSituationOfTheProblem__core--num {
+  @include animatenum(40px, 79px, 79px);
+}
+</style>
+
+)
+code(Var)
+return
+
+
+
 ::`:nth::
 ::nth::
 Var =
