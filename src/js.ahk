@@ -111,6 +111,14 @@ Var =
     return previousValue + currentValue
 // 请注意使用末参来初始化 previousValue 的值
 }, 0)
+
+// 初始化为数组的示例
+children.reduce((previousValue, currentValue) => {
+	if (currentValue.hlPid === v.hlItemId)
+	   previousValue.push({ name: currentValue.hlItemName, id: currentValue.hlItemId })
+	// 默认总是要返回一个数组的
+	return previousValue
+}, [])
 )
 code(Var)
 return
@@ -1725,7 +1733,7 @@ return
 ::foreach::
 Var = 
 (
-.forEach(function (e, i) {
+forEach(function (e, i) {
      console.log(i, e);
 });
 )

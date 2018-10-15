@@ -1,4 +1,14 @@
-﻿::arra::
+﻿::.filter::
+Var =
+(
+.filter((data) => {
+  return data === name;
+})
+)
+code(Var)
+return
+
+::arra::
 ::arrm::
 ::arrn::
 ::arraym::
@@ -103,8 +113,15 @@ Var =
 (
 .reduce((previousValue, currentValue, index, array) => {
     return previousValue + currentValue
-// 请注意使用末参来初始化 previousValue 的值
 }, 0)
+
+// 初始化为数组的示例
+children.reduce((previousValue, currentValue) => {
+	if (currentValue.hlPid === v.hlItemId)
+	   previousValue.push({ name: currentValue.hlItemName, id: currentValue.hlItemId })
+	// 默认总是要返回一个数组的
+	return previousValue
+}, [])
 )
 }
 
@@ -157,22 +174,9 @@ console.log(characters.find(hasCharacterFrom('marvel'))); // { id: 1, name: 'iro
 if (v == "filter") {
 Var = 
 (
-const characters = [
-  { id: 1, name: 'ironman' },
-  { id: 2, name: 'black_widow' },
-  { id: 3, name: 'captain_america' },
-  { id: 4, name: 'captain_america' },
-];
-
-function getCharacter(name) {
-  return character => character.name === name;
-}
-
-// [
-//   { id: 3, name: 'captain_america' },
-//   { id: 4, name: 'captain_america' },
-// ]
-console.log(characters.filter(getCharacter('captain_america')));
+.filter((data) => {
+  return data === name;
+})
 )
 }
 
