@@ -332,7 +332,7 @@ Gui, Add, Text,  W140 ys, 教育咨询g端
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/antd-dgedu-consult-g">g端 git</a>
 Gui, Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/login.jspx">前端菜单配置</a>
 
-Gui, Add, Text,  W140 ys, 12345
+Gui, Add, Text,  W140 ys, 东莞市长12345
 Gui, Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">swagger-ui</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">dg12345-vue git</a>
 

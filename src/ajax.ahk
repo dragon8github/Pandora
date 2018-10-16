@@ -79,6 +79,7 @@ return
 ::ajax.form::
 ::form.ajax::
 ::postform::
+::formdata::
 Var =
 (
 // 更多form提交方式，请参考：https://www.cnblogs.com/CyLee/p/9441535.html

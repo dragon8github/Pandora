@@ -1327,7 +1327,7 @@ return
 ::trans::
 Var =
 (
-transition: .3s all;
+transition: .3s all ease;
 )
 code(Var)
 return
