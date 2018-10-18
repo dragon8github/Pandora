@@ -16,6 +16,7 @@ FileDelete, .\src\*.bak
 #Include src/html.ahk       ; HTML    
 #Include src/three.ahk      ; THREE    
 #Include src/vue.ahk        ; Vue
+#Include src/wx.ahk         ; wx
 #Include src/shell.ahk      ; shell
 #Include src/node.ahk       ; nodejs 
 #include src/css.ahk        ; css   

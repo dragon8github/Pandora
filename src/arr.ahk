@@ -206,3 +206,13 @@ $("div").each(function (index, domEle) {
 
 code(Var)
 return
+
+::.map::
+Var =
+(
+.map(function (v, index, array) {
+    return v
+});
+)
+code(Var)
+return

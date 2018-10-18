@@ -1,4 +1,47 @@
-﻿::vue.init::
+﻿::vue.msg::
+::vue.msgbox::
+Var =
+(
+import Vue from 'vue';
+import mapbox from './mapbox.vue'
+
+const mapboxConstructor = Vue.extend(mapbox);
+
+
+let _initInstance;
+
+const initInstance = () => {
+  _initInstance = new mapboxConstructor({
+    el: document.createElement('div')
+  });
+  document.body.appendChild(_initInstance.$el);
+};
+
+const show = () => {
+	if (!_initInstance) {
+	  initInstance();
+	}
+
+	Vue.nextTick(() => {
+		_initInstance.value = true;
+	});
+}
+
+const close = () => {
+	Vue.nextTick(() => {
+		_initInstance.value = false;
+	});
+}
+
+export default {
+	show,
+	close,
+}
+)
+code(Var)
+return
+
+::vue.init::
 InputBox, OutputVar, title, enter a name?,,,,,,,,test
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
@@ -320,49 +363,6 @@ watch: {
         this.go()
     }
 },
-)
-code(Var)
-return
-
-::vue.js::
-::vue.instance::
-Var =
-(
-import Vue from 'vue';
-import mapbox from './mapbox.vue'
-
-const mapboxConstructor = Vue.extend(mapbox);
-
-
-let _initInstance;
-
-const initInstance = () => {
-  _initInstance = new mapboxConstructor({
-    el: document.createElement('div')
-  });
-  document.body.appendChild(_initInstance.$el);
-};
-
-const show = () => {
-	if (!_initInstance) {
-	  initInstance();
-	}
-
-	Vue.nextTick(() => {
-		_initInstance.value = true;
-	});
-}
-
-const close = () => {
-	Vue.nextTick(() => {
-		_initInstance.value = false;
-	});
-}
-
-export default {
-	show,
-	close,
-}
 )
 code(Var)
 return

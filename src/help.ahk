@@ -191,7 +191,7 @@ code(Var)
 return
 
 ::now::
-Var := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 code(Var)
 return
 
@@ -738,6 +738,87 @@ Var =
 
 `)
 code(Var)
+)
+code(Var)
+return
+
+
+^!1::
+Var =
+(
+// cylee'todo1
+)
+code(Var)
+return
+
+^!2::
+Var =
+(
+// cylee'todo2
+)
+code(Var)
+return
+
+^!3::
+Var =
+(
+// cylee'todo3
+)
+code(Var)
+return
+
+^!4::
+Var =
+(
+// cylee'todo4
+)
+code(Var)
+return
+
+^!5::
+Var =
+(
+// cylee'todo5
+)
+code(Var)
+return
+
+^!6::
+Var =
+(
+// cylee'todo6
+)
+code(Var)
+return
+
+^!7::
+Var =
+(
+// cylee'todo7
+)
+code(Var)
+return
+
+^!8::
+Var =
+(
+// cylee'todo8
+)
+code(Var)
+return
+
+^!9::
+Var =
+(
+// cylee'todo9
+)
+code(Var)
+return
+
+^!0::
+Var =
+(
+// cylee'todo0
 )
 code(Var)
 return

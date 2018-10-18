@@ -1,4 +1,17 @@
-﻿::arr2str::
+﻿::moment::
+t := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
+Var =
+(
+// http://momentjs.cn/docs/#/get-set/second/
+// moment(new Date()).format('YYYY/MM/DD HH:mm:ss')
+// moment.isMoment(obj);
+// moment('fuckyou').isValid()
+moment('%t%').format('YYYY/MM/DD HH:mm:ss')
+)
+code(Var)
+return
+
+::arr2str::
 ::array2str::
 Var =
 (
@@ -1105,14 +1118,15 @@ $('.keySupervision__layer').css({ left, top }).show(300, function () {
 })
 
 // vue版本
+<div class="msgbox" v-show="value">
 data () {
     return {
-        // <div class="msgbox" v-show="value">
         value: false
     }
 },
 methods: {
   hideListener (e) {
+    // 只要你的弹窗所有元素都准许BEM规范即可。也就是说都带msgbox前缀，就可以轻松区分。
     if (!e.target.className.includes('msgbox')) {
         this.value = false
     }
@@ -1123,10 +1137,10 @@ methods: {
   }
 },
 watch: {
-value (newV) {
-  newV === true && window.addEventListener('click', this.hideListener)
-  newV === false && window.removeEventListener('click', this.hideListener);
-}
+    value (newV) {
+      newV === true && window.addEventListener('mouseup', this.hideListener)
+      newV === false && window.removeEventListener('mouseup', this.hideListener);
+    }
 },
 )
 code(Var)
@@ -2400,6 +2414,7 @@ code(Var)
 return
 
 ::foren::
+::for.en::
 Var = 
 (
 // 对象遍历

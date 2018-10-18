@@ -1,4 +1,12 @@
-﻿::cdn-3d::
+﻿::cdn-moment::
+Var =
+(
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js"></script>
+)
+code(Var)
+return
+
+::cdn-3d::
 ::cdn-three::
 ::cdn-threejs::
 Var =

@@ -1,3 +1,29 @@
+::echarts.center::
+::maps.center::
+Var =
+(
+var getcenterpoint = function (val) {
+    var myarr = val.split(';');
+    var lngarr = []
+    var latarr = []
+    myarr.forEach(function (e, i) {
+         var myarr2 = e.split(',');
+         lngarr.push(myarr2[0])
+         latarr.push(myarr2[1])
+    });
+    var maxlng = Math.max(...lngarr)
+    var minlng = Math.min(...lngarr)
+    var maxlat = Math.max(...latarr)
+    var minlat = Math.min(...latarr)
+    var mylng = (maxlng - minlng) / 2 + minlng
+    var mylat = (maxlat - minlat) / 2 + minlat
+    var position = new BMap.Point(mylng, mylat);
+    return position
+}
+)
+code(Var)
+return
+
 ::echarts.dian::
 ::echarts.sandian::
 Var =

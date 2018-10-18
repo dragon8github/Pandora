@@ -83,6 +83,7 @@ Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
 Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">Vue-awesome</a>
+Gui, Add, Link,, <a href="http://momentjs.cn/">momentjs</a>
 
 
 Gui, Add, Text, W140 Section xs yp+80, cdn：
@@ -336,9 +337,11 @@ Gui, Add, Text,  W140 ys, 东莞市长12345
 Gui, Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">swagger-ui</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">dg12345-vue git</a>
 
-
 Gui, Add, Text,  W140 ys, 东莞课外教育网
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
+
+Gui, Add, Text,  W140 xs Section  y+100, 教育咨询b端
+Gui, Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/antd-dgedu-consult-b">b端 git</a>
 
 
 Gui, Tab, 9
