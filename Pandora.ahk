@@ -7,14 +7,6 @@ FileEncoding, UTF-8
 FileDelete, *.bak 
 FileDelete, .\src\*.bak
 
-; 每次输入字符时, 热字串识别器会检查当前活动窗口, 并且如果活动窗口不同于之前, 则会重置. 如果活动窗口发生变化, 但在键入任何字符之前返回, 则不会检测到更改(但可能会由于其他原因重置热字串识别器). 
-; 通过两个热字符串的触发角，优雅自然无障碍的重置。（实验中...）
-~Enter::
-~Tab::
-	; 热字串识别器也可以通过调用 Hotstring("Reset") 来重置.
-	Hotstring("Reset")
-return
-
 #include src/GUI.ahk		; GUI系列 
 #Include src/lib.ahk        ; 公共函数
 #Include src/help.ahk       ; 辅助功能
