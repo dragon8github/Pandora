@@ -364,18 +364,24 @@ var proxySync = ;(function(){
 code(Var)
 return
 
-::unshift::
+::unique::
 Var =
 (
-var unshift = function (arr, index) {
-    var v = arr.splice(step, 1)
-    arr.unshift(v[0])
-    return arr
+var unique = function (arr) {
+    var hash = {},
+        i = arr.length,
+        key, res = []
+    while (i--) {
+        key = arr[i]
+        if (hash[key]) continue
+        hash[key] = 1
+        res.unshift(key)
+    }
+    return res
 }
 )
 code(Var)
 return
-
 
 ::wl::
 ::wls::
@@ -979,6 +985,7 @@ Var =
 (
 var button = document.createElement('button');
 button.textContent = "Say Hello";
+button.id = "fuck";
 button.onclick = function() {
     window.alert('Hello');
 }

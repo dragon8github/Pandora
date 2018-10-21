@@ -125,49 +125,49 @@ $('#app').mouseup(() => {})
 if (v == "@click=""doThat('hello', $event)`""") {
 Var = 
 (
-@click="doThat('hello', $event)"
+@click = "doThat('hello', $event)"
 )
 }
 if (v == "@click.stop") {
 Var = 
 (
-@click.stop
+@click.stop = "doThat('hello', $event)"
 )
 }
 if (v == "@click.once") {
 Var = 
 (
-@click.once
+@click.once = "doThat('hello', $event)"
 )
 }
 if (v == "@change") {
 Var = 
 (
-@change
+@change = "doThat('hello', $event)"
 )
 }
 if (v == "@keyup") {
 Var = 
 (
-@keyup
+@keyup = "doThat('hello', $event)"
 )
 }
 if (v == "@keyup.enter") {
 Var = 
 (
-@keyup.enter
+@keyup.enter = "doThat('hello', $event)"
 )
 }
 if (v == "@keyup.13") {
 Var = 
 (
-@keyup.13
+@keyup.13 = "doThat('hello', $event)"
 )
 }
 if (v == "@input") {
 Var = 
 (
-@input
+@input = "doThat('hello', $event)"
 )
 }
 if (v == "onClick = { this.clickHandle }") {
