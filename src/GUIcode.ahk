@@ -1,4 +1,100 @@
-﻿NewNodejsSequelize:
+﻿NewAxiosIndexHtml:
+name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+htmlfilename := name . "/index.html"
+phpfilename := name . "/index.php"
+FileCreateDir, %name%
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+
+/**
+ * get 请求
+ */
+axios.get('http://192.168.31.97/index.php?a=123').then(response => {
+    console.log(%t%, response)
+})
+
+/**
+ * post application/x-www-form-urlencoded;charset=utf-8
+ * https://github.com/axios/axios#browser
+ * 推荐使用 qs： 
+ * $ cnpm install qs
+ * const params = qs.stringify({ 'a': 123 })
+ */
+const params = new URLSearchParams();
+params.append('a', '123');
+axios.post('http://192.168.31.97/index.php', params, {
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+}).then(response => {
+    console.log(%t%, response)
+})
+
+/**
+ * post application/json;charset=utf-8
+ */
+axios.post('http://192.168.31.97/index.php', {a: 123}).then(response => {
+    console.log(%t%, response)
+})
+
+// ajax（默认是application/json;charset=utf-8）
+axios({
+  method: 'post',
+  url: 'http://192.168.31.97/index.php',
+  data: {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  }
+}).then(response => {
+	console.log(%t%, response)
+})
+
+// ajax（指定为application/x-www-form-urlencoded;charset=utf-8）
+const params2 = new URLSearchParams();
+params2.append('firstName', 'Fred');
+params2.append('lastName', 'Flintstone');
+axios({
+  method: 'post',
+  url: 'http://192.168.31.97/index.php',
+  data: params2,
+  headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
+}).then(response => {
+	console.log(%t%, response)
+})
+</script>
+</html>
+),  %htmlfilename%
+
+FileAppend,
+(
+<?php 
+
+header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Headers:x-requested-with,content-type'); 
+
+// post(form) 和 get请求
+var_dump($_REQUEST);
+// application/json;charset=utf-8 的数据必须这样使用
+var_dump($GLOBALS['HTTP_RAW_POST_DATA']);
+
+),  %phpfilename%
+
+RunBy(htmlfilename)	
+run, % htmlfilename
+return
+
+NewNodejsSequelize:
 name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 filename := name . "/index.js"
 FileCreateDir, %name%

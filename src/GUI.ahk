@@ -190,7 +190,6 @@ Gui, Add, Link,, <a href="http://antv.alipay.com/zh-cn/index.html">antv可视化
 Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-design精选插件</a>
 
 
-
 Gui, Tab, 5
 Gui, Add, Text,  W140  Section, layer/layui：
 Gui, Add, Link,, <a href="http://layer.layui.com/">layer</a>
@@ -213,10 +212,13 @@ Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/blob/master/
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer">puppeteer-Github</a>
 Gui, Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree/master/examples/">puppeteer-示例</a>
 
-Gui, Add, Text,  W140 ys, moment.js：
+Gui, Add, Text,  W160 ys, moment.js：
 Gui, Add, Link,, <a href="http://momentjs.cn/">moment 官网</a>
 Gui, Add, Link,, <a href="https://github.com/moment/moment/">moment.js github</a>
 Gui, Add, Link,, <a href="http://momentjs.cn/docs/#/parsing/">moment.js 文档手册</a>
+
+Gui, Add, Text,  W140 ys, axios：
+Gui, Add, Link,, <a href="https://github.com/axios/axios">axios github</a>
 
 Gui, Tab, 6
 Gui, Add, Text,  W140 Section, 高德地图：
@@ -336,6 +338,7 @@ Gui, Add, Text, gNewIndexHtml W140, 新建index.html
 Gui, Add, Text, gNewreactbabelHtml W140, 新建react.babel.html
 Gui, Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
 Gui, Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
+Gui, Add, Text, gNewAxiosIndexHtml W140,新建axios.html
 
 Gui, Add, Text, gNewEchartsPinHtml  ys x+80, 新建echarts.pin.html(玫瑰饼图)
 Gui, Add, Text, gNewEchartsLineHtml ,新建echats.Line.html（折线图）

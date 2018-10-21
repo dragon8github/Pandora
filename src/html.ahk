@@ -1,4 +1,79 @@
-﻿::wuxianping::
+﻿::axios.html::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+
+/**
+ * get 请求
+ */
+axios.get('http://192.168.31.97/index.php?a=123').then(response => {
+    console.log(20181021221522, response)
+})
+
+/**
+ * post application/x-www-form-urlencoded;charset=utf-8
+ * https://github.com/axios/axios#browser
+ * 推荐使用 qs： 
+ * $ cnpm install qs
+ * const params = qs.stringify({ 'a': 123 })
+ */
+const params = new URLSearchParams();
+params.append('a', '123');
+axios.post('http://192.168.31.97/index.php', params, {
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+}).then(response => {
+    console.log(20181021221338, response)
+})
+
+/**
+ * post application/json;charset=utf-8
+ */
+axios.post('http://192.168.31.97/index.php', {a: 123}).then(response => {
+    console.log(20181021221338, response)
+})
+
+// ajax（默认是application/json;charset=utf-8）
+axios({
+  method: 'post',
+  url: 'http://192.168.31.97/index.php',
+  data: {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  }
+}).then(response => {
+	console.log(20181021225057, response)
+})
+
+// ajax（指定为application/x-www-form-urlencoded;charset=utf-8）
+const params2 = new URLSearchParams();
+params2.append('firstName', 'Fred');
+params2.append('lastName', 'Flintstone');
+axios({
+  method: 'post',
+  url: 'http://192.168.31.97/index.php',
+  data: params2,
+  headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
+}).then(response => {
+	console.log(20181021225057, response)
+})
+</script>
+</html>
+)
+code(Var)
+return
+
+::wuxianping::
 ::wuxianp::
 Var =
 (

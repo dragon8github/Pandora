@@ -160,7 +160,11 @@ code(Var)
 return
 
 ::cdn-axios::
-    SendRaw, <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+Var =
+(
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+)
+code(Var)
 Return
 
 ::cdn-swiper::

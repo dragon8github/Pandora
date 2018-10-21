@@ -52,6 +52,8 @@ return
 Var = 
 (
 header('Access-Control-Allow-Origin:*');
+// https://www.cnblogs.com/CyLee/p/7644380.html
+header('Access-Control-Allow-Headers:x-requested-with,content-type'); 
 header('Access-Control-Allow-Headers:Content-Type,Content-Length, Authorization,Origin,Accept,X-Requested-With, token, app');
 header('Access-Control-Allow-Methods:GET,POST');
 header('Access-Control-Allow-Credentials:true');

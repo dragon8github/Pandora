@@ -1,4 +1,96 @@
-﻿
+﻿::axios::
+Var =
+(
+// ajax（默认是application/json;charset=utf-8）
+axios({
+  method: 'post',
+  url: 'http://192.168.31.97/index.php',
+  data: {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  }
+}).then(response => {
+	console.log(20181021225057, response)
+})
+
+)
+code(Var)
+return
+
+::axios.get::
+Var =
+(
+/**
+ * get 请求
+ */
+axios.get('http://192.168.31.97/index.php?a=123').then(response => {
+    console.log(20181021221522, response)
+})
+)
+code(Var)
+return
+
+::axios.post::
+::axios.json::
+Var =
+(
+// ajax（默认是application/json;charset=utf-8）
+axios({
+  method: 'post',
+  url: 'http://192.168.31.97/index.php',
+  data: {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  }
+}).then(response => {
+	console.log(20181021225057, response)
+})
+
+/**
+ * post application/json;charset=utf-8
+ */
+axios.post('http://192.168.31.97/index.php', {a: 123}).then(response => {
+    console.log(20181021221338, response)
+})
+)
+code(Var)
+return
+
+::axios.form::
+Var =
+(
+/**
+ * post application/x-www-form-urlencoded;charset=utf-8
+ * https://github.com/axios/axios#browser
+ * 推荐使用 qs： 
+ * $ cnpm install qs
+ * const params = qs.stringify({ 'a': 123 })
+ */
+const params = new URLSearchParams();
+params.append('a', '123');
+axios.post('http://192.168.31.97/index.php', params, {
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+}).then(response => {
+    console.log(20181021221338, response)
+})
+
+//////////////////////////////////////////////
+
+const params2 = new URLSearchParams();
+params2.append('firstName', 'Fred');
+params2.append('lastName', 'Flintstone');
+axios({
+  method: 'post',
+  url: 'http://192.168.31.97/index.php',
+  data: params2,
+  headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
+}).then(response => {
+	console.log(20181021225057, response)
+})
+)
+code(Var)
+return
+
 ::momentt::
 t := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 Var =
@@ -1598,6 +1690,7 @@ code(Var)
 Return
 
 ::/form::
+::form/::
 Var =
 (
 application/x-www-form-urlencoded;charset=utf-8
