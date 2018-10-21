@@ -883,13 +883,27 @@ Var =
   transition: transform 1s ease;
 }
 
-
+////////////////////////////////////////////////////////////////////////////////////////////
 
 <transition name="msgbox-bounce">
-    <div class="msgbox" v-show="value">
-    
-    </div>
+    <div class="msgbox" v-show="value"></div>
 </transition>
+
+methods: {
+    // 隐藏弹窗
+    hideListener (e) {
+      // 如果点击的地方不是弹窗本身的话，那么关闭弹窗
+      if (!e.target.className.includes('msgbox')) this.value = false
+    }
+}
+
+watch: {
+    // 如果弹窗发生了变化
+    value (newV) {
+        newV === true && window.addEventListener('mouseup', this.hideListener)
+        newV === false && window.removeEventListener('mouseup', this.hideListener);
+    },
+}
 
 .msgbox {
     @include center;
@@ -908,10 +922,6 @@ Var =
    opacity: 0;
    transform: translate3d(-50`%, -50`%, 0) scale(0.9);
 }
-
-
-
-
 )
 code(Var)
 return

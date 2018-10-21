@@ -20,9 +20,10 @@ FileDelete, .\src\*.bak
 #include src/css.ahk        ; css   
 #Include src/TypeScript.ahk ; TypeScript
 #Include src/tp.ahk		 	; thinkphp
-#Include src/js.ahk         ; JavaScript   
+#Include src/js.ahk         ; JavaScript  
+#Include src/event.ahk      ; event
 #Include src/arr.ahk        ; arr
-#Include src/ajax.ahk         ; ajax   
+#Include src/ajax.ahk       ; ajax   
 #Include src/react.ahk      ; React
 #Include src/cdn.ahk        ; CDN   
 #Include src/php.ahk        ; php   
