@@ -62,5 +62,174 @@ if (v == "") {
 
 }
 
+if (v == "document.getElementById('app').addEventListener('click', () => {})") {
+Var = 
+(
+document.getElementById('app').addEventListener('click', () => {}
+)
+}
+if (v == "document.getElementById('app').addEventListener('mouseover', () => {}) ,") {
+Var = 
+(
+document.getElementById('app').addEventListener('mouseover'`, () => {}) ,
+)
+}
+if (v == "document.getElementById('app').addEventListener('mouseleave', () => {}") {
+Var = 
+(
+document.getElementById('app').addEventListener('mouseleave'`, () => {}
+)
+}
+if (v == "document.getElementById('app').onclick = (e) => {}") {
+Var = 
+(
+document.getElementById('app').onclick = (e) => {}
+)
+}
+if (v == "document.getElementById('myform').onsubmit = (e) => {}") {
+Var = 
+(
+document.getElementById('myform').onsubmit = (e) => {}
+)
+}
+if (v == "$('#app').click(() => {})") {
+Var = 
+(
+$('#app').click(() => {})
+)
+}
+if (v == "$('#app').mouseleave(() => {})") {
+Var = 
+(
+$('#app').mouseleave(() => {})
+)
+}
+if (v == "$('#app').mouseover(() => {})") {
+Var = 
+(
+$('#app').mouseover(() => {})
+)
+}
+if (v == "$('#app').change(() => {})") {
+Var = 
+(
+$('#app').change(() => {})
+)
+}
+if (v == "$('#app').mouseup(() => {})") {
+Var = 
+(
+$('#app').mouseup(() => {})
+)
+}
+if (v == "@click=""doThat('hello', $event)`""") {
+Var = 
+(
+@click="doThat('hello', $event)"
+)
+}
+if (v == "@click.stop") {
+Var = 
+(
+@click.stop
+)
+}
+if (v == "@click.once") {
+Var = 
+(
+@click.once
+)
+}
+if (v == "@change") {
+Var = 
+(
+@change
+)
+}
+if (v == "@keyup") {
+Var = 
+(
+@keyup
+)
+}
+if (v == "@keyup.enter") {
+Var = 
+(
+@keyup.enter
+)
+}
+if (v == "@keyup.13") {
+Var = 
+(
+@keyup.13
+)
+}
+if (v == "@input") {
+Var = 
+(
+@input
+)
+}
+if (v == "onClick = { this.clickHandle }") {
+Var = 
+(
+onClick = { this.clickHandle }
+)
+}
+if (v == "onChange = { this.changeHandle }") {
+Var = 
+(
+onChange = { this.changeHandle }
+)
+}
+if (v == "onScroll = { this.scrollHandle }") {
+Var = 
+(
+onScroll = { this.scrollHandle }
+)
+}
+if (v == "onInput = { this.inputHandle }") {
+Var = 
+(
+onInput = { this.inputHandle }
+)
+}
+if (v == "onMouseOver = { this.MouseOverHandle }") {
+Var = 
+(
+onMouseOver = { this.MouseOverHandle }
+)
+}
+if (v == "onMouseLeave = { this.MouseLeaveHandle }") {
+Var = 
+(
+onMouseLeave = { this.MouseLeaveHandle }
+)
+}
+if (v == "ehcarts.click") {
+Var = 
+(
+ehcarts.click
+)
+}
+if (v == "ehcarts.mouseover") {
+Var = 
+(
+ehcarts.mouseover
+)
+}
+if (v == "ehcarts.mouseout") {
+Var = 
+(
+ehcarts.mouseout
+)
+}
+if (v == "冒泡点击mouseup") {
+Var = 
+(
+冒泡点击mouseup
+)
+}
+
 code(Var)
 return
