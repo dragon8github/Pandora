@@ -1,4 +1,5 @@
-﻿::moment::
+﻿
+::momentt::
 t := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 Var =
 (
@@ -48,8 +49,9 @@ Number((这里是你的值).toString().match(/^\d+(?:\.\d{0,2})?/))
 code(Var)
 return
 
-::addclick::
-::onclick::
+::.add::
+::.addevent::
+::.addclick::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
@@ -1616,20 +1618,31 @@ SendInput, {up}{tab}
 Return
 
 ::$click::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
-$(".object").click(function () {
-	
+$('#app').click(function (e) {
+	console.log(%t%, e.target);
 });
 )
 code(Var)
-SendInput, {up}{tab}
 Return
 
-::$change::
+::.click::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
-$(".object").change(function () {
+.click(function (e) {
+	console.log(%t%, e.target);
+});
+)
+code(Var)
+Return
+
+::.change::
+Var = 
+(
+.change(function (e) {
 
 });
 )
@@ -1713,6 +1726,7 @@ Return
 
 
 >!f::
+::.for::
 Var = 
 (
 .forEach(function (e, i) {
@@ -1732,28 +1746,6 @@ function () {}
 code(Var)
 SendInput, {left}{enter}
 Return
-
-::fe::
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-Var =
-(
-function (e) {
-    console.log(%t%, e)
-}
-)
-code(Var)
-return
-
-::foreach::
-Var = 
-(
-forEach(function (e, i) {
-     console.log(i, e);
-});
-)
-code(Var)
-Return
-
 
 !-::
 Var = 
@@ -1900,22 +1892,25 @@ Return
 Var =
 (
 .map(function (v, index, array) {
-        return v
+    return v
 });
 )
 code(Var)
 return
 
 ::switch::
-    SendInput,
+Var =
 (
-switch (data) {{}{}}{left}{enter 2}{up}{tab}case 0`:
-  break`;
-case 1`:
-  break`;
-default`:
-  
+switch (data) {
+	case 0:
+	  	break;
+  	case 1:
+    	break;
+    default:
+    	return 0
+}
 )
+code(Var)
 return
 
 ::date::

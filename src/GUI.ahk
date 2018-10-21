@@ -67,6 +67,7 @@ Gui, Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
 Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lion大帝魔兽</a>
 Gui, Add, Link,, <a href="http://www.hanhande.com/">憨憨电影</a>
 Gui, Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
+Gui, Add, Link,, <a href="https://www.cmdy5.com/dongman/wugengjidierji.html">草民电影</a>
 Gui, Add, Link,, <a href="http://www.tan8.com/lesson3-category-1.html">蛐蛐钢琴网</a>
 
 

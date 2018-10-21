@@ -198,6 +198,11 @@ t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 code(Var)
 return
 
+::noww::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+code(t)
+return
+
 ::now::
 Var := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 code(Var)
@@ -640,7 +645,7 @@ SendInput, % time
 return
 
 ::git::
-    SendInput, git add . && git commit -m '' --no-verify && git push -u origin master{LEFT 42}
+    SendInput, git add . && git commit -m '迭代' --no-verify && git push -u origin master{LEFT 42}
 Return
 
 ::git-push::
