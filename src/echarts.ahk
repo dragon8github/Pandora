@@ -1,4 +1,4 @@
-::echarts.center::
+ï»¿::echarts.center::
 ::maps.center::
 Var =
 (
@@ -28,66 +28,71 @@ return
 ::echarts.sandian::
 Var =
 (
-const createPoints = (data, name) => {
-   // É¢µã»ù±¾ÅäÖÃ
-   const config = {
-      type: 'effectScatter',
-      coordinateSystem: 'geo',
-      // symbol: 'diamond',
-      zlevel: 2, 
-      showEffectOn: 'render',
-      hoverAnimation: true,
-      symbolSize: 8,
-      // rippleEffect: {
-      //   period: 15, scale: 6, brushType: 'fill'
-      // },
-      itemStyle: {
-          normal: {
-              color: function(params){
-                  return levelColorMap[params.value && params.value.length >= 3 && params.value[3] || 'C'];
-              },
-              shadowBlur: 10,
-              shadowColor: '#333'
-          }
-      },
-      data: data
-  }
-  if (name) {
-      config.name = name
-  }
-  // ·µ»ØÅäÖÃ
-  return config;
+// åˆ›å»ºæ•£ç‚¹é…ç½®é¡¹
+const createPoints = (name, data) => {
+	// è¿”å›çš„è¿™ä¸ªé…ç½®å¯¹è±¡ï¼Œç›´æ¥æ’å…¥åˆ°serieså³å¯
+    return {
+    	// è®¾ç½®åç§°ï¼Œè¿™å’Œlegendå…³è”
+    	name: name,
+    	// æ•£ç‚¹ç±»å‹
+        type: 'effectScatter',
+        // åæ ‡ç³»ï¼ˆé»˜è®¤ä¸Šé¢çš„geoé…ç½®ä½œä¸ºåæ ‡ç³»ï¼‰
+        coordinateSystem: 'geo',
+        // å›¾å½¢
+        symbol: 'circle', // 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'ï¼Œ'image://url'
+        // å±‚çº§
+        zlevel: 2,
+        // ç»˜åˆ¶å®Œæˆåæ˜¾ç¤ºç‰¹æ•ˆ
+        showEffectOn: 'render',
+        // æ˜¯å¦å¼€å¯é¼ æ ‡ hover çš„æç¤ºåŠ¨ç”»æ•ˆæœ
+        hoverAnimation: true,
+        // æ•£ç‚¹å¤§å°
+        symbolSize: 10,
+        // æ¶Ÿæ¼ªæ•ˆæœ
+        // rippleEffect: { period: 15, scale: 6, brushType: 'fill' },
+        itemStyle: {
+            normal: {            	
+            	// æ ¹æ®ä¸åŒçš„ twoconsTypeId æ¸²æŸ“ä¸åŒçš„é¢œè‰²
+                color: params => colorMap[params.value[3]], 
+                shadowBlur: 10,
+                shadowColor: '#333'
+            }
+        },
+        // æ•£ç‚¹æ•°æ®ï¼Œæ ¼å¼å¦‚ä¸‹:
+        // [{name: 'ä¸é‡è¦éšä¾¿å†™ç‚¹ä»€ä¹ˆéƒ½å¯ä»¥', value: [ç»åº¦, çº¬åº¦, å…¶ä»–å€¼]}, {...}, , {...}, , {...}]
+        data: data
+    }
 }
 )
 code(Var)
 return
 
 ::echarts.pin::
-::echarts::yuan::
+::echarts.yuan::
 Var =
 (
-// »ùÓÚ×¼±¸ºÃµÄdom£¬³õÊ¼»¯echartsÊµÀı
+// åŸºäºå‡†å¤‡å¥½çš„domï¼Œåˆå§‹åŒ–echartså®ä¾‹
 var myChart = echarts.init(document.getElementById('main'));
 myChart.setOption({
 	title: {
-		text: '¾­ÓªÕ¼µÀ',
+		text: 'ç»è¥å é“',
 		x: 'center',
 		y: 'bottom'
 	},
 	series: [{
-		name: '¾­ÓªÕ¼µÀÀàĞÍ',
+		name: 'ç»è¥å é“ç±»å‹',
 		type: 'pie',
 		radius: '55`%',
 		center: ['50`%', '60`%'],
 		labelLine: {
 			normal: {
-				// Òıµ¼ÏßµÄ³¤¶È
+				// å¼•å¯¼çº¿çš„é•¿åº¦
 				length: 1
 			}
 		},
 		data: [
-			{ value: 1210, name: 'µêÍâ¾­ÓªÕ¼µÀ' },
-			{ value: 1030, name: 'Á÷¶¯¾­ÓªÕ¼µÀ' }
+			{ value: 1210, name: 'åº—å¤–ç»è¥å é“' },
+			{ value: 1030, name: 'æµåŠ¨ç»è¥å é“' }
 		],
 		itemStyle: {
 			emphasis: {
@@ -95,11 +100,11 @@ myChart.setOption({
 				shadowOffsetX: 0,
 				shadowColor: 'rgba(0, 0, 0, 0.5)'
 			},
-			// normal ÊÇÍ¼ĞÎÔÚÄ¬ÈÏ×´Ì¬ÏÂµÄÑùÊ½£»emphasisÊÇÍ¼ĞÎÔÚ¸ßÁÁ×´Ì¬ÏÂµÄÑùÊ½£¬±ÈÈçÔÚÊó±êĞü¸¡»òÕßÍ¼ÀıÁª¶¯¸ßÁÁÊ±¡£
+			// normal æ˜¯å›¾å½¢åœ¨é»˜è®¤çŠ¶æ€ä¸‹çš„æ ·å¼ï¼›emphasisæ˜¯å›¾å½¢åœ¨é«˜äº®çŠ¶æ€ä¸‹çš„æ ·å¼ï¼Œæ¯”å¦‚åœ¨é¼ æ ‡æ‚¬æµ®æˆ–è€…å›¾ä¾‹è”åŠ¨é«˜äº®æ—¶ã€‚
 			normal: {
-				// ±ıÍ¼Í¼ĞÎÉÏµÄÎÄ±¾±êÇ©
+				// é¥¼å›¾å›¾å½¢ä¸Šçš„æ–‡æœ¬æ ‡ç­¾
 				label: { show: true },
-				// ±êÇ©µÄÊÓ¾õÒıµ¼ÏßÑùÊ½
+				// æ ‡ç­¾çš„è§†è§‰å¼•å¯¼çº¿æ ·å¼
 				labelLine: { show: true }
 			}
 		}
@@ -118,12 +123,12 @@ Var =
 var myChart = echarts.init(document.getElementById('main'));
     myChart.setOption({
         title: {
-            text: 'Õ¼ÓÃµÀÂ·ÎÊÌâ½á¹¹',
+            text: 'å ç”¨é“è·¯é—®é¢˜ç»“æ„',
             x: 'center',
             align: 'right'
         },
         xAxis: {
-            data: ["¾­ÓªÕ¼µÀ", "À¬»øÕ¼µÀ", "³µÁ¾Õ¼µÀ", "°ÔÕ¼³µÎ»", "ÆäËûÕ¼µÀ"],
+            data: ["ç»è¥å é“", "åƒåœ¾å é“", "è½¦è¾†å é“", "éœ¸å è½¦ä½", "å…¶ä»–å é“"],
             axisLine: {
                 lineStyle: {
                     color: 'black',
@@ -157,7 +162,7 @@ var myChart = echarts.init(document.getElementById('main'));
             }
         },
         series: [{
-            name: 'ÏúÁ¿',
+            name: 'é”€é‡',
             type: 'bar',
             data: [2240, 1768, 1547, 600, 31],
             barWidth: 25,
@@ -200,7 +205,7 @@ var myChart = echarts.init(document.getElementById('main'));
                     fontSize: '16'
                 }
             },
-            data: ['1ÔÂ', '2ÔÂ', '3ÔÂ', '4ÔÂ', '5ÔÂ', '6ÔÂ']
+            data: ['1æœˆ', '2æœˆ', '3æœˆ', '4æœˆ', '5æœˆ', '6æœˆ']
         }],
         yAxis: [{
             type: 'value',
@@ -258,14 +263,14 @@ Var =
 (
 var myChart = echarts.init(document.getElementById('main'));
 var data = [
-	{ value: 10, name: '¾ÍÒµ±£ÕÏÀà' },
-	{ value: 5, name: 'ÆäËûÀà' },
-	{ value: 15, name: '³ÇÊĞ½¨ÉèÀà' },
-	{ value: 25, name: 'ÃñÕş¾È¼ÃÀà' },
-	{ value: 20, name: 'ÊĞ³¡¼à¹ÜÀà' },
-	{ value: 35, name: 'ÊĞÈİ³Ç¹ÜÀà' },
-	{ value: 30, name: '¹«¹²°²È«Àà' },
-	{ value: 40, name: '¹«°²Ïû·ÀÀà' }
+	{ value: 10, name: 'å°±ä¸šä¿éšœç±»' },
+	{ value: 5, name: 'å…¶ä»–ç±»' },
+	{ value: 15, name: 'åŸå¸‚å»ºè®¾ç±»' },
+	{ value: 25, name: 'æ°‘æ”¿æ•‘æµç±»' },
+	{ value: 20, name: 'å¸‚åœºç›‘ç®¡ç±»' },
+	{ value: 35, name: 'å¸‚å®¹åŸç®¡ç±»' },
+	{ value: 30, name: 'å…¬å…±å®‰å…¨ç±»' },
+	{ value: 40, name: 'å…¬å®‰æ¶ˆé˜²ç±»' }
 ];
 var category = [];
 for (var i = 0; i < data.length; i++) {
@@ -287,7 +292,7 @@ var option = {
 			normal: {
 				label: {
 					formatter: [
-						'{b}', 'Õ¼±È{d}`%'
+						'{b}', 'å æ¯”{d}`%'
 					].join('\n'),
 					textStyle: {
 						color: '#000000',
@@ -314,9 +319,9 @@ return
 ::echarts.defaultoption::
 Var =
 (
-// »ù´¡ÅäÖÃ
+// åŸºç¡€é…ç½®
 const options = {
-    // µØÍ¼µÄgeoÅäÖÃ(ÕâÀïÑ¡Ôñ¶«³ÇµØÍ¼×÷Îªµ×²ã±³¾°Í¼£¬ÓÖ¿ÉÒÔ×÷ÎªÈÈÁ¦Í¼µÄ×ø±êÏµ)
+    // åœ°å›¾çš„geoé…ç½®(è¿™é‡Œé€‰æ‹©ä¸œåŸåœ°å›¾ä½œä¸ºåº•å±‚èƒŒæ™¯å›¾ï¼Œåˆå¯ä»¥ä½œä¸ºçƒ­åŠ›å›¾çš„åæ ‡ç³»)
     geo: { 
         id:'0', 
         silent: true,
@@ -332,7 +337,7 @@ const options = {
     },
     tooltip: { trigger: 'item', formatter: '{b}' },
     series: [
-      // Íø¸ñµÄ»ù±¾ÅäÖÃ
+      // ç½‘æ ¼çš„åŸºæœ¬é…ç½®
       {
           // silent: true,
           type: 'map', 
@@ -353,12 +358,12 @@ const options = {
                   r: 0.8,
                   colorStops: [{
                       offset: 0, 
-                      color: 'rgba(147, 235, 248, 0)' // 0`% ´¦µÄÑÕÉ«
+                      color: 'rgba(147, 235, 248, 0)' // 0`% å¤„çš„é¢œè‰²
                   }, {
                       offset: 1, 
-                      color: 'rgba(147, 235, 248, .2)' // 100`% ´¦µÄÑÕÉ«
+                      color: 'rgba(147, 235, 248, .2)' // 100`% å¤„çš„é¢œè‰²
                   }],
-                  globalCoord: false // È±Ê¡Îª false
+                  globalCoord: false // ç¼ºçœä¸º false
               }
           },
           emphasis: {
@@ -387,7 +392,7 @@ label: {
    borderRadius: 8,
    position: 'bottom',
    formatter: function (params) {
-	  // Íø¸ñÃû³Æ [Íø¸ñÈËÔ±/ÆóÒµÊı]
+	  // ç½‘æ ¼åç§° [ç½‘æ ¼äººå‘˜/ä¼ä¸šæ•°]
 	  return `${e.gridName} [${e.gridMan}/${e.gridEnterprise}]`
    }
 }
@@ -405,6 +410,47 @@ myChart.on('click', params => {
 code(Var)
 return
 
+::echarts.qipao::
+Var =
+(
+ // æ•£ç‚¹æ°”æ³¡å›¾
+{
+    type: 'scatter',
+    // åæ ‡ç³»ï¼ˆé»˜è®¤ä¸Šé¢çš„geoé…ç½®ä½œä¸ºåæ ‡ç³»ï¼‰
+    coordinateSystem: 'geo',
+    // å›¾å½¢
+    symbol: 'pin', // 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'ï¼Œ'image://url'
+    // åŠ¨æ€è®¾ç½®æ°”æ³¡çš„å¤§å°
+    symbolSize: val => {
+        var a = (this.maxSize4Pin - this.minSize4Pin) / (this.max - this.min);
+        var b = this.minSize4Pin - a * this.min;
+        b = this.maxSize4Pin - a * this.max;
+        return a * val[2] + b;
+    },
+    label: {
+        normal: {
+            show: true,
+            textStyle: {
+                color: '#fff',
+                fontSize: 12,
+            },
+            formatter: function (params) {
+                return params.value[2]
+            }
+        }
+    },
+    itemStyle: {
+        normal: {
+            color: '#F62157',
+        }
+    },
+    zlevel: 6,
+    data: [],
+}
+)
+code(Var)
+return
+
 ::echarts.title::
 Var =
 (
@@ -412,7 +458,7 @@ title: {
 	 show: true,
 	 bottom: 200,
 	 right: 20,
-	 text: 'Íø¸ñÃû³Æ [Íø¸ñÈËÔ±/ÆóÒµÊıÁ¿]',
+	 text: 'ç½‘æ ¼åç§° [ç½‘æ ¼äººå‘˜/ä¼ä¸šæ•°é‡]',
 	 textStyle: {
 	   fontSize: 30,
 	   color: '#fee002',
@@ -426,19 +472,23 @@ return
 ::echarts.legend::
 Var =
 (
+// æ”¾ç½®åœ¨æ ¹é…ç½®
+// é€šè¿‡dataå±æ€§æ¥åŒ¹é…æ‰€æœ‰çš„seriesçš„nameå±æ€§ï¼Œç„¶åè‡ªåŠ¨è¯†åˆ«seriesä¸­çš„colorè¿›è¡Œæ˜ å°„ï¼Œæ‰€ä»¥ä½ å¿…é¡»è¦å¤šä¸ªseriesæ‰å¯ä»¥é…åˆlegendä½¿ç”¨ã€‚å…¶ä¸­legendçš„dataå±æ€§æœ€å¥½æ˜¯åŠ¨æ€çš„ã€‚
 legend: {
-	orient: 'vertical',
-	right: '80',
-	bottom: '200',
-	itemWidth: 50,
-	itemHeight: 28,
-	data: ['A¼¶Ñ§Ğ£', 'B¼¶Ñ§Ğ£', 'C¼¶Ñ§Ğ£'],
-	textStyle: {
-		color: '#fff',
-		fontSize: 20
-	},
-	selectedMode: 'multiple',
-}
+    orient: 'horizontal',
+    selectedMode: 'multiple',
+    bottom: '0',
+    left: 'center',
+    width: 740,
+    itemWidth: 20,
+    itemHeight: 20,
+    textStyle: {
+        color: '#000',
+        fontSize: 16
+    },
+    // è¿™ä¸ªå€¼æœ€å¥½æ˜¯åŠ¨æ€é…ç½®çš„
+    data: ['æ²»å®‰æ¶ˆé˜²', 'äº¤é€šç®¡ç†', 'å¸‚åœºç®¡ç†'], 
+},
 )
 code(Var)
 return
@@ -460,7 +510,7 @@ visualMap: {
 	// itemHeight: 25,
 	realtime: false,
 	calculable: true,
-	seriesIndex: 0,  // ÕâÀïĞèÒªÖ¸¶¨£¬ÊÇÓ³ÉäÄÄ¸öseriesÅäÖÃ
+	seriesIndex: 0,  // è¿™é‡Œéœ€è¦æŒ‡å®šï¼Œæ˜¯æ˜ å°„å“ªä¸ªseriesé…ç½®
 	inRange: {
 		color: ['#1E81F1', '#1A66F3', '#144CF7', '#1032F9']
 	},
@@ -478,6 +528,7 @@ return
 ::echarts.tip::
 Var =
 (
+// æ ¹é…ç½®ï¼Œå¦‚æœformatterè¿”å›ç©ºåˆ™æˆ–è€…å¹²è„†ä¸è¿”å›ï¼Œåˆ™ä¸ä¼šæ˜¾ç¤ºï¼Œå¯ä»¥ç”¨æ¥æ˜¾ç¤ºseriesçš„æ•°æ®ã€‚ä¹Ÿå¯ä»¥é€šè¿‡åˆ¤æ–­params.componentSubTypeæ¥è¿›è¡Œæ˜¾ç¤ºã€‚
 tooltip: {
    trigger: 'item',
    padding: [10, 15],
@@ -488,7 +539,7 @@ tooltip: {
 	   if (params.data) {
 		  return `${params.seriesName} <br /> ${params.name}`
 		}
-		// Èç¹ûÃ»ÓĞdataËµÃ÷ÊÇµØÍ¼Íø¸ñ£¬²»ÒªÏÔÊ¾
+		// å¦‚æœæ²¡æœ‰dataè¯´æ˜æ˜¯åœ°å›¾ç½‘æ ¼ï¼Œä¸è¦æ˜¾ç¤º
 		return ''
    }
 }
@@ -501,12 +552,12 @@ Var =
 (
 var myChart = echarts.init(document.getElementById('eastCityMap'));
 
-// »ñÈ¡Ä¬ÈÏÅäÖÃ
+// è·å–é»˜è®¤é…ç½®
 var getDeafaultOption = () => {
     return $.extend(true, {}, options)
 }
 
-// ²»¿É±ä¶¯µÄÅäÖÃ
+// ä¸å¯å˜åŠ¨çš„é…ç½®
 const options = {
 	series: [
 		{
@@ -553,24 +604,24 @@ Var =
     "type": "FeatureCollection",
     "features": [
       {
-          "type": "Feature", "properties": {"name": "¶«İ¸ÊĞ"},
+          "type": "Feature", "properties": {"name": "ä¸œèå¸‚"},
           "geometry": {
               "type": "Polygon",
               "coordinates": [
                   [
                     [114.25967371414019,22.91052307097266],
-                    // ... Polygon¾ÍÊÇÒ»¸öÈıÎ¬Êı×é£¬Ò²¾ÍÊÇÍø¸ñ£¨¿é£©
-                    // ĞèÒª×¢ÒâµÄÊÇ£¬µÚÒ»¸ö×ø±êºÍ×îºóÒ»¸ö×ø±ê±ØĞëÒ»ÖÂ²Å¿ÉÒÔÎ§ÆğÀ´Âï¡£
-                    // ×¢ÒâÉ¾µôÕâ¶Î×¢ÊÍ£¬jsonÊÇ²»Ö§³Ö×¢ÊÍµÄ¡£
-                    // ×îºÃµ½http://geojson.io/ÖĞ²âÊÔÒ»ÏÂ¡£Ë¢ĞÂµÄÊ±ºòÑ¡Ôñfalse¿ÉÒÔÖØÖÃ¡£
-                    // ğ¤Ìùµ½¡¾Json¡¿À¸Ä¿È¥Õı³£¾Í¿ÉÒÔÏÔÊ¾£¬Èç¹ûÃ»ÏÔÊ¾¾ÍÒª¿´´íÎóÌáÊ¾ÁË
+                    // ... Polygonå°±æ˜¯ä¸€ä¸ªä¸‰ç»´æ•°ç»„ï¼Œä¹Ÿå°±æ˜¯ç½‘æ ¼ï¼ˆå—ï¼‰
+                    // éœ€è¦æ³¨æ„çš„æ˜¯ï¼Œç¬¬ä¸€ä¸ªåæ ‡å’Œæœ€åä¸€ä¸ªåæ ‡å¿…é¡»ä¸€è‡´æ‰å¯ä»¥å›´èµ·æ¥å˜›ã€‚
+                    // æ³¨æ„åˆ æ‰è¿™æ®µæ³¨é‡Šï¼Œjsonæ˜¯ä¸æ”¯æŒæ³¨é‡Šçš„ã€‚
+                    // æœ€å¥½åˆ°http://geojson.io/ä¸­æµ‹è¯•ä¸€ä¸‹ã€‚åˆ·æ–°çš„æ—¶å€™é€‰æ‹©falseå¯ä»¥é‡ç½®ã€‚
+                    // é»è´´åˆ°ã€Jsonã€‘æ ç›®å»æ­£å¸¸å°±å¯ä»¥æ˜¾ç¤ºï¼Œå¦‚æœæ²¡æ˜¾ç¤ºå°±è¦çœ‹é”™è¯¯æç¤ºäº†
                     [114.21042989104119,22.80255398178911]
                   ]
               ]
           }
       },
       {
-            "type": "Feature", "properties": {"name": "ÕâÊÇÆäËûÍø¸ñ"},
+            "type": "Feature", "properties": {"name": "è¿™æ˜¯å…¶ä»–ç½‘æ ¼"},
                 "geometry": {
                     "type": "Polygon",
                     "coordinates": [
@@ -579,7 +630,7 @@ Var =
                 }
             },
             {
-                "type": "Feature", "properties": {"name": "ÕâÊÇÆäËûÍø¸ñ"},
+                "type": "Feature", "properties": {"name": "è¿™æ˜¯å…¶ä»–ç½‘æ ¼"},
                 "geometry": {
                     "type": "Polygon",
                     "coordinates": [
@@ -601,11 +652,11 @@ return
 Var =
 (
 /**
- * ĞÂ½¨Polygon
- * @param {string} name ¸²¸ÇÎïµÄÃû×Ö
- * @param {array} coordinates ÕâÊÇÒ»¸öÈıÎ¬Êı×é
- * ²Î¿¼¸ñÊ½£ºhttp://echarts.baidu.com/examples/data/asset/geo/HK.json
- * ×¢Òâ£¬Polygon ºÍ MultiPolygonÊÇ²»Ò»ÑùµÄ£¬Ç°ÕßÊÇÈıÎ¬Êı×é£¬ºóÕßÊÇËÄÎ¬Êı×é¡£
+ * æ–°å»ºPolygon
+ * @param {string} name è¦†ç›–ç‰©çš„åå­—
+ * @param {array} coordinates è¿™æ˜¯ä¸€ä¸ªä¸‰ç»´æ•°ç»„
+ * å‚è€ƒæ ¼å¼ï¼šhttp://echarts.baidu.com/examples/data/asset/geo/HK.json
+ * æ³¨æ„ï¼ŒPolygon å’Œ MultiPolygonæ˜¯ä¸ä¸€æ ·çš„ï¼Œå‰è€…æ˜¯ä¸‰ç»´æ•°ç»„ï¼Œåè€…æ˜¯å››ç»´æ•°ç»„ã€‚
  */
 const createPolygon = (name, coordinates) => {
    	return {

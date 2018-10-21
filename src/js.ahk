@@ -1448,7 +1448,7 @@ Send, {left 1}
 Return
 
 ::ret::
-    Send, {text}return
+    SendRaw, return
 Return 
 
 ::pro::
