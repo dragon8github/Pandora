@@ -14,8 +14,9 @@
 
 	Menu, utilsMenu, Add, deepcopy, utilsHandler
 	Menu, utilsMenu, Add, getElementPosition, utilsHandler
-	Menu, utilsMenu, Add, unqiue, utilsHandler
+	Menu, utilsMenu, Add, unique, utilsHandler
 	Menu, utilsMenu, Add, getuuid, utilsHandler
+    Menu, utilsMenu, Add, pad, utilsHandler
 
 	Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
@@ -25,6 +26,8 @@
 	Menu, utilsMenu, Add, getclassname, utilsHandler
 	Menu, utilsMenu, Add, setStyle, utilsHandler
 	Menu, utilsMenu, Add, hasClass, utilsHandler
+    Menu, utilsMenu, Add, gettop, utilsHandler
+    Menu, utilsMenu, Add, scrollToTop, utilsHandler
 
 	Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -36,8 +39,63 @@ utilsHandler:
 v := A_ThisMenuItem
 Var :=
 
-if (v == "") {
+if (v == "gettop") {
+Var = 
+(
+// 获取距离顶部的相对距离
+function getElementTop(element){
+    try {
+　  　　　var actualTop = element.offsetTop;
+　  　　　var current = element.offsetParent;
+　  　　　while (current !== null){
+　  　　　　　actualTop += current.offsetTop;
+　  　　　　　current = current.offsetParent;
+　  　　　}
+　  　　　return actualTop;
+    } catch (e) {}
+}
+)
+}
 
+if (v == "scrollToTop") {
+Var = 
+(
+var timer = null;
+var goTop = function() {
+    cancelAnimationFrame(timer);
+    timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+            document.body.scrollTop = document.documentElement.scrollTop = oTop - 500;
+            timer = requestAnimationFrame(fn);
+        } else {
+            cancelAnimationFrame(timer);
+        }
+    });
+}
+// es6
+const scrollToTop = () => {
+  const c = document.documentElement.scrollTop || document.body.scrollTop;
+  if (c > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    window.scrollTo(0, c - c / 8);
+  }
+};
+)
+}
+
+
+if (v == "pad") {
+Var = 
+(
+// 补全
+function pad (target, n) {
+    var zero = new Array(n).join('0');
+    var str = zero + target;
+    var result = str.substr(-n);
+    return result;
+}
+)
 }
 
 if (v == "isArray") {
@@ -169,7 +227,7 @@ function getElementPosition (el: Element, offset: Object): Object {
 )
 }
 
-if (v == "unqiue") {
+if (v == "unique") {
 Var = 
 (
 var unique = function (arr) {
@@ -183,6 +241,18 @@ var unique = function (arr) {
         res.unshift(key)
     }
     return res
+}
+
+/**
+ * es6： return Array.from(new Set(arr));
+ * 补充： return [...new Set(arr)]
+ */
+function unique(arr) {
+    var retArray = [];
+    for (var i = 0; i < arr.length; i++) {
+       !~retArray.indexOf(arr[i]) && retArray.push(arr[i]);
+    }
+    return retArray;
 }
 )
 }

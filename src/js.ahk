@@ -379,6 +379,18 @@ var unique = function (arr) {
     }
     return res
 }
+
+/**
+ * es6： return Array.from(new Set(arr));
+ * 补充： return [...new Set(arr)]
+ */
+function unique(arr) {
+    var retArray = [];
+    for (var i = 0; i < arr.length; i++) {
+       !~retArray.indexOf(arr[i]) && retArray.push(arr[i]);
+    }
+    return retArray;
+}
 )
 code(Var)
 return
@@ -2246,26 +2258,6 @@ const scrollToTop = () => {
 )
 code(Var)
 Return
-
-::unique::
-::norepeat::
-Var = 
-(
-/**
- * 只能用于数组
- * 如果是 es6 推荐： return Array.from(new Set(arr));
- * 补充： return [...new Set(arr)]
- */
-function unique(arr) {
-    var retArray = [];
-    for (var i = 0; i < arr.length; i++) {
-       !~retArray.indexOf(arr[i]) && retArray.push(arr[i]);
-    }
-    return retArray;
-}
-)
-code(Var)
-return
 
 ::randarr::
 ::shuffle::
