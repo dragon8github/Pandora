@@ -6,9 +6,9 @@
 	Hotstring("Reset")
 return
 
-::ahk.enter::
-::ahk.input::
-::ahk.msgbox::
+::ahkmsg::
+::ahkinput::
+::ahkmsgbox::
 Var =
 (
 InputBox, OutputVar, title, enter a name?,,,,,,,,test

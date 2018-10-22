@@ -1,4 +1,14 @@
-﻿::cdn-moment::
+﻿::cdn-rx::
+::cdn-rxjs::
+::cdn-rx.js::
+Var =
+(
+<script src="https://cdn.bootcss.com/rxjs/6.3.3/rxjs.umd.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-moment::
 Var =
 (
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js"></script>

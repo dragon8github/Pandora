@@ -1,4 +1,22 @@
-﻿::animatenum::
+﻿::nth::
+	Menu, NthMenu, Add, :nth-child(n), nthHandle
+	Menu, NthMenu, Add, :nth-child(even), nthHandle
+	Menu, NthMenu, Add, :nth-child(odd), nthHandle
+	Menu, NthMenu, Add, :last-child, nthHandle
+	Menu, NthMenu, Add, :first-child, nthHandle
+	Menu, NthMenu, Add, :nth-child(2n), nthHandle
+	Menu, NthMenu, Add, :nth-child(2n + 1), nthHandle
+
+	Menu, NthMenu, Show
+	Menu, NthMenu, DeleteAll
+return
+
+nthHandle:
+	code(A_ThisMenuItem)
+return
+
+
+::animatenum::
 Var =
 (
 // 这是js代码

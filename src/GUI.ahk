@@ -221,6 +221,9 @@ Gui, Add, Text,  W140 ys, axios：
 Gui, Add, Link,, <a href="https://github.com/axios/axios">axios github</a>
 Gui, Add, Link,, <a href="https://www.cnblogs.com/CyLee/p/9827489.html">axios 简易教程</a>
 
+Gui, Add, Text,  W140  Section xs yp+140, Rxjs：
+Gui, Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/guide/overview">Rxjs 官网</a>
+Gui, Add, Link,, <a href="https://github.com/Reactive-Extensions/RxJS">Rxjs： github</a>
 
 Gui, Tab, 6
 Gui, Add, Text,  W140 Section, 高德地图：

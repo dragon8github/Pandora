@@ -1,4 +1,10 @@
-﻿::ts.fd::
+﻿::tsc::
+::sc::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+SendRaw, tsc %OutputVar%.ts && node %OutputVar%.js
+return
+
+::ts.fd::
 ::ts.fdefault::
 ::ts.funcd::
 ::ts.funcdefault::
