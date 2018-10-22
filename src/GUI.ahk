@@ -219,6 +219,8 @@ Gui, Add, Link,, <a href="http://momentjs.cn/docs/#/parsing/">moment.js 文档�
 
 Gui, Add, Text,  W140 ys, axios：
 Gui, Add, Link,, <a href="https://github.com/axios/axios">axios github</a>
+Gui, Add, Link,, <a href="https://www.cnblogs.com/CyLee/p/9827489.html">axios 简易教程</a>
+
 
 Gui, Tab, 6
 Gui, Add, Text,  W140 Section, 高德地图：
