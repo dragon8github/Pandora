@@ -1,4 +1,20 @@
-﻿::vuex.action::
+﻿::vue.w::
+::vue.watch::
+::vuew::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var = 
+(
+watch: {
+    proportionofclassificationproblem (newV, oldV) {
+        console.log(%t%, newV)
+    }
+},
+)
+code(Var)
+return
+
+
+::vuex.action::
 ::vuex.actions::
 ::vuex.a::
 ::vuexa::
@@ -353,6 +369,7 @@ code(Var)
 return
 
 ::vue.c::
+::vuec::
 Var =
 (
 computed: {
@@ -366,6 +383,8 @@ return
 
 ::vue.cw::
 ::vue.wc::
+::vuewc::
+::vuecw::
 Var =
 (
 computed: {

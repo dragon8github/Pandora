@@ -2445,21 +2445,17 @@ return
 ::sort::
 ::sortArr::
 ::Arrsort::
+::sortobj::
+::objsort::
 Var = 
 (
-// 将arr升序排列,如果是倒序return -(a-b)
+// 默认是从小到大，如果要从大到小，则是倒序return -(a-b)
 var orderArr = function (arr) { 
     arr.sort((a, b) => { return a - b }) 
 }
-)
-code(Var)
-return
 
-::sortobj::
-Var = 
-(
-// 将arr升序排列,如果是倒序return -(value1 - value2)
-const orderArr = (arr) => { 
+// 如果是要排序对象其实同理，只是需要传入属性值罢了
+const orderArr = (arr, property) => { 
     arr.sort((a, b) => { 
          let value1 = a[property]; 
          let value2 = b[property]; 
@@ -2469,6 +2465,7 @@ const orderArr = (arr) => {
 )
 code(Var)
 return
+
 
 ::jiecheng::
 Var = 
