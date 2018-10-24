@@ -1,4 +1,20 @@
-﻿::axios::
+﻿::is-wx::
+::is-weixin::
+Var =
+(
+var is_weixn = function () {
+    var ua = navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i)=="micromessenger") {
+        return true;
+    } else {
+        return false;
+    }
+}
+)
+code(Var)
+return
+
+::axios::
 Var =
 (
 // ajax（默认是application/json;charset=utf-8）

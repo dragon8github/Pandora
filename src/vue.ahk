@@ -1,10 +1,12 @@
 ﻿::vuex.action::
 ::vuex.actions::
 ::vuex.a::
+::vuexa::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
 Var =
 (
-eq_problemType ({ commit, state, dispatch, rootState }, eq_problemType) {
-  state.eq_problemType = eq_problemType
+%OutputVar% ({ commit, state, dispatch, rootState }, %OutputVar%) {
+  state.%OutputVar% = %OutputVar%
   dispatch('list')
 },
 )

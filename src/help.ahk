@@ -835,3 +835,11 @@ Var =
 )
 code(Var)
 return
+
+!PGUP::
+    SendInput, {PGUP 100}
+return
+
+!PGDN::
+    SendInput, {PGDN 100}
+return

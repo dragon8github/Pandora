@@ -64,7 +64,6 @@ Gui, Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
 Gui, Add, Text,  W140 ys, 娱乐:
 Gui, Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
 Gui, Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
-Gui, Add, Link,, <a href="http://i.youku.com/u/UMzc0NzQ2NDg0">lion大帝魔兽</a>
 Gui, Add, Link,, <a href="http://www.hanhande.com/">憨憨电影</a>
 Gui, Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
 Gui, Add, Link,, <a href="https://www.cmdy5.com/dongman/wugengjidierji.html">草民电影</a>
@@ -77,17 +76,18 @@ Gui, Add, Link,, <a href="http://tool.oschina.net/highlight">在线代码着色<
 Gui, Add, Link,, <a href="https://tool.lu/html/">tool.lu压缩</a>
 Gui, Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
 Gui, Add, Link,, <a href="http://www.bejson.com/">bejson超强工具箱</a>
+Gui, Add, Link,, <a href="https://loading.io/spinner/">最好的loading平台</a>
 
 Gui, Add, Text,  W140 ys, 奇妙工具:
 Gui, Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
 Gui, Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
-Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">fontawesome</a>
-Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">Vue-awesome</a>
+Gui, Add, Link,, <a href="http://fontawesome.dashgame.com/">font-awesome</a>
+Gui, Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 Gui, Add, Link,, <a href="http://momentjs.cn/">momentjs</a>
 
 
-Gui, Add, Text, W140 Section xs yp+80, cdn：
+Gui, Add, Text, W140 Section xs yp+50, cdn：
 Gui, Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Add, Link,, <a href="https://www.cdnjs.net/">百度cdn</a>
 Gui, Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
