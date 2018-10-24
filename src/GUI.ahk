@@ -76,7 +76,7 @@ Gui, Add, Link,, <a href="http://tool.oschina.net/highlight">在线代码着色<
 Gui, Add, Link,, <a href="https://tool.lu/html/">tool.lu压缩</a>
 Gui, Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
 Gui, Add, Link,, <a href="http://www.bejson.com/">bejson超强工具箱</a>
-Gui, Add, Link,, <a href="https://loading.io/spinner/">最好的loading平台</a>
+Gui, Add, Link,, <a href="https://loading.io/spinner/">Loading 平台</a>
 
 Gui, Add, Text,  W140 ys, 奇妙工具:
 Gui, Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
