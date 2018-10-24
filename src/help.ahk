@@ -257,7 +257,10 @@ v := A_ThisMenuItem
 Var := 
 
 if (v == "") {
-	
+Var = 
+(
+
+`)
 }
 
 code(Var)

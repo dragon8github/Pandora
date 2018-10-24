@@ -128,16 +128,36 @@ return
   Menu, VueMenu, Add, vuex.modules, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
+  Menu, VueMenu, Add, , VueHandler
+  Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, vue.computed, VueHandler
   Menu, VueMenu, Add, vue.watch, VueHandler
   Menu, VueMenu, Add, vue.watch-vuex, VueHandler
   Menu, VueMenu, Add, vue.data, VueHandler
+  Menu, VueMenu, Add, vue.methods, VueHandler
   Menu, VueMenu, Add, vue.style, VueHandler
   Menu, VueMenu, Add, v-for, VueHandler
+  Menu, VueMenu, Add, , VueHandler
+  Menu, VueMenu, Add, , VueHandler
+  
+  Menu, VueMenu, Add, beforeMount, VueHandler
+  Menu, VueMenu, Add, beforeCreate, VueHandler
+  Menu, VueMenu, Add, created, VueHandler
+  Menu, VueMenu, Add, mounted, VueHandler
+  Menu, VueMenu, Add, activated, VueHandler
+  
+  Menu, VueMenu, Add, , VueHandler
+  Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$router.push('index'), VueHandler
-
+  Menu, VueMenu, Add, this.$router.back, VueHandler
+  Menu, VueMenu, Add, 组件钩子beforeRouteLeave, VueHandler
+  Menu, VueMenu, Add, 组件钩子beforeRouteEnter, VueHandler
+  Menu, VueMenu, Add, 全局钩子router.afterEach, VueHandler
+  Menu, VueMenu, Add, 全局钩子router.beforeEach, VueHandler
+  Menu, VueMenu, Add, 获取参数this.$route.params.id, VueHandler
+  
 
 	Menu, VueMenu, Show
 	Menu, VueMenu, DeleteAll
@@ -149,8 +169,132 @@ v := A_ThisMenuItem
 Var :=
 
 if (v == "") {
+Var = 
+(
 
+)
 }
+
+if (v == "beforeMount") {
+Var = 
+(
+beforeMount () {}
+)
+}
+if (v == "beforeCreate") {
+Var = 
+(
+beforeCreate () {}
+)
+}
+if (v == "created") {
+Var = 
+(
+created () {}
+)
+}
+if (v == "mounted") {
+Var = 
+(
+mounted () {}
+)
+}
+if (v == "activated") {
+Var = 
+(
+activated () {}
+)
+}
+
+
+if (v == "vue.methods") {
+Var = 
+(
+methods: {
+    go () {
+        
+    }
+}
+)
+}
+
+if (v == "全局钩子router.beforeEach") {
+Var = 
+(
+router.beforeEach((to, from, next) => {
+    // 前往页面
+    let _to = to.fullPath.toUrl()
+    // 来路页面
+    let _from = from.fullPath.toUrl()
+    // 设置标题
+    setTitle(to.meta.title)
+    // 放行页面
+    next()
+})
+)
+}
+
+
+if (v == "全局钩子router.afterEach") {
+Var = 
+(
+// 全局路由钩子
+router.afterEach((to, from) => {
+    // 记录回路
+    if (name) store.state.back = { title: from.meta.title, path: from.path }
+    // 获取面包屑标题
+    const completeTitle = getCompleteTitleByMatched(to.matched)
+    // 更新 vuex 状态 - 标题
+    store.dispatch('SET_TITLE', completeTitle)
+    // 更新页面标题（简单即可）
+    document.title = to.meta.title
+    // 关闭所有的loading
+    Loader.hideAll();
+})
+)
+}
+
+if (v == "this.$router.back") {
+Var = 
+(
+this.$router.back
+)
+}
+
+if (v == "获取参数this.$route.params.id") {
+Var = 
+(
+this.$route.params.id
+)
+}
+
+if (v == "组件钩子beforeRouteLeave") {
+Var = 
+(
+// 页面离开的时候，初始化一些参数配置
+beforeRouteLeave  (to, from, next) {
+    // 还原为全部选择框都显示
+    this.$store.dispatch('list/onlyShowSelect')
+    // 取消问题类型，默认为空
+    this.$store.dispatch('list/eq_problemType')
+    next();
+},
+)
+}
+
+if (v == "组件钩子beforeRouteEnter") {
+Var = 
+(
+beforeRouteEnter (to, from, next) {
+    next(vm => {
+      if (from.path === '/myBusiness') vm.$router.push('/')
+      next()
+    })
+}
+)
+}
+
+
 
 if (v == "vue.init") {
 InputBox, OutputVar, title, enter a name?,,,,,,,,test
