@@ -729,6 +729,7 @@ code(Var)
 return
 
 ::loading...::
+::...::
 Var = 
 (
 .loading:after {
@@ -1260,25 +1261,6 @@ align-items: center`;
 )
 Return
 
-::`:before::
-    SendInput,
-(
-::before {{}{}}{left}
-content: " "`;
-position:absolute`;
-
-)
-Return
-
-::`:after::
-    SendInput,
-(
-::after {{}{}}{left}
-content: " "`;
-position:absolute`;
-
-)
-Return
 
 ::center::
     SendInput, 

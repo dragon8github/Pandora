@@ -1,4 +1,33 @@
-﻿NewAxiosIndexHtml:
+﻿NewRxjsIndexHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>rxjs demo</title>
+    <script src="https://cdn.bootcss.com/rxjs/6.3.3/rxjs.umd.min.js"></script>
+</head>
+<body>
+  <button>test</button>
+</body>
+<script>
+   // https://rxjs-dev.firebaseapp.com/guide/overview#purity
+   const button = document.querySelector('button');
+   const { fromEvent } = rxjs;
+   const { scan } = rxjs.operators;
+
+   fromEvent(button, 'click').pipe(scan(count => count + 1, 0))
+        .subscribe(count => console.log(Clicked ${count} times));
+</script>
+),  %name%
+RunBy(name)	
+run, % name
+return
+
+NewAxiosIndexHtml:
 name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 htmlfilename := name . "/index.html"
 phpfilename := name . "/index.php"

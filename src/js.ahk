@@ -3424,10 +3424,10 @@ return
 ::maybe::
 Var =
 (
-var maybe = (fn, n = '') => { 
+const maybe = (fn, n = '') => { 
    try { 
       const result = fn()
-      return (result && result === result) ? result : n
+      return (result && result === result && result !== 'NaN' && result !== 'Invalid date') ? result : n
    } catch (err) {
       return n 
    }

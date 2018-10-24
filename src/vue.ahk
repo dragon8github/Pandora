@@ -1,4 +1,17 @@
-﻿::vue.msg::
+﻿::vuex.action::
+::vuex.actions::
+::vuex.a::
+Var =
+(
+eq_problemType ({ commit, state, dispatch, rootState }, eq_problemType) {
+  state.eq_problemType = eq_problemType
+  dispatch('list')
+},
+)
+code(Var)
+return
+
+::vue.msg::
 ::vue.msgbox::
 Var =
 (
@@ -96,7 +109,7 @@ return
   Menu, VueMenu, Add, vuex.init, VueHandler
   Menu, VueMenu, Add, vuex.modules, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
-  Menu, VueMenu, Add, this.$store.state.departmental, VueHandler
+  Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
   Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, vue.computed, VueHandler
   Menu, VueMenu, Add, vue.watch, VueHandler
@@ -244,10 +257,10 @@ Var =
 this.$store.dispatch
 )
 }
-if (v == "this.$store.state.departmental") {
+if (v == "this.$store.state.list.loading") {
 Var = 
 (
-this.$store.state.departmental
+this.$store.state.list.loading
 )
 }
 if (v == "vue.computed") {

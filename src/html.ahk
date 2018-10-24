@@ -1,4 +1,12 @@
-﻿::rx.html::
+﻿::html.div::
+Var =
+(
+<div style='background:red; position:absolute; width: 200px; height: 200px; left: 0px; right: 0px;' id='fuck'>123</div>
+)
+code(Var)
+return
+
+::rx.html::
 ::rxjs.html::
 Var =
 (

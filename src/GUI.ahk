@@ -119,6 +119,8 @@ Gui, Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/login.jspx">
 Gui, Add, Text,  W140 ys, 12345大数据屏（vue）
 Gui, Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">swagger-ui</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">dg12345-vue git</a>
+Gui, Add, Link,, <a href="http://120.77.146.174:86">dg12345测试地址174</a>
+
 
 Gui, Add, Text,  W140 ys, 东莞课外教育网（nuxt）
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
@@ -223,7 +225,8 @@ Gui, Add, Link,, <a href="https://www.cnblogs.com/CyLee/p/9827489.html">axios �
 
 Gui, Add, Text,  W140  Section xs yp+140, Rxjs：
 Gui, Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/guide/overview">Rxjs 官网</a>
-Gui, Add, Link,, <a href="https://github.com/Reactive-Extensions/RxJS">Rxjs： github</a>
+Gui, Add, Link,, <a href="https://github.com/Reactive-Extensions/RxJS">Rxjs github</a>
+Gui, Add, Link,, <a href="https://cn.rx.js.org/manual/overview.html">Rxjs 中文网</a>
 
 Gui, Tab, 6
 Gui, Add, Text,  W140 Section, 高德地图：
@@ -344,6 +347,8 @@ Gui, Add, Text, gNewreactbabelHtml W140, 新建react.babel.html
 Gui, Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
 Gui, Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
 Gui, Add, Text, gNewAxiosIndexHtml W140,新建axios.html
+Gui, Add, Text, gNewRxjsIndexHtml W140,新建Rxjs.html
+
 
 Gui, Add, Text, gNewEchartsPinHtml  ys x+80, 新建echarts.pin.html(玫瑰饼图)
 Gui, Add, Text, gNewEchartsLineHtml ,新建echats.Line.html（折线图）
