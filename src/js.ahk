@@ -1,4 +1,12 @@
-﻿::is-wx::
+﻿::imp::
+Var =
+(
+import moment from 'moment'
+)
+code(Var)
+return
+
+::is-wx::
 ::is-weixin::
 Var =
 (
