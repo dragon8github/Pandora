@@ -526,6 +526,7 @@ return
 ::echarts.tooltip::
 ::echarts.tool::
 ::echarts.tip::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
 // 根配置，如果formatter返回空则或者干脆不返回，则不会显示，可以用来显示series的数据。也可以通过判断params.componentSubType来进行显示。
@@ -536,10 +537,8 @@ tooltip: {
 	  fontSize: 20
    },
    formatter: function (params) {
-	   if (params.data) {
-		  return `${params.seriesName} <br /> ${params.name}`
-		}
-		// 如果没有data说明是地图网格，不要显示
+	    console.log(%t%, params)
+		// 返回空说明不展示tooltip
 		return ''
    }
 }

@@ -1,4 +1,13 @@
-﻿; 每次输入字符时, 热字串识别器会检查当前活动窗口, 并且如果活动窗口不同于之前, 则会重置. 如果活动窗口发生变化, 但在键入任何字符之前返回, 则不会检测到更改(但可能会由于其他原因重置热字串识别器). 
+﻿::gitp::
+::git push::
+::git p::
+::git pu::
+::gitpu::
+SendRaw, git push -u origin master
+return
+
+
+; 每次输入字符时, 热字串识别器会检查当前活动窗口, 并且如果活动窗口不同于之前, 则会重置. 如果活动窗口发生变化, 但在键入任何字符之前返回, 则不会检测到更改(但可能会由于其他原因重置热字串识别器). 
 ; 通过两个热字符串的触发角，优雅自然无障碍的重置。（实验中...）
 ~Enter::
 ~Tab::
@@ -411,7 +420,7 @@ return
 
 
 !l:: 
-    lifeArray := ["beforeMount", "beforeCreate", "created", "mounted", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate", "", "", "primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥992px)", "lg —— 大屏幕 大桌面显示器 (≥1200px)" "", "", "",  "public", "private", "protected"]
+    lifeArray := ["beforeMount", "beforeCreate", "created", "mounted", "destroyed", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate", "", "", "primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥992px)", "lg —— 大屏幕 大桌面显示器 (≥1200px)" "", "", "",  "public", "private", "protected"]
     Loop % lifeArray.MaxIndex() {
         this_life := lifeArray[a_index]
         Menu, LifeMenu, Add, %this_life%, MenuHandlerlifeArray

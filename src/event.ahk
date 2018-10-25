@@ -224,7 +224,9 @@ onMouseLeave = { this.MouseLeaveHandle }
 if (v == "ehcarts.click") {
 Var = 
 (
-ehcarts.click
+this.myChart.on('click', function (params) {
+	console.log(20181025092106, params)
+})
 )
 }
 if (v == "ehcarts.mouseover") {

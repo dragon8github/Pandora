@@ -238,6 +238,8 @@ return
   Menu, VueMenu, Add, created, VueHandler
   Menu, VueMenu, Add, mounted, VueHandler
   Menu, VueMenu, Add, activated, VueHandler
+  Menu, VueMenu, Add, destroyed, VueHandler
+  
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -266,6 +268,15 @@ Var =
 
 )
 }
+
+
+if (v == "destroyed") {
+Var = 
+(
+destroyed () {}
+)
+}
+
 
 if (v == "router.init") {
 Var = 
