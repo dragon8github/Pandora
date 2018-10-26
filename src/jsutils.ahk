@@ -1,13 +1,25 @@
 ﻿!u::
-
-	Menu, utilsMenu, Add, isArray, utilsHandler
+    Menu, utilsMenu, Add, isString, utilsHandler
+    Menu, utilsMenu, Add, isNumber, utilsHandler
+    Menu, utilsMenu, Add, isBoolean, utilsHandler
+    Menu, utilsMenu, Add, isArray, utilsHandler
+    Menu, utilsMenu, Add, isObject, utilsHandler
+	Menu, utilsMenu, Add, isPureObject, utilsHandler
+    Menu, utilsMenu, Add, isFunction, utilsHandler
 	Menu, utilsMenu, Add, isDate, utilsHandler
-	Menu, utilsMenu, Add, isFunction, utilsHandler
-	Menu, utilsMenu, Add, isNumber, utilsHandler
-	Menu, utilsMenu, Add, isEmptyObject, utilsHandler
-	Menu, utilsMenu, Add, isObject, utilsHandler
-	Menu, utilsMenu, Add, isPromise, utilsHandler
+    Menu, utilsMenu, Add, isPromise, utilsHandler
 	Menu, utilsMenu, Add, isNaN, utilsHandler
+
+    Menu, utilsMenu, Add, , utilsHandler
+    Menu, utilsMenu, Add, , utilsHandler
+    
+    Menu, utilsMenu, Add, isZH-Cn, utilsHandler
+    Menu, utilsMenu, Add, isIp, utilsHandler
+    Menu, utilsMenu, Add, isPhone, utilsHandler
+    Menu, utilsMenu, Add, isPwd, utilsHandler
+    Menu, utilsMenu, Add, isUser, utilsHandler
+    Menu, utilsMenu, Add, isId, utilsHandler
+    Menu, utilsMenu, Add, isEmail, utilsHandler
 
 	Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
@@ -38,6 +50,86 @@ utilsHandler:
 ; MsgBox You selected  from the menu .
 v := A_ThisMenuItem
 Var :=
+
+
+if (v == "") {
+Var = 
+(
+)
+}
+
+
+if (v == "isString") {
+Var = 
+(
+SendRaw, Object.prototype.toString.call(String) === '[object String]'
+)
+}
+if (v == "isBoolean") {
+Var = 
+(
+Object.prototype.toString.call(Boolean) === '[object Boolean]'
+)
+}
+if (v == "isZH-Cn") {
+Var = 
+(
+if (!/^[\u4e00-\u9fa5]+$/.test('李钊鸿')) {
+      throw new Error('请输入中文汉字')
+}
+)
+}
+if (v == "isIp") {
+Var = 
+(
+body.match(/\d\.\d\.\d\.\d:\d/g);
+)
+}
+if (v == "isPhone") {
+Var = 
+(
+/^([0-9]{3,4}-)?[0-9]{7,8}$/.test(s)
+/^[1][3,4,5,7,8][0-9]{9}$/.test(s)
+/^1\d{10}$/.test(s)
+/^((1)3(\d){9}$)|(^(1)4[5-9](\d){8}$)|(^(1)5[^4]{9}$)|(^(1)66(\d){8}$)|(^(1)7[0-8](\d){8}$)|(^(1)8(\d){9}$)|(^(1)9[8-9](\d){8}$)/.test(16961121989)
+)
+}
+if (v == "isPwd") {
+Var = 
+(
+/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/.test('123456a@') // 必须同时包含数字和字母,支持非法符号
+)
+}
+if (v == "isUser") {
+Var = 
+(
+ /^[a-zA-Z0-9-_]*$/.test('') // 由6-16位数字、 字母、 '_'、 '-'组成，不含特殊字符
+)
+}
+if (v == "isId") {
+Var = 
+(
+if (!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test('445222199307100337')){
+    throw new Error('非法身份证')
+}
+)
+}
+if (v == "isEmail") {
+Var = 
+(
+)
+}
+
+if (v == "isZH-Cn") {
+Var = 
+(
+if (!/^[\u4e00-\u9fa5]+$/.test('李钊鸿')) {
+      throw new Error('请输入中文汉字')
+}
+)
+}
+
+
 
 if (v == "gettop") {
 Var = 
@@ -134,7 +226,7 @@ export default function isNumber(input) {
 )
 }
 
-if (v == "isEmptyObject") {
+if (v == "isPureObject") {
 Var = 
 (
 export default function isEmptyObject(obj) {

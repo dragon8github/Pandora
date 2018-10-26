@@ -2,26 +2,26 @@
 	Menu, EventMenu, Add, ### 注意：onclick只能为元素绑定一个方法，而addEventListener可以绑定无限个 ### , EventHandler
 	Menu, EventMenu, Add, , EventHandler
 	Menu, EventMenu, Add, , EventHandler
-	Menu, EventMenu, Add, document.getElementById('app').addEventListener('click'`, () => {}), EventHandler
-	Menu, EventMenu, Add, document.getElementById('app').addEventListener('mouseover'`, () => {}) , EventHandler
-	Menu, EventMenu, Add, document.getElementById('app').addEventListener('mouseleave'`, () => {}), EventHandler
+	Menu, EventMenu, Add, .addEventListener('click'`, e => {}), EventHandler
+	Menu, EventMenu, Add, .addEventListener('mouseover'`, e => {}) , EventHandler
+	Menu, EventMenu, Add, .addEventListener('mouseleave'`, e => {}), EventHandler
 	
 	Menu, EventMenu, Add, , EventHandler
 	Menu, EventMenu, Add, , EventHandler
 	
-	Menu, EventMenu, Add, document.getElementById('app').onclick = (e) => {}, EventHandler
-	Menu, EventMenu, Add, document.getElementById('myform').onsubmit = (e) => {}, EventHandler
+	Menu, EventMenu, Add, .onclick = (e) => {}, EventHandler
+	Menu, EventMenu, Add, .onsubmit = (e) => {}, EventHandler
 	
 
 	Menu, EventMenu, Add, , EventHandler
 	Menu, EventMenu, Add, , EventHandler
 
-	Menu, EventMenu, Add, $("#app").click(() => {}), EventHandler
-	Menu, EventMenu, Add, $("#app").mouseleave(() => {}), EventHandler
-	Menu, EventMenu, Add, $("#app").mouseover(() => {}), EventHandler
-	Menu, EventMenu, Add, $("#app").change(() => {}), EventHandler
-	Menu, EventMenu, Add, $("#app").mouseup(() => {}), EventHandler
-	Menu, EventMenu, Add, $('#app').scroll(() => {}), EventHandler
+	Menu, EventMenu, Add, $("#app").click(e => {}), EventHandler
+	Menu, EventMenu, Add, $("#app").mouseleave(e => {}), EventHandler
+	Menu, EventMenu, Add, $("#app").mouseover(e => {}), EventHandler
+	Menu, EventMenu, Add, $("#app").change(e => {}), EventHandler
+	Menu, EventMenu, Add, $("#app").mouseup(e => {}), EventHandler
+	Menu, EventMenu, Add, $('#app').scroll(e => {}), EventHandler
 
 	Menu, EventMenu, Add, , EventHandler
 	Menu, EventMenu, Add, , EventHandler
@@ -68,7 +68,7 @@ if (v == "") {
 
 }
 
-if (v == "$('#app').scroll(() => {})") {
+if (v == "$('#app').scroll(e => {})") {
 Var = 
 (
 $('.trajectoryTable').scroll(function (e) {
@@ -77,67 +77,67 @@ $('.trajectoryTable').scroll(function (e) {
 )
 }
 
-if (v == "document.getElementById('app').addEventListener('click', () => {})") {
+if (v == ".addEventListener('click', e => {})") {
 Var = 
 (
-document.getElementById('app').addEventListener('click', () => {}
+.addEventListener('click', e => {})
 )
 }
-if (v == "document.getElementById('app').addEventListener('mouseover', () => {}) ,") {
+if (v == ".addEventListener('mouseover', e => {}) ,") {
 Var = 
 (
-document.getElementById('app').addEventListener('mouseover'`, () => {}) ,
+.addEventListener('mouseover', e => {})
 )
 }
-if (v == "document.getElementById('app').addEventListener('mouseleave', () => {}") {
+if (v == ".addEventListener('mouseleave', e => {}") {
 Var = 
 (
-document.getElementById('app').addEventListener('mouseleave'`, () => {}
+.addEventListener('mouseleave', e => {})
 )
 }
-if (v == "document.getElementById('app').onclick = (e) => {}") {
+if (v == ".onclick = (e) => {}") {
 Var = 
 (
-document.getElementById('app').onclick = (e) => {}
+.onclick = (e) => {}
 )
 }
-if (v == "document.getElementById('myform').onsubmit = (e) => {}") {
+if (v == ".onsubmit = (e) => {}") {
 Var = 
 (
-document.getElementById('myform').onsubmit = (e) => {}
+.onsubmit = (e) => {}
 )
 }
-if (v == "$('#app').click(() => {})") {
+if (v == "$('#app').click(e => {})") {
 Var = 
 (
-$('#app').click(() => {})
+$('#app').click(e => {})
 )
 }
-if (v == "$('#app').mouseleave(() => {})") {
+if (v == "$('#app').mouseleave(e => {})") {
 Var = 
 (
-$('#app').mouseleave(() => {})
+$('#app').mouseleave(e => {})
 )
 }
-if (v == "$('#app').mouseover(() => {})") {
+if (v == "$('#app').mouseover(e => {})") {
 Var = 
 (
-$('#app').mouseover(() => {})
+$('#app').mouseover(e => {})
 )
 }
-if (v == "$('#app').change(() => {})") {
+if (v == "$('#app').change(e => {})") {
 Var = 
 (
-$('#app').change(() => {})
+$('#app').change(e => {})
 )
 }
-if (v == "$('#app').mouseup(() => {})") {
+if (v == "$('#app').mouseup(e => {})") {
 Var = 
 (
-$('#app').mouseup(() => {})
+$('#app').mouseup(e => {})
 )
 }
-if (v == "@click=""doThat('hello', $event)`""") {
+if (v == "@click=""doThat('hello', $event)""") {
 Var = 
 (
 @click = "doThat('hello', $event)"
@@ -222,29 +222,68 @@ onMouseLeave = { this.MouseLeaveHandle }
 )
 }
 if (v == "ehcarts.click") {
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
-this.myChart.on('click', function (params) {
-	console.log(20181025092106, params)
+this.myChart.on('click', params => {
+	console.log(%t%, params)
 })
 )
 }
 if (v == "ehcarts.mouseover") {
 Var = 
 (
-ehcarts.mouseover
+this.myChart.on('mouseover', params => {
+	console.log(%t%, params)
+})
 )
 }
 if (v == "ehcarts.mouseout") {
 Var = 
 (
-ehcarts.mouseout
+this.myChart.on('mouseout', params => {
+	console.log(%t%, params)
+})
 )
 }
 if (v == "冒泡点击mouseup") {
 Var = 
 (
-冒泡点击mouseup
+// jQuery版本
+$('.keySupervision__layer').css({ left, top }).show(300, function () {
+      window.addEventListener('mouseup', function cancelFade(e) {
+         if (!e.target.className.includes('keySupervision__layer')) {
+             $('.keySupervision__layer').hide();
+             window.removeEventListener('mouseup', cancelFade);
+         }
+      })
+})
+
+// vue版本
+<div class="msgbox" v-show="value">
+data () {
+    return {
+        value: false
+    }
+},
+methods: {
+  hideListener (e) {
+    // 只要你的弹窗所有元素都准许BEM规范即可。也就是说都带msgbox前缀，就可以轻松区分。
+    if (!e.target.className.includes('msgbox')) {
+        this.value = false
+    }
+  },
+  // 可以给关闭按钮绑定，如<a class="msgbox__header--close" @click='value = !value'>×</a>
+  show () {
+    if (!this.value) this.value = true
+  }
+},
+watch: {
+    value (newV) {
+      newV === true && window.addEventListener('mouseup', this.hideListener)
+      newV === false && window.removeEventListener('mouseup', this.hideListener);
+    }
+},
 )
 }
 

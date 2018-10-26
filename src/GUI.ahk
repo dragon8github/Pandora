@@ -236,18 +236,9 @@ Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/reference/core
 Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/abc/quickstart">高德地图-快速上手</a>
 
 Gui, Add, Text,  W140 ys, 百度地图：
-Gui, Add, Link,, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0">百度地图-JavaScript</a>
-Gui, Add, Link,, <a href="http://lbsyun.baidu.com/jsdemo.htm#canvaslayer">百度地图-Demo</a>
-Gui, Add, Link,, <a href="http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html">百度地图-API</a>
+Gui, Add, Link,, <a href="http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a3b0">百度地图-API</a>
 Gui, Add, Link,, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/openlibrary">百度地图-开源库</a>
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/helloworld">百度地图-快速上手</a>
-
-Gui, Add, Text, W140 ys, 地图工具：
-Gui, Add, Link, W140, <a href="http://api.map.baidu.com/lbsapi/getpoint/">百度拾取坐标系统</a>
-Gui, Add, Link, W140, <a href="http://geojson.io/">GeoJSON.io</a>
-Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#k0_2">百度地图主题定制</a>
-Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/custom/">百度地图皮肤制作</a>
-
 
 Gui, Add, Text, W140 ys, 百度地图教程：
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#f0_3">地图点击事件</a>
@@ -257,13 +248,20 @@ Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_4">点聚�
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_5">沿线运动教程（马里奥）</a>
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_16">自定义点图标（狐美人）</a>
 
+Gui, Add, Text, W140 ys, 地图工具：
+Gui, Add, Link, W140, <a href="http://api.map.baidu.com/lbsapi/getpoint/">百度拾取坐标系统</a>
+Gui, Add, Link, W140, <a href="http://geojson.io/">GeoJSON.io</a>
+Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#k0_2">百度地图主题定制</a>
+Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/custom/">百度地图皮肤制作</a>
+
+
 Gui, Add, Text, W140 ys, 百度mapv：
 Gui, Add, Link, W140, <a href="http://mapv.baidu.com/">mapv官网</a>
 Gui, Add, Link, W140, <a href="http://mapv.baidu.com/examples/#csv-car.html">mapv-example</a>
 Gui, Add, Link, W140, <a href="https://github.com/huiyan-fe/mapv/blob/master/API.md">百度线面教程</a>
 Gui, Add, Link, W140, <a href="https://github.com/huiyan-fe/mapv/#readme">ampv-github</a>
 
-Gui, Add, Text,  W140  Section xs yp+100, echart:
+Gui, Add, Text,  W140  Section xs yp+120, echart:
 Gui, Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
 Gui, Add, Link,, <a href="http://echarts.baidu.com/theme-builder/">echart 主题构建</a>
 Gui, Add, Link,, <a href="http://echarts.baidu.com/tutorial.html#5 分钟上手 ECharts">echart 快速上手</a>
