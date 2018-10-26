@@ -40,6 +40,11 @@
 	Menu, utilsMenu, Add, hasClass, utilsHandler
     Menu, utilsMenu, Add, gettop, utilsHandler
     Menu, utilsMenu, Add, scrollToTop, utilsHandler
+    
+    Menu, utilsMenu, Add, , utilsHandler
+	Menu, utilsMenu, Add, , utilsHandler
+    
+    Menu, utilsMenu, Add, isBottom是否滚动到底部, utilsHandler
 
 	Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -55,6 +60,27 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "isBottom是否滚动到底部") {
+Var = 
+(
+let scrollHandle = (el) => {
+	// 如果已经滚到底部了
+	if (el.scrollHeight - el.scrollTop === el.clientHeight) {
+		console.log(123)
+	}
+}
+
+// 懒加载优化：滚动节流策略
+let __SCROLLTIMER__ = null
+// 绑定滚动事件
+$('.dgtable__warp').scroll(e => {
+    clearTimeout(__SCROLLTIMER__);
+    __SCROLLTIMER__ = setTimeout(_ => scrollHandle(e), 150);
+})
 )
 }
 

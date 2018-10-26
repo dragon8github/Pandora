@@ -1,4 +1,50 @@
-﻿::imp::
+﻿::is-Bottom::
+::is.bottom::
+::isbottom::
+Var =
+(
+let scrollHandle = (el) => {
+	// 如果已经滚到底部了
+	if (el.scrollHeight - el.scrollTop === el.clientHeight) {
+		console.log(123)
+	}
+}
+
+// 懒加载优化：滚动节流策略
+let __SCROLLTIMER__ = null
+// 绑定滚动事件
+$('.dgtable__warp').scroll(e => {
+    clearTimeout(__SCROLLTIMER__);
+    __SCROLLTIMER__ = setTimeout(_ => scrollHandle(e), 150);
+})
+)
+code(Var)
+return
+
+::es5.class::
+::es5class::
+::class5::
+Var =
+(
+function Person(name) {
+    this.name = name
+}
+
+Person.prototype = {
+    constructor: Person
+
+    sayName: function () {}
+        console.log(this.name)
+    },
+    
+    toString: function () {
+        return this.name
+    }
+)
+code(Var)
+return
+
+::imp::
 Var =
 (
 import moment from 'moment'
