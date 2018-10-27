@@ -1,6 +1,107 @@
-﻿::is-Bottom::
+﻿::js.private::
+::js.priv::
+::js.siyoubianl::
+::js.siyoubianliang::
+Var =
+(
+//////////////////////////////////////////////
+// 模块模式
+//////////////////////////////////////////////
+var person = (function(){
+	var age = 25
+
+	return {
+		name: 'Lee',
+
+		getAge: function () {
+			return age
+		},
+
+		setAge: function () {
+			age++
+		}
+	}
+}());
+
+console.log(person.name) // Lee
+console.log(person.getAge()) // 25
+
+person.age = 100 // hack try...
+console.log(person.getAge()) // 25
+
+//////////////////////////////////////////////
+// 构造函数的私有变量
+//////////////////////////////////////////////
+function Person(name) {
+	this.name = name
+	var age = 18
+
+	this.getAge = function () {
+		return age
+	}
+
+	this.setAge = function () {
+		age++
+	}
+}
+
+var person = new Person('Lee')
+console.log(person.name) // Lee
+console.log(person.getAge()) // 18
+
+person.age = 100 // hack try...
+Person.age = 100 // hack try...
+console.log(person.getAge()) // 18
+)
+code(Var)
+return
+
+::.attr::
+Var =
+(
+.getAttribute('tabindex');
+)
+code(Var)
+return
+
+::es5.jicheng::
+::js.jicheng::
+Var =
+(
+// 矩形（构造器/父类）
+function Rectangle (height, width) {
+	this.height = height;
+	this.width = width;
+}
+
+// 获取面积
+Rectangle.prototype.getArea = function () {
+	return this.height * this.width;
+}
+
+// 正方形（将继承矩形）
+function Square (size) {
+	this.height = size
+	this.width = size
+}
+
+// 继承的重中之重语法，其实也可以用：Square.prototype = Object.create(Rectangle.prototype)
+Square.prototype = Object.create(Rectangle.prototype);
+// 构造函数
+Square.prototype.constructor = Square;
+
+var square = new Square(6);
+// 调用继承的矩形类的获取面积函数
+console.log(square.getArea()) // 36
+)
+code(Var)
+return
+
+::is-Bottom::
 ::is.bottom::
 ::isbottom::
+::scrollbottom::
+::scroll.bottom::
 Var =
 (
 let scrollHandle = (el) => {
@@ -40,6 +141,7 @@ Person.prototype = {
     toString: function () {
         return this.name
     }
+}
 )
 code(Var)
 return
@@ -444,11 +546,74 @@ func();
 code(Var)
 return
 
-::__event::
-::__event__::
+::eventtarget::
+::js.eventtarget::
+::event.target::
 Var =
 (
-// 1、发布 — 订阅的功能
+function EventTarget() {
+
+}
+
+EventTarget.prototype = {
+	constructor: EventTarget,
+	addListener: function (type, listener) {
+		if (!this.hasOwnProperty("_listeners")) {
+			this._listeners = [];
+		}
+
+		if (typeof this._listeners[type] == 'undefined') {
+			this._listeners[type] = []
+		}
+
+		this._listeners[type].push(listener);
+	},
+	trigger: function (event) {
+		if (!event.target) {
+			event.target = this;
+		}
+
+		if (!event.type) {
+			throw new Error("Event object miss 'type' property.");
+		}
+
+		if (this._listeners && this._listeners[event.type] instanceof Array) {
+			var listeners = this._listeners[event.type];
+			for (var i = 0; i < listeners.length; i++) {
+			    listeners[i].call(this, event);
+			}
+		}
+	},
+	removeListener: function (type, listener) {
+		if (this._listeners && this._listeners[type] instanceof Array) {
+			var listeners = this._listeners[type];
+			for (var i = 0; i < listeners.length; i++) {
+			    if (listeners[i] === listener) {
+			    	listeners.splice(i, 1);
+			    	break;
+			    }
+			}
+		}
+	},
+}
+
+var event = new EventTarget();
+event.addListener('message', function (event) {
+	console.log('message is ' + event.data);
+})
+event.trigger({
+	type: 'message',
+	data: 'Hello world!'
+})
+)
+code(Var)
+return
+
+::__event::
+::__event__::
+::js.event::
+Var =
+(
 window.__EVENT__ = {
      // 缓存列表
      clientList: [],
@@ -457,39 +622,38 @@ window.__EVENT__ = {
              this.clientList[key] = [];
          }
          // 订阅的消息添加进缓存列表
-         this.clientList[key].push(fn); 
+         this.clientList[key].push(fn);
      },
      trigger: function() {
          var key = Array.prototype.shift.call(arguments),
              fns = this.clientList[key];
          // 如果没有绑定对应的消息
-         if (!fns || fns.length === 0) { 
+         if (!fns || fns.length === 0) {
              return false;
          }
          for (var i = 0, fn; fn = fns[i++];) {
              // arguments 是 trigger 时带上的参数
              fn.apply(this, arguments);
          }
-     }
-};
-
-// 2、取消订阅的事件
-__EVENT__.remove = function(key, fn) {
-     var fns = this.clientList[key];
-     if (!fns) { // 如果 key 对应的消息没有被人订阅，则直接返回
-         return false;
-     }
-     if (!fn) { // 如果没有传入具体的回调函数，表示需要取消 key 对应消息的所有订阅
-         fns && (fns.length = 0);
-     } else {
-         for (var l = fns.length - 1; l >= 0; l--) { // 反向遍历订阅的回调函数列表
-             var _fn = fns[l];
-             if (_fn === fn) {
-                 fns.splice(l, 1); // 删除订阅者的回调函数
+     },
+     remove: function(key, fn) {
+         var fns = this.clientList[key];
+         if (!fns) { // 如果 key 对应的消息没有被人订阅，则直接返回
+             return false;
+         }
+         if (!fn) { // 如果没有传入具体的回调函数，表示需要取消 key 对应消息的所有订阅
+             fns && (fns.length = 0);
+         } else {
+             for (var l = fns.length - 1; l >= 0; l--) { // 反向遍历订阅的回调函数列表
+                 var _fn = fns[l];
+                 if (_fn === fn) {
+                     fns.splice(l, 1); // 删除订阅者的回调函数
+                 }
              }
          }
-     }
+    }
 };
+
 )
 code(Var)
 return
@@ -1492,29 +1656,6 @@ AppsKey & r::
     SendRaw, npm run dev
 return
 
-!i::
-Var = 
-(
-if (condition) {
-    
-}
-)
-code(Var)
-return
-
->!i::
-Var = 
-(
-if (condition) {
-
-} else if (condition) {
-
-} else {
-    
-}
-)
-code(Var)
-return
 
 ::removee::
 ::removeevent::
@@ -1886,6 +2027,21 @@ clearInterval(timer);
 code(Var)
 Return
 
+::js.mixin::
+::mixin::
+Var =
+(
+function mixin (receiver, supplier) {
+	Object.keys(supplier).forEach(function (property) {
+	     var descriptor = Object.getOwnPropertyDescriptor(supplier, property);
+	     Object.defineProperties(receiver, property, descriptor);
+	});
+	return receiver;
+}
+)
+code(Var)
+return
+
 ::$each::
 Var = 
 (
@@ -1908,6 +2064,7 @@ Return
 
 
 >!f::
+::.fore::
 ::.for::
 Var = 
 (

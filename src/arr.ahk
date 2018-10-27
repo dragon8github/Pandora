@@ -8,24 +8,27 @@ Var =
 code(Var)
 return
 
+::arr::
 ::arra::
-::arrm::
-::arrn::
-::arraym::
-::arrayn::
->!a::
+::arrr::
+!a::
 	Menu, ShellMenu, Add,  for i++, ForHandler
-    Menu, ShellMenu, Add,  forEach, ForHandler
 	Menu, ShellMenu, Add,  for i--, ForHandler
 	Menu, ShellMenu, Add,  for in, ForHandler
 	Menu, ShellMenu, Add,  for of, ForHandler
 	Menu, ShellMenu, Add,  for entries, ForHandler
-	Menu, ShellMenu, Add,  map, ForHandler
-	Menu, ShellMenu, Add,  reduce, ForHandler
-	Menu, ShellMenu, Add,  some（数组至少一个符合条件，返回true/false）, ForHandler
-    Menu, ShellMenu, Add,  every（数组必须全部符合条件，返回true/false）, ForHandler
-	Menu, ShellMenu, Add,  find, ForHandler
-	Menu, ShellMenu, Add,  filter, ForHandler
+	Menu, ShellMenu, Add,  Array#forEach, ForHandler
+	Menu, ShellMenu, Add,  Array#map, ForHandler
+	Menu, ShellMenu, Add,  Array#reduce, ForHandler
+	Menu, ShellMenu, Add,  Array#some（数组至少一个符合条件，返回true/false）, ForHandler
+    Menu, ShellMenu, Add,  Array#every（数组必须全部符合条件，返回true/false）, ForHandler
+	Menu, ShellMenu, Add,  Array#find, ForHandler
+	Menu, ShellMenu, Add,  Array#filter, ForHandler
+	Menu, ShellMenu, Add,  Array#of（创建数组的优雅函数）, ForHandler
+	Menu, ShellMenu, Add,  Array#from（类数组转化成数组的方式）, ForHandler
+	
+	Menu, ShellMenu, Add,, ForHandler
+	Menu, ShellMenu, Add,, ForHandler
 	Menu, ShellMenu, Add,  jQuery $.each, ForHandler
 	Menu, ShellMenu, Add,  jQuery each, ForHandler
 
@@ -38,6 +41,39 @@ ForHandler:
 ; MsgBox You selected  from the menu .
 v := A_ThisMenuItem
 Var :=
+
+
+if (v == "") {
+Var = 
+(
+
+)
+}
+
+if (v == "of（创建数组的优雅函数）") {
+Var = 
+(
+new Array(3) // (3) [empty × 3]
+Array.of(3)  // [3] 
+)
+}
+
+if (v == "from（类数组转化成数组的方式）") {
+Var = 
+(
+var arrlike = {
+	length: 3,
+	0: 'foo',
+	1: 'bar'
+}
+
+// ES5
+var ES5arr = Array.prototype.slice.call( arrlike );  // (3) ["foo", "bar", empty]
+
+// ES6
+var ES6arr = Array.from( arrlike ); // (3) ["foo", "bar", undefined]
+)
+}
 
 if (v == "for i++") {
 Var = 
@@ -90,7 +126,7 @@ for (let [index, value] of [1, 2, 3].entries()) {
 )
 }
 
-if (v == "forEach") {
+if (v == "Array#forEach") {
 Var = 
 (
 .forEach(function (e, i) {
@@ -99,7 +135,7 @@ Var =
 )
 }
 
-if (v == "map") {
+if (v == "Array#map") {
 Var = 
 (
 .map(function (v, index, array) {
@@ -108,7 +144,7 @@ Var =
 )
 }
 
-if (v == "reduce") {
+if (v == "Array#reduce") {
 Var = 
 (
 .reduce((previousValue, currentValue, index, array) => {
@@ -125,7 +161,7 @@ children.reduce((previousValue, currentValue) => {
 )
 }
 
-if (v == "some（数组至少一个符合条件，返回true/false）") {
+if (v == "Array#some（数组至少一个符合条件，返回true/false）") {
 Var = 
 (
 const fruits = [
@@ -140,7 +176,7 @@ const isAnyRed = fruits.some(f => f.color == 'red'); // true
 }
 
 
-if (v == "every（数组必须全部符合条件，返回true/false）") {
+if (v == "Array#every（数组必须全部符合条件，返回true/false）") {
 Var = 
 (
 const fruits = [
@@ -154,7 +190,7 @@ const isAnyRed = fruits.every(f => f.color == 'red'); // false
 )
 }
 
-if (v == "find") {
+if (v == "Array#find") {
 Var = 
 (
 const characters = [
@@ -171,7 +207,7 @@ console.log(characters.find(hasCharacterFrom('marvel'))); // { id: 1, name: 'iro
 )
 }
 
-if (v == "filter") {
+if (v == "Array#filter") {
 Var = 
 (
 .filter((data) => {

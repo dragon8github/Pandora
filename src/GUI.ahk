@@ -43,10 +43,11 @@ Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 Gui, Add, Button, w780 h30 Default, FUCK
 
 Gui, Add, Tab3, w780 h460 Choose1, 常用| 创慧教育 | Vue | React | 库 | 地图 | PHP | 微信 | 工作坊  | 爬虫 | 鸡肋
+
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
+Gui, Add, Link,, <a href="https://github.com/dragon8github/Pandora/blob/master/pandora.exe?raw=true">Lastest Pandora</a>
 Gui, Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
-Gui, Add, Link,, <a href="http://www.cnblogs.com/cylee">技术淘宝</a>
 Gui, Add, Link,, <a href="https://github.com">github</a>
 Gui, Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
 Gui, Add, Link,, <a href="http://e.xitu.io/">掘金前端</a>
