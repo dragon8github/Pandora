@@ -24,6 +24,7 @@ FileDelete, .\src\*.bak
 #Include src/js.ahk         ; JavaScript  
 #Include src/event.ahk      ; event
 #Include src/arr.ahk        ; arr
+#Include src/jsobject.ahk   ; object
 #Include src/ajax.ahk       ; ajax   
 #Include src/react.ahk      ; React
 #Include src/cdn.ahk        ; CDN   

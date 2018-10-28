@@ -12,28 +12,28 @@ return
 ::arra::
 ::arrr::
 !a::
-	Menu, ShellMenu, Add,  for i++, ForHandler
-	Menu, ShellMenu, Add,  for i--, ForHandler
-	Menu, ShellMenu, Add,  for in, ForHandler
-	Menu, ShellMenu, Add,  for of, ForHandler
-	Menu, ShellMenu, Add,  for entries, ForHandler
-	Menu, ShellMenu, Add,  Array#forEach, ForHandler
-	Menu, ShellMenu, Add,  Array#map, ForHandler
-	Menu, ShellMenu, Add,  Array#reduce, ForHandler
-	Menu, ShellMenu, Add,  Array#some（数组至少一个符合条件，返回true/false）, ForHandler
-    Menu, ShellMenu, Add,  Array#every（数组必须全部符合条件，返回true/false）, ForHandler
-	Menu, ShellMenu, Add,  Array#find, ForHandler
-	Menu, ShellMenu, Add,  Array#filter, ForHandler
-	Menu, ShellMenu, Add,  Array#of（创建数组的优雅函数）, ForHandler
-	Menu, ShellMenu, Add,  Array#from（类数组转化成数组的方式）, ForHandler
+	Menu, arrayMenu, Add,  for i++, ForHandler
+	Menu, arrayMenu, Add,  for i--, ForHandler
+	Menu, arrayMenu, Add,  for in, ForHandler
+	Menu, arrayMenu, Add,  for of, ForHandler
+	Menu, arrayMenu, Add,  for entries, ForHandler
+	Menu, arrayMenu, Add,  Array#forEach, ForHandler
+	Menu, arrayMenu, Add,  Array#map, ForHandler
+	Menu, arrayMenu, Add,  Array#reduce, ForHandler
+	Menu, arrayMenu, Add,  Array#some（数组至少一个符合条件，返回true/false）, ForHandler
+    Menu, arrayMenu, Add,  Array#every（数组必须全部符合条件，返回true/false）, ForHandler
+	Menu, arrayMenu, Add,  Array#find, ForHandler
+	Menu, arrayMenu, Add,  Array#filter, ForHandler
+	Menu, arrayMenu, Add,  Array#of（创建数组的优雅函数）, ForHandler
+	Menu, arrayMenu, Add,  Array#from（类数组转化成数组的方式）, ForHandler
 	
-	Menu, ShellMenu, Add,, ForHandler
-	Menu, ShellMenu, Add,, ForHandler
-	Menu, ShellMenu, Add,  jQuery $.each, ForHandler
-	Menu, ShellMenu, Add,  jQuery each, ForHandler
+	Menu, arrayMenu, Add,, ForHandler
+	Menu, arrayMenu, Add,, ForHandler
+	Menu, arrayMenu, Add,  jQuery $.each, ForHandler
+	Menu, arrayMenu, Add,  jQuery each, ForHandler
 
-	Menu, ShellMenu, Show
-	Menu, ShellMenu, DeleteAll
+	Menu, arrayMenu, Show
+	Menu, arrayMenu, DeleteAll
 return
 
 

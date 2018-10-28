@@ -49,6 +49,7 @@
 	Menu, EventMenu, Add, ehcarts.click, EventHandler
 	Menu, EventMenu, Add, ehcarts.mouseover, EventHandler
 	Menu, EventMenu, Add, ehcarts.mouseout, EventHandler
+	Menu, EventMenu, Add, ehcarts.legendselectchanged, EventHandler
 
 	Menu, EventMenu, Add, , EventHandler
 	Menu, EventMenu, Add, , EventHandler
@@ -65,7 +66,18 @@ v := A_ThisMenuItem
 Var :=	
 
 if (v == "") {
+Var = 
+(
+)
+}
 
+if (v == "ehcarts.legendselected") {
+Var = 
+(
+this.myChart.on('legendselectchanged', params => {
+	console.log(20181028120657, params)
+})
+)
 }
 
 if (v == "$('#app').scroll(e => {})") {
