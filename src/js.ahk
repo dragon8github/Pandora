@@ -1,7 +1,24 @@
-﻿::js.private::
+﻿::strline::
+::getline::
+::foreachstr::
+::foreachline::
+::forstr::
+Var =
+(
+var str = ''
+temp1.forEach(function (e, i) {
+   str += ${i+1} —— ${e} \r\n
+});
+console.log(str)
+)
+code(Var)
+return
+
+::js.private::
 ::js.priv::
 ::js.siyoubianl::
 ::js.siyoubianliang::
+::js.mokuaimoshi::
 Var =
 (
 //////////////////////////////////////////////
