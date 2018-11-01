@@ -1,4 +1,14 @@
-﻿::setline::
+﻿::taobaojiejuefangan::
+::flexiable::
+::flexible::
+Var =
+(
+
+)
+code(Var)
+return
+
+::setline::
 ::strline::
 ::getline::
 ::foreachstr::

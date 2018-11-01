@@ -44,6 +44,32 @@ Var =
 code(Var)
 return
 
+::ahkmenu2::
+Var =
+(
+reactArray := ["新建create-react-app", "新建react-redux.html", "React runtime", "ReactDOM.render",  "constructor", "this.porps", "ref", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
+Loop `% reactArray.MaxIndex() {
+    this_life := reactArray[a_index]
+    Menu, reactArray, Add, `%this_life`%, ReactMenuHandler
+}
+Menu, reactArray, Show
+
+
+
+
+ReactMenuHandler:
+
+if (A_ThisMenuItem == "ref") {
+Var = 
+(
+写上你的代码
+`)
+code(Var)
+}
+)
+code(Var)
+return
+
 ::gitp::
 ::git push::
 ::git p::

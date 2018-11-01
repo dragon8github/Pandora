@@ -189,10 +189,28 @@ return
 
 
 ReactMenuHandler:
-if (A_ThisMenuItem == "this.porps") {
+
+if (A_ThisMenuItem == "ref") {
 Var = 
 (
-this.porps.
+constructor(props) {
+  super(props)
+  this.getContainer = this.getContainer.bind(this)
+}
+
+getContainer(ref) {
+  this.container = ref
+}
+
+render() {
+  const { children, onClickOutside, ...props } = this.props
+  return <div {...props} ref={this.getContainer}>{children}</div>
+}
+
+handle = e => {
+  const el = this.container
+  if (el && !el.contains(e.target)) onClickOutside(e)
+}
 )
 code(Var)
 }
@@ -444,7 +462,7 @@ code(Var)
 Return  
 
 !t::
-	reactArray := ["新建create-react-app", "新建react-redux.html", "React runtime", "ReactDOM.render",  "constructor", "this.porps", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
+	reactArray := ["新建create-react-app", "新建react-redux.html", "React runtime", "ReactDOM.render",  "constructor", "this.porps", "ref", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()"]
 	Loop % reactArray.MaxIndex() {
 		this_life := reactArray[a_index]
 		Menu, reactArray, Add, %this_life%, ReactMenuHandler
