@@ -1,8 +1,10 @@
-﻿::strline::
+﻿::setline::
+::strline::
 ::getline::
 ::foreachstr::
 ::foreachline::
 ::forstr::
+::forline::
 Var =
 (
 var str = ''
@@ -739,6 +741,9 @@ code(Var)
 return
 
 ::wl::
+::window.l::
+::window.lo::
+::window.local::
 ::wls::
 Var =
 (
@@ -2677,25 +2682,16 @@ return
 ::objsort::
 Var = 
 (
-// 默认是从小到大，如果要从大到小，则是倒序return -(a-b)
-var orderArr = function (arr) { 
-    arr.sort((a, b) => { return a - b }) 
-}
-
-// 如果是要排序对象其实同理，只是需要传入属性值罢了
-const orderArr = (arr, property) => { 
-    arr.sort((a, b) => { 
-         let value1 = a[property]; 
-         let value2 = b[property]; 
-         return value1 - value2; 
-    }) 
-}
+// 正序（从小到大）是a - b ，(倒序)从大到小 -(a-b)
+arr.sort((a, b) => { return a - b })
 )
 code(Var)
 return
 
 
 ::jiecheng::
+::!n::
+::^n::
 Var = 
 (
 var factorial = n => {

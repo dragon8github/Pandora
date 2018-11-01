@@ -398,6 +398,7 @@ flexHandler:
 v := A_ThisMenuItem
 Var :=
 
+
 if (v == "justify-content: flex-start") {
 Var = 
 (
@@ -849,6 +850,29 @@ Return
     SendRaw, margin: 0 auto;
 return
 
+::arrow.updown::
+::arrowupdown::
+Var =
+(
+&::before, &::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  right: 15px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  width: 0;
+  height: 0;
+}
+&:active { background-color:#EBEBEB; }
+&::after {top: 12px; border-bottom: 8px solid #333; }
+&::before {bottom: 12px; border-top: 8px solid #333; }
+&.is-up::after {border-bottom: 8px solid #C4B484; }
+&.is-down::before {border-top: 8px solid #C4B484; }
+)
+code(Var)
+return
+
 ::arrow::
 Var = 
 (
@@ -864,8 +888,11 @@ code(Var)
 return
 
 ::arrow-top::
+::arrow-up::
 ::arrow.top::
+::arrow.up::
 ::arrowtop::
+::arrowup::
 Var = 
 (
 .triangle {
@@ -898,6 +925,9 @@ return
 ::arrow-bottom::
 ::arrow.bottom::
 ::arrowbottom::
+::arrow-down::
+::arrow.down::
+::arrowdown::
 Var = 
 (
 .triangle {

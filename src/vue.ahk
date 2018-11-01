@@ -1,4 +1,21 @@
-﻿::router.init::
+﻿::deep.watch::
+::deepwatch::
+::deepw::
+Var =
+(
+watch: {
+    proportionofclassificationproblem: {
+        deep: true,
+        handler (newV, oldV) {
+            console.log(20181030114859, newV)
+        }
+    }
+},
+)
+code(Var)
+return
+
+::router.init::
 ::route.init::
 Var =
 (
@@ -225,6 +242,7 @@ return
   Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, vue.computed, VueHandler
   Menu, VueMenu, Add, vue.watch, VueHandler
+  Menu, VueMenu, Add, vue.deep.watch, VueHandler
   Menu, VueMenu, Add, vue.watch-vuex, VueHandler
   Menu, VueMenu, Add, vue.data, VueHandler
   Menu, VueMenu, Add, vue.methods, VueHandler
@@ -266,6 +284,20 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "vue.deep.watch") {
+Var = 
+(
+watch: {
+    proportionofclassificationproblem: {
+        deep: true,
+        handler (newV, oldV) {
+            console.log(20181030114859, newV)
+        }
+    }
+},
 )
 }
 

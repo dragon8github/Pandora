@@ -585,8 +585,14 @@ return
 ::echarts.loading::
 Var =
 (
-mapChart.showLoading();
-mapChart.hideLoading();
+this.myChart.showLoading({
+     text: '正在加载数据...',
+     color: '#c23531',
+     textColor: '#000',
+     maskColor: 'rgba(255, 255, 255, 0.7)',
+     zlevel: 199307100338
+});
+this.myChart.hideLoading();
 )
 code(Var)
 return
