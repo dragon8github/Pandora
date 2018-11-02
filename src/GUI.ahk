@@ -1,8 +1,8 @@
 ﻿Gui, Add, Text, gAllSearchA W140 Section xs yp+10, 搜索引擎类:
 Gui, Add, Checkbox, vcylee, 博客园
-Gui, Add, Checkbox, gMySubroutine Checked HwndMyEditHwnd vbd, 百度
+Gui, Add, Checkbox, gMySubroutine HwndMyEditHwnd vbd, 百度
 Gui, Add, Checkbox, vgoogle, Google
-Gui, Add, Checkbox, vgithub, Github
+Gui, Add, Checkbox, vgithub Checked, Github
 Gui, Add, Checkbox, vso, Stack Overflow
 Gui, Add, Checkbox, vsegmentfault, SegmentFault
 

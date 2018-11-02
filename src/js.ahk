@@ -1,4 +1,20 @@
-﻿::clickoutsize::
+﻿::poll::
+Var =
+(
+// layui的递归
+var maxTimeout = 10
+var timeout = 0
+(function poll() {
+  if(++timeout > maxTimeout * 1000 / 4){
+    return error(item + ' is not a valid module');
+  };
+  <这里写上你的判断> ? onCallback() : setTimeout(poll, 4);
+}());
+)
+code(Var)
+return
+
+::clickoutsize::
 ::clickoutside::
 Var =
 (
@@ -40,9 +56,11 @@ export default class ClickOutside extends Component {
     if (e.type === 'click' && this.isTouch) return
     const { onClickOutside } = this.props
     const el = this.container
+    // 这一句代码就是核心: el.contains，这种思路是通用的
     if (el && !el.contains(e.target)) onClickOutside(e)
   }
 }
+
 )
 code(Var)
 return

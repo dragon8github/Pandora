@@ -1,11 +1,12 @@
 ﻿#IfWinNotActive 神武3
 ; #InstallKeybdHook
 #Persistent ; 让脚本持续运行, 直到用户退出.
-Hotstring("EndChars", "`t`n")  ; 设置为tab键作为终止符（也可以加入回车键）
+Hotstring("EndChars", "`t")  ; 设置为tab键作为终止符（也可以加入回车键）`n
 
 FileEncoding, UTF-8
 FileDelete, *.bak 
 FileDelete, .\src\*.bak
+
 
 #include src/GUI.ahk		; GUI系列 
 #Include src/lib.ahk        ; 公共函数
