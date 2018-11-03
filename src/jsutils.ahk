@@ -21,13 +21,15 @@
     Menu, utilsMenu, Add, isUser, utilsHandler
     Menu, utilsMenu, Add, isId, utilsHandler
     Menu, utilsMenu, Add, isEmail, utilsHandler
+    Menu, utilsMenu, Add, is-wx, utilsHandler
+    
 
 	Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
 
 	Menu, utilsMenu, Add, deepcopy, utilsHandler
 	Menu, utilsMenu, Add, getElementPosition, utilsHandler
-	Menu, utilsMenu, Add, unique, utilsHandler
+	Menu, utilsMenu, Add, unique数组去重复, utilsHandler
 	Menu, utilsMenu, Add, getuuid, utilsHandler
     Menu, utilsMenu, Add, pad, utilsHandler
 
@@ -37,6 +39,7 @@
 	Menu, utilsMenu, Add, addClass, utilsHandler
 	Menu, utilsMenu, Add, removeclass , utilsHandler
 	Menu, utilsMenu, Add, getclassname, utilsHandler
+    Menu, utilsMenu, Add, getstyle, utilsHandler
 	Menu, utilsMenu, Add, setStyle, utilsHandler
 	Menu, utilsMenu, Add, hasClass, utilsHandler
     Menu, utilsMenu, Add, gettop, utilsHandler
@@ -46,6 +49,13 @@
 	Menu, utilsMenu, Add, , utilsHandler
     
     Menu, utilsMenu, Add, isBottom是否滚动到底部, utilsHandler
+    Menu, utilsMenu, Add, device获取设备信息, utilsHandler
+    Menu, utilsMenu, Add, preloadimg图片预加载, utilsHandler
+    Menu, utilsMenu, Add, escape防止XSS, utilsHandler
+    Menu, utilsMenu, Add, poll递归, utilsHandler
+    Menu, utilsMenu, Add, stopevent阻止事件冒泡, utilsHandler
+    Menu, utilsMenu, Add, addcss/link样式加载器, utilsHandler
+    
 
 	Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -64,6 +74,177 @@ Var =
 )
 }
 
+if (v == "addcss/link样式加载器") {
+Var = 
+(
+var link = function(href, fn, cssname){
+	var that = this
+	,link = doc.createElement('link')
+	,head = doc.getElementsByTagName('head')[0];
+
+	if(typeof fn === 'string') cssname = fn;
+
+	var app = (cssname || href).replace(/\.|\//g, '')
+	,id = link.id = 'layuicss-'+app
+	,timeout = 0
+	,time = 10;
+
+	link.rel = 'stylesheet';
+	link.href = href + (config.debug ? '?v='+new Date().getTime() : '');
+	link.media = 'all';
+
+	if(!doc.getElementById(id)){
+	  head.appendChild(link);
+	}
+
+	if(typeof fn !== 'function') return that;
+
+	//轮询css是否加载完毕
+	(function poll() {
+	  if(++timeout > time * 1000 / 100){
+	    return error(href + ' timeout');
+	  };
+	  <这里写上你的条件> ? fn() : setTimeout(poll, 100);
+	}());
+
+	return that;
+};
+
+var addcss = function(firename, fn, cssname){
+	return link(config.dir + 'css/' + firename, fn, cssname);
+};
+)
+}
+
+if (v == "getstyle") {
+Var = 
+(
+getComputedStyle(el)[ruleName];
+)
+}
+
+if (v == "stopevent阻止事件冒泡") {
+Var = 
+(
+var stope = function(thisEvent){
+  thisEvent = thisEvent || window.event;
+  try { thisEvent.stopPropagation() } catch(e){
+    thisEvent.cancelBubble = true;
+  }
+};
+)
+}
+
+if (v == "is-wx") {
+Var = 
+(
+var is_weixn = function () {
+    var ua = navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i)=="micromessenger") {
+        return true;
+    } else {
+        return false;
+    }
+}
+)
+}
+
+if (v == "poll递归") {
+Var = 
+(
+// layui的递归
+var maxTimeout = 10
+var timeout = 0
+var wait = 4
+var onCallback = () => { /* say somthing */ }
+(function poll() {
+  if(++timeout > maxTimeout * 1000 / wait){
+    return error('条件不成立时，在这里写上你的错误提示');
+  };
+  <这里写上你的判断> ? onCallback() : setTimeout(poll, wait);
+}());
+)
+}
+
+if (v == "escape防止XSS") {
+Var = 
+(
+var escape = function(html){
+  return String(html || '').replace(/&(?!#?[a-zA-Z0-9]+;)/g, '&amp;')
+  .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+}
+)
+}
+
+if (v == "preloadimg图片预加载") {
+Var = 
+(
+var perloadimg = function(url, callback, error) {
+    var img = new Image();
+    img.src = url;
+    if(img.complete){
+      return callback(img);
+    }
+    img.onload = function(){
+      img.onload = null;
+      typeof callback === 'function' && callback(img);
+    };
+    img.onerror = function(e){
+      img.onerror = null;
+      typeof error === 'function' && error(e);
+    };
+};
+)
+}
+
+if (v == "device获取设备信息") {
+Var = 
+(
+var device = function(key){
+  var agent = navigator.userAgent.toLowerCase()
+
+  //获取版本号
+  ,getVersion = function(label){
+    var exp = new RegExp(label + '/([^\\s\\_\\-]+)');
+    label = (agent.match(exp)||[])[1];
+    return label || false;
+  }
+  
+  //返回结果集
+  ,result = {
+    os: function(){ //底层操作系统
+      if(/windows/.test(agent)){
+        return 'windows';
+      } else if(/linux/.test(agent)){
+        return 'linux';
+      } else if(/iphone|ipod|ipad|ios/.test(agent)){
+        return 'ios';
+      } else if(/mac/.test(agent)){
+        return 'mac';
+      } 
+    }()
+    ,ie: function(){ //ie版本
+      return (!!window.ActiveXObject || "ActiveXObject" in window) ? (
+        (agent.match(/msie\s(\d+)/) || [])[1] || '11' //由于ie11并没有msie的标识
+      `) : false;
+    }()
+    ,weixin: getVersion('micromessenger')  //是否微信
+  };
+  
+  //任意的key
+  if(key && !result[key]){
+    result[key] = getVersion(key);
+  }
+  
+  //移动设备
+  result.android = /android/.test(agent);
+  result.ios = result.os === 'ios';
+  
+  return result;
+};
+)
+}
 
 if (v == "isBottom是否滚动到底部") {
 Var = 
@@ -346,7 +527,7 @@ function getElementPosition (el: Element, offset: Object): Object {
 )
 }
 
-if (v == "unique") {
+if (v == "unique数组去重复") {
 Var = 
 (
 var unique = function (arr) {

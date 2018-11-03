@@ -232,13 +232,6 @@ code(Var)
 return
 
 !v::
-
-  Menu, VueMenu, Add, vuex.init, VueHandler
-  Menu, VueMenu, Add, vuex.modules, VueHandler
-  Menu, VueMenu, Add, this.$store.dispatch, VueHandler
-  Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
-  Menu, VueMenu, Add, , VueHandler
-  Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, vue.computed, VueHandler
   Menu, VueMenu, Add, vue.watch, VueHandler
@@ -258,6 +251,15 @@ return
   Menu, VueMenu, Add, activated, VueHandler
   Menu, VueMenu, Add, destroyed, VueHandler
   
+  
+  Menu, VueMenu, Add, , VueHandler
+  Menu, VueMenu, Add, , VueHandler
+  
+  Menu, VueMenu, Add, vuex.init, VueHandler
+  Menu, VueMenu, Add, vuex.modules, VueHandler
+  Menu, VueMenu, Add, this.$store.dispatch, VueHandler
+  Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
+
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler

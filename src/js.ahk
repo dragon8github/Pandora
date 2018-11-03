@@ -1,14 +1,177 @@
-﻿::poll::
+﻿::link::
+::addcss::
+Var =
+(
+var link = function(href, fn, cssname){
+	var that = this
+	,link = doc.createElement('link')
+	,head = doc.getElementsByTagName('head')[0];
+
+	if(typeof fn === 'string') cssname = fn;
+
+	var app = (cssname || href).replace(/\.|\//g, '')
+	,id = link.id = 'layuicss-'+app
+	,timeout = 0
+	,time = 10;
+
+	link.rel = 'stylesheet';
+	link.href = href + (config.debug ? '?v='+new Date().getTime() : '');
+	link.media = 'all';
+
+	if(!doc.getElementById(id)){
+	  head.appendChild(link);
+	}
+
+	if(typeof fn !== 'function') return that;
+
+	//轮询css是否加载完毕
+	(function poll() {
+	  if(++timeout > time * 1000 / 100){
+	    return error(href + ' timeout');
+	  };
+	  <这里写上你的条件> ? fn() : setTimeout(poll, 100);
+	}());
+
+	return that;
+};
+
+var addcss = function(firename, fn, cssname){
+	return link(config.dir + 'css/' + firename, fn, cssname);
+};
+)
+code(Var)
+return
+
+::eventstop::
+::stopevent::
+::stope::
+Var =
+(
+var stope = function(thisEvent){
+  thisEvent = thisEvent || window.event;
+  try { thisEvent.stopPropagation() } catch(e){
+    thisEvent.cancelBubble = true;
+  }
+};
+)
+code(Var)
+
+return
+
+::device::
+::shebeixinxi::
+::shebei::
+Var =
+(
+var device = function(key){
+  var agent = navigator.userAgent.toLowerCase()
+
+  //获取版本号
+  ,getVersion = function(label){
+    var exp = new RegExp(label + '/([^\\s\\_\\-]+)');
+    label = (agent.match(exp)||[])[1];
+    return label || false;
+  }
+  
+  //返回结果集
+  ,result = {
+    os: function(){ //底层操作系统
+      if(/windows/.test(agent)){
+        return 'windows';
+      } else if(/linux/.test(agent)){
+        return 'linux';
+      } else if(/iphone|ipod|ipad|ios/.test(agent)){
+        return 'ios';
+      } else if(/mac/.test(agent)){
+        return 'mac';
+      } 
+    }()
+    ,ie: function(){ //ie版本
+      return (!!window.ActiveXObject || "ActiveXObject" in window) ? (
+        (agent.match(/msie\s(\d+)/) || [])[1] || '11' //由于ie11并没有msie的标识
+      `) : false;
+    }()
+    ,weixin: getVersion('micromessenger')  //是否微信
+  };
+  
+  //任意的key
+  if(key && !result[key]){
+    result[key] = getVersion(key);
+  }
+  
+  //移动设备
+  result.android = /android/.test(agent);
+  result.ios = result.os === 'ios';
+  
+  return result;
+};
+)
+code(Var)
+return
+
+::preloadimg::
+::loadimg::
+Var =
+(
+var perloadimg = function(url, callback, error) {   
+    var img = new Image();
+    img.src = url; 
+    if(img.complete){
+      return callback(img);
+    }
+    img.onload = function(){
+      img.onload = null;
+      typeof callback === 'function' && callback(img);
+    };
+    img.onerror = function(e){
+      img.onerror = null;
+      typeof error === 'function' && error(e);
+    };  
+};
+)
+code(Var)
+return
+
+::escape::
+::xss::
+Var =
+(
+var escape = function(html){
+  return String(html || '').replace(/&(?!#?[a-zA-Z0-9]+;)/g, '&amp;')
+  .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+}
+)
+code(Var)
+return
+
+::$.resize::
+::jquery.resize::
+::resize::
+Var =
+(
+//监听 DOM 尺寸变化，该创意来自：http://benalman.com/projects/jquery-resize-plugin/
+  !function(a,b,c){"$:nomunge";function l(){f=b[g](function(){d.each(function(){var b=a(this),c=b.width(),d=b.height(),e=a.data(this,i);(c!==e.w||d!==e.h)&&b.trigger(h,[e.w=c,e.h=d])}),l()},e[j])}var f,d=a([]),e=a.resize=a.extend(a.resize,{}),g="setTimeout",h="resize",i=h+"-special-event",j="delay",k="throttleWindow";e[j]=250,e[k]=!0,a.event.special[h]={setup:function(){if(!e[k]&&this[g])return!1;var b=a(this);d=d.add(b),a.data(this,i,{w:b.width(),h:b.height()}),1===d.length&&l()},teardown:function(){if(!e[k]&&this[g])return!1;var b=a(this);d=d.not(b),b.removeData(i),d.length||clearTimeout(f)},add:function(b){function f(b,e,f){var g=a(this),h=a.data(this,i)||{};h.w=e!==c?e:g.width(),h.h=f!==c?f:g.height(),d.apply(this,arguments)}if(!e[k]&&this[g])return!1;var d;return a.isFunction(b)?(d=b,f):(d=b.handler,b.handler=f,void 0)}}}($,window);
+$(window).resize(function(e){
+      console.log(123)
+});
+)
+code(Var)
+return
+
+::poll::
 Var =
 (
 // layui的递归
 var maxTimeout = 10
 var timeout = 0
+var wait = 4
+var onCallback = () => { /* say somthing */ }
 (function poll() {
-  if(++timeout > maxTimeout * 1000 / 4){
-    return error(item + ' is not a valid module');
+  if(++timeout > maxTimeout * 1000 / wait){
+    return error('条件不成立时，在这里写上你的错误提示');
   };
-  <这里写上你的判断> ? onCallback() : setTimeout(poll, 4);
+  <这里写上你的判断> ? onCallback() : setTimeout(poll, wait);
 }());
 )
 code(Var)
@@ -70,7 +233,50 @@ return
 ::flexible::
 Var =
 (
+(function flexible (window, document) {
+  var docEl = document.documentElement
+  var dpr = window.devicePixelRatio || 1
 
+  // adjust body font size
+  function setBodyFontSize () {
+    if (document.body) {
+      document.body.style.fontSize = (12 * dpr) + 'px'
+    }
+    else {
+      document.addEventListener('DOMContentLoaded', setBodyFontSize)
+    }
+  }
+  setBodyFontSize();
+
+  // set 1rem = viewWidth / 10
+  function setRemUnit () {
+    var rem = docEl.clientWidth / 10
+    docEl.style.fontSize = rem + 'px'
+  }
+
+  setRemUnit()
+
+  // reset rem unit on page resize
+  window.addEventListener('resize', setRemUnit)
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      setRemUnit()
+    }
+  })
+
+  // detect 0.5px supports
+  if (dpr >= 2) {
+    var fakeBody = document.createElement('body')
+    var testElement = document.createElement('div')
+    testElement.style.border = '.5px solid transparent'
+    fakeBody.appendChild(testElement)
+    docEl.appendChild(fakeBody)
+    if (testElement.offsetHeight === 1) {
+      docEl.classList.add('hairlines')
+    }
+    docEl.removeChild(fakeBody)
+  }
+}(window, document))
 )
 code(Var)
 return
@@ -251,7 +457,9 @@ code(Var)
 return
 
 ::is-wx::
+::iswx::
 ::is-weixin::
+::isweixin::
 Var =
 (
 var is_weixn = function () {
