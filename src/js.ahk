@@ -2373,6 +2373,7 @@ Return
 >!f::
 ::.fore::
 ::.for::
+::.f::
 Var = 
 (
 .forEach(function (e, i) {
@@ -2522,8 +2523,9 @@ for (var i = Things.length - 1; i >= 0; i--) {
 code(Var)
 Return
 
-!f::
 ::for::
+::for+::
+::for++::
 Var = 
 (
 for (var i = 0; i < Things.length; i++) {
@@ -2535,6 +2537,7 @@ Return
 
 >!m::
 ::.map::
+::.m::
 Var =
 (
 .map(function (v, index, array) {

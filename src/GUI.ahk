@@ -33,7 +33,7 @@ Gui, Add, Checkbox, vsuning, 苏宁易购
 Gui, Add, Checkbox, vkongzi, 孔夫子二手书
 
 ; 搜索框
-Gui, Add, Edit, vSearchContent w780 Limit50 yp+60 Section xs, 
+Gui, Add, Edit, vSearchContent w780 Limit50 yp+20 Section xs, 
 ; 背景色
 Gui, Color, E6FFE6
 ; margin 布局
@@ -42,7 +42,7 @@ Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 ; submit 按钮
 Gui, Add, Button, w780 h30 Default, FUCK
 
-Gui, Add, Tab3, w780 h460 Choose1, 常用| 创慧教育 | Vue | React | 库 | 地图 | PHP | 微信 | 工作坊  | 爬虫 | 鸡肋
+Gui, Add, Tab3, w780 h500 Choose1, 常用| 创慧教育 | Vue | React | 库 | 地图 | PHP | 微信 | 工作坊  | 爬虫 | 鸡肋
 
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -93,6 +93,7 @@ Gui, Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Add, Link,, <a href="https://www.cdnjs.net/">百度cdn</a>
 Gui, Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
 Gui, Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
+Gui, Add, Link,, <a href="https://unpkg.com/#/">unpkg cdn</a>
 
 
 Gui, Add, Text,  W140 ys, 最近学习：
@@ -100,6 +101,8 @@ Gui, Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react
 Gui, Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React 小书</a>
 Gui, Add, Link,, <a href="http://www.jtthink.com/">jtthink.com</a>
 Gui, Add, Link,, <a href="https://gitbook.cn/gitchat/geekbooks">极客书单</a>
+Gui, Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0.10源码</a>
+Gui, Add, Link,, <a href="https://github.com/seajs/seajs/issues/242">CMD规范</a>
 
 
 Gui, Tab, 2
@@ -200,6 +203,8 @@ Gui, Add, Link,, <a href="http://www.layui.com/doc/">layui文档</a>
 Gui, Add, Link,, <a href="http://www.layui.com/demo/">layui示例</a>
 Gui, Add, Link,, <a href="https://github.com/sentsin/layui/">layui-github</a>
 Gui, Add, Link,, <a href="https://www.layui.com/admin/std/dist/views/">layui-admin</a>
+Gui, Add, Link,, <a href="https://github.com/sentsin/layui/blob/master/src/layui.js">layui 源码</a>
+
 
 Gui, Add, Text,  W140 ys, Bootstrap:
 Gui, Add, Link,, <a href="https://v3.bootcss.com/css/#grid-options">全局 css 样式</a>
@@ -224,10 +229,11 @@ Gui, Add, Text,  W140 ys, axios：
 Gui, Add, Link,, <a href="https://github.com/axios/axios">axios github</a>
 Gui, Add, Link,, <a href="https://www.cnblogs.com/CyLee/p/9827489.html">axios 简易教程</a>
 
-Gui, Add, Text,  W140  Section xs yp+140, Rxjs：
+Gui, Add, Text,  W140  Section xs yp+180, Rxjs：
 Gui, Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/guide/overview">Rxjs 官网</a>
 Gui, Add, Link,, <a href="https://github.com/Reactive-Extensions/RxJS">Rxjs github</a>
 Gui, Add, Link,, <a href="https://cn.rx.js.org/manual/overview.html">Rxjs 中文网</a>
+Gui, Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/api">Rxjs API大全</a>
 
 Gui, Tab, 6
 Gui, Add, Text,  W140 Section, 高德地图：
@@ -386,7 +392,7 @@ GuiClose:
 return
 
 !space::
-	Gui, Show,, Simple Input Example
+	Gui, Show,, Pandora
 return 
 
 /*

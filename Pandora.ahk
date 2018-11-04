@@ -7,6 +7,10 @@ FileEncoding, UTF-8
 FileDelete, *.bak 
 FileDelete, .\src\*.bak
 
+IfExist, ./static/Pandora.ico
+{
+Menu TRAY, Icon, ./static/Pandora.ico
+}
 
 #include src/GUI.ahk		; GUI系列 
 #Include src/lib.ahk        ; 公共函数

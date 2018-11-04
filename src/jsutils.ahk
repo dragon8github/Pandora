@@ -1,34 +1,34 @@
 ﻿!u::
 !i::
-    Menu, utilsMenu, Add, isString, utilsHandler
-    Menu, utilsMenu, Add, isNumber, utilsHandler
-    Menu, utilsMenu, Add, isBoolean, utilsHandler
-    Menu, utilsMenu, Add, isArray, utilsHandler
-    Menu, utilsMenu, Add, isObject, utilsHandler
-	Menu, utilsMenu, Add, isPureObject, utilsHandler
-    Menu, utilsMenu, Add, isFunction, utilsHandler
-	Menu, utilsMenu, Add, isDate, utilsHandler
-    Menu, utilsMenu, Add, isPromise, utilsHandler
-	Menu, utilsMenu, Add, isNaN, utilsHandler
+    Menu, utilsIs, Add, isString, utilsHandler
+    Menu, utilsIs, Add, isNumber, utilsHandler
+    Menu, utilsIs, Add, isBoolean, utilsHandler
+    Menu, utilsIs, Add, isArray, utilsHandler
+    Menu, utilsIs, Add, isObject, utilsHandler
+    Menu, utilsIs, Add, isPureObject, utilsHandler
+    Menu, utilsIs, Add, isFunction, utilsHandler
+    Menu, utilsIs, Add, isDate, utilsHandler
+    Menu, utilsIs, Add, isPromise, utilsHandler
+    Menu, utilsIs, Add, isNaN, utilsHandler
 
-    Menu, utilsMenu, Add, , utilsHandler
-    Menu, utilsMenu, Add, , utilsHandler
-    
-    Menu, utilsMenu, Add, isZH-Cn, utilsHandler
-    Menu, utilsMenu, Add, isIp, utilsHandler
-    Menu, utilsMenu, Add, isPhone, utilsHandler
-    Menu, utilsMenu, Add, isPwd, utilsHandler
-    Menu, utilsMenu, Add, isUser, utilsHandler
-    Menu, utilsMenu, Add, isId, utilsHandler
-    Menu, utilsMenu, Add, isEmail, utilsHandler
-    Menu, utilsMenu, Add, is-wx, utilsHandler
-    
+    Menu, utilsIs, Add, , utilsHandler
+    Menu, utilsIs, Add, , utilsHandler
 
+    Menu, utilsIs, Add, isZH-Cn, utilsHandler
+    Menu, utilsIs, Add, isIp, utilsHandler
+    Menu, utilsIs, Add, isPhone, utilsHandler
+    Menu, utilsIs, Add, isPwd, utilsHandler
+    Menu, utilsIs, Add, isUser, utilsHandler
+    Menu, utilsIs, Add, isId, utilsHandler
+    Menu, utilsIs, Add, isEmail, utilsHandler
+    Menu, utilsIs, Add, is-wx, utilsHandler
+    
+    Menu, utilsMenu , Add, is, :utilsIs
+    
 	Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
 
 	Menu, utilsMenu, Add, deepcopy, utilsHandler
-	Menu, utilsMenu, Add, getElementPosition, utilsHandler
 	Menu, utilsMenu, Add, unique数组去重复, utilsHandler
 	Menu, utilsMenu, Add, getuuid, utilsHandler
     Menu, utilsMenu, Add, pad, utilsHandler
@@ -42,6 +42,7 @@
     Menu, utilsMenu, Add, getstyle, utilsHandler
 	Menu, utilsMenu, Add, setStyle, utilsHandler
 	Menu, utilsMenu, Add, hasClass, utilsHandler
+    Menu, utilsMenu, Add, getElementPosition, utilsHandler
     Menu, utilsMenu, Add, gettop, utilsHandler
     Menu, utilsMenu, Add, scrollToTop, utilsHandler
     
@@ -55,10 +56,12 @@
     Menu, utilsMenu, Add, poll递归, utilsHandler
     Menu, utilsMenu, Add, stopevent阻止事件冒泡, utilsHandler
     Menu, utilsMenu, Add, addcss/link样式加载器, utilsHandler
+    Menu, utilsMenu, Add, ClickOutside点击外部冒泡, utilsHandler
     
 
 	Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
+    Menu, utilsIs, DeleteAll
 return
 
 
@@ -71,6 +74,17 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "ClickOutside点击外部冒泡") {
+Var = 
+(
+handle = e => {
+  const el = this.container
+  // 核心: el.contains()，这里的el就是弹窗本身，换句话就是inSide
+  if (el && !el.contains(e.target)) onClickOutside(e)
+}
 )
 }
 
