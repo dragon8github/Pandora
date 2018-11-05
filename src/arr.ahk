@@ -20,6 +20,7 @@ return
 	Menu, arrayMenu, Add,  Array#forEach, ForHandler
 	Menu, arrayMenu, Add,  Array#map, ForHandler
 	Menu, arrayMenu, Add,  Array#reduce, ForHandler
+	Menu, arrayMenu, Add,  Array#reduceRight, ForHandler
 	Menu, arrayMenu, Add,  Array#some（数组至少一个符合条件，返回true/false）, ForHandler
     Menu, arrayMenu, Add,  Array#every（数组必须全部符合条件，返回true/false）, ForHandler
 	Menu, arrayMenu, Add,  Array#find, ForHandler
@@ -47,6 +48,15 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "Array#reduceRight") {
+Var = 
+(
+[4, 12, 44, 65].reduceRight((total, num) => {
+    return total - num;
+})
 )
 }
 

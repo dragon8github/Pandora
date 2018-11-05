@@ -94,6 +94,8 @@ Gui, Add, Link,, <a href="https://www.cdnjs.net/">百度cdn</a>
 Gui, Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
 Gui, Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
 Gui, Add, Link,, <a href="https://unpkg.com/#/">unpkg cdn</a>
+Gui, Add, Link,, <a href="https://cdnjs.com/">cdnjs.com</a>
+
 
 
 Gui, Add, Text,  W140 ys, 最近学习：
@@ -234,6 +236,10 @@ Gui, Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/guide/overview">Rxjs 
 Gui, Add, Link,, <a href="https://github.com/Reactive-Extensions/RxJS">Rxjs github</a>
 Gui, Add, Link,, <a href="https://cn.rx.js.org/manual/overview.html">Rxjs 中文网</a>
 Gui, Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/api">Rxjs API大全</a>
+
+Gui, Add, Text,  W140  ys, ramda.js：
+Gui, Add, Link,, <a href="http://ramda.cn/">ramda.js 官网</a>
+Gui, Add, Link,, <a href="https://github.com/ramda/ramda">ramda.js github</a>
 
 Gui, Tab, 6
 Gui, Add, Text,  W140 Section, 高德地图：

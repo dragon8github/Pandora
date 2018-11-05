@@ -474,7 +474,7 @@ return
 
 ^!o::
     str := Trim(Clipboard)
-    If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") ) {
+    If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") ) {
         RUN, % str
     } else {
         RUN, https://www.baidu.com/s?wd=%str%
@@ -487,7 +487,7 @@ return
     Send, ^c
     ClipWait, 2
     str := Trim(Clipboard)
-    If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") ) {
+    If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") ) {
         RUN, % str
     } else {
         RUN, https://www.baidu.com/s?wd=%str%
