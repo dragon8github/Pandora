@@ -42,7 +42,7 @@ Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 ; submit 按钮
 Gui, Add, Button, w780 h30 Default, FUCK
 
-Gui, Add, Tab3, w780 h500 Choose1, 常用| 创慧教育 | Vue | React | 库 | 地图 | PHP | 微信 | 工作坊  | 爬虫 | 鸡肋
+Gui, Add, Tab3, w780 h500 Choose1, 常用 | 工作坊 | 创慧教育 | Vue | React | 库 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | 鸡肋
 
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -107,7 +107,31 @@ Gui, Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0.10源�
 Gui, Add, Link,, <a href="https://github.com/seajs/seajs/issues/242">CMD规范</a>
 
 
+
 Gui, Tab, 2
+Gui, Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
+Gui, Add, Text, gNewIndexHtml W140, 新建index.html
+Gui, Add, Text, gNewreactbabelHtml W140, 新建react.babel.html
+Gui, Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
+Gui, Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
+Gui, Add, Text, gNewAxiosIndexHtml W140,新建axios.html
+Gui, Add, Text, gNewRxjsIndexHtml W140,新建Rxjs.html
+
+
+Gui, Add, Text, gNewEchartsPinHtml  ys x+80, 新建echarts.pin.html(玫瑰饼图)
+Gui, Add, Text, gNewEchartsLineHtml ,新建echats.Line.html（折线图）
+Gui, Add, Text, gNewEchartsBarHtml ,新建echats.Bar.html（柱状图）
+Gui, Add, Text, gNewEchartsPurePinHtml ,新建echats.Pin.html（纯圆饼图）
+
+Gui, Add, Text, gNewNodePachong W140 ys x+50, 新建nodejs爬虫模板
+Gui, Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
+Gui, Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
+Gui, Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
+Gui, Add, Text, gNewNodejsSequelize W190, 新建nodejs-sequelize-mysql模板
+
+
+
+Gui, Tab, 3
 Gui, Add, Text,  W130 Section, 油气管道（react）:
 Gui, Add, Link,, <a href="http://47.106.185.185:8080/api/swagger-ui.html#/">油气管道swagger-ui</a>
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">油气管道 git</a>
@@ -132,7 +156,7 @@ Gui, Add, Text,  W140 ys, 东莞课外教育网（nuxt）
 Gui, Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
 
 
-Gui, Tab, 3
+Gui, Tab, 4
 Gui, Add, Text,  W140 Section, Vue：
 Gui, Add, Link,, <a href="http://vuejs.org/">vue</a>
 Gui, Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
@@ -160,13 +184,15 @@ Gui, Add, Text,  W160 ys, vuetifyjs
 Gui, Add, Link,, <a href="https://github.com/vuetifyjs/vuetify">vuetify</a>
 Gui, Add, Link,, <a href="https://github.com/vuetifyjs/nuxt">vuetifyjs/nuxt</a>
 
-Gui, Tab, 4
+Gui, Tab, 5
 Gui, Add, Text,  W140  Section, React：
 Gui, Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react 官网</a>
 Gui, Add, Link,, <a href="https://reacttraining.com/react-router/web/api/Route/component">React-router</a>
 Gui, Add, Link,, <a href="https://github.com/reduxjs/redux">redux</a>
 Gui, Add, Link,, <a href="https://redux.js.org/basics/usage-with-react">React-redux</a>
 Gui, Add, Link,, <a href="https://github.com/facebook/create-react-app">create-react-app</a>
+Gui, Add, Link,, <a href="https://github.com/enaqx/awesome-react">awesome-react</a>
+
 
 Gui, Add, Text,  W140 ys, react ssr next：
 Gui, Add, Link,, <a href="https://nextjs.org/">next官网</a>
@@ -198,7 +224,16 @@ Gui, Add, Link,, <a href="http://antv.alipay.com/zh-cn/index.html">antv可视化
 Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-design精选插件</a>
 
 
-Gui, Tab, 5
+
+Gui, Add, Text,  W140  Section xs yp+60, ReactNative：
+Gui, Add, Link,, <a href="https://github.com/facebook/react-native">react-native github</a>
+Gui, Add, Link,, <a href="https://facebook.github.io/react-native/">react-native 官网</a>
+Gui, Add, Link,, <a href="https://github.com/enaqx/awesome-react#react-native">awesome-react-native</a>
+Gui, Add, Link,, <a href="https://mp.weixin.qq.com/s/7yy5wFbEet30EcOwxDOWVA">react-native 开源项目</a>
+Gui, Add, Link,, <a href="https://www.cnblogs.com/CyLee/p/9912977.html">环境的搭建和启动（安卓版）</a>
+
+
+Gui, Tab, 6
 Gui, Add, Text,  W140  Section, layer/layui：
 Gui, Add, Link,, <a href="http://layer.layui.com/">layer</a>
 Gui, Add, Link,, <a href="http://www.layui.com/doc/">layui文档</a>
@@ -241,7 +276,7 @@ Gui, Add, Text,  W140  ys, ramda.js：
 Gui, Add, Link,, <a href="http://ramda.cn/">ramda.js 官网</a>
 Gui, Add, Link,, <a href="https://github.com/ramda/ramda">ramda.js github</a>
 
-Gui, Tab, 6
+Gui, Tab, 7
 Gui, Add, Text,  W140 Section, 高德地图：
 Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/summary">高德地图-JavaScript</a>
 Gui, Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/map/map-show">高德地图-Demo</a>
@@ -262,8 +297,8 @@ Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_5">沿线�
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_16">自定义点图标（狐美人）</a>
 
 Gui, Add, Text, W140 ys, 地图工具：
-Gui, Add, Link, W140, <a href="http://api.map.baidu.com/lbsapi/getpoint/">百度拾取坐标系统</a>
 Gui, Add, Link, W140, <a href="http://geojson.io/">GeoJSON.io</a>
+Gui, Add, Link, W140, <a href="http://api.map.baidu.com/lbsapi/getpoint/">百度拾取坐标系统</a>
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#k0_2">百度地图主题定制</a>
 Gui, Add, Link, W140, <a href="http://lbsyun.baidu.com/custom/">百度地图皮肤制作</a>
 
@@ -293,7 +328,7 @@ Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html">EChart
 Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts 论坛示例</a>
 Gui, Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xB1jgoJnDf">ECharts 安徽示例</a>
 
-Gui, Tab, 7
+Gui, Tab, 8
 Gui, Add, Text,  W140 Section, Thinkphp：
 Gui, Add, Link, W140, <a href="https://github.com/top-think/thinkphp">Thinkphp3.2-github</a>
 Gui, Add, Link, W140, <a href="https://github.com/top-think/think">Thinkphp5-github</a>
@@ -340,7 +375,7 @@ Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quicks
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478303">where 参数注入</a>
 Gui, Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478304">分批/分块查询</a>
 
-Gui, Tab, 8
+Gui, Tab, 9
 Gui, Add, Text,  W140 Section, 微信小程序：
 Gui, Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html">微信小程序开发工具</a>
 Gui, Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/">微信内置API</a>
@@ -350,28 +385,6 @@ Gui, Add, Link, W140, <a href="https://developers.weixin.qq.com/miniprogram/dev/
 Gui, Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/event.html">事件大全</a>
 Gui, Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/custom-component/component.html">Component构造器</a>
 Gui, Add, Link, W140, <a href="https://legacy.gitbook.com/book/dragon8github/fuck/edit#/edit/master/README.md?_k=pfi687">我的gitbook</a>
-
-Gui, Tab, 9
-Gui, Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
-Gui, Add, Text, gNewIndexHtml W140, 新建index.html
-Gui, Add, Text, gNewreactbabelHtml W140, 新建react.babel.html
-Gui, Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
-Gui, Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
-Gui, Add, Text, gNewAxiosIndexHtml W140,新建axios.html
-Gui, Add, Text, gNewRxjsIndexHtml W140,新建Rxjs.html
-
-
-Gui, Add, Text, gNewEchartsPinHtml  ys x+80, 新建echarts.pin.html(玫瑰饼图)
-Gui, Add, Text, gNewEchartsLineHtml ,新建echats.Line.html（折线图）
-Gui, Add, Text, gNewEchartsBarHtml ,新建echats.Bar.html（柱状图）
-Gui, Add, Text, gNewEchartsPurePinHtml ,新建echats.Pin.html（纯圆饼图）
-
-Gui, Add, Text, gNewNodePachong W140 ys x+50, 新建nodejs爬虫模板
-Gui, Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
-Gui, Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
-Gui, Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
-Gui, Add, Text, gNewNodejsSequelize W190, 新建nodejs-sequelize-mysql模板
-
 
 Gui, Tab, 10
 Gui, Add, Text,  W100 Section, 代理IP:
@@ -386,6 +399,23 @@ Gui, Add, Link,, <a href="http://www.manbiwang.com/#/">满币网</a>
 Gui, Add, Link,, <a href="http://candy.dragonvein.io/frontend/web/site/signup">dragonvein</a>
 
 Gui, Tab, 11
+Gui, Add, Text,  W140 Section, Dart:
+Gui, Add, Link,, <a href="https://www.dartlang.org/">Dart官网</a>
+Gui, Add, Link,, <a href="http://www.cndartlang.com/">Dart 中文社区</a>
+
+Gui, Add, Text,  W140 ys, Flutter:
+Gui, Add, Link,, <a href="https://github.com/flutter/flutter">Flutter github</a>
+Gui, Add, Link,, <a href="https://flutter.io/">Flutter官网</a>
+Gui, Add, Link,, <a href="https://flutter-io.cn/">Flutter中文社区</a>
+
+
+Gui, Add, Text,  W140 ys, Dcloud:
+Gui, Add, Link,, <a href="http://www.dcloud.io/">Dcloud官网</a>
+Gui, Add, Link,, <a href="http://dcloud.io/doc.html">Dcloud文档</a>
+Gui, Add, Link,, <a href="http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/111">Dcloud 云打包</a>
+Gui, Add, Link,, <a href="http://droid4x.haimawan.com/">海马玩模拟器下载</a>
+
+Gui, Tab, 12
 Gui, Add, Text,  W140 Section, 食之无用:
 Gui, Add, Link,, <a href="http://blog.mn886.net/jqGrid/">jQGrid 中文文档</a>
 

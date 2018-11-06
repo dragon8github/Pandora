@@ -527,30 +527,19 @@ return
 
 
 !Up::
-    Send, {PGUP}
-return
-
-^!Up::
-#Up::
-    Send, {PGUP 10}
+    SendInput, {PGUP}
 return
 
 +!Up::
-    Send, +{PGUP}
+    SendInput, +{PGUP}
 return
 
 !Down::
-    Send, {PGDN}
+    SendInput, {PGDN}
 return
-
-^!Down::
-#Down::
-    Send, {PGDN 10}
-return
-
 
 +!Down::
-    Send, +{PGDN}
+    SendInput, +{PGDN}
 return
 
 !Right::
