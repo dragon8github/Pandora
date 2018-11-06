@@ -224,13 +224,14 @@ Gui, Add, Link,, <a href="http://antv.alipay.com/zh-cn/index.html">antv可视化
 Gui, Add, Link,, <a href="https://ant.design/docs/react/recommendation-cn">Ant-design精选插件</a>
 
 
-
 Gui, Add, Text,  W140  Section xs yp+60, ReactNative：
 Gui, Add, Link,, <a href="https://github.com/facebook/react-native">react-native github</a>
 Gui, Add, Link,, <a href="https://facebook.github.io/react-native/">react-native 官网</a>
 Gui, Add, Link,, <a href="https://github.com/enaqx/awesome-react#react-native">awesome-react-native</a>
 Gui, Add, Link,, <a href="https://mp.weixin.qq.com/s/7yy5wFbEet30EcOwxDOWVA">react-native 开源项目</a>
-Gui, Add, Link,, <a href="https://www.cnblogs.com/CyLee/p/9912977.html">环境的搭建和启动（安卓版）</a>
+Gui, Add, Link,, <a href="https://github.com/enaqx/awesome-react#react-native-sample-apps">react-native 开源项目2</a>
+Gui, Add, Link,, <a href="https://facebook.github.io/react-native/docs/components-and-apis">Components and APIs</a>
+
 
 
 Gui, Tab, 6
