@@ -346,6 +346,11 @@ Var =
 	Menu, ShellMenu, DeleteAll
 return
 
+ShellHandler2:
+v := A_ThisMenuItem
+return
+
+
 
 ShellHandler:
 ; MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.

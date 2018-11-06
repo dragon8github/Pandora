@@ -70,9 +70,7 @@ read -p "Enter a number"
 code(Var)
 return
 
-!n::
-
-
+!b::
 	; 环境变量
 	Menu, A, Add, 打印环境变量, ShellHandler
 	Menu, A, Add, 打印$PATH路径, ShellHandler
