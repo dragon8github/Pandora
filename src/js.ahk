@@ -1027,9 +1027,8 @@ return
 
 ::wl::
 ::window.l::
-::window.lo::
-::window.local::
-::wls::
+::windowl::
+::local::
 Var =
 (
 window.localStorage.setItem('key', 'value')
@@ -1803,15 +1802,15 @@ return
 ::exchange::
 Var = 
 (
-var a = [1,4,6,43,5,9,0,23,45];
-var changeArr = function (arr, k, j) {
-    var tmp = arr[k];
-    arr[k] = arr[j];
-    arr[j] = tmp;
+var arr = [1,4,6,43,5,9,0,23,45];
+var exchange = function (arr, index1, index2) {
+    var tmp = arr[index1];
+    arr[index1] = arr[index2];
+    arr[index2] = tmp;
     return arr;
 }
-a = change(a,3,7);
-console.log(a);
+arr = exchange(arr,3,7);
+console.log(arr);
 )
 code(Var)
 return
@@ -3699,38 +3698,21 @@ return
 ::maopaopaixu::
 Var = 
 (
-// 冒泡排序 O(N^2 )
-// 待排序的数组
 var arr = [8, 5,5,3,2]
-
-// 最外部的循环其实没什么参与什么作为。
-// 至于为什么要-1 其实很容易理解。因为最后一次的时候是不需要与自己比较的。所以绕过了
-// 当然你减不减好像也没什么区别。只是减少次数来优化罢了
+// 为什么要-1，因为最后一次的时候是不需要与自己比较，所以绕过了。当然你不-1也无所谓，只是优化而已
 for (var i = 0;i < arr.length - 1; i++) {
-    // 重点想清楚这里为什么要-i。其实也很简单，每一次轮回，都会把最大（小）数塞到最后。
-    // 所以下次就不必去比较最后一位了。同理，你减不减都无所谓。只是优化而已。但这个优化的幅度比较大
+    // 同理，你减不减i都无所谓。只是优化而已。但这个优化的幅度比较大推荐加上。
     for (var j = 0; j < arr.length - i; j++) {
-        // 这里的比大小判断决定排序是倒序还是正序
+        // a > b(从小到大正序) / a < b(从大到小倒序)
         if (arr[j] > arr[j+1]) {
-            // 以下代码只是普通的交换变量逻辑。没什么好说的。
-            // 如果真要说的话，只能说无论临时变量存储的是j的值还是j + 1的值都是可以的
+            // [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
             var temp = arr[j + 1]
             arr[j + 1] = arr[j]
             arr[j] = temp
-　　　　　　　// [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]] // ES6d的语法，可直接代替上面3行代码
         }
     }
 }
-
 console.log(arr)
-
-/*
-该排序法名为：冒泡排序法
-思路而言几乎没有难点，人人都能理解。但真要动手写的时候，却总有写不出或者想不出的情况。
-原因就在于没有多写，写完也要看看套路。
-双重循环，以及那些可有可无的-1 和 -i
-以及注意外层的循环没有参与计算的作为。只有内存的j循环进行了比较或交换而已
-*/
 )
 code(Var)
 return

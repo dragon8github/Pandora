@@ -1056,9 +1056,6 @@ Return
 	SendInput, padding-right: px`;{left 3}
 Return
 
-::prp::
-	SendInput, padding-right: px`;{left 3}
-Return
 
 ::db::
     SendRaw, display: block;

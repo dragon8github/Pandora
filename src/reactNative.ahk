@@ -186,3 +186,19 @@ let styles = StyleSheet.create({
 )
 code(Var)
 return
+
+::rn.gz::
+::rngz::
+Var =
+(
+constructor(props) {
+  super(props)
+  this.state = {
+	  inputNum: '',
+	  inputPW: '',
+  }
+  this.updatePW = this.updatePW.bind(this)
+}
+)
+code(Var)
+return
