@@ -4,15 +4,26 @@
 	Menu, ShellMenu, Add, adb reverse tcp:8081 tcp:8081, ReactNativeHandler2
 	Menu, ShellMenu, Add, adb devices, ReactNativeHandler2
 	Menu, ShellMenu, Add, watchman watch-del-all && react-native start --reset-cache, ReactNativeHandler2
+	Menu, ShellMenu, Add, monitor, ReactNativeHandler2
+	
 
 	Menu, ShellMenu, Add, , ReactNativeHandler
 	Menu, ShellMenu, Add, , ReactNativeHandler
 	
 	Menu, ShellMenu, Add, RN.init 初始化模板, ReactNativeHandler
-	Menu, ShellMenu, Add, This.forceUpdate()强制启动更新, ReactNativeHandler
-	Menu, ShellMenu, Add, shouldComponentUpdate 是否放弃渲染, ReactNativeHandler
 	Menu, ShellMenu, Add, import { ... } from 'react-native', ReactNativeHandler
 	Menu, ShellMenu, Add, style={styles.container}, ReactNativeHandler
+	Menu, ShellMenu, Add, constructor, ReactNativeHandler
+	Menu, ShellMenu, Add, setState 合并状态机最简语法, ReactNativeHandler
+	Menu, ShellMenu, Add, setState(oldV => {}`, () => {}) 合并状态机复杂用法, ReactNativeHandler
+	Menu, ShellMenu, Add, This.forceUpdate()强制启动更新, ReactNativeHandler
+	Menu, ShellMenu, Add, shouldComponentUpdate 是否放弃渲染, ReactNativeHandler
+	
+	Menu, ShellMenu, Add, , ReactNativeHandler
+	Menu, ShellMenu, Add, , ReactNativeHandler
+	
+	
+	Menu, ShellMenu, Add, TextInput-onChnageText, ReactNativeHandler
 	
 
 	Menu, ShellMenu, Show
@@ -27,6 +38,54 @@ if (v == "") {
 Var =
 (
 
+)
+}
+
+if (v == "setState(oldV => {}, () => {}) 合并状态机复杂用法") {
+Var =
+(
+updateNum(v) {
+  this.setState(oldV => {
+  	console.log(oldV)
+  	return {
+  		inputNum: newText,
+  	}
+  }, () => {
+  	console.log('我是回调函数')
+  })
+}
+)
+}
+
+if (v == "TextInput-onChnageText") {
+Var =
+(
+onChnageText={this.updatePW}
+)
+}
+
+if (v == "constructor") {
+Var =
+(
+constructor(props) {
+  super(props)
+  this.state = {
+	  inputNum: '',
+	  inputPW: '',
+  }
+  this.updatePW = this.updatePW.bind(this)
+}
+)
+}
+
+if (v == "setState 合并状态机最简语法") {
+Var =
+(
+this.setState(() => {
+  return {
+    inputNum: 123
+  }
+})
 )
 }
 
