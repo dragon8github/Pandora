@@ -1,11 +1,40 @@
-﻿::jsonphp::
-::phpjson::
+﻿::php.log::
 Var =
 (
-header("Access-Control-Allow-Origin:*"); 
-header('Access-Control-Allow-Headers:x-requested-with,content-type'); 
+function WriteLog($msg,$module = null,$logLevel = "DEBUG")
+{
+    $filepath = "./log/";
+    if(!is_dir($filepath)) mkdir($filepath,'0777');
+    $MyLogFile = @fopen($filepath.date("Y-m-d").".txt",'a+');
+
+    $time = date("Y-m-d H:i:s");
+    if(isset($module)){$module =  sprintf("\r\n归属模块：".$module."\r\n");}
+    $logLine = "\r\n-------------------------------  $time -------------------------------\r\n";
+    $logLine .= $module;
+    $logLine .= "\r\n异常信息：$msg\r\n";
+    $logLine .= "\r\n错误等级：$logLevel\r\n";
+    fwrite($MyLogFile,$logLine);
+}
+
+WriteLog("test");
+)
+code(Var)
+return
+
+::php.jsonp::
+Var =
+(
 $rws_post = $GLOBALS['HTTP_RAW_POST_DATA'];
-var_dump($rws_post);
+$mypost = json_decode($rws_post);
+)
+code(Var)
+return
+
+::php.json::
+::php.jsons::
+Var =
+(
+json_encode($_REQUEST)
 )
 code(Var)
 return
@@ -32,6 +61,7 @@ return
 ::php_post::
 ::php.post::
 ::phppost::
+::jsonpost::
 Var = 
 (
 <?php 

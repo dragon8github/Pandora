@@ -426,7 +426,7 @@ Gui, Add, Text,  W140 ys, 弃之可惜:
 Gui, Add, Link,, <a href="https://sketch2code.azurewebsites.net/">Microsoft sketch2code</a>
 
 Gui, Tab, 13
-Gui, Add, Edit, vClipHistory w750 H400 Limit400
+Gui, Add, Edit, vClipHistory w750 H400 Limit199307100337
 ; submit 按钮
 Gui, Add, Button, gSaveClipHistory w750 h30, 保存到桌面
 

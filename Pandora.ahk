@@ -20,6 +20,7 @@ FileDelete, .\src\*.bak
 #Include src/node.ahk         ; nodejs 
 #include src/css.ahk          ; css   
 #Include src/TypeScript.ahk   ; TypeScript
+#Include src/php.ahk          ; php
 #Include src/tp.ahk		 	  ; thinkphp
 #Include src/jsutils.ahk      ; jsutils
 #Include src/js.ahk           ; JavaScript  
@@ -30,7 +31,6 @@ FileDelete, .\src\*.bak
 #Include src/ajax.ahk         ; ajax   
 #Include src/react.ahk        ; React
 #Include src/cdn.ahk          ; CDN   
-#Include src/php.ahk          ; php   
 #Include src/github.ahk       ; 云代码库    
 #Include src/ht.ahk           ; ht-elementUI库   
 #Include src/Lua.ahk          ; secondkey_board  
