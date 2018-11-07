@@ -30,7 +30,7 @@ $mypost = json_decode($rws_post);
 code(Var)
 return
 
-::php.json::
+
 ::php.jsons::
 Var =
 (
@@ -62,12 +62,20 @@ return
 ::php.post::
 ::phppost::
 ::jsonpost::
+::php.json::
 Var = 
 (
 <?php 
     // http://www.cnblogs.com/CyLee/p/7644380.html
     header("Access-Control-Allow-Origin:*"); 
     header('Access-Control-Allow-Headers:x-requested-with,content-type');
+
+
+    // var_dump($GLOBALS['HTTP_RAW_POST_DATA']);
+    // var_dump($_REQUEST);
+    // var_dump($_SERVER["CONTENT_TYPE"]);
+    // var_dump($_SERVER["REQUEST_METHOD"]);
+    // var_dump($_SERVER);
 
     $rws_post = $GLOBALS['HTTP_RAW_POST_DATA'];
     $mypost = json_decode($rws_post);
