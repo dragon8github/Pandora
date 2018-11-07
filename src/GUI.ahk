@@ -426,7 +426,10 @@ Gui, Add, Text,  W140 ys, 弃之可惜:
 Gui, Add, Link,, <a href="https://sketch2code.azurewebsites.net/">Microsoft sketch2code</a>
 
 Gui, Tab, 13
-Gui, Add, Edit, vClipHistory w750 H460 Limit50, 
+Gui, Add, Edit, vClipHistory w750 H400 Limit50
+; submit 按钮
+Gui, Add, Button, gSaveClipHistory w750 h30, 保存到桌面
+
 
 GuiEscape:
 GuiClose:
@@ -450,14 +453,22 @@ return
 return 
 */
 
+SaveClipHistory: 
+	filename := A_Desktop . "/" . A_YYYY . A_MM . A_DD . ".txt"
+	GuiControlGet, OutputVar, , ClipHistory, Text
+	FileAppend, %OutputVar%, %filename%
+	MsgBox, 保存成功
+return
+
 ClipChanged(Type) {
     try {
        if (type == 1) {
-            ; filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"
-            if (StrLen(Trim(StrReplace(Clipboard, "`r`n"))) != 0) {
-                time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
+            
+			; 必须复制的不是空内容，并且不是在GUI中复制的才进行储存。
+            if (StrLen(Trim(StrReplace(Clipboard, "`r`n"))) != 0  && !WinActive("ahk_class AutoHotkeyGUI")) {
 				GuiControlGet, OutputVar, , ClipHistory, Text
-                content := "__________________" . time . "__________________`r`n`r`n" . Clipboard . "`r`n`r`n`r`n`r`n" . OutputVar
+				time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
+				content := "__________________" . time . "__________________`r`n`r`n" . Clipboard . "`r`n`r`n`r`n`r`n" . OutputVar
 				GuiControl, Text, ClipHistory, %content%
             }
         }  
