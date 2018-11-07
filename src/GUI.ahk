@@ -426,7 +426,7 @@ Gui, Add, Text,  W140 ys, 弃之可惜:
 Gui, Add, Link,, <a href="https://sketch2code.azurewebsites.net/">Microsoft sketch2code</a>
 
 Gui, Tab, 13
-Gui, Add, Edit, vClipHistory w750 H400 Limit50
+Gui, Add, Edit, vClipHistory w750 H400 Limit400
 ; submit 按钮
 Gui, Add, Button, gSaveClipHistory w750 h30, 保存到桌面
 
@@ -463,12 +463,12 @@ return
 ClipChanged(Type) {
     try {
        if (type == 1) {
-            
 			; 必须复制的不是空内容，并且不是在GUI中复制的才进行储存。
             if (StrLen(Trim(StrReplace(Clipboard, "`r`n"))) != 0  && !WinActive("ahk_class AutoHotkeyGUI")) {
 				GuiControlGet, OutputVar, , ClipHistory, Text
 				time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
-				content := "__________________" . time . "__________________`r`n`r`n" . Clipboard . "`r`n`r`n`r`n`r`n" . OutputVar
+				WinGetTitle, title, A
+				content := "__________________ " . title . " 【" . time . "】 " . "__________________ `r`n`r`n" . Clipboard . "`r`n`r`n`r`n`r`n" . OutputVar
 				GuiControl, Text, ClipHistory, %content%
             }
         }  
