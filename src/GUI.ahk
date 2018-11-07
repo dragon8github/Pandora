@@ -1,4 +1,6 @@
-﻿Gui, Add, Text, gAllSearchA W140 Section xs yp+10, 搜索引擎类:
+﻿OnClipboardChange("ClipChanged")
+
+Gui, Add, Text, gAllSearchA W140 Section xs yp+10, 搜索引擎类:
 Gui, Add, Checkbox, vcylee, 博客园
 Gui, Add, Checkbox, gMySubroutine HwndMyEditHwnd vbd, 百度
 Gui, Add, Checkbox, vgoogle, Google
@@ -42,7 +44,7 @@ Gui, Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 ; submit 按钮
 Gui, Add, Button, w780 h30 Default, FUCK
 
-Gui, Add, Tab3, w780 h500 Choose1, 常用 | 工作坊 | 创慧教育 | Vue | React | 库 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | 鸡肋
+Gui, Add, Tab3, w780 h500 Choose1, 常用 | 工作坊 | 创慧教育 | Vue | React | 库 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | 鸡肋 | 剪切板
 
 Gui, Tab, 1
 Gui, Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -423,6 +425,9 @@ Gui, Add, Link,, <a href="http://blog.mn886.net/jqGrid/">jQGrid 中文文档</a>
 Gui, Add, Text,  W140 ys, 弃之可惜:
 Gui, Add, Link,, <a href="https://sketch2code.azurewebsites.net/">Microsoft sketch2code</a>
 
+Gui, Tab, 13
+Gui, Add, Edit, vClipHistory w750 H460 Limit50, 
+
 GuiEscape:
 GuiClose:
 	Gui,Hide
@@ -444,6 +449,22 @@ return
 	Gui, Show,, Simple Input Example
 return 
 */
+
+ClipChanged(Type) {
+    try {
+       if (type == 1) {
+            ; filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"
+            if (StrLen(Trim(StrReplace(Clipboard, "`r`n"))) != 0) {
+                time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
+				GuiControlGet, OutputVar, , ClipHistory, Text
+                content := "__________________" . time . "__________________`r`n`r`n" . Clipboard . "`r`n`r`n`r`n`r`n" . OutputVar
+				GuiControl, Text, ClipHistory, %content%
+            }
+        }  
+    } catch e {
+        
+    }
+}
 
 #Include src/GUIcode.ahk
 

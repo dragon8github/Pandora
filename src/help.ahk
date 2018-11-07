@@ -285,11 +285,18 @@ SendInput, %Var%{left 30}
 return
 
 ::ahktime::
-::ahknow::
 ::ahkdate::
 Var =
 (
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+)
+code(Var)
+return
+
+::ahknow::
+Var =
+(
+Var := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 )
 code(Var)
 return
