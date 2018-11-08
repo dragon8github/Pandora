@@ -41,3 +41,4 @@ FileDelete, .\src\*.bak
 #Include src/sql.ahk		  ; sql
 #Include src/bdmap.ahk		  ; sql
 #include src/prehosting.ahk	  ; 预设置的快捷键
+

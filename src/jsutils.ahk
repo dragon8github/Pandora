@@ -57,6 +57,7 @@
     Menu, utilsMenu, Add, stopevent阻止事件冒泡, utilsHandler
     Menu, utilsMenu, Add, addcss/link样式加载器, utilsHandler
     Menu, utilsMenu, Add, ClickOutside点击外部冒泡, utilsHandler
+    Menu, utilsMenu, Add, maybe, utilsHandler
     
 
 	Menu, utilsMenu, Show
@@ -74,6 +75,27 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "maybe") {
+Var = 
+(
+const maybe = (fn, n = '') => {
+   try {
+      const result = fn()
+      return (result && result === result && result !== 'NaN' && result !== 'Invalid date') ? result : n
+   } catch (err) {
+      return n
+   }
+}
+
+var obj = {
+ a: 123
+}
+maybe(_=> obj.a, 0); // 123
+maybe(_=> obj.b, 0); // 0
+maybe(_=> obj.a.b.s.w.holy.shit.fuck.god, 0); // 0
 )
 }
 

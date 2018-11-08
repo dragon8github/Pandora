@@ -1,9 +1,9 @@
 ﻿!j::
-	Menu, jsobjectMenu, Add, ################ 六种基本类型：string/number/boolean/null/undefined/object ################, jsobjectHandler
-	Menu, jsobjectMenu, Add, Object.assign({}`, ), jsobjectHandler
 	Menu, jsobjectMenu, Add, delete person.age 删除对象的属性, jsobjectHandler
+	Menu, jsobjectMenu, Add, Object.assign({}`, ), jsobjectHandler
 	Menu, jsobjectMenu, Add, Object.is 比 === 更严格的比较, jsobjectHandler
 	Menu, jsobjectMenu, Add, 'tail' in cat / cat.hasOwnProperty('tail') 判断对象是否包含某属性, jsobjectHandler
+	
 	Menu, jsobjectMenu, Add,, jsobjectHandler
 	Menu, jsobjectMenu, Add,, jsobjectHandler
 

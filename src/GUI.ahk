@@ -463,8 +463,8 @@ return
 ClipChanged(Type) {
     try {
        if (type == 1) {
-			; 必须复制的不是空内容，并且不是在GUI中复制的才进行储存。
-            if (StrLen(Trim(StrReplace(Clipboard, "`r`n"))) != 0  && !WinActive("ahk_class AutoHotkeyGUI")) {
+			; 必须复制的不是空内容但小于200，并且不是在GUI中复制的才进行储存。
+            if (StrLen(Trim(StrReplace(Clipboard, "`r`n"))) != 0  && !WinActive("ahk_class AutoHotkeyGUI") && StrLen(Trim(StrReplace(Clipboard, "`r`n"))) <= 200) {
 				GuiControlGet, OutputVar, , ClipHistory, Text
 				time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 				WinGetTitle, title, A
