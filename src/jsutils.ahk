@@ -58,6 +58,8 @@
     Menu, utilsMenu, Add, addcss/link样式加载器, utilsHandler
     Menu, utilsMenu, Add, ClickOutside点击外部冒泡, utilsHandler
     Menu, utilsMenu, Add, maybe, utilsHandler
+    Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
+    
     
 
 	Menu, utilsMenu, Show
@@ -75,6 +77,41 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "copyToClipboard 剪切板") {
+Var = 
+(
+// 剪切板
+export const copyToClipboard = (text, cb) => {
+    if(text.indexOf('-') !== -1) {
+        let arr = text.split('-');
+        text = arr[0] + arr[1];
+    }
+    var textArea = document.createElement("textarea");
+      textArea.style.position = 'fixed';
+      textArea.style.top = '0';
+      textArea.style.left = '0';
+      textArea.style.width = '2em';
+      textArea.style.height = '2em';
+      textArea.style.padding = '0';
+      textArea.style.border = 'none';
+      textArea.style.outline = 'none';
+      textArea.style.boxShadow = 'none';
+      textArea.style.background = 'transparent';
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+
+      try {
+        var successful = document.execCommand('copy');
+        cb && cb()
+      } catch (err) {
+        console.log('该浏览器不支持点击复制到剪贴板');
+      }
+      document.body.removeChild(textArea);
+}
 )
 }
 

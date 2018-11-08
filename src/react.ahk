@@ -189,6 +189,24 @@ return
 
 
 ReactMenuHandler:
+if (A_ThisMenuItem == "") {
+Var = 
+(
+)
+code(Var)
+}
+
+if (A_ThisMenuItem == "React.Fragment 代替div作为外层") {
+Var = 
+(
+import React, { Fragment } from 'react';
+
+<Fragment>
+       Copyright <Icon type="copyright" /> 2018 蚂蚁金服体验技术部出品
+</Fragment>
+)
+code(Var)
+}
 
 if (A_ThisMenuItem == "ref") {
 Var = 
@@ -462,7 +480,7 @@ code(Var)
 Return  
 
 !t::
-	reactArray := ["新建create-react-app", "新建react-redux.html", "React runtime", "ReactDOM.render",  "constructor", "this.porps", "ref", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()强制启动更新"]
+	reactArray := ["新建create-react-app", "新建react-redux.html", "React runtime", "React.Fragment 代替div作为外层", "ReactDOM.render",  "constructor", "this.porps", "ref", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()强制启动更新"]
 	Loop % reactArray.MaxIndex() {
 		this_life := reactArray[a_index]
 		Menu, reactArray, Add, %this_life%, ReactMenuHandler

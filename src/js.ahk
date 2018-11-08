@@ -639,7 +639,7 @@ return
 ::nice::
 Var =
 (
-$('.drapdown__ul').niceScroll({ cursorcolor: 'rgba(0,0,0,0.2)', autohidemode: false });
+setTimeout(() => { $('.drapdown__ul').niceScroll({ cursorcolor: 'rgba(0,0,0,0.2)', autohidemode: true })}, 350);
 setTimeout(() => $('.drapdown__ul').getNiceScroll().resize(), 0);
 )
 code(Var)
@@ -1846,7 +1846,12 @@ return
 
 ::wa::
 ::walert::
-    Send, window.alert('123');{left 2}{shift down}{left 5}{shift up}
+Var =
+(
+window.alert('123');
+)
+code(Var)
+SendInput, {left 2}{shift down}{left 5}{shift up}
 return
 
 ; 构造函数的拼音老是记不得，以后就用联想来拼写好了
@@ -3278,7 +3283,8 @@ return
 ::clip::
 Var = 
 (
-function copyToClipboard (text) {
+// 剪切板
+export const copyToClipboard = (text, cb) => {
     if(text.indexOf('-') !== -1) {
         let arr = text.split('-');
         text = arr[0] + arr[1];
@@ -3300,6 +3306,7 @@ function copyToClipboard (text) {
 
       try {
         var successful = document.execCommand('copy');
+        cb && cb()
       } catch (err) {
         console.log('该浏览器不支持点击复制到剪贴板');
       }

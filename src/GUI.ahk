@@ -108,6 +108,9 @@ Gui, Add, Link,, <a href="https://gitbook.cn/gitchat/geekbooks">极客书单</a>
 Gui, Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0.10源码</a>
 Gui, Add, Link,, <a href="https://github.com/seajs/seajs/issues/242">CMD规范</a>
 
+Gui, Add, Text,  W140 ys, 与钱为伍：
+Gui, Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
+
 
 
 Gui, Tab, 2
