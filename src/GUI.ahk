@@ -465,12 +465,13 @@ return
 
 ClipChanged(Type) {
    if (type == 1) {
+		b := Trim(StrReplace(Clipboard, "`r`n"))
 		; 必须复制的不是空内容但小于200，并且不是在GUI中复制的才进行储存。
-		if (StrLen(Trim(StrReplace(Clipboard, "`r`n"))) != 0  && !WinActive("ahk_class AutoHotkeyGUI") && StrLen(Trim(StrReplace(Clipboard, "`r`n"))) <= 200) {
+		if (StrLen(b) != 0 && StrLen(b) <= 200 && !WinActive("ahk_class AutoHotkeyGUI")) {
 			GuiControlGet, OutputVar, , ClipHistory, Text
 			; 注意文本框中的文本是`n为换行符，但剪切板是`r`n
 			a := Trim(StrReplace(OutputVar, "`n"))
-			b := Trim(StrReplace(Clipboard, "`r`n"))
+			; 文本框是否存在了，存在就不添加了
 			is := InStr(a, b)
 			; 只是去重复。防止不小心重复，缺点是无法放在最前面比较遗憾; 可惜数组无法使用，不然肯定很简单实现。
 			if (is == 0) {
