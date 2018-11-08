@@ -23,13 +23,9 @@
     Menu, utilsIs, Add, isEmail, utilsHandler
     Menu, utilsIs, Add, is-wx, utilsHandler
     
-    Menu, utilsMenu , Add, is, :utilsIs
-    
-	Menu, utilsMenu, Add, , utilsHandler
-	Menu, utilsMenu, Add, , utilsHandler
-
+    Menu, utilsMenu , Add, is 判断, :utilsIs
 	Menu, utilsMenu, Add, deepcopy, utilsHandler
-	Menu, utilsMenu, Add, unique数组去重复, utilsHandler
+	Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
 	Menu, utilsMenu, Add, getuuid, utilsHandler
     Menu, utilsMenu, Add, pad, utilsHandler
 
@@ -49,16 +45,17 @@
     Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
     
-    Menu, utilsMenu, Add, isBottom是否滚动到底部, utilsHandler
-    Menu, utilsMenu, Add, device获取设备信息, utilsHandler
-    Menu, utilsMenu, Add, preloadimg图片预加载, utilsHandler
-    Menu, utilsMenu, Add, escape防止XSS, utilsHandler
-    Menu, utilsMenu, Add, poll递归, utilsHandler
-    Menu, utilsMenu, Add, stopevent阻止事件冒泡, utilsHandler
-    Menu, utilsMenu, Add, addcss/link样式加载器, utilsHandler
-    Menu, utilsMenu, Add, ClickOutside点击外部冒泡, utilsHandler
-    Menu, utilsMenu, Add, maybe, utilsHandler
+    Menu, utilsMenu, Add, isBottom 是否滚动到底部, utilsHandler
+    Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
+    Menu, utilsMenu, Add, preloadimg 图片预加载, utilsHandler
+    Menu, utilsMenu, Add, escape 防止XSS, utilsHandler
+    Menu, utilsMenu, Add, poll 递归, utilsHandler
+    Menu, utilsMenu, Add, stopevent 阻止事件冒泡, utilsHandler
+    Menu, utilsMenu, Add, addcss/link 样式加载器, utilsHandler
+    Menu, utilsMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
+    Menu, utilsMenu, Add, maybe 神奇的预设函数, utilsHandler
     Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
+    Menu, utilsMenu, Add, lazyload 图片懒加载, utilsHandler
     
     
 
@@ -77,6 +74,57 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "lazyload 图片懒加载") {
+Var = 
+(
+/**
+ * 图片懒加载
+ * https://www.liaoxuefeng.com/article/00151045553343934ba3bb4ed684623b1bf00488231d88d000
+ * <img src="https://loading.io/assets/img/ajax.gif" data-src="http://www.hongte.info/assets/images/banner2.jpg">
+ * <div style="margin-top: 1000px;"></div>
+ */
+;(function(){
+    // 获取包含data-src属性的img
+    var lazyImgs = document.querySelectorAll('img[data-src]')
+    // 将Node-List转化成数组类型
+    lazyImgs = [].slice.apply(lazyImgs);
+     // 定义事件函数
+    var lazyload = function () {
+        // 获取页面滚动的高度
+        var wtop = window.scrollY;
+        // 获取可视区域高度
+        var wheight = document.documentElement.clientHeight;
+        // 判断是否还有未加载的img
+        if (lazyImgs.length > 0) {
+            // 循环处理数组的每个img元素
+            for (var i = lazyImgs.length - 1; i >= 0; i--) {
+                // 获取图片信息
+                var el = lazyImgs[i], rect = el.getBoundingClientRect(), src = el.getAttribute('data-src')
+                // 判断是否在可视范围内:
+                if (rect.top - wtop < wheight) {
+                   // 设置src属性:
+                   el.setAttribute('src', src);
+                   // 删除对象
+                   Array.prototype.splice.call(lazyImgs, i, 1);
+                }
+            }
+        }
+    };
+
+    // 懒加载优化：滚动节流策略
+    var __SCROLLTIMER__ = null
+    // 绑定事件
+    window.onscroll = function () {
+        clearTimeout(__SCROLLTIMER__);
+        __SCROLLTIMER__ = setTimeout(lazyload, 150);
+    }
+
+    // 手动触发一次, 因为页面显示时，并未触发scroll事件。
+    lazyload();
+}());
 )
 }
 
@@ -115,7 +163,7 @@ export const copyToClipboard = (text, cb) => {
 )
 }
 
-if (v == "maybe") {
+if (v == "maybe 神奇的预设函数") {
 Var = 
 (
 const maybe = (fn, n = '') => {
@@ -136,7 +184,7 @@ maybe(_=> obj.a.b.s.w.holy.shit.fuck.god, 0); // 0
 )
 }
 
-if (v == "ClickOutside点击外部冒泡") {
+if (v == "ClickOutside点 击外部冒泡") {
 Var = 
 (
 handle = e => {
@@ -147,7 +195,7 @@ handle = e => {
 )
 }
 
-if (v == "addcss/link样式加载器") {
+if (v == "addcss/link 样式加载器") {
 Var = 
 (
 var link = function(href, fn, cssname){
@@ -196,7 +244,7 @@ getComputedStyle(el)[ruleName];
 )
 }
 
-if (v == "stopevent阻止事件冒泡") {
+if (v == "stopevent 阻止事件冒泡") {
 Var = 
 (
 var stope = function(thisEvent){
@@ -222,7 +270,7 @@ var is_weixn = function () {
 )
 }
 
-if (v == "poll递归") {
+if (v == "poll 递归") {
 Var = 
 (
 // layui的递归
@@ -239,7 +287,7 @@ var onCallback = () => { /* say somthing */ }
 )
 }
 
-if (v == "escape防止XSS") {
+if (v == "escape 防止XSS") {
 Var = 
 (
 var escape = function(html){
@@ -250,7 +298,7 @@ var escape = function(html){
 )
 }
 
-if (v == "preloadimg图片预加载") {
+if (v == "preloadimg 图片预加载") {
 Var = 
 (
 var perloadimg = function(url, callback, error) {
@@ -271,7 +319,7 @@ var perloadimg = function(url, callback, error) {
 )
 }
 
-if (v == "device获取设备信息") {
+if (v == "device 获取设备信息") {
 Var = 
 (
 var device = function(key){
@@ -319,7 +367,7 @@ var device = function(key){
 )
 }
 
-if (v == "isBottom是否滚动到底部") {
+if (v == "isBottom 是否滚动到底部") {
 Var = 
 (
 let scrollHandle = (el) => {
@@ -600,7 +648,7 @@ function getElementPosition (el: Element, offset: Object): Object {
 )
 }
 
-if (v == "unique数组去重复") {
+if (v == "unique 数组去重复") {
 Var = 
 (
 var unique = function (arr) {
