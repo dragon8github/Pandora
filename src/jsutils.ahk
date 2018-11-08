@@ -22,12 +22,16 @@
     Menu, utilsIs, Add, isId, utilsHandler
     Menu, utilsIs, Add, isEmail, utilsHandler
     Menu, utilsIs, Add, is-wx, utilsHandler
+    Menu, utilsIs, Add, is-ie, utilsHandler
+    Menu, utilsIs, Add, isBottom 是否滚动到底部, utilsHandler
+    
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
 	Menu, utilsMenu, Add, deepcopy, utilsHandler
 	Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
 	Menu, utilsMenu, Add, getuuid, utilsHandler
     Menu, utilsMenu, Add, pad, utilsHandler
+    
 
 	Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
@@ -45,10 +49,10 @@
     Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
     
-    Menu, utilsMenu, Add, isBottom 是否滚动到底部, utilsHandler
+    
     Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
     Menu, utilsMenu, Add, preloadimg 图片预加载, utilsHandler
-    Menu, utilsMenu, Add, escape 防止XSS, utilsHandler
+    Menu, utilsMenu, Add, escapeHTML 防止XSS, utilsHandler
     Menu, utilsMenu, Add, poll 递归, utilsHandler
     Menu, utilsMenu, Add, stopevent 阻止事件冒泡, utilsHandler
     Menu, utilsMenu, Add, addcss/link 样式加载器, utilsHandler
@@ -56,6 +60,12 @@
     Menu, utilsMenu, Add, maybe 神奇的预设函数, utilsHandler
     Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
     Menu, utilsMenu, Add, lazyload 图片懒加载, utilsHandler
+    Menu, utilsMenu, Add, rem 解决方案, utilsHandler
+    Menu, utilsMenu, Add, js 倒计时, utilsHandler
+    Menu, utilsMenu, Add, cookie 库, utilsHandler
+    Menu, utilsMenu, Add, 函数去抖（debounce）, utilsHandler
+    Menu, utilsMenu, Add, 函数节流（throttle）, utilsHandler
+    
     
     
 
@@ -74,6 +84,318 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "函数节流（throttle）") {
+Var = 
+(
+
+// 函数节流（throttle）
+var throttle = function(func, wait, options) {
+  var timeout, context, args, result;
+  // 标记时间戳
+  var previous = 0;
+  // options可选属性 leading: true/false 表示第一次事件马上触发回调/等待wait时间后触发
+  // options可选属性 trailing: true/false 表示最后一次回调触发/最后一次回调不触发
+  if (!options) options = {};
+
+  var later = function() {
+    previous = options.leading === false ? 0 : +(new Date());
+    timeout = null;
+    result = func.apply(context, args);
+    if (!timeout) context = args = null;
+  };
+
+  var throttled = function() {
+    // 记录当前时间戳
+    var now = +(new Date());
+    // 如果是第一次触发且选项设置不立即执行回调
+    if (!previous && options.leading === false)
+    // 将记录的上次执行的时间戳置为当前
+    previous = now;
+    // 距离下次触发回调还需等待的时间
+    var remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+
+    // 等待时间 <= 0或者不科学地 > wait（异常情况）
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+          // 清除定时器
+        clearTimeout(timeout);
+        // 解除引用
+        timeout = null;
+      }
+      // 将记录的上次执行的时间戳置为当前
+      previous = now;
+
+      // 触发回调
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+    // 在定时器不存在且选项设置最后一次触发需要执行回调的情况下
+    // 设置定时器，间隔remaining时间后执行later
+    else if (!timeout && options.trailing !== false)    {
+      timeout = setTimeout(later, remaining);
+    }
+   return result;
+  };
+
+  throttled.cancel = function() {
+    clearTimeout(timeout);
+    previous = 0;
+    timeout = context = args = null;
+  };
+
+  return throttled;
+};
+
+// demo
+var fn = (data) => console.log(20180926160742, data);
+// leading 为 true时，第一次执行立即触发，这比setTimeout好多了
+// trailing 为 fasle时，不会触发最后一次。这样比较符合直觉。
+const fn2 = throttle(fn, 3000, { leading: true, trailing: false });
+fn2(123) // 请手动不停的执行这个函数
+)
+}
+
+if (v == "函数去抖（debounce）") {
+Var = 
+(
+
+// 函数去抖（debounce）：让函数只有在过完一段时间后再执行，并且该段时间内不被调用才会被执行
+var debounce = function(func, wait, immediate) {
+    var timeout, result;
+
+     // 定时器设置的回调，清除定时器，执行回调函数func
+    var later = function(context, args) {
+      timeout = null;
+      if (args) result = func.apply(context, args);
+    };
+
+    var restArgs = function(func, startIndex) {
+      startIndex = startIndex == null ? func.length - 1 : +startIndex;
+      return function() {
+        var length = Math.max(arguments.length - startIndex, 0);
+        var rest = Array(length);
+        for (var index = 0; index < length; index++) {
+          rest[index] = arguments[index + startIndex];
+        }
+        switch (startIndex) {
+          case 0: return func.call(this, rest);
+          case 1: return func.call(this, arguments[0], rest);
+          case 2: return func.call(this, arguments[0], arguments[1], rest);
+        }
+        var args = Array(startIndex + 1);
+        for (index = 0; index < startIndex; index++) {
+          args[index] = arguments[index];
+        }
+        args[startIndex] = rest;
+        return func.apply(this, args);
+      };
+    };
+
+    var delay = restArgs(function(func, wait, args) {
+      return setTimeout(function(){
+        return func.apply(null, args);
+      }, wait);
+    });
+
+     // restArgs函数将传入的func的参数改造成Rest Parameters —— 一个参数数组
+    var debounced = restArgs(function(args) {
+      if (timeout) clearTimeout(timeout);
+      if (immediate) {
+        // 立即触发的条件：immediate为true且timeout为空
+        var callNow = !timeout;
+        timeout = setTimeout(later, wait);
+        if (callNow) result = func.apply(this, args);
+      } else {
+        // _.delay方法实际上是setTimeout()包裹了一层参数处理的逻辑
+        timeout = delay(later, wait, this, args);
+      }
+
+      return result;
+    });
+
+    debounced.cancel = function() {
+      clearTimeout(timeout);
+      timeout = null;
+    };
+
+    return debounced;
+};
+)
+}
+
+if (v == "is-ie") {
+Var = 
+(
+(function(){ //ie版本
+    var agent = navigator.userAgent.toLowerCase();
+    return (!!window.ActiveXObject || "ActiveXObject" in window) ? (
+      (agent.match(/msie\s(\d+)/) || [])[1] || '11' //由于ie11并没有msie的标识
+    `) : false;
+}())
+)
+}
+
+if (v == "cookie 库") {
+Var = 
+(
+/**
+ * @desc  设置Cookie
+ * @param {String} name
+ * @param {String} value
+ * @param {Number} expires
+ */
+function setCookie(name, value, expires) {
+    var cookieString = name + "=" + escape(value);
+    //判斷是否設置過期時間,0代表關閉瀏覽器時失效
+    if (expires > 0) {
+        var date = new Date();
+        date.setTime(date.getTime() + expires * 1000);
+        cookieString = cookieString + ";expires=" + date.toUTCString();
+    }
+    document.cookie=cookieString;
+}
+
+/**
+ * @desc 根据name读取cookie
+ * @param  {String} name
+ * @return {String}
+ */
+function getCookie(name) {
+    var arr = document.cookie.replace(/\s/g, "").split(';');
+    for (var i = 0; i < arr.length; i++) {
+        var tempArr = arr[i].split('=');
+        if (tempArr[0] == name) {
+            return decodeURIComponent(tempArr[1]);
+        }
+    }
+    return '';
+}
+
+/**
+ * @desc 根据name修改cookie
+ * @param  {String} name
+ * @param  {String} value
+ * @param  {Number} expires 
+ */
+function editCookie(name, value, expires){
+    var cookieString = name + "=" + escape(value);
+    if (expires > 0) {
+        var date = new Date();
+        date.setTime(date.getTime() + expires * 1000);
+        cookieString = cookieString + ";expires=" + date.toGMTString();
+    }
+    document.cookie = cookieString;
+}
+
+/**
+ * @desc 根据name删除cookie
+ * @param  {String} name
+ */
+function removeCookie(name) {
+    // 设置已过期，系统会立刻删除cookie
+    setCookie(name, '1', -1);
+}
+)
+}
+
+if (v == "js 倒计时") {
+Var = 
+(
+/**
+ * 開始倒計時
+ * http://candy.dragonvein.io/frontend/web/site/signup
+ * @param {jQuery DOM} $dom
+ * <input type='button' id='second' value = '獲取驗證碼 | Get SMS Code'/>
+ */
+$(function () {
+	// 触发按钮
+	$("#second").click(function () {
+	    sendCode();
+	});
+	// 獲取cookie值
+	v = getCookie("secondsremained_login") ? getCookie("secondsremained_login") : 0;
+	if (v > 0) {
+		 // 開始倒計時
+	    countDown($("#second")); 
+	}
+})
+
+function sendCode () {
+	// 设置默认时间
+	setCookie('secondsremained_login', '60', 60)
+	// 開始倒計時
+    countDown($("#second")); 
+}
+
+function countDown ($dom) {
+	var countdown = getCookie('secondsremained_login') ? getCookie('secondsremained_login') : 0;
+	(function settime () {
+		if (countdown == 0) {
+		    $dom.removeAttr('disabled');
+		    $dom.val('獲取驗證碼 | Get SMS Code');
+		    return;
+		} else {
+		    $dom.attr('disabled', true);
+		    $dom.val(countdown + '秒後重發 | Waiting ' + countdown + 's');
+		    countdown--;
+		    editCookie('secondsremained_login', countdown, countdown + 1);
+		}
+		setTimeout(function() { settime($dom) },1000) //每1000毫秒執行壹次
+	}());
+}
+)
+}
+
+if (v == "rem 解决方案") {
+Var = 
+(
+/*
+ (function flexible (window, document) {
+   var docEl = document.documentElement
+   // set 1rem = viewWidth / 10
+   function setRemUnit () {
+     var rem = docEl.clientWidth / 10
+     docEl.style.fontSize = rem + 'px'
+   }
+   setRemUnit()
+   // reset rem unit on page resize
+   window.addEventListener('resize', setRemUnit)
+   window.addEventListener('pageshow', function (e) {
+     if (e.persisted) {
+       setRemUnit()
+     }
+   })
+ }(window, document))
+*/
+
+// rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，1920-192如此类推
+$vw_fontsize: 75; // iPhone 6尺寸的根元素大小基准值
+@function rem($px) {
+    @return ($px / $vw_fontsize ) * 1rem;
+}
+
+// 根元素大小使用 vw 单位
+$vw_design: 750;
+html {
+    font-size: ($vw_fontsize / ($vw_design / 2)) * 100vw;
+    // 同时，通过Media Queries 限制根元素最大最小值
+    @media screen and (max-width: 320px) {
+        font-size: 64px;
+    }
+    @media screen and (min-width: 540px) {
+        font-size: 108px;
+    }
+}
+// body 也增加最大最小宽度限制，避免默认100`%宽度的 block 元素跟随 body 而过大过小
+body {
+    max-width: 540px;
+    min-width: 320px;
+}
 )
 }
 
@@ -287,7 +609,7 @@ var onCallback = () => { /* say somthing */ }
 )
 }
 
-if (v == "escape 防止XSS") {
+if (v == "escapeHTML 防止XSS") {
 Var = 
 (
 var escape = function(html){

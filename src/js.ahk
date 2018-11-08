@@ -3193,6 +3193,8 @@ code(Var)
 return
 
 ::is-ie::
+::isie::
+::is.ie::
 Var = 
 (
 (function(){ //ie版本

@@ -463,6 +463,7 @@ SaveClipHistory:
 	MsgBox, 保存成功
 return
 
+
 ClipChanged(Type) {
     try {
        if (type == 1) {

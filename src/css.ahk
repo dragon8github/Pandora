@@ -673,6 +673,25 @@ return
 ::rem.scss::
 Var = 
 (
+/*
+ (function flexible (window, document) {
+   var docEl = document.documentElement
+   // set 1rem = viewWidth / 10
+   function setRemUnit () {
+     var rem = docEl.clientWidth / 10
+     docEl.style.fontSize = rem + 'px'
+   }
+   setRemUnit()
+   // reset rem unit on page resize
+   window.addEventListener('resize', setRemUnit)
+   window.addEventListener('pageshow', function (e) {
+     if (e.persisted) {
+       setRemUnit()
+     }
+   })
+ }(window, document))
+*/
+
 // rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推
 $vw_fontsize: 75; // iPhone 6尺寸的根元素大小基准值
 @function rem($px) {
@@ -681,7 +700,7 @@ $vw_fontsize: 75; // iPhone 6尺寸的根元素大小基准值
 // 根元素大小使用 vw 单位
 $vw_design: 750;
 html {
-    font-size: ($vw_fontsize / ($vw_design / 2)) * 100vw;?
+    font-size: ($vw_fontsize / ($vw_design / 2)) * 100vw;
     // 同时，通过Media Queries 限制根元素最大最小值
     @media screen and (max-width: 320px) {
         font-size: 64px;
