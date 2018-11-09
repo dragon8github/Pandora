@@ -282,8 +282,8 @@ return
     Menu, VueMenu, Add, , VueHandler
     Menu, VueMenu, Add, , VueHandler
   
-    Menu, VueMenu, Add, myprogress, VueHandler
-    Menu, VueMenu, Add, mapbox, VueHandler
+    Menu, VueMenu, Add, myprogress组件, VueHandler
+    Menu, VueMenu, Add, msgbox组件, VueHandler
   
 
 	Menu, VueMenu, Show
@@ -302,7 +302,7 @@ Var =
 )
 }
 
-if (v == "mapbox") {
+if (v == "msgbox组件") {
 Var = 
 (
 import Vue from 'vue';
@@ -343,7 +343,7 @@ export default {
 )
 }
 
-if (v == "myprogress") {
+if (v == "myprogress组件") {
 Var = 
 (
 <template>
