@@ -27,21 +27,21 @@
     
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
-	  Menu, utilsMenu, Add, deepcopy, utilsHandler
-	  Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
-	  Menu, utilsMenu, Add, getuuid, utilsHandler
+    Menu, utilsMenu, Add, deepcopy, utilsHandler
+    Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
+    Menu, utilsMenu, Add, getuuid, utilsHandler
     Menu, utilsMenu, Add, pad, utilsHandler
     
 
-	  Menu, utilsMenu, Add, , utilsHandler
-	  Menu, utilsMenu, Add, , utilsHandler
+    Menu, utilsMenu, Add, , utilsHandler
+    Menu, utilsMenu, Add, , utilsHandler
  
-	  Menu, utilsMenu, Add, addClass, utilsHandler
-	  Menu, utilsMenu, Add, removeclass , utilsHandler
-	  Menu, utilsMenu, Add, getclassname, utilsHandler
+    Menu, utilsMenu, Add, addClass, utilsHandler
+    Menu, utilsMenu, Add, removeclass , utilsHandler
+    Menu, utilsMenu, Add, getclassname, utilsHandler
     Menu, utilsMenu, Add, getstyle, utilsHandler
-	  Menu, utilsMenu, Add, setStyle, utilsHandler
-	  Menu, utilsMenu, Add, hasClass, utilsHandler
+    Menu, utilsMenu, Add, setStyle, utilsHandler
+    Menu, utilsMenu, Add, hasClass, utilsHandler
     Menu, utilsMenu, Add, getElementPosition 获取元素的定位, utilsHandler
     Menu, utilsMenu, Add, gettop 获取距离顶部的相对距离, utilsHandler
     Menu, utilsMenu, Add, scrollToTop 滚动到头部, utilsHandler
@@ -49,7 +49,7 @@
     
     
     Menu, utilsMenu, Add, , utilsHandler
-	  Menu, utilsMenu, Add, , utilsHandler
+	Menu, utilsMenu, Add, , utilsHandler
     
     
     Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
@@ -67,7 +67,7 @@
     Menu, utilsMenu, Add, cookie 库, utilsHandler
     Menu, utilsMenu, Add, 函数去抖（debounce）, utilsHandler
     Menu, utilsMenu, Add, 函数节流（throttle）, utilsHandler
-    Menu, utilsMenu, Add, createmodel 自定义模型, utilsHandler
+    Menu, utilsMenu, Add, Model类, utilsHandler
     
 
 	  Menu, utilsMenu, Show
@@ -88,79 +88,113 @@ Var =
 )
 }
 
-if (v == "createmodel 自定义模型") {
+if (v == "Model类") {
 Var = 
 (
-// 创建一个基本模型
-export const createModel = () => {
-    return Object.assign({}, {
-        // token
-        token: '',
-        // 核心数据
-        data: null,
-        // 是否加载中
-        loading: false,
-        // 是否数据为空
-        empty: false,
-        // 是否正在加载更多
-        loadingmore: false,
-        // 是否没有更多了
-        nomore: false,
-        // 总数
-        total: 0,
-        // 页码
-        page: 0,
-        // 数量
-        size: 20,
-        // 是否报错了
-        error: '',
-        // 重置
-        resetWhere () {
-          this.loading = false
-          this.empty = false
-          this.loadingmore = false
-          this.nomore = false
-          this.total = 0
-          this.page = 0
-          this.size = 20
-          this.error = ''
-        },
-        showLoading () {
-          return this.loading = true, this.token = getUUID(), this.token
-        },
-        showLoadingmore () {
-          return this.loadingmore = true, this.token = getUUID(), this.token
-        },
-        hideLoading () {
-          this.loading = false
-        },
-        hideLoadingmore () {
-          this.loadingmore = false
-        },
-        isFirstPage () {
-          return this.page === 0
-        },
-        setData (data = [], total = 0, token) {
-          if (token && this.token != token) return
+import { getUUID } from '@/utils/utils.js'
 
-          const isEmptyData = data.length === 0
+export default class Model {
+	constructor (name, age) {
+		// 核心数据
+		this.data = null
+		// token
+		this.token = ''
+		// 是否加载中
+		this.loading = false
+		// 是否数据为空
+		this.empty = false
+		// 是否正在加载更多
+		this.loadingmore = false
+		// 是否没有更多了
+		this.nomore = false
+		// 总数
+		this.total = 0
+		// 页码
+		this.page = 0
+		// 数量
+		this.size = 20
+		// 是否报错了
+		this.error = ''
+	}
 
-          this.loading = false
-          this.loadingmore = false
-          this.total = total
+	// 重置
+  resetWhere () {
+	  this.token = ''
+	  this.loading = false
+	  this.empty = false
+	  this.loadingmore = false
+	  this.nomore = false
+	  this.total = 0
+	  this.page = 0
+	  this.size = 20
+	  this.error = ''
+  }
 
-          if (this.isFirstPage() && isEmptyData) 
-            this.empty = true
+  // 显示loading并且返回token
+  showLoading () {
+    this.loading = true
+  }
 
-          if (data.length < this.size || (!this.isFirstPage() && isEmptyData)) 
-            this.nomore = true
+  // 显示loadingmore并且返回token
+  showLoadingmore () {
+    this.loadingmore = true
+  }
 
-          if (this.isFirstPage())
-            this.data = data
-          else
-            this.data = Array.prototype.concat.call(this.data || [], data)
-        }
-    })
+  // 隐藏loading
+  hideLoading () {
+    this.loading = false
+  }
+
+  // 隐藏Loadingmore
+  hideLoadingmore () {
+    this.loadingmore = false
+  }
+
+  // 页码++
+  pagePlus () {
+	  this.page++
+  }
+
+  // 是否是第一次加载
+  isFirstPage () {
+    return this.page === 0
+  }
+
+  // 刷新token并且返回token
+  refreshToken () {
+    return this.token = getUUID()
+  }
+
+  // 设置data以及一系列逻辑
+  setData ({ data = [], total = 0, token = '' } = {}) {
+    // 如果token不一致，说明请求被覆盖了。应该中止逻辑演变
+    if (token && this.token != token) return
+
+    this.total = total
+    this.loading = false
+    this.loadingmore = false
+    
+    const isEmptyData = data.length === 0
+
+    // empty 表示没有数据
+    if (this.isFirstPage() && isEmptyData) 
+      this.empty = true
+    
+    // nomore 表示没有更多数据
+    if (data.length < this.size || (!this.isFirstPage() && isEmptyData)) 
+      this.nomore = true
+    
+    if (!isEmptyData) {
+      this.empty = false
+      this.nomore = false
+    }
+
+
+    if (this.isFirstPage())
+      this.data = data
+    else
+      this.data = Array.prototype.concat.call(this.data || [], data)
+  }
 }
 }
 
