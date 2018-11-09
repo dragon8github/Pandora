@@ -16,11 +16,11 @@
 	Menu, EventMenu, Add, , EventHandler
 	Menu, EventMenu, Add, , EventHandler
 
-	Menu, EventMenu, Add, $("#app").click(e => {}), EventHandler
-	Menu, EventMenu, Add, $("#app").mouseleave(e => {}), EventHandler
-	Menu, EventMenu, Add, $("#app").mouseover(e => {}), EventHandler
-	Menu, EventMenu, Add, $("#app").change(e => {}), EventHandler
-	Menu, EventMenu, Add, $("#app").mouseup(e => {}), EventHandler
+	Menu, EventMenu, Add, $('#app').click(e => {}), EventHandler
+	Menu, EventMenu, Add, $('#app').mouseleave(e => {}), EventHandler
+	Menu, EventMenu, Add, $('#app').mouseover(e => {}), EventHandler
+	Menu, EventMenu, Add, $('#app').change(e => {}), EventHandler
+	Menu, EventMenu, Add, $('#app').mouseup(e => {}), EventHandler
 	Menu, EventMenu, Add, $('#app').scroll(e => {}), EventHandler
 
 	Menu, EventMenu, Add, , EventHandler

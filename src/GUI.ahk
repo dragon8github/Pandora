@@ -59,9 +59,9 @@ Gui, Pandora:Add, Link,, <a href="http://e.xitu.io/">掘金前端</a>
 Gui, Pandora:Add, Link,, <a href="https://www.aliyun.com/">阿里云</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 其他:
-Gui, Pandora:Add, Link,, <a href="http://www.baidu.com">百度</a>
+Gui, Pandora:Add, Link, gInspect ,  <a>安卓调试</a>
 Gui, Pandora:Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</a>
-Gui, Pandora:Add, Link, gInspect ,  <a>安卓/Nodejs调试</a>
+Gui, Pandora:Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
 Gui, Pandora:Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AutoHotkey官网</a>
 BabelUrl := "http://babeljs.io/repl#?babili=true&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=true&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cbabili&prettier=false&targets=&version=6.26.0"
 Gui, Pandora:Add, Link,, <a href="%BabelUrl%">Babel在线转换</a>
@@ -72,7 +72,6 @@ Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
 Gui, Pandora:Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
 Gui, Pandora:Add, Link,, <a href="http://www.hanhande.com/">憨憨电影</a>
 Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
-Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/dongman/wugengjidierji.html">草民电影</a>
 Gui, Pandora:Add, Link,, <a href="http://www.tan8.com/lesson3-category-1.html">蛐蛐钢琴网</a>
 
 
@@ -85,7 +84,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.bejson.com/">bejson超强工具箱<
 Gui, Pandora:Add, Link,, <a href="https://loading.io/spinner/">Loading 平台</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 奇妙工具:
-Gui, Pandora:Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
+
 Gui, Pandora:Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Pandora:Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 Gui, Pandora:Add, Link,, <a href="http://fontawesome.dashgame.com/">font-awesome</a>
@@ -93,15 +92,13 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue
 Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/">momentjs</a>
 
 
-Gui, Pandora:Add, Text, W140 Section xs yp+50, cdn：
+Gui, Pandora:Add, Text, W140 Section xs yp+80, cdn：
 Gui, Pandora:Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cdnjs.net/">百度cdn</a>
 Gui, Pandora:Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://unpkg.com/#/">unpkg cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdnjs.com/">cdnjs.com</a>
-
-
 
 Gui, Pandora:Add, Text,  W140 ys, 最近学习：
 Gui, Pandora:Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react 掘金小册</a>
@@ -111,9 +108,9 @@ Gui, Pandora:Add, Link,, <a href="https://gitbook.cn/gitchat/geekbooks">极客�
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0.10源码</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/seajs/seajs/issues/242">CMD规范</a>
 
+
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍：
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
-
 
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html

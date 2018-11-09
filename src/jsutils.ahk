@@ -37,11 +37,22 @@
     Menu, utilsMenu, Add, , utilsHandler
  
     Menu, utilsMenu, Add, addClass, utilsHandler
+    Menu, utilsMenu, Add, hasClass, utilsHandler
     Menu, utilsMenu, Add, removeclass , utilsHandler
     Menu, utilsMenu, Add, getclassname, utilsHandler
     Menu, utilsMenu, Add, getstyle, utilsHandler
     Menu, utilsMenu, Add, setStyle, utilsHandler
-    Menu, utilsMenu, Add, hasClass, utilsHandler
+    
+    Menu, utilsMenu, Add, , utilsHandler
+    Menu, utilsMenu, Add, , utilsHandler
+    
+    Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
+    Menu, utilsMenu, Add, lazyload 图片懒加载, utilsHandler
+    Menu, utilsMenu, Add, preloadimg 图片预加载, utilsHandler
+    Menu, utilsMenu, Add, escapeHTML 防止XSS, utilsHandler
+    Menu, utilsMenu, Add, stopevent 阻止事件冒泡, utilsHandler
+    Menu, utilsMenu, Add, addcss/link 样式加载器, utilsHandler
+    Menu, utilsMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
     Menu, utilsMenu, Add, getElementPosition 获取元素的定位, utilsHandler
     Menu, utilsMenu, Add, gettop 获取距离顶部的相对距离, utilsHandler
     Menu, utilsMenu, Add, scrollToTop 滚动到头部, utilsHandler
@@ -52,22 +63,16 @@
 	Menu, utilsMenu, Add, , utilsHandler
     
     
-    Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
-    Menu, utilsMenu, Add, preloadimg 图片预加载, utilsHandler
-    Menu, utilsMenu, Add, escapeHTML 防止XSS, utilsHandler
+    
     Menu, utilsMenu, Add, poll 递归, utilsHandler
-    Menu, utilsMenu, Add, stopevent 阻止事件冒泡, utilsHandler
-    Menu, utilsMenu, Add, addcss/link 样式加载器, utilsHandler
-    Menu, utilsMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
     Menu, utilsMenu, Add, maybe 神奇的预设函数, utilsHandler
     Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
-    Menu, utilsMenu, Add, lazyload 图片懒加载, utilsHandler
     Menu, utilsMenu, Add, rem 解决方案, utilsHandler
-    Menu, utilsMenu, Add, js 倒计时, utilsHandler
+    Menu, utilsMenu, Add, countDown 倒计时, utilsHandler
     Menu, utilsMenu, Add, cookie 库, utilsHandler
-    Menu, utilsMenu, Add, 函数去抖（debounce）, utilsHandler
-    Menu, utilsMenu, Add, 函数节流（throttle）, utilsHandler
-    Menu, utilsMenu, Add, Model类, utilsHandler
+    Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
+    Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
+    Menu, utilsMenu, Add, Model 类, utilsHandler
     
 
 	  Menu, utilsMenu, Show
@@ -88,7 +93,7 @@ Var =
 )
 }
 
-if (v == "Model类") {
+if (v == "Model 类") {
 Var = 
 (
 import { getUUID } from '@/utils/utils.js'
@@ -196,6 +201,7 @@ export default class Model {
       this.data = Array.prototype.concat.call(this.data || [], data)
   }
 }
+)
 }
 
 if (v == "scrollIntoView 滚动到元素可视区域") {
@@ -205,7 +211,7 @@ document.querySelector(".loadingmore").scrollIntoView();
 )
 }
 
-if (v == "函数节流（throttle）") {
+if (v == "throttle 函数节流") {
 Var = 
 (
 
@@ -278,7 +284,7 @@ fn2(123) // 请手动不停的执行这个函数
 )
 }
 
-if (v == "函数去抖（debounce）") {
+if (v == "debounce 函数去抖") {
 Var = 
 (
 
@@ -421,7 +427,7 @@ function removeCookie(name) {
 )
 }
 
-if (v == "js 倒计时") {
+if (v == "countDown 倒计时") {
 Var = 
 (
 /**
@@ -756,6 +762,14 @@ var perloadimg = function(url, callback, error) {
       typeof error === 'function' && error(e);
     };
 };
+
+const preLoadImages = (imgs) => {
+  var imgWrap = [];
+  imgs.forEach(function (path) {
+       new Image().src = path;
+  });
+}
+preLoadImages(['./bg.png', './bg2.png'])
 )
 }
 
