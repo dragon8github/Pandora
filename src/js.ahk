@@ -5,6 +5,8 @@ Var =
 // 创建一个基本模型
 export const createModel = () => {
     return Object.assign({}, {
+        // token
+        token: '',
         // 核心数据
         data: null,
         // 是否加载中
@@ -12,7 +14,7 @@ export const createModel = () => {
         // 是否数据为空
         empty: false,
         // 是否正在加载更多
-        loadmore: false,
+        loadingmore: false,
         // 是否没有更多了
         nomore: false,
         // 总数
@@ -23,6 +25,52 @@ export const createModel = () => {
         size: 20,
         // 是否报错了
         error: '',
+        // 重置
+        resetWhere () {
+          this.loading = false
+          this.empty = false
+          this.loadingmore = false
+          this.nomore = false
+          this.total = 0
+          this.page = 0
+          this.size = 20
+          this.error = ''
+        },
+        showLoading () {
+          return this.loading = true, this.token = getUUID(), this.token
+        },
+        showLoadingmore () {
+          return this.loadingmore = true, this.token = getUUID(), this.token
+        },
+        hideLoading () {
+          this.loading = false
+        },
+        hideLoadingmore () {
+          this.loadingmore = false
+        },
+        isFirstPage () {
+          return this.page === 0
+        },
+        setData (data = [], total = 0, token) {
+          if (token && this.token != token) return
+
+          const isEmptyData = data.length === 0
+
+          this.loading = false
+          this.loadingmore = false
+          this.total = total
+
+          if (this.isFirstPage() && isEmptyData) 
+            this.empty = true
+
+          if (data.length < this.size || (!this.isFirstPage() && isEmptyData)) 
+            this.nomore = true
+
+          if (this.isFirstPage())
+            this.data = data
+          else
+            this.data = Array.prototype.concat.call(this.data || [], data)
+        }
     })
 }
 )
@@ -1947,7 +1995,10 @@ var wraphtml = document.body.appendChild(el);
 code(Var)
 return
 
+::class::
+::es6class::
 ::es6.class::
+::esclass::
 ::es.class::
 ::js.class::
 Var = 

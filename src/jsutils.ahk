@@ -27,27 +27,29 @@
     
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
-	Menu, utilsMenu, Add, deepcopy, utilsHandler
-	Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
-	Menu, utilsMenu, Add, getuuid, utilsHandler
+	  Menu, utilsMenu, Add, deepcopy, utilsHandler
+	  Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
+	  Menu, utilsMenu, Add, getuuid, utilsHandler
     Menu, utilsMenu, Add, pad, utilsHandler
     
 
-	Menu, utilsMenu, Add, , utilsHandler
-	Menu, utilsMenu, Add, , utilsHandler
-
-	Menu, utilsMenu, Add, addClass, utilsHandler
-	Menu, utilsMenu, Add, removeclass , utilsHandler
-	Menu, utilsMenu, Add, getclassname, utilsHandler
+	  Menu, utilsMenu, Add, , utilsHandler
+	  Menu, utilsMenu, Add, , utilsHandler
+ 
+	  Menu, utilsMenu, Add, addClass, utilsHandler
+	  Menu, utilsMenu, Add, removeclass , utilsHandler
+	  Menu, utilsMenu, Add, getclassname, utilsHandler
     Menu, utilsMenu, Add, getstyle, utilsHandler
-	Menu, utilsMenu, Add, setStyle, utilsHandler
-	Menu, utilsMenu, Add, hasClass, utilsHandler
-    Menu, utilsMenu, Add, getElementPosition, utilsHandler
-    Menu, utilsMenu, Add, gettop, utilsHandler
-    Menu, utilsMenu, Add, scrollToTop, utilsHandler
+	  Menu, utilsMenu, Add, setStyle, utilsHandler
+	  Menu, utilsMenu, Add, hasClass, utilsHandler
+    Menu, utilsMenu, Add, getElementPosition 获取元素的定位, utilsHandler
+    Menu, utilsMenu, Add, gettop 获取距离顶部的相对距离, utilsHandler
+    Menu, utilsMenu, Add, scrollToTop 滚动到头部, utilsHandler
+    Menu, utilsMenu, Add, scrollIntoView 滚动到元素可视区域, utilsHandler
+    
     
     Menu, utilsMenu, Add, , utilsHandler
-	Menu, utilsMenu, Add, , utilsHandler
+	  Menu, utilsMenu, Add, , utilsHandler
     
     
     Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
@@ -65,12 +67,11 @@
     Menu, utilsMenu, Add, cookie 库, utilsHandler
     Menu, utilsMenu, Add, 函数去抖（debounce）, utilsHandler
     Menu, utilsMenu, Add, 函数节流（throttle）, utilsHandler
-    
-    
+    Menu, utilsMenu, Add, createmodel 自定义模型, utilsHandler
     
 
-	Menu, utilsMenu, Show
-	Menu, utilsMenu, DeleteAll
+	  Menu, utilsMenu, Show
+	  Menu, utilsMenu, DeleteAll
     Menu, utilsIs, DeleteAll
 return
 
@@ -84,6 +85,89 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "createmodel 自定义模型") {
+Var = 
+(
+// 创建一个基本模型
+export const createModel = () => {
+    return Object.assign({}, {
+        // token
+        token: '',
+        // 核心数据
+        data: null,
+        // 是否加载中
+        loading: false,
+        // 是否数据为空
+        empty: false,
+        // 是否正在加载更多
+        loadingmore: false,
+        // 是否没有更多了
+        nomore: false,
+        // 总数
+        total: 0,
+        // 页码
+        page: 0,
+        // 数量
+        size: 20,
+        // 是否报错了
+        error: '',
+        // 重置
+        resetWhere () {
+          this.loading = false
+          this.empty = false
+          this.loadingmore = false
+          this.nomore = false
+          this.total = 0
+          this.page = 0
+          this.size = 20
+          this.error = ''
+        },
+        showLoading () {
+          return this.loading = true, this.token = getUUID(), this.token
+        },
+        showLoadingmore () {
+          return this.loadingmore = true, this.token = getUUID(), this.token
+        },
+        hideLoading () {
+          this.loading = false
+        },
+        hideLoadingmore () {
+          this.loadingmore = false
+        },
+        isFirstPage () {
+          return this.page === 0
+        },
+        setData (data = [], total = 0, token) {
+          if (token && this.token != token) return
+
+          const isEmptyData = data.length === 0
+
+          this.loading = false
+          this.loadingmore = false
+          this.total = total
+
+          if (this.isFirstPage() && isEmptyData) 
+            this.empty = true
+
+          if (data.length < this.size || (!this.isFirstPage() && isEmptyData)) 
+            this.nomore = true
+
+          if (this.isFirstPage())
+            this.data = data
+          else
+            this.data = Array.prototype.concat.call(this.data || [], data)
+        }
+    })
+}
+}
+
+if (v == "scrollIntoView 滚动到元素可视区域") {
+Var = 
+(
+document.querySelector(".loadingmore").scrollIntoView();
 )
 }
 
@@ -782,7 +866,7 @@ if (!/^[\u4e00-\u9fa5]+$/.test('李钊鸿')) {
 
 
 
-if (v == "gettop") {
+if (v == "gettop 获取距离顶部的相对距离") {
 Var = 
 (
 // 获取距离顶部的相对距离
@@ -800,7 +884,7 @@ function getElementTop(element){
 )
 }
 
-if (v == "scrollToTop") {
+if (v == "scrollToTop 滚动到头部") {
 Var = 
 (
 var timer = null;
@@ -955,7 +1039,7 @@ deepExtend({}, objA, objB);
 )
 }
 
-if (v == "getElementPosition") {
+if (v == "getElementPosition 获取元素的定位") {
 Var = 
 (
 function getElementPosition (el: Element, offset: Object): Object {

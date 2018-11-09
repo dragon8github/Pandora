@@ -1,4 +1,6 @@
 ﻿!j::
+	
+	Menu, jsobjectMenu, Add, ({a = 123`, b = 321`, c = 456} = {}) 对象解构 与 参数默认值, jsobjectHandler
 	Menu, jsobjectMenu, Add, delete person.age 删除对象的属性, jsobjectHandler
 	Menu, jsobjectMenu, Add, Object.assign({}`, ), jsobjectHandler
 	Menu, jsobjectMenu, Add, Object.is 比 === 更严格的比较, jsobjectHandler
@@ -36,6 +38,14 @@ if (v == "") {
 Var =
 (
 
+)
+}
+
+if (v == "({a = 123, b = 321, c = 456} = {}) 对象解构 与 参数默认值") {
+Var =
+(
+var abc = ({a = 123, b = 321, c = 456} = {}) => console.log(20181109155055, a)
+abc()
 )
 }
 

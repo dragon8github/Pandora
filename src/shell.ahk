@@ -1,4 +1,6 @@
-﻿::sh.curl::
+﻿
+
+::sh.curl::
 ::shell.curl::
 ::bash.curl::
 Var =
@@ -156,6 +158,15 @@ return
 	Menu, H, Add, `%（从右到做）操作符, ShellHandler
 	
 	
+	Menu, ShellMenu, Add, git, ShellHandler
+	Menu, ShellMenu, Add, git add . && git commit -m "", ShellHandler
+	Menu, ShellMenu, Add, git push -u origin master , ShellHandler
+	Menu, ShellMenu, Add, git pull origin master , ShellHandler
+	
+	
+	Menu, ShellMenu, Add, , ShellHandler
+	Menu, ShellMenu, Add, , ShellHandler
+	
 	Menu, ShellMenu, Add, #!/bin/bash, ShellHandler
 	Menu, ShellMenu, Add, for循环, ShellHandler
 	Menu, ShellMenu, Add, 环境变量, :A
@@ -176,6 +187,52 @@ ShellHandler:
 ; MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.
 v := A_ThisMenuItem
 Var := 
+
+
+if (v == "") {
+Var = 
+(
+
+)
+}
+
+if (v == "git add . && git commit -m """"") {
+Var = 
+(
+git add . && git commit -m "迭代"
+)
+SendInput, % Var
+SendInput, {left}
+return
+}
+
+if (v == "git pull origin master") {
+Var = 
+(
+git pull origin master
+)
+SendInput, % Var
+return
+}
+
+if (v == "git push -u origin master") {
+Var = 
+(
+git push -u origin master
+)
+SendInput, % Var
+return
+}
+
+if (v == "git") {
+Var = 
+(
+git add . && git commit -m '迭代' --no-verify && git push -u origin master
+)
+SendInput, % Var
+SendInput, {left 42}
+return
+}
 
 
 if (v == "#!/bin/bash") {
