@@ -1,4 +1,33 @@
-﻿
+﻿::createmodel::
+::model::
+Var =
+(
+// 创建一个基本模型
+export const createModel = () => {
+    return Object.assign({}, {
+        // 核心数据
+        data: null,
+        // 是否加载中
+        loading: false,
+        // 是否数据为空
+        empty: false,
+        // 是否正在加载更多
+        loadmore: false,
+        // 是否没有更多了
+        nomore: false,
+        // 总数
+        total: 0,
+        // 页码
+        page: 0,
+        // 数量
+        size: 20,
+        // 是否报错了
+        error: '',
+    })
+}
+)
+code(Var)
+return
 
 ::link::
 ::addcss::

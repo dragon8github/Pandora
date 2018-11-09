@@ -1,4 +1,18 @@
-﻿::nth::
+﻿::loading::
+Var =
+(
+.is-loading::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	background: rgba(255, 255, 255, 0.7) url('~@/assets/loading.gif') center center / 120px 120px  no-repeat;
+}
+)
+code(Var)
+return
+
+::nth::
 	Menu, NthMenu, Add, :nth-child(n), nthHandle
 	Menu, NthMenu, Add, :nth-child(even), nthHandle
 	Menu, NthMenu, Add, :nth-child(odd), nthHandle
