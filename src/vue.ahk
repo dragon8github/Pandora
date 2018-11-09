@@ -141,13 +141,14 @@ return
 
 ::vue.msg::
 ::vue.msgbox::
+::v.msgbox::
+::v.msg::
 Var =
 (
 import Vue from 'vue';
 import mapbox from './mapbox.vue'
 
 const mapboxConstructor = Vue.extend(mapbox);
-
 
 let _initInstance;
 
@@ -158,19 +159,20 @@ const initInstance = () => {
   document.body.appendChild(_initInstance.$el);
 };
 
-const show = () => {
+const show = ({ name, list, center }) => {
 	if (!_initInstance) {
 	  initInstance();
 	}
 
-	Vue.nextTick(() => {
-		_initInstance.value = true;
-	});
+	_initInstance.value = true;
+	_initInstance.name = name;
+	_initInstance.list = list;
+	_initInstance.center = center;
 }
 
 const close = () => {
 	Vue.nextTick(() => {
-		_initInstance.value = false;
+		_initInstance && (_initInstance.value = false)
 	});
 }
 
@@ -266,6 +268,7 @@ return
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
+  
   Menu, VueMenu, Add, router.init, VueHandler
   Menu, VueMenu, Add, this.$router.push('index'), VueHandler
   Menu, VueMenu, Add, this.$router.back, VueHandler
@@ -274,6 +277,13 @@ return
   Menu, VueMenu, Add, 全局钩子router.afterEach, VueHandler
   Menu, VueMenu, Add, 全局钩子router.beforeEach, VueHandler
   Menu, VueMenu, Add, 获取参数this.$route.params.id, VueHandler
+  
+  
+    Menu, VueMenu, Add, , VueHandler
+    Menu, VueMenu, Add, , VueHandler
+  
+    Menu, VueMenu, Add, myprogress, VueHandler
+    Menu, VueMenu, Add, mapbox, VueHandler
   
 
 	Menu, VueMenu, Show
@@ -289,6 +299,103 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "mapbox") {
+Var = 
+(
+import Vue from 'vue';
+import mapbox from './mapbox.vue'
+
+const mapboxConstructor = Vue.extend(mapbox);
+
+let _initInstance;
+
+const initInstance = () => {
+  _initInstance = new mapboxConstructor({
+    el: document.createElement('div')
+  });
+  document.body.appendChild(_initInstance.$el);
+};
+
+const show = ({ name, list, center }) => {
+	if (!_initInstance) {
+	  initInstance();
+	}
+
+	_initInstance.value = true;
+	_initInstance.name = name;
+	_initInstance.list = list;
+	_initInstance.center = center;
+}
+
+const close = () => {
+	Vue.nextTick(() => {
+		_initInstance && (_initInstance.value = false)
+	});
+}
+
+export default {
+	show,
+	close,
+}
+)
+}
+
+if (v == "myprogress") {
+Var = 
+(
+<template>
+    <div class="myprogress" :style='{ width: mywidth }'></div>
+</template>
+
+<script>
+export default {
+  name: 'myprogress',
+  data () {
+    return {
+      mywidth: 0
+    }
+  },
+  methods: {
+      go () {
+          console.log('go');
+      }
+  },
+  props: {
+    _width: {
+      default: 0,
+      type: String
+    }
+  },
+  components: {
+
+  },
+  computed: {
+
+  },
+  watch: {
+    _width (newV) {
+      this.mywidth = 0
+      setTimeout(_ => this.mywidth = newV, 50)
+    }
+  },
+  mounted () {
+      setTimeout(() => {
+        this.mywidth = this._width
+      }, 50);
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.myprogress {
+  transition: .5s all ease;
+  width: 0;
+}
+</style>
 )
 }
 
