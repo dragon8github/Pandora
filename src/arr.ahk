@@ -97,8 +97,13 @@ for (var i = 0; i < Things.length; i++) {
 if (v == "for i--") {
 Var = 
 (
+var Things = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+var arr = []
 for (var i = Things.length - 1; i >= 0; i--) {
-	Things[i]
+	if (Things[i] `% 2 === 0) {
+		arr.push(...Things.splice(i, 1))
+		console.log(Things, arr)
+	}
 }
 )
 }

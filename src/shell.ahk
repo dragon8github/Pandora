@@ -35,8 +35,11 @@ code(Var)
 return
 
 ::sh.tree::
+::shtree::
 ::bash.tree::
+::bashtree::
 ::shell.tree::
+::shelltree::
 ::tree::
 Var =
 (

@@ -1,4 +1,97 @@
-﻿::createmodel::
+﻿::nodetree::
+::treenode::
+Var =
+(
+class Node {
+	constructor(val) {
+	    this._val = val
+	    this._parent = null
+	    this._children = []
+	}
+
+	isRoot () {
+		return isValid(this._parent)
+	}
+
+	get children () {
+		return this._children
+	}
+
+	hasChildren () {
+		return this._children.length > 0
+	}
+
+	get value () {
+		return this._val
+	}
+
+	set value (val) {
+		this._val = val
+	}
+
+	append(child) {
+		child._parent = this
+		this._children.push(child)
+		return this
+	}
+
+	toString() {
+		return `Node (val: ${this._val}, children: ${this.children.length})`
+	}
+}
+
+class Tree {
+	constructor(root) {
+	    this._root = root
+	}
+
+	static map(node, fn, tree = null) {
+		node.value = fn(node.value)
+
+		if (tree === null) 
+			tree = new Tree(node)
+
+		if (node.hasChildren()) {
+			// 遍历子树
+			node.children.map(child => {
+				// 递归
+				Tree.map(child, fn, tree)
+			})
+		}
+
+		return tree
+	}
+
+	get root() {
+		return this._root
+	}
+}
+
+//////////////////////////////////////////////
+const church = new Node('church')
+const neleson = new Node('neleson')
+const rosser = new Node('rosser')
+const turing = new Node('turing')
+const kleene = new Node('kleene')
+const nelson = new Node('nelson')
+const constable = new Node('constable')
+const mendelson = new Node('mendelson')
+const sacks = new Node('sacks')
+const gandy = new Node('gandy')
+//////////////////////////////////////////////
+
+church.append(rosser).append(turing).append(kleene);
+kleene.append(neleson).append(constable);
+rosser.append(mendelson).append(sacks);
+turing.append(gandy);
+//////////////////////////////////////////////
+church.toString()
+Tree.map(church, p => p)
+)
+code(Var)
+return
+
+::createmodel::
 ::model::
 Var =
 (
@@ -2029,36 +2122,46 @@ var wraphtml = document.body.appendChild(el);
 code(Var)
 return
 
-::class::
+
 ::es6class::
 ::es6.class::
 ::esclass::
 ::es.class::
 ::js.class::
+::class::
 Var = 
 (
 class Person {
 	constructor (name, age) {
-		 // super(); // 继承
-		 this._name = name;
-		 this._age = age;
+		// super();
+		// 建议内置的变量加个_区分，而要访问的变量用get关键词来识别返回
+		this._name = name;
+		this._age = age;
 	}
-	
-	static classMethod () {
-		return 'hello';
+
+	get name() {
+		return this.name
 	}
-	
-	getVersion () {
-        console.log("1.0");
+
+	set name(value) {
+		this._name = value
+	}
+
+	get age() {
+		return this._age
+	}
+
+	set age(value) {
+		this._age = value
+	}
+
+	static version () {
+		return 'v0.1.0';
+	}
+
+	toString () {
+        return ``name： ${this._name}，age：${this._age}``
     }
-	
-	get prop() {
-		return 'getter';
-	}
-  
-	set prop(value) {
-		console.log('setter: '+value);
-	}	
 }
 )
 code(Var)
@@ -2636,8 +2739,13 @@ Return
 ::for--::
 Var = 
 (
+var Things = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+var arr = []
 for (var i = Things.length - 1; i >= 0; i--) {
-	Things[i]
+	if (Things[i] `% 2 === 0) {
+		arr.push(...Things.splice(i, 1))	
+		console.log(Things, arr)
+	}
 }
 )
 code(Var)

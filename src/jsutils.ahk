@@ -24,24 +24,27 @@
     Menu, utilsIs, Add, is-wx, utilsHandler
     Menu, utilsIs, Add, is-ie, utilsHandler
     Menu, utilsIs, Add, isBottom 是否滚动到底部, utilsHandler
+
+    Menu, utilsDOM, Add, addClass, utilsHandler
+    Menu, utilsDOM, Add, hasClass, utilsHandler
+    Menu, utilsDOM, Add, removeclass , utilsHandler
+    Menu, utilsDOM, Add, getclassname, utilsHandler
+    Menu, utilsDOM, Add, getstyle, utilsHandler
+    Menu, utilsDOM, Add, setStyle, utilsHandler
     
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
-    Menu, utilsMenu, Add, deepcopy, utilsHandler
-    Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
-    Menu, utilsMenu, Add, getuuid, utilsHandler
-    Menu, utilsMenu, Add, pad, utilsHandler
+    Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     
 
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
+    
+    Menu, utilsMenu, Add, deepcopy, utilsHandler
+    Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
+    Menu, utilsMenu, Add, getuuid, utilsHandler
+    Menu, utilsMenu, Add, pad, utilsHandler
  
-    Menu, utilsMenu, Add, addClass, utilsHandler
-    Menu, utilsMenu, Add, hasClass, utilsHandler
-    Menu, utilsMenu, Add, removeclass , utilsHandler
-    Menu, utilsMenu, Add, getclassname, utilsHandler
-    Menu, utilsMenu, Add, getstyle, utilsHandler
-    Menu, utilsMenu, Add, setStyle, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -62,9 +65,10 @@
     Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
     
-    
-    
+    Menu, utilsMenu, Add, es6.class, utilsHandler
+    Menu, utilsMenu, Add, for-- 循环中splice需要使用, utilsHandler
     Menu, utilsMenu, Add, poll 递归, utilsHandler
+    Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
     Menu, utilsMenu, Add, maybe 神奇的预设函数, utilsHandler
     Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
     Menu, utilsMenu, Add, rem 解决方案, utilsHandler
@@ -90,6 +94,66 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "es6.class") {
+Var = 
+(
+class Person {
+	constructor (name, age) {
+		// super();
+		// 建议内置的变量加个_区分，而要访问的变量用get关键词来识别返回
+		this._name = name;
+		this._age = age;
+	}
+
+	get name() {
+		return this.name
+	}
+
+	set name(value) {
+		this._name = value
+	}
+
+	get age() {
+		return this._age
+	}
+
+	set age(value) {
+		this._age = value
+	}
+
+	static version () {
+		return 'v0.1.0';
+	}
+
+	toString () {
+        return `name： ${this._name}，age：${this._age}`
+    }
+}
+)
+}
+
+if (v == "for-- 循环中splice需要使用") {
+Var = 
+(
+var Things = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+var arr = []
+for (var i = Things.length - 1; i >= 0; i--) {
+	if (Things[i] `% 2 === 0) {
+		arr.push(...Things.splice(i, 1))
+		console.log(Things, arr)
+	}
+}
+)
+}
+
+
+if (v == "Math.max.apply 获取数组最大值") {
+Var = 
+(
+Math.max.apply(null, arr)
 )
 }
 
