@@ -481,7 +481,7 @@ ClipChanged(Type) {
 				time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 				WinGetTitle, title, A
 				content := "__________________ " . title . " 【" . time . "】 " . "__________________ `r`n`r`n" . Clipboard . "`r`n`r`n`r`n`r`n" . OutputVar
-				GuiControl, Text, ClipHistory, %content%
+				GuiControl, Pandora:Text, ClipHistory, %content%
 			}
 		}
 	} 

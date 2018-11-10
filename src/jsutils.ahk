@@ -845,7 +845,7 @@ $('.dgtable__warp').scroll(e => {
 if (v == "isString") {
 Var = 
 (
-SendRaw, Object.prototype.toString.call(String) === '[object String]'
+Object.prototype.toString.call(String) === '[object String]'
 )
 }
 if (v == "isBoolean") {
