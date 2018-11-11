@@ -93,6 +93,10 @@ return
 
 ::createmodel::
 ::model::
+::class.model::
+::model.class::
+::classmodel::
+::modelclass::
 Var =
 (
 import { getUUID } from '@/utils/utils.js'
@@ -188,9 +192,12 @@ export default class Model {
     if (data.length < this.size || (!this.isFirstPage() && isEmptyData)) 
       this.nomore = true
     
+    // 如果有数据，应该重置标识
     if (!isEmptyData) {
       this.empty = false
-      this.nomore = false
+      // 就算有数据，如果不够长度，也是数据nomore
+      if (data.length === this.size)
+        this.nomore = false
     }
 
 

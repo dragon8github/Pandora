@@ -40,11 +40,18 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
-    Menu, utilsMenu, Add, deepcopy, utilsHandler
+    Menu, utilsMenu, Add, deepcopy 深拷贝, utilsHandler
     Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
-    Menu, utilsMenu, Add, getuuid, utilsHandler
-    Menu, utilsMenu, Add, pad, utilsHandler
- 
+    Menu, utilsMenu, Add, getuuid 32位随机数, utilsHandler
+    Menu, utilsMenu, Add, pad 自动补全, utilsHandler
+    Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
+    Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
+    Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
+    Menu, utilsMenu, Add, for-- 循环中splice需要使用, utilsHandler
+    Menu, utilsMenu, Add, maybe 神奇的预设函数, utilsHandler
+    Menu, utilsMenu, Add, poll 递归, utilsHandler
+    Menu, utilsMenu, Add, countDown 倒计时, utilsHandler
+    Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -61,26 +68,17 @@
     Menu, utilsMenu, Add, scrollToTop 滚动到头部, utilsHandler
     Menu, utilsMenu, Add, scrollIntoView 滚动到元素可视区域, utilsHandler
     
-    
     Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
     
+    Menu, utilsMenu, Add, curry2 二元参数的手动柯里化, utilsHandler
     Menu, utilsMenu, Add, es6.class, utilsHandler
-    Menu, utilsMenu, Add, for-- 循环中splice需要使用, utilsHandler
-    Menu, utilsMenu, Add, poll 递归, utilsHandler
-    Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
-    Menu, utilsMenu, Add, maybe 神奇的预设函数, utilsHandler
-    Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
     Menu, utilsMenu, Add, rem 解决方案, utilsHandler
-    Menu, utilsMenu, Add, countDown 倒计时, utilsHandler
     Menu, utilsMenu, Add, cookie 库, utilsHandler
-    Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
-    Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
     Menu, utilsMenu, Add, Model 类, utilsHandler
-    
 
-	  Menu, utilsMenu, Show
-	  Menu, utilsMenu, DeleteAll
+    Menu, utilsMenu, Show
+	Menu, utilsMenu, DeleteAll
     Menu, utilsIs, DeleteAll
 return
 
@@ -94,6 +92,20 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "curry2 二元参数的手动柯里化") {
+Var = 
+(
+// 二元参数的手动柯里化
+function curry2(fn) {
+	return function(firstArg){
+		return function (secondArg) {
+			return fn(firstArg, secondArg)
+		}
+	}
+}
 )
 }
 
@@ -242,20 +254,23 @@ export default class Model {
     this.total = total
     this.loading = false
     this.loadingmore = false
-    
+
     const isEmptyData = data.length === 0
 
     // empty 表示没有数据
-    if (this.isFirstPage() && isEmptyData) 
+    if (this.isFirstPage() && isEmptyData)
       this.empty = true
-    
+
     // nomore 表示没有更多数据
-    if (data.length < this.size || (!this.isFirstPage() && isEmptyData)) 
+    if (data.length < this.size || (!this.isFirstPage() && isEmptyData))
       this.nomore = true
-    
+
+    // 如果有数据，应该重置标识
     if (!isEmptyData) {
       this.empty = false
-      this.nomore = false
+      // 就算有数据，如果不够长度，也是数据nomore
+      if (data.length === this.size)
+        this.nomore = false
     }
 
 
@@ -1024,10 +1039,10 @@ const scrollToTop = () => {
 }
 
 
-if (v == "pad") {
+if (v == "pad 自动补全") {
 Var = 
 (
-// 补全
+// 自动补全
 function pad (target, n) {
     var zero = new Array(n).join('0');
     var str = zero + target;
@@ -1122,7 +1137,7 @@ function isNaN(obj) {
 )
 }
 
-if (v == "deepcopy") {
+if (v == "deepcopy 深拷贝") {
 Var = 
 (
 var deepExtend = function(out) {
@@ -1196,7 +1211,7 @@ function unique(arr) {
 )
 }
 
-if (v == "getuuid") {
+if (v == "getuuid 32位随机数") {
 Var = 
 (
 function getUUID () {
