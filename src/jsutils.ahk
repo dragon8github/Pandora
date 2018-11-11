@@ -1,5 +1,8 @@
 ﻿!u::
 !i::
+    
+    
+    Menu, utilsIs, Add, is, utilsHandler
     Menu, utilsIs, Add, isString, utilsHandler
     Menu, utilsIs, Add, isNumber, utilsHandler
     Menu, utilsIs, Add, isBoolean, utilsHandler
@@ -92,6 +95,22 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "is") {
+Var = 
+(
+// 仿ramda: https://github.com/ramda/ramda/blob/master/source/is.js
+const is = (type, val) => {
+	return val != null && val.constructor === type || val instanceof type;
+}
+
+is(String, '123')     // => true
+is(Number, 123)       // => true
+is(Date, new Date())  // => true
+is(Object, {})        // => true
+is(Array, [])         // => true
 )
 }
 

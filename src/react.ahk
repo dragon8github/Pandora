@@ -477,10 +477,62 @@ ReactDOM.render(
 code(Var)
 }
 
+
+if (A_ThisMenuItem == "React clickOutside") {
+Var =
+(
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+export default class ClickOutside extends Component {
+  static propTypes = {
+    onClickOutside: PropTypes.func.isRequired
+  }
+
+  constructor(props) {
+    super(props)
+    this.getContainer = this.getContainer.bind(this)
+    this.isTouch = false
+  }
+
+  getContainer(ref) {
+    this.container = ref
+  }
+
+  render() {
+    const { children, onClickOutside, ...props } = this.props
+    return <div {...props} ref={this.getContainer}>{children}</div>
+  }
+
+  componentDidMount() {
+    document.addEventListener('touchend', this.handle, true)
+    document.addEventListener('click', this.handle, true)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('touchend', this.handle, true)
+    document.removeEventListener('click', this.handle, true)
+  }
+
+  handle = e => {
+    if (e.type === 'touchend') this.isTouch = true
+    if (e.type === 'click' && this.isTouch) return
+    const { onClickOutside } = this.props
+    const el = this.container
+    // 这一句代码就是核心: el.contains，这种思路是通用的
+    if (el && !el.contains(e.target)) onClickOutside(e)
+  }
+}
+
+)
+code(Var)
+}
+
+
 Return  
 
 !t::
-	reactArray := ["新建create-react-app", "新建react-redux.html", "React runtime", "React.Fragment 代替div作为外层", "ReactDOM.render",  "constructor", "this.porps", "ref", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()强制启动更新"]
+	reactArray := ["新建create-react-app", "新建react-redux.html", "React runtime", "React clickOutside", "React.Fragment 代替div作为外层", "ReactDOM.render",  "constructor", "this.porps", "ref", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()强制启动更新"]
 	Loop % reactArray.MaxIndex() {
 		this_life := reactArray[a_index]
 		Menu, reactArray, Add, %this_life%, ReactMenuHandler

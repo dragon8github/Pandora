@@ -45,7 +45,7 @@ Gui, Pandora:Margin, 10, 10
 Gui, Pandora:Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 
 ; submit 按钮
-Gui, Pandora:Add, Button, w780 h30 gFuck, FUCK
+Gui, Pandora:Add, Button, w780 h30 gFuck Default, FUCK
 
 Gui, Pandora:Add, Tab3, w780 h500 Choose1, 常用 | 工作坊 | 创慧教育 | Vue | React | 库 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | 鸡肋 | 剪切板
 
@@ -70,6 +70,7 @@ Gui, Pandora:Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
 Gui, Pandora:Add, Text,  W140 ys, 娱乐:
 Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
 Gui, Pandora:Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
+Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/play/20494.html?20494-1-22">草民电影</a>
 Gui, Pandora:Add, Link,, <a href="http://www.hanhande.com/">憨憨电影</a>
 Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
 Gui, Pandora:Add, Link,, <a href="http://www.tan8.com/lesson3-category-1.html">蛐蛐钢琴网</a>

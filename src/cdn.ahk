@@ -1,4 +1,13 @@
-﻿::cdn-rx::
+﻿::cdn-ramda::
+::cdn-ramda.js::
+Var =
+(
+<script src="https://cdn.bootcss.com/ramda/0.25.0/ramda.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-rx::
 ::cdn-rxjs::
 ::cdn-rx.js::
 Var =
