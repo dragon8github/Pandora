@@ -238,7 +238,7 @@ var link = function(href, fn, cssname){
 	if(typeof fn !== 'function') return that;
 
 	//轮询css是否加载完毕
-	(function poll() {
+	;(function poll() {
 	  if(++timeout > time * 1000 / 100){
 	    return error(href + ' timeout');
 	  };
@@ -380,7 +380,7 @@ var maxTimeout = 10
 var timeout = 0
 var wait = 4
 var onCallback = () => { /* say somthing */ }
-(function poll() {
+;(function poll() {
   if(++timeout > maxTimeout * 1000 / wait){
     return error('条件不成立时，在这里写上你的错误提示');
   };

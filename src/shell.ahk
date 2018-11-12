@@ -165,6 +165,7 @@ return
 	Menu, ShellMenu, Add, git add . && git commit -m "", ShellHandler
 	Menu, ShellMenu, Add, git push -u origin master , ShellHandler
 	Menu, ShellMenu, Add, git pull origin master , ShellHandler
+	Menu, ShellMenu, Add, git mergetool, ShellHandler
 	
 	
 	Menu, ShellMenu, Add, , ShellHandler
@@ -197,6 +198,15 @@ Var =
 (
 
 )
+}
+
+if (v == "git mergetool") {
+Var = 
+(
+git mergetool
+)
+SendInput, % Var
+return
 }
 
 if (v == "git add . && git commit -m """"") {

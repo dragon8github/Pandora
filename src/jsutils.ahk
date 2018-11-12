@@ -13,6 +13,7 @@
     Menu, utilsIs, Add, isDate, utilsHandler
     Menu, utilsIs, Add, isPromise, utilsHandler
     Menu, utilsIs, Add, isNaN, utilsHandler
+    Menu, utilsIs, Add, isNodeList, utilsHandler
 
     Menu, utilsIs, Add, , utilsHandler
     Menu, utilsIs, Add, , utilsHandler
@@ -95,6 +96,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "isNodeList") {
+Var = 
+(
+Object.prototype.toString.call(v) === '[object NodeList]'
 )
 }
 
@@ -765,7 +773,7 @@ var link = function(href, fn, cssname){
 	if(typeof fn !== 'function') return that;
 
 	//轮询css是否加载完毕
-	(function poll() {
+	;(function poll() {
 	  if(++timeout > time * 1000 / 100){
 	    return error(href + ' timeout');
 	  };
@@ -822,7 +830,7 @@ var maxTimeout = 10
 var timeout = 0
 var wait = 4
 var onCallback = () => { /* say somthing */ }
-(function poll() {
+;(function poll() {
   if(++timeout > maxTimeout * 1000 / wait){
     return error('条件不成立时，在这里写上你的错误提示');
   };
@@ -1297,7 +1305,6 @@ export const setStyle = (element, styleName, value) => {
             }
         }
     } else {
-        styleName = camelCase(styleName);
         if (styleName === 'opacity' && ieVersion < 9) {
             element.style.filter = isNaN(value) ? '' : 'alpha(opacity=' + value * 100 + ')';
         } else {

@@ -1,4 +1,14 @@
-﻿::cdn-ramda::
+﻿::cdn-log4::
+::cdn-log::
+::cdn-log4js::
+Var =
+(
+<script src="https://cdn.bootcss.com/log4javascript/1.4.9/log4javascript_lite.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-ramda::
 ::cdn-ramda.js::
 Var =
 (
