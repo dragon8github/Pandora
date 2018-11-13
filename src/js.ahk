@@ -1,4 +1,12 @@
-﻿::nodetree::
+﻿::removeattr::
+Var =
+(
+document.querySelector('.fuck').removeAttribute('disabled');
+)
+code(Var)
+return
+
+::nodetree::
 ::treenode::
 Var =
 (
@@ -1944,7 +1952,8 @@ code(Var)
 return
 
 ::setattr::
-    send, el.setAttribute('tabindex', 3);
+::attr::
+    sendInput, el.setAttribute('tabindex', 3);
 return
 
 ::el.getattr::
@@ -2557,6 +2566,7 @@ Return
 ::cleartimeri::
 ::settic::
 ::clearti::
+::cleari::
 Var = 
 (
 clearInterval(timer);
@@ -3384,6 +3394,8 @@ return
 ::jqok::
 ::jqready::
 ::jqueryready::
+::loadscript::
+::loadjs::
 Var = 
 (
 /**

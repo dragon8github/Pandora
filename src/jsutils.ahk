@@ -35,6 +35,8 @@
     Menu, utilsDOM, Add, getclassname, utilsHandler
     Menu, utilsDOM, Add, getstyle, utilsHandler
     Menu, utilsDOM, Add, setStyle, utilsHandler
+    Menu, utilsDOM, Add, setattr, utilsHandler
+    Menu, utilsDOM, Add, removeattr, utilsHandler
     
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
@@ -71,6 +73,7 @@
     Menu, utilsMenu, Add, gettop 获取距离顶部的相对距离, utilsHandler
     Menu, utilsMenu, Add, scrollToTop 滚动到头部, utilsHandler
     Menu, utilsMenu, Add, scrollIntoView 滚动到元素可视区域, utilsHandler
+    Menu, utilsMenu, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
@@ -96,6 +99,58 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "setattr") {
+Var = 
+(
+el.setAttribute('tabindex', 3);
+)
+}
+
+if (v == "removeattr") {
+Var = 
+(
+document.querySelector('.fuck').removeAttribute('disabled');
+)
+}
+
+
+if (v == "onscript/loadscript 加载脚本并等待加载完成") {
+Var = 
+(
+/**
+ * 加载script并且执行回调
+ * @param {String} url 资源地址
+ * @param {Function} cb 回调方法
+ * https://www.cnblogs.com/_franky/archive/2010/06/20/1761370.html
+ */
+var onscriptload = function (url, cb) {
+  var node = document.createElement("script")
+  var head = document.getElementsByTagName('head')[0]
+  var timeID
+  var supportLoad = "onload" in node
+  var onEvent = supportLoad ? "onload" : "onreadystatechange"
+  node[onEvent] = function onLoad() {
+      if (!supportLoad && !timeID && /complete|loaded/.test(node.readyState)) {
+          timeID = setTimeout(onLoad)
+          return
+      }
+      if (supportLoad || timeID) {
+          clearTimeout(timeID)
+          cb && cb()
+      }
+  }
+  head.insertBefore(node, head.firstChild)
+  node.src = url
+}
+
+onscriptload('https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js', function () {
+   console.log(jQuery.fn.jquery);
+   console.log($('*').size())
+})
+
 )
 }
 
