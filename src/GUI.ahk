@@ -127,6 +127,7 @@ Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+80, 新建echarts.pin.html(玫�
 Gui, Pandora:Add, Text, gNewEchartsLineHtml ,新建echats.Line.html（折线图）
 Gui, Pandora:Add, Text, gNewEchartsBarHtml ,新建echats.Bar.html（柱状图）
 Gui, Pandora:Add, Text, gNewEchartsPurePinHtml ,新建echats.Pin.html（纯圆饼图）
+Gui, Pandora:Add, Text, gNewEchartsmap3dHtml ,新建echats.map3D.html（3D地图）
 
 Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+50, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
@@ -333,6 +334,8 @@ Gui, Pandora:Add, Text, W140 ys, ECharts Gallery:
 Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html">ECharts 官方论坛</a>
 Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts 论坛示例</a>
 Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xB1jgoJnDf">ECharts 安徽示例</a>
+Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xSy3KhFV4M">ECharts 3D地图</a>
+
 
 Gui, Pandora:Tab, 8
 Gui, Pandora:Add, Text,  W140 Section, Thinkphp：

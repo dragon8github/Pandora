@@ -1,4 +1,81 @@
-﻿NewRxjsIndexHtml:
+﻿NewEchartsmap3dHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 100`%;;height:100vh;"></div>
+    <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    var option = {
+        geo3D: {
+            map: 'china',
+            roam: true,
+            itemStyle: {
+                areaColor: '#1d5e98',
+                opacity: 1,
+                borderWidth: 0.4,
+                borderColor: '#000'
+            },
+            label: {
+                show: true,
+                textStyle: {
+                    color: '#fff', //地图初始化区域字体颜色
+                    fontSize: 14,
+                    opacity: 1,
+                    backgroundColor: 'rgba(0,23,11,0)'
+                },
+            },
+            emphasis: { //当鼠标放上去  地区区域是否显示名称
+                label: {
+                    show: true,
+                    textStyle: {
+                        color: '#000',
+                        fontSize: 14,
+                        backgroundColor: 'rgba(0,23,11,0)'
+                    }
+                }
+            },
+            //shading: 'lambert',
+            light: { //光照阴影
+                main: {
+                    color: '#fff', //光照颜色
+                    intensity: 1.2, //光照强度
+                    //shadowQuality: 'high', //阴影亮度
+                    shadow: false, //是否显示阴影
+                    alpha: 55,
+                    beta: 10
+
+                },
+                ambient: {
+                    intensity: 0.3
+                }
+            }
+        },
+    };
+    myChart.setOption(option);
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)	
+run, % name
+return
+
+NewRxjsIndexHtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
 (

@@ -75,6 +75,7 @@
     Menu, utilsMenu, Add, scrollIntoView 滚动到元素可视区域, utilsHandler
     Menu, utilsMenu, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
     Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
+    Menu, utilsMenu, Add, cache request axios 缓存请求, utilsHandler
     
     
     Menu, utilsMenu, Add, , utilsHandler
@@ -85,6 +86,8 @@
     Menu, utilsMenu, Add, rem 解决方案, utilsHandler
     Menu, utilsMenu, Add, cookie 库, utilsHandler
     Menu, utilsMenu, Add, Model 类, utilsHandler
+    Menu, utilsMenu, Add, AMD/CommonJS/factory/module, utilsHandler
+    
 
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -101,6 +104,91 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "cache request axios 缓存请求") {
+Var = 
+(
+// 检查状态码
+const checkStatus = (response) => {
+	// 判断请求状态
+    if (response.status >= 200 && response.status < 300) {
+        // 返回Promise
+        return response.data
+    } else {
+      // 服务器响应异常
+      throw new Error(response.statusText)
+    }
+}
+
+// 缓存到sessionStorage
+const cachedSave = (hashcode, content) => {
+  // 设置缓存
+  sessionStorage.setItem(hashcode, JSON.stringify(content));
+  // 设置缓存时间
+  sessionStorage.setItem(${hashcode}:timestamp`, Date.now());
+  // 返回Promise
+  return content;
+};
+
+// 公共请求
+export const request = (url, options) => {
+    // 指纹
+    const fingerprint = url + (options ? JSON.stringify(options) : '')
+    // 加密指纹
+    const hashcode = hash.sha256().update(fingerprint).digest('hex')
+    // 柯里化缓存函数
+    const _cachedSave = cachedSave.bind(null, hashcode)
+    // 过期设置
+    const expirys = options && options.expirys || 60
+    // 本请求是否禁止缓存？
+    if (expirys !== false) {
+        // 获取缓存
+        const cached = sessionStorage.getItem(hashcode);
+        // 获取该缓存的时间
+        const whenCached = sessionStorage.getItem(${hashcode}:timestamp);
+        // 如果缓存都存在
+        if (cached !== null && whenCached !== null) {
+          // 判断缓存是否过期
+          const age = (Date.now() - whenCached) / 1000;
+          // 如果不过期的话直接返回该内容
+          if (age < expirys) {
+              // 返回promise式的缓存
+              return new Promise((resolve, reject) => resolve(JSON.parse(cached)))
+          }
+          // 删除缓存内容
+          sessionStorage.removeItem(hashcode);
+          // 删除缓存时间
+          sessionStorage.removeItem(${hashcode}:timestamp);
+        }
+    }
+    return axios(url, options).then(checkStatus).then(_cachedSave)
+}
+)
+}
+
+if (v == "AMD/CommonJS/factory/module") {
+Var = 
+(
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['exports', 'echarts'], factory);
+    } else if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
+        // CommonJS
+        factory(exports, require('echarts'));
+    } else {
+        // Browser globals
+        factory({}, root.echarts);
+    }
+}(this, function(exports, echarts) {
+    if (!echarts) {
+        log('ECharts is not Loaded');
+        return;
+    }
+}));
+
 )
 }
 

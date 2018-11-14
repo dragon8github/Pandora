@@ -1,4 +1,68 @@
-﻿::easydeep::
+﻿::cacherequest::
+::cacheaxios::
+Var =
+(
+
+// 检查状态码
+const checkStatus = (response) => {
+	// 判断请求状态
+    if (response.status >= 200 && response.status < 300) {
+        // 返回Promise 
+        return response.data
+    } else {
+      // 服务器响应异常
+      throw new Error(response.statusText)
+    }
+}
+
+// 缓存到sessionStorage
+const cachedSave = (hashcode, content) => {
+  // 设置缓存
+  sessionStorage.setItem(hashcode, JSON.stringify(content));
+  // 设置缓存时间
+  sessionStorage.setItem(`${hashcode}:timestamp`, Date.now());
+  // 返回Promise
+  return content;
+};
+
+// 公共请求
+export const request = (url, options) => {
+    // 指纹
+    const fingerprint = url + (options ? JSON.stringify(options) : '')
+    // 加密指纹
+    const hashcode = hash.sha256().update(fingerprint).digest('hex')
+    // 柯里化缓存函数
+    const _cachedSave = cachedSave.bind(null, hashcode)
+    // 过期设置
+    const expirys = options && options.expirys || 60
+    // 本请求是否禁止缓存？
+    if (expirys !== false) {
+        // 获取缓存
+        const cached = sessionStorage.getItem(hashcode);
+        // 获取该缓存的时间
+        const whenCached = sessionStorage.getItem(`${hashcode}:timestamp`);
+        // 如果缓存都存在
+        if (cached !== null && whenCached !== null) {
+          // 判断缓存是否过期
+          const age = (Date.now() - whenCached) / 1000;
+          // 如果不过期的话直接返回该内容
+          if (age < expirys) {
+              // 返回promise式的缓存
+              return new Promise((resolve, reject) => resolve(JSON.parse(cached)))
+          }
+          // 删除缓存内容
+          sessionStorage.removeItem(hashcode);
+          // 删除缓存时间
+          sessionStorage.removeItem(`${hashcode}:timestamp`);
+        }
+    }
+    return axios(url, options).then(checkStatus).then(_cachedSave)
+}
+)
+code(Var)
+return
+
+::easydeep::
 ::easycopy::
 ::easyextend::
 Var =
@@ -4370,6 +4434,7 @@ code(Var)
 return
 
 ::curry::
+::kelihua::
 Var =
 (
 // 科里化是把一个多参数函数转化为一个嵌套的一元函数的过程。
