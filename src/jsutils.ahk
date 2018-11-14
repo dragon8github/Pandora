@@ -74,6 +74,8 @@
     Menu, utilsMenu, Add, scrollToTop 滚动到头部, utilsHandler
     Menu, utilsMenu, Add, scrollIntoView 滚动到元素可视区域, utilsHandler
     Menu, utilsMenu, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
+    Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
+    
     
     Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
@@ -99,6 +101,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "JSON.parse(JSON.stringify(...)) 超简易拷贝") {
+Var = 
+(
+JSON.parse(JSON.stringify(...))
 )
 }
 

@@ -1,4 +1,13 @@
-﻿::watchdeep::
+﻿::vue.update::
+::v.update::
+Var =
+(
+this.$forceUpdate();
+)
+code(Var)
+return
+
+::watchdeep::
 ::deep.watch::
 ::deepwatch::
 ::deepw::
@@ -247,6 +256,7 @@ return
   
 
   Menu, VueMenu, Add, vue.init, VueHandler
+  Menu, VueMenu, Add, this.$forceUpdate(), VueHandler
   Menu, VueMenu, Add, vue.computed, VueHandler
   Menu, VueMenu, Add, vue.watch, VueHandler
   Menu, VueMenu, Add, vue.deep.watch, VueHandler
@@ -299,6 +309,13 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "this.$forceUpdate()") {
+Var = 
+(
+this.$forceUpdate()
 )
 }
 

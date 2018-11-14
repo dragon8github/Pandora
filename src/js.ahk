@@ -1,4 +1,14 @@
-﻿::removeattr::
+﻿::easydeep::
+::easycopy::
+::easyextend::
+Var =
+(
+JSON.parse(JSON.stringify(...))
+)
+code(Var)
+return
+
+::removeattr::
 Var =
 (
 document.querySelector('.fuck').removeAttribute('disabled');
