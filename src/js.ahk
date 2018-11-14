@@ -1,8 +1,9 @@
-﻿::cacherequest::
+﻿::cache.request::
+::cache.axios::
+::cacherequest::
 ::cacheaxios::
 Var =
 (
-
 // 检查状态码
 const checkStatus = (response) => {
 	// 判断请求状态
@@ -31,7 +32,7 @@ export const request = (url, options) => {
     const fingerprint = url + (options ? JSON.stringify(options) : '')
     // 加密指纹
     const hashcode = hash.sha256().update(fingerprint).digest('hex')
-    // 柯里化缓存函数
+    // 预设值指纹
     const _cachedSave = cachedSave.bind(null, hashcode)
     // 过期设置
     const expirys = options && options.expirys || 60
@@ -47,8 +48,10 @@ export const request = (url, options) => {
           const age = (Date.now() - whenCached) / 1000;
           // 如果不过期的话直接返回该内容
           if (age < expirys) {
+              // 新建一个response
+              const response = new Response(new Blob([cached]))
               // 返回promise式的缓存
-              return new Promise((resolve, reject) => resolve(JSON.parse(cached)))
+              return new Promise((resolve, reject) => resolve(response.json()))
           }
           // 删除缓存内容
           sessionStorage.removeItem(hashcode);

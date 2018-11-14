@@ -114,7 +114,7 @@ Var =
 const checkStatus = (response) => {
 	// 判断请求状态
     if (response.status >= 200 && response.status < 300) {
-        // 返回Promise
+        // 返回Promise 
         return response.data
     } else {
       // 服务器响应异常
@@ -127,7 +127,7 @@ const cachedSave = (hashcode, content) => {
   // 设置缓存
   sessionStorage.setItem(hashcode, JSON.stringify(content));
   // 设置缓存时间
-  sessionStorage.setItem(${hashcode}:timestamp`, Date.now());
+  sessionStorage.setItem(`${hashcode}:timestamp`, Date.now());
   // 返回Promise
   return content;
 };
@@ -138,7 +138,7 @@ export const request = (url, options) => {
     const fingerprint = url + (options ? JSON.stringify(options) : '')
     // 加密指纹
     const hashcode = hash.sha256().update(fingerprint).digest('hex')
-    // 柯里化缓存函数
+    // 预设值指纹
     const _cachedSave = cachedSave.bind(null, hashcode)
     // 过期设置
     const expirys = options && options.expirys || 60
@@ -147,20 +147,22 @@ export const request = (url, options) => {
         // 获取缓存
         const cached = sessionStorage.getItem(hashcode);
         // 获取该缓存的时间
-        const whenCached = sessionStorage.getItem(${hashcode}:timestamp);
+        const whenCached = sessionStorage.getItem(`${hashcode}:timestamp`);
         // 如果缓存都存在
         if (cached !== null && whenCached !== null) {
           // 判断缓存是否过期
           const age = (Date.now() - whenCached) / 1000;
           // 如果不过期的话直接返回该内容
           if (age < expirys) {
+              // 新建一个response
+              const response = new Response(new Blob([cached]))
               // 返回promise式的缓存
-              return new Promise((resolve, reject) => resolve(JSON.parse(cached)))
+              return new Promise((resolve, reject) => resolve(response.json()))
           }
           // 删除缓存内容
           sessionStorage.removeItem(hashcode);
           // 删除缓存时间
-          sessionStorage.removeItem(${hashcode}:timestamp);
+          sessionStorage.removeItem(`${hashcode}:timestamp`);
         }
     }
     return axios(url, options).then(checkStatus).then(_cachedSave)

@@ -1,6 +1,7 @@
 ﻿~^F12::
 ; 获取指定位置的数值
-FileRead, key, C:\Users\lizhaohong\Desktop\keypressed.txt
+path := A_Desktop . "\keypressed.txt"
+FileRead, key, %path%
 
 ; b 博客园
 if (key == 66) {

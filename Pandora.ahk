@@ -33,7 +33,6 @@ clipHistoryArr := []
 #Include src/react.ahk        ; React
 #Include src/cdn.ahk          ; CDN   
 #Include src/github.ahk       ; 云代码库    
-#Include src/ht.ahk           ; ht-elementUI库   
 #Include src/Lua.ahk          ; secondkey_board  
 #Include src/gulp.ahk         ; gulp
 #Include src/docker.ahk       ; docker
