@@ -37,15 +37,42 @@
     Menu, utilsDOM, Add, setStyle, utilsHandler
     Menu, utilsDOM, Add, setattr, utilsHandler
     Menu, utilsDOM, Add, removeattr, utilsHandler
+
+
+    Menu, utilsObject, Add, ({a = 123`, b = 321`, c = 456} = {}) 对象解构 与 参数默认值, utilsHandler
+    Menu, utilsObject, Add, delete person.age 删除对象的属性, utilsHandler
+    Menu, utilsObject, Add, Object.assign({}`, ), utilsHandler
+    Menu, utilsObject, Add, Object.is 比 === 更严格的比较, utilsHandler
+    Menu, utilsObject, Add, 'tail' in cat / cat.hasOwnProperty('tail') 判断对象是否包含某属性, utilsHandler
+    
+    Menu, utilsObject, Add,, utilsHandler
+    Menu, utilsObject, Add,, utilsHandler
+
+    Menu, utilsObject, Add, Object.defineProperty 属性的权限设置 writable（可写） / configurable（可配置）/enumerable（可枚举）, utilsHandler
+    Menu, utilsObject, Add, Object.defineProperties 属性的批量权限设置, utilsHandler
+    Menu, utilsObject, Add, Object.getOwnPropertyDescriptor({a: 123}`, 'a') 获取属性的配置, utilsHandler
+    Menu, utilsObject, Add, getter / setter , utilsHandler
+
+    Menu, utilsObject, Add,, utilsHandler
+    Menu, utilsObject, Add,, utilsHandler
+
+    Menu, utilsObject, Add, for#Object.keys, utilsHandler
+    Menu, utilsObject, Add, for#o in obj, utilsHandler
+    Menu, utilsObject, Add, for#Object.entries(), utilsHandler
+    Menu, utilsObject, Add, for#Object.values(), utilsHandler
+    Menu, utilsObject, Add, for#Object.keys(), utilsHandler
     
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
+    Menu, utilsMenu , Add, Object 常用API, :utilsObject
     
 
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
+    Menu, utilsMenu, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
+    Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
     Menu, utilsMenu, Add, deepcopy 深拷贝, utilsHandler
     Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
     Menu, utilsMenu, Add, getuuid 32位随机数, utilsHandler
@@ -58,6 +85,7 @@
     Menu, utilsMenu, Add, poll 递归, utilsHandler
     Menu, utilsMenu, Add, countDown 倒计时, utilsHandler
     Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
+    Menu, utilsMenu, Add, __EVENT__消息订阅, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -73,13 +101,10 @@
     Menu, utilsMenu, Add, gettop 获取距离顶部的相对距离, utilsHandler
     Menu, utilsMenu, Add, scrollToTop 滚动到头部, utilsHandler
     Menu, utilsMenu, Add, scrollIntoView 滚动到元素可视区域, utilsHandler
-    Menu, utilsMenu, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
-    Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
-    Menu, utilsMenu, Add, cache request axios 缓存请求, utilsHandler
     
     
     Menu, utilsMenu, Add, , utilsHandler
-	Menu, utilsMenu, Add, , utilsHandler
+	  Menu, utilsMenu, Add, , utilsHandler
     
     Menu, utilsMenu, Add, curry2 二元参数的手动柯里化, utilsHandler
     Menu, utilsMenu, Add, es6.class, utilsHandler
@@ -87,6 +112,7 @@
     Menu, utilsMenu, Add, cookie 库, utilsHandler
     Menu, utilsMenu, Add, Model 类, utilsHandler
     Menu, utilsMenu, Add, AMD/CommonJS/factory/module, utilsHandler
+    Menu, utilsMenu, Add, cache request axios 缓存请求, utilsHandler
     
 
     Menu, utilsMenu, Show
@@ -104,6 +130,127 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "({a = 123, b = 321, c = 456} = {}) 对象解构 与 参数默认值") {
+Var =
+(
+var abc = ({a = 123, b = 321, c = 456} = {}) => console.log(20181109155055, a)
+abc()
+)
+}
+
+if (v == "Object.assign({}, )") {
+Var =
+(
+Object.assign({}, )
+)
+}
+if (v == "Object.is 比 === 更严格的比较") {
+Var =
+(
+0 === -0 // true
+NaN === NaN // false（这也是NaN的特性）
+
+Object.is(0, -0) // false
+Object.is(NaN, NaN) // true
+)
+}
+
+if (v == "'tail' in cat / cat.hasOwnProperty('tail') 判断对象是否包含某属性") {
+Var =
+(
+'tail' in cat
+cat.hasOwnProperty('tail')
+)
+}
+if (v == "Object.getOwnPropertyDescriptor({a: 123}, 'a') 获取属性的配置") {
+Var =
+(
+// {value: 123, writable: true, enumerable: true, configurable: true}
+Object.getOwnPropertyDescriptor({a: 123}, "a")
+)
+}
+if (v == "Object.defineProperty 属性的权限设置 writable（可写） / configurable（可配置）/enumerable（可枚举）") {
+Var =
+(
+var myObject = {};
+
+Object.defineProperty(myObject, "a", {
+  value: 2,
+  writable: true,  // 可写
+  configurable: true, // 可配置
+  enumerable: true  // 可枚举
+});
+
+myObject.a // 2
+)
+}
+if (v == "Object.defineProperties 属性的批量权限设置") {
+Var =
+(
+
+)
+}
+
+if (v == "getter / setter") {
+Var =
+(
+
+)
+}
+
+if (v == "delete person.age 删除对象的属性") {
+Var =
+(
+delete person.age
+)
+}
+
+if (v == "__EVENT__消息订阅") {
+Var = 
+(
+window.__EVENT__ = {
+     // 缓存列表
+     clientList: [],
+     listen: function(key, fn) {
+         if (!this.clientList[key]) {
+             this.clientList[key] = [];
+         }
+         // 订阅的消息添加进缓存列表
+         this.clientList[key].push(fn);
+     },
+     trigger: function() {
+         var key = Array.prototype.shift.call(arguments),
+             fns = this.clientList[key];
+         // 如果没有绑定对应的消息
+         if (!fns || fns.length === 0) {
+             return false;
+         }
+         for (var i = 0, fn; fn = fns[i++];) {
+             // arguments 是 trigger 时带上的参数
+             fn.apply(this, arguments);
+         }
+     },
+     remove: function(key, fn) {
+         var fns = this.clientList[key];
+         if (!fns) { // 如果 key 对应的消息没有被人订阅，则直接返回
+             return false;
+         }
+         if (!fn) { // 如果没有传入具体的回调函数，表示需要取消 key 对应消息的所有订阅
+             fns && (fns.length = 0);
+         } else {
+             for (var l = fns.length - 1; l >= 0; l--) { // 反向遍历订阅的回调函数列表
+                 var _fn = fns[l];
+                 if (_fn === fn) {
+                     fns.splice(l, 1); // 删除订阅者的回调函数
+                 }
+             }
+         }
+    }
+};
 )
 }
 
@@ -125,12 +272,12 @@ const checkStatus = (response) => {
 // 缓存到sessionStorage
 const cachedSave = (hashcode, content) => {
   // 设置缓存
-  sessionStorage.setItem(hashcode, JSON.stringify(content));
+  sessionStorage.setItem(hashcode, JSON.stringify(content))
   // 设置缓存时间
-  sessionStorage.setItem(`${hashcode}:timestamp`, Date.now());
+  sessionStorage.setItem(`${hashcode}:timestamp`, Date.now())
   // 返回Promise
-  return content;
-};
+  return content
+}
 
 // 公共请求
 export const request = (url, options) => {
@@ -145,13 +292,13 @@ export const request = (url, options) => {
     // 本请求是否禁止缓存？
     if (expirys !== false) {
         // 获取缓存
-        const cached = sessionStorage.getItem(hashcode);
+        const cached = sessionStorage.getItem(hashcode)
         // 获取该缓存的时间
-        const whenCached = sessionStorage.getItem(`${hashcode}:timestamp`);
+        const whenCached = sessionStorage.getItem(`${hashcode}:timestamp`)
         // 如果缓存都存在
         if (cached !== null && whenCached !== null) {
           // 判断缓存是否过期
-          const age = (Date.now() - whenCached) / 1000;
+          const age = (Date.now() - whenCached) / 1000
           // 如果不过期的话直接返回该内容
           if (age < expirys) {
               // 新建一个response
@@ -160,9 +307,9 @@ export const request = (url, options) => {
               return new Promise((resolve, reject) => resolve(response.json()))
           }
           // 删除缓存内容
-          sessionStorage.removeItem(hashcode);
+          sessionStorage.removeItem(hashcode)
           // 删除缓存时间
-          sessionStorage.removeItem(`${hashcode}:timestamp`);
+          sessionStorage.removeItem(`${hashcode}:timestamp`)
         }
     }
     return axios(url, options).then(checkStatus).then(_cachedSave)

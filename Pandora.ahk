@@ -28,7 +28,6 @@ clipHistoryArr := []
 #Include src/reactNative.ahk  ; ReactNative
 #Include src/event.ahk        ; event
 #Include src/arr.ahk          ; arr
-#Include src/jsobject.ahk     ; object
 #Include src/ajax.ahk         ; ajax   
 #Include src/react.ahk        ; React
 #Include src/cdn.ahk          ; CDN   

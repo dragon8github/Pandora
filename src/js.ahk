@@ -2,6 +2,8 @@
 ::cache.axios::
 ::cacherequest::
 ::cacheaxios::
+::js.request::
+::es6.request::
 Var =
 (
 // 检查状态码
@@ -19,12 +21,12 @@ const checkStatus = (response) => {
 // 缓存到sessionStorage
 const cachedSave = (hashcode, content) => {
   // 设置缓存
-  sessionStorage.setItem(hashcode, JSON.stringify(content));
+  sessionStorage.setItem(hashcode, JSON.stringify(content))
   // 设置缓存时间
-  sessionStorage.setItem(`${hashcode}:timestamp`, Date.now());
+  sessionStorage.setItem(`${hashcode}:timestamp`, Date.now())
   // 返回Promise
-  return content;
-};
+  return content
+}
 
 // 公共请求
 export const request = (url, options) => {
@@ -39,13 +41,13 @@ export const request = (url, options) => {
     // 本请求是否禁止缓存？
     if (expirys !== false) {
         // 获取缓存
-        const cached = sessionStorage.getItem(hashcode);
+        const cached = sessionStorage.getItem(hashcode)
         // 获取该缓存的时间
-        const whenCached = sessionStorage.getItem(`${hashcode}:timestamp`);
+        const whenCached = sessionStorage.getItem(`${hashcode}:timestamp`)
         // 如果缓存都存在
         if (cached !== null && whenCached !== null) {
           // 判断缓存是否过期
-          const age = (Date.now() - whenCached) / 1000;
+          const age = (Date.now() - whenCached) / 1000
           // 如果不过期的话直接返回该内容
           if (age < expirys) {
               // 新建一个response
@@ -54,9 +56,9 @@ export const request = (url, options) => {
               return new Promise((resolve, reject) => resolve(response.json()))
           }
           // 删除缓存内容
-          sessionStorage.removeItem(hashcode);
+          sessionStorage.removeItem(hashcode)
           // 删除缓存时间
-          sessionStorage.removeItem(`${hashcode}:timestamp`);
+          sessionStorage.removeItem(`${hashcode}:timestamp`)
         }
     }
     return axios(url, options).then(checkStatus).then(_cachedSave)
