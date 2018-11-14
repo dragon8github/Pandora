@@ -22,7 +22,14 @@ FileAppend,
     var option = {
         geo3D: {
             map: 'china',
-            roam: true,
+            viewControl: {
+                // 摄像头的距离 maxDistance: 100, minDistance: 100,
+                distance: 100, 
+                // 上下 minAlpha: 40, maxAlpha: 40,
+                alpha: 40,
+                // 左右 minBeta: 0, maxBeta: 0,
+                beta: 0,
+            },
             itemStyle: {
                 areaColor: '#1d5e98',
                 opacity: 1,
