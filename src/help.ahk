@@ -588,7 +588,7 @@ return
     RUN, https://www.tslang.cn/docs/handbook/basic-types.html
 return
 
->!c::
+::cmd::
     run, cmd
 return
 

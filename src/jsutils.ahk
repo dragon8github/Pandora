@@ -1,7 +1,5 @@
 ﻿!u::
 !i::
-    
-    
     Menu, utilsIs, Add, is, utilsHandler
     Menu, utilsIs, Add, isString, utilsHandler
     Menu, utilsIs, Add, isNumber, utilsHandler
@@ -65,7 +63,7 @@
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
-    Menu, utilsMenu , Add, Object 常用API, :utilsObject
+    Menu, utilsMenu , Add, Object 操作, :utilsObject
     
 
     Menu, utilsMenu, Add, , utilsHandler
@@ -86,6 +84,7 @@
     Menu, utilsMenu, Add, countDown 倒计时, utilsHandler
     Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
     Menu, utilsMenu, Add, __EVENT__消息订阅, utilsHandler
+    Menu, utilsMenu, Add, compose 函数组合, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -104,7 +103,7 @@
     
     
     Menu, utilsMenu, Add, , utilsHandler
-	  Menu, utilsMenu, Add, , utilsHandler
+	Menu, utilsMenu, Add, , utilsHandler
     
     Menu, utilsMenu, Add, curry2 二元参数的手动柯里化, utilsHandler
     Menu, utilsMenu, Add, es6.class, utilsHandler
@@ -118,6 +117,7 @@
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
     Menu, utilsIs, DeleteAll
+    Menu, utilsObject, DeleteAll
 return
 
 
@@ -130,6 +130,32 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "compose 函数组合") {
+Var = 
+(
+function compose () {
+	let args = arguments
+	let start = args.length - 1
+
+	return function () {
+		let i = start
+		let result = args[start].apply(this, arguments)
+		while (i--)
+			result = args[i].call(this, result)
+		return result
+	}
+}
+
+const explode = _ => _.split(/\s+/)
+const count = _ => _.length
+const countWords = compose(count, explode);
+countWords(``a
+			b
+			c
+			d``); // => 4
 )
 }
 
@@ -503,7 +529,7 @@ Var =
 import { getUUID } from '@/utils/utils.js'
 
 export default class Model {
-	constructor (name, age) {
+	constructor ({ size = 20 } = {}) {
 		// 核心数据
 		this.data = null
 		// token
@@ -521,7 +547,7 @@ export default class Model {
 		// 页码
 		this.page = 0
 		// 数量
-		this.size = 20
+		this.size = this._size = size
 		// 是否报错了
 		this.error = ''
 	}
@@ -535,7 +561,7 @@ export default class Model {
 	  this.nomore = false
 	  this.total = 0
 	  this.page = 0
-	  this.size = 20
+	  this.size = this._size
 	  this.error = ''
   }
 
@@ -575,7 +601,7 @@ export default class Model {
   }
 
   // 设置data以及一系列逻辑
-  setData ({ data = [], total = 0, token = '' } = {}) {
+  setData ({ data = [], total = 0, token = ''} = {}, cb = null) {
     // 如果token不一致，说明请求被覆盖了。应该中止逻辑演变
     if (token && this.token != token) return
 
@@ -601,11 +627,13 @@ export default class Model {
         this.nomore = false
     }
 
-
     if (this.isFirstPage())
       this.data = data
     else
       this.data = Array.prototype.concat.call(this.data || [], data)
+
+    // 执行回调
+    cb && cb(this)
   }
 }
 )

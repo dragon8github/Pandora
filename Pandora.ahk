@@ -7,7 +7,6 @@ FileEncoding, UTF-8
 FileDelete, *.bak 
 FileDelete, .\src\*.bak
 
-clipHistoryArr := []
 
 #include src/GUI.ahk		  ; GUI系列 
 #Include src/lib.ahk          ; 公共函数
@@ -38,5 +37,5 @@ clipHistoryArr := []
 #Include src/python.ahk		  ; python
 #Include src/echarts.ahk	  ; echarts
 ; #Include src/sql.ahk		  ; sql
-#Include src/bdmap.ahk		  ; sql
+#Include src/bdmap.ahk		  ; bdmap
 #include src/prehosting.ahk	  ; 预设置的快捷键

@@ -1,8 +1,38 @@
-﻿::cache.request::
+﻿::compose::
+::jszuhe::
+::zuhe::
+Var =
+(
+function compose () {
+	let args = arguments
+	let start = args.length - 1
+
+	return function () {
+		let i = start
+		let result = args[start].apply(this, arguments)
+		while (i--) 
+			result = args[i].call(this, result)
+		return result
+	}
+}
+
+const explode = _ => _.split(/\s+/)
+const count = _ => _.length
+const countWords = compose(count, explode);
+countWords(``a
+			b
+			c
+			d``); // => 4
+)
+code(Var)
+return
+
+::cache.request::
 ::cache.axios::
 ::cacherequest::
 ::cacheaxios::
 ::js.request::
+::jsrequest::
 ::es6.request::
 Var =
 (
@@ -178,18 +208,24 @@ Tree.map(church, p => p)
 code(Var)
 return
 
+
 ::createmodel::
-::model::
 ::class.model::
 ::model.class::
 ::classmodel::
 ::modelclass::
+::js.model::
+::jsmodel::
+::es.model::
+::es6.model::
+::class.model::
+::model::
 Var =
 (
 import { getUUID } from '@/utils/utils.js'
 
 export default class Model {
-	constructor (name, age) {
+	constructor ({ size = 20 } = {}) {
 		// 核心数据
 		this.data = null
 		// token
@@ -207,7 +243,7 @@ export default class Model {
 		// 页码
 		this.page = 0
 		// 数量
-		this.size = 20
+		this.size = this._size = size
 		// 是否报错了
 		this.error = ''
 	}
@@ -221,7 +257,7 @@ export default class Model {
 	  this.nomore = false
 	  this.total = 0
 	  this.page = 0
-	  this.size = 20
+	  this.size = this._size 
 	  this.error = ''
   }
 
@@ -261,7 +297,7 @@ export default class Model {
   }
 
   // 设置data以及一系列逻辑
-  setData ({ data = [], total = 0, token = '' } = {}) {
+  setData ({ data = [], total = 0, token = ''} = {}, cb = null) {
     // 如果token不一致，说明请求被覆盖了。应该中止逻辑演变
     if (token && this.token != token) return
 
@@ -287,11 +323,13 @@ export default class Model {
         this.nomore = false
     }
 
-
     if (this.isFirstPage())
       this.data = data
     else
       this.data = Array.prototype.concat.call(this.data || [], data)
+
+    // 执行回调
+    cb && cb(this)
   }
 }
 )
@@ -1043,7 +1081,7 @@ Var =
 Object.assign({}, )
 )
 code(Var)
-Send, {left 1}
+SendInput, {left 1}
 return
 
 ::fn.after::
@@ -1637,34 +1675,34 @@ return
 
 ::/plain::
 ::plain/::
-    Send, text/plain
+    SendInput, text/plain
 return
 
 ::toup::
 ::todaxie::
 ::toda::
-    Send, toUpperCase()
+    SendInput, toUpperCase()
 return
 
 ::tolo::
 ::tolow::
 ::toxiaoxie::
 ::toxiao::
-    Send, toLocaleLowerCase()
+    SendInput, toLocaleLowerCase()
 return
 
 ::err::
 ::iferr::
-    Send, if (err) throw new Error(err.message);
+    SendInput, if (err) throw new Error(err.message);
 return
 
 ::ph::
 ::place::
-    Send, placeholder
+    SendInput, placeholder
 return
 
 ::pup::
-    Send, puppeteer
+    SendInput, puppeteer
 return
 
 ::gzhs::
@@ -1693,7 +1731,7 @@ return
 
 ::udf::
 ::undefin::
-    Send, undefined
+    SendInput, undefined
 return
 
 ::activehtml::
@@ -1800,7 +1838,7 @@ code(Var)
 return
 
 ::match::
-    Send, body.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,4}/g); // 推荐使用exec可以拿到多个数组
+    SendInput, body.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,4}/g); // 推荐使用exec可以拿到多个数组
 return
 
 ::exec::
@@ -1939,14 +1977,14 @@ code(Var)
 return
 
 ::echo::
-    Send, document.body.innerHTML = "Hello World";
-    Send, {left}{Shift Down}{left 13}{Shift Up}
+    SendInput, document.body.innerHTML = "Hello World";
+    SendInput, {left}{Shift Down}{left 13}{Shift Up}
 return
 
 ::args2arr::
 ::2arr::
 ::args2::
-    Send, [].slice.call(arguments)
+    SendInput, [].slice.call(arguments)
 return
 
 ::checkpwdlevel::
@@ -2037,20 +2075,20 @@ return
 
 ::el.getattr::
 ::getattr::
-    send, el.getAttribute('tabindex');
+    sendInput, el.getAttribute('tabindex');
 return
 
 ::el.setattr::
 ::setattr::
-    send, el.setAttribute('tabindex', '1');
+    sendInput, el.setAttribute('tabindex', '1');
 return
 
 ::getstyle::
-    Send, getComputedStyle(el)[ruleName];
+    SendInput, getComputedStyle(el)[ruleName];
 return
 
 ::setstyle::
-    Send, el.style.borderWidth = '20px';
+    SendInput, el.style.borderWidth = '20px';
 return
 
 
@@ -2117,7 +2155,7 @@ code(Var)
 return
 
 ::$remove::
-    Send, el.parentNode.removeChild(el)
+    SendInput, el.parentNode.removeChild(el)
 return
 
 ::eval::
@@ -2155,7 +2193,7 @@ return
 
 ; 构造函数的拼音老是记不得，以后就用联想来拼写好了
 ::gz::
-    Send, constructor
+    SendInput, constructor
 return
 
 ; insert jquery 的意思，也有爱jquery的意思，为没有jquery的网站添加jq插件
@@ -2196,7 +2234,7 @@ return
 ; 打印出jQuery的版本
 ::$.v::
 ::$.version::
-    Send, console.log(jQuery.fn.jquery);
+    SendInput, console.log(jQuery.fn.jquery);
 return
 
 ::$before::
@@ -2264,8 +2302,8 @@ return
 
 /*
 ::c::
-Send, {Text}console.log('');
-Send, {left 2}{click 2}
+SendInput, {Text}console.log('');
+SendInput, {left 2}{click 2}
 
 return
 
@@ -2371,7 +2409,7 @@ Var =
 require('');
 )
 code(Var)
-Send, {left 3}
+SendInput, {left 3}
 return
 
 AppsKey & d::
@@ -2383,6 +2421,19 @@ debugger;
 code(Var)
 Return
 
+
+
+>!c::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =
+(
+console.log(%t%, ); return;
+)
+code(Var)
+SendInput, {left 10}
+return
+
+
 AppsKey & c:: 
 >^c:: 
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
@@ -2391,10 +2442,11 @@ Var =
 console.log(%t%, )
 )
 code(Var)
-Send, {left 1}
+SendInput, {left 1}
 Return
 
 ::ret::
+::re::
     SendRaw, return
 Return 
 
@@ -2503,7 +2555,7 @@ Var =
 JSON.parse()
 )
 code(Var)
-Send, {left}
+SendInput, {left}
 Return
 
 ::jsons::
@@ -2513,7 +2565,7 @@ Var =
 JSON.stringify()
 )
 code(Var)
-Send, {left}
+SendInput, {left}
 Return
 
 ::json/::
@@ -2719,7 +2771,7 @@ Var =
 _ => {}
 )
 code(Var)
-Send, {left 1}
+SendInput, {left 1}
 return
 
 !=::
@@ -2729,7 +2781,7 @@ Var =
 => {}
 )
 code(Var)
-Send, {left 1}
+SendInput, {left 1}
 return
 
 !9::
@@ -2739,7 +2791,7 @@ Var =
 () => {}
 )
 code(Var)
-Send, {left 1}
+SendInput, {left 1}
 return
 ::dg::
 Var =
@@ -2747,7 +2799,7 @@ Var =
 document.getElementById('')
 )
 code(Var)
-Send, {left 2}
+SendInput, {left 2}
 Return
 
 ::ds::
@@ -2756,7 +2808,7 @@ Var =
 document.querySelectorAll('')
 )
 code(Var)
-Send, {left 2}
+SendInput, {left 2}
 Return
 
 ::dsa::
@@ -2766,7 +2818,7 @@ Var =
 document.querySelector('')
 )
 code(Var)
-Send, {left 2}
+SendInput, {left 2}
 return
 
 ::dgt::
@@ -2775,7 +2827,7 @@ Var =
 document.getElementsByTagName('')
 )
 code(Var)
-Send, {left 2} 
+SendInput, {left 2} 
 return
 
 ::dgc::
@@ -2784,7 +2836,7 @@ Var =
 document.getElementsByClassName('')
 )
 code(Var)
-Send, {left 2} 
+SendInput, {left 2} 
 return
 
 ::dgn::
@@ -2793,7 +2845,7 @@ Var =
 document.getElementsByName('')
 )
 code(Var)
-Send, {left 2} 
+SendInput, {left 2} 
 return
 
 ::fetch::
@@ -2997,7 +3049,7 @@ Var =
 //////////////////////////////////////////////
 )
 code(Var)
-Send, {Up}
+SendInput, {Up}
 Return
 
 +!/::
@@ -4266,7 +4318,7 @@ Var =
 maybe(_ => , [])
 )
 code(Var)
-Send, {left 5}
+SendInput, {left 5}
 return
 
 ::maybe::
