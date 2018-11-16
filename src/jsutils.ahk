@@ -112,6 +112,7 @@
     Menu, utilsMenu, Add, Model 类, utilsHandler
     Menu, utilsMenu, Add, AMD/CommonJS/factory/module, utilsHandler
     Menu, utilsMenu, Add, cache request axios 缓存请求, utilsHandler
+    Menu, utilsMenu, Add, deepfind 深度递归搜索, utilsHandler
     
 
     Menu, utilsMenu, Show
@@ -132,6 +133,226 @@ Var =
 (
 )
 }
+
+if (v == "deepfind 深度递归搜索") {
+Var = 
+(
+var fuck = [
+    {
+        "label": "占用道路问题",
+        "value": 31,
+        "children": [
+            {
+                "label": "经营占道",
+                "value": 35,
+                "children": [
+                    {
+                        "label": "店外经营占道",
+                        "value": 40,
+                        "children": null
+                    },
+                    {
+                        "label": "流动摊贩占道",
+                        "value": 41,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "label": "垃圾占道",
+                "value": 36,
+                "children": [
+                    {
+                        "label": "生活垃圾",
+                        "value": 42,
+                        "children": null
+                    },
+                    {
+                        "label": "建筑垃圾",
+                        "value": 43,
+                        "children": null
+                    },
+                    {
+                        "label": "工业垃圾",
+                        "value": 44,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "label": "车辆占道",
+                "value": 37,
+                "children": [
+                    {
+                        "label": "机动车占道",
+                        "value": 45,
+                        "children": null
+                    },
+                    {
+                        "label": "非机动车占道",
+                        "value": 46,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "label": "霸占车位",
+                "value": 38,
+                "children": []
+            },
+            {
+                "label": "其他占道",
+                "value": 39,
+                "children": []
+            }
+        ]
+    },
+    {
+        "label": "“两违”问题",
+        "value": 32,
+        "children": [
+            {
+                "label": "违法建筑",
+                "value": 58,
+                "children": [
+                    {
+                        "label": "房屋违建",
+                        "value": 61,
+                        "children": null
+                    },
+                    {
+                        "label": "小区违建",
+                        "value": 62,
+                        "children": null
+                    },
+                    {
+                        "label": "违建棚架",
+                        "value": 63,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "label": "违法用地",
+                "value": 59,
+                "children": []
+            },
+            {
+                "label": "其他违建",
+                "value": 60,
+                "children": []
+            }
+        ]
+    },
+    {
+        "label": "市容设施管理问题",
+        "value": 33,
+        "children": [
+            {
+                "label": "道路损坏",
+                "value": 47,
+                "children": []
+            },
+            {
+                "label": "垃圾桶损坏",
+                "value": 48,
+                "children": []
+            },
+            {
+                "label": "下水道堵塞",
+                "value": 49,
+                "children": []
+            },
+            {
+                "label": "井盖损坏",
+                "value": 50,
+                "children": []
+            },
+            {
+                "label": "路灯损坏",
+                "value": 51,
+                "children": []
+            },
+            {
+                "label": "树木修剪",
+                "value": 52,
+                "children": []
+            },
+            {
+                "label": "水电气",
+                "value": 53,
+                "children": []
+            },
+            {
+                "label": "户外广告牌",
+                "value": 54,
+                "children": []
+            },
+            {
+                "label": "隔音屏损坏",
+                "value": 55,
+                "children": []
+            },
+            {
+                "label": "洒水车问题",
+                "value": 56,
+                "children": []
+            },
+            {
+                "label": "其他",
+                "value": 57,
+                "children": []
+            }
+        ]
+    },
+    {
+        "label": "其他问题",
+        "value": 34,
+        "children": []
+    }
+]
+const deepFind = ({ arr = [], key = '', val = '', children = 'children'} = {}) => {
+    // 即将返回的数组
+    var main = []
+    // 如果没有键也没有值，那么还是直接返回吧
+    if (!val || !key) return main
+    // 用try方案方便直接中止所有递归的程序
+    try {
+        // 开始轮询
+        (function poll(arr, level) {
+            // 如果传入非数组
+            if (!Array.isArray(arr)) return
+            // 遍历数组
+            for (var i = 0; i < arr.length; i++) {
+                // 获取当前项
+                var item = arr[i]
+                // 先占位预设值
+                main[level] = item[key]
+                // 如果已经找到了
+                if (item[key] === val) {
+                    // 直接抛出错误中断所有由父及子的所有轮询
+                    throw Error
+                // 如果存在children，那么深入递归
+                } else if (item[children] && item[children].length) {
+                    poll(item[children], level + 1)
+                // 如果是最后一个了且没有找到值，那么删除之
+                } else if (i === arr.length - 1) {
+                   // 删除占位预设值
+                   main.length = main.length - 1
+                }
+            }
+        })(arr, 0)
+    // 错误捕捉仅为程序正常执行
+    } catch (err) {}
+
+    // 返回最终数组
+    return main
+}
+var myarr = deepFind({ arr: fuck, key: 'value', val: 63, children: 'children' })
+console.log(20181115092957, myarr)
+)
+}
+
 
 if (v == "compose 函数组合") {
 Var = 

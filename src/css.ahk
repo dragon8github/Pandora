@@ -160,16 +160,6 @@ code(Var)
 return
 
 
-
-::`:nth::
-::nth::
-Var =
-(
-&:nth-child(1)
-)
-code(Var)
-return
-
 ::css.scroll::
 ::css.scrollbar::
 Var =

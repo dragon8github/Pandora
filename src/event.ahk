@@ -1,12 +1,36 @@
 ﻿!e::
-	Menu, EventMenu, Add, ### 注意：onclick只能为元素绑定一个方法，而addEventListener可以绑定无限个 ### , EventHandler
+
+	Menu, EventMenu, Add, @click="doThat('hello'`, $event)", EventHandler
+	Menu, EventMenu, Add, @click.stop, EventHandler
+	Menu, EventMenu, Add, @click.once, EventHandler
+	Menu, EventMenu, Add, @change, EventHandler
+	Menu, EventMenu, Add, @keyup, EventHandler
+	Menu, EventMenu, Add, @keyup.enter, EventHandler
+	Menu, EventMenu, Add, @keyup.13, EventHandler
+	Menu, EventMenu, Add, @input, EventHandler
+	Menu, EventMenu, Add, @mouseover/@mouseleave, EventHandler
+	
+
 	Menu, EventMenu, Add, , EventHandler
 	Menu, EventMenu, Add, , EventHandler
+	
+	Menu, EventMenu, Add, onClick = { this.clickHandle }, EventHandler
+	Menu, EventMenu, Add, onChange = { this.changeHandle }, EventHandler
+	Menu, EventMenu, Add, onScroll = { this.scrollHandle }, EventHandler
+	Menu, EventMenu, Add, onInput = { this.inputHandle }, EventHandler
+	Menu, EventMenu, Add, onMouseOver = { this.MouseOverHandle }, EventHandler
+	Menu, EventMenu, Add, onMouseLeave = { this.MouseLeaveHandle }, EventHandler
+	
+	
+	Menu, EventMenu, Add, , EventHandler
+	Menu, EventMenu, Add, , EventHandler
+	
 	Menu, EventMenu, Add, .addEventListener('click'`, e => {}), EventHandler
 	Menu, EventMenu, Add, .addEventListener('mouseover'`, e => {}) , EventHandler
 	Menu, EventMenu, Add, .addEventListener('mouseleave'`, e => {}), EventHandler
 	
 	Menu, EventMenu, Add, , EventHandler
+	Menu, EventMenu, Add, ### 注意：onclick只能为元素绑定一个方法，而addEventListener可以绑定无限个 ### , EventHandler
 	Menu, EventMenu, Add, , EventHandler
 	
 	Menu, EventMenu, Add, .onclick = (e) => {}, EventHandler
@@ -25,27 +49,7 @@
 
 	Menu, EventMenu, Add, , EventHandler
 	Menu, EventMenu, Add, , EventHandler
-
-	Menu, EventMenu, Add, @click="doThat('hello'`, $event)", EventHandler
-	Menu, EventMenu, Add, @click.stop, EventHandler
-	Menu, EventMenu, Add, @click.once, EventHandler
-	Menu, EventMenu, Add, @change, EventHandler
-	Menu, EventMenu, Add, @keyup, EventHandler
-	Menu, EventMenu, Add, @keyup.enter, EventHandler
-	Menu, EventMenu, Add, @keyup.13, EventHandler
-	Menu, EventMenu, Add, @input, EventHandler
-
-	Menu, EventMenu, Add, , EventHandler
-	Menu, EventMenu, Add, , EventHandler
-	Menu, EventMenu, Add, onClick = { this.clickHandle }, EventHandler
-	Menu, EventMenu, Add, onChange = { this.changeHandle }, EventHandler
-	Menu, EventMenu, Add, onScroll = { this.scrollHandle }, EventHandler
-	Menu, EventMenu, Add, onInput = { this.inputHandle }, EventHandler
-	Menu, EventMenu, Add, onMouseOver = { this.MouseOverHandle }, EventHandler
-	Menu, EventMenu, Add, onMouseLeave = { this.MouseLeaveHandle }, EventHandler
-
-	Menu, EventMenu, Add, , EventHandler
-	Menu, EventMenu, Add, , EventHandler
+	
 	Menu, EventMenu, Add, ehcarts.click, EventHandler
 	Menu, EventMenu, Add, ehcarts.mouseover, EventHandler
 	Menu, EventMenu, Add, ehcarts.mouseout, EventHandler
@@ -68,6 +72,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "@mouseover/@mouseleave") {
+Var = 
+(
+@mouseover='broadcast(false)' @mouseleave='broadcast'
 )
 }
 
