@@ -294,6 +294,7 @@ return
   
     Menu, VueMenu, Add, myprogress组件, VueHandler
     Menu, VueMenu, Add, msgbox组件, VueHandler
+    Menu, VueMenu, Add, click-outside 指令, VueHandler
   
 
 	Menu, VueMenu, Show
@@ -309,6 +310,27 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "click-outside 指令") {
+Var = 
+(
+export default {
+  bind: function (el, { value }) {
+    let onClickOutside = value
+    el.handler = function (e) {
+      if (el && !el.contains(e.target)) {
+        onClickOutside(e)
+      }
+    }
+    document.addEventListener('click', el.handler, true)
+  },
+  unbind: function (el) {
+    document.removeEventListener('click', el.handler, true)
+    el.handler = null
+  }
+}
 )
 }
 

@@ -112,6 +112,16 @@ InputBox, OutputVar, title, enter a name?,,,,,,,,test
 code(Var)
 return
 
+::nosafe::
+::notsafe::
+::chromesafe::
+Var =
+(
+ --args --disable-web-security --user-data-dir
+)
+SendInput, % Var
+return
+
 ::api.open::
 ::api.sw::
 ::apisw::

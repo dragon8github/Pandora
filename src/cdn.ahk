@@ -1,4 +1,13 @@
-﻿::cdn-log4::
+﻿::cdn-vconsole::
+::cdn-console::
+Var =
+(
+<script src="https://cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-log4::
 ::cdn-log::
 ::cdn-log4js::
 Var =

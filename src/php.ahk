@@ -1,4 +1,66 @@
-﻿::php.log::
+﻿::php.new::
+::newphp::
+::php.test::
+Var =
+(
+<?php 
+
+header('Content-Type: application/json; charset=utf-8');
+
+class userinfo {
+    var $user_name;
+    var $user_ip;
+    var $user_logintime;
+    var $user_token;
+}
+
+$u = new userinfo();
+$u->user_name = "贝尔塔猫";
+$u->user_logintime = time();
+$u->user_ip = "127.0.0.1";
+$u->user_token = uniqid();
+// $result = serialize($u); 
+
+$data = array('msg' => '请求成功', 'code' => 200, 'data' => $u);
+echo json_encode($data);
+
+?>
+)
+code(Var)
+return
+
+::php.class::
+::php.model::
+::php.m::
+Var =
+(
+<?php 
+
+header('Content-Type: application/json; charset=utf-8');
+
+class userinfo {
+    var $user_name;
+    var $user_ip;
+    var $user_logintime;
+    var $user_token;
+}
+
+$u = new userinfo();
+$u->user_name = "贝尔塔猫";
+$u->user_logintime = time();
+$u->user_ip = "127.0.0.1";
+$u->user_token = uniqid();
+// $result = serialize($u); 
+
+$data = array('msg' => '请求成功', 'code' => 200, 'data' => $u);
+echo json_encode($data);
+
+?>
+)
+code(Var)
+return
+
+::php.log::
 Var =
 (
 function WriteLog($msg,$module = null,$logLevel = "DEBUG")

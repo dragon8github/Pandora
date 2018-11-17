@@ -786,10 +786,6 @@ Var =
 code(Var)
 return
 
-::yuan::
-    SendRaw, border-radius: 50`%;
-return
-
 ::bbr::
     SendRaw, border-radius: 4px;
 return

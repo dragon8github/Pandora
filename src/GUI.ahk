@@ -156,6 +156,8 @@ Gui, Pandora:Add, Text,  W140 ys, 12345大数据屏（vue）
 Gui, Pandora:Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">swagger-ui</a>
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">dg12345-vue git</a>
 Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:86">dg12345测试地址174</a>
+Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">dg12345演示地址</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
@@ -189,6 +191,10 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/PanJiaChen/vue-element-admi
 Gui, Pandora:Add, Text,  W160 ys, vuetifyjs
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuetifyjs/vuetify">vuetify</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuetifyjs/nuxt">vuetifyjs/nuxt</a>
+
+Gui, Pandora:Add, Text,  W160 ys, vux
+Gui, Pandora:Add, Link,, <a href="https://github.com/airyland/vux">vux github</a>
+Gui, Pandora:Add, Link,, <a href="https://vux.li/">vux 官网</a>
 
 Gui, Pandora:Tab, 5
 Gui, Pandora:Add, Text,  W140  Section, React：
@@ -283,17 +289,30 @@ Gui, Pandora:Add, Text,  W140  ys, ramda.js：
 Gui, Pandora:Add, Link,, <a href="http://ramda.cn/">ramda.js 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ramda/ramda">ramda.js github</a>
 
+Gui, Pandora:Add, Text,  W140  ys, 手机调试：
+Gui, Pandora:Add, Link,, <a href="https://github.com/Tencent/vConsole/blob/dev/src/lib/query.js">vconsole</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/AlloyTeam/AlloyLever">AlloyLever</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/wuchangming/spy-debugger">spy-debugger</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/whistle">whistle</a>
+
+
+
+
 Gui, Pandora:Tab, 7
 Gui, Pandora:Add, Text,  W140 Section, 高德地图：
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/summary">高德地图-JavaScript</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/map/map-show">高德地图-Demo</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/reference/core">高德地图-API</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/abc/quickstart">高德地图-快速上手</a>
+Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/map/3d-map">高德地图-3D地图</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 百度地图：
 Gui, Pandora:Add, Link,, <a href="http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a3b0">百度地图-API</a>
 Gui, Pandora:Add, Link,, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/openlibrary">百度地图-开源库</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/helloworld">百度地图-快速上手</a>
+Gui, Pandora:Add, Link, W140, <a href="http://bbs.lbsyun.baidu.com/forum.php?mod=viewthread&tid=137156&tdsourcetag=s_pctim_aiomsg&qq-pf-to=pcqq.temporaryc2c">百度地图-论堂</a>
+Gui, Pandora:Add, Link, W140, <a href="https://lbs.amap.com/api/javascript-api/guide/map/3d-map">百度地图-3D地图</a>
+
 
 Gui, Pandora:Add, Text, W140 ys, 百度地图教程：
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#f0_3">地图点击事件</a>
