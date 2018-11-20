@@ -47,7 +47,7 @@ Gui, Pandora:Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
 ; submit 按钮
 Gui, Pandora:Add, Button, w780 h30 gFuck Default, FUCK
 
-Gui, Pandora:Add, Tab3, w780 h500 Choose1, 常用 | 工作坊 | 创慧教育 | Vue | React | 库 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | 鸡肋 | 剪切板
+Gui, Pandora:Add, Tab3, w780 h500 Choose1, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | 鸡肋 | 剪切板
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -109,9 +109,19 @@ Gui, Pandora:Add, Link,, <a href="https://gitbook.cn/gitchat/geekbooks">极客�
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0.10源码</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/seajs/seajs/issues/242">CMD规范</a>
 
+Gui, Pandora:Add, Text,  W140 ys, kindle：
+Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/manageyourkindle">我的设备</a>
+Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/Kindle免费电子书/b?node=116175071">kindle官方</a>
+Gui, Pandora:Add, Link,, <a href="https://www.jiumodiary.com/">鸠摩搜书</a>
+Gui, Pandora:Add, Link,, <a href="https://bookfere.com/">书伴</a>
+Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&node=1337022071">Kindle Unlimited</a>
+
+
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍：
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
+
+
 
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
@@ -159,12 +169,20 @@ Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:86">dg12345测试地址1
 Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">dg12345演示地址</a>
 
 
-
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
+Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:83/">extra-edu 线上</a>
 
 
 Gui, Pandora:Tab, 4
+Gui, Pandora:Add, Text,  W130 Section, Nodejs:
+Gui, Pandora:Add, Link,, <a href="https://nodejs.org/dist/latest-v11.x/docs/api/">Nodejs API</a>
+Gui, Pandora:Add, Link,, <a href="https://nodejs.org/en/">Nodejs 官网</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/nodejs/node">Nodejs github</a>
+
+
+
+Gui, Pandora:Tab, 5
 Gui, Pandora:Add, Text,  W140 Section, Vue：
 Gui, Pandora:Add, Link,, <a href="http://vuejs.org/">vue</a>
 Gui, Pandora:Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
@@ -196,7 +214,7 @@ Gui, Pandora:Add, Text,  W160 ys, vux
 Gui, Pandora:Add, Link,, <a href="https://github.com/airyland/vux">vux github</a>
 Gui, Pandora:Add, Link,, <a href="https://vux.li/">vux 官网</a>
 
-Gui, Pandora:Tab, 5
+Gui, Pandora:Tab, 6
 Gui, Pandora:Add, Text,  W140  Section, React：
 Gui, Pandora:Add, Link,, <a href="https://reactjs.org/docs/hello-world.html">react 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://reacttraining.com/react-router/web/api/Route/component">React-router</a>
@@ -246,7 +264,7 @@ Gui, Pandora:Add, Link,, <a href="https://facebook.github.io/react-native/docs/c
 
 
 
-Gui, Pandora:Tab, 6
+Gui, Pandora:Tab, 7
 Gui, Pandora:Add, Text,  W140  Section, layer/layui：
 Gui, Pandora:Add, Link,, <a href="http://layer.layui.com/">layer</a>
 Gui, Pandora:Add, Link,, <a href="http://www.layui.com/doc/">layui文档</a>
@@ -298,7 +316,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/whistle">whis
 
 
 
-Gui, Pandora:Tab, 7
+Gui, Pandora:Tab, 8
 Gui, Pandora:Add, Text,  W140 Section, 高德地图：
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/summary">高德地图-JavaScript</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/map/map-show">高德地图-Demo</a>
@@ -356,7 +374,7 @@ Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?
 Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xSy3KhFV4M">ECharts 3D地图</a>
 
 
-Gui, Pandora:Tab, 8
+Gui, Pandora:Tab, 9
 Gui, Pandora:Add, Text,  W140 Section, Thinkphp：
 Gui, Pandora:Add, Link, W140, <a href="https://github.com/top-think/thinkphp">Thinkphp3.2-github</a>
 Gui, Pandora:Add, Link, W140, <a href="https://github.com/top-think/think">Thinkphp5-github</a>
@@ -403,7 +421,7 @@ Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478303">where 参数注入</a>
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478304">分批/分块查询</a>
 
-Gui, Pandora:Tab, 9
+Gui, Pandora:Tab, 10
 Gui, Pandora:Add, Text,  W140 Section, 微信小程序：
 Gui, Pandora:Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html">微信小程序开发工具</a>
 Gui, Pandora:Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/">微信内置API</a>
@@ -414,7 +432,7 @@ Gui, Pandora:Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev
 Gui, Pandora:Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/custom-component/component.html">Component构造器</a>
 Gui, Pandora:Add, Link, W140, <a href="https://legacy.gitbook.com/book/dragon8github/fuck/edit#/edit/master/README.md?_k=pfi687">我的gitbook</a>
 
-Gui, Pandora:Tab, 10
+Gui, Pandora:Tab, 11
 Gui, Pandora:Add, Text,  W100 Section, 代理IP:
 Gui, Pandora:Add, Link,, <a href="http://www.xicidaili.com/nn">西刺</a>
 Gui, Pandora:Add, Link,, <a href="https://proxy.l337.tech/txt">l337</a>
@@ -426,7 +444,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">易码</
 Gui, Pandora:Add, Link,, <a href="http://www.manbiwang.com/#/">满币网</a>
 Gui, Pandora:Add, Link,, <a href="http://candy.dragonvein.io/frontend/web/site/signup">dragonvein</a>
 
-Gui, Pandora:Tab, 11
+Gui, Pandora:Tab, 12
 Gui, Pandora:Add, Text,  W140 Section, Dart:
 Gui, Pandora:Add, Link,, <a href="https://www.dartlang.org/">Dart官网</a>
 Gui, Pandora:Add, Link,, <a href="http://www.cndartlang.com/">Dart 中文社区</a>
@@ -443,14 +461,14 @@ Gui, Pandora:Add, Link,, <a href="http://dcloud.io/doc.html">Dcloud文档</a>
 Gui, Pandora:Add, Link,, <a href="http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/111">Dcloud 云打包</a>
 Gui, Pandora:Add, Link,, <a href="http://droid4x.haimawan.com/">海马玩模拟器下载</a>
 
-Gui, Pandora:Tab, 12
+Gui, Pandora:Tab, 13
 Gui, Pandora:Add, Text,  W140 Section, 食之无用:
 Gui, Pandora:Add, Link,, <a href="http://blog.mn886.net/jqGrid/">jQGrid 中文文档</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 弃之可惜:
 Gui, Pandora:Add, Link,, <a href="https://sketch2code.azurewebsites.net/">Microsoft sketch2code</a>
 
-Gui, Pandora:Tab, 13
+Gui, Pandora:Tab, 14
 
 Gui, Pandora:Add, Edit, vClipHistory w750 H400 Limit199307100337
 

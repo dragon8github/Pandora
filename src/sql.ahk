@@ -9,7 +9,7 @@
 	Menu, sqlMenuA, Add, ALTER DATABASE 库名 选项信息 -- 修改库的选项信息, sqlHandler
 
 	; 表的操作
-	Menu, sqlMenuB, Add, SHOW TABLES FROM 数据库名 -- 查看所有表, sqlHandler
+	Menu, sqlMenuB, Add, SHOW TABLES -- 查看所有表, sqlHandler
 	Menu, sqlMenuB, Add
 	Menu, sqlMenuB, Add, SHOW CREATE TABLE 表名 -- 查看表结构, sqlHandler
 	Menu, sqlMenuB, Add
@@ -29,10 +29,9 @@
 	Menu, sqlMenuC, Add, UPDATE 改, sqlHandler
 
 	; ______________________________________________________
-	
-	Menu, sqlMenu, Add, CRUD, :sqlMenuC
-	Menu, sqlMenu, Add, 库, :sqlMenuA
 	Menu, sqlMenu, Add, 表, :sqlMenuB
+	Menu, sqlMenu, Add, 库, :sqlMenuA
+	Menu, sqlMenu, Add, CRUD, :sqlMenuC
 
 	Menu, sqlMenu, Add,, :sqlHandler
 	Menu, sqlMenu, Add,, :sqlHandler
@@ -78,6 +77,9 @@
 
 	Menu, sqlMenu, Show
 	Menu, sqlMenu, DeleteAll
+	Menu, sqlMenuA, DeleteAll
+	Menu, sqlMenuB, DeleteAll
+	Menu, sqlMenuC, DeleteAll
 return
 
 
@@ -92,10 +94,10 @@ Var =
 )
 }
 
-if (v == "SHOW TABLES FROM 数据库名 -- 查看所有表") {
+if (v == "SHOW TABLES -- 查看所有表") {
 Var = 
 (
-SHOW TABLES FROM 数据库名
+SHOW TABLES -- [FROM 数据库名]
 )
 }
 
@@ -161,8 +163,8 @@ DROP DATABASE[ IF EXISTS] 数据库名 -- 删除库
 if (v == "INSERT 增") {
 Var = 
 (
-INSERT [INTO] 表名 [(字段列表)] VALUES (值列表)[, (值列表), ...]
-INSERT [INTO] 表名 SET 字段名=值[, 字段名=值, ...]
+-- INSERT [INTO] 表名 SET 字段名=值[, 字段名=值, ...]
+INSERT [INTO] 表名 [(字段列表)] VALUES (值列表)[, (值列表), ...] 
 )
 }
 
@@ -187,7 +189,7 @@ UPDATE 表名 SET 字段名=新值[, 字段名=新值] [更新条件]
 )
 }
 
-code(Var)
+SendInput, % Var
 return
 
 ::sqls::

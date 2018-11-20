@@ -1,4 +1,15 @@
-﻿::vue.update::
+﻿::mapstate::
+Var =
+(
+import { mapState } from 'vuex'
+computed: {
+  ...mapState('theme', ['findLastSixMonthAir', 'findLastSixMonthAirTown'])
+},
+)
+code(Var)
+return
+
+::vue.update::
 ::v.update::
 Var =
 (
@@ -250,6 +261,7 @@ return
   Menu, VueMenu, Add, vuex.modules, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
+  Menu, VueMenu, Add, mapState, VueHandler  
 
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -289,16 +301,16 @@ return
   Menu, VueMenu, Add, 获取参数this.$route.params.id, VueHandler
   
   
-    Menu, VueMenu, Add, , VueHandler
-    Menu, VueMenu, Add, , VueHandler
-  
-    Menu, VueMenu, Add, myprogress组件, VueHandler
-    Menu, VueMenu, Add, msgbox组件, VueHandler
-    Menu, VueMenu, Add, click-outside 指令, VueHandler
-  
+  Menu, VueMenu, Add, , VueHandler
+  Menu, VueMenu, Add, , VueHandler
 
-	Menu, VueMenu, Show
-	Menu, VueMenu, DeleteAll
+  Menu, VueMenu, Add, myprogress组件, VueHandler
+  Menu, VueMenu, Add, msgbox组件, VueHandler
+  Menu, VueMenu, Add, click-outside 指令, VueHandler
+
+
+  Menu, VueMenu, Show
+  Menu, VueMenu, DeleteAll
 return
 
 VueHandler:
@@ -310,6 +322,16 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "mapState") {
+Var = 
+(
+import { mapState } from 'vuex'
+computed: {
+  ...mapState('theme', ['findLastSixMonthAir', 'findLastSixMonthAirTown'])
+},
 )
 }
 

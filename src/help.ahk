@@ -393,13 +393,6 @@ return
     Run, %A_Startup%
 return
 
-::shehuizhuyi::
-Var =
-(
-富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善
-)
-code(Var)
-return
 
 
 :*:d]::  ; 此热字串通过后面的命令把 "]d" 替换成当前日期和时间.
@@ -463,6 +456,11 @@ return
 
 ::@de::
     Send, @Decorator
+return
+
+::@cc::
+::@2980::
+    SendInput, dragon8cc@2980.com
 return
 
 ::@qq::

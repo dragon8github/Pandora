@@ -182,6 +182,12 @@ return
 	Menu, ShellMenu, Add, sed（替换文本）, :G
 	Menu, ShellMenu, Add, 强大的 ## 操作符和 `%`% 操作符, :H
 	
+	Menu, ShellMenu, Add
+	Menu, ShellMenu, Add
+	
+	Menu, ShellMenu, Add, wc 查看多少行代码, ShellHandler
+	Menu, ShellMenu, Add, find + xargs + cat合并多个文件内容到一个文件, ShellHandler
+	
 	Menu, ShellMenu, Show
 	Menu, ShellMenu, DeleteAll
 return  
@@ -197,6 +203,22 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "find + xargs + cat合并多个文件内容到一个文件") {
+Var = 
+(
+$ cat **/* > merge.fuck
+$ find ./ -iregex '.*\.\(js\|scss\|tpl\)$' | xargs cat > merge.fuckyou
+)
+}
+
+if (v == "wc 查看多少行代码") {
+Var = 
+(
+find . -name "*.json" -prune -o -path "./assets/*" -o -iname "*.MD"  -prune -o -type f -print | xargs wc -l
+find ./ -iregex '.*\.\(js\|vue\|scss\)$' | xargs wc -l
 )
 }
 
