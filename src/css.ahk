@@ -1,4 +1,68 @@
-﻿::loading::
+﻿::animate.updown::
+Var =
+(
+.fadeOutDown {
+    animation: fadeOutDown 1.3s infinite;
+}
+
+.fadeOutUp {
+    animation: fadeOutUp 1.3s infinite;
+}
+
+@keyframes fadeOutUp {
+    // from {
+    //   opacity: 0.1;
+    //   transform: translate3d(0, 80`%, 0);
+    // }
+
+    // to {
+    //   opacity: 1;
+    //   transform: translate3d(0, 0`%, 0);
+    // }
+
+    25`% {
+        transform: translateY(-3px);
+    }
+
+    50`%,
+    100`% {
+        transform: translateY(0);
+    }
+
+    75`% {
+        transform: translateY(3px);
+    }
+}
+
+@keyframes fadeOutDown {
+    // from {
+    //   opacity: 1;
+    //   transform: translate3d(0, -20`%, 0);
+    // }
+
+    // to {
+    //   opacity: 0.1;
+    //   transform: translate3d(0, 30`%, 0);
+    // }
+
+    25`% {
+        transform: translateY(-3px);
+    }
+
+    50`%,
+    100`% {
+        transform: translateY(0);
+    }
+
+    75`% {
+        transform: translateY(3px);
+    }
+}
+)
+code(Var)
+return  
+
+::loading::
 Var =
 (
 .is-loading::after {
@@ -855,7 +919,12 @@ return
 Return
 
 ::bg::
-    SendInput,background: url('https://iph.href.lu/100x100') center center / 130px 130px no-repeat content-box`;
+Var =
+(
+background: transparent url('https://iph.href.lu/100x100') center center / 100`% 100`%  no-repeat content-box;
+background-size: cover;
+)
+SendInput, % Var
 Return
 
 ::bgc::

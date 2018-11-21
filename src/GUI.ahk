@@ -91,6 +91,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具
 Gui, Pandora:Add, Link,, <a href="http://fontawesome.dashgame.com/">font-awesome</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/">momentjs</a>
+Gui, Pandora:Add, Link,, <a href="http://apizza.cc">apizza</a>
 
 
 Gui, Pandora:Add, Text, W140 Section xs yp+80, cdn：
