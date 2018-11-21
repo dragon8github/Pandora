@@ -89,6 +89,8 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
+    
+    Menu, utilsMenu, Add, encodeURI URI过滤, utilsHandler
     Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
     Menu, utilsMenu, Add, lazyload 图片懒加载, utilsHandler
     Menu, utilsMenu, Add, preloadimg 图片预加载, utilsHandler
@@ -131,6 +133,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "encodeURI URI过滤") {
+Var = 
+(
+encodeURI
 )
 }
 

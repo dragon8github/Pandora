@@ -145,7 +145,7 @@ Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫�
 Gui, Pandora:Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
 Gui, Pandora:Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
 Gui, Pandora:Add, Text, gNewNodejsSequelize W190, 新建nodejs-sequelize-mysql模板
-
+Gui, Pandora:Add, Text, gNewNodejsRenamechName W190, 新建nodejs批量改名中文模板
 
 
 Gui, Pandora:Tab, 3
