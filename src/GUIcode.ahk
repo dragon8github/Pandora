@@ -11,12 +11,12 @@ const request = require('request')
 // 简单的GET请求获取翻译结果
 const _request = (text, cb) => {
 	request({
-	    url: encodeURI(`http://119.23.22.136:6635/baidu_transapi.php?text=${text}&type=tuofeng`),
+	    url: encodeURI(``http://119.23.22.136:6635/baidu_transapi.php?text=${text}&type=tuofeng``),
 	}, function (err, response, body) {
 		// 如果翻译异常那么直接中断
 		if (err)
 			// 抛出异常吧
-			throw new Error(`${err.message} ///////////////// ${text} ///////////////// ${body}`)
+			throw new Error(``${err.message} ///////////////// ${text} ///////////////// ${body}``)
 		// 必须有内容返回并且请求码为200才可以回调
 		if (body && response.statusCode === 200)
 			// 回调
@@ -47,7 +47,7 @@ const get = name => {
 		    		// 如果出现异常，那么直接中止
 			    	if (err) 
 			    		// 抛出异常吧
-			    		throw new Error(`${err.message} ///////////////// ${filename} ///////////////// ${ch}`)
+			    		throw new Error(``${err.message} ///////////////// ${filename} ///////////////// ${ch}``)
 			    })
 			}
 	    })

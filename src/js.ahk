@@ -3154,7 +3154,7 @@ Return
 ::.m::
 Var =
 (
-.map(function (v, index, array) {
+.map((v, index, array) => {
     return v
 });
 )

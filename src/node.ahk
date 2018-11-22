@@ -1,4 +1,60 @@
-﻿::clearconsole::
+﻿::node.ch::
+Var =
+(
+const fs      = require('fs-extra')
+const globby  = require('globby')
+const request = require('request')
+
+// 简单的GET请求获取翻译结果
+const _request = (text, cb) => {
+	request({
+	    url: encodeURI(``http://119.23.22.136:6635/baidu_transapi.php?text=${text}&type=tuofeng``),
+	}, function (err, response, body) {
+		// 如果翻译异常那么直接中断
+		if (err)
+			// 抛出异常吧
+			throw new Error(``${err.message} ///////////////// ${text} ///////////////// ${body}``)
+		// 必须有内容返回并且请求码为200才可以回调
+		if (body && response.statusCode === 200)
+			// 回调
+	    	cb && cb(body)
+	})
+}
+
+// 从字符串中区分出名字和后缀
+const get = name => {
+	const len = name.lastIndexOf('.')
+	return { name: name.substr(0, len), ext: name.substr(len) }
+}
+
+// 遍历当前文件夹下所有的文件
+(async () => {
+	// 筛选当前文件夹下的文件类型
+	const names = await globby(['*.png|*.jpg|*.gif'])
+	// 开始遍历改名
+	for (let [index, filename] of names.entries()) {
+		// 获取文件名和前缀
+	    const { name, ext } = get(filename)
+	    // 发送请求
+	    _request(name, ch => {
+	    	// 如果翻译结果不为空并且不为原本的值
+	    	if (ch && ch != name) {
+		    	// 那么修改文件名
+		    	fs.rename(filename, ch + ext, err => {
+		    		// 如果出现异常，那么直接中止
+			    	if (err) 
+			    		// 抛出异常吧
+			    		throw new Error(``${err.message} ///////////////// ${filename} ///////////////// ${ch}``)
+			    })
+			}
+	    })
+	}
+})()
+)
+code(Var)
+return
+
+::clearconsole::
 Var =
 (
 function clearConsole() {

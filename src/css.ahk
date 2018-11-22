@@ -921,8 +921,7 @@ Return
 ::bg::
 Var =
 (
-background: transparent url('https://iph.href.lu/100x100') center center / 100`% 100`%  no-repeat content-box;
-background-size: cover;
+background: transparent url('https://iph.href.lu/100x100') center center / 100`% 100`%  no-repeat content-box; /* 100`% 100`% 可以换成 background-size: cover */
 )
 SendInput, % Var
 Return

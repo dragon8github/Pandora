@@ -181,6 +181,37 @@ Gui, Pandora:Add, Link,, <a href="https://nodejs.org/dist/latest-v11.x/docs/api/
 Gui, Pandora:Add, Link,, <a href="https://nodejs.org/en/">Nodejs 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/nodejs/node">Nodejs github</a>
 
+Gui, Pandora:Add, Text,  W140 ys, 工具库：
+Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/globby">globby</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/isaacs/minimatch#usage">minimatch</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/jhotmann/node-rename-cli">node-rename-cli</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/jprichardson/node-fs-extra">node-fs-extra</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/ora">ora</a>
+
+Gui, Pandora:Add, Text,  W140 ys, 工具库2：
+Gui, Pandora:Add, Link,, <a href="https://github.com/isaacs/rimraf">rimraf</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/substack/node-mkdirp">node-mkdirp</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/JacksonTian/anywhere">anywhere</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/opn">opn</a>
+Gui, Pandora:Add, Link,, <a href="https://www.npmjs.com/package/cross-env">cross-env</a>
+
+Gui, Pandora:Add, Text,  W140 ys, 工具库3：
+Gui, Pandora:Add, Link,, <a href="https://github.com/remy/nodemon/">nodemon</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/SBoudrias/Inquirer.js">inquirer</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/request/request">request</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/hapijs/joi">joi</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/execa">execa</a>
+
+Gui, Pandora:Add, Text,  W140 ys, 工具库4：
+Gui, Pandora:Add, Link,, <a href="https://github.com/shelljs/shelljs">shelljs</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/nodemailer/nodemailer">nodemailer</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/kvz/locutus">locutus</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/wiredjs/wired-elements">wired-elements</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/olistic/warriorjs">warriorjs</a>
+
+
+
+
 
 
 Gui, Pandora:Tab, 5

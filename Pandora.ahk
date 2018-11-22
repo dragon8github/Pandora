@@ -38,4 +38,5 @@ FileDelete, .\src\*.bak
 #Include src/echarts.ahk	  ; echarts
 #Include src/sql.ahk		  ; sql
 #Include src/bdmap.ahk		  ; bdmap
+#Include src/canvas.ahk		  ; canvas
 #include src/prehosting.ahk	  ; 预设置的快捷键
