@@ -1,4 +1,321 @@
-﻿::canvas.grid::
+﻿::canvas.game::
+::canvas.guess::
+::canvas.initgame::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        background-color: #ddd;
+    }
+
+      #canvas {
+          margin-left: 10px;
+          margin-top: 10px;
+          background: #ffffff;
+          border: thin solid #aaaaaa;
+      }
+
+    </style>
+</head>
+
+<body>
+    <canvas id='canvas' width='500' height='300'>
+        Canvas not supported
+    </canvas>
+</body>
+<script>
+const context = document.getElementById('canvas').getContext('2d');
+
+var guesses = 0;
+var message = "guess the letter from a (lower) to z (higher)";
+var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'z', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+var today = new Date();
+var letterToGuess = "";
+var higherOrLower = "";
+var letterGuessed;
+var gameOver = false;
+
+function initGame() {
+  var letterIndex = Math.floor(Math.random() * letters.length);
+  letterToGuess = letters[letterIndex];
+  guesses = 0;
+  letterGuessed = []
+  gameOver = false
+  window.addEventListener('keydown', eventKeyPressed, true);
+  drawScreen();
+}
+
+function eventKeyPressed(e) {
+  if (!gameOver) {
+    var letterPressed = String.fromCharCode(e.keyCode);
+    letterPressed = letterPressed.toLowerCase();
+
+    // bingo!
+    if (letterPressed == letterToGuess) {
+      gameOver = true
+    } else {
+      var letterIndex = letters.indexOf(letterToGuess);
+      var guessIndex = letters.indexOf(letterPressed);
+      if (~guessIndex) {
+        guesses++;
+        letterGuessed.push(letterPressed);
+        higherOrLower = guessIndex > letterIndex ? "Higher" : "Lower" 
+      }
+    }
+
+    drawScreen();
+  }
+}
+
+function drawScreen() {
+  context.fillStyle = '#ffffaa';
+  context.fillRect(0, 0, 500, 300);
+
+  context.strokeStyle = '#000';
+  context.strokeRect(5, 5, 490, 290);
+
+  context.textBaseline = 'top';
+
+  context.fillStyle = '#000';
+  context.font = '10px Microsoft Yahei';
+  context.fillText(today, 150, 10);
+
+  context.fillStyle = '#ff0000';
+  context.font = '14px Microsoft Yahei';
+  context.fillText(message, 125, 30);
+
+  context.fillStyle = '#109910';
+  context.font = '16px Microsoft Yahei';
+  context.fillText('Guesses:' + guesses, 215, 50);
+
+  context.fillStyle = '#000';
+  context.font = '16px Microsoft Yahei';
+  context.fillText('Higher Or Lower:' + higherOrLower, 150, 125);
+
+  context.fillStyle = '#ff0000';
+  context.font = '16px Microsoft Yahei';
+  context.fillText('Letters Guessed:' + letterGuessed.toString(), 10, 260);
+
+  if (gameOver) {
+    context.fillStyle = '#ff0000';
+    context.font = '40px Microsoft Yahei';
+    context.fillText('You Got it!', 155, 180);
+  }
+}
+
+initGame()
+</script>
+</html>
+)
+code(Var)
+return
+
+!c::
+::canvas::
+    Menu, CanvasMenu, Add, 新建canvas.html, NewCanvasHtml
+	Menu, CanvasMenu, Add, canvas.html, CanvasHandler
+    Menu, CanvasMenu, Add, context.init, CanvasHandler
+    
+    Menu, CanvasMenu, Add,
+    Menu, CanvasMenu, Add,
+    
+    Menu, CanvasMenu, Add, context.fillStyle, CanvasHandler
+    Menu, CanvasMenu, Add, context.fillRect, CanvasHandler
+    Menu, CanvasMenu, Add, context.font, CanvasHandler
+    Menu, CanvasMenu, Add, context.textBaseline, CanvasHandler
+    Menu, CanvasMenu, Add, context.fillText, CanvasHandler
+    Menu, CanvasMenu, Add, context.strokeStyle, CanvasHandler
+    Menu, CanvasMenu, Add, context.strokeRect, CanvasHandler
+    Menu, CanvasMenu, Add, context.strokeTex, CanvasHandler
+    
+    Menu, CanvasMenu, Add,
+    Menu, CanvasMenu, Add,
+    
+    Menu, CanvasMenu, Add, 文本, CanvasHandler
+    Menu, CanvasMenu, Add, 背景, CanvasHandler
+    Menu, CanvasMenu, Add, 图片, CanvasHandler
+    Menu, CanvasMenu, Add, 边框, CanvasHandler
+
+	Menu, CanvasMenu, Show
+	Menu, CanvasMenu, DeleteAll
+return
+
+
+CanvasHandler:
+; MsgBox You selected  from the menu .
+v := A_ThisMenuItem
+Var :=
+
+if (v == "") {
+Var =
+(
+
+)
+}
+
+if (v == "context.strokeTex") {
+Var =
+(
+context.strokeText('Hello Canvas', canvas.width / 2 - 150, canvas.height / 2 + 15);
+)
+}
+
+if (v == "context.strokeStyle") {
+Var =
+(
+context.strokeStyle = '#000';
+)
+}
+
+if (v == "context.strokeRect") {
+Var =
+(
+context.strokeRect(5, 5, 490, 290);
+)
+}
+
+
+if (v == "边框") {
+Var =
+(
+context.strokeStyle = '#000';
+context.strokeRect(5, 5, 490, 290);
+)
+}
+
+
+if (v == "图片") {
+Var =
+(
+var helloworldImage = new Image();
+helloworldImage.onload = function () {
+context.drawImage(helloworldImage, 155, 110);
+}
+helloworldImage.src = 'helloworld.gif'
+)
+}
+
+if (v == "背景") {
+Var =
+(
+context.fillStyle = '#ffffaa';
+context.fillRect(0, 0, 500, 300);
+)
+}
+
+
+if (v == "文本") {
+Var =
+(
+context.fillStyle = '#000';
+context.font = '20px Microsoft Yahei';
+context.textBaseline = 'top';
+context.fillText('Hello World!', 195, 80);
+)
+}
+
+if (v == "context.fillStyle") {
+Var =
+(
+context.fillStyle = '#ffffaa';
+)
+}
+if (v == "context.fillRect") {
+Var =
+(
+context.fillRect(0, 0, 500, 300);
+)
+}
+if (v == "context.font") {
+Var =
+(
+context.font = '20px Microsoft Yahei';
+)
+}
+if (v == "context.textBaseline") {
+Var =
+(
+context.textBaseline = 'top';
+)
+}
+if (v == "context.fillText") {
+Var =
+(
+context.fillText('Hello World!', 195, 80);
+)
+}
+
+if (v == "canvas.html") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        background-color: #ddd;
+    }
+
+    #canvas {
+		width: 600px;
+		height: 300px;
+		margin: 20px;
+		background: #fff;
+    }
+    </style>
+</head>
+
+<body>
+	<!--
+		当设置元素的width/height属性时，是同时修改了该元素本身大小和元素绘图表面的大小。
+		如果是通过 CSS 来设定canvas的大小，那么只会改变元素本身的大小，而不会影响到绘图表面。
+	-->
+	<canvas id='canvas' width='600' height='300'>
+		Canvas not supported
+	</canvas>
+</body>
+<script>
+var canvas = document.getElementById('canvas'),
+	context = canvas.getContext('2d');
+
+context.font = '38pt Arial';
+context.fillStyle = 'cornflowerblue';
+context.strokeStyle = 'blue';
+
+context.fillText('Hello Canvas', canvas.width / 2 - 150, canvas.height / 2 + 15);
+context.strokeText('Hello Canvas', canvas.width / 2 - 150, canvas.height / 2 + 15);
+
+</script>
+</html>
+)
+}
+
+if (v == "context.init") {
+Var =
+(
+var canvas = document.getElementById('canvas'),
+	context = canvas.getContext('2d');
+)
+}
+
+code(Var)
+return
+
+
+::canvas.grid::
 Var =
 (
 const context = document.getElementById('canvas').getContext('2d');
@@ -157,7 +474,7 @@ code(Var)
 return
 
 ::canvas.html::
-::canvas:init::
+::canvas.init::
 Var =
 (
 <!DOCTYPE html>

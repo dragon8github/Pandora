@@ -26,6 +26,7 @@
 	Menu, EventMenu, Add, , EventHandler
 	
 	Menu, EventMenu, Add, .addEventListener('click'`, e => {}), EventHandler
+	Menu, EventMenu, Add, .addEventListener('keydown'`, e => {}) 与 String.fromCharCode(e.keycode), EventHandler
 	Menu, EventMenu, Add, .addEventListener('mouseover'`, e => {}) , EventHandler
 	Menu, EventMenu, Add, .addEventListener('mouseleave'`, e => {}), EventHandler
 	
@@ -72,6 +73,15 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == ".addEventListener('keydown', e => {}) 与 String.fromCharCode(e.keycode)") {
+Var = 
+(
+window.addEventListener('keydown', e => {
+	console.log(20181124200306, String.fromCharCode(e.keycode))
+}, true)
 )
 }
 

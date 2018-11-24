@@ -132,6 +132,7 @@ Gui, Pandora:Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
 Gui, Pandora:Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
 Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
 Gui, Pandora:Add, Text, gNewRxjsIndexHtml W140,新建Rxjs.html
+Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+80, 新建echarts.pin.html(玫瑰饼图)
@@ -168,6 +169,7 @@ Gui, Pandora:Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">dg12345-vue git</a>
 Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:86">dg12345测试地址174</a>
 Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">dg12345演示地址</a>
+Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:86/peyu/test.html">效果图演示地址</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
@@ -534,7 +536,7 @@ return
 
 SaveClipHistory: 
 	filename := A_Desktop . "/" . A_YYYY . A_MM . A_DD . ".txt"
-	GuiControlGet, OutputVar, , ClipHistory, Text
+	GuiControlGet, OutputVar, Pandora:, ClipHistory, Text
 	FileAppend, %OutputVar%, %filename%
 	MsgBox, 保存成功
 return
@@ -544,7 +546,8 @@ ClipChanged(Type) {
 		b := Trim(StrReplace(Clipboard, "`r`n"))
 		; 必须复制的不是空内容但小于200，并且不是在GUI中复制的才进行储存。
 		if (StrLen(b) != 0 && StrLen(b) <= 200 && !WinActive("ahk_class AutoHotkeyGUI")) {
-			GuiControlGet, OutputVar, , ClipHistory, Text
+			; 从文本框获取已有的内容，保存到OutputVar变量中
+			GuiControlGet, OutputVar, Pandora:, ClipHistory, Text
 			; 注意文本框中的文本是`n为换行符，但剪切板是`r`n
 			a := Trim(StrReplace(OutputVar, "`n"))
 			; 文本框是否存在了，存在就不添加了

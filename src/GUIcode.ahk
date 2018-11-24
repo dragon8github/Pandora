@@ -1,4 +1,57 @@
-﻿NewNodejsRenamechName:
+﻿NewCanvasHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        background-color: #ddd;
+    }
+
+    #canvas {
+		width: 600px;
+		height: 300px;
+		margin: 20px;
+		background: #fff;
+    }
+    </style>
+</head>
+
+<body>
+	<!--
+		当设置元素的width/height属性时，是同时修改了该元素本身大小和元素绘图表面的大小。
+		如果是通过 CSS 来设定canvas的大小，那么只会改变元素本身的大小，而不会影响到绘图表面。
+	-->
+	<canvas id='canvas' width='600' height='300'>
+		Canvas not supported
+	</canvas>
+</body>
+<script>
+var canvas = document.getElementById('canvas'),
+	context = canvas.getContext('2d');
+
+context.font = '38pt Arial';
+context.fillStyle = 'cornflowerblue';
+context.strokeStyle = 'blue';
+
+context.fillText('Hello Canvas', canvas.width / 2 - 150, canvas.height / 2 + 15);
+context.strokeText('Hello Canvas', canvas.width / 2 - 150, canvas.height / 2 + 15);
+
+</script>
+</html>
+),  %name%
+RunBy(name)	
+run, % name
+return
+
+NewNodejsRenamechName:
 name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 filename := name . "/index.js"
 FileCreateDir, %name%
