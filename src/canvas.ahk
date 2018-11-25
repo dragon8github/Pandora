@@ -1,4 +1,77 @@
-﻿::canvas.game::
+﻿::canvas.erweima::
+::cabvas.gen::
+::canvas.img::
+::canvas.images::
+::canvas.image::
+Var =
+(
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Image to use:</p>
+    <img id="scream" src="http://www.runoob.com/images/img_the_scream.jpg" alt="The Scream" width="220" height="277">
+    <p>Canvas:</p>
+    <img id="qrcode" src="https://qr.api.cli.im/qr?data=aq&level=H&transparent=false&bgcolor=`%23ffffff&forecolor=`%23000000&blockpixel=12&marginblock=1&logourl=&size=260&kid=cliim&key=c0337212f969a6214f369a5945382d9b" alt="The Scream" width="50" height="50">
+    <p>Canvas:</p>
+    <div id="respic"></div>
+    <canvas id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;"> 您的浏览器不支持 HTML5 canvas 标签。</canvas>
+    <script>
+    var c = document.getElementById("myCanvas"),
+        ctx = c.getContext("2d"),
+        img = document.getElementById("scream"),
+        qrcode = document.getElementById("qrcode"),
+        respic = document.getElementById('respic'),
+        A = false,
+        B = false,
+        maxTimeout = 10,
+        timeout = 0,
+        wait = 4
+
+    function convertCanvasToImage(canvas) {
+        var image = new Image();
+        image.src = c.toDataURL("image/png");
+        return image;
+    }
+
+    img.onload = function() {
+        A = true
+        ctx.drawImage(img, 10, 10);
+    }
+
+    qrcode.onload = function() {
+        B = true
+        qrcode.style.width = 1;
+        qrcode.style.height = 1;
+        ctx.drawImage(qrcode, 50, 50, 100, 100);
+    }
+
+    // 递归
+    var generate = function() {
+        var _data = convertCanvasToImage(c);
+        respic.appendChild(_data);
+    };
+    (function poll() {
+        if (++timeout > maxTimeout * 1000 / wait) {
+            window.alert('超时');
+        };
+        A && B ? generate() : setTimeout(poll, wait);
+    }());
+    </script>
+</body>
+</html>
+)
+code(Var)
+return
+
+::canvas.game::
 ::canvas.guess::
 ::canvas.initgame::
 Var =
@@ -123,6 +196,8 @@ return
     Menu, CanvasMenu, Add, 新建canvas.html, NewCanvasHtml
 	Menu, CanvasMenu, Add, canvas.html, CanvasHandler
     Menu, CanvasMenu, Add, context.init, CanvasHandler
+    Menu, CanvasMenu, Add, canvas.toDataURL(), CanvasHandler
+    Menu, CanvasMenu, Add, window.requestAnimFrame, CanvasHandler
     
     Menu, CanvasMenu, Add,
     Menu, CanvasMenu, Add,
@@ -158,6 +233,29 @@ if (v == "") {
 Var =
 (
 
+)
+}
+
+if (v == "window.requestAnimFrame") {
+Var =
+(
+window.requestAnimFrame = (function(){
+    return  window.requestAnimationFrame       ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            window.oRequestAnimationFrame      ||
+            window.msRequestAnimationFrame     ||
+            function(/* function */ callback, /* DOMElement */ element){
+                window.setTimeout(callback, 1000 / 60);
+            };
+})();
+)
+}
+
+if (v == "canvas.toDataURL()") {
+Var =
+(
+window.open(canvas.toDataURL(), "canvasImage", `left=0,top=0,width=${canvas.width},height=${canvas.height},toolbar=0,resizable=0`);
 )
 }
 

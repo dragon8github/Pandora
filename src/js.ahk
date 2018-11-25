@@ -1,4 +1,25 @@
-﻿::jsuniqid::
+﻿::window.animate::
+::window.requestanimate::
+::requestanimate::
+::requestanimateframe::
+::window.requestanimateframe::
+Var =
+(
+window.requestAnimFrame = (function(){
+    return  window.requestAnimationFrame       ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            window.oRequestAnimationFrame      ||
+            window.msRequestAnimationFrame     ||
+            function(/* function */ callback, /* DOMElement */ element){
+                window.setTimeout(callback, 1000 / 60);
+            };
+})();
+)
+code(Var)
+return
+
+::jsuniqid::
 ::js.uniqid::
 ::uniqid::
 Var =
@@ -737,16 +758,18 @@ return
 ::poll::
 Var =
 (
-// layui的递归
-var maxTimeout = 10
-var timeout = 0
-var wait = 4
-var onCallback = () => { /* say somthing */ }
-;(function poll() {
-  if(++timeout > maxTimeout * 1000 / wait){
-    return error('条件不成立时，在这里写上你的错误提示');
-  };
-  <这里写上你的判断> ? onCallback() : setTimeout(poll, wait);
+// 递归
+var maxTimeout = 10,
+    timeout = 0,
+    wait = 4, 
+    callback = function() {
+       // ... 这样写上条件成功时执行的内容
+    };
+(function poll() {
+    if (++timeout > maxTimeout * 1000 / wait) {
+        return window.alert('超时');
+    };
+    <这里写上你的判断> ? callback() : setTimeout(poll, wait);
 }());
 )
 code(Var)

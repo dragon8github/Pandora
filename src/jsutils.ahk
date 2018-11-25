@@ -69,6 +69,7 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
+    Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
     Menu, utilsMenu, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
     Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
     Menu, utilsMenu, Add, deepcopy 深拷贝, utilsHandler
@@ -133,6 +134,22 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "window.requestAnimFrame") {
+Var =
+(
+window.requestAnimFrame = (function(){
+    return  window.requestAnimationFrame       ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            window.oRequestAnimationFrame      ||
+            window.msRequestAnimationFrame     ||
+            function(/* function */ callback, /* DOMElement */ element){
+                window.setTimeout(callback, 1000 / 60);
+            };
+})();
 )
 }
 
@@ -1334,7 +1351,7 @@ var link = function(href, fn, cssname){
 	//轮询css是否加载完毕
 	;(function poll() {
 	  if(++timeout > time * 1000 / 100){
-	    return error(href + ' timeout');
+	    return console.error(href + ' timeout');
 	  };
 	  <这里写上你的条件> ? fn() : setTimeout(poll, 100);
 	}());
@@ -1384,16 +1401,18 @@ var is_weixn = function () {
 if (v == "poll 递归") {
 Var = 
 (
-// layui的递归
-var maxTimeout = 10
-var timeout = 0
-var wait = 4
-var onCallback = () => { /* say somthing */ }
-;(function poll() {
-  if(++timeout > maxTimeout * 1000 / wait){
-    return error('条件不成立时，在这里写上你的错误提示');
-  };
-  <这里写上你的判断> ? onCallback() : setTimeout(poll, wait);
+// 递归
+var maxTimeout = 10,
+    timeout = 0,
+    wait = 4, 
+    callback = function() {
+       // ... 这样写上条件成功时执行的内容
+    };
+(function poll() {
+    if (++timeout > maxTimeout * 1000 / wait) {
+        return window.alert('超时');
+    };
+    <这里写上你的判断> ? callback() : setTimeout(poll, wait);
 }());
 )
 }
