@@ -17,65 +17,91 @@ Var =
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="main" style="width: 100`%;;height:100vh;"></div>
     <script type="text/javascript">
-    // 基于准备好的dom，初始化echarts实例
+    
+    // 基于准备好的dom，初始化echarts实例（必须先加载 echarts-gl.min.js ）
+    // 基于准备好的dom，初始化echarts实例（必须先加载 echarts-gl.min.js ）
+    // 基于准备好的dom，初始化echarts实例（必须先加载 echarts-gl.min.js ）
     var myChart = echarts.init(document.getElementById('main'));
 
     // https://github.com/dragon8github/Pandora/tree/master/data
     // echarts.registerMap('wangge', `这里写上你的geo.json`); 
 
-    var option = {
-        geo3D: {
-            map: 'china', // wangge
-            viewControl: {
-                // 摄像头的距离 maxDistance: 100, minDistance: 100,
-                distance: 100, 
-                // 上下 minAlpha: 40, maxAlpha: 40,
-                alpha: 40,
-                // 左右 minBeta: 0, maxBeta: 0,
-                beta: 0,
-            },
-            itemStyle: {
-                areaColor: '#1d5e98',
-                opacity: 1,
-                borderWidth: 0.4,
-                borderColor: '#000'
-            },
-            label: {
+     const distance = 100;
+        const alpha = 54.49200177574249;
+        const beta = -35.565489851313075;
+        var option = {
+            tooltip: {
                 show: true,
-                textStyle: {
-                    color: '#fff', //地图初始化区域字体颜色
-                    fontSize: 14,
-                    opacity: 1,
-                    backgroundColor: 'rgba(0,23,11,0)'
-                },
-            },
-            emphasis: { //当鼠标放上去  地区区域是否显示名称
-                label: {
-                    show: true,
-                    textStyle: {
-                        color: '#000',
-                        fontSize: 14,
-                        backgroundColor: 'rgba(0,23,11,0)'
-                    }
+                trigger:'item',
+                alwaysShowContent:true,
+                backgroundColor:'rgba(50,50,50,0.7)',
+                hideDelay:100,
+                triggerOn:'mousemove',
+                enterable:true,
+                padding: 15,
+                formatter: function (params, ticket, callback) {
+                  return '123'
                 }
             },
-            //shading: 'lambert',
-            light: { //光照阴影
-                main: {
-                    color: '#fff', //光照颜色
-                    intensity: 1.2, //光照强度
-                    //shadowQuality: 'high', //阴影亮度
-                    shadow: false, //是否显示阴影
-                    alpha: 55,
-                    beta: 10
+            series: [{
+              type: 'map3D',
+              map: 'DongGuanGrid',
+              top: '-16.8`%',
+              left: '-4.8`%',
+              viewControl: {
+                  // 摄像头的距离 maxDistance: distance, minDistance: distance,
+                  distance: distance, 
+                  // 上下 minAlpha: alpha, maxAlpha: alpha,
+                  alpha: alpha,
+                  // 左右 minBeta: beta, maxBeta:beta,
+                  beta: beta, 
+              },
+              itemStyle: {
+                  areaColor: '#082974',
+                  opacity: 0,
+              },
+              label: {
+                  show: false,
+                  textStyle: {
+                      color: '#fff', //地图初始化区域字体颜色
+                      fontSize: 14,
+                      opacity: 1,
+                      backgroundColor: 'rgba(0,23,11,0)'
+                  },
+              },
+              emphasis: { //当鼠标放上去  地区区域是否显示名称
+                  label: {
+                      show: true,
+                      textStyle: {
+                          color: '#fff',
+                          fontSize: 14,
+                          backgroundColor: 'rgba(0,23,11,0)'
+                      }
+                  },
+                  itemStyle: {
+                      areaColor: '#082974',
+                      opacity: 1,
+                      borderWidth: 0.4,
+                      borderColor: '#000'
+                  },
+              },
+              //shading: 'lambert',
+              light: { //光照阴影
+                  main: {
+                      color: '#fff', //光照颜色
+                      intensity: 1.2, //光照强度
+                      //shadowQuality: 'high', //阴影亮度
+                      shadow: false, //是否显示阴影
+                      alpha: 55,
+                      beta: 10
 
-                },
-                ambient: {
-                    intensity: 0.3
-                }
-            }
-        },
-    };
+                  },
+                  ambient: {
+                      intensity: 0.3
+                  }
+              },
+            }]
+        };
     myChart.setOption(option);
     </script>
 </body>

@@ -94,7 +94,7 @@ Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/">momentjs</a>
 Gui, Pandora:Add, Link,, <a href="http://apizza.cc">apizza</a>
 
 
-Gui, Pandora:Add, Text, W140 Section xs yp+80, cdn：
+Gui, Pandora:Add, Text, W140 Section xs yp+50, cdn：
 Gui, Pandora:Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cdnjs.net/">百度cdn</a>
 Gui, Pandora:Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
@@ -170,6 +170,7 @@ Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-
 Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:86">dg12345测试地址174</a>
 Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">dg12345演示地址</a>
 Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:86/peyu/test.html">效果图演示地址</a>
+Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/dg12345-vue-plus">新版的git</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
