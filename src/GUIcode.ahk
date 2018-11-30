@@ -1,4 +1,217 @@
-﻿NewCanvasHtml:
+﻿
+NewautoscrollHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/dragscroll/0.0.8/dragscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+<script>
+</script>
+
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    #app {
+        height: 200px;
+        background: red; 
+        width: 200px;  
+        overflow: scroll;
+        cursor: move;
+    }
+
+    p {
+        height: 40px;
+        margin: 0;
+        padding: 0;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div id="app" class='dragscroll'>
+        <p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+    </div>
+</body>
+<script>
+
+    $.fn.extend({
+        'autoScroll': function (options) {
+            // 配置参数
+            var opt = $.extend({}, {speed: 1500, size: 4, height: 40, time: 10000}, options)
+            // jQuery对象
+            var $el = this;
+            // 时间器
+            var timer = null;
+            // 核心函数
+            var _autoScroll = function () {
+                // 自动滚动
+                timer =  setInterval(function () {
+                    // 滚动的速度
+                    const speed = opt.speed
+                    // 每次滚动多少条
+                    const size = opt.size;
+                    // 每条的高度是多少
+                    const height = opt.height;
+                    // 每次滚动的距离
+                    const distance = size * height;
+                    // 当前滚动的高度
+                    const currentScrollTop = $el.scrollTop()
+                    // 底部位置
+                    const bottom = $el.prop('scrollHeight') - $el.height()
+                    // 如果已经滚到底了
+                    if (Math.floor(currentScrollTop) === Math.floor(bottom)) {
+                        // 滚回头部
+                        $el.animate({ scrollTop: 0 }, 0).animate({ scrollTop: distance + 'px' }, speed);;
+                    } else {
+                        // 余数
+                        const remainder = currentScrollTop `% height
+                        // 下一次滚动的位置 = 当前位置 + 每次滚动的位置 - 余数
+                        const nextScrollTop = currentScrollTop + distance - remainder
+                        // 开始滚动
+                        $el.animate({ scrollTop: nextScrollTop + 'px' }, speed);
+                    }
+                // 滚动间隔
+                }, opt.time + opt.speed);
+                // 鼠标移入的时候，删除自动滚动, 鼠标移出的时候，自动滚动
+                $el.one('mouseover', function () { clearInterval(timer)}).one('mouseleave', _autoScroll)
+                // 将timer放入jQuery对象的缓存中，方便后续操作
+                $el.data('timer', timer)
+            }
+            // 开始滚动
+            _autoScroll()
+            // 返回时间器，方便后续操作
+            return timer
+        },
+        'stopScroll': function () {
+             // jQuery对象
+            var $el = this;
+            // 时间器
+            var timer = $el.data('timer')
+            // 消除它就是停止它（其实这里还需要结束动画，但就不做那么麻烦了）
+            clearInterval(timer);
+        }
+    });
+
+    $('#app').autoScroll({ height: 40, speed: 300, time: 3000, size: 5 })
+
+   $('#app').niceScroll({ cursorcolor: 'rgba(0,0,0,0.2)', autohidemode: 'hidden' })
+</script>
+</html>
+),  %name%
+RunBy(name)	
+run, % name
+return
+
+NewscrollforeveryHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/dragscroll/0.0.8/dragscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+    <script>
+    </script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    *,
+    ::after,
+    ::before {
+        box-sizing: border-box;
+    }
+
+    #app {
+        height: 200px;
+        background: thin;
+        width: 200px;
+        overflow: scroll;
+        cursor: move;
+    }
+
+    p {
+        height: 40px;
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+<body>
+    <div id="app" class='dragscroll'>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+    </div>
+</body>
+<script>
+const $app = $('#app')
+const innerHeight = 40
+const len = 5
+const distance = innerHeight * len
+let timer = null 
+const start = () => {
+ timer = setInterval(function() {
+     const scrollDistance = $app.scrollTop();
+     if (scrollDistance >= distance) {
+         $app.scrollTop(0)
+     } else {
+         $app.scrollTop(scrollDistance + 1)
+     }
+ }, 10);   
+}
+
+start()
+
+$('#app').niceScroll({ cursorcolor: 'rgba(0,0,0,0.2)', autohidemode: 'hidden' })
+
+$('#app').mouseover(e => {
+    clearInterval(timer);
+}).mouseleave(e => {
+    start()
+})
+</script>
+
+</html>
+
+),  %name%
+RunBy(name)	
+run, % name
+return
+
+
+NewCanvasHtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
 (

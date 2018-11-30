@@ -133,6 +133,8 @@ Gui, Pandora:Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
 Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
 Gui, Pandora:Add, Text, gNewRxjsIndexHtml W140,新建Rxjs.html
 Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
+Gui, Pandora:Add, Text, gNewautoscrollHtml W140,新建autoscroll.html
+Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+80, 新建echarts.pin.html(玫瑰饼图)
