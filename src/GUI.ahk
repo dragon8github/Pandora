@@ -214,9 +214,6 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/olistic/warriorjs">warriorj
 
 
 
-
-
-
 Gui, Pandora:Tab, 5
 Gui, Pandora:Add, Text,  W140 Section, Vue：
 Gui, Pandora:Add, Link,, <a href="http://vuejs.org/">vue</a>
@@ -248,6 +245,12 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/vuetifyjs/nuxt">vuetifyjs/n
 Gui, Pandora:Add, Text,  W160 ys, vux
 Gui, Pandora:Add, Link,, <a href="https://github.com/airyland/vux">vux github</a>
 Gui, Pandora:Add, Link,, <a href="https://vux.li/">vux 官网</a>
+
+
+Gui, Pandora:Add, Text, W140 Section xs yp+180, vue动画钩子：
+Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes">vue-transition</a>
+Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#JavaScript-Hooks">JavaScript-Hooks</a>
+Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/api/#transition-group">transition-group</a>
 
 Gui, Pandora:Tab, 6
 Gui, Pandora:Add, Text,  W140  Section, React：
@@ -349,6 +352,10 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/wuchangming/spy-debugger">s
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/whistle">whistle</a>
 
 
+Gui, Pandora:Add, Text,  W140  ys, 动画库：
+Gui, Pandora:Add, Link,, <a href="https://github.com/julianshapiro/velocity">velocity-github</a>
+Gui, Pandora:Add, Link,, <a href="http://velocityjs.org/">velocity-官网</a>
+Gui, Pandora:Add, Link,, <a href="http://www.mrfront.com/docs/velocity.js/index.html">velocity-中文官网</a>
 
 
 Gui, Pandora:Tab, 8

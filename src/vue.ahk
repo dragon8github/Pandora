@@ -1159,6 +1159,10 @@ return
 ::ref::
 ::v-ref::
 ::v-refs::
+::this.refs::
+::this.ref::
+::this.$ref::
+::this.$refs::
 Var =
 (
 // <select ref="myselect"></select>

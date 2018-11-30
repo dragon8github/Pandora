@@ -1,4 +1,12 @@
-﻿::cdn-vconsole::
+﻿::cdn-dragscroll::
+Var =
+(
+<script src="https://cdn.bootcss.com/dragscroll/0.0.8/dragscroll.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-vconsole::
 ::cdn-console::
 Var =
 (
@@ -68,6 +76,7 @@ return
 
 
 ::cdn-scroll::
+::cdn-nice::
 ::cdn-nicescroll::
 Var =
 (

@@ -12,6 +12,7 @@ FileDelete, .\src\*.bak
 #Include src/lib.ahk          ; 公共函数
 #Include src/help.ahk         ; 辅助功能
 #Include src/makedown.ahk     ; makedown
+#Include src/cdn.ahk          ; CDN   
 #Include src/html.ahk         ; HTML    
 #Include src/three.ahk        ; THREE    
 #Include src/vue.ahk          ; Vue
@@ -29,7 +30,7 @@ FileDelete, .\src\*.bak
 #Include src/arr.ahk          ; arr
 #Include src/ajax.ahk         ; ajax   
 #Include src/react.ahk        ; React
-#Include src/cdn.ahk          ; CDN   
+
 #Include src/github.ahk       ; 云代码库    
 #Include src/Lua.ahk          ; secondkey_board  
 #Include src/gulp.ahk         ; gulp

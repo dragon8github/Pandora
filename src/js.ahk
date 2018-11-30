@@ -1,4 +1,71 @@
-﻿::window.animate::
+﻿::autoscroll::
+::$.autoscroll::
+Var =
+(
+$.fn.extend({
+    'autoScroll': function (options) {
+	    // 配置参数
+	    var opt = $.extend({}, {speed: 1500, size: 4, height: 40, time: 10000}, options)
+	    // jQuery对象
+	    var $el = this;
+	    // 时间器
+	    var timer = null;
+	    // 核心函数
+	    var _autoScroll = function () {
+	        // 自动滚动
+	        timer =  setInterval(function () {
+	            // 滚动的速度
+	            const speed = opt.speed
+	            // 每次滚动多少条
+	            const size = opt.size;
+	            // 每条的高度是多少
+	            const height = opt.height;
+	            // 每次滚动的距离
+	            const distance = size * height;
+	            // 当前滚动的高度
+	            const currentScrollTop = $el.scrollTop()
+	            // 底部位置
+	            const bottom = $el.prop('scrollHeight') - $el.height()
+	            // 如果已经滚到底了
+	            if (Math.floor(currentScrollTop) === Math.floor(bottom)) {
+	                // 滚回头部
+	                $el.animate({ scrollTop: 0 }, 0).animate({ scrollTop: distance + 'px' }, speed);;
+	            } else {
+	                // 余数
+	                const remainder = currentScrollTop `% height
+	                // 下一次滚动的位置 = 当前位置 + 每次滚动的位置 - 余数
+	                const nextScrollTop = currentScrollTop + distance - remainder
+	                // 开始滚动
+	                $el.animate({ scrollTop: nextScrollTop + 'px' }, speed);
+	            }
+	        // 滚动间隔
+	        }, opt.time + opt.speed);
+	        // 鼠标移入的时候，删除自动滚动, 鼠标移出的时候，自动滚动
+	        $el.one('mouseover', function () { clearInterval(timer)}).one('mouseleave', _autoScroll)
+	        // 将timer放入jQuery对象的缓存中，方便后续操作
+	        $el.data('timer', timer)
+	    }
+	    // 开始滚动
+	    _autoScroll()
+	    // 返回时间器，方便后续操作
+	    return timer
+	},
+	'stopScroll': function () {
+	     // jQuery对象
+	    var $el = this;
+	    // 时间器
+	    var timer = $el.data('timer')
+	    // 消除它就是停止它（其实这里还需要结束动画，但就不做那么麻烦了）
+	    clearInterval(timer);
+	}
+});
+
+$('.trajectoryTable').autoScroll()
+)
+code(Var)
+return
+
+::window.animate::
 ::window.requestanimate::
 ::requestanimate::
 ::requestanimateframe::
