@@ -1,4 +1,5 @@
 ﻿::cdn-dragscroll::
+::cdn-drag::
 Var =
 (
 <script src="https://cdn.bootcss.com/dragscroll/0.0.8/dragscroll.min.js"></script>

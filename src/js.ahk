@@ -1,4 +1,61 @@
-﻿::autoscroll::
+﻿::dragscroll::
+Var =
+(
+const dragScroll = el => {
+    var _window = window,
+        _document = document,
+        mousemove = 'mousemove',
+        mouseup = 'mouseup',
+        mousedown = 'mousedown',
+        EventListener = 'EventListener',
+        addEventListener = 'add' + EventListener,
+        removeEventListener = 'remove' + EventListener,
+        newScrollX, newScrollY;
+
+    (function(el, lastClientX, lastClientY, pushed, scroller, cont) {
+        (cont = el.container || el)[addEventListener](
+            mousedown,
+            cont.md = function(e) {
+                if (!el.hasAttribute('nochilddrag') ||
+                    _document.elementFromPoint(
+                        e.pageX, e.pageY
+                    `) == cont
+                `) {
+                    pushed = 1;
+                    lastClientX = e.clientX;
+                    lastClientY = e.clientY;
+
+                    e.preventDefault();
+                }
+            }, 0
+        `);
+
+        _window[addEventListener](
+            mouseup, cont.mu = function() { pushed = 0; }, 0
+        `);
+
+        _window[addEventListener](
+            mousemove,
+            cont.mm = function(e) {
+                if (pushed) {
+                    (scroller = el.scroller || el).scrollLeft -=
+                        newScrollX = (-lastClientX + (lastClientX = e.clientX));
+                    scroller.scrollTop -=
+                        newScrollY = (-lastClientY + (lastClientY = e.clientY));
+                    if (el == _document.body) {
+                        (scroller = _document.documentElement).scrollLeft -= newScrollX;
+                        scroller.scrollTop -= newScrollY;
+                    }
+                }
+            }, 0
+        `);
+    })(el);
+}
+)
+code(Var)
+return
+
+::autoscroll::
 ::$.autoscroll::
 Var =
 (
@@ -29,7 +86,9 @@ $.fn.extend({
 	            // 如果已经滚到底了
 	            if (Math.floor(currentScrollTop) === Math.floor(bottom)) {
 	                // 滚回头部
-	                $el.animate({ scrollTop: 0 }, 0).animate({ scrollTop: distance + 'px' }, speed);;
+                    // $el.animate({ scrollTop: 0 }, 0).animate({ scrollTop: distance + 'px' }, speed);
+                    // 滚回头部
+                    $el.animate({ scrollTop: 0 }, speed);
 	            } else {
 	                // 余数
 	                const remainder = currentScrollTop `% height

@@ -257,7 +257,9 @@ $.fn.extend({
 	            // 如果已经滚到底了
 	            if (Math.floor(currentScrollTop) === Math.floor(bottom)) {
 	                // 滚回头部
-	                $el.animate({ scrollTop: 0 }, 0).animate({ scrollTop: distance + 'px' }, speed);;
+                    // $el.animate({ scrollTop: 0 }, 0).animate({ scrollTop: distance + 'px' }, speed);
+                    // 滚回头部
+                    $el.animate({ scrollTop: 0 }, speed);
 	            } else {
 	                // 余数
 	                const remainder = currentScrollTop `% height
