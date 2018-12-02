@@ -19,6 +19,7 @@ FileDelete, .\src\*.bak
 #Include src/wx.ahk           ; wx
 #Include src/shell.ahk        ; shell
 #Include src/node.ahk         ; nodejs 
+#Include src/canvas.ahk		  ; canvas
 #include src/css.ahk          ; css   
 #Include src/TypeScript.ahk   ; TypeScript
 #Include src/tp.ahk		 	  ; thinkphp
@@ -38,5 +39,4 @@ FileDelete, .\src\*.bak
 #Include src/echarts.ahk	  ; echarts
 ; #Include src/sql.ahk		  ; sql
 #Include src/bdmap.ahk		  ; bdmap
-#Include src/canvas.ahk		  ; canvas
 #include src/prehosting.ahk	  ; 预设置的快捷键

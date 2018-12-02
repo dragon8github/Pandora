@@ -1,4 +1,13 @@
-﻿::canvas.erweima::
+﻿::canvas.wh::
+::canvas.size::
+Var =
+(
+canvas.width, canvas.height
+)
+code(Var)
+return
+
+::canvas.erweima::
 ::cabvas.gen::
 ::canvas.img::
 ::canvas.images::
@@ -193,11 +202,12 @@ return
 
 !c::
 ::canvas::
-    Menu, CanvasMenu, Add, 新建canvas.html, NewCanvasHtml
 	Menu, CanvasMenu, Add, canvas.html, CanvasHandler
     Menu, CanvasMenu, Add, context.init, CanvasHandler
     Menu, CanvasMenu, Add, canvas.toDataURL(), CanvasHandler
     Menu, CanvasMenu, Add, window.requestAnimFrame, CanvasHandler
+    Menu, CanvasMenu, Add, canvas.width, CanvasHandler
+    Menu, CanvasMenu, Add, canvas.height, CanvasHandler
     
     Menu, CanvasMenu, Add,
     Menu, CanvasMenu, Add,
@@ -214,10 +224,34 @@ return
     Menu, CanvasMenu, Add,
     Menu, CanvasMenu, Add,
     
+    
+    Menu, CanvasMenu, Add, context.beginPath / context.closePath, CanvasHandler
+    Menu, CanvasMenu, Add, context.arc, CanvasHandler
+    Menu, CanvasMenu, Add, context.fill, CanvasHandler
+    
+
+    Menu, CanvasMenu, Add,
+    Menu, CanvasMenu, Add,
+    
+    Menu, CanvasMenu, Add, context.drawImage, CanvasHandler
+    
+    Menu, CanvasMenu, Add,
+    Menu, CanvasMenu, Add,
+    
+    Menu, CanvasMenu, Add, canvas.onmousedown, CanvasHandler
+    
+    Menu, CanvasMenu, Add,
+    Menu, CanvasMenu, Add,
+    
     Menu, CanvasMenu, Add, 文本, CanvasHandler
     Menu, CanvasMenu, Add, 背景, CanvasHandler
     Menu, CanvasMenu, Add, 图片, CanvasHandler
     Menu, CanvasMenu, Add, 边框, CanvasHandler
+    Menu, CanvasMenu, Add, 球, CanvasHandler
+    Menu, CanvasMenu, Add, 动画示例：不断下落的球, CanvasHandler
+    Menu, CanvasMenu, Add, 动画示例：两点间的移动 —— 线段距离, CanvasHandler
+    Menu, CanvasMenu, Add, 实战示例：猜英文游戏, CanvasHandler
+    Menu, CanvasMenu, Add, 实战示例：生成二维码图片, CanvasHandler
 
 	Menu, CanvasMenu, Show
 	Menu, CanvasMenu, DeleteAll
@@ -225,7 +259,6 @@ return
 
 
 CanvasHandler:
-; MsgBox You selected  from the menu .
 v := A_ThisMenuItem
 Var :=
 
@@ -235,6 +268,241 @@ Var =
 
 )
 }
+
+if (v == "实战示例：生成二维码图片") {
+SendLevel 1
+SendInput, canvas.erweima{tab}
+return
+}
+
+if (v == "实战示例：猜英文游戏") {
+SendLevel 1
+SendInput, canvas.game{tab}
+return
+}
+
+if (v == "context.drawImage") {
+Var =
+(
+context.drawImage(pointImage, points[i].x, points[i].y, 1, 1);
+)
+}
+
+if (v == "动画示例：两点间的移动 —— 线段距离") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        background-color: #ddd;
+    }
+
+    #canvas {
+		margin: 20px;
+		background: #fff;
+    }
+    </style>
+</head>
+
+<body>
+	<canvas id='canvas' width='500' height='500'>
+		Canvas not supported
+	</canvas>
+</body>
+<script>
+var canvas = document.getElementById('canvas'),
+	context = canvas.getContext('2d')
+
+	// 示例数据
+	var p1 = { x: 20, y: 250 }
+	var p2 = { x: 480, y: 250 }
+	var ball = { x: p1.x, y: p1.y }
+
+	var speed = 5
+
+	var dx = p2.x - p1.x
+	var dy = p2.y - p1.y
+	var distance = Math.sqrt(dx*dx + dy*dy)
+	var moves = distance / speed
+
+	var xunits = (p2.x - p1.x) / moves
+	var yunits = (p2.y - p1.y) / moves
+
+	var pointImage = new Image();
+	pointImage.src = 'a.ico'
+	var points = new Array();
+
+	function drawScreen() {
+		ball.x += xunits
+		ball.y += yunits
+
+		// 边框
+		context.fillStyle = '#eeeeee';
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		context.strokeStyle = '#000000';
+		context.strokeRect(1, 1, canvas.width - 2, canvas.height - 2);
+
+		// 轨迹
+		points.push({ x: ball.x, y: ball.y })
+		for (var i = 0; i < points.length; i++) {
+		    context.drawImage(pointImage, points[i].x, points[i].y, 1, 1);
+		}
+
+		// 球... 
+		context.fillStyle = '#000'
+		context.beginPath()
+		context.arc(ball.x, ball.y, 15, 0, Math.PI*2, true)
+		context.closePath()
+		context.fill()
+	}
+
+	(function gameLoop(){
+		--moves > 0 && setTimeout(gameLoop, 20)
+		drawScreen()
+	}())
+
+</script>
+</html>
+)
+}
+
+if (v == "canvas.onmousedown") {
+Var =
+(
+canvas.onmousedown = function (e) {
+    context.clearRect(0, 0, canvas.width, canvas.height)
+    window.alert('123');
+}
+)
+}
+
+
+if (v == "动画示例：不断下落的球") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html, body{
+        margin: 0
+        padding: 0
+        background-color: #ddd
+    }
+
+    #canvas {
+		margin: 20px
+		background: #fff
+    }
+    </style>
+</head>
+
+<body>
+	<canvas id='canvas' width='500' height='500'>
+		Canvas not supported
+	</canvas>
+</body>
+<script>
+var canvas = document.getElementById('canvas'),
+	context = canvas.getContext('2d')
+
+	var y = 10
+	var x = 250
+	var speed = 5
+
+	function drawScreen () {
+		context.fillStyle = '#eee'
+		context.fillRect(0, 0, canvas.width, canvas.height)
+
+		// 边框
+		context.strokeStyle = '#000'
+		context.strokeRect(5, 5, canvas.width - 2, canvas.height - 2)
+
+		if (y > canvas.height) 
+			y = 0 
+		else
+		 	y += speed
+
+		// 创建一个球
+		context.fillStyle = '#000'
+		context.beginPath()
+		context.arc(x, y, 15, 0, Math.PI*2, true)
+		context.closePath()
+		context.fill()
+	}
+
+	(function gameLoop(){
+		setTimeout(gameLoop, 20)
+		drawScreen()
+	}())
+</script>
+</html>
+)
+}
+
+if (v == "球") {
+Var =
+(
+var y = 10
+var x = 250
+context.fillStyle = '#000'
+context.beginPath()
+context.arc(x, y, 15, 0, Math.PI*2, true)
+context.closePath()
+context.fill()
+)
+}
+
+if (v == "context.beginPath / context.closePath") {
+Var =
+(
+context.beginPath();
+
+context.closePath();
+)
+code(Var)
+Send, {UP}
+return
+}
+
+if (v == "context.arc") {
+Var =
+(
+context.arc(x, y, 15, 0, Math.PI*2, true)
+)
+}
+
+if (v == "context.fill") {
+Var =
+(
+context.fill()
+)
+}
+
+if (v == "canvas.width") {
+Var =
+(
+canvas.width
+)
+}
+
+if (v == "canvas.height") {
+Var =
+(
+canvas.height
+)
+}
+
 
 if (v == "window.requestAnimFrame") {
 Var =
