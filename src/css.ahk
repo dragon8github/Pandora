@@ -1,4 +1,78 @@
-﻿::animate.updown::
+﻿/*
+!s::
+
+    Menu, CssMenu, Add, 上下翻滚：transform: rotateX(180deg), CssHandler
+    Menu, CssMenu, Add, 左右翻滚：transform: rotateY(180deg), CssHandler
+    Menu, CssMenu, Add, 原地旋转倒立：transform: rotate(180deg), CssHandler
+    
+    Menu, CssMenu, Add, 
+    Menu, CssMenu, Add, 
+    
+    Menu, CssMenu, Add, transform: translate(-50`%`, -50`%), CssHandler
+    Menu, CssMenu, Add, transform: translateY(-50`%), CssHandler
+    Menu, CssMenu, Add, transform: translateX(-50`%), CssHandler   
+    
+    Menu, CssMenu, Add, 
+    Menu, CssMenu, Add, 
+
+	Menu, CssMenu, Show
+	Menu, CssMenu, DeleteAll
+return
+*/
+
+
+CssHandler:
+v := A_ThisMenuItem
+Var :=
+
+if (v == "") {
+Var =
+(
+)
+}
+
+if (v == "上下翻滚：transform: rotateX(180deg)") {
+Var =
+(
+transform: rotateX(180deg)
+)
+}
+if (v == "左右翻滚：transform: rotateY(180deg)") {
+Var =
+(
+transform: rotateY(180deg)
+)
+}
+if (v == "原地旋转倒立：transform: rotate(180deg)") {
+Var =
+(
+transform: rotate(180deg)
+)
+}
+if (v == "transform: translate(-50%, -50%)") {
+Var =
+(
+transform: translate(-50`%, -50`%)
+)
+}
+if (v == "transform: translateY(-50%)") {
+Var =
+(
+transform: translateY(-50`%)
+)
+}
+if (v == "transform: translateX(-50%)") {
+Var =
+(
+transform: translateX(-50`%)
+)
+}
+code(Var)
+return
+
+
+
+::animate.updown::
 Var =
 (
 .fadeOutDown {

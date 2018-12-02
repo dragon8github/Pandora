@@ -30,14 +30,13 @@ FileDelete, .\src\*.bak
 #Include src/arr.ahk          ; arr
 #Include src/ajax.ahk         ; ajax   
 #Include src/react.ahk        ; React
-
 #Include src/github.ahk       ; 云代码库    
 #Include src/Lua.ahk          ; secondkey_board  
 #Include src/gulp.ahk         ; gulp
 #Include src/docker.ahk       ; docker
 #Include src/python.ahk		  ; python
 #Include src/echarts.ahk	  ; echarts
-#Include src/sql.ahk		  ; sql
+; #Include src/sql.ahk		  ; sql
 #Include src/bdmap.ahk		  ; bdmap
 #Include src/canvas.ahk		  ; canvas
 #include src/prehosting.ahk	  ; 预设置的快捷键
