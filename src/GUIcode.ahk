@@ -1,4 +1,86 @@
-﻿
+﻿NewvuetransitionHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+
+    }
+
+    .hello {
+        background: red;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 50`%;
+        top: 50`%;
+        transform: translate(-50`%, -50`%);
+    }
+    
+    .msgbox-bounce-leave-active, .msgbox-bounce-enter-active {
+        transition: .3s all ease;
+    }
+    .msgbox-bounce-enter {
+      opacity: 0;
+      transform: translate3d(-50`%, -50`%, 0) scale(0.7);
+    }
+    .msgbox-bounce-leave-active {
+      opacity: 0;
+      transform: translate3d(-50`%, -50`%, 0) scale(0.9);
+    }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="show = !show">
+          Toggle
+        </button>
+        <transition name="msgbox-bounce">
+          <p v-if="show" class='hello'>hello</p>
+        </transition>
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: [],
+        show: true
+    },
+    methods: {
+        handleClick: function () {
+
+        }
+    },
+    beforeMount: function () {
+
+    }
+})
+</script>
+</html>
+),  %name%
+RunBy(name)	
+run, % name
+return
+
+
 NewautoscrollHtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
@@ -76,7 +158,9 @@ FileAppend,
                     // 如果已经滚到底了
                     if (Math.floor(currentScrollTop) === Math.floor(bottom)) {
                         // 滚回头部
-                        $el.animate({ scrollTop: 0 }, 0).animate({ scrollTop: distance + 'px' }, speed);;
+                        // $el.animate({ scrollTop: 0 }, 0).animate({ scrollTop: distance + 'px' }, speed);
+                        // 滚回头部
+                        $el.animate({ scrollTop: 0 }, speed);
                     } else {
                         // 余数
                         const remainder = currentScrollTop `% height

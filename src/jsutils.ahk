@@ -118,6 +118,7 @@
     Menu, utilsMenu, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsMenu, Add, $.autoscroll 自动滚动, utilsHandler
     Menu, utilsMenu, Add, $.scrollforevery 无缝滚动, utilsHandler
+    Menu, utilsMenu, Add, dragscroll 拖拽滚动, utilsHandler
 
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -135,6 +136,62 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "dragscroll 拖拽滚动") {
+Var = 
+(
+const dragScroll = el => {
+    var _window = window,
+        _document = document,
+        mousemove = 'mousemove',
+        mouseup = 'mouseup',
+        mousedown = 'mousedown',
+        EventListener = 'EventListener',
+        addEventListener = 'add' + EventListener,
+        removeEventListener = 'remove' + EventListener,
+        newScrollX, newScrollY;
+
+    (function(el, lastClientX, lastClientY, pushed, scroller, cont) {
+        (cont = el.container || el)[addEventListener](
+            mousedown,
+            cont.md = function(e) {
+                if (!el.hasAttribute('nochilddrag') ||
+                    _document.elementFromPoint(
+                        e.pageX, e.pageY
+                    `) == cont
+                `) {
+                    pushed = 1;
+                    lastClientX = e.clientX;
+                    lastClientY = e.clientY;
+
+                    e.preventDefault();
+                }
+            }, 0
+        `);
+
+        _window[addEventListener](
+            mouseup, cont.mu = function() { pushed = 0; }, 0
+        `);
+
+        _window[addEventListener](
+            mousemove,
+            cont.mm = function(e) {
+                if (pushed) {
+                    (scroller = el.scroller || el).scrollLeft -=
+                        newScrollX = (-lastClientX + (lastClientX = e.clientX));
+                    scroller.scrollTop -=
+                        newScrollY = (-lastClientY + (lastClientY = e.clientY));
+                    if (el == _document.body) {
+                        (scroller = _document.documentElement).scrollLeft -= newScrollX;
+                        scroller.scrollTop -= newScrollY;
+                    }
+                }
+            }, 0
+        `);
+    })(el);
+}
 )
 }
 

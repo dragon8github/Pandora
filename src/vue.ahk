@@ -269,14 +269,23 @@ return
 
   Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, this.$forceUpdate(), VueHandler
-  Menu, VueMenu, Add, vue.computed, VueHandler
-  Menu, VueMenu, Add, vue.watch, VueHandler
+  
   Menu, VueMenu, Add, vue.deep.watch, VueHandler
   Menu, VueMenu, Add, vue.watch-vuex, VueHandler
+  
   Menu, VueMenu, Add, vue.data, VueHandler
   Menu, VueMenu, Add, vue.methods, VueHandler
+  Menu, VueMenu, Add, vue.computed, VueHandler
+  Menu, VueMenu, Add, vue.watch, VueHandler
+  Menu, VueMenu, Add, vue.components, VueHandler
+  
   Menu, VueMenu, Add, vue.style, VueHandler
   Menu, VueMenu, Add, v-for, VueHandler
+  Menu, VueMenu, Add, $refs, VueHandler
+  
+  Menu, VueMenu, Add, <transition-group>, VueHandler
+  Menu, VueMenu, Add, <transition>, VueHandler
+  Menu, VueMenu, Add, <transition v-on...>, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -322,6 +331,135 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "<transition v-on...>") {
+Var = 
+(
+<transition
+  v-on:before-enter="beforeEnter"
+  v-on:enter="enter"
+  v-on:after-enter="afterEnter"
+  v-on:enter-cancelled="enterCancelled"
+
+  v-on:before-leave="beforeLeave"
+  v-on:leave="leave"
+  v-on:after-leave="afterLeave"
+  v-on:leave-cancelled="leaveCancelled"
+>
+  <!-- ... -->
+</transition>
+
+// ...
+methods: {
+  // --------
+  // 进入中
+  // --------
+
+  beforeEnter: function (el) {
+    // ...
+  },
+  // 当与 CSS 结合使用时
+  // 回调函数 done 是可选的
+  enter: function (el, done) {
+    // ...
+    done()
+  },
+  afterEnter: function (el) {
+    // ...
+  },
+  enterCancelled: function (el) {
+    // ...
+  },
+
+  // --------
+  // 离开时
+  // --------
+
+  beforeLeave: function (el) {
+    // ...
+  },
+  // 当与 CSS 结合使用时
+  // 回调函数 done 是可选的
+  leave: function (el, done) {
+    // ...
+    done()
+  },
+  afterLeave: function (el) {
+    // ...
+  },
+  // leaveCancelled 只用于 v-show 中
+  leaveCancelled: function (el) {
+    // ...
+  }
+}
+)
+}
+
+if (v == "<transition>") {
+Var = 
+(
+<transition name="msgbox-bounce">
+  <div class="msgbox" v-show="value">
+     
+  </div>
+</transition>
+
+.msgbox-bounce-leave-active, .msgbox-bounce-enter-active {
+    transition: .3s all ease;
+}
+.msgbox-bounce-enter {
+  opacity: 0;
+  transform: translate3d(-50`%, -50`%, 0) scale(0.7);
+}
+.msgbox-bounce-leave-active {
+  opacity: 0;
+  transform: translate3d(-50`%, -50`%, 0) scale(0.9);
+}
+)
+}
+
+if (v == "<transition-group>") {
+Var = 
+(
+<transition-group name='fadeIn' @enter="fadeIn" @leave='fadeOut' class='news__items' tag='ul'>
+  <li class='news__item' v-for='(item, index) in analysisOfPublicOpinion' :key='index' 
+      v-if='index >= page * 5 && index < page * 5 + 5'
+      :data-index='index'
+      @click='go(item.link)'
+  >
+    <div class='news__item--index'>{{ index + 1 }}</div>
+    <article class='news__item--article'>{{ item.title }}</article>
+  </li>
+</transition-group>
+
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.fadeIn-enter-active, .fadeIn-leave-active {
+  transition: all .5s ease;
+}
+
+.fadeIn-enter, .fadeIn-leave-to{
+  opacity: 0;
+}
+</style>
+)
+}
+
+if (v == "vue.components") {
+Var = 
+(
+import myprogress from '@/components/myprogress.vue'
+
+)
+}
+
+if (v == "$refs") {
+Var = 
+(
+// <select ref="myselect"></select>
+this.$refs.myselect
 )
 }
 
@@ -1154,18 +1292,17 @@ v-cloak
 code(Var)
 return
 
+::this.refs::
+::this.ref::
+::this.$ref::
+::this.$refs::
 ::$refs::
 ::$ref::
 ::ref::
 ::v-ref::
 ::v-refs::
-::this.refs::
-::this.ref::
-::this.$ref::
-::this.$refs::
 Var =
 (
-// <select ref="myselect"></select>
 this.$refs.myselect
 )
 code(Var)
