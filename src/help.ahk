@@ -98,6 +98,18 @@ Var =
 code(Var)
 return
 
+::ahklevel::
+::ahksend::
+::ahksendlevel::
+Var =
+(
+SendLevel 1
+SendInput, falangjindutiao{tab}
+return
+)
+code(Var)
+return
+
 ::ahkmenu2::
 Var =
 (
@@ -107,8 +119,6 @@ Loop `% reactArray.MaxIndex() {
     Menu, reactArray, Add, `%this_life`%, ReactMenuHandler
 }
 Menu, reactArray, Show
-
-
 
 
 ReactMenuHandler:

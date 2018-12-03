@@ -952,34 +952,25 @@ export default class ClickOutside extends Component {
 code(Var)
 return
 
+
 ::taobaojiejuefangan::
 ::flexiable::
 ::flexible::
+::flexable::
+::taobao::
 Var =
 (
+//////////////////////////////////////////////
+JavaScript
+//////////////////////////////////////////////
 (function flexible (window, document) {
   var docEl = document.documentElement
-  var dpr = window.devicePixelRatio || 1
-
-  // adjust body font size
-  function setBodyFontSize () {
-    if (document.body) {
-      document.body.style.fontSize = (12 * dpr) + 'px'
-    }
-    else {
-      document.addEventListener('DOMContentLoaded', setBodyFontSize)
-    }
-  }
-  setBodyFontSize();
-
   // set 1rem = viewWidth / 10
   function setRemUnit () {
     var rem = docEl.clientWidth / 10
     docEl.style.fontSize = rem + 'px'
   }
-
   setRemUnit()
-
   // reset rem unit on page resize
   window.addEventListener('resize', setRemUnit)
   window.addEventListener('pageshow', function (e) {
@@ -987,20 +978,18 @@ Var =
       setRemUnit()
     }
   })
-
-  // detect 0.5px supports
-  if (dpr >= 2) {
-    var fakeBody = document.createElement('body')
-    var testElement = document.createElement('div')
-    testElement.style.border = '.5px solid transparent'
-    fakeBody.appendChild(testElement)
-    docEl.appendChild(fakeBody)
-    if (testElement.offsetHeight === 1) {
-      docEl.classList.add('hairlines')
-    }
-    docEl.removeChild(fakeBody)
-  }
 }(window, document))
+//////////////////////////////////////////////
+scss
+//////////////////////////////////////////////
+$root_fontsize: 192; // 因为效果图是1920 / 10
+// $base-font-size: 75px; //design iphone6: 375px * 2 / 10 = 75px; --design
+// $base-font-size: 32px; //design iphone3gs: 320px / 10 = 32px
+// $base-font-size: 64px; //design iphone4/5: 320px * 2 / 10 = 64px
+// $base-font-size: 124.2px; //design iphone6: 414px * 3 / 10 = 124.2px;
+@function rem($px) {
+    @return ($px / $root_fontsize ) * 1rem;
+}
 )
 code(Var)
 return
@@ -1208,11 +1197,12 @@ axios({
   data: {
     firstName: 'Fred',
     lastName: 'Flintstone'
-  }
+  },
+  // headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
+  // data: Qs.stringify({userAccount: 'dgeduc-b', userPwd: '123456', type: 'account', }),
 }).then(response => {
 	console.log(20181021225057, response)
 })
-
 )
 code(Var)
 return

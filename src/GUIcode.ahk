@@ -536,6 +536,8 @@ FileAppend,
     <meta charset="UTF-8">
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/qs/6.5.2/qs.min.js"></script>
 </head>
 
 <body>
@@ -547,13 +549,13 @@ FileAppend,
  * get 请求
  */
 axios.get('http://192.168.31.97/index.php?a=123').then(response => {
-    console.log(%t%, response)
+    console.log(20181203202901, response)
 })
 
 /**
  * post application/x-www-form-urlencoded;charset=utf-8
  * https://github.com/axios/axios#browser
- * 推荐使用 qs： 
+ * 推荐使用 qs：
  * $ cnpm install qs
  * const params = qs.stringify({ 'a': 123 })
  */
@@ -562,14 +564,32 @@ params.append('a', '123');
 axios.post('http://192.168.31.97/index.php', params, {
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
 }).then(response => {
-    console.log(%t%, response)
+    console.log(20181203202901, response)
 })
+
+/**
+ * axios(url, [config]) + qs + application/x-www-form-urlencoded
+ * @param {*} 参数 参数说明
+ */
+ axios('http://120.77.146.174:84/api/admin/user/sysUser/login', {
+       method: 'POST',
+       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
+       data: Qs.stringify({
+           userAccount: 'dgeduc-b',
+           userPwd: '123456',
+           type: 'account',
+        }),
+ }).then(response => {
+     console.log(20181203100805, response)
+     // return response.json()
+ })
+
 
 /**
  * post application/json;charset=utf-8
  */
 axios.post('http://192.168.31.97/index.php', {a: 123}).then(response => {
-    console.log(%t%, response)
+    console.log(20181203202901, response)
 })
 
 // ajax（默认是application/json;charset=utf-8）
@@ -581,7 +601,7 @@ axios({
     lastName: 'Flintstone'
   }
 }).then(response => {
-	console.log(%t%, response)
+	console.log(20181203202901, response)
 })
 
 // ajax（指定为application/x-www-form-urlencoded;charset=utf-8）
@@ -594,7 +614,7 @@ axios({
   data: params2,
   headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
 }).then(response => {
-	console.log(%t%, response)
+	console.log(20181203202901, response)
 })
 </script>
 </html>

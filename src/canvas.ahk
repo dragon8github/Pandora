@@ -317,20 +317,34 @@ Var =
 	</canvas>
 </body>
 <script>
-var canvas = document.getElementById('canvas'),
-	context = canvas.getContext('2d')
+	var canvas = document.getElementById('canvas'),
+		context = canvas.getContext('2d')
+
+	// requestAnimFrame API
+	window.requestAnimFrame = (function(){
+	    return  window.requestAnimationFrame       ||
+	            window.webkitRequestAnimationFrame ||
+	            window.mozRequestAnimationFrame    ||
+	            window.oRequestAnimationFrame      ||
+	            window.msRequestAnimationFrame     ||
+	            function(/* function */ callback, /* DOMElement */ element){
+	                window.setTimeout(callback, 1000 / 60);
+	            };
+	})();
 
 	// 示例数据
 	var p1 = { x: 20, y: 250 }
 	var p2 = { x: 480, y: 250 }
 	var ball = { x: p1.x, y: p1.y }
-
 	var speed = 5
 
+	//////////////////////////////////////////////
+	// 核心公式
 	var dx = p2.x - p1.x
 	var dy = p2.y - p1.y
 	var distance = Math.sqrt(dx*dx + dy*dy)
 	var moves = distance / speed
+	//////////////////////////////////////////////
 
 	var xunits = (p2.x - p1.x) / moves
 	var yunits = (p2.y - p1.y) / moves
@@ -352,7 +366,7 @@ var canvas = document.getElementById('canvas'),
 		// 轨迹
 		points.push({ x: ball.x, y: ball.y })
 		for (var i = 0; i < points.length; i++) {
-		    context.drawImage(pointImage, points[i].x, points[i].y, 1, 1);
+		    context.drawImage(pointImage, points[i].x, points[i].y, 20, 20);
 		}
 
 		// 球... 
@@ -364,13 +378,12 @@ var canvas = document.getElementById('canvas'),
 	}
 
 	(function gameLoop(){
-		--moves > 0 && setTimeout(gameLoop, 20)
+		--moves > 0 && window.requestAnimFrame(gameLoop)
 		drawScreen()
 	}())
 
 </script>
-</html>
-)
+</html>)
 }
 
 if (v == "canvas.onmousedown") {

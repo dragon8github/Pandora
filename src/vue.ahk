@@ -272,6 +272,8 @@ return
   
   Menu, VueMenu, Add, vue.deep.watch, VueHandler
   Menu, VueMenu, Add, vue.watch-vuex, VueHandler
+  Menu, VueMenu, Add, vue.watch-$route, VueHandler
+  Menu, VueMenu, Add, , VueHandler
   
   Menu, VueMenu, Add, vue.data, VueHandler
   Menu, VueMenu, Add, vue.methods, VueHandler
@@ -331,6 +333,18 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "vue.watch-$route") {
+Var = 
+(
+watch: {
+    '$route'(value) {
+        if (value.name == 'login') this.show = false;
+        else this.show = true;
+    }
+},
 )
 }
 

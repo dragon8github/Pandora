@@ -110,7 +110,7 @@
     
     Menu, utilsMenu, Add, curry2 二元参数的手动柯里化, utilsHandler
     Menu, utilsMenu, Add, es6.class, utilsHandler
-    Menu, utilsMenu, Add, rem 解决方案, utilsHandler
+    Menu, utilsMenu, Add, rem 解决方案 / 淘宝解决方案, utilsHandler
     Menu, utilsMenu, Add, cookie 库, utilsHandler
     Menu, utilsMenu, Add, Model 类, utilsHandler
     Menu, utilsMenu, Add, AMD/CommonJS/factory/module, utilsHandler
@@ -1371,52 +1371,10 @@ function countDown ($dom) {
 )
 }
 
-if (v == "rem 解决方案") {
-Var = 
-(
-/*
- (function flexible (window, document) {
-   var docEl = document.documentElement
-   // set 1rem = viewWidth / 10
-   function setRemUnit () {
-     var rem = docEl.clientWidth / 10
-     docEl.style.fontSize = rem + 'px'
-   }
-   setRemUnit()
-   // reset rem unit on page resize
-   window.addEventListener('resize', setRemUnit)
-   window.addEventListener('pageshow', function (e) {
-     if (e.persisted) {
-       setRemUnit()
-     }
-   })
- }(window, document))
-*/
-
-// rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，1920-192如此类推
-$vw_fontsize: 75; // iPhone 6尺寸的根元素大小基准值
-@function rem($px) {
-    @return ($px / $vw_fontsize ) * 1rem;
-}
-
-// 根元素大小使用 vw 单位
-$vw_design: 750;
-html {
-    font-size: ($vw_fontsize / ($vw_design / 2)) * 100vw;
-    // 同时，通过Media Queries 限制根元素最大最小值
-    @media screen and (max-width: 320px) {
-        font-size: 64px;
-    }
-    @media screen and (min-width: 540px) {
-        font-size: 108px;
-    }
-}
-// body 也增加最大最小宽度限制，避免默认100`%宽度的 block 元素跟随 body 而过大过小
-body {
-    max-width: 540px;
-    min-width: 320px;
-}
-)
+if (v == "rem 解决方案 / 淘宝解决方案") {
+SendLevel 1
+SendInput, taobao{tab}
+return 
 }
 
 if (v == "lazyload 图片懒加载") {

@@ -1,4 +1,18 @@
-﻿::cdn-dragscroll::
+﻿::cdn-qs::
+Var =
+(
+<script src="https://cdn.bootcss.com/qs/6.5.2/qs.min.js"></script>
+
+Qs.stringify({
+  userAccount: 'dgeduc-b',
+  userPwd: '123456',
+  type: 'account',
+})
+)
+code(Var)
+return
+
+::cdn-dragscroll::
 ::cdn-drag::
 Var =
 (

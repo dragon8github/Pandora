@@ -146,7 +146,7 @@ code(code)
     Clipboard := code
     ; 这里也需要等待，否则有几率出现黏贴不出的情况，如果出现黏贴不出的情况，就尝试调大这里的数值把
     Sleep, 200
-    SendInput, ^+v
+    SendInput, {CtrlDown}{ShiftDown}v{CtrlUp}{ShiftUp}
     ; 这里至少需要等待100m，原因不详
     sleep, 100
     Clipboard := tmp
