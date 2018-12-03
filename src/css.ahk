@@ -1,4 +1,19 @@
-﻿::maopaojindutiao::
+﻿::px2rem::
+Var =
+(
+$root_fontsize: 192; // 因为效果图是1920 / 10
+// $base-font-size: 75px; //design iphone6: 375px * 2 / 10 = 75px; --design
+// $base-font-size: 32px; //design iphone3gs: 320px / 10 = 32px
+// $base-font-size: 64px; //design iphone4/5: 320px * 2 / 10 = 64px
+// $base-font-size: 124.2px; //design iphone6: 414px * 3 / 10 = 124.2px;
+@function rem($px) {
+    @return ($px / $root_fontsize ) * 1rem;
+}
+)
+code(Var)
+return
+
+::maopaojindutiao::
 ::qishuijindutiao::
 Var =
 (
@@ -53,6 +68,16 @@ return
     Menu, CssMenu, Add, transform: translate(-50`%`, -50`%), CssHandler
     Menu, CssMenu, Add, transform: translateY(-50`%), CssHandler
     Menu, CssMenu, Add, transform: translateX(-50`%), CssHandler   
+        
+    Menu, CssMenu, Add, 
+    Menu, CssMenu, Add, 
+    
+    Menu, CssMenu, Add, ell, CssHandler2
+    Menu, CssMenu, Add, loading..., CssHandler2
+    Menu, CssMenu, Add, center, CssHandler2
+    Menu, CssMenu, Add, ycenter, CssHandler2
+    Menu, CssMenu, Add, xcenter, CssHandler2
+    Menu, CssMenu, Add, px2rem, CssHandler2
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -64,7 +89,10 @@ return
 	Menu, CssMenu, DeleteAll
 return
 
-
+CssHandler2:
+SendLevel 1
+SendInput, %A_ThisMenuItem%{tab}
+return
 
 CssHandler:
 v := A_ThisMenuItem

@@ -248,10 +248,12 @@ return
     Menu, CanvasMenu, Add, 图片, CanvasHandler
     Menu, CanvasMenu, Add, 边框, CanvasHandler
     Menu, CanvasMenu, Add, 球, CanvasHandler
-    Menu, CanvasMenu, Add, 动画示例：不断下落的球, CanvasHandler
-    Menu, CanvasMenu, Add, 动画示例：两点间的移动 —— 线段距离, CanvasHandler
     Menu, CanvasMenu, Add, 实战示例：猜英文游戏, CanvasHandler
     Menu, CanvasMenu, Add, 实战示例：生成二维码图片, CanvasHandler
+    Menu, CanvasMenu, Add, 动画示例：不断下落的球, CanvasHandler
+    Menu, CanvasMenu, Add, 动画示例：两点间的移动 —— 线段距离, CanvasHandler
+    Menu, CanvasMenu, Add, 动画示例：矢量运动与三角函数（cos/sin）, CanvasHandler
+    Menu, CanvasMenu, Add, 动画示例：撞球反弹（180 - x 或者 360 - y）, CanvasHandler
 
 	Menu, CanvasMenu, Show
 	Menu, CanvasMenu, DeleteAll
@@ -266,6 +268,214 @@ if (v == "") {
 Var =
 (
 
+)
+}
+
+if (v == "动画示例：撞球反弹（180 - x 或者 360 - y）") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        background-color: #ddd;
+    }
+
+    #canvas {
+		margin: 20px;
+		background: #fff;
+    }
+    </style>
+</head>
+
+<body>
+	<canvas id='canvas' width='500' height='500'>
+		Canvas not supported
+	</canvas>
+</body>
+<script>
+	var canvas = document.getElementById('canvas'),
+		context = canvas.getContext('2d')
+
+	// requestAnimFrame API
+	window.requestAnimFrame = (function(){
+	    return  window.requestAnimationFrame       ||
+	            window.webkitRequestAnimationFrame ||
+	            window.mozRequestAnimationFrame    ||
+	            window.oRequestAnimationFrame      ||
+	            window.msRequestAnimationFrame     ||
+	            function(/* function */ callback, /* DOMElement */ element){
+	                window.setTimeout(callback, 1000 / 60);
+	            };
+	})();
+
+	// 示例数据
+	var p1 = { x: 20, y: 20 }
+	var ball = { x: p1.x, y: p1.y }
+	var speed = 5
+
+
+	//////////////////////////////////////////////
+	// 三角函数公式
+	var angle = 35
+	var radians = angle * Math.PI / 180
+	var xunits = Math.cos(radians) * speed
+	var yunits = Math.sin(radians) * speed
+	//////////////////////////////////////////////
+	
+	var pointImage = new Image();
+	pointImage.src = 'a.ico'
+	var points = new Array();
+
+	function drawScreen() {
+		ball.x += xunits
+		ball.y += yunits
+
+		// 边框
+		context.fillStyle = '#eeeeee';
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		context.strokeStyle = '#000000';
+		context.strokeRect(1, 1, canvas.width - 2, canvas.height - 2);
+
+		// 轨迹
+		points.push({ x: ball.x, y: ball.y })
+		for (var i = 0; i < points.length; i++) {
+		    context.drawImage(pointImage, points[i].x, points[i].y, 20, 20);
+		}
+
+		// 球... 
+		context.fillStyle = '#000'
+		context.beginPath()
+		context.arc(ball.x, ball.y, 15, 0, Math.PI * 2, true)
+		context.closePath()
+		context.fill()
+
+		// 如果球撞到右边或者左边，那么用180°减去这个矢量来的时候的角度，得出入射角度。
+		if (ball.x > canvas.width || ball.x <0) {
+			angle = 180 - angle;
+			updateBall()
+		// 如果球撞到顶部或者底部，用360°减去矢量来的时候的角度。
+		} else if (ball.y > canvas.height || ball.y < 0) {
+			angle = 360 - angle;
+			updateBall()
+		}
+	}
+
+	function updateBall() {
+		radians = angle * Math.PI / 180
+		xunits = Math.cos(radians) * speed
+		yunits = Math.sin(radians) * speed
+	}
+
+	(function gameLoop(){
+		window.requestAnimFrame(gameLoop)
+		drawScreen()
+	}())
+
+</script>
+</html>
+)
+}
+
+if (v == "动画示例：矢量运动与三角函数（cos/sin）") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        background-color: #ddd;
+    }
+
+    #canvas {
+		margin: 20px;
+		background: #fff;
+    }
+    </style>
+</head>
+
+<body>
+	<canvas id='canvas' width='500' height='500'>
+		Canvas not supported
+	</canvas>
+</body>
+<script>
+	var canvas = document.getElementById('canvas'),
+		context = canvas.getContext('2d')
+
+	// requestAnimFrame API
+	window.requestAnimFrame = (function(){
+	    return  window.requestAnimationFrame       ||
+	            window.webkitRequestAnimationFrame ||
+	            window.mozRequestAnimationFrame    ||
+	            window.oRequestAnimationFrame      ||
+	            window.msRequestAnimationFrame     ||
+	            function(/* function */ callback, /* DOMElement */ element){
+	                window.setTimeout(callback, 1000 / 60);
+	            };
+	})();
+
+	// 示例数据
+	var p1 = { x: 20, y: 20 }
+	var ball = { x: p1.x, y: p1.y }
+	var speed = 5
+
+
+	//////////////////////////////////////////////
+	// 三角函数公式
+	var angle = 45
+	var radians = angle * Math.PI / 180
+	var xunits = Math.cos(radians) * speed
+	var yunits = Math.sin(radians) * speed
+	//////////////////////////////////////////////
+	
+	var pointImage = new Image();
+	pointImage.src = 'a.ico'
+	var points = new Array();
+
+	function drawScreen() {
+		ball.x += xunits
+		ball.y += yunits
+
+		// 边框
+		context.fillStyle = '#eeeeee';
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		context.strokeStyle = '#000000';
+		context.strokeRect(1, 1, canvas.width - 2, canvas.height - 2);
+
+		// 轨迹
+		points.push({ x: ball.x, y: ball.y })
+		for (var i = 0; i < points.length; i++) {
+		    context.drawImage(pointImage, points[i].x, points[i].y, 20, 20);
+		}
+
+		// 球... 
+		context.fillStyle = '#000'
+		context.beginPath()
+		context.arc(ball.x, ball.y, 15, 0, Math.PI * 2, true)
+		context.closePath()
+		context.fill()
+	}
+
+	(function gameLoop(){
+		window.requestAnimFrame(gameLoop)
+		drawScreen()
+	}())
+
+</script>
+</html>
 )
 }
 
