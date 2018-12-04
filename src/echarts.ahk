@@ -767,6 +767,7 @@ return
 ::geo.json.fn::
 ::geo.fn::
 ::geo.class::
+::createPolygon::
 Var =
 (
 /**

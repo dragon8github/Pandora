@@ -89,6 +89,7 @@ return
 	Menu, CssMenu, DeleteAll
 return
 
+
 CssHandler2:
 SendLevel 1
 SendInput, %A_ThisMenuItem%{tab}
@@ -1648,7 +1649,7 @@ Return
 ::box-shadow::
 ::css.shadow::
 ::shadow::
-    SendRaw, box-shadow: 0 2px 12px 0 rgba(212, 212, 212, 0.1);
+    SendRaw, box-shadow: rgba(0, 0, 0, 0.33) 0px 5px 30px;
 return
 
 ::box-shadow2::

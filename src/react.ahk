@@ -531,14 +531,60 @@ code(Var)
 
 Return  
 
+
 !t::
-	reactArray := ["新建create-react-app", "新建react-redux.html", "React runtime", "React clickOutside", "React.Fragment 代替div作为外层", "ReactDOM.render",  "constructor", "this.porps", "ref", "static defaultProps", "this.state",  "this.setState", "react for", "this.state.list.map" ,  "箭头函数点击事件handleClick", "style={{ display: this.state.expandForm ? 'block' : 'none' }}","const { ... } = this.props", "const { ... } = this.state", "class App extends Component",   "render () {}", "WrappedComponent", "WrappedComponent + @Decorator", "this.forceUpdate()强制启动更新"]
-	Loop % reactArray.MaxIndex() {
-		this_life := reactArray[a_index]
-		Menu, reactArray, Add, %this_life%, ReactMenuHandler
-	}
-	Menu, reactArray, Show
+	Menu, reactMenu, Add, 新建create-react-app, ReactMenuHandler
+	Menu, reactMenu, Add, 新建react-redux.html, ReactMenuHandler
+	Menu, reactMenu, Add, React runtime, ReactMenuHandler
+	
+	Menu, reactMenu, Add
+	Menu, reactMenu, Add
+	
+	Menu, reactMenu, Add, class App extends Component, ReactMenuHandler
+	Menu, reactMenu, Add, constructor, ReactMenuHandler
+	Menu, reactMenu, Add, static defaultProps, ReactMenuHandler
+	Menu, reactMenu, Add, render () {}, ReactMenuHandler
+	Menu, reactMenu, Add, ReactDOM.render, ReactMenuHandler
+		
+	Menu, reactMenu, Add
+	Menu, reactMenu, Add
+	
+	Menu, reactMenu, Add, ref, ReactMenuHandler
+	Menu, reactMenu, Add, this.state, ReactMenuHandler
+	Menu, reactMenu, Add, this.porps, ReactMenuHandler
+	Menu, reactMenu, Add, this.setState, ReactMenuHandler	
+	Menu, reactMenu, Add, react for, ReactMenuHandler
+	Menu, reactMenu, Add, this.state.list.map, ReactMenuHandler
+	Menu, reactMenu, Add, style={{ display: this.state.expandForm ? 'block' : 'none' }}, ReactMenuHandler
+	Menu, reactMenu, Add, const { ... } = this.props, ReactMenuHandler
+	Menu, reactMenu, Add, const { ... } = this.state, ReactMenuHandler
+	
+	Menu, reactMenu, Add
+	Menu, reactMenu, Add
+	
+	Menu, reactMenu, Add, 箭头函数点击事件handleClick, ReactMenuHandler
+		
+	Menu, reactMenu, Add
+	Menu, reactMenu, Add
+	
+	
+	Menu, reactMenu, Add, WrappedComponent, ReactMenuHandler
+	Menu, reactMenu, Add, WrappedComponent + @Decorator, ReactMenuHandler
+	Menu, reactMenu, Add, this.forceUpdate()强制启动更新, ReactMenuHandler
+	Menu, reactMenu, Add, React.Fragment 代替div作为外层, ReactMenuHandler
+	
+	Menu, reactMenu, Add
+	Menu, reactMenu, Add
+	
+	Menu, reactMenu, Add, React clickOutside, ReactMenuHandler
+ 
+	Menu, reactMenu, Show
+	Menu, reactMenu, DeleteAll
 return
+
+
+
+
 
 ::rclass::
 Var = 

@@ -593,16 +593,7 @@ Var =
 	}())
 
 </script>
-</html>)
-}
-
-if (v == "canvas.onmousedown") {
-Var =
-(
-canvas.onmousedown = function (e) {
-    context.clearRect(0, 0, canvas.width, canvas.height)
-    window.alert('123');
-}
+</html>
 )
 }
 

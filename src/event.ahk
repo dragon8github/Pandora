@@ -1,67 +1,107 @@
 ﻿!e::
+Menu, VueEventMenu, Add, @click="doThat('hello'`, $event)", EventHandler
+	Menu, VueEventMenu, Add, @click.stop, EventHandler
+	Menu, VueEventMenu, Add, @click.once, EventHandler
+	Menu, VueEventMenu, Add, @change, EventHandler
+	Menu, VueEventMenu, Add, @keyup, EventHandler
+	Menu, VueEventMenu, Add, @keyup.enter, EventHandler
+	Menu, VueEventMenu, Add, @keyup.13, EventHandler
+	Menu, VueEventMenu, Add, @input, EventHandler
+	Menu, VueEventMenu, Add, @mouseover/@mouseleave, EventHandler
+	
+	Menu, ReactEventMenu, Add, onClick = { this.clickHandle }, EventHandler
+	Menu, ReactEventMenu, Add, onChange = { this.changeHandle }, EventHandler
+	Menu, ReactEventMenu, Add, onScroll = { this.scrollHandle }, EventHandler
+	Menu, ReactEventMenu, Add, onInput = { this.inputHandle }, EventHandler
+	Menu, ReactEventMenu, Add, onMouseOver = { this.MouseOverHandle }, EventHandler
+	Menu, ReactEventMenu, Add, onMouseLeave = { this.MouseLeaveHandle }, EventHandler
 
-	Menu, EventMenu, Add, @click="doThat('hello'`, $event)", EventHandler
-	Menu, EventMenu, Add, @click.stop, EventHandler
-	Menu, EventMenu, Add, @click.once, EventHandler
-	Menu, EventMenu, Add, @change, EventHandler
-	Menu, EventMenu, Add, @keyup, EventHandler
-	Menu, EventMenu, Add, @keyup.enter, EventHandler
-	Menu, EventMenu, Add, @keyup.13, EventHandler
-	Menu, EventMenu, Add, @input, EventHandler
-	Menu, EventMenu, Add, @mouseover/@mouseleave, EventHandler
-	
 
-	Menu, EventMenu, Add, , EventHandler
-	Menu, EventMenu, Add, , EventHandler
-	
-	Menu, EventMenu, Add, onClick = { this.clickHandle }, EventHandler
-	Menu, EventMenu, Add, onChange = { this.changeHandle }, EventHandler
-	Menu, EventMenu, Add, onScroll = { this.scrollHandle }, EventHandler
-	Menu, EventMenu, Add, onInput = { this.inputHandle }, EventHandler
-	Menu, EventMenu, Add, onMouseOver = { this.MouseOverHandle }, EventHandler
-	Menu, EventMenu, Add, onMouseLeave = { this.MouseLeaveHandle }, EventHandler
+	Menu, jqueryEventMenu, Add, $('#app').click(e => {}), EventHandler
+	Menu, jqueryEventMenu, Add, $('#app').mouseleave(e => {}), EventHandler
+	Menu, jqueryEventMenu, Add, $('#app').mouseover(e => {}), EventHandler
+	Menu, jqueryEventMenu, Add, $('#app').change(e => {}), EventHandler
+	Menu, jqueryEventMenu, Add, $('#app').mouseup(e => {}), EventHandler
+	Menu, jqueryEventMenu, Add, $('#app').scroll(e => {}), EventHandler
 	
 	
-	Menu, EventMenu, Add, , EventHandler
-	Menu, EventMenu, Add, , EventHandler
-	
-	Menu, EventMenu, Add, .addEventListener('click'`, e => {}), EventHandler
-	Menu, EventMenu, Add, .addEventListener('keydown'`, e => {}) 与 String.fromCharCode(e.keycode), EventHandler
-	Menu, EventMenu, Add, .addEventListener('mouseover'`, e => {}) , EventHandler
-	Menu, EventMenu, Add, .addEventListener('mouseleave'`, e => {}), EventHandler
-	
-	Menu, EventMenu, Add, , EventHandler
-	Menu, EventMenu, Add, ### 注意：onclick只能为元素绑定一个方法，而addEventListener可以绑定无限个 ### , EventHandler
-	Menu, EventMenu, Add, , EventHandler
-	
-	Menu, EventMenu, Add, .onclick = (e) => {}, EventHandler
-	Menu, EventMenu, Add, .onsubmit = (e) => {}, EventHandler
-	
+	Menu, JavaScriptEventMenu, Add, .addEventListener('click'`, e => {}), EventHandler
+	Menu, JavaScriptEventMenu, Add, .addEventListener('keydown'`, e => {}) 与 String.fromCharCode(e.keycode), EventHandler
+	Menu, JavaScriptEventMenu, Add, .addEventListener('mouseover'`, e => {}) , EventHandler
+	Menu, JavaScriptEventMenu, Add, .addEventListener('mouseleave'`, e => {}), EventHandler
+	Menu, JavaScriptEventMenu, Add, , EventHandler
+	Menu, JavaScriptEventMenu, Add, ### 注意：onclick只能为元素绑定一个方法，而addEventListener可以绑定无限个 ### , EventHandler
+	Menu, JavaScriptEventMenu, Add, , EventHandler
+	Menu, JavaScriptEventMenu, Add, .onclick = (e) => {}, EventHandler
+	Menu, JavaScriptEventMenu, Add, .onsubmit = (e) => {}, EventHandler
 
-	Menu, EventMenu, Add, , EventHandler
-	Menu, EventMenu, Add, , EventHandler
 
-	Menu, EventMenu, Add, $('#app').click(e => {}), EventHandler
-	Menu, EventMenu, Add, $('#app').mouseleave(e => {}), EventHandler
-	Menu, EventMenu, Add, $('#app').mouseover(e => {}), EventHandler
-	Menu, EventMenu, Add, $('#app').change(e => {}), EventHandler
-	Menu, EventMenu, Add, $('#app').mouseup(e => {}), EventHandler
-	Menu, EventMenu, Add, $('#app').scroll(e => {}), EventHandler
-
-	Menu, EventMenu, Add, , EventHandler
-	Menu, EventMenu, Add, , EventHandler
 	
-	Menu, EventMenu, Add, ehcarts.click, EventHandler
-	Menu, EventMenu, Add, ehcarts.mouseover, EventHandler
-	Menu, EventMenu, Add, ehcarts.mouseout, EventHandler
-	Menu, EventMenu, Add, ehcarts.legendselectchanged, EventHandler
+	Menu, echartsEventMenu, Add, ehcarts.click, EventHandler
+	Menu, echartsEventMenu, Add, ehcarts.mouseover, EventHandler
+	Menu, echartsEventMenu, Add, ehcarts.mouseout, EventHandler
+	Menu, echartsEventMenu, Add, ehcarts.legendselectchanged, EventHandler
 
-	Menu, EventMenu, Add, , EventHandler
-	Menu, EventMenu, Add, , EventHandler
+	Menu, echartsEventMenu, Add
+	Menu, echartsEventMenu, Add
+
+	Menu, echartsEventMenu, Add, echarts.init, EventHandler
+	Menu, echartsEventMenu, Add, echarts.options, EventHandler
+	Menu, echartsEventMenu, Add, echarts.loading, EventHandler
+
+	Menu, echartsEventMenu, Add
+	Menu, echartsEventMenu, Add
+
+
+	Menu, echartsEventMenu, Add, echarts.pin（饼图）, EventHandler
+	Menu, echartsEventMenu, Add, echarts.bar（柱状图）, EventHandler
+	Menu, echartsEventMenu, Add, echarts.line（折线图）, EventHandler
+	Menu, echartsEventMenu, Add, echarts.rose（玫瑰图）, EventHandler
+
+	Menu, echartsEventMenu, Add
+	Menu, echartsEventMenu, Add
+
+	Menu, echartsEventMenu, Add, echarts.label, EventHandler
+	Menu, echartsEventMenu, Add, echarts.title, EventHandler
+	Menu, echartsEventMenu, Add, echarts.legend, EventHandler
+	Menu, echartsEventMenu, Add, echarts.visualMap, EventHandler
+	Menu, echartsEventMenu, Add, echarts.tooltip, EventHandler
+
+	Menu, echartsEventMenu, Add
+	Menu, echartsEventMenu, Add
+
+	Menu, echartsEventMenu, Add, echarts.3dmap, EventHandler
+	Menu, echartsEventMenu, Add, echarts.effectScatter（2d地图散点）, EventHandler
+	Menu, echartsEventMenu, Add, echarts.scatter（2d地图气泡）, EventHandler
+
+	Menu, echartsEventMenu, Add
+	Menu, echartsEventMenu, Add
+
+	Menu, echartsEventMenu, Add, getPointCenter, EventHandler
+	Menu, echartsEventMenu, Add, geojson, EventHandler
+	Menu, echartsEventMenu, Add, createPolygon, EventHandler
+
+	Menu, EventMenu, Add, echarts, :echartsEventMenu
+	Menu, EventMenu, Add, Vue, :VueEventMenu
+	Menu, EventMenu, Add, React, :ReactEventMenu
+	Menu, EventMenu, Add, jquery, :jqueryEventMenu
+	Menu, EventMenu, Add, JavaScript, :JavaScriptEventMenu
+	
+	Menu, EventMenu, Add
+	Menu, EventMenu, Add
+	
 	Menu, EventMenu, Add, 冒泡点击mouseup, EventHandler
+	Menu, EventMenu, Add, String.fromCharCode(e.keycode), EventHandler
+	
 
 	Menu, EventMenu, Show
 	Menu, EventMenu, DeleteAll
+	Menu, echartsEventMenu, DeleteAll
+	Menu, VueEventMenu, DeleteAll
+	Menu, ReactEventMenu, DeleteAll
+	Menu, jqueryEventMenu, DeleteAll
+	Menu, JavaScriptEventMenu, DeleteAll
+	
 return
 
 
@@ -73,6 +113,124 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "echarts.init") {
+SendLevel 1
+SendInput, echarts.init{tab}
+return
+}
+
+if (v == "echarts.options") {
+SendLevel 1
+SendInput, echarts.options{tab}
+return
+}
+
+if (v == "echarts.loading") {
+SendLevel 1
+SendInput, echarts.loading{tab}
+return
+}
+
+if (v == "echarts.pin（饼图）") {
+SendLevel 1
+SendInput, echarts.pin{tab}
+return
+}
+
+if (v == "echarts.bar（柱状图）") {
+SendLevel 1
+SendInput, echarts.bar{tab}
+return
+}
+
+if (v == "echarts.line（折线图）") {
+SendLevel 1
+SendInput, echarts.line{tab}
+return
+}
+
+if (v == "echarts.rose（玫瑰图）") {
+SendLevel 1
+SendInput, echarts.rose{tab}
+return
+}
+
+if (v == "echarts.label") {
+SendLevel 1
+SendInput, echarts.label{tab}
+return
+}
+
+if (v == "echarts.title") {
+SendLevel 1
+SendInput, echarts.title{tab}
+return
+}
+
+if (v == "echarts.legend") {
+SendLevel 1
+SendInput, echarts.legend{tab}
+return
+}
+
+if (v == "echarts.visualMap") {
+SendLevel 1
+SendInput, echarts.visualMap{tab}
+return
+}
+
+if (v == "echarts.tooltip") {
+SendLevel 1
+SendInput, echarts.tooltip{tab}
+return
+}
+
+if (v == "echarts.3dmap") {
+SendLevel 1
+SendInput, echarts.3dmap{tab}
+return
+}
+
+if (v == "echarts.effectScatter（2d地图散点）") {
+SendLevel 1
+SendInput, echarts.effectScatter{tab}
+return
+}
+
+if (v == "echarts.scatter（2d地图气泡）") {
+SendLevel 1
+SendInput, echarts.scatter{tab}
+return
+}
+
+if (v == "getPointCenter") {
+SendLevel 1
+SendInput, getPointCenter{tab}
+return
+}
+
+if (v == "geojson") {
+SendLevel 1
+SendInput, geojson{tab}
+return
+}
+
+if (v == "createPolygon") {
+SendLevel 1
+SendInput, createPolygon{tab}
+return
+}
+
+if (v == "String.fromCharCode(e.keycode)") {
+Var = 
+(
+window.addEventListener('keydown', e => {
+	console.log(20181124200306, String.fromCharCode(e.keycode))
+}, true)
 )
 }
 

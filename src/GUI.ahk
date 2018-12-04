@@ -187,6 +187,7 @@ Gui, Pandora:Add, Text,  W130 Section, Nodejs:
 Gui, Pandora:Add, Link,, <a href="https://nodejs.org/dist/latest-v11.x/docs/api/">Nodejs API</a>
 Gui, Pandora:Add, Link,, <a href="https://nodejs.org/en/">Nodejs 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/nodejs/node">Nodejs github</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/awesome-nodejs">awesome-nodejs</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 工具库：
 Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/globby">globby</a>
