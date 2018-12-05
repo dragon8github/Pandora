@@ -18,16 +18,13 @@ return
 	Menu, DockerMenu, Add, docker rmi <IMAGE>, DockerMenuHandler
 	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add  ; 添加分隔线.
-	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add, docker cp /root/php/www/index.html <container>:/var/www/, DockerMenuHandler
 	Menu, DockerMenu, Add, docker cp <container>:/var/www/ /root/php/, DockerMenuHandler
-	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add, docker exec -i -t <container> /bin/bash, DockerMenuHandler
 	Menu, DockerMenu, Add, docker exec -it <container> sh, DockerMenuHandler
 	Menu, DockerMenu, Add, docker exec <container> echo 123, DockerMenuHandler
-	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add  ; 添加分隔线.
 	Menu, DockerMenu, Add, docker run -it --rm --name myphp php:7.2.4-cli-alpine3.7 php -m, DockerMenuHandler

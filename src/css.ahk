@@ -78,6 +78,7 @@ return
     Menu, CssMenu, Add, ycenter, CssHandler2
     Menu, CssMenu, Add, xcenter, CssHandler2
     Menu, CssMenu, Add, px2rem, CssHandler2
+    Menu, CssMenu, Add, reset.css, CssHandler2
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 

@@ -254,6 +254,7 @@ return
     Menu, CanvasMenu, Add, 动画示例：两点间的移动 —— 线段距离, CanvasHandler
     Menu, CanvasMenu, Add, 动画示例：矢量运动与三角函数（cos/sin）, CanvasHandler
     Menu, CanvasMenu, Add, 动画示例：撞球反弹（180 - x 或者 360 - y）, CanvasHandler
+	Menu, CanvasMenu, Add, 动画示例：多个球撞墙反弹, CanvasHandler
 
 	Menu, CanvasMenu, Show
 	Menu, CanvasMenu, DeleteAll
@@ -268,6 +269,136 @@ if (v == "") {
 Var =
 (
 
+)
+}
+
+if (v == "动画示例：多个球撞墙反弹") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        background-color: #ddd;
+    }
+
+    #canvas {
+		margin: 20px;
+		background: #fff;
+    }
+    </style>
+</head>
+
+<body>
+	<canvas id='canvas' width='500' height='500'>
+		Canvas not supported
+	</canvas>
+</body>
+<script>
+	var canvas = document.getElementById('canvas'),
+		context = canvas.getContext('2d')
+
+	// requestAnimFrame API
+	window.requestAnimFrame = (function(){
+	    return  window.requestAnimationFrame       ||
+	            window.webkitRequestAnimationFrame ||
+	            window.mozRequestAnimationFrame    ||
+	            window.oRequestAnimationFrame      ||
+	            window.msRequestAnimationFrame     ||
+	            function(/* function */ callback, /* DOMElement */ element){
+	                window.setTimeout(callback, 1000 / 60);
+	            };
+	})();
+
+	// 示例数据
+	var p1 = { x: 20, y: 20 }
+	var ball = { x: p1.x, y: p1.y }
+	var speed = 5
+
+	var numBalls = 100;
+	var maxSize = 8;
+	var minSize = 5;
+	var maxSpeed = maxSize + 5;
+	var balls = new Array();
+	var tempBall,tempX, tempY, tempSpeed, tempAngle, tempRadius, tempRadians, tempXunits, tempYunits;
+
+	for (var i = 0; i < numBalls; i++) {
+	    tempRadius = Math.floor(Math.random() * maxSize) + minSize
+	    tempX = tempRadius * 2 + (Math.floor(Math.random() * canvas.width) - tempRadius * 2);
+	    tempY = tempRadius * 2 + (Math.floor(Math.random() * canvas.height) - tempRadius * 2);
+	    tempSpeed = maxSpeed - tempRadius
+	    tempAngle = Math.floor(Math.random() * 360);
+	    tempRadians = tempAngle * Math.PI / 180
+	    tempXunits = Math.cos(tempRadians) * tempSpeed
+	    tempYunits = Math.sin(tempRadians) * tempSpeed
+
+	    tempBall = {
+	    	x: tempX,
+	    	y: tempY,
+	    	radius: tempRadius,
+	    	speed: tempSpeed,
+	    	angle: tempAngle,
+	    	xunits: tempXunits,
+	    	yunits: tempYunits
+	    }
+
+	    balls.push(tempBall)
+	}
+
+
+	function drawScreen() {
+		context.fillStyle = '#eeeeee';
+		context.fillRect(0, 0, canvas.width, canvas.height);
+
+		// 边框
+		context.strokeStyle = '#000000';
+		context.strokeRect(1, 1, canvas.width - 2, canvas.height - 2);
+
+		context.fillStyle = '#000'
+		for (var i = 0; i < balls.length; i++) {
+			var ball = balls[i]
+			ball.x += ball.xunits
+			ball.y += ball.yunits
+
+		    // 球... 
+    		context.beginPath()
+    		context.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, true)
+    		context.closePath()
+    		context.fill()
+
+    		// 如果球撞到右边或者左边，那么用180°减去这个矢量来的时候的角度，得出入射角度。
+    		if (ball.x > canvas.width || ball.x <0) {
+    			ball.angle = 180 - ball.angle;
+    			updateBall(ball)
+    		// 如果球撞到顶部或者底部，用360°减去矢量来的时候的角度。
+    		} else if (ball.y > canvas.height || ball.y < 0) {
+    			ball.angle = 360 - ball.angle;
+    			updateBall(ball)
+    		}
+		}
+
+		
+	}
+
+	function updateBall(ball) {
+		ball.radians = ball.angle * Math.PI / 180
+		ball.xunits = Math.cos(ball.radians) * ball.speed
+		ball.yunits = Math.sin(ball.radians) * ball.speed
+	}
+
+	(function gameLoop(){
+		window.requestAnimFrame(gameLoop)
+		drawScreen()
+	}())
+
+</script>
+</html>
 )
 }
 
