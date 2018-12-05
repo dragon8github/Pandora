@@ -1,4 +1,161 @@
-﻿::node.ch::
+﻿!j::
+
+	Menu, NodeMenu, Add, sequelize.connect, NodeHandler
+	Menu, NodeMenu, Add, sequelize.createmodel, NodeHandler
+
+	Menu, NodeMenu, Add
+	Menu, NodeMenu, Add
+
+	Menu, NodeMenu, Add, request, NodeHandler
+	Menu, NodeMenu, Add, request.proxy, NodeHandler
+
+	Menu, NodeMenu, Add
+	Menu, NodeMenu, Add
+
+	Menu, NodeMenu, Add, node-http, NodeHandler
+	Menu, NodeMenu, Add, http.request, NodeHandler
+
+	Menu, NodeMenu, Add
+	Menu, NodeMenu, Add
+
+	Menu, NodeMenu, Add, fs.write, NodeHandler
+	Menu, NodeMenu, Add, fs.read, NodeHandler
+	Menu, NodeMenu, Add, fs.rename, NodeHandler
+	Menu, NodeMenu, Add, fs.rm, NodeHandler
+	Menu, NodeMenu, Add, fs.mkdir, NodeHandler
+	Menu, NodeMenu, Add, fs.ls, NodeHandler
+
+	Menu, NodeMenu, Add
+	Menu, NodeMenu, Add
+
+	Menu, NodeMenu, Add, node.pachong, NodeHandler
+	Menu, NodeMenu, Add, node.ssh, NodeHandler
+	Menu, NodeMenu, Add, node.gbk, NodeHandler
+	Menu, NodeMenu, Add, node.ch, NodeHandler
+	
+	Menu, NodeMenu, Add
+	Menu, NodeMenu, Add
+	
+	Menu, NodeMenu, Add, clearconsole, NodeHandler
+
+
+	Menu, NodeMenu, Show
+	Menu, NodeMenu, DeleteAll
+return
+
+
+NodeHandler:
+; MsgBox You selected unique 数组去重复 from the menu utilsMenu.
+v := A_ThisMenuItem
+Var :=
+
+if (v == "sequelize.connect") {
+SendLevel 1
+SendInput, sequelize.connect{tab}
+return
+}
+
+if (v == "sequelize.createmodel") {
+SendLevel 1
+SendInput, sequelize.createmodel{tab}
+return
+}
+
+if (v == "request") {
+SendLevel 1
+SendInput, request{tab}
+return
+}
+
+if (v == "request.proxy") {
+SendLevel 1
+SendInput, request.proxy{tab}
+return
+}
+
+if (v == "node-http") {
+SendLevel 1
+SendInput, node-http{tab}
+return
+}
+
+if (v == "http.request") {
+SendLevel 1
+SendInput, http.request{tab}
+return
+}
+
+if (v == "fs.write") {
+SendLevel 1
+SendInput, fs.write{tab}
+return
+}
+
+if (v == "fs.read") {
+SendLevel 1
+SendInput, fs.read{tab}
+return
+}
+
+if (v == "fs.rename") {
+SendLevel 1
+SendInput, fs.rename{tab}
+return
+}
+
+if (v == "fs.rm") {
+SendLevel 1
+SendInput, fs.rm{tab}
+return
+}
+
+if (v == "fs.mkdir") {
+SendLevel 1
+SendInput, fs.mkdir{tab}
+return
+}
+
+if (v == "fs.ls") {
+SendLevel 1
+SendInput, fs.ls{tab}
+return
+}
+
+if (v == "node.pachong") {
+SendLevel 1
+SendInput, node.pachong{tab}
+return
+}
+
+if (v == "node.ssh") {
+SendLevel 1
+SendInput, node.ssh{tab}
+return
+}
+
+if (v == "node.gbk") {
+SendLevel 1
+SendInput, node.gbk{tab}
+return
+}
+
+if (v == "node.ch") {
+SendLevel 1
+SendInput, node.ch{tab}
+return
+}
+
+if (v == "clearconsole") {
+SendLevel 1
+SendInput, clearconsole{tab}
+return
+}
+
+
+code(Var)
+return
+
+::node.ch::
 Var =
 (
 const fs      = require('fs-extra')
@@ -136,6 +293,7 @@ return
 
 ::node.dir::
 ::node.ls::
+::fs.ls::
 Var =
 (
 var fs = require('fs');
@@ -347,6 +505,7 @@ return
 
 ::node-mkdir::
 ::fs-mkdir::
+::fs.mkdir::
 Var = 
 (
 var mkdirp = require('mkdirp');

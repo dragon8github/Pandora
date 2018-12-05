@@ -71,6 +71,7 @@ Menu, VueEventMenu, Add, @click="doThat('hello'`, $event)", EventHandler
 	Menu, echartsEventMenu, Add
 
 	Menu, echartsEventMenu, Add, echarts.3dmap, EventHandler
+	Menu, echartsEventMenu, Add, aspectScale: 1, EventHandler
 	Menu, echartsEventMenu, Add, echarts.effectScatter（2d地图散点）, EventHandler
 	Menu, echartsEventMenu, Add, echarts.scatter（2d地图气泡）, EventHandler
 
@@ -113,6 +114,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "aspectScale: 1") {
+Var = 
+(
+aspectScale: 1
 )
 }
 
