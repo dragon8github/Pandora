@@ -1,5 +1,5 @@
 ﻿!e::
-Menu, VueEventMenu, Add, @click="doThat('hello'`, $event)", EventHandler
+	Menu, VueEventMenu, Add, @click="doThat('hello'`, $event)", EventHandler
 	Menu, VueEventMenu, Add, @click.stop, EventHandler
 	Menu, VueEventMenu, Add, @click.once, EventHandler
 	Menu, VueEventMenu, Add, @change, EventHandler
@@ -437,6 +437,7 @@ this.myChart.on('mouseover', params => {
 })
 )
 }
+
 if (v == "ehcarts.mouseout") {
 Var = 
 (
@@ -445,6 +446,16 @@ this.myChart.on('mouseout', params => {
 })
 )
 }
+
+if (v == "ehcarts.legendselectchanged") {
+Var = 
+(
+this.myChart.on('legendselectchanged', params => {
+	console.log(%t%, params)
+})
+)
+}
+
 if (v == "冒泡点击mouseup") {
 Var = 
 (

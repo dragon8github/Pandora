@@ -305,6 +305,9 @@ return
   Menu, VueMenu, Add, router.init, VueHandler
   Menu, VueMenu, Add, this.$router.push('index'), VueHandler
   Menu, VueMenu, Add, this.$router.back, VueHandler
+  Menu, VueMenu, Add, route-layout, VueHandler
+  Menu, VueMenu, Add,<router-view></router-view>, VueHandler
+  
   Menu, VueMenu, Add, 组件钩子beforeRouteLeave, VueHandler
   Menu, VueMenu, Add, 组件钩子beforeRouteEnter, VueHandler
   Menu, VueMenu, Add, 全局钩子router.afterEach, VueHandler
@@ -332,6 +335,37 @@ Var :=
 if (v == "") {
 Var = 
 (
+
+)
+}
+
+if (v == "<router-view></router-view>") {
+Var = 
+(
+<router-view></router-view>
+)
+}
+
+
+if (v == "route-layout") {
+Var = 
+(
+import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
+
+import Dashboard from "@/pages/Dashboard.vue";
+
+const routes = [
+  {
+    path: "/",
+    component: DashboardLayout,
+    redirect: "/dashboard",
+    children: [
+      {path: "dashboard", name: "Dashboard", component: Dashboard },
+    ]
+  }
+];
+
+export default routes;
 
 )
 }

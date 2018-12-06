@@ -1,4 +1,13 @@
-﻿::cdn-qs::
+﻿::cdn-bs4::
+Var =
+(
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link href="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+)
+code(Var)
+return
+
+::cdn-qs::
 Var =
 (
 <script src="https://cdn.bootcss.com/qs/6.5.2/qs.min.js"></script>

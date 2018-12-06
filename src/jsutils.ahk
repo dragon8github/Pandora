@@ -35,6 +35,14 @@
     Menu, utilsDOM, Add, setStyle, utilsHandler
     Menu, utilsDOM, Add, setattr, utilsHandler
     Menu, utilsDOM, Add, removeattr, utilsHandler
+    
+    Menu, utilsDOM, Add
+    Menu, utilsDOM, Add
+    
+    Menu, utilsDOM, Add, getElementPosition 获取元素的定位, utilsHandler
+    Menu, utilsDOM, Add, gettop 获取距离顶部的相对距离, utilsHandler
+    Menu, utilsDOM, Add, scrollToTop 滚动到头部, utilsHandler
+    Menu, utilsDOM, Add, scrollIntoView 滚动到元素可视区域, utilsHandler
 
 
     Menu, utilsObject, Add, ({a = 123`, b = 321`, c = 456} = {}) 对象解构 与 参数默认值, utilsHandler
@@ -71,54 +79,52 @@
     
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
     Menu, utilsMenu, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
+    Menu, utilsMenu, Add, addcss/link 样式加载器, utilsHandler
     Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
     Menu, utilsMenu, Add, deepcopy 深拷贝, utilsHandler
     Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
-    Menu, utilsMenu, Add, getuuid 32位随机数, utilsHandler
-    Menu, utilsMenu, Add, pad 自动补全, utilsHandler
     Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
-    Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
-    Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
+    Menu, utilsMenu, Add, pad 自动补全, utilsHandler
     Menu, utilsMenu, Add, for-- 循环中splice需要使用, utilsHandler
     Menu, utilsMenu, Add, maybe 神奇的预设函数, utilsHandler
-    Menu, utilsMenu, Add, poll 递归, utilsHandler
-    Menu, utilsMenu, Add, countDown 倒计时, utilsHandler
-    Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
-    Menu, utilsMenu, Add, __EVENT__消息订阅, utilsHandler
+    Menu, utilsMenu, Add, getuuid 32位随机数, utilsHandler
+    Menu, utilsMenu, Add, uuid 超简易版, utilsHandler
     Menu, utilsMenu, Add, compose 函数组合, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
-    
+    Menu, utilsMenu, Add, poll 递归, utilsHandler
     Menu, utilsMenu, Add, encodeURI URI过滤, utilsHandler
     Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
-    Menu, utilsMenu, Add, lazyload 图片懒加载, utilsHandler
-    Menu, utilsMenu, Add, preloadimg 图片预加载, utilsHandler
     Menu, utilsMenu, Add, escapeHTML 防止XSS, utilsHandler
     Menu, utilsMenu, Add, stopevent 阻止事件冒泡, utilsHandler
-    Menu, utilsMenu, Add, addcss/link 样式加载器, utilsHandler
     Menu, utilsMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
-    Menu, utilsMenu, Add, getElementPosition 获取元素的定位, utilsHandler
-    Menu, utilsMenu, Add, gettop 获取距离顶部的相对距离, utilsHandler
-    Menu, utilsMenu, Add, scrollToTop 滚动到头部, utilsHandler
-    Menu, utilsMenu, Add, scrollIntoView 滚动到元素可视区域, utilsHandler
-    
     
     Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
     
+    Menu, utilsMenu, Add, __EVENT__消息订阅, utilsHandler
     Menu, utilsMenu, Add, curry2 二元参数的手动柯里化, utilsHandler
     Menu, utilsMenu, Add, es6.class, utilsHandler
-    Menu, utilsMenu, Add, rem 解决方案 / 淘宝解决方案, utilsHandler
     Menu, utilsMenu, Add, cookie 库, utilsHandler
     Menu, utilsMenu, Add, Model 类, utilsHandler
+    Menu, utilsMenu, Add, rem 解决方案 / 淘宝解决方案, utilsHandler
     Menu, utilsMenu, Add, AMD/CommonJS/factory/module, utilsHandler
     Menu, utilsMenu, Add, cache request axios 缓存请求, utilsHandler
     Menu, utilsMenu, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsMenu, Add, $.autoscroll 自动滚动, utilsHandler
     Menu, utilsMenu, Add, $.scrollforevery 无缝滚动, utilsHandler
     Menu, utilsMenu, Add, dragscroll 拖拽滚动, utilsHandler
+    Menu, utilsMenu, Add, holder占位图, utilsHandler
+    Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
+    Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
+    Menu, utilsMenu, Add, lazyload 图片懒加载, utilsHandler
+    Menu, utilsMenu, Add, preloadimg 图片预加载, utilsHandler
+    Menu, utilsMenu, Add, countDown 倒计时, utilsHandler
+    Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
+    
+    
 
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -136,6 +142,21 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "uuid 超简易版") {
+Var = 
+(
+const MdUuid = () => Math.random().toString(36).slice(4)
+)
+}
+
+if (v == "holder占位图") {
+Var = 
+(
+<script src="https://cdn.bootcss.com/holder/2.9.6/holder.min.js"></script>
+<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
 )
 }
 
@@ -1991,11 +2012,15 @@ function unique(arr) {
 if (v == "getuuid 32位随机数") {
 Var = 
 (
+// 兼容版
 function getUUID () {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
     return (c === 'x' ? (Math.random() * 16 | 0) : ('r&0x3' | '0x8')).toString(16)
   })
 }
+
+// es6版本
+const UUIDGeneratorBrowser = () => ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));
 )
 }
 

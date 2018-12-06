@@ -121,6 +121,12 @@ Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍：
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
+Gui, Pandora:Add, Link,, <a href="https://themequarry.com/category/free?page=2">admin-lte-free</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/creativetimofficial/material-dashboard">material-dashboard</a>
+Gui, Pandora:Add, Link,, <a href="https://www.creative-tim.com/product/vue-material-dashboard">material-dashboard-vue</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/vuematerial/vue-material">vue-material</a>
+
+
 
 
 
