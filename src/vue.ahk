@@ -305,7 +305,7 @@ return
   Menu, VueMenu, Add, router.init, VueHandler
   Menu, VueMenu, Add, this.$router.push('index'), VueHandler
   Menu, VueMenu, Add, this.$router.back, VueHandler
-  Menu, VueMenu, Add, route-layout, VueHandler
+  Menu, VueMenu, Add, 路由layout, VueHandler
   Menu, VueMenu, Add,<router-view></router-view>, VueHandler
   
   Menu, VueMenu, Add, 组件钩子beforeRouteLeave, VueHandler
@@ -347,7 +347,7 @@ Var =
 }
 
 
-if (v == "route-layout") {
+if (v == "路由layout") {
 Var = 
 (
 import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";

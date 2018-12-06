@@ -67,6 +67,8 @@ BabelUrl := "http://babeljs.io/repl#?babili=true&browsers=&build=&builtIns=false
 Gui, Pandora:Add, Link,, <a href="%BabelUrl%">Babel在线转换</a>
 Gui, Pandora:Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
 
+
+
 Gui, Pandora:Add, Text,  W140 ys, 娱乐:
 Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
 Gui, Pandora:Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
@@ -85,13 +87,12 @@ Gui, Pandora:Add, Link,, <a href="http://www.bejson.com/">bejson超强工具箱<
 Gui, Pandora:Add, Link,, <a href="https://loading.io/spinner/">Loading 平台</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 奇妙工具:
-
 Gui, Pandora:Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Pandora:Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 Gui, Pandora:Add, Link,, <a href="http://fontawesome.dashgame.com/">font-awesome</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/">momentjs</a>
-Gui, Pandora:Add, Link,, <a href="http://apizza.cc">apizza</a>
+Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza</a>
 
 
 Gui, Pandora:Add, Text, W140 Section xs yp+50, cdn：
@@ -222,6 +223,9 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/nodemailer/nodemailer">node
 Gui, Pandora:Add, Link,, <a href="https://github.com/kvz/locutus">locutus</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/wiredjs/wired-elements">wired-elements</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/olistic/warriorjs">warriorjs</a>
+
+Gui, Pandora:Add, Text, W140 Section xs yp+80, JS库：
+Gui, Pandora:Add, Link,, <a href="https://github.com/KyleAMathews/deepmerge">deepmerge</a>
 
 
 

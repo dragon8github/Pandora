@@ -1,4 +1,21 @@
-﻿
+﻿::css.box::
+::red.box::
+::css.hello::
+::hello.box::
+Var =
+(
+.hello {
+    background: red;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50`%;
+    top: 50`%;
+    transform: translate(-50`%, -50`%);
+}
+)
+code(Var)
+return
 
 !s::
 
@@ -30,7 +47,7 @@
     Menu, CssMenu, Add, reset.css, CssHandler2
     Menu, CssMenu, Add, input.yellow, CssHandler2
     Menu, CssMenu, Add, css.placeholder, CssHandler2
-    
+    Menu, CssMenu, Add, css.box, CssHandler2
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
     
@@ -39,6 +56,8 @@
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
+    Menu, CssMenu, Add, 利用 translateZ(0) 提升速度, CssHandler
+    
     Menu, CssMenu, Add, will-change 代替 translate3D 优化, CssHandler
     Menu, CssMenu, Add, background-attachment: fixed 改成了 position: fixed (因为前面这玩意滚动实时计算重绘), CssHandler
     Menu, CssMenu, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
@@ -63,6 +82,14 @@ Var =
 (
 )
 }
+
+if (v == "利用 translateZ(0) 提升速度") {
+Var =
+(
+transform: scale(2) translateZ(0);
+)
+}
+
 
 if (v == "背景图片所在的元素替换为::before伪元素") {
 Var =
