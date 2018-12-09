@@ -1,4 +1,14 @@
-﻿::wufengscroll::
+﻿::div#box::
+::divbox::
+::box::
+Var =
+(
+<div id='box' style='position: absolute;top: 0;left: 0;background:red; width: 10px; height: 10px; border-radius:50`%'></div>
+)
+code(Var)
+return
+
+::wufengscroll::
 ::scrollforevery::
 ::foreveryscroll::
 Var =

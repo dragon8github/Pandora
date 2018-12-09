@@ -1,7 +1,41 @@
-﻿::css.box::
-::red.box::
-::css.hello::
-::hello.box::
+﻿::text-shadow::
+Var =
+(
+text-shadow: #25B3DC 0px 0px 10px, #25B3DC 0px 0px 20px, #25b3dc 0px 0px 30px, #25b3dc 0px 0px 40px, #25b3dc 0px 0px 70px, #25b3dc 0px 0px 80px, #25b3dc 0px 0px 100px;
+)
+code(Var)
+return
+
+
+
+
+::@animate::
+::@key::
+Var =
+(
+@keyframes fuckyou {
+    0`% {
+    
+    }
+    
+    100`% {
+    
+    }
+}
+)
+code(Var)
+return
+
+
+::ib::
+Var =
+(
+display: inline-block;
+)
+code(Var)
+return
+
+::redbox::
 Var =
 (
 .hello {
@@ -47,12 +81,16 @@ return
     Menu, CssMenu, Add, reset.css, CssHandler2
     Menu, CssMenu, Add, input.yellow, CssHandler2
     Menu, CssMenu, Add, css.placeholder, CssHandler2
-    Menu, CssMenu, Add, css.box, CssHandler2
+    Menu, CssMenu, Add, css.text-shadown, CssHandler
+    Menu, CssMenu, Add, css.box-shadown, CssHandler
+    
+    
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
     
     Menu, CssMenu, Add, 发廊进度条, CssHandler
     Menu, CssMenu, Add, 冒泡进度条, CssHandler
+    Menu, CssMenu, Add, redbox, CssHandler2
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -82,6 +120,22 @@ Var =
 (
 )
 }
+
+if (v == "css.box-shadown") {
+Var =
+(
+box-shadow: rgba(255, 255, 255, 0.33) 0px 0px 54px;
+)
+}
+
+if (v == "css.text-shadown") {
+Var =
+(
+text-shadow: #25B3DC 0px 0px 10px, #25B3DC 0px 0px 20px, #25b3dc 0px 0px 30px, #25b3dc 0px 0px 40px, #25b3dc 0px 0px 70px, #25b3dc 0px 0px 80px, #25b3dc 0px 0px 100px;
+)
+}
+
+
 
 if (v == "利用 translateZ(0) 提升速度") {
 Var =
@@ -125,12 +179,9 @@ will-change: opacity, transform;
 }
 
 if (v == "冒泡进度条") {
-Var =
-(
 SendLevel 1
 SendInput, maopaojindutiao{tab}
 return
-)
 }
 
 if (v == "发廊进度条") {
@@ -1671,17 +1722,15 @@ Return
 ::box-shadow::
 ::css.shadow::
 ::shadow::
-    SendRaw, box-shadow: rgba(0, 0, 0, 0.33) 0px 5px 30px;
-return
-
-::box-shadow2::
-Var = 
+Var =
 (
+box-shadow: rgba(255, 255, 255, 0.33) 0px 0px 54px;
 box-shadow: 0 0 0 1px hsla(0, 0`%, 100`%, .3) inset, 
             0 .5em 1em rgba(0, 0, 0, 0.6);
 )
 code(Var)
 return
+
 
 ::chrome-yellow::
 ::chrome.yellow::

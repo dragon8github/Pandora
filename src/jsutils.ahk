@@ -123,7 +123,7 @@
     Menu, utilsMenu, Add, preloadimg 图片预加载, utilsHandler
     Menu, utilsMenu, Add, countDown 倒计时, utilsHandler
     Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
-    
+    Menu, utilsMenu, Add, 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug, utilsHandler
     
 
     Menu, utilsMenu, Show
@@ -142,6 +142,19 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "处理iOS 微信客户端6.7.4 键盘收起页面未下移bug") {
+Var = 
+(
+/**
+ * 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug
+ */
+;(/iphone|ipod|ipad/i.test(navigator.appVersion)) && document.addEventListener('blur', (e) => {
+    // 这里加了个类型判断，因为a等元素也会触发blur事件
+    ['input', 'textarea'].includes(e.target.localName) && document.body.scrollIntoView(false)
+}, true)
 )
 }
 

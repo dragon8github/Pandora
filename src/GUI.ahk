@@ -65,7 +65,7 @@ Gui, Pandora:Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手�
 Gui, Pandora:Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AutoHotkey官网</a>
 BabelUrl := "http://babeljs.io/repl#?babili=true&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=true&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cbabili&prettier=false&targets=&version=6.26.0"
 Gui, Pandora:Add, Link,, <a href="%BabelUrl%">Babel在线转换</a>
-Gui, Pandora:Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
+Gui, Pandora:Add, Link,, <a href="https://codesandbox.io/">CodeSandbox</a>
 
 
 

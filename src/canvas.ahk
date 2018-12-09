@@ -908,10 +908,9 @@ Var =
 (
 var helloworldImage = new Image();
 helloworldImage.onload = function () {
-context.drawImage(helloworldImage, 155, 110);
+	 ctx.drawImage(helloworldImage, 0, 0, canvas.width, canvas.height);
 }
-helloworldImage.src = 'helloworld.gif'
-)
+helloworldImage.src = 'https://iph.href.lu/400x400'
 }
 
 if (v == "背景") {

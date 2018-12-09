@@ -321,6 +321,9 @@ return
   Menu, VueMenu, Add, myprogress组件, VueHandler
   Menu, VueMenu, Add, msgbox组件, VueHandler
   Menu, VueMenu, Add, click-outside 指令, VueHandler
+  Menu, VueMenu, Add, 组件复用的新套路: 合并配置，来代替mixin方案, VueHandler
+  Menu, VueMenu, Add, 波浪效果组件, VueHandler
+  
 
 
   Menu, VueMenu, Show
@@ -336,6 +339,58 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "波浪效果组件") {
+run, https://github.com/dragon8github/Pandora/blob/master/template/MdRipple.zip?raw=true
+return
+}
+    
+
+if (v == "组件复用的新套路: 合并配置，来代替mixin方案") {
+Var = 
+(
+// core/MdComponent
+import deepmerge from 'deepmerge'
+export default function (newComponent) {
+	const defaults = {
+		props: {
+			mdTheme: null
+		},
+		computed: {
+			$mdActiveTheme () {
+			}
+		}
+	}
+	return deepmerge(defaults, newComponent)
+}
+
+// index.vue
+import MdComponent from 'core/MdComponent'
+export default new MdComponent({
+	name: 'test',
+	components: {
+
+	},
+	props: {
+
+	},
+	data () {
+		return {
+
+		}
+	},
+	computed: {
+
+	},
+	watch： {
+
+	},
+	methods: {
+	
+	},
+})
 )
 }
 
