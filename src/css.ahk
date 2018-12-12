@@ -99,11 +99,14 @@ return
     Menu, CssMenu, Add, will-change 代替 translate3D 优化, CssHandler
     Menu, CssMenu, Add, background-attachment: fixed 改成了 position: fixed (因为前面这玩意滚动实时计算重绘), CssHandler
     Menu, CssMenu, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
+    Menu, CssMenu, Add, cursor:手掌手势, CssHandler
     
 
 	Menu, CssMenu, Show
 	Menu, CssMenu, DeleteAll
 return
+
+
 
 
 CssHandler2:
@@ -118,6 +121,13 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "cursor:手掌手势") {
+Var =
+(
+cursor: url('https://webapi.amap.com/theme/v1.3/openhand.cur'),default;
 )
 }
 
@@ -628,6 +638,14 @@ Var =
     font-weight: bold;
     font-style: normal;
 }
+)
+code(Var)
+return
+
+::cup::
+Var =
+(
+cursor: pointer;
 )
 code(Var)
 return

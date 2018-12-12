@@ -911,6 +911,7 @@ helloworldImage.onload = function () {
 	 ctx.drawImage(helloworldImage, 0, 0, canvas.width, canvas.height);
 }
 helloworldImage.src = 'https://iph.href.lu/400x400'
+)
 }
 
 if (v == "背景") {

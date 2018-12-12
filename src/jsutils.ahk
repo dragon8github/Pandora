@@ -77,7 +77,9 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
+    Menu, utilsMenu, Add, 往页面插入style, utilsHandler
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
+    Menu, utilsMenu, Add, getScriptPath, utilsHandler
     Menu, utilsMenu, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
     Menu, utilsMenu, Add, addcss/link 样式加载器, utilsHandler
     Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
@@ -129,6 +131,7 @@
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
     Menu, utilsIs, DeleteAll
+    Menu, utilsDOM, DeleteAll
     Menu, utilsObject, DeleteAll
 return
 
@@ -144,6 +147,39 @@ Var =
 (
 )
 }
+
+if (v == "往页面插入style") {
+Var = 
+(
+var styles = document.createElement('style')
+styles.id = 'fuckyou'
+styles.type = 'text/css'
+document.getElementsByTagName('head')[0].appendChild(styles)
+
+// 新版本美化
+styles.sheet.addRule('.tab-pane', 'margin-bottom: 20px')
+styles.sheet.addRule('.ace_editor.ace-eclipse', 'height: 350px !important')
+styles.sheet.addRule('.request-panel .response-content, .response-panel', 'min-height: 350px !important')
+
+// 旧版本美化
+styles.sheet.addRule('#response-body', 'height: 350px; overflow: scroll;')
+styles.sheet.addRule('.panel-response-textarea', 'min-height: 350px !important')
+)
+}
+
+
+if (v == "getScriptPath") {
+Var = 
+(
+// http://stackoverflow.com/questions/2161159/get-script-path
+function getScriptPath() {
+    var scripts = _doc.currentScript || (function () { var s = _doc.getElementsByTagName('script'); return (s.length) ? s[s.length - 1] : false; })();
+    var path = scripts ? scripts.src.split('?')[0] : '';
+    return (path.split('/').length > 0) ? path.split('/').slice(0, -1).join('/') + '/' : '';
+}
+)
+}
+
 
 if (v == "处理iOS 微信客户端6.7.4 键盘收起页面未下移bug") {
 Var = 
@@ -386,19 +422,9 @@ $('.trajectoryTable').autoScroll()
 }
 
 if (v == "window.requestAnimFrame") {
-Var =
-(
-window.requestAnimFrame = (function(){
-    return  window.requestAnimationFrame       ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
-            window.oRequestAnimationFrame      ||
-            window.msRequestAnimationFrame     ||
-            function(/* function */ callback, /* DOMElement */ element){
-                window.setTimeout(callback, 1000 / 60);
-            };
-})();
-)
+SendLevel 1
+SendInput, requestanimate{tab}
+return
 }
 
 if (v == "encodeURI URI过滤") {

@@ -1,4 +1,9 @@
-﻿::div#box::
+﻿::test.html::
+Var := ajax("https://raw.githubusercontent.com/cbracco/html5-test-page/master/index.html")
+code(Var)
+return
+
+::div#box::
 ::divbox::
 ::box::
 Var =

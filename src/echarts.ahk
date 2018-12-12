@@ -139,6 +139,7 @@ return
 
 ::echarts.dian::
 ::echarts.sandian::
+::echarts.effectScatter::
 Var =
 (
 // 创建散点配置项

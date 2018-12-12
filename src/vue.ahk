@@ -259,6 +259,7 @@ return
 
   Menu, VueMenu, Add, vuex.init, VueHandler
   Menu, VueMenu, Add, vuex.modules, VueHandler
+  Menu, VueMenu, Add, vuex.action, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
   Menu, VueMenu, Add, mapState, VueHandler  
@@ -340,6 +341,12 @@ Var =
 (
 
 )
+}
+
+if (v == "vuex.action") {
+SendLevel 1
+SendInput, vuex.a{tab}
+return
 }
 
 if (v == "波浪效果组件") {
@@ -1411,6 +1418,8 @@ this.$refs.myselect
 code(Var)
 return
 
+::this.$nextTick::
+::this.$next::
 ::$nextTick::
 ::$next::
 ::$.next::

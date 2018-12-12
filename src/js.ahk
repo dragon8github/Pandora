@@ -1,4 +1,16 @@
-﻿::dragscroll::
+﻿::getscriptpath::
+Var =
+(
+function getScriptPath() {
+    var scripts = _doc.currentScript || (function () { var s = _doc.getElementsByTagName('script'); return (s.length) ? s[s.length - 1] : false; })();
+    var path = scripts ? scripts.src.split('?')[0] : '';
+    return (path.split('/').length > 0) ? path.split('/').slice(0, -1).join('/') + '/' : '';
+  }
+)
+code(Var)
+return
+
+::dragscroll::
 Var =
 (
 const dragScroll = el => {
@@ -141,6 +153,16 @@ window.requestAnimFrame = (function(){
                 window.setTimeout(callback, 1000 / 60);
             };
 })();
+
+window.cancelAnimationFrame=window.cancelAnimationFrame ||
+	Window.webkitCancelAnimationFrame ||
+	window.mozCancelAnimationFrame ||
+	window.msCancelAnimationFrame ||
+	window.oCancelAnimationFrame ||
+	function( id ){
+		//为了使setTimteout的尽可能的接近每秒60帧的效果
+		window.clearTimeout( id );
+	}
 )
 code(Var)
 return

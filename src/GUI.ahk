@@ -65,7 +65,7 @@ Gui, Pandora:Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手�
 Gui, Pandora:Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AutoHotkey官网</a>
 BabelUrl := "http://babeljs.io/repl#?babili=true&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=true&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cbabili&prettier=false&targets=&version=6.26.0"
 Gui, Pandora:Add, Link,, <a href="%BabelUrl%">Babel在线转换</a>
-Gui, Pandora:Add, Link,, <a href="https://codesandbox.io/">CodeSandbox</a>
+Gui, Pandora:Add, Link,, <a href="https://codesandbox.io/u/dragon8github">CodeSandbox</a>
 
 
 
@@ -91,7 +91,7 @@ Gui, Pandora:Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Pandora:Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 Gui, Pandora:Add, Link,, <a href="http://fontawesome.dashgame.com/">font-awesome</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
-Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/">momentjs</a>
+Gui, Pandora:Add, Link,, <a href="http://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=955910">iconfont</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza</a>
 
 
