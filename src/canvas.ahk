@@ -208,7 +208,9 @@ return
     Menu, CanvasMenu, Add, window.requestAnimFrame, CanvasHandler
     Menu, CanvasMenu, Add, canvas.width, CanvasHandler
     Menu, CanvasMenu, Add, canvas.height, CanvasHandler
-    
+    Menu, CanvasMenu, Add, canvas.width`, canvas.height, CanvasHandler
+	Menu, CanvasMenu, Add, 清空画布, CanvasHandler
+	
     Menu, CanvasMenu, Add,
     Menu, CanvasMenu, Add,
     
@@ -255,6 +257,7 @@ return
     Menu, CanvasMenu, Add, 动画示例：矢量运动与三角函数（cos/sin）, CanvasHandler
     Menu, CanvasMenu, Add, 动画示例：撞球反弹（180 - x 或者 360 - y）, CanvasHandler
 	Menu, CanvasMenu, Add, 动画示例：多个球撞墙反弹, CanvasHandler
+	Menu, CanvasMenu, Add, 动画示例：浩瀚宇宙星空, CanvasHandler
 
 	Menu, CanvasMenu, Show
 	Menu, CanvasMenu, DeleteAll
@@ -269,6 +272,116 @@ if (v == "") {
 Var =
 (
 
+)
+}
+
+if (v == "动画示例：浩瀚宇宙星空") {
+Var =
+(
+// 星空背景canvas
+bg (canvas) {
+	var c = canvas.getContext("2d");
+	var numStars = 1900
+	var radius = '0.' + Math.floor(Math.random() * 9) + 1
+	var focalLength = canvas.width * 2
+	var centerX, centerY
+	var stars = []
+	var star
+	var i
+
+	initializeStars();
+
+	function initializeStars() {
+		centerX = canvas.width / 2;
+		centerY = canvas.height / 2;
+
+		stars = [];
+		for (i = 0; i < numStars; i++) {
+			star = { x: Math.random() * canvas.width, y: Math.random() * canvas.height, z: Math.random() * canvas.width, o: '0.' + Math.floor(Math.random() * 99) + 1 };
+			stars.push(star);
+		}
+	}
+
+	function moveStars() {
+		for (i = 0; i < numStars; i++) {
+			star = stars[i];
+			star.z--;
+
+			if (star.z <= 0) {
+				star.z = canvas.width;
+			}
+		}
+	}
+
+	function drawStars() {
+		var pixelX, pixelY, pixelRadius;
+
+		if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) {
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+			initializeStars();
+		}
+
+		c.fillStyle = "rgba(0,10,20,1)";
+		c.fillRect(0, 0, canvas.width, canvas.height);
+		c.fillStyle = "rgba(209, 255, 255, " + radius + ")";
+
+		for (i = 0; i < numStars; i++) {
+			star = stars[i];
+
+			pixelX = (star.x - centerX) * (focalLength / star.z);
+			pixelX += centerX;
+			pixelY = (star.y - centerY) * (focalLength / star.z);
+			pixelY += centerY;
+			pixelRadius = 1 * (focalLength / star.z);
+
+			c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
+			c.fillStyle = "rgba(209, 255, 255, " + star.o + ")";
+		}
+	}
+
+	return function executeFrame() {
+		moveStars();
+		drawStars();
+		canvas.animateID = window.requestAnimFrame(executeFrame);
+	}
+}
+
+//////////////////////////////////////////////
+// 代码示例
+//////////////////////////////////////////////
+
+// canvas 
+this.canvas = document.getElementById("space")
+// 获取动画的开关
+this.executeFrame = this.bg(this.canvas)
+
+// 需要动画的页面则开启它
+if (this.needAnimate() && !this.canvas.animateID) {
+	// 执行动画
+	this.executeFrame()
+// 如果不需要动画则关闭它
+} else {
+	// 暂停动画
+	window.cancelAnimationFrame(this.canvas.animateID)
+	// 重置id
+	this.canvas.animateID = null
+}
+)
+}
+
+
+if (v == "清空画布") {
+Var =
+(
+c.clearRect(0, 0, canvas.width, canvas.height);
+)
+}
+
+if (v == "canvas.width`, canvas.height") {
+Var =
+(
+canvas.width, canvas.height
 )
 }
 

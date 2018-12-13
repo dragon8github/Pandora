@@ -100,6 +100,7 @@ return
     Menu, CssMenu, Add, background-attachment: fixed 改成了 position: fixed (因为前面这玩意滚动实时计算重绘), CssHandler
     Menu, CssMenu, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
     Menu, CssMenu, Add, cursor:手掌手势, CssHandler
+    Menu, CssMenu, Add, loading, CssHandler2
     
 
 	Menu, CssMenu, Show
@@ -308,7 +309,11 @@ return
 ::loading::
 Var =
 (
-.is-loading::after {
+.loading {
+	position: relative;
+}
+
+.loading::after {
 	content: '';
 	display: block;
 	position: absolute;
