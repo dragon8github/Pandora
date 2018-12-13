@@ -316,9 +316,8 @@ Var =
 .loading::after {
 	content: '';
 	display: block;
-	position: absolute;
-	top: 0; right: 0; bottom: 0; left: 0;
-	background: rgba(255, 255, 255, 0.7) url('~@/assets/loading.gif') center center / 120px 120px  no-repeat;
+	position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+	background: transparent url('https://github.com/dragon8github/Pandora/blob/master/static/loading.gif?raw=true') center center / 32px 32px  no-repeat;
 }
 )
 code(Var)
