@@ -98,6 +98,30 @@ Var =
 code(Var)
 return
 
+::ahknewhtml::
+::ahknew::
+::ahkhtml::
+Var =
+(
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+</html>
+`),  `%name`%
+RunBy(name)	
+run, `% name
+)
+code(Var)
+return
+
 ::ahklevel::
 ::ahksend::
 ::ahksendlevel::

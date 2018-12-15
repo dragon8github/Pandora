@@ -1145,13 +1145,14 @@ return
 return
 
 ::@bg::
-SendInput,
+Var =
 (
-width: 44px`;
-height: 44px`;
-background: url('https://iph.href.lu/100x100') center / 100`% 100`% no-repeat`;
-display: inline-block`;
+width: 44px;
+height: 44px;
+background: url('https://iph.href.lu/100x100') center / 100`% 100`% no-repeat;
+display: inline-block;
 )
+code(Var)
 return
 
 ::size::

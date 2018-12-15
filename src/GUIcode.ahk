@@ -1,4 +1,490 @@
-﻿NewvuetransitionHtml:
+﻿NewEchartdoulecolorHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption({
+        title: {
+            text: '占用道路问题结构',
+            x: 'center',
+            align: 'right'
+        },
+        xAxis: {
+            data: ["经营占道", "垃圾占道", "车辆占道", "霸占车位", "其他占道"],
+            axisLine: {
+                lineStyle: {
+                    color: 'black',
+                    width: 0.5
+                }
+            },
+            axisLabel: {
+                interval: 0,
+                textStyle: {
+                    color: 'black',
+                    fontSize: 18
+                }
+            }
+        },
+        yAxis: {
+            splitLine: {
+                show: true
+            },
+            type: 'value',
+            axisLine: {
+                lineStyle: {
+                    width: 0
+                }
+            },
+            axisLabel: {
+                interval: 0,
+                textStyle: {
+                    color: 'black',
+                    fontSize: 14
+                }
+            }
+        },
+        series: [{
+            name: '销量',
+            type: 'bar',
+            stack: 'one',
+            data: [2240, 1768, 1547, 600, 310],
+            barWidth: 25,
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        var colorList = ['#00a0e9', '#00a0e9 ', '#00a0e9 ', '#00a0e9 ', '#00a0e9'];
+                        return colorList[params.dataIndex]
+                    },
+                    label: {
+                        show: true,
+                        position: 'top',
+                        color: 'black',
+                        fontSize: 14,
+                        formatter: '{c}'
+                    },
+                    opacity: 0.4
+                },
+            },
+        }, {
+            type: 'bar',
+            stack: 'one',
+            data: [240, 768, 547, 160, 131],
+            barWidth: 25,
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        var colorList = ['#DE6E47', '#DE6E47 ', '#DE6E47 ', '#DE6E47 ', '#DE6E47'];
+                        return colorList[params.dataIndex]
+                    },
+                    label: {
+                        show: true,
+                        position: 'top',
+                        color: 'black',
+                        fontSize: 14,
+                        formatter: '{c}'
+                    },
+                    opacity: 0.4
+                },
+            },
+        }]
+    });
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+NewEchartraduisHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}`%)"
+        },
+        series: [{
+            name: '访问来源',
+            type: 'pie',
+            radius: ['65`%', '75`%'],
+            center: ['49.5`%', '50.5`%'],
+            color: ['#00a0e9', '#ea7e6f', '#fe8f18', '#f6c272', '#7c77b9'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: true,
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '20',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
+            data: [
+                { value: 335, name: '直接访问' },
+                { value: 310, name: '邮件营销' },
+                { value: 234, name: '联盟广告' },
+                { value: 135, name: '视频广告' },
+                { value: 1548, name: '搜索引擎' }
+            ]
+        }]
+    };
+    myChart.setOption(option);
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+NewEchartPinBoderHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    //断开圆环的白色部分样式
+    var placeHolderStyle = {
+        normal: {
+            label: {
+                show: false
+            },
+            labelLine: {
+                show: false
+            },
+            color: 'transparent',
+            borderColor: 'transparent',
+            borderWidth: 0
+        }
+    };
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}`%)"
+        },
+        series: [{
+            name: '访问来源',
+            type: 'pie',
+            radius: ['65`%', '75`%'],
+            center: ['49.5`%', '50.5`%'],
+            color: ['#00a0e9', '#ea7e6f', '#fe8f18', '#f6c272', '#7c77b9'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: true,
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '20',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
+            data: [
+                { value: 50, name: '', itemStyle: placeHolderStyle },
+                { value: 335, name: '直接访问' },
+                { value: 50, name: '', itemStyle: placeHolderStyle },
+                { value: 310, name: '邮件营销' },
+                { value: 50, name: '', itemStyle: placeHolderStyle },
+                { value: 234, name: '联盟广告' },
+                { value: 50, name: '', itemStyle: placeHolderStyle },
+                { value: 135, name: '视频广告' },
+                { value: 50, name: '', itemStyle: placeHolderStyle },
+                { value: 1548, name: '搜索引擎' }
+            ]
+        }]
+    };
+    myChart.setOption(option);
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+NewEchartsareaStyleHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            // 覆盖面
+            areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: 'rgb(255, 158, 68)'
+                }, {
+                    offset: 1,
+                    color: 'rgb(255, 70, 131)'
+                }])
+            }
+        }]
+    };
+    myChart.setOption(option);
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+NewEchartssmoothHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        grid: { left: '12`%', right: '3`%', bottom: '35px', top: '35px', },
+        xAxis: [{
+            type: 'category',
+            axisTick: { show: false },
+            axisLine: { show: false, },
+            axisLabel: {
+                textStyle: {
+                    color: '#444444',
+                    fontSize: '16'
+                }
+            },
+            data: ['1月', '2月', '3月', '4月', '5月', '6月']
+        }],
+        yAxis: [{
+            type: 'value',
+            splitLine: {
+                lineStyle: {
+                    color: 'rgba(52,73,94, .23)',
+                    type: 'dashed'
+                },
+            },
+            axisTick: { show: false },
+            axisLine: { show: false, },
+            axisLabel: {
+                margin: '10',
+                textStyle: {
+                    color: '#444444',
+                    fontSize: '16',
+                    align: 'right',
+                    baseline: 'bottom'
+                }
+            }
+        }],
+        series: [{
+            type: 'line',
+            // 曲线
+            smooth: true,
+            symbol: 'emptyCircle',
+            symbolSize: 7,
+            itemStyle: {
+                normal: {
+                    color: '#118cfe',
+                    lineStyle: {
+                        color: '#118cfe'
+                    }
+                }
+            },
+            label: {
+                show: true,
+                position: 'top',
+                distance: 8,
+                textStyle: {
+                    color: '#444444',
+                    fontSize: 18
+                }
+            },
+            data: [1020, 324, 1132, 1389, 1288, 1358],
+        }, ]
+    };
+    myChart.setOption(option);
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)	
+run, % name
+return
+
+NewEchartstwoBarHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption({
+		    color: ['#3398DB'],
+		    tooltip : {
+		        trigger: 'axis',
+		        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+		            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+		        }
+		    },
+		    grid: {
+		        left: '3`%',
+		        right: '4`%',
+		        bottom: '3`%',
+		        containLabel: true
+		    },
+		    xAxis : [
+		        {
+		            type : 'category',
+		            data : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+		            axisTick: {
+		                alignWithLabel: true
+		            }
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value'
+		        },
+		         {
+		            type: 'value',
+		            scale: true,
+		            name: '预购量',
+		            max: 1200,
+		            min: 0,
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'直接访问',
+		            type:'bar',
+		            barWidth: '60`%',
+		            data:[10, 52, 200, 334, 390, 330, 220]
+		        }
+		    ]
+	});
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)	
+run, % name
+return
+
+NewvuetransitionHtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
 (

@@ -150,6 +150,13 @@ Gui, Pandora:Add, Text, gNewEchartsLineHtml ,新建echats.Line.html（折线图�
 Gui, Pandora:Add, Text, gNewEchartsBarHtml ,新建echats.Bar.html（柱状图）
 Gui, Pandora:Add, Text, gNewEchartsPurePinHtml ,新建echats.Pin.html（纯圆饼图）
 Gui, Pandora:Add, Text, gNewEchartsmap3dHtml ,新建echats.map3D.html（3D地图）
+Gui, Pandora:Add, Text, gNewEchartstwoBarHtml ,新建echats.twoBar.html（双Y轴柱状图）
+Gui, Pandora:Add, Text, gNewEchartssmoothHtml ,新建echats.smooth.html（曲线图smooth）
+Gui, Pandora:Add, Text, gNewEchartsareaStyleHtml ,新建echats.areaStyle.html（折线覆盖面图）
+Gui, Pandora:Add, Text, gNewEchartraduisHtml ,新建echats.raduis.html（圆环图）
+Gui, Pandora:Add, Text, gNewEchartPinBoderHtml ,新建echats.pinBoder.html（圆环断层图）
+Gui, Pandora:Add, Text, gNewEchartdoulecolorHtml ,新建echats.doulecolor.html（双色柱状图）
+
 
 Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+50, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
