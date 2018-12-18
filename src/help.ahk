@@ -122,6 +122,15 @@ run, `% name
 code(Var)
 return
 
+<+?::
+Var =
+(
+/*  */
+)
+code(Var)
+Send, {left 3}
+return
+
 ::ahklevel::
 ::ahksend::
 ::ahksendlevel::

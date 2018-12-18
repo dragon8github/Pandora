@@ -1,4 +1,56 @@
-﻿::text-shadow::
+﻿::ell2::
+Var =
+(
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+
+/*! autoprefixer: off */
+-webkit-box-orient: vertical;
+)
+code(Var)
+return
+
+::before::
+::&`:`:before::
+Var =
+(
+position: relative;
+padding-left: rem(20);
+
+&::before {
+  @include ycenter;
+  content: '';
+  left: 0;
+  width: 5px;
+  height: 20px;
+  background-color: #1a81a4;
+}
+)
+code(Var)
+return
+
+::after::
+::&`:`:after::
+Var =
+(
+position: relative;
+padding-left: rem(20);
+
+&::after {
+  @include ycenter;
+  content: '';
+  left: 0;
+  width: 5px;
+  height: 20px;
+  background-color: #1a81a4;
+}
+)
+code(Var)
+return
+
+::text-shadow::
 Var =
 (
 text-shadow: #25B3DC 0px 0px 10px, #25B3DC 0px 0px 20px, #25b3dc 0px 0px 30px, #25b3dc 0px 0px 40px, #25b3dc 0px 0px 70px, #25b3dc 0px 0px 80px, #25b3dc 0px 0px 100px;
@@ -750,7 +802,7 @@ justify-content: space-around;
 )
 }
 
-if (v == "space-between") {
+if (v == "justify-content: space-between") {
 Var = 
 (
 justify-content: space-between;
@@ -904,15 +956,16 @@ return
 ::css.yuan::
 Var =
 (
-content: '';
-position: absolute;
-top: 50`%;
-transform: translateY(-50`%);
-left: -8px;
-width: 6px;
-height: 7px;
-background-color: #0b76c3;
-border-radius: 50`%;
+position: relative;
+padding: rem(10);
+
+&::before {
+    content: '';
+    @include ycenter;
+    border-radius: 50`%;
+    width: rem(10);
+    height: rem(10);
+}
 )
 code(Var)
 return

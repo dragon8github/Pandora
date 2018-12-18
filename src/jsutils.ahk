@@ -77,6 +77,8 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
+    
+    Menu, utilsMenu, Add, 新建长度为N的数组[...Array(100)], ForHandler
     Menu, utilsMenu, Add, 往页面插入style, utilsHandler
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
     Menu, utilsMenu, Add, getScriptPath, utilsHandler

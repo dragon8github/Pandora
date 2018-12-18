@@ -183,11 +183,13 @@ Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/logi
 
 Gui, Pandora:Add, Text,  W140 ys, 12345大数据屏（vue）
 Gui, Pandora:Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">swagger-ui</a>
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">dg12345-vue git</a>
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/dg12345-vue-plus">新版的git</a>
-Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">测试地址174</a>
+Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">旧版 dg12345-vue git</a>
+Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/dg12345-vue-plus">旧版 dg12345-vue-plus git</a>
+Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">旧版测试地址174</a>
+Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">旧版演示地址</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com/#/overallSituation">新版测试地址174</a>
-Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">旧版12345演示地址</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>
+
 
 
 

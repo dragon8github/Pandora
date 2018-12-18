@@ -1027,37 +1027,9 @@ export default store
 )
 }
 if (v == "vuex.modules") {
-Var = 
-(
-let state = {
-    AppData: {}
-}
-
-const actions = {
-  setAppData ({ commit, state, dispatch, rootState }, data) {
-     commit('SET_APP_DATA', data.userInfo)
-  }
-}
-
-const mutations = {
-  SET_APP_DATA (state, userInfo) {
-    return state.AppData = userInfo
-  }
-},
-
-const getters = {
-  AppData (state) {
-    return state.AppData;
-  }
-}
-export default {
-  namespaced: true,
-  state,
-  mutations,
-  actions,
-  getters,
-}
-)
+SendLevel 1
+SendInput, vuex.modules{tab}
+return
 }
 
 if (v == "this.$store.dispatch") {
@@ -1249,14 +1221,23 @@ return
 ::vuex.module::
 Var =
 (
+import { request } from '@/utils/request.js'
+import Model from '@/utils/Model.js'
+
 let state = {
-    AppData: {}
+    AppData: {},
+    getDepartSecondOverdue: null,
 }
 
 const actions = {
   setAppData ({ commit, state, dispatch, rootState }, data) {
 	   commit('SET_APP_DATA', data.userInfo)
-  }
+  },
+  getDepartSecondOverdue ({ commit, state, dispatch, rootState }, departId) {
+    return request('/sg/department/sgDepartmentCount/getDepartSecondOverdue?departId=' + departId).then(result => {
+        state.getDepartSecondOverdue = result
+    })
+  },
 }
 
 const mutations = {

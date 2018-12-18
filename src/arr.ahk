@@ -1,4 +1,17 @@
-﻿::.filter::
+﻿::newarr::
+Var =
+(
+// new Int8Array(100)
+// [...Array(100)].map(_ => 0);
+// [...Array(100)].map((v, index, array) => index);
+[...Array(100)].map((v, index, array) => {
+    return index
+});
+)
+code(Var)
+return
+
+::.filter::
 Var =
 (
 .filter((data) => {
@@ -12,6 +25,8 @@ return
 ::arra::
 ::arrr::
 !a::
+	
+	Menu, arrayMenu, Add,  新建长度为N的数组[...Array(100)], ForHandler
 	Menu, arrayMenu, Add,  for i++, ForHandler
 	Menu, arrayMenu, Add,  for i--, ForHandler
 	Menu, arrayMenu, Add,  for in, ForHandler
@@ -49,6 +64,12 @@ Var =
 (
 
 )
+}
+
+if (v == "新建长度为N的数组[...Array(100)]") {
+SendLevel 1
+SendInput, newarr{tab}
+return
 }
 
 if (v == "Array#reduceRight") {
