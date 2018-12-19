@@ -35,7 +35,7 @@ Gui, Pandora:Add, Checkbox, vsuning, 苏宁易购
 Gui, Pandora:Add, Checkbox, vkongzi, 孔夫子二手书
 
 ; 搜索框
-Gui, Pandora:Add, Edit, vSearchContent w780 Limit50 yp+20 Section xs, 
+Gui, Pandora:Add, Edit, vSearchContent w780 Limit50 yp+20 Section xs, dragon8github/Pandora
 ; 背景色
 Gui, Pandora:Color, E6FFE6
 ; margin 布局
@@ -126,7 +126,7 @@ Gui, Pandora:Add, Link,, <a href="https://themequarry.com/category/free?page=2">
 Gui, Pandora:Add, Link,, <a href="https://github.com/creativetimofficial/material-dashboard">material-dashboard</a>
 Gui, Pandora:Add, Link,, <a href="https://www.creative-tim.com/product/vue-material-dashboard">material-dashboard-vue</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuematerial/vue-material">vue-material</a>
-
+Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza-old</a>
 
 
 
@@ -183,11 +183,13 @@ Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/logi
 
 Gui, Pandora:Add, Text,  W140 ys, 12345大数据屏（vue）
 Gui, Pandora:Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">swagger-ui</a>
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">旧版 dg12345-vue git</a>
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/dg12345-vue-plus">旧版 dg12345-vue-plus git</a>
+Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">旧版 dg12345 git</a>
+Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/dg12345-vue-plus">旧版 dg12345-plus git</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-old">新的 gitlab 地址旧版12345</a>
 Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">旧版测试地址174</a>
 Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">旧版演示地址</a>
-Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com/#/overallSituation">新版测试地址174</a>
+Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com/#/overallSituation">新版 plus 测试地址174</a>
+
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>
 
 

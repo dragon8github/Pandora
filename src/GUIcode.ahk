@@ -1208,42 +1208,36 @@ FileAppend,
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
     myChart.setOption({
-        title: {
-            text: '经营占道',
-            x: 'center',
-            y: 'bottom'
-        },
         series: [{
-            name: '经营占道类型',
             type: 'pie',
             radius: '55`%',
-            center: ['50`%', '60`%'],
+            center: ['50`%', '50`%'],
+            color: ['#86D560', '#1890FF', '#13C2C2', '#F7BA40', '#58D6AA', '#1EDFE0', '#F5B8D9', '#E8845A', '#D4D545', ],
+            data: [
+                { value: [611, 110], name: '市场管理' },
+                { value: [9, 110], name: '行政效能投诉' },
+                { value: [1, 110], name: '治安消防' },
+            ],
+            // 引导线
             labelLine: {
                 normal: {
-                    // 引导线的长度
-                    length: 1
+                    length: 10,
+                    length2: 20,
                 }
             },
-            data: [
-                { value: 1210, name: '店外经营占道' },
-                { value: 1030, name: '流动经营占道' }
-            ],
+            // 文本
+            label: {
+                show: true,
+                formatter: '{b}\n\n{d}`%'
+            },
             itemStyle: {
                 emphasis: {
                     shadowBlur: 10,
                     shadowOffsetX: 0,
                     shadowColor: 'rgba(0, 0, 0, 0.5)'
                 },
-                // normal 是图形在默认状态下的样式；emphasis是图形在高亮状态下的样式，比如在鼠标悬浮或者图例联动高亮时。
-                normal: {
-                    // 饼图图形上的文本标签
-                    label: { show: true },
-                    // 标签的视觉引导线样式
-                    labelLine: { show: true }
-                }
             }
         }],
-        color: ['#e76660', '#df4547']
     });
     </script>
 </body>

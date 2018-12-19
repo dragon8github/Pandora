@@ -77,7 +77,7 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
-    
+    Menu, utilsMenu, Add, 加强版map遍历:fuckmap, utilsHandler
     Menu, utilsMenu, Add, 新建长度为N的数组[...Array(100)], ForHandler
     Menu, utilsMenu, Add, 往页面插入style, utilsHandler
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
@@ -148,6 +148,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "加强版map遍历:fuckmap") {
+SendLevel 1
+SendInput, fuckmap{tab}
+return
 }
 
 if (v == "往页面插入style") {
@@ -1763,13 +1769,17 @@ $('.dgtable__warp').scroll(e => {
 if (v == "isString") {
 Var = 
 (
-Object.prototype.toString.call(String) === '[object String]'
+export default function isString(input) {
+	return Object.prototype.toString.call(input) === '[object String]'
+}
 )
 }
 if (v == "isBoolean") {
 Var = 
 (
-Object.prototype.toString.call(Boolean) === '[object Boolean]'
+export default function isBoolean(input) {
+	return Object.prototype.toString.call(input) === '[object Boolean]'
+}
 )
 }
 if (v == "isZH-Cn") {

@@ -135,6 +135,7 @@ return
     Menu, CssMenu, Add, css.placeholder, CssHandler2
     Menu, CssMenu, Add, css.text-shadown, CssHandler
     Menu, CssMenu, Add, css.box-shadown, CssHandler
+    Menu, CssMenu, Add, 框型阴影, CssHandler
     
     
     Menu, CssMenu, Add, 
@@ -177,6 +178,14 @@ Var =
 )
 }
 
+if (v == "框型阴影") {
+Var =
+(
+border: 0;
+box-shadow: 0, 2px 6px 0 hsla(0, 0`%, 0`%, 0.2)
+)
+}
+
 if (v == "cursor:手掌手势") {
 Var =
 (
@@ -185,10 +194,9 @@ cursor: url('https://webapi.amap.com/theme/v1.3/openhand.cur'),default;
 }
 
 if (v == "css.box-shadown") {
-Var =
-(
-box-shadow: rgba(255, 255, 255, 0.33) 0px 0px 54px;
-)
+SendLevel 1
+SendInput, box-shadow{tab}
+return
 }
 
 if (v == "css.text-shadown") {
@@ -1800,9 +1808,9 @@ Return
 ::shadow::
 Var =
 (
+// box-shadow: 0 4px 6px 0 hsla(0, 0`%, 0`%, 0.2)
+// box-shadow: 0 0 0 1px hsla(0, 0`%, 100`%, .3) inset,0 .5em 1em rgba(0, 0, 0, 0.6);
 box-shadow: rgba(255, 255, 255, 0.33) 0px 0px 54px;
-box-shadow: 0 0 0 1px hsla(0, 0`%, 100`%, .3) inset, 
-            0 .5em 1em rgba(0, 0, 0, 0.6);
 )
 code(Var)
 return

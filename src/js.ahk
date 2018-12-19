@@ -1,4 +1,41 @@
-﻿::getscriptpath::
+﻿::fuckfor::
+::bettermap::
+::fuckm::
+::objmap::
+::anymap::
+::fuckmap::
+::mymap::
+Var =
+(
+// 字符串判断
+export const isString = (v) => Object.prototype.toString.call(v) === '[object String]'
+
+// 数组判断
+export const isArray = (input) => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
+
+// 对象判断
+export const isObject = (input) => input != null && Object.prototype.toString.call(input) === '[object Object]'
+
+// 仿 Array.prototype.map 函数。兼容数组、对象的遍历
+export const betterMap = (v, cb) => {
+    let result = []
+    if (isArray(v) || isString(v)) {
+        for (var i = 0; i < v.length; i++) {
+            result.push(cb && cb(v[i], i, v, result))
+        }
+    }
+    if (isObject(v)) {
+        for (var k in v) {
+            result.push(cb && cb(v[k], k, v, result))
+        }
+    }
+    return result
+}
+)
+code(Var)
+return
+
+::getscriptpath::
 Var =
 (
 function getScriptPath() {
@@ -1432,7 +1469,7 @@ Var =
 }, 0)
 
 // 初始化为数组的示例
-children.reduce((previousValue, currentValue) => {
+children.reduce((previousValue, currentValue, index, array) => {
 	if (currentValue.hlPid === v.hlItemId)
 	   previousValue.push({ name: currentValue.hlItemName, id: currentValue.hlItemId })
 	// 默认总是要返回一个数组的

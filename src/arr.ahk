@@ -25,7 +25,7 @@ return
 ::arra::
 ::arrr::
 !a::
-	
+	Menu, arrayMenu, Add,  加强版map遍历:fuckmap, ForHandler
 	Menu, arrayMenu, Add,  新建长度为N的数组[...Array(100)], ForHandler
 	Menu, arrayMenu, Add,  for i++, ForHandler
 	Menu, arrayMenu, Add,  for i--, ForHandler
@@ -64,6 +64,12 @@ Var =
 (
 
 )
+}
+
+if (v == "加强版map遍历:fuckmap") {
+SendLevel 1
+SendInput, fuckmap{tab}
+return
 }
 
 if (v == "新建长度为N的数组[...Array(100)]") {
