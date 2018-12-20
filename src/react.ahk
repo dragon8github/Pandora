@@ -1,197 +1,79 @@
-﻿::ant.time::
-::ant.pickdate::
-Var =
-(
-import { DatePicker } from 'antd';
-
-const RangePicker = DatePicker.RangePicker;
-
-<FormItem {...formItemLayout} label="生效时间">
-  {form.getFieldDecorator('createTime', {
-    rules: [{ required: false }],
-    initialValue: createTime,
-  })(
-    <RangePicker placeholder={['开始日期', '结束日期']} style={{ width: '100`%' }} />
-  `)}
-</FormItem>
-
-if (fieldsValue.le_endTime && fieldsValue.le_endTime.length >= 2) {
-	values.ge_startTime = fieldsValue.le_endTime[0].format('YYYY-MM-DD HH:mm:ss')
-	values.le_endTime = fieldsValue.le_endTime[1].format('YYYY-MM-DD HH:mm:ss')
-}
-	  
-)
-code(Var)
+﻿!t::
+	Menu, reactMenu, Add, 新建create-react-app, ReactMenuHandler
+	Menu, reactMenu, Add, React runtime for stackblitz, ReactMenuHandler
+	Menu, reactMenu, Add, React runtime for codesandbox, ReactMenuHandler
+	Menu, reactMenu, Add, import 基本内容, ReactMenuHandler
+	Menu, reactMenu, Add, react-init, ReactMenuHandler
+	
+	Menu, reactMenu, Add
+	Menu, reactMenu, Add
+	
+	Menu, reactMenu, Add, class App extends Component, ReactMenuHandler
+	Menu, reactMenu, Add, constructor, ReactMenuHandler
+	Menu, reactMenu, Add, static defaultProps, ReactMenuHandler
+	Menu, reactMenu, Add, render () {}, ReactMenuHandler
+	Menu, reactMenu, Add, ReactDOM.render, ReactMenuHandler
+		
+	Menu, reactMenu, Add
+	Menu, reactMenu, Add
+	
+	Menu, reactMenu, Add, ref, ReactMenuHandler
+	Menu, reactMenu, Add, this.state, ReactMenuHandler
+	Menu, reactMenu, Add, this.porps, ReactMenuHandler
+	Menu, reactMenu, Add, this.setState, ReactMenuHandler	
+	Menu, reactMenu, Add, react for, ReactMenuHandler
+	Menu, reactMenu, Add, this.state.list.map, ReactMenuHandler
+	Menu, reactMenu, Add, style={{ display: this.state.expandForm ? 'block' : 'none' }}, ReactMenuHandler
+	Menu, reactMenu, Add, const { ... } = this.props, ReactMenuHandler
+	Menu, reactMenu, Add, const { ... } = this.state, ReactMenuHandler
+	
+	Menu, reactMenu, Add
+	Menu, reactMenu, Add
+	
+	Menu, reactMenu, Add, 箭头函数点击事件handleClick, ReactMenuHandler
+		
+	Menu, reactMenu, Add
+	Menu, reactMenu, Add
+	
+	
+	Menu, reactMenu, Add, WrappedComponent, ReactMenuHandler
+	Menu, reactMenu, Add, WrappedComponent + @Decorator, ReactMenuHandler
+	Menu, reactMenu, Add, this.forceUpdate()强制启动更新, ReactMenuHandler
+	Menu, reactMenu, Add, React.Fragment 代替div作为外层, ReactMenuHandler
+	
+	Menu, reactMenu, Add
+	Menu, reactMenu, Add
+	
+	Menu, reactMenu, Add, React clickOutside, ReactMenuHandler
+ 
+	Menu, reactMenu, Show
+	Menu, reactMenu, DeleteAll
 return
-
-::js.redux::
-::redux.html::
-::redux-html::
-::react.redux::
-::redux.demo::
-::redux-demo::
-Var =
-(
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0/redux.min.js"></script>
-    <style>
-    html, body{
-        margin: 0;
-        padding: 0;
-    }
-
-    #app {
-
-    }
-    </style>
-</head>
-
-<body>
-    <div id="app">
-        <label class='num'></label>
-        <button class='like'>like</button>
-        <button class='unlike'>unlike</button>
-    </div>
-</body>
-<script>
-    
-    const render = () => {
-        document.querySelector('.num').innerText = store.getState()
-    }
-
-    document.querySelector('.like').addEventListener('click', function (event) {
-        store.dispatch({ type: 'LIKE' })
-    })
-
-    document.querySelector('.unlike').addEventListener('click', function (event) {
-        store.dispatch({ type: 'UNLIKE' })
-    })
-
-    // redux的核心方法： reducer
-    const reducer = (previousState = 0, action) => {
-        switch (action.type) {
-            case 'LIKE':
-                return previousState + 1;
-            case 'UNLIKE':
-                return previousState - 1;
-            default:
-                return previousState
-        }
-    }
-
-    // 创建redux的核心：store
-    const store = Redux.createStore(reducer);
-
-    // 订阅更新渲染
-    store.subscribe(render);
-
-    // 首次渲染
-    render()
-
-</script>
-</html>
-)
-code(Var)
-return
-
-::rfor::
-::reactfor::
-Var =
-(
-render () {
-	const { getCount, addInput } = this.props
-	let listInput = () => {
-		let result = []
-		for (let i = 1; i <= 10; i++) {
-		   result.push(<div key = { i }>输入框: <input type='text'/></div>)
-		}
-		return result
-	}
-
-	return <div>
-		{ listInput() }
-		<input type = 'button' onClick = { addInput }  value = '添加'/>
-	</div>
-}
-)
-code(Var)
-return
-
-::ant.model::
-::ant-modal::
-Var =
-(
-const CreateForm = Form.create()(props => {
-  const { modalVisible, form, handleAdd, handleModalVisible } = props;
-  const okHandle = () => {
-    form.validateFields((err, fieldsValue) => {
-      if (err) return;
-      form.resetFields();
-      handleAdd(fieldsValue);
-    });
-  };
-  return (
-    <Modal
-      title="新建规则"
-      visible={modalVisible}
-      onOk={okHandle}
-      onCancel={() => handleModalVisible(false)}
-    >
-      <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 19 }} label="描述">
-        {form.getFieldDecorator('desc', {
-          rules: [{ required: true, message: 'Please input some description...' }],
-        })(<Input placeholder="请输入" />)}
-      </FormItem>
-    </Modal>
-  `);
-});
-
-
-handleModalVisible = flag => {
-	this.setState({
-	  modalVisible: !!flag,
-	});
-};
-
-handleAdd = fields => {
-	const { dispatch } = this.props;
-	dispatch({
-	  type: 'rule/add',
-	  payload: {
-		description: fields.desc,
-	  },
-});
-
-message.success('添加成功');
-	this.setState({
-	  modalVisible: false,
-	});
-};
-
-const parentMethods = {
-  handleAdd: this.handleAdd,
-  handleModalVisible: this.handleModalVisible,
-};
-
-
-const { modalVisible } = this.state;
-
-<CreateForm {...parentMethods} modalVisible={modalVisible} />
-)
-code(Var)
-return
-
 
 
 ReactMenuHandler:
 if (A_ThisMenuItem == "") {
 Var = 
 (
+)
+code(Var)
+}
+
+if (A_ThisMenuItem == "React runtime for codesandbox") {
+Run, https://codesandbox.io/s/new
+}
+
+if (A_ThisMenuItem == "react-init") {
+SendLevel 1
+SendInput, react-init{tab}
+return
+}
+
+if (A_ThisMenuItem == "import 基本内容") {
+Var = 
+(
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 )
 code(Var)
 }
@@ -462,13 +344,15 @@ this.forceUpdate()
 code(Var)
 }
 
-if (A_ThisMenuItem == "React runtime") {
+if (A_ThisMenuItem == "React runtime for stackblitz") {
 	Run, https://stackblitz.com/fork/react
 }
 
 if (A_ThisMenuItem == "ReactDOM.render") {
 Var =
 (
+import ReactDOM from "react-dom";
+
 ReactDOM.render(
 　　 <h1> Hello, world! < /h1>,
     document.getElementById('app')
@@ -527,62 +411,222 @@ export default class ClickOutside extends Component {
 )
 code(Var)
 }
-
-
 Return  
 
+::ant.time::
+::ant.pickdate::
+Var =
+(
+import { DatePicker } from 'antd';
 
-!t::
-	Menu, reactMenu, Add, 新建create-react-app, ReactMenuHandler
-	Menu, reactMenu, Add, 新建react-redux.html, ReactMenuHandler
-	Menu, reactMenu, Add, React runtime, ReactMenuHandler
-	
-	Menu, reactMenu, Add
-	Menu, reactMenu, Add
-	
-	Menu, reactMenu, Add, class App extends Component, ReactMenuHandler
-	Menu, reactMenu, Add, constructor, ReactMenuHandler
-	Menu, reactMenu, Add, static defaultProps, ReactMenuHandler
-	Menu, reactMenu, Add, render () {}, ReactMenuHandler
-	Menu, reactMenu, Add, ReactDOM.render, ReactMenuHandler
-		
-	Menu, reactMenu, Add
-	Menu, reactMenu, Add
-	
-	Menu, reactMenu, Add, ref, ReactMenuHandler
-	Menu, reactMenu, Add, this.state, ReactMenuHandler
-	Menu, reactMenu, Add, this.porps, ReactMenuHandler
-	Menu, reactMenu, Add, this.setState, ReactMenuHandler	
-	Menu, reactMenu, Add, react for, ReactMenuHandler
-	Menu, reactMenu, Add, this.state.list.map, ReactMenuHandler
-	Menu, reactMenu, Add, style={{ display: this.state.expandForm ? 'block' : 'none' }}, ReactMenuHandler
-	Menu, reactMenu, Add, const { ... } = this.props, ReactMenuHandler
-	Menu, reactMenu, Add, const { ... } = this.state, ReactMenuHandler
-	
-	Menu, reactMenu, Add
-	Menu, reactMenu, Add
-	
-	Menu, reactMenu, Add, 箭头函数点击事件handleClick, ReactMenuHandler
-		
-	Menu, reactMenu, Add
-	Menu, reactMenu, Add
-	
-	
-	Menu, reactMenu, Add, WrappedComponent, ReactMenuHandler
-	Menu, reactMenu, Add, WrappedComponent + @Decorator, ReactMenuHandler
-	Menu, reactMenu, Add, this.forceUpdate()强制启动更新, ReactMenuHandler
-	Menu, reactMenu, Add, React.Fragment 代替div作为外层, ReactMenuHandler
-	
-	Menu, reactMenu, Add
-	Menu, reactMenu, Add
-	
-	Menu, reactMenu, Add, React clickOutside, ReactMenuHandler
- 
-	Menu, reactMenu, Show
-	Menu, reactMenu, DeleteAll
+const RangePicker = DatePicker.RangePicker;
+
+<FormItem {...formItemLayout} label="生效时间">
+  {form.getFieldDecorator('createTime', {
+    rules: [{ required: false }],
+    initialValue: createTime,
+  })(
+    <RangePicker placeholder={['开始日期', '结束日期']} style={{ width: '100`%' }} />
+  `)}
+</FormItem>
+
+if (fieldsValue.le_endTime && fieldsValue.le_endTime.length >= 2) {
+	values.ge_startTime = fieldsValue.le_endTime[0].format('YYYY-MM-DD HH:mm:ss')
+	values.le_endTime = fieldsValue.le_endTime[1].format('YYYY-MM-DD HH:mm:ss')
+}
+	  
+)
+code(Var)
+return
+
+::js.redux::
+::redux.html::
+::redux-html::
+::react.redux::
+::redux.demo::
+::redux-demo::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0/redux.min.js"></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <label class='num'></label>
+        <button class='like'>like</button>
+        <button class='unlike'>unlike</button>
+    </div>
+</body>
+<script>
+    
+    const render = () => {
+        document.querySelector('.num').innerText = store.getState()
+    }
+
+    document.querySelector('.like').addEventListener('click', function (event) {
+        store.dispatch({ type: 'LIKE' })
+    })
+
+    document.querySelector('.unlike').addEventListener('click', function (event) {
+        store.dispatch({ type: 'UNLIKE' })
+    })
+
+    // redux的核心方法： reducer
+    const reducer = (previousState = 0, action) => {
+        switch (action.type) {
+            case 'LIKE':
+                return previousState + 1;
+            case 'UNLIKE':
+                return previousState - 1;
+            default:
+                return previousState
+        }
+    }
+
+    // 创建redux的核心：store
+    const store = Redux.createStore(reducer);
+
+    // 订阅更新渲染
+    store.subscribe(render);
+
+    // 首次渲染
+    render()
+
+</script>
+</html>
+)
+code(Var)
+return
+
+::rfor::
+::reactfor::
+Var =
+(
+render () {
+	const { getCount, addInput } = this.props
+	let listInput = () => {
+		let result = []
+		for (let i = 1; i <= 10; i++) {
+		   result.push(<div key = { i }>输入框: <input type='text'/></div>)
+		}
+		return result
+	}
+
+	return <div>
+		{ listInput() }
+		<input type = 'button' onClick = { addInput }  value = '添加'/>
+	</div>
+}
+)
+code(Var)
+return
+
+::ant.model::
+::ant-modal::
+Var =
+(
+const CreateForm = Form.create()(props => {
+  const { modalVisible, form, handleAdd, handleModalVisible } = props;
+  const okHandle = () => {
+    form.validateFields((err, fieldsValue) => {
+      if (err) return;
+      form.resetFields();
+      handleAdd(fieldsValue);
+    });
+  };
+  return (
+    <Modal
+      title="新建规则"
+      visible={modalVisible}
+      onOk={okHandle}
+      onCancel={() => handleModalVisible(false)}
+    >
+      <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 19 }} label="描述">
+        {form.getFieldDecorator('desc', {
+          rules: [{ required: true, message: 'Please input some description...' }],
+        })(<Input placeholder="请输入" />)}
+      </FormItem>
+    </Modal>
+  `);
+});
+
+
+handleModalVisible = flag => {
+	this.setState({
+	  modalVisible: !!flag,
+	});
+};
+
+handleAdd = fields => {
+	const { dispatch } = this.props;
+	dispatch({
+	  type: 'rule/add',
+	  payload: {
+		description: fields.desc,
+	  },
+});
+
+message.success('添加成功');
+	this.setState({
+	  modalVisible: false,
+	});
+};
+
+const parentMethods = {
+  handleAdd: this.handleAdd,
+  handleModalVisible: this.handleModalVisible,
+};
+
+
+const { modalVisible } = this.state;
+
+<CreateForm {...parentMethods} modalVisible={modalVisible} />
+)
+code(Var)
 return
 
 
+
+
+::react-init::
+Var =
+(
+import React from "react";
+import ReactDOM from "react-dom";
+
+import "./styles.css";
+
+function App() {
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <h2>Start editing to see some magic happen!</h2>
+    </div>
+  `);
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+)
+code(Var)
+return
 
 
 

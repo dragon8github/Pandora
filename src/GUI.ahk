@@ -104,12 +104,13 @@ Gui, Pandora:Add, Link,, <a href="https://unpkg.com/#/">unpkg cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdnjs.com/">cdnjs.com</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 最近学习：
-Gui, Pandora:Add, Link,, <a href="https://juejin.im/book/5b1e15f76fb9a01e516d14a0">react 掘金小册</a>
 Gui, Pandora:Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React 小书</a>
 Gui, Pandora:Add, Link,, <a href="http://www.jtthink.com/">jtthink.com</a>
 Gui, Pandora:Add, Link,, <a href="https://gitbook.cn/gitchat/geekbooks">极客书单</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0.10源码</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/seajs/seajs/issues/242">CMD规范</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/seajs/seajs/issues/242">CMD规范</a> 
+Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/">CODECASTS 免费课程</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, kindle：
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/manageyourkindle">我的设备</a>
@@ -120,7 +121,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&
 
 
 
-Gui, Pandora:Add, Text,  W140 ys, 与钱为伍：
+Gui, Pandora:Add, Text,  W160 ys, 与钱为伍：
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
 Gui, Pandora:Add, Link,, <a href="https://themequarry.com/category/free?page=2">admin-lte-free</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/creativetimofficial/material-dashboard">material-dashboard</a>
