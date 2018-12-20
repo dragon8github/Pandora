@@ -2,7 +2,7 @@
 	Menu, reactMenu, Add, 新建create-react-app, ReactMenuHandler
 	Menu, reactMenu, Add, React runtime for stackblitz, ReactMenuHandler
 	Menu, reactMenu, Add, React runtime for codesandbox, ReactMenuHandler
-	Menu, reactMenu, Add, import 基本内容, ReactMenuHandler
+	Menu, reactMenu, Add, import , ReactMenuHandler
 	Menu, reactMenu, Add, react-init, ReactMenuHandler
 	
 	Menu, reactMenu, Add
@@ -40,6 +40,7 @@
 	Menu, reactMenu, Add, WrappedComponent + @Decorator, ReactMenuHandler
 	Menu, reactMenu, Add, this.forceUpdate()强制启动更新, ReactMenuHandler
 	Menu, reactMenu, Add, React.Fragment 代替div作为外层, ReactMenuHandler
+	Menu, reactMenu, Add, 父组件调用子组件示例, ReactMenuHandler
 	
 	Menu, reactMenu, Add
 	Menu, reactMenu, Add
@@ -58,6 +59,54 @@ Var =
 )
 code(Var)
 }
+
+
+if (A_ThisMenuItem == "父组件调用子组件示例") {
+Var = 
+(
+// 其实直接在父子间用 ref 就可以了，不需要特意借助用 fuckyou 拿到child……
+// 但这不失为一种好的方案。
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+export default class Parent extends Component {
+  render() {
+    return (
+      <div>
+        {/* <Child ref={this.fuckyou} /> 这种其实更方便，而且不需要在子组件写多余的代码  */}
+        <Child fuckyou={this.fuckyou} />
+        <button onClick={this.click}>click</button>
+      </div>
+    `);
+  }
+
+  fuckyou = ref => {
+    this.child = ref;
+  };
+
+  click = e => {
+    this.child.myName();
+  };
+}
+
+class Child extends Component {
+  componentDidMount() {
+      this.props.fuckyou && this.props.fuckyou(this);
+  }
+
+  myName = () => alert("123");
+
+  render() {
+    return <div />;
+  }
+}
+
+ReactDOM.render(<Parent />, document.getElementById("root"));
+
+)
+code(Var)
+}
+
 
 if (A_ThisMenuItem == "React runtime for codesandbox") {
 Run, https://codesandbox.io/s/new
