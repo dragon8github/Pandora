@@ -81,6 +81,7 @@
 	Menu, echartsEventMenu, Add, getPointCenter, EventHandler
 	Menu, echartsEventMenu, Add, geojson, EventHandler
 	Menu, echartsEventMenu, Add, createPolygon, EventHandler
+	Menu, echartsEventMenu, Add, echarts.broadcast 轮播器, EventHandler
 
 	Menu, EventMenu, Add, echarts, :echartsEventMenu
 	Menu, EventMenu, Add, Vue, :VueEventMenu
@@ -115,6 +116,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "echarts.broadcast 轮播器") {
+SendLevel 1
+SendInput, ehcarts.lunbo{tab}
+return
 }
 
 if (v == "aspectScale: 1") {

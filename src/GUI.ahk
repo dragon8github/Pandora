@@ -129,7 +129,8 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/vuematerial/vue-material">v
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza-old</a>
 
 
-
+Gui, Pandora:Add, Text,  W140 ys, 图片速查：
+Gui, Pandora:Add, Link,, <a href="https://raw.githubusercontent.com/dragon8github/Pandora/master/static/gitpic.jpg">git命令速查表</a>
 
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html

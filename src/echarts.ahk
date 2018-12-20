@@ -1,4 +1,29 @@
-﻿::echarts.3dmap::
+﻿::ehcarts.lunbo::
+Var =
+(
+broadcast() {
+  // 只允许轮播一次
+  this.timer && clearInterval(this.timer)
+  // 初始化
+  let currentIndex = -1
+  // 定时器
+  this.timer = setInterval(() => {
+      // 数量
+      const dataLen = this.getDepartSecondTypePercentage.length;
+      // 取消之前高亮的图形
+      this.myChart.dispatchAction({ type: 'downplay', seriesIndex: 0, dataIndex: currentIndex })
+      // 翻页
+      currentIndex = (currentIndex + 1) `% dataLen;
+      // 高亮当前图形
+      this.myChart.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: currentIndex })
+  }, 1500)
+}
+)
+code(Var)
+return
+
+
+::echarts.3dmap::
 ::echarts.map3d::
 ::echarts.3d::
 Var =

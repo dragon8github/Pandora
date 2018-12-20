@@ -43,6 +43,7 @@
     Menu, utilsDOM, Add, gettop 获取距离顶部的相对距离, utilsHandler
     Menu, utilsDOM, Add, scrollToTop 滚动到头部, utilsHandler
     Menu, utilsDOM, Add, scrollIntoView 滚动到元素可视区域, utilsHandler
+    Menu, utilsDOM, Add, isBottom 是否滚动到底部, utilsHandler
 
 
     Menu, utilsObject, Add, ({a = 123`, b = 321`, c = 456} = {}) 对象解构 与 参数默认值, utilsHandler
@@ -77,6 +78,7 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
+    Menu, utilsMenu, Add, isBottom 是否滚动到底部, utilsHandler
     Menu, utilsMenu, Add, 加强版map遍历:fuckmap, utilsHandler
     Menu, utilsMenu, Add, 新建长度为N的数组[...Array(100)], ForHandler
     Menu, utilsMenu, Add, 往页面插入style, utilsHandler
