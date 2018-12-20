@@ -37,13 +37,7 @@
 
 
 	
-	Menu, echartsEventMenu, Add, ehcarts.click, EventHandler
-	Menu, echartsEventMenu, Add, ehcarts.mouseover, EventHandler
-	Menu, echartsEventMenu, Add, ehcarts.mouseout, EventHandler
-	Menu, echartsEventMenu, Add, ehcarts.legendselectchanged, EventHandler
 
-	Menu, echartsEventMenu, Add
-	Menu, echartsEventMenu, Add
 
 	Menu, echartsEventMenu, Add, echarts.init, EventHandler
 	Menu, echartsEventMenu, Add, echarts.options, EventHandler
@@ -57,6 +51,14 @@
 	Menu, echartsEventMenu, Add, echarts.bar（柱状图）, EventHandler
 	Menu, echartsEventMenu, Add, echarts.line（折线图）, EventHandler
 	Menu, echartsEventMenu, Add, echarts.rose（玫瑰图）, EventHandler
+
+	Menu, echartsEventMenu, Add
+	Menu, echartsEventMenu, Add
+	
+	Menu, echartsEventMenu, Add, ehcarts.click, EventHandler
+	Menu, echartsEventMenu, Add, ehcarts.mouseover, EventHandler
+	Menu, echartsEventMenu, Add, ehcarts.mouseout, EventHandler
+	Menu, echartsEventMenu, Add, ehcarts.legendselectchanged, EventHandler
 
 	Menu, echartsEventMenu, Add
 	Menu, echartsEventMenu, Add
@@ -82,6 +84,7 @@
 	Menu, echartsEventMenu, Add, geojson, EventHandler
 	Menu, echartsEventMenu, Add, createPolygon, EventHandler
 	Menu, echartsEventMenu, Add, echarts.broadcast 轮播器, EventHandler
+	Menu, echartsEventMenu, Add, new echarts.graphic.LinearGradient, EventHandler
 
 	Menu, EventMenu, Add, echarts, :echartsEventMenu
 	Menu, EventMenu, Add, Vue, :VueEventMenu
@@ -115,6 +118,20 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "new echarts.graphic.LinearGradient") {
+Var = 
+(
+color: new echarts.graphic.LinearGradient(
+    0, 0, 0, 1,
+    [
+        {offset: 0, color: '#83bff6'},
+        {offset: 0.5, color: '#188df0'},
+        {offset: 1, color: '#188df0'}
+    ]
+`)
 )
 }
 

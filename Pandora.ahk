@@ -20,9 +20,10 @@ FileDelete, .\src\*.bak
 #Include src/shell.ahk        ; shell
 #Include src/node.ahk         ; nodejs 
 #Include src/canvas.ahk		  ; canvas
-#include src/css.ahk          ; css   
 #Include src/TypeScript.ahk   ; TypeScript
 #Include src/tp.ahk		 	  ; thinkphp
+#Include src/echarts.ahk	  ; echarts
+#include src/css.ahk          ; css
 #Include src/jsutils.ahk      ; jsutils
 #Include src/php.ahk          ; php
 #Include src/js.ahk           ; JavaScript  
@@ -36,7 +37,6 @@ FileDelete, .\src\*.bak
 #Include src/gulp.ahk         ; gulp
 #Include src/docker.ahk       ; docker
 #Include src/python.ahk		  ; python
-#Include src/echarts.ahk	  ; echarts
 ; #Include src/sql.ahk		  ; sql
 #Include src/bdmap.ahk		  ; bdmap
 #include src/prehosting.ahk	  ; 预设置的快捷键
