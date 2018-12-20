@@ -28,7 +28,7 @@ return
 	Menu, arrayMenu, Add,  加强版map遍历:fuckmap, ForHandler
 	Menu, arrayMenu, Add,  新建长度为N的数组[...Array(100)], ForHandler
 	Menu, arrayMenu, Add,  for i++, ForHandler
-	Menu, arrayMenu, Add,  for i--, ForHandler
+	Menu, arrayMenu, Add,  for-- 循环中splice需要使用, ForHandler
 	Menu, arrayMenu, Add,  for in, ForHandler
 	Menu, arrayMenu, Add,  for of, ForHandler
 	Menu, arrayMenu, Add,  for entries, ForHandler
@@ -121,7 +121,7 @@ for (var i = 0; i < Things.length; i++) {
 )
 }
 
-if (v == "for i--") {
+if (v == "for-- 循环中splice需要使用") {
 Var = 
 (
 var Things = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

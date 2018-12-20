@@ -1,4 +1,33 @@
-﻿::fuckfor::
+﻿::celue::
+::js.celue::
+::celuemoshi::
+::celuemodel::
+Var =
+(
+// JavaScript版 策略模式 解决计算薪资问题
+var strategies = {
+	'S': function ( salary ) {
+		return salary * 4
+	},
+	'A': function ( salary ) {
+		return salary * 3
+	},
+	'B': function ( salary ) {
+		return salary * 2
+	}
+};
+
+var calculateBonus = function ( level, salary ) {
+	return strategies[ level ]( salary )
+}
+
+calculateBonus('S', 10000) // 40000
+calculateBonus('B', 10000) // 20000
+)
+code(Var)
+return
+
+::fuckfor::
 ::bettermap::
 ::fuckm::
 ::objmap::
@@ -2696,10 +2725,10 @@ return
 
 
 ::es6class::
-::es6.class::
 ::esclass::
 ::es.class::
 ::js.class::
+::es6.class::
 ::class::
 Var = 
 (

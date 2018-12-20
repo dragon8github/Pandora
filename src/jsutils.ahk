@@ -78,6 +78,7 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
+    Menu, utilsMenu, Add, JavaScript版 策略模式, utilsHandler
     Menu, utilsMenu, Add, isBottom 是否滚动到底部, utilsHandler
     Menu, utilsMenu, Add, 加强版map遍历:fuckmap, utilsHandler
     Menu, utilsMenu, Add, 新建长度为N的数组[...Array(100)], ForHandler
@@ -151,6 +152,13 @@ Var =
 (
 )
 }
+
+if (v == "JavaScript版 策略模式") {
+SendLevel 1
+SendInput, celue{tab}
+return
+}
+
 
 if (v == "加强版map遍历:fuckmap") {
 SendLevel 1
@@ -995,41 +1003,9 @@ function curry2(fn) {
 }
 
 if (v == "es6.class") {
-Var = 
-(
-class Person {
-	constructor (name, age) {
-		// super();
-		// 建议内置的变量加个_区分，而要访问的变量用get关键词来识别返回
-		this._name = name;
-		this._age = age;
-	}
-
-	get name() {
-		return this.name
-	}
-
-	set name(value) {
-		this._name = value
-	}
-
-	get age() {
-		return this._age
-	}
-
-	set age(value) {
-		this._age = value
-	}
-
-	static version () {
-		return 'v0.1.0';
-	}
-
-	toString () {
-        return `name： ${this._name}，age：${this._age}`
-    }
-}
-)
+SendLevel 1
+SendInput, js.class{tab}
+return
 }
 
 if (v == "for-- 循环中splice需要使用") {
@@ -1554,7 +1530,7 @@ maybe(_=> obj.a.b.s.w.holy.shit.fuck.god, 0); // 0
 )
 }
 
-if (v == "ClickOutside点 击外部冒泡") {
+if (v == "ClickOutside 点击外部冒泡") {
 Var = 
 (
 handle = e => {
