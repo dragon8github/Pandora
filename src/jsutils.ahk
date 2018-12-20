@@ -44,7 +44,14 @@
     Menu, utilsDOM, Add, scrollToTop 滚动到头部, utilsHandler
     Menu, utilsDOM, Add, scrollIntoView 滚动到元素可视区域, utilsHandler
     Menu, utilsDOM, Add, isBottom 是否滚动到底部, utilsHandler
-
+    
+    Menu, utilsDOM, Add
+    Menu, utilsDOM, Add
+    
+    Menu, utilsDOM, Add, 往页面插入style, utilsHandler
+    Menu, utilsDOM, Add, getScriptPath, utilsHandler
+    Menu, utilsDOM, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
+    Menu, utilsDOM, Add, addcss/link 样式加载器, utilsHandler
 
     Menu, utilsObject, Add, ({a = 123`, b = 321`, c = 456} = {}) 对象解构 与 参数默认值, utilsHandler
     Menu, utilsObject, Add, delete person.age 删除对象的属性, utilsHandler
@@ -70,29 +77,42 @@
     Menu, utilsObject, Add, for#Object.keys(), utilsHandler
     
     
+    Menu, utilsSolution, Add, __EVENT__消息订阅, utilsHandler
+    Menu, utilsSolution, Add, cookie 库, utilsHandler
+    Menu, utilsSolution, Add, Model 类, utilsHandler
+    Menu, utilsSolution, Add, rem 解决方案 / 淘宝解决方案, utilsHandler
+    Menu, utilsSolution, Add, AMD/CommonJS/factory/module, utilsHandler
+    Menu, utilsSolution, Add, cache request axios 缓存请求, utilsHandler
+    Menu, utilsSolution, Add, deepfind 深度递归搜索, utilsHandler
+    Menu, utilsSolution, Add, $.autoscroll 自动滚动, utilsHandler
+    Menu, utilsSolution, Add, $.scrollforevery 无缝滚动, utilsHandler
+    Menu, utilsSolution, Add, dragscroll 拖拽滚动, utilsHandler
+    Menu, utilsSolution, Add, lazyload 图片懒加载, utilsHandler
+    Menu, utilsSolution, Add, preloadimg 图片预加载, utilsHandler
+    Menu, utilsSolution, Add, countDown 倒计时, utilsHandler
+    Menu, utilsSolution, Add, copyToClipboard 剪切板, utilsHandler
+    
+    Menu, utilsDesignPattern, Add, JavaScript版 策略模式, utilsHandler
+    Menu, utilsDesignPattern, Add, __EVENT__消息订阅, utilsHandler
+    
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     Menu, utilsMenu , Add, Object 操作, :utilsObject
-    
+    Menu, utilsMenu , Add, 解决方案/功能/库, :utilsSolution
+    Menu, utilsMenu , Add, 设计模式, :utilsDesignPattern
+
 
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
-    Menu, utilsMenu, Add, JavaScript版 策略模式, utilsHandler
-    Menu, utilsMenu, Add, isBottom 是否滚动到底部, utilsHandler
-    Menu, utilsMenu, Add, 加强版map遍历:fuckmap, utilsHandler
-    Menu, utilsMenu, Add, 新建长度为N的数组[...Array(100)], ForHandler
-    Menu, utilsMenu, Add, 往页面插入style, utilsHandler
+    
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
-    Menu, utilsMenu, Add, getScriptPath, utilsHandler
-    Menu, utilsMenu, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
-    Menu, utilsMenu, Add, addcss/link 样式加载器, utilsHandler
+    Menu, utilsMenu, Add, 加强版map遍历:fuckmap, utilsHandler
     Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
     Menu, utilsMenu, Add, deepcopy 深拷贝, utilsHandler
     Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
     Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
     Menu, utilsMenu, Add, pad 自动补全, utilsHandler
-    Menu, utilsMenu, Add, for-- 循环中splice需要使用, utilsHandler
     Menu, utilsMenu, Add, maybe 神奇的预设函数, utilsHandler
     Menu, utilsMenu, Add, getuuid 32位随机数, utilsHandler
     Menu, utilsMenu, Add, uuid 超简易版, utilsHandler
@@ -111,25 +131,11 @@
     Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
     
-    Menu, utilsMenu, Add, __EVENT__消息订阅, utilsHandler
-    Menu, utilsMenu, Add, curry2 二元参数的手动柯里化, utilsHandler
     Menu, utilsMenu, Add, es6.class, utilsHandler
-    Menu, utilsMenu, Add, cookie 库, utilsHandler
-    Menu, utilsMenu, Add, Model 类, utilsHandler
-    Menu, utilsMenu, Add, rem 解决方案 / 淘宝解决方案, utilsHandler
-    Menu, utilsMenu, Add, AMD/CommonJS/factory/module, utilsHandler
-    Menu, utilsMenu, Add, cache request axios 缓存请求, utilsHandler
-    Menu, utilsMenu, Add, deepfind 深度递归搜索, utilsHandler
-    Menu, utilsMenu, Add, $.autoscroll 自动滚动, utilsHandler
-    Menu, utilsMenu, Add, $.scrollforevery 无缝滚动, utilsHandler
-    Menu, utilsMenu, Add, dragscroll 拖拽滚动, utilsHandler
-    Menu, utilsMenu, Add, holder占位图, utilsHandler
     Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
     Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
-    Menu, utilsMenu, Add, lazyload 图片懒加载, utilsHandler
-    Menu, utilsMenu, Add, preloadimg 图片预加载, utilsHandler
-    Menu, utilsMenu, Add, countDown 倒计时, utilsHandler
-    Menu, utilsMenu, Add, copyToClipboard 剪切板, utilsHandler
+    Menu, utilsMenu, Add, curry2 二元参数的手动柯里化, utilsHandler
+    Menu, utilsMenu, Add, holder占位图, utilsHandler
     Menu, utilsMenu, Add, 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug, utilsHandler
     
 
