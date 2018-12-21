@@ -1,4 +1,4 @@
-﻿::ehcarts.lunbo::
+﻿::echarts.lunbo::
 Var =
 (
 broadcast() {
@@ -621,6 +621,8 @@ legend: {
     width: 740,
     itemWidth: 20,
     itemHeight: 20,
+    // 每项之间的间距，用padding反而没用？
+    itemGap: 15,
     textStyle: {
         color: '#000',
         fontSize: 16

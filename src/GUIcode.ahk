@@ -1,4 +1,63 @@
-﻿NewEchartdoulecolorHtml:
+﻿NewgdmapHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- 高德地图 -->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=02b84c6bb891ece41093dc5f4d9c5868"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=02b84c6bb891ece41093dc5f4d9c5868&plugin=AMap.MarkerClusterer"></script>
+    <!-- 高德UI组件库 1.0 -->
+    <script src="https://webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+
+        
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+$(function() {
+    console.log('hello world');
+});
+
+//加载天气查询插件
+AMap.plugin('AMap.Weather', function() {
+    //创建天气查询实例
+    var weather = new AMap.Weather();
+
+    //执行实时天气信息查询
+    weather.getLive('东莞市', function(err, data) {
+        console.log(err, data);
+    });
+});
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+NewEchartdoulecolorHtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
 (

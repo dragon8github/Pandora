@@ -26,7 +26,8 @@
 	
 	
 	Menu, JavaScriptEventMenu, Add, .addEventListener('click'`, e => {}), EventHandler
-	Menu, JavaScriptEventMenu, Add, .addEventListener('keydown'`, e => {}) 与 String.fromCharCode(e.keycode), EventHandler
+	Menu, JavaScriptEventMenu, Add, js监听enter, EventHandler
+	Menu, JavaScriptEventMenu, Add, js 组合键监听ctrl + enter, EventHandler
 	Menu, JavaScriptEventMenu, Add, .addEventListener('mouseover'`, e => {}) , EventHandler
 	Menu, JavaScriptEventMenu, Add, .addEventListener('mouseleave'`, e => {}), EventHandler
 	Menu, JavaScriptEventMenu, Add, , EventHandler
@@ -43,8 +44,15 @@
 	Menu, echartsEventMenu, Add, echarts.options, EventHandler
 	Menu, echartsEventMenu, Add, echarts.loading, EventHandler
 
+
 	Menu, echartsEventMenu, Add
 	Menu, echartsEventMenu, Add
+
+	Menu, echartsEventMenu, Add, echarts.label, EventHandler
+	Menu, echartsEventMenu, Add, echarts.title, EventHandler
+	Menu, echartsEventMenu, Add, echarts.legend, EventHandler
+	Menu, echartsEventMenu, Add, echarts.visualMap, EventHandler
+	Menu, echartsEventMenu, Add, echarts.tooltip, EventHandler
 
 
 	Menu, echartsEventMenu, Add, echarts.pin（饼图）, EventHandler
@@ -60,14 +68,6 @@
 	Menu, echartsEventMenu, Add, ehcarts.mouseout, EventHandler
 	Menu, echartsEventMenu, Add, ehcarts.legendselectchanged, EventHandler
 
-	Menu, echartsEventMenu, Add
-	Menu, echartsEventMenu, Add
-
-	Menu, echartsEventMenu, Add, echarts.label, EventHandler
-	Menu, echartsEventMenu, Add, echarts.title, EventHandler
-	Menu, echartsEventMenu, Add, echarts.legend, EventHandler
-	Menu, echartsEventMenu, Add, echarts.visualMap, EventHandler
-	Menu, echartsEventMenu, Add, echarts.tooltip, EventHandler
 
 	Menu, echartsEventMenu, Add
 	Menu, echartsEventMenu, Add
@@ -121,6 +121,22 @@ Var =
 )
 }
 
+if (v == "js 组合键监听ctrl + enter") {
+Var = 
+(
+$(window).keydown(function (event) {
+	 // 监听esc键退出全屏
+	 if (event.keyCode == 27) {
+	   
+	 }
+	 // 监听 Ctrl + Enter 可全屏查看 
+	 if (event.ctrlKey && event.keyCode == 13) {
+		
+	 }
+});
+)
+}
+
 if (v == "new echarts.graphic.LinearGradient") {
 Var = 
 (
@@ -137,7 +153,7 @@ color: new echarts.graphic.LinearGradient(
 
 if (v == "echarts.broadcast 轮播器") {
 SendLevel 1
-SendInput, ehcarts.lunbo{tab}
+SendInput, echarts.lunbo{tab}
 return
 }
 
@@ -257,21 +273,14 @@ SendInput, createPolygon{tab}
 return
 }
 
-if (v == "String.fromCharCode(e.keycode)") {
-Var = 
-(
-window.addEventListener('keydown', e => {
-	console.log(20181124200306, String.fromCharCode(e.keycode))
-}, true)
-)
-}
 
-if (v == ".addEventListener('keydown', e => {}) 与 String.fromCharCode(e.keycode)") {
+if (v == "js监听enter") {
 Var = 
 (
-window.addEventListener('keydown', e => {
-	console.log(20181124200306, String.fromCharCode(e.keycode))
-}, true)
+window.addEventListener("keydown", function(e) {
+	// enter键开始
+	if (e.keyCode == 13) self.start();
+}, false);
 )
 }
 
