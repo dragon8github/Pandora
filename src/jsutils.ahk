@@ -1729,24 +1729,12 @@ var device = function(key){
 )
 }
 
-if (v == "isBottom 是否滚动到底部") {
-Var = 
-(
-let scrollHandle = (el) => {
-	// 如果已经滚到底部了
-	if (el.scrollHeight - el.scrollTop === el.clientHeight) {
-		console.log(123)
-	}
-}
 
-// 懒加载优化：滚动节流策略
-let __SCROLLTIMER__ = null
-// 绑定滚动事件
-$('.dgtable__warp').scroll(e => {
-    clearTimeout(__SCROLLTIMER__);
-    __SCROLLTIMER__ = setTimeout(_ => scrollHandle(e), 150);
-})
-)
+
+if (v == "isBottom 是否滚动到底部") {
+SendLevel 1
+SendInput, isbottom{tab}
+return
 }
 
 
