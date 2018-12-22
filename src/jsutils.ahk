@@ -92,14 +92,44 @@
     Menu, utilsSolution, Add, countDown 倒计时, utilsHandler
     Menu, utilsSolution, Add, copyToClipboard 剪切板, utilsHandler
     
+    
+    
+    Menu, utilsThis, Add, 1、作为对象的方法调用, utilsHandler
+    Menu, utilsThis, Add, 2、作为普通函数调用时, utilsHandler
+    Menu, utilsThis, Add, 3、作为构造器调用, utilsHandler
+    Menu, utilsThis, Add, 4、Function.prototype.call 或 Function.prototype.apply 调用, utilsHandler
+    Menu, utilsThis, Add, 5、es6箭头函数调用时, utilsHandler
+    Menu, utilsThis, Add, 6、es6 class 中的, utilsHandler
+    
+    Menu, utilsDesignPattern, Add, 封装, utilsHandler
+    Menu, utilsDesignPattern, Add, 多态, utilsHandler
+    Menu, utilsDesignPattern, Add, 继承, utilsHandler
+    Menu, utilsDesignPattern, Add, call 和 apply, utilsHandler
+    Menu, utilsDesignPattern, Add, AOP - 面向切面编程, utilsHandler
+    
+    Menu, utilsDesignPattern, Add, , utilsHandler
+    Menu, utilsDesignPattern, Add, , utilsHandler
+    
+    
+    Menu, utilsDesignPattern, Add, 惰性单例, utilsHandler
+    Menu, utilsDesignPattern, Add, 透明单例, utilsHandler
+    Menu, utilsDesignPattern, Add, 代理单例, utilsHandler
+    Menu, utilsDesignPattern, Add, 通用的惰性单例, utilsHandler
+    
+    
+    Menu, utilsDesignPattern, Add, , utilsHandler
+    Menu, utilsDesignPattern, Add, , utilsHandler
+    
     Menu, utilsDesignPattern, Add, JavaScript版 策略模式, utilsHandler
     Menu, utilsDesignPattern, Add, __EVENT__消息订阅, utilsHandler
+    
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     Menu, utilsMenu , Add, Object 操作, :utilsObject
     Menu, utilsMenu , Add, 解决方案/功能/库, :utilsSolution
     Menu, utilsMenu , Add, 设计模式, :utilsDesignPattern
+    Menu, utilsMenu, Add, this , :utilsThis
 
 
     Menu, utilsMenu, Add, , utilsHandler
@@ -144,6 +174,8 @@
     Menu, utilsIs, DeleteAll
     Menu, utilsDOM, DeleteAll
     Menu, utilsObject, DeleteAll
+    Menu, utilsDesignPattern, DeleteAll
+    
 return
 
 
@@ -156,6 +188,323 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "通用的惰性单例") {
+Var = 
+(
+var getSingle = function(fn) {
+     var result;
+     return function() {
+         return result || (result = fn.apply(this, arguments));
+     }
+};
+)
+}
+
+
+if (v == "惰性单例") {
+Var = 
+(
+var Singleton = function(name) {
+     this.name = name;
+};
+Singleton.getInstance = (function() {
+     var instance = null;
+     return function(name) {
+         if (!instance) {
+             instance = new Singleton(name);
+         }
+         return instance;
+     }
+})();
+var a = Singleton.getInstance( 'sven1' );
+var b = Singleton.getInstance( 'sven2' );
+alert ( a === b ); // true
+)
+}
+
+if (v == "透明单例") {
+Var = 
+(
+var CreateDiv = (function() {
+     var instance;
+     var _CreateDiv = function(html) {
+         if (instance) {
+             return instance;
+         }
+         this.html = html;
+         this.init();
+         return instance = this;
+     };
+     _CreateDiv.prototype.init = function() {
+         var div = document.createElement('div');
+         div.innerHTML = this.html;
+         document.body.appendChild(div);
+     };
+     return _CreateDiv;
+})();
+
+var a = new CreateDiv('sven1');
+var b = new CreateDiv('sven2');
+alert(a === b); // => true
+)
+}
+
+if (v == "代理单例") {
+Var = 
+(
+// 普通的创建 div 的类：
+var CreateDiv = function(html) {
+     this.html = html;
+     this.init();
+};
+CreateDiv.prototype.init = function() {
+     var div = document.createElement('div');
+     div.innerHTML = this.html;
+     document.body.appendChild(div);
+};
+// 引入代理类
+var ProxySingletonCreateDiv = (function() {
+    var instance;
+    return function(html) {
+        if (!instance) {
+            instance = new CreateDiv(html);
+        }
+        return instance;
+    }
+})();
+var a = new ProxySingletonCreateDiv('sven1');
+var b = new ProxySingletonCreateDiv('sven2');
+alert(a === b);
+)
+}
+
+if (v == "封装") {
+Var = 
+(
+// JavaScript并没有提供private、public、protected 关键字来提供不同的访问权限，我们只能依赖变量的 作用域来实现封装特性
+var myObject = (function() {
+  // 私有（private）变量
+  var __name = 'sven'; 
+  // 公开（public）方法
+  return {
+     getName: function () {
+        return __name;
+     }
+  }
+})();
+console.log( myObject.getName() ); // 输出：sven
+console.log( myObject.__name ) // 输出：undefined
+)
+}
+
+
+if (v == "多态") {
+Var = 
+(
+var makeSound = function(animal) {
+    if (animal instanceof Duck) {
+        console.log('嘎嘎嘎');
+    } else if (animal instanceof Chicken) {
+        console.log('咯咯咯');
+    }
+};
+var Duck = function() {};
+var Chicken = function() {};
+makeSound(new Duck());    // 嘎嘎嘎
+makeSound(new Chicken()); // 咯咯咯
+
+//////////////////////////////////////////////
+// 
+//////////////////////////////////////////////
+var renderMap = function( map ){
+  if ( map.show instanceof Function ){
+     map.show();
+  }
+};
+renderMap( googleMap ); // 输出：开始渲染谷歌地图
+renderMap( baiduMap );  // 输出：开始渲染百度地图
+
+// 即使以后增加了搜搜地图， renderMap 函数仍、然不需要做任何改变，如下所示：
+var sosoMap = {
+  show: function(){
+     console.log( '开始渲染搜搜地图' );
+  }
+};
+renderMap( sosoMap ); // 输出：开始渲染搜搜地图
+)
+}
+
+
+if (v == "基于原型模式的继承") {
+Var = 
+(
+var A = function(){};
+var B = function(){};
+A.prototype = { name: 'sven' };
+
+// 核心
+B.prototype = new A();
+var b = new B();
+console.log( b.name ); // 输出：sven
+)
+}
+
+
+if (v == "call 和 apply") {
+Var = 
+(
+)
+}
+
+
+if (v == "AOP - 面向切面编程") {
+Var = 
+(
+// （A）定义原始函数
+var func = function() {
+    console.log(2);
+};
+
+Function.prototype.before = function(beforefn) {
+    // 保存原始函数（A）的引用
+    var __self = this;
+
+    // （B）
+    return function() { 
+        // 执行 before 函数
+        beforefn.apply(this, arguments); 
+
+        // 执行原始函数（A）
+        return __self.apply(this, arguments);
+    }
+};
+
+Function.prototype.after = function(afterfn) {
+    // 保存函数（B）的引用
+    var __self = this;
+
+    // （C）
+    return function() {
+        // 执行函数（B）并获取执行结果，而实际上函数（B）的返回的是原始函数（A）的执行结果
+        var ret = __self.apply(this, arguments);
+
+        // 执行 after 函数
+        afterfn.apply(this, arguments);
+
+        // 返回原函数（A）的执行结果
+        return ret;
+    }
+};
+
+func = func.before(function() {
+    console.log(1);
+}).after(function() {
+    console.log(3);
+});
+
+// 执行函数（C）
+func();
+)
+}
+
+
+
+if (v == "1、作为对象的方法调用") {
+Var = 
+(
+var obj = {
+     a: 1,
+     getA: function(){
+        alert ( this === obj ); // 输出：true
+        alert ( this.a );       // 输出: 1
+     }
+};
+obj.getA();
+)
+}
+
+if (v == "2、作为普通函数调用时") {
+Var = 
+(
+//////////////////////////////////////////////
+// 当函数作为普通函数方式被调用时，此时的 this 总是指向全局对象。
+// 如果是在浏览器里，全局对象就是 window。
+//////////////////////////////////////////////
+window.name = 'windowName';
+var getName = function () {
+     return this.name;
+};
+console.log( getName() ); // windowName
+
+// 以下写法和（1）很相似，所以容易混淆，但实际上这种调用函数的方式和（2）也是一样的道理，它指向的是函数执行时的环境，所以需要额外注意一下：
+window.name = 'windowName';
+var myObject = {
+     name: 'sven',
+     getName: function(){
+        return this.name;
+     }
+};
+var getName = myObject.getName;
+console.log( getName() ); // windowName
+)
+}
+
+if (v == "3、作为构造器调用") {
+Var = 
+(
+//////////////////////////////////////////////
+// JavaScript 中没有类，但是可以从构造器中创建对象，同时也提供了 new 运算符，使得构造器看起来更像一个类。
+// 所有 JavaScript 函数都可以当作构造器使用。当用 new 运算符调用函数时，该函数总会返回一个对象，通常情况下，构造器里的 this 就指向返回的这个对象。
+//////////////////////////////////////////////
+var MyClass = function(){
+     this.name = 'sven';
+};
+var obj = new MyClass();
+alert ( obj.name ); // 输出：sven
+)
+}
+
+
+if (v == "4、Function.prototype.call 或 Function.prototype.apply 调用") {
+Var = 
+(
+window.name = 'foo';
+var obj1 = {name: 'sven'};
+var obj2 = {name: 'anne'};
+
+var getName = function () {
+    alert ( this.name );
+};
+getName();            // 输出: foo
+getName.call( obj1 ); // 输出: sven
+getName.call( obj2 ); // 输出: anne
+)
+}
+
+
+if (v == "6、es6 class 中的") {
+Var = 
+(
+
+)
+}
+
+if (v == "5、es6箭头函数调用时") {
+Var = 
+(
+// 箭头函数自己没有this，只能往上找对象。
+
+
+// 不适用场合
+var fuck = {
+	bb: 'bb',
+	methods: () =>  {
+		console.log(this.bb) // undefined
+	}
+}
 )
 }
 

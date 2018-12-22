@@ -39,4 +39,5 @@ FileDelete, .\src\*.bak
 #Include src/python.ahk		  ; python
 ; #Include src/sql.ahk		  ; sql
 #Include src/bdmap.ahk		  ; bdmap
+#include src/game.ahk	  	  ; 游戏
 #include src/prehosting.ahk	  ; 预设置的快捷键
