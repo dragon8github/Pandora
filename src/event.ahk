@@ -141,13 +141,14 @@ if (v == "new echarts.graphic.LinearGradient") {
 Var = 
 (
 color: new echarts.graphic.LinearGradient(
-    0, 0, 0, 1,
-    [
-        {offset: 0, color: '#83bff6'},
-        {offset: 0.5, color: '#188df0'},
-        {offset: 1, color: '#188df0'}
-    ]
-`)
+	// 右/下/左/上
+	0, 0, 0, 1,
+	[
+		{offset: 0, color: 'rgba(141, 222, 255, 0.8)'},
+		{offset: 0.6, color: 'rgba(141, 222, 255, 0.3)'},
+		{offset: 1, color: 'transparent'}
+	]
+`),
 )
 }
 

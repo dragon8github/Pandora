@@ -4,6 +4,7 @@ FileAppend,
 (
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
@@ -12,45 +13,85 @@ FileAppend,
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
     <!-- jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
     <!-- 高德地图 -->
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=02b84c6bb891ece41093dc5f4d9c5868"></script>
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=02b84c6bb891ece41093dc5f4d9c5868&plugin=AMap.MarkerClusterer"></script>
     <!-- 高德UI组件库 1.0 -->
     <script src="https://webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
-
-        
     <style>
-    html, body{
+    html,
+    body {
         margin: 0;
         padding: 0;
     }
 
-    #app {
+    #app {}
 
+    .weather__icon {
+        position: relative;
+        top: 5px;
+        margin: 0 3px;
+        width: 26px;
+        height: 27px;
+        display: inline-block;
+        background: url('http://static.tianqistatic.com/static/tianqi2018/ico2/b0.png') center / 100`% 100`% no-repeat;
+    }
+
+    .is-qing {
+        background-image: url('http://static.tianqistatic.com/static/tianqi2018/ico2/b0.png') 
+    }
+
+    .is-yun {
+        background-image: url('http://static.tianqistatic.com/static/tianqi2018/ico2/b1.png')
+    }
+
+    .is-yin {
+        background-image: url('http://static.tianqistatic.com/static/tianqi2018/ico2/b2.png')
+    }
+
+    .is-yu {
+        background-image: url('http://static.tianqistatic.com/static/tianqi2018/ico2/b8.png')
     }
     </style>
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <div class="weather">东莞 <i class='weather__icon' :class='weatherType'></i> {{ this.weather }}</div>
+    </div>
 </body>
 <script>
 $(function() {
     console.log('hello world');
 });
 
-//加载天气查询插件
-AMap.plugin('AMap.Weather', function() {
-    //创建天气查询实例
-    var weather = new AMap.Weather();
-
-    //执行实时天气信息查询
-    weather.getLive('东莞市', function(err, data) {
-        console.log(err, data);
-    });
-});
+var vue = new Vue({
+    el: '#app',
+    data: {
+        weather: '',
+        weatherType: '',
+    },
+    beforeMount: function() {
+        //加载天气查询插件
+        AMap.plugin('AMap.Weather', ()=> {
+            //创建天气查询实例
+            var weather = new AMap.Weather();
+            //执行实时天气信息查询
+            weather.getLive('东莞市', (err, data) => {
+                console.log(err, data);
+                this.weather = data.temperature
+                const type = data.weather
+                // http://www.tianqi.com/dongguan/30
+                if (type.includes('晴')) this.weatherType = 'is-qing'
+                if (type.includes('云')) this.weatherType = 'is-yun'
+                if (type.includes('阴')) this.weatherType = 'is-yin'
+                if (type.includes('雨')) this.weatherType = 'is-yu'
+            });
+        });
+    }
+})
 </script>
+
 </html>
 ),  %name%
 RunBy(name)
