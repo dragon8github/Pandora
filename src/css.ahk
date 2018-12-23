@@ -88,6 +88,8 @@ code(Var)
 return
 
 ::redbox::
+::cssbox::
+::css.box::
 Var =
 (
 .hello {

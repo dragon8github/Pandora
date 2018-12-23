@@ -52,8 +52,18 @@
     Menu, utilsDOM, Add, getScriptPath, utilsHandler
     Menu, utilsDOM, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
     Menu, utilsDOM, Add, addcss/link 样式加载器, utilsHandler
+    
+    
+    Menu, utilsObject, Add, for#Object.keys, utilsHandler
+    Menu, utilsObject, Add, for#o in obj, utilsHandler
+    Menu, utilsObject, Add, for#Object.entries(), utilsHandler
+    Menu, utilsObject, Add, for#Object.values(), utilsHandler
+    Menu, utilsObject, Add, for#Object.keys(), utilsHandler
 
-    Menu, utilsObject, Add, ({a = 123`, b = 321`, c = 456} = {}) 对象解构 与 参数默认值, utilsHandler
+    Menu, utilsObject, Add,, utilsHandler
+    Menu, utilsObject, Add,, utilsHandler
+
+    Menu, utilsObject, Add, 《认知》：({a = 123`, b = 321`, c = 456} = {}) 对象解构 与 参数默认值, utilsHandler
     Menu, utilsObject, Add, delete person.age 删除对象的属性, utilsHandler
     Menu, utilsObject, Add, Object.assign({}`, ), utilsHandler
     Menu, utilsObject, Add, Object.is 比 === 更严格的比较, utilsHandler
@@ -67,14 +77,7 @@
     Menu, utilsObject, Add, Object.getOwnPropertyDescriptor({a: 123}`, 'a') 获取属性的配置, utilsHandler
     Menu, utilsObject, Add, getter / setter , utilsHandler
 
-    Menu, utilsObject, Add,, utilsHandler
-    Menu, utilsObject, Add,, utilsHandler
 
-    Menu, utilsObject, Add, for#Object.keys, utilsHandler
-    Menu, utilsObject, Add, for#o in obj, utilsHandler
-    Menu, utilsObject, Add, for#Object.entries(), utilsHandler
-    Menu, utilsObject, Add, for#Object.values(), utilsHandler
-    Menu, utilsObject, Add, for#Object.keys(), utilsHandler
     
     
     Menu, utilsSolution, Add, __EVENT__消息订阅, utilsHandler
@@ -522,22 +525,9 @@ return
 }
 
 if (v == "往页面插入style") {
-Var = 
-(
-var styles = document.createElement('style')
-styles.id = 'fuckyou'
-styles.type = 'text/css'
-document.getElementsByTagName('head')[0].appendChild(styles)
-
-// 新版本美化
-styles.sheet.addRule('.tab-pane', 'margin-bottom: 20px')
-styles.sheet.addRule('.ace_editor.ace-eclipse', 'height: 350px !important')
-styles.sheet.addRule('.request-panel .response-content, .response-panel', 'min-height: 350px !important')
-
-// 旧版本美化
-styles.sheet.addRule('#response-body', 'height: 350px; overflow: scroll;')
-styles.sheet.addRule('.panel-response-textarea', 'min-height: 350px !important')
-)
+SendLevel 1
+SendInput, addstyle{tab}
+return
 }
 
 
@@ -1054,7 +1044,7 @@ countWords(``a
 }
 
 
-if (v == "({a = 123, b = 321, c = 456} = {}) 对象解构 与 参数默认值") {
+if (v == "《认知》：({a = 123, b = 321, c = 456} = {}) 对象解构 与 参数默认值") {
 Var =
 (
 var abc = ({a = 123, b = 321, c = 456} = {}) => console.log(20181109155055, a)
