@@ -602,15 +602,6 @@ export const request = (url, options) => {
 code(Var)
 return
 
-::easydeep::
-::easycopy::
-::easyextend::
-Var =
-(
-JSON.parse(JSON.stringify(...))
-)
-code(Var)
-return
 
 ::removeattr::
 Var =
@@ -1980,6 +1971,56 @@ Var =
 var a = function (opt = {a: 1, c: 2}) {
 	console.log(20180825191248, opt)
 }
+)
+code(Var)
+return
+
+::deepextend::
+::deepextends::
+::shenkaobei::
+::deepcopy::
+Var =
+(
+var deepExtend = function(out) {
+   out = out || {};
+
+   for (var i = 1; i < arguments.length; i++) {
+     var obj = arguments[i];
+
+     if (!obj)
+       continue;
+
+     for (var key in obj) {
+       if (obj.hasOwnProperty(key)) {
+         if (typeof obj[key] === 'object')
+           out[key] = deepExtend(out[key], obj[key]);
+         else
+           out[key] = obj[key];
+       }
+     }
+   }
+
+   return out;
+ };
+
+ deepExtend({}, objA, objB);
+)
+code(Var)
+return
+
+
+::extend::
+::qiankaobei::
+::copy::
+Var =
+(
+ function extend(Child, Parent){
+    var F = function(){ };
+    F.prototype = Parent.prototype;
+    Child.prototype = new F();
+    Child.prototype.constructor = Child;
+    Child.parent = Parent.prototype
+ }
 )
 code(Var)
 return

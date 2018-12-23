@@ -139,10 +139,11 @@
     Menu, utilsMenu, Add, , utilsHandler
     
     
+    Menu, utilsMenu, Add, extend 浅拷贝, utilsHandler
+    Menu, utilsMenu, Add, deepExtend 深拷贝, utilsHandler
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
     Menu, utilsMenu, Add, 加强版map遍历:fuckmap, utilsHandler
     Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
-    Menu, utilsMenu, Add, deepcopy 深拷贝, utilsHandler
     Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
     Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
     Menu, utilsMenu, Add, pad 自动补全, utilsHandler
@@ -2297,33 +2298,16 @@ function isNaN(obj) {
 )
 }
 
-if (v == "deepcopy 深拷贝") {
-Var = 
-(
-var deepExtend = function(out) {
-  out = out || {};
+if (v == "extend 浅拷贝") {
+SendLevel 1
+SendInput, extend{tab}
+return
+}
 
-  for (var i = 1; i < arguments.length; i++) {
-    var obj = arguments[i];
-
-    if (!obj)
-      continue;
-
-    for (var key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        if (typeof obj[key] === 'object')
-          out[key] = deepExtend(out[key], obj[key]);
-        else
-          out[key] = obj[key];
-      }
-    }
-  }
-
-  return out;
-};
-
-deepExtend({}, objA, objB);
-)
+if (v == "deepExtend 深拷贝") {
+SendLevel 1
+SendInput, deepextend{tab}
+return
 }
 
 if (v == "getElementPosition 获取元素的定位") {
