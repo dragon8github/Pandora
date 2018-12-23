@@ -48,7 +48,7 @@
     Menu, utilsDOM, Add
     Menu, utilsDOM, Add
     
-    Menu, utilsDOM, Add, 往页面插入style, utilsHandler
+    Menu, utilsDOM, Add, injectCss 往页面插入style, utilsHandler
     Menu, utilsDOM, Add, getScriptPath, utilsHandler
     Menu, utilsDOM, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
     Menu, utilsDOM, Add, addcss/link 样式加载器, utilsHandler
@@ -95,6 +95,12 @@
     Menu, utilsSolution, Add, countDown 倒计时, utilsHandler
     Menu, utilsSolution, Add, copyToClipboard 剪切板, utilsHandler
     
+
+    Menu, utilsExtend, Add, extend 浅拷贝, utilsHandler
+    Menu, utilsExtend, Add, deepExtend 深拷贝, utilsHandler
+    Menu, utilsExtend, Add, multi 多重拷贝, utilsHandler
+    Menu, utilsExtend, Add, 寄生式继承, utilsHandler
+    Menu, utilsExtend, Add, 构造器借用, utilsHandler
     
     
     Menu, utilsThis, Add, 1、作为对象的方法调用, utilsHandler
@@ -106,7 +112,7 @@
     
     Menu, utilsDesignPattern, Add, 封装, utilsHandler
     Menu, utilsDesignPattern, Add, 多态, utilsHandler
-    Menu, utilsDesignPattern, Add, 继承, utilsHandler
+    Menu, utilsDesignPattern, Add, 继承, :utilsExtend
     Menu, utilsDesignPattern, Add, call 和 apply, utilsHandler
     Menu, utilsDesignPattern, Add, AOP - 面向切面编程, utilsHandler
     
@@ -139,8 +145,6 @@
     Menu, utilsMenu, Add, , utilsHandler
     
     
-    Menu, utilsMenu, Add, extend 浅拷贝, utilsHandler
-    Menu, utilsMenu, Add, deepExtend 深拷贝, utilsHandler
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
     Menu, utilsMenu, Add, 加强版map遍历:fuckmap, utilsHandler
     Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
@@ -192,6 +196,71 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "构造器借用") {
+Var = 
+(
+function Shape(id) {
+  this.id = id;
+}
+Shape.prototype.name = 'shape'
+Shape.prototype.toString = function () {
+  return this.name
+}
+
+function Triangle() {
+  Shape.apply(this, arguments)
+}
+Triangle.prototype.name = 'Triangle'
+
+var t = new Triangle(101);
+t.name; // "Triangle"
+)
+}
+
+if (v == "寄生式继承") {
+Var = 
+(
+// 在创建对象的函数中直接吸收其他对象的功能，然后对其进行扩展并返回。“就好像所有的工作都是自己做的一样无耻！”
+// 寄生式继承并没有涉及什么新的模式和语法，只是一种概念认知。
+var twoD = {
+  name: '2D shape',
+  dimensions: 2
+}
+
+function triangle(s, h) {
+  var that = Object(twoD);
+  that.name = 'TRIANGLE';
+  that.side = s;
+  that.height = h;
+  that.getArea = function () {
+    return this.side * this.height / 2;
+  };
+  return that;
+}
+
+var t = triangle(5, 10);
+t.dimensions; // 2
+)
+}
+
+if (v == "multi 多重拷贝") {
+Var = 
+(
+function multi() {
+  var n = {}, stuff, j = 0, len = arguments.length;
+  for (var i = 0; i < len; i++) {
+      stuff = arguments[j];
+      for (var i in stuff) {
+        if (stuff hasOwnProperty(i)) {
+          n[i] = stuff[i];
+        }
+      }
+  }
+  return n
+}
 )
 }
 
@@ -525,7 +594,7 @@ SendInput, fuckmap{tab}
 return
 }
 
-if (v == "往页面插入style") {
+if (v == "injectCss 往页面插入style") {
 SendLevel 1
 SendInput, addstyle{tab}
 return
