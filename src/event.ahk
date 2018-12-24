@@ -85,6 +85,8 @@
 	Menu, echartsEventMenu, Add, createPolygon, EventHandler
 	Menu, echartsEventMenu, Add, echarts.broadcast 轮播器, EventHandler
 	Menu, echartsEventMenu, Add, new echarts.graphic.LinearGradient, EventHandler
+	Menu, echartsEventMenu, Add, 隐藏xy轴, EventHandler
+	Menu, echartsEventMenu, Add, 坐标区域虚线（其实是Y轴不是x轴）, EventHandler
 
 	Menu, EventMenu, Add, echarts, :echartsEventMenu
 	Menu, EventMenu, Add, Vue, :VueEventMenu
@@ -120,6 +122,34 @@ Var =
 (
 )
 }
+
+if (v == "隐藏xy轴") {
+Var = 
+(
+axisLine: {
+	lineStyle: {
+		width: 0,
+		color: 'transparent'
+	}
+},
+)
+}
+
+if (v == "坐标区域虚线（其实是Y轴不是x轴）") {
+Var = 
+(
+splitLine: {
+	show: true,
+	lineStyle: {
+	  type: 'dashed',
+	  color: '#34495e',
+	  opacity: 0.54,
+	  width: 1,
+	}
+},
+)
+}
+
 
 if (v == "js 组合键监听ctrl + enter") {
 Var = 
