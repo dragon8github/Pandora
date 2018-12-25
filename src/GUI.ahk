@@ -148,6 +148,9 @@ Gui, Pandora:Add, Text, gNewautoscrollHtml W140,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
 Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
+Gui, Pandora:Add, Text, gNewassertHtml W160,新建assert.html
+Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建异步assert.html
+
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+80, 新建echarts.pin.html(玫瑰饼图)

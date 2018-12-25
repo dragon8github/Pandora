@@ -2726,12 +2726,13 @@ return
 
 ::wa::
 ::walert::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
-window.alert('123');
+window.alert([%t%, ].join('  '));
 )
 code(Var)
-SendInput, {left 2}{shift down}{left 5}{shift up}
+SendInput, {left 14}
 return
 
 ; 构造函数的拼音老是记不得，以后就用联想来拼写好了

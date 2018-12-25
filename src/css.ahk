@@ -1470,7 +1470,11 @@ code(Var)
 Return
 
 ::posr::
-    SendRaw, position: relative;
+Var =
+(
+position: relative;
+)
+code(Var)
 Return
 
 ::posf::

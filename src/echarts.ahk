@@ -677,6 +677,9 @@ tooltip: {
    textStyle: {
 	  fontSize: 20
    },
+   position: function(point, params, dom, rect, size) {
+        return [point[0] + 20, '0`%']
+    },
    formatter: function (params) {
 	    console.log(%t%, params)
 		// 返回空说明不展示tooltip
