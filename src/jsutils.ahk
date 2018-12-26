@@ -645,18 +645,22 @@ Var =
 if (v == "dragscroll 拖拽滚动") {
 Var = 
 (
-const dragScroll = el => {
-    var _window = window,
-        _document = document,
-        mousemove = 'mousemove',
-        mouseup = 'mouseup',
-        mousedown = 'mousedown',
-        EventListener = 'EventListener',
-        addEventListener = 'add' + EventListener,
-        removeEventListener = 'remove' + EventListener,
-        newScrollX, newScrollY;
+export const dragScroll = el => {
+    var _window = window
+        ,_document = document
+        ,mousemove = 'mousemove'
+        ,mouseup = 'mouseup'
+        ,mousedown = 'mousedown'
+        ,EventListener = 'EventListener'
+        ,addEventListener = 'add'+EventListener
+        ,removeEventListener = 'remove'+EventListener
+        ,newScrollX, newScrollY;
 
-    (function(el, lastClientX, lastClientY, pushed, scroller, cont) {
+    // HERE
+    var startx,starty, endx, endy;
+
+
+    return (function(el, lastClientX, lastClientY, pushed, scroller, cont) {
         (cont = el.container || el)[addEventListener](
             mousedown,
             cont.md = function(e) {
@@ -666,33 +670,46 @@ const dragScroll = el => {
                     `) == cont
                 `) {
                     pushed = 1;
-                    lastClientX = e.clientX;
-                    lastClientY = e.clientY;
+                    startx = lastClientX = e.clientX;
+                    starty = lastClientY = e.clientY;
 
                     e.preventDefault();
                 }
             }, 0
         `);
 
-        _window[addEventListener](
-            mouseup, cont.mu = function() { pushed = 0; }, 0
+        el[addEventListener](
+            mouseup, cont.mu = function(e) { 
+                pushed = 0;  
+                // HERE
+                endx = e.clientX;
+                endy = e.clientY;
+                // setTimeout(function(){ el.classList.remove("dragging"); }, 100);
+            }, 0
         `);
 
-        _window[addEventListener](
+        el[addEventListener](
             mousemove,
             cont.mm = function(e) {
                 if (pushed) {
-                    (scroller = el.scroller || el).scrollLeft -=
-                        newScrollX = (-lastClientX + (lastClientX = e.clientX));
-                    scroller.scrollTop -=
-                        newScrollY = (-lastClientY + (lastClientY = e.clientY));
+                    // HERE
+                    // el.classList.add("dragging");
+                    (scroller = el.scroller || el).scrollLeft -= newScrollX = (-lastClientX + (lastClientX = e.clientX));
+                    scroller.scrollTop -= newScrollY = (-lastClientY + (lastClientY = e.clientY));
                     if (el == _document.body) {
                         (scroller = _document.documentElement).scrollLeft -= newScrollX;
                         scroller.scrollTop -= newScrollY;
                     }
                 }
+
             }, 0
-        `);
+        `)
+
+        return function (CLICKHANDLER) {
+            if (Math.abs(starty - endy) <= 1) {
+                CLICKHANDLER && CLICKHANDLER(el)
+            }
+        }
     })(el);
 }
 )

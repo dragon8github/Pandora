@@ -99,8 +99,9 @@
 	
 	Menu, EventMenu, Add, 冒泡点击mouseup, EventHandler
 	Menu, EventMenu, Add, String.fromCharCode(e.keycode), EventHandler
+	Menu, EventMenu, Add, event.preventDefault(); event.stopPropagation();, EventHandler
+	Menu, EventMenu, Add, 长按longpress手势, EventHandler
 	
-
 	Menu, EventMenu, Show
 	Menu, EventMenu, DeleteAll
 	Menu, echartsEventMenu, DeleteAll
@@ -120,6 +121,96 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "长按longpress手势") {
+Var = 
+(
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        max-width: 540px;
+        min-width: 320px;
+    }
+</style>
+<body>
+    <button id="longPress">longPress</button>
+
+    <li class="longPress">longPress</li>
+    <li class="longPress">longPress</li>
+    <li class="longPress">longPress</li>
+    <li class="longPress">longPress</li>
+</body>
+<script>
+    
+/**
+ * 绑定长按事件，同时支持绑定点击事件
+ * @param {dom} dom 需要绑定的dom元素
+ * @param {fn} longPressCallBack 长按事件执行的方法
+ * @param {fn} touchCallBack 点击事件执行的方法
+ */
+var longPress = function (dom, longPressCallBack, touchCallBack) {
+    var timer = undefined;
+    var isLongPress = false;
+
+    var setEvent = function (e) {
+          e.addEventListener('touchstart', function(event) {
+                  timer = setTimeout(function () {
+                    isLongPress = true
+                  longPressCallBack && longPressCallBack(e);
+                }, 500);
+          }, false);
+
+          e.addEventListener('touchmove', function(event) {
+                 clearTimeout(timer);
+          }, false);
+
+          e.addEventListener('touchend', function(event) {
+                  if (!isLongPress) touchCallBack && touchCallBack()
+                  clearTimeout(timer); 
+                  isLongPress = false;
+          }, false);
+    }
+
+    if (dom.length) {
+        // 支持绑定多个元素
+          for (var i = 0; i < dom.length; i++) {
+            setEvent(dom[i])
+        }
+    } else {
+        setEvent(dom)
+    }
+}
+
+longPress(document.getElementById('longPress'), function () {
+    console.log('longPress')
+}, function () {
+    console.log('touch');
+});
+
+[...document.querySelectorAll('.longPress')].forEach(function (e, i) {
+    longPress(e, function () {
+        console.log('longPress')
+    }, function () {
+        console.log('touch');
+    });
+});
+</script>
+</html>
+)
+}
+
+if (v == "event.preventDefault(); event.stopPropagation();") {
+Var = 
+(
+event.preventDefault(); event.stopPropagation();
 )
 }
 

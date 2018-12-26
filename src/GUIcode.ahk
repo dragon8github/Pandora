@@ -1,4 +1,78 @@
-﻿NewAsyncassertHtml:
+﻿scrollTextHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   
+    <style>
+    html, body{
+        margin: 50px;
+        padding: 50px;
+    }
+
+    #app {
+    }
+
+    .text {
+        width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class='text'>国家统计局东莞调查队</div>
+    </div>
+</body>
+<script>
+
+const el = document.querySelector('.text')
+
+function scrollText1() {
+    // 到底了
+    if ((el.scrollWidth - el.scrollLeft).toFixed(0) - el.clientWidth === 0) {
+        setTimeout(scrollText2, 2500);
+    } else {
+        // 滚动 
+        el.scrollTo(el.scrollLeft + 1, 0)
+        // 帧动画
+        setTimeout(scrollText1, 1000 / 60);
+    }
+}
+
+function scrollText2() {
+    // 到底了
+    if (el.scrollLeft === 0) {
+        setTimeout(scrollText1, 2500);
+    } else {
+        // 滚动 
+        el.scrollTo(el.scrollLeft - 1, 0)
+        // 帧动画
+        setTimeout(scrollText2, 1000 / 35);
+    }
+}
+
+scrollText1();
+
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+NewAsyncassertHtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
 (

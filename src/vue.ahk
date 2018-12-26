@@ -1,4 +1,6 @@
-﻿::mapstate::
+﻿
+
+::mapstate::
 Var =
 (
 import { mapState } from 'vuex'
@@ -1136,8 +1138,13 @@ return
 Var =
 (
 computed: {
-    hotcounselling () {
-      return this.$store.state.departmental.hotcounselling
+    townstreetSelect: {
+        get () {
+          return this.$store.state.mapDetails.townstreetSelect  
+        },
+        set (newV) {
+           this.$store.dispatch('mapDetails/townstreetSelect', newV)
+        }
     }
 },
 )

@@ -150,6 +150,7 @@ Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
 Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gNewassertHtml W160,新建assert.html
 Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建异步assert.html
+Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
 
 
 
@@ -197,8 +198,9 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-o
 Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">旧版测试地址174</a>
 Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">旧版演示地址</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com/#/overallSituation">新版 plus 测试地址174</a>
-
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
+
 
 
 
