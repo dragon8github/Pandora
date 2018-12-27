@@ -145,6 +145,7 @@
     Menu, utilsMenu, Add, , utilsHandler
     
     
+    Menu, utilsMenu, Add, urlparams 获取路由参数, utilsHandler
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
     Menu, utilsMenu, Add, 加强版map遍历:fuckmap, utilsHandler
     Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
@@ -197,6 +198,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "urlparams 获取路由参数") {
+SendLevel 1
+SendInput, urlparams{tab}
+return
 }
 
 if (v == "构造器借用") {

@@ -197,9 +197,10 @@ Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/dg12345-
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-old">新的 gitlab 地址旧版12345</a>
 Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">旧版测试地址174</a>
 Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">旧版演示地址</a>
-Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com/#/overallSituation">新版 plus 测试地址174</a>
+Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com/#/dg/overallSituation">新版 plus 测试地址174</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/issues?tdsourcetag=s_pctim_aiomsg">测试工单地址</a>
 
 
 
