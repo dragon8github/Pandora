@@ -333,7 +333,7 @@ const deepFind = (arr, condition, children) => {
     return main
 }
 
-let myarr = deepFind(fuck, item => item.value === 63, 'children')
+let myarr = deepFind(fuck, (item, index, level) => item.value === 63, 'children')
 console.log(20181115092957, myarr)
 )
 code(Var)
