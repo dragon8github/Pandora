@@ -288,6 +288,12 @@ Var =
 (
 const fuck = [{"label": "占用道路问题", "value": 31, "children": [{"label": "经营占道", "value": 35, "children": [{"label": "店外经营占道", "value": 40, "children": null }, {"label": "流动摊贩占道", "value": 41, "children": null } ] }, {"label": "垃圾占道", "value": 36, "children": [{"label": "生活垃圾", "value": 42, "children": null }, {"label": "建筑垃圾", "value": 43, "children": null }, {"label": "工业垃圾", "value": 44, "children": null } ] }, {"label": "车辆占道", "value": 37, "children": [{"label": "机动车占道", "value": 45, "children": null }, {"label": "非机动车占道", "value": 46, "children": null } ] }, {"label": "霸占车位", "value": 38, "children": [] }, {"label": "其他占道", "value": 39, "children": [] } ]}, {"label": "“两违”问题", "value": 32, "children": [{"label": "违法建筑", "value": 58, "children": [{"label": "房屋违建", "value": 61, "children": null }, {"label": "小区违建", "value": 62, "children": null }, {"label": "违建棚架", "value": 63, "children": null } ] }, {"label": "违法用地", "value": 59, "children": [] }, {"label": "其他违建", "value": 60, "children": [] } ] }, {"label": "市容设施管理问题", "value": 33, "children": [{"label": "道路损坏", "value": 47, "children": [] }, {"label": "垃圾桶损坏", "value": 48, "children": [] }, {"label": "下水道堵塞", "value": 49, "children": [] }, {"label": "井盖损坏", "value": 50, "children": [] }, {"label": "路灯损坏", "value": 51, "children": [] }, {"label": "树木修剪", "value": 52, "children": [] }, {"label": "水电气", "value": 53, "children": [] }, {"label": "户外广告牌", "value": 54, "children": [] }, {"label": "隔音屏损坏", "value": 55, "children": [] }, {"label": "洒水车问题", "value": 56, "children": [] }, {"label": "其他", "value": 57, "children": [] } ] }, {"label": "其他问题", "value": 34, "children": [] } ]
 
+/**
+ * 深度递归搜索
+ * @param {Array} arr 你要搜索的数组
+ * @param {Function} condition 回调函数，必须返回谓词，判断是否找到了。会传入(item, index, level)三个参数
+ * @param {String} children 子数组的key
+ */
 const deepFind = (arr, condition, children) => {
     // 即将返回的数组
     let main = []
@@ -334,7 +340,8 @@ const deepFind = (arr, condition, children) => {
 }
 
 let myarr = deepFind(fuck, (item, index, level) => item.value === 63, 'children')
-console.log(20181115092957, myarr)
+console.log(20181115092957, myarr)  // [{…}, {…}, {…}]
+console.log(20181115092957, myarr.map(_ => _.value)) // [32, 58, 63]
 )
 code(Var)
 return

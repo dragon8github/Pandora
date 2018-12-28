@@ -81,12 +81,12 @@
     
     
     Menu, utilsSolution, Add, __EVENT__消息订阅, utilsHandler
+    Menu, utilsSolution, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsSolution, Add, cookie 库, utilsHandler
     Menu, utilsSolution, Add, Model 类, utilsHandler
     Menu, utilsSolution, Add, rem 解决方案 / 淘宝解决方案, utilsHandler
     Menu, utilsSolution, Add, AMD/CommonJS/factory/module, utilsHandler
     Menu, utilsSolution, Add, cache request axios 缓存请求, utilsHandler
-    Menu, utilsSolution, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsSolution, Add, $.autoscroll 自动滚动, utilsHandler
     Menu, utilsSolution, Add, $.scrollforevery 无缝滚动, utilsHandler
     Menu, utilsSolution, Add, dragscroll 拖拽滚动, utilsHandler
@@ -145,6 +145,7 @@
     Menu, utilsMenu, Add, , utilsHandler
     
     
+    Menu, utilsMenu, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsMenu, Add, urlparams 获取路由参数, utilsHandler
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
     Menu, utilsMenu, Add, 加强版map遍历:fuckmap, utilsHandler
