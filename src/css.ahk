@@ -1,111 +1,4 @@
-﻿::ell2::
-Var =
-(
-overflow: hidden;
-text-overflow: ellipsis;
-display: -webkit-box;
--webkit-line-clamp: 2;
-
-/*! autoprefixer: off */
--webkit-box-orient: vertical;
-)
-code(Var)
-return
-
-::before::
-::&`:`:before::
-Var =
-(
-position: relative;
-padding-left: rem(20);
-
-&::before {
-  @include ycenter;
-  content: '';
-  left: 0;
-  width: 5px;
-  height: 20px;
-  background-color: #1a81a4;
-}
-)
-code(Var)
-return
-
-::after::
-::&`:`:after::
-Var =
-(
-position: relative;
-padding-left: rem(20);
-
-&::after {
-  @include ycenter;
-  content: '';
-  left: 0;
-  width: 5px;
-  height: 20px;
-  background-color: #1a81a4;
-}
-)
-code(Var)
-return
-
-::text-shadow::
-Var =
-(
-text-shadow: #25B3DC 0px 0px 10px, #25B3DC 0px 0px 20px, #25b3dc 0px 0px 30px, #25b3dc 0px 0px 40px, #25b3dc 0px 0px 70px, #25b3dc 0px 0px 80px, #25b3dc 0px 0px 100px;
-)
-code(Var)
-return
-
-
-
-
-::@animate::
-::@key::
-Var =
-(
-@keyframes fuckyou {
-    0`% {
-    
-    }
-    
-    100`% {
-    
-    }
-}
-)
-code(Var)
-return
-
-
-::ib::
-Var =
-(
-display: inline-block;
-)
-code(Var)
-return
-
-::redbox::
-::cssbox::
-::css.box::
-Var =
-(
-.hello {
-    background: red;
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    left: 50`%;
-    top: 50`%;
-    transform: translate(-50`%, -50`%);
-}
-)
-code(Var)
-return
-
-!s::
+﻿!s::
 
     Menu, CssMenu, Add, 上下翻滚：transform: rotateX(180deg), CssHandler
     Menu, CssMenu, Add, 左右翻滚：transform: rotateY(180deg), CssHandler
@@ -156,6 +49,9 @@ return
     Menu, CssMenu, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
     Menu, CssMenu, Add, cursor:手掌手势, CssHandler
     Menu, CssMenu, Add, loading, CssHandler2
+    Menu, CssMenu, Add, 舒服的字体样式font, CssHandler
+    Menu, CssMenu, Add, lit.css极简系列：btn, CssHandler
+    Menu, CssMenu, Add, :root 与 var(--primary-color), CssHandler
     
 
 	Menu, CssMenu, Show
@@ -178,6 +74,19 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "lit.css极简系列：btn") {
+SendLevel 1
+SendInput, btn{tab}
+return
+}
+
+
+if (v == "舒服的字体样式font") {
+SendLevel 1
+SendInput, font{tab}
+return
 }
 
 if (v == "框型阴影") {
@@ -1886,6 +1795,145 @@ animation: candystripe 1s linear infinite;
     100`% {
         background-position: 20px 0;
     }
+}
+)
+code(Var)
+return
+
+::btn::
+Var =
+(
+.btn {
+    padding: 1em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border: solid;
+    font: .7em nunito;
+
+    cursor:pointer;
+    color: white;
+    background: #fa0;
+    border: solid #fa0;
+}
+)
+code(Var)
+return
+
+::font::
+Var =
+(
+font: 300 16px/1.8 -apple-system,PingFang SC,Verdana,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;
+font-size: 62.5`%;
+background: #fafafa;
+text-rendering: optimizelegibility;
+-webkit-text-size-adjust: 100`%;
+-webkit-font-smoothing: antialiased;
+)
+code(Var)
+return
+
+::ell2::
+Var =
+(
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+
+/*! autoprefixer: off */
+-webkit-box-orient: vertical;
+)
+code(Var)
+return
+
+::before::
+::&`:`:before::
+Var =
+(
+position: relative;
+padding-left: rem(20);
+
+&::before {
+  @include ycenter;
+  content: '';
+  left: 0;
+  width: 5px;
+  height: 20px;
+  background-color: #1a81a4;
+}
+)
+code(Var)
+return
+
+::after::
+::&`:`:after::
+Var =
+(
+position: relative;
+padding-left: rem(20);
+
+&::after {
+  @include ycenter;
+  content: '';
+  left: 0;
+  width: 5px;
+  height: 20px;
+  background-color: #1a81a4;
+}
+)
+code(Var)
+return
+
+::text-shadow::
+Var =
+(
+text-shadow: #25B3DC 0px 0px 10px, #25B3DC 0px 0px 20px, #25b3dc 0px 0px 30px, #25b3dc 0px 0px 40px, #25b3dc 0px 0px 70px, #25b3dc 0px 0px 80px, #25b3dc 0px 0px 100px;
+)
+code(Var)
+return
+
+
+
+
+::@animate::
+::@key::
+Var =
+(
+@keyframes fuckyou {
+    0`% {
+    
+    }
+    
+    100`% {
+    
+    }
+}
+)
+code(Var)
+return
+
+
+::ib::
+Var =
+(
+display: inline-block;
+)
+code(Var)
+return
+
+::redbox::
+::cssbox::
+::css.box::
+Var =
+(
+.hello {
+    background: red;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50`%;
+    top: 50`%;
+    transform: translate(-50`%, -50`%);
 }
 )
 code(Var)

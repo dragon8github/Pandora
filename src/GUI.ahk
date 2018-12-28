@@ -90,7 +90,7 @@ Gui, Pandora:Add, Text,  W140 ys, 奇妙工具:
 Gui, Pandora:Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Pandora:Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 Gui, Pandora:Add, Link,, <a href="http://fontawesome.dashgame.com/">font-awesome</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
+Gui, Pandora:Add, Link,, <a href="https://nginxconfig.io/">nginxconfig.io</a>
 Gui, Pandora:Add, Link,, <a href="http://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=955910">iconfont</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza</a>
 
@@ -103,9 +103,10 @@ Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://unpkg.com/#/">unpkg cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdnjs.com/">cdnjs.com</a>
 
+
 Gui, Pandora:Add, Text,  W140 ys, 最近学习：
 Gui, Pandora:Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">React 小书</a>
-Gui, Pandora:Add, Link,, <a href="http://www.jtthink.com/">jtthink.com</a>
+Gui, Pandora:Add, Link,, <a href="https://hellogithub.com/periodical/volume/15/">有趣的github项目</a>
 Gui, Pandora:Add, Link,, <a href="https://gitbook.cn/gitchat/geekbooks">极客书单</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0.10源码</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/seajs/seajs/issues/242">CMD规范</a> 
@@ -120,7 +121,6 @@ Gui, Pandora:Add, Link,, <a href="https://bookfere.com/">书伴</a>
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&node=1337022071">Kindle Unlimited</a>
 
 
-
 Gui, Pandora:Add, Text,  W160 ys, 与钱为伍：
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
 Gui, Pandora:Add, Link,, <a href="https://themequarry.com/category/free?page=2">admin-lte-free</a>
@@ -133,6 +133,8 @@ Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f
 Gui, Pandora:Add, Text,  W140 ys, 图片速查：
 Gui, Pandora:Add, Link,, <a href="https://raw.githubusercontent.com/dragon8github/Pandora/master/static/gitpic.jpg">git命令速查表</a>
 Gui, Pandora:Add, Link,, <a href="https://carbon.now.sh/">carbon代码图片</a>
+Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
+
 
 
 Gui, Pandora:Tab, 2
