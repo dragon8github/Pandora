@@ -17,6 +17,8 @@
 	Menu, reactMenu, Add
 	Menu, reactMenu, Add
 	
+	Menu, reactMenu, Add, CSS module 全局样式, ReactMenuHandler
+	Menu, reactMenu, Add, CSS module cssname, ReactMenuHandler
 	Menu, reactMenu, Add, ref, ReactMenuHandler
 	Menu, reactMenu, Add, this.state, ReactMenuHandler
 	Menu, reactMenu, Add, this.porps, ReactMenuHandler
@@ -56,6 +58,50 @@ ReactMenuHandler:
 if (A_ThisMenuItem == "") {
 Var = 
 (
+)
+code(Var)
+}
+
+if (A_ThisMenuItem == "CSS module cssname") {
+Var = 
+(
+// CgAuth.less
+.CardName{
+	height: 55px;
+	line-height: 55px;
+	background-color: #fff;
+	border-bottom: 1px solid #e9e9e9;
+	font-family: PingFangSC-Medium;
+	font-size: 16px;
+	color: rgba(0,0,0,0.85);
+	text-align: center;
+	font-weight: 500;
+}
+
+import styles from './CgAuth.less';
+
+<div className={styles.CardName}>认证流程</div>
+)
+code(Var)
+}
+
+if (A_ThisMenuItem == "CSS module 全局样式") {
+Var = 
+(
+// css 样式
+(:global)(.test1) {
+    color: blue;
+}
+
+// 或者如下(定义多个全局样式)
+:global {
+    .test1 {
+        color: blue;
+    }
+    .test2 {
+        color: red;
+    }
+}
 )
 code(Var)
 }

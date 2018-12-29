@@ -278,14 +278,9 @@ return
   Menu, VueMenu, Add, vue.watch-$route, VueHandler
   Menu, VueMenu, Add, , VueHandler
   
-  Menu, VueMenu, Add, vue.data, VueHandler
-  Menu, VueMenu, Add, vue.methods, VueHandler
   Menu, VueMenu, Add, vue.computed, VueHandler
   Menu, VueMenu, Add, vue.watch, VueHandler
-  Menu, VueMenu, Add, vue.components, VueHandler
-  
   Menu, VueMenu, Add, vue.style, VueHandler
-  Menu, VueMenu, Add, v-for, VueHandler
   Menu, VueMenu, Add, $refs, VueHandler
   
   Menu, VueMenu, Add, <transition-group>, VueHandler
@@ -295,15 +290,6 @@ return
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
-  Menu, VueMenu, Add, beforeMount, VueHandler
-  Menu, VueMenu, Add, beforeCreate, VueHandler
-  Menu, VueMenu, Add, created, VueHandler
-  Menu, VueMenu, Add, mounted, VueHandler
-  Menu, VueMenu, Add, activated, VueHandler
-  Menu, VueMenu, Add, destroyed, VueHandler
-  
-  Menu, VueMenu, Add, , VueHandler
-  Menu, VueMenu, Add, , VueHandler
   
   Menu, VueMenu, Add, router.init, VueHandler
   Menu, VueMenu, Add, this.$router.push('index'), VueHandler
@@ -1050,9 +1036,14 @@ if (v == "vue.computed") {
 Var = 
 (
 computed: {
-  departmentalProblemRanking () {
-    return this.$store.state.overallSituation.departmentalProblemRanking
-  }
+    townstreetSelect: {
+        get () {
+          return this.$store.state.mapDetails.townstreetSelect
+        },
+        set (newV) {
+           this.$store.dispatch('mapDetails/townstreetSelect', newV)
+        }
+    }
 },
 )
 }
