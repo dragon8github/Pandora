@@ -301,7 +301,7 @@ const deepFind = (arr, condition, children) => {
     // 用try方案方便直接中止所有递归的程序
     try {
         // 开始轮询
-        (function poll(arr, level) {
+        (function poll(arr, level, cb) {
             // 如果传入非数组
             if (!Array.isArray(arr)) return
 
@@ -316,19 +316,32 @@ const deepFind = (arr, condition, children) => {
                 // 检验是否已经找到了
                 const isFind = condition && condition(item, i, level) || false
 
+                // 自杀函数
+                const kill = () => {
+	            	// 删除占位预设值
+	                main.length = main.length - 1
+	                // 触发回调
+	                cb && cb()
+                }
+
                 // 如果已经找到了
                 if (isFind) {
                     // 直接抛出错误中断所有轮询
                     throw Error
-
                 // 如果存在children，那么深入递归
                 } else if (children && item[children] && item[children].length) {
-                    poll(item[children], level + 1)
-
+                    poll(item[children], level + 1, 
+                    	// 如果本函数被触发，说明children还是找不到。
+                    	() => {
+                    	// 那么如果我是最后一条，那么我也自杀吧
+                    	if (i === arr.length - 1) {
+                    		kill()
+                    	}
+                    })
                 // 如果是最后一个且没有找到值，那么通过修改数组长度来删除当前项
                 } else if (i === arr.length - 1) {
-                   // 删除占位预设值
-                   main.length = main.length - 1
+	                // 找不到，羞愧自杀
+	                kill()
                 }
             }
         })(arr, 0)
