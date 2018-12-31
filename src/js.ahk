@@ -735,6 +735,7 @@ return
 ::eventstop::
 ::stopevent::
 ::stope::
+::e.stop::
 Var =
 (
 var stope = function(thisEvent){

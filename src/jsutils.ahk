@@ -79,8 +79,6 @@
 
 
     
-    
-    Menu, utilsSolution, Add, __EVENT__消息订阅, utilsHandler
     Menu, utilsSolution, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsSolution, Add, cookie 库, utilsHandler
     Menu, utilsSolution, Add, Model 类, utilsHandler
@@ -115,6 +113,7 @@
     Menu, utilsDesignPattern, Add, 模块模式：现代模块实现的基石, utilsHandler
     Menu, utilsDesignPattern, Add, 多态, utilsHandler
     Menu, utilsDesignPattern, Add, 继承, :utilsExtend
+    Menu, utilsDesignPattern, Add, 闭包与Cache, :utilsExtend
     Menu, utilsDesignPattern, Add, call 和 apply, utilsHandler
     Menu, utilsDesignPattern, Add, AOP - 面向切面编程, utilsHandler
     Menu, utilsDesignPattern, Add, 抽象类接口：咖啡与茶, utilsHandler
@@ -158,6 +157,7 @@
     Menu, utilsMenu, Add, , utilsHandler
     
     
+    Menu, utilsMenu, Add, event.preventDefault(); event.stopPropagation();, EventHandler
     Menu, utilsMenu, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsMenu, Add, urlparams 获取路由参数, utilsHandler
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
@@ -190,7 +190,12 @@
     Menu, utilsMenu, Add, curry2 二元参数的手动柯里化, utilsHandler
     Menu, utilsMenu, Add, holder占位图, utilsHandler
     Menu, utilsMenu, Add, 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug, utilsHandler
+    Menu, utilsMenu, Add, Android 输入法键盘 和 input 问题:scrollIntoViewIfNeeded, utilsHandler
     Menu, utilsMenu, Add, 社会主义点击事件, utilsHandler
+    Menu, utilsMenu, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
+    Menu, utilsMenu, Add, 使用了es6的set生产1W条不重复8位的数字, utilsHandler
+    
+    
     
 
     Menu, utilsMenu, Show
@@ -214,6 +219,124 @@ Var =
 (
 )
 }
+
+if (v == "使用了es6的set生产1W条不重复8位的数字") {
+Var = 
+(
+/**
+ * @desc - 生产1W条8位的数字.使用了es6的set。
+ *         set的特性是不允许重复的值存在。利用这个特性来剔除重复的值
+ */
+var _set = new Set();
+while(_set.size != 10000) {
+    _set.add(~~(Math.random() * (99999999 - 10000000 + 1) + 10000000));
+}
+)
+}
+
+if (v == "获取手机归属地信息：中国移动/中国联通/中国电信") {
+Var = 
+(
+/**
+ * @func
+ * @desc - 获取手机归属地信息
+ * @param {string} phoneNo - 手机号码
+ * @param {string} callback - 回调函数
+ */
+var getPhoneData = function(phoneNo, callback) {
+    $.ajax({
+        url: 'http://tcc.taobao.com/cc/json/mobile_tel_segment.htm',
+        type: 'get',
+        data: {
+            tel: phoneNo
+        },
+        success: function(result) {
+            if (result) {
+                var _data = result.split('=')[1]
+                _data = _data.replace(/\s+/g, "").replace(/<\/?.+?>/g, "").replace(/[\r\n]/g, "").replace(/\'/g, '"').replace(/\:/g, '":').replace(/\,/g, ',"').replace('{', '{"')
+                var phoneData = JSON.parse(_data);
+                console.log(phoneData)
+                if (phoneData.catName === '中国移动') {
+                    applyData.PhoneType = 1;
+                } else if (phoneData.catName === '中国联通') {
+                    applyData.PhoneType = 2
+                } else if (phoneData.catName === '中国电信') {
+                    applyData.PhoneType = 3
+                } else {
+                    applyData.PhoneType = 0
+                }
+                applyData.PhoneAddress = phoneData.province
+            }
+        },
+        error: function(result) {
+            console.info('无法获取手机归属地信息');
+        },
+        complete: function() {
+            typeof callback === 'function' && submitApply();
+        }
+    })
+}
+
+)
+}
+
+if (v == "闭包与Cache") {
+Var = 
+(
+/**
+ * @func
+ * @desc - 灵活使用闭包的概念。
+           以下简单的实验说明他们是不同的实例。所以他们各自闭包内的_cache是不相干也不相同的
+           其实是简单的类与实例的概念。但还是说明一下比较好
+           毕竟大部分的插件也是这样制作的
+ */
+var Cache = (function () {
+    var _cache = {};
+
+    return {
+      getCache: function (key) {
+        return _cache[key]
+      },
+      setCache: function (key, value) {
+        _cache[key] = value;
+      },
+      showAllCache: function () {
+        console.log(_cache);
+      }
+    }
+});
+
+
+var a = new Cache();
+a.setCache('foo', 'bar');
+a.showAllCache();
+
+var b = new Cache();
+b.setCache('foo', 'bar2');
+b.showAllCache();
+
+/* 从输出的结果得知两者的闭包互不相干 */
+)
+}
+
+if (v == "Android 输入法键盘 和 input 问题:scrollIntoViewIfNeeded") {
+Var = 
+(
+/**
+ * Android 输入法键盘 和 input 问题
+ */
+if(getSys() === 'Android') {
+    window.addEventListener("resize", function() {
+        if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+           window.setTimeout(function() {
+                document.activeElement.scrollIntoViewIfNeeded();
+           }, 0);
+       }
+    })
+}
+)
+}
+
 
 if (v == "优惠券条件分支：链式after解决方案") {
 Var = 
@@ -1523,6 +1646,20 @@ Var =
     }
 }));
 
+;(function (root, factory) {
+  if (typeof exports === "object") {
+    module.exports = factory();
+  } else if (typeof define === "function" && define.amd) {
+    define([], factory);
+  } else {
+    root.FUCKYOU = factory();
+  }
+}(this,function () {
+　　// ...  这里编写你的代码
+　　return {
+      
+   };
+});
 )
 }
 
