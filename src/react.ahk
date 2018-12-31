@@ -17,7 +17,7 @@
 	Menu, reactMenu, Add
 	Menu, reactMenu, Add
 	
-	Menu, reactMenu, Add, CSS module 全局样式, ReactMenuHandler
+	Menu, reactMenu, Add, CSS module :global全局样式 , ReactMenuHandler
 	Menu, reactMenu, Add, CSS module cssname, ReactMenuHandler
 	Menu, reactMenu, Add, ref, ReactMenuHandler
 	Menu, reactMenu, Add, this.state, ReactMenuHandler
@@ -55,14 +55,18 @@ return
 
 
 ReactMenuHandler:
-if (A_ThisMenuItem == "") {
+
+v := A_ThisMenuItem
+Var := 
+
+
+if (v == "") {
 Var = 
 (
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "CSS module cssname") {
+if (v == "CSS module cssname") {
 Var = 
 (
 // CgAuth.less
@@ -82,12 +86,12 @@ import styles from './CgAuth.less';
 
 <div className={styles.CardName}>认证流程</div>
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "CSS module 全局样式") {
+if (v == "CSS module :global全局样式") {
 Var = 
 (
+// http://www.ruanyifeng.com/blog/2016/06/css_modules.html
 // css 样式
 (:global)(.test1) {
     color: blue;
@@ -103,11 +107,10 @@ Var =
     }
 }
 )
-code(Var)
 }
 
 
-if (A_ThisMenuItem == "父组件调用子组件示例") {
+if (v == "父组件调用子组件示例") {
 Var = 
 (
 // 其实直接在父子间用 ref 就可以了，不需要特意借助用 fuckyou 拿到child……
@@ -150,30 +153,28 @@ class Child extends Component {
 ReactDOM.render(<Parent />, document.getElementById("root"));
 
 )
-code(Var)
 }
 
 
-if (A_ThisMenuItem == "React runtime for codesandbox") {
+if (v == "React runtime for codesandbox") {
 Run, https://codesandbox.io/s/new
 }
 
-if (A_ThisMenuItem == "react-init") {
+if (v == "react-init") {
 SendLevel 1
 SendInput, react-init{tab}
 return
 }
 
-if (A_ThisMenuItem == "import 基本内容") {
+if (v == "import 基本内容") {
 Var = 
 (
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "React.Fragment 代替div作为外层") {
+if (v == "React.Fragment 代替div作为外层") {
 Var = 
 (
 import React, { Fragment } from 'react';
@@ -182,10 +183,9 @@ import React, { Fragment } from 'react';
        Copyright <Icon type="copyright" /> 2018 蚂蚁金服体验技术部出品
 </Fragment>
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "ref") {
+if (v == "ref") {
 Var = 
 (
 constructor(props) {
@@ -207,39 +207,36 @@ handle = e => {
   if (el && !el.contains(e.target)) onClickOutside(e)
 }
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "新建create-react-app") {
+if (v == "新建create-react-app") {
 	name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 	FileCreateDir, %name%
 	RunWaitOne("cd " . name . " && npm install -g create-react-app && create-react-app my-app && cd my-app && npm start")
 }
 
 
-if (A_ThisMenuItem == "新建react-redux.html") {
+if (v == "新建react-redux.html") {
 	run, https://github.com/dragon8github/Pandora/blob/master/template/layui_template.zip?raw=true
 }
 
 
-if (A_ThisMenuItem == "this.state") {
+if (v == "this.state") {
 Var = 
 (
 this.state.
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "class App extends Component") {
+if (v == "class App extends Component") {
 Var = 
 (
 class App extends Component {}
 )
-code(Var)
 Send, {left}{enter}
 }
 
-if (A_ThisMenuItem == "static defaultProps") {
+if (v == "static defaultProps") {
 Var =
 (
 static defaultProps = {
@@ -249,10 +246,9 @@ static defaultProps = {
   }
  }
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "constructor") {
+if (v == "constructor") {
 Var =
 (
 constructor (props) {
@@ -265,10 +261,9 @@ constructor (props) {
 	}
  }
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "render () {}") {
+if (v == "render () {}") {
 Var =
 (
 render () {
@@ -279,10 +274,9 @@ render () {
   `)
  }
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "this.setState") {
+if (v == "this.setState") {
 Var =
 (
 this.setState({
@@ -292,10 +286,9 @@ this.setState({
 	})
 })
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "this.state.list.map") {
+if (v == "this.state.list.map") {
 Var =
 (
 {this.state.list.map((entry, index) => {
@@ -307,11 +300,10 @@ Var =
 	</ListItem>
  })}
 )
-code(Var)
 }
 
 
-if (A_ThisMenuItem == "箭头函数点击事件handleClick") {
+if (v == "箭头函数点击事件handleClick") {
 Var =
 (
 handleClick: (e) => {
@@ -320,19 +312,17 @@ handleClick: (e) => {
 	})
 }
 )
-code(Var)
 }
 
 
-if (A_ThisMenuItem == "style={{ display: this.state.expandForm ? 'block' : 'none' }}") {
+if (v == "style={{ display: this.state.expandForm ? 'block' : 'none' }}") {
 Var =
 (
 style={{ display: this.state.expandForm ? 'block' : 'none' }}
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "WrappedComponent + @Decorator"){
+if (v == "WrappedComponent + @Decorator"){
 Var =
 (
 const fuckDecorator = (WrappedComponent) => {
@@ -370,12 +360,11 @@ class App extends Component {
 	}
 }
 )
-code(Var)
 }
 
 
 
-if (A_ThisMenuItem == "react for") {
+if (v == "react for") {
 Var =
 (
 render () {
@@ -394,29 +383,26 @@ render () {
 	</div>
 }
 )
-code(Var)
 }
 
 
-if (A_ThisMenuItem == "const { ... } = this.props") {
+if (v == "const { ... } = this.props") {
 Var =
 (
 const { ... } = this.props;
 )
-code(Var)
 Send, {left 16}+{left 3}
 }
 
-if (A_ThisMenuItem == "const { ... } = this.state") {
+if (v == "const { ... } = this.state") {
 Var =
 (
 const { ... } = this.state;
 )
-code(Var)
 Send, {left 16}+{left 3}
 }
 
-if (A_ThisMenuItem == "WrappedComponent") {
+if (v == "WrappedComponent") {
 Var =
 (
 const Decorator = WrappedComponent => {
@@ -427,23 +413,21 @@ const Decorator = WrappedComponent => {
 	}
 }
 )
-code(Var)
 }
 
 
-if (A_ThisMenuItem == "this.forceUpdate()强制启动更新") {
+if (v == "this.forceUpdate()强制启动更新") {
 Var =
 (
 this.forceUpdate()
 )
-code(Var)
 }
 
-if (A_ThisMenuItem == "React runtime for stackblitz") {
+if (v == "React runtime for stackblitz") {
 	Run, https://stackblitz.com/fork/react
 }
 
-if (A_ThisMenuItem == "ReactDOM.render") {
+if (v == "ReactDOM.render") {
 Var =
 (
 import ReactDOM from "react-dom";
@@ -453,11 +437,10 @@ ReactDOM.render(
     document.getElementById('app')
 `);
 )
-code(Var)
 }
 
 
-if (A_ThisMenuItem == "React clickOutside") {
+if (v == "React clickOutside") {
 Var =
 (
 import React, { Component } from 'react'
@@ -504,8 +487,9 @@ export default class ClickOutside extends Component {
 }
 
 )
-code(Var)
 }
+
+code(Var)
 Return  
 
 ::ant.time::

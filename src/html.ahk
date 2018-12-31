@@ -1,4 +1,22 @@
-﻿::test.html::
+﻿::`:src::
+Var =
+(
+<script src="./"></script>
+)
+code(Var)
+SendInput, {left 11}
+return
+
+::`:href::
+Var =
+(
+<link rel="stylesheet" href="./">
+)
+code(Var)
+SendInput, {left 2}
+return
+
+::test.html::
 Var := ajax("https://raw.githubusercontent.com/cbracco/html5-test-page/master/index.html")
 code(Var)
 return

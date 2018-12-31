@@ -424,10 +424,10 @@ if (v == "vue.watch-$route") {
 Var = 
 (
 watch: {
-    '$route'(value) {
-        if (value.name == 'login') this.show = false;
-        else this.show = true;
-    }
+  '$route' (to, from) {
+      // 只有详情页面，才需要多一个来路路径。
+      this.fromTitle = to.name === 'details' ? from.meta.title + '> ' : ''
+  }
 },
 )
 }

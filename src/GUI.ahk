@@ -113,12 +113,13 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/seajs/seajs/issues/242">CMD
 Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/">CODECASTS 免费课程</a>
 
 
-Gui, Pandora:Add, Text,  W140 ys, kindle：
+Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/manageyourkindle">我的设备</a>
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/Kindle免费电子书/b?node=116175071">kindle官方</a>
 Gui, Pandora:Add, Link,, <a href="https://www.jiumodiary.com/">鸠摩搜书</a>
-Gui, Pandora:Add, Link,, <a href="https://bookfere.com/">书伴</a>
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&node=1337022071">Kindle Unlimited</a>
+Gui, Pandora:Add, Link,, <a href="https://huangxuan.me/js-module-7day/#/4">《JavaScript 模块化七日谈》</a>
+
 
 
 Gui, Pandora:Add, Text,  W160 ys, 与钱为伍：

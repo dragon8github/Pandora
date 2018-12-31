@@ -52,6 +52,7 @@
     Menu, CssMenu, Add, 舒服的字体样式font, CssHandler
     Menu, CssMenu, Add, lit.css极简系列：btn, CssHandler
     Menu, CssMenu, Add, :root 与 var(--primary-color), CssHandler
+    Menu, CssMenu, Add, display: table 自动对齐策略, CssHandler
     
 
 	Menu, CssMenu, Show
@@ -73,6 +74,26 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "display: table 自动对齐策略") {
+Var =
+(
+.body__cards {
+	display: table;
+	/* 第一个参数是水平，第二个参数是垂直，但问题在于这样设置，左右都有间距，但往往是只需要一边，所以还需要结合margin: 0 -16px; */
+	border-spacing: 16px 0;
+	/* 补丁 */
+	margin: 0 -16px;
+}
+
+	.body__card {
+		width: 45`%;
+		padding: 16px;
+		display: table-cell;
+		text-align: center;
+	}
 )
 }
 
@@ -558,20 +579,6 @@ overflow: hidden;
 code(Var)
 return
 
-::css.after::
-::css.before::
-Var =
-(
-position: relative;
-
-&::before {
-	content: '';
-	position: absolute;
-	top: 0; right: 0; bottom: 0; left: 0;
-}
-)
-code(Var)
-return
 
 
 ::border::
@@ -1846,7 +1853,8 @@ display: -webkit-box;
 code(Var)
 return
 
-::before::
+::`:before::
+::css.before::
 ::&`:`:before::
 Var =
 (
@@ -1865,7 +1873,8 @@ padding-left: rem(20);
 code(Var)
 return
 
-::after::
+::`:after::
+::css.after::
 ::&`:`:after::
 Var =
 (

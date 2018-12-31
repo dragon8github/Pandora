@@ -110,12 +110,18 @@
     Menu, utilsThis, Add, 5、es6箭头函数调用时, utilsHandler
     Menu, utilsThis, Add, 6、es6 class 中的, utilsHandler
     
+    Menu, utilsDesignPattern, Add, this , :utilsThis
     Menu, utilsDesignPattern, Add, 封装, utilsHandler
+    Menu, utilsDesignPattern, Add, 模块模式：现代模块实现的基石, utilsHandler
     Menu, utilsDesignPattern, Add, 多态, utilsHandler
     Menu, utilsDesignPattern, Add, 继承, :utilsExtend
     Menu, utilsDesignPattern, Add, call 和 apply, utilsHandler
     Menu, utilsDesignPattern, Add, AOP - 面向切面编程, utilsHandler
+    Menu, utilsDesignPattern, Add, 抽象类接口：咖啡与茶, utilsHandler
     
+    Menu, utilsDesignPattern, Add, Function.prototype.before, utilsHandler
+    Menu, utilsDesignPattern, Add, Function.prototype.after, utilsHandler
+
     Menu, utilsDesignPattern, Add, , utilsHandler
     Menu, utilsDesignPattern, Add, , utilsHandler
     
@@ -132,14 +138,21 @@
     Menu, utilsDesignPattern, Add, JavaScript版 策略模式, utilsHandler
     Menu, utilsDesignPattern, Add, __EVENT__消息订阅, utilsHandler
     
+    Menu, utilsDesignPattern, Add, , utilsHandler
+    Menu, utilsDesignPattern, Add, , utilsHandler
+    
+    Menu, utilsDesignPattern, Add, 优惠券条件分支：链式after解决方案, utilsHandler
+    
+    
+    Menu, utilspractice, Add, 解构：const [language`, country] = locale.split('-');, utilsHandler
+    
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     Menu, utilsMenu , Add, Object 操作, :utilsObject
     Menu, utilsMenu , Add, 解决方案/功能/库, :utilsSolution
     Menu, utilsMenu , Add, 设计模式, :utilsDesignPattern
-    Menu, utilsMenu, Add, this , :utilsThis
-
+    Menu, utilsMenu, Add, 认知与刻意练习, :utilspractice
 
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -199,6 +212,133 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "优惠券条件分支：链式after解决方案") {
+Var = 
+(
+Function.prototype.after = function(fn) {
+    var self = this;
+    return function() {
+        var ret = self.apply(this, arguments);  
+        if (ret === 'next') {
+            return fn.apply(this.arguments);
+        }
+    }
+}
+
+var order500yuan = function(orderType, pay, stock) {
+    if (orderType === 1 && pay === true) {
+        console.log('500 元定金预购，得到 100 优惠券');
+    } else {
+        return 'next'; // 我不知道下一个节点是谁，反正把请求往后面传递
+    }
+};
+
+var order200yuan = function(orderType, pay, stock) {
+    if (orderType === 2 && pay === true) {
+        console.log('200 元定金预购，得到 50 优惠券');
+    } else {
+        return 'next'; // 我不知道下一个节点是谁，反正把请求往后面传递
+    }
+};
+
+var orderNormal = function(orderType, pay, stock) {
+    if (stock > 0) {
+        console.log('普通购买，无优惠券');
+    } else {
+        console.log('手机库存不足');
+    }
+};
+
+var order = order500yuan.after( order200yuan ).after( orderNormal );
+order( 1, true, 500 )
+order( 2, true, 500 );
+order( 1, false, 500 );
+)
+}
+
+if (v == "Function.prototype.before") {
+SendLevel 1
+SendInput, fn.before{tab}
+return
+}
+
+if (v == "Function.prototype.after") {
+SendLevel 1
+SendInput, fn.after{tab}
+return
+}
+
+if (v == "抽象类接口：咖啡与茶") {
+Var = 
+(
+// 继承抽象类的目的，通常是可以为了可以省略很多重复的操作，或者帮你完成了很多基础工作，譬如本例的煮水（boilWater）
+// 但接口还强制你重写/实现/覆盖指定方法譬如brew, pourIncup, addCondiments来搜集配置和个性化需求。
+// 这种模式也成为模板模式。可以脑补【模板页面】的场景
+var Beverage = function() {};
+Beverage.prototype.boilWater = function() {
+	console.log( '把水煮沸' );
+};
+Beverage.prototype.brew = function() {
+	throw new Error( '子类必须重写 brew 方法' );
+};
+Beverage.prototype.pourIncup = function() {
+	throw new Error( '子类必须重写 pourIncup 方法' );
+};
+Beverage.prototype.addCondiments = function() {
+	throw new Error( '子类必须重写 addCondiments 方法' );
+};
+Beverage.prototype.init = function() {
+    this.boilWater();
+    this.bubbleBeverage();
+    this.pourCup();
+    this.addCondiments();
+};
+
+var Coffee = function() {};
+// 原型继承抽象类
+Coffee.prototype = new Beverage();
+
+Coffee.prototype.bubbleBeverage = function() {
+    console.log("开水冲泡咖啡.");
+};
+Coffee.prototype.pourCup = function() {
+    console.log("咖啡倒入杯中.");
+};
+Coffee.prototype.addCondiments = function() {
+    console.log("添加糖和牛奶.");
+};
+
+var coffee = new Coffee();
+coffee.init();
+)
+}
+
+if (v == "utilspractice") {
+Var = 
+(
+const [language, country] = locale.split('-');
+)
+}
+
+if (v == "模块模式：现代模块实现的基石") {
+Var = 
+(
+var Module = (function($){
+    var _$body = $("body");     // we can use jQuery now!
+    var foo = function(){
+        console.log(_$body);    // 特权方法
+    }
+
+    // Revelation Pattern
+    return {
+        foo: foo
+    }
+})(jQuery)
+
+Module.foo();
 )
 }
 
@@ -405,18 +545,19 @@ if (v == "封装") {
 Var = 
 (
 // JavaScript并没有提供private、public、protected 关键字来提供不同的访问权限，我们只能依赖变量的 作用域来实现封装特性
-var myObject = (function() {
-  // 私有（private）变量
-  var __name = 'sven'; 
-  // 公开（public）方法
-  return {
-     getName: function () {
-        return __name;
-     }
-  }
-})();
-console.log( myObject.getName() ); // 输出：sven
-console.log( myObject.__name ) // 输出：undefined
+var Module = (function(){
+    var _private = "safe now";
+    var foo = function(){
+        console.log(_private)
+    }
+
+    return {
+        foo: foo
+    }
+})()
+
+Module.foo();    // "safe now"
+Module._private; // undefined
 )
 }
 
