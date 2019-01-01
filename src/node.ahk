@@ -1,5 +1,11 @@
 ﻿!j::
 
+	Menu, NodeMenu, Add, $ npm install -g nodemon && nodemom index.js, NodeHandler
+	Menu, NodeMenu, Add, $ npm install pm2 -g && pm2 start hello.js --watch, NodeHandler
+
+	Menu, NodeMenu, Add
+	Menu, NodeMenu, Add
+
 	Menu, NodeMenu, Add, sequelize.connect, NodeHandler
 	Menu, NodeMenu, Add, sequelize.createmodel, NodeHandler
 
@@ -24,6 +30,9 @@
 	Menu, NodeMenu, Add, fs.rm, NodeHandler
 	Menu, NodeMenu, Add, fs.mkdir, NodeHandler
 	Menu, NodeMenu, Add, fs.ls, NodeHandler
+	Menu, NodeMenu, Add, fs.watch, NodeHandler
+	Menu, NodeMenu, Add, 命令行参数process.argv, NodeHandler
+	
 
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
@@ -48,6 +57,52 @@ NodeHandler:
 ; MsgBox You selected unique 数组去重复 from the menu utilsMenu.
 v := A_ThisMenuItem
 Var :=
+
+if (v == "") {
+Var = 
+(
+)
+}
+
+
+if (v == "命令行参数process.argv") {
+Var = 
+(
+/**
+ * $ echo fuckyou > fuck.txt 
+ * $ node index.js fuck.txt
+ */
+const fs = require( 'fs' )
+const filename = process.argv[2]
+if (!filename) {
+	throw new Error( 'A file to watch must be specified! ' )
+}
+fs.watch(filename, () => {
+	console.log( 'File changed!' )
+})
+console.log( 'Now watching fuck.txt for changes...' )
+)
+}
+
+if (v == "$ npm install pm2 -g && pm2 start hello.js --watch") {
+Var = 
+(
+npm install pm2 -g && pm2 start hello.js --watch
+)
+}
+
+if (v == "$ npm install -g nodemon && nodemom index.js") {
+Var =
+(
+npm install -g nodemon && nodemom index.js
+)
+}
+
+if (v == "fs.watch") {
+SendLevel 1
+SendInput, fs.watch{tab}
+return
+}
 
 if (v == "sequelize.connect") {
 SendLevel 1
@@ -152,6 +207,20 @@ return
 }
 
 
+code(Var)
+return
+
+::fs.watch::
+Var =
+(
+// echo fuck > fuck.txt
+const fs = require('fs');
+fs.watch('fuck.txt', () => {
+	console.log('File changed!')
+});
+console.log('Now watching fuck.txt for changes...');
+// echo fuckyou >> fuck.txt
+)
 code(Var)
 return
 

@@ -252,6 +252,10 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/olistic/warriorjs">warriorj
 Gui, Pandora:Add, Text, W140 Section xs yp+80, JS库：
 Gui, Pandora:Add, Link,, <a href="https://github.com/KyleAMathews/deepmerge">deepmerge</a>
 
+Gui, Pandora:Add, Text, W140 Section ys, koajs：
+Gui, Pandora:Add, Link,, <a href="https://github.com/koajs">koajs-github</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/koajs/jwt">koajs-jwt</a>
+
 
 
 Gui, Pandora:Tab, 5
@@ -555,8 +559,8 @@ Gui, Pandora:Add, Link,, <a href="http://droid4x.haimawan.com/">海马玩模拟�
 Gui, Pandora:Tab, 13
 Gui, Pandora:Add, Text,  W140 Section, 极简库:
 Gui, Pandora:Add, Link,, <a href="http://microjs.com/#">microjs</a>
-Gui, Pandora:Add, Link,, <a href="https://ajusa.github.io/lit/">lit</a>
-
+Gui, Pandora:Add, Link,, <a href="https://ajusa.github.io/lit/">lit.css</a>
+Gui, Pandora:Add, Link,, <a href="https://nostalgic-css.github.io/NES.css/">NES.css</a>
 
 
 Gui, Pandora:Tab, 14
