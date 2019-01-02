@@ -264,28 +264,28 @@ return
   Menu, VueMenu, Add, vuex.action, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
-  Menu, VueMenu, Add, mapState, VueHandler  
+  Menu, VueMenu, Add, import { mapState } from 'vuex', VueHandler  
 
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
 
   Menu, VueMenu, Add, vue.init, VueHandler
-  Menu, VueMenu, Add, this.$forceUpdate(), VueHandler
-  
-  Menu, VueMenu, Add, vue.deep.watch, VueHandler
+  Menu, VueMenu, Add, vue.style, VueHandler
+  Menu, VueMenu, Add, vue.computed: get/set, VueHandler
+  Menu, VueMenu, Add, vue.watch, VueHandler
+  Menu, VueMenu, Add, vue.watch.deep, VueHandler
   Menu, VueMenu, Add, vue.watch-vuex, VueHandler
   Menu, VueMenu, Add, vue.watch-$route, VueHandler
+  
   Menu, VueMenu, Add, , VueHandler
   
-  Menu, VueMenu, Add, vue.computed, VueHandler
-  Menu, VueMenu, Add, vue.watch, VueHandler
-  Menu, VueMenu, Add, vue.style, VueHandler
   Menu, VueMenu, Add, $refs, VueHandler
-  
-  Menu, VueMenu, Add, <transition-group>, VueHandler
+  Menu, VueMenu, Add, this.$forceUpdate(), VueHandler
+  Menu, VueMenu, Add, <keep-alive>, VueHandler
   Menu, VueMenu, Add, <transition>, VueHandler
   Menu, VueMenu, Add, <transition v-on...>, VueHandler
+  Menu, VueMenu, Add, <transition-group>, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -294,15 +294,13 @@ return
   Menu, VueMenu, Add, router.init, VueHandler
   Menu, VueMenu, Add, this.$router.push('index'), VueHandler
   Menu, VueMenu, Add, this.$router.back, VueHandler
-  Menu, VueMenu, Add, 路由layout, VueHandler
-  Menu, VueMenu, Add,<router-view></router-view>, VueHandler
-  
+  Menu, VueMenu, Add, 获取参数this.$route.params.id, VueHandler
+  Menu, VueMenu, Add, <router-view></router-view>, VueHandler
   Menu, VueMenu, Add, 组件钩子beforeRouteLeave, VueHandler
   Menu, VueMenu, Add, 组件钩子beforeRouteEnter, VueHandler
   Menu, VueMenu, Add, 全局钩子router.afterEach, VueHandler
   Menu, VueMenu, Add, 全局钩子router.beforeEach, VueHandler
-  Menu, VueMenu, Add, 获取参数this.$route.params.id, VueHandler
-  
+  Menu, VueMenu, Add, 路由 Layout 布局示例, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -328,6 +326,16 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "<keep-alive>") {
+Var = 
+(
+<!-- 路由入口 -->
+<keep-alive include="overallSituation,townStreet">
+    <router-view class='view' :class='{"is-mask": isMask}' />
+</keep-alive>
 )
 }
 
@@ -397,7 +405,7 @@ Var =
 }
 
 
-if (v == "路由layout") {
+if (v == "路由 Layout 布局示例") {
 Var = 
 (
 import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
@@ -561,7 +569,7 @@ this.$refs.myselect
 )
 }
 
-if (v == "mapState") {
+if (v == "import { mapState } from 'vuex'") {
 Var = 
 (
 import { mapState } from 'vuex'
@@ -696,7 +704,7 @@ export default {
 )
 }
 
-if (v == "vue.deep.watch") {
+if (v == "vue.watch.deep") {
 Var = 
 (
 watch: {
@@ -1032,7 +1040,7 @@ Var =
 this.$store.state.list.loading
 )
 }
-if (v == "vue.computed") {
+if (v == "vue.computed: get/set") {
 Var = 
 (
 computed: {
