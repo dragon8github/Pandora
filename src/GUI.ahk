@@ -36,18 +36,20 @@ Gui, Pandora:Add, Checkbox, vkongzi, 孔夫子二手书
 
 ; 搜索框
 Gui, Pandora:Add, Edit, vSearchContent w780 Limit50 yp+20 Section xs, dragon8github/Pandora
+
 ; 背景色
 Gui, Pandora:Color, E6FFE6
+
 ; margin 布局
 Gui, Pandora:Margin, 10, 10
 
-; 取消按钮
-Gui, Pandora:Add, Button, gCancelSelect w780 h30 yp+30, 取消选中
-
 ; submit 按钮
-Gui, Pandora:Add, Button, w780 h30 gFuck Default, FUCK
+Gui, Pandora:Add, Button, w380 h30 gFuck Section xs h30 yp+30 Default, FUCK
 
-Gui, Pandora:Add, Tab3, w780 h500 Choose1, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 剪切板
+; 取消按钮
+Gui, Pandora:Add, Button, gCancelSelect w380 h30 ys, 取消选中
+
+Gui, Pandora:Add, Tab3, w780 h500 Section xs  Choose1, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 剪切板
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -109,8 +111,8 @@ Gui, Pandora:Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/l
 Gui, Pandora:Add, Link,, <a href="https://hellogithub.com/periodical/volume/15/">有趣的github项目</a>
 Gui, Pandora:Add, Link,, <a href="https://gitbook.cn/gitchat/geekbooks">极客书单</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0.10源码</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/seajs/seajs/issues/242">CMD规范</a> 
 Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/">CODECASTS 免费课程</a>
+Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/learn/laravel">learn-laravel</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -628,6 +630,8 @@ ClipChanged(Type) {
 
 
 CancelSelect:
+	; 清空搜索框
+	; GuiControl,, SearchContent, 
 	GuiControl,, bd, 0
 	GuiControl,, google, 0
 	GuiControl,, so, 0

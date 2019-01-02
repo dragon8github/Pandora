@@ -802,6 +802,7 @@ return
 
 ::preloadimg::
 ::loadimg::
+::preload::
 Var =
 (
 var perloadimg = function(url, callback, error) {   
@@ -1728,15 +1729,6 @@ window.localStorage.getItem('key')
 code(Var)
 return
 
-
-::next::
-::next()::
-Var =
-(
-nextElementSibling
-)
-code(Var)
-return
 
 ::$.scroll::
 ::$.onscroll::

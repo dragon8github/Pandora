@@ -1402,6 +1402,7 @@ return
 ::$nextTick::
 ::$next::
 ::$.next::
+::next::
 Var =
 (
 this.$nextTick(() => {

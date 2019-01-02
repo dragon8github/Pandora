@@ -32,6 +32,8 @@
 	Menu, NodeMenu, Add, fs.ls, NodeHandler
 	Menu, NodeMenu, Add, fs.watch, NodeHandler
 	Menu, NodeMenu, Add, 命令行参数process.argv, NodeHandler
+	Menu, NodeMenu, Add, 新建子进程（Nodejs执行shell）：child_process.spawn 与 stdout, NodeHandler
+	Menu, NodeMenu, Add, 子进程与EventEmitter：on('data')/on('close'), NodeHandler
 	
 
 	Menu, NodeMenu, Add
@@ -61,6 +63,57 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "子进程与EventEmitter：on('data')/on('close')") {
+Var = 
+(
+/**
+ * $ echo fuckyou > fuck.txt 
+ * $ node index.js fuck.txt
+ * $ echo fuckyou again >> fuck.txt
+ */
+const fs = require( 'fs' )
+const spawn = require('child_process').spawn;
+const filename = process.argv[2]
+if (!filename) {
+	throw new Error( 'A file to watch must be specified! ' )
+}
+fs.watch(filename, () => {
+	const ls = spawn('ls', ['-l', '-h', filename])
+	let output = ''
+	ls.stdout.on('data', chunk => output += chunk)
+	ls.on('close', () => {
+		const parts = output.split(/\s+/);
+		console.log(20190101222102, parts)
+	})
+})
+console.log( 'Now watching fuck.txt for changes...' )
+)
+}
+
+if (v == "新建子进程（Nodejs执行shell）：child_process.spawn 与 stdout") {
+Var = 
+(
+/**
+ * $ echo fuckyou > fuck.txt 
+ * $ node index.js fuck.txt
+ * $ echo fuckyou again >> fuck.txt
+ */
+const fs = require( 'fs' )
+const spawn = require('child_process').spawn;
+const filename = process.argv[2]
+if (!filename) {
+	throw new Error( 'A file to watch must be specified! ' )
+}
+fs.watch(filename, () => {
+    // 新建一个子进程（执行一个shell）
+	const ls = spawn('ls', ['-l', '-h', filename])
+	// 子进程输出流
+	ls.stdout.pipe(process.stdout)
+})
+console.log( 'Now watching fuck.txt for changes...' )
 )
 }
 

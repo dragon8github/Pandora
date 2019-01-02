@@ -505,22 +505,23 @@ MenuHandler:
 Return  
 
 MenuHandlerlifeArray:
-    if (A_ThisMenuItem == "xs —— 超小屏幕 手机 (<768px)") {
-        SendRaw, xs
-    }
-    
-    else if (A_ThisMenuItem == "sm —— 小屏幕 平板 (≥768px)") {
-        SendRaw, sm
-    }
-    
-    else if (A_ThisMenuItem == "md —— 中等屏幕 桌面显示器 (≥992px)") {
-        SendRaw, md
-    }
-    
-    else if (A_ThisMenuItem == "lg —— 大屏幕 大桌面显示器 (≥1200px)") {
-        SendRaw, lg
-    }
-    Send, % A_ThisMenuItem
+Var := A_ThisMenuItem
+if (A_ThisMenuItem == "xs —— 超小屏幕 手机 (<768px)") {
+    Var := "xs"
+}
+
+else if (A_ThisMenuItem == "sm —— 小屏幕 平板 (≥768px)") {
+    Var := "sm"
+}
+
+else if (A_ThisMenuItem == "md —— 中等屏幕 桌面显示器 (≥992px)") {
+    Var := "md"
+}
+
+else if (A_ThisMenuItem == "lg —— 大屏幕 大桌面显示器 (≥1200px)") {
+    Var := "lg"
+}
+code(Var)
 return
 
 
