@@ -1,5 +1,6 @@
 ﻿!j::
-
+	
+	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
 	Menu, NodeMenu, Add, $ npm install -g nodemon && nodemom index.js, NodeHandler
 	Menu, NodeMenu, Add, $ npm install pm2 -g && pm2 start hello.js --watch, NodeHandler
 
@@ -9,17 +10,6 @@
 	Menu, NodeMenu, Add, sequelize.connect, NodeHandler
 	Menu, NodeMenu, Add, sequelize.createmodel, NodeHandler
 
-	Menu, NodeMenu, Add
-	Menu, NodeMenu, Add
-
-	Menu, NodeMenu, Add, request, NodeHandler
-	Menu, NodeMenu, Add, request.proxy, NodeHandler
-
-	Menu, NodeMenu, Add
-	Menu, NodeMenu, Add
-
-	Menu, NodeMenu, Add, node-http, NodeHandler
-	Menu, NodeMenu, Add, http.request, NodeHandler
 
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
@@ -31,9 +21,6 @@
 	Menu, NodeMenu, Add, fs.mkdir, NodeHandler
 	Menu, NodeMenu, Add, fs.ls, NodeHandler
 	Menu, NodeMenu, Add, fs.watch, NodeHandler
-	Menu, NodeMenu, Add, 命令行参数process.argv, NodeHandler
-	Menu, NodeMenu, Add, 新建子进程（Nodejs执行shell）：child_process.spawn 与 stdout, NodeHandler
-	Menu, NodeMenu, Add, 子进程与EventEmitter：on('data')/on('close'), NodeHandler
 	
 
 	Menu, NodeMenu, Add
@@ -43,12 +30,19 @@
 	Menu, NodeMenu, Add, node.ssh, NodeHandler
 	Menu, NodeMenu, Add, node.gbk, NodeHandler
 	Menu, NodeMenu, Add, node.ch, NodeHandler
+	Menu, NodeMenu, Add, request, NodeHandler
+	Menu, NodeMenu, Add, request.proxy, NodeHandler
+	Menu, NodeMenu, Add, node-http, NodeHandler
+	Menu, NodeMenu, Add, http.request, NodeHandler
+	Menu, NodeMenu, Add, 命令行参数process.argv, NodeHandler
+	Menu, NodeMenu, Add, 新建子进程（Nodejs执行shell）：child_process.spawn 与 stdout, NodeHandler
+	Menu, NodeMenu, Add, 子进程与EventEmitter：on('data')/on('close'), NodeHandler
 	
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
 	
 	Menu, NodeMenu, Add, clearconsole, NodeHandler
-
+	Menu, NodeMenu, Add, TJ commander 命令行神器, NodeHandler
 
 	Menu, NodeMenu, Show
 	Menu, NodeMenu, DeleteAll
@@ -63,6 +57,42 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "#!/usr/bin/env node") {
+Var = 
+(
+#!/usr/bin/env node
+)
+}
+
+if (v == "TJ commander 命令行神器") {
+Var = 
+(
+#!/usr/bin/env node
+'use strict';
+// $ cnpm install request commander -S
+const fs = require('fs');
+const request = require('request');
+const program = require('commander');
+const pkg = require('./package.json');
+
+program
+  .version(pkg.version)
+  .description(pkg.description)
+  .usage('[options] <command> [...]')
+  .option('-o, --host <hostname>', 'hostname [localhost]', 'localhost')
+  .option('-p, --port <number>', 'port number [9200]', '9200')
+  .option('-j, --json', 'format output as JSON')
+  .option('-i, --index <name>', 'which index to use')
+  .option('-t, --type <type>', 'default type for bulk operations');
+
+program.parse(process.argv);
+
+if (!program.args.filter(arg => typeof arg === 'object').length) {
+  program.help();
+}
 )
 }
 
