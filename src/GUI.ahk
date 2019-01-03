@@ -49,7 +49,7 @@ Gui, Pandora:Add, Button, w380 h30 gFuck Section xs h30 yp+30 Default, FUCK
 ; 取消按钮
 Gui, Pandora:Add, Button, gCancelSelect w380 h30 ys, 取消选中
 
-Gui, Pandora:Add, Tab3, w780 h500 Section xs  Choose1, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 剪切板
+Gui, Pandora:Add, Tab3, w780 h550 Section xs  Choose1, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 剪切板
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -113,6 +113,7 @@ Gui, Pandora:Add, Link,, <a href="https://gitbook.cn/gitchat/geekbooks">极客�
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0.10源码</a>
 Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/">CODECASTS 免费课程</a>
 Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/learn/laravel">learn-laravel</a>
+Gui, Pandora:Add, Link,, <a href="https://camp.qianduan.group/koa2/2/1/2">ikcamp</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -120,8 +121,6 @@ Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/manageyourkindle">我的
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/Kindle免费电子书/b?node=116175071">kindle官方</a>
 Gui, Pandora:Add, Link,, <a href="https://www.jiumodiary.com/">鸠摩搜书</a>
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&node=1337022071">Kindle Unlimited</a>
-
-
 
 
 Gui, Pandora:Add, Text,  W160 ys, 与钱为伍：
@@ -137,6 +136,7 @@ Gui, Pandora:Add, Text,  W140 ys, 图片速查：
 Gui, Pandora:Add, Link,, <a href="https://raw.githubusercontent.com/dragon8github/Pandora/master/static/gitpic.jpg">git命令速查表</a>
 Gui, Pandora:Add, Link,, <a href="https://carbon.now.sh/">carbon代码图片</a>
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
+Gui, Pandora:Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
 
 
 
@@ -257,6 +257,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/KyleAMathews/deepmerge">dee
 Gui, Pandora:Add, Text, W140 Section ys, koajs：
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs">koajs-github</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs/jwt">koajs-jwt</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/koajs/bodyparser">koajs-bodyparser</a>
 
 
 

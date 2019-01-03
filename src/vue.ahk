@@ -264,7 +264,7 @@ return
   Menu, VueMenu, Add, vuex.action, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
-  Menu, VueMenu, Add, import { mapState } from 'vuex', VueHandler  
+  Menu, VueMenu, Add, import { mapState, mapActions } from 'vuex', VueHandler  
 
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -296,6 +296,7 @@ return
   Menu, VueMenu, Add, this.$router.back, VueHandler
   Menu, VueMenu, Add, 获取参数this.$route.params.id, VueHandler
   Menu, VueMenu, Add, <router-view></router-view>, VueHandler
+  Menu, VueMenu, Add, <router-link></router-link>, VueHandler
   Menu, VueMenu, Add, 组件钩子beforeRouteLeave, VueHandler
   Menu, VueMenu, Add, 组件钩子beforeRouteEnter, VueHandler
   Menu, VueMenu, Add, 全局钩子router.afterEach, VueHandler
@@ -326,6 +327,14 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "<router-link></router-link>") {
+Var = 
+(
+// 推荐使用path，name不太靠谱
+<router-link :to="{ path: this.fromFullPath, name: 'user', params: { userId: 123 }}">User</router-link>
 )
 }
 
@@ -569,12 +578,32 @@ this.$refs.myselect
 )
 }
 
-if (v == "import { mapState } from 'vuex'") {
+if (v == "import { mapState, mapActions } from 'vuex'") {
 Var = 
 (
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+
+methods: {
+    ...mapActions('themeDetails', {
+      deparmenthandleChange: 'departmentSelect',
+      cityChange: 'townstreetSelect',
+      matterChange: 'matterSelect',
+      eq_problemTypeChange: 'eq_problemType',
+      eq_stateIdChange: 'eq_satisfyId',
+      eq_satisfyIdChange: 'eq_stateId',
+    })
+},
 computed: {
-  ...mapState('theme', ['findLastSixMonthAir', 'findLastSixMonthAirTown'])
+  ...mapState('themeDetails', [
+    'departmentItems', 
+    'matterItems', 
+    'departmentSelect', 
+    'townstreetSelect', 
+    'matterSelect',
+    'eq_problemType',
+    'eq_stateId',
+    'eq_satisfyId',
+  ])
 },
 )
 }

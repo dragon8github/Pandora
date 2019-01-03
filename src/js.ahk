@@ -1,4 +1,12 @@
-﻿::addstyles::
+﻿::chrome::
+Var =
+(
+--args --disable-web-security --user-data-dir
+)
+code(Var)
+return
+
+::addstyles::
 ::addstyle::
 ::addcss::
 ::injectcss::

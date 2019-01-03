@@ -187,6 +187,8 @@ return
 	
 	Menu, ShellMenu, Add, wc 查看多少行代码, ShellHandler
 	Menu, ShellMenu, Add, find + xargs + cat合并多个文件内容到一个文件, ShellHandler
+	Menu, ShellMenu, Add, 批量重命名, ShellHandler
+	
 	
 	Menu, ShellMenu, Show
 	Menu, ShellMenu, DeleteAll
@@ -203,6 +205,17 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "批量重命名") {
+Var = 
+(
+# 文件名后统一增加.bak后缀：
+for i in $(ls);do mv $i ${i}.gif;done
+	
+# 批量重命名(后缀修改为bak为例)： 
+for i in $(ls);do mv $i ${i`%.*}.bak;done
 )
 }
 
