@@ -1702,10 +1702,10 @@ function unique(arr) {
 code(Var)
 return
 
-::wl::
+
+::ls::
+::locals::
 ::window.l::
-::windowl::
-::local::
 Var =
 (
 window.localStorage.setItem('key', 'value')

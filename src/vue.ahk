@@ -264,7 +264,7 @@ return
   Menu, VueMenu, Add, vuex.action, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
-  Menu, VueMenu, Add, import { mapState, mapActions } from 'vuex', VueHandler  
+  Menu, VueMenu, Add, import { mapState`, mapActions } from 'vuex', VueHandler  
 
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
