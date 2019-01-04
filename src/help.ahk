@@ -26,6 +26,15 @@ resetlabel:
     Hotstring("Reset")
 return
 
+::renzhi::
+::rz::
+Var =
+(
+(〜￣△￣)〜认知～(￣▽￣～)
+)
+code(Var)
+return
+
 ::a-z::
 Var =
 (

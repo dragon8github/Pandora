@@ -1,26 +1,28 @@
 ﻿!k::
 
     Menu, koaMenu, Add, awesome-koa, koaHandler
-	Menu, koaMenu, Add, $ npm install -g nodemon, koaHandler
-	Menu, koaMenu, Add, $ npm install koa koa-router, koaHandler
+    Menu, koaMenu, Add, $ npm install -g nodemon, koaHandler
+    Menu, koaMenu, Add, $ npm install koa koa-router, koaHandler
 
-	Menu, koaMenu, Add,
-	Menu, koaMenu, Add,
+    Menu, koaMenu, Add,
+    Menu, koaMenu, Add,
 
-	Menu, koaMenu, Add, Hello World, koaHandler
-	Menu, koaMenu, Add, 中间件, koaHandler
-	Menu, koaMenu, Add, koa-router 与 router.get, koaHandler
+    Menu, koaMenu, Add, Hello World, koaHandler
+    Menu, koaMenu, Add, 中间件, koaHandler
+    Menu, koaMenu, Add, (〜￣△￣)〜认知～(￣▽￣～)：洋葱理论认知和示例, koaHandler
+
+    Menu, koaMenu, Add,
+    Menu, koaMenu, Add,
+
+    Menu, koaMenu, Add, koa-router 与 router.get, koaHandler
+    Menu, koaMenu, Add, (〜￣△￣)〜认知～(￣▽￣～)：不借助koa-router自己处理路由示例, koaHandler
     Menu, koaMenu, Add, 获取路由get参数： ctx.params.id, koaHandler
     Menu, koaMenu, Add, koa-router 多重中间件, koaHandler
     Menu, koaMenu, Add, 路由前缀：prefix, koaHandler
     Menu, koaMenu, Add, 用 koa-bodyparser 解析post body, koaHandler
+    Menu, koaMenu, Add, 代码优化：分离 router.js 实战, koaHandler
     
-    Menu, koaMenu, Add,
-	Menu, koaMenu, Add,
     
-    Menu, koaMenu, Add, 洋葱理论认知和示例, koaHandler
-    Menu, koaMenu, Add, 不借助koa-router自己处理路由示例, koaHandler
-
 	Menu, koaMenu, Show
 	Menu, koaMenu, DeleteAll
 return
@@ -34,6 +36,47 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "代码优化：分离 router.js 实战") {
+Var =
+(
+//////////////////////////////////////////////
+// router.js
+//////////////////////////////////////////////
+const router = require('koa-router')()
+
+module.exports = app => {
+	// Content-Type 必须使用 x-www-form-urlencoded 或者 application/json 的方式发送POST请求才可以接收到。
+	router.post('/user/login', async (ctx, next) => {
+		let {name, password} = ctx.request.body
+		console.log(20190103224604, name, password)
+		if ( name === 'ljdp' && password === '123456' ) {
+		  ctx.response.body = `Hello， ${name}！`
+		} else {
+		  ctx.response.body = '账号信息错误'
+		}
+	})
+	app.use(router.routes())
+}
+
+
+//////////////////////////////////////////////
+// app.js
+//////////////////////////////////////////////
+
+const Koa = require('koa')
+const bodyParser = require('koa-bodyparser')
+const router = require('./router.js')
+const app = new Koa()
+app.use(bodyParser())
+
+router(app)
+
+app.listen(3000, ()=>{
+  console.log('server is running at http://localhost:3000')
+})
 )
 }
 
@@ -134,7 +177,7 @@ app.listen(3000, () => {
 )
 }
 
-if (v == "不借助koa-router自己处理路由示例") {
+if (v == "(〜￣△￣)〜认知～(￣▽￣～)：不借助koa-router自己处理路由示例") {
 Var =
 (
 const Koa = require('koa')
@@ -170,7 +213,7 @@ app.listen(3000, ()=>{
 )
 }
 
-if (v == "洋葱理论认知和示例") {
+if (v == "(〜￣△￣)〜认知～(￣▽￣～)：洋葱理论认知和示例") {
 Var =
 (
 // 洋葱示例

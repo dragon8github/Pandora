@@ -63,7 +63,7 @@
     Menu, utilsObject, Add,, utilsHandler
     Menu, utilsObject, Add,, utilsHandler
 
-    Menu, utilsObject, Add, 《认知》：({a = 123`, b = 321`, c = 456} = {}) 对象解构 与 参数默认值, utilsHandler
+    Menu, utilsObject, Add, (〜￣△￣)〜认知～(￣▽￣～)：({a = 123`, b = 321`, c = 456} = {}) 对象解构 与 参数默认值, utilsHandler
     Menu, utilsObject, Add, delete person.age 删除对象的属性, utilsHandler
     Menu, utilsObject, Add, Object.assign({}`, ), utilsHandler
     Menu, utilsObject, Add, Object.is 比 === 更严格的比较, utilsHandler
@@ -143,7 +143,7 @@
     Menu, utilsDesignPattern, Add, 优惠券条件分支：链式after解决方案, utilsHandler
     
     
-    Menu, utilspractice, Add, 解构：const [language`, country] = locale.split('-');, utilsHandler
+    Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
     
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
@@ -151,7 +151,7 @@
     Menu, utilsMenu , Add, Object 操作, :utilsObject
     Menu, utilsMenu , Add, 解决方案/功能/库, :utilsSolution
     Menu, utilsMenu , Add, 设计模式, :utilsDesignPattern
-    Menu, utilsMenu, Add, 认知与刻意练习, :utilspractice
+    Menu, utilsMenu, Add, (〜￣△￣)〜认知～(￣▽￣～), :utilspractice
 
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -507,10 +507,10 @@ coffee.init();
 )
 }
 
-if (v == "utilspractice") {
+if (v == "解构与split结合：const [language, country] = locale.split('-')") {
 Var = 
 (
-const [language, country] = locale.split('-');
+const [language, country] = locale.split('-')
 )
 }
 
@@ -1510,7 +1510,7 @@ countWords(``a
 }
 
 
-if (v == "《认知》：({a = 123, b = 321, c = 456} = {}) 对象解构 与 参数默认值") {
+if (v == "(〜￣△￣)〜认知～(￣▽￣～)：({a = 123, b = 321, c = 456} = {}) 对象解构 与 参数默认值") {
 Var =
 (
 var abc = ({a = 123, b = 321, c = 456} = {}) => console.log(20181109155055, a)
