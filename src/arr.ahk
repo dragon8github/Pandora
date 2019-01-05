@@ -46,7 +46,7 @@ return
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,  jQuery $.each, ForHandler
-	Menu, arrayMenu, Add,  jQuery each, ForHandler
+	Menu, arrayMenu, Add,  jQuery $('.img').each, ForHandler
 
 	Menu, arrayMenu, Show
 	Menu, arrayMenu, DeleteAll
@@ -271,11 +271,11 @@ $.each( { name: "John", lang: "JS" }, function(i, n){
 )
 }
 
-if (v == "jQuery each") {
+if (v == "jQuery $('.img').each") {
 Var = 
 (
 // [ "one", "two", "three", "four"] 也可以遍历普通数组哦
-$("div").each(function (index, domEle) {
+$('.img').each(function (index, domEle) {
   	// domEle == this
  	console.log(index, $(this), domEle)
 });

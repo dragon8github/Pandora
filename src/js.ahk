@@ -1,4 +1,12 @@
-﻿::chrome::
+﻿::yyyy::
+Var =
+(
+yyyy-MM-dd HH:mm:ss
+)
+code(Var)
+return
+
+::chrome::
 Var =
 (
 --args --disable-web-security --user-data-dir
@@ -1713,6 +1721,15 @@ window.localStorage.setItem('key', 'value')
 code(Var)
 return
 
+::wlg::
+Var =
+(
+window.localStorage.getItem('key')
+)
+code(Var)
+return
+
+
 ::time2time::
 ::date2date::
 Var =
@@ -1728,15 +1745,6 @@ const time2time = (time) => {
 )
 code(Var)
 return
-
-::wlg::
-Var =
-(
-window.localStorage.getItem('key')
-)
-code(Var)
-return
-
 
 ::$.scroll::
 ::$.onscroll::
@@ -4312,12 +4320,51 @@ function jsonp(urlObj, callback) {
 code(Var)
 return
 
+
+::js.cache::
+::cache::
+Var =
+(
+/**
+ * @func
+ * @desc - 灵活使用闭包的概念。
+           以下简单的实验说明他们是不同的实例。所以他们各自闭包内的_cache是不相干也不相同的
+           其实是简单的类与实例的概念。但还是说明一下比较好
+           毕竟大部分的插件也是这样制作的
+ */
+var Cache = (function () {
+    var _cache = {};
+
+    return {
+      getCache: function (key) {
+        return _cache[key]
+      },
+      setCache: function (key, value) {
+        _cache[key] = value;
+      },
+      showAllCache: function () {
+        console.log(_cache);
+      }
+    }
+});
+
+
+var a = new Cache();
+a.setCache('foo', 'bar');
+a.showAllCache();
+
+var b = new Cache();
+b.setCache('foo', 'bar2');
+b.showAllCache();
+
+/* 从输出的结果得知两者的闭包互不相干 */
+)
+code(Var)
+return
+
 ::cachemethod::
 ::cachefunc::
 ::cachefunction::
-::memoized::
-::js.cache::
-::cache::
 Var = 
 (
 const memoized = fn => {

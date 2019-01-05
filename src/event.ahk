@@ -26,15 +26,16 @@
 	
 	
 	Menu, JavaScriptEventMenu, Add, .addEventListener('click'`, e => {}), EventHandler
-	Menu, JavaScriptEventMenu, Add, js监听enter, EventHandler
-	Menu, JavaScriptEventMenu, Add, js 组合键监听ctrl + enter, EventHandler
 	Menu, JavaScriptEventMenu, Add, .addEventListener('mouseover'`, e => {}) , EventHandler
 	Menu, JavaScriptEventMenu, Add, .addEventListener('mouseleave'`, e => {}), EventHandler
 	Menu, JavaScriptEventMenu, Add, , EventHandler
-	Menu, JavaScriptEventMenu, Add, ### 注意：onclick只能为元素绑定一个方法，而addEventListener可以绑定无限个 ### , EventHandler
+	Menu, JavaScriptEventMenu, Add, (〜￣△￣)〜认知：onclick只能为元素绑定一个方法，而addEventListener可以绑定无限个～(￣▽￣～), EventHandler
 	Menu, JavaScriptEventMenu, Add, , EventHandler
 	Menu, JavaScriptEventMenu, Add, .onclick = (e) => {}, EventHandler
 	Menu, JavaScriptEventMenu, Add, .onsubmit = (e) => {}, EventHandler
+	Menu, JavaScriptEventMenu, Add, , EventHandler
+	Menu, JavaScriptEventMenu, Add, js 监听 enter, EventHandler
+	Menu, JavaScriptEventMenu, Add, js 组合键监听 ctrl + enter, EventHandler
 
 
 	
@@ -242,7 +243,7 @@ splitLine: {
 }
 
 
-if (v == "js 组合键监听ctrl + enter") {
+if (v == "js 组合键监听 ctrl + enter") {
 Var = 
 (
 $(window).keydown(function (event) {
@@ -396,7 +397,7 @@ return
 }
 
 
-if (v == "js监听enter") {
+if (v == "js 监听 enter") {
 Var = 
 (
 window.addEventListener("keydown", function(e) {

@@ -1,5 +1,7 @@
 ﻿!j::
 	
+	Menu, NodeMenu, Add, 'use strict';, NodeHandler
+	Menu, NodeMenu, Add, module.exports, NodeHandler
 	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
 	Menu, NodeMenu, Add, $ npm install -g nodemon && nodemom index.js, NodeHandler
 	Menu, NodeMenu, Add, $ npm install pm2 -g && pm2 start hello.js --watch, NodeHandler
@@ -42,7 +44,8 @@
 	Menu, NodeMenu, Add
 	
 	Menu, NodeMenu, Add, clearconsole, NodeHandler
-	Menu, NodeMenu, Add, TJ commander 命令行神器, NodeHandler
+	Menu, NodeMenu, Add, TJ commander 命令行神器（简单版）, NodeHandler
+	Menu, NodeMenu, Add, TJ commander 命令行神器（加强版）, NodeHandler
 
 	Menu, NodeMenu, Show
 	Menu, NodeMenu, DeleteAll
@@ -60,6 +63,20 @@ Var =
 )
 }
 
+if (v == "module.exports") {
+Var = 
+(
+module.exports
+)
+}
+
+if (v == "'use strict';") {
+Var = 
+(
+'use strict';
+)
+}
+
 if (v == "#!/usr/bin/env node") {
 Var = 
 (
@@ -67,7 +84,119 @@ Var =
 )
 }
 
-if (v == "TJ commander 命令行神器") {
+if (v == "TJ commander 命令行神器（加强版）") {
+Var = 
+(
+#!/usr/bin/env node
+'use strict'
+// $ cnpm install request commander -S
+const fs = require('fs')
+const request = require('request')
+const program = require('commander')
+const pkg = require('./package.json')
+
+// 初始化基本命令
+program
+  .version(pkg.version)
+  .description(pkg.description)
+  .usage('[options] <command> [...]')
+  .option('-o, --host <hostname>', 'hostname [localhost]', 'localhost')
+  .option('-p, --port <number>', 'port number [9200]', '9200')
+  .option('-j, --json', 'format output as JSON')
+  .option('-i, --index <name>', 'which index to use')
+  .option('-t, --type <type>', 'default type for bulk operations')
+
+// 获取当前URL
+program
+	.command('url [path]')
+	.description('generate the URL for the options and path (default is /)')
+	.action((path = '/') => {
+      console.log(fullUrl(path))
+  })
+
+// 搜索内容
+// $ ./index.js get '_cat/'
+// $ ./index.js get '_cat/indices/?'
+program
+  .command('get [path]')
+  .description('perform an HTTP GET request for path (default is /)')
+  .action((path = '/') => {
+    const options = {
+      url: fullUrl(path),
+      json: program.json,
+    };
+    request(options, (err, res, body) => {
+      if (program.json) {
+        console.log(JSON.stringify(err || body));
+      } else {
+        if (err) throw err;
+        console.log(body);
+      }
+    });
+  });
+
+// 创建内容
+// $ ./index.js create-index --index books
+// $ ./index.js create-index -i books2
+program
+  .command('create-index')
+  .description('create an index')
+  .action(() => {
+    if (!program.index) {
+      const msg = 'No index specified! Use --index <name>';
+      if (!program.json) throw Error(msg);
+      console.log(JSON.stringify({error: msg}));
+      return;
+    }
+
+    request.put(fullUrl(), handleResponse);
+  });
+
+// 列出索引
+// $ ./index.js  li
+program
+  .command('list-indices')
+  .alias('li')
+  .description('get a list of indices in this cluster')
+  .action(() => {
+    const path = program.json ? '_all' : '_cat/indices?v';
+    request({url: fullUrl(path), json: program.json}, handleResponse);
+  });
+
+
+// 拼接url辅助函数
+const fullUrl = (path = '') => {
+  let url = ``http://${program.host}:${program.port}/``
+  if (program.index) {
+    url += program.index + '/'
+    if (program.type) {
+      url += program.type + '/'
+    }
+  }
+  return url + path.replace(/^\/*/, '')
+}
+
+// 处理搜索内容
+const handleResponse = (err, res, body) => {
+  if (program.json) {
+    console.log(JSON.stringify(err || body));
+  } else {
+    if (err) throw err;
+    console.log(body);
+  }
+};
+
+
+program.parse(process.argv)
+
+if (!program.args.filter(arg => typeof arg === 'object').length) {
+  program.help()
+}
+)
+}
+
+
+if (v == "TJ commander 命令行神器（简单版）") {
 Var = 
 (
 #!/usr/bin/env node
