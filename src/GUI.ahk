@@ -178,6 +178,7 @@ Gui, Pandora:Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)�
 Gui, Pandora:Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
 Gui, Pandora:Add, Text, gNewNodejsSequelize W190, 新建nodejs-sequelize-mysql模板
 Gui, Pandora:Add, Text, gNewNodejsRenamechName W190, 新建nodejs批量改名中文模板
+Gui, Pandora:Add, Text, gNewmochachai W190, 新建mocha+chai单元测试模板
 
 
 Gui, Pandora:Tab, 3

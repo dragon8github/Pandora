@@ -1,4 +1,8 @@
-﻿scrollTextHtml:
+﻿Newmochachai:
+run, https://github.com/dragon8github/Pandora/blob/master/template/mocha + chai.zip?raw=true
+return
+
+scrollTextHtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
 (
