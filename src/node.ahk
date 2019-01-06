@@ -18,6 +18,7 @@
 
 	Menu, NodeMenu, Add, fs.write, NodeHandler
 	Menu, NodeMenu, Add, fs.read, NodeHandler
+	Menu, NodeMenu, Add, fs.readFileSync, NodeHandler
 	Menu, NodeMenu, Add, fs.rename, NodeHandler
 	Menu, NodeMenu, Add, fs.rm, NodeHandler
 	Menu, NodeMenu, Add, fs.mkdir, NodeHandler
@@ -27,7 +28,7 @@
 
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
-
+	Menu, NodeMenu, Add, node.cheerio-XML, NodeHandler
 	Menu, NodeMenu, Add, node.pachong, NodeHandler
 	Menu, NodeMenu, Add, node.ssh, NodeHandler
 	Menu, NodeMenu, Add, node.gbk, NodeHandler
@@ -37,7 +38,7 @@
 	Menu, NodeMenu, Add, node-http, NodeHandler
 	Menu, NodeMenu, Add, http.request, NodeHandler
 	Menu, NodeMenu, Add, 命令行参数process.argv, NodeHandler
-	Menu, NodeMenu, Add, 新建子进程（Nodejs执行shell）：child_process.spawn 与 stdout, NodeHandler
+	Menu, NodeMenu, Add, 新建子进程（执行shell）：child_process.spawn 与 stdout, NodeHandler
 	Menu, NodeMenu, Add, 子进程与EventEmitter：on('data')/on('close'), NodeHandler
 	
 	Menu, NodeMenu, Add
@@ -60,6 +61,31 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "fs.readFileSync") {
+Var = 
+(
+const fs = require('fs');
+const rdf = fs.readFileSync(`${__dirname}/pg132.rdf`);
+)
+}
+
+if (v == "node.cheerio-XML") {
+Var = 
+(
+'use strict';
+
+const cheerio = require('cheerio');
+const fs = require('fs');
+const rdf = fs.readFileSync(`${__dirname}/pg132.rdf`);
+
+const $ = cheerio.load(rdf)
+const book = {};
+// 找到 <pgterms:ebook rdf:about="ebooks/132"> 的132.(并且转化为int类型)
+book.id = +$('pgterms\\:ebook').attr('rdf:about').replace('ebooks/', '')
+book.title = $('dcterms\\:title').text()
 )
 }
 
@@ -252,7 +278,7 @@ console.log( 'Now watching fuck.txt for changes...' )
 )
 }
 
-if (v == "新建子进程（Nodejs执行shell）：child_process.spawn 与 stdout") {
+if (v == "新建子进程（执行shell）：child_process.spawn 与 stdout") {
 Var = 
 (
 /**
