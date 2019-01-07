@@ -26,6 +26,19 @@ resetlabel:
     Hotstring("Reset")
 return
 
+
+::ahkcmd::
+Var =
+(
+url := "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/mocha.zip"
+name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+FileCreateDir, %name%
+RunWaitOne("cd " . name . " && curl -O " . url)
+run, %name%
+)
+code(Var)
+return
+
 ::renzhi::
 ::rz::
 Var =

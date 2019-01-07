@@ -282,6 +282,7 @@ window.cancelAnimationFrame=window.cancelAnimationFrame ||
 code(Var)
 return
 
+
 ::jsuniqid::
 ::js.uniqid::
 ::uniqid::
@@ -1680,6 +1681,9 @@ code(Var)
 return
 
 ::unique::
+::norepeatarr::
+::norepeat::
+::no-repeat::
 Var =
 (
 var unique = function (arr) {

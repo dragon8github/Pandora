@@ -1,80 +1,4 @@
 ﻿
-
-::sh.curl::
-::shell.curl::
-::bash.curl::
-Var =
-(
-# post 请求 application/json
-curl -H "Content-type: application/json" -X POST -d '{"user": "admin", "passwd":"12345678"}' http://127.0.0.1/index.php
-
-# post Form 请求 
-# <?php 
-# header("Access-Control-Allow-Origin:*"); 
-# header('Access-Control-Allow-Headers:x-requested-with,content-type'); 
-# $rws_post = $GLOBALS['HTTP_RAW_POST_DATA'];
-# var_dump($rws_post);
-curl -H "Content-type: application/x-www-form-urlencoded" -d "user=admin&passwd=12345678" http://127.0.0.1:8080/login
-
-# get 请求
-curl http://127.0.0.1:8080/login?admin&passwd=12345678
-)
-code(Var)
-return
-
-::sh.wc::
-::shell.wc::
-::bash.wc::
-::wc::
-Var =
-(
-find . -name "*.json" -prune -o -path "./assets/*" -o -iname "*.MD"  -prune -o -type f -print | xargs wc -l
-find ./ -iregex '.*\.\(js\|vue\|scss\)$' | xargs wc -l
-)
-code(Var)
-return
-
-::sh.tree::
-::shtree::
-::bash.tree::
-::bashtree::
-::shell.tree::
-::shelltree::
-::tree::
-Var =
-(
-find ./ -maxdepth 2 -name ".git" -prune -o -name ".gitignore" -prune -o -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g' > FUCK.MD
-# 过滤了一些不需要打印的东西
-find ./ -iregex './\.\(.*\)'  -prune -o -iregex '\./node_modules'  -prune -o -iregex '.*\.\(md\|png\|jpg\|gif\|otf\|TTF)' -prune -o -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g' > FUCK.MD
-)
-code(Var)
-return
-
-::readline::
-::sh.read::
-::bashread::
-::bash.read::
-	Send, read -p "Enter a number"
-return
-
-::shfor::
-::bashfor::
-::shellfor::
-Var =
-(
-#!/bin/bash
-count=1;
-for img in `find ./ -iname '*.png' -o -iname '*.jpg' -type f -maxdepth 1`
-do
-	echo "$count"
-	let count++
-done
-
-read -p "Enter a number"
-)
-code(Var)
-return
-
 !b::
 	; 环境变量
 	Menu, A, Add, 打印环境变量, ShellHandler
@@ -188,6 +112,8 @@ return
 	Menu, ShellMenu, Add, wc 查看多少行代码, ShellHandler
 	Menu, ShellMenu, Add, find + xargs + cat合并多个文件内容到一个文件, ShellHandler
 	Menu, ShellMenu, Add, 批量重命名, ShellHandler
+	Menu, ShellMenu, Add, curl -O 下载, ShellHandler
+	Menu, ShellMenu, Add, curl -i 输出响应头, ShellHandler
 	
 	
 	Menu, ShellMenu, Show
@@ -205,6 +131,20 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "curl -O 下载") {
+Var = 
+(
+curl -O 
+)
+}
+
+if (v == "curl -i 输出响应头") {
+Var = 
+(
+curl -i 
 )
 }
 
@@ -805,4 +745,79 @@ if (Var) {
 }else {
 	MsgBox, 未找到定义代码块
 }
+return
+
+::sh.curl::
+::shell.curl::
+::bash.curl::
+Var =
+(
+# post 请求 application/json
+curl -H "Content-type: application/json" -X POST -d '{"user": "admin", "passwd":"12345678"}' http://127.0.0.1/index.php
+
+# post Form 请求 
+# <?php 
+# header("Access-Control-Allow-Origin:*"); 
+# header('Access-Control-Allow-Headers:x-requested-with,content-type'); 
+# $rws_post = $GLOBALS['HTTP_RAW_POST_DATA'];
+# var_dump($rws_post);
+curl -H "Content-type: application/x-www-form-urlencoded" -d "user=admin&passwd=12345678" http://127.0.0.1:8080/login
+
+# get 请求
+curl http://127.0.0.1:8080/login?admin&passwd=12345678
+)
+code(Var)
+return
+
+::sh.wc::
+::shell.wc::
+::bash.wc::
+::wc::
+Var =
+(
+find . -name "*.json" -prune -o -path "./assets/*" -o -iname "*.MD"  -prune -o -type f -print | xargs wc -l
+find ./ -iregex '.*\.\(js\|vue\|scss\)$' | xargs wc -l
+)
+code(Var)
+return
+
+::sh.tree::
+::shtree::
+::bash.tree::
+::bashtree::
+::shell.tree::
+::shelltree::
+::tree::
+Var =
+(
+find ./ -maxdepth 2 -name ".git" -prune -o -name ".gitignore" -prune -o -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g' > FUCK.MD
+# 过滤了一些不需要打印的东西
+find ./ -iregex './\.\(.*\)'  -prune -o -iregex '\./node_modules'  -prune -o -iregex '.*\.\(md\|png\|jpg\|gif\|otf\|TTF)' -prune -o -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g' > FUCK.MD
+)
+code(Var)
+return
+
+::readline::
+::sh.read::
+::bashread::
+::bash.read::
+	Send, read -p "Enter a number"
+return
+
+::shfor::
+::bashfor::
+::shellfor::
+Var =
+(
+#!/bin/bash
+count=1;
+for img in `find ./ -iname '*.png' -o -iname '*.jpg' -type f -maxdepth 1`
+do
+	echo "$count"
+	let count++
+done
+
+read -p "Enter a number"
+)
+code(Var)
 return

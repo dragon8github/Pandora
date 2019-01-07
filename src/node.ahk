@@ -3,6 +3,7 @@
 	Menu, NodeMenu, Add, 'use strict';, NodeHandler
 	Menu, NodeMenu, Add, module.exports, NodeHandler
 	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
+	Menu, NodeMenu, Add, 命令行参数process.argv, NodeHandler
 	Menu, NodeMenu, Add, $ npm install -g nodemon && nodemom index.js, NodeHandler
 	Menu, NodeMenu, Add, $ npm install pm2 -g && pm2 start hello.js --watch, NodeHandler
 
@@ -24,7 +25,9 @@
 	Menu, NodeMenu, Add, fs.mkdir, NodeHandler
 	Menu, NodeMenu, Add, fs.ls, NodeHandler
 	Menu, NodeMenu, Add, fs.watch, NodeHandler
-	
+	Menu, NodeMenu, Add, fs.stat, NodeHandler
+	Menu, NodeMenu, Add, fs.exists, NodeHandler
+	Menu, NodeMenu, Add, node-dir 遍历目录, NodeHandler
 
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
@@ -37,7 +40,6 @@
 	Menu, NodeMenu, Add, request.proxy, NodeHandler
 	Menu, NodeMenu, Add, node-http, NodeHandler
 	Menu, NodeMenu, Add, http.request, NodeHandler
-	Menu, NodeMenu, Add, 命令行参数process.argv, NodeHandler
 	Menu, NodeMenu, Add, 新建子进程（执行shell）：child_process.spawn 与 stdout, NodeHandler
 	Menu, NodeMenu, Add, 子进程与EventEmitter：on('data')/on('close'), NodeHandler
 	
@@ -61,6 +63,56 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "node-dir 遍历目录") {
+Var = 
+(
+#!/usr/bin/env node
+'use strict';
+const dir = require('node-dir');
+const dirname = process.argv[2] || ''
+
+const options = {
+	match: /\.rdf$/,
+	exclude: ['pg0.rdf'],
+};
+
+dir.readFiles(dirname, options, (err, content, next) => {
+	if (err) throw err;
+	console.log(20190106160314, content);
+	next();
+})
+)
+}
+
+if (v == "fs.stat") {
+Var = 
+(
+const fs = require('fs');
+const file = process.argv[2] || ''
+fs.stat(file, (err, stats) => {
+  if (err) {
+    throw err;
+  }
+  console.log(stats.isFile())
+  console.log(stats.isDirectory())
+
+  const rdf = fs.readFileSync(file);
+})
+)
+}
+
+if (v == "fs.exists") {
+Var = 
+(
+const fs = require('fs');
+const file = process.argv[2] || ''
+fs.exists(file, (exists) => {
+  console.log(exists ? 'it\'s there' : 'no passwd!');
+});
+
 )
 }
 

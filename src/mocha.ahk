@@ -1,4 +1,6 @@
 ﻿!m::
+	
+	Menu, mochaMenu, Add, Chai.js断言库API中文文档, mochaHandler
 	Menu, mochaMenu, Add, 1、expect, mochaHandler
 	Menu, mochaMenu, Add, 2、.all.keys('bar'，'baz'), mochaHandler
 	Menu, mochaMenu, Add, 3、.any.keys('bar'，'baz'), mochaHandler
@@ -39,6 +41,11 @@ Var =
 (
 
 )
+}
+
+if (v == "Chai.js断言库API中文文档") {
+run, https://www.jianshu.com/p/f200a75a15d2
+return
 }
 
 if (v == "1、expect") {

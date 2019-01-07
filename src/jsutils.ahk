@@ -194,11 +194,7 @@
     Menu, utilsMenu, Add, 社会主义点击事件, utilsHandler
     Menu, utilsMenu, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
     Menu, utilsMenu, Add, 使用了es6的set生产1W条不重复8位的数字, utilsHandler
-    Menu, utilsMenu, Add, response.status 状态码大全, utilsHandler
     
-    
-    
-
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
     Menu, utilsIs, DeleteAll
@@ -221,72 +217,6 @@ Var =
 )
 }
 
-if (v == "response.status 状态码大全") {
-Var = 
-(
-response.status=
-Set response status via numeric code:
-
-100 "continue"
-101 "switching protocols"
-102 "processing"
-200 "ok"
-201 "created"
-202 "accepted"
-203 "non-authoritative information"
-204 "no content"
-205 "reset content"
-206 "partial content"
-207 "multi-status"
-208 "already reported"
-226 "im used"
-300 "multiple choices"
-301 "moved permanently"
-302 "found"
-303 "see other"
-304 "not modified"
-305 "use proxy"
-307 "temporary redirect"
-308 "permanent redirect"
-400 "bad request"
-401 "unauthorized"
-402 "payment required"
-403 "forbidden"
-404 "not found"
-405 "method not allowed"
-406 "not acceptable"
-407 "proxy authentication required"
-408 "request timeout"
-409 "conflict"
-410 "gone"
-411 "length required"
-412 "precondition failed"
-413 "payload too large"
-414 "uri too long"
-415 "unsupported media type"
-416 "range not satisfiable"
-417 "expectation failed"
-418 "I'm a teapot"
-422 "unprocessable entity"
-423 "locked"
-424 "failed dependency"
-426 "upgrade required"
-428 "precondition required"
-429 "too many requests"
-431 "request header fields too large"
-500 "internal server error"
-501 "not implemented"
-502 "bad gateway"
-503 "service unavailable"
-504 "gateway timeout"
-505 "http version not supported"
-506 "variant also negotiates"
-507 "insufficient storage"
-508 "loop detected"
-510 "not extended"
-511 "network authentication required"
-)
-}
 
 if (v == "使用了es6的set生产1W条不重复8位的数字") {
 Var = 
@@ -2805,33 +2735,9 @@ function getElementPosition (el: Element, offset: Object): Object {
 }
 
 if (v == "unique 数组去重复") {
-Var = 
-(
-var unique = function (arr) {
-    var hash = {},
-        i = arr.length,
-        key, res = []
-    while (i--) {
-        key = arr[i]
-        if (hash[key]) continue
-        hash[key] = 1
-        res.unshift(key)
-    }
-    return res
-}
-
-/**
- * es6： return Array.from(new Set(arr));
- * 补充： return [...new Set(arr)]
- */
-function unique(arr) {
-    var retArray = [];
-    for (var i = 0; i < arr.length; i++) {
-       !~retArray.indexOf(arr[i]) && retArray.push(arr[i]);
-    }
-    return retArray;
-}
-)
+SendLevel 1
+SendInput, norepeatarr{tab}
+return
 }
 
 if (v == "getuuid 32位随机数") {
