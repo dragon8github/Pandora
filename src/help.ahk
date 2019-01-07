@@ -32,9 +32,9 @@ Var =
 (
 url := "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/mocha.zip"
 name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-FileCreateDir, %name%
+FileCreateDir, `%name`%
 RunWaitOne("cd " . name . " && curl -O " . url)
-run, %name%
+run, `%name`%
 )
 code(Var)
 return

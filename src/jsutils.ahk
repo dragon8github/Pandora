@@ -87,6 +87,7 @@
     Menu, utilsSolution, Add, cache request axios 缓存请求, utilsHandler
     Menu, utilsSolution, Add, $.autoscroll 自动滚动, utilsHandler
     Menu, utilsSolution, Add, $.scrollforevery 无缝滚动, utilsHandler
+    Menu, utilsSolution, Add, $.scrollforevery 无缝滚动（Vue版本）, utilsHandler
     Menu, utilsSolution, Add, dragscroll 拖拽滚动, utilsHandler
     Menu, utilsSolution, Add, lazyload 图片懒加载, utilsHandler
     Menu, utilsSolution, Add, preloadimg 图片预加载, utilsHandler
@@ -214,6 +215,136 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "$.scrollforevery 无缝滚动（Vue版本）") {
+Var = 
+(
+<template>
+    <div class="growthRanking" :class="{ 'emptying': town.empty }">
+        <div class='growthRanking__header'>
+            <span class='growthRanking__header--id'>排名</span>
+            <span class='growthRanking__header--name'>事件名称</span>
+            <span class='growthRanking__header--count'>事件增长量（件）</span>
+        </div>
+
+       <div class='growthRanking__rows' ref='dragscroll'>
+           <template v-if='maybe(_=> town.data.length, 0)'>
+               <div class='growthRanking__row' v-for='(item, index) in town.data.concat(town.data)' :key='index' @click.stop = "go(item.itemId)">
+                   <div class='growthRanking__row--id' </div>
+                   <div class='growthRanking__row--name' :title='item.itemName'>{{ item.itemName }}</div>
+                   <div class='growthRanking__row--count'>{{ item.countt }}</div>
+               </div>
+           </template>
+       </div>
+    </div>
+</template>
+
+<script>
+import { dragScroll, getCityIdList } from '@/utils/utils'
+export default {
+    name: 'growthRanking',
+    data() {
+        return {
+            timer: null,
+            dragScrollClick: null,
+            cityIdList: getCityIdList(),
+        }
+    },
+    methods: {
+        go(itemId) {
+            this.dragScrollClick(_ => {
+                // 设置单位id
+                this.$store.dispatch('list/departmentSelect', this.eq_departId)
+                // 设置事项id
+                this.$store.dispatch('list/matterSelect', itemId)
+                // // 跳转到部门二级
+                this.$router.push('./details')
+            })
+        },
+    },
+    computed: {
+        town() {
+            return this.maybe(_ => this.$store.state.departmentDetails.getDepartSecondGrowth)
+        },
+        eq_departId () {
+            return this.$store.state.departmentDetails.eq_departId
+        }
+    },
+    watch: {
+        town: {
+            deep: true,
+            handler (newV, oldV) {
+                if (newV) {
+                    setTimeout(() => {
+                        // 没有滚动条也可以滚动
+                        $('.growthRanking__rows').niceScroll({ scrollbarid: 'growthRanking--scrollbarid' })
+                        // 鼠标拖拽滚动
+                        this.dragScrollClick = dragScroll(this.$refs.dragscroll)
+                    }, 350);
+
+                    // 开始自动滚动
+                    const $app = $('.growthRanking__rows')
+                    // 每一条的高度
+                    const innerHeight = window.px2px(65)
+                    // 固定的33个东莞镇区
+                    const len = newV.length
+                    // 边界点
+                    const distance = innerHeight * len
+                    // 是否停止？
+                    let stop = false
+
+                    // 无限滚动的函数
+                    const _start = () => {
+                        // 检测是否停止
+                        if (stop) return
+
+                        // 清空计时器
+                        window.cancelAnimationFrame(this.timer)
+
+                        // 获取当前滚动
+                        const scrollDistance = $app.scrollTop();
+
+                        // 如果触发临界点
+                        if (scrollDistance >= distance) {
+                             // 0 返回到第一层的指定距离
+                            $app.scrollTop(scrollDistance `% distance)
+                        } else {
+                            // 滚动
+                            $app.scrollTop(scrollDistance + 1)
+                        }
+
+                        // 尽量保证性能
+                        this.timer = window.requestAnimFrame(_start)
+                    }
+
+                    // 开始滚动
+                    _start()
+
+                    // 鼠标开关
+                    $app.mouseover(e => {
+                        stop = true
+                    }).mouseleave(e => {
+                        stop = false
+                        _start()
+                    })
+                }
+            }
+        }
+    },
+    mounted() {
+        
+    },
+    // 页面离开的时候，初始化一些参数配置
+    beforeRouteLeave  (to, from, next) {
+        // 清空计时器
+        window.cancelAnimationFrame(this.timer)
+        // 放行
+        next();
+    },
+}
+</script>
 )
 }
 

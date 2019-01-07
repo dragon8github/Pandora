@@ -1,4 +1,12 @@
-﻿Newmochachai:
+﻿Newesmodule:
+url := "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/node-babel.zip"
+name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+FileCreateDir, %name%
+RunWaitOne("cd " . name . " && curl -O " . url)
+run,%name%
+return
+
+Newmochachai:
 url := "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/mocha%20%2B%20chai.zip"
 name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 FileCreateDir, %name%

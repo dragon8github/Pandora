@@ -47,6 +47,7 @@ return
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,  jQuery $.each, ForHandler
 	Menu, arrayMenu, Add,  jQuery $('.img').each, ForHandler
+	Menu, arrayMenu, Add,  ((________ = '________') => [...Array(________.length)].reduce((_`, __`, ___) => ++___))('________'), ForHandler
 
 	Menu, arrayMenu, Show
 	Menu, arrayMenu, DeleteAll
@@ -63,6 +64,13 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "((________ = '________') => [...Array(________.length)].reduce((_, __, ___) => ++___))('________')") {
+Var = 
+(
+((________ = '________') => [...Array(________.length)].reduce((_, __, ___) => ++___))('________')
 )
 }
 
