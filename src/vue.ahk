@@ -277,6 +277,7 @@ return
   Menu, VueMenu, Add, vue.watch.deep, VueHandler
   Menu, VueMenu, Add, vue.watch-vuex, VueHandler
   Menu, VueMenu, Add, vue.watch-$route, VueHandler
+  Menu, VueMenu, Add, vue.directive 指令, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   
@@ -302,6 +303,7 @@ return
   Menu, VueMenu, Add, 全局钩子router.afterEach, VueHandler
   Menu, VueMenu, Add, 全局钩子router.beforeEach, VueHandler
   Menu, VueMenu, Add, 路由 Layout 布局示例, VueHandler
+  Menu, VueMenu, Add, 动态路由：router.addRoutes, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -311,6 +313,7 @@ return
   Menu, VueMenu, Add, click-outside 指令, VueHandler
   Menu, VueMenu, Add, 组件复用的新套路: 合并配置，来代替mixin方案, VueHandler
   Menu, VueMenu, Add, 波浪效果组件, VueHandler
+  Menu, VueMenu, Add, 波浪效果指令, VueHandler
   
 
 
@@ -327,6 +330,96 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "vue.directive 指令") {
+Var = 
+(
+import './waves.css';
+
+const vueWaves = {};
+vueWaves.install = (Vue, options = {}) => {
+  Vue.directive('waves', {
+    bind(el, binding) {
+      el.addEventListener('click', e => {
+        const customOpts = Object.assign(options, binding.value);
+        const opts = Object.assign({
+            ele: el, // 波纹作用元素
+            type: 'hit', // hit点击位置扩散center中心点扩展
+            color: 'rgba(0, 0, 0, 0.15)' // 波纹颜色
+          }, customOpts),
+          target = opts.ele;
+        if (target) {
+          target.style.position = 'relative';
+          target.style.overflow = 'hidden';
+          const rect = target.getBoundingClientRect();
+          let ripple = target.querySelector('.waves-ripple');
+          if (!ripple) {
+            ripple = document.createElement('span');
+            ripple.className = 'waves-ripple';
+            ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
+            target.appendChild(ripple);
+          } else {
+            ripple.className = 'waves-ripple';
+          }
+          switch (opts.type) {
+            case 'center':
+              ripple.style.top = (rect.height / 2 - ripple.offsetHeight / 2) + 'px';
+              ripple.style.left = (rect.width / 2 - ripple.offsetWidth / 2) + 'px';
+              break;
+            default:
+              ripple.style.top = (e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop) + 'px';
+              ripple.style.left = (e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft) + 'px';
+          }
+          ripple.style.backgroundColor = opts.color;
+          ripple.className = 'waves-ripple z-active';
+          return false;
+        }
+      }, false);
+    }
+  })
+};
+
+export default vueWaves;
+
+/* 
+main.js 中这样注册使用
+import vueWaves from './directive/waves'
+Vue.use(vueWaves)
+
+<a class='header__crumbs--btn' @click.stop='goback' v-waves>返回</a>
+ */
+)
+}
+
+if (v == "波浪效果指令") {
+url := "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/waves.zip"
+name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+FileCreateDir, %name%
+RunWaitOne("cd " . name . " && curl -O " . url)
+run, %name%
+return
+}
+
+if (v == "动态路由：router.addRoutes") {
+Var = 
+(
+// 根据菜单生成的路由信息
+// https://github.com/wdlhao/vue2-element-touzi-admin/blob/master/src/utils/mUtils.js#L166
+// https://github.com/wdlhao/vue2-element-touzi-admin/blob/master/src/page/login.vue#L80
+const routes = mUtils.generateRoutesFromMenu(menuData)
+const asyncRouterMap = [
+  {
+  path: '/index',
+  name:'',
+  hidden   : true,
+  component: require('layout/home.vue'),
+  redirect: '/index',
+  children:routes
+  }
+]
+router.addRoutes(asyncRouterMap);
 )
 }
 
