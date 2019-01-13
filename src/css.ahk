@@ -50,16 +50,26 @@
     Menu, CssMenu, Add, cursor:手掌手势, CssHandler
     Menu, CssMenu, Add, loading, CssHandler2
     Menu, CssMenu, Add, 舒服的字体样式font, CssHandler
+    Menu, CssMenu, Add, 使用系统默认字体：System font stack, CssHandler
     Menu, CssMenu, Add, lit.css极简系列：btn, CssHandler
     Menu, CssMenu, Add, :root 与 var(--primary-color), CssHandler
     Menu, CssMenu, Add, display: table 自动对齐策略, CssHandler
+    Menu, CssMenu, Add, Calc()与background-position数学表达式, CssHandler
+    Menu, CssMenu, Add, 三个DVI的Bouncing loader, CssHandler
+    Menu, CssMenu, Add, 恒定宽高比, CssHandler
+    Menu, CssMenu, Add, display:table垂直居中, CssHandler
+    Menu, CssMenu, Add, 高度从0到auto的伸缩特效魔法, CssHandler
+    Menu, CssMenu, Add, 文字Hover Shadow Box Animation美化, CssHandler
+    Menu, CssMenu, Add, 文字Hover underline animation美化, CssHandler
+    Menu, CssMenu, Add, 向overflow溢出元素添加渐变, CssHandler
+    Menu, CssMenu, Add, hover Sibling fade, CssHandler
+    Menu, CssMenu, Add, 原生实现switch, CssHandler
+    
     
 
 	Menu, CssMenu, Show
 	Menu, CssMenu, DeleteAll
 return
-
-
 
 
 CssHandler2:
@@ -74,6 +84,324 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "原生实现switch") {
+Var =
+(
+// https://30-seconds.github.io/30-seconds-of-css/#toggle-switch
+<input type="checkbox" id="toggle" class="offscreen" /> <label for="toggle" class="switch"></label>
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+.switch::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  background-color: white;
+  top: 1px;
+  left: 1px;
+  transition: all 0.3s;
+}
+input[type='checkbox']:checked + .switch::after {
+  transform: translateX(20px);
+}
+input[type='checkbox']:checked + .switch {
+  background-color: #7983ff;
+}
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+)
+}
+
+if (v == "使用系统默认字体：System font stack") {
+Var =
+(
+<p class="system-font-stack">This text uses the system font.</p>
+
+.system-font-stack {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+)
+}
+
+if (v == "hover Sibling fade") {
+Var =
+(
+// https://30-seconds.github.io/30-seconds-of-css/#sibling-fade
+<div class="sibling-fade">
+  <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 4</span><span>Item 5</span> <span>Item 6</span>
+</div>
+
+span {
+  padding: 0 1rem;
+  transition: opacity 0.2s;
+}
+.sibling-fade:hover span:not(:hover) {
+  opacity: 0.5;
+}
+)
+}
+
+
+if (v == "向overflow溢出元素添加渐变") {
+Var =
+(
+// https://30-seconds.github.io/30-seconds-of-css/#overflow-scroll-gradient
+<div class="overflow-scroll-gradient">
+  <div class="overflow-scroll-gradient__scroller">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
+    Iure id exercitationem nulla qui repellat laborum vitae, <br />
+    molestias tempora velit natus. Quas, assumenda nisi. <br />
+    Quisquam enim qui iure, consequatur velit sit? <br />
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />
+    Iure id exercitationem nulla qui repellat laborum vitae, <br />
+    molestias tempora velit natus. Quas, assumenda nisi. <br />
+    Quisquam enim qui iure, consequatur velit sit?
+  </div>
+</div>
+
+.overflow-scroll-gradient {
+  position: relative;
+}
+.overflow-scroll-gradient::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 240px;
+  height: 25px;
+  background: linear-gradient(rgba(255, 255, 255, 0.001), white); 
+  pointer-events: none;
+}
+.overflow-scroll-gradient__scroller {
+  overflow-y: scroll;
+  background: white;
+  width: 240px;
+  height: 200px;
+  padding: 15px;
+  line-height: 1.2;
+}
+)
+}
+
+if (v == "文字Hover underline animation美化") {
+Var =
+(
+// https://30-seconds.github.io/30-seconds-of-css/#hover-underline-animation
+<p class="hover-underline-animation">Hover this text to see the effect!</p>
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100`%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+)
+}
+
+if (v == "文字Hover Shadow Box Animation美化") {
+Var =
+(
+// https://30-seconds.github.io/30-seconds-of-css/#hover-shadow-box-animation
+<p class="hover-shadow-box-animation">Box it!</p>
+
+.hover-shadow-box-animation {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  margin: 10px;
+  transition-duration: 0.3s;
+  transition-property: box-shadow, transform;
+}
+.hover-shadow-box-animation:hover,
+.hover-shadow-box-animation:focus,
+.hover-shadow-box-animation:active {
+  box-shadow: 1px 10px 10px -10px rgba(0, 0, 24, 0.5);
+  transform: scale(1.2);
+}
+)
+}
+
+if (v == "高度从0到auto的伸缩特效魔法") {
+Var =
+(
+// https://30-seconds.github.io/30-seconds-of-css/#height-transition
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .el {
+        transition: max-height 0.5s;
+        overflow: hidden;
+        max-height: 0;
+    }
+
+    .trigger:hover>.el {
+        max-height: var(--max-height);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="trigger">
+        Hover me to see a height transition.
+        <div class="el">content</div>
+    </div>
+</body>
+<script>
+var el = document.querySelector('.el')
+var height = el.scrollHeight
+el.style.setProperty('--max-height', height + 'px')
+</script>
+
+</html>
+)
+}
+
+if (v == "display:table垂直居中") {
+Var =
+(
+// https://30-seconds.github.io/30-seconds-of-css/#display-table-centering
+<div class="container">
+  <div class="center"><span>Centered content</span></div>
+</div>
+
+.container {
+  border: 1px solid #333;
+  height: 250px;
+  width: 250px;
+}
+.center {
+  display: table;
+  height: 100`%;
+  width: 100`%;
+}
+.center > span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+)
+}
+
+if (v == ":root 与 var(--primary-color)") {
+Var =
+(
+:root {
+    --font: nunito;
+    --gray-color: #CCC;
+    --primary-color: #fa0;
+    --warning-color: #ffd600;
+    --error-color: #d50000;
+    --success-color: #00c853;
+    --info-color: #2962ff;
+}
+
+.accent {
+	color: var(--primary-color);
+}
+)
+}
+
+
+if (v == "恒定宽高比") {
+Var =
+(
+<div class="constant-width-to-height-ratio"></div>
+.constant-width-to-height-ratio {
+  background: #333;
+  width: 50`%;
+}
+.constant-width-to-height-ratio::before {
+  content: '';
+  padding-top: 100`%;
+  float: left;
+}
+.constant-width-to-height-ratio::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+)
+}
+
+if (v == "三个DVI的Bouncing loader") {
+Var =
+(
+// https://30-seconds.github.io/30-seconds-of-css/
+<div class="bouncing-loader">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+@keyframes bouncing-loader {
+  to {
+    opacity: 0.1;
+    transform: translate3d(0, -1rem, 0);
+  }
+}
+.bouncing-loader {
+  display: flex;
+  justify-content: center;
+}
+.bouncing-loader > div {
+  width: 1rem;
+  height: 1rem;
+  margin: 3rem 0.2rem;
+  background: #8385aa;
+  border-radius: 50`%;
+  animation: bouncing-loader 0.6s infinite alternate;
+}
+.bouncing-loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.bouncing-loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+)
+}
+
+if (v == "Calc()与background-position数学表达式") {
+Var =
+(
+.box-example {
+  height: 280px;
+  background: #222 url('https://image.ibb.co/fUL9nS/wolf.png') no-repeat;
+  background-position: calc(100`% - 20px) calc(100`% - 20px);
+}
 )
 }
 

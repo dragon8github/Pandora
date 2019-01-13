@@ -1715,9 +1715,7 @@ code(Var)
 return
 
 ::wl::
-::ls::
-::locals::
-::window.l::
+::wls::
 Var =
 (
 window.localStorage.setItem('key', 'value')
@@ -3341,16 +3339,17 @@ return
 ::today::
 Var = 
 (
-var date = new Date();
-var year = date.getFullYear();
-var month = date.getMonth() + 1;
-var day = date.getDate();
-var hours = date.getHours();
-var minu = date.getMinutes();
-var second = date.getSeconds(); 
-var arr = [month, day, hours, minu, second];
-arr.forEach((item, index) => { arr[index] = item < 10 ? "0" + item : item; }) // 判断是否满10 
-console.log(year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4])
+const dateYYYYMMDDHHmmss =  t => {
+	const date = new Date(t)
+	const year = date.getFullYear()
+	const month = date.getMonth() + 1
+	const day = date.getDate()
+	const hours = date.getHours()
+	const minu = date.getMinutes()
+	const second = date.getSeconds()
+	const arr = [month, day, hours, minu, second].map((item, index) => item < 10 ? '0' + item : item)
+	return year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4]
+}
 )
 code(Var)
 return

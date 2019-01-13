@@ -158,6 +158,7 @@
     Menu, utilsMenu, Add, , utilsHandler
     
     
+    Menu, utilsMenu, Add, 获取前6个月/前15天数据, EventHandler
     Menu, utilsMenu, Add, event.preventDefault(); event.stopPropagation();, EventHandler
     Menu, utilsMenu, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsMenu, Add, urlparams 获取路由参数, utilsHandler
@@ -195,6 +196,7 @@
     Menu, utilsMenu, Add, 社会主义点击事件, utilsHandler
     Menu, utilsMenu, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
     Menu, utilsMenu, Add, 使用了es6的set生产1W条不重复8位的数字, utilsHandler
+    Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
     
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -215,6 +217,92 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "高度从0到auto的伸缩特效魔法") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .el {
+        transition: max-height 0.5s;
+        overflow: hidden;
+        max-height: 0;
+    }
+
+    .trigger:hover>.el {
+        max-height: var(--max-height);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="trigger">
+        Hover me to see a height transition.
+        <div class="el">content</div>
+    </div>
+</body>
+<script>
+var el = document.querySelector('.el')
+var height = el.scrollHeight
+el.style.setProperty('--max-height', height + 'px')
+</script>
+
+</html>
+)
+}
+
+if (v == "获取前6个月/前15天数据") {
+Var = 
+(
+/**
+ * 生成日报模式下的 xAxisDate 数据，
+ * 业务需求:  如果是日报（day）则是取前半个月的数据，即15条数据
+ * @param {String} str 当前用户选择的日报时间
+ * @param {Number} len 往前获取多少天？
+ * @return {Array} 如：["20181211","20181210","20181209","20181208","20181207", "20181206","20181205","20181204","20181203","20181202", "20181201","20181130","20181129","20181128","20181127"] 
+ */
+getDayxAxisDate(str, len) {
+    // 转化为date对象
+    const _date = new Date(str.substring(0, 4), str.substring(4, 6) - 1, str.substring(6, 8))
+
+    // 往前取半个月15天
+    return [...Array(len)].map((v, index, array) => {
+        // 不断地回退day
+        _date.setDate(_date.getDate() - 1)
+        // YYYYMMDD
+        return _date.getFullYear() + PrefixInteger(_date.getMonth() + 1, 2) + PrefixInteger(_date.getDate(), 2)
+        // 翻转一下顺序，让数组符合desc顺序的直觉
+    }).reverse()
+},
+
+/**
+ * 生成月报模式下的 xAxisDate 数据，
+ * 业务需求:  如果是月报（month）则是取前半年的数据，即6条数据
+ * @param {String} str 当前用户选择的月报时间
+ * @param {Number} len 往前获取几个月？
+ * @return {Array} 如： ["20181207","20181208","201809","201810","201811","201812"]
+ */
+getMonthxAxisDate(str, len) {
+    // 转化为date对象
+    const _date = new Date(str.substring(0, 4), str.substring(4, 6) - 1)
+    // 往前取半年6个月
+    return [...Array(len)].map((v, index, array) => {
+        // 不断地回退month
+        _date.setMonth(_date.getMonth() - 1)
+        // MM
+        return PrefixInteger(_date.getMonth() + 1) + '月'
+        // 翻转一下顺序，让数组符合desc顺序的直觉
+    }).reverse()
+},
 )
 }
 

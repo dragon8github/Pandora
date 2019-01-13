@@ -1,4 +1,17 @@
-﻿::`:src::
+﻿::code::
+Var =
+(
+<pre>
+   <code>
+       
+   </code>
+</pre>
+)
+code(Var)
+SendInput, {up 2}{tab 2}
+return
+
+::`:src::
 Var =
 (
 <script src="./"></script>
