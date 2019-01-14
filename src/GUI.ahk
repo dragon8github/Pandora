@@ -114,6 +114,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0
 Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/">CODECASTS 免费课程</a>
 Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/learn/laravel">learn-laravel</a>
 Gui, Pandora:Add, Link,, <a href="https://camp.qianduan.group/koa2/2/1/2">ikcamp</a>
+Gui, Pandora:Add, Link,, <a href="http://aotu.jd.com/share/">凹凸实验室公开课</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -123,6 +124,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.jiumodiary.com/">鸠摩搜书</a>
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&node=1337022071">Kindle Unlimited</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/i0natan/nodebestpractices">Nodejs最佳实践</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/30-seconds/30-seconds-of-code">30 seconds of code</a>
+Gui, Pandora:Add, Link,, <a href="https://aotu.io/">凹凸实验室</a>
 
 
 Gui, Pandora:Add, Text,  W160 ys, 与钱为伍：
