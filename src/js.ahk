@@ -1,4 +1,68 @@
-﻿::yyyy::
+﻿::stringtopath::
+::string2path::
+::strtopath::
+::str2path::
+Var =
+(
+//https://github.com/lodash/lodash/blob/master/.internal/stringToPath.js
+// https://github.com/lodash/lodash/blob/master/.internal/baseGet.js
+// https://github.com/lodash/lodash/blob/master/get.js
+const charCodeOfDot = '.'.charCodeAt(0)
+const reEscapeChar = /\\(\\)?/g
+const rePropName = RegExp(
+  // Match anything that isn't a dot or bracket.
+  '[^.[\\]]+' + '|' +
+  // Or match property names within brackets.
+  '\\[(?:' +
+    // Match a non-string expression.
+    '([^"\'].*)' + '|' +
+    // Or match strings (supports escaping characters).
+    '(["\'])((?:(?!\\2)[^\\\\]|\\\\.)*?)\\2' +
+  ')\\]'+ '|' +
+  // Or match "" as the space between consecutive dots or empty brackets.
+  '(?=(?:\\.|\\[\\])(?:\\.|\\[\\]|$))'
+, 'g')
+
+/**
+ * Converts `string` to a property path array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the property path array.
+ */
+const stringToPath = (string) => {
+  const result = []
+  if (string.charCodeAt(0) === charCodeOfDot) {
+    result.push('')
+  }
+  string.replace(rePropName, (match, expression, quote, subString) => {
+    let key = match
+    if (quote) {
+      key = subString.replace(reEscapeChar, '$1')
+    }
+    else if (expression) {
+      key = expression.trim()
+    }
+    result.push(key)
+  })
+  return result
+}
+)
+code(Var)
+return
+
+::root::
+Var =
+(
+var root = typeof self == 'object' && self.self === self && self ||
+            typeof global == 'object' && global.global === global && global ||
+            this ||
+            {};
+)
+code(Var)
+return
+
+::yyyy::
 Var =
 (
 yyyy-MM-dd HH:mm:ss
@@ -1349,13 +1413,13 @@ return
 ::umd::
 Var =
 (
-// 方式一
+// 方式一： 
 (function (name, context, definition) {
   if (typeof module != 'undefined' && module.exports) module.exports = definition()
   else if (typeof define == 'function' && define.amd) define(definition)
   else context[name] = definition()
 })('你挂在到全局的模块名，譬如jQuery', this, function () {
-	
+
 	// ... 这里写上比的代码
 
 	return {
@@ -1382,6 +1446,15 @@ Var =
   // your code...
 }));
 
+// 方法三：underscore提取的
+ if (typeof exports !== 'undefined') {
+  if (typeof module !== 'undefined' && module.exports) {
+    exports = module.exports = _;
+  }
+  exports._ = _;
+} else {
+  root._ = _;
+}
 )
 code(Var)
 return
@@ -3429,7 +3502,16 @@ return
 Var =
 (
 // ~~(0 + Math.random() * 51) // 0-50
-// parseInt(Math.random() * 5) // 0-4 
+// parseInt(Math.random() * 5) // 0-4
+/*  
+var random = function(min, max) {
+    if (max == null) {
+      max = min;
+      min = 0;
+    }
+    return min + Math.floor(Math.random() * (max - min + 1));
+  };
+*/
 parseInt(Math.random() * 10 + 1);  // 获取 1 - 10 到随机数
 )
 code(Var)

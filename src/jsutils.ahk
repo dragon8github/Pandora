@@ -197,6 +197,7 @@
     Menu, utilsMenu, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
     Menu, utilsMenu, Add, 使用了es6的set生产1W条不重复8位的数字, utilsHandler
     Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
+    Menu, utilsMenu, Add, js获取root（window）对象, utilsHandler
     
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -217,6 +218,16 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "js获取root（window）对象") {
+Var = 
+(
+var root = typeof self == 'object' && self.self === self && self ||
+            typeof global == 'object' && global.global === global && global ||
+            this ||
+            {};
 )
 }
 

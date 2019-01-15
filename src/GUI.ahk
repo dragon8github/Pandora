@@ -162,6 +162,7 @@ Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gNewassertHtml W160,新建assert.html
 Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建异步assert.html
 Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
+Gui, Pandora:Add, Text, gliveHtml W160,新建调用摄像头.html
 
 
 
@@ -431,6 +432,7 @@ Gui, Pandora:Tab, 8
 Gui, Pandora:Add, Text,  W140 Section, 库1：
 Gui, Pandora:Add, Link,, <a href="https://github.com/GoogleChromeLabs/quicklink/tree/master/translations/zh-cn">quicklink</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/developit/microbundle">microbundle 零配置打包</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/greensock/GreenSock-JS">GreenSock-JS/TweenMax.js</a>
 
 
 
@@ -491,6 +493,15 @@ Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html
 Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts 论坛示例</a>
 Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xB1jgoJnDf">ECharts 安徽示例</a>
 Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xSy3KhFV4M">ECharts 3D地图</a>
+
+
+Gui, Pandora:Add, Text, W140 ys, openlayers:
+Gui, Pandora:Add, Link, W140, <a href="https://github.com/openlayers/openlayers">openlayers github</a>
+Gui, Pandora:Add, Link, W140, <a href="http://openlayers.org/">openlayers 官网</a>
+Gui, Pandora:Add, Link, W140, <a href="http://openlayers.org/en/latest/apidoc/index.html">openlayers API</a>
+Gui, Pandora:Add, Link, W140, <a href="http://weilin.me/ol3-primer/">openlayers 中文教程</a>
+Gui, Pandora:Add, Link, W140, <a href="https://www.cnblogs.com/CyLee/p/6429628.html">我的博客园笔记</a>
+
 
 
 Gui, Pandora:Tab, 10
