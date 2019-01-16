@@ -862,6 +862,7 @@ request({
 code(Var)
 return
 
+::node.mkdir::
 ::node-mkdir::
 ::fs-mkdir::
 ::fs.mkdir::

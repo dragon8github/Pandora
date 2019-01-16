@@ -1,4 +1,14 @@
-﻿::cdn-bs4::
+﻿::cdn-loda::
+::cdn-load::
+::cdn-lodash::
+Var =
+(
+<script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-bs4::
 Var =
 (
 <script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>

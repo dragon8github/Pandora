@@ -1,4 +1,36 @@
-﻿::ajax::
+﻿::axios.lanjie::
+Var =
+(
+/**
+ * 请求拦截
+ */
+http.interceptors.request.use(async request => {
+    // 如果是登录是不需要任何Authorization的
+    if ('/uaa/auth/login' === request.url) {
+        return request
+
+    // 如果是重新获取token，则Authorization需要设置为refreshToken
+    } else if ('/uaa/auth/token' === request.url) {
+        var refreshToken = getRefreshToken();
+        request.headers['Authorization'] = 'Bearer ' + refreshToken
+        return request
+
+    // 其余API的Authorization全部使用token
+    } else {
+        var refreshToken = getRefreshToken();
+        var token = await getToken(refreshToken);
+        request.headers['Authorization'] = 'Bearer ' + token
+        return request;
+    }
+}, err => {
+  return Promise.reject(err)
+})
+
+)
+code(Var)
+return
+
+::ajax::
 AppsKey & a::
 >^a::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
@@ -27,12 +59,15 @@ code(Var)
 Return
 
 ::xhrajax::
+::rawajax::
 ::xhr::
 Var =
 (
 var request = new XMLHttpRequest();
-// 由于request.Send() 只能发送POST参数，所以如果你想使用GET请求，就不要使用Send（）来传递参数，而是直接在URL后拼接参数即可。
-request.open('POST', '/my/url', true);
+// 由于request.Send() 只能发送POST参数，如果是GET请求只能send()或者send(null)
+// 所以如果你想使用GET请求传递参数，直接在URL后拼接参数即可。
+// 第三个参数为true时为异步，为false时是同步
+request.open('POST', '/my/url', true); 
 request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
     // Success!
@@ -40,13 +75,13 @@ request.onload = function() {
     var resp = request.responseText;
     console.log(resp)
   } else {
-  	// Fail
-  	 window.alert('Fail');
+    // Fail
+     window.alert('Fail');
   }
 };
 
 request.onerror = function() {
-	window.alert('Error!');
+  window.alert('Error!');
 };
 
 request.send();

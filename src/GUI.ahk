@@ -49,7 +49,7 @@ Gui, Pandora:Add, Button, w410 h30 gFuck Section xs h30 yp+30 Default, FUCK
 ; 取消按钮
 Gui, Pandora:Add, Button, gCancelSelect w410 h30 ys, 取消选中
 
-Gui, Pandora:Add, Tab3, w830 h550 Section xs  Choose1, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 奇妙工具 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 剪切板
+Gui, Pandora:Add, Tab3, w830 h570 Section xs  Choose1, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 奇妙工具 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 剪切板
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -104,6 +104,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://unpkg.com/#/">unpkg cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdnjs.com/">cdnjs.com</a>
+Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">75cdn</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近学习：
@@ -115,6 +116,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/">CODECASTS 免费�
 Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/learn/laravel">learn-laravel</a>
 Gui, Pandora:Add, Link,, <a href="https://camp.qianduan.group/koa2/2/1/2">ikcamp</a>
 Gui, Pandora:Add, Link,, <a href="http://aotu.jd.com/share/">凹凸实验室公开课</a>
+Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/video/av39807850?zw">Hexo bilibili教程</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -125,6 +128,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&
 Gui, Pandora:Add, Link,, <a href="https://github.com/i0natan/nodebestpractices">Nodejs最佳实践</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/30-seconds/30-seconds-of-code">30 seconds of code</a>
 Gui, Pandora:Add, Link,, <a href="https://aotu.io/">凹凸实验室</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/phodal/serverless">《Serverless 架构应用开发指南》</a>
+
 
 
 Gui, Pandora:Add, Text,  W160 ys, 与钱为伍：
@@ -222,7 +227,7 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12
 
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
-Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:83/">extra-edu 线上</a>
+Gui, Pandora:Add, Link,, <a href="http://kw.dgjy.net">extra-edu 线上</a>
 
 
 Gui, Pandora:Tab, 4
@@ -286,6 +291,8 @@ Gui, Pandora:Add, Link,, <a href="https://nuxtjs.org/api">nuxt api</a>
 Gui, Pandora:Add, Link,, <a href="https://nuxtjs.org/examples">nuxt example</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/nuxt">nuxt github</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/nuxt-community/create-nuxt-app">create-nuxt-app</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/nuxt/nuxtjs.org/blob/master/pages/guide.vue">nuxt 官网源码</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 饿了么UI：
 Gui, Pandora:Add, Link,, <a href="http://element-cn.eleme.io/#/zh-CN/component/radio">Element-UI</a>
@@ -303,7 +310,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/airyland/vux">vux github</a
 Gui, Pandora:Add, Link,, <a href="https://vux.li/">vux 官网</a>
 
 
-Gui, Pandora:Add, Text, W140 Section xs yp+180, vue动画钩子：
+Gui, Pandora:Add, Text, W140 Section xs yp+200, vue动画钩子：
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes">vue-transition</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#JavaScript-Hooks">JavaScript-Hooks</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/api/#transition-group">transition-group</a>
@@ -372,6 +379,8 @@ Gui, Pandora:Add, Link,, <a href="http://www.layui.com/demo/">layui示例</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/sentsin/layui/">layui-github</a>
 Gui, Pandora:Add, Link,, <a href="https://www.layui.com/admin/std/dist/views/">layui-admin</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/sentsin/layui/blob/master/src/layui.js">layui 源码</a>
+Gui, Pandora:Add, Link,, <a href="https://www.layui.com/template/fly/">layui 论坛</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, Bootstrap:

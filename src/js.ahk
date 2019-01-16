@@ -1,4 +1,52 @@
-﻿::stringtopath::
+﻿::nothtml::
+::nohtml::
+::filterhtml::
+Var =
+(
+const s = ``<span style="font-size:14px"><span style="background-color:#ffffff"><span style="color:#0099ff"><span style="font-size:16px"><strong>会议背景</strong></span></span></span></span></p ><p><span style="color:#525252"><span style="font-size:14px"><span style="background-color:#ffffff">``;
+
+const stripHTML = _ => _.replace(/<(?:.|\s)*?>/g, '');
+
+stripHTML(s); // "会议背景"
+)
+code(Var)
+return
+
+::onunload::
+::window.onunload::
+Var =
+(
+/**
+ * php代码示例：
+ * <?php 
+    header('Access-Control-Allow-Origin:*');
+
+    function WriteLog($msg,$module = null,$logLevel = "DEBUG") {
+        $filepath = "./log/";
+        if(!is_dir($filepath)) mkdir($filepath,'0777');
+        $MyLogFile = @fopen($filepath.date("Y-m-d").".txt",'a+');
+
+        $time = date("Y-m-d H:i:s");
+        if(isset($module)){$module =  sprintf("\r\n归属模块：".$module."\r\n");}
+        $logLine = "\r\n-------------------------------  $time -------------------------------\r\n";
+        $logLine .= $module;
+        $logLine .= "\r\n异常信息：$msg\r\n";
+        $logLine .= "\r\n错误等级：$logLevel\r\n";
+        fwrite($MyLogFile,$logLine);
+    }
+
+    WriteLog("test");
+ */
+window.onunload = e => {
+     var request = new XMLHttpRequest();
+     request.open('GET', 'http://localhost/index.php?', false);
+     request.send();
+};
+)
+code(Var)
+return
+
+::stringtopath::
 ::string2path::
 ::strtopath::
 ::str2path::
@@ -4038,6 +4086,10 @@ var onscriptload = function (url, cb) {
 onscriptload('https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js', function () {
    console.log(jQuery.fn.jquery);
    console.log($('*').size())
+})
+
+onscriptload('https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js', function () {
+   console.log(_)
 })
 
 )

@@ -163,7 +163,7 @@
     Menu, utilsMenu, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsMenu, Add, urlparams 获取路由参数, utilsHandler
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
-    Menu, utilsMenu, Add, 加强版map遍历:fuckmap, utilsHandler
+    Menu, utilsMenu, Add, 加强版map遍历:bettermap, utilsHandler
     Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
     Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
     Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
@@ -198,6 +198,9 @@
     Menu, utilsMenu, Add, 使用了es6的set生产1W条不重复8位的数字, utilsHandler
     Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
     Menu, utilsMenu, Add, js获取root（window）对象, utilsHandler
+    Menu, utilsMenu, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
+    Menu, utilsMenu, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
+    
     
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -219,6 +222,18 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "filterhtml: 移除html标签，只提取文本text()") {
+SendLevel 1
+SendInput, filterhtml{tab}
+return
+}
+
+if (v == "window.onunload 刷新/关闭页面之前发送请求") {
+SendLevel 1
+SendInput, window.onunload{tab}
+return
 }
 
 if (v == "js获取root（window）对象") {
@@ -1127,7 +1142,7 @@ return
 }
 
 
-if (v == "加强版map遍历:fuckmap") {
+if (v == "加强版map遍历:bettermap") {
 SendLevel 1
 SendInput, fuckmap{tab}
 return

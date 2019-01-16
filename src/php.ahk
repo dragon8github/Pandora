@@ -61,6 +61,7 @@ code(Var)
 return
 
 ::php.log::
+::phplog::
 Var =
 (
 function WriteLog($msg,$module = null,$logLevel = "DEBUG")
@@ -147,7 +148,9 @@ Var =
 code(Var)
 return
 
+
 ::php.header::
+::phpheader::
 ::header.php::
 Var = 
 (

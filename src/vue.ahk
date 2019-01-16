@@ -1,261 +1,4 @@
 ﻿
-
-::mapstate::
-Var =
-(
-import { mapState } from 'vuex'
-computed: {
-  ...mapState('theme', ['findLastSixMonthAir', 'findLastSixMonthAirTown'])
-},
-)
-code(Var)
-return
-
-::vue.update::
-::v.update::
-Var =
-(
-this.$forceUpdate();
-)
-code(Var)
-return
-
-::watchdeep::
-::deep.watch::
-::deepwatch::
-::deepw::
-Var =
-(
-watch: {
-    proportionofclassificationproblem: {
-        deep: true,
-        handler (newV, oldV) {
-            console.log(20181030114859, newV)
-        }
-    }
-},
-)
-code(Var)
-return
-
-::router.init::
-::route.init::
-Var =
-(
-import Vue from 'vue'
-import Router from 'vue-router'
-import store from '../store'
-Vue.use(Router)
-
-// 总体情况
-const overallSituation = r => require.ensure([], () => r(require('@/pages/overallSituation/index.vue')), 'overallSituation')
-// 列表页面
-const list = r => require.ensure([], () => r(require('@/pages/list/index.vue')), 'list')
-// 部门看板
-const departmental = r => require.ensure([], () => r(require('@/pages/departmental/index.vue')), 'departmental')
-// 镇街看板
-const townStreet = r => require.ensure([], () => r(require('@/pages/townStreet/index.vue')), 'townStreet')
-// 事项分类
-const matters = r => require.ensure([], () => r(require('@/pages/matters/index.vue')), 'matters')
-// 专题看板
-const theme = r => require.ensure([], () => r(require('@/pages/theme/index.vue')), 'theme')
-// 专题看板 > 城市管理
-const cityManagement = r => require.ensure([], () => r(require('@/pages/theme/children_pages/cityManagement/index.vue')), 'cityManagement')
-// 专题看板 > 行政效能
-const efficiency = r => require.ensure([], () => r(require('@/pages/theme/children_pages/efficiency/index.vue')), 'efficiency')
-// 专题看板 > 环境保护
-const environmentalProtection = r => require.ensure([], () => r(require('@/pages/theme/children_pages/environmentalProtection/index.vue')), 'environmentalProtection')
-// 专题看板 > 交通管理
-const trafficControl = r => require.ensure([], () => r(require('@/pages/theme/children_pages/trafficControl/index.vue')), 'trafficControl')
-// 专题看板 > 地图看板
-const map = r => require.ensure([], () => r(require('@/pages/themeMap/index.vue')), 'map')
-
-// 路由配置
-var router = new Router({
-  // 哈希模式
-  mode: 'hash',
-  // 路由导航
-  routes: [
-    // 首页 > 重定向 > 总体情况
-    { path: '/', redirect: '/overallSituation' },
-    // 总体情况
-    { path: '/overallSituation', name: 'overallSituation', meta: { title: '总体情况' }, component: overallSituation },
-    // 列表页面
-    { path: '/list', name: 'list', meta: { title: '详情明细' }, component: list },
-    // 部门看板
-    { path: '/departmental', name: 'departmental', meta: { title: '部门看板' }, component: departmental },
-    // 镇街看板
-    { path: '/townStreet', name: 'townStreet', meta: { title: '镇街看板' }, component: townStreet },
-    // 事项分类
-    { path: '/matters', name: 'matters', meta: { title: '事项分类' }, component: matters },
-    // 专题看板 > 重定向 > 城市管理
-    { path: '/theme/', redirect: '/theme/cityManagement' },
-    // 专题看板
-    { path: '/theme', name: 'theme', meta: { title: '专题看板' }, component: theme, children: [
-        // 专题看板 > 城市管理
-        { path: 'cityManagement', name: 'cityManagement', meta: { title: '城市管理' }, component: cityManagement },
-        // 专题看板 > 行政效能
-        { path: 'efficiency', name: 'efficiency', meta: { title: '行政效能' }, component: efficiency },
-        // 专题看板 > 环境保护
-        { path: 'environmentalProtection', name: 'environmentalProtection', meta: { title: '环境保护' },component: environmentalProtection },
-        // 专题看板 > 交通管理
-        { path: 'trafficControl', name: 'trafficControl', meta: { title: '交通管理' }, component: trafficControl },
-        // 专题看板 > 地图看板
-        { path: 'map', name: 'map', meta: { title: '地图看板' }, component: map },
-        
-      ]
-    },
-  ]
-})
-
-
-// 全局路由钩子
-router.afterEach((to, from) => {
-   
-})
-
-router.beforeEach((to, from, next) => {
-    // 前往页面
-    let _to = to.fullPath.toUrl()
-    // 来路页面
-    let _from = from.fullPath.toUrl()
-    // 设置标题
-    setTitle(to.meta.title)
-    // 放行页面
-    next()
-})
-
-export default router
-)
-code(Var)
-return
-
-::vue.w::
-::vue.watch::
-::vuew::
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-Var = 
-(
-watch: {
-    proportionofclassificationproblem (newV, oldV) {
-        console.log(%t%, newV)
-    }
-},
-)
-code(Var)
-return
-
-
-::vuex.action::
-::vuex.actions::
-::vuex.a::
-::vuexa::
-InputBox, OutputVar, title, enter a name?,,,,,,,,test
-Var =
-(
-%OutputVar% ({ commit, state, dispatch, rootState }, %OutputVar%) {
-  state.%OutputVar% = %OutputVar%
-  dispatch('list')
-},
-)
-code(Var)
-return
-
-::vue.msg::
-::vue.msgbox::
-::v.msgbox::
-::v.msg::
-Var =
-(
-import Vue from 'vue';
-import mapbox from './mapbox.vue'
-
-const mapboxConstructor = Vue.extend(mapbox);
-
-let _initInstance;
-
-const initInstance = () => {
-  _initInstance = new mapboxConstructor({
-    el: document.createElement('div')
-  });
-  document.body.appendChild(_initInstance.$el);
-};
-
-const show = ({ name, list, center }) => {
-	if (!_initInstance) {
-	  initInstance();
-	}
-
-	_initInstance.value = true;
-	_initInstance.name = name;
-	_initInstance.list = list;
-	_initInstance.center = center;
-}
-
-const close = () => {
-	Vue.nextTick(() => {
-		_initInstance && (_initInstance.value = false)
-	});
-}
-
-export default {
-	show,
-	close,
-}
-)
-code(Var)
-return
-
-::vue.init::
-InputBox, OutputVar, title, enter a name?,,,,,,,,test
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-Var = 
-(
-<template>
-    <div class="%OutputVar%">
-        %OutputVar%
-    </div>
-</template>
-
-<script>
-export default {
-  name: '%OutputVar%',
-  data () {
-    return {
-        items: [],
-        title: 'HelloWorld'
-    }
-  },
-  methods: {
-      go () {
-          console.log('go');
-      }
-  },
-  components: {
-
-  },
-  computed: {
-  
-  },
-  watch: {
-  
-  },
-  beforeMount () {
-      console.log(%t%, '%OutputVar%');
-  }
-}
-</script>
-
-<style lang="scss" scoped>
-@import "~@/scss/functions.scss";
-.%OutputVar% {
-
-}
-</style>
-)
-code(Var)
-return
-
 !v::
 
 
@@ -314,6 +57,7 @@ return
   Menu, VueMenu, Add, 组件复用的新套路: 合并配置，来代替mixin方案, VueHandler
   Menu, VueMenu, Add, 波浪效果组件, VueHandler
   Menu, VueMenu, Add, 波浪效果指令, VueHandler
+  Menu, VueMenu, Add, nuxt-loading组件(改), VueHandler
   
 
 
@@ -329,6 +73,186 @@ Var :=
 if (v == "") {
 Var = 
 (
+
+)
+}
+
+
+if (v == "nuxt-loading组件(改)") {
+Var = 
+(
+<template>
+  <div
+    class='nuxt-progress' 
+    :class="{ 'nuxt-progress-notransition': this.skipTimerCount > 0, 'nuxt-progress-failed': !this.canSucceed }"
+    :style="{ 'width': this.percent + '`%', 'left': this.left }"
+  >
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'NuxtLoading',
+  data() {
+    return {
+      percent: 0,
+      show: true,
+      canSucceed: true,
+      reversed: false,
+      skipTimerCount: 0,
+      rtl: false,
+      throttle: 200,
+      duration: 3000,
+      continuous: true
+    }
+  },
+  computed: {
+    left() {
+      if (!this.continuous && !this.rtl) {
+        return false
+      }
+      return this.rtl
+        ? (this.reversed ? '0px' : 'auto')
+        : (!this.reversed ? '0px' : 'auto')
+    }
+  },
+  beforeDestroy() {
+    this.clear()
+  },
+  methods: {
+    clear() {
+      clearInterval(this._timer)
+      clearTimeout(this._throttle)
+      this._timer = null
+    },
+    start() {
+      this.clear()
+      this.percent = 0
+      this.reversed = false
+      this.skipTimerCount = 0
+      this.canSucceed = true
+
+      if (this.throttle) {
+        this._throttle = setTimeout(() => this.startTimer(), this.throttle)
+      } else {
+        this.startTimer()
+      }
+      return this
+    },
+    set(num) {
+      this.show = true
+      this.canSucceed = true
+      this.percent = Math.min(100, Math.max(0, Math.floor(num)))
+      return this
+    },
+    get() {
+      return this.percent
+    },
+    increase(num) {
+      this.percent = Math.min(100, Math.floor(this.percent + num))
+      return this
+    },
+    decrease(num) {
+      this.percent = Math.max(0, Math.floor(this.percent - num))
+      return this
+    },
+    pause() {
+      clearInterval(this._timer)
+      return this
+    },
+    resume() {
+      this.startTimer()
+      return this
+    },
+    finish() {
+      // Lee 添加的补丁
+      this.skipTimerCount = 1
+      this.percent = this.reversed ? 0 : 100
+      this.hide()
+      return this
+    },
+    hide() {
+      this.clear()
+      setTimeout(() => {
+        this.show = false
+        this.$nextTick(() => {
+          this.percent = 0
+          this.reversed = false
+        })
+      }, 500)
+      return this
+    },
+    fail() {
+      this.canSucceed = false
+      return this
+    },
+    startTimer() {
+      if (!this.show) {
+        this.show = true
+      }
+      if (typeof this._cut === 'undefined') {
+        this._cut = 10000 / Math.floor(this.duration)
+      }
+
+      this._timer = setInterval(() => {
+        /**
+         * When reversing direction skip one timers
+         * so 0, 100 are displayed for two iterations
+         * also disable css width transitioning
+         * which otherwise interferes and shows
+         * a jojo effect
+         */
+        if (this.skipTimerCount > 0) {
+          this.skipTimerCount--
+          return
+        }
+
+        if (this.reversed) {
+          this.decrease(this._cut)
+        } else {
+          this.increase(this._cut)
+        }
+
+        if (this.continuous) {
+          if (this.percent >= 100) {
+            this.skipTimerCount = 1
+
+            this.reversed = !this.reversed
+          } else if (this.percent <= 0) {
+            this.skipTimerCount = 1
+
+            this.reversed = !this.reversed
+          }
+        }
+      }, 100)
+    }
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.nuxt-progress {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: rem(4);
+  width: 0`%;
+  opacity: 1;
+  transition: width 0.1s, opacity 0.4s;
+  background-color: #41B883;
+  z-index: 999999;
+}
+
+.nuxt-progress.nuxt-progress-notransition {
+  transition: none;
+}
+
+.nuxt-progress-failed {
+  background-color: red;
+}
+</style>
 
 )
 }
@@ -1266,6 +1190,263 @@ this.$store.dispatch('deparmental/departmentalProblemRanking')
 
 code(Var)
 return
+
+::mapstate::
+Var =
+(
+import { mapState } from 'vuex'
+computed: {
+  ...mapState('theme', ['findLastSixMonthAir', 'findLastSixMonthAirTown'])
+},
+)
+code(Var)
+return
+
+::vue.update::
+::v.update::
+Var =
+(
+this.$forceUpdate();
+)
+code(Var)
+return
+
+::watchdeep::
+::deep.watch::
+::deepwatch::
+::deepw::
+Var =
+(
+watch: {
+    proportionofclassificationproblem: {
+        deep: true,
+        handler (newV, oldV) {
+            console.log(20181030114859, newV)
+        }
+    }
+},
+)
+code(Var)
+return
+
+::router.init::
+::route.init::
+Var =
+(
+import Vue from 'vue'
+import Router from 'vue-router'
+import store from '../store'
+Vue.use(Router)
+
+// 总体情况
+const overallSituation = r => require.ensure([], () => r(require('@/pages/overallSituation/index.vue')), 'overallSituation')
+// 列表页面
+const list = r => require.ensure([], () => r(require('@/pages/list/index.vue')), 'list')
+// 部门看板
+const departmental = r => require.ensure([], () => r(require('@/pages/departmental/index.vue')), 'departmental')
+// 镇街看板
+const townStreet = r => require.ensure([], () => r(require('@/pages/townStreet/index.vue')), 'townStreet')
+// 事项分类
+const matters = r => require.ensure([], () => r(require('@/pages/matters/index.vue')), 'matters')
+// 专题看板
+const theme = r => require.ensure([], () => r(require('@/pages/theme/index.vue')), 'theme')
+// 专题看板 > 城市管理
+const cityManagement = r => require.ensure([], () => r(require('@/pages/theme/children_pages/cityManagement/index.vue')), 'cityManagement')
+// 专题看板 > 行政效能
+const efficiency = r => require.ensure([], () => r(require('@/pages/theme/children_pages/efficiency/index.vue')), 'efficiency')
+// 专题看板 > 环境保护
+const environmentalProtection = r => require.ensure([], () => r(require('@/pages/theme/children_pages/environmentalProtection/index.vue')), 'environmentalProtection')
+// 专题看板 > 交通管理
+const trafficControl = r => require.ensure([], () => r(require('@/pages/theme/children_pages/trafficControl/index.vue')), 'trafficControl')
+// 专题看板 > 地图看板
+const map = r => require.ensure([], () => r(require('@/pages/themeMap/index.vue')), 'map')
+
+// 路由配置
+var router = new Router({
+  // 哈希模式
+  mode: 'hash',
+  // 路由导航
+  routes: [
+    // 首页 > 重定向 > 总体情况
+    { path: '/', redirect: '/overallSituation' },
+    // 总体情况
+    { path: '/overallSituation', name: 'overallSituation', meta: { title: '总体情况' }, component: overallSituation },
+    // 列表页面
+    { path: '/list', name: 'list', meta: { title: '详情明细' }, component: list },
+    // 部门看板
+    { path: '/departmental', name: 'departmental', meta: { title: '部门看板' }, component: departmental },
+    // 镇街看板
+    { path: '/townStreet', name: 'townStreet', meta: { title: '镇街看板' }, component: townStreet },
+    // 事项分类
+    { path: '/matters', name: 'matters', meta: { title: '事项分类' }, component: matters },
+    // 专题看板 > 重定向 > 城市管理
+    { path: '/theme/', redirect: '/theme/cityManagement' },
+    // 专题看板
+    { path: '/theme', name: 'theme', meta: { title: '专题看板' }, component: theme, children: [
+        // 专题看板 > 城市管理
+        { path: 'cityManagement', name: 'cityManagement', meta: { title: '城市管理' }, component: cityManagement },
+        // 专题看板 > 行政效能
+        { path: 'efficiency', name: 'efficiency', meta: { title: '行政效能' }, component: efficiency },
+        // 专题看板 > 环境保护
+        { path: 'environmentalProtection', name: 'environmentalProtection', meta: { title: '环境保护' },component: environmentalProtection },
+        // 专题看板 > 交通管理
+        { path: 'trafficControl', name: 'trafficControl', meta: { title: '交通管理' }, component: trafficControl },
+        // 专题看板 > 地图看板
+        { path: 'map', name: 'map', meta: { title: '地图看板' }, component: map },
+        
+      ]
+    },
+  ]
+})
+
+
+// 全局路由钩子
+router.afterEach((to, from) => {
+   
+})
+
+router.beforeEach((to, from, next) => {
+    // 前往页面
+    let _to = to.fullPath.toUrl()
+    // 来路页面
+    let _from = from.fullPath.toUrl()
+    // 设置标题
+    setTitle(to.meta.title)
+    // 放行页面
+    next()
+})
+
+export default router
+)
+code(Var)
+return
+
+::vue.w::
+::vue.watch::
+::vuew::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var = 
+(
+watch: {
+    proportionofclassificationproblem (newV, oldV) {
+        console.log(%t%, newV)
+    }
+},
+)
+code(Var)
+return
+
+
+::vuex.action::
+::vuex.actions::
+::vuex.a::
+::vuexa::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+Var =
+(
+%OutputVar% ({ commit, state, dispatch, rootState }, %OutputVar%) {
+  state.%OutputVar% = %OutputVar%
+  dispatch('list')
+},
+)
+code(Var)
+return
+
+::vue.msg::
+::vue.msgbox::
+::v.msgbox::
+::v.msg::
+Var =
+(
+import Vue from 'vue';
+import mapbox from './mapbox.vue'
+
+const mapboxConstructor = Vue.extend(mapbox);
+
+let _initInstance;
+
+const initInstance = () => {
+  _initInstance = new mapboxConstructor({
+    el: document.createElement('div')
+  });
+  document.body.appendChild(_initInstance.$el);
+};
+
+const show = ({ name, list, center }) => {
+	if (!_initInstance) {
+	  initInstance();
+	}
+
+	_initInstance.value = true;
+	_initInstance.name = name;
+	_initInstance.list = list;
+	_initInstance.center = center;
+}
+
+const close = () => {
+	Vue.nextTick(() => {
+		_initInstance && (_initInstance.value = false)
+	});
+}
+
+export default {
+	show,
+	close,
+}
+)
+code(Var)
+return
+
+::vue.init::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var = 
+(
+<template>
+    <div class="%OutputVar%">
+        %OutputVar%
+    </div>
+</template>
+
+<script>
+export default {
+  name: '%OutputVar%',
+  data () {
+    return {
+        items: [],
+        title: 'HelloWorld'
+    }
+  },
+  methods: {
+      go () {
+          console.log('go');
+      }
+  },
+  components: {
+
+  },
+  computed: {
+  
+  },
+  watch: {
+  
+  },
+  beforeMount () {
+      console.log(%t%, '%OutputVar%');
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.%OutputVar% {
+
+}
+</style>
+)
+code(Var)
+return
+
 
 ::vue.style::
 Var =
