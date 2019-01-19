@@ -1,7 +1,4 @@
-﻿
-!v::
-
-
+﻿!v::
   Menu, VueMenu, Add, vuex.init, VueHandler
   Menu, VueMenu, Add, vuex.modules, VueHandler
   Menu, VueMenu, Add, vuex.action, VueHandler
@@ -30,6 +27,8 @@
   Menu, VueMenu, Add, <transition>, VueHandler
   Menu, VueMenu, Add, <transition v-on...>, VueHandler
   Menu, VueMenu, Add, <transition-group>, VueHandler
+  Menu, VueMenu, Add, render(h), VueHandler
+  Menu, VueMenu, Add, render(h) jsx用法, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -77,10 +76,100 @@ Var =
 )
 }
 
+if (v == "render(h) jsx用法") {
+Var = 
+(
+render(h) {
+    let uploadList;
+
+    if (this.showFileList) {
+      uploadList = (
+        <UploadList
+          disabled={this.uploadDisabled}
+          listType={this.listType}
+          files={this.uploadFiles}
+          on-remove={this.handleRemove}
+          handlePreview={this.onPreview}>
+        </UploadList>
+      `);
+    }
+
+    const uploadData = {
+      props: {
+        type: this.type,
+        drag: this.drag,
+        action: this.action,
+        multiple: this.multiple,
+        'before-upload': this.beforeUpload,
+        'with-credentials': this.withCredentials,
+        headers: this.headers,
+        name: this.name,
+        data: this.data,
+        accept: this.accept,
+        fileList: this.uploadFiles,
+        autoUpload: this.autoUpload,
+        listType: this.listType,
+        disabled: this.uploadDisabled,
+        limit: this.limit,
+        'on-exceed': this.onExceed,
+        'on-start': this.handleStart,
+        'on-progress': this.handleProgress,
+        'on-success': this.handleSuccess,
+        'on-error': this.handleError,
+        'on-preview': this.onPreview,
+        'on-remove': this.handleRemove,
+        'http-request': this.httpRequest
+      },
+      ref: 'upload-inner'
+    };
+
+    const trigger = this.$slots.trigger || this.$slots.default;
+    const uploadComponent = <upload {...uploadData}>{trigger}</upload>;
+
+    return (
+      <div>
+        { this.listType === 'picture-card' ? uploadList : ''}
+        {
+          this.$slots.trigger
+            ? [uploadComponent, this.$slots.default]
+            : uploadComponent
+        }
+        {this.$slots.tip}
+        { this.listType !== 'picture-card' ? uploadList : ''}
+      </div>
+    `);
+  }
+)
+}
+
+if (v == "render(h)") {
+Var = 
+(
+render(h) {
+  let el = h(false)
+  if (this.show) {
+    el = h('div', {
+      staticClass: 'nuxt-progress',
+      class: {
+        'nuxt-progress-notransition': this.skipTimerCount > 0,
+        'nuxt-progress-failed': !this.canSucceed
+      },
+      style: {
+        'width': this.percent + '`%',
+        'left': this.left
+      }
+    })
+  }
+  return el
+}
+)
+}
+
 
 if (v == "NProgress页面加载组件") {
 Var = 
 (
+// $ cnpm install --save nprogress
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 

@@ -1,4 +1,36 @@
-﻿::cdn-loda::
+﻿::cdn-mapbox::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/mapbox-gl/0.52.0-beta.2/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/mapbox-gl/0.52.0-beta.2/mapbox-gl.css"/>
+</head>
+<style>
+</style>
+
+<body>
+    <div id='map' style='width: 400px; height: 300px;'></div>
+</body>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiZHJhZ29uOG1hcGJveCIsImEiOiJjanIwZjZ1aWIwNjZ5NDVxbGZlOXYwY2kwIn0.w2vjF9k4LP3w_BN5xgmdlg';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11'
+});
+</script>
+
+</html>
+)
+code(Var)
+return
+
+::cdn-loda::
 ::cdn-load::
 ::cdn-lodash::
 Var =

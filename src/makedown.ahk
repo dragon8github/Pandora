@@ -1,4 +1,42 @@
-﻿::md.table::
+﻿::md.br::
+::md.p::
+Var =
+(
+&#8195;
+)
+code(Var)
+return
+
+::md.top::
+::md.title::
+Var =
+(
+---
+title: composer疑难杂症
+date: 2019-01-19 19:27:19
+tags:
+- cpmposer
+- php
+categories: 
+- cpmposer
+- php
+---
+)
+code(Var)
+return
+
+::mdimg::
+::md.img::
+::md.image::
+::md.images::
+Var =
+(
+![](composer疑难杂症/1.png)
+)
+code(Var)
+return
+
+::md.table::
 Var =
 (
 名称 | 说明

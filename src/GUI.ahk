@@ -57,7 +57,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/Pandora/blob/
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com">github</a>
 Gui, Pandora:Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
-Gui, Pandora:Add, Link,, <a href="http://e.xitu.io/">掘金前端</a>
+Gui, Pandora:Add, Link,, <a href="https://cylee.top/">cylee.top</a>
 Gui, Pandora:Add, Link,, <a href="https://www.aliyun.com/">阿里云</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 其他:
@@ -129,6 +129,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/i0natan/nodebestpractices">
 Gui, Pandora:Add, Link,, <a href="https://github.com/30-seconds/30-seconds-of-code">30 seconds of code</a>
 Gui, Pandora:Add, Link,, <a href="https://aotu.io/">凹凸实验室</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/phodal/serverless">《Serverless 架构应用开发指南》</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md">JavaScript算法</a>
 
 
 
@@ -273,6 +274,12 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/koajs">koajs-github</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs/jwt">koajs-jwt</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs/bodyparser">koajs-bodyparser</a>
 
+Gui, Pandora:Add, Text, W140 Section ys, electron：
+Gui, Pandora:Add, Link,, <a href="https://github.com/electron/electron-api-demos">electron-api-demos</a>
+Gui, Pandora:Add, Link,, <a href="https://electronjs.org/">electron 官网</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/electron">electron github</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/electron/electron-quick-start">electron-quick-start</a>
+Gui, Pandora:Add, Link,, <a href="https://electronjs.org/docs/api/client-request">electron-api文档</a>
 
 
 Gui, Pandora:Tab, 5
@@ -444,6 +451,9 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/developit/microbundle">micr
 Gui, Pandora:Add, Link,, <a href="https://github.com/greensock/GreenSock-JS">GreenSock-JS/TweenMax.js</a>
 
 
+Gui, Pandora:Add, Text, W140 ys, 地图辅助库：
+Gui, Pandora:Add, Link,, <a href="http://turfjs.org/docs/#bearing">turfjs</a>
+
 
 Gui, Pandora:Tab, 9
 Gui, Pandora:Add, Text,  W140 Section, 高德地图：
@@ -478,10 +488,11 @@ Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/custom/">百度�
 
 
 Gui, Pandora:Add, Text, W140 ys, 百度mapv：
-Gui, Pandora:Add, Link, W140, <a href="http://mapv.baidu.com/">mapv官网</a>
-Gui, Pandora:Add, Link, W140, <a href="http://mapv.baidu.com/examples/#csv-car.html">mapv-example</a>
-Gui, Pandora:Add, Link, W140, <a href="https://github.com/huiyan-fe/mapv/blob/master/API.md">百度线面教程</a>
-Gui, Pandora:Add, Link, W140, <a href="https://github.com/huiyan-fe/mapv/#readme">ampv-github</a>
+Gui, Pandora:Add, Link,, <a href="http://mapv.baidu.com/">mapv官网</a>
+Gui, Pandora:Add, Link,, <a href="http://mapv.baidu.com/examples/#csv-car.html">mapv-example</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/huiyan-fe/mapv/blob/master/API.md">百度线面教程</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/huiyan-fe/mapv/#readme">ampv-github</a>
+
 
 Gui, Pandora:Add, Text,  W140  Section xs yp+120, echart:
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
@@ -511,6 +522,10 @@ Gui, Pandora:Add, Link, W140, <a href="http://openlayers.org/en/latest/apidoc/in
 Gui, Pandora:Add, Link, W140, <a href="http://weilin.me/ol3-primer/">openlayers 中文教程</a>
 Gui, Pandora:Add, Link, W140, <a href="https://www.cnblogs.com/CyLee/p/6429628.html">我的博客园笔记</a>
 
+Gui, Pandora:Add, Text, W140 ys, mapbox:
+Gui, Pandora:Add, Link, W140, <a href="https://docs.mapbox.com/">mapbox 官网</a>
+Gui, Pandora:Add, Link, W140, <a href="https://www.mapbox.com/mapbox-gl-js/api/">mapbox gl api</a>
+Gui, Pandora:Add, Link, W140, <a href="https://github.com/mapbox/mapbox-gl-js">mapbox gl github</a>
 
 
 Gui, Pandora:Tab, 10
@@ -533,6 +548,8 @@ Gui, Pandora:Add, Link, W140, <a href="https://getcomposer.org/Composer-Setup.ex
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/composer">Composer 中文版本</a>
 Gui, Pandora:Add, Link, W140, <a href="https://getcomposer.org/doc/">Composer 官方文档</a>
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478269">Composer 使用教程</a>
+Gui, Pandora:Add, Link, W140, <a href="https://packagist.org/?query=laravel">packagist.org</a>
+
 
 Gui, Pandora:Add, Text, W140 ys, Thinkphp 开源项目：
 Gui, Pandora:Add, Link, W140, <a href="https://github.com/zoujingli/ThinkAdmin">ThinkAdmin</a>
@@ -553,8 +570,7 @@ Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478292">ORM 数据层操作</a>
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478293">数据库复杂查询链式操作</a>
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478294">事务支持</a>
-
-Gui, Pandora:Add, Link, W140 ys, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478295">各种查询表达式</a>
+Gui, Pandora:Add, Link, W140,  <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478295">各种查询表达式</a>
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478301">聚合查询</a>
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478302">时间查询</a>
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478303">where 参数注入</a>

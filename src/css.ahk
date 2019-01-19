@@ -1,5 +1,29 @@
 ﻿!s::
 
+    
+    Menu, Csssolution, Add, 利用 translateZ(0) 提升速度, CssHandler
+    Menu, Csssolution, Add, will-change 代替 translate3D 优化, CssHandler
+    Menu, Csssolution, Add, background-attachment: fixed 改成了 position: fixed (因为前面这玩意滚动实时计算重绘), CssHandler
+    Menu, Csssolution, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
+    Menu, Csssolution, Add, cursor:手掌手势, CssHandler
+    Menu, Csssolution, Add, loading, CssHandler2
+    Menu, Csssolution, Add, 舒服的字体样式font, CssHandler
+    Menu, Csssolution, Add, 使用系统默认字体：System font stack, CssHandler
+    Menu, Csssolution, Add, lit.css极简系列：btn, CssHandler
+    Menu, Csssolution, Add, :root 与 var(--primary-color), CssHandler
+    Menu, Csssolution, Add, display: table 自动对齐策略, CssHandler
+    Menu, Csssolution, Add, Calc()与background-position数学表达式, CssHandler
+    Menu, Csssolution, Add, 三个DVI的Bouncing loader, CssHandler
+    Menu, Csssolution, Add, 恒定宽高比, CssHandler
+    Menu, Csssolution, Add, display:table垂直居中, CssHandler
+    Menu, Csssolution, Add, 高度从0到auto的伸缩特效魔法, CssHandler
+    Menu, Csssolution, Add, 文字Hover Shadow Box Animation美化, CssHandler
+    Menu, Csssolution, Add, 文字Hover underline animation美化, CssHandler
+    Menu, Csssolution, Add, 向overflow溢出元素添加渐变, CssHandler
+    Menu, Csssolution, Add, hover Sibling fade, CssHandler
+    Menu, Csssolution, Add, 原生实现switch, CssHandler
+
+
     Menu, CssMenu, Add, 上下翻滚：transform: rotateX(180deg), CssHandler
     Menu, CssMenu, Add, 左右翻滚：transform: rotateY(180deg), CssHandler
     Menu, CssMenu, Add, 原地旋转倒立：transform: rotate(180deg), CssHandler
@@ -42,28 +66,8 @@
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
-    Menu, CssMenu, Add, 利用 translateZ(0) 提升速度, CssHandler
     
-    Menu, CssMenu, Add, will-change 代替 translate3D 优化, CssHandler
-    Menu, CssMenu, Add, background-attachment: fixed 改成了 position: fixed (因为前面这玩意滚动实时计算重绘), CssHandler
-    Menu, CssMenu, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
-    Menu, CssMenu, Add, cursor:手掌手势, CssHandler
-    Menu, CssMenu, Add, loading, CssHandler2
-    Menu, CssMenu, Add, 舒服的字体样式font, CssHandler
-    Menu, CssMenu, Add, 使用系统默认字体：System font stack, CssHandler
-    Menu, CssMenu, Add, lit.css极简系列：btn, CssHandler
-    Menu, CssMenu, Add, :root 与 var(--primary-color), CssHandler
-    Menu, CssMenu, Add, display: table 自动对齐策略, CssHandler
-    Menu, CssMenu, Add, Calc()与background-position数学表达式, CssHandler
-    Menu, CssMenu, Add, 三个DVI的Bouncing loader, CssHandler
-    Menu, CssMenu, Add, 恒定宽高比, CssHandler
-    Menu, CssMenu, Add, display:table垂直居中, CssHandler
-    Menu, CssMenu, Add, 高度从0到auto的伸缩特效魔法, CssHandler
-    Menu, CssMenu, Add, 文字Hover Shadow Box Animation美化, CssHandler
-    Menu, CssMenu, Add, 文字Hover underline animation美化, CssHandler
-    Menu, CssMenu, Add, 向overflow溢出元素添加渐变, CssHandler
-    Menu, CssMenu, Add, hover Sibling fade, CssHandler
-    Menu, CssMenu, Add, 原生实现switch, CssHandler
+    Menu, CssMenu, Add, css解决方案, :Csssolution
     
     
 
