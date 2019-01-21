@@ -1,6 +1,4 @@
 ﻿!s::
-
-    
     Menu, Csssolution, Add, 利用 translateZ(0) 提升速度, CssHandler
     Menu, Csssolution, Add, will-change 代替 translate3D 优化, CssHandler
     Menu, Csssolution, Add, background-attachment: fixed 改成了 position: fixed (因为前面这玩意滚动实时计算重绘), CssHandler
@@ -22,6 +20,8 @@
     Menu, Csssolution, Add, 向overflow溢出元素添加渐变, CssHandler
     Menu, Csssolution, Add, hover Sibling fade, CssHandler
     Menu, Csssolution, Add, 原生实现switch, CssHandler
+    Menu, Csssolution, Add, 不断闪闪发光的动画, CssHandler
+    
 
 
     Menu, CssMenu, Add, 上下翻滚：transform: rotateX(180deg), CssHandler
@@ -88,6 +88,45 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "不断闪闪发光的动画") {
+Var =
+(
+/* 
+color:#fff;
+animation: Pulse 2s infinite;
+
+.el-cascader__selected {
+  // background-color: #3bc2e9;
+  animation: Pulse 2s infinite;
+
+  .el-cascader__label, .el-input__suffix {
+      // color: #153f4b;
+      color: #fff;
+  }
+}
+ */
+@keyframes Pulse {
+    0`% {
+      background-color: #036075;
+      box-shadow: 0 0 9px #333;
+      // color: #25b3dc;
+    }
+
+    50`% {
+      background-color: #2daebf;
+      box-shadow: 0 0 27px #2daebf;
+      // color: #fff;
+    }
+
+    100`% {
+      background-color: #036075;
+      box-shadow: 0 0 9px #333;
+      // color: #25b3dc;
+    }
+}
 )
 }
 
