@@ -320,6 +320,22 @@ Clipboard := V
 tip("生成完毕", "已将生成代码加入到剪切板中")
 return
 
+::ahkcomfirm::
+Var =
+(
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var = 
+(
+<template>
+    <div class="`%OutputVar`%">
+        `%OutputVar`%
+    </div>
+</template>
+`)
+)
+code(Var)
+return
 
 ^!r::
 	Clipboard :=

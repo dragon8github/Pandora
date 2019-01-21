@@ -40,6 +40,7 @@ FileDelete, .\src\*.bak
 #Include src/koa.ahk		  ; koa
 #Include src/mocha.ahk		  ; mocha + chai
 ; #Include src/sql.ahk		  ; sql
+#Include src/laravel.ahk	  ; laravel
 #Include src/bdmap.ahk		  ; bdmap
 #include src/game.ahk	  	  ; 游戏
 #include src/prehosting.ahk	  ; 预设置的快捷键

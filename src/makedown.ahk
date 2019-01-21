@@ -2,7 +2,7 @@
 ::md.p::
 Var =
 (
-&#8195;
+<br />
 )
 code(Var)
 return
@@ -12,13 +12,13 @@ return
 Var =
 (
 ---
-title: composer疑难杂症
-date: 2019-01-19 19:27:19
-tags:
-- cpmposer
+title: laravel-demo2
+date: 2019-01-19 23:20:39
+tag:
+- laravel
 - php
-categories: 
-- cpmposer
+categories:
+- laravel
 - php
 ---
 )
