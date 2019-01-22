@@ -139,16 +139,22 @@ Gui, Pandora:Add, Link,, <a href="https://leancloud.cn/">leancloud</a>
 Gui, Pandora:Add, Link,, <a href="https://leancloud.cn/docs/leanstorage-started-js.html">数据存储入门</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/leancloud/StorageStarted">leancloud入门Demo</a>
 Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/video/av8868380/">leancloud安全课程</a>
-Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/video/av12928037">LeanCloud Web 应用开发实践</a>
 Gui, Pandora:Add, Link,, <a href="https://cloud.minapp.com/">知晓云</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza-old</a>
-
+Gui, Pandora:Add, Link,, <a href="https://www.wilddog.com/console/wd6326449524sjxxpb">wilddog野狗</a>
+Gui, Pandora:Add, Link,, <a href="https://docs.wilddog.com/sync/Web/quickstart.html">wilddog 快速入门</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 图片速查：
 Gui, Pandora:Add, Link,, <a href="https://raw.githubusercontent.com/dragon8github/Pandora/master/static/gitpic.jpg">git命令速查表</a>
 Gui, Pandora:Add, Link,, <a href="https://carbon.now.sh/">carbon代码图片</a>
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
-Gui, Pandora:Add, Link,, <a href="https://wx.qq.com/">微信网页版</a>
+
+Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">pexels.com</a>
+Gui, Pandora:Add, Link,, <a href="https://unsplash.com/">unsplash.com</a>
+Gui, Pandora:Add, Link,, <a href="https://www.foodiesfeed.com/">foodiesfeed.com</a>
+Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">pixabay.com</a>
+Gui, Pandora:Add, Link,, <a href="http://en.freejpg.com.ar/">freejpg</a>
+Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co/</a>
 
 
 
@@ -381,7 +387,7 @@ Gui, Pandora:Add, Link,, <a href="https://facebook.github.io/react-native/docs/c
 Gui, Pandora:Tab, 7
 Gui, Pandora:Add, Text,  W140  Section, layer/layui：
 Gui, Pandora:Add, Link,, <a href="http://layer.layui.com/">layer</a>
-Gui, Pandora:Add, Link,, <a href="http://www.layui.com/doc/">layui文档</a>
+Gui, Pandora:Add, Link,, <a href="https://www.layui.com/doc/modules/layer.html">layui文档</a>
 Gui, Pandora:Add, Link,, <a href="http://www.layui.com/demo/">layui示例</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/sentsin/layui/">layui-github</a>
 Gui, Pandora:Add, Link,, <a href="https://www.layui.com/admin/std/dist/views/">layui-admin</a>
@@ -586,6 +592,9 @@ Gui, Pandora:Add, Link, W140, <a href="https://developers.weixin.qq.com/miniprog
 Gui, Pandora:Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/event.html">事件大全</a>
 Gui, Pandora:Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/custom-component/component.html">Component构造器</a>
 Gui, Pandora:Add, Link, W140, <a href="https://legacy.gitbook.com/book/dragon8github/fuck/edit#/edit/master/README.md?_k=pfi687">我的gitbook</a>
+
+Gui, Pandora:Add, Text,  W140 Section ys, 其他：
+Gui, Pandora:Add, Link, W140, <a href="https://wx.qq.com/">微信网页版</a>
 
 Gui, Pandora:Tab, 12
 Gui, Pandora:Add, Text,  W100 Section, 代理IP:

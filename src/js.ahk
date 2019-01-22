@@ -1382,6 +1382,8 @@ code(Var)
 return
 
 ::momentt::
+::moment::
+::moment.now::
 t := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 Var =
 (
@@ -3460,6 +3462,7 @@ return
 ::today::
 Var = 
 (
+// dateYYYYMMDDHHmmss('2019/1/22 12:11:11')
 const dateYYYYMMDDHHmmss =  t => {
 	const date = new Date(t)
 	const year = date.getFullYear()

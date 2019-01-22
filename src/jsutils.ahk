@@ -200,6 +200,7 @@
     Menu, utilsMenu, Add, js获取root（window）对象, utilsHandler
     Menu, utilsMenu, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
     Menu, utilsMenu, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
+    Menu, utilsMenu, Add, 宇宙流星雨canvas, utilsHandler
     
     
     Menu, utilsMenu, Show
@@ -221,6 +222,91 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "宇宙流星雨canvas") {
+Var = 
+(
+<!-- 星空背景 -->
+<canvas id='space'></canvas>
+
+// 星空背景canvas
+bg (canvas) {
+    const c = canvas.getContext("2d");
+    const numStars = 1900
+    const radius = '0.' + Math.floor(Math.random() * 9) + 1
+    const focalLength = canvas.width * 2
+
+    let centerX, centerY
+    let stars = []
+    let star
+    let i
+
+    initializeStars();
+
+    function initializeStars() {
+        centerX = canvas.width / 2;
+        centerY = canvas.height / 2;
+
+        stars = [];
+        for (i = 0; i < numStars; i++) {
+            star = { x: Math.random() * canvas.width, y: Math.random() * canvas.height, z: Math.random() * canvas.width, o: '0.' + Math.floor(Math.random() * 99) + 1 };
+            stars.push(star);
+        }
+    }
+
+    function moveStars() {
+        for (i = 0; i < numStars; i++) {
+            star = stars[i];
+            star.z--;
+
+            if (star.z <= 0) {
+                star.z = canvas.width;
+            }
+        }
+    }
+
+    function drawStars() {
+        var pixelX, pixelY, pixelRadius;
+
+        if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initializeStars();
+        }
+
+        c.fillStyle = "rgba(0,10,20,1)";
+        c.fillRect(0, 0, canvas.width, canvas.height);
+        c.fillStyle = "rgba(209, 255, 255, " + radius + ")";
+
+        for (i = 0; i < numStars; i++) {
+            star = stars[i];
+
+            pixelX = (star.x - centerX) * (focalLength / star.z);
+            pixelX += centerX;
+            pixelY = (star.y - centerY) * (focalLength / star.z);
+            pixelY += centerY;
+            pixelRadius = 1 * (focalLength / star.z);
+
+            c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
+            c.fillStyle = "rgba(209, 255, 255, " + star.o + ")";
+        }
+    }
+
+    return function executeFrame() {
+        moveStars();
+        drawStars();
+        canvas.animateID = window.requestAnimFrame(executeFrame);
+    }
+}
+
+mounted () {
+    // canvas 
+    this.canvas = document.getElementById("space")
+    // 获取动画的开关
+    this.executeFrame = this.bg(this.canvas)
+}
 )
 }
 

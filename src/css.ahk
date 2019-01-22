@@ -1,14 +1,11 @@
 ﻿!s::
-    Menu, Csssolution, Add, 利用 translateZ(0) 提升速度, CssHandler
-    Menu, Csssolution, Add, will-change 代替 translate3D 优化, CssHandler
-    Menu, Csssolution, Add, background-attachment: fixed 改成了 position: fixed (因为前面这玩意滚动实时计算重绘), CssHandler
-    Menu, Csssolution, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
-    Menu, Csssolution, Add, cursor:手掌手势, CssHandler
-    Menu, Csssolution, Add, loading, CssHandler2
-    Menu, Csssolution, Add, 舒服的字体样式font, CssHandler
-    Menu, Csssolution, Add, 使用系统默认字体：System font stack, CssHandler
-    Menu, Csssolution, Add, lit.css极简系列：btn, CssHandler
-    Menu, Csssolution, Add, :root 与 var(--primary-color), CssHandler
+    Menu, cssoptimization, Add, 利用 translateZ(0) 提升速度, CssHandler
+    Menu, cssoptimization, Add, will-change 代替 translate3D 优化, CssHandler
+    Menu, cssoptimization, Add, background-attachment: fixed 改成了 position: fixed (因为前面这玩意滚动实时计算重绘), CssHandler
+    Menu, cssoptimization, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
+    Menu, cssoptimization, Add, cursor:手掌手势, CssHandler
+    
+    
     Menu, Csssolution, Add, display: table 自动对齐策略, CssHandler
     Menu, Csssolution, Add, Calc()与background-position数学表达式, CssHandler
     Menu, Csssolution, Add, 三个DVI的Bouncing loader, CssHandler
@@ -40,9 +37,14 @@
     
     Menu, CssMenu, Add, ell, CssHandler2
     Menu, CssMenu, Add, loading..., CssHandler2
+    Menu, CssMenu, Add, loading, CssHandler2
     Menu, CssMenu, Add, center, CssHandler2
     Menu, CssMenu, Add, ycenter, CssHandler2
     Menu, CssMenu, Add, xcenter, CssHandler2
+    Menu, CssMenu, Add, 舒服的字体样式font, CssHandler
+    Menu, CssMenu, Add, 使用系统默认字体：System font stack, CssHandler
+    Menu, CssMenu, Add, :root 与 var(--primary-color), CssHandler
+
     
     
     Menu, CssMenu, Add, 
@@ -55,17 +57,20 @@
     Menu, CssMenu, Add, css.text-shadown, CssHandler
     Menu, CssMenu, Add, css.box-shadown, CssHandler
     Menu, CssMenu, Add, 框型阴影, CssHandler
-    
+    Menu, CssMenu, Add, lit.css极简系列：btn, CssHandler
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
     
     Menu, CssMenu, Add, 发廊进度条, CssHandler
-    Menu, CssMenu, Add, 冒泡进度条, CssHandler
+    Menu, CssMenu, Add, 七喜冒泡进度条, CssHandler
     Menu, CssMenu, Add, redbox, CssHandler2
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
+    
+    
+    Menu, CssMenu, Add, css优化, :cssoptimization
     
     Menu, CssMenu, Add, css解决方案, :Csssolution
     
@@ -440,6 +445,7 @@ Var =
 if (v == "Calc()与background-position数学表达式") {
 Var =
 (
+// https://30-seconds.github.io/30-seconds-of-css/#calc
 .box-example {
   height: 280px;
   background: #222 url('https://image.ibb.co/fUL9nS/wolf.png') no-repeat;
@@ -492,6 +498,7 @@ box-shadow: 0, 2px 6px 0 hsla(0, 0`%, 0`%, 0.2)
 if (v == "cursor:手掌手势") {
 Var =
 (
+cursor: grab;
 cursor: url('https://webapi.amap.com/theme/v1.3/openhand.cur'),default;
 )
 }
@@ -552,7 +559,7 @@ will-change: opacity, transform;
 )
 }
 
-if (v == "冒泡进度条") {
+if (v == "七喜冒泡进度条") {
 SendLevel 1
 SendInput, maopaojindutiao{tab}
 return
@@ -1306,6 +1313,7 @@ return
 ::link.icon::
 ::link-icon::
 ::icon::
+::ico::
 Var =
 (
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
@@ -2322,6 +2330,19 @@ Var =
     top: 50`%;
     transform: translate(-50`%, -50`%);
 }
+
+$('#app').click(e => {
+    const x = e.clientX + 'px'
+    const y = e.clientY + 'px'
+    const div = $(`<div style="position: absolute; left: ${x}; top: ${y}; width: 10px; height: 10px; background:red"></div>`)
+    $('body').append(div)
+    layer.open({
+        offset: [y, x],
+        area: ['auto', '305px'],
+        title: `新建便签 —— ${moment(new Date()).format('YYYY/MM/DD HH:mm:ss')}`,
+        content: '<textarea class="note" placeholder="记笔记..."></textarea>',
+    })
+})
 )
 code(Var)
 return

@@ -113,6 +113,7 @@ return
 ::cdn-moment::
 Var =
 (
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js"></script>
 )
 code(Var)

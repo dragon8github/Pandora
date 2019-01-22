@@ -102,6 +102,9 @@
 	Menu, EventMenu, Add, String.fromCharCode(e.keycode), EventHandler
 	Menu, EventMenu, Add, event.preventDefault(); event.stopPropagation();, EventHandler
 	Menu, EventMenu, Add, 长按longpress手势, EventHandler
+	Menu, EventMenu, Add, 监听paste复制黏贴事件, EventHandler
+	Menu, EventMenu, Add, click 与 e.clientX/e.clientY, EventHandler
+	
 	
 	Menu, EventMenu, Show
 	Menu, EventMenu, DeleteAll
@@ -122,6 +125,112 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "click 与 e.clientX/e.clientY") {
+Var = 
+(
+$('#app').click(e => {
+    const x = e.clientX + 'px'
+    const y = e.clientY + 'px'
+    const div = $(`<div style="position: absolute; left: ${x}; top: ${y}; width: 10px; height: 10px; background:red"></div>`)
+    $('body').append(div)
+    layer.open({
+        offset: [y, x],
+        area: ['auto', '305px'],
+        title: `新建便签 —— ${moment(new Date()).format('YYYY/MM/DD HH:mm:ss')}`,
+        content: '<textarea class="note" placeholder="记笔记..."></textarea>',
+    })
+})
+)
+}
+
+if (v == "监听paste复制黏贴事件") {
+Var = 
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    body {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+    </style>
+</head>
+
+<body>
+    <textarea></textarea>
+    <div contenteditable style="width: 300px;height: 100px; border:1px solid">
+        <img src="" id="imgNode">
+</div>
+</body>
+<script>
+document.addEventListener('paste', function(event) {
+    console.log(event);
+    var isChrome = false;
+    if (event.clipboardData || event.originalEvent) {
+        var clipboardData = (event.clipboardData || event.originalEvent.clipboardData);
+        if (clipboardData.items) {
+            // for chrome
+            var items = clipboardData.items,
+                len = items.length,
+                blob = null;
+            isChrome = true;
+            for (var i = 0; i < len; i++) {
+                console.log(items[i]);
+                if (items[i].type.indexOf("image") !== -1) {
+                    //getAsFile() 此方法只是living standard firefox ie11 并不支持
+                    blob = items[i].getAsFile();
+                }
+            }
+            if (blob !== null) {
+                var blobUrl = URL.createObjectURL(blob);
+                //blob对象显示
+                document.getElementById("imgNode").src = blobUrl;
+                var reader = new FileReader();
+                //base64码显示
+                /* 
+                    reader.onload = function (event) {
+                        // event.target.result 即为图片的Base64编码字符串
+                        var base64_str = event.target.result;
+
+                        document.getElementById("imgNode").src=base64_str;
+                    }
+                    reader.readAsDataURL(blob);
+                */
+                var fd = new FormData(document.forms[0]);
+                fd.append("the_file", blob, 'image.png');
+                //创建XMLHttpRequest对象
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/image');
+                xhr.onload = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            var data = JSON.parse(xhr.responseText);
+                            console.log(data);
+                        } else {
+                            console.log(xhr.statusText);
+                        }
+                    };
+                };
+                xhr.onerror = function(e) {
+                    console.log(xhr.statusText);
+                }
+                xhr.send(fd);
+            }
+        }
+    }
+})
+</script>
+
+</html>
 )
 }
 
