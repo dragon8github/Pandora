@@ -1,7 +1,17 @@
 ﻿!w::
-	Menu, dogMenu, Add, cdn, dogHandler
-	Menu, dogMenu, Add, init, dogHandler
-
+	Menu, dogMenu, Add, wilddog-cdn, dogHandler
+	Menu, dogMenu, Add, wilddog-init, dogHandler
+    
+    Menu, dogMenu, Add,, dogHandler
+    Menu, dogMenu, Add,, dogHandler
+    
+    
+    Menu, dogMenu, Add, ref.set, dogHandler
+    
+    Menu, dogMenu, Add,, dogHandler
+    Menu, dogMenu, Add,, dogHandler
+    
+    Menu, dogMenu, Add, ref.on('value'`, snapshot => { }), dogHandler
 
 	Menu, dogMenu, Show
 	Menu, dogMenu, DeleteAll
@@ -18,14 +28,42 @@ dogHandler:
 v := A_ThisMenuItem
 Var :=
 
-if (v == "") {
+if (v == "ref.on('value', snapshot => { })") {
 Var =
 (
-
+// 监听数据变化
+ref.on("value", function(snapshot) {
+    console.log(snapshot.val())
+})
 )
 }
 
-if (v == "init") {
+if (v == "ref.set") {
+Var =
+(
+// 添加功能示例
+ref.set({
+  "messageboard":{
+    "message1":{
+        "content" : "Wilddog, Cool!",
+        "presenter" : "Jack"
+    }
+  }
+})
+)
+}
+
+
+
+if (v == "wilddog-cdn") {
+Var =
+(
+<!-- Wilddog -->
+<script src="https://cdn.wilddog.com/sdk/js/2.0.0/wilddog.js"></script>
+)
+}
+
+if (v == "wilddog-init") {
 Var =
 (
 /**
@@ -56,13 +94,6 @@ if (window.wilddog) {
 )
 }
 
-if (v == "cdn") {
-Var =
-(
-<!-- Wilddog -->
-<script src="https://cdn.wilddog.com/sdk/js/2.0.0/wilddog.js"></script>
-)
-}
 
 code(Var)
 return
