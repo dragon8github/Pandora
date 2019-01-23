@@ -929,9 +929,9 @@ return
 
 ; 不知道从什么时候开始，大写的C盘写不出来了。这里我用小写吧无所谓，反正window不区分大小写
 ::desk::
+::~::
 ::desktop::
-    StringLower, str, A_Desktop
-    SendInput, %str%
+    SendInput, %A_Desktop%
 return
 
 ::desk/::
