@@ -8,7 +8,7 @@ Menu, FileMenu, Add, &Open, FileOpen
 Menu, MyMenuBar, Add, &File, :FileMenu
 
 ; 添加菜单栏到窗口:
-Gui, Pandora:Menu, MyMenuBar
+; Gui, Pandora:Menu, MyMenuBar
 
 ; 支持拖拽大小
 ; Gui, Pandora:+Resize
@@ -21,21 +21,19 @@ Gui, Pandora:Add, Checkbox, vgithub Checked, Github
 Gui, Pandora:Add, Checkbox, vso, Stack Overflow
 Gui, Pandora:Add, Checkbox, vsegmentfault, SegmentFault
 
-Gui, Pandora:Add, Text, gAllSearchB W120 ys, 翻译类:
+Gui, Pandora:Add, Text, gAllSearchB W160 ys, 翻译类:
 Gui, Pandora:Add, Checkbox, vbdfy, 百度翻译   
 Gui, Pandora:Add, Checkbox, vyoudaofy, 有道翻译
 Gui, Pandora:Add, Checkbox, vgooglefanyi, Google翻译
-Gui, Pandora:Add, Checkbox, vjinshanciba, 金山词霸
 
-
-Gui, Pandora:Add, Text, gAllSearchC W100 Section xs y+60, 音乐类:
+Gui, Pandora:Add, Text, gAllSearchC W160 ys, 音乐类:
 Gui, Pandora:Add, Checkbox, vwy, 网易云音乐   
 Gui, Pandora:Add, Checkbox, vqq, QQ音乐
 Gui, Pandora:Add, Checkbox, vdog, 酷狗音乐
 Gui, Pandora:Add, Checkbox, vxiami, 虾米音乐
 Gui, Pandora:Add, Checkbox, vkuwo, 酷我音乐
 
-Gui, Pandora:Add, Text, gAllSearchD W60 ys, 社区类:
+Gui, Pandora:Add, Text, gAllSearchD W160 ys, 社区类:
 Gui, Pandora:Add, Checkbox, vjuejin, 掘金
 Gui, Pandora:Add, Checkbox, vjianshu, 简书
 Gui, Pandora:Add, Checkbox, vcsdn, CSDN
@@ -50,7 +48,8 @@ Gui, Pandora:Add, Checkbox, vsuning, 苏宁易购
 Gui, Pandora:Add, Checkbox, vkongzi, 孔夫子二手书
 
 ; 搜索框
-Gui, Pandora:Add, Edit, vSearchContent w280 Limit50 yp+40 Section xs, dragon8github/Pandora
+Gui, Pandora:Add, Edit, vSearchContent w890 Limit50 yp+20 Section xs, dragon8github/Pandora
+
 
 ; 背景色
 Gui, Pandora:Color, E6FFE6
@@ -59,13 +58,13 @@ Gui, Pandora:Color, E6FFE6
 Gui, Pandora:Margin, 10, 10
 
 ; submit 按钮
-Gui, Pandora:Add, Button, w280 h30 gFuck Section xs h30 yp+40 Default, FUCK
+Gui, Pandora:Add, Button, w440 h30 gFuck Section xs h30 yp+30 Default, FUCK
 
 ; 取消按钮
-Gui, Pandora:Add, Button, gCancelSelect w280 h30 xs, 取消选中
+Gui, Pandora:Add, Button, gCancelSelect w440 h30 ys, 取消选中
 
 ; Tab 选项卡 w830 h570 
-Gui, Pandora:Add, Tab3, Section ys ym Choose1 w900, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 奇妙工具 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 回收站 | 剪切板 
+Gui, Pandora:Add, Tab3, Section xs Choose1 w900, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 奇妙工具 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 回收站 | 剪切板 
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -722,8 +721,6 @@ CancelSelect:
 	GuiControl,, bdfy, 0
 	GuiControl,, youdaofy, 0
 	GuiControl,, googlefanyi, 0
-	GuiControl,, jinshanciba, 0
-	
 
 	GuiControl,, wy, 0
 	GuiControl,, qq, 0
@@ -786,7 +783,6 @@ AllSearchB:
 		GuiControl,, bdfy, 1 
 		GuiControl,, youdaofy, 1 
 		GuiControl,, googlefanyi, 1 
-		GuiControl,, jinshanciba, 1 
 	} else {
 		GuiControl,, bdfy, 0
 		GuiControl,, youdaofy, 0
