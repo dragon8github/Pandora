@@ -47,12 +47,6 @@ return
     code(ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/JavaScript/urlcode.js"))
 return
 
-; _____________ Css ________________
-
-::normalize::
-    code(ajax("https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css"))
-Return
-
 ; _____________ Nodejs ________________
 
 ::express::

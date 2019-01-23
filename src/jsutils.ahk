@@ -145,7 +145,13 @@
     
     
     Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
+    Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
+    Menu, utilspractice, Add, curry2 二元参数的手动柯里化, utilsHandler
     
+    Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
+    Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
+    Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
+    Menu, utilsmy, Add, 宇宙流星雨canvas, utilsHandler
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
@@ -153,25 +159,33 @@
     Menu, utilsMenu , Add, 解决方案/功能/库, :utilsSolution
     Menu, utilsMenu , Add, 设计模式, :utilsDesignPattern
     Menu, utilsMenu, Add, (〜￣△￣)〜认知～(￣▽￣～), :utilspractice
+    Menu, utilsMenu, Add, (=・ω・=) 我的 (｀・ω・´), :utilsmy
 
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
     
     Menu, utilsMenu, Add, 获取前6个月/前15天数据, EventHandler
-    Menu, utilsMenu, Add, event.preventDefault(); event.stopPropagation();, EventHandler
-    Menu, utilsMenu, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsMenu, Add, urlparams 获取路由参数, utilsHandler
-    Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
-    Menu, utilsMenu, Add, 加强版map遍历:bettermap, utilsHandler
-    Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
+    Menu, utilsMenu, Add, getuuid 32位随机数, utilsHandler
+    Menu, utilsMenu, Add, 使用了es6的set生产1W条不重复8位的数字, utilsHandler
+    Menu, utilsMenu, Add, uuid 超简易版, utilsHandler
     Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
     Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
     Menu, utilsMenu, Add, pad 自动补全, utilsHandler
-    Menu, utilsMenu, Add, maybe 神奇的预设函数, utilsHandler
-    Menu, utilsMenu, Add, getuuid 32位随机数, utilsHandler
-    Menu, utilsMenu, Add, uuid 超简易版, utilsHandler
+    
+    Menu, utilsMenu, Add, , utilsHandler
+    Menu, utilsMenu, Add, , utilsHandler
+    
     Menu, utilsMenu, Add, compose 函数组合, utilsHandler
+    Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
+    Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
+    Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
+    Menu, utilsMenu, Add, js获取root（window）对象, utilsHandler
+    Menu, utilsMenu, Add, holder占位图, utilsHandler
+    Menu, utilsMenu, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
+    Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
+
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -186,21 +200,15 @@
     Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
     
+    
     Menu, utilsMenu, Add, es6.class, utilsHandler
-    Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
-    Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
-    Menu, utilsMenu, Add, curry2 二元参数的手动柯里化, utilsHandler
-    Menu, utilsMenu, Add, holder占位图, utilsHandler
-    Menu, utilsMenu, Add, 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug, utilsHandler
-    Menu, utilsMenu, Add, Android 输入法键盘 和 input 问题:scrollIntoViewIfNeeded, utilsHandler
+    Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
     Menu, utilsMenu, Add, 社会主义点击事件, utilsHandler
     Menu, utilsMenu, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
-    Menu, utilsMenu, Add, 使用了es6的set生产1W条不重复8位的数字, utilsHandler
-    Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
-    Menu, utilsMenu, Add, js获取root（window）对象, utilsHandler
+    Menu, utilsMenu, Add, 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug, utilsHandler
+    Menu, utilsMenu, Add, Android 输入法键盘 和 input 问题:scrollIntoViewIfNeeded, utilsHandler
     Menu, utilsMenu, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
-    Menu, utilsMenu, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
-    Menu, utilsMenu, Add, 宇宙流星雨canvas, utilsHandler
+    Menu, utilsMenu, Add, assert原始单元测试, utilsHandler
     
     
     Menu, utilsMenu, Show
@@ -224,6 +232,79 @@ Var =
 (
 )
 }
+
+if (v == "assert原始单元测试") {
+Var = 
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+    ul#results { border: 2px ridge maroon; background-color: #ffffcc; padding: 0.25em 1.5em; margin-left: 0; }
+    li.pass { color: #006400; }
+    li.fail { color: #dc143c; text-decoration: line-through; }
+    </style>
+</head>
+
+<body>
+    <div id="results"></div>
+</body>
+<script>
+(function(win) {
+  var results;
+  win.assert = function assert(value, desc) {
+    var li = document.createElement("li");
+    li.className = value ? "pass" : "fail";
+    li.appendChild(document.createTextNode(desc));
+    results.appendChild(li);
+    if (!value) {
+      li.parentNode.parentNode.className = "fail";
+    }
+    return li;
+  };
+  win.test = function test(name, fn) {
+    results = document.getElementById("results");
+    results = assert(true, name).appendChild(
+        document.createElement("ul"));
+    fn();
+  };
+})(window);
+
+window.onload = function() {
+  test("A test.", function() {
+    assert(true, "First assertion completed");
+    assert(true, "Second assertion completed");
+    assert(true, "Third assertion completed");
+  });
+  test("Another test.", function() {
+    assert(true, "First test completed");
+    assert(false, "Second test failed");
+    assert(true, "Third assertion completed");
+  });
+  test("A third test.", function() {
+    assert(null, "fail");
+    assert(5, "pass")
+  });
+};
+</script>
+</html>
+)
+}
+
+if (v == "parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162") {
+Var = 
+(
+dict.offset = [
+    e.clientX - parseFloat(layero.css('left')),
+    e.clientY - parseFloat(layero.css('top'))
+;
+)
+}
+
 
 if (v == "宇宙流星雨canvas") {
 Var = 

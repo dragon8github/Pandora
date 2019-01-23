@@ -34,10 +34,6 @@
 	Menu, JavaScriptEventMenu, Add, .onclick = (e) => {}, EventHandler
 	Menu, JavaScriptEventMenu, Add, .onsubmit = (e) => {}, EventHandler
 	Menu, JavaScriptEventMenu, Add, , EventHandler
-	Menu, JavaScriptEventMenu, Add, js 监听 enter, EventHandler
-	Menu, JavaScriptEventMenu, Add, js 组合键监听 ctrl + enter, EventHandler
-
-
 	
 
 
@@ -104,7 +100,12 @@
 	Menu, EventMenu, Add, 长按longpress手势, EventHandler
 	Menu, EventMenu, Add, 监听paste复制黏贴事件, EventHandler
 	Menu, EventMenu, Add, click 与 e.clientX/e.clientY, EventHandler
-	
+	Menu, EventMenu, Add, js 监听 enter, EventHandler
+	Menu, EventMenu, Add, js 组合键监听 ctrl + enter, EventHandler
+	Menu, EventMenu, Add, js 组合键监听 ctrl + click, EventHandler
+	Menu, EventMenu, Add, js esc键监听, EventHandler
+
+
 	
 	Menu, EventMenu, Show
 	Menu, EventMenu, DeleteAll
@@ -125,6 +126,34 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "js esc键监听") {
+Var = 
+(
+$(window).keydown(function (event) {
+    // 监听esc键退出全屏
+    if (event.keyCode == 27) {
+      
+    }
+});
+)
+}
+
+if (v == "js 组合键监听 ctrl + click") {
+Var = 
+(
+/**
+ * 点击事件的回调函数
+ */
+const clickHandle = ({ ctrlKey } = event) => {
+    if (ctrlKey) {
+        // ...
+    }
+}
+
+$(window).click(clickHandle)
 )
 }
 

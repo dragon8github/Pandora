@@ -1,9 +1,17 @@
 ﻿!s::
+
+    Menu, CssMenu, Add, normalize.css, CssHandler2
+    Menu, CssMenu, Add, chrome-yellow, CssHandler2
+    Menu, CssMenu, Add, px2rem, CssHandler2
+    Menu, CssMenu, Add, css.placeholder, CssHandler2
+    
+    Menu, CssMenu, Add, 
+    Menu, CssMenu, Add, 
+    
     Menu, cssoptimization, Add, 利用 translateZ(0) 提升速度, CssHandler
     Menu, cssoptimization, Add, will-change 代替 translate3D 优化, CssHandler
     Menu, cssoptimization, Add, background-attachment: fixed 改成了 position: fixed (因为前面这玩意滚动实时计算重绘), CssHandler
     Menu, cssoptimization, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
-    Menu, cssoptimization, Add, cursor:手掌手势, CssHandler
     
     
     Menu, Csssolution, Add, display: table 自动对齐策略, CssHandler
@@ -18,6 +26,7 @@
     Menu, Csssolution, Add, hover Sibling fade, CssHandler
     Menu, Csssolution, Add, 原生实现switch, CssHandler
     Menu, Csssolution, Add, 不断闪闪发光的动画, CssHandler
+    
     
 
 
@@ -50,10 +59,6 @@
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
     
-    Menu, CssMenu, Add, px2rem, CssHandler2
-    Menu, CssMenu, Add, reset.css, CssHandler2
-    Menu, CssMenu, Add, input.yellow, CssHandler2
-    Menu, CssMenu, Add, css.placeholder, CssHandler2
     Menu, CssMenu, Add, css.text-shadown, CssHandler
     Menu, CssMenu, Add, css.box-shadown, CssHandler
     Menu, CssMenu, Add, 框型阴影, CssHandler
@@ -65,6 +70,7 @@
     Menu, CssMenu, Add, 发廊进度条, CssHandler
     Menu, CssMenu, Add, 七喜冒泡进度条, CssHandler
     Menu, CssMenu, Add, redbox, CssHandler2
+    Menu, CssMenu, Add, cursor:手掌手势, CssHandler
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -1303,6 +1309,7 @@ return
 
 ::reset.css::
 ::normalize.css::
+::normalize::
 Var =
 (
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100`%}body{margin:0}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80`%}sub,sup{font-size:75`%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100`%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100`%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
@@ -2346,3 +2353,6 @@ $('#app').click(e => {
 )
 code(Var)
 return
+
+
+

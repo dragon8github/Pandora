@@ -138,6 +138,9 @@ document.getElementsByTagName('head')[0].appendChild(styles)
 // 必须先插入再执行
 styles.sheet.addRule('#app', 'background: red; width: 1000px;')
 
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+
 // 更推荐这种比较舒服的书写方式
 var injectCss = function (css) {
     var style = document.createElement('style')
@@ -149,11 +152,11 @@ var injectCss = function (css) {
     }
     document.getElementsByTagName('head')[0].appendChild(style)
 }
-injectCss(`
+injectCss(``
 #app {
   background: blue;
 }
-`)
+``)
 
 )
 code(Var)
