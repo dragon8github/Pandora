@@ -13,8 +13,7 @@ Gui, Pandora:Menu, MyMenuBar
 ; 支持拖拽大小
 ; Gui, Pandora:+Resize
 
-Gui, Pandora:Add, Text, gAllSearchA W140 Section xs yp+10, 搜索引擎类:
-Gui, Pandora:Add, Checkbox, vcylee, 博客园
+Gui, Pandora:Add, Text, gAllSearchA W120 Section xs yp+10, 搜索引擎类:
 Gui, Pandora:Add, Checkbox, gMySubroutine HwndMyEditHwnd vbd, 百度
 Gui, Pandora:Add, Checkbox, vgoogle, Google
 Gui, Pandora:Add, Checkbox, vgithub Checked, Github
@@ -26,9 +25,10 @@ Gui, Pandora:Add, Checkbox, vbdfy, 百度翻译
 Gui, Pandora:Add, Checkbox, vyoudaofy, 有道翻译
 Gui, Pandora:Add, Checkbox, vgooglefanyi, Google翻译
 Gui, Pandora:Add, Checkbox, vjinshanciba, 金山词霸
+Gui, Pandora:Add, Checkbox, vhaicifanyi, 词海翻译
 
 
-Gui, Pandora:Add, Text, gAllSearchC W100 Section xs y+60, 音乐类:
+Gui, Pandora:Add, Text, gAllSearchC W90 Section xs y+20, 音乐类:
 Gui, Pandora:Add, Checkbox, vwy, 网易云音乐   
 Gui, Pandora:Add, Checkbox, vqq, QQ音乐
 Gui, Pandora:Add, Checkbox, vdog, 酷狗音乐
@@ -40,17 +40,18 @@ Gui, Pandora:Add, Checkbox, vjuejin, 掘金
 Gui, Pandora:Add, Checkbox, vjianshu, 简书
 Gui, Pandora:Add, Checkbox, vcsdn, CSDN
 Gui, Pandora:Add, Checkbox, vzhihu, 知乎
+Gui, Pandora:Add, Checkbox, vcylee, 博客园
 
-Gui, Pandora:Add, Text, gAllSearchE W160 ys, 购物类:
+Gui, Pandora:Add, Text, gAllSearchE W120 ys, 购物类:
 Gui, Pandora:Add, Checkbox, vtaobao, 淘宝
 Gui, Pandora:Add, Checkbox, vjingdong, 京东
 Gui, Pandora:Add, Checkbox, vdangdang, 当当
 Gui, Pandora:Add, Checkbox, vamazon, 亚马逊
-Gui, Pandora:Add, Checkbox, vsuning, 苏宁易购
+; Gui, Pandora:Add, Checkbox, vsuning, 苏宁易购
 Gui, Pandora:Add, Checkbox, vkongzi, 孔夫子二手书
 
 ; 搜索框
-Gui, Pandora:Add, Edit, vSearchContent w280 Limit50 yp+40 Section xs, dragon8github/Pandora
+Gui, Pandora:Add, Edit, vSearchContent w260 Limit50 yp+40 Section xs, dragon8github/Pandora
 
 ; 背景色
 Gui, Pandora:Color, E6FFE6
@@ -59,10 +60,10 @@ Gui, Pandora:Color, E6FFE6
 Gui, Pandora:Margin, 10, 10
 
 ; submit 按钮
-Gui, Pandora:Add, Button, w280 h30 gFuck Section xs h30 yp+40 Default, FUCK
+Gui, Pandora:Add, Button, w260 h30 gFuck Section xs h30 yp+40 Default, FUCK
 
 ; 取消按钮
-Gui, Pandora:Add, Button, gCancelSelect w280 h30 xs, 取消选中
+Gui, Pandora:Add, Button, gCancelSelect w260 h30 xs, 取消选中
 
 ; Tab 选项卡 w830 h570 
 Gui, Pandora:Add, Tab3, Section ys ym Choose1 w900, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 奇妙工具 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 回收站 | 剪切板 
@@ -156,6 +157,12 @@ Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">pixabay.com</a>
 Gui, Pandora:Add, Link,, <a href="http://en.freejpg.com.ar/">freejpg</a>
 Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co/</a>
 
+Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
+Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
+Gui, Pandora:Add, Link,, <a href="https://app.didiyun.com/#/dc2/detail?uuid=a289c3f607fd5bbd8261df9b266ae211">滴滴云</a>
+
+
+Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
@@ -217,16 +224,10 @@ Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/antd-dge
 Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/login.jspx">前端菜单配置</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 12345大数据屏（vue）
-Gui, Pandora:Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">swagger-ui</a>
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">旧版 dg12345 git</a>
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/dg12345-vue-plus">旧版 dg12345-plus git</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-old">新的 gitlab 地址旧版12345</a>
-Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">旧版测试地址174</a>
-Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">旧版演示地址</a>
-Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com/#/dg/overallSituation">新版 plus 测试地址174</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>
+Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com/#/dg/overallSituation">新版 plus 测试地址174</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/issues?tdsourcetag=s_pctim_aiomsg">测试工单地址</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/boards">敏捷看板</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
@@ -641,16 +642,17 @@ Gui, Pandora:Add, Link,, <a href="https://leancloud.cn/docs/leanstorage-started-
 Gui, Pandora:Add, Link,, <a href="https://github.com/leancloud/StorageStarted">leancloud入门Demo</a>
 Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/video/av8868380/">leancloud安全课程</a>
 
-Gui, Pandora:Add, Text, W140 ys, 垃圾2:
-Gui, Pandora:Add, Text, gNewautoscrollHtml W140,新建autoscroll.html
-Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
-Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
-Gui, Pandora:Add, Text, gliveHtml W160,新建调用摄像头.html
-Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
+Gui, Pandora:Add, Text,  W140 ys, 垃圾2:
+Gui, Pandora:Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">swagger-ui</a>
+Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">旧版 dg12345 git</a>
+Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/dg12345-vue-plus">旧版 dg12345-plus git</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-old">新的 gitlab 地址旧版12345</a>
+Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">旧版测试地址174</a>
+Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">旧版演示地址</a>
 
 ; 剪切框
 Gui, Pandora:Tab, 16
-Gui, Pandora:Add, Edit, vClipHistory w870 H450 Limit199307100337
+Gui, Pandora:Add, Edit, vClipHistory w870 H420 Limit199307100337
 Gui, Pandora:Add, Button, gSaveClipHistory w870 h30, 保存到桌面
 
 return
@@ -900,6 +902,17 @@ Fuck:
 	if (googlefanyi == 1) {
 		RUN, https://translate.google.cn/#auto/en/%SearchContent%
 	}
+	
+	; 金山词霸
+	if (jinshanciba == 1) {
+		RUN, https://translate.google.cn/#auto/en/%SearchContent%
+	}
+	
+	; 词海翻译
+	if (haici == 1) {
+		RUN, http://dict.cn/%SearchContent%
+	}
+	
 
 	; 网易云音乐   
 	if (wy == 1) {

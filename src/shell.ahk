@@ -85,6 +85,18 @@
 	Menu, H, Add, `%（从右到做）操作符, ShellHandler
 	
 	
+	Menu, ShellMenu, Add, 116.85.26.25, ShellHandler2
+	Menu, ShellMenu, Add, dc2-user, ShellHandler2
+	Menu, ShellMenu, Add, sudo su, ShellHandler2
+	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler2
+	Menu, ShellMenu, Add, wget 下载文件, ShellHandler3
+	Menu, ShellMenu, Add, tar 解压, ShellHandler3
+	
+		
+	Menu, ShellMenu, Add, , ShellHandler
+	Menu, ShellMenu, Add, , ShellHandler
+	
+	
 	Menu, ShellMenu, Add, git, ShellHandler
 	Menu, ShellMenu, Add, git add . && git commit -m "", ShellHandler
 	Menu, ShellMenu, Add, git push -u origin master , ShellHandler
@@ -120,6 +132,37 @@
 	Menu, ShellMenu, DeleteAll
 return  
 
+ShellHandler2:
+v := A_ThisMenuItem
+SendInput,{Text}%v%
+return
+
+ShellHandler3:
+v := A_ThisMenuItem
+Var := 
+if (v == "") {
+Var = 
+(
+)
+}
+
+if (v == "wget 下载文件") {
+Var = 
+(
+wget http://nginx.org/download/nginx-1.15.8.tar.gz
+)
+}
+
+if (v == "tar 解压") {
+Var = 
+(
+tar zxvf nginx-1.15.8.tar.gz
+)
+}
+
+SendInput,{Text}%Var%
+return
+
 
 ShellHandler:
 ; MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.
@@ -130,7 +173,16 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
 
+
+
+
+if (v == "ps -ef | grep nginx") {
+Var = 
+(
+ps -ef | grep nginx
 )
 }
 

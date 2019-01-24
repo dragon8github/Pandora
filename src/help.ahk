@@ -481,8 +481,6 @@ ShellHandler2:
 v := A_ThisMenuItem
 return
 
-
-
 ShellHandler:
 ; MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.
 v := A_ThisMenuItem
@@ -538,25 +536,31 @@ return
 return
 
 
-MenuHandler:
-    SendRaw, % A_ThisMenuItem
-Return  
+!l:: 
+    lifeArray := ["beforeMount", "beforeCreate", "created", "mounted", "destroyed", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate", "", "", "primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥992px)", "lg —— 大屏幕 大桌面显示器 (≥1200px)" "", "", "",  "public", "private", "protected", "","","String", "Number", "Boolean", "Object", "Function", "Array"]
+    Loop % lifeArray.MaxIndex() {
+        this_life := lifeArray[a_index]
+        Menu, LifeMenu, Add, %this_life%, MenuHandlerlifeArray
+    }
+    Menu, LifeMenu, Show
+    Menu, LifeMenu, DeleteAll
+return
 
 MenuHandlerlifeArray:
 Var := A_ThisMenuItem
-if (A_ThisMenuItem == "xs —— 超小屏幕 手机 (<768px)") {
+if (Var == "xs —— 超小屏幕 手机 (<768px)") {
     Var := "xs"
 }
 
-else if (A_ThisMenuItem == "sm —— 小屏幕 平板 (≥768px)") {
+else if (Var == "sm —— 小屏幕 平板 (≥768px)") {
     Var := "sm"
 }
 
-else if (A_ThisMenuItem == "md —— 中等屏幕 桌面显示器 (≥992px)") {
+else if (Var == "md —— 中等屏幕 桌面显示器 (≥992px)") {
     Var := "md"
 }
 
-else if (A_ThisMenuItem == "lg —— 大屏幕 大桌面显示器 (≥1200px)") {
+else if (Var == "lg —— 大屏幕 大桌面显示器 (≥1200px)") {
     Var := "lg"
 }
 code(Var)
@@ -640,17 +644,6 @@ return
     Send, {Del}
 return
 
-
-!l:: 
-    lifeArray := ["beforeMount", "beforeCreate", "created", "mounted", "destroyed", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate", "", "", "primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥992px)", "lg —— 大屏幕 大桌面显示器 (≥1200px)" "", "", "",  "public", "private", "protected", "","","String", "Number", "Boolean", "Object", "Function", "Array"]
-    Loop % lifeArray.MaxIndex() {
-        this_life := lifeArray[a_index]
-        Menu, LifeMenu, Add, %this_life%, MenuHandlerlifeArray
-    }
-    Menu, LifeMenu, Show
-    ; 不然每次都会添加白线
-    Menu, LifeMenu, DeleteAll
-return
 
 AppsKey & s::
 >^s::
@@ -842,8 +835,9 @@ return
 AppsKey & i::
 >^i::
 ::aliip::
+::didiip::
 ::ip5::
-    SendRaw, 119.23.22.136
+    SendRaw, 116.85.26.25 ;119.23.22.136
 return
 
 

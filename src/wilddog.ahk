@@ -23,8 +23,11 @@
     Menu, dogMenu, Add,, dogHandler
     Menu, dogMenu, Add,, dogHandler
     
-    Menu, dogMenu, Add, 我的便签控制台, dogHandler
+    Menu, dogMenu, Add, 我的控制台, dogHandler
     Menu, dogMenu, Add, Reference API 文档, dogHandler
+    Menu, dogMenu, Add, on 所有事件API 文档, dogHandler
+    Menu, dogMenu, Add, EventType 所有的事件类型on/once, dogHandler
+    
 
 	Menu, dogMenu, Show
 	Menu, dogMenu, DeleteAll
@@ -45,6 +48,16 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "EventType 所有的事件类型on/once") {
+run, https://docs.wilddog.com/sync/Web/api/Query.html#EventType
+return
+}
+
+if (v == "on 所有事件API 文档") {
+run, https://docs.wilddog.com/sync/Web/api/Query.html#on
+return
 }
 
 if (v == "我的便签控制台") {

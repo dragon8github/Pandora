@@ -52,9 +52,9 @@
     Menu, CssMenu, Add, xcenter, CssHandler2
     Menu, CssMenu, Add, 舒服的字体样式font, CssHandler
     Menu, CssMenu, Add, 使用系统默认字体：System font stack, CssHandler
+    Menu, CssMenu, Add, 挺好玩的代码字体：comic sans ms, CssHandler
     Menu, CssMenu, Add, :root 与 var(--primary-color), CssHandler
 
-    
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -101,6 +101,15 @@ Var =
 (
 )
 }
+
+
+if (v == "挺好玩的代码字体：comic sans ms") {
+Var =
+(
+font-family: 'comic sans ms', sans-serif;
+)
+}
+
 
 if (v == "不断闪闪发光的动画") {
 Var =
