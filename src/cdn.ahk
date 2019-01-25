@@ -1,4 +1,14 @@
-﻿::cdn-mapbox::
+﻿::cdn-animate::
+::cdn-animte::
+::cdn-anime::
+Var =
+(
+<script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-mapbox::
 Var =
 (
 <!DOCTYPE html>
@@ -147,9 +157,8 @@ return
 ::cdn-nicescroll::
 Var =
 (
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!-- https://github.com/inuyaksa/jquery.nicescroll -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 )
 code(Var)
 return
@@ -303,7 +312,7 @@ Return
 ::cdn-jquery::
 Var = 
 (
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 )
 code(Var)
 Return

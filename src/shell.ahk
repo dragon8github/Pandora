@@ -85,9 +85,6 @@
 	Menu, H, Add, `%（从右到做）操作符, ShellHandler
 	
 	
-	Menu, ShellMenu, Add, 116.85.26.25, ShellHandler2
-	Menu, ShellMenu, Add, dc2-user, ShellHandler2
-	Menu, ShellMenu, Add, sudo su, ShellHandler2
 	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler2
 	Menu, ShellMenu, Add, wget 下载文件, ShellHandler3
 	Menu, ShellMenu, Add, tar 解压, ShellHandler3
@@ -149,7 +146,7 @@ Var =
 if (v == "wget 下载文件") {
 Var = 
 (
-wget http://nginx.org/download/nginx-1.15.8.tar.gz
+wget -O nginx-1.15.8.tar.gz http://nginx.org/download/nginx-1.15.8.tar.gz
 )
 }
 
@@ -872,4 +869,12 @@ done
 read -p "Enter a number"
 )
 code(Var)
+return
+
+::tar::
+Var =
+(
+tar zxvf
+)
+SendInput, % Var A_Space
 return

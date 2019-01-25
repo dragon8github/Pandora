@@ -1,14 +1,13 @@
-﻿::code::
+﻿::shipin::
+::video::
+::vedio::
 Var =
 (
-<pre>
-   <code>
-       
-   </code>
-</pre>
+<video autoplay loop muted id="myVideo">
+    <source src="./saber.mp4" type="video/mp4">
+</video>
 )
 code(Var)
-SendInput, {up 2}{tab 2}
 return
 
 ::`:src::

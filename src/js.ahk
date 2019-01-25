@@ -1456,7 +1456,7 @@ return
 ::nice::
 Var =
 (
-setTimeout(() => { $('.drapdown__ul').niceScroll({ cursorcolor: 'rgba(0,0,0,0.2)', autohidemode: true })}, 350);
+setTimeout(() => { $('.drapdown__ul').niceScroll({ cursorcolor: 'rgba(0,0,0,0.2)', autohidemode: true, horizrailenabled: false, emulatetouch: true, zindex: 199307100337 })}, 350);
 setTimeout(() => $('.drapdown__ul').getNiceScroll().resize(), 0);
 )
 code(Var)
@@ -2946,13 +2946,8 @@ Return
 
 
 >!c::
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-Var =
-(
-console.log(%t%, ); return;
-)
-code(Var)
-SendInput, {left 10}
+WinGetTitle, title, A
+code(title)
 return
 
 

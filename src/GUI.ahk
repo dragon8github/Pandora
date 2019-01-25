@@ -183,6 +183,7 @@ Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
 Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gliveHtml W160,新建调用摄像头.html
 Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
+Gui, Pandora:Add, Text, gxuanliyanhua W160,新建点击绚丽烟花效果.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
@@ -617,6 +618,8 @@ Gui, Pandora:Add, Text,  W140 ys, Flutter:
 Gui, Pandora:Add, Link,, <a href="https://github.com/flutter/flutter">Flutter github</a>
 Gui, Pandora:Add, Link,, <a href="https://flutter.io/">Flutter官网</a>
 Gui, Pandora:Add, Link,, <a href="https://flutter-io.cn/">Flutter中文社区</a>
+Gui, Pandora:Add, Link,, <a href="https://docs.flutter.io/">https://docs.flutter.io/</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, Dcloud:
