@@ -90,7 +90,7 @@ Gui, Pandora:Add, Text,  W140 ys, 娱乐:
 Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
 Gui, Pandora:Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/play/20494.html?20494-1-22">草民电影</a>
-Gui, Pandora:Add, Link,, <a href="http://www.hanhande.com/">憨憨电影</a>
+Gui, Pandora:Add, Link,, <a href="http://www.dilidili.wang/">无名小站</a>
 Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
 Gui, Pandora:Add, Link,, <a href="http://www.tan8.com/lesson3-category-1.html">蛐蛐钢琴网</a>
 
@@ -184,6 +184,7 @@ Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gliveHtml W160,新建调用摄像头.html
 Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
 Gui, Pandora:Add, Text, gxuanliyanhua W160,新建点击绚丽烟花效果.html
+Gui, Pandora:Add, Text, gmaoboli W160,新建毛玻璃.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)

@@ -4503,6 +4503,12 @@ return
 ::cachemethod::
 ::cachefunc::
 ::cachefunction::
+::paramscache::
+::paramcache::
+::hanshuhuancun::
+::hanshucache::
+::funcache::
+::memoized::
 Var = 
 (
 const memoized = fn => {

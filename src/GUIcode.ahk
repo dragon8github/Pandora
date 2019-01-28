@@ -1,4 +1,55 @@
-﻿xuanliyanhua:
+﻿maoboli:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Frosted glass</title>
+<style media="screen">
+/**
+ * http://play.csssecrets.io/frosted-glass
+ * https://github.com/markbrown4/css-secrets/blob/master/18-frosted-glass.html
+ */
+body {
+    min-height: 100vh;
+    background: url("http://csssecrets.io/images/tiger.jpg") 0 / cover fixed;
+}
+
+main {
+    position: relative;
+    overflow: hidden;
+    background: hsla(0, 0`%, 100`%, .25) border-box;
+    box-shadow: 0 0 0 1px hsla(0, 0`%, 100`%, .3) inset, 0 .5em 1em rgba(0, 0, 0, 0.6);
+
+    margin: 0 auto;
+    padding: 1em;
+    max-width: 23em;
+}
+
+main::before {
+    content: '';
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    background: url("http://csssecrets.io/images/tiger.jpg") 0 / cover fixed;
+    filter: blur(20px);
+    margin: -30px;
+    z-index: -1;
+}
+</style>
+</head>
+<body>
+    <main>
+        “The only way to get rid of a temptation is to yield to it. Resist it, and your soul grows sick with longing for the things it has forbidden to itself, with desire for what its monstrous laws have made monstrous and unlawful.”</em>
+    </main>
+</body>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+xuanliyanhua:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
 (

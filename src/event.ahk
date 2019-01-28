@@ -103,8 +103,10 @@
 	Menu, EventMenu, Add, js 监听 enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + click, EventHandler
+	Menu, EventMenu, Add, js 组合键监听 ctrl + shift + p, EventHandler
 	Menu, EventMenu, Add, js esc键监听, EventHandler
-
+	Menu, EventMenu, Add, 用Input事件代替keyup事件：$('input').on('input'`, search), EventHandler
+	
 
 	
 	Menu, EventMenu, Show
@@ -126,6 +128,25 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "用Input事件代替keyup事件：$('input').on('input', search)") {
+Var = 
+(
+$('input').on('input', search)
+)
+}
+
+if (v == "js 组合键监听 ctrl + shift + p") {
+Var = 
+(
+$(window).keydown(function (event) {
+	 // 监听 Ctrl + Shift + p 打开搜索框
+	 if (event.ctrlKey && event.shiftKey && event.keyCode == 80) {
+		openPanel()
+	 }
+});
 )
 }
 

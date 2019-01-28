@@ -53,6 +53,13 @@
     Menu, utilsDOM, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
     Menu, utilsDOM, Add, addcss/link 样式加载器, utilsHandler
     
+    Menu, utilsDOM, Add
+    Menu, utilsDOM, Add
+    
+    Menu, utilsDOM, Add, 是否隐藏：$('#div').is(':hidden'), utilsHandler
+    Menu, utilsDOM, Add, 是否显示：$('#div').is(':visible'), utilsHandler
+    Menu, utilsDOM, Add, clickOutSide：!el.contains(event.target), utilsHandler
+    
     
     Menu, utilsObject, Add, for#Object.keys, utilsHandler
     Menu, utilsObject, Add, for#o in obj, utilsHandler
@@ -130,6 +137,7 @@
     Menu, utilsDesignPattern, Add, 透明单例, utilsHandler
     Menu, utilsDesignPattern, Add, 代理单例, utilsHandler
     Menu, utilsDesignPattern, Add, 通用的惰性单例, utilsHandler
+    Menu, utilsDesignPattern, Add, （回调版）单例模式，通常用于ajax类, utilsHandler
     
     
     Menu, utilsDesignPattern, Add, , utilsHandler
@@ -180,6 +188,7 @@
     Menu, utilsMenu, Add, compose 函数组合, utilsHandler
     Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
     Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
+    Menu, utilsMenu, Add, memoized 函数缓存, utilsHandler
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
     Menu, utilsMenu, Add, js获取root（window）对象, utilsHandler
     Menu, utilsMenu, Add, holder占位图, utilsHandler
@@ -230,6 +239,70 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "memoized 函数缓存") {
+SendLevel 1
+SendInput, funcache{tab}
+return
+}
+
+if (v == "是否隐藏：$('#div').is(':hidden')") {
+Var = 
+(
+$('#div').is(':hidden')
+)
+}
+
+if (v == "是否显示：$('#div').is(':visible')") {
+Var = 
+(
+$('#div').is(':visible')
+)
+}
+
+if (v == "clickOutSide：!el.contains(event.target)") {
+Var = 
+(
+!el.contains(event.target)
+)
+}
+
+if (v == "（回调版）单例模式，通常用于ajax类") {
+Var = 
+(
+// （回调版）单例模式，通常用于ajax类
+var getCallBackSingle = function(fn) {
+    // 缓存
+    var cache;
+    // 接受一个回调函数
+    return function (cb) {
+        // 如果有缓存存在，那么直接使用缓存作为回调值，否则使用默认函数
+        cache ? cb.apply(this, cache) : fn(function () {
+            console.log('no cache')
+            // 保存到缓存并且执行回调
+            cb.apply(this, cache = arguments)
+        })
+    }
+};
+
+// demo：获取所有内容
+var getData = function (successcb) {
+    $.ajax({
+        url: "/search.json",
+        dataType: 'json',
+        success: successcb,
+        error: function(e, m){
+           console.log('数据接口请求异常', e, m);
+        }
+    })
+}
+
+// 使用示例
+var _getData = getCallBackSingle(getData)
+_getData(_ => {console.log(20190126191340, _)}) // no cache，[...]
+_getData(_ => {console.log(20190126191340, _)}) // [...]
 )
 }
 
