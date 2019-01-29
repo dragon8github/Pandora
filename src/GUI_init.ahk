@@ -15,7 +15,7 @@ Gui, ISearch:Color, E6FFE6
 Gui, ISearch:Add, Edit, vISearchContent gISearchContent w800 Limit50 Section , 
 
 ; 数据源
-__SEARCH_DATABASE__ := { "home": "/home/dc-user/", "nginx安装目录": "/usr/local/nginx", "nginx.conf": "/usr/local/nginx/conf/nginx.conf", "php-fpm": "/usr/local/bin/php-fpm", "Nginx": "/usr/local/nginx/sbin/nginx", "nginx html": "/usr/local/nginx/html/", "php.ini": "/usr/local/php/php.ini" }
+__SEARCH_DATABASE__ := { "home": "/home/dc2-user/", "nginx安装目录": "/usr/local/nginx", "nginx.conf": "/usr/local/nginx/conf/nginx.conf", "php-fpm": "/usr/local/bin/php-fpm", "Nginx": "/usr/local/nginx/sbin/nginx", "nginx html": "/usr/local/nginx/html/", "php.ini": "/usr/local/php/php.ini" }
 
 ; 创建含名称和大小两列的 ListView:
 Gui, ISearch:Add, ListView, r7 w800 h600 gMyListView xs, Name|Path
