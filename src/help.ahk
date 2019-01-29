@@ -27,6 +27,19 @@ resetlabel:
 return
 
 
+::ahkarr::
+::ahkfor::
+::ahkloop::
+::ahkarray::
+Var =
+(
+myarray := ["a", "b", "c", "d"]
+For key, value in myarray
+            MsgBox `%key`% = `%value`%
+)
+code(Var)
+return
+
 ::ahkcmd::
 Var =
 (

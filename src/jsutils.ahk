@@ -1,5 +1,4 @@
 ﻿!u::
-!i::
     Menu, utilsIs, Add, is, utilsHandler
     Menu, utilsIs, Add, isString, utilsHandler
     Menu, utilsIs, Add, isNumber, utilsHandler

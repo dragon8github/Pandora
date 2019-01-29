@@ -1,168 +1,5 @@
-﻿::pythonpachong::
-::pypachonh::
-::python.pachong::
-::py.pachonh::
-Var =
-(
-# python 3.x 开始自带了pip，如果没有请自信百度安装。
-# pip install beautifulsoup4 requests
-from bs4 import BeautifulSoup
-import requests
-
-res = requests.get('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?range=10')
-res.encoding = 'gbk'
-soup = BeautifulSoup(res.text, 'html.parser')
-table = soup.select('#ContentPlaceHolder1_resultrows table tr')
-myarr = []
-for tr in table:
-	td = tr.select('td')
-	if len(td) > 0:
-		Rank = td[0].text;
-		Address = td[1].text;
-		Quantity = td[2].text;
-		Percentage = td[3].text;
-		myarr.append({"Rank": Rank, "Address": Address, "Quantity": Quantity, "Percentage": Percentage})
-print(myarr)
-)
-code(Var)
-return
-
-::pyfastsort::
-::pykuaisipaixu::
-::pyquicksort::
-Var =
-(
-# 快速排序
-def quicksort(array):
-	# 这不是废话吗？如果数组中只有1个成员或没有成员，那还排个屁序！！
-	if len(array) <= 1:
-		return array
-	else:
-		# 随机选出一个作为排序对比时的【基准数】，这里就取第一个好了最简单了
-		pivot = array[0]
-		# 将比基准数小的放在一个数组中（记得除外基准数，也就是[1:]）
-		less = [i for i in array[1:] if i <= pivot]
-		# 把基准数大的放在另外一个数组中（记得除外基准数，也就是[1:]）
-		greater = [i for i in array[1:] if i > pivot]
-		# 这就是快速排序的精华所在:递归, 然后把三个数据合并
-		return quicksort(less) + [pivot] + quicksort(greater)
-
-print(quicksort([10, 5, 2, 3])) # [2, 3, 5, 10]
-)
-code(Var)
-return
-
-::pyerfenfa::
-::pyerfen::
-::pybinary::
-Var =
-(
-def binary_search(list, target):
-	low = 0
-	high = len(list)
-
-	while not (low > high):
-		mid = int((low + high) / 2)
-		guess = list[mid]
-
-		if guess == target:
-			return mid
-		if guess > target:
-			high = mid - 1
-		else:
-			low = mid + 1
-
-	return None
-
-print(binary_search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5))
-input()
-)
-code(Var)
-return
-
-AppsKey & p::
->^p::
-;pxToRem
-    t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-    SendInput, print(%t%, )`{left 1}
-return
-
-::pytry::
-Var =
-(
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
-
-try:
-    fh = open('testfile', 'w')
-    fh.write('这是一个测试文件，用于测试异常!!')
-except Exception as e:
-   print('Exception 万能异常' + e.message)
-else:
-    print('没有发生异常的话执行这里：内容写入文件成功')
-    fh.close()
-finally:
-	print('退出try时总会执行')
-)
-code(Var)
-return
-
-::pyfor::
-::py.for::
-Var =
-(
-for i in range(5):
-	print('Jimmy Five Times (' + str(i) + ')')
-)
-code(Var)
-return
-
-::pyif::
-::py.if::
-Var =
-(
-if name == 'Alice':
-	print('Hi, Alice')
-elif age < 12
-	print('you are not Alice, kiddo.')
-else:
-	print('you are neither Alice nor a little kid.')
-`)
-)
-code(Var)
-return
-
-::pyclass::
-::py.class::
-Var =
-(
-class Me:
-    def __init__(self, name):
-        self.name = name
-
-    def show(self):
-        print(self.name)
-
-    @staticmethod
-    def version():
-        print('1.0')
-
-
-me = Me('Lee')
-me.show() # Lee
-Me.version() # 1.0
-)
-code(Var)
-return
-
-::prr::
-	t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-    SendInput, print(%t%, )`{left 1}
-return
-
-!p::
+﻿!y::
 	; 爬虫基础
-	
 	Menu, pachong1, Add, bs4 + requests , PythonHandler
 	
 	; def 函数
@@ -707,5 +544,168 @@ if (Var) {
 }
 return
 
+
+
+::pythonpachong::
+::pypachonh::
+::python.pachong::
+::py.pachonh::
+Var =
+(
+# python 3.x 开始自带了pip，如果没有请自信百度安装。
+# pip install beautifulsoup4 requests
+from bs4 import BeautifulSoup
+import requests
+
+res = requests.get('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?range=10')
+res.encoding = 'gbk'
+soup = BeautifulSoup(res.text, 'html.parser')
+table = soup.select('#ContentPlaceHolder1_resultrows table tr')
+myarr = []
+for tr in table:
+	td = tr.select('td')
+	if len(td) > 0:
+		Rank = td[0].text;
+		Address = td[1].text;
+		Quantity = td[2].text;
+		Percentage = td[3].text;
+		myarr.append({"Rank": Rank, "Address": Address, "Quantity": Quantity, "Percentage": Percentage})
+print(myarr)
+)
+code(Var)
+return
+
+::pyfastsort::
+::pykuaisipaixu::
+::pyquicksort::
+Var =
+(
+# 快速排序
+def quicksort(array):
+	# 这不是废话吗？如果数组中只有1个成员或没有成员，那还排个屁序！！
+	if len(array) <= 1:
+		return array
+	else:
+		# 随机选出一个作为排序对比时的【基准数】，这里就取第一个好了最简单了
+		pivot = array[0]
+		# 将比基准数小的放在一个数组中（记得除外基准数，也就是[1:]）
+		less = [i for i in array[1:] if i <= pivot]
+		# 把基准数大的放在另外一个数组中（记得除外基准数，也就是[1:]）
+		greater = [i for i in array[1:] if i > pivot]
+		# 这就是快速排序的精华所在:递归, 然后把三个数据合并
+		return quicksort(less) + [pivot] + quicksort(greater)
+
+print(quicksort([10, 5, 2, 3])) # [2, 3, 5, 10]
+)
+code(Var)
+return
+
+::pyerfenfa::
+::pyerfen::
+::pybinary::
+Var =
+(
+def binary_search(list, target):
+	low = 0
+	high = len(list)
+
+	while not (low > high):
+		mid = int((low + high) / 2)
+		guess = list[mid]
+
+		if guess == target:
+			return mid
+		if guess > target:
+			high = mid - 1
+		else:
+			low = mid + 1
+
+	return None
+
+print(binary_search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5))
+input()
+)
+code(Var)
+return
+
+AppsKey & p::
+>^p::
+;pxToRem
+    t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+    SendInput, print(%t%, )`{left 1}
+return
+
+::pytry::
+Var =
+(
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+try:
+    fh = open('testfile', 'w')
+    fh.write('这是一个测试文件，用于测试异常!!')
+except Exception as e:
+   print('Exception 万能异常' + e.message)
+else:
+    print('没有发生异常的话执行这里：内容写入文件成功')
+    fh.close()
+finally:
+	print('退出try时总会执行')
+)
+code(Var)
+return
+
+::pyfor::
+::py.for::
+Var =
+(
+for i in range(5):
+	print('Jimmy Five Times (' + str(i) + ')')
+)
+code(Var)
+return
+
+::pyif::
+::py.if::
+Var =
+(
+if name == 'Alice':
+	print('Hi, Alice')
+elif age < 12
+	print('you are not Alice, kiddo.')
+else:
+	print('you are neither Alice nor a little kid.')
+`)
+)
+code(Var)
+return
+
+::pyclass::
+::py.class::
+Var =
+(
+class Me:
+    def __init__(self, name):
+        self.name = name
+
+    def show(self):
+        print(self.name)
+
+    @staticmethod
+    def version():
+        print('1.0')
+
+
+me = Me('Lee')
+me.show() # Lee
+Me.version() # 1.0
+)
+code(Var)
+return
+
+::prr::
+	t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+    SendInput, print(%t%, )`{left 1}
+return
 
 
