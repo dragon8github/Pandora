@@ -10,5 +10,16 @@ ISearchGuiClose:
 return
 
 ISearchContent:
-    GuiControlGet, OutputVar, ISearch:, ISearchContent, Text
+    GuiControlGet, OutputVar, ISearch:, ISearchContent, Text	
+	
+	; 删除所有
+	LV_Delete()
+	
+	; 遍历所有数据
+	For key, value in __SEARCH_DATABASE__
+		if (InStr(key, OutputVar) || InStr(value, OutputVar)) {
+			LV_Add("", key, value)
+		}
+	
+	
 return
