@@ -83,6 +83,36 @@
 	Menu, H, Add, `% 获取文件名和后缀示例, ShellHandler
 	Menu, H, Add, #（从左到右）操作符, ShellHandler
 	Menu, H, Add, `%（从右到做）操作符, ShellHandler
+
+	; docker
+	Menu, I, Add, docker ps, ShellHandler2
+	Menu, I, Add, docker ps -a, ShellHandler2
+	Menu, I, Add, docker start <container>, ShellHandler2
+	Menu, I, Add, docker stop <container>, ShellHandler2
+	Menu, I, Add, docker stop <container> && docker rm <container>, ShellHandler2
+	Menu, I, Add, docker images, ShellHandler2
+	Menu, I, Add, docker rmi <IMAGE>, ShellHandler2
+
+	Menu, I, Add
+	Menu, I, Add
+
+	Menu, I, Add, docker cp /root/php/www/index.html <container>:/var/www/, ShellHandler2
+	Menu, I, Add, docker cp <container>:/var/www/ /root/php/, ShellHandler2
+
+	Menu, I, Add
+	Menu, I, Add
+
+	Menu, I, Add, docker exec -i -t <container> /bin/bash, ShellHandler2
+	Menu, I, Add, docker exec -it <container> sh, ShellHandler2
+	Menu, I, Add, docker exec <container> echo 123, ShellHandler2
+
+	Menu, I, Add
+	Menu, I, Add
+
+	Menu, I, Add, docker run -it --rm --name myphp php:7.2.4-cli-alpine3.7 php -m, ShellHandler2
+	Menu, I, Add, docker run --privileged -d -p 8080:80 --name myhttpd -v /root/myweb:/var/www/html centos:httpd /usr/sbin/init, ShellHandler2
+	Menu, I, Add, docker run --name mynginx --privileged -p 9090:80 -v /root/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v /root/nginx/www/:/usr/share/nginx/html/ -d centos:nginx, ShellHandler2
+
 	
 	
 	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler2
@@ -114,6 +144,7 @@
 	Menu, ShellMenu, Add, grep（搜索文本）, :F
 	Menu, ShellMenu, Add, sed（替换文本）, :G
 	Menu, ShellMenu, Add, 强大的 ## 操作符和 `%`% 操作符, :H
+	Menu, ShellMenu, Add, docker, :I
 	
 	Menu, ShellMenu, Add
 	Menu, ShellMenu, Add
@@ -123,7 +154,8 @@
 	Menu, ShellMenu, Add, 批量重命名, ShellHandler
 	Menu, ShellMenu, Add, curl -O 下载, ShellHandler
 	Menu, ShellMenu, Add, curl -i 输出响应头, ShellHandler
-	
+
+
 	
 	Menu, ShellMenu, Show
 	Menu, ShellMenu, DeleteAll

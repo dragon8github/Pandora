@@ -371,6 +371,13 @@ if (v == "event.preventDefault(); event.stopPropagation();") {
 Var = 
 (
 event.preventDefault(); event.stopPropagation();
+
+var stope = function(thisEvent){
+  thisEvent = thisEvent || window.event;
+  try { thisEvent.stopPropagation() } catch(e){
+    thisEvent.cancelBubble = true;
+  }
+};
 )
 }
 

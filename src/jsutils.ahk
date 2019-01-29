@@ -85,8 +85,6 @@
     Menu, utilsObject, Add, getter / setter , utilsHandler
 
 
-    
-    Menu, utilsSolution, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsSolution, Add, cookie 库, utilsHandler
     Menu, utilsSolution, Add, Model 类, utilsHandler
     Menu, utilsSolution, Add, rem 解决方案 / 淘宝解决方案, utilsHandler
@@ -94,7 +92,7 @@
     Menu, utilsSolution, Add, cache request axios 缓存请求, utilsHandler
     Menu, utilsSolution, Add, $.autoscroll 自动滚动, utilsHandler
     Menu, utilsSolution, Add, $.scrollforevery 无缝滚动, utilsHandler
-    Menu, utilsSolution, Add, $.scrollforevery 无缝滚动（Vue版本）, utilsHandler
+    
     Menu, utilsSolution, Add, dragscroll 拖拽滚动, utilsHandler
     Menu, utilsSolution, Add, lazyload 图片懒加载, utilsHandler
     Menu, utilsSolution, Add, preloadimg 图片预加载, utilsHandler
@@ -159,28 +157,31 @@
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
     Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
-    Menu, utilsmy, Add, 宇宙流星雨canvas, utilsHandler
+    Menu, utilsmy, Add, 获取前6个月/前15天数据, EventHandler
+    
+    Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
+    Menu, utilsjuran, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
+    Menu, utilsjuran, Add, holder占位图, utilsHandler
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     Menu, utilsMenu , Add, Object 操作, :utilsObject
-    Menu, utilsMenu , Add, 解决方案/功能/库, :utilsSolution
+    Menu, utilsMenu , Add, 解决方案, :utilsSolution
     Menu, utilsMenu , Add, 设计模式, :utilsDesignPattern
     Menu, utilsMenu, Add, (〜￣△￣)〜认知～(￣▽￣～), :utilspractice
     Menu, utilsMenu, Add, (=・ω・=) 我的 (｀・ω・´), :utilsmy
+    Menu, utilsMenu, Add, 居然还有这种操作？Σ(ﾟдﾟ;), :utilsjuran
 
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
-    
-    Menu, utilsMenu, Add, 获取前6个月/前15天数据, EventHandler
+
     Menu, utilsMenu, Add, urlparams 获取路由参数, utilsHandler
     Menu, utilsMenu, Add, getuuid 32位随机数, utilsHandler
-    Menu, utilsMenu, Add, 使用了es6的set生产1W条不重复8位的数字, utilsHandler
     Menu, utilsMenu, Add, uuid 超简易版, utilsHandler
-    Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
-    Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
-    Menu, utilsMenu, Add, pad 自动补全, utilsHandler
+    Menu, utilsMenu, Add, 使用了es6的set生产1W条不重复8位的数字, utilsHandler
+    Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
+    Menu, utilsMenu, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -189,37 +190,34 @@
     Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
     Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
     Menu, utilsMenu, Add, memoized 函数缓存, utilsHandler
+    
+    Menu, utilsMenu, Add, , utilsHandler
+    Menu, utilsMenu, Add, , utilsHandler
+    
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
-    Menu, utilsMenu, Add, js获取root（window）对象, utilsHandler
-    Menu, utilsMenu, Add, holder占位图, utilsHandler
-    Menu, utilsMenu, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
-    Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
-
-    
-    Menu, utilsMenu, Add, , utilsHandler
-    Menu, utilsMenu, Add, , utilsHandler
-    
     Menu, utilsMenu, Add, poll 递归, utilsHandler
+    Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
+    Menu, utilsMenu, Add, pad 自动补全, utilsHandler
+    Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
+    Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
+    
+    Menu, utilsMenu, Add, , utilsHandler
+    Menu, utilsMenu, Add, , utilsHandler
+    
+    Menu, utilsMenu, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
     Menu, utilsMenu, Add, encodeURI URI过滤, utilsHandler
-    Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
+    Menu, utilsMenu, Add, js获取root（window）对象, utilsHandler
     Menu, utilsMenu, Add, escapeHTML 防止XSS, utilsHandler
-    Menu, utilsMenu, Add, stopevent 阻止事件冒泡, utilsHandler
     Menu, utilsMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
+    Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
 	Menu, utilsMenu, Add, , utilsHandler
     
-    
-    Menu, utilsMenu, Add, es6.class, utilsHandler
-    Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
-    Menu, utilsMenu, Add, 社会主义点击事件, utilsHandler
-    Menu, utilsMenu, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
     Menu, utilsMenu, Add, 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug, utilsHandler
     Menu, utilsMenu, Add, Android 输入法键盘 和 input 问题:scrollIntoViewIfNeeded, utilsHandler
-    Menu, utilsMenu, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
-    Menu, utilsMenu, Add, assert原始单元测试, utilsHandler
     
-    
+
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
     Menu, utilsIs, DeleteAll
@@ -306,67 +304,6 @@ _getData(_ => {console.log(20190126191340, _)}) // [...]
 )
 }
 
-if (v == "assert原始单元测试") {
-Var = 
-(
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <style>
-    ul#results { border: 2px ridge maroon; background-color: #ffffcc; padding: 0.25em 1.5em; margin-left: 0; }
-    li.pass { color: #006400; }
-    li.fail { color: #dc143c; text-decoration: line-through; }
-    </style>
-</head>
-
-<body>
-    <div id="results"></div>
-</body>
-<script>
-(function(win) {
-  var results;
-  win.assert = function assert(value, desc) {
-    var li = document.createElement("li");
-    li.className = value ? "pass" : "fail";
-    li.appendChild(document.createTextNode(desc));
-    results.appendChild(li);
-    if (!value) {
-      li.parentNode.parentNode.className = "fail";
-    }
-    return li;
-  };
-  win.test = function test(name, fn) {
-    results = document.getElementById("results");
-    results = assert(true, name).appendChild(
-        document.createElement("ul"));
-    fn();
-  };
-})(window);
-
-window.onload = function() {
-  test("A test.", function() {
-    assert(true, "First assertion completed");
-    assert(true, "Second assertion completed");
-    assert(true, "Third assertion completed");
-  });
-  test("Another test.", function() {
-    assert(true, "First test completed");
-    assert(false, "Second test failed");
-    assert(true, "Third assertion completed");
-  });
-  test("A third test.", function() {
-    assert(null, "fail");
-    assert(5, "pass")
-  });
-};
-</script>
-</html>
-)
-}
 
 if (v == "parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162") {
 Var = 
@@ -378,91 +315,6 @@ dict.offset = [
 )
 }
 
-
-if (v == "宇宙流星雨canvas") {
-Var = 
-(
-<!-- 星空背景 -->
-<canvas id='space'></canvas>
-
-// 星空背景canvas
-bg (canvas) {
-    const c = canvas.getContext("2d");
-    const numStars = 1900
-    const radius = '0.' + Math.floor(Math.random() * 9) + 1
-    const focalLength = canvas.width * 2
-
-    let centerX, centerY
-    let stars = []
-    let star
-    let i
-
-    initializeStars();
-
-    function initializeStars() {
-        centerX = canvas.width / 2;
-        centerY = canvas.height / 2;
-
-        stars = [];
-        for (i = 0; i < numStars; i++) {
-            star = { x: Math.random() * canvas.width, y: Math.random() * canvas.height, z: Math.random() * canvas.width, o: '0.' + Math.floor(Math.random() * 99) + 1 };
-            stars.push(star);
-        }
-    }
-
-    function moveStars() {
-        for (i = 0; i < numStars; i++) {
-            star = stars[i];
-            star.z--;
-
-            if (star.z <= 0) {
-                star.z = canvas.width;
-            }
-        }
-    }
-
-    function drawStars() {
-        var pixelX, pixelY, pixelRadius;
-
-        if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initializeStars();
-        }
-
-        c.fillStyle = "rgba(0,10,20,1)";
-        c.fillRect(0, 0, canvas.width, canvas.height);
-        c.fillStyle = "rgba(209, 255, 255, " + radius + ")";
-
-        for (i = 0; i < numStars; i++) {
-            star = stars[i];
-
-            pixelX = (star.x - centerX) * (focalLength / star.z);
-            pixelX += centerX;
-            pixelY = (star.y - centerY) * (focalLength / star.z);
-            pixelY += centerY;
-            pixelRadius = 1 * (focalLength / star.z);
-
-            c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
-            c.fillStyle = "rgba(209, 255, 255, " + star.o + ")";
-        }
-    }
-
-    return function executeFrame() {
-        moveStars();
-        drawStars();
-        canvas.animateID = window.requestAnimFrame(executeFrame);
-    }
-}
-
-mounted () {
-    // canvas 
-    this.canvas = document.getElementById("space")
-    // 获取动画的开关
-    this.executeFrame = this.bg(this.canvas)
-}
-)
-}
 
 if (v == "filterhtml: 移除html标签，只提取文本text()") {
 SendLevel 1
@@ -569,136 +421,6 @@ getMonthxAxisDate(str, len) {
         // 翻转一下顺序，让数组符合desc顺序的直觉
     }).reverse()
 },
-)
-}
-
-if (v == "$.scrollforevery 无缝滚动（Vue版本）") {
-Var = 
-(
-<template>
-    <div class="growthRanking" :class="{ 'emptying': town.empty }">
-        <div class='growthRanking__header'>
-            <span class='growthRanking__header--id'>排名</span>
-            <span class='growthRanking__header--name'>事件名称</span>
-            <span class='growthRanking__header--count'>事件增长量（件）</span>
-        </div>
-
-       <div class='growthRanking__rows' ref='dragscroll'>
-           <template v-if='maybe(_=> town.data.length, 0)'>
-               <div class='growthRanking__row' v-for='(item, index) in town.data.concat(town.data)' :key='index' @click.stop = "go(item.itemId)">
-                   <div class='growthRanking__row--id' </div>
-                   <div class='growthRanking__row--name' :title='item.itemName'>{{ item.itemName }}</div>
-                   <div class='growthRanking__row--count'>{{ item.countt }}</div>
-               </div>
-           </template>
-       </div>
-    </div>
-</template>
-
-<script>
-import { dragScroll, getCityIdList } from '@/utils/utils'
-export default {
-    name: 'growthRanking',
-    data() {
-        return {
-            timer: null,
-            dragScrollClick: null,
-            cityIdList: getCityIdList(),
-        }
-    },
-    methods: {
-        go(itemId) {
-            this.dragScrollClick(_ => {
-                // 设置单位id
-                this.$store.dispatch('list/departmentSelect', this.eq_departId)
-                // 设置事项id
-                this.$store.dispatch('list/matterSelect', itemId)
-                // // 跳转到部门二级
-                this.$router.push('./details')
-            })
-        },
-    },
-    computed: {
-        town() {
-            return this.maybe(_ => this.$store.state.departmentDetails.getDepartSecondGrowth)
-        },
-        eq_departId () {
-            return this.$store.state.departmentDetails.eq_departId
-        }
-    },
-    watch: {
-        town: {
-            deep: true,
-            handler (newV, oldV) {
-                if (newV) {
-                    setTimeout(() => {
-                        // 没有滚动条也可以滚动
-                        $('.growthRanking__rows').niceScroll({ scrollbarid: 'growthRanking--scrollbarid' })
-                        // 鼠标拖拽滚动
-                        this.dragScrollClick = dragScroll(this.$refs.dragscroll)
-                    }, 350);
-
-                    // 开始自动滚动
-                    const $app = $('.growthRanking__rows')
-                    // 每一条的高度
-                    const innerHeight = window.px2px(65)
-                    // 固定的33个东莞镇区
-                    const len = newV.length
-                    // 边界点
-                    const distance = innerHeight * len
-                    // 是否停止？
-                    let stop = false
-
-                    // 无限滚动的函数
-                    const _start = () => {
-                        // 检测是否停止
-                        if (stop) return
-
-                        // 清空计时器
-                        window.cancelAnimationFrame(this.timer)
-
-                        // 获取当前滚动
-                        const scrollDistance = $app.scrollTop();
-
-                        // 如果触发临界点
-                        if (scrollDistance >= distance) {
-                             // 0 返回到第一层的指定距离
-                            $app.scrollTop(scrollDistance `% distance)
-                        } else {
-                            // 滚动
-                            $app.scrollTop(scrollDistance + 1)
-                        }
-
-                        // 尽量保证性能
-                        this.timer = window.requestAnimFrame(_start)
-                    }
-
-                    // 开始滚动
-                    _start()
-
-                    // 鼠标开关
-                    $app.mouseover(e => {
-                        stop = true
-                    }).mouseleave(e => {
-                        stop = false
-                        _start()
-                    })
-                }
-            }
-        }
-    },
-    mounted() {
-        
-    },
-    // 页面离开的时候，初始化一些参数配置
-    beforeRouteLeave  (to, from, next) {
-        // 清空计时器
-        window.cancelAnimationFrame(this.timer)
-        // 放行
-        next();
-    },
-}
-</script>
 )
 }
 
@@ -2827,18 +2549,6 @@ if (v == "getstyle") {
 Var = 
 (
 getComputedStyle(el)[ruleName];
-)
-}
-
-if (v == "stopevent 阻止事件冒泡") {
-Var = 
-(
-var stope = function(thisEvent){
-  thisEvent = thisEvent || window.event;
-  try { thisEvent.stopPropagation() } catch(e){
-    thisEvent.cancelBubble = true;
-  }
-};
 )
 }
 

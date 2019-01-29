@@ -57,9 +57,9 @@
   Menu, VueMenu, Add, 波浪效果组件, VueHandler
   Menu, VueMenu, Add, 波浪效果指令, VueHandler
   Menu, VueMenu, Add, NProgress页面加载组件, VueHandler
+  Menu, VueMenu, Add, 宇宙流星雨canvas, VueHandler
+  Menu, utilsSolution, Add, $.scrollforevery 无缝滚动（Vue版本）, utilsHandler
   
-
-
   Menu, VueMenu, Show
   Menu, VueMenu, DeleteAll
 return
@@ -73,6 +73,223 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+
+if (v == "$.scrollforevery 无缝滚动（Vue版本）") {
+Var = 
+(
+<template>
+    <div class="growthRanking" :class="{ 'emptying': town.empty }">
+        <div class='growthRanking__header'>
+            <span class='growthRanking__header--id'>排名</span>
+            <span class='growthRanking__header--name'>事件名称</span>
+            <span class='growthRanking__header--count'>事件增长量（件）</span>
+        </div>
+
+       <div class='growthRanking__rows' ref='dragscroll'>
+           <template v-if='maybe(_=> town.data.length, 0)'>
+               <div class='growthRanking__row' v-for='(item, index) in town.data.concat(town.data)' :key='index' @click.stop = "go(item.itemId)">
+                   <div class='growthRanking__row--id' </div>
+                   <div class='growthRanking__row--name' :title='item.itemName'>{{ item.itemName }}</div>
+                   <div class='growthRanking__row--count'>{{ item.countt }}</div>
+               </div>
+           </template>
+       </div>
+    </div>
+</template>
+
+<script>
+import { dragScroll, getCityIdList } from '@/utils/utils'
+export default {
+    name: 'growthRanking',
+    data() {
+        return {
+            timer: null,
+            dragScrollClick: null,
+            cityIdList: getCityIdList(),
+        }
+    },
+    methods: {
+        go(itemId) {
+            this.dragScrollClick(_ => {
+                // 设置单位id
+                this.$store.dispatch('list/departmentSelect', this.eq_departId)
+                // 设置事项id
+                this.$store.dispatch('list/matterSelect', itemId)
+                // // 跳转到部门二级
+                this.$router.push('./details')
+            })
+        },
+    },
+    computed: {
+        town() {
+            return this.maybe(_ => this.$store.state.departmentDetails.getDepartSecondGrowth)
+        },
+        eq_departId () {
+            return this.$store.state.departmentDetails.eq_departId
+        }
+    },
+    watch: {
+        town: {
+            deep: true,
+            handler (newV, oldV) {
+                if (newV) {
+                    setTimeout(() => {
+                        // 没有滚动条也可以滚动
+                        $('.growthRanking__rows').niceScroll({ scrollbarid: 'growthRanking--scrollbarid' })
+                        // 鼠标拖拽滚动
+                        this.dragScrollClick = dragScroll(this.$refs.dragscroll)
+                    }, 350);
+
+                    // 开始自动滚动
+                    const $app = $('.growthRanking__rows')
+                    // 每一条的高度
+                    const innerHeight = window.px2px(65)
+                    // 固定的33个东莞镇区
+                    const len = newV.length
+                    // 边界点
+                    const distance = innerHeight * len
+                    // 是否停止？
+                    let stop = false
+
+                    // 无限滚动的函数
+                    const _start = () => {
+                        // 检测是否停止
+                        if (stop) return
+
+                        // 清空计时器
+                        window.cancelAnimationFrame(this.timer)
+
+                        // 获取当前滚动
+                        const scrollDistance = $app.scrollTop();
+
+                        // 如果触发临界点
+                        if (scrollDistance >= distance) {
+                             // 0 返回到第一层的指定距离
+                            $app.scrollTop(scrollDistance `% distance)
+                        } else {
+                            // 滚动
+                            $app.scrollTop(scrollDistance + 1)
+                        }
+
+                        // 尽量保证性能
+                        this.timer = window.requestAnimFrame(_start)
+                    }
+
+                    // 开始滚动
+                    _start()
+
+                    // 鼠标开关
+                    $app.mouseover(e => {
+                        stop = true
+                    }).mouseleave(e => {
+                        stop = false
+                        _start()
+                    })
+                }
+            }
+        }
+    },
+    mounted() {
+        
+    },
+    // 页面离开的时候，初始化一些参数配置
+    beforeRouteLeave  (to, from, next) {
+        // 清空计时器
+        window.cancelAnimationFrame(this.timer)
+        // 放行
+        next();
+    },
+}
+</script>
+)
+}
+
+
+if (v == "宇宙流星雨canvas") {
+Var = 
+(
+<!-- 星空背景 -->
+<canvas id='space'></canvas>
+
+// 星空背景canvas
+bg (canvas) {
+    const c = canvas.getContext("2d");
+    const numStars = 1900
+    const radius = '0.' + Math.floor(Math.random() * 9) + 1
+    const focalLength = canvas.width * 2
+
+    let centerX, centerY
+    let stars = []
+    let star
+    let i
+
+    initializeStars();
+
+    function initializeStars() {
+        centerX = canvas.width / 2;
+        centerY = canvas.height / 2;
+
+        stars = [];
+        for (i = 0; i < numStars; i++) {
+            star = { x: Math.random() * canvas.width, y: Math.random() * canvas.height, z: Math.random() * canvas.width, o: '0.' + Math.floor(Math.random() * 99) + 1 };
+            stars.push(star);
+        }
+    }
+
+    function moveStars() {
+        for (i = 0; i < numStars; i++) {
+            star = stars[i];
+            star.z--;
+
+            if (star.z <= 0) {
+                star.z = canvas.width;
+            }
+        }
+    }
+
+    function drawStars() {
+        var pixelX, pixelY, pixelRadius;
+
+        if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initializeStars();
+        }
+
+        c.fillStyle = "rgba(0,10,20,1)";
+        c.fillRect(0, 0, canvas.width, canvas.height);
+        c.fillStyle = "rgba(209, 255, 255, " + radius + ")";
+
+        for (i = 0; i < numStars; i++) {
+            star = stars[i];
+
+            pixelX = (star.x - centerX) * (focalLength / star.z);
+            pixelX += centerX;
+            pixelY = (star.y - centerY) * (focalLength / star.z);
+            pixelY += centerY;
+            pixelRadius = 1 * (focalLength / star.z);
+
+            c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
+            c.fillStyle = "rgba(209, 255, 255, " + star.o + ")";
+        }
+    }
+
+    return function executeFrame() {
+        moveStars();
+        drawStars();
+        canvas.animateID = window.requestAnimFrame(executeFrame);
+    }
+}
+
+mounted () {
+    // canvas 
+    this.canvas = document.getElementById("space")
+    // 获取动画的开关
+    this.executeFrame = this.bg(this.canvas)
+}
 )
 }
 
