@@ -142,6 +142,7 @@
     
     Menu, utilsDesignPattern, Add, JavaScript版 策略模式, utilsHandler
     Menu, utilsDesignPattern, Add, __EVENT__消息订阅, utilsHandler
+    Menu, utilsDesignPattern, Add, es6 超简洁版Event事件模块, utilsHandler
     
     Menu, utilsDesignPattern, Add, , utilsHandler
     Menu, utilsDesignPattern, Add, , utilsHandler
@@ -152,6 +153,10 @@
     Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     Menu, utilspractice, Add, curry2 二元参数的手动柯里化, utilsHandler
+    Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
+    Menu, utilspractice, Add, 多个异步操作时，请毫不犹豫用Pormise.all, utilsHandler
+    Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
+    
     
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
@@ -162,6 +167,12 @@
     Menu, utilsjuran, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
     Menu, utilsjuran, Add, holder占位图, utilsHandler
     
+    
+    Menu, utilsmaybe, Add, 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug, utilsHandler
+    Menu, utilsmaybe, Add, Android 输入法键盘 和 input 问题:scrollIntoViewIfNeeded, utilsHandler
+    Menu, utilsmaybe, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
+    Menu, utilsmaybe, Add, js获取root（window）对象, utilsHandler
+    
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     Menu, utilsMenu , Add, Object 操作, :utilsObject
@@ -170,6 +181,7 @@
     Menu, utilsMenu, Add, (〜￣△￣)〜认知～(￣▽￣～), :utilspractice
     Menu, utilsMenu, Add, (=・ω・=) 我的 (｀・ω・´), :utilsmy
     Menu, utilsMenu, Add, 居然还有这种操作？Σ(ﾟдﾟ;), :utilsjuran
+    Menu, utilsMenu, Add, 没准将来会有用呢？╮(￣▽￣)╭, :utilsmaybe
 
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -180,7 +192,9 @@
     Menu, utilsMenu, Add, uuid 超简易版, utilsHandler
     Menu, utilsMenu, Add, 使用了es6的set生产1W条不重复8位的数字, utilsHandler
     Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
-    Menu, utilsMenu, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
+    
+    Menu, utilsMenu, Add, 获取localStorage的剩余容量, utilsHandler
+    Menu, utilsMenu, Add, 获取localStorage最大容量, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -193,9 +207,9 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
+    Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
     Menu, utilsMenu, Add, poll 递归, utilsHandler
-    Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
     Menu, utilsMenu, Add, pad 自动补全, utilsHandler
     Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
     Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
@@ -205,17 +219,10 @@
     
     Menu, utilsMenu, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
     Menu, utilsMenu, Add, encodeURI URI过滤, utilsHandler
-    Menu, utilsMenu, Add, js获取root（window）对象, utilsHandler
     Menu, utilsMenu, Add, escapeHTML 防止XSS, utilsHandler
     Menu, utilsMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
     Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
-    
-    Menu, utilsMenu, Add, , utilsHandler
-	Menu, utilsMenu, Add, , utilsHandler
-    
-    Menu, utilsMenu, Add, 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug, utilsHandler
-    Menu, utilsMenu, Add, Android 输入法键盘 和 input 问题:scrollIntoViewIfNeeded, utilsHandler
-    
+        
 
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -236,6 +243,139 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "es6 超简洁版Event事件模块") {
+Var = 
+(
+class Event {
+	constructor(props) {
+	    this.map = {}
+	}
+
+	add (name, fn) {
+		if (this.map[name])
+			this.map[name].push(fn)
+		else
+			this.map[name] = [fn]
+		return this
+	}
+
+	emit (name, ...args) {
+		// 遍历数组中的所有函数并且执行，注入args
+		this.map[name].forEach(_ => _(...args))
+		// 返回prototype可以形成链式
+		return this
+	}
+}
+
+let e = new Event()
+// 我们约定第一个参数是err信息，如果没有错误则注入null
+e.add("hello", (err, name) => {
+	if (err) return console.error(err)
+	console.log(name)
+})
+.emit('hello', '发送错误')
+.emit('hello', null, 'success')
+)
+}
+
+
+if (v == "...args参数和fn(...args) 入参的技巧和认知") {
+Var = 
+(
+emit (name, ...args) {
+    // 遍历数组中的所有函数并且执行，注入args
+    this.map[name].forEach(_ => _(...args))
+    // 能形成链式
+    return this
+}
+)
+}
+
+if (v == "多个异步操作时，请毫不犹豫用Pormise.all") {
+Var = 
+(
+const getName = new Promise((resolve, reject) => {
+   setTimeout(function () {
+        resolve('success') // reject('fail')
+   }, 50);
+})
+Promise.all([getName, getName])
+	.then(console.log)
+	.catch(console.log)
+)
+}
+
+if (v == "对象字面量如何使用async/await标记") {
+Var = 
+(
+// 其实很简单，最最前面加入即可。
+async init ({ commit, state, dispatch, rootState })  {
+    // 获取部门id列表（包含重映射部门id）
+    await dispatch('getAllDepartmentItems')
+    // 获取事项id列表（包含重映射事项id）
+    await dispatch('getAllMatterItems')
+},
+
+// 如果是传统的也可以这样
+init: async function  ({ commit, state, dispatch, rootState }) {
+    // 获取部门id列表（包含重映射部门id）
+    await dispatch('getAllDepartmentItems')
+    // 获取事项id列表（包含重映射事项id）
+    await dispatch('getAllMatterItems')
+}
+)
+}
+
+if (v == "获取localStorage的剩余容量") {
+Var = 
+(
+(function(){
+    if(!window.localStorage) {
+        console.log('浏览器不支持localStorage');
+    }
+    var size = 0;
+    for(item in window.localStorage) {
+        if(window.localStorage.hasOwnProperty(item)) {
+            size += window.localStorage.getItem(item).length;
+        }
+    }
+    console.log('当前localStorage剩余容量为' + (size / 1024).toFixed(2) + 'KB');
+})()
+)
+}
+
+if (v == "获取localStorage最大容量") {
+Var = 
+(
+(function() {
+   if(!window.localStorage) {
+   console.log('当前浏览器不支持localStorage!')
+   }    var test = '0123456789';
+   var add = function(num) {
+     num += num;
+     if(num.length == 10240) {
+       test = num;
+       return;
+     }
+     add(num);
+   }
+   add(test);
+   var sum = test;
+   var show = setInterval(function(){
+      sum += test;
+      try {
+       window.localStorage.removeItem('test');
+       window.localStorage.setItem('test', sum);
+       console.log(sum.length / 1024 + 'KB');
+      } catch(e) {
+       console.log(sum.length / 1024 + 'KB超出最大限制');
+       clearInterval(show);
+      }
+   }, 0.1)
+ })()
 )
 }
 

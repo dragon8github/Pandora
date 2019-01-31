@@ -870,6 +870,8 @@ return
 ::e.stop::
 Var =
 (
+event.preventDefault(); event.stopPropagation();
+
 var stope = function(thisEvent){
   thisEvent = thisEvent || window.event;
   try { thisEvent.stopPropagation() } catch(e){
@@ -4643,6 +4645,7 @@ return
 
 ::return promise::
 ::new promise::
+::new p::
 ::promise::
 Var = 
 (
