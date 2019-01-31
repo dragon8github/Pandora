@@ -4643,6 +4643,47 @@ getProxyList().then(function (proxyList) {
 code(Var)
 return
 
+::es6.event::
+::es6.__event__::
+::es6evemt::
+::eventes6::
+::event6::
+::new event::
+Var =
+(
+class Event {
+	constructor(props) {
+	    this.map = {}
+	}
+
+	add (name, fn) {
+		if (this.map[name])
+			this.map[name].push(fn)
+		else
+			this.map[name] = [fn]
+		return this
+	}
+
+	emit (name, ...args) {
+		// 遍历数组中的所有函数并且执行，注入args
+		this.map[name].forEach(_ => _(...args))
+		// 返回prototype可以形成链式
+		return this
+	}
+}
+
+let e = new Event()
+// 我们约定第一个参数是err信息，如果没有错误则注入null
+e.add("hello", (err, name) => {
+	if (err) return console.error(err)
+	console.log(name)
+})
+.emit('hello', '发送错误')
+.emit('hello', null, 'success')
+)
+code(Var)
+return
+
 ::return promise::
 ::new promise::
 ::new p::
