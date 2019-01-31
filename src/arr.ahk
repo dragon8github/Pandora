@@ -25,8 +25,15 @@ return
 ::arra::
 ::arrr::
 !a::
-	Menu, arrayMenu, Add,  加强版map遍历:fuckmap, ForHandler
-	Menu, arrayMenu, Add,  新建长度为N的数组[...Array(100)], ForHandler
+	Menu, arrayMenu, Add, 加强版map遍历:fuckmap, ForHandler
+	Menu, arrayMenu, Add, 新建长度为N的数组[...Array(100)], ForHandler
+    Menu, arrayMenu, Add, unique 数组去重复, ForHandler
+    Menu, arrayMenu, Add, Math.max.apply 获取数组最大值, ForHandler
+    Menu, arrayMenu, Add, 使用了es6的set生产1W条不重复8位的数字, ForHandler
+	
+	Menu, arrayMenu, Add,, ForHandler
+	Menu, arrayMenu, Add,, ForHandler
+	
 	Menu, arrayMenu, Add,  for i++, ForHandler
 	Menu, arrayMenu, Add,  for-- 循环中splice需要使用, ForHandler
 	Menu, arrayMenu, Add,  for in, ForHandler
@@ -63,8 +70,34 @@ Var :=
 if (v == "") {
 Var = 
 (
-
 )
+}
+
+if (v == "使用了es6的set生产1W条不重复8位的数字") {
+Var = 
+(
+/**
+ * @desc - 生产1W条8位的数字.使用了es6的set。
+ *         set的特性是不允许重复的值存在。利用这个特性来剔除重复的值
+ */
+var _set = new Set();
+while(_set.size != 10000) {
+    _set.add(~~(Math.random() * (99999999 - 10000000 + 1) + 10000000));
+}
+)
+}
+
+if (v == "Math.max.apply 获取数组最大值") {
+Var = 
+(
+Math.max.apply(null, arr)
+)
+}
+
+if (v == "unique 数组去重复") {
+SendLevel 1
+SendInput, norepeatarr{tab}
+return
 }
 
 if (v == "((________ = '________') => [...Array(________.length)].reduce((_, __, ___) => ++___))('________')") {

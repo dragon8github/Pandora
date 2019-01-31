@@ -1,4 +1,13 @@
-﻿::nothtml::
+﻿::ps::
+::promise.s::
+Var =
+(
+Promise.resolve('hello')
+)
+code(Var)
+return
+
+::nothtml::
 ::nohtml::
 ::filterhtml::
 Var =
@@ -2316,14 +2325,20 @@ return
 ::uuid::
 Var = 
 (
-// 32位 正式版
-const UUIDGeneratorBrowser = () => ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));
-UUIDGeneratorBrowser(); // '7982fcfe-5721-4632-bede-6000885be57d'
-
 // 9位 简易版
 const MdUuid = () => Math.random().toString(36).slice(4)
 MdUuid() // "r1mca5d4z"
 
+// 32位 正式版
+const UUIDGeneratorBrowser = () => ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));
+UUIDGeneratorBrowser(); // '7982fcfe-5721-4632-bede-6000885be57d'
+
+// 36位
+function getUUID () {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    return (c === 'x' ? (Math.random() * 16 | 0) : ('r&0x3' | '0x8')).toString(16)
+  })
+}
 )
 code(Var)
 return

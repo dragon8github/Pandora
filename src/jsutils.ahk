@@ -143,6 +143,7 @@
     Menu, utilsDesignPattern, Add, JavaScript版 策略模式, utilsHandler
     Menu, utilsDesignPattern, Add, __EVENT__消息订阅, utilsHandler
     Menu, utilsDesignPattern, Add, es6 超简洁版Event事件模块, utilsHandler
+    Menu, utilsDesignPattern, Add, 仿rxjs的观察者模式, utilsHandler
     
     Menu, utilsDesignPattern, Add, , utilsHandler
     Menu, utilsDesignPattern, Add, , utilsHandler
@@ -154,9 +155,10 @@
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     Menu, utilspractice, Add, curry2 二元参数的手动柯里化, utilsHandler
     Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
-    Menu, utilspractice, Add, 多个异步操作时，请毫不犹豫用Pormise.all, utilsHandler
     Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
-    
+    Menu, utilspractice, Add, 多个异步操作时，请毫不犹豫用Pormise.all, utilsHandler
+    Menu, utilspractice, Add, Promise.race只返回最快的一个, utilsHandler
+    Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
     
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
@@ -165,14 +167,15 @@
     
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
-    Menu, utilsjuran, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
     Menu, utilsjuran, Add, holder占位图, utilsHandler
+    Menu, utilsjuran, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
     
     
     Menu, utilsmaybe, Add, 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug, utilsHandler
     Menu, utilsmaybe, Add, Android 输入法键盘 和 input 问题:scrollIntoViewIfNeeded, utilsHandler
     Menu, utilsmaybe, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
     Menu, utilsmaybe, Add, js获取root（window）对象, utilsHandler
+    
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
@@ -200,15 +203,12 @@
     Menu, utilsMenu, Add, , utilsHandler
     
 
-    Menu, utilsMenu, Add, urlparams 获取路由参数, utilsHandler
-    Menu, utilsMenu, Add, getuuid 32位随机数, utilsHandler
     Menu, utilsMenu, Add, uuid 超简易版, utilsHandler
-    Menu, utilsMenu, Add, 使用了es6的set生产1W条不重复8位的数字, utilsHandler
+    Menu, utilsMenu, Add, urlparams 获取路由参数, utilsHandler
+    
     Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
-    
-    Menu, utilsMenu, Add, 获取localStorage的剩余容量, utilsHandler
-    Menu, utilsMenu, Add, 获取localStorage最大容量, utilsHandler
-    
+    Menu, utilsMenu, Add, 获取localStorage剩余容量和最大容量, utilsHandler
+
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
@@ -224,8 +224,6 @@
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
     Menu, utilsMenu, Add, poll 递归, utilsHandler
     Menu, utilsMenu, Add, pad 自动补全, utilsHandler
-    Menu, utilsMenu, Add, unique 数组去重复, utilsHandler
-    Menu, utilsMenu, Add, Math.max.apply 获取数组最大值, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -256,6 +254,133 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "koajs 核心函数compose的超简单源码实现") {
+Var = 
+(
+// https://github.com/koajs/compose/blob/master/index.js
+function compose (middleware) {
+  if (!Array.isArray(middleware)) throw new TypeError('Middleware stack must be an array!')
+  for (const fn of middleware) {
+    if (typeof fn !== 'function') throw new TypeError('Middleware must be composed of functions!')
+  }
+  return function (context, next) {
+    let index = -1
+    return dispatch(0)
+    function dispatch (i) {
+      if (i <= index) return Promise.reject(new Error('next() called multiple times'))
+      index = i
+      let fn = middleware[i]
+      if (i === middleware.length) fn = next
+      if (!fn) return Promise.resolve()
+      try {
+        return Promise.resolve(fn(context, dispatch.bind(null, i + 1)));
+      } catch (err) {
+        return Promise.reject(err)
+      }
+    }
+  }
+}
+
+const a = async (ctx, next) => {
+  console.log(1)
+  const hello = await Promise.resolve('hello')
+  console.log(hello)
+
+  await next()
+  console.log('a end')
+}
+
+const b = async (ctx, next) => {
+  console.log(2)
+  const hello = await Promise.resolve('hello')
+  console.log(hello)
+
+  await next()
+  console.log('b end')
+}
+
+compose([a, b])({});
+// 1
+// hello
+// 2
+// hello
+// b end
+// a end
+)
+}
+
+if (v == "仿rxjs的观察者模式") {
+Var = 
+(
+function create(fn) {
+
+	let isComplete = false
+
+	return ({ next, complete, error }) => {
+		function _next(...args) {
+			if (isComplete) 
+				return
+			next(...args)
+		}
+
+		function _complete(...args) {
+			complete(...args)
+			isComplete = true
+		}
+
+		function _error(...args) {
+			error(...args)
+		}
+
+		// 依赖注入
+		fn({ next: _next, complete: _complete, error: _error })
+
+		// 返回开关
+		return () => (isComplete = true)
+	}
+}
+
+let observerable = create(observer => {
+	setTimeout(() => {
+		observer.next(1)
+	}, 1000)
+	observer.next(2)
+	observer.complete(3)
+})
+
+const subject = {
+	next: value => {
+		console.log(value)
+	},
+	complete: console.log,
+	error: console.log
+}
+
+let unsubscribe = observerable(subject);
+
+// 输出 2
+// 输出 3
+// 并没有输出1，因为 complete 之后 next 就不会生效了。
+)
+}
+
+if (v == "Promise.race只返回最快的一个") {
+Var = 
+(
+const getName = new Promise((resolve, reject) => {
+   setTimeout(function () {
+        resolve('success') // reject('fail')
+   }, 50);
+})
+
+const getNumber = Promise.resolve(1)
+
+Promise.race([getName, getNumber])
+	.then(console.log) // 输出 1 只输出最快返回的一个
+	.catch(console.log)
 )
 }
 
@@ -477,27 +602,11 @@ init: async function  ({ commit, state, dispatch, rootState }) {
 )
 }
 
-if (v == "获取localStorage的剩余容量") {
-Var = 
-(
-(function(){
-    if(!window.localStorage) {
-        console.log('浏览器不支持localStorage');
-    }
-    var size = 0;
-    for(item in window.localStorage) {
-        if(window.localStorage.hasOwnProperty(item)) {
-            size += window.localStorage.getItem(item).length;
-        }
-    }
-    console.log('当前localStorage剩余容量为' + (size / 1024).toFixed(2) + 'KB');
-})()
-)
-}
 
-if (v == "获取localStorage最大容量") {
+if (v == "获取localStorage剩余容量和最大容量") {
 Var = 
 (
+// 获取localStorage最大容量
 (function() {
    if(!window.localStorage) {
    console.log('当前浏览器不支持localStorage!')
@@ -524,6 +633,21 @@ Var =
       }
    }, 0.1)
  })()
+ 
+ 
+// 获取localStorage的剩余容量
+(function(){
+    if(!window.localStorage) {
+        console.log('浏览器不支持localStorage');
+    }
+    var size = 0;
+    for(item in window.localStorage) {
+        if(window.localStorage.hasOwnProperty(item)) {
+            size += window.localStorage.getItem(item).length;
+        }
+    }
+    console.log('当前localStorage剩余容量为' + (size / 1024).toFixed(2) + 'KB');
+})()
 )
 }
 
@@ -712,19 +836,7 @@ getMonthxAxisDate(str, len) {
 }
 
 
-if (v == "使用了es6的set生产1W条不重复8位的数字") {
-Var = 
-(
-/**
- * @desc - 生产1W条8位的数字.使用了es6的set。
- *         set的特性是不允许重复的值存在。利用这个特性来剔除重复的值
- */
-var _set = new Set();
-while(_set.size != 10000) {
-    _set.add(~~(Math.random() * (99999999 - 10000000 + 1) + 10000000));
-}
-)
-}
+
 
 if (v == "获取手机归属地信息：中国移动/中国联通/中国电信") {
 Var = 
@@ -1427,13 +1539,6 @@ Var =
     // 这里加了个类型判断，因为a等元素也会触发blur事件
     ['input', 'textarea'].includes(e.target.localName) && document.body.scrollIntoView(false)
 }, true)
-)
-}
-
-if (v == "uuid 超简易版") {
-Var = 
-(
-const MdUuid = () => Math.random().toString(36).slice(4)
 )
 }
 
@@ -2272,12 +2377,6 @@ for (var i = Things.length - 1; i >= 0; i--) {
 }
 
 
-if (v == "Math.max.apply 获取数组最大值") {
-Var = 
-(
-Math.max.apply(null, arr)
-)
-}
 
 if (v == "Model 类") {
 Var = 
@@ -3216,24 +3315,24 @@ function getElementPosition (el: Element, offset: Object): Object {
 )
 }
 
-if (v == "unique 数组去重复") {
-SendLevel 1
-SendInput, norepeatarr{tab}
-return
-}
 
-if (v == "getuuid 32位随机数") {
+if (v == "uuid 超简易版") {
 Var = 
 (
-// 兼容版
+// 36位
 function getUUID () {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
     return (c === 'x' ? (Math.random() * 16 | 0) : ('r&0x3' | '0x8')).toString(16)
   })
 }
 
-// es6版本
+// 32位 正式版
 const UUIDGeneratorBrowser = () => ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));
+UUIDGeneratorBrowser(); // '7982fcfe-5721-4632-bede-6000885be57d'
+
+// 9位 简易版
+const MdUuid = () => Math.random().toString(36).slice(4)
+MdUuid() // "r1mca5d4z"
 )
 }
 
