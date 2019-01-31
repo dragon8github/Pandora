@@ -1447,6 +1447,7 @@ Number((这里是你的值).toString().match(/^\d+(?:\.\d{0,2})?/))
 code(Var)
 return
 
+::.a::
 ::.add::
 ::.addevent::
 ::.addclick::
@@ -3163,6 +3164,7 @@ code(Var)
 Return
 
 ::.click::
+::.c::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
@@ -3264,6 +3266,18 @@ $.each($('.object'), function (i, e) {
 code(Var)
 Return
 
+
+::.f::
+::.foreach::
+::.for::
+Var =
+(
+.forEach(_ => {  })
+)
+code(Var)
+return
+
+::.e::
 ::.each::
 Var = 
 (
@@ -3296,7 +3310,7 @@ Var =
 function () {}
 )
 code(Var)
-SendInput, {left}{enter}
+SendInput, {left}
 Return
 
 !-::
