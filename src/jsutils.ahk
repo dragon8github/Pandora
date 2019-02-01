@@ -228,6 +228,7 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
+    Menu, utilsMenu, Add, 模拟真实点击click，专门对付clickoutside, utilsHandler
     Menu, utilsMenu, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
     Menu, utilsMenu, Add, encodeURI URI过滤, utilsHandler
     Menu, utilsMenu, Add, escapeHTML 防止XSS, utilsHandler
@@ -254,6 +255,22 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "模拟真实点击click，专门对付clickoutside") {
+Var = 
+(
+var evmousedown = document.createEvent('HTMLEvents'); 
+// evmousedown.clientX = 88
+// evmousedown.clientY = 18
+evmousedown.initEvent('mousedown', false, true); 
+var evmouseup = document.createEvent('HTMLEvents'); 
+// evmouseup.clientX = 88
+// evmouseup.clientY = 18
+evmouseup.initEvent('mouseup', false, true); 
+document.dispatchEvent(evmousedown)
+document.dispatchEvent(evmouseup)
 )
 }
 

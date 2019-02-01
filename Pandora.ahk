@@ -43,6 +43,7 @@ FileDelete, .\src\*.bak
 #Include src/gulp.ahk         ; gulp
 #Include src/python.ahk		  ; python
 #Include src/koa.ahk		  ; koa
+#Include src/docker.ahk		  ; docker
 ; #Include src/sql.ahk		  ; sql
 #Include src/wilddog.ahk	  ; wilddog
 

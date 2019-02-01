@@ -1,4 +1,4 @@
-﻿!y::
+﻿!p::
 	; 爬虫基础
 	Menu, pachong1, Add, bs4 + requests , PythonHandler
 	

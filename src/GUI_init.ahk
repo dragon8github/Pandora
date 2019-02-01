@@ -12,18 +12,23 @@ Gui, ISearch:Default
 Gui, ISearch:Color, E6FFE6
 
 ; 搜索框
-Gui, ISearch:Add, Edit, vISearchContent gISearchContent w800 Limit50 Section , 
+Gui, ISearch:Add, Edit, vISearchContent gISearchContent w800 Limit50 Section
+
+; 提交按钮
+; submit 按钮
+Gui, ISearch:Add, Button, w800 h30 gOpen Section xs h30 yp+30 Default, 打开
 
 ; 数据源
 __SEARCH_DATABASE__ := { "home": "/home/dc2-user/", "nginx安装目录": "/usr/local/nginx", "nginx.conf": "/usr/local/nginx/conf/nginx.conf", "php-fpm": "/usr/local/bin/php-fpm", "Nginx": "/usr/local/nginx/sbin/nginx", "nginx html": "/usr/local/nginx/html/", "php.ini": "/usr/local/php/php.ini" }
 
 ; 创建含名称和大小两列的 ListView:
-Gui, ISearch:Add, ListView, r7 w800 h600 gMyListView xs, Name|Path
+Gui, ISearch:Add, ListView, r7 w800 h600 gMyListView xs yp+40, Name|Path
 
 For key, value in __SEARCH_DATABASE__
 	LV_Add("", key, value)
 
 LV_ModifyCol()
+
 
 /**
 //////////////////////////////////////////////
@@ -194,7 +199,7 @@ Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co/<
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
 Gui, Pandora:Add, Link,, <a href="https://app.didiyun.com/#/dc2/detail?uuid=a289c3f607fd5bbd8261df9b266ae211">滴滴云</a>
-
+Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 
