@@ -1,6 +1,10 @@
-﻿!space::
+﻿
+
+!space::
 	Gui, Pandora:Show,, Pandora
 return 
+
+
 
 
 PandoraGuiEscape:
@@ -304,20 +308,6 @@ SearchContent:
     GuiControlGet, OutputVar, Pandora:, SearchContent, Text
 return
 
-MyListView:
-if (A_GuiEvent = "DoubleClick")
-{
-    LV_GetText(RowText1, A_EventInfo, 1)
-    LV_GetText(RowText2, A_EventInfo, 2)
-    Clipboard := RowText2
-    ToolTip  已加入到剪切板： "%RowText2%"
-    SetTimer, RemoveToolTip, -1000
-}
-return
-
-RemoveToolTip:
-ToolTip
-return
 
 maoboli:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
