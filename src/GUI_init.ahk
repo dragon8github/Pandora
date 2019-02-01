@@ -12,23 +12,24 @@ Gui, ISearch:Default
 Gui, ISearch:Color, E6FFE6
 
 ; 搜索框
-Gui, ISearch:Add, Edit, vISearchContent gISearchContent w800 Limit50 Section
+Gui, ISearch:Add, Edit, vISearchContent gISearchContent w600 Limit50 Section
 
 ; 提交按钮
 ; submit 按钮
-Gui, ISearch:Add, Button, w800 h30 gOpen Section xs h30 yp+30 Default, 打开
+Gui, ISearch:Add, Button, w600 h30 gOpen Section xs h30 yp+30 Default, 打开
+
 
 ; 数据源
-__SEARCH_DATABASE__ := { "post": "C:\Users\Lee\Desktop\my\source\_posts" , "hexo": "C:\Users\Lee\Desktop\my", "12345": "C:\Users\Lee\Desktop\12345-plus-new\dist", "home": "/home/dc2-user/", "nginx安装目录": "/usr/local/nginx", "nginx.conf": "/usr/local/nginx/conf/nginx.conf", "php-fpm": "/usr/local/bin/php-fpm", "Nginx": "/usr/local/nginx/sbin/nginx", "nginx html": "/usr/local/nginx/html/", "php.ini": "/usr/local/php/php.ini" }
+__SEARCH_DATABASE__ := {"post": "C:\Users\Lee\Desktop\my\source\_posts" , "hexo": "C:\Users\Lee\Desktop\my", "12345": "C:\Users\Lee\Desktop\12345-plus-new", "home": "/home/dc2-user/", "nginx安装目录": "/usr/local/nginx", "nginx.conf": "/usr/local/nginx/conf/nginx.conf", "php-fpm": "/usr/local/bin/php-fpm", "Nginx": "/usr/local/nginx/sbin/nginx", "nginx html": "/usr/local/nginx/html/", "php.ini": "/usr/local/php/php.ini" }
 
 ; 创建含名称和大小两列的 ListView:
-Gui, ISearch:Add, ListView, r7 w800 h600 gMyListView AltSubmit xs yp+40, Name|Path
+Gui, ISearch:Add, ListView, r7 w600 h400 gMyListView AltSubmit xs yp+40, Name|Path
 
 For key, value in __SEARCH_DATABASE__
 	LV_Add("", key, value)
 
 LV_ModifyCol()
-
+LV_ModifyCol(2, "SortDesc")
 
 /**
 //////////////////////////////////////////////
