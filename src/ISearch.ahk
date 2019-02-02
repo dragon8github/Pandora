@@ -18,9 +18,10 @@ openthepath(_) {
 		LV_GetText(text, _, 2)
 		StringLower, lowerText, text
 		if (InStr(lowerText, "c:") or InStr(lowerText, "d:") or InStr(lowerText, "e:") or InStr(lowerText, "g:") or InStr(lowerText, "f:") or InStr(lowerText, "h:")) {
-			run, %lowerText%
+			return lowerText
 		}
 	}
+	return ""
 }
 
 MyListView:
@@ -60,8 +61,17 @@ ISearchContent:
 		}
 return
 
-
-
 Open:
-	openthepath(__AINFO__)
+	data := openthepath(__AINFO__)
+	if (data) {
+		run, % data
+	}
+return
+
+
+cmderOpen:
+	data := openthepath(__AINFO__)
+	if (data) {
+		RunByCmder(data)
+	}
 return

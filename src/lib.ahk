@@ -57,6 +57,15 @@ arrincludes(myarr, v) {
 	return b
 }
 
+RunByCmder(name) {
+    myIdea := "C:\Users\Lee\cmder\Cmder.exe"
+    Run, %myIdea% %name%
+}
+
+;^!g::
+;GitBy(Clipboard)
+;return
+
 RunBy(name) {
     myIdea := "C:\Program Files\Sublime Text 3\sublime_text3.exe"
     if (!FileExist(myIdea)) {

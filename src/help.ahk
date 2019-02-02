@@ -518,18 +518,13 @@ return
     Run, %A_Startup%
 return
 
-
+^!c::
+RunByCmder(Clipboard)
+return
 
 :*:d]::  ; 此热字串通过后面的命令把 "]d" 替换成当前日期和时间.
 FormatTime, CurrentDateTime,, yyyy/MM/dd hh:mm:ss
 SendInput %CurrentDateTime%
-return
-
-^!c::
-    SetKeyDelay, 100
-    Sleep, 150
-    Send, ^!1
-    Send, {Alt}hpc
 return
 
 ^1::

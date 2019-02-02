@@ -15,12 +15,13 @@ Gui, ISearch:Color, E6FFE6
 Gui, ISearch:Add, Edit, vISearchContent gISearchContent w600 Limit50 Section
 
 ; 提交按钮
-; submit 按钮
 Gui, ISearch:Add, Button, w600 h30 gOpen Section xs h30 yp+30 Default, 打开
 
+; 提交按钮
+Gui, ISearch:Add, Button, w600 h30 gcmderOpen Section xs h30 yp+30 Default, cmder打开
 
 ; 数据源
-__SEARCH_DATABASE__ := {"post": "C:\Users\Lee\Desktop\my\source\_posts" , "hexo": "C:\Users\Lee\Desktop\my", "12345": "C:\Users\Lee\Desktop\12345-plus-new", "home": "/home/dc2-user/", "nginx安装目录": "/usr/local/nginx", "nginx.conf": "/usr/local/nginx/conf/nginx.conf", "php-fpm": "/usr/local/bin/php-fpm", "Nginx": "/usr/local/nginx/sbin/nginx", "nginx html": "/usr/local/nginx/html/", "php.ini": "/usr/local/php/php.ini" }
+__SEARCH_DATABASE__ := { "chrome": "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", "xshell": "C:\Program Files (x86)\NetSarang\Xshell 6\Xshell.exe", "12345\dist": "C:\Users\Lee\Desktop\12345-plus-new\dist", "印象笔记yxbj": "C:\Program Files (x86)\Evernote\Evernote\印象笔记", "ftp": "C:\Users\Lee\Desktop\FlashFXP_4.3.1.1969\flashfxp.exe", "cylee.top": "https://cylee.top/","post": "C:\Users\Lee\Desktop\my\source\_posts" , "hexo": "C:\Users\Lee\Desktop\my", "12345": "C:\Users\Lee\Desktop\12345-plus-new", "home": "/home/dc2-user/", "nginx安装目录": "/usr/local/nginx", "nginx.conf": "/usr/local/nginx/conf/nginx.conf", "php-fpm": "/usr/local/bin/php-fpm", "Nginx": "/usr/local/nginx/sbin/nginx", "nginx html": "/usr/local/nginx/html/", "php.ini": "/usr/local/php/php.ini" }
 
 ; 创建含名称和大小两列的 ListView:
 Gui, ISearch:Add, ListView, r7 w600 h400 gMyListView AltSubmit xs yp+40, Name|Path
