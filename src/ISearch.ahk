@@ -75,3 +75,10 @@ cmderOpen:
 		RunByCmder(data)
 	}
 return
+
+sublimeOpen:
+	data := openthepath(__AINFO__)
+	if (data) {
+		RunBy(data)
+	}
+return
