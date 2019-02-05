@@ -17,7 +17,7 @@ openthepath(_) {
 	if (_ != -1) {
 		LV_GetText(text, _, 2)
 		StringLower, lowerText, text
-		if (InStr(lowerText, "c:") or InStr(lowerText, "d:") or InStr(lowerText, "e:") or InStr(lowerText, "g:") or InStr(lowerText, "f:") or InStr(lowerText, "h:")) {
+		if (InStr(lowerText, "http") or InStr(lowerText, "c:") or InStr(lowerText, "d:") or InStr(lowerText, "e:") or InStr(lowerText, "g:") or InStr(lowerText, "f:") or InStr(lowerText, "h:")) {
 			return lowerText
 		}
 	}
@@ -31,7 +31,7 @@ if (A_GuiEvent = "Normal") {
 
 if (A_GuiEvent = "RightClick") {
 	__AINFO__ := A_EventInfo 
-	openthepath(__AINFO__)
+	run, % openthepath(__AINFO__)
 }
 
 if (A_GuiEvent = "DoubleClick") {

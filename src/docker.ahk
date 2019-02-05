@@ -21,18 +21,25 @@
 
 	Menu, DockerMenu, Add
 	Menu, DockerMenu, Add
+	
+	Menu, DockerMenu, Add, docker build -t <name> ., DockerMenuHandler2
+	Menu, DockerMenu, Add, docker history <image>, DockerMenuHandler2
+	
+	Menu, DockerMenu, Add
+	Menu, DockerMenu, Add
 
 	Menu, DockerMenu, Add, docker run -it --rm --name myphp php:7.2.4-cli-alpine3.7 php -m, DockerMenuHandler2
 	Menu, DockerMenu, Add, docker run --privileged -d -p 8080:80 --name myhttpd -v /root/myweb:/var/www/html centos:httpd /usr/sbin/init, DockerMenuHandler2
 	Menu, DockerMenu, Add, docker run --name mynginx --privileged -p 9090:80 -v /root/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v /root/nginx/www/:/usr/share/nginx/html/ -d centos:nginx, DockerMenuHandler2
 	
 	Menu, DockerMenu, Show
-	Menu, DockerMenu, DeleteAll ; 解决重复渲染的分割线的bug
+	Menu, DockerMenu, DeleteAll
 return
 
 DockerMenuHandler2:
 v := A_ThisMenuItem
-SendInput,{Text}%v%
+Sleep, 50
+Send, {Text}%v%
 return
 
 

@@ -707,6 +707,8 @@ code(Var)
 return
 
 ::nth::
+    Menu, NthMenu, Add, :first-child, nthHandle
+    Menu, NthMenu, Add, :last-child, nthHandle
 	Menu, NthMenu, Add, :nth-child(n), nthHandle
 	Menu, NthMenu, Add, :nth-child(even), nthHandle
 	Menu, NthMenu, Add, :nth-child(odd), nthHandle
