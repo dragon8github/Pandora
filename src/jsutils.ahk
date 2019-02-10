@@ -151,6 +151,7 @@
     Menu, utilsDesignPattern, Add, 优惠券条件分支：链式after解决方案, utilsHandler
     
     
+    Menu, utilspractice, Add, 函数参数对象深度解构 var a = ({ state: { nums`, numGroup`, map } }) => {}, utilsHandler
     Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     Menu, utilspractice, Add, curry2 二元参数的手动柯里化, utilsHandler
@@ -255,6 +256,17 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "函数参数对象深度解构 var a = ({ state: { nums, numGroup, map } }) => {}") {
+Var = 
+(
+var a = ({ state: { nums, numGroup, map } }) => {
+	console.log(20190209102908, nums, numGroup, map)
+}
+
+a({state: {nums: 1, numGroup: 2, map: 3 } })
 )
 }
 

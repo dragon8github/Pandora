@@ -1010,6 +1010,18 @@ var maxTimeout = 10,
     };
     <这里写上你的判断> ? callback() : setTimeout(poll, wait);
 }());
+
+
+const poll = (conditionFn, callback, wait = 4, maxTimeout = 10, timeout = 0) => {
+  // 请求是否超出阈值
+  if (++timeout > maxTimeout * 1000 / wait) throw new Error('overtime')
+  // 如果条件满足，那么执行，否则轮询
+  conditionFn() ? callback() : setTimeout(() => {poll(conditionFn, callback, wait, maxTimeout, timeout) }, wait)
+}
+
+var i = 0;
+poll(() => i === 1, () => {window.alert([20190209130827, 'ok'].join('  '));}) 
+// i = 1
 )
 code(Var)
 return
@@ -3266,15 +3278,34 @@ $.each($('.object'), function (i, e) {
 code(Var)
 Return
 
+::token::
+Var =
+(
+// 刷新token
+window.token = Math.random().toString(36).slice(4)
+
+// 闭包token
+;(function(_token){
+  return request('/sg/street/sgTownStreet/queryLocationInfo').then(data => {
+    // 如果依然如故，说明没有覆盖可以渲染
+    if (window.token === _token) {
+      
+    }
+  })
+}(token));
+)
+code(Var)
+return
 
 ::.f::
 ::.foreach::
 ::.for::
 Var =
 (
-.forEach(_ => {  })
+.forEach((val, key) => {})
 )
 code(Var)
+Send, {left 2}
 return
 
 ::.e::

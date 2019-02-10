@@ -26,6 +26,27 @@ resetlabel:
     Hotstring("Reset")
 return
 
+::jwd::
+Var =
+(
+// [longitude, latitude]
+[Lng, Lat] 
+)
+code(Var)
+return
+
+::cfg::
+SendInput, configure
+return
+
+::conf::
+::confi::
+::config::
+::configu::
+::configure::
+SendInput, {text}configure
+return
+
 
 ::ahkarr::
 ::ahkfor::
