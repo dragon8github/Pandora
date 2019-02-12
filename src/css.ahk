@@ -87,7 +87,7 @@ return
 
 CssHandler2:
 SendLevel 1
-SendInput, %A_ThisMenuItem%{tab}
+Send, %A_ThisMenuItem%{tab}
 return
 
 CssHandler:
@@ -489,14 +489,14 @@ Var =
 
 if (v == "lit.css极简系列：btn") {
 SendLevel 1
-SendInput, btn{tab}
+Send, btn{tab}
 return
 }
 
 
 if (v == "舒服的字体样式font") {
 SendLevel 1
-SendInput, font{tab}
+Send, font{tab}
 return
 }
 
@@ -518,7 +518,7 @@ cursor: url('https://webapi.amap.com/theme/v1.3/openhand.cur'),default;
 
 if (v == "css.box-shadown") {
 SendLevel 1
-SendInput, box-shadow{tab}
+Send, box-shadow{tab}
 return
 }
 
@@ -574,13 +574,13 @@ will-change: opacity, transform;
 
 if (v == "七喜冒泡进度条") {
 SendLevel 1
-SendInput, maopaojindutiao{tab}
+Send, maopaojindutiao{tab}
 return
 }
 
 if (v == "发廊进度条") {
 SendLevel 1
-SendInput, falangjindutiao{tab}
+Send, falangjindutiao{tab}
 return
 }
 

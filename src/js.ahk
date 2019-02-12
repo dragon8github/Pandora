@@ -1,17 +1,54 @@
-﻿::singajax::
+﻿::singaxios::
+::singleaxios::
+::pedingaxios::
+Var =
+(
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+// 请求队列
+let pending = []
+// 请求拦截器
+axios.interceptors.request.use(config => {
+    // 中止队列中所有相同请求地址的xhr
+    pending.forEach(_ => _.url === config.url && _.cancel('repeat abort'));
+    // 配置取消令牌
+    config.cancelToken = new axios.CancelToken(cancel => {
+       // 移除所有中止的请求，并且将新的请求推入缓存
+       pending = [...pending.filter(_ => _.url != config.url), { url: config.url, cancel }]
+    })
+    return config
+}, error => {
+    return Pormise.reject(error)
+})
+
+for (var i = 0; i < 10; i++) {
+    axios({url: 'http://localhost'}).then(console.log).catch(_ => {
+        if (_.message === 'repeat abort') 
+            return console.info(_.message)
+
+        // other error handler... 
+        // something code... 
+    })
+}
+)
+code(Var)
+return
+
+::singajax::
 ::singleajax::
+::pedingajax::
 Var =
 (
 //（核心）以url相同作为重复条件，你可以根据自己的情况编写自己的重复条件
 var SingleAjax = function () {
-    // 缓存的队列 
-    var cache = [];
+    // 缓存的队列
+    var pending = [];
     // 返回单例模式ajax
     return function (opts) {
         // 中止队列中所有相同请求地址的xhr
-        cache.forEach(_ => _.url === opts.url && _.xhr.abort());
-        // 将新的请求推出缓存
-        cache.push({ url: opts.url, xhr: $.ajax(opts) });
+        pending.forEach(_ => _.url === opts.url && _.xhr.abort());
+        // 移除所有中止的请求，并且将新的请求推入缓存
+        pedding = [...pedding.filter(_ => _.url != opts.url), { url: opts.url, xhr: $.ajax(opts) }]
     }
 }
 
@@ -22,6 +59,7 @@ for (var i = 0; i < 10; i++) {
     singleAjax({
         url: "http://localhost",
         success: function (data) {
+            // 其实在成功之后，可以考虑扩展把成功的xhr从队列中移除，但其实也不影响。已经成功的xhr就算再次被执行abort也不会怎么样，更不会从200变成cannel状态，更不会触发error。
             console.log('请求成功', data);
         },
         error: function(e, m){

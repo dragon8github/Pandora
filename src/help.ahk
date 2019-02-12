@@ -193,7 +193,7 @@ return
 Var =
 (
 SendLevel 1
-SendInput, falangjindutiao{tab}
+Send, falangjindutiao{tab}
 return
 )
 code(Var)

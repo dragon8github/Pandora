@@ -167,6 +167,7 @@
     Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
     Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
     Menu, utilsmy, Add, 单例版ajax, utilsHandler
+    Menu, utilsmy, Add, 去重复版本的axios, utilsHandler
     Menu, utilsmy, Add, 获取前6个月/前15天数据, EventHandler
     
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
@@ -262,9 +263,15 @@ Var =
 )
 }
 
+if (v == "去重复版本的axios") {
+SendLevel 1
+Send, singaxios{tab}
+return
+}
+
 if (v == "单例版ajax") {
 SendLevel 1
-SendInput, singajax{tab}
+Send, singajax{tab}
 return
 }
 
@@ -691,7 +698,7 @@ Var =
 
 if (v == "memoized 函数缓存") {
 SendLevel 1
-SendInput, funcache{tab}
+Send, funcache{tab}
 return
 }
 
@@ -767,13 +774,13 @@ dict.offset = [
 
 if (v == "filterhtml: 移除html标签，只提取文本text()") {
 SendLevel 1
-SendInput, filterhtml{tab}
+Send, filterhtml{tab}
 return
 }
 
 if (v == "window.onunload 刷新/关闭页面之前发送请求") {
 SendLevel 1
-SendInput, window.onunload{tab}
+Send, window.onunload{tab}
 return
 }
 
@@ -1026,13 +1033,13 @@ order( 1, false, 500 );
 
 if (v == "Function.prototype.before") {
 SendLevel 1
-SendInput, fn.before{tab}
+Send, fn.before{tab}
 return
 }
 
 if (v == "Function.prototype.after") {
 SendLevel 1
-SendInput, fn.after{tab}
+Send, fn.after{tab}
 return
 }
 
@@ -1147,7 +1154,7 @@ Var =
 
 if (v == "urlparams 获取路由参数") {
 SendLevel 1
-SendInput, urlparams{tab}
+Send, urlparams{tab}
 return
 }
 
@@ -1536,20 +1543,20 @@ var fuck = {
 
 if (v == "JavaScript版 策略模式") {
 SendLevel 1
-SendInput, celue{tab}
+Send, celue{tab}
 return
 }
 
 
 if (v == "加强版map遍历:bettermap") {
 SendLevel 1
-SendInput, fuckmap{tab}
+Send, fuckmap{tab}
 return
 }
 
 if (v == "injectCss 往页面插入style") {
 SendLevel 1
-SendInput, addstyle{tab}
+Send, addstyle{tab}
 return
 }
 
@@ -1819,7 +1826,7 @@ $('.trajectoryTable').autoScroll()
 
 if (v == "window.requestAnimFrame") {
 SendLevel 1
-SendInput, requestanimate{tab}
+Send, requestanimate{tab}
 return
 }
 
@@ -2396,7 +2403,7 @@ function curry2(fn) {
 
 if (v == "es6.class") {
 SendLevel 1
-SendInput, js.class{tab}
+Send, js.class{tab}
 return
 }
 
@@ -2805,7 +2812,7 @@ function countDown ($dom) {
 
 if (v == "rem 解决方案 / 淘宝解决方案") {
 SendLevel 1
-SendInput, taobao{tab}
+Send, taobao{tab}
 return 
 }
 
@@ -3101,7 +3108,7 @@ var device = function(key){
 
 if (v == "isBottom 是否滚动到底部") {
 SendLevel 1
-SendInput, isbottom{tab}
+Send, isbottom{tab}
 return
 }
 
@@ -3328,13 +3335,13 @@ function isNaN(obj) {
 
 if (v == "extend 浅拷贝") {
 SendLevel 1
-SendInput, extend{tab}
+Send, extend{tab}
 return
 }
 
 if (v == "deepExtend 深拷贝") {
 SendLevel 1
-SendInput, deepextend{tab}
+Send, deepextend{tab}
 return
 }
 

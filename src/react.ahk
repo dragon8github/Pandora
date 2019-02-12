@@ -162,7 +162,7 @@ Run, https://codesandbox.io/s/new
 
 if (v == "react-init") {
 SendLevel 1
-SendInput, react-init{tab}
+Send, react-init{tab}
 return
 }
 
