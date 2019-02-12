@@ -1,4 +1,39 @@
-﻿::ps::
+﻿::singajax::
+::singleajax::
+Var =
+(
+//（核心）以url相同作为重复条件，你可以根据自己的情况编写自己的重复条件
+var SingleAjax = function () {
+    // 缓存的队列 
+    var cache = [];
+    // 返回单例模式ajax
+    return function (opts) {
+        // 中止队列中所有相同请求地址的xhr
+        cache.forEach(_ => _.url === opts.url && _.xhr.abort());
+        // 将新的请求推出缓存
+        cache.push({ url: opts.url, xhr: $.ajax(opts) });
+    }
+}
+
+// 生成单例ajax
+var singleAjax = new SingleAjax()
+
+for (var i = 0; i < 10; i++) {
+    singleAjax({
+        url: "http://localhost",
+        success: function (data) {
+            console.log('请求成功', data);
+        },
+        error: function(e, m){
+           console.log('数据接口请求异常（请放心这是正常现象，由于请求被中止，所以会回调error。只需要判断一下m === "abort" 即可，你还可以在 abort() 时在 _.xhr 中加入任意属性来判断深入判断）', e, m, m === "abort");
+        }
+    })
+}
+)
+code(Var)
+return
+
+::ps::
 ::promise.s::
 Var =
 (

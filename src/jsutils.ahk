@@ -130,11 +130,13 @@
     Menu, utilsDesignPattern, Add, , utilsHandler
     
     
+    Menu, utilsDesignPattern, Add, 单例版ajax, utilsHandler
     Menu, utilsDesignPattern, Add, 惰性单例, utilsHandler
     Menu, utilsDesignPattern, Add, 透明单例, utilsHandler
     Menu, utilsDesignPattern, Add, 代理单例, utilsHandler
     Menu, utilsDesignPattern, Add, 通用的惰性单例, utilsHandler
     Menu, utilsDesignPattern, Add, （回调版）单例模式，通常用于ajax类, utilsHandler
+    
     
     
     Menu, utilsDesignPattern, Add, , utilsHandler
@@ -164,6 +166,7 @@
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
     Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
+    Menu, utilsmy, Add, 单例版ajax, utilsHandler
     Menu, utilsmy, Add, 获取前6个月/前15天数据, EventHandler
     
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
@@ -257,6 +260,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "单例版ajax") {
+SendLevel 1
+SendInput, singajax{tab}
+return
 }
 
 if (v == "函数参数对象深度解构 var a = ({ state: { nums, numGroup, map } }) => {}") {
