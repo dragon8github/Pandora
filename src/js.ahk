@@ -1,4 +1,84 @@
-﻿::ps::
+﻿::imgonload::
+::imgload::
+::imageonload::
+Var =
+(
+//js
+var pic = new Image()
+pic.src = 'http://caibaojian.com/a/a3.png'
+pic.onload = pic.onreadystatechange = function(){
+	if(!this.readyState||this.readyState=='loaded'||this.readyState=='complete'){
+	// 加载完成 
+	}
+};
+
+//jquery
+$('<img/>').attr('src', 'http://caibaojian.com/a/a3.png').on('load', function() {
+   $(this).remove(); // 防止内存泄露
+   //图片加载完毕
+});
+)
+code(Var)
+return
+
+::mask::
+Var =
+(
+var Mask = function (cb) {
+	var div = document.createElement('div')
+	div.style = 'background-color: rgba(255, 255, 255, 0.7);position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337; display:none;'
+	div.addEventListener('click', cb)
+	document.body.append(div)
+
+	var img = new Image()
+	img.src = "https://github.com/dragon8github/Pandora/blob/master/static/loading.gif?raw=true"
+	img.style = 'position: absolute; top: 50`%; left: 50`%;'
+	div.append(img)
+
+	var show = function (showcb) {
+		div.style.display = 'block'
+		showcb && showcb()
+	}
+
+	var close = function (showcb) {
+		div.style.display = 'none'
+		showcb && showcb()
+	}
+
+	return { show, close }
+}
+const mask = new Mask()
+mask.show()
+mask.close()
+)
+code(Var)
+return
+
+::create::
+::creatediv::
+Var =
+(
+var div = document.createElement('div')
+div.style = 'position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337; background-color: rgba(0,0,0,.3);'
+// document.body.append(div)
+document.body.insertBefore(div, document.body.firstChild)
+)
+code(Var)
+return
+
+::createimg::
+::createimage::
+::createimages::
+Var =
+(
+var img = new Image()
+img.src = "https://github.com/dragon8github/Pandora/blob/master/static/loading.gif?raw=true"
+img.style = 'position: absolute; top: 50`%; left: 50`%;'
+)
+code(Var)
+return
+
+::ps::
 ::promise.s::
 Var =
 (

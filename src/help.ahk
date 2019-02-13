@@ -733,8 +733,8 @@ return
     RUN, https://www.tslang.cn/docs/handbook/basic-types.html
 return
 
-::cmd::
-    run, cmd
+#c::
+    run, %A_Desktop%/Cmder.exe.lnk
 return
 
 ::@info::

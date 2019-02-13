@@ -38,6 +38,15 @@
     Menu, utilsDOM, Add
     Menu, utilsDOM, Add
     
+    Menu, utilsDOM, Add, create 创建元素, utilsHandler
+    Menu, utilsDOM, Add, create 创建img, utilsHandler
+    Menu, utilsDOM, Add, 插入body前面, utilsHandler
+    Menu, utilsDOM, Add, 插入body后面, utilsHandler
+    Menu, utilsDOM, Add, img判断加载完成, utilsHandler
+    
+    Menu, utilsDOM, Add
+    Menu, utilsDOM, Add
+    
     Menu, utilsDOM, Add, getElementPosition 获取元素的定位, utilsHandler
     Menu, utilsDOM, Add, gettop 获取距离顶部的相对距离, utilsHandler
     Menu, utilsDOM, Add, scrollToTop 滚动到头部, utilsHandler
@@ -58,6 +67,7 @@
     Menu, utilsDOM, Add, 是否隐藏：$('#div').is(':hidden'), utilsHandler
     Menu, utilsDOM, Add, 是否显示：$('#div').is(':visible'), utilsHandler
     Menu, utilsDOM, Add, clickOutSide：!el.contains(event.target), utilsHandler
+    Menu, utilsDOM, Add, mask蒙版, utilsHandler
     
     
     Menu, utilsObject, Add, for#Object.keys, utilsHandler
@@ -160,6 +170,7 @@
     Menu, utilspractice, Add, 多个异步操作时，请毫不犹豫用Pormise.all, utilsHandler
     Menu, utilspractice, Add, Promise.race只返回最快的一个, utilsHandler
     Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
+    Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
@@ -258,6 +269,65 @@ Var =
 (
 )
 }
+
+if (v == "强制转化为Boolean类型：!!(a && b)") {
+Var = 
+(
+var a = 1, b = 0
+console.log(!!(a && b))
+)
+}
+
+if (v == "img判断加载完成") {
+SendLevel 1
+SendInput, imgonload{tab}
+return
+}
+
+
+if (v == "create 创建img") {
+SendLevel 1
+SendInput, createimg{tab}
+return
+}
+
+
+if (v == "mask蒙版") {
+SendLevel 1
+SendInput, mask{tab}
+return
+}
+
+if (v == "create 创建元素") {
+Var = 
+(
+var div = document.createElement('div')
+div.style = 'position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337; background-color: rgba(0,0,0,.3);'
+// document.body.append(div)
+document.body.insertBefore(div, document.body.firstChild)
+)
+}
+
+if (v == "插入body前面") {
+Var = 
+(
+var div = document.createElement('div')
+div.style = 'position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337; background-color: rgba(0,0,0,.3);'
+// document.body.append(div)
+document.body.insertBefore(div, document.body.firstChild)
+)
+}
+
+if (v == "插入body后面") {
+Var = 
+(
+var div = document.createElement('div')
+div.style = 'position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337; background-color: rgba(0,0,0,.3);'
+// document.body.append(div)
+document.body.insertBefore(div, document.body.firstChild)
+)
+}
+
 
 if (v == "函数参数对象深度解构 var a = ({ state: { nums, numGroup, map } }) => {}") {
 Var = 

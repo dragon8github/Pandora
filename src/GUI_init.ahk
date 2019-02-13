@@ -27,7 +27,7 @@ Gui, ISearch:Add, Button, w193 h30 gsublimeOpen ys h30, sublime
 Gui, ISearch:Add, Button, w193 h30 gcmderOpen ys h30, cmder打开
 
 ; 数据源
-__SEARCH_DATABASE__ := { "http://localhost:4000": "http://localhost:4000", "http://localhost:8099": "http://localhost:8099", "chrome": "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", "xshell": "C:\Program Files (x86)\NetSarang\Xshell 6\Xshell.exe", "12345\dist": "C:\Users\Lee\Desktop\12345-plus-new\dist", "印象笔记yxbj": "C:\Program Files (x86)\Evernote\Evernote\Evernote.exe", "ftp": "C:\Users\Lee\Desktop\FlashFXP_4.3.1.1969\flashfxp.exe", "cylee.top": "https://cylee.top/","post": "C:\Users\Lee\Desktop\my\source\_posts" , "hexo": "C:\Users\Lee\Desktop\my", "12345": "C:\Users\Lee\Desktop\12345-plus-new", "home": "/home/dc2-user/", "nginx安装目录": "/usr/local/nginx", "nginx.conf": "/usr/local/nginx/conf/nginx.conf", "php-fpm": "/usr/local/bin/php-fpm", "Nginx": "/usr/local/nginx/sbin/nginx", "nginx html": "/usr/local/nginx/html/", "php.ini": "/usr/local/php/php.ini" }
+__SEARCH_DATABASE__ := { "typora markdown": "C:\Program Files\Typora\Typora.exe", "Cmder":"C:\Users\Lee\cmder\Cmder.exe", "http://localhost:4000": "http://localhost:4000", "http://localhost:8099": "http://localhost:8099", "chrome": "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", "xshell": "C:\Program Files (x86)\NetSarang\Xshell 6\Xshell.exe", "12345\dist": "C:\Users\Lee\Desktop\12345-plus-new\dist", "印象笔记yxbj": "C:\Program Files (x86)\Evernote\Evernote\Evernote.exe", "ftp": "C:\Users\Lee\Desktop\FlashFXP_4.3.1.1969\flashfxp.exe", "cylee.top": "https://cylee.top/","post": "C:\Users\Lee\Desktop\my\source\_posts" , "hexo": "C:\Users\Lee\Desktop\my", "12345": "C:\Users\Lee\Desktop\12345-plus-new", "home": "/home/dc2-user/", "nginx安装目录": "/usr/local/nginx", "nginx.conf": "/usr/local/nginx/conf/nginx.conf", "php-fpm": "/usr/local/bin/php-fpm", "Nginx": "/usr/local/nginx/sbin/nginx", "nginx html": "/usr/local/nginx/html/", "php.ini": "/usr/local/php/php.ini" }
 
 ; 创建含名称和大小两列的 ListView:
 Gui, ISearch:Add, ListView, r7 w600 h400 gMyListView AltSubmit Section xs yp+40, Name|Path
@@ -206,9 +206,9 @@ Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co/<
 
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
+Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="https://app.didiyun.com/#/dc2/detail?uuid=a289c3f607fd5bbd8261df9b266ae211">滴滴云</a>
 Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub</a>
-Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/play/23812.html?23812-1-1">生活大爆炸</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 
@@ -275,10 +275,11 @@ Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/logi
 
 Gui, Pandora:Add, Text,  W140 ys, 12345大数据屏（vue）
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>
-Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/dg/maptheme">新版 plus 测试地址174</a>
+Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">v0</a>
+Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/dg/maptheme">v2</a>
+Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/boards">敏捷看板</a>
-
 
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
