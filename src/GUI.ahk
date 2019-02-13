@@ -1,6 +1,4 @@
-﻿
-
-!space::
+﻿!space::
 	Gui, Pandora:Show,, Pandora
 return 
 
@@ -2778,6 +2776,63 @@ FileAppend,
         })
     </script>
 
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+
+NewnorepeataxiosHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+</head>
+<body>
+</body>
+<script>
+    // 请求队列
+    let pending = []
+
+    // 请求拦截器
+    axios.interceptors.request.use(config => {
+        // 中止队列中所有相同请求地址的xhr
+        pending.forEach(_ => _.url === config.url && _.cancel('repeat abort'));
+        // 配置取消令牌
+        config.cancelToken = new axios.CancelToken(cancel => {
+           // 移除所有中止的请求，并且将新的请求推入缓存
+           pending = [...pending.filter(_ => _.url != config.url), { url: config.url, cancel }]
+        })
+        return config
+    }, error => {
+        return Pormise.reject(error)
+    })
+
+    // 响应拦截器
+    axios.interceptors.response.use(res => {
+      // 成功响应之后清空队列中所有相同Url的请求
+      pending = pending.filter(_ => _.url != res.config.url)
+      // 返回 response
+      return res
+    }, error => {
+       return Pormise.reject(error)
+    });
+
+    for (var i = 0; i < 10; i++) {
+        axios({url: 'http://localhost'}).then(console.log).catch(_ => {
+            if (_.message === 'repeat abort') return console.info(_.message)
+            // other error handler...
+            // something code...
+        })
+    }
+</script>
 </html>
 ),  %name%
 RunBy(name)

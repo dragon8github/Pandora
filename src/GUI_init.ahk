@@ -224,6 +224,7 @@ Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
 Gui, Pandora:Add, Text, gNewassertHtml W160,新建assert.html
 Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建异步assert.html
+Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
 
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html

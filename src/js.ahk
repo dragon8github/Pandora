@@ -1,13 +1,11 @@
-﻿
-::singaxios::
+﻿::singaxios::
 ::singleaxios::
 ::pedingaxios::
 Var =
 (
-// <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-
 // 请求队列
 let pending = []
+
 // 请求拦截器
 axios.interceptors.request.use(config => {
     // 中止队列中所有相同请求地址的xhr
@@ -22,13 +20,21 @@ axios.interceptors.request.use(config => {
     return Pormise.reject(error)
 })
 
+// 响应拦截器
+axios.interceptors.response.use(res => {
+  // 成功响应之后清空队列中所有相同Url的请求
+  pending = pending.filter(_ => _.url != res.config.url)
+  // 返回 response
+  return res
+}, error => {
+   return Pormise.reject(error)
+});
+
 for (var i = 0; i < 10; i++) {
     axios({url: 'http://localhost'}).then(console.log).catch(_ => {
-        if (_.message === 'repeat abort') 
-            return console.info(_.message)
-
-        // other error handler... 
-        // something code... 
+        if (_.message === 'repeat abort') return console.info(_.message)
+        // other error handler...
+        // something code...
     })
 }
 )
