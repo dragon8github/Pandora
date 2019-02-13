@@ -612,109 +612,109 @@ npm install -g nodemon && nodemom index.js
 
 if (v == "fs.watch") {
 SendLevel 1
-SendInput, fs.watch{tab}
+Send, fs.watch{tab}
 return
 }
 
 if (v == "sequelize.connect") {
 SendLevel 1
-SendInput, sequelize.connect{tab}
+Send, sequelize.connect{tab}
 return
 }
 
 if (v == "sequelize.createmodel") {
 SendLevel 1
-SendInput, sequelize.createmodel{tab}
+Send, sequelize.createmodel{tab}
 return
 }
 
 if (v == "request") {
 SendLevel 1
-SendInput, request{tab}
+Send, request{tab}
 return
 }
 
 if (v == "request.proxy") {
 SendLevel 1
-SendInput, request.proxy{tab}
+Send, request.proxy{tab}
 return
 }
 
 if (v == "node-http") {
 SendLevel 1
-SendInput, node-http{tab}
+Send, node-http{tab}
 return
 }
 
 if (v == "http.request") {
 SendLevel 1
-SendInput, http.request{tab}
+Send, http.request{tab}
 return
 }
 
 if (v == "fs.write") {
 SendLevel 1
-SendInput, fs.write{tab}
+Send, fs.write{tab}
 return
 }
 
 if (v == "fs.read") {
 SendLevel 1
-SendInput, fs.read{tab}
+Send, fs.read{tab}
 return
 }
 
 if (v == "fs.rename") {
 SendLevel 1
-SendInput, fs.rename{tab}
+Send, fs.rename{tab}
 return
 }
 
 if (v == "fs.rm") {
 SendLevel 1
-SendInput, fs.rm{tab}
+Send, fs.rm{tab}
 return
 }
 
 if (v == "fs.mkdir") {
 SendLevel 1
-SendInput, fs.mkdir{tab}
+Send, fs.mkdir{tab}
 return
 }
 
 if (v == "fs.ls") {
 SendLevel 1
-SendInput, fs.ls{tab}
+Send, fs.ls{tab}
 return
 }
 
 if (v == "node.pachong") {
 SendLevel 1
-SendInput, node.pachong{tab}
+Send, node.pachong{tab}
 return
 }
 
 if (v == "node.ssh") {
 SendLevel 1
-SendInput, node.ssh{tab}
+Send, node.ssh{tab}
 return
 }
 
 if (v == "node.gbk") {
 SendLevel 1
-SendInput, node.gbk{tab}
+Send, node.gbk{tab}
 return
 }
 
 if (v == "node.ch") {
 SendLevel 1
-SendInput, node.ch{tab}
+Send, node.ch{tab}
 return
 }
 
 if (v == "clearconsole") {
 SendLevel 1
-SendInput, clearconsole{tab}
+Send, clearconsole{tab}
 return
 }
 

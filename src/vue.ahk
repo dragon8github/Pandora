@@ -541,7 +541,7 @@ Var =
 
 if (v == "vuex.action") {
 SendLevel 1
-SendInput, vuex.a{tab}
+Send, vuex.a{tab}
 return
 }
 
@@ -1244,7 +1244,7 @@ export default store
 }
 if (v == "vuex.modules") {
 SendLevel 1
-SendInput, vuex.modules{tab}
+Send, vuex.modules{tab}
 return
 }
 

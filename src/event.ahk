@@ -442,7 +442,7 @@ color: new echarts.graphic.LinearGradient(
 
 if (v == "echarts.broadcast 轮播器") {
 SendLevel 1
-SendInput, echarts.lunbo{tab}
+Send, echarts.lunbo{tab}
 return
 }
 
@@ -456,109 +456,109 @@ aspectScale: 1
 
 if (v == "echarts.init") {
 SendLevel 1
-SendInput, echarts.init{tab}
+Send, echarts.init{tab}
 return
 }
 
 if (v == "echarts.options") {
 SendLevel 1
-SendInput, echarts.options{tab}
+Send, echarts.options{tab}
 return
 }
 
 if (v == "echarts.loading") {
 SendLevel 1
-SendInput, echarts.loading{tab}
+Send, echarts.loading{tab}
 return
 }
 
 if (v == "echarts.pin（饼图）") {
 SendLevel 1
-SendInput, echarts.pin{tab}
+Send, echarts.pin{tab}
 return
 }
 
 if (v == "echarts.bar（柱状图）") {
 SendLevel 1
-SendInput, echarts.bar{tab}
+Send, echarts.bar{tab}
 return
 }
 
 if (v == "echarts.line（折线图）") {
 SendLevel 1
-SendInput, echarts.line{tab}
+Send, echarts.line{tab}
 return
 }
 
 if (v == "echarts.rose（玫瑰图）") {
 SendLevel 1
-SendInput, echarts.rose{tab}
+Send, echarts.rose{tab}
 return
 }
 
 if (v == "echarts.label") {
 SendLevel 1
-SendInput, echarts.label{tab}
+Send, echarts.label{tab}
 return
 }
 
 if (v == "echarts.title") {
 SendLevel 1
-SendInput, echarts.title{tab}
+Send, echarts.title{tab}
 return
 }
 
 if (v == "echarts.legend") {
 SendLevel 1
-SendInput, echarts.legend{tab}
+Send, echarts.legend{tab}
 return
 }
 
 if (v == "echarts.visualMap") {
 SendLevel 1
-SendInput, echarts.visualMap{tab}
+Send, echarts.visualMap{tab}
 return
 }
 
 if (v == "echarts.tooltip") {
 SendLevel 1
-SendInput, echarts.tooltip{tab}
+Send, echarts.tooltip{tab}
 return
 }
 
 if (v == "echarts.3dmap") {
 SendLevel 1
-SendInput, echarts.3dmap{tab}
+Send, echarts.3dmap{tab}
 return
 }
 
 if (v == "echarts.effectScatter（2d地图散点）") {
 SendLevel 1
-SendInput, echarts.effectScatter{tab}
+Send, echarts.effectScatter{tab}
 return
 }
 
 if (v == "echarts.scatter（2d地图气泡）") {
 SendLevel 1
-SendInput, echarts.scatter{tab}
+Send, echarts.scatter{tab}
 return
 }
 
 if (v == "getPointCenter") {
 SendLevel 1
-SendInput, getPointCenter{tab}
+Send, getPointCenter{tab}
 return
 }
 
 if (v == "geojson") {
 SendLevel 1
-SendInput, geojson{tab}
+Send, geojson{tab}
 return
 }
 
 if (v == "createPolygon") {
 SendLevel 1
-SendInput, createPolygon{tab}
+Send, createPolygon{tab}
 return
 }
 

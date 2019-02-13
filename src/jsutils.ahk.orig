@@ -274,18 +274,7 @@ Var =
 )
 }
 
-
-if (v == "去重复版本的axios") {
-SendLevel 1
-Send, singaxios{tab}
-return
-}
-
-if (v == "单例版ajax") {
-SendLevel 1
-Send, singajax{tab}
-return
-}
+<<<<<<< HEAD
 if (v == "强制转化为Boolean类型：!!(a && b)") {
 Var = 
 (
@@ -345,6 +334,20 @@ document.body.insertBefore(div, document.body.firstChild)
 }
 
 
+=======
+if (v == "去重复版本的axios") {
+SendLevel 1
+Send, singaxios{tab}
+return
+}
+
+if (v == "单例版ajax") {
+SendLevel 1
+Send, singajax{tab}
+return
+}
+
+>>>>>>> 902632e658b5c13ad2168fcbf35e8e3aafc38e7f
 if (v == "函数参数对象深度解构 var a = ({ state: { nums, numGroup, map } }) => {}") {
 Var = 
 (

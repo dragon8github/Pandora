@@ -725,13 +725,13 @@ Var =
 
 if (v == "实战示例：生成二维码图片") {
 SendLevel 1
-SendInput, canvas.erweima{tab}
+Send, canvas.erweima{tab}
 return
 }
 
 if (v == "实战示例：猜英文游戏") {
 SendLevel 1
-SendInput, canvas.game{tab}
+Send, canvas.game{tab}
 return
 }
 

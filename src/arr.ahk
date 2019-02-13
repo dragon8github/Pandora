@@ -1,4 +1,15 @@
-﻿::newarr::
+﻿::for10::
+Var =
+(
+for (var i = 0; i < 10; i++) {
+    
+}
+)
+code(Var)
+Send, {up}{tab}
+return
+
+::newarr::
 Var =
 (
 // new Int8Array(100)
@@ -96,7 +107,7 @@ Math.max.apply(null, arr)
 
 if (v == "unique 数组去重复") {
 SendLevel 1
-SendInput, norepeatarr{tab}
+Send, norepeatarr{tab}
 return
 }
 
@@ -109,13 +120,13 @@ Var =
 
 if (v == "加强版map遍历:fuckmap") {
 SendLevel 1
-SendInput, fuckmap{tab}
+Send, fuckmap{tab}
 return
 }
 
 if (v == "新建长度为N的数组[...Array(100)]") {
 SendLevel 1
-SendInput, newarr{tab}
+Send, newarr{tab}
 return
 }
 
