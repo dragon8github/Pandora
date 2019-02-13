@@ -247,6 +247,7 @@ return
 ::nosafe::
 ::notsafe::
 ::chromesafe::
+::unsafe::
 Var =
 (
  --args --disable-web-security --user-data-dir

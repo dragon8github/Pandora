@@ -2802,7 +2802,10 @@ FileAppend,
 let pending = []
 
 // 获取纯Url，不包含?后面的参数
-const getPureUrl = url => url.substr(0, url.indexOf('?'))
+var getPureUrl = url => {
+	const index = url.indexOf('?')
+	return url.substr(0, ~index ? index : url.length)
+}
 
 // 请求拦截器
 axios.interceptors.request.use(config => {
@@ -2846,7 +2849,8 @@ run, % name
 return
 
 NewnorepeatajaxsHtml:
-Var =
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
 (
 <!DOCTYPE html>
 <html lang="en">
@@ -2865,7 +2869,10 @@ Var =
 <script>
 
 // 获取纯Url，不包含?后面的参数
-const getPureUrl = url => url.substr(0, url.indexOf('?'))
+var getPureUrl = url => {
+	const index = url.indexOf('?')
+	return url.substr(0, ~index ? index : url.length)
+}
 
 //（核心）以url相同作为重复条件，你可以根据自己的情况编写自己的重复条件
 var SingleAjax = function () {
@@ -2909,6 +2916,7 @@ for (var i = 0; i < 10; i++) {
 }
 </script>
 </html>
-)
-code(Var)
+),  %name%
+RunBy(name)
+run, % name
 return

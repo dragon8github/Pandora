@@ -1194,3 +1194,9 @@ server.listen(3000, function (err) {
 )
 code(Var)
 Return
+
+::cnpmm::
+::npm cnpm::
+::cnpm2::
+SendInput, npm install cnpm -g --registry=https://registry.npm.taobao.org 
+return
