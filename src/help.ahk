@@ -433,14 +433,6 @@ return
     Clipboard := tmp
 return
 
-::git2::
-::gitt::
-Var =
-(
-git add components/ && git commit -m "迭代" && git push -u origin master
-)
-SendInput, %Var%{left 30}
-return
 
 ::ahktime::
 ::ahkdate::
@@ -469,26 +461,6 @@ Var := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_S
 code(Var)
 return
 
-::git commit::
-::git c::
-::gitc::
-Var =
-(
-git commit -m ""
-)
-Send, {text}%Var%
-Send, {left}
-return
-
-
-::git push::
-::gitpush::
-Var =
-(
-git push -u origin master
-)
-Send, {text}%Var%
-return
 
 ::ahkmenu::
 Var =
@@ -596,28 +568,9 @@ code(Var)
 return
 
 
-::githubimg::
-::github-img::
-::github.img::
-    SendRaw, ![](./showImages/index.jpg)
-return
-
-::@de::
-    Send, @Decorator
-return
-
-::@cc::
-::@2980::
-    SendInput, dragon8cc@2980.com
-return
-
 ::@qq::
 ::@qq.com::
     Send, 928532756@qq.com
-return
-
-::gg::
-    Send, google.com
 return
 
 ^+/::
@@ -876,9 +829,16 @@ time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_
 SendInput, % time
 return
 
-::git::
-    SendInput, git add . && git commit -m '迭代' --no-verify && git push -u origin master{LEFT 42}
-Return
+::git commit::
+::git c::
+::gitc::
+Var =
+(
+git commit -m ""
+)
+Send, {text}%Var%
+Send, {left}
+return
 
 ::git-push::
 ::gitpush::
@@ -892,6 +852,7 @@ return
     SendInput, git pull origin master
 return
 
+::.git::
 ::gitig::
 ::.git::
 ::gitignore::
@@ -916,6 +877,29 @@ selenium-debug.log
 )
 code(Var)
 return
+
+::git::
+    SendInput, git add . && git commit -m '迭代' --no-verify && git push -u origin master{LEFT 42}
+Return
+
+::gitdev::
+::gitd::
+::git dev::
+ SendInput, git add . && git commit -m '迭代' --no-verify && git push -u origin dev{LEFT 39}
+return
+
+::gitpro::
+::gitp::
+::git pro::
+ SendInput, git add . && git commit -m '迭代' --no-verify && git push -u origin pro{LEFT 39}
+return
+
+::gittest::
+::gitt::
+::git test::
+ SendInput, git add . && git commit -m '迭代' --no-verify && git push -u origin test{LEFT 40}
+return
+
 
 ::auth::
     SendInput, Authorization

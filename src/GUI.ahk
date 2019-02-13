@@ -2798,43 +2798,117 @@ FileAppend,
 <body>
 </body>
 <script>
-    // 请求队列
-    let pending = []
+// 请求队列
+let pending = []
 
-    // 请求拦截器
-    axios.interceptors.request.use(config => {
-        // 中止队列中所有相同请求地址的xhr
-        pending.forEach(_ => _.url === config.url && _.cancel('repeat abort'));
-        // 配置取消令牌
-        config.cancelToken = new axios.CancelToken(cancel => {
-           // 移除所有中止的请求，并且将新的请求推入缓存
-           pending = [...pending.filter(_ => _.url != config.url), { url: config.url, cancel }]
-        })
-        return config
-    }, error => {
-        return Pormise.reject(error)
+// 获取纯Url，不包含?后面的参数
+const getPureUrl = url => url.substr(0, url.indexOf('?'))
+
+// 请求拦截器
+axios.interceptors.request.use(config => {
+    // 获取纯Url（不包含?后面的参数）
+    const pureUrl = getPureUrl(config.url)
+    // 中止队列中所有相同请求地址的xhr
+    pending.forEach(_ => _.url === pureUrl && _.cancel('repeat abort'));
+    // 配置取消令牌
+    config.cancelToken = new axios.CancelToken(cancel => {
+       // 移除所有中止的请求，并且将新的请求推入缓存
+       pending = [...pending.filter(_ => _.url != pureUrl), { url: pureUrl, cancel }]
     })
+    return config
+}, error => {
+    return Promise.reject(error)
+})
 
-    // 响应拦截器
-    axios.interceptors.response.use(res => {
-      // 成功响应之后清空队列中所有相同Url的请求
-      pending = pending.filter(_ => _.url != res.config.url)
-      // 返回 response
-      return res
-    }, error => {
-       return Pormise.reject(error)
-    });
+// 响应拦截器
+axios.interceptors.response.use(res => {
+  // 成功响应之后清空队列中所有相同Url的请求
+  pending = pending.filter(_ => _.url != getPureUrl(res.config.url))
+  // 返回 response
+  return res
+}, error => {
+   return Promise.reject(error)
+});
 
-    for (var i = 0; i < 10; i++) {
-        axios({url: 'http://localhost'}).then(console.log).catch(_ => {
-            if (_.message === 'repeat abort') return console.info(_.message)
-            // other error handler...
-            // something code...
-        })
-    }
+for (var i = 0; i < 10; i++) {
+    axios({url: 'http://localhost'}).then(console.log).catch(_ => {
+        if (_.message === 'repeat abort') return console.info(_.message)
+        // other error handler...
+        // something code...
+        throw new Error(_.message)
+    })
+}
 </script>
 </html>
 ),  %name%
 RunBy(name)
 run, % name
+return
+
+NewnorepeatajaxsHtml:
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+</body>
+<script>
+
+// 获取纯Url，不包含?后面的参数
+const getPureUrl = url => url.substr(0, url.indexOf('?'))
+
+//（核心）以url相同作为重复条件，你可以根据自己的情况编写自己的重复条件
+var SingleAjax = function () {
+    // 缓存的队列
+    var pending = [];
+
+    // 返回单例模式ajax
+    return function (opts) {
+    	// 获取纯Url（不包含?后面的参数）
+    	const pureUrl = getPureUrl(opts.url)
+        // 中止队列中所有相同请求地址的xhr
+        pending.forEach(_ => _.url === pureUrl && _.xhr.abort());
+        // 获取 success 回调函数
+        const _success = opts.success
+        // 装饰成功回调函数
+        opts.success = function (...rest) {
+        	// 从队列过滤掉已经成功的请求
+        	pending = pending.filter(_ => _.url != pureUrl)
+        	// 继续执行它的成功
+        	_success && _success(...rest)
+        }
+        // 移除所有中止的请求，并且将新的请求推入缓存
+        pending = [...pending.filter(_ => _.url != pureUrl), { url: pureUrl, xhr: $.ajax(opts) }]
+    }
+}
+
+// 生成单例ajax
+var singleAjax = new SingleAjax()
+
+for (var i = 0; i < 10; i++) {
+    singleAjax({
+        url: "http://localhost",
+        success: function (data) {
+            // 其实在成功之后，可以考虑扩展把成功的xhr从队列中移除，但其实也不影响。已经成功的xhr就算再次被执行abort也不会怎么样，更不会从200变成cannel状态，更不会触发error。
+            console.log('请求成功', data);
+        },
+        error: function(e, m){
+           console.log('数据接口请求异常（请放心这是正常现象，由于请求被中止，所以会回调error。只需要判断一下m === "abort" 即可，你还可以在 abort() 时在 _.xhr 中加入任意属性来判断深入判断）', e, m, m === "abort");
+        }
+    })
+}
+</script>
+</html>
+)
+code(Var)
 return
