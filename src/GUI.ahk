@@ -1924,7 +1924,7 @@ FileAppend,
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <title>rxjs demo</title>
-    <script src="https://cdn.bootcss.com/rxjs/6.3.3/rxjs.umd.min.js"></script>
+    <script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
 </head>
 <body>
   <button>test</button>
@@ -1933,10 +1933,21 @@ FileAppend,
    // https://rxjs-dev.firebaseapp.com/guide/overview#purity
    const button = document.querySelector('button');
    const { fromEvent } = rxjs;
-   const { scan } = rxjs.operators;
+   // operators库中都是纯函数，拥有一系列操作符（类似Array#map, filter, concat, reduce）可帮助您控制事件如何流经您的可观察对象。
+   const { scan, throttleTime, filter, delay, debounceTime } = rxjs.operators;
 
-   fromEvent(button, 'click').pipe(scan(count => count + 1, 0))
-        .subscribe(count => console.log(Clicked ${count} times));
+   // throttleTime ：先执行，然后等待1000毫秒.并且等待的时间内不会再次执行
+   // debounceTime ： 先等待1000毫秒，然后执行.并且等待的时间内如果再次触发，则重新开始计算，毁掉之前的timer
+   // delay ：等待1000毫秒，然后再执行。有多少执行多少，不会阻止拦截任何请求。
+    fromEvent(button, 'click').pipe(
+    	// 实现每秒最多允许一次点击，一秒之后才往下流。
+    	delay(1000),
+    	// 过滤只有 BUTTON 点击才有效
+    	filter(ev => ev.target.tagName === 'BUTTON'),
+    	// scan 回调的值往下一个流（pipe）
+   		scan(count => count + 1, 1000000)
+   	`)
+    .subscribe(count => console.log(``Clicked ${count} times``));
 </script>
 ),  %name%
 RunBy(name)	

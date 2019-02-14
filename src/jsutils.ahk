@@ -135,7 +135,8 @@
     
     Menu, utilsDesignPattern, Add, Function.prototype.before, utilsHandler
     Menu, utilsDesignPattern, Add, Function.prototype.after, utilsHandler
-
+    Menu, utilsDesignPattern, Add, 超简单的currying与理财花销实例, utilsHandler
+    
     Menu, utilsDesignPattern, Add, , utilsHandler
     Menu, utilsDesignPattern, Add, , utilsHandler
     
@@ -162,17 +163,26 @@
     
     Menu, utilsDesignPattern, Add, 优惠券条件分支：链式after解决方案, utilsHandler
     
-    
-    Menu, utilspractice, Add, 函数参数对象深度解构 var a = ({ state: { nums`, numGroup`, map } }) => {}, utilsHandler
-    Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
-    Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
+    Menu, utilspractice, Add, 仿rxjs的观察者模式, utilsHandler
+    Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
+    Menu, utilspractice, Add, 超简单的currying与理财花销实例, utilsHandler
     Menu, utilspractice, Add, curry2 二元参数的手动柯里化, utilsHandler
-    Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
-    Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
+    
+    Menu, utilspractice, Add,
+    Menu, utilspractice, Add,
+    
     Menu, utilspractice, Add, 多个异步操作时，请毫不犹豫用Pormise.all, utilsHandler
     Menu, utilspractice, Add, Promise.race只返回最快的一个, utilsHandler
-    Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
+    
+    Menu, utilspractice, Add,
+    Menu, utilspractice, Add,
+    
+    Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
+    Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
+    Menu, utilspractice, Add, 函数参数对象深度解构 var a = ({ state: { nums`, numGroup`, map } }) => {}, utilsHandler
+    Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
+    Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
@@ -193,9 +203,17 @@
     Menu, utilsmaybe, Add, js获取root（window）对象, utilsHandler
     
     
+    Menu, utilses5, Add, (...arr)数组解构的前辈：Array.prototype.push.apply(arr`, newArr), utilsHandler
+    Menu, utilses5, Add, 函数调用注入args：successFn.apply(this`, arguments), utilsHandler
+    Menu, utilses5, Add, 简写Array.prototype.push.apply的方法：[].push.apply, utilsHandler
+    Menu, utilses5, Add, Fn.call：除了参数是数组/类数组以外的都使用call如map/reduce/filter（因为他们的参数都是函数）等, utilsHandler
+    Menu, utilses5, Add, 超简单的currying与理财花销实例, utilsHandler
+    
+    
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     Menu, utilsMenu , Add, Object 操作, :utilsObject
+    Menu, utilsMenu , Add, 原始之初es5的伏魔录, :utilses5
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -228,10 +246,12 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
-    Menu, utilsMenu, Add, compose 函数组合, utilsHandler
+    
     Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
     Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
     Menu, utilsMenu, Add, memoized 函数缓存, utilsHandler
+    Menu, utilsMenu, Add, timeChunk 分时分批处理函数 , utilsHandler
+    Menu, utilsMenu, Add, compose 函数组合, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -271,6 +291,118 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "timeChunk 分时分批处理函数") {
+Var = 
+(
+var timeChunk = function ( ary, fn, count, wait) {
+	var start = function () {
+		// 每次循环count次数，如果长度不够count时，就取剩余长度。这是个不错的判断思维。用Main.min
+		for (var i = 0; i < Math.min( count || 1, ary.length ); i++) {
+			// 不断从数组取出内容进行操作
+			var obj = ary.shift()
+			fn(obj)
+		}
+	}
+
+	return function () {
+		var timer = setInterval(function () {
+			if (ary.length === 0) {
+				return clearInterval(timer);
+			}
+			start()
+		}, wait || 200);
+	}
+}
+
+var ary = [...Array(1000)].map((v, index, array) => index)
+
+var render = timeChunk( ary, function ( n ) {
+	var div = document.createElement('div')
+	div.innerHTML = n;
+	document.body.appendChild( div );
+}, 8)
+
+render();
+)
+}
+
+if (v == "超简单的currying与理财花销实例") {
+Var = 
+(
+var currying = function (fn) {
+	var args = [];
+	return function () {
+		// 新设计：如果不传参数则立刻返回当前计算结果
+		if ( arguments.length === 0 ) {
+			// 返回执行结果
+			return fn.apply(this, args);
+		} else {
+			// 将参数加入缓存
+			Array.prototype.push.apply( args, arguments );
+			// 返回本函数
+			return arguments.callee;
+		}
+	}
+}
+
+// 测试：理财函数
+var cost = function(){
+	return Array.prototype.reduce.call(arguments, function (previousValue, currentValue, index, array) {
+		return previousValue + currentValue
+	}, 0)
+};
+
+// cost(100, 200, 300, 400)
+
+var curring_cost = currying(cost)
+
+curring_cost( 1000 )
+curring_cost( 1000 )
+curring_cost( 1000 )
+curring_cost( 1000 )
+
+curring_cost(  )
+)
+}
+
+if (v == "Fn.call：除了参数是数组/类数组以外的都使用call如map/reduce/filter（因为他们的参数都是函数）等") {
+Var = 
+(
+var cost = (function(){
+	var money = 0;
+	return function () {
+		return Array.prototype.reduce.call(arguments, function (previousValue, currentValue, index, array) {
+		    return previousValue + currentValue
+		}, 0)
+	}
+}());
+
+cost(100, 200, 300, 400)
+)
+}
+
+if (v == "简写Array.prototype.push.apply的方法：[].push.apply") {
+Var = 
+(
+[].push.apply
+)
+}
+
+if (v == "(...arr)数组解构的前辈：Array.prototype.push.apply(arr, newArr)") {
+Var = 
+(
+Array.prototype.push.apply(arr, newArr)
+)
+}
+
+
+if (v == "函数调用注入args：successFn.apply(this, arguments)") {
+Var = 
+(
+successFn.apply(this, arguments)
 )
 }
 
@@ -319,8 +451,8 @@ Var =
 (
 var div = document.createElement('div')
 div.style = 'position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337; background-color: rgba(0,0,0,.3);'
-// document.body.append(div)
-document.body.insertBefore(div, document.body.firstChild)
+document.body.append(div)
+// document.body.insertBefore(div, document.body.firstChild)
 )
 }
 
@@ -329,6 +461,7 @@ Var =
 (
 var div = document.createElement('div')
 div.style = 'position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337; background-color: rgba(0,0,0,.3);'
+div.innerHTML = '123'
 // document.body.append(div)
 document.body.insertBefore(div, document.body.firstChild)
 )
@@ -339,8 +472,9 @@ Var =
 (
 var div = document.createElement('div')
 div.style = 'position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337; background-color: rgba(0,0,0,.3);'
-// document.body.append(div)
-document.body.insertBefore(div, document.body.firstChild)
+div.innerHTML = '123'
+document.body.append(div)
+// document.body.insertBefore(div, document.body.firstChild)
 )
 }
 
@@ -430,7 +564,7 @@ compose([a, b])({});
 if (v == "仿rxjs的观察者模式") {
 Var = 
 (
-function create(fn) {
+function Observable(fn) {
 
 	let isComplete = false
 
@@ -458,7 +592,7 @@ function create(fn) {
 	}
 }
 
-let observerable = create(observer => {
+let observerable = Observable(observer => {
 	setTimeout(() => {
 		observer.next(1)
 	}, 1000)

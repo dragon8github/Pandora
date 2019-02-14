@@ -1,4 +1,8 @@
-﻿::for10::
+﻿
+
+
+::forr::
+::for10::
 Var =
 (
 for (var i = 0; i < 10; i++) {

@@ -244,10 +244,20 @@ InputBox, OutputVar, title, enter a name?,,,,,,,,test
 code(Var)
 return
 
+::chromemax::
+::chrome max::
+Var =
+(
+--start-maximized --kiosk
+)
+code(Var)
+return
+
 ::nosafe::
 ::notsafe::
 ::chromesafe::
 ::unsafe::
+::safe::
 Var =
 (
  --args --disable-web-security --user-data-dir
@@ -889,11 +899,6 @@ Return
  SendInput, git add . && git commit -m '迭代' --no-verify && git push -u origin dev{LEFT 39}
 return
 
-::gitpro::
-::gitp::
-::git pro::
- SendInput, git add . && git commit -m '迭代' --no-verify && git push -u origin pro{LEFT 39}
-return
 
 ::gittest::
 ::gitt::

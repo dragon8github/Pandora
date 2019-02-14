@@ -1,4 +1,48 @@
-﻿::singaxios::
+﻿::timechunk::
+Var =
+(
+var timeChunk = function ( ary, fn, count, wait) {
+	var start = function () {
+		// 每次循环count次数，如果长度不够count时，就取剩余长度。这是个不错的判断思维。用Main.min
+		for (var i = 0; i < Math.min( count || 1, ary.length ); i++) {
+			// 不断从数组取出内容进行操作
+			var obj = ary.shift()
+			fn(obj)
+		}
+	}
+
+	return function () {
+		var timer = setInterval(function () {
+			if (ary.length === 0) {
+				return clearInterval(timer);
+			}
+			start()
+		}, wait || 200);
+	}
+}
+
+var ary = [...Array(1000)].map((v, index, array) => index)
+
+var render = timeChunk( ary, function ( n ) {
+	var div = document.createElement('div')
+	div.innerHTML = n;
+	document.body.appendChild( div );
+}, 8)
+
+render();
+)
+code(Var)
+return
+
+::[]::
+Var =
+(
+Array.prototype.
+)
+code(Var)
+return
+
+::singaxios::
 ::singleaxios::
 ::pedingaxios::
 Var =
@@ -3424,6 +3468,7 @@ SendInput, {up}{tab}
 Return
 
 ::ctimer::
+::ct::
 ::cleartimer::
 ::settc::
 ::cleart::
@@ -3435,6 +3480,7 @@ code(Var)
 Return
 
 ::ctimeri::
+::cti::
 ::cleartimeri::
 ::settic::
 ::clearti::

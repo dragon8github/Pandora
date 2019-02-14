@@ -211,6 +211,7 @@ Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="https://app.didiyun.com/#/dc2/detail?uuid=a289c3f607fd5bbd8261df9b266ae211">滴滴云</a>
 Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub</a>
 Gui, Pandora:Add, Link,, <a href="https://amazonaws-china.com/cn/ec2/">aws Amazon EC2</a>
+Gui, Pandora:Add, Link,, <a href="https://pdffood.com/">电子书购买列表</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：

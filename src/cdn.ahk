@@ -115,7 +115,8 @@ return
 ::cdn-rx.js::
 Var =
 (
-<script src="https://cdn.bootcss.com/rxjs/6.3.3/rxjs.umd.min.js"></script>
+<!-- <script src="https://cdn.bootcss.com/rxjs/6.4.0/rxjs.umd.min.js"></script> -->
+<script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
 )
 code(Var)
 return
