@@ -1,4 +1,36 @@
-﻿::timechunk::
+﻿::scrolltop::
+Var =
+(
+var timer = null;
+var goTop = function() {
+    cancelAnimationFrame(timer);
+    timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+            document.body.scrollTop = document.documentElement.scrollTop = oTop - 500;
+            timer = requestAnimationFrame(fn);
+        } else {
+            cancelAnimationFrame(timer);
+        }
+    });
+}
+
+// es6
+const scrollToTop = () => {
+  const c = document.documentElement.scrollTop || document.body.scrollTop;
+  if (c > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    window.scrollTo(0, c - c / 8);
+  }
+};
+
+// 有一些需要直接用scrollTop = 0来设置
+document.querySelector(".page-loadmore-wrapper").scrollTop = 0
+)
+code(Var)
+return
+
+::timechunk::
 Var =
 (
 var timeChunk = function ( ary, fn, count, wait) {

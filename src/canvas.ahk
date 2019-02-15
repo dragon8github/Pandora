@@ -574,7 +574,7 @@ Var =
 	//////////////////////////////////////////////
 	
 	var pointImage = new Image();
-	pointImage.src = 'a.ico'
+	pointImage.src = 'https://github.com/fluidicon.png'
 	var points = new Array();
 
 	function drawScreen() {
@@ -672,21 +672,20 @@ Var =
 	})();
 
 	// 示例数据
-	var p1 = { x: 20, y: 20 }
-	var ball = { x: p1.x, y: p1.y }
+	var ball = { x: 250, y: 250 }
 	var speed = 5
 
-
+	;  // 获取 1 - 10 到随机数
 	//////////////////////////////////////////////
 	// 三角函数公式
-	var angle = 45
+	var angle = parseInt(Math.random() * 360)
 	var radians = angle * Math.PI / 180
 	var xunits = Math.cos(radians) * speed
 	var yunits = Math.sin(radians) * speed
 	//////////////////////////////////////////////
-	
+
 	var pointImage = new Image();
-	pointImage.src = 'a.ico'
+	pointImage.src = 'https://github.com/fluidicon.png'
 	var points = new Array();
 
 	function drawScreen() {
@@ -705,7 +704,7 @@ Var =
 		    context.drawImage(pointImage, points[i].x, points[i].y, 20, 20);
 		}
 
-		// 球... 
+		// 球...
 		context.fillStyle = '#000'
 		context.beginPath()
 		context.arc(ball.x, ball.y, 15, 0, Math.PI * 2, true)
@@ -713,9 +712,21 @@ Var =
 		context.fill()
 	}
 
+	// 是否（大于）超出范围
+	var isGreaterThanBoundary = () => {
+		return ball.x > canvas.width || ball.y > canvas.height
+	}
+
+	// 是否（小于）超出范围
+	var isLessThanBoundary = () => {
+		return ball.x < 0 || ball.y < 0
+	}
+
 	(function gameLoop(){
-		window.requestAnimFrame(gameLoop)
-		drawScreen()
+		if (!isGreaterThanBoundary() && !isLessThanBoundary()) {
+			window.requestAnimFrame(gameLoop)
+			drawScreen()
+		}
 	}())
 
 </script>
@@ -804,7 +815,7 @@ Var =
 	var yunits = (p2.y - p1.y) / moves
 
 	var pointImage = new Image();
-	pointImage.src = 'a.ico'
+	pointImage.src = 'https://github.com/fluidicon.png'
 	var points = new Array();
 
 	function drawScreen() {
