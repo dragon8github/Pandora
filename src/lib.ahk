@@ -62,6 +62,26 @@ RunByCmder(name) {
     Run, %myIdea% %name%
 }
 
+_send(v, isSendLevel = false) {
+    if (isSendLevel) {
+        SendLevel 1
+    }
+    if (WinExist("ahk_class SoPY_Comp")) {
+        send, {Shift}
+    }
+    send, % v
+}
+
+_sendinput(v, isSendLevel = false) {
+    if (isSendLevel) {
+        SendLevel 1
+    }
+    if (WinExist("ahk_class SoPY_Comp")) {
+        send, {Shift}
+    }
+    SendInput, % v
+}
+
 ;^!g::
 ;GitBy(Clipboard)
 ;return

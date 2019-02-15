@@ -646,38 +646,37 @@ AppsKey & s::
     }
 return
 
-
 !Up::
-    SendInput, {PGUP}
+    Send, {PGUP}
 return
 
 +!Up::
-    SendInput, +{PGUP}
+    Send, +{PGUP}
 return
 
 !Down::
-    SendInput, {PGDN}
+    Send, {PGDN}
 return
 
 +!Down::
-    SendInput, +{PGDN}
+    Send, +{PGDN}
 return
 
 !Right::
-    SendInput, {end} 
+    Send, {end}       
 return
+
 
 +!Right::
-    SendInput, +{end} 
+    Send, +{end} 
 return
 
-; ~!Left::
 !Left::
-    SendInput, {Home}
+    Send, {Home}
 return
 
 +!Left::
-    SendInput, +{Home}
+    Send, +{Home}
 return
 
 /*
@@ -890,20 +889,20 @@ code(Var)
 return
 
 ::git::
-    SendInput, git add . && git commit -m '迭代' --no-verify && git push -u origin master{LEFT 42}
+    _sendinput("git add . && git commit -m '迭代' --no-verify && git push -u origin master{LEFT 42}")
 Return
 
 ::gitdev::
 ::gitd::
 ::git dev::
- SendInput, git add . && git commit -m '迭代' --no-verify && git push -u origin dev{LEFT 39}
+    _sendinput("git add . && git commit -m '迭代' --no-verify && git push -u origin dev{LEFT 39}")
 return
 
 
 ::gittest::
 ::gitt::
 ::git test::
- SendInput, git add . && git commit -m '迭代' --no-verify && git push -u origin test{LEFT 40}
+    _sendinput("git add . && git commit -m '迭代' --no-verify && git push -u origin test{LEFT 40}")
 return
 
 
