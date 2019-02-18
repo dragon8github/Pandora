@@ -66,15 +66,16 @@ _send(v, isSendLevel = false, isTab = false) {
     if (isSendLevel) {
         SendLevel 1
     }
-    if (WinExist("ahk_class SoPY_Comp")) {
+    
+    if (WinExist("ahk_class SoPY_Comp") || WinExist("ahk_class PX_WINDOW_CLASS")) {
         send, {Shift}
     }
     
-    
-    send, % v
+    send, %v%
     
     if (isTab) {
-        Send, {tab}
+        send, {tab}
+        return
     }
 }
 

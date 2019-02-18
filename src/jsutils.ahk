@@ -219,9 +219,13 @@
     Menu, utilsMenu, Add, , utilsHandler
     
     
-    
     Menu, utilssf, Add, 栈（后入先出）: 客栈->酒店->洗盘子->开房->后入->鲜出->压入（push）->弹出（pop）->双p, utilsHandler
     Menu, utilssf, Add, 堆（先入先出）: 死人堆->早死早投胎->排队, utilsHandler
+    
+    Menu, utilssf, Add, 
+    Menu, utilssf, Add, 
+    
+    Menu, utilssf, Add, 欧几里得算法：目标使土地分配最大化，不断让宽与高求余，直到整数倍为止, utilsHandler
     
     Menu, utilsMenu , Add, (#-_-)┯━┯  解决方案, :utilsSolution
     Menu, utilsMenu , Add, (╯°口°)╯(┴—┴  设计模式, :utilsDesignPattern
@@ -279,10 +283,12 @@
         
 
     Menu, utilsMenu, Show
+    
 	Menu, utilsMenu, DeleteAll
     Menu, utilsIs, DeleteAll
     Menu, utilsDOM, DeleteAll
     Menu, utilsObject, DeleteAll
+    Menu, utilssf, DeleteAll
     Menu, utilsDesignPattern, DeleteAll
     
 return
@@ -298,6 +304,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "欧几里得算法：目标使土地分配最大化，不断让宽与高求余，直到整数倍为止") {
+_send("oujilide", true, true)
+return
 }
 
 if (v == "timeChunk 分时分批处理函数") {

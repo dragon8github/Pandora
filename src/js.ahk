@@ -1,4 +1,34 @@
-﻿::scrolltop::
+﻿::oujilide::
+Var =
+(
+/**
+ * 欧几里得算法
+ * 目标使土地分配最大化，不断让宽与高求余，直到整数倍为止。
+ * @param {N} w 宽
+ * @param {N} h 高
+ */
+var euclid = function (w, h) {
+	// 获取基准线
+	var benchmark = Math.max(w, h) `% Math.min(w, h)
+	// 数据非法
+	if (isNaN(benchmark)) {
+		return 0
+	// 如果是整数倍，说明满足条件
+	} else if (benchmark == 0) {
+		// 返回小的那个数就是了
+		return Math.min(w, h)
+	// 否则递归
+	} else {
+		return euclid(benchmark, Math.min(w, h))
+	}
+}
+
+euclid(1680, 640)
+)
+code(Var)
+return
+
+::scrolltop::
 Var =
 (
 var timer = null;
