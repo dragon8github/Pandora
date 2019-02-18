@@ -215,6 +215,7 @@ Gui, Pandora:Add, Link,, <a href="https://pdffood.com/">电子书购买列表</a
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
+Gui, Pandora:Add, Link,, <a href="http://photo.weibo.com/">新浪微博图床</a>
 
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
