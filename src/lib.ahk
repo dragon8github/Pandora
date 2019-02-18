@@ -62,14 +62,20 @@ RunByCmder(name) {
     Run, %myIdea% %name%
 }
 
-_send(v, isSendLevel = false) {
+_send(v, isSendLevel = false, isTab = false) {
     if (isSendLevel) {
         SendLevel 1
     }
     if (WinExist("ahk_class SoPY_Comp")) {
         send, {Shift}
     }
+    
+    
     send, % v
+    
+    if (isTab) {
+        Send, {tab}
+    }
 }
 
 _sendinput(v, isSendLevel = false) {

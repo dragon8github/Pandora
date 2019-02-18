@@ -3881,6 +3881,8 @@ return
 
 ::rand::
 ::random::
+::range::
+::rang::
 Var =
 (
 // ~~(0 + Math.random() * 51) // 0-50

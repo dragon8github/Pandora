@@ -83,30 +83,56 @@
 	Menu, H, Add, `% 获取文件名和后缀示例, ShellHandler
 	Menu, H, Add, #（从左到右）操作符, ShellHandler
 	Menu, H, Add, `%（从右到做）操作符, ShellHandler
+	
+	
+	
+	Menu, gitShellMenu, Add, git, ShellHandler4
+	Menu, gitShellMenu, Add, git add . && git commit -m "", ShellHandler
+	Menu, gitShellMenu, Add, git push -u origin master , ShellHandler
+	Menu, gitShellMenu, Add, git pull origin master , ShellHandler
+	
+	Menu, gitShellMenu, Add,
+	Menu, gitShellMenu, Add,	
+	
+	Menu, gitShellMenu, Add, git dev, ShellHandler4
+	Menu, gitShellMenu, Add, git add . && git commit -m "", ShellHandler2
+	Menu, gitShellMenu, Add, git push -u origin dev , ShellHandler2
+	Menu, gitShellMenu, Add, git pull origin dev , ShellHandler2
 
+	Menu, gitShellMenu, Add,
+	Menu, gitShellMenu, Add,	
+	
+	Menu, gitShellMenu, Add, git test, ShellHandler4
+	Menu, gitShellMenu, Add, git add . && git commit -m "", ShellHandler2
+	Menu, gitShellMenu, Add, git push -u origin test , ShellHandler2
+	Menu, gitShellMenu, Add, git pull origin test , ShellHandler2
+
+	Menu, gitShellMenu, Add,
+	Menu, gitShellMenu, Add,	
 	
 	
+	Menu, gitShellMenu, Add, git mergetool, ShellHandler
+	
+	
+	Menu, ShellMenu, Add, git, :gitShellMenu
+	
+	Menu, ShellMenu, Add, , ShellHandler
+	Menu, ShellMenu, Add, , ShellHandler
+	
+	Menu, ShellMenu, Add, #!/bin/bash, ShellHandler
 	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler2
 	Menu, ShellMenu, Add, wget 下载文件, ShellHandler3
 	Menu, ShellMenu, Add, tar 解压, ShellHandler3
+	Menu, ShellMenu, Add, curl -O 下载, ShellHandler
+	Menu, ShellMenu, Add, curl -i 输出响应头, ShellHandler
 	
 		
 	Menu, ShellMenu, Add, , ShellHandler
 	Menu, ShellMenu, Add, , ShellHandler
 	
 	
-	Menu, ShellMenu, Add, git, ShellHandler
-	Menu, ShellMenu, Add, git add . && git commit -m "", ShellHandler
-	Menu, ShellMenu, Add, git push -u origin master , ShellHandler
-	Menu, ShellMenu, Add, git pull origin master , ShellHandler
-	Menu, ShellMenu, Add, git mergetool, ShellHandler
 	
 	
-	Menu, ShellMenu, Add, , ShellHandler
-	Menu, ShellMenu, Add, , ShellHandler
-	
-	Menu, ShellMenu, Add, #!/bin/bash, ShellHandler
-	Menu, ShellMenu, Add, for循环, ShellHandler
 	Menu, ShellMenu, Add, 环境变量, :A
 	Menu, ShellMenu, Add, 时间, :B
 	Menu, ShellMenu, Add, find , :C
@@ -119,21 +145,26 @@
 	Menu, ShellMenu, Add
 	Menu, ShellMenu, Add
 	
+	Menu, ShellMenu, Add, for循环, ShellHandler
 	Menu, ShellMenu, Add, wc 查看多少行代码, ShellHandler
 	Menu, ShellMenu, Add, find + xargs + cat合并多个文件内容到一个文件, ShellHandler
 	Menu, ShellMenu, Add, 批量重命名, ShellHandler
-	Menu, ShellMenu, Add, curl -O 下载, ShellHandler
-	Menu, ShellMenu, Add, curl -i 输出响应头, ShellHandler
-
+	
 
 	
 	Menu, ShellMenu, Show
 	Menu, ShellMenu, DeleteAll
+	Menu, gitShellMenu, DeleteAll
+	
 return  
 
 ShellHandler2:
 v := A_ThisMenuItem
-SendInput,{Text}%v%
+Send,{Text}%v%
+return
+
+ShellHandler4:
+_send(A_ThisMenuItem,true, true)
 return
 
 ShellHandler3:
