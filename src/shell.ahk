@@ -115,10 +115,6 @@
 	
 	
 	Menu, ShellMenu, Add, git, :gitShellMenu
-	
-	Menu, ShellMenu, Add, , ShellHandler
-	Menu, ShellMenu, Add, , ShellHandler
-	
 	Menu, ShellMenu, Add, #!/bin/bash, ShellHandler
 	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler2
 	Menu, ShellMenu, Add, wget 下载文件, ShellHandler3
