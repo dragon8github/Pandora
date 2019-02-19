@@ -137,7 +137,7 @@ Gui, Pandora:Add, Link,, <a href="https://codesandbox.io/u/dragon8github">CodeSa
 Gui, Pandora:Add, Text,  W140 ys, 娱乐:
 Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
 Gui, Pandora:Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
-Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/play/20494.html?20494-1-22">草民电影</a>
+Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/index.php?m=vod-search">草民电影</a>
 Gui, Pandora:Add, Link,, <a href="http://www.dilidili.wang/">无名小站</a>
 Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
 Gui, Pandora:Add, Link,, <a href="http://www.tan8.com/lesson3-category-1.html">蛐蛐钢琴网</a>
@@ -217,6 +217,9 @@ Gui, Pandora:Add, Link,, <a href="https://pdffood.com/">电子书购买列表</a
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 Gui, Pandora:Add, Link,, <a href="http://photo.weibo.com/">新浪微博图床</a>
 Gui, Pandora:Add, Link,, <a href="https://www.zhihu.com/question/23054572">100块以内的礼物</a>
+Gui, Pandora:Add, Link,, <a href="https://ecs.console.aliyun.com/#/home">阿里云控制台</a>
+Gui, Pandora:Add, Link,, <a href="https://dc.36fy.com/">加速度</a>
+
 
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html

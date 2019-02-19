@@ -404,6 +404,7 @@ const stringToPath = (string) => {
 code(Var)
 return
 
+/**
 ::root::
 Var =
 (
@@ -414,6 +415,7 @@ var root = typeof self == 'object' && self.self === self && self ||
 )
 code(Var)
 return
+*/
 
 ::yyyy::
 Var =
@@ -3901,6 +3903,61 @@ randcolor () {
 code(Var)
 return
 
+::singlerand::
+::singlerange::
+::singlerang::
+::singlerandom::
+Var =
+(
+'use strict';
+// 我的随机函数
+var random = function(min, max) {
+    if (max == null) {
+      max = min;
+      min = 0;
+    }
+    return min + Math.floor(Math.random() * (max - min + 1));
+};
+
+// 缓存函数
+var singeFn = function (fn, maxPollTime = 20) {
+	// 缓存
+	var cache = []
+	// 轮询次数
+	var pollTime = 0
+	// 返回随机数生成器
+	return function _ () {
+		// 获取随机数
+		var data = fn.apply(this, arguments)
+		// 如果存在则递归
+		if (~cache.indexOf(data)) {		
+			// 递归调用（如果递归次数大于阈值，那么直接返回False）
+			return ++pollTime > maxPollTime ? false : _.apply(this, arguments)
+		} else {
+			// 重置轮询次数
+			pollTime = 0
+			// 添加缓存并且返回data
+			return cache.push(data), data
+		}
+	}
+}
+
+// 从-7，7取随机数
+var rangeRadom = rand.bind(null, -7, 7)
+
+// 返回一个新的函数
+var singeRangeRadom = singeFn(rangeRadom);
+
+// 获取返回值
+singeRangeRadom()
+singeRangeRadom()
+singeRangeRadom()
+singeRangeRadom()
+singeRangeRadom()
+)
+code(Var)
+return
+
 ::feifafuhao::
 Var =
 (
@@ -3915,17 +3972,18 @@ return
 ::rang::
 Var =
 (
-// ~~(0 + Math.random() * 51) // 0-50
-// parseInt(Math.random() * 5) // 0-4
-/*  
+/*
+// 范围选择如 -100 ~ 100 强烈推荐这个函数
 var random = function(min, max) {
     if (max == null) {
       max = min;
       min = 0;
     }
     return min + Math.floor(Math.random() * (max - min + 1));
-  };
+};
 */
+// ~~(0 + Math.random() * 51)      // 0-50
+// parseInt(Math.random() * 5)     // 0-4
 parseInt(Math.random() * 10 + 1);  // 获取 1 - 10 到随机数
 )
 code(Var)
@@ -5085,6 +5143,8 @@ console.log(arr)
 code(Var)
 return
 
+::qsort::
+::quicksort::
 ::kuaisupaixu::
 ::fastpaixu::
 Var = 

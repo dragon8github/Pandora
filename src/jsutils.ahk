@@ -147,7 +147,7 @@
     Menu, utilsDesignPattern, Add, 代理单例, utilsHandler
     Menu, utilsDesignPattern, Add, 通用的惰性单例, utilsHandler
     Menu, utilsDesignPattern, Add, （回调版）单例模式，通常用于ajax类, utilsHandler
-    
+    Menu, utilsDesignPattern, Add, 单例模式：生成不重复的随机数, utilsHandler
     
     
     Menu, utilsDesignPattern, Add, , utilsHandler
@@ -184,6 +184,7 @@
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     
+    Menu, utilsmy, Add, 单例模式：生成不重复的随机数, utilsHandler
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
     Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
@@ -225,7 +226,7 @@
     Menu, utilssf, Add, 
     Menu, utilssf, Add, 
     
-    Menu, utilssf, Add, 欧几里得算法：目标使土地分配最大化，不断让宽与高求余，直到整数倍为止, utilsHandler
+    Menu, utilssf, Add, 欧几里得算法（分而治之）：目标使土地分配最大化，不断让宽与高求余，直到整数倍为止, utilsHandler
     
     Menu, utilsMenu , Add, (#-_-)┯━┯  解决方案, :utilsSolution
     Menu, utilsMenu , Add, (╯°口°)╯(┴—┴  设计模式, :utilsDesignPattern
@@ -306,7 +307,11 @@ Var =
 )
 }
 
-if (v == "欧几里得算法：目标使土地分配最大化，不断让宽与高求余，直到整数倍为止") {
+if (v == "单例模式：生成不重复的随机数") {
+_send("singlerand", true, true)
+}
+
+if (v == "欧几里得算法（分而治之）：目标使土地分配最大化，不断让宽与高求余，直到整数倍为止") {
 _send("oujilide", true, true)
 return
 }
