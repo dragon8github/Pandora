@@ -125,17 +125,22 @@
     
     Menu, utilsDesignPattern, Add, this , :utilsThis
     Menu, utilsDesignPattern, Add, 封装, utilsHandler
-    Menu, utilsDesignPattern, Add, 模块模式：现代模块实现的基石, utilsHandler
     Menu, utilsDesignPattern, Add, 多态, utilsHandler
-    Menu, utilsDesignPattern, Add, 继承, :utilsExtend
-    Menu, utilsDesignPattern, Add, 闭包与Cache, :utilsExtend
-    Menu, utilsDesignPattern, Add, call 和 apply, utilsHandler
-    Menu, utilsDesignPattern, Add, AOP - 面向切面编程, utilsHandler
-    Menu, utilsDesignPattern, Add, 抽象类接口：咖啡与茶, utilsHandler
+    Menu, utilsDesignPattern, Add, 继承（浅拷贝/深拷贝/多重拷贝/寄生式继承/构造器借用）, :utilsExtend
     
+    Menu, utilsDesignPattern, Add, call 和 apply, utilsHandler
     Menu, utilsDesignPattern, Add, Function.prototype.before, utilsHandler
     Menu, utilsDesignPattern, Add, Function.prototype.after, utilsHandler
+    
+    Menu, utilsDesignPattern, Add, , utilsHandler
+    Menu, utilsDesignPattern, Add, , utilsHandler
+    
+    Menu, utilsDesignPattern, Add, 闭包与Cache, utilsHandler
+    Menu, utilsDesignPattern, Add, 模块模式：现代模块实现的基石, utilsHandler
     Menu, utilsDesignPattern, Add, 超简单的currying与理财花销实例, utilsHandler
+    Menu, utilsDesignPattern, Add, 超简单的链式调用套路：即让方法调用结束后返回对象本身, utilsHandler
+    Menu, utilsDesignPattern, Add, AOP - 面向切面编程, utilsHandler
+    Menu, utilsDesignPattern, Add, 模板抽象类接口：咖啡与茶, utilsHandler
     
     Menu, utilsDesignPattern, Add, , utilsHandler
     Menu, utilsDesignPattern, Add, , utilsHandler
@@ -208,8 +213,9 @@
     Menu, utilses5, Add, (...arr)数组解构的前辈：Array.prototype.push.apply(arr`, newArr), utilsHandler
     Menu, utilses5, Add, 函数调用注入args：successFn.apply(this`, arguments), utilsHandler
     Menu, utilses5, Add, 简写Array.prototype.push.apply的方法：[].push.apply, utilsHandler
-    Menu, utilses5, Add, Fn.call：除了参数是数组/类数组以外的都使用call如map/reduce/filter（因为他们的参数都是函数）等, utilsHandler
+    Menu, utilses5, Add, Function.prototype.call：除了参数为数组/类数组以外的都应该使用call，如map/reduce/filter（因为他们的参数都是函数）等, utilsHandler
     Menu, utilses5, Add, 超简单的currying与理财花销实例, utilsHandler
+    Menu, utilses5, Add, 超简单的链式调用套路：即让方法调用结束后返回对象本身, utilsHandler
     
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
@@ -309,6 +315,28 @@ Var =
 )
 }
 
+if (v == "超简单的链式调用套路：即让方法调用结束后返回对象本身") {
+Var = 
+(
+var User = function () {
+	this.id = null
+	this.name = null
+}
+
+User.prototype.setId = function ( id ) {
+	this.id = id
+	return this
+}
+
+User.prototype.setName = function ( name ) {
+	this.name = name
+	return this
+}
+
+console.log(new User().setId(1234).setName('Lee'))
+)
+}
+
 if (v == "单例模式：生成不重复的随机数") {
 _send("singlerand", true, true)
 }
@@ -392,7 +420,7 @@ curring_cost(  )
 )
 }
 
-if (v == "Fn.call：除了参数是数组/类数组以外的都使用call如map/reduce/filter（因为他们的参数都是函数）等") {
+if (v == "Function.prototype.call：除了参数为数组/类数组以外的都应该使用call，如map/reduce/filter（因为他们的参数都是函数）等") {
 Var = 
 (
 var cost = (function(){
@@ -1271,7 +1299,7 @@ Send, fn.after{tab}
 return
 }
 
-if (v == "抽象类接口：咖啡与茶") {
+if (v == "模板抽象类接口：咖啡与茶") {
 Var = 
 (
 // 继承抽象类的目的，通常是可以为了可以省略很多重复的操作，或者帮你完成了很多基础工作，譬如本例的煮水（boilWater）

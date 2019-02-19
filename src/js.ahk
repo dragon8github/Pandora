@@ -1,4 +1,27 @@
-﻿::autof::
+﻿>^t::
+::console.time::
+::console.t::
+::ctime::
+::consolet::
+::logtime::
+::logt::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =
+(
+// 启动计时器
+console.time('20190219153729')
+
+// ...
+
+
+// 停止计时，输出时间
+console.timeEnd('20190219153729')
+)
+code(Var)
+Send, {UP 3}
+return
+
+::autof::
 ::atf::
 ::autofix::
 ::autofixer::

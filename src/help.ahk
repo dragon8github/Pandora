@@ -833,11 +833,6 @@ AppsKey & i::
 return
 
 
-AppsKey & t::
->^t::
-time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
-SendInput, % time
-return
 
 ::git commit::
 ::git c::
