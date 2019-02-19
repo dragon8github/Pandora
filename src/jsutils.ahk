@@ -177,6 +177,7 @@
     Menu, utilspractice, Add,
     Menu, utilspractice, Add,
     
+
     Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
     Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
     Menu, utilspractice, Add, 函数参数对象深度解构 var a = ({ state: { nums`, numGroup`, map } }) => {}, utilsHandler
@@ -290,6 +291,7 @@
     Menu, utilsDOM, DeleteAll
     Menu, utilsObject, DeleteAll
     Menu, utilssf, DeleteAll
+    Menu, utilspractice, DeleteAll
     Menu, utilsDesignPattern, DeleteAll
     
 return

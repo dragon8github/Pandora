@@ -1,4 +1,19 @@
-﻿::oujilide::
+﻿::autof::
+::atf::
+::autofix::
+::autofixer::
+::autoperfixer::
+::autoprefixer::
+::autoper::
+::autopre::
+Var =
+(
+autoprefixer
+)
+code(Var)
+return
+
+::oujilide::
 Var =
 (
 /**
@@ -3615,8 +3630,8 @@ return
 ::.each::
 Var = 
 (
-.each(function (i, e) {
-    console.log(i, e);
+.each(/* 如果是遍历元素就不需要，如果是遍历数组，首参应该是一个数组[ary]或者对象{obj}, */ function (i, e) {
+    console.log(i, e, $(e));
 });
 )
 code(Var)
@@ -3907,6 +3922,7 @@ return
 ::singlerange::
 ::singlerang::
 ::singlerandom::
+::singleradom::
 Var =
 (
 'use strict';
@@ -3943,16 +3959,12 @@ var singeFn = function (fn, maxPollTime = 20) {
 }
 
 // 从-7，7取随机数
-var rangeRadom = rand.bind(null, -7, 7)
+var rangeRadom = random.bind(null, -7, 7)
 
 // 返回一个新的函数
 var singeRangeRadom = singeFn(rangeRadom);
 
 // 获取返回值
-singeRangeRadom()
-singeRangeRadom()
-singeRangeRadom()
-singeRangeRadom()
 singeRangeRadom()
 )
 code(Var)

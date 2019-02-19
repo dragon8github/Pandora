@@ -41,7 +41,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>二、联想代码补全，根据自己的联想，预设置的关键字，然后按下回车显示全文</p>
+<p>二、联想代码补全，根据自己的联想，预设置的关键字，然后按下 Tab 显示全文</p>
 <p>
   <a href="https://nodejs.org/">
     <img
@@ -59,7 +59,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>四、自动翻译命名，程序员梦寐以求的神器功能！</p>
+<p>四、自动翻译命名，程序员梦寐以求的神器功能！选中文字，按下ctrl + Alt + Q , 如果直接使用 Alt + Q 则是直接翻译。</p>
 <p>
   <a href="https://nodejs.org/">
     <img
