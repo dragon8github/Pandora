@@ -11,7 +11,7 @@ Var =
 // 启动计时器
 console.time('20190219153729')
 
-// ...
+// your code...
 
 
 // 停止计时，输出时间
@@ -3402,7 +3402,7 @@ Var =
 code(Var)
 return
 
-::jsonp::
+::jsonpp::
 Var =
 (
 /**
@@ -3436,6 +3436,7 @@ code(Var)
 return
 
 ::json.p::
+::jsonp::
 Var =
 (
 JSON.parse()
@@ -4885,36 +4886,6 @@ console.log(d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate())
 code(Var)
 return
 
-::jsonp::
-Var = 
-(
-/**
- * @func
- * @desc jsonp的基本使用函数
- * @params {object} urlObj
- * @params {string} urlObj.url - jsonp的请求地址
- * @params {string} urlObj.jsonpCallback - jsonp的回调函数命名
- * @params {function} callback - 要执行的回调函数
- */
-function jsonp(urlObj, callback) {
-    let url = urlObj.url;
-    let callbackName = urlObj.jsonpCallback;
-
-    // 先定义一个全局函数，供jsonp调用
-    window[callbackName] = function(data) {
-        window[callbackName] = undefined;
-        document.body.removeChild(script);
-        callback(data);
-    };
-
-    // jsonp的原理，插入一个script标签，并且执行上面的全局函数
-    let script = document.createElement('script');
-    script.src = url;
-    document.body.appendChild(script);
-}
-)
-code(Var)
-return
 
 
 ::js.cache::

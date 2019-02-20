@@ -116,12 +116,11 @@
 	
 	Menu, ShellMenu, Add, git, :gitShellMenu
 	Menu, ShellMenu, Add, #!/bin/bash, ShellHandler
-	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler2
+	Menu, ShellMenu, Add, ps -ef | grep <关键词>, ShellHandler2
 	Menu, ShellMenu, Add, wget 下载文件, ShellHandler3
 	Menu, ShellMenu, Add, tar 解压, ShellHandler3
 	Menu, ShellMenu, Add, curl -O 下载, ShellHandler
 	Menu, ShellMenu, Add, curl -i 输出响应头, ShellHandler
-	
 		
 	Menu, ShellMenu, Add, , ShellHandler
 	Menu, ShellMenu, Add, , ShellHandler
@@ -146,6 +145,12 @@
 	Menu, ShellMenu, Add, find + xargs + cat合并多个文件内容到一个文件, ShellHandler
 	Menu, ShellMenu, Add, 批量重命名, ShellHandler
 	
+	Menu, ShellMenu, Add
+	Menu, ShellMenu, Add
+	
+	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler2
+	Menu, ShellMenu, Add, nginx -s reload 重启 nginx, ShellHandler
+	Menu, ShellMenu, Add, nginx -t 测试配置是否有语法错误，并且获取配置位置, ShellHandler
 
 	
 	Menu, ShellMenu, Show
@@ -202,7 +207,15 @@ Var =
 )
 }
 
+if (v == "nginx -s reload 重启 nginx") {
+_send("nginx -s reload",true, true)
+return
+}
 
+if (v == "nginx -t 测试配置是否有语法错误，并且获取配置位置") {
+_send("nginx -t",true, true)
+return
+}
 
 
 if (v == "ps -ef | grep nginx") {

@@ -17,6 +17,7 @@
   Menu, VueMenu, Add, vue.watch.deep, VueHandler
   Menu, VueMenu, Add, vue.watch-vuex, VueHandler
   Menu, VueMenu, Add, vue.watch-$route, VueHandler
+  Menu, VueMenu, Add, vue.watch-deep-$route, VueHandler
   Menu, VueMenu, Add, vue.directive 指令, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
@@ -35,9 +36,9 @@
   
   
   Menu, VueMenu, Add, router.init, VueHandler
+  Menu, VueMenu, Add, 获取参数this.$route.params.id, VueHandler
   Menu, VueMenu, Add, this.$router.push('index'), VueHandler
   Menu, VueMenu, Add, this.$router.back, VueHandler
-  Menu, VueMenu, Add, 获取参数this.$route.params.id, VueHandler
   Menu, VueMenu, Add, <router-view></router-view>, VueHandler
   Menu, VueMenu, Add, <router-link></router-link>, VueHandler
   Menu, VueMenu, Add, 组件钩子beforeRouteLeave, VueHandler
@@ -73,6 +74,20 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "vue.watch-deep-$route") {
+Var = 
+(
+watch: {
+  '$route': {
+      deep: true,
+      handler (newV, oldV) {
+          this.$store.dispatch('Map/reset')
+      }
+  }
+},
 )
 }
 
