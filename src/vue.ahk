@@ -50,16 +50,24 @@
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
+  
+  
+  Menu, vuesolution, Add, myprogress组件, VueHandler
+  Menu, vuesolution, Add, msgbox组件, VueHandler
+  Menu, vuesolution, Add, click-outside 指令, VueHandler
+  Menu, vuesolution, Add, 组件复用的新套路: 合并配置，来代替mixin方案, VueHandler
+  Menu, vuesolution, Add, 波浪效果组件, VueHandler
+  Menu, vuesolution, Add, 波浪效果指令, VueHandler
+  Menu, vuesolution, Add, NProgress页面加载组件, VueHandler
+  Menu, vuesolution, Add, 宇宙流星雨canvas, VueHandler
+  Menu, vuesolution, Add, $.scrollforevery 无缝滚动（Vue版本）, VueHandler
+  
+  
+  Menu, VueMenu, Add, Vue 解决方案和组件, :vuesolution
+  
+  
 
-  Menu, VueMenu, Add, myprogress组件, VueHandler
-  Menu, VueMenu, Add, msgbox组件, VueHandler
-  Menu, VueMenu, Add, click-outside 指令, VueHandler
-  Menu, VueMenu, Add, 组件复用的新套路: 合并配置，来代替mixin方案, VueHandler
-  Menu, VueMenu, Add, 波浪效果组件, VueHandler
-  Menu, VueMenu, Add, 波浪效果指令, VueHandler
-  Menu, VueMenu, Add, NProgress页面加载组件, VueHandler
-  Menu, VueMenu, Add, 宇宙流星雨canvas, VueHandler
-  Menu, utilsSolution, Add, $.scrollforevery 无缝滚动（Vue版本）, utilsHandler
+
   
   Menu, VueMenu, Show
   Menu, VueMenu, DeleteAll

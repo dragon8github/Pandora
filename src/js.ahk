@@ -3473,15 +3473,6 @@ application/x-www-form-urlencoded;charset=utf-8
 code(Var)
 Return
 
-::ff::
-Var = 
-(
-_ => {
-    
-}
-)
-code(Var)
-return
 
 ::$()::
 ::$()()::
@@ -3820,7 +3811,7 @@ for (var i = Things.length - 1; i >= 0; i--) {
 code(Var)
 Return
 
-!f::
+
 ::for::
 ::for+::
 ::for++::
