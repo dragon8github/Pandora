@@ -1,19 +1,12 @@
 ﻿!f::
 
-	
-	
 	Menu, FutureMenu, Add, class StatelessWidget, FlutterHandler
 	Menu, FutureMenu, Add, class StatefulWidget, FlutterHandler
+	Menu, FutureMenu, Add, images, FlutterHandler
+	Menu, FutureMenu, Add, Echo, FlutterHandler
+	Menu, FutureMenu, Add, Widget build, FlutterHandler
 	
-	Menu, FutureMenu, Add, 
-	Menu, FutureMenu, Add, 
-	
-	Menu, FutureMenu, Add, Future.then, FlutterHandler
-	Menu, FutureMenu, Add, Future.catch, FlutterHandler
-	Menu, FutureMenu, Add, Future.whenComplete, FlutterHandler
-	Menu, FutureMenu, Add, Future.wait, FlutterHandler
-	Menu, FutureMenu, Add, async/await, FlutterHandler
-	
+
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 	
@@ -25,15 +18,44 @@
 	
 	Menu, FutureMenu, Add, flatbutton, FlutterHandler
 	
+	
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 	
+	Menu, FutureMenu, Add, new route Widget, FlutterHandler
 	Menu, FutureMenu, Add, Navigator.push, FlutterHandler
+	Menu, FutureMenu, Add, Navigator.push 命名路由, FlutterHandler
 	
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 
-	Menu, FutureMenu, Add, onPressed, FlutterHandler
+	Menu, FutureMenu, Add, 点击事件 onPressed, FlutterHandler
+	
+	Menu, FutureMenu, Add, 
+	Menu, FutureMenu, Add, 
+	
+	
+	Menu, FutureMenu, Add, RandomWordsWidget 生成随机字符串, FlutterHandler
+	
+	Menu, FutureMenu, Add, 
+	Menu, FutureMenu, Add, 
+	
+	
+	Menu, FutureMenu, Add, Future.then, FlutterHandler
+	Menu, FutureMenu, Add, Future.catch, FlutterHandler
+	Menu, FutureMenu, Add, Future.whenComplete, FlutterHandler
+	Menu, FutureMenu, Add, Future.wait, FlutterHandler
+	Menu, FutureMenu, Add, async/await, FlutterHandler
+	
+	Menu, FutureMenu, Add, 
+	Menu, FutureMenu, Add, 
+	
+	Menu, FutureMenu, Add, @override void initState() {}, FlutterHandler
+	Menu, FutureMenu, Add, @override void didUpdateWidget() {}, FlutterHandler
+	Menu, FutureMenu, Add, @override void deactivate() {}, FlutterHandler
+	Menu, FutureMenu, Add, @override void dispose() {}, FlutterHandler
+	Menu, FutureMenu, Add, @override void reassemble() {}, FlutterHandler
+	Menu, FutureMenu, Add, @override void didChangeDependencies() {}, FlutterHandler
 
 	Menu, FutureMenu, Show
 	Menu, FutureMenu, DeleteAll
@@ -57,6 +79,189 @@ Var =
 )
 }
 
+
+
+if (v == "@override void initState() {}") {
+Var =
+(
+@override
+void initState() {
+  super.initState();
+  //初始化状态  
+  _counter=widget.initValue;
+  print("initState");
+}
+)
+}
+
+if (v == "@override void didUpdateWidget() {}") {
+Var =
+(
+@override
+void didUpdateWidget(CounterWidget oldWidget) {
+   super.didUpdateWidget(oldWidget);
+   print("didUpdateWidget");
+}
+)
+}
+
+if (v == "@override void deactivate() {}") {
+Var =
+(
+@override
+void deactivate() {
+   super.deactivate();
+   print("deactive");
+}
+
+)
+}
+
+if (v == "@override void dispose() {}") {
+Var =
+(
+@override
+void dispose() {
+	super.dispose();
+	print("dispose");
+}
+)
+}
+
+if (v == "@override void reassemble() {}") {
+Var =
+(
+@override
+void reassemble() {
+  super.reassemble();
+  print("reassemble");
+}
+)
+}
+
+if (v == "@override void didChangeDependencies() {}") {
+Var =
+(
+@override
+void didChangeDependencies() {
+  super.didChangeDependencies();
+  print("didChangeDependencies");
+}
+)
+}
+
+if (v == "Widget build") {
+_send("fwb", true, true)
+}
+
+
+if (v == "Echo") {
+Var =
+(
+class Echo extends StatelessWidget {
+  const Echo({
+    Key key,
+    // @required 标注是必备参数。这样有利于静态代码分析器进行检查
+    @required this.text,
+    this.backgroundColor:Colors.grey,
+  }):super(key:key);
+
+  final String text;
+  final Color backgroundColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        color: backgroundColor,
+        child: Text(text),
+      `),
+    `);
+  }
+}
+// 这样使用:
+class _Echo extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return Echo(text: "hello world");
+  }
+}
+)
+}
+
+
+if (v == "images") {
+_send("fimg", true, true)
+}
+
+if (v == "RandomWordsWidget 生成随机字符串") {
+Var =
+(
+import 'package:english_words/english_words.dart';
+class RandomWordsWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // 生成随机字符串
+    final wordPair = new WordPair.random();
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: new Text(wordPair.toString()),
+    `);
+  }
+}
+)
+}
+
+if (v == "new route Widget") {
+Var =
+(
+class NewRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("New route"),
+      `),
+      body: Center(
+        child: Text("This is new route"),
+      `),
+    `);
+  }
+}
+)
+}
+
+if (v == "Navigator.push 命名路由") {
+Var =
+(
+// 命名路由的最大优点是直观，我们可以通过语义化的字符串来管理路由。但其有一个明显的缺点：不能直接传递路由参数。
+
+// app build
+routes: {
+  "new_page": (context) => NewRoute(),
+},
+
+// new route
+class NewRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("New route"),
+      `),
+      body: Center(
+        child: Text("This is new route"),
+      `),
+    `);
+  }
+}
+
+// flatbtn click event
+onPressed: () {
+  Navigator.pushNamed(context, "new_page");
+},
+)
+}
+
 if (v == "Navigator.push") {
 Var =
 (
@@ -69,7 +274,7 @@ Navigator.push(
 )
 }
 
-if (v == "onPressed") {
+if (v == "点击事件 onPressed") {
 Var =
 (
 onPressed: () {
@@ -126,6 +331,48 @@ return
 ::fcfull::
 ::fc::
 ::fclass::
+::fff::
+Var =
+(
+class MyApp extends StatefulWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("New route"),
+      `),
+      body: Center(
+        child: Text("This is new route"),
+      `),
+    `);
+  }
+}
+)
+code(Var)
+return
+
+::fimg::
+::fimage::
+::fimages::
+Var =
+(
+class RenderLogo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset('images/logo.jpg');
+  }
+}
+)
+code(Var)
+return
+
+::fles::
+::fless::
+::fclass::
+::ffl::
+::fffl::
+::ffless::
+::fcless::
 Var =
 (
 class MyApp extends StatelessWidget {
@@ -143,8 +390,8 @@ class MyApp extends StatelessWidget {
 }
 )
 code(Var)
-Send, {up 3}
 return
+
 
 ::flatbtn::
 ::flatbutton::
@@ -162,26 +409,6 @@ FlatButton(
 	`);
   },
 `)
-)
-code(Var)
-return
-
-::fclass::
-Var =
-(
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("New route"),
-      `),
-      body: Center(
-        child: Text("This is new route"),
-      `),
-    `);
-  }
-}
 )
 code(Var)
 return
@@ -298,11 +525,72 @@ Future.delayed(new Duration(seconds: 2),(){
 code(Var)
 return
 
-::@over::
-::@o::
+::fwb::
+::fbuild::
+::fwbuild::
 Var =
 (
 @override
+  Widget build(BuildContext context) {
+    print("build");
+    return Center(
+      child: FlatButton(
+        child: Text("$_counter"),
+        onPressed: () => setState(() => ++_counter),
+      `)
+    `)
+  }
+);
+code(Var)
+return
+
+::@over::
+::@o::
+Send, @override
+return
+
+::fimp::
+::fmp::
+Var =
+(
+import 'package:english_words/english_words.dart';
+)
+code(Var)
+return
+
+::flife::
+::flite::
+Var =
+(
+@override
+void didUpdateWidget(CounterWidget oldWidget) {
+  super.didUpdateWidget(oldWidget);
+  print("didUpdateWidget");
+}
+
+@override
+void deactivate() {
+  super.deactivate();
+  print("deactive");
+}
+
+@override
+void dispose() {
+  super.dispose();
+  print("dispose");
+}
+
+@override
+void reassemble() {
+  super.reassemble();
+  print("reassemble");
+}
+
+@override
+void didChangeDependencies() {
+  super.didChangeDependencies();
+  print("didChangeDependencies");
+}
 )
 code(Var)
 return

@@ -192,7 +192,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
 Gui, Pandora:Add, Link,, <a href="https://leancloud.cn/">leancloud</a>
 Gui, Pandora:Add, Link,, <a href="https://cloud.minapp.com/">知晓云</a>
 Gui, Pandora:Add, Link,, <a href="https://www.wilddog.com/console/wd6326449524sjxxpb">wilddog野狗</a>
-Gui, Pandora:Add, Link,, <a href="https://docs.wilddog.com/sync/Web/quickstart.html">wilddog 快速入门</a>
+Gui, Pandora:Add, Link,, <a href="https://yeoman.io/generators/">yeoman generators</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza-old</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza</a>
 
@@ -215,10 +215,12 @@ Gui, Pandora:Add, Link,, <a href="https://pdffood.com/">电子书购买列表</a
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
-Gui, Pandora:Add, Link,, <a href="http://photo.weibo.com/5651028146/albums?rd=1">新浪微博图床</a>
+Gui, Pandora:Add, Link,, <a href="http://photo.weibo.com/upload/index">新浪微博图床</a>
 Gui, Pandora:Add, Link,, <a href="https://www.zhihu.com/question/23054572">100块以内的礼物</a>
 Gui, Pandora:Add, Link,, <a href="https://ecs.console.aliyun.com/#/home">阿里云控制台</a>
 Gui, Pandora:Add, Link,, <a href="https://dc.36fy.com/">加速度</a>
+Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
+
 
 
 Gui, Pandora:Tab, 2
@@ -680,6 +682,8 @@ Gui, Pandora:Add, Link,, <a href="http://www.cndartlang.com/">Dart 中文社区<
 Gui, Pandora:Add, Link,, <a href="https://webdev.dartlang.org/tools/sdk#install">Dart 安装下载</a>
 Gui, Pandora:Add, Link,, <a href="https://webdev.dartlang.org/api?package=Dart SDK">Dart SDK 文档</a>
 Gui, Pandora:Add, Link,, <a href="https://dartpad.dartlang.org/2a24f3f042f1c86cf91621c30adce771">DartPad 在线调试</a>
+Gui, Pandora:Add, Link,, <a href="https://pub.dartlang.org/">pub 仓库</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, Flutter:

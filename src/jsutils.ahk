@@ -146,7 +146,7 @@
     Menu, utilsDesignPattern, Add, , utilsHandler
     
     
-    Menu, utilsDesignPattern, Add, 单例版ajax, utilsHandler
+    Menu, utilsDesignPattern, Add, (=・ω・=)我的单例版ajax, utilsHandler
     Menu, utilsDesignPattern, Add, 惰性单例, utilsHandler
     Menu, utilsDesignPattern, Add, 透明单例, utilsHandler
     Menu, utilsDesignPattern, Add, 代理单例, utilsHandler
@@ -190,11 +190,12 @@
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     
+    Menu, utilsmy, Add, (=・ω・=)我的单例版ajax, utilsHandler
     Menu, utilsmy, Add, 单例模式：生成不重复的随机数, utilsHandler
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
     Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
-    Menu, utilsmy, Add, 单例版ajax, utilsHandler
+    Menu, utilsmy, Add, (=・ω・=)我的单例版ajax, utilsHandler
     Menu, utilsmy, Add, 去重复版本的axios, utilsHandler
     Menu, utilsmy, Add, 获取前6个月/前15天数据, EventHandler
     
@@ -465,9 +466,9 @@ Send, singaxios{tab}
 return
 }
 
-if (v == "单例版ajax") {
+if (v == "(=・ω・=)我的单例版ajax") {
 SendLevel 1
-Send, singajax{tab}
+Send, singeajax{tab}
 return
 }
 if (v == "强制转化为Boolean类型：!!(a && b)") {

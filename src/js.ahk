@@ -1,4 +1,60 @@
-﻿>^t::
+﻿::singeajax::
+::singajax::
+::singeajax::
+Var =
+(
+
+// 获取纯Url，不包含?后面的参数
+var getPureUrl = url => {
+    const index = url.indexOf('?')
+    return url.substr(0, ~index ? index : url.length)
+}
+
+//（核心）以url相同作为重复条件，你可以根据自己的情况编写自己的重复条件
+var SingleAjax = function () {
+    // 缓存的队列
+    var pending = [];
+
+    // 返回单例模式ajax
+    return function (opts) {
+        // 获取纯Url（不包含?后面的参数）
+        const pureUrl = getPureUrl(opts.url)
+        // 中止队列中所有相同请求地址的xhr
+        pending.forEach(_ => _.url === pureUrl && _.xhr.abort());
+        // 获取 success 回调函数
+        const _success = opts.success
+        // 装饰成功回调函数
+        opts.success = function (...rest) {
+            // 从队列过滤掉已经成功的请求
+            pending = pending.filter(_ => _.url != pureUrl)
+            // 继续执行它的成功
+            _success && _success(...rest)
+        }
+        // 移除所有中止的请求，并且将新的请求推入缓存
+        pending = [...pending.filter(_ => _.url != pureUrl), { url: pureUrl, xhr: $.ajax(opts) }]
+    }
+}
+
+// 生成单例ajax
+var singleAjax = new SingleAjax()
+
+for (var i = 0; i < 10; i++) {
+    singleAjax({
+        url: "http://localhost",
+        success: function (data) {
+            // 其实在成功之后，可以考虑扩展把成功的xhr从队列中移除，但其实也不影响。已经成功的xhr就算再次被执行abort也不会怎么样，更不会从200变成cannel状态，更不会触发error。
+            console.log('请求成功', data);
+        },
+        error: function(e, m){
+           console.log('数据接口请求异常（请放心这是正常现象，由于请求被中止，所以会回调error。只需要判断一下m === "abort" 即可，你还可以在 abort() 时在 _.xhr 中加入任意属性来判断深入判断）', e, m, m === "abort");
+        }
+    })
+}
+)
+code(Var)
+return
+
+>^t::
 ::console.time::
 ::console.t::
 ::ctime::
@@ -3933,6 +3989,8 @@ randcolor () {
 code(Var)
 return
 
+::singerand::
+::singrand::
 ::singlerand::
 ::singlerange::
 ::singlerang::
