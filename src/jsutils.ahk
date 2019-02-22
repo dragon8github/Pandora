@@ -340,6 +340,7 @@ console.log(new User().setId(1234).setName('Lee'))
 
 if (v == "单例模式：生成不重复的随机数") {
 _send("singlerand", true, true)
+return
 }
 
 if (v == "欧几里得算法（分而治之）：目标使土地分配最大化，不断让宽与高求余，直到整数倍为止") {

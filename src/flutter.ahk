@@ -1,17 +1,31 @@
 ﻿!f::
-
+	Menu, FutureMenu, Add, finit(Hello World), FlutterHandler
 	Menu, FutureMenu, Add, class StatelessWidget, FlutterHandler
 	Menu, FutureMenu, Add, class StatefulWidget, FlutterHandler
 	Menu, FutureMenu, Add, images, FlutterHandler
+	Menu, FutureMenu, Add, @override Widget build, FlutterHandler
 	Menu, FutureMenu, Add, Echo, FlutterHandler
-	Menu, FutureMenu, Add, Widget build, FlutterHandler
-	
 
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
+
+	Menu, FutureMenu, Add, child, FlutterHandler
+	Menu, FutureMenu, Add, Center, FlutterHandler
+	Menu, FutureMenu, Add, Container, FlutterHandler
+	Menu, FutureMenu, Add, Text, FlutterHandler
+	Menu, FutureMenu, Add, Column, FlutterHandler
 	
-	Menu, FutureMenu, Add, child: Text("open new route")`,, FlutterHandler2
-	Menu, FutureMenu, Add, textColor: Colors.blue`,,FlutterHandler2
+  Menu, FutureMenu, Add, 
+	Menu, FutureMenu, Add, 
+
+	
+	Menu, FutureMenu, Add, textColor, FlutterHandler
+	Menu, FutureMenu, Add, color, FlutterHandler
+	Menu, FutureMenu, Add, height, FlutterHandler
+	Menu, FutureMenu, Add, width, FlutterHandler
+	Menu, FutureMenu, Add, style, FlutterHandler
+	Menu, FutureMenu, Add, textAlign, FlutterHandler
+	
 		
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
@@ -22,7 +36,7 @@
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 	
-	Menu, FutureMenu, Add, new route Widget, FlutterHandler
+	Menu, FutureMenu, Add, 新建路由 new route Widget, FlutterHandler
 	Menu, FutureMenu, Add, Navigator.push, FlutterHandler
 	Menu, FutureMenu, Add, Navigator.push 命名路由, FlutterHandler
 	
@@ -49,6 +63,7 @@
 	
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
+	
 	
 	Menu, FutureMenu, Add, @override void initState() {}, FlutterHandler
 	Menu, FutureMenu, Add, @override void didUpdateWidget() {}, FlutterHandler
@@ -79,7 +94,79 @@ Var =
 )
 }
 
+if (v == "Column") {
+_send("fcol", true, true)
+return
+}
 
+if (v == "child") {
+_send("fchild", true, true)
+return
+}
+
+if (v == "textColor") {
+_send("ftc", true, true)
+return
+}
+
+if (v == "color") {
+_send("fcolor", true, true)
+return
+}
+
+if (v == "width/height") {
+_send("fwh", true, true)
+return
+}
+
+if (v == "style") {
+_send("fstyle", true, true)
+return
+}
+
+if (v == "textAlign") {
+_send("fta", true, true)
+return
+}
+
+if (v == "Center") {
+Var =
+(
+Center(
+	child: Container(
+		height: 400.0,
+        width: 300.0,
+	`)
+`)
+)
+}
+
+if (v == "Container") {
+Var =
+(
+Container(
+	height: 400.0,
+    width: 300.0,
+`)
+)
+}
+
+if (v == "Text") {
+Var =
+(
+Text(
+    'Hello!',
+    style: TextStyle(fontSize: 40.0),
+    textAlign: TextAlign.center,
+`),
+)
+}
+
+
+if (v == "finit(Hello World)") {
+_send("finit", true, true)
+return
+}
 
 if (v == "@override void initState() {}") {
 Var =
@@ -150,8 +237,9 @@ void didChangeDependencies() {
 )
 }
 
-if (v == "Widget build") {
+if (v == "@override Widget build") {
 _send("fwb", true, true)
+return
 }
 
 
@@ -191,6 +279,7 @@ class _Echo extends StatelessWidget {
 
 if (v == "images") {
 _send("fimg", true, true)
+return
 }
 
 if (v == "RandomWordsWidget 生成随机字符串") {
@@ -211,7 +300,7 @@ class RandomWordsWidget extends StatelessWidget {
 )
 }
 
-if (v == "new route Widget") {
+if (v == "新建路由 new route Widget") {
 Var =
 (
 class NewRoute extends StatelessWidget {
@@ -290,46 +379,143 @@ onPressed: () {
 
 if (v == "flatbutton") {
 _send("flatbutton", true, true)
+return
 }
 
 if (v == "class StatelessWidget") {
 _send("fcless", true, true)
+return
 }
 
 if (v == "class StatefulWidget") {
 _send("fcful", true, true)
+return
 }
 
 if (v == "Future.whenComplete") {
 _send("ffw", true, true)
+return
 }
 
 if (v == "Future.wait") {
 _send("ffwait", true, true)
+return
 }
 
 if (v == "async/await") {
 _send("ffasync", true, true)
+return
 }
 
 if (v == "Future.then") {
 _send("futrue", true, true)
+return
 }
 
 if (v == "Future.catch") {
 _send("futrue.catch", true, true)
+return
 }
 
 if (v == "class") {
 _send("fclass", true, true)
+return
 }
 
 code(Var)
 return
 
+::fwd::
+::fwh::
+Var =
+(
+height: 400.0,
+width: 300.0,
+)
+code(Var)
+return
+
+::fcol::
+::flist::
+::ful::
+::fli::
+Var =
+(
+Column(
+	children: <Widget>[
+	  Text('Hello!'),
+	  Text('Hello!'),
+	  Text('Hello!'),
+	  Text('Hello!'),
+	],
+`)
+)
+code(Var)
+return
+
+::ftc::
+Var =
+(
+textColor: Colors.blue,
+)
+code(Var)
+return
+
+::fta::
+Var =
+(
+textAlign: TextAlign.center,
+)
+code(Var)
+return
+
+::fstyle::
+Var =
+(
+style: TextStyle(fontSize: 40.0),
+)
+code(Var)
+return
+
+::fc::
+::fclo::
+::fco::
+::fcolor::
+::fcolors::
+Var =
+(
+color: Colors.purple,
+)
+code(Var)
+return
+
+::fchild::
+Var =
+(
+child: Container(
+	
+`),
+)
+code(Var)
+return
+
+::fcenter::
+::fcen::
+Var =
+(
+Center(
+  child: Text(
+	'Hello!',
+	style: TextStyle(fontSize: 40.0),
+	textAlign: TextAlign.center,
+  `),
+`),
+)
+code(Var)
+return
+
 ::fcful::
 ::fcfull::
-::fc::
 ::fclass::
 ::fff::
 Var =
@@ -591,6 +777,52 @@ void didChangeDependencies() {
   super.didChangeDependencies();
   print("didChangeDependencies");
 }
+)
+code(Var)
+return
+
+::fhelloworld::
+::fhello::
+::finit::
+Var =
+(
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Hello Rectangle',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Hello Rectangle'),
+        `),
+        body: HelloRectangle(),
+      `),
+    `),
+  `);
+}
+
+class HelloRectangle extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        color: Colors.greenAccent,
+        height: 400.0,
+        width: 300.0,
+        child: Center(
+          child: Text(
+            'Hello!',
+            style: TextStyle(fontSize: 40.0),
+            textAlign: TextAlign.center,
+          `),
+        `),
+      `),
+    `);
+  }
+}
+
 )
 code(Var)
 return

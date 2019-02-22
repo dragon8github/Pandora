@@ -67,14 +67,14 @@ _send(v, isSendLevel = false, isTab = false) {
         SendLevel 1
     }
     
+    send, %v%
+
     if (WinExist("ahk_class SoPY_Comp") || WinExist("ahk_class PX_WINDOW_CLASS")) {
         send, {shift}
     }
-    
-    send, %v%
-    
+
     if (isTab) {
-        send, {Tab}
+       send, {tab}
     }
 }
 
@@ -174,18 +174,6 @@ SwitchIME(dwLayout){
     SendMessage,0x50,0,HKL,%ctl%,A
 }
 
-; 复制黏贴大段文本
-code(code)
-{
-    tmp := Clipboard
-    Clipboard := code
-    ; 这里也需要等待，否则有几率出现黏贴不出的情况，如果出现黏贴不出的情况，就尝试调大这里的数值把
-    Sleep, 200
-    Send, {CtrlDown}{ShiftDown}v{CtrlUp}{ShiftUp}
-    ; 这里至少需要等待100m，原因不详
-    sleep, 100
-    Clipboard := tmp
-}
 
 ; 获取当前窗口的id，使用是if WinActive("ahk_id 0x3d1362")
 ; https://wyagd001.github.io/zh-cn/docs/misc/WinTitle.htm#ActiveWindow
@@ -201,3 +189,14 @@ return
 return
 
 
+; 复制黏贴大段文本
+code(code) {
+    tmp := Clipboard
+    Clipboard := code
+    ; 这里也需要等待，否则有几率出现黏贴不出的情况，如果出现黏贴不出的情况，就尝试调大这里的数值把
+    Sleep, 200
+    Send, {CtrlDown}{ShiftDown}v{CtrlUp}{ShiftUp}
+    ; 这里至少需要等待100m，原因不详
+    sleep, 100
+    Clipboard := tmp
+}

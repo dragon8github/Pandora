@@ -203,7 +203,7 @@ Gui, Pandora:Add, Link,, <a href="https://unsplash.com/">unsplash.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.foodiesfeed.com/">foodiesfeed.com</a>
 Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">pixabay.com</a>
 Gui, Pandora:Add, Link,, <a href="http://en.freejpg.com.ar/">freejpg</a>
-Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co/</a>
+Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
@@ -212,6 +212,8 @@ Gui, Pandora:Add, Link,, <a href="https://app.didiyun.com/#/dc2/detail?uuid=a289
 Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub</a>
 Gui, Pandora:Add, Link,, <a href="https://amazonaws-china.com/cn/ec2/">aws Amazon EC2</a>
 Gui, Pandora:Add, Link,, <a href="https://pdffood.com/">电子书购买列表</a>
+Gui, Pandora:Add, Link,, <a href="https://classroom.udacity.com/courses/ud905/lessons/92a39eec-0c04-4d98-b47f-c884b9cd5a3b/concepts/78143d19-8360-4f83-88ab-cfcb5b160465">「Flutter 教学视频」</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
@@ -745,6 +747,12 @@ OnClipboardChange("ClipChanged")
 ClipChanged(Type) {
    if (type == 1) {
 		b := Trim(StrReplace(Clipboard, "`r`n"))
+		
+		if (InStr(b, "sinaimg.cn/small") && InStr(b, ".jpg")) {
+			b := "![](" . StrReplace(b, "small", "large") . ")"
+			return Clipboard := b
+		}
+		
 		; 必须复制的不是空内容但小于200，并且不是在GUI中复制的才进行储存。
 		if (StrLen(b) != 0 && StrLen(b) <= 200 && !WinActive("ahk_class AutoHotkeyGUI")) {
 			; 从文本框获取已有的内容，保存到OutputVar变量中
