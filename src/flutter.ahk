@@ -1,10 +1,7 @@
 ﻿!f::
-	Menu, FutureMenu, Add, finit(Hello World), FlutterHandler
+	Menu, FutureMenu, Add, Flutter init, FlutterHandler
 	Menu, FutureMenu, Add, class StatelessWidget, FlutterHandler
 	Menu, FutureMenu, Add, class StatefulWidget, FlutterHandler
-	Menu, FutureMenu, Add, images, FlutterHandler
-	Menu, FutureMenu, Add, @override Widget build, FlutterHandler
-	Menu, FutureMenu, Add, Echo, FlutterHandler
 
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
@@ -14,24 +11,28 @@
 	Menu, FutureMenu, Add, Container, FlutterHandler
 	Menu, FutureMenu, Add, Text, FlutterHandler
 	Menu, FutureMenu, Add, Column, FlutterHandler
-	
-  Menu, FutureMenu, Add, 
+	Menu, FutureMenu, Add, images, FlutterHandler
+    
+    Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 
 	
 	Menu, FutureMenu, Add, textColor, FlutterHandler
 	Menu, FutureMenu, Add, color, FlutterHandler
-	Menu, FutureMenu, Add, height, FlutterHandler
-	Menu, FutureMenu, Add, width, FlutterHandler
+	Menu, FutureMenu, Add, width/height, FlutterHandler
 	Menu, FutureMenu, Add, style, FlutterHandler
 	Menu, FutureMenu, Add, textAlign, FlutterHandler
+    Menu, FutureMenu, Add, padding, FlutterHandler
+    Menu, FutureMenu, Add, margin, FlutterHandler
+    Menu, FutureMenu, Add, EdgeInsets.only(top: 64.0`, left: 32.0`, bottom: 32.0`, right: 32.0), FlutterHandler2
+    Menu, FutureMenu, Add, EdgeInsets.all(50.0), FlutterHandler2
 	
 		
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 	
 	Menu, FutureMenu, Add, flatbutton, FlutterHandler
-	
+	Menu, FutureMenu, Add, Echo, FlutterHandler
 	
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
@@ -64,7 +65,7 @@
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 	
-	
+	Menu, FutureMenu, Add, @override Widget build, FlutterHandler
 	Menu, FutureMenu, Add, @override void initState() {}, FlutterHandler
 	Menu, FutureMenu, Add, @override void didUpdateWidget() {}, FlutterHandler
 	Menu, FutureMenu, Add, @override void deactivate() {}, FlutterHandler
@@ -93,6 +94,32 @@ Var =
 (
 )
 }
+
+if (v == "padding") {
+Var =
+(
+padding: EdgeInsets.only(
+  top: 64.0,
+  left: 32.0,
+  bottom: 32.0,
+  right: 32.0,
+`),
+)
+}
+
+
+if (v == "margin") {
+Var =
+(
+margin: EdgeInsets.only(
+  top: 64.0,
+  left: 32.0,
+  bottom: 32.0,
+  right: 32.0,
+`),
+)
+}
+
 
 if (v == "Column") {
 _send("fcol", true, true)
@@ -163,7 +190,7 @@ Text(
 }
 
 
-if (v == "finit(Hello World)") {
+if (v == "Flutter init") {
 _send("finit", true, true)
 return
 }
