@@ -22,6 +22,14 @@ return
 	Hotstring("Reset")
 return
 
+::es::
+Var =
+(
+elasticsearch
+)
+code(Var)
+return
+
 resetlabel:
     Hotstring("Reset")
 return
@@ -949,7 +957,8 @@ return
 return
 
 
-!enter::
+>!enter::
+>^enter::
     WinGet, OutputVar, MinMax, A
     if (OutputVar == 1) {
         WinRestore, A

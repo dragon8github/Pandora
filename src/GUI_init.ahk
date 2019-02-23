@@ -292,7 +292,7 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345
 Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">v0</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v1.dgdatav.com:6080/#/overallSituation">v1</a>
 
-Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/dg/maptheme">v2</a>
+Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/">v2</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/boards">敏捷看板</a>

@@ -198,6 +198,9 @@ Array.prototype.
 code(Var)
 return
 
+::singeaxios::
+::singereq::
+::singerequest::
 ::singaxios::
 ::singleaxios::
 ::pedingaxios::
@@ -207,17 +210,19 @@ Var =
 let pending = []
 
 // 获取纯Url，不包含?后面的参数
-var getPureUrl = url => {
+const getPureUrl = (url, start = 0) => {
 	const index = url.indexOf('?')
-	return url.substr(0, ~index ? index : url.length)
+	const pureUrl = url.substr(0, ~index ? index : url.length)
+  return pureUrl.substr(start)
 }
+
 
 // 请求拦截器
 axios.interceptors.request.use(config => {
     // 获取纯Url（不包含?后面的参数）
     const pureUrl = getPureUrl(config.url)
     // 中止队列中所有相同请求地址的xhr
-    pending.forEach(_ => _.url === pureUrl && _.cancel('repeat abort'));
+    pending.forEach(_ => _.url === pureUrl && _.cancel('repeat abort' + pureUrl))
     // 配置取消令牌
     config.cancelToken = new axios.CancelToken(cancel => {
        // 移除所有中止的请求，并且将新的请求推入缓存
@@ -231,12 +236,13 @@ axios.interceptors.request.use(config => {
 // 响应拦截器
 axios.interceptors.response.use(res => {
   // 成功响应之后清空队列中所有相同Url的请求
-  pending = pending.filter(_ => _.url != getPureUrl(res.config.url))
+  pending = pending.filter(_ => _.url != getPureUrl(res.config.url, res.config.baseURL.length))
   // 返回 response
   return res
 }, error => {
    return Promise.reject(error)
 });
+
 
 for (var i = 0; i < 10; i++) {
     axios({url: 'http://localhost'}).then(console.log).catch(_ => {

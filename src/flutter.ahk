@@ -1,5 +1,6 @@
 ﻿!f::
 	Menu, FutureMenu, Add, Flutter init, FlutterHandler
+    Menu, FutureMenu, Add, Flutter import, FlutterHandler
 	Menu, FutureMenu, Add, class StatelessWidget, FlutterHandler
 	Menu, FutureMenu, Add, class StatefulWidget, FlutterHandler
 
@@ -95,6 +96,10 @@ Var =
 )
 }
 
+if (v == "Flutter import") {
+_send("fimp", true, true)
+}
+
 if (v == "padding") {
 Var =
 (
@@ -179,16 +184,9 @@ Container(
 }
 
 if (v == "Text") {
-Var =
-(
-Text(
-    'Hello!',
-    style: TextStyle(fontSize: 40.0),
-    textAlign: TextAlign.center,
-`),
-)
+_send("ftext", true, true)
+return
 }
-
 
 if (v == "Flutter init") {
 _send("finit", true, true)
@@ -504,6 +502,36 @@ style: TextStyle(fontSize: 40.0),
 code(Var)
 return
 
+::fh::
+Var =
+(
+height: 400.0,
+)
+code(Var)
+return
+
+
+::ftext::
+::ftxt::
+Var =
+(
+Text(
+    'Hello!',
+    style: TextStyle(fontSize: 40.0),
+    textAlign: TextAlign.center,
+`),
+)
+code(Var)
+return
+
+::fw::
+Var =
+(
+width: 300.0,
+)
+code(Var)
+return
+
 ::fc::
 ::fclo::
 ::fco::
@@ -511,7 +539,7 @@ return
 ::fcolors::
 Var =
 (
-color: Colors.purple,
+color: Colors.greenAccent,
 )
 code(Var)
 return
@@ -520,7 +548,16 @@ return
 Var =
 (
 child: Container(
-	
+    color: Colors.greenAccent,
+    height: 400.0,
+    width: 300.0,
+    child: Center(
+      child: Text(
+        'Hello!',
+        style: TextStyle(fontSize: 40.0),
+        textAlign: TextAlign.center,
+      `),
+    `),
 `),
 )
 code(Var)
@@ -764,9 +801,10 @@ return
 
 ::fimp::
 ::fmp::
+::fimport::
 Var =
 (
-import 'package:english_words/english_words.dart';
+import 'package:flutter/material.dart';
 )
 code(Var)
 return
@@ -850,6 +888,71 @@ class HelloRectangle extends StatelessWidget {
   }
 }
 
+)
+code(Var)
+return
+
+::finit2::
+Var =
+(
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: 'Hello Rectangle',
+    home: Scaffold(
+      body: HelloRectangle(),
+    `),
+  `)`);
+}
+
+class HelloRectangle extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var container = Container(
+      color: Colors.purple,
+      height: 400.0,
+      width: 300.0,
+      child:  Column(
+        children: <Widget>[
+          Text('Hello!'),
+          Text('Hello!'),
+          Text('Hello!'),
+          Text('Hello!'),
+        ],
+      `)
+    `);
+    return Container(
+      padding: EdgeInsets.only(
+        top: 64.0,
+        left: 32.0,
+        bottom: 32.0,
+        right: 32.0,
+      `),
+      child: container,
+    `);
+  }
+}
+
+var container = Column(
+  children: <Widget>[
+    Text('Hello!'),
+    Text('Hello!'),
+    Text('Hello!'),
+    Text('Hello!'),
+  ],
+`);
+)
+code(Var)
+return
+
+::fmain::
+Var =
+(
+void main() {
+  print("hello!!");
+}
 )
 code(Var)
 return

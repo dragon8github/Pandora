@@ -107,7 +107,12 @@
 	Menu, EventMenu, Add, js esc键监听, EventHandler
 	Menu, EventMenu, Add, 用Input事件代替keyup事件：$('input').on('input'`, search), EventHandler
 	
-
+	Menu, EventMenu, Add
+	Menu, EventMenu, Add
+	
+	Menu, EventMenu, Add, Elasticsearch#新增数据（索引/类型/文档id）, EventHandler
+	Menu, EventMenu, Add, Elasticsearch#查看所有索引, EventHandler
+	Menu, EventMenu, Add, Elasticsearch#删除索引, EventHandler
 	
 	Menu, EventMenu, Show
 	Menu, EventMenu, DeleteAll
@@ -129,6 +134,21 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "Elasticsearch#新增数据（索引/类型/文档id）") {
+_send("esput", true, true)
+return
+}
+
+if (v == "Elasticsearch#查看所有索引") {
+_send("esmap", true, true)
+return
+}
+
+if (v == "Elasticsearch#删除索引") {
+_send("esdel", true, true)
+return
 }
 
 if (v == "用Input事件代替keyup事件：$('input').on('input', search)") {
@@ -819,5 +839,46 @@ watch: {
 )
 }
 
+code(Var)
+return
+
+::es.put::
+::es.post::
+::esput::
+::espost::
+::es.insert::
+::esinsert::
+::es.add::
+::esadd::
+Var =
+(
+curl -XPUT 'http://localhost:9200/get-together/group/1?pretty' -H 'Content-Type:application/json' -d '{"firstName": "JOJO", "lastName": "Joestar"}'
+)
+code(Var)
+return
+
+::es.map::
+::esmap::
+::es.mapping::
+::esmapping::
+::es.maping::
+::esmaping::
+::es.all::
+::esall::
+Var =
+(
+curl 'localhost:9200/_mapping?pretty=true'
+)
+code(Var)
+return
+
+::esdel::
+::es.del::
+::es.remove::
+::esremove::
+Var =
+(
+curl -XDELETE 'http://localhost:9200/get-together'
+)
 code(Var)
 return
