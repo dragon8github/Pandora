@@ -486,22 +486,23 @@ Gui, Pandora:Add, Text,  W140 ys, axios：
 Gui, Pandora:Add, Link,, <a href="https://github.com/axios/axios">axios github</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/CyLee/p/9827489.html">axios 简易教程</a>
 
-Gui, Pandora:Add, Text,  W140  Section xs yp+180, Rxjs：
+
+Gui, Pandora:Add, Text,  W140  ys, ramda.js：
+Gui, Pandora:Add, Link,, <a href="http://ramda.cn/">ramda.js 官网</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/ramda/ramda">ramda.js github</a>
+
+Gui, Pandora:Add, Text,  W140  Section xs yp+200, Rxjs：
 Gui, Pandora:Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/guide/overview">Rxjs 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/Reactive-Extensions/RxJS">Rxjs github</a>
 Gui, Pandora:Add, Link,, <a href="https://cn.rx.js.org/manual/overview.html">Rxjs 中文网</a>
 Gui, Pandora:Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/api">Rxjs API大全</a>
 
-Gui, Pandora:Add, Text,  W140  ys, ramda.js：
-Gui, Pandora:Add, Link,, <a href="http://ramda.cn/">ramda.js 官网</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/ramda/ramda">ramda.js github</a>
 
 Gui, Pandora:Add, Text,  W140  ys, 手机调试：
 Gui, Pandora:Add, Link,, <a href="https://github.com/Tencent/vConsole/blob/dev/src/lib/query.js">vconsole</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/AlloyTeam/AlloyLever">AlloyLever</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/wuchangming/spy-debugger">spy-debugger</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/whistle">whistle</a>
-
 
 Gui, Pandora:Add, Text,  W140  ys, 动画库：
 Gui, Pandora:Add, Link,, <a href="https://github.com/julianshapiro/velocity">velocity-github</a>
@@ -516,6 +517,11 @@ Gui, Pandora:Add, Link,, <a href="https://lodash.com/">lodash</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/lodash/lodash">lodash-github</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/yeyuqiudeng/pocket-lodash">lodash-源码解读</a>
 
+Gui, Pandora:Add, Text,  W140  ys, elasticsearch：
+Gui, Pandora:Add, Link,, <a href="https://www.elastic.co/cn/products">elasticsearch官网</a>
+Gui, Pandora:Add, Link,, <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/getting-started.html">elasticsearch文档</a>
+Gui, Pandora:Add, Link,, <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">elasticsearch 中文网</a>
+Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/2017/08/elasticsearch.html">阮一峰elasticsearch</a>
 
 Gui, Pandora:Tab, 8
 Gui, Pandora:Add, Text,  W140 Section, 库1：

@@ -197,6 +197,7 @@ code(code) {
     Sleep, 200
     Send, {CtrlDown}{ShiftDown}v{CtrlUp}{ShiftUp}
     ; 这里至少需要等待100m，原因不详
-    sleep, 100
-    Clipboard := tmp
+    ; sleep, 100
+    ; 还原剪切板
+    ; Clipboard := tmp
 }

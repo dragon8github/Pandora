@@ -111,7 +111,10 @@
 	Menu, EventMenu, Add
 	
 	Menu, EventMenu, Add, Elasticsearch#新增数据（索引/类型/文档id）, EventHandler
+	Menu, EventMenu, Add, Elasticsearch#新增索引, EventHandler
 	Menu, EventMenu, Add, Elasticsearch#查看所有索引, EventHandler
+	Menu, EventMenu, Add, Elasticsearch#查看指定索引, EventHandler
+	Menu, EventMenu, Add, Elasticsearch#查看指定索引下的指定类型, EventHandler
 	Menu, EventMenu, Add, Elasticsearch#删除索引, EventHandler
 	
 	Menu, EventMenu, Show
@@ -134,6 +137,21 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "Elasticsearch#查看指定索引") {
+_send("esmapindex", true, true)
+return
+}
+
+if (v == "Elasticsearch#查看指定索引下的指定类型") {
+_send("esmaptype", true, true)
+return
+}
+
+if (v == "Elasticsearch#新增索引") {
+_send("esindex", true, true)
+return
 }
 
 if (v == "Elasticsearch#新增数据（索引/类型/文档id）") {
@@ -854,7 +872,7 @@ Var =
 (
 curl -XPUT 'http://localhost:9200/get-together/group/1?pretty' -H 'Content-Type:application/json' -d '{"firstName": "JOJO", "lastName": "Joestar"}'
 )
-code(Var)
+Send, %Var%
 return
 
 ::es.map::
@@ -869,7 +887,7 @@ Var =
 (
 curl 'localhost:9200/_mapping?pretty=true'
 )
-code(Var)
+Send, %Var%
 return
 
 ::esdel::
@@ -880,5 +898,34 @@ Var =
 (
 curl -XDELETE 'http://localhost:9200/get-together'
 )
-code(Var)
+Send, %Var%
+return
+
+::esindex::
+::es.index::
+::esnewindex::
+::es.newindex::
+Var =
+(
+curl -XPUT 'http://localhost:9200/new-index'
+)
+Send, %Var%
+return
+
+::esmapindex::
+::es.mapindex::
+Var =
+(
+curl 'localhost:9200/you-index/_mapping?pretty=true'
+)
+Send, %Var%{left 22}
+return
+
+::esmaptype::
+::es.maptype::
+Var =
+(
+curl 'localhost:9200/you-index/_mapping/you-type?pretty=true'
+)
+Send, %Var%{left 22}
 return
