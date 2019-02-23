@@ -63,18 +63,16 @@ RunByCmder(name) {
 }
 
 _send(v, isSendLevel = false, isTab = false) {
+    
     if (isSendLevel) {
         SendLevel 1
     }
     
+    Send, % v
     
-    send, %v%
-    
-    if (WinExist("ahk_class SoPY_Comp") || WinExist("ahk_class PX_WINDOW_CLASS")) {
+    if (WinExist("ahk_class SoPY_Comp")) {
         send, {shift}
     }
-    
-    Sleep, 100
 
     if (isTab) {
        send, {tab}
