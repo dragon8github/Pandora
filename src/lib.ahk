@@ -189,6 +189,12 @@ return
     Send, % class
 return
 
+cs(code) {
+    ; 这个函数的主要意义是保存到剪切板，也是为了统一收集send请求。如果以后有需要再移除也行。
+    Clipboard := code
+    Send, {Text}%code%
+}
+
 
 ; 复制黏贴大段文本
 code(code) {
@@ -198,7 +204,7 @@ code(code) {
     Sleep, 200
     Send, {CtrlDown}{ShiftDown}v{CtrlUp}{ShiftUp}
     ; 这里至少需要等待100m，原因不详
-    ; sleep, 100
+    sleep, 100
     ; 还原剪切板
-    ; Clipboard := tmp
+    Clipboard := tmp
 }

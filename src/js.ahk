@@ -1,4 +1,16 @@
-﻿::singeajax::
+﻿::TF::
+::TF()::
+::T()::
+::F()::
+Var =
+(
+const T = () => true
+const F = () => false
+)
+code(Var)
+return
+
+::singeajax::
 ::singajax::
 ::singeajax::
 Var =
@@ -2619,9 +2631,11 @@ return
 ::toup::
 ::todaxie::
 ::toda::
+::tou::
     SendInput, toUpperCase()
 return
 
+::tol::
 ::tolo::
 ::tolow::
 ::toxiaoxie::

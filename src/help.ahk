@@ -828,14 +828,13 @@ AppsKey & l::
 return
 
 ; 我阿里云的ip，方便我记忆
-AppsKey & i::
->^i::
-::aliip::
 ::didiip::
-::ip5::
-    SendRaw, 116.85.26.25 ;119.23.22.136
+    SendRaw, 116.85.26.25 
 return
 
+::aliip::
+SendRaw, 47.52.69.151:443
+return
 
 
 ::git commit::
@@ -953,13 +952,15 @@ return
 return
 
 
->!enter::
->^enter::
-    WinGet, OutputVar, MinMax, A
-    if (OutputVar == 1) {
-        WinRestore, A
-    } else {
-        WinMaximize, A
+~!enter::
+    WinGetTitle, title, A
+    if (!InStr(title, "Android Studio")) {
+        WinGet, OutputVar, MinMax, A
+        if (OutputVar == 1) {
+            WinRestore, A
+        } else {
+            WinMaximize, A
+        }
     }
 return
 

@@ -279,6 +279,7 @@
     Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
     Menu, utilsMenu, Add, poll 递归, utilsHandler
     Menu, utilsMenu, Add, pad 自动补全, utilsHandler
+    Menu, utilsMenu, Add, 首字母大写 _.charAt(0) 的使用, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -313,6 +314,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "首字母大写 _.charAt(0) 的使用") {
+Var = 
+(
+['lee', 'mp'].map(_ => _.charAt(0).toUpperCase() + _.substr(1)) //  ["Lee", "Mp"]
 )
 }
 
