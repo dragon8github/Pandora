@@ -350,6 +350,7 @@ code(Var)
 return
 
 ::mask::
+::showloading::
 Var =
 (
 var Mask = function (cb) {
@@ -359,7 +360,7 @@ var Mask = function (cb) {
 	document.body.append(div)
 
 	var img = new Image()
-	img.src = "https://github.com/dragon8github/Pandora/blob/master/static/loading.gif?raw=true"
+	img.src = "http://wx3.sinaimg.cn/small/006ar8zggy1g0isbtuj2kg300w00wq2p.gif"
 	img.style = 'position: absolute; top: 50`%; left: 50`%;'
 	div.append(img)
 

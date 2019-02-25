@@ -192,7 +192,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
 Gui, Pandora:Add, Link,, <a href="https://leancloud.cn/">leancloud</a>
 Gui, Pandora:Add, Link,, <a href="https://cloud.minapp.com/">知晓云</a>
 Gui, Pandora:Add, Link,, <a href="https://www.wilddog.com/console/wd6326449524sjxxpb">wilddog野狗</a>
-Gui, Pandora:Add, Link,, <a href="https://yeoman.io/generators/">yeoman generators</a>
+Gui, Pandora:Add, Link,, <a href="https://zb.oschina.net/services/service-star/index.html">开源众包</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza-old</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza</a>
 
@@ -222,7 +222,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.zhihu.com/question/23054572">100�
 Gui, Pandora:Add, Link,, <a href="https://ecs.console.aliyun.com/#/home">阿里云控制台</a>
 Gui, Pandora:Add, Link,, <a href="https://dc.36fy.com/">加速度</a>
 Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
-
+Gui, Pandora:Add, Link,, <a href="https://yeoman.io/generators/">yeoman generators</a>
 
 
 Gui, Pandora:Tab, 2

@@ -121,6 +121,7 @@
 	Menu, ShellMenu, Add, tar 解压, ShellHandler3
 	Menu, ShellMenu, Add, curl -O 下载, ShellHandler
 	Menu, ShellMenu, Add, curl -i 输出响应头, ShellHandler
+	Menu, ShellMenu, Add, curl -s -H -d -XPUT/XDELETE/XPOST 完整示例, ShellHandler
 		
 	Menu, ShellMenu, Add, , ShellHandler
 	Menu, ShellMenu, Add, , ShellHandler
@@ -205,6 +206,15 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "curl -s -H -d -XPUT/XDELETE/XPOST 完整示例") {
+Var = 
+(
+curl -s -XPUT 'http://localhost:9200/get-together/group/1?pretty' -H 'Content-Type:application/json' -d '{"firstName": "JOJO", "lastName": "Joestar"}'
+)
+cs(Var)
+return
 }
 
 if (v == "nginx -s reload 重启 nginx") {

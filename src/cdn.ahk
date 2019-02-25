@@ -323,6 +323,7 @@ Return
 Var = 
 (
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+<script crossorigin="anonymous" integrity="sha384-c8inZyD0O4L/ErSuX3RVWgqsgtiAUw34TeSWiUwbKaXaI2RQg8SKVe80cipDBf0D" src="https://lib.baomitu.com/vue/2.6.7/vue.min.js"></script>
 )
 code(Var)
 Return

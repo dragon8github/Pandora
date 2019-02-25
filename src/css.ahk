@@ -504,7 +504,7 @@ if (v == "框型阴影") {
 Var =
 (
 border: 0;
-box-shadow: 0, 2px 6px 0 hsla(0, 0`%, 0`%, 0.2)
+box-shadow: 2px 6px 0 hsla(0, 0`%, 0`%, 0.2);
 )
 }
 
@@ -700,7 +700,7 @@ Var =
 	content: '';
 	display: block;
 	position: absolute; top: 0; right: 0; bottom: 0; left: 0;
-	background: transparent url('https://github.com/dragon8github/Pandora/blob/master/static/loading.gif?raw=true') center center / 32px 32px  no-repeat;
+	background: transparent url('http://wx3.sinaimg.cn/small/006ar8zggy1g0isbtuj2kg300w00wq2p.gif') center center / 32px 32px  no-repeat;
 }
 )
 code(Var)

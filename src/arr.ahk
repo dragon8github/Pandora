@@ -192,12 +192,8 @@ for (var i = Things.length - 1; i >= 0; i--) {
 }
 
 if (v == "for in") {
-Var = 
-(
-for (var property in source) {
-    console.log(source[property]);
-}
-)
+cs("forin")
+return
 }
 
 if (v == "for of") {
@@ -347,6 +343,19 @@ Var =
 .map(function (v, index, array) {
     return v
 });
+)
+code(Var)
+return
+
+::forin::
+::for in::
+Var =
+(
+for (var property in source) {
+	if (source.hasOwnProperty(property)) {
+		console.log(source[property]);
+	}
+}
 )
 code(Var)
 return
