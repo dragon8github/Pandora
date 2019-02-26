@@ -2420,19 +2420,63 @@ var deepExtend = function(out) {
 code(Var)
 return
 
+::swalert::
+::swa::
+::salert::
+::swal::
+Var =
+(
+// https://sweetalert.js.org/guides/
+swal({
+    title: '干得漂亮！',
+    text: '更新成功！',
+    timer: 3000,
+    icon: 'success', // "warning", "error", "success" and "info".
+    closeOnClickOutside: true,
+    closeOnEsc: true,
+    buttons: {
+        cancel: '取消按钮',
+        confirm: 'OK',
+        buttonFuck: { 
+            value: 'Fuck',
+            // 要使用这个功能先注释 timer 配置。开启这个的时候，点击不会关闭alert, 并且会显示loading。可以通过 swal.stopLoading() 全局关闭
+            closeModal: false,
+        }
+    }
+}).then(_ => {
+    console.log(20190226144843, _)
+})
+)
+code(Var)
+return
+
 
 ::extend::
 ::qiankaobei::
 ::copy::
+::inher::
+::inherit::
 Var =
 (
- function extend(Child, Parent){
+// 继承模式中最后的圣杯（Holy Grail）
+function extend(Child, Parent){
     var F = function(){ };
     F.prototype = Parent.prototype;
     Child.prototype = new F();
     Child.prototype.constructor = Child;
     Child.parent = Parent.prototype
- }
+}
+
+// 用IIFE优化桥梁F，不需要每次都创建
+var inherit = (function(){
+  var F = function () {}
+  return function (Child, Parent) {
+    F.prototype = Parent.prototype;
+    Child.prototype = new F();
+    Child.prototype.constructor = Child;
+    Child.parent = Parent.prototype
+  }
+}());
 )
 code(Var)
 return

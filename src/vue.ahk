@@ -11,6 +11,7 @@
   
 
   Menu, VueMenu, Add, vue.init, VueHandler
+  Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
   Menu, VueMenu, Add, vue.style, VueHandler
   Menu, VueMenu, Add, vue.computed: get/set, VueHandler
   Menu, VueMenu, Add, vue.watch, VueHandler
@@ -82,6 +83,18 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == "v-cloak 用来解决渲染之前的尴尬期") {
+Var = 
+(
+<style>
+    [v-cloak] {
+         display: none;
+    }
+</style>
+<div id='app' v-cloak></div>
 )
 }
 

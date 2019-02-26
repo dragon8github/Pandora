@@ -123,7 +123,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com">github</a>
 Gui, Pandora:Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
 Gui, Pandora:Add, Link,, <a href="https://cylee.top/">cylee.top</a>
-Gui, Pandora:Add, Link,, <a href="https://www.aliyun.com/">阿里云</a>
+Gui, Pandora:Add, Link,, <a href="https://ecs.console.aliyun.com/#/home">阿里云控制台</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 其他:
 Gui, Pandora:Add, Link, gInspect ,  <a>安卓调试</a>
@@ -219,10 +219,12 @@ Gui, Pandora:Add, Link,, <a href="https://classroom.udacity.com/courses/ud905/le
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 Gui, Pandora:Add, Link,, <a href="http://photo.weibo.com/upload/index">新浪微博图床</a>
 Gui, Pandora:Add, Link,, <a href="https://www.zhihu.com/question/23054572">100块以内的礼物</a>
-Gui, Pandora:Add, Link,, <a href="https://ecs.console.aliyun.com/#/home">阿里云控制台</a>
 Gui, Pandora:Add, Link,, <a href="https://dc.36fy.com/">加速度</a>
 Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
 Gui, Pandora:Add, Link,, <a href="https://yeoman.io/generators/">yeoman generators</a>
+Gui, Pandora:Add, Link,, <a href="https://www.vultr.com/">vultr</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/Alvin9999/new-pac/wiki/自建ss服务器教程">自建ss服务器教程</a>
+
 
 
 Gui, Pandora:Tab, 2
@@ -522,6 +524,10 @@ Gui, Pandora:Add, Link,, <a href="https://www.elastic.co/cn/products">elasticsea
 Gui, Pandora:Add, Link,, <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/getting-started.html">elasticsearch文档</a>
 Gui, Pandora:Add, Link,, <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">elasticsearch 中文网</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/2017/08/elasticsearch.html">阮一峰elasticsearch</a>
+
+Gui, Pandora:Add, Text,  W140  ys, sweetAlert：
+Gui, Pandora:Add, Link,, <a href="https://sweetalert.js.org/guides/#getting-started">sweetAlert官网</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/t4t5/sweetalert">sweetAlert Github</a>
 
 Gui, Pandora:Tab, 8
 Gui, Pandora:Add, Text,  W140 Section, 库1：

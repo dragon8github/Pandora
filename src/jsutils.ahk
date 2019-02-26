@@ -210,19 +210,25 @@
     Menu, utilsmaybe, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
     Menu, utilsmaybe, Add, js获取root（window）对象, utilsHandler
     
-    
+    Menu, utilses5, Add, 将参数arguments转化为一个数组Array.prototype.slice.call(arguments), utilsHandler
     Menu, utilses5, Add, (...arr)数组解构的前辈：Array.prototype.push.apply(arr`, newArr), utilsHandler
     Menu, utilses5, Add, 函数调用注入args：successFn.apply(this`, arguments), utilsHandler
     Menu, utilses5, Add, 简写Array.prototype.push.apply的方法：[].push.apply, utilsHandler
     Menu, utilses5, Add, Function.prototype.call：除了参数为数组/类数组以外的都应该使用call，如map/reduce/filter（因为他们的参数都是函数）等, utilsHandler
+    
+    Menu, utilses5, Add, 
+    Menu, utilses5, Add,  
+    
     Menu, utilses5, Add, 超简单的currying与理财花销实例, utilsHandler
     Menu, utilses5, Add, 超简单的链式调用套路：即让方法调用结束后返回对象本身, utilsHandler
+    
+    
     
     
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     Menu, utilsMenu , Add, Object 操作, :utilsObject
-    Menu, utilsMenu , Add, 原始之初es5的伏魔录, :utilses5
+    Menu, utilsMenu , Add, 原始之初ECMA5伏魔录, :utilses5
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -314,6 +320,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "将参数arguments转化为一个数组Array.prototype.slice.call(arguments)") {
+Var = 
+(
+Array.prototype.slice.call(arguments)
 )
 }
 

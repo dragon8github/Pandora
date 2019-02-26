@@ -1,4 +1,16 @@
-﻿::cdn-animate::
+﻿::cdn-alert::
+::cdn-sweetalert::
+::cdn-swal::
+::cdn-swa::
+Var =
+(
+<!-- https://sweetalert.js.org/guides/ -->
+<script src="https://cdn.staticfile.org/sweetalert/2.1.2/sweetalert.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-animate::
 ::cdn-animte::
 ::cdn-anime::
 Var =

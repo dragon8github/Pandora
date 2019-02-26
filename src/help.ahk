@@ -22,6 +22,10 @@ return
 	Hotstring("Reset")
 return
 
+::vpwd::
+SendRaw, R+m3{]H]m11D1e!h
+return
+
 ::es::
 Send, elasticsearch
 return
