@@ -541,12 +541,12 @@ return
 
 ^1::
 !1::
-    Send, {text}ljdp
+    Send, {text}dgdp
 return
 
 ^2::
 !2::
-    Send, {text}GzNhc#020
+    Send, {text}ch#ks!690
 return
 
 ::hosts::
