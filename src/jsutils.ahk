@@ -198,6 +198,7 @@
     Menu, utilsmy, Add, (=・ω・=)我的单例版ajax, utilsHandler
     Menu, utilsmy, Add, 去重复版本的axios, utilsHandler
     Menu, utilsmy, Add, 获取前6个月/前15天数据, EventHandler
+    Menu, utilsmy, Add, 通过URL判断是否本地开发环境, EventHandler
     
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
@@ -320,6 +321,19 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "通过URL判断是否本地开发环境") {
+Var = 
+(
+const baseUrl = (function(){
+	if (window.location.origin === 'file://' || ~window.location.host.indexOf("localhost") || ~window.location.host.indexOf("192.168")) {
+		return 'http://12345v1.dgdatav.com:6080'
+	} else {
+		return '/api'
+	}
+}());
 )
 }
 

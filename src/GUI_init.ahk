@@ -484,21 +484,15 @@ Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/">moment 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/moment/moment/">moment.js github</a>
 Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/docs/#/parsing/">moment.js 文档手册</a>
 
-Gui, Pandora:Add, Text,  W140 ys, axios：
-Gui, Pandora:Add, Link,, <a href="https://github.com/axios/axios">axios github</a>
-Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/CyLee/p/9827489.html">axios 简易教程</a>
-
-
-Gui, Pandora:Add, Text,  W140  ys, ramda.js：
+Gui, Pandora:Add, Text,  W140  ys, 函数式库：
+Gui, Pandora:Add, Link,, <a href="https://underscorejs.org/">underscore 官网</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/jashkenas/underscore">underscore-github</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/hanzichi/underscore-analysis">underscore-源码解读</a>
+Gui, Pandora:Add, Link,, <a href="https://lodash.com/">lodash 官网</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/lodash/lodash">lodash-github</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/yeyuqiudeng/pocket-lodash">lodash-源码解读</a>
 Gui, Pandora:Add, Link,, <a href="http://ramda.cn/">ramda.js 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ramda/ramda">ramda.js github</a>
-
-Gui, Pandora:Add, Text,  W140  Section xs yp+200, Rxjs：
-Gui, Pandora:Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/guide/overview">Rxjs 官网</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/Reactive-Extensions/RxJS">Rxjs github</a>
-Gui, Pandora:Add, Link,, <a href="https://cn.rx.js.org/manual/overview.html">Rxjs 中文网</a>
-Gui, Pandora:Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/api">Rxjs API大全</a>
-
 
 Gui, Pandora:Add, Text,  W140  ys, 手机调试：
 Gui, Pandora:Add, Link,, <a href="https://github.com/Tencent/vConsole/blob/dev/src/lib/query.js">vconsole</a>
@@ -506,18 +500,21 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/AlloyTeam/AlloyLever">Alloy
 Gui, Pandora:Add, Link,, <a href="https://github.com/wuchangming/spy-debugger">spy-debugger</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/whistle">whistle</a>
 
+
+Gui, Pandora:Add, Text,  W140  Section xs yp+150, Rxjs：
+Gui, Pandora:Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/guide/overview">Rxjs 官网</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/Reactive-Extensions/RxJS">Rxjs github</a>
+Gui, Pandora:Add, Link,, <a href="https://cn.rx.js.org/manual/overview.html">Rxjs 中文网</a>
+Gui, Pandora:Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/api">Rxjs API大全</a>
+
+Gui, Pandora:Add, Text,  W140  Section ys , mobx：
+Gui, Pandora:Add, Link,, <a href="https://github.com/mobxjs/mobx">mobx github</a>
+Gui, Pandora:Add, Link,, <a href="https://cn.mobx.js.org/">mobx 官网</a>
+
 Gui, Pandora:Add, Text,  W140  ys, 动画库：
 Gui, Pandora:Add, Link,, <a href="https://github.com/julianshapiro/velocity">velocity-github</a>
 Gui, Pandora:Add, Link,, <a href="http://velocityjs.org/">velocity-官网</a>
 Gui, Pandora:Add, Link,, <a href="http://www.mrfront.com/docs/velocity.js/index.html">velocity-中文官网</a>
-
-Gui, Pandora:Add, Text,  W140  ys, 函数式库：
-Gui, Pandora:Add, Link,, <a href="https://underscorejs.org/">underscore</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/jashkenas/underscore">underscore-github</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/hanzichi/underscore-analysis">underscore-源码解读</a>
-Gui, Pandora:Add, Link,, <a href="https://lodash.com/">lodash</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/lodash/lodash">lodash-github</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/yeyuqiudeng/pocket-lodash">lodash-源码解读</a>
 
 Gui, Pandora:Add, Text,  W140  ys, elasticsearch：
 Gui, Pandora:Add, Link,, <a href="https://www.elastic.co/cn/products">elasticsearch官网</a>
@@ -528,6 +525,11 @@ Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/2017/08/elastic
 Gui, Pandora:Add, Text,  W140  ys, sweetAlert：
 Gui, Pandora:Add, Link,, <a href="https://sweetalert.js.org/guides/#getting-started">sweetAlert官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/t4t5/sweetalert">sweetAlert Github</a>
+
+Gui, Pandora:Add, Text,  W140 ys, axios：
+Gui, Pandora:Add, Link,, <a href="https://github.com/axios/axios">axios github</a>
+Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/CyLee/p/9827489.html">axios 简易教程</a>
+
 
 Gui, Pandora:Tab, 8
 Gui, Pandora:Add, Text,  W140 Section, 库1：
@@ -545,7 +547,7 @@ Gui, Pandora:Add, Text, W140 Section, 高德地图：
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/summary">高德地图-JavaScript</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/map/map-show">高德地图-Demo</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/reference/core">高德地图-API</a>
-Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/abc/quickstart">高德地图-快速上手</a>
+Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/demo-center/amap-ui">高德地图-轨迹图</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/map/3d-map">高德地图-3D地图</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/services/weather/?sug_index=0">高德地图-天气预报</a>
 

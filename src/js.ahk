@@ -1,4 +1,18 @@
-﻿::TF::
+﻿::islocal::
+Var =
+(
+const baseUrl = (function(){
+	if (window.location.origin === 'file://' || ~window.location.host.indexOf("localhost") || ~window.location.host.indexOf("192.168")) {
+		return 'http://12345v1.dgdatav.com:6080'
+	} else {
+		return '/api'
+	}
+}());
+)
+code(Var)
+return
+
+::TF::
 ::TF()::
 ::T()::
 ::F()::
