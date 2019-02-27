@@ -1,4 +1,24 @@
-﻿::islocal::
+﻿::showerr::
+::showerror::
+::errimg::
+::errorimg::
+Var =
+(
+<div style="text-align: center;">
+    <img src="http://wx2.sinaimg.cn/mw690/006ar8zggy1g0jlcpykdsj30et0eut8t.jpg" width="100" alt="..."  />
+    <p>服务器异常，请稍后<a href="javascript:;" style='color: blue;text-decoration: none;' onclick='retry()'>重试</a></p>    
+</div>
+
+<script>
+function retry() {
+    
+}
+</script>
+)
+code(Var)
+return
+
+::islocal::
 Var =
 (
 const baseUrl = (function(){

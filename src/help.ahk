@@ -546,7 +546,7 @@ return
 
 ^2::
 !2::
-    Send, {text}ch#ks!690
+    Send, {text}GzNhc#020
 return
 
 ::hosts::
