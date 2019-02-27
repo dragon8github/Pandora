@@ -109,7 +109,7 @@
     Menu, utilsSolution, Add, copyToClipboard 剪切板, utilsHandler
     
 
-    Menu, utilsExtend, Add, extend 浅拷贝, utilsHandler
+    Menu, utilsExtend, Add, extend 浅拷贝（继承模式中最后的圣杯）, utilsHandler
     Menu, utilsExtend, Add, deepExtend 深拷贝, utilsHandler
     Menu, utilsExtend, Add, multi 多重拷贝, utilsHandler
     Menu, utilsExtend, Add, 寄生式继承, utilsHandler
@@ -199,6 +199,7 @@
     Menu, utilsmy, Add, 去重复版本的axios, utilsHandler
     Menu, utilsmy, Add, 获取前6个月/前15天数据, EventHandler
     Menu, utilsmy, Add, 通过URL判断是否本地开发环境, EventHandler
+    Menu, utilsmy, Add, 用 IIFE 解决 setInterval 首次不执行的尴尬, EventHandler
     
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
@@ -244,7 +245,7 @@
     Menu, utilssf, Add, 欧几里得算法（分而治之）：目标使土地分配最大化，不断让宽与高求余，直到整数倍为止, utilsHandler
     
     Menu, utilsMenu , Add, (#-_-)┯━┯  解决方案, :utilsSolution
-    Menu, utilsMenu , Add, (╯°口°)╯(┴—┴  设计模式, :utilsDesignPattern
+    Menu, utilsMenu , Add, (╯°口°)╯(┴—┴  设计模式与原型面向对象, :utilsDesignPattern
     Menu, utilsMenu , Add, _(:3」∠)_算法与数据结构, :utilssf
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -321,6 +322,18 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "用 IIFE 解决 setInterval 首次不执行的尴尬") {
+Var = 
+(
+(function(fn, t) {
+	// 立即执行一次，这也是这个IIFE的目的：为了解决 setInterval 首次不执行的尴尬
+	fn && fn()
+	// 返回计时器timer
+	return setInterval(fn, t)
+})(f, 6000)
 )
 }
 
@@ -3626,7 +3639,7 @@ function isNaN(obj) {
 )
 }
 
-if (v == "extend 浅拷贝") {
+if (v == "extend 浅拷贝（继承模式中最后的圣杯）") {
 SendLevel 1
 Send, extend{tab}
 return
@@ -3743,3 +3756,4 @@ export const setStyle = (element, styleName, value) => {
 
 code(Var)
 return
+
