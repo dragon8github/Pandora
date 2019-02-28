@@ -116,6 +116,8 @@
 	
 	Menu, ShellMenu, Add, git, :gitShellMenu
 	Menu, ShellMenu, Add, #!/bin/bash, ShellHandler
+	Menu, ShellMenu, Add, 输出多行内容文件：cat>shadowsocks.json<<EOF, ShellHandler
+	Menu, ShellMenu, Add, 安装脚本shadowsocks-install.sh, ShellHandler
 	Menu, ShellMenu, Add, ps -ef | grep <关键词>, ShellHandler2
 	Menu, ShellMenu, Add, wget 下载文件, ShellHandler3
 	Menu, ShellMenu, Add, tar 解压, ShellHandler3
@@ -178,6 +180,7 @@ Var =
 )
 }
 
+
 if (v == "wget 下载文件") {
 Var = 
 (
@@ -205,6 +208,57 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "安装脚本shadowsocks-install.sh") {
+Var = 
+(
+#!/bin/bash
+
+yum install python-setuptools && easy_install pip
+
+pip install shadowsocks
+
+cat>/etc/shadowsocks.json<<EOF
+{
+    "server": "0.0.0.0",
+    "server_port": 443,
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+    "password": "daweiyixiangshihao",
+    "timeout": 300,
+    "method": "aes-256-cfb",
+    "fast_open": false,
+    "workers": 1
+}
+EOF
+
+ssserver -c /etc/shadowsocks.json -d start
+
+systemctl stop firewalld.service
+
+systemctl disable firewalld.service
+)
+}
+
+
+if (v == "输出多行内容文件：cat>shadowsocks.json<<EOF") {
+Var = 
+(
+cat>shadowsocks.json<<EOF
+{
+    "server": "0.0.0.0",
+    "server_port": 443,
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+    "password": "daweiyixiangshihao",
+    "timeout": 300,
+    "method": "aes-256-cfb",
+    "fast_open": false,
+    "workers": 1
+}
+EOF
 )
 }
 

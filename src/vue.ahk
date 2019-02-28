@@ -12,6 +12,7 @@
 
   Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
+  Menu, VueMenu, Add, :style='{}' 表达式, VueHandler
   Menu, VueMenu, Add, vue.style, VueHandler
   Menu, VueMenu, Add, vue.computed: get/set, VueHandler
   Menu, VueMenu, Add, vue.watch, VueHandler
@@ -83,6 +84,13 @@ if (v == "") {
 Var = 
 (
 
+)
+}
+
+if (v == ":style='{}' 表达式") {
+Var = 
+(
+:style='{ "z-index": isShowGuidance ? 2001 : 1 }'
 )
 }
 
@@ -2257,6 +2265,14 @@ watch: {
    opacity: 0;
    transform: translate3d(-50`%, -50`%, 0) scale(0.9);
 }
+)
+code(Var)
+return
+
+::`:style::
+Var =
+(
+:style='{ "z-index": isShowGuidance ? 2001 : 1 }'
 )
 code(Var)
 return

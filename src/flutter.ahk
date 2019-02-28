@@ -956,3 +956,31 @@ void main() {
 )
 code(Var)
 return
+
+::fapp::
+Var =
+(
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Unit Converter',
+      home: Scaffold(
+        backgroundColor: Colors.green[100],
+        body: Center(
+          child: Center(
+          child: Text(
+              'Hello!',
+              style: TextStyle(fontSize: 40.0),
+              textAlign: TextAlign.center,
+            `),
+          `),
+        `),
+      `),
+    `);
+  }
+}
+)
+code(Var)
+return

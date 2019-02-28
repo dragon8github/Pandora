@@ -159,6 +159,7 @@ Gui, Pandora:Add, Link,, <a href="https://nginxconfig.io/">nginxconfig.io</a>
 Gui, Pandora:Add, Link,, <a href="http://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=955910">iconfont</a>
 Gui, Pandora:Add, Link,, <a href="https://carbon.now.sh/">carbon代码图片</a>
 
+
 Gui, Pandora:Add, Text, W140 ys, cdn：
 Gui, Pandora:Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Pandora:Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
@@ -480,7 +481,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer">pup
 Gui, Pandora:Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree/master/examples/">puppeteer-示例</a>
 
 Gui, Pandora:Add, Text,  W160 ys, moment.js：
-Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/">moment 官网</a>
+Gui, Pandora:Add, Link,, <a href="http://momentjs.com/">moment 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/moment/moment/">moment.js github</a>
 Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/docs/#/parsing/">moment.js 文档手册</a>
 
@@ -536,6 +537,11 @@ Gui, Pandora:Add, Text,  W140 Section, 库1：
 Gui, Pandora:Add, Link,, <a href="https://github.com/GoogleChromeLabs/quicklink/tree/master/translations/zh-cn">quicklink</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/developit/microbundle">microbundle 零配置打包</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/greensock/GreenSock-JS">GreenSock-JS/TweenMax.js</a>
+
+Gui, Pandora:Add, Text,  W140 Section, grafana：
+Gui, Pandora:Add, Link,, <a href="https://grafana.com/">grafana</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/grafana/grafana">grafana github</a>
+
 
 
 Gui, Pandora:Add, Text, W140 ys, 地图辅助库：

@@ -2038,7 +2038,9 @@ Var =
 (
 /* 移动设备断点，视图宽度 <= 768px */
 @media (max-width: 768px) {
-
+	body {
+		background: red
+	}
 }
 
 /* 移动设备断点，视图宽度 >= 769px */
@@ -2363,5 +2365,51 @@ $('#app').click(e => {
 code(Var)
 return
 
+::icss::
+::insertcss::
+::addcss::
+::addstyle::
+::insertstyle::
+Var =
+(
+// 更推荐这种比较舒服的书写方式
+var injectCss = function (css) {
+    var style = document.createElement('style')
+    style.type = 'text/css'
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css
+    } else {
+        style.appendChild(document.createTextNode(css))
+    }
+    document.getElementsByTagName('head')[0].appendChild(style)
+}
+injectCss(`
+#app {
+  background: blue;
+}
 
+/* 移动设备断点，视图宽度 <= 768px */
+@media (max-width: 768px) {
+	body {
+		background: red
+	}
+}
 
+/* 移动设备断点，视图宽度 >= 769px */
+@media (min-width: 769px and max-width: 1024) {
+
+}
+
+/* 移动设备断点，视图宽度 >= 1024px */
+@media (min-width: 1024px and max-width: 1216px) {
+
+}
+
+/* 移动设备断点，视图宽度 >= 1216 */
+@media (min-width: 1216px) {
+
+}
+`)
+)
+code(Var)
+return

@@ -308,6 +308,7 @@
     Menu, utilsObject, DeleteAll
     Menu, utilssf, DeleteAll
     Menu, utilspractice, DeleteAll
+    Menu, utilses5, DeleteAll
     Menu, utilsDesignPattern, DeleteAll
     
 return
