@@ -38,6 +38,7 @@
 
 
 	Menu, echartsEventMenu, Add, echarts.init, EventHandler
+	Menu, echartsEventMenu, Add, echarts 通过dom获取echarts实例，批量监听reset, EventHandler
 	Menu, echartsEventMenu, Add, echarts.options, EventHandler
 	Menu, echartsEventMenu, Add, echarts.loading, EventHandler
 
@@ -137,6 +138,28 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "echarts 通过dom获取echarts实例，批量监听reset") {
+Var = 
+(
+// 懒加载优化：滚动节流策略
+var __SCROLLTIMER__ = null
+
+// 重新设置 echarts 的宽高
+var resizeEcharts = () => {
+ $('[_echarts_instance_]').each((i, e) => { 
+	 echarts.getInstanceByDom(e).resize()
+ })  
+}
+
+// 绑定事件
+window.onresize = function () {
+ clearTimeout(__SCROLLTIMER__);
+ __SCROLLTIMER__ = setTimeout(resizeEcharts, 150);
+}
+
 )
 }
 

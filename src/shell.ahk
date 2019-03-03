@@ -87,29 +87,23 @@
 	
 	
 	Menu, gitShellMenu, Add, git, ShellHandler4
-	Menu, gitShellMenu, Add, git add . && git commit -m "", ShellHandler
-	Menu, gitShellMenu, Add, git push -u origin master , ShellHandler
-	Menu, gitShellMenu, Add, git pull origin master , ShellHandler
 	
 	Menu, gitShellMenu, Add,
 	Menu, gitShellMenu, Add,	
 	
-	Menu, gitShellMenu, Add, git dev, ShellHandler4
-	Menu, gitShellMenu, Add, git add . && git commit -m "", ShellHandler2
-	Menu, gitShellMenu, Add, git push -u origin dev , ShellHandler2
-	Menu, gitShellMenu, Add, git pull origin dev , ShellHandler2
-
+	Menu, gitShellMenu, Add, git branch -a # 查看所有分支 , ShellHandler2
+	Menu, gitShellMenu, Add, git branch -d <分支名> # 删除本地分支 , ShellHandler2
+	Menu, gitShellMenu, Add, git push origin --delete <远程分支名> # 删除远程分支 , ShellHandler2
+	Menu, gitShellMenu, Add, git branch -b <分支名> # 新建分支并且切换到该分支 , ShellHandler2
+	
 	Menu, gitShellMenu, Add,
 	Menu, gitShellMenu, Add,	
 	
-	Menu, gitShellMenu, Add, git test, ShellHandler4
-	Menu, gitShellMenu, Add, git add . && git commit -m "", ShellHandler2
-	Menu, gitShellMenu, Add, git push -u origin test , ShellHandler2
-	Menu, gitShellMenu, Add, git pull origin test , ShellHandler2
-
+	Menu, gitShellMenu, Add, git tag # 查看所有tag , ShellHandler2
+	Menu, gitShellMenu, Add, git tag -a v1.0 -m '里程碑' # 新建 tag , ShellHandler2
+	
 	Menu, gitShellMenu, Add,
 	Menu, gitShellMenu, Add,	
-	
 	
 	Menu, gitShellMenu, Add, git mergetool, ShellHandler
 	

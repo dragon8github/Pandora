@@ -138,9 +138,9 @@ Gui, Pandora:Add, Text,  W140 ys, 娱乐:
 Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
 Gui, Pandora:Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/index.php?m=vod-search">草民电影</a>
-Gui, Pandora:Add, Link,, <a href="http://www.dilidili.wang/">无名小站</a>
+Gui, Pandora:Add, Link,, <a href="http://www.dilidili.name/">无名小站</a>
 Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
-Gui, Pandora:Add, Link,, <a href="http://www.tan8.com/lesson3-category-1.html">蛐蛐钢琴网</a>
+Gui, Pandora:Add, Link,, <a href="http://www.fengchedm.com/">风车动漫</a>
 
 
 Gui, Pandora:Add, Text, W160 ys, 常用工具：
@@ -538,11 +538,9 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/GoogleChromeLabs/quicklink/
 Gui, Pandora:Add, Link,, <a href="https://github.com/developit/microbundle">microbundle 零配置打包</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/greensock/GreenSock-JS">GreenSock-JS/TweenMax.js</a>
 
-Gui, Pandora:Add, Text,  W140 Section, grafana：
+Gui, Pandora:Add, Text,  W140 ys, grafana：
 Gui, Pandora:Add, Link,, <a href="https://grafana.com/">grafana</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/grafana/grafana">grafana github</a>
-
-
 
 Gui, Pandora:Add, Text, W140 ys, 地图辅助库：
 Gui, Pandora:Add, Link,, <a href="http://turfjs.org/docs/#bearing">turfjs</a>

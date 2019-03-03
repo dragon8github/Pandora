@@ -1,8 +1,29 @@
 ﻿!f::
+	Menu, FlutterAttr, Add, textColor, FlutterHandler
+	Menu, FlutterAttr, Add, color, FlutterHandler
+	Menu, FlutterAttr, Add, width/height, FlutterHandler
+	Menu, FlutterAttr, Add, style, FlutterHandler
+	Menu, FlutterAttr, Add, textAlign, FlutterHandler
+    Menu, FlutterAttr, Add, padding, FlutterHandler
+    Menu, FlutterAttr, Add, margin, FlutterHandler
+    Menu, FlutterAttr, Add, EdgeInsets.only(top: 64.0`, left: 32.0`, bottom: 32.0`, right: 32.0), FlutterHandler2
+    Menu, FlutterAttr, Add, EdgeInsets.all(50.0), FlutterHandler2
+    
+    Menu, FlutterFuture, Add, Future.then, FlutterHandler
+    Menu, FlutterFuture, Add, Future.catch, FlutterHandler
+    Menu, FlutterFuture, Add, Future.whenComplete, FlutterHandler
+    Menu, FlutterFuture, Add, Future.wait, FlutterHandler
+    Menu, FlutterFuture, Add, async/await, FlutterHandler
+    
+    Menu, FlutterPIANDUAN, Add, 类似构造函数, FlutterHandler
+
 	Menu, FutureMenu, Add, Flutter init, FlutterHandler
     Menu, FutureMenu, Add, Flutter import, FlutterHandler
 	Menu, FutureMenu, Add, class StatelessWidget, FlutterHandler
 	Menu, FutureMenu, Add, class StatefulWidget, FlutterHandler
+    Menu, FutureMenu, Add, 样式属性大全, :FlutterAttr
+    Menu, FutureMenu, Add, Future（promise）, :FlutterFuture
+    Menu, FutureMenu, Add, 代码片段, :FlutterPIANDUAN
 
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
@@ -14,21 +35,6 @@
 	Menu, FutureMenu, Add, Column, FlutterHandler
 	Menu, FutureMenu, Add, images, FlutterHandler
     
-    Menu, FutureMenu, Add, 
-	Menu, FutureMenu, Add, 
-
-	
-	Menu, FutureMenu, Add, textColor, FlutterHandler
-	Menu, FutureMenu, Add, color, FlutterHandler
-	Menu, FutureMenu, Add, width/height, FlutterHandler
-	Menu, FutureMenu, Add, style, FlutterHandler
-	Menu, FutureMenu, Add, textAlign, FlutterHandler
-    Menu, FutureMenu, Add, padding, FlutterHandler
-    Menu, FutureMenu, Add, margin, FlutterHandler
-    Menu, FutureMenu, Add, EdgeInsets.only(top: 64.0`, left: 32.0`, bottom: 32.0`, right: 32.0), FlutterHandler2
-    Menu, FutureMenu, Add, EdgeInsets.all(50.0), FlutterHandler2
-	
-		
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 	
@@ -52,16 +58,7 @@
 	
 	
 	Menu, FutureMenu, Add, RandomWordsWidget 生成随机字符串, FlutterHandler
-	
-	Menu, FutureMenu, Add, 
-	Menu, FutureMenu, Add, 
-	
-	
-	Menu, FutureMenu, Add, Future.then, FlutterHandler
-	Menu, FutureMenu, Add, Future.catch, FlutterHandler
-	Menu, FutureMenu, Add, Future.whenComplete, FlutterHandler
-	Menu, FutureMenu, Add, Future.wait, FlutterHandler
-	Menu, FutureMenu, Add, async/await, FlutterHandler
+
 	
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
@@ -94,6 +91,11 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "类似构造函数") {
+_send("fgzhs", true, true)
+return 
 }
 
 if (v == "Flutter import") {
@@ -981,6 +983,23 @@ class MyApp extends StatelessWidget {
     `);
   }
 }
+)
+code(Var)
+return
+
+::fgz::
+::fgzhs::
+Var =
+(
+  const Category({
+    Key key,
+    @required this.name,
+    @required this.color,
+    @required this.iconLocation,
+  })  : assert(name != null),
+        assert(color != null),
+        assert(iconLocation != null),
+        super(key: key);
 )
 code(Var)
 return

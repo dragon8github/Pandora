@@ -33,6 +33,7 @@ FileDelete, .\src\*.bak
 #include src/css.ahk              ; css
 #Include src/jsutils.ahk          ; jsutils
 #Include src/php.ahk              ; php
+#Include src/sql.ahk		      ; sql
 #Include src/js.ahk               ; JavaScript  
 #Include src/reactNative.ahk      ; ReactNative
 #Include src/event.ahk            ; event
@@ -48,7 +49,6 @@ FileDelete, .\src\*.bak
 #Include src/bilibili.ahk	      ; bilibili
 #Include src/elasticsearch.ahk	  ; elasticsearch
 #Include src/golang.ahk	          ; golang
-; #Include src/sql.ahk		      ; sql
 #Include src/wilddog.ahk	      ; wilddog
 
 
