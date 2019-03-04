@@ -183,7 +183,7 @@ Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/manageyourkindle">我的设备</a>
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/Kindle免费电子书/b?node=116175071">kindle官方</a>
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&node=1337022071">Kindle Unlimited</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/i0natan/nodebestpractices">Nodejs最佳实践</a>
+Gui, Pandora:Add, Link,, <a href="https://baideye.com/article/123#menu_index_24">免费游戏1500G</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/phodal/serverless">《Serverless》</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md">《JavaScript 算法》</a>
 Gui, Pandora:Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">《React 小书》</a>
@@ -196,6 +196,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.wilddog.com/console/wd6326449524sj
 Gui, Pandora:Add, Link,, <a href="https://zb.oschina.net/services/service-star/index.html">开源众包</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza-old</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza</a>
+Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/3aa99766c2834cdcf0f9efe553f79177/dev">apizza-新时代</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
@@ -293,8 +294,7 @@ Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/logi
 Gui, Pandora:Add, Text,  W140 ys, 12345大数据屏（vue）
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>
 Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">v0</a>
-Gui, Pandora:Add, Link,, <a href="http://12345v1.dgdatav.com:6080/#/overallSituation">v1</a>
-
+Gui, Pandora:Add, Link,, <a href="http://12345v1.dgdatav.com:6080/#/dg/overallSituation">v1</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/">v2</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
@@ -306,6 +306,9 @@ Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
 Gui, Pandora:Add, Link,, <a href="http://kw.dgjy.net">extra-edu 线上</a>
 
+
+Gui, Pandora:Add, Text,  W140 ys, 知识库
+Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/dashboard.action#all-updates">confluence</a>
 
 Gui, Pandora:Tab, 4
 Gui, Pandora:Add, Text,  W130 Section, Nodejs:
@@ -544,6 +547,10 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/grafana/grafana">grafana gi
 
 Gui, Pandora:Add, Text, W140 ys, 地图辅助库：
 Gui, Pandora:Add, Link,, <a href="http://turfjs.org/docs/#bearing">turfjs</a>
+
+Gui, Pandora:Add, Text, W140 ys, 团队工具：
+Gui, Pandora:Add, Link,, <a href="https://www.atlassian.com/software/confluence">confluence知识库</a>
+Gui, Pandora:Add, Link,, <a href="https://www.jointjs.com/">jointjs流程图</a>
 
 
 Gui, Pandora:Tab, 9
