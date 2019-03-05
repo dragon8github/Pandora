@@ -197,9 +197,9 @@
     Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
     Menu, utilsmy, Add, (=・ω・=)我的单例版ajax, utilsHandler
     Menu, utilsmy, Add, 去重复版本的axios, utilsHandler
-    Menu, utilsmy, Add, 获取前6个月/前15天数据, EventHandler
-    Menu, utilsmy, Add, 通过URL判断是否本地开发环境, EventHandler
-    Menu, utilsmy, Add, 用 IIFE 解决 setInterval 首次不执行的尴尬, EventHandler
+    Menu, utilsmy, Add, 获取前6个月/前15天数据, utilsHandler
+    Menu, utilsmy, Add, 通过URL判断是否本地开发环境, utilsHandler
+    Menu, utilsmy, Add, 用 IIFE 解决 setInterval 首次不执行的尴尬, utilsHandler
     
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
@@ -327,6 +327,7 @@ Var =
 }
 
 if (v == "用 IIFE 解决 setInterval 首次不执行的尴尬") {
+
 Var = 
 (
 (function(fn, t) {

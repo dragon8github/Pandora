@@ -298,7 +298,7 @@ return
 ::cdn-axios::
 Var =
 (
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdn.staticfile.org/axios/0.19.0-beta.1/axios.min.js"></script>
 )
 code(Var)
 Return

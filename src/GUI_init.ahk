@@ -215,6 +215,8 @@ Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=descr
 Gui, Pandora:Add, Link,, <a href="https://amazonaws-china.com/cn/ec2/">aws Amazon EC2</a>
 Gui, Pandora:Add, Link,, <a href="https://pdffood.com/">电子书购买列表</a>
 Gui, Pandora:Add, Link,, <a href="https://classroom.udacity.com/courses/ud905/lessons/92a39eec-0c04-4d98-b47f-c884b9cd5a3b/concepts/78143d19-8360-4f83-88ab-cfcb5b160465">「Flutter 教学视频」</a>
+Gui, Pandora:Add, Link,, <a href="http://www.51ym.me/User/MobileSMSCode.aspx">易码平台</a>
+
 
 
 
@@ -773,7 +775,7 @@ ClipChanged(Type) {
    if (type == 1) {
 		b := Trim(StrReplace(Clipboard, "`r`n"))
 		
-		if (InStr(b, "sinaimg.cn/small")) {
+		if (InStr(b, "sinaimg.cn/small") && StrLen(b) <= 100) {
 			b := "![](" . StrReplace(b, "small", "large") . ")"
 			return Clipboard := b
 		}
