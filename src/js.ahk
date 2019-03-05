@@ -3244,7 +3244,7 @@ return
 Var = 
 (
 var o = document.createElement('script');
-o.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js';
+o.src = 'https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js';
 document.documentElement.appendChild(o); // console.log(jQuery.fn.jquery);
 )
 code(Var)
@@ -4691,7 +4691,7 @@ var onscriptload = function (url, cb) {
   node.src = url
 }
 
-onscriptload('https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js', function () {
+onscriptload('https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js', function () {
    console.log(jQuery.fn.jquery);
    console.log($('*').size())
 })

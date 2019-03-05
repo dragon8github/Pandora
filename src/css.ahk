@@ -1212,7 +1212,7 @@ Var =
     <title>Document</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- jquery -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+    <script src='https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js'></script>
     <style>
       ::-webkit-input-placeholder { 
         color: #41508a; 

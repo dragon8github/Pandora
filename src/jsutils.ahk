@@ -185,7 +185,7 @@
 
     Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
     Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
-    Menu, utilspractice, Add, 函数参数对象深度解构 var a = ({ state: { nums`, numGroup`, map } }) => {}, utilsHandler
+    Menu, utilspractice, Add, 函数参数对象深度结构与重命名： var a = ({ state: { nums:list`, numGroup`, map } }) => {}, utilsHandler
     Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
@@ -582,11 +582,11 @@ document.body.append(div)
 }
 
 
-if (v == "函数参数对象深度解构 var a = ({ state: { nums, numGroup, map } }) => {}") {
+if (v == "函数参数对象深度结构与重命名： var a = ({ state: { nums:list, numGroup, map } }) => {}") {
 Var = 
 (
-var a = ({ state: { nums, numGroup, map } }) => {
-	console.log(20190209102908, nums, numGroup, map)
+var a = ({ state: { nums: list, numGroup, map } }) => {
+	console.log('num重命名为list了', list, numGroup, map)
 }
 
 a({state: {nums: 1, numGroup: 2, map: 3 } })
@@ -1985,7 +1985,7 @@ Var =
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/dragscroll/0.0.8/dragscroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script>
@@ -2663,7 +2663,7 @@ var onscriptload = function (url, cb) {
   node.src = url
 }
 
-onscriptload('https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js', function () {
+onscriptload('https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js', function () {
    console.log(jQuery.fn.jquery);
    console.log($('*').size())
 })

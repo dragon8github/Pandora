@@ -226,7 +226,7 @@ Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/ex
 Gui, Pandora:Add, Link,, <a href="https://yeoman.io/generators/">yeoman generators</a>
 Gui, Pandora:Add, Link,, <a href="https://www.vultr.com/">vultr</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/Alvin9999/new-pac/wiki/自建ss服务器教程">自建ss服务器教程</a>
-
+Gui, Pandora:Add, Link,, <a href="https://36dcup.tk/user">36dcup</a>
 
 
 Gui, Pandora:Tab, 2
@@ -773,7 +773,7 @@ ClipChanged(Type) {
    if (type == 1) {
 		b := Trim(StrReplace(Clipboard, "`r`n"))
 		
-		if (InStr(b, "sinaimg.cn/small") && InStr(b, ".jpg")) {
+		if (InStr(b, "sinaimg.cn/small")) {
 			b := "![](" . StrReplace(b, "small", "large") . ")"
 			return Clipboard := b
 		}
