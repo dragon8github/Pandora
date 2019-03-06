@@ -5086,8 +5086,22 @@ return
 ::hanshucache::
 ::funcache::
 ::memoized::
+::canshuhuancun::
+::paramhuancun::
+::paramshuancun::
 Var = 
 (
+// 参数标记缓存器
+var memoized = function (fn) {
+      var cache = {};
+      return function () {
+        // 我们约定以第一个参数作为key
+        var __KEY__ = arguments[0]
+        // 记录缓存
+        return cache[__KEY__] || (cache[__KEY__] = fn.apply(this, arguments));
+      };
+};
+
 const memoized = fn => {
 	const lookupTable = {};
 	// setInterval( () => console.log(lookupTable) , 1000); // 可以通过解释这个来观察缓存的变化

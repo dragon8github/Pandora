@@ -136,6 +136,7 @@
     Menu, utilsDesignPattern, Add, , utilsHandler
     
     Menu, utilsDesignPattern, Add, 闭包与Cache, utilsHandler
+    Menu, utilsDesignPattern, Add, 参数缓存器, utilsHandler
     Menu, utilsDesignPattern, Add, 模块模式：现代模块实现的基石, utilsHandler
     Menu, utilsDesignPattern, Add, 超简单的currying与理财花销实例, utilsHandler
     Menu, utilsDesignPattern, Add, 超简单的链式调用套路：即让方法调用结束后返回对象本身, utilsHandler
@@ -325,6 +326,12 @@ Var =
 (
 )
 }
+
+if (v == "参数缓存器") {
+_send("paramscache", true, true)
+return
+}
+
 
 if (v == "用 IIFE 解决 setInterval 首次不执行的尴尬") {
 
@@ -961,9 +968,10 @@ Var =
 (
 // 获取localStorage最大容量
 (function() {
-   if(!window.localStorage) {
-   console.log('当前浏览器不支持localStorage!')
-   }    var test = '0123456789';
+   if(!window.sessionStorage) {
+        console.log('当前浏览器不支持sessionStorage!')
+   }    
+   var test = '0123456789';
    var add = function(num) {
      num += num;
      if(num.length == 10240) {
@@ -977,8 +985,8 @@ Var =
    var show = setInterval(function(){
       sum += test;
       try {
-       window.localStorage.removeItem('test');
-       window.localStorage.setItem('test', sum);
+       window.sessionStorage.removeItem('test');
+       window.sessionStorage.setItem('test', sum);
        console.log(sum.length / 1024 + 'KB');
       } catch(e) {
        console.log(sum.length / 1024 + 'KB超出最大限制');
@@ -986,20 +994,20 @@ Var =
       }
    }, 0.1)
  })()
- 
- 
-// 获取localStorage的剩余容量
+
+
+// 获取sessionStorage的剩余容量
 (function(){
-    if(!window.localStorage) {
-        console.log('浏览器不支持localStorage');
+    if(!window.sessionStorage) {
+        console.log('浏览器不支持sessionStorage');
     }
     var size = 0;
-    for(item in window.localStorage) {
-        if(window.localStorage.hasOwnProperty(item)) {
-            size += window.localStorage.getItem(item).length;
+    for(item in window.sessionStorage) {
+        if(window.sessionStorage.hasOwnProperty(item)) {
+            size += window.sessionStorage.getItem(item).length;
         }
     }
-    console.log('当前localStorage剩余容量为' + (size / 1024).toFixed(2) + 'KB');
+    console.log('当前sessionStorage剩余容量为' + (size / 1024).toFixed(2) + 'KB');
 })()
 )
 }
