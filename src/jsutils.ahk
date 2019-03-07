@@ -202,6 +202,7 @@
     Menu, utilsmy, Add, 通过URL判断是否本地开发环境, utilsHandler
     Menu, utilsmy, Add, 用 IIFE 解决 setInterval 首次不执行的尴尬, utilsHandler
     Menu, utilsmy, Add, setInterval 强大的解决方案, utilsHandler
+    Menu, utilsmy, Add, setInterval Switch超简单开关, utilsHandler
     
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
@@ -325,6 +326,126 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "setInterval Switch超简单开关") {
+Var = 
+(
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
+</head>
+<body>
+    <div id="app" style="width: 600px; height:400px;"></div>
+</body>
+
+<script>
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('app'))
+
+// mock data
+var data = [
+    { value: 10, name: '就业保障类' },
+    { value: 15, name: '城市建设类' },
+    { value: 25, name: '民政救济类' },
+    { value: 20, name: '市场监管类' },
+    { value: 35, name: '市容城管类' },
+    { value: 30, name: '公共安全类' },
+    { value: 40, name: '公安消防类' },
+]
+
+// 核心配置
+var option = {
+    legend: {
+        x: 'center',
+        y: 'bottom',
+        data: data.map(_ => _.name)
+    },
+    series: [{
+        type: 'pie',
+        radius: [25, 95],
+        center: ['50`%', 140],
+        roseType: 'area',
+        clockWise: false,
+        itemStyle: {
+            normal: {
+                label: {
+                    formatter: ['{b}', '占比{d}`%'].join('\n'),
+                    textStyle: { color: '#000', fontSize: 12 }
+                },
+            },
+            emphasis: {
+                label: {
+                    textStyle: { color: '#000', fontSize: 24 }
+                }
+            }
+        },
+        data: data
+    }]
+}
+
+myChart.setOption(option)
+
+function Switch () {
+    // 当前索引
+    let current = 0;
+    // 节点数量
+    let len = myChart.getOption().series[0].data.length
+    // 开始轮播
+    let timer = null
+
+    // 返回一个开始按钮
+    const start = function () {
+        // 如果已经存在，则不重复执行
+        if (timer)
+            return timer
+
+        return timer = setInterval(() => {
+               // 先取消上一次高亮
+               myChart.dispatchAction({ type: 'downplay', seriesIndex: 0, dataIndex: current `% len })
+               // 高亮当前节点
+               myChart.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: ++current `% len })
+        }, 1500)
+    }
+
+    // 返回一个关闭按钮
+    const stop = function () {
+        // 消除定时器
+        timer = clearInterval(timer)
+        // 关闭高亮
+        myChart.dispatchAction({ type: 'downplay', seriesIndex: 0, dataIndex: current `% len })
+    }
+
+    return { start, stop }
+}
+
+// 获取开关
+let _switch = Switch()
+
+// 开启
+_switch.start()
+
+/**
+ * 虽然 Echarts 有提供 mycharts.on('mouseover') 和 mycharts.on('mouseout')。
+ * 但建议还是直接用 DOM 来主导 mouseover/mouseout，否则有一些麻烦的问题。
+ * 请自行斟酌选择使用。
+ */
+
+// 移动过去就暂停
+document.getElementById('app').addEventListener('mouseover', () => {
+    _switch.stop()
+})
+
+// 移动过去就开启
+document.getElementById('app').addEventListener('mouseout', () => {
+    _switch.start()
+})
+</script>
+</html>
 )
 }
 
