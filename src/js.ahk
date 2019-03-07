@@ -1,4 +1,120 @@
-﻿::showerr::
+﻿::IIFEi::
+::iifet::
+::iifetimer::
+::iifetimeri::
+Var =
+(
+const timer = (function(fn, t) {
+	// 立即执行一次，这也是这个IIFE的目的：为了解决 setInterval 首次不执行的尴尬
+	fn && fn()
+	// 返回计时器timer
+	return setInterval(fn, t)
+})(f, 6000)
+)
+code(Var)
+return
+
+::request.js::
+::cache.request::
+::cache.axios::
+Var =
+(
+import axios from 'axios'
+import hash from 'hash.js'
+
+// 判断是否为一个空对象：{}
+const isEmptyObject = obj => {
+    if (Object.getOwnPropertyNames) {
+        return (Object.getOwnPropertyNames(obj).length === 0);
+    } else {
+        var k;
+        for (k in obj) {
+            if (obj.hasOwnProperty(k)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+// 检查状态码
+const checkStatus = (response) => {
+  // 判断请求状态
+    if (response.status >= 200 && response.status < 300) {
+        // 返回Promise
+        return response.data
+    } else {
+      // 服务器响应异常
+      throw new Error(response.statusText)
+    }
+}
+
+// 缓存到sessionStorage
+const cachedSave = (hashcode, content) => {
+    try {
+    // 返回code500是后端固定的报错反馈 && 不能为空对象 && 数据的小于2M
+    if (content.code != 500 && !isEmptyObject(content) && (JSON.stringify(content).length / 1024).toFixed(2) < 2048) {
+      // 设置缓存
+      sessionStorage.setItem(hashcode, JSON.stringify(content))
+      // 设置缓存时间
+      sessionStorage.setItem(``${hashcode}:timestamp``, Date.now())
+    }
+  } catch (err) {
+      // 超出缓存大小
+      if (err.name === 'QuotaExceededError') {
+        // 清空所有缓存
+        sessionStorage.clear()
+        // 重新设置缓存
+        sessionStorage.setItem(hashcode, JSON.stringify(content))
+        // 重新设置缓存时间
+        sessionStorage.setItem(``${hashcode}:timestamp``, Date.now())
+      }
+  }
+
+  // 返回Promise
+  return content
+}
+
+// 公共请求
+export const request = (url, options = {}) => {
+    // 指纹
+    const fingerprint = url + JSON.stringify(options)
+    // 加密指纹
+    const hashcode = hash.sha256().update(fingerprint).digest('hex')
+    // 预设值指纹
+    const _cachedSave = cachedSave.bind(null, hashcode)
+    // 过期设置
+    const expirys = options && options.expirys || 60
+    // 本请求是否禁止缓存？
+    if (expirys !== false) {
+        // 获取缓存
+        const cached = sessionStorage.getItem(hashcode)
+        // 获取该缓存的时间
+        const whenCached = sessionStorage.getItem(${hashcode}:timestamp)
+        // 如果缓存都存在
+        if (cached !== null && whenCached !== null) {
+          // 判断缓存是否过期
+          const age = (Date.now() - whenCached) / 1000
+          // 如果不过期的话直接返回该内容
+          if (age < expirys) {
+              // 新建一个response
+              const response = new Response(new Blob([cached]))
+              // 返回promise式的缓存
+              return new Promise((resolve, reject) => resolve(response.json()))
+          }
+          // 删除缓存内容
+          sessionStorage.removeItem(hashcode)
+          // 删除缓存时间
+          sessionStorage.removeItem(${hashcode}:timestamp)
+        }
+    }
+    return axios(url, options).then(checkStatus).then(_cachedSave)
+}
+)
+code(Var)
+return
+
+::showerr::
 ::showerror::
 ::errimg::
 ::errorimg::

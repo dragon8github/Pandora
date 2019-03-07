@@ -33,7 +33,7 @@ Var =
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>

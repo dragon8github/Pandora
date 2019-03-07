@@ -943,7 +943,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1057,7 +1057,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1125,7 +1125,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1212,7 +1212,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1266,7 +1266,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1356,7 +1356,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1839,7 +1839,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
@@ -2143,7 +2143,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -2204,7 +2204,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -2296,7 +2296,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -2380,65 +2380,59 @@ FileAppend,
 (
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
-
 <body>
-    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="width: 600px;height:400px;"></div>
-    <script type="text/javascript">
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-    var data = [
-        { value: 10, name: '就业保障类' },
-        { value: 5, name: '其他类' },
-        { value: 15, name: '城市建设类' },
-        { value: 25, name: '民政救济类' },
-        { value: 20, name: '市场监管类' },
-        { value: 35, name: '市容城管类' },
-        { value: 30, name: '公共安全类' },
-        { value: 40, name: '公安消防类' }
-    ];
-    var category = [];
-    for (var i = 0; i < data.length; i++) {
-        category.push(data[i].name);
-    }
-    var option = {
-        legend: {
-            x: 'center',
-            y: 'bottom',
-            data: category
-        },
-        series: [{
-            type: 'pie',
-            radius: [25, 95],
-            center: ['50`%', 140],
-            roseType: 'area',
-            clockWise: false,
-            itemStyle: {
-                normal: {
-                    label: {
-                        formatter: [
-                            '{b}', '占比{d}`%'
-                        ].join('\n'),
-                        textStyle: {
-                            color: '#000000',
-                            fontSize: 16
-                        }
-                    },
-                }
-            },
-            data: data
-        }]
-    };
-    myChart.setOption(option);
-    </script>
+    <div id="app" style="width: 600px; height:400px;"></div>
 </body>
+
+<script>
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('app'))
+
+// mock data
+var data = [
+    { value: 5,  name: '其他类' },
+    { value: 10, name: '就业保障类' },
+    { value: 15, name: '城市建设类' },
+    { value: 25, name: '民政救济类' },
+    { value: 20, name: '市场监管类' },
+    { value: 35, name: '市容城管类' },
+    { value: 30, name: '公共安全类' },
+    { value: 40, name: '公安消防类' }
+]
+
+// 核心配置
+var option = {
+    legend: {
+        x: 'center',
+        y: 'bottom',
+        data: data.map(_ => _.name)
+    },
+    series: [{
+        type: 'pie',
+        radius: [25, 95],
+        center: ['50`%', 140],
+        roseType: 'area',
+        clockWise: false,
+        itemStyle: {
+            normal: {
+                label: {
+                    formatter: ['{b}', '占比{d}`%'].join('\n'),
+                    textStyle: { color: '#000', fontSize: 16 }
+                },
+            }
+        },
+        data: data
+    }]
+}
+
+myChart.setOption(option);
+</script>
 </html>
 ),  %name%
 RunBy(name)
@@ -2926,6 +2920,70 @@ for (var i = 0; i < 10; i++) {
     })
 }
 </script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+NewjointjsHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.css" />
+</head>
+<body>
+    <!-- content -->
+    <div id="myholder"></div>
+
+    <!-- dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.js"></script>
+
+    <!-- code -->
+    <script type="text/javascript">
+
+        var graph = new joint.dia.Graph;
+
+        var paper = new joint.dia.Paper({
+            el: document.getElementById('myholder'),
+            model: graph,
+            width: 600,
+            height: 100,
+            gridSize: 1
+        });
+
+        var rect = new joint.shapes.standard.Rectangle();
+        rect.position(100, 30);
+        rect.resize(100, 40);
+        rect.attr({
+            body: {
+                fill: 'blue'
+            },
+            label: {
+                text: 'Hello',
+                fill: 'white'
+            }
+        });
+        rect.addTo(graph);
+
+        var rect2 = rect.clone();
+        rect2.translate(300, 0);
+        rect2.attr('label/text', 'World!');
+        rect2.addTo(graph);
+
+        var link = new joint.shapes.standard.Link();
+        link.source(rect);
+        link.target(rect2);
+        link.addTo(graph);
+
+    </script>
+</body>
 </html>
 ),  %name%
 RunBy(name)

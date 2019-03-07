@@ -26,6 +26,7 @@ FileDelete, .\src\*.bak
 #Include src/vue.ahk              ; Vue
 #Include src/wx.ahk               ; wx
 #Include src/shell.ahk            ; shell
+#Include src/js.ahk               ; JavaScript  
 #Include src/node.ahk             ; nodejs 
 #Include src/canvas.ahk		      ; canvas
 #Include src/TypeScript.ahk       ; TypeScript
@@ -34,7 +35,6 @@ FileDelete, .\src\*.bak
 #Include src/jsutils.ahk          ; jsutils
 #Include src/php.ahk              ; php
 #Include src/sql.ahk		      ; sql
-#Include src/js.ahk               ; JavaScript  
 #Include src/reactNative.ahk      ; ReactNative
 #Include src/event.ahk            ; event
 #Include src/arr.ahk              ; arr

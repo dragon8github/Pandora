@@ -196,7 +196,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.wilddog.com/console/wd6326449524sj
 Gui, Pandora:Add, Link,, <a href="https://zb.oschina.net/services/service-star/index.html">开源众包</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza-old</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza</a>
-Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/3aa99766c2834cdcf0f9efe553f79177/dev">apizza-新时代</a>
+Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/3aa99766c2834cdcf0f9efe553f79177/dev">apizza-Live</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
@@ -245,6 +245,8 @@ Gui, Pandora:Add, Text, gNewassertHtml W160,新建assert.html
 Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建异步assert.html
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
 Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
+Gui, Pandora:Add, Text, gNewjointjsHtml W160,新建去重复jointjs流程图.html
+
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
@@ -552,7 +554,13 @@ Gui, Pandora:Add, Link,, <a href="http://turfjs.org/docs/#bearing">turfjs</a>
 
 Gui, Pandora:Add, Text, W140 ys, 团队工具：
 Gui, Pandora:Add, Link,, <a href="https://www.atlassian.com/software/confluence">confluence知识库</a>
-Gui, Pandora:Add, Link,, <a href="https://www.jointjs.com/">jointjs流程图</a>
+
+Gui, Pandora:Add, Text, W140 ys, jointjs流程图
+Gui, Pandora:Add, Link,, <a href="https://www.jointjs.com/">jointjs官网</a>
+Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/docs/jointjs/v2.2/joint.html">jointjs api</a>
+Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos/kitchensink">jointjs 在线体验</a>
+Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos">jointjs demo大全</a>
+Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/tutorial">jointjs 入门指引</a>
 
 
 Gui, Pandora:Tab, 9

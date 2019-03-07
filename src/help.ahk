@@ -1077,3 +1077,14 @@ return
 !PGDN::
     SendInput, {PGDN 100}
 return
+
+
+::randimg::
+::rangeimg::
+Var =
+(
+https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
+http://lorempixel.com/1600/900
+)
+code(Var)
+return

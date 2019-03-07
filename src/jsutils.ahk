@@ -201,6 +201,7 @@
     Menu, utilsmy, Add, 获取前6个月/前15天数据, utilsHandler
     Menu, utilsmy, Add, 通过URL判断是否本地开发环境, utilsHandler
     Menu, utilsmy, Add, 用 IIFE 解决 setInterval 首次不执行的尴尬, utilsHandler
+    Menu, utilsmy, Add, setInterval 强大的解决方案, utilsHandler
     
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
@@ -326,6 +327,169 @@ Var =
 (
 )
 }
+
+if (v == "setInterval 强大的解决方案") {
+Var = 
+(
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
+</head>
+<body>
+    <div id="app" style="width: 600px; height:400px;"></div>
+</body>
+
+<script>
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('app'))
+
+// mock data
+var data = [
+    { value: 10, name: '就业保障类' },
+    { value: 15, name: '城市建设类' },
+    { value: 25, name: '民政救济类' },
+    { value: 20, name: '市场监管类' },
+    { value: 35, name: '市容城管类' },
+    { value: 30, name: '公共安全类' },
+    { value: 40, name: '公安消防类' },
+]
+
+// 核心配置
+var option = {
+    legend: {
+        x: 'center',
+        y: 'bottom',
+        data: data.map(_ => _.name)
+    },
+    series: [{
+        type: 'pie',
+        radius: [25, 95],
+        center: ['50`%', 140],
+        roseType: 'area',
+        clockWise: false,
+        itemStyle: {
+            normal: {
+                label: {
+                    formatter: ['{b}', '占比{d}`%'].join('\n'),
+                    textStyle: { color: '#000', fontSize: 12 }
+                },
+            },
+            emphasis: {
+                label: {
+                    textStyle: { color: '#000', fontSize: 24 }
+                }
+            }
+        },
+        data: data
+    }]
+}
+
+myChart.setOption(option)
+
+/**
+ * MerryGoRound
+ *
+ * @param  {Function} 需要轮询的函数
+ * @param  {Number}   轮询间隔
+ * @param  {Number}   索引开始位置
+ */
+function MerryGoRound (fn, interval = 1500, current = 0) {
+    // 时间器
+    let timer = null
+
+    // 开始
+    const start = function (reset = false, IIFE = false) {
+        // 是否重置？
+        if (reset) {
+            timer = null
+            current = 0
+        }
+
+        // 如果旋转木马已经启动，那么不重复开启
+        if (timer) {
+            return timer
+        }
+
+        // 如果不是函数那么返回错误
+        if (fn instanceof Function === false) {
+            return console.warn('First arguments must be a function.')
+        }
+
+        // 是否使用 IIFE 解决 setInterval 首次不执行的尴尬
+        IIFE && fn(current++)
+
+        // 设置计时器timer
+        timer = setInterval(() => fn(current++), interval)
+
+        // 还是要返回timer好一点
+        return timer
+    }
+
+    // 停止
+    const stop = function (reset = false, stopfn) {
+        // 停止回调函数
+        stopfn && stopfn(current)
+
+        // 是否重置索引为0
+        if (reset) {
+            current = 0
+        }
+
+        // 清空轮播器
+        timer = clearInterval(timer)
+    }
+
+    // 返回开关
+    return { start, stop }
+}
+
+// 我的echarts的轮播器核心函数
+var wheelPlanting = (len, current) => {
+    // 先取消上一次高亮
+    myChart.dispatchAction({ type: 'downplay', seriesIndex: 0, dataIndex: current `% len })
+    // 高亮当前节点
+    myChart.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: ++current `% len })
+}
+
+// 获取节点的数量
+const len = myChart.getOption().series[0].data.length
+
+// 预设值（参考【偏应用】和【科里化】的简易做法）
+var _wheelPlanting = wheelPlanting.bind(null, len)
+
+// 返回一个开关
+var _switch = new MerryGoRound(_wheelPlanting)
+
+// 按下 “开”
+_switch.start()
+
+/**
+ * 虽然 Echarts 有提供 mycharts.on('mouseover') 和 mycharts.on('mouseout')。
+ * 但建议还是直接用 DOM 来主导 mouseover/mouseout，否则有一些麻烦的问题。
+ * 请自行斟酌选择使用。
+ */
+
+// 移动过去就暂停
+document.getElementById('app').addEventListener('mouseover', () => {
+    // 停止，实际上这个stopfn回调，最好也是用一下预设值，但为了简单还是直接使用了位于全局的len。特殊情况再特殊处理吧。
+    _switch.stop(false, current => {
+        // 先取消上一次高亮
+        myChart.dispatchAction({ type: 'downplay', seriesIndex: 0, dataIndex: current `% len })
+    })
+})
+
+// 移动过去就开启
+document.getElementById('app').addEventListener('mouseout', () => {
+    _switch.start()
+})
+</script>
+</html>
+)
+}
+
 
 if (v == "参数缓存器") {
 _send("paramscache", true, true)
@@ -2521,66 +2685,8 @@ window.__EVENT__ = {
 }
 
 if (v == "cache request axios 缓存请求") {
-Var = 
-(
-// 检查状态码
-const checkStatus = (response) => {
-	// 判断请求状态
-    if (response.status >= 200 && response.status < 300) {
-        // 返回Promise 
-        return response.data
-    } else {
-      // 服务器响应异常
-      throw new Error(response.statusText)
-    }
-}
-
-// 缓存到sessionStorage
-const cachedSave = (hashcode, content) => {
-  // 设置缓存
-  sessionStorage.setItem(hashcode, JSON.stringify(content))
-  // 设置缓存时间
-  sessionStorage.setItem(`${hashcode}:timestamp`, Date.now())
-  // 返回Promise
-  return content
-}
-
-// 公共请求
-export const request = (url, options) => {
-    // 指纹
-    const fingerprint = url + (options ? JSON.stringify(options) : '')
-    // 加密指纹
-    const hashcode = hash.sha256().update(fingerprint).digest('hex')
-    // 预设值指纹
-    const _cachedSave = cachedSave.bind(null, hashcode)
-    // 过期设置
-    const expirys = options && options.expirys || 60
-    // 本请求是否禁止缓存？
-    if (expirys !== false) {
-        // 获取缓存
-        const cached = sessionStorage.getItem(hashcode)
-        // 获取该缓存的时间
-        const whenCached = sessionStorage.getItem(`${hashcode}:timestamp`)
-        // 如果缓存都存在
-        if (cached !== null && whenCached !== null) {
-          // 判断缓存是否过期
-          const age = (Date.now() - whenCached) / 1000
-          // 如果不过期的话直接返回该内容
-          if (age < expirys) {
-              // 新建一个response
-              const response = new Response(new Blob([cached]))
-              // 返回promise式的缓存
-              return new Promise((resolve, reject) => resolve(response.json()))
-          }
-          // 删除缓存内容
-          sessionStorage.removeItem(hashcode)
-          // 删除缓存时间
-          sessionStorage.removeItem(`${hashcode}:timestamp`)
-        }
-    }
-    return axios(url, options).then(checkStatus).then(_cachedSave)
-}
-)
+_send("request.js", true, true)
+return
 }
 
 if (v == "AMD/CommonJS/factory/module") {

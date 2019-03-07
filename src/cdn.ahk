@@ -196,7 +196,7 @@ return
 ::cdn-echart::
 Var =
 (
-<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+<script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
 )
 code(Var)
 return
