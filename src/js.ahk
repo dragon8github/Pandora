@@ -1276,9 +1276,26 @@ return
 ::model::
 Var =
 (
-import { getUUID } from '@/utils/utils.js'
+// import { getUUID, isEmptyObject } from '@/utils/utils.js'
 
-export default class Model {
+function isEmptyObject(obj) {
+     if (Object.getOwnPropertyNames) {
+         return (Object.getOwnPropertyNames(obj).length === 0);
+     } else {
+         var k;
+         for (k in obj) {
+             if (obj.hasOwnProperty(k)) {
+                 return false;
+             }
+         }
+         return true;
+     }
+ }
+
+ // 9位 简易版
+ const getUUID = () => Math.random().toString(36).slice(4)
+
+ class Model {
 	constructor ({ size = 20 } = {}) {
 		// 核心数据
 		this.data = null
@@ -1355,11 +1372,13 @@ export default class Model {
     // 如果token不一致，说明请求被覆盖了。应该中止逻辑演变
     if (token && this.token != token) return
 
+    console.log(+new Date())
+
     this.total = total
     this.loading = false
     this.loadingmore = false
     
-    const isEmptyData = data.length === 0
+    const isEmptyData = data.length === 0 || isEmptyObject(data)
 
     // empty 表示没有数据
     if (this.isFirstPage() && isEmptyData) 
@@ -1385,6 +1404,23 @@ export default class Model {
     // 执行回调
     cb && cb(this)
   }
+}
+
+//////////////////////////////////////////////
+// 使用示例：演示refreshToken阻止重复的使用。
+//////////////////////////////////////////////
+var m = new Model()
+
+var f = (i) => {
+	const token = m.refreshToken()
+	setTimeout(() => {
+		m.setData({ data: [i], token: token })
+		console.log(i)
+	}, 3500);
+}
+
+for (var i = 0; i < 10; i++) {
+	f(i)
 }
 )
 code(Var)
@@ -4297,11 +4333,12 @@ Return
 Var =
 (
 //////////////////////////////////////////////
-
+// say something...
 //////////////////////////////////////////////
 )
 code(Var)
 SendInput, {Up}
+Send, {ShiftDown}{left 16}{ShiftUp}
 Return
 
 +!/::

@@ -1410,6 +1410,7 @@ return
 Var =
 (
 watch: {
+    // 也支持这样： 'analysis.data': {}
     proportionofclassificationproblem: {
         deep: true,
         handler (newV, oldV) {

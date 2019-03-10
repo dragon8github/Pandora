@@ -155,7 +155,7 @@ Gui, Pandora:Add, Text,  W140 ys, 奇妙工具:
 Gui, Pandora:Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
 Gui, Pandora:Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 Gui, Pandora:Add, Link,, <a href="http://fontawesome.dashgame.com/">font-awesome</a>
-Gui, Pandora:Add, Link,, <a href="https://nginxconfig.io/">nginxconfig.io</a>
+Gui, Pandora:Add, Link,, <a href="https://nginxconfig.io/">生成器nginxconfig.io</a>
 Gui, Pandora:Add, Link,, <a href="http://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=955910">iconfont</a>
 Gui, Pandora:Add, Link,, <a href="https://carbon.now.sh/">carbon代码图片</a>
 
@@ -489,6 +489,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/GoogleChrome/puppeteer/tree
 
 Gui, Pandora:Add, Text,  W160 ys, moment.js：
 Gui, Pandora:Add, Link,, <a href="http://momentjs.com/">moment 官网</a>
+Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/">moment 中文</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/moment/moment/">moment.js github</a>
 Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/docs/#/parsing/">moment.js 文档手册</a>
 
