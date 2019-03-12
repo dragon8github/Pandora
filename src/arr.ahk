@@ -45,6 +45,7 @@ return
     Menu, arrayMenu, Add, unique 数组去重复, ForHandler
     Menu, arrayMenu, Add, Math.max.apply 获取数组最大值, ForHandler
     Menu, arrayMenu, Add, 使用了es6的set生产1W条不重复8位的数字, ForHandler
+	Menu, arrayMenu, Add, 从数组中随机不重复取出指定数量的人, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -85,6 +86,29 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "从数组中随机不重复取出指定数量的人") {
+Var = 
+(
+// 目标人数
+const target = 10
+// 组所有成员
+const people = [...document.querySelectorAll('.members .nickname')].map(_ => _.innerText)
+// 组成员人数
+const len = people.length
+// 被选中的孩子们
+let beSelectPeoples = new Set()
+// 直到满足目标人数
+while(beSelectPeoples.size != target) {
+  // 随机数
+  const rand = ~~(0 + Math.random() * (len + 1))
+  // 被选中的孩子
+  const beSelectPeople = people[rand]
+  // 加入队列
+  beSelectPeoples.add(beSelectPeople)
+}
 )
 }
 

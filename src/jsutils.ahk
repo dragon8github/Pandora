@@ -203,6 +203,7 @@
     Menu, utilsmy, Add, 用 IIFE 解决 setInterval 首次不执行的尴尬, utilsHandler
     Menu, utilsmy, Add, setInterval 强大的解决方案, utilsHandler
     Menu, utilsmy, Add, setInterval Switch超简单开关, utilsHandler
+    Menu, utilsmy, Add, 微信群组随机取人头, utilsHandler
     
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
@@ -326,6 +327,47 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "微信群组随机取人头") {
+Var = 
+(
+/**
+ * 1、打开微信网页版
+ * 2、打开一个群，点击下拉菜单。
+ * 3、打开控制台输入该脚本：[...document.querySelectorAll('.members .nickname')].map(_ => _.innerText)
+ * 
+ */
+// 费雪耶兹（Fisher–Yates） 也被称作高纳德（ Knuth）随机置乱算法
+function shuffle(target) {
+    var j, x, i = target.length;
+    for (; i > 0; j = parseInt(Math.random() * i), x = target[--i], target[i] = target[j], target[j] = x) {}
+    return target
+}
+var peoples = shuffle([...document.querySelectorAll('.members .nickname')].map(_ => _.innerText))
+peoples.slice(0, 6)
+
+//////////////////////////////////////////////
+// 或者用这种更快一点
+//////////////////////////////////////////////
+// 目标人数
+const target = 10
+// 组所有成员
+const people = [...document.querySelectorAll('.members .nickname')].map(_ => _.innerText)
+// 组成员人数
+const len = people.length
+// 被选中的孩子们
+let beSelectPeoples = new Set()
+// 直到满足目标人数
+while(beSelectPeoples.size != target) {
+  // 随机数
+  const rand = ~~(0 + Math.random() * (len + 1))
+  // 被选中的孩子
+  const beSelectPeople = people[rand]
+  // 加入队列
+  beSelectPeoples.add(beSelectPeople)
+}
 )
 }
 
