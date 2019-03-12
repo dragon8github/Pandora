@@ -1081,10 +1081,20 @@ return
 
 ::randimg::
 ::rangeimg::
+::testimg::
+::testimages::
 Var =
 (
 https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
 http://lorempixel.com/1600/900
+)
+code(Var)
+return
+
+::testmp4::
+Var =
+(
+https://player.vimeo.com/video/253905163
 )
 code(Var)
 return

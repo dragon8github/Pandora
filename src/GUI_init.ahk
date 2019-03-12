@@ -245,7 +245,9 @@ Gui, Pandora:Add, Text, gNewassertHtml W160,新建assert.html
 Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建异步assert.html
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
 Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
-Gui, Pandora:Add, Text, gNewjointjsHtml W160,新建去重复jointjs流程图.html
+Gui, Pandora:Add, Text, gNewjointjsHtml W160,新建去重复jointjs流程图
+Gui, Pandora:Add, Text, gNewuploadHtml W160,新建读取本地目录/文件内容
+Gui, Pandora:Add, Text, gNewlshtml W160,新建读取本地目录列表
 
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
@@ -304,6 +306,7 @@ Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/boards">敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/api/sg/redis/cleanDefault">清空缓存</a>
+Gui, Pandora:Add, Link,, <a href="http://12345admin.dgdatav.com:6080/#">admin</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）

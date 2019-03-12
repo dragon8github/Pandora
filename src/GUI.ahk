@@ -2989,3 +2989,118 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+NewuploadHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Document</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- Vue -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js'></script>
+    <!-- jquery -->
+    <script src='https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js'></script>
+    <style>
+        html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type='file' name='file_input[]' id='fileId' webkitdirectory multiple />
+        <button type='submit' name='btn' value='提交' id='btnId' onclick='check()'>提交</button>
+    </div>
+    <script>
+    function check() {
+        var objFile = document.getElementById('fileId');
+        if (!objFile.value) 
+            throw new Error('请选择文件或文件夹')
+
+        // 获取到文件列表
+        var files = $('#fileId').prop('files'); 
+
+        // 如果不存在文件
+        if (!files.length)
+            return
+
+        // 新建一个FileReader
+        var reader = new FileReader(); 
+        // 读取文件 
+        reader.readAsText(files[0], 'UTF-8'); 
+        // 开始读取
+        reader.onload = function(evt) { 
+            // 读取文件内容
+            var fileString = evt.target.result; 
+            console.log(fileString)
+        }
+    }
+    </script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+Newlshtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Document</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- Vue -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js'></script>
+    <!-- jquery -->
+    <script src='https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js'></script>
+    <style>
+        html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+       <input type="file" id="filepicker" name="fileList" webkitdirectory multiple />
+       <ul id="listing"></ul>
+    </div>
+    <script>
+    document.getElementById("filepicker").addEventListener("change", function(event) {
+      let output = document.getElementById("listing");
+      let files = event.target.files;
+
+      for (let i=0; i<files.length; i++) {
+        let item = document.createElement("li");
+        item.innerHTML = files[i].webkitRelativePath;
+        output.appendChild(item);
+      };
+    }, false);
+    </script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
