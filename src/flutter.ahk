@@ -32,6 +32,7 @@
     Menu, FutureMenu, Add, 函数, :FlutterFunc
     Menu, FutureMenu, Add, Future（promise）, :FlutterFuture
     Menu, FutureMenu, Add, 代码片段, :FlutterPIANDUAN
+    Menu, FutureMenu, Add, flutter rem 解决方案,  FlutterHandler
 
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
@@ -53,8 +54,8 @@
 	Menu, FutureMenu, Add, 
     
     
-    Menu, FutureMenu, Add, padding: const EdgeInsets.all(32.0)`,, FlutterHandler3
-    Menu, FutureMenu, Add, padding: const EdgeInsets.only(bottom: 8.0`, top: 8.0)`,, FlutterHandler3
+    Menu, FutureMenu, Add, padding: EdgeInsets.all(32.0)`,, FlutterHandler3
+    Menu, FutureMenu, Add, padding: EdgeInsets.only(bottom: 8.0`, top: 8.0)`,, FlutterHandler3
     Menu, FutureMenu, Add, Column —— crossAxisAlignment: CrossAxisAlignment.xxx, :FlutterColumnHandler
     Menu, FutureMenu, Add, Row —— mainAxisAlignment: MainAxisAlignment.xxx, :FlutterRowHandler
     
@@ -123,6 +124,11 @@ Var =
 )
 }
 
+if (v == "flutter rem 解决方案") {
+_send("frem", true, true)
+return
+}
+
 if (v == "Container的装饰器decoration组件（背景色，圆角）") {
 _send("faop", true, true)
 return
@@ -170,7 +176,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //风景区地址部分
     Widget addressContainer = Container(
-      padding: const EdgeInsets.all(32.0),//此部分四周间隔一定距离
+      padding: EdgeInsets.all(32.0),//此部分四周间隔一定距离
       child: Row(
         children: <Widget>[
           Expanded(
@@ -178,7 +184,7 @@ class MyApp extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start, //顶部对齐
               children: <Widget>[
                 Container(
-                  padding: const EdgeInsets.only(bottom: 8.0),//与下面文本间隔一定距离
+                  padding: EdgeInsets.only(bottom: 8.0),//与下面文本间隔一定距离
                   child: Text(
                     '风景区地址',
                     style: TextStyle(
@@ -212,7 +218,7 @@ class MyApp extends StatelessWidget {
         children: <Widget>[
           Icon(icon, color: Colors.lightGreen[600]),//上面图标部分
           Container(
-            margin: const EdgeInsets.only(top: 8.0),
+            margin: EdgeInsets.only(top: 8.0),
             child: Text(//下面文本部分
               label,
               style: TextStyle(
@@ -241,7 +247,7 @@ class MyApp extends StatelessWidget {
 
     //风景区介绍文本部分
     Widget textContainer = Container(
-      padding: const EdgeInsets.all(32.0),
+      padding: EdgeInsets.all(32.0),
       //文本块一定是用'''来引用起来
       child: Text(
         '''
@@ -598,7 +604,7 @@ class RandomWordsWidget extends StatelessWidget {
     // 生成随机字符串
     final wordPair = new WordPair.random();
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0),
       child: new Text(wordPair.toString()),
     `);
   }
@@ -797,34 +803,6 @@ style: TextStyle(fontSize: 40.0),
 code(Var)
 return
 
-::fh::
-Var =
-(
-height: 400.0,
-)
-code(Var)
-return
-
-
-::fw::
-Var =
-(
-width: 300.0,
-)
-code(Var)
-return
-
-::fc::
-::fclo::
-::fco::
-::fcolor::
-::fcolors::
-Var =
-(
-color: Colors.greenAccent,
-)
-code(Var)
-return
 
 ::fchild::
 Var =
@@ -1240,9 +1218,21 @@ return
 
 ::fpadding::
 ::fpad::
+::fpd::
+::fpdd::
 Var =
 (
-padding: const EdgeInsets.only(top: 0.0, right: 0.0, bottom: 0.0, left: 0.0),
+// padding: EdgeInsets.all(8.0),
+padding: EdgeInsets.only(top: 0.0, right: 0.0, bottom: 0.0, left: 0.0),
+)
+code(Var)
+return
+
+::fmargin::
+Var =
+(
+// margin: EdgeInsets.all(8.0),
+margin: EdgeInsets.only(top: 0.0, right: 0.0, bottom: 0.0, left: 0.0),
 )
 code(Var)
 return
@@ -1250,28 +1240,54 @@ return
 ::fedge::
 Var =
 (
-const EdgeInsets.only(top: 10.0, right: 0.0, bottom: 0.0, left: 0.0),
+EdgeInsets.only(top: 10.0, right: 0.0, bottom: 0.0, left: 0.0),
 )
 code(Var)
 return
 
+
 ::faop::
+::fdec::
+Var =
+(
+decoration: new BoxDecoration(
+  // 背景颜色
+  color: Color.fromRGBO(255,122,69, 1),
+  // 圆角：borderRadius: BorderRadius.all(Radius.circular(16.0))
+  borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), bottomRight: Radius.circular(5.0)),
+  image: DecorationImage(
+    image: ExactAssetImage("images/index_bottom.png")
+  `)
+`),
+)
+code(Var)
+return
+
+::fdiv::
 Var =
 (
 Container(
-  decoration: new BoxDecoration(
-    color: mustbe ? Color.fromRGBO(255,122,69, 1) : Color.fromRGBO(0,183,147, 1),
-    borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), bottomRight: Radius.circular(5.0))
-  `),
-  child: Text(
-    "必选",
-    style: TextStyle(
-      fontSize: 11,
-      color: Colors.white
-    `),
-    textAlign: TextAlign.center,
-  `),
+  child: ,
 `)
+)
+code(Var)
+return
+
+::frem::
+Var =
+(
+// 屏幕宽度
+final double screenWidth = window.physicalSize.width;
+// 效果图宽度
+final double uiWidth = 750;
+// 像素比
+final double devicePixelRatio = window.devicePixelRatio;
+// 比率
+final double x = screenWidth / uiWidth / devicePixelRatio;
+
+double rem(double n) {
+  return n * x;
+}
 )
 code(Var)
 return
