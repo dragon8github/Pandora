@@ -1,4 +1,7 @@
 ﻿!f::
+
+    Menu, EventFutureMenu, Add, 点击事件 onPressed, FlutterHandler
+
     Menu, FlutterColumnHandler, Add, crossAxisAlignment: CrossAxisAlignment, FlutterHandler3
     Menu, FlutterColumnHandler, Add, baseline, FlutterHandler3
     Menu, FlutterColumnHandler, Add, center, FlutterHandler3
@@ -19,6 +22,14 @@
     Menu, FlutterFuture, Add, Future.wait, FlutterHandler
     Menu, FlutterFuture, Add, async/await, FlutterHandler
     
+	
+	Menu, overrideFutureMenu, Add, @override Widget build, FlutterHandler
+	Menu, overrideFutureMenu, Add, @override void initState() {}, FlutterHandler
+	Menu, overrideFutureMenu, Add, @override void didUpdateWidget() {}, FlutterHandler
+	Menu, overrideFutureMenu, Add, @override void deactivate() {}, FlutterHandler
+	Menu, overrideFutureMenu, Add, @override void dispose() {}, FlutterHandler
+	Menu, overrideFutureMenu, Add, @override void reassemble() {}, FlutterHandler
+	Menu, overrideFutureMenu, Add, @override void didChangeDependencies() {}, FlutterHandler
     
     Menu, FlutterFunc, Add, 函数可选参数 + 默认参数, FlutterHandler
     
@@ -29,23 +40,23 @@
     Menu, FutureMenu, Add, Flutter import, FlutterHandler
 	Menu, FutureMenu, Add, class StatelessWidget, FlutterHandler
 	Menu, FutureMenu, Add, class StatefulWidget, FlutterHandler
+    
+    Menu, FutureMenu, Add, 
+	Menu, FutureMenu, Add, 
+    
     Menu, FutureMenu, Add, 函数, :FlutterFunc
     Menu, FutureMenu, Add, Future（promise）, :FlutterFuture
     Menu, FutureMenu, Add, 代码片段, :FlutterPIANDUAN
-    Menu, FutureMenu, Add, flutter rem 解决方案,  FlutterHandler
+    Menu, FutureMenu, Add, @override, :overrideFutureMenu
+    Menu, FutureMenu, Add, Event事件大全, :EventFutureMenu
 
+    
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 
-    Menu, FutureMenu, Add, child, FlutterHandler
-    Menu, FutureMenu, Add, children, FlutterHandler
     Menu, FutureMenu, Add, ListView, FlutterHandler
 	Menu, FutureMenu, Add, Center, FlutterHandler
-	Menu, FutureMenu, Add, Container, FlutterHandler
     Menu, FutureMenu, Add, Container的装饰器decoration组件（背景色，圆角）, FlutterHandler
-	Menu, FutureMenu, Add, Text, FlutterHandler
-	Menu, FutureMenu, Add, Column, FlutterHandler
-    Menu, FutureMenu, Add, Row, FlutterHandler
 	Menu, FutureMenu, Add, images Widget, FlutterHandler
     Menu, FutureMenu, Add, images fit: BoxFit.cover, FlutterHandler    
     Menu, FutureMenu, Add, images.network, FlutterHandler    
@@ -64,8 +75,10 @@
 	
 	Menu, FutureMenu, Add, flatbutton, FlutterHandler
 	Menu, FutureMenu, Add, Echo, FlutterHandler
+	Menu, FutureMenu, Add, RandomWordsWidget 生成随机字符串, FlutterHandler
+    Menu, FutureMenu, Add, flutter rem 解决方案,  FlutterHandler
     Menu, FutureMenu, Add, 综合布局示例, FlutterHandler
-	
+    
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 	
@@ -74,29 +87,8 @@
 	Menu, FutureMenu, Add, Navigator.push 命名路由, FlutterHandler
     Menu, FutureMenu, Add, router示例：页面跳转基本使用, FlutterHandler
 	
-	Menu, FutureMenu, Add, 
-	Menu, FutureMenu, Add, 
-
-	Menu, FutureMenu, Add, 点击事件 onPressed, FlutterHandler
-	
-	Menu, FutureMenu, Add, 
-	Menu, FutureMenu, Add, 
 	
 	
-	Menu, FutureMenu, Add, RandomWordsWidget 生成随机字符串, FlutterHandler
-
-	
-	Menu, FutureMenu, Add, 
-	Menu, FutureMenu, Add, 
-	
-	Menu, FutureMenu, Add, @override Widget build, FlutterHandler
-	Menu, FutureMenu, Add, @override void initState() {}, FlutterHandler
-	Menu, FutureMenu, Add, @override void didUpdateWidget() {}, FlutterHandler
-	Menu, FutureMenu, Add, @override void deactivate() {}, FlutterHandler
-	Menu, FutureMenu, Add, @override void dispose() {}, FlutterHandler
-	Menu, FutureMenu, Add, @override void reassemble() {}, FlutterHandler
-	Menu, FutureMenu, Add, @override void didChangeDependencies() {}, FlutterHandler
-
 	Menu, FutureMenu, Show
 	Menu, FutureMenu, DeleteAll
 	
@@ -140,15 +132,6 @@ Var =
 String getUserInfo(String name, [String from = '中国']) {
 	
 }
-)
-}
-
-if (v == "children") {
-Var =
-(
-children: <Widget>[
-	
-]
 )
 }
 
@@ -460,15 +443,6 @@ Center(
 )
 }
 
-if (v == "Container") {
-Var =
-(
-Container(
-	height: 400.0,
-    width: 300.0,
-`)
-)
-}
 
 if (v == "Text") {
 _send("ftext", true, true)
@@ -741,8 +715,8 @@ return
 ::fwh::
 Var =
 (
-height: 400.0,
-width: 300.0,
+height: rem(750),
+width: rem(577),
 )
 code(Var)
 return
@@ -763,65 +737,6 @@ Row(
 code(Var)
 return
 
-::fcol::
-::fclo::
-Var =
-(
-Column(
-	children: <Widget>[
-	  Text('Hello!'),
-	  Text('Hello!'),
-	  Text('Hello!'),
-	  Text('Hello!'),
-	],
-`)
-)
-code(Var)
-return
-
-::ftc::
-Var =
-(
-textColor: Colors.blue,
-)
-code(Var)
-return
-
-::fta::
-Var =
-(
-textAlign: TextAlign.center,
-)
-code(Var)
-return
-
-::fstyle::
-Var =
-(
-style: TextStyle(fontSize: 40.0),
-)
-code(Var)
-return
-
-
-::fchild::
-Var =
-(
-child: Container(
-    color: Colors.greenAccent,
-    height: 400.0,
-    width: 300.0,
-    child: Center(
-      child: Text(
-        'Hello!',
-        style: TextStyle(fontSize: 40.0),
-        textAlign: TextAlign.center,
-      `),
-    `),
-`),
-)
-code(Var)
-return
 
 ::fcenter::
 ::fcen::
@@ -869,9 +784,9 @@ return
 Var =
 (
 Image.asset(
-  'images/wudang.jpeg',
-  width: 600.0,
-  height: 240.0,
+  'images/wudang.png',
+  width: rem(600.0),
+  height: rem(240.0),
   fit: BoxFit.cover, //图片填充整个父容器
 `),
 )
@@ -1069,6 +984,10 @@ Var =
 import 'package:flutter/material.dart';
 )
 code(Var)
+Sleep, 500
+Send, {left 2}
+Sleep, 10
+Send, ^+{left 7}
 return
 
 ::flife::
@@ -1206,7 +1125,8 @@ Var =
 Text(
   'Hello',
   style: TextStyle(
-      fontSize: 40.0
+    fontSize: rem(36),
+    color: Colors.white,
   `),
   textAlign: TextAlign.center,
   softWrap: true,
@@ -1222,25 +1142,32 @@ return
 ::fpdd::
 Var =
 (
-// padding: EdgeInsets.all(8.0),
-padding: EdgeInsets.only(top: 0.0, right: 0.0, bottom: 0.0, left: 0.0),
+// padding: EdgeInsets.all(rem(8.0)),
+padding: EdgeInsets.only(top: rem(0.0), right: rem(0.0), bottom: rem(0.0), left: rem(0.0)),
 )
 code(Var)
 return
 
 ::fmargin::
+::fmt::
+::fm::
+::fml::
+::fmr::
+::fmt::
+::fmb::
 Var =
 (
-// margin: EdgeInsets.all(8.0),
-margin: EdgeInsets.only(top: 0.0, right: 0.0, bottom: 0.0, left: 0.0),
+// margin: EdgeInsets.all(rem(8.0)),
+margin: EdgeInsets.only(top: rem(0.0), right: rem(0.0), bottom: rem(0.0), left: rem(0.0)),
 )
 code(Var)
 return
 
 ::fedge::
+::fegde::
 Var =
 (
-EdgeInsets.only(top: 10.0, right: 0.0, bottom: 0.0, left: 0.0),
+EdgeInsets.only(top: rem(0.0), right: rem(0.0), bottom: rem(0.0), left: rem(0.0))
 )
 code(Var)
 return
@@ -1287,6 +1214,208 @@ final double x = screenWidth / uiWidth / devicePixelRatio;
 
 double rem(double n) {
   return n * x;
+}
+)
+code(Var)
+return
+
+::fpage::
+::fnewpage::
+::fnew::
+Var =
+(
+import 'package:flutter/material.dart';
+
+class Examination extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Container(
+          color: Colors.greenAccent,
+          height: 400.0,
+          width: 300.0,
+          child: Center(
+            child: Text(
+              'Hello!',
+              style: TextStyle(fontSize: 40.0),
+              textAlign: TextAlign.center,
+            `),
+          `),
+        `),
+      `),
+    `);
+  }
+}
+)
+code(Var)
+return
+
+::fsca::
+::fjiao::
+::fjsj::
+::fjiaoshouj::
+::fjiaoshoujia::
+::fyo::
+::fyoman::
+Var =
+(
+return Scaffold(
+    appBar: new AppBar(
+      title: new Text("导航页面示例"),
+    `),
+    body: Center(
+      child: Container(
+        color: Colors.greenAccent,
+        height: 400.0,
+        width: 300.0,
+        child: Center(
+          child: Text(
+            'Hello!',
+            style: TextStyle(fontSize: 40.0),
+            textAlign: TextAlign.center,
+          `),
+        `),
+      `),
+    `),
+`);
+)
+code(Var)
+return
+
+::fcolor::
+Var =
+(
+color: Color.fromRGBO(71,58,102, 1)
+)
+code(Var)
+return
+
+::fpos::
+::fasb::
+Var =
+(
+Positioned(
+  top: rem(134),
+  left: 0,
+  right: 0,
+  child: userInfo,
+`),
+)
+code(Var)
+return
+
+::fc::
+Var =
+(
+Container(
+  child: ,
+`)
+)
+code(Var)
+return
+
+::froutes::
+::frouter::
+Var =
+(
+ routes: <String, WidgetBuilder>{
+  'My': (BuildContext context) => new My(),
+  'Examination': (BuildContext context) => new Examination(),
+},
+)
+code(Var)
+return
+
+::fpush::
+Var =
+(
+Navigator.pushNamed(context, "Examination");
+)
+code(Var)
+return
+
+::fmedia::
+Var =
+(
+MediaQueryData mediaQuery = MediaQuery.of(context);
+print(mediaQuery.devicePixelRatio);
+print(mediaQuery.size.width);
+print(mediaQuery.size.height);
+)
+code(Var)
+return
+
+::fwindow::
+Var =
+(
+import 'dart:ui';
+// 屏幕宽度
+final double screenWidth = window.physicalSize.width;
+// 效果图宽度
+final double uiWidth = 750;
+// 像素比
+final double devicePixelRatio = window.devicePixelRatio;
+// 比率
+final double x = screenWidth / uiWidth / devicePixelRatio;
+
+double rem(double n) {
+  return n * x;
+}
+
+print(window.physicalSize);
+window.physicalSize.height
+window.physicalSize.width
+)
+code(Var)
+return
+
+::fborder::
+Var =
+(
+// borderRadius: BorderRadius.all(Radius.circular(16.0))
+borderRadius: BorderRadius.only(topLeft: Radius.circular(13.0), topRight: Radius.circular(13.0)),
+)
+code(Var)
+return
+
+::fink::
+::fanimate::
+::ftran::
+Var =
+(
+Material(
+  color: Colors.transparent,
+  child: Ink(
+    color: Colors.green,
+    child: InkWell(
+      highlightColor: Colors.white,
+      splashColor:  Colors.white,
+      borderRadius: BorderRadius.all(Radius.circular(23.0)),
+      onTap: () {
+        if (cb is Function) {
+          cb();
+        }
+      },
+      child: Container(
+        width: rem(328.0),
+        height: rem(120.0),
+      `)
+    `),
+  `)
+`)
+)
+code(Var)
+return
+
+::fclick::
+::fevent::
+Var =
+(
+onTap: () {
+  if (cb is Function) {
+    cb();
+  }
 }
 )
 code(Var)

@@ -963,6 +963,25 @@ return
     SendRaw, %str%
 return
 
+::ahktitle::
+Var =
+(
+WinGetTitle, title, A
+if (InStr(title, "Android Studio")) {
+    
+}
+)
+code(Var)
+return
+
+~^s::
+    WinGetTitle, title, A
+    if (InStr(title, "Android Studio")) {
+        Send, ^+\
+    } else {
+        Send, ^s
+    }
+return
 
 ~!enter::
     WinGetTitle, title, A

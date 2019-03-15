@@ -185,6 +185,7 @@
     
 
     Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
+    Menu, utilspractice, Add, 对象字面量的变量键：this.setState({ [fuckyou]: 'true' }), utilsHandler
     Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
     Menu, utilspractice, Add, 函数参数对象深度结构与重命名： var a = ({ state: { nums:list`, numGroup`, map } }) => {}, utilsHandler
     Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
@@ -327,6 +328,14 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "对象字面量的变量键：this.setState({ [fuckyou]: 'true' })") {
+Var = 
+(
+var visible = 'fuckyou'
+console.log({[visible]: 'true'}) // { fuckyou: 'true' }
 )
 }
 
