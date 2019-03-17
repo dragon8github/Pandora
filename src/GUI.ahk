@@ -369,7 +369,7 @@ FileAppend,
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Vue -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!-- anime -->
@@ -622,7 +622,7 @@ FileAppend,
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Vue -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
    
@@ -845,7 +845,7 @@ FileAppend,
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Vue -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!-- 高德地图 -->
@@ -1430,7 +1430,7 @@ FileAppend,
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Vue -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <style>
@@ -2659,7 +2659,7 @@ FileAppend,
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Vue -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <style>
@@ -2704,7 +2704,7 @@ FileAppend,
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" rel="stylesheet">
 
     <!-- Vue -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
 
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
@@ -3002,7 +3002,7 @@ FileAppend,
     <title>Document</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- Vue -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js'></script>
+    <script src='https://cdn.staticfile.org/vue/2.6.9/vue.min.js'></script>
     <!-- jquery -->
     <script src='https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js'></script>
     <style>
@@ -3066,7 +3066,7 @@ FileAppend,
     <title>Document</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- Vue -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js'></script>
+    <script src='https://cdn.staticfile.org/vue/2.6.9/vue.min.js'></script>
     <!-- jquery -->
     <script src='https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js'></script>
     <style>

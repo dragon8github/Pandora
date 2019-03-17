@@ -316,6 +316,8 @@ Gui, Pandora:Add, Link,, <a href="http://kw.dgjy.net">extra-edu 线上</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 知识库
 Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/dashboard.action#all-updates">confluence</a>
+Gui, Pandora:Add, Link,, <a href="https://hui.dgjy.net">门户网站</a>
+
 
 Gui, Pandora:Tab, 4
 Gui, Pandora:Add, Text,  W130 Section, Nodejs:

@@ -57,18 +57,19 @@
     Menu, FutureMenu, Add, ListView, FlutterHandler
 	Menu, FutureMenu, Add, Center, FlutterHandler
     Menu, FutureMenu, Add, Container的装饰器decoration组件（背景色，圆角）, FlutterHandler
-	Menu, FutureMenu, Add, images Widget, FlutterHandler
-    Menu, FutureMenu, Add, images fit: BoxFit.cover, FlutterHandler    
+	Menu, FutureMenu, Add, images.assets, FlutterHandler
     Menu, FutureMenu, Add, images.network, FlutterHandler    
     
     Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
     
     
-    Menu, FutureMenu, Add, padding: EdgeInsets.all(32.0)`,, FlutterHandler3
-    Menu, FutureMenu, Add, padding: EdgeInsets.only(bottom: 8.0`, top: 8.0)`,, FlutterHandler3
+    Menu, FutureMenu, Add, fpadding, FlutterHandler2
+    Menu, FutureMenu, Add, fmargin, FlutterHandler2
     Menu, FutureMenu, Add, Column —— crossAxisAlignment: CrossAxisAlignment.xxx, :FlutterColumnHandler
     Menu, FutureMenu, Add, Row —— mainAxisAlignment: MainAxisAlignment.xxx, :FlutterRowHandler
+    Menu, FutureMenu, Add, SingleChildScrollView, FlutterHandler
+    Menu, FutureMenu, Add, fwrap, FlutterHandler2
     
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
@@ -78,11 +79,11 @@
 	Menu, FutureMenu, Add, RandomWordsWidget 生成随机字符串, FlutterHandler
     Menu, FutureMenu, Add, flutter rem 解决方案,  FlutterHandler
     Menu, FutureMenu, Add, 综合布局示例, FlutterHandler
+    Menu, FutureMenu, Add, StatefulWidget示例, FlutterHandler
     
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 	
-	Menu, FutureMenu, Add, 新建路由 new route Widget, FlutterHandler
 	Menu, FutureMenu, Add, Navigator.push, FlutterHandler
 	Menu, FutureMenu, Add, Navigator.push 命名路由, FlutterHandler
     Menu, FutureMenu, Add, router示例：页面跳转基本使用, FlutterHandler
@@ -102,7 +103,7 @@ return
 
 FlutterHandler2:
 Var := A_ThisMenuItem
-code(Var)
+_Send(Var, true, true)
 return
 
 FlutterHandler:
@@ -114,6 +115,72 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "StatefulWidget示例") {
+Var =
+(
+import 'package:flutter/material.dart';
+import 'dart:math';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Hello Rainbow Rectangle'),
+        `),
+        body: HelloRectangle(text: 'Hello from instantiation!'),
+      `),
+    `),
+  `);
+}
+
+class HelloRectangle extends StatefulWidget {
+  final String text;
+  HelloRectangle({
+    this.text,
+  });
+  @override
+  createState() => _HelloRectangleState();
+}
+
+class _HelloRectangleState extends State<HelloRectangle> {
+  Color _color = Colors.greenAccent;
+  void _generateRandomColor() {
+    var random = Random();
+    setState(() {
+      _color = Color.fromARGB(
+        255,
+        random.nextInt(255),
+        random.nextInt(255),
+        random.nextInt(255),
+      `);
+    });
+  }
+  Widget build(BuildContext context) {
+    return Center(
+      child: FlatButton(
+        onPressed: _generateRandomColor,
+        color: _color,
+        child: Center(
+          child: Text(
+            widget.text,
+            style: TextStyle(fontSize: 40.0),
+            textAlign: TextAlign.center,
+          `),
+        `),
+      `),
+    `);
+  }
+}
+)
+}
+
+
+if (v == "SingleChildScrollView") {
+_send("fscroll", true, true)
+return
 }
 
 if (v == "flutter rem 解决方案") {
@@ -341,17 +408,6 @@ _send("flistview", true, true)
 return
 }
 
-if (v == "images fit: BoxFit.cover") {
-Var =
-(
-Image.asset(
-  'images/wudang.jpeg',
-  width: 600.0,
-  height: 240.0,
-  fit: BoxFit.cover, //图片填充整个父容器
-`),
-)
-}
 
 if (v == "flutter devices") {
 cs(v)
@@ -563,7 +619,7 @@ class _Echo extends StatelessWidget {
 }
 
 
-if (v == "images Widget") {
+if (v == "images.assets") {
 _send("fimg", true, true)
 return
 }
@@ -580,30 +636,6 @@ class RandomWordsWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: new Text(wordPair.toString()),
-    `);
-  }
-}
-)
-}
-
-if (v == "新建路由 new route Widget") {
-Var =
-(
-class SecondScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("导航页面示例"),
-      `),
-      body: new Center(
-        child: new RaisedButton(
-          onPressed: (){
-            Navigator.pop(context);
-          },
-          child: new Text('返回页面'),
-        `),
-      `),
     `);
   }
 }
@@ -664,7 +696,7 @@ onPressed: () {
 }
 
 if (v == "flatbutton") {
-_send("flatbutton", true, true)
+_send("fbtn", true, true)
 return
 }
 
@@ -715,7 +747,7 @@ return
 ::fwh::
 Var =
 (
-height: rem(750),
+height: rem2(750),
 width: rem(577),
 )
 code(Var)
@@ -761,15 +793,40 @@ return
 ::fff::
 Var =
 (
-class MyApp extends StatefulWidget {
+class HelloRectangle extends StatefulWidget {
+  final String text;
+  HelloRectangle({
+    this.text,
+  });
   @override
+  createState() => _HelloRectangleState();
+}
+
+class _HelloRectangleState extends State<HelloRectangle> {
+  Color _color = Colors.greenAccent;
+  void _generateRandomColor() {
+    var random = Random();
+    setState(() {
+      _color = Color.fromARGB(
+        255,
+        random.nextInt(255),
+        random.nextInt(255),
+        random.nextInt(255),
+      `);
+    });
+  }
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("New route"),
-      `),
-      body: Center(
-        child: Text("This is new route"),
+    return Center(
+      child: FlatButton(
+        onPressed: _generateRandomColor,
+        color: _color,
+        child: Center(
+          child: Text(
+            widget.text,
+            style: TextStyle(fontSize: 40.0),
+            textAlign: TextAlign.center,
+          `),
+        `),
       `),
     `);
   }
@@ -786,7 +843,7 @@ Var =
 Image.asset(
   'images/wudang.png',
   width: rem(600.0),
-  height: rem(240.0),
+  height: rem2(240.0),
   fit: BoxFit.cover, //图片填充整个父容器
 `),
 )
@@ -820,25 +877,6 @@ code(Var)
 return
 
 
-::flatbtn::
-::flatbutton::
-Var =
-(
-FlatButton(
-  child: Text("open new route"),
-  textColor: Colors.blue,
-  onPressed: () {
-	Navigator.push(
-	  context,
-	  new MaterialPageRoute(builder: (context) {
-		return new NewRoute();
-	  })
-	`);
-  },
-`)
-)
-code(Var)
-return
 
 ::ff.await::
 ::ff.async::
@@ -1096,10 +1134,11 @@ return
 ::flistview::
 ::flv::
 ::flist::
-::fscrollview::
 Var =
 (
 ListView(
+  // padding-top设置为0，解决无法置顶的bug
+  padding: EdgeInsets.only(top: rem2(0.0)),
   children: <Widget>[
     
   ],
@@ -1119,6 +1158,7 @@ code(Var)
 return
 
 ::ftxt::
+::ft::
 ::ftext::
 Var =
 (
@@ -1143,31 +1183,74 @@ return
 Var =
 (
 // padding: EdgeInsets.all(rem(8.0)),
-padding: EdgeInsets.only(top: rem(0.0), right: rem(0.0), bottom: rem(0.0), left: rem(0.0)),
+padding: EdgeInsets.only(top: rem2(0.0), right: rem(0.0), bottom: rem2(0.0), left: rem(0.0)),
 )
 code(Var)
 return
 
 ::fmargin::
-::fmt::
 ::fm::
+Var =
+(
+// margin: EdgeInsets.all(rem(8.0)),
+margin: EdgeInsets.only(top: rem2(0.0), right: rem(0.0), bottom: rem2(0.0), left: rem(0.0)),
+)
+code(Var)
+return
+
 ::fml::
+Var =
+(
+// margin: EdgeInsets.all(rem(8.0)),
+margin: EdgeInsets.only(top: rem2(0.0), right: rem(0.0), bottom: rem2(0.0), left: rem(0.0)),
+)
+code(Var)
+sleep, 500
+Send, {left 6}
+return
+
 ::fmr::
+Var =
+(
+// margin: EdgeInsets.all(rem(8.0)),
+margin: EdgeInsets.only(top: rem2(0.0), right: rem(0.0), bottom: rem2(0.0), left: rem(0.0)),
+)
+code(Var)
+sleep, 500
+Send, {left 40}
+return
+
 ::fmt::
+Var =
+(
+// margin: EdgeInsets.all(rem(8.0)),
+margin: EdgeInsets.only(top: rem2(0.0), right: rem(0.0), bottom: rem2(0.0), left: rem(0.0)),
+)
+code(Var)
+sleep, 500
+Send, {left 57}
+return
+
 ::fmb::
 Var =
 (
 // margin: EdgeInsets.all(rem(8.0)),
-margin: EdgeInsets.only(top: rem(0.0), right: rem(0.0), bottom: rem(0.0), left: rem(0.0)),
+margin: EdgeInsets.only(top: rem2(0.0), right: rem(0.0), bottom: rem2(0.0), left: rem(0.0)),
 )
 code(Var)
+sleep, 500
+Send, {left 22}
 return
+
+
+
+
 
 ::fedge::
 ::fegde::
 Var =
 (
-EdgeInsets.only(top: rem(0.0), right: rem(0.0), bottom: rem(0.0), left: rem(0.0))
+EdgeInsets.only(top: rem2(0.0), right: rem(0.0), bottom: rem2(0.0), left: rem(0.0))
 )
 code(Var)
 return
@@ -1203,17 +1286,29 @@ return
 ::frem::
 Var =
 (
-// 屏幕宽度
+import 'dart:ui';
+// 屏幕宽度（px）
 final double screenWidth = window.physicalSize.width;
-// 效果图宽度
+// 屏幕宽度（px）
+final double screenHeight = window.physicalSize.height;
+// 效果图宽度（iPhone6 750*1334）
 final double uiWidth = 750;
+// 效果图宽度（iPhone6 750*1334）
+final double uiHeight = 1334;
 // 像素比
 final double devicePixelRatio = window.devicePixelRatio;
-// 比率
-final double x = screenWidth / uiWidth / devicePixelRatio;
+// 宽度比率
+final double scaleWidth = screenWidth / uiWidth / devicePixelRatio;
+// 高度比率
+final double scaleHeight = screenHeight / uiHeight / devicePixelRatio;
 
+// 仿移动端 rem 解决方案
 double rem(double n) {
-  return n * x;
+  return n * scaleWidth;
+}
+
+double rem2(double n) {
+  return n * scaleHeight;
 }
 )
 code(Var)
@@ -1292,11 +1387,12 @@ code(Var)
 return
 
 ::fpos::
+::fpsd::
 ::fasb::
 Var =
 (
 Positioned(
-  top: rem(134),
+  top: rem2(134),
   left: 0,
   right: 0,
   child: userInfo,
@@ -1313,6 +1409,10 @@ Container(
 `)
 )
 code(Var)
+Sleep, 500
+Send, {UP}
+Send, {End}
+Send, {left}
 return
 
 ::froutes::
@@ -1347,25 +1447,40 @@ code(Var)
 return
 
 ::fwindow::
+::fwin::
+::fsize::
 Var =
 (
 import 'dart:ui';
-// 屏幕宽度
+// 屏幕宽度（px）
 final double screenWidth = window.physicalSize.width;
-// 效果图宽度
+// 屏幕宽度（px）
+final double screenHeight = window.physicalSize.height;
+// 效果图宽度（iPhone6 750*1334）
 final double uiWidth = 750;
+// 效果图宽度（iPhone6 750*1334）
+final double uiHeight = 1334;
 // 像素比
 final double devicePixelRatio = window.devicePixelRatio;
-// 比率
-final double x = screenWidth / uiWidth / devicePixelRatio;
+// 宽度比率
+final double scaleWidth = screenWidth / uiWidth / devicePixelRatio;
+// 高度比率
+final double scaleHeight = screenHeight / uiHeight / devicePixelRatio;
+print(devicePixelRatio);
+print(scaleWidth);
+print(scaleHeight);
+)
+code(Var)
+return
 
-double rem(double n) {
-  return n * x;
-}
-
-print(window.physicalSize);
-window.physicalSize.height
-window.physicalSize.width
+::fdp::
+::fmedia::
+Var =
+(
+MediaQueryData mediaQuery = MediaQuery.of(context);
+print(mediaQuery.devicePixelRatio);
+print(mediaQuery.size.width);
+print(mediaQuery.size.height);
 )
 code(Var)
 return
@@ -1374,6 +1489,7 @@ return
 Var =
 (
 // borderRadius: BorderRadius.all(Radius.circular(16.0))
+// shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20)))
 borderRadius: BorderRadius.only(topLeft: Radius.circular(13.0), topRight: Radius.circular(13.0)),
 )
 code(Var)
@@ -1399,7 +1515,7 @@ Material(
       },
       child: Container(
         width: rem(328.0),
-        height: rem(120.0),
+        height: rem2(120.0),
       `)
     `),
   `)
@@ -1420,3 +1536,74 @@ onTap: () {
 )
 code(Var)
 return
+
+::fscroll::
+Var =
+(
+Scrollbar(
+  child: SingleChildScrollView(
+    scrollDirection: Axis.horizontal, // 默认是 vertical
+    // 如果是使用horizontal，毫无疑问是用Row，如果是用vertical，就用Column
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        
+      ],
+    `),
+  `),
+`)
+)
+code(Var)
+return
+
+::fwarp::
+::fwrap::
+Var =
+(
+Wrap(
+  direction: Axis.horizontal, // 默认是 horizontal（水平） 
+  spacing: rem(24.0), // Chip 之间间隙大小
+  runSpacing: rem(40.0), // 行之间的间隙大小
+  children: <Widget>[
+  ],
+`)
+)
+code(Var)
+return
+
+::fbtn::
+Var =
+(
+FlatButton(
+  onPressed: () {
+  	print(20190315171856);
+  },
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(20)),
+  `)
+  color: Colors.greenAccent,
+  child: Center(
+    child: Text(
+      'Hello',
+      style: TextStyle(
+      	fontSize: rem(40),
+        color: Color.fromRGBO(49,129,215, 1),
+      `),
+      textAlign: TextAlign.center,
+    `),
+  `),
+`)
+)
+code(Var)
+return
+
+::fcb::
+Var =
+(
+if (cb is Function) {
+  cb();
+}
+)
+code(Var)
+return
+
