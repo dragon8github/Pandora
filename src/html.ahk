@@ -897,7 +897,8 @@ Return
 Return
 
 ::art::
-    SendRaw, <article></article>
+code("<article></article>")
+send, {left 10}
 return
 
 ::middle::

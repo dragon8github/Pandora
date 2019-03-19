@@ -4,6 +4,7 @@
     Menu, CssMenu, Add, chrome-yellow, CssHandler2
     Menu, CssMenu, Add, px2rem, CssHandler2
     Menu, CssMenu, Add, css.placeholder, CssHandler2
+    Menu, CssMenu, Add, css.animate, CssHandler2
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -54,6 +55,7 @@
     Menu, CssMenu, Add, 使用系统默认字体：System font stack, CssHandler
     Menu, CssMenu, Add, 挺好玩的代码字体：comic sans ms, CssHandler
     Menu, CssMenu, Add, :root 与 var(--primary-color), CssHandler
+    Menu, CssMenu, Add, outline:none, CssHandler3
 
     
     Menu, CssMenu, Add, 
@@ -90,6 +92,12 @@ SendLevel 1
 Send, %A_ThisMenuItem%{tab}
 return
 
+CssHandler3:
+v := A_ThisMenuItem
+code(v)
+return
+
+
 CssHandler:
 v := A_ThisMenuItem
 Var :=
@@ -99,6 +107,34 @@ Var =
 (
 )
 }
+
+if (v == "css.animate") {
+Var =
+(
+.banner1__earth--img {
+	width: 655px;
+	height: 660px;
+    animation: Pulse 3.5s infinite ease;
+}
+
+
+@-webkit-keyframes Pulse {
+    0`% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+    }
+    50`% {
+      -webkit-transform: translateY(-30px);
+              transform: translateY(-30px);
+    }
+    100`% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+    }
+}
+)
+}
+
 
 
 if (v == "挺好玩的代码字体：comic sans ms") {
@@ -291,7 +327,7 @@ if (v == "文字Hover Shadow Box Animation美化") {
 Var =
 (
 // https://30-seconds.github.io/30-seconds-of-css/#hover-shadow-box-animation
-<p class="hover-shadow-box-animation">Box it!</p>
+<p class="hover-shadow-box-animation">Box it!记得要给我一点高度比如22px</p>
 
 .hover-shadow-box-animation {
   display: inline-block;

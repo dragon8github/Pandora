@@ -206,6 +206,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.foodiesfeed.com/">foodiesfeed.com<
 Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">pixabay.com</a>
 Gui, Pandora:Add, Link,, <a href="http://en.freejpg.com.ar/">freejpg</a>
 Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co</a>
+Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
@@ -307,6 +309,7 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/boards">敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/api/sg/redis/cleanDefault">清空缓存</a>
 Gui, Pandora:Add, Link,, <a href="http://12345admin.dgdatav.com:6080/#">admin</a>
+Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
@@ -316,6 +319,7 @@ Gui, Pandora:Add, Link,, <a href="http://kw.dgjy.net">extra-edu 线上</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 知识库
 Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/dashboard.action#all-updates">confluence</a>
+Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/pages/viewpage.action?pageId=1310755">confluence2</a>
 Gui, Pandora:Add, Link,, <a href="https://hui.dgjy.net">门户网站</a>
 
 

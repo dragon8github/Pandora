@@ -1591,6 +1591,7 @@ code(Var)
 return
 
 ::vue.init::
+::vueinit::
 InputBox, OutputVar, title, enter a name?,,,,,,,,test
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 

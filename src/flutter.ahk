@@ -38,6 +38,7 @@
 	Menu, FutureMenu, Add, Flutter init, FlutterHandler
     Menu, FutureMenu, Add, flutter devices, FlutterHandler
     Menu, FutureMenu, Add, Flutter import, FlutterHandler
+    Menu, FutureMenu, Add, Flutter import ios, FlutterHandler
 	Menu, FutureMenu, Add, class StatelessWidget, FlutterHandler
 	Menu, FutureMenu, Add, class StatefulWidget, FlutterHandler
     
@@ -45,11 +46,10 @@
 	Menu, FutureMenu, Add, 
     
     Menu, FutureMenu, Add, 函数, :FlutterFunc
+    Menu, FutureMenu, Add, 类与面向对象, :FlutterPIANDUAN
     Menu, FutureMenu, Add, Future（promise）, :FlutterFuture
-    Menu, FutureMenu, Add, 代码片段, :FlutterPIANDUAN
+    Menu, FutureMenu, Add, Event事件, :EventFutureMenu
     Menu, FutureMenu, Add, @override, :overrideFutureMenu
-    Menu, FutureMenu, Add, Event事件大全, :EventFutureMenu
-
     
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
@@ -59,21 +59,22 @@
     Menu, FutureMenu, Add, Container的装饰器decoration组件（背景色，圆角）, FlutterHandler
 	Menu, FutureMenu, Add, images.assets, FlutterHandler
     Menu, FutureMenu, Add, images.network, FlutterHandler    
+    Menu, FutureMenu, Add, SingleChildScrollView, FlutterHandler
+    Menu, FutureMenu, Add, fwrap, FlutterHandler2
+    Menu, FutureMenu, Add, Column —— crossAxisAlignment: CrossAxisAlignment.xxx, :FlutterColumnHandler
+    Menu, FutureMenu, Add, Row —— mainAxisAlignment: MainAxisAlignment.xxx, :FlutterRowHandler
     
     Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
     
-    
     Menu, FutureMenu, Add, fpadding, FlutterHandler2
     Menu, FutureMenu, Add, fmargin, FlutterHandler2
-    Menu, FutureMenu, Add, Column —— crossAxisAlignment: CrossAxisAlignment.xxx, :FlutterColumnHandler
-    Menu, FutureMenu, Add, Row —— mainAxisAlignment: MainAxisAlignment.xxx, :FlutterRowHandler
-    Menu, FutureMenu, Add, SingleChildScrollView, FlutterHandler
-    Menu, FutureMenu, Add, fwrap, FlutterHandler2
+
     
 	Menu, FutureMenu, Add, 
 	Menu, FutureMenu, Add, 
 	
+    Menu, FutureMenu, Add, CupertinoButton, FlutterHandler
 	Menu, FutureMenu, Add, flatbutton, FlutterHandler
 	Menu, FutureMenu, Add, Echo, FlutterHandler
 	Menu, FutureMenu, Add, RandomWordsWidget 生成随机字符串, FlutterHandler
@@ -86,9 +87,10 @@
 	
 	Menu, FutureMenu, Add, Navigator.push, FlutterHandler
 	Menu, FutureMenu, Add, Navigator.push 命名路由, FlutterHandler
-    Menu, FutureMenu, Add, router示例：页面跳转基本使用, FlutterHandler
-	
-	
+    Menu, FutureMenu, Add, router示例：页面跳转基本使用, FlutterHandler    
+    Menu, FutureMenu, Add, Navigator.push(context`, new MaterialPageRoute(builder: (context) => new SecondScreen()));, FlutterHandler3
+    Menu, FutureMenu, Add, Navigator.pushNamed(context`, "new_page");, FlutterHandler3
+    Menu, FutureMenu, Add, Navigator.of(context).pushReplacementNamed("app");, FlutterHandler3
 	
 	Menu, FutureMenu, Show
 	Menu, FutureMenu, DeleteAll
@@ -115,6 +117,16 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "CupertinoButton") {
+_send("iosbtn", true, true)
+return
+}
+
+if (v == "Flutter import ios") {
+_send("fios", true, true)
+return
 }
 
 if (v == "StatefulWidget示例") {
@@ -747,8 +759,8 @@ return
 ::fwh::
 Var =
 (
-height: rem2(750),
 width: rem(577),
+height: rem2(750),
 )
 code(Var)
 return
@@ -775,11 +787,7 @@ return
 Var =
 (
 Center(
-  child: Text(
-	'Hello!',
-	style: TextStyle(fontSize: 40.0),
-	textAlign: TextAlign.center,
-  `),
+  child: ,
 `),
 )
 code(Var)
@@ -791,42 +799,37 @@ return
 ::fcfull::
 ::fclass::
 ::fff::
+InputBox, OutputVar, title, enter a name?,,,,,,,,TestPage
 Var =
 (
-class HelloRectangle extends StatefulWidget {
+class %OutputVar% extends StatefulWidget {
   final String text;
-  HelloRectangle({
+  %OutputVar%({
     this.text,
   });
+  
   @override
   createState() => _HelloRectangleState();
 }
 
-class _HelloRectangleState extends State<HelloRectangle> {
-  Color _color = Colors.greenAccent;
-  void _generateRandomColor() {
-    var random = Random();
-    setState(() {
-      _color = Color.fromARGB(
-        255,
-        random.nextInt(255),
-        random.nextInt(255),
-        random.nextInt(255),
-      `);
+class _%OutputVar% extends State<%OutputVar%> {
+  @override
+  void initState() {
+    super.initState();
+    new Future.delayed(Duration(seconds: 3), () {
+      print('App正在加载...');
     });
   }
+
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: FlatButton(
-        onPressed: _generateRandomColor,
-        color: _color,
-        child: Center(
-          child: Text(
-            widget.text,
-            style: TextStyle(fontSize: 40.0),
-            textAlign: TextAlign.center,
+    return new Center(
+      child: Stack(
+        children: <Widget>[
+          Image.asset(
+            'images/logo.png',
           `),
-        `),
+        ],
       `),
     `);
   }
@@ -1607,3 +1610,45 @@ if (cb is Function) {
 code(Var)
 return
 
+::fslepp::
+Var =
+(
+import 'dart:async';
+new Future.delayed(Duration(seconds: 3), () {
+  print('App正在加载...');
+});
+)
+code(Var)
+return
+
+::fios::
+Var =
+(
+import 'package:flutter/cupertino.dart';
+)
+code(Var)
+return
+
+::iosbtn::
+::iosbutton::
+::fiosbtn::
+Var =
+(
+CupertinoButton(
+  child: Text(
+    '确定报名',
+    style: TextStyle(
+      fontSize: 20,
+      color: Colors.white,
+    `),
+    textAlign: TextAlign.center,
+  `),
+  color: Color.fromRGBO(40,137,241, 1),
+  borderRadius: BorderRadius.all(Radius.circular(24.0)), // 按钮圆角设置
+  onPressed: () { // onPressed不为null视为可点击
+    print('You click the button');
+  },
+`)
+)
+code(Var)
+return
