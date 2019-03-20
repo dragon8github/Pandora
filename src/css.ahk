@@ -5,6 +5,8 @@
     Menu, CssMenu, Add, px2rem, CssHandler2
     Menu, CssMenu, Add, css.placeholder, CssHandler2
     Menu, CssMenu, Add, css.animate, CssHandler2
+    Menu, CssMenu, Add, function.scss, CssHandler2
+    Menu, CssMenu, Add, utils.scss, CssHandler2
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -107,6 +109,7 @@ Var =
 (
 )
 }
+
 
 if (v == "css.animate") {
 Var =
@@ -2457,6 +2460,270 @@ return
 Var =
 (
 javascript:/* debug.css | MIT License | zaydek.github.com/debug.css */ if (!("is_debugging" in window)) { is_debugging = false; var debug_el = document.createElement("style"); debug_el.append(document.createTextNode(``*:not(path):not(g) { color: hsla(210, 100`%, 100`%, 0.9) !important; background: hsla(210, 100`%,  50`%, 0.5) !important; outline: solid 0.25rem hsla(210, 100`%, 100`%, 0.5) !important; box-shadow: none !important; filter: none !important; }``)); } function enable_debugger() { if (!is_debugging) { document.head.appendChild(debug_el); is_debugging = true; } } function disable_debugger() { if (is_debugging) { document.head.removeChild(debug_el); is_debugging = false; } } !is_debugging ? enable_debugger() : disable_debugger();
+)
+code(Var)
+return
+
+::function.scss::
+::functions.scss::
+::function.css::
+::functions.css::
+::@scss::
+Var =
+(
+@mixin ycenter {
+    position: absolute;
+    top: 50`%;
+    transform: translateY(-50`%);
+}
+
+@mixin xcenter {
+    position: absolute;
+    left: 50`%;
+    transform: translateX(-50`%);
+}
+
+@mixin ell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin center {
+    position: absolute;
+    left: 50`%;
+    top: 50`%;
+    transform: translate(-50`%, -50`%);
+}
+
+
+@mixin flex ($x: false, $y: false, $direction: false) {
+    display: flex;
+
+    @if $x {
+        @if $x==s or $x==start {
+            justify-content: flex-start;
+        }
+
+        @else if $x==c or $x==center {
+            justify-content: center;
+        }
+
+        @else if $x==e or $x==end {
+            justify-content: flex-end;
+        }
+
+        @else if $x==a or $x==around {
+            justify-content: space-around;
+        }
+
+        @else if $x==b or $x==between {
+            justify-content: space-between;
+        }
+
+        @else {
+            justify-content: $x;
+        }
+    }
+
+    @if $y {
+        @if $y==s or $y==start {
+            align-items: flex-start;
+        }
+
+        @else if $y==c or $y==center {
+            align-items: center;
+        }
+
+        @else if $y==e or $y==end {
+            align-items: flex-end;
+        }
+
+        @else if $y==stretch or $y==full or $y==f {
+            align-items: stretch;
+        }
+
+        @else if $y==baseline or $y==base or $y==b or $y==line or $y==l {
+            align-items: baseline;
+        }
+
+        @else {
+            align-items: $y;
+        }
+    }
+
+    @if $direction {
+        @if $direction==c or $direction==col {
+            flex-direction: column;
+        }
+
+        @else {
+            flex-direction: $direction;
+        }
+    }
+}
+
+@mixin bg ($width, $height, $url) {
+    width: $width;
+    height: $height;
+    background: transparent url($url) center / $width $height no-repeat;
+    display: inline-block;
+}
+
+@mixin fullbg ($width, $height, $url) {
+    width: $width;
+    height: $height;
+    background: url($url) center / 100`% no-repeat content-box;
+}
+)
+code(Var)
+return
+
+::@imp::
+Var =
+(
+<style lang="scss" scoped>
+@import '~@/scss/functions.scss';
+
+</style>
+)
+code(Var)
+return
+
+::utils.scss::
+::utils.css::
+Var =
+(
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    background: #F9FAFE;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-family: Microsoft Yahei;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.u-hide {
+  display: none;
+}
+
+.u-flex-bs {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.u-container {
+    width: 1200px;
+    margin: auto;
+    position: relative;
+}
+
+.u-container-full {
+    width: 100`%;
+    position: relative;
+}
+
+.u-flex-bc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.u-flex-ac {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.u-flex-sc {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.u-ycenter {
+    position: absolute;
+    top: 50`%;
+    transform: translateY(-50`%);
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+}
+
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100`%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.hover-shadow-box-animation {
+    display: inline-block;
+    vertical-align: middle;
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    transition-duration: 0.3s;
+    transition-property: box-shadow, transform;
+}
+
+.hover-shadow-box-animation:hover,
+.hover-shadow-box-animation:focus,
+.hover-shadow-box-animation:active {
+    box-shadow: 1px 10px 10px -10px rgba(0, 0, 24, 0.5);
+    transform: scale(1.2);
+}
+
+@-webkit-keyframes Pulse {
+    0`% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+    }
+    50`% {
+      -webkit-transform: translateY(-30px);
+              transform: translateY(-30px);
+    }
+    100`% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+    }
+}
 )
 code(Var)
 return

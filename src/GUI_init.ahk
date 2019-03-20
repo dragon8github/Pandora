@@ -236,6 +236,7 @@ Gui, Pandora:Add, Link,, <a href="https://36dcup.tk/user">36dcup</a>
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
 Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建index.html
+Gui, Pandora:Add, Text, gNewvuecounttoHtml W140, 新建vue-count-to.html
 Gui, Pandora:Add, Text, gNewreactbabelHtml W140, 新建react.babel.html
 Gui, Pandora:Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
 Gui, Pandora:Add, Text, gNewreduxIndexHtml W140,新建react-redux.html

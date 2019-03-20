@@ -205,6 +205,7 @@
     Menu, utilsmy, Add, setInterval 强大的解决方案, utilsHandler
     Menu, utilsmy, Add, setInterval Switch超简单开关, utilsHandler
     Menu, utilsmy, Add, 微信群组随机取人头, utilsHandler
+    Menu, utilsmy, Add, Vue 进度条组件, utilsHandler
     
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
@@ -4040,6 +4041,64 @@ export const setStyle = (element, styleName, value) => {
 };
 )
 }
+
+if (v == "Vue 进度条组件") {
+Var = 
+(
+<template>
+    <div class="myprogress" :style='{ width: mywidth }'></div>
+</template>
+
+<script>
+export default {
+  name: 'myprogress',
+  data () {
+    return {
+      mywidth: 0
+    }
+  },
+  methods: {
+      go () {
+          console.log('go');
+      }
+  },
+  props: {
+    _width: {
+      default: 0,
+      type: String
+    }
+  },
+  components: {
+
+  },
+  computed: {
+
+  },
+  watch: {
+    _width (newV) {
+      this.mywidth = 0
+      setTimeout(_ => this.mywidth = newV, 50)
+    }
+  },
+  mounted () {
+      setTimeout(() => {
+        this.mywidth = this._width
+      }, 50);
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.myprogress {
+  transition: .5s all ease;
+  width: 0;
+}
+</style>
+)
+}
+
+
 
 
 code(Var)
