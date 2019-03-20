@@ -1025,7 +1025,6 @@ Var =
 import 'package:flutter/material.dart';
 )
 code(Var)
-Sleep, 500
 Send, {left 2}
 Sleep, 10
 Send, ^+{left 7}
@@ -1208,7 +1207,6 @@ Var =
 margin: EdgeInsets.only(top: rem2(0.0), right: rem(0.0), bottom: rem2(0.0), left: rem(0.0)),
 )
 code(Var)
-sleep, 500
 Send, {left 6}
 return
 
@@ -1219,7 +1217,7 @@ Var =
 margin: EdgeInsets.only(top: rem2(0.0), right: rem(0.0), bottom: rem2(0.0), left: rem(0.0)),
 )
 code(Var)
-sleep, 500
+
 Send, {left 40}
 return
 
@@ -1230,7 +1228,7 @@ Var =
 margin: EdgeInsets.only(top: rem2(0.0), right: rem(0.0), bottom: rem2(0.0), left: rem(0.0)),
 )
 code(Var)
-sleep, 500
+
 Send, {left 57}
 return
 
@@ -1241,7 +1239,7 @@ Var =
 margin: EdgeInsets.only(top: rem2(0.0), right: rem(0.0), bottom: rem2(0.0), left: rem(0.0)),
 )
 code(Var)
-sleep, 500
+
 Send, {left 22}
 return
 
@@ -1412,7 +1410,7 @@ Container(
 `)
 )
 code(Var)
-Sleep, 500
+
 Send, {UP}
 Send, {End}
 Send, {left}
