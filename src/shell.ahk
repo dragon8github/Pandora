@@ -1000,17 +1000,9 @@ return
 
 
 ::gitdd::
-Var =
-(
-git add . && git commit -m '迭代' --no-verify && git push -u origin develop
-)
-code(Var)
+_sendinput("git add . && git commit -m '{+} ' --no-verify && git push -u origin develop{LEFT 43}")
 return
 
 ::gitr::
-Var =
-(
-git add . && git commit -m '迭代' --no-verify && git push -u origin release
-)
-code(Var)
+_sendinput("git add . && git commit -m '{+} ' --no-verify && git push -u origin release{LEFT 43}")
 return
