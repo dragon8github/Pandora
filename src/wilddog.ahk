@@ -28,6 +28,11 @@
     Menu, dogMenu, Add, on 所有事件API 文档, dogHandler
     Menu, dogMenu, Add, EventType 所有的事件类型on/once, dogHandler
     
+    Menu, dogMenu, Add,, dogHandler
+    Menu, dogMenu, Add,, dogHandler
+    
+    Menu, dogMenu, Add, PowserShell 压缩（必须有文件才成立）, dogHandler
+    Menu, dogMenu, Add, PowserShell 解压, dogHandler
 
 	Menu, dogMenu, Show
 	Menu, dogMenu, DeleteAll
@@ -49,6 +54,7 @@ Var =
 (
 )
 }
+
 
 if (v == "EventType 所有的事件类型on/once") {
 run, https://docs.wilddog.com/sync/Web/api/Query.html#EventType

@@ -206,6 +206,7 @@
     Menu, utilsmy, Add, setInterval Switch超简单开关, utilsHandler
     Menu, utilsmy, Add, 微信群组随机取人头, utilsHandler
     Menu, utilsmy, Add, Vue 进度条组件, utilsHandler
+    Menu, utilsmy, Add, utils.js, utilsHandler
     
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
@@ -304,7 +305,8 @@
     Menu, utilsMenu, Add, escapeHTML 防止XSS, utilsHandler
     Menu, utilsMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
     Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
-        
+    Menu, utilsMenu, Add, umd、amd, utilsHandler
+    
 
     Menu, utilsMenu, Show
     
@@ -330,6 +332,16 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "utils.js") {
+_send("utils.js", true, true)
+return
+}
+
+if (v == "umd、amd") {
+_send("UMD", true, true)
+return
 }
 
 if (v == "对象字面量的变量键：this.setState({ [fuckyou]: 'true' })") {
@@ -4104,3 +4116,83 @@ export default {
 code(Var)
 return
 
+
+
+::utils.js::
+::utils::
+Var =
+(
+/**
+ * 最简单且最安全的方法显示一个值，举个例子: 
+ * var obj = {a: 123 }
+   maybe(_=> obj.a, 0); // 123
+   maybe(_=> obj.b, 0); // 0
+   maybe(_=> obj.a.b.s.w.holy.shit.fuck.god, 0); // 0
+ */
+export const maybe = (fn, n = '') => {
+    try {
+        const result = fn()
+        return (result && result === result && result !== 'NaN' && result !== 'undefined' && result !== 'Invalid date') ? result : n
+    } catch (err) {
+        return n
+    }
+}
+
+/**
+ * 获取数组最后一位
+ */
+Array.prototype.last = function () {
+    return this[this.length - 1]
+} 
+
+
+/**
+ * 判断对象是否是一个空的对象，既{}
+ */
+export const isEmptyObject = obj => {
+    if (Object.getOwnPropertyNames) {
+        return (Object.getOwnPropertyNames(obj).length === 0);
+    } else {
+        var k;
+        for (k in obj) {
+            if (obj.hasOwnProperty(k)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+/**
+ * 将对象转化为formdata格式
+ */
+export const obj2formdata = (json) => {
+    var data = new FormData()
+    if (json) {
+        Object.keys(json).forEach(function(key) {
+            data.append(key, json[key])
+        });
+    }
+    return data
+}
+
+
+/**
+ * 将对象转化为GET参数
+ */
+export const obj2formdatastr = (body) => {
+    if (body) {
+        let formparams = '';
+        Object.keys(body).forEach(key => {
+            if (formparams.length > 0) {
+                formparams += '&';
+            }
+            formparams = formparams + key + '=' + body[key];
+        });
+        return formparams
+    }
+    return ''
+}
+)
+code(Var)
+return

@@ -73,6 +73,7 @@
     
     Menu, CssMenu, Add, 发廊进度条, CssHandler
     Menu, CssMenu, Add, 七喜冒泡进度条, CssHandler
+    Menu, CssMenu, Add, 光之波动进度条, CssHandler
     Menu, CssMenu, Add, redbox, CssHandler2
     Menu, CssMenu, Add, cursor:手掌手势, CssHandler
     
@@ -107,6 +108,91 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "光之波动进度条") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Document</title>
+</head>
+<style>
+body {
+    max-width: 540px;
+    min-width: 320px;
+}
+
+.progress-bar {
+    background-color: #1a1a1a;
+    height: 25px;
+    padding: 5px;
+    width: 350px;
+    margin: 70px 0 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
+}
+
+.span {
+    display: inline-block;
+    height: 100`%;
+    background-color: #777;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+    transition: width .4s ease-in-out;     
+    position: relative;           
+}
+
+.orange {
+   background-color: #fecf23;
+   background-image: linear-gradient(top, #fecf23, #fd9215);  
+}        
+
+
+.span::after {
+    content: '';
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    border-radius: 3px;
+    -webkit-animation: animate-shine 2s ease-out infinite;
+}
+
+@keyframes animate-shine {
+    0`% {
+        opacity: 0;
+        width: 0;
+    }
+
+    50`% {
+        opacity: .5;
+    }
+
+    100`% {
+        opacity: 0;
+        width: 95`%;
+    }
+}
+</style>
+
+<body>
+    <div class="shine progress-bar">
+        <span class='span orange' style="width: 75`%;"></span>
+    </div>
+</body>
+<script>
+</script>
+
+</html>
 )
 }
 

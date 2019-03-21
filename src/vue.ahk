@@ -5,6 +5,7 @@
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
   Menu, VueMenu, Add, import { mapState`, mapActions } from 'vuex', VueHandler  
+  Menu, VueMenu, Add, ElementUI 按需引入教程, VueHandler  
 
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -21,6 +22,8 @@
   Menu, VueMenu, Add, vue.watch-$route, VueHandler
   Menu, VueMenu, Add, vue.watch-deep-$route, VueHandler
   Menu, VueMenu, Add, vue.directive 指令, VueHandler
+  Menu, VueMenu, Add, vue.props, VueHandler
+  
   
   Menu, VueMenu, Add, , VueHandler
   
@@ -68,9 +71,6 @@
   Menu, VueMenu, Add, Vue 解决方案和组件, :vuesolution
   
   
-
-
-  
   Menu, VueMenu, Show
   Menu, VueMenu, DeleteAll
 return
@@ -85,6 +85,16 @@ Var =
 (
 
 )
+}
+
+if (v == "ElementUI 按需引入教程") {
+_send("elementui", true, true)
+return
+}
+
+if (v == "vue.props") {
+_send("vue.props", true, true)
+return
 }
 
 if (v == ":style='{}' 表达式") {
@@ -2275,6 +2285,78 @@ return
 Var =
 (
 :style='{ "z-index": isShowGuidance ? 2001 : 1 }'
+)
+code(Var)
+return
+
+::vue.props::
+::vue.prop::
+Var =
+(
+props: {
+   text: {
+       type: String,
+       default: ''
+   }
+},
+)
+code(Var)
+return
+
+::element::
+::elementui::
+Var =
+(
+1、需要安装
+
+cnpm install babel-plugin-component -D
+
+2、.babelrc 替换：
+
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["> 1`%", "last 2 versions", "not ie <= 8"]
+      }
+    }],
+    "stage-2"
+  ],
+  "plugins": [
+    "transform-vue-jsx", 
+    "transform-runtime",
+    ["component", {
+      "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+    }]
+   ]
+}
+
+3、使用教程：
+import 'element-ui/lib/theme-chalk/index.css'
+
+import { DatePicker, Select, Option, Cascader, MessageBox, tooltip, Message, Autocomplete, Input, Checkbox, Switch, Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
+
+Vue.component(btn.name, btn)
+Vue.component(vtitle.name, vtitle)
+Vue.component(DatePicker.name, DatePicker)
+Vue.component(Select.name, Select)
+Vue.component(Option.name, Option)
+Vue.component(Cascader.name, Cascader)
+Vue.component(tooltip.name, tooltip)
+Vue.component(Input.name, Input)
+Vue.component(Autocomplete.name, Autocomplete)
+Vue.component(Checkbox.name, Checkbox)
+Vue.component(Switch.name, Switch)
+Vue.component(Dropdown.name, Dropdown)
+Vue.component(DropdownMenu.name, DropdownMenu)
+Vue.component(DropdownItem.name, DropdownItem)
+
+Vue.prototype.$message = Message
+Vue.prototype.$msgbox = MessageBox
+Vue.prototype.$alert = MessageBox.alert
+Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$prompt = MessageBox.prompt
 )
 code(Var)
 return

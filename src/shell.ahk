@@ -148,6 +148,14 @@
 	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler2
 	Menu, ShellMenu, Add, nginx -s reload 重启 nginx, ShellHandler
 	Menu, ShellMenu, Add, nginx -t 测试配置是否有语法错误，并且获取配置位置, ShellHandler
+	
+		
+	Menu, ShellMenu, Add
+	Menu, ShellMenu, Add
+	    
+    Menu, ShellMenu, Add, PowserShell 压缩（必须有文件才成立）, ShellHandler3
+    Menu, ShellMenu, Add, PowserShell 解压, ShellHandler3
+
 
 	
 	Menu, ShellMenu, Show
@@ -172,6 +180,17 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "PowserShell 压缩（必须有文件才成立）") {
+cs("Compress-Archive -Path * -DestinationPath ./test.zip")
+return
+}
+
+if (v == "PowserShell 解压") {
+cs(" Expand-Archive -Path test.zip -DestinationPath .")
+return
 }
 
 
@@ -979,3 +998,19 @@ tar zxvf
 SendInput, % Var A_Space
 return
 
+
+::gitdd::
+Var =
+(
+git add . && git commit -m '迭代' --no-verify && git push -u origin develop
+)
+code(Var)
+return
+
+::gitr::
+Var =
+(
+git add . && git commit -m '迭代' --no-verify && git push -u origin release
+)
+code(Var)
+return

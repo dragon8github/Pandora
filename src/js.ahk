@@ -2085,6 +2085,7 @@ return
 
 
 ::umd::
+::amd::
 Var =
 (
 // 方式一： 
@@ -2129,6 +2130,64 @@ Var =
 } else {
   root._ = _;
 }
+
+// 方式四：flexSearch的解决方案（https://github.com/nextapps-de/flexsearch/edit/master/flexsearch.js）
+/**!
+ * @preserve yourName v0.6.21
+ * Copyright 2019 Nextapps GmbH
+ * Author: Thomas Wilkerling
+ * Released under the Apache 2.0 Licence
+ * https://github.com/dragon8github/yourName
+ */
+
+(function(){
+
+    provide("yourName", (function factory(/* args */){
+    	// ... your code
+    }(
+    	// ... args
+    `)), this);
+
+    /* --------------------------------------------------------------------------------------
+     * UMD Wrapper for Browser and Node.js
+     * @param {!string} name
+     * @param {!Function|Object} factory
+     * @param {!Function|Object=} root
+     * @suppress {checkVars}
+     * @const
+     */
+
+    function provide(name, factory, root){
+
+        let prop;
+
+        // AMD (RequireJS)
+        if((prop = root["define"]) && prop["amd"]){
+
+            prop([], function(){
+
+                return factory;
+            });
+        }
+        // Closure (Xone)
+        else if((prop = root["modules"])){
+
+            prop[name.toLowerCase()] = factory;
+        }
+        // CommonJS (Node.js)
+        else if(typeof exports === "object"){
+
+            // export
+            module.exports = factory;
+        }
+        // Global (window)
+        else{
+
+            root[name] = factory;
+        }
+    }
+
+}).call(this);
 )
 code(Var)
 return
