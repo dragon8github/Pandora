@@ -1888,9 +1888,19 @@ return
 Var =
 (
 import moment from 'moment'
+import card from '@/components/card'
 )
 code(Var)
 return
+
+::cimp::
+Var =
+(
+import card from '@/components/card'
+)
+code(Var)
+return
+
 
 ::is-wx::
 ::iswx::

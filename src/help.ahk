@@ -224,17 +224,6 @@ code(Var)
 Send, {left 3}
 return
 
-::ahklevel::
-::ahksend::
-::ahksendlevel::
-Var =
-(
-SendLevel 1
-Send, falangjindutiao{tab}
-return
-)
-code(Var)
-return
 
 ::ahkmenu2::
 Var =
@@ -1198,4 +1187,17 @@ Var =
 --app=http://12345v1.dgdatav.com:6080/#/dg/overallSituation
 )
 code(Var)
+return
+
+::ahksend::
+::ahks::
+Var =
+(
+_send("root", true, true)
+return
+)
+code(Var)
+Send, {UP 1}{Home 1}
+Send, {Right 7}
+Send, +{right 4}
 return

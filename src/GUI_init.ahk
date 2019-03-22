@@ -177,6 +177,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/">CODECASTS 免费�
 Gui, Pandora:Add, Link,, <a href="http://aotu.jd.com/share/">凹凸实验室公开课</a>
 Gui, Pandora:Add, Link,, <a href="https://camp.qianduan.group/koa2/2/1/2">ikcamp</a>
 Gui, Pandora:Add, Link,, <a href="https://aotu.io/">凹凸实验室</a>
+Gui, Pandora:Add, Link,, <a href="https://scrimba.com/">学习代码新世界</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -187,6 +188,8 @@ Gui, Pandora:Add, Link,, <a href="https://baideye.com/article/123#menu_index_24"
 Gui, Pandora:Add, Link,, <a href="https://github.com/phodal/serverless">《Serverless》</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md">《JavaScript 算法》</a>
 Gui, Pandora:Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">《React 小书》</a>
+Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/weuse?page=1">《大牛都在用什么？》</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
@@ -301,16 +304,17 @@ Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/logi
 
 Gui, Pandora:Add, Text,  W140 ys, 12345大数据屏（vue）
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心git lab</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
 Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">v0</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v1.dgdatav.com:6080/#/dg/overallSituation">v1</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/">v2</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/boards">敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/api/sg/redis/cleanDefault">清空缓存</a>
 Gui, Pandora:Add, Link,, <a href="http://12345admin.dgdatav.com:6080/#">admin</a>
 Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心git lab</a>
+; @gs
 
 
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
@@ -405,12 +409,15 @@ Gui, Pandora:Add, Text,  W160 ys, vuetifyjs
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuetifyjs/vuetify">vuetify</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuetifyjs/nuxt">vuetifyjs/nuxt</a>
 
-Gui, Pandora:Add, Text,  W160 ys, vux
+Gui, Pandora:Add, Text,  W100 ys, vux
 Gui, Pandora:Add, Link,, <a href="https://github.com/airyland/vux">vux github</a>
 Gui, Pandora:Add, Link,, <a href="https://vux.li/">vux 官网</a>
 
+Gui, Pandora:Add, Text,  W160 ys, 其他插件收录
+Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repo/jaweii/vueg">vueg转场动画</a>
 
-Gui, Pandora:Add, Text, W140 Section xs yp+200, vue动画钩子：
+
+Gui, Pandora:Add, Text, W140 Section xs yp+240, vue动画钩子：
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes">vue-transition</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#JavaScript-Hooks">JavaScript-Hooks</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/api/#transition-group">transition-group</a>
@@ -503,7 +510,7 @@ Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/">moment 中文</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/moment/moment/">moment.js github</a>
 Gui, Pandora:Add, Link,, <a href="http://momentjs.cn/docs/#/parsing/">moment.js 文档手册</a>
 
-Gui, Pandora:Add, Text,  W140  ys, 函数式库：
+Gui, Pandora:Add, Text,  W160  ys, 函数式库：
 Gui, Pandora:Add, Link,, <a href="https://underscorejs.org/">underscore 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/jashkenas/underscore">underscore-github</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/hanzichi/underscore-analysis">underscore-源码解读</a>
@@ -520,7 +527,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/wuchangming/spy-debugger">s
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/whistle">whistle</a>
 
 
-Gui, Pandora:Add, Text,  W140  Section xs yp+150, Rxjs：
+Gui, Pandora:Add, Text,  W140  Section xs yp+180, Rxjs：
 Gui, Pandora:Add, Link,, <a href="https://rxjs-dev.firebaseapp.com/guide/overview">Rxjs 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/Reactive-Extensions/RxJS">Rxjs github</a>
 Gui, Pandora:Add, Link,, <a href="https://cn.rx.js.org/manual/overview.html">Rxjs 中文网</a>
@@ -535,7 +542,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/julianshapiro/velocity">vel
 Gui, Pandora:Add, Link,, <a href="http://velocityjs.org/">velocity-官网</a>
 Gui, Pandora:Add, Link,, <a href="http://www.mrfront.com/docs/velocity.js/index.html">velocity-中文官网</a>
 
-Gui, Pandora:Add, Text,  W140  ys, elasticsearch：
+Gui, Pandora:Add, Text,  W160  ys, elasticsearch：
 Gui, Pandora:Add, Link,, <a href="https://www.elastic.co/cn/products">elasticsearch官网</a>
 Gui, Pandora:Add, Link,, <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/getting-started.html">elasticsearch文档</a>
 Gui, Pandora:Add, Link,, <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">elasticsearch 中文网</a>
@@ -551,10 +558,13 @@ Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/CyLee/p/9827489.html">
 
 
 Gui, Pandora:Tab, 8
-Gui, Pandora:Add, Text,  W140 Section, 库1：
+Gui, Pandora:Add, Text,  W180 Section, 库1：
 Gui, Pandora:Add, Link,, <a href="https://github.com/GoogleChromeLabs/quicklink/tree/master/translations/zh-cn">quicklink</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/developit/microbundle">microbundle 零配置打包</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/greensock/GreenSock-JS">GreenSock-JS/TweenMax.js</a>
+Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repo/hakimel/reveal-js">演示文稿PPT js</a>
+Gui, Pandora:Add, Link,, <a href="https://ilyashubin.github.io/scrollbooster/">Table拖动js</a>
+Gui, Pandora:Add, Link,, <a href="https://sortablejs.github.io/Sortable/">List拖动js</a>
 
 Gui, Pandora:Add, Text,  W140 ys, grafana：
 Gui, Pandora:Add, Link,, <a href="https://grafana.com/">grafana</a>
@@ -573,6 +583,22 @@ Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos/kitchensink
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos">jointjs demo大全</a>
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/tutorial">jointjs 入门指引</a>
 
+Gui, Pandora:Add, Text, W140 ys, 录制：
+Gui, Pandora:Add, Link,, <a href="https://www.rrweb.io/replay">录制和回放</a>
+Gui, Pandora:Add, Link,, <a href="https://scrimba.com/p/pV5eHk/c9EqQSD">录制灵感来源</a>
+
+Gui, Pandora:Add, Text,  W140  Section xs yp+200, 顺眼测试框架：
+Gui, Pandora:Add, Link,, <a href="https://github.com/avajs/ava">ava</a>
+
+Gui, Pandora:Add, Text, W140 ys, nodejs cms：
+Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repos/NodeJS/CMS">NodeJS/CMS</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/awesome-javascript#node-powered-cms-frameworks">（推荐）powered-cms</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/NodeBB/NodeBB">NodeBB</a>
+Gui, Pandora:Add, Link,, <a href="https://www.graphql.com/">graphql</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/apostrophecms/apostrophe">apostrophe</a>
+
+
+; @qimiao @qm @ku
 
 Gui, Pandora:Tab, 9
 Gui, Pandora:Add, Text, W140 Section, 高德地图：
@@ -751,9 +777,13 @@ Gui, Pandora:Add, Link,, <a href="http://droid4x.haimawan.com/">海马玩模拟�
 
 Gui, Pandora:Tab, 14
 Gui, Pandora:Add, Text,  W140 Section, 极简库:
-Gui, Pandora:Add, Link,, <a href="http://microjs.com/#">microjs</a>
-Gui, Pandora:Add, Link,, <a href="https://ajusa.github.io/lit/">lit.css</a>
-Gui, Pandora:Add, Link,, <a href="https://nostalgic-css.github.io/NES.css/">NES.css</a>
+Gui, Pandora:Add, Link,, <a href="http://microjs.com/#">极简js大全：microjs</a>
+Gui, Pandora:Add, Link,, <a href="https://ajusa.github.io/lit/">极简风格：lit.css</a>
+Gui, Pandora:Add, Link,, <a href="https://nostalgic-css.github.io/NES.css/">马里奥风格：NES.css</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/pure-css/pure/">雅虎：pure.css</a>
+Gui, Pandora:Add, Link,, <a href="https://bulma.io/">青铜王者：bulma.css</a>
+Gui, Pandora:Add, Link,, <a href="https://foundation.zurb.com/">响应翘楚：foundation 6</a>
+
 
 ; 垃圾回收站
 Gui, Pandora:Tab, 15

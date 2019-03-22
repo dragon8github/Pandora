@@ -33,7 +33,6 @@
 	Menu, JavaScriptEventMenu, Add, , EventHandler
 	Menu, JavaScriptEventMenu, Add, .onclick = (e) => {}, EventHandler
 	Menu, JavaScriptEventMenu, Add, .onsubmit = (e) => {}, EventHandler
-	Menu, JavaScriptEventMenu, Add, , EventHandler
 	
 
 
@@ -96,18 +95,23 @@
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
 	
-	Menu, EventMenu, Add, 冒泡点击mouseup, EventHandler
-	Menu, EventMenu, Add, String.fromCharCode(e.keycode), EventHandler
-	Menu, EventMenu, Add, event.preventDefault(); event.stopPropagation();, EventHandler
-	Menu, EventMenu, Add, 长按longpress手势, EventHandler
-	Menu, EventMenu, Add, 监听paste复制黏贴事件, EventHandler
-	Menu, EventMenu, Add, click 与 e.clientX/e.clientY, EventHandler
 	Menu, EventMenu, Add, js 监听 enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + click, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + shift + p, EventHandler
 	Menu, EventMenu, Add, js esc键监听, EventHandler
+	Menu, EventMenu, Add, 监听paste复制黏贴事件, EventHandler
+	
+	Menu, EventMenu, Add
+	Menu, EventMenu, Add
+	
 	Menu, EventMenu, Add, 用Input事件代替keyup事件：$('input').on('input'`, search), EventHandler
+	Menu, EventMenu, Add, click 与 e.clientX/e.clientY, EventHandler
+	Menu, EventMenu, Add, 长按longpress手势, EventHandler
+	Menu, EventMenu, Add, String.fromCharCode(e.keycode), EventHandler
+	Menu, EventMenu, Add, 用 passive 特性让页面滑动流畅, EventHandler
+	Menu, EventMenu, Add, event.preventDefault(); event.stopPropagation();, EventHandler
+	Menu, EventMenu, Add, clickOutSide：!el.contains(event.target), utilsHandler
 	
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
@@ -139,6 +143,20 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "用 passive 特性让页面滑动流畅") {
+Var = 
+(
+// 特别是监听mousewheel页面滑动事件之类的，最适合用
+// https://blog.csdn.net/tengxy_cloud/article/details/52858742
+// https://www.youtube.com/watch?v=65VMej8n23A
+document.addEventListener('touchstart', touchstartListener, {
+  capture: true,  // 是否要从父组件开始冒泡
+  once: false,    // 是否只执行一次
+  passive: true,  // 是否跳过 preventDefault() 的判断，能大幅度增加速度
+})
 )
 }
 
@@ -966,47 +984,3 @@ this.myChart.on('legendselectchanged', params => {
 })
 )
 }
-
-if (v == "冒泡点击mouseup") {
-Var = 
-(
-// jQuery版本
-$('.keySupervision__layer').css({ left, top }).show(300, function () {
-      window.addEventListener('mouseup', function cancelFade(e) {
-         if (!e.target.className.includes('keySupervision__layer')) {
-             $('.keySupervision__layer').hide();
-             window.removeEventListener('mouseup', cancelFade);
-         }
-      })
-})
-
-// vue版本
-<div class="msgbox" v-show="value">
-data () {
-    return {
-        value: false
-    }
-},
-methods: {
-  hideListener (e) {
-    // 只要你的弹窗所有元素都准许BEM规范即可。也就是说都带msgbox前缀，就可以轻松区分。
-    if (!e.target.className.includes('msgbox')) {
-        this.value = false
-    }
-  },
-  // 可以给关闭按钮绑定，如<a class="msgbox__header--close" @click='value = !value'>×</a>
-  show () {
-    if (!this.value) this.value = true
-  }
-},
-watch: {
-    value (newV) {
-      newV === true && window.addEventListener('mouseup', this.hideListener)
-      newV === false && window.removeEventListener('mouseup', this.hideListener);
-    }
-},
-)
-}
-
-code(Var)
-return

@@ -7,6 +7,7 @@
     Menu, CssMenu, Add, css.animate, CssHandler2
     Menu, CssMenu, Add, function.scss, CssHandler2
     Menu, CssMenu, Add, utils.scss, CssHandler2
+    Menu, CssMenu, Add, g.min.css, CssHandler2
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -389,25 +390,42 @@ Var =
 <p class="hover-underline-animation">Hover this text to see the effect!</p>
 
 .hover-underline-animation {
-  display: inline-block;
-  position: relative;
-  color: #0087ca;
+    display: inline-block;
+    position: relative;
+
+    // 补丁
+    &.has-under-text::after {
+        top: 99`%;
+    }
+
+    // active补丁
+    &.is-active::after {
+        content: '';
+        position: absolute;
+        width: 100`%;
+        height: 2px;
+        left: 0;
+        transform: scaleX(1);
+        background-color: #fff;
+    }
 }
+
 .hover-underline-animation::after {
-  content: '';
-  position: absolute;
-  width: 100`%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #0087ca;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
+    content: '';
+    position: absolute;
+    width: 100`%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
 }
+
 .hover-underline-animation:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 )
 }
@@ -503,22 +521,8 @@ Var =
 }
 
 if (v == ":root 与 var(--primary-color)") {
-Var =
-(
-:root {
-    --font: nunito;
-    --gray-color: #CCC;
-    --primary-color: #fa0;
-    --warning-color: #ffd600;
-    --error-color: #d50000;
-    --success-color: #00c853;
-    --info-color: #2962ff;
-}
-
-.accent {
-	color: var(--primary-color);
-}
-)
+_send(":root", true, true)
+return
 }
 
 
@@ -2809,6 +2813,56 @@ a {
       -webkit-transform: translateY(0px);
               transform: translateY(0px);
     }
+}
+)
+code(Var)
+return
+
+::g.css::
+::g.min.css::
+Var =
+(
+.g{display:flex;flex-flow:row wrap;align-content:flex-start;}.g-1,.g-1-1,.g-1-2,.g-1-3,.g-2-3,.g-1-4,.g-3-4,.g-1-5,.g-2-5,.g-3-5,.g-4-5,.g-5-5,.g-1-6,.g-5-6,.g-1-8,.g-3-8,.g-5-8,.g-7-8,.g-1-12,.g-5-12,.g-7-12,.g-11-12,.g-1-24,.g-2-24,.g-3-24,.g-4-24,.g-5-24,.g-6-24,.g-7-24,.g-8-24,.g-9-24,.g-10-24,.g-11-24,.g-12-24,.g-13-24,.g-14-24,.g-15-24,.g-16-24,.g-17-24,.g-18-24,.g-19-24,.g-20-24,.g-21-24,.g-22-24,.g-23-24,.g-24-24{display:inline-block;}.g-1-24{width:4.1667`%;}.g-1-12,.g-2-24{width:8.3333`%;}.g-1-8,.g-3-24{width:12.5000`%;}.g-1-6,.g-4-24{width:16.6667`%;}.g-1-5{width:20`%;}.g-5-24{width:20.8333`%;}.g-1-4,.g-6-24{width:25`%;}.g-7-24{width:29.1667`%;}.g-1-3,.g-8-24{width:33.3333`%;}.g-3-8,.g-9-24{width:37.5000`%;}.g-2-5{width:40`%;}.g-5-12,.g-10-24{width:41.6667`%;}.g-11-24{width:45.8333`%;}.g-1-2,.g-12-24{width:50`%;}.g-13-24{width:54.1667`%;}.g-7-12,.g-14-24{width:58.3333`%;}.g-3-5{width:60`%;}.g-5-8,.g-15-24{width:62.5000`%;}.g-2-3,.g-16-24{width:66.6667`%;}.g-17-24{width:70.8333`%;}.g-3-4,.g-18-24{width:75`%;}.g-19-24{width:79.1667`%;}.g-4-5{width:80`%;}.g-5-6,.g-20-24{width:83.3333`%;}.g-7-8,.g-21-24{width:87.5000`%;}.g-11-12,.g-22-24{width:91.6667`%;}.g-23-24{width:95.8333`%;}.g-1,.g-1-1,.g-5-5,.g-24-24{width:100`%;}
+)
+code(Var)
+return
+
+::`:root::
+Var =
+(
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.accent {
+    color: var(--primary);
 }
 )
 code(Var)

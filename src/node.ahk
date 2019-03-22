@@ -1200,3 +1200,8 @@ Return
 ::cnpm2::
 SendInput, npm install cnpm -g --registry=https://registry.npm.taobao.org 
 return
+
+::cnpm::
+::npm::
+_sendinput("cnpm i  -S{LEFT 3}")
+return
