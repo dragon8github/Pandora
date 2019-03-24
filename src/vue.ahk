@@ -43,7 +43,9 @@
   Menu, VueMenu, Add, router.init, VueHandler
   Menu, VueMenu, Add, 获取参数this.$route.params.id, VueHandler
   Menu, VueMenu, Add, this.$router.push('index'), VueHandler
-  Menu, VueMenu, Add, this.$router.back, VueHandler
+  Menu, VueMenu, Add, this.$router.back(), VueHandler
+  Menu, VueMenu, Add, this.$router.currentRoute.meta.step, VueHandler
+  
   Menu, VueMenu, Add, <router-view></router-view>, VueHandler
   Menu, VueMenu, Add, <router-link></router-link>, VueHandler
   Menu, VueMenu, Add, 组件钩子beforeRouteLeave, VueHandler
@@ -76,14 +78,19 @@
 return
 
 VueHandler:
-; MsgBox You selected  from the menu .
 v := A_ThisMenuItem
 Var :=
 
 if (v == "") {
 Var = 
 (
+)
+}
 
+if (v == "this.$router.currentRoute.meta.step") {
+Var = 
+(
+this.$router.currentRoute.meta.step
 )
 }
 
@@ -1144,10 +1151,10 @@ router.afterEach((to, from) => {
 )
 }
 
-if (v == "this.$router.back") {
+if (v == "this.$router.back()") {
 Var = 
 (
-this.$router.back
+this.$router.back() // window.history.back();
 )
 }
 
@@ -2330,6 +2337,16 @@ Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$prompt = MessageBox.prompt
+)
+code(Var)
+return
+
+::window.back::
+::window.back()::
+::back::
+Var =
+(
+this.$router.back() // window.history.back();
 )
 code(Var)
 return

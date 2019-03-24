@@ -815,6 +815,7 @@ Var =
 code(Var)
 return
 
+::html::
 ::html5::
 ::html`:5::
 Var = 

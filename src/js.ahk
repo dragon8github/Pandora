@@ -1901,6 +1901,15 @@ import card from '@/components/card'
 code(Var)
 return
 
+::uimp::
+Var =
+(
+import { shortcuts } from '@/utils/utils'
+)
+code(Var)
+return
+
+
 
 ::is-wx::
 ::iswx::

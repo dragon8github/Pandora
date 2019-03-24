@@ -34,6 +34,7 @@ FileDelete, .\src\*.bak
 #Include src/echarts.ahk	      ; echarts
 #Include src/jsutils.ahk          ; jsutils
 #Include src/php.ahk              ; php
+#Include src/elementui.ahk	      ; elementUI
 #Include src/sql.ahk		      ; sql
 #Include src/reactNative.ahk      ; ReactNative
 #Include src/event.ahk            ; event

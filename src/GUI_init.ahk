@@ -253,6 +253,7 @@ Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
 Gui, Pandora:Add, Text, gNewjointjsHtml W160,新建去重复jointjs流程图
 Gui, Pandora:Add, Text, gNewuploadHtml W160,新建读取本地目录/文件内容
 Gui, Pandora:Add, Text, gNewlshtml W160,新建读取本地目录列表
+Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条
 
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
