@@ -154,3 +154,11 @@ Var =
 )
 code(Var)
 return
+
+::el-tag::
+Var =
+(
+<el-tag class='item'>每周一次</el-tag>
+)
+code(Var)
+return

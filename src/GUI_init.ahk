@@ -114,7 +114,7 @@ Gui, Pandora:Add, Button, gCancelSelect w260 h30 xs, 取消选中
 
 
 ; Tab 选项卡 w830 h570 
-Gui, Pandora:Add, Tab3, Section ys ym Choose1 w900, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 奇妙工具 | 地图 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 回收站 | 剪切板 
+Gui, Pandora:Add, Tab3, Section ys ym Choose1 w900, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 奇妙工具 | 图表 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 回收站 | 剪切板 
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -315,6 +315,8 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/api/sg/redis/cleanDefault">清空缓存</a>
 Gui, Pandora:Add, Link,, <a href="http://12345admin.dgdatav.com:6080/#">admin</a>
 Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心gitlab</a>
+Gui, Pandora:Add, Link,, <a href="https://www.xiaopiu.com/web/byId?type=project&id=5c7cc747126f63402c1e331f">数据中心原型</a>
 ; @gs
 
 
@@ -638,6 +640,11 @@ Gui, Pandora:Add, Link,, <a href="http://mapv.baidu.com/">mapv官网</a>
 Gui, Pandora:Add, Link,, <a href="http://mapv.baidu.com/examples/#csv-car.html">mapv-example</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/huiyan-fe/mapv/blob/master/API.md">百度线面教程</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/huiyan-fe/mapv/#readme">ampv-github</a>
+
+Gui, Pandora:Add, Text, W140 ys, charts.js：
+Gui, Pandora:Add, Link,, <a href="https://www.chartjs.org/">charts.js 官网</a>
+Gui, Pandora:Add, Link,, <a href="https://www.chartjs.org/samples/latest/">charts.js samples</a>
+Gui, Pandora:Add, Link,, <a href="https://www.chartjs.org/docs/latest/">charts.js doc</a>
 
 
 Gui, Pandora:Add, Text,  W140  Section xs yp+120, echart:
