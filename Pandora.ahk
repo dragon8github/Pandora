@@ -11,14 +11,12 @@ FileDelete, .\src\*.bak
 #include src/GUI_init.ahk	  ; GUI初始化系列
 #include src/GUI.ahk		  ; GUI系列
 #Include src/ISearch.ahk	  ; ISearch
+
 /**
 //////////////////////////////////////////////
 说明一下： GUI的初始化必须置顶
 //////////////////////////////////////////////
  */
- 
-
- 
 
 #Include src/lib.ahk              ; 公共函数
 #Include src/help.ahk             ; 辅助功能

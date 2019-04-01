@@ -568,8 +568,6 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/GoogleChromeLabs/quicklink/
 Gui, Pandora:Add, Link,, <a href="https://github.com/developit/microbundle">microbundle 零配置打包</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/greensock/GreenSock-JS">GreenSock-JS/TweenMax.js</a>
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repo/hakimel/reveal-js">演示文稿PPT js</a>
-Gui, Pandora:Add, Link,, <a href="https://ilyashubin.github.io/scrollbooster/">Table拖动js</a>
-Gui, Pandora:Add, Link,, <a href="https://sortablejs.github.io/Sortable/">List拖动js</a>
 
 Gui, Pandora:Add, Text,  W140 ys, grafana：
 Gui, Pandora:Add, Link,, <a href="https://grafana.com/">grafana</a>
@@ -577,6 +575,9 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/grafana/grafana">grafana gi
 
 Gui, Pandora:Add, Text, W140 ys, 地图辅助库：
 Gui, Pandora:Add, Link,, <a href="http://turfjs.org/docs/#bearing">turfjs</a>
+
+Gui, Pandora:Add, Text,  W140 yp+50, 顺眼测试框架：
+Gui, Pandora:Add, Link,, <a href="https://github.com/avajs/ava">ava</a>
 
 Gui, Pandora:Add, Text, W140 ys, 团队工具：
 Gui, Pandora:Add, Link,, <a href="https://www.atlassian.com/software/confluence">confluence知识库</a>
@@ -588,19 +589,23 @@ Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos/kitchensink
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos">jointjs demo大全</a>
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/tutorial">jointjs 入门指引</a>
 
-Gui, Pandora:Add, Text, W140 ys, 录制：
-Gui, Pandora:Add, Link,, <a href="https://www.rrweb.io/replay">录制和回放</a>
-Gui, Pandora:Add, Link,, <a href="https://scrimba.com/p/pV5eHk/c9EqQSD">录制灵感来源</a>
 
-Gui, Pandora:Add, Text,  W140  Section xs yp+200, 顺眼测试框架：
-Gui, Pandora:Add, Link,, <a href="https://github.com/avajs/ava">ava</a>
 
-Gui, Pandora:Add, Text, W140 ys, nodejs cms：
+
+Gui, Pandora:Add, Text, W140 Section xs yp+50, nodejs cms：
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repos/NodeJS/CMS">NodeJS/CMS</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/awesome-javascript#node-powered-cms-frameworks">（推荐）powered-cms</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/NodeBB/NodeBB">NodeBB</a>
 Gui, Pandora:Add, Link,, <a href="https://www.graphql.com/">graphql</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/apostrophecms/apostrophe">apostrophe</a>
+
+Gui, Pandora:Add, Text, W140 ys, 拖拽：
+Gui, Pandora:Add, Link,, <a href="https://ilyashubin.github.io/scrollbooster/">table拖动js</a>
+Gui, Pandora:Add, Link,, <a href="https://sortablejs.github.io/Sortable/">列表拖拽js</a>
+
+Gui, Pandora:Add, Text, W140 ys, 录制js：
+Gui, Pandora:Add, Link,, <a href="https://www.rrweb.io/replay">录制和回放</a>
+Gui, Pandora:Add, Link,, <a href="https://scrimba.com/p/pV5eHk/c9EqQSD">录制灵感来源</a>
 
 
 ; @qimiao @qm @ku
