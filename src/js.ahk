@@ -6514,3 +6514,25 @@ preLoadImages(['./bg.png', './bg2.png', './bigBtn_1.svg', './bigBtn_2.svg', './b
 )
 code(Var)
 return
+
+
+::script::
+::script`:src::
+::src::
+Var =
+(
+<script src='.js'></script>
+)
+code(Var)
+Send, {left 14}
+return
+
+::.remove::
+Var =
+(
+.removeEventListener('click', e => {
+	
+})
+)
+code(Var)
+return

@@ -200,6 +200,7 @@ Gui, Pandora:Add, Link,, <a href="https://zb.oschina.net/services/service-star/i
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza-old</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/3aa99766c2834cdcf0f9efe553f79177/dev">apizza-Live</a>
+Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/526d58e01a7480bf15c97fd4e5038d9d/dev">apizza-数据中心</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
@@ -317,6 +318,7 @@ Gui, Pandora:Add, Link,, <a href="http://12345admin.dgdatav.com:6080/#">admin</a
 Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心gitlab</a>
 Gui, Pandora:Add, Link,, <a href="https://www.xiaopiu.com/web/byId?type=project&id=5c7cc747126f63402c1e331f">数据中心原型</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter-all">数据中心原型gitlab</a>
 ; @gs
 
 

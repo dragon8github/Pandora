@@ -213,3 +213,43 @@ code(code) {
     ; 还原剪切板
     Clipboard := tmp
 }
+
+ ; 暂时只支持6大txt显示。不够再添加吧。控制一下体积。
+ txtit(ary, spliter="---") {
+  ; 数组长度，一共有几个需要显示的？
+  len := ary.Length()
+  
+  ; 如果是字符串的话：数组的长度一定不会为空，如果为空，说明是字符串吧
+  if (len == "") {
+    ; 切割字符串为数组
+    ary := StrSplit(ary, spliter)
+    ; 新的数组长度
+    len := ary.Length()
+  }
+  
+  ; 一行显示几个？
+  xsize := 3
+  ; 一共有几行
+  ycount := Ceil(len / xsize)
+  ; 开始遍历
+  For index, value in ary {
+     ; 索引是从1开始的，我习惯从0开始
+     i := index - 1
+     ; x轴的位置
+     _x := A_ScreenWidth * (Mod(i, xsize) / xsize)
+     ; y轴的位置（如果是第一行普遍都是0)
+     _y := i < xsize ? 0 : A_ScreenHeight / (Abs(index / xsize) + 1)
+     ; 当前宽度
+     _w := A_ScreenWidth / xsize
+     ; 当前高度
+     _h := A_ScreenHeight / ycount
+    
+     ; 开始执行
+     Run,% "C:\Windows\notepad.exe",,, pid
+     WinWait, ahk_pid %pid%
+     WinActivate, ahk_pid %pid%
+     WinMove, ahk_pid %pid%,, _x, _y, _w, _h
+     code(value)
+  }
+  return
+}
