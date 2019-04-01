@@ -30,11 +30,12 @@ FileDelete, .\src\*.bak
      ; 索引是从1开始的，我习惯从0开始
      i := index - 1
      ; x轴的位置
-     _x := A_ScreenWidth * (i / xsize)
-     ; y轴的位置（如果是第一行普遍都是0）
+     _x := A_ScreenWidth * (Mod(i, xsize) / xsize)
+     ; y轴的位置（如果是第一行普遍都是0)
      _y := i < xsize ? 0 : A_ScreenHeight / (Abs(index / xsize) + 1)
-     ; 宽度
+     ; 当前宽度
      _w := A_ScreenWidth / xsize
+     ; 当前高度
      _h := A_ScreenHeight / ycount
     
      ; 开始执行
@@ -49,7 +50,7 @@ FileDelete, .\src\*.bak
 }
 
 !x::
-txtit(["fuckyou", "fuckyou", "fuckyou"])
+txtit(["fuckyou", "fuckyou", "fuckyou", "fuckyou"])
 return
 
 
