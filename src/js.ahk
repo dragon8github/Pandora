@@ -2539,6 +2539,7 @@ function unique(arr) {
 code(Var)
 return
 
+::ls::
 ::wl::
 ::wls::
 Var =
@@ -2548,6 +2549,7 @@ window.localStorage.setItem('key', 'value')
 code(Var)
 return
 
+::lg::
 ::wlg::
 Var =
 (

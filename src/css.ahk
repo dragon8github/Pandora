@@ -2880,3 +2880,12 @@ Var =
 )
 code(Var)
 return
+
+::rotate::
+::rote::
+Var =
+(
+transform: rotate(180deg)
+)
+code(Var)
+return

@@ -18,6 +18,8 @@ FileDelete, .\src\*.bak
  */
  
 
+ 
+
 #Include src/lib.ahk              ; 公共函数
 #Include src/help.ahk             ; 辅助功能
 #Include src/makedown.ahk         ; makedown

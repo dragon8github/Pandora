@@ -37,6 +37,7 @@ return
 */
 
 
+
 tip(title=" ", content=" ") {
     TrayTip, %title%, %content%, 20 ,16
     SetTimer, _HideTrayTip, 1500
@@ -203,9 +204,10 @@ code(code) {
     ; 这里也需要等待，否则有几率出现黏贴不出的情况，如果出现黏贴不出的情况，就尝试调大这里的数值把
     Sleep, 200
     WinGetTitle, title, A
-    if (InStr(title, "Android Studio") or InStr(title, "PyCharm") or InStr(title, "WebStorm") or InStr(title, "PhpStorm") or InStr(title, "IDEA")) {
+    if (InStr(title, "Android Studio") or InStr(title, "PyCharm") or InStr(title, "WebStorm") or InStr(title, "PhpStorm") or InStr(title, "IDEA") or InStr(title, "Notepad2")) {
         SendInput, {CtrlDown}v{CtrlUp}
     } else {
+        MsgBox, % Clipboard
         Send, {CtrlDown}{ShiftDown}v{CtrlUp}{ShiftUp}
     }
     ; 这里至少需要等待100m，原因不详
@@ -216,6 +218,8 @@ code(code) {
 
  ; 暂时只支持6大txt显示。不够再添加吧。控制一下体积。
  txtit(ary, spliter="---") {
+  ; 全局变量真的只能这样用了，定义在外面没有办法生存。
+  global pidary := pidary ? pidary : []
   ; 数组长度，一共有几个需要显示的？
   len := ary.Length()
   
@@ -245,7 +249,8 @@ code(code) {
      _h := A_ScreenHeight / ycount
     
      ; 开始执行
-     Run,% "C:\Windows\notepad.exe",,, pid
+     Run, notepad2,,, pid
+     pidary.push(pid)
      WinWait, ahk_pid %pid%
      WinActivate, ahk_pid %pid%
      WinMove, ahk_pid %pid%,, _x, _y, _w, _h
@@ -253,3 +258,9 @@ code(code) {
   }
   return
 }
+
+!x::
+For key, value in pidary {
+    Process, Close, %value%
+}
+return
