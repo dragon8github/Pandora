@@ -207,7 +207,6 @@ code(code) {
     if (InStr(title, "Android Studio") or InStr(title, "PyCharm") or InStr(title, "WebStorm") or InStr(title, "PhpStorm") or InStr(title, "IDEA") or InStr(title, "Notepad2")) {
         SendInput, {CtrlDown}v{CtrlUp}
     } else {
-        MsgBox, % Clipboard
         Send, {CtrlDown}{ShiftDown}v{CtrlUp}{ShiftUp}
     }
     ; 这里至少需要等待100m，原因不详

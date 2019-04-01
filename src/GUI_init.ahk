@@ -608,6 +608,9 @@ Gui, Pandora:Add, Link,, <a href="https://www.rrweb.io/replay">录制和回放</
 Gui, Pandora:Add, Link,, <a href="https://scrimba.com/p/pV5eHk/c9EqQSD">录制灵感来源</a>
 
 
+Gui, Pandora:Add, Text, W140 ys, APlayer（优雅的MP3播放器，B站和iSearch都用，也支持Vue和各种版本）：
+Gui, Pandora:Add, Link,, <a href="https://github.com/MoePlayer/APlayer">Aplay github</a>
+
 ; @qimiao @qm @ku
 
 Gui, Pandora:Tab, 9
