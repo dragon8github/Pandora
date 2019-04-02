@@ -4158,6 +4158,7 @@ fetch('https://api.github.com/users/gaearon/gists')
 code(Var)
 return
 
+::.t::
 ::.then::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
@@ -5512,6 +5513,7 @@ return
 ::promise::
 Var = 
 (
+// 注意，你必须resolve或reject才可以执行.then()
 return new Promise((resolve, reject) => {
    setTimeout(function () {
         resolve('success') // reject('fail')

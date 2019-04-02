@@ -57,7 +57,7 @@
   Menu, VueMenu, Add, 全局钩子router.beforeEach, VueHandler
   Menu, VueMenu, Add, 路由 Layout 布局示例, VueHandler
   Menu, VueMenu, Add, 动态路由：router.addRoutes, VueHandler
-  Menu, VueMenu, Add, next的三种参数形态, VueHandler
+  Menu, VueMenu, Add, next() 的三种参数形态, VueHandler
   Menu, VueMenu, Add, 路由验证token并跳转登录与重定向的套路, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
@@ -131,7 +131,7 @@ return
 }
 
 
-if (v == "next的三种参数形态") {
+if (v == "next() 的三种参数形态") {
 Var = 
 (
 next({ path: '/' })

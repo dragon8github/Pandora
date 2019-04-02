@@ -21,35 +21,12 @@ Var =
 export default {
   data() {
     return {
-      tableData: [{
-        jobName: '业务服务热点实时对接口',
-        businessHours: '2019/01/02',
-        runningState: '未开始',
-        startTime: '2019/02/11  17:26:44',
-        acquisitionTime: '2019/02/28  17:26:44',
-        duration: '11秒',
-      },{
-        jobName: '业务服务热点实时接口',
-        businessHours: '2019/01/02',
-        runningState: '完成',
-        startTime: '2019/02/11  17:26:44',
-        acquisitionTime: '2019/02/28  17:26:44',
-        duration: '24秒',
-      },{
-        jobName: '测试子流程作业',
-        businessHours: '2019/01/02',
-        runningState: '失败',
-        startTime: '2019/02/11  17:26:44',
-        acquisitionTime: '2019/02/28  17:26:44',
-        duration: '12秒',
-      },{
-        jobName: '业务服务热点实时接口',
-        businessHours: '2019/01/02',
-        runningState: '等待重试',
-        startTime: '2019/02/11  17:26:44',
-        acquisitionTime: '2019/02/28  17:26:44',
-        duration: '暂无',
-      }]
+      tableData: [
+        {jobName: '业务服务热点实时对接口', businessHours: '2019/01/02', runningState: '未开始', startTime: '2019/02/11  17:26:44', acquisitionTime: '2019/02/28  17:26:44', duration: '11秒', },
+        {jobName: '业务服务热点实时接口', businessHours: '2019/01/02', runningState: '完成', startTime: '2019/02/11  17:26:44', acquisitionTime: '2019/02/28  17:26:44', duration: '24秒', },
+        {jobName: '测试子流程作业', businessHours: '2019/01/02', runningState: '失败', startTime: '2019/02/11  17:26:44', acquisitionTime: '2019/02/28  17:26:44', duration: '12秒', },
+        {jobName: '业务服务热点实时接口', businessHours: '2019/01/02', runningState: '等待重试', startTime: '2019/02/11  17:26:44', acquisitionTime: '2019/02/28  17:26:44', duration: '暂无', }
+      ]
     }
   },
   methods: {
@@ -119,22 +96,8 @@ Var =
  export default {
   data () {
     return {
-        options: [{
-          value: '选项1',
-          label: '黄金糕'
-        }, {
-          value: '选项2',
-          label: '双皮奶'
-        }, {
-          value: '选项3',
-          label: '蚵仔煎'
-        }, {
-          value: '选项4',
-          label: '龙须面'
-        }, {
-          value: '选项5',
-          label: '北京烤鸭'
-        }],
+      value: '',
+      options: [{value: '选项1', label: '黄金糕'}, {value: '选项2', label: '双皮奶'}, {value: '选项3', label: '蚵仔煎'}, {value: '选项4', label: '龙须面'}, {value: '选项5', label: '北京烤鸭'}],
     }
   },
 }
