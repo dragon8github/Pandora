@@ -17,7 +17,7 @@ Var =
             </el-table-column> 
     </el-table> 
 </div>
-
+---
 export default {
   data() {
     return {
@@ -58,7 +58,7 @@ export default {
     },
   },
 }
-
+---
 <style lang="scss">
 .table {
   font-size: 14px;
@@ -79,7 +79,7 @@ export default {
 }
 </style>
 )
-code(Var)
+txtit(Var)
 return
 
 
@@ -115,7 +115,7 @@ Var =
      :value="item.value">
    </el-option>
  </el-select>
- 
+ ---
  export default {
   data () {
     return {
@@ -140,7 +140,7 @@ Var =
 }
 </script>
 )
-code(Var)
+txtit(Var)
 return
 
 ::el-tab::

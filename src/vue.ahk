@@ -10,24 +10,26 @@
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
+  Menu, vuewatch, Add, vue.watch, VueHandler
+  Menu, vuewatch, Add, vue.watch.deep, VueHandler
+  Menu, vuewatch, Add, vue.watch-vuex, VueHandler
+  Menu, vuewatch, Add, vue.watch-$route, VueHandler
+  Menu, vuewatch, Add, vue.watch-deep-$route, VueHandler
 
   Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
+  Menu, VueMenu, Add, css-scoped深度作用选择器：>>>（css） 与 /deep/（sass）, VueHandler
   Menu, VueMenu, Add, :style='{}' 表达式, VueHandler
   Menu, VueMenu, Add, vue.style, VueHandler
   Menu, VueMenu, Add, vue.computed: get/set, VueHandler
-  Menu, VueMenu, Add, vue.watch, VueHandler
-  Menu, VueMenu, Add, vue.watch.deep, VueHandler
-  Menu, VueMenu, Add, vue.watch-vuex, VueHandler
-  Menu, VueMenu, Add, vue.watch-$route, VueHandler
-  Menu, VueMenu, Add, vue.watch-deep-$route, VueHandler
-  Menu, VueMenu, Add, vue.directive 指令, VueHandler
+  Menu, VueMenu, Add, $refs, VueHandler
   Menu, VueMenu, Add, vue.props, VueHandler
+  Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
   
   
   Menu, VueMenu, Add, , VueHandler
+  Menu, VueMenu, Add, , VueHandler
   
-  Menu, VueMenu, Add, $refs, VueHandler
   Menu, VueMenu, Add, this.$forceUpdate(), VueHandler
   Menu, VueMenu, Add, <keep-alive>, VueHandler
   Menu, VueMenu, Add, <transition>, VueHandler
@@ -35,6 +37,7 @@
   Menu, VueMenu, Add, <transition-group>, VueHandler
   Menu, VueMenu, Add, render(h), VueHandler
   Menu, VueMenu, Add, render(h) jsx用法, VueHandler
+  Menu, VueMenu, Add, vue.directive 指令, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -54,10 +57,11 @@
   Menu, VueMenu, Add, 全局钩子router.beforeEach, VueHandler
   Menu, VueMenu, Add, 路由 Layout 布局示例, VueHandler
   Menu, VueMenu, Add, 动态路由：router.addRoutes, VueHandler
+  Menu, VueMenu, Add, next的三种参数形态, VueHandler
+  Menu, VueMenu, Add, 路由验证token并跳转登录与重定向的套路, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
-  
   
   Menu, vuesolution, Add, myprogress组件, VueHandler
   Menu, vuesolution, Add, msgbox组件, VueHandler
@@ -84,6 +88,71 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "路由验证token并跳转登录与重定向的套路") {
+Var = 
+(
+router.beforeEach((to, from, next) => {
+	// 如果是登录页面，直接放
+    if (to.path === '/login') {
+        next()
+    // 如果不是登录页面，判断是否有token
+    } else if (getToken()) { 
+        next({ ...to, replace: true })
+    // 如果没有登录页面，跳转到登录页面。并且记录重定向的值
+    } else {
+        next(`/login?redirect=${to.path}`)
+    }
+})
+
+---
+
+export default {
+  watch: {
+    $route: {
+      handler: function(route) {
+        this.redirect = route.query && route.query.redirect
+      },
+      immediate: true
+    }
+  },
+  methods: {
+  	handleLogin () {
+  		// 登录成功后，跳转到重定向的地方
+  		this.$router.push({ path: this.redirect || '/' })
+  	}
+  }
+}
+)
+txtit(Var)
+return 
+}
+
+
+if (v == "next的三种参数形态") {
+Var = 
+(
+next({ path: '/' })
+next(`/login?redirect=${to.path}`)
+next({ ...to, replace: true })
+)
+}
+
+if (v == "css-scoped深度作用选择器：>>>（css） 与 /deep/（sass）") {
+Var = 
+(
+<style lang="scss" scoped>
+.select {
+  width: 100px;
+
+  /deep/ .el-input__inner {
+    border: 0;
+    color: #000;
+  }
+}
+</style>
 )
 }
 

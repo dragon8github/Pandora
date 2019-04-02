@@ -1202,3 +1202,6 @@ Send, {Right 7}
 Send, +{right 4}
 return
 
+XButton1::
+    Send, {Home}
+return

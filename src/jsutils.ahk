@@ -11,6 +11,8 @@
     Menu, utilsIs, Add, isPromise, utilsHandler
     Menu, utilsIs, Add, isNaN, utilsHandler
     Menu, utilsIs, Add, isNodeList, utilsHandler
+    Menu, utilsIs, Add, 判断是否为数字：!isNaN(+params.id), utilsHandler
+     
 
     Menu, utilsIs, Add, , utilsHandler
     Menu, utilsIs, Add, , utilsHandler
@@ -332,6 +334,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "判断是否为数字：!isNaN(+params.id)") {
+Var = 
+(
+!isNaN(+params.id)
 )
 }
 
