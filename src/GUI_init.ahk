@@ -236,6 +236,7 @@ Gui, Pandora:Add, Link,, <a href="https://yeoman.io/generators/">yeoman generato
 Gui, Pandora:Add, Link,, <a href="https://www.vultr.com/">vultr</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/Alvin9999/new-pac/wiki/自建ss服务器教程">自建ss服务器教程</a>
 Gui, Pandora:Add, Link,, <a href="https://36dcup.tk/user">36dcup</a>
+Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
 
 
 Gui, Pandora:Tab, 2

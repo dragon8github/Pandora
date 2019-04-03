@@ -95,6 +95,14 @@
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
 	
+	Menu, EventMenu, Add, clientX/clientY：触摸目标在视口中的x/y坐标, EventHandler2
+	Menu, EventMenu, Add, pageX/pageY：触摸目标在页面中的x/y坐标, EventHandler2
+	Menu, EventMenu, Add, screenX/screenY：触摸目标在屏幕中的x/y坐标, EventHandler2
+
+	
+	Menu, EventMenu, Add
+	Menu, EventMenu, Add
+	
 	Menu, EventMenu, Add, js 监听 enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + click, EventHandler
@@ -134,6 +142,10 @@
 	
 return
 
+EventHandler2:
+v := A_ThisMenuItem
+code(v)
+return
 
 EventHandler:
 ; MsgBox You selected  from the menu .
