@@ -550,7 +550,10 @@ return
 return
 
 ^!c::
-RunByCmder(Clipboard)
+    Clipboard := 
+    Send, ^c
+    ClipWait, 1
+    Clipboard := StrReplace(Clipboard, "`r`n")  
 return
 
 :*:d]::  ; 此热字串通过后面的命令把 "]d" 替换成当前日期和时间.
@@ -731,7 +734,8 @@ return
 return
 
 #c::
-    run, %A_Desktop%/Cmder.exe.lnk
+    ;run, %A_Desktop%/Cmder.exe.lnk
+    RunByCmder(A_Desktop) ; Clipboard
 return
 
 ::@info::
@@ -1204,4 +1208,34 @@ return
 
 XButton1::
     Send, {Home}
+return
+
+::ahktxt::
+::ahktxtit::
+Var =
+(
+Var = 
+(
+<template>
+
+</template>
+---
+<script>
+  export default {
+    data() {
+      return {
+        
+      };
+    }
+  };
+</script>
+---
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+
+</style>
+`)
+txtit(Var)
+)
+code(Var)
 return

@@ -2419,3 +2419,29 @@ this.$router.back() // window.history.back();
 )
 code(Var)
 return
+
+::vuex.module2::
+Var =
+(
+import { request } from '@/utils/request.js'
+
+let state = {
+   tableHeader: null
+}
+
+const actions = {
+  tableHeader ({ commit, state, dispatch, rootState }, data) {
+	  request('/chuanghui/dc/group/dcGroupViewData/tableHeader/1').then(result => {
+        console.log(20190403103346, result)
+    }) 
+  },
+}
+
+export default {
+  namespaced: true,
+  state,
+  actions,
+}
+)
+code(Var)
+return

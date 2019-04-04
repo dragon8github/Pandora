@@ -317,10 +317,7 @@ Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/boards">敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/api/sg/redis/cleanDefault">清空缓存</a>
 Gui, Pandora:Add, Link,, <a href="http://12345admin.dgdatav.com:6080/#">admin</a>
-Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心gitlab</a>
-Gui, Pandora:Add, Link,, <a href="https://www.xiaopiu.com/web/byId?type=project&id=5c7cc747126f63402c1e331f">数据中心原型</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter-all">数据中心原型gitlab</a>
+
 ; @gs
 
 
@@ -333,6 +330,12 @@ Gui, Pandora:Add, Text,  W140 ys, 知识库
 Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/dashboard.action#all-updates">confluence</a>
 Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/pages/viewpage.action?pageId=1310755">confluence2</a>
 Gui, Pandora:Add, Link,, <a href="https://hui.dgjy.net">门户网站</a>
+
+Gui, Pandora:Add, Text,  W140 xs Section yp+100, 数据中心
+Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心源码gitlab</a>
+Gui, Pandora:Add, Link,, <a href="https://www.xiaopiu.com/web/byId?type=project&id=5c7cc747126f63402c1e331f">数据中心web原型</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter">数据中心原型gitlab</a>
 
 
 Gui, Pandora:Tab, 4
@@ -422,6 +425,7 @@ Gui, Pandora:Add, Link,, <a href="https://vux.li/">vux 官网</a>
 
 Gui, Pandora:Add, Text,  W160 ys, 其他插件收录
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repo/jaweii/vueg">vueg转场动画</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/1615450788/vue-cron">vue-cron</a>
 
 
 Gui, Pandora:Add, Text, W140 Section xs yp+240, vue动画钩子：

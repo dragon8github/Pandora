@@ -141,6 +141,7 @@
 	Menu, ShellMenu, Add, wc 查看多少行代码, ShellHandler
 	Menu, ShellMenu, Add, find + xargs + cat合并多个文件内容到一个文件, ShellHandler
 	Menu, ShellMenu, Add, 批量重命名, ShellHandler
+	Menu, ShellMenu, Add, 灭霸响指：Thanos.sh - 删除系统一半的文件, ShellHandler3
 	
 	Menu, ShellMenu, Add
 	Menu, ShellMenu, Add
@@ -179,6 +180,14 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "灭霸响指：Thanos.sh - 删除系统一半的文件") {
+Var = 
+(
+let i=`find . -type f | wc -l`/2 ; find . -type f -print0 | shuf -z -n $i | xargs -0 -- cat 
 )
 }
 

@@ -154,3 +154,73 @@ export default {
 )
 txtit(Var)
 return
+
+::el-pop::
+Var =
+(
+<el-popover
+  placement="right"
+  width="400"
+  trigger="click">
+  <el-table :data="gridData">
+    <el-table-column width="150" property="date" label="日期"></el-table-column>
+    <el-table-column width="100" property="name" label="姓名"></el-table-column>
+    <el-table-column width="300" property="address" label="地址"></el-table-column>
+  </el-table>
+  <el-button slot="reference">click 激活</el-button>
+</el-popover>
+---
+
+<script>
+  export default {
+    data() {
+      return {
+        gridData: [{
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }]
+      };
+    }
+  };
+</script>
+)
+txtit(Var)
+return
+
+
+::el-tree::
+Var =
+(
+<el-tree
+  :data="data3"
+  show-checkbox
+  node-key="id"
+  :default-expanded-keys="[2, 3]"
+  :default-checked-keys="[5]">
+</el-tree>
+---
+<script>
+  export default {
+    data() {
+      return {
+        data3: [{id: 1, label: '一级 2', children: [{id: 3, label: '二级 2-1', children: [{id: 4, label: '三级 3-1-1'}, {id: 5, label: '三级 3-1-2', disabled: true }] }, {id: 2, label: '二级 2-2', disabled: true, children: [{id: 6, label: '三级 3-2-1'}, {id: 7, label: '三级 3-2-2', disabled: true }] }] }],
+      };
+    }
+  };
+</script>
+)
+txtit(Var)
+return
