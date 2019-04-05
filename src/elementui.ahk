@@ -66,6 +66,7 @@ return
 Var =
 (
 <!-- <el-button @click="go(scope.row)" type="text" size="small">【详情】</el-button> -->
+<!-- <el-button @click='next' type='primary' :loading="loading2">下一步</el-button> -->
 <el-button @click='go' type='primary'>返回</el-button>
 )
 code(Var)

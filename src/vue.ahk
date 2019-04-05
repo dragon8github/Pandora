@@ -2,6 +2,7 @@
   Menu, VueMenu, Add, vuex.init, VueHandler
   Menu, VueMenu, Add, vuex.modules, VueHandler
   Menu, VueMenu, Add, vuex.action, VueHandler
+  Menu, VueMenu, Add, this.$store.commit, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
   Menu, VueMenu, Add, import { mapState`, mapActions } from 'vuex', VueHandler  
@@ -38,6 +39,7 @@
   Menu, VueMenu, Add, render(h), VueHandler
   Menu, VueMenu, Add, render(h) jsx用法, VueHandler
   Menu, VueMenu, Add, vue.directive 指令, VueHandler
+  Menu, VueMenu, Add, this.$set 深度赋值, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -90,6 +92,21 @@ Var =
 (
 )
 }
+
+if (v == "this.$set 深度赋值") {
+Var = 
+(
+this.$set(this.tags, key, value)
+)
+}
+
+if (v == "this.$store.commit") {
+Var = 
+(
+this.$store.commit('Collection/SET_DATABASENAMES', response.databaseNames)
+)
+}
+
 
 if (v == "路由验证token并跳转登录与重定向的套路") {
 Var = 
@@ -426,6 +443,8 @@ mounted () {
 if (v == "render(h) jsx用法") {
 Var = 
 (
+// <script type="text/jsx"></script>
+// https://github.com/ElemeFE/element/blob/dev/packages/menu/src/menu.vue
 render(h) {
     let uploadList;
 
@@ -492,6 +511,7 @@ render(h) {
 if (v == "render(h)") {
 Var = 
 (
+// <script type="text/jsx"></script>
 render(h) {
   let el = h(false)
   if (this.show) {
@@ -903,7 +923,7 @@ if (v == "import { mapState, mapActions } from 'vuex'") {
 Var = 
 (
 import { mapState, mapActions } from 'vuex'
-
+---
 methods: {
     ...mapActions('themeDetails', {
       deparmenthandleChange: 'departmentSelect',
@@ -914,6 +934,7 @@ methods: {
       eq_satisfyIdChange: 'eq_stateId',
     })
 },
+---
 computed: {
   ...mapState('themeDetails', [
     'departmentItems', 
@@ -927,6 +948,8 @@ computed: {
   ])
 },
 )
+txtit(Var)
+return
 }
 
 if (v == "click-outside 指令") {
@@ -1807,6 +1830,7 @@ return
 ::vuex.tmp::
 ::vuex.modules::
 ::vuex.module::
+::vuex.m::
 Var =
 (
 import { request } from '@/utils/request.js'
@@ -2421,6 +2445,7 @@ code(Var)
 return
 
 ::vuex.module2::
+::vuex.m2::
 Var =
 (
 import { request } from '@/utils/request.js'
@@ -2442,6 +2467,20 @@ export default {
   state,
   actions,
 }
+)
+code(Var)
+return
+
+::vuex.mu::
+::vuex.mutation::
+::vuex.mutations::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+StringUpper, a, OutputVar
+Var =
+(
+SET_%a% (state, %OutputVar%) {
+  state.%OutputVar% = %OutputVar%
+},
 )
 code(Var)
 return

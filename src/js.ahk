@@ -2207,6 +2207,39 @@ Var =
     }
 
 }).call(this);
+
+
+
+// 方式五（elemetui的popper.js ）：https://github.com/ElemeFE/element/blob/dev/src/utils/popper.js
+//
+// Cross module loader
+// Supported: Node, AMD, Browser globals
+//
+;(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like environments that support module.exports,
+        // like Node.
+        module.exports = factory();
+    } else {
+        // Browser globals (root is window)
+        root.Popper = factory();
+    }
+}(this, function () {
+
+    'use strict';
+
+
+    function Popper() {
+      
+    }
+
+    return Popper;
+}));
+
 )
 code(Var)
 return
@@ -2743,6 +2776,15 @@ var inherit = (function(){
     Child.parent = Parent.prototype
   }
 }());
+
+// elementUI utils.js 
+// https://github.com/ElemeFE/element/blob/dev/src/utils/util.js
+function extend(to, _from) {
+  for (let key in _from) {
+    to[key] = _from[key];
+  }
+  return to;
+};
 )
 code(Var)
 return
@@ -4159,6 +4201,16 @@ code(Var)
 return
 
 ::.t::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =
+(
+.then(({ message, code, data } = {}) => {
+    console.log(%t%, message, code, data, )
+})
+)
+code(Var)
+return
+
 ::.then::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
@@ -6537,6 +6589,222 @@ Var =
 .removeEventListener('click', e => {
 	
 })
+)
+code(Var)
+return
+
+::merge::
+Var =
+(
+ function(target) {
+  for (let i = 1, j = arguments.length; i < j; i++) {
+    let source = arguments[i] || {};
+    for (let prop in source) {
+      if (source.hasOwnProperty(prop)) {
+        let value = source[prop];
+        if (value !== undefined) {
+          target[prop] = value;
+        }
+      }
+    }
+  }
+
+  return target;
+};
+)
+code(Var)
+return
+
+::scrollintoview::
+::scrolltoview::
+Var =
+(
+function scrollIntoView(container, selected) {
+  if (Vue.prototype.$isServer) return;
+
+  if (!selected) {
+    container.scrollTop = 0;
+    return;
+  }
+
+  const offsetParents = [];
+  let pointer = selected.offsetParent;
+  while (pointer && container !== pointer && container.contains(pointer)) {
+    offsetParents.push(pointer);
+    pointer = pointer.offsetParent;
+  }
+  const top = selected.offsetTop + offsetParents.reduce((prev, curr) => (prev + curr.offsetTop), 0);
+  const bottom = top + selected.offsetHeight;
+  const viewRectTop = container.scrollTop;
+  const viewRectBottom = viewRectTop + container.clientHeight;
+
+  if (top < viewRectTop) {
+    container.scrollTop = top;
+  } else if (bottom > viewRectBottom) {
+    container.scrollTop = bottom - container.clientHeight;
+  }
+}
+)
+code(Var)
+return
+
+::dom.js::
+::domjs::
+Var =
+(
+
+/* istanbul ignore next */
+export const on = (function() {
+  if (document.addEventListener) {
+    return function(element, event, handler) {
+      if (element && event && handler) {
+        element.addEventListener(event, handler, false);
+      }
+    };
+  } else {
+    return function(element, event, handler) {
+      if (element && event && handler) {
+        element.attachEvent('on' + event, handler);
+      }
+    };
+  }
+})();
+
+/* istanbul ignore next */
+export const off = (function() {
+  if (document.removeEventListener) {
+    return function(element, event, handler) {
+      if (element && event) {
+        element.removeEventListener(event, handler, false);
+      }
+    };
+  } else {
+    return function(element, event, handler) {
+      if (element && event) {
+        element.detachEvent('on' + event, handler);
+      }
+    };
+  }
+})();
+
+/* istanbul ignore next */
+export const once = function(el, event, fn) {
+  var listener = function() {
+    if (fn) {
+      fn.apply(this, arguments);
+    }
+    off(el, event, listener);
+  };
+  on(el, event, listener);
+};
+
+/* istanbul ignore next */
+export function hasClass(el, cls) {
+  if (!el || !cls) return false;
+  if (cls.indexOf(' ') !== -1) throw new Error('className should not contain space.');
+  if (el.classList) {
+    return el.classList.contains(cls);
+  } else {
+    return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1;
+  }
+};
+
+/* istanbul ignore next */
+export function addClass(el, cls) {
+  if (!el) return;
+  var curClass = el.className;
+  var classes = (cls || '').split(' ');
+
+  for (var i = 0, j = classes.length; i < j; i++) {
+    var clsName = classes[i];
+    if (!clsName) continue;
+
+    if (el.classList) {
+      el.classList.add(clsName);
+    } else if (!hasClass(el, clsName)) {
+      curClass += ' ' + clsName;
+    }
+  }
+  if (!el.classList) {
+    el.className = curClass;
+  }
+};
+
+/* istanbul ignore next */
+export function removeClass(el, cls) {
+  if (!el || !cls) return;
+  var classes = cls.split(' ');
+  var curClass = ' ' + el.className + ' ';
+
+  for (var i = 0, j = classes.length; i < j; i++) {
+    var clsName = classes[i];
+    if (!clsName) continue;
+
+    if (el.classList) {
+      el.classList.remove(clsName);
+    } else if (hasClass(el, clsName)) {
+      curClass = curClass.replace(' ' + clsName + ' ', ' ');
+    }
+  }
+  if (!el.classList) {
+    el.className = trim(curClass);
+  }
+};
+
+/* istanbul ignore next */
+export const getStyle = ieVersion < 9 ? function(element, styleName) {
+  if (!element || !styleName) return null;
+  styleName = camelCase(styleName);
+  if (styleName === 'float') {
+    styleName = 'styleFloat';
+  }
+  try {
+    switch (styleName) {
+      case 'opacity':
+        try {
+          return element.filters.item('alpha').opacity / 100;
+        } catch (e) {
+          return 1.0;
+        }
+      default:
+        return (element.style[styleName] || element.currentStyle ? element.currentStyle[styleName] : null);
+    }
+  } catch (e) {
+    return element.style[styleName];
+  }
+} : function(element, styleName) {
+  if (!element || !styleName) return null;
+  styleName = camelCase(styleName);
+  if (styleName === 'float') {
+    styleName = 'cssFloat';
+  }
+  try {
+    var computed = document.defaultView.getComputedStyle(element, '');
+    return element.style[styleName] || computed ? computed[styleName] : null;
+  } catch (e) {
+    return element.style[styleName];
+  }
+};
+
+/* istanbul ignore next */
+export function setStyle(element, styleName, value) {
+  if (!element || !styleName) return;
+
+  if (typeof styleName === 'object') {
+    for (var prop in styleName) {
+      if (styleName.hasOwnProperty(prop)) {
+        setStyle(element, prop, styleName[prop]);
+      }
+    }
+  } else {
+    styleName = camelCase(styleName);
+    if (styleName === 'opacity' && ieVersion < 9) {
+      element.style.filter = isNaN(value) ? '' : 'alpha(opacity=' + value * 100 + ')';
+    } else {
+      element.style[styleName] = value;
+    }
+  }
+};
 )
 code(Var)
 return

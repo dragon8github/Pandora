@@ -1239,3 +1239,14 @@ txtit(Var)
 )
 code(Var)
 return
+
+::``````::
+Var =
+(
+``````bash
+
+``````
+)
+code(Var)
+Send, {up}
+return

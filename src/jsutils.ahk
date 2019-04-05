@@ -27,6 +27,12 @@
     Menu, utilsIs, Add, is-wx, utilsHandler
     Menu, utilsIs, Add, is-ie, utilsHandler
     Menu, utilsIs, Add, isBottom 是否滚动到底部, utilsHandler
+    
+    
+    Menu, utilsDOM, Add, dom.js, utilsHandler
+    
+    Menu, utilsDOM, Add
+    Menu, utilsDOM, Add
 
     Menu, utilsDOM, Add, addClass, utilsHandler
     Menu, utilsDOM, Add, hasClass, utilsHandler
@@ -53,6 +59,7 @@
     Menu, utilsDOM, Add, gettop 获取距离顶部的相对距离, utilsHandler
     Menu, utilsDOM, Add, scrollToTop 滚动到头部, utilsHandler
     Menu, utilsDOM, Add, scrollIntoView 滚动到元素可视区域, utilsHandler
+    Menu, utilsDOM, Add, scrollIntoView 滚动到元素可视区域（代码实现）, utilsHandler
     Menu, utilsDOM, Add, isBottom 是否滚动到底部, utilsHandler
     
     Menu, utilsDOM, Add
@@ -274,8 +281,8 @@
 
     Menu, utilsMenu, Add, uuid 超简易版, utilsHandler
     Menu, utilsMenu, Add, urlparams 获取路由参数, utilsHandler
-    
     Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
+    Menu, utilsMenu, Add, merge（既$.extend，这个概念更好，不会与面向对象的继承混淆）, utilsHandler
     Menu, utilsMenu, Add, 获取localStorage剩余容量和最大容量, utilsHandler
 
     Menu, utilsMenu, Add, , utilsHandler
@@ -307,7 +314,7 @@
     Menu, utilsMenu, Add, escapeHTML 防止XSS, utilsHandler
     Menu, utilsMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
     Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
-    Menu, utilsMenu, Add, umd、amd, utilsHandler
+    Menu, utilsMenu, Add, UMD、AMD, utilsHandler
     Menu, utilsMenu, Add, stackoverflow愚人节彩蛋效果, utilsHandler
     
 
@@ -335,6 +342,21 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "dom.js") {
+_send("dom.js", true, true)
+return
+}
+
+if (v == "scrollIntoView 滚动到元素可视区域（代码实现）") {
+_send("scrollIntoView", true, true)
+return
+}
+
+if (v == "merge（既$.extend，这个概念更好，不会与面向对象的继承混淆）") {
+_send("merge", true, true)
+return
 }
 
 if (v == "判断是否为数字：!isNaN(+params.id)") {
@@ -495,7 +517,7 @@ _send("utils.js", true, true)
 return
 }
 
-if (v == "umd、amd") {
+if (v == "UMD、AMD") {
 _send("UMD", true, true)
 return
 }
