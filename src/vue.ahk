@@ -169,6 +169,12 @@ Var =
     color: #000;
   }
 }
+
+/deep/.el-select-dropdown__item {
+  padding: 0;
+  height: auto;
+  line-height: 0;
+}
 </style>
 )
 }

@@ -107,25 +107,23 @@
 	
 	Menu, gitShellMenu, Add, git mergetool, ShellHandler
 	
-	
-	Menu, ShellMenu, Add, git, :gitShellMenu
+
 	Menu, ShellMenu, Add, #!/bin/bash（通过echo $SHELL确定）, ShellHandler
+	Menu, ShellMenu, Add, for循环, ShellHandler
+	Menu, ShellMenu, Add, if、then、else、elif、if, ShellHandler
 	Menu, ShellMenu, Add, export PATH添加一条路径, ShellHandler
 	Menu, ShellMenu, Add, 输出多行内容文件：cat>shadowsocks.json<<EOF, ShellHandler
-	Menu, ShellMenu, Add, 安装脚本shadowsocks-install.sh, ShellHandler
-	Menu, ShellMenu, Add, ps -ef | grep <关键词>, ShellHandler2
 	Menu, ShellMenu, Add, wget 下载文件, ShellHandler3
 	Menu, ShellMenu, Add, tar 解压, ShellHandler3
-	Menu, ShellMenu, Add, curl -O 下载, ShellHandler
-	Menu, ShellMenu, Add, curl -i 输出响应头, ShellHandler
-	Menu, ShellMenu, Add, curl -s -H -d -XPUT/XDELETE/XPOST 完整示例, ShellHandler
+	Menu, ShellMenu, Add, tar 压缩, ShellHandler3
+
 		
 	Menu, ShellMenu, Add, , ShellHandler
 	Menu, ShellMenu, Add, , ShellHandler
 	
 	
 	
-	
+	Menu, ShellMenu, Add, git, :gitShellMenu
 	Menu, ShellMenu, Add, 环境变量, :A
 	Menu, ShellMenu, Add, 时间, :B
 	Menu, ShellMenu, Add, find , :C
@@ -138,29 +136,35 @@
 	Menu, ShellMenu, Add
 	Menu, ShellMenu, Add
 	
-	Menu, ShellMenu, Add, for循环, ShellHandler
+	Menu, ShellMenu, Add, ps -ef | grep <关键词>, ShellHandler2
 	Menu, ShellMenu, Add, wc 查看多少行代码, ShellHandler
 	Menu, ShellMenu, Add, find + xargs + cat合并多个文件内容到一个文件, ShellHandler
 	Menu, ShellMenu, Add, 批量重命名, ShellHandler
+	Menu, ShellMenu, Add, 安装脚本shadowsocks-install.sh, ShellHandler
 	Menu, ShellMenu, Add, 灭霸响指：Thanos.sh - 删除系统一半的文件, ShellHandler3
 	
 	Menu, ShellMenu, Add
 	Menu, ShellMenu, Add
 	
+	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler2
 	Menu, ShellMenu, Add, nginx默认路径：/usr/local/nginx/sbin/nginx, ShellHandler3
 	Menu, ShellMenu, Add, nginx配置路径：/usr/local/nginx/conf/nginx.conf, ShellHandler3
-	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler2
 	Menu, ShellMenu, Add, nginx -s reload 重启 nginx, ShellHandler
 	Menu, ShellMenu, Add, nginx -t 测试配置是否有语法错误，并且获取配置位置, ShellHandler
 	
-		
+	Menu, ShellMenu, Add
+	Menu, ShellMenu, Add
+	    
+
+	Menu, ShellMenu, Add, curl -O 下载, ShellHandler
+	Menu, ShellMenu, Add, curl -i 输出响应头, ShellHandler
+	Menu, ShellMenu, Add, curl -s -H -d -XPUT/XDELETE/XPOST 完整示例, ShellHandler
+	
 	Menu, ShellMenu, Add
 	Menu, ShellMenu, Add
 	    
     Menu, ShellMenu, Add, PowserShell 压缩（必须有文件才成立）, ShellHandler3
     Menu, ShellMenu, Add, PowserShell 解压, ShellHandler3
-
-
 	
 	Menu, ShellMenu, Show
 	Menu, ShellMenu, DeleteAll
@@ -183,6 +187,25 @@ Var =
 )
 }
 
+
+if (v == "tar 压缩") {
+Var = 
+(
+tar -csvf backup.tar.gz /home/wwwroot
+)
+}
+
+if (v == "if、then、else、elif、if") {
+Var = 
+(
+#!/bin/bash
+DIR="/media/cdrom"
+if [ ! -e $DIR ]
+then
+  mkdir -p $DIR
+fi
+)
+}
 
 if (v == "安装脚本shadowsocks-install.sh") {
 Var = 
@@ -1037,4 +1060,13 @@ return
 
 ::gitr::
 _sendinput("git add . && git commit -m '{+} ' --no-verify && git push -u origin release{LEFT 43}")
+return
+
+::sfind::
+::bfind::
+Var =
+(
+find / -iname "nginx"
+)
+code(Var)
 return

@@ -1,11 +1,15 @@
 ﻿::md.table::
+::md.t::
 Var =
 (
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
+
+| 参数   |      作用      |
+|----------|:-------------:|
+| anonymous_enable=YES | 允许匿名访问模式。 |
+| anon_upload_enable=YES | 允许匿名用户上传文件 |
+| anon_mkdir_write_enable=YES | 允许匿名用户创建目录 |
+| anon_other_write_enable=YES | 允许匿名用户修改目录名或删除目录 |
+| anon_umask=022 | umask值 |
 )
 code(Var)
 return
