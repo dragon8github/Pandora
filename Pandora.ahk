@@ -29,6 +29,7 @@ FileDelete, .\src\*.bak
 #Include src/elementui.ahk	      ; elementUI
 #Include src/shell.ahk            ; shell
 #include src/css.ahk              ; css
+#Include src/arr.ahk              ; arr
 #Include src/js.ahk               ; JavaScript  
 #Include src/node.ahk             ; nodejs 
 #Include src/canvas.ahk		      ; canvas
@@ -39,7 +40,6 @@ FileDelete, .\src\*.bak
 #Include src/sql.ahk		      ; sql
 #Include src/reactNative.ahk      ; ReactNative
 #Include src/event.ahk            ; event
-#Include src/arr.ahk              ; arr
 #Include src/ajax.ahk             ; ajax   
 #Include src/react.ahk            ; React
 #Include src/Lua.ahk              ; secondkey_board  

@@ -4109,10 +4109,9 @@ Return
 !-::
 Var = 
 (
-_ => {}
+_ => _.
 )
 code(Var)
-SendInput, {left 1}
 return
 
 !=::
@@ -4206,6 +4205,11 @@ Var =
 (
 .then(({ message, code, data } = {}) => {
     console.log(%t%, message, code, data, )
+    if (code === 200) {
+      this.$store.commit('Collection/SET_TAGTREE', data)
+    } else {
+      this.$message(message || '数据异常')
+    }
 })
 )
 code(Var)
@@ -4265,6 +4269,15 @@ code(Var)
 Return
 
 >!m::
+>^m::
+Var =
+(
+.map(_ => ({ _. }));
+)
+code(Var)
+Send, {left 5}
+return
+
 ::.map::
 ::.m::
 Var =
@@ -6807,4 +6820,14 @@ export function setStyle(element, styleName, value) {
 };
 )
 code(Var)
+return
+
+::jsonps::
+::jsonsp::
+Var =
+(
+JSON.parse(JSON.stringify())
+)
+code(Var)
+Send, {left 2}
 return

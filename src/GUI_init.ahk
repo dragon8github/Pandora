@@ -266,6 +266,7 @@ Gui, Pandora:Add, Text, gliveHtml W160,新建调用摄像头.html
 Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
 Gui, Pandora:Add, Text, gxuanliyanhua W160,新建点击绚丽烟花效果.html
 Gui, Pandora:Add, Text, gmaoboli W160,新建毛玻璃.html
+Gui, Pandora:Add, Text, gwangyejindutiao W160,新建网页进度条.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
@@ -336,7 +337,7 @@ Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心源码gitlab</a>
 Gui, Pandora:Add, Link,, <a href="https://www.xiaopiu.com/web/byId?type=project&id=5c7cc747126f63402c1e331f">数据中心web原型</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter">数据中心原型gitlab</a>
-
+Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:8103/">日报</a>
 
 Gui, Pandora:Tab, 4
 Gui, Pandora:Add, Text,  W130 Section, Nodejs:

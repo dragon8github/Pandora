@@ -46,6 +46,9 @@ return
     Menu, arrayMenu, Add, Math.max.apply 获取数组最大值, ForHandler
     Menu, arrayMenu, Add, 使用了es6的set生产1W条不重复8位的数字, ForHandler
 	Menu, arrayMenu, Add, 从数组中随机不重复取出指定数量的人, ForHandler
+	Menu, arrayMenu, Add, Array.prototype.remove, ForHandler
+	Menu, arrayMenu, Add, 类数组转数组：Array.prototype.slice.call(arguments), ForHandler
+	
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -86,6 +89,49 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "Array#from（类数组转化成数组的方式）") {
+Var = 
+(
+Array.from(document.querySelectorAll('.t'))
+)
+}
+
+if (v == "类数组转数组：Array.prototype.slice.call(arguments)") {
+Var = 
+(
+Array.prototype.slice.call(arguments)
+)
+}
+
+if (v == "Array.prototype.remove") {
+Var = 
+(
+// Array Remove - By John Resig (MIT Licensed)
+/**
+ * // 移除数组中的第二项
+ * array.remove(1);
+ * // 移除数组中的倒数第二项
+ * array.remove(-2);
+ * // 移除数组中的第二项和第三项（从第二项开始，删除2个元素）
+ * array.remove(1,2);
+ * // 移除数组中的最后一项和倒数第二项（数组中的最后两项）
+ * array.remove(-2,-1);
+ *
+ */
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
+
+const removeAt = (target, index) => !!target.splice(index, 1).length
+export const remove = (target, item) => {
+    var index = target.indexOf(item);
+    return ~index ? removeAt(target, index) : false
+}
 )
 }
 
