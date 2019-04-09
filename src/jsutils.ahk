@@ -202,6 +202,7 @@
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     
+    Menu, utilsmy, Add, deepset：超强！深度set（deepfind的兄弟方法）, utilsHandler
     Menu, utilsmy, Add, (=・ω・=)我的单例版ajax, utilsHandler
     Menu, utilsmy, Add, 单例模式：生成不重复的随机数, utilsHandler
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
@@ -343,6 +344,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "deepset：超强！深度set（deepfind的兄弟方法）") {
+_send("deepset", true, true)
+return
 }
 
 if (v == "async/await与箭头函数：async (to, from, next) => {}") {
@@ -4412,6 +4418,45 @@ export const obj2formdatastr = (body) => {
     }
     return ''
 }
+)
+code(Var)
+return
+
+::deepset::
+Var =
+(
+// 示例数组
+const d = [{"leafNode": 0, "childList": [{"leafNode": 0, "childList": [{"leafNode": 1, "childList": null, "tagId": 1636642, "tagPid": 1636637, "tagName": "测试子子标签1", "tagType": 0, "tagTypeName": null }, {"leafNode": 1, "childList": null, "tagId": 1637728, "tagPid": 1636637, "tagName": "ddsda", "tagType": null, "tagTypeName": null }], "tagId": 1636637, "tagPid": 1636636, "tagName": "测试子标签", "tagType": 0, "tagTypeName": null }, {"leafNode": 0, "childList": [{"leafNode": 1, "childList": null, "tagId": 1636640, "tagPid": 1636638, "tagName": "测试子子标签", "tagType": 0, "tagTypeName": null }, {"leafNode": 1, "childList": null, "tagId": 1636641, "tagPid": 1636638, "tagName": "测试子子标签2", "tagType": 0, "tagTypeName": null }], "tagId": 1636638, "tagPid": 1636636, "tagName": "测试子标签2", "tagType": 0, "tagTypeName": null }], "tagId": 1636636, "tagPid": -1, "tagName": "测试根标签1", "tagType": 0, "tagTypeName": null }, {"leafNode": 1, "childList": null, "tagId": 1636639, "tagPid": -1, "tagName": "测试根标签2", "tagType": 0, "tagTypeName": null }, {"leafNode": 0, "childList": [{"leafNode": 1, "childList": null, "tagId": 1637413, "tagPid": 1637399, "tagName": "部门子标签1", "tagType": 0, "tagTypeName": null }, {"leafNode": 1, "childList": null, "tagId": 1637420, "tagPid": 1637399, "tagName": "部门子标签2", "tagType": 0, "tagTypeName": null }, {"leafNode": 1, "childList": null, "tagId": 1637421, "tagPid": 1637399, "tagName": "部门子标签3", "tagType": 0, "tagTypeName": null }], "tagId": 1637399, "tagPid": -1, "tagName": "部门", "tagType": 0, "tagTypeName": null }, {"leafNode": 0, "childList": [{"leafNode": 0, "childList": [{"leafNode": 1, "childList": null, "tagId": 1637725, "tagPid": 1637422, "tagName": "系统子子标签3", "tagType": 0, "tagTypeName": null }, {"leafNode": 1, "childList": null, "tagId": 1637424, "tagPid": 1637422, "tagName": "系统子子标签1", "tagType": 0, "tagTypeName": null }, {"leafNode": 1, "childList": null, "tagId": 1637425, "tagPid": 1637422, "tagName": "系统子子标签2", "tagType": 0, "tagTypeName": null }], "tagId": 1637422, "tagPid": 1637400, "tagName": "系统子标签1", "tagType": 0, "tagTypeName": null }, {"leafNode": 1, "childList": null, "tagId": 1637423, "tagPid": 1637400, "tagName": "系统子标签2", "tagType": 0, "tagTypeName": null }], "tagId": 1637400, "tagPid": -1, "tagName": "系统", "tagType": 0, "tagTypeName": null }]
+
+const deepSet = (ary, path, cb) => {
+	// （重要）保存引用
+	let obj = ary
+	// 不断轮询路径
+	while (path.length) {
+		// 从左往右取出路径
+		const key = path.shift()
+		// 获取当前路径的值
+		obj = obj[key]
+		// 判断路径，如果异常则直接中断循环
+		if (!obj) break
+	}
+	// 回调，注入指定路径的ary引用
+	cb && cb(obj)
+	// （重点）返回被串改的数组
+	return ary
+}
+
+deepSet(d, [3, 'childList', 0, 'childList', 1], item => {
+	// ...
+
+	const j = {"tagId": 1637728, "tagPid": 1636637, "tagName": "ddsda"}
+
+	if (Array.isArray(item.childList)) {
+		item.childList.unshift(j)
+	} else {
+		item.childList = [j]
+	}
+})
 )
 code(Var)
 return

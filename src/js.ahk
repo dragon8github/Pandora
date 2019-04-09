@@ -1015,15 +1015,21 @@ const deepFind = (arr, condition, children) => {
                 // 先占位预设值
                 main[level] = item
 
+                // 扩展：如果是一个对象的话，添加一些标记属性
+                if (Object.prototype.toString.call(item) === '[object Object]') {
+                  item.__INDEX__ = i
+                  item.__LEVEL__ = level
+                }
+
                 // 检验是否已经找到了
                 const isFind = condition && condition(item, i, level) || false
 
                 // 自杀函数
                 const kill = () => {
-	            	// 删除占位预设值
-	                main.length = main.length - 1
-	                // 触发回调
-	                cb && cb()
+                // 删除占位预设值
+                  main.length = main.length - 1
+                  // 触发回调
+                  cb && cb()
                 }
 
                 // 如果已经找到了
@@ -1032,18 +1038,18 @@ const deepFind = (arr, condition, children) => {
                     throw Error
                 // 如果存在children，那么深入递归
                 } else if (children && item[children] && item[children].length) {
-                    poll(item[children], level + 1, 
-                    	// 如果本函数被触发，说明children还是找不到。
-                    	() => {
-                    	// 那么如果我是最后一条，那么我也自杀吧
-                    	if (i === arr.length - 1) {
-                    		kill()
-                    	}
+                    poll(item[children], level + 1,
+                      // 如果本函数被触发，说明children还是找不到。
+                      () => {
+                      // 那么如果我是最后一条，那么我也自杀吧
+                      if (i === arr.length - 1) {
+                        kill()
+                      }
                     })
                 // 如果是最后一个且没有找到值，那么通过修改数组长度来删除当前项
                 } else if (i === arr.length - 1) {
-	                // 找不到，羞愧自杀
-	                kill()
+                  // 找不到，羞愧自杀
+                  kill()
                 }
             }
         })(arr, 0)
@@ -1889,6 +1895,7 @@ Var =
 (
 import moment from 'moment'
 import card from '@/components/card'
+import { deepFind } from '@/utils/utils.js'
 )
 code(Var)
 return
@@ -6830,4 +6837,15 @@ JSON.parse(JSON.stringify())
 )
 code(Var)
 Send, {left 2}
+return
+
+::jsx::
+Var =
+(
+<script type="text/jsx">
+
+</script>
+)
+code(Var)
+Send, {up}{tab}
 return
