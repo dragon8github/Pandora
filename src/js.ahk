@@ -1799,7 +1799,7 @@ console.log(person.getAge()) // 18
 code(Var)
 return
 
-::.attr::
+:?:.attr::
 Var =
 (
 .getAttribute('tabindex');
@@ -2082,10 +2082,10 @@ Number((这里是你的值).toString().match(/^\d+(?:\.\d{0,2})?/))
 code(Var)
 return
 
-::.a::
-::.add::
-::.addevent::
-::.addclick::
+:?:.a::
+:?:.add::
+:?:.addevent::
+:?:.addclick::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
@@ -2252,7 +2252,7 @@ code(Var)
 return
 
 
-::.reduce::
+:?:.reduce::
 ::reduce::
 ::reduces::
 Var =
@@ -3948,8 +3948,8 @@ $('#app').click(function (e) {
 code(Var)
 Return
 
-::.click::
-::.c::
+:?:.click::
+:?:.c::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
@@ -3960,7 +3960,7 @@ Var =
 code(Var)
 Return
 
-::.change::
+:?:.change::
 Var = 
 (
 .change(function (e) {
@@ -4073,8 +4073,8 @@ code(Var)
 return
 
 
-::.e::
-::.each::
+:?:.e::
+:?:.each::
 Var = 
 (
 .each(/* 如果是遍历元素就不需要，如果是遍历数组，首参应该是一个数组[ary]或者对象{obj}, */ function (i, e) {
@@ -4086,9 +4086,9 @@ Return
 
 
 >!f::
-::.fore::
-::.for::
-::.f::
+:?:.fore::
+:?:.for::
+:?:.f::
 Var = 
 (
 .forEach((e, i) => {
@@ -4202,7 +4202,7 @@ fetch('https://api.github.com/users/gaearon/gists')
 code(Var)
 return
 
-::.t::
+:?:.t::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
@@ -4218,7 +4218,7 @@ Var =
 code(Var)
 return
 
-::.then::
+:?:.then::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
@@ -4230,7 +4230,7 @@ Var =
 code(Var)
 Return
 
-::.catch::
+:?:.catch::
 Var =
 (
 .catch(err => { throw new Error(err.message) });
@@ -4281,8 +4281,8 @@ code(Var)
 Send, {left 5}
 return
 
-::.map::
-::.m::
+:?:.map::
+:?:.m::
 Var =
 (
 .map((v, index, array) => {
@@ -6599,7 +6599,7 @@ code(Var)
 Send, {left 14}
 return
 
-::.remove::
+:?:.remove::
 Var =
 (
 .removeEventListener('click', e => {

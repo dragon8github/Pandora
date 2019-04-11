@@ -906,9 +906,9 @@ return
     SendInput, git pull origin master
 return
 
-::.git::
+:?:.git::
 ::gitig::
-::.git::
+:?:.git::
 ::gitignore::
 Var = 
 (

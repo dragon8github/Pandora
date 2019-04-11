@@ -26,7 +26,7 @@ Var =
 code(Var)
 return
 
-::.filter::
+:?:.filter::
 Var =
 (
 .filter((data) => {
@@ -395,7 +395,7 @@ $('.img').each(function (index, domEle) {
 code(Var)
 return
 
-::.map::
+:?:.map::
 Var =
 (
 .map((v, index, array) => {
@@ -405,7 +405,7 @@ Var =
 code(Var)
 return
 
-::.m::
+:?:.m::
 Var =
 (
 .map(_ => _.)
@@ -414,10 +414,10 @@ code(Var)
 Send, {left}
 return
 
-::.mo::
-::.ma::
-::.mobject::
-::.mobj::
+:?:.mo::
+:?:.ma::
+:?:.mobject::
+:?:.mobj::
 Var =
 (
 .map(_ => Object.assign({}, _, {  }))
@@ -441,8 +441,8 @@ return
 
 
 :?:.f::
-::.foreach::
-::.for::
+:?:.foreach::
+:?:.for::
 Var =
 (
 .forEach((val, key) => {})
