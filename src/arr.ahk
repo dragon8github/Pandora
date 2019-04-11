@@ -440,7 +440,7 @@ code(Var)
 return
 
 
-::.f::
+:?:.f::
 ::.foreach::
 ::.for::
 Var =
