@@ -112,7 +112,7 @@
 	Menu, ShellMenu, Add, for循环, ShellHandler
 	Menu, ShellMenu, Add, if、then、else、elif、if, ShellHandler
 	Menu, ShellMenu, Add, export PATH添加一条路径, ShellHandler
-	Menu, ShellMenu, Add, 输出多行内容文件：cat>shadowsocks.json<<EOF, ShellHandler
+	Menu, ShellMenu, Add, 如何echo输出多行内容文件, ShellHandler
 	Menu, ShellMenu, Add, wget 下载文件, ShellHandler3
 	Menu, ShellMenu, Add, tar 解压, ShellHandler3
 	Menu, ShellMenu, Add, tar 压缩, ShellHandler3
@@ -212,7 +212,7 @@ Var =
 (
 #!/bin/bash
 
-yum install python-setuptools && easy_install pip
+yum -y install python-setuptools && easy_install pip
 
 pip install shadowsocks
 
@@ -239,7 +239,7 @@ systemctl disable firewalld.service
 }
 
 
-if (v == "输出多行内容文件：cat>shadowsocks.json<<EOF") {
+if (v == "如何echo输出多行内容文件") {
 Var = 
 (
 cat>shadowsocks.json<<EOF

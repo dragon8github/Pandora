@@ -309,20 +309,8 @@ Var =
 }
 
 if (v == "Array#reduce") {
-Var = 
-(
-.reduce((previousValue, currentValue, index, array) => {
-    return previousValue + currentValue
-}, 0)
-
-// 初始化为数组的示例
-children.reduce((previousValue, currentValue) => {
-	if (currentValue.hlPid === v.hlItemId)
-	   previousValue.push({ name: currentValue.hlItemName, id: currentValue.hlItemId })
-	// 默认总是要返回一个数组的
-	return previousValue
-}, [])
-)
+_send("reduce", true, true)
+return
 }
 
 if (v == "Array#some（数组至少一个符合条件，返回true/false）") {
@@ -410,11 +398,32 @@ return
 ::.map::
 Var =
 (
-.map(function (v, index, array) {
+.map((v, index, array) => {
     return v
 });
 )
 code(Var)
+return
+
+::.m::
+Var =
+(
+.map(_ => _.)
+)
+code(Var)
+Send, {left}
+return
+
+::.mo::
+::.ma::
+::.mobject::
+::.mobj::
+Var =
+(
+.map(_ => Object.assign({}, _, {  }))
+)
+code(Var)
+Send, {left 4}
 return
 
 ::forin::
@@ -428,4 +437,16 @@ for (var property in source) {
 }
 )
 code(Var)
+return
+
+
+::.f::
+::.foreach::
+::.for::
+Var =
+(
+.forEach((val, key) => {})
+)
+code(Var)
+Send, {left 2}
 return

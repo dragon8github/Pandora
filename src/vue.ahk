@@ -74,6 +74,7 @@
   Menu, vuesolution, Add, NProgress页面加载组件, VueHandler
   Menu, vuesolution, Add, 宇宙流星雨canvas, VueHandler
   Menu, vuesolution, Add, $.scrollforevery 无缝滚动（Vue版本）, VueHandler
+  Menu, vuesolution, Add, el-menu简易封装, VueHandler
   
   
   Menu, VueMenu, Add, Vue 解决方案和组件, :vuesolution
@@ -92,6 +93,65 @@ Var =
 (
 )
 }
+
+if (v == "el-menu简易封装") {
+Var = 
+(
+<template>
+  <el-menu @open='handleOpen'>
+    <div class="fuck" v-for='(item, index) in list' :key='index'>
+      <el-submenu v-if='item.childList' :index='item.tagId'>
+        <template slot="title">
+          {{ item.tagName }}
+        </template>
+        <fuck :list='item.childList' @open='handleOpen'></fuck>
+      </el-submenu>
+      <el-menu-item  :index='item.tagId' v-else>
+        <i class="el-icon-menu"></i>
+        <span slot="title">{{ item.tagName }}</span>
+      </el-menu-item>
+    </div>
+  </el-menu>
+</template>
+
+<script>
+export default {
+  name: 'fuck',
+  methods: {
+      handleOpen (...args) {
+        this.$emit('open', ...args)
+      }
+  },
+  components: {
+
+  },
+  computed: {
+
+  },
+  props: {
+     list: {
+         type: Array,
+         default: []
+     }
+  },
+  watch: {
+
+  },
+  beforeMount () {
+
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.fuck {
+
+}
+</style>
+)
+}
+
 
 if (v == "this.$set 深度赋值") {
 Var = 

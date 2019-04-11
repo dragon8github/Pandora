@@ -730,7 +730,18 @@ return
 return
 
 >!t::
-    RUN, https://www.tslang.cn/docs/handbook/basic-types.html
+Var =
+(
+// 启动计时器
+console.time('20190219153729')
+
+// your code...
+
+
+// 停止计时，输出时间
+console.timeEnd('20190219153729')
+)
+code(Var)
 return
 
 #c::
@@ -868,7 +879,7 @@ return
 
 ::aliip::
 ::vip::
-SendRaw, 45.32.102.75
+SendRaw, 207.148.115.156
 return
 
 
