@@ -195,7 +195,7 @@
 
     Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
     Menu, utilspractice, Add, async/await与箭头函数：async (to`, from`, next) => {}, utilsHandler
-    Menu, utilspractice, Add, 对象字面量的变量键：this.setState({ [fuckyou]: 'true' }), utilsHandler
+    Menu, utilspractice, Add, 对象字面量的变量键：this.setState({ [butterflyyou]: 'true' }), utilsHandler
     Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
     Menu, utilspractice, Add, 函数参数对象深度结构与重命名： var a = ({ state: { nums:list`, numGroup`, map } }) => {}, utilsHandler
     Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
@@ -545,11 +545,11 @@ _send("UMD", true, true)
 return
 }
 
-if (v == "对象字面量的变量键：this.setState({ [fuckyou]: 'true' })") {
+if (v == "对象字面量的变量键：this.setState({ [butterflyyou]: 'true' })") {
 Var = 
 (
-var visible = 'fuckyou'
-console.log({[visible]: 'true'}) // { fuckyou: 'true' }
+var visible = 'butterflyyou'
+console.log({[visible]: 'true'}) // { butterflyyou: 'true' }
 )
 }
 
@@ -2415,7 +2415,7 @@ Var =
 
 
 // 不适用场合
-var fuck = {
+var butterfly = {
 	bb: 'bb',
 	methods: () =>  {
 		console.log(this.bb) // undefined
@@ -2433,7 +2433,7 @@ return
 
 if (v == "加强版map遍历:bettermap") {
 SendLevel 1
-Send, fuckmap{tab}
+Send, butterflymap{tab}
 return
 }
 
@@ -2723,7 +2723,7 @@ encodeURI
 if (v == "deepfind 深度递归搜索") {
 Var = 
 (
-var fuck = [
+var butterfly = [
     {
         "label": "占用道路问题",
         "value": 31,
@@ -2934,7 +2934,7 @@ const deepFind = ({ arr = [], key = '', val = '', children = 'children'} = {}) =
     // 返回最终数组
     return main
 }
-var myarr = deepFind({ arr: fuck, key: 'value', val: 63, children: 'children' })
+var myarr = deepFind({ arr: butterfly, key: 'value', val: 63, children: 'children' })
 console.log(20181115092957, myarr)
 )
 }
@@ -3119,7 +3119,7 @@ Var =
   } else if (typeof define === "function" && define.amd) {
     define([], factory);
   } else {
-    root.FUCKYOU = factory();
+    root.butterflyYOU = factory();
   }
 }(this,function () {
 　　// ...  这里编写你的代码
@@ -3147,7 +3147,7 @@ el.setAttribute('tabindex', 3);
 if (v == "removeattr") {
 Var = 
 (
-document.querySelector('.fuck').removeAttribute('disabled');
+document.querySelector('.butterfly').removeAttribute('disabled');
 )
 }
 
@@ -3744,7 +3744,7 @@ var obj = {
 }
 maybe(_=> obj.a, 0); // 123
 maybe(_=> obj.b, 0); // 0
-maybe(_=> obj.a.b.s.w.holy.shit.fuck.god, 0); // 0
+maybe(_=> obj.a.b.s.w.holy.shit.butterfly.god, 0); // 0
 )
 }
 
@@ -4358,7 +4358,7 @@ Var =
  * var obj = {a: 123 }
    maybe(_=> obj.a, 0); // 123
    maybe(_=> obj.b, 0); // 0
-   maybe(_=> obj.a.b.s.w.holy.shit.fuck.god, 0); // 0
+   maybe(_=> obj.a.b.s.w.holy.shit.butterfly.god, 0); // 0
  */
 export const maybe = (fn, n = '') => {
     try {
@@ -4634,14 +4634,14 @@ Var =
  * const a = {b: { c: { d: { e: {} } } } }
  * deepSet(a, ['b', 'c', 'd', 'e'], item => {
  * 	 // ...
- * 	 item.fuck = 123
+ * 	 item.butterfly = 123
  * })
  *	
  * 示例2：
  * const a = {b: { c: { d: { e: {} } } } }
  * deepSet(a, ['b', 'c', 'd', 'e', 'f', 'g', 'h'], item => {
  * 	 // ...
- * 	 item.fuck = 123
+ * 	 item.butterfly = 123
  * })
  */
 const deepSet = (ary, path, cb) => {
