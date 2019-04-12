@@ -4376,6 +4376,13 @@ Array.prototype.last = function () {
     return this[this.length - 1]
 } 
 
+/**
+ * 获取数组第一位
+ */
+Array.prototype.first = function () {
+    return this[0]
+} 
+
 
 /**
  * 判断对象是否是一个空的对象，既{}
@@ -4424,6 +4431,195 @@ export const obj2formdatastr = (body) => {
     }
     return ''
 }
+
+
+/**
+ * 函数节流（throttle）
+ */
+export const throttle = (func, wait, options) => {
+  var timeout, context, args, result;
+  // 标记时间戳
+  var previous = 0;
+  // options可选属性 leading: true/false 表示第一次事件马上触发回调/等待wait时间后触发
+  // options可选属性 trailing: true/false 表示最后一次回调触发/最后一次回调不触发
+  if (!options) options = {};
+
+  var later = function() {
+    previous = options.leading === false ? 0 : +(new Date());
+    timeout = null;
+    result = func.apply(context, args);
+    if (!timeout) context = args = null;
+  };
+
+  var throttled = function() {
+    // 记录当前时间戳
+    var now = +(new Date());
+    // 如果是第一次触发且选项设置不立即执行回调
+    if (!previous && options.leading === false)
+    // 将记录的上次执行的时间戳置为当前
+    previous = now;
+    // 距离下次触发回调还需等待的时间
+    var remaining = wait - (now = previous);
+    context = this;
+    args = arguments;
+
+    // 等待时间 <= 0或者不科学地 > wait（异常情况）
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+          // 清除定时器
+        clearTimeout(timeout);
+        // 解除引用
+        timeout = null;
+      }
+      // 将记录的上次执行的时间戳置为当前
+      previous = now;
+
+      // 触发回调
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+    // 在定时器不存在且选项设置最后一次触发需要执行回调的情况下
+    // 设置定时器，间隔remaining时间后执行later
+    else if (!timeout && options.trailing !== false)    {
+      timeout = setTimeout(later, remaining);
+    }
+   return result;
+  };
+
+  throttled.cancel = function() {
+    clearTimeout(timeout);
+    previous = 0;
+    timeout = context = args = null;
+  };
+
+  return throttled;
+};
+
+
+// Array Remove - By John Resig (MIT Licensed)
+/**
+ * // 移除数组中的第二项
+ * array.remove(1);
+ * // 移除数组中的倒数第二项
+ * array.remove(-2);
+ * // 移除数组中的第二项和第三项（从第二项开始，删除2个元素）
+ * array.remove(1,2);
+ * // 移除数组中的最后一项和倒数第二项（数组中的最后两项）
+ * array.remove(-2,-1);
+ *
+ */
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  this.push.apply(this, rest);
+  return this
+};
+
+
+ /**
+ * 深度递归搜索
+ * @param {Array} arr 你要搜索的数组
+ * @param {Function} condition 回调函数，必须返回谓词，判断是否找到了。会传入(item, index, level)三个参数
+ * @param {String} children 子数组的key
+ */
+export const deepFind = (arr, condition, children) => {
+    // 即将返回的数组
+    let main = []
+
+    // 用try方案方便直接中止所有递归的程序
+    try {
+        // 开始轮询
+        (function poll(arr, level, cb) {
+            // 如果传入非数组
+            if (!Array.isArray(arr)) return
+
+            // 遍历数组
+            for (let i = 0; i < arr.length; i++) {
+                // 获取当前项
+                const item = arr[i]
+
+                // 先占位预设值
+                main[level] = item
+
+                // 扩展：如果是一个对象的话，添加一些标记属性
+                if (Object.prototype.toString.call(item) === '[object Object]') {
+                  item.__INDEX__ = i
+                  item.__LEVEL__ = level
+                }
+
+                // 检验是否已经找到了
+                const isFind = condition && condition(item, i, level) || false
+
+                // 自杀函数
+                const kill = () => {
+                // 删除占位预设值
+                  main.length = main.length - 1
+                  // 触发回调
+                  cb && cb()
+                }
+
+                // 如果已经找到了
+                if (isFind) {
+                    // 直接抛出错误中断所有轮询
+                    throw Error
+                // 如果存在children，那么深入递归
+                } else if (children && item[children] && item[children].length) {
+                    poll(item[children], level + 1,
+                      // 如果本函数被触发，说明children还是找不到。
+                      () => {
+                      // 那么如果我是最后一条，那么我也自杀吧
+                      if (i === arr.length - 1) {
+                        kill()
+                      }
+                    })
+                // 如果是最后一个且没有找到值，那么通过修改数组长度来删除当前项
+                } else if (i === arr.length - 1) {
+                  // 找不到，羞愧自杀
+                  kill()
+                }
+            }
+        })(arr, 0)
+    // 使用try/catch是为了中止所有轮询中的任务
+    } catch (err) {}
+
+    // 返回最终数组
+    return main
+}
+
+/**
+ * 深度设置
+ */
+export const deepSet = (ary, path, cb) => {
+  // （重要）保存引用
+  let obj = ary
+  // 不断轮询路径
+  while (path.length) {
+    // 从左往右取出路径
+    const key = path.shift()
+    // 获取当前路径的值
+    obj = obj[key]
+    // 判断路径，如果异常则直接中断循环
+    if (!obj) break
+  }
+  // 回调，注入指定路径的ary引用
+  cb && cb(obj)
+  // （重点）返回被串改的数组
+  return ary
+}
+
+/**
+ * chunk 数组分块函数
+ * 对数组进行分块，满足条件的分为hit组，不满足分到miss组
+ *
+ * const ary = [1, 2, 3, 4, 5, 6, 7, 8]
+ * const result = chunk(ary, _ => _ > 1)
+ * console.log(result)
+ */
+export const chunk = (ary, fn) => ary.reduce(({ hit, miss } = {}, v) => {
+  fn(v) ? hit.push(v) : miss.push(v)
+  return { hit, miss }
+}, { hit: [], miss: [] })
+
 )
 code(Var)
 return

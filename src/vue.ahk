@@ -1686,6 +1686,17 @@ InputBox, OutputVar, title, enter a name?,,,,,,,,test
 Var =
 (
 %OutputVar% ({ commit, state, dispatch, rootState }, %OutputVar%) {
+  return request('/dc/record/dcColumnRule/showAllColumnByTable', { params: { datasourceId: state.datasourceId, databaseName: state.selectDatabase, tableName }})
+  return request('/dc/record/dcTableRule/queryTableWithColumn', { 
+      method: 'POST', 
+      data: { 
+        tableQuery: {
+          datasourceId: state.datasourceId, 
+          databaseName: state.selectDatabase, 
+          tableNameList: state.selectTables.map(_ => _.tableName)
+        }
+      }
+  })
   state.%OutputVar% = %OutputVar%
   dispatch('list')
 },

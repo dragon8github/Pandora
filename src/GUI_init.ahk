@@ -145,7 +145,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.fengchedm.com/">风车动漫</a>
 
 Gui, Pandora:Add, Text, W160 ys, 常用工具：
 Gui, Pandora:Add, Link,, <a href="http://tool.oschina.net/codeformat/js">在线代码格式化</a>
-Gui, Pandora:Add, Link,, <a href="http://tool.oschina.net/highlight">在线代码着色</a>
+Gui, Pandora:Add, Link,, <a href="https://www.sojson.com/jsjiemi.html">sojson工具库</a>
 Gui, Pandora:Add, Link,, <a href="https://tool.lu/html/">tool.lu压缩</a>
 Gui, Pandora:Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
 Gui, Pandora:Add, Link,, <a href="http://www.bejson.com/">bejson超强工具箱</a>
@@ -189,7 +189,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/phodal/serverless">《Serve
 Gui, Pandora:Add, Link,, <a href="https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md">《JavaScript 算法》</a>
 Gui, Pandora:Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">《React 小书》</a>
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/weuse?page=1">《大牛都在用什么？》</a>
-
+Gui, Pandora:Add, Link,, <a href="https://classroom.udacity.com/courses/ud905/lessons/92a39eec-0c04-4d98-b47f-c884b9cd5a3b/concepts/78143d19-8360-4f83-88ab-cfcb5b160465">「Flutter 教学视频」</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
@@ -204,13 +204,14 @@ Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/526d58e01a748
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
+Gui, Pandora:Add, Link,, <a href="http://iconstore.co/">iconstore.co</a>
 Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">pexels.com</a>
 Gui, Pandora:Add, Link,, <a href="https://unsplash.com/">unsplash.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.foodiesfeed.com/">foodiesfeed.com</a>
 Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">pixabay.com</a>
 Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co</a>
 Gui, Pandora:Add, Link,, <a href="https://www.freepik.com/">freepik</a>
-Gui, Pandora:Add, Link,, <a href="http://iconstore.co/">iconstore.co</a>
+
 
 
 
@@ -218,14 +219,12 @@ Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="https://app.didiyun.com/#/dc2/detail?uuid=a289c3f607fd5bbd8261df9b266ae211">滴滴云</a>
-Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub</a>
+Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub 镜像仓库</a>
 Gui, Pandora:Add, Link,, <a href="https://amazonaws-china.com/cn/ec2/">aws Amazon EC2</a>
-Gui, Pandora:Add, Link,, <a href="https://pdffood.com/">电子书购买列表</a>
-Gui, Pandora:Add, Link,, <a href="https://classroom.udacity.com/courses/ud905/lessons/92a39eec-0c04-4d98-b47f-c884b9cd5a3b/concepts/78143d19-8360-4f83-88ab-cfcb5b160465">「Flutter 教学视频」</a>
 Gui, Pandora:Add, Link,, <a href="http://www.51ym.me/User/MobileSMSCode.aspx">易码平台</a>
 Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer</a>
-
-
+Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/cmd.html">linux命令搜索</a>
+Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/ocr.html">OCR在线识别</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 Gui, Pandora:Add, Link,, <a href="http://photo.weibo.com/upload/index">新浪微博图床</a>
@@ -267,6 +266,7 @@ Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
 Gui, Pandora:Add, Text, gxuanliyanhua W160,新建点击绚丽烟花效果.html
 Gui, Pandora:Add, Text, gmaoboli W160,新建毛玻璃.html
 Gui, Pandora:Add, Text, gwangyejindutiao W160,新建网页进度条.html
+Gui, Pandora:Add, Text, gemphhtml W160,新建更新提示波动图.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
@@ -309,7 +309,6 @@ Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/logi
 
 Gui, Pandora:Add, Text,  W140 ys, 12345大数据屏（vue）
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心git lab</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
 Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">v0</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v1.dgdatav.com:6080/#/dg/overallSituation">v1</a>
@@ -337,7 +336,15 @@ Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心源码gitlab</a>
 Gui, Pandora:Add, Link,, <a href="https://www.xiaopiu.com/web/byId?type=project&id=5c7cc747126f63402c1e331f">数据中心web原型</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter">数据中心原型gitlab</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心git lab</a>
 Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:8103/">日报</a>
+
+Gui, Pandora:Add, Text,  W140 ys xp+160, 私服仓库Nexus
+Gui, Pandora:Add, Link,, <a href="https://nexus.alltosea.com/">公司的Nexus</a>
+Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/xueyoucd/p/9538126.html">搭建 npm 私服教程</a>
+Gui, Pandora:Add, Link,, <a href="https://www.sonatype.com/nexus-repository-oss">官方网站</a>
+
+
 
 Gui, Pandora:Tab, 4
 Gui, Pandora:Add, Text,  W130 Section, Nodejs:
@@ -815,6 +822,10 @@ Gui, Pandora:Add, Link,, <a href="https://nostalgic-css.github.io/NES.css/">马�
 Gui, Pandora:Add, Link,, <a href="https://github.com/pure-css/pure/">雅虎：pure.css</a>
 Gui, Pandora:Add, Link,, <a href="https://bulma.io/">青铜王者：bulma.css</a>
 Gui, Pandora:Add, Link,, <a href="https://foundation.zurb.com/">响应翘楚：foundation 6</a>
+
+Gui, Pandora:Add, Text,  W140 ys, css工具:
+Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/shadow_visualization.html">css阴影生成器</a>
+
 
 
 ; 垃圾回收站
