@@ -211,12 +211,12 @@ Gui, Pandora:Add, Link,, <a href="https://www.foodiesfeed.com/">foodiesfeed.com<
 Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">pixabay.com</a>
 Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co</a>
 Gui, Pandora:Add, Link,, <a href="https://www.freepik.com/">freepik</a>
-
+Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
 
 
 
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
-Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
+Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="https://app.didiyun.com/#/dc2/detail?uuid=a289c3f607fd5bbd8261df9b266ae211">滴滴云</a>
 Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub 镜像仓库</a>
@@ -234,7 +234,7 @@ Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/ex
 Gui, Pandora:Add, Link,, <a href="https://yeoman.io/generators/">yeoman generators</a>
 Gui, Pandora:Add, Link,, <a href="https://www.vultr.com/">vultr</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/Alvin9999/new-pac/wiki/自建ss服务器教程">自建ss服务器教程</a>
-Gui, Pandora:Add, Link,, <a href="https://36dcup.tk/user">36dcup</a>
+Gui, Pandora:Add, Link,, <a href="https://36dcup.tk/user">36dcup加速度</a>
 Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
 
 
@@ -434,6 +434,8 @@ Gui, Pandora:Add, Link,, <a href="https://vux.li/">vux 官网</a>
 Gui, Pandora:Add, Text,  W160 ys, 其他插件收录
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repo/jaweii/vueg">vueg转场动画</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/1615450788/vue-cron">vue-cron</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/OYsun/VueCircleMenu">vue-圆环菜单</a>
+;@vue
 
 
 Gui, Pandora:Add, Text, W140 Section xs yp+240, vue动画钩子：
@@ -624,6 +626,9 @@ Gui, Pandora:Add, Link,, <a href="https://scrimba.com/p/pV5eHk/c9EqQSD">录制�
 
 Gui, Pandora:Add, Text, W140 ys, APlayer（优雅的MP3播放器，B站和iSearch都用，也支持Vue和各种版本）：
 Gui, Pandora:Add, Link,, <a href="https://github.com/MoePlayer/APlayer">Aplay github</a>
+
+Gui, Pandora:Add, Text, W140 ys xp+180, 有趣有趣：
+Gui, Pandora:Add, Link,, <a href="https://github.com/e-oj/Magic-Grid">新时代瀑布流Magic-Grid</a>
 
 ; @qimiao @qm @ku
 

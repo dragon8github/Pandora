@@ -30,6 +30,7 @@ FileDelete, .\src\*.bak
 #Include src/shell.ahk            ; shell
 #include src/css.ahk              ; css
 #Include src/arr.ahk              ; arr
+#Include src/python.ahk		      ; python
 #Include src/js.ahk               ; JavaScript  
 #Include src/node.ahk             ; nodejs 
 #Include src/canvas.ahk		      ; canvas
@@ -44,7 +45,6 @@ FileDelete, .\src\*.bak
 #Include src/react.ahk            ; React
 #Include src/Lua.ahk              ; secondkey_board  
 #Include src/gulp.ahk             ; gulp
-#Include src/python.ahk		      ; python
 #Include src/koa.ahk		      ; koa
 #Include src/docker.ahk		      ; docker
 #Include src/flutter.ahk	      ; flutter

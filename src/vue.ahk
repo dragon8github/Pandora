@@ -2439,6 +2439,7 @@ Var =
 code(Var)
 return
 
+::props::
 ::vue.props::
 ::vue.prop::
 Var =

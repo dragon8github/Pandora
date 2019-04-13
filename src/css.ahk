@@ -1,4 +1,6 @@
 ﻿!s::
+    Menu, cssknow, Add, currentColor 当前字体颜色, CssHandler2
+
     Menu, CssMenu, Add, css.debugger, CssHandler2
     Menu, CssMenu, Add, normalize.css, CssHandler2
     Menu, CssMenu, Add, chrome-yellow, CssHandler2
@@ -9,6 +11,7 @@
     Menu, CssMenu, Add, utils.scss, CssHandler2
     Menu, CssMenu, Add, g.min.css, CssHandler2
     Menu, CssMenu, Add, layout.css, CssHandler2
+    Menu, CssMenu, Add, (=・ω・=)css认知系列, :cssknow
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -112,6 +115,13 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "currentColor 当前字体颜色") {
+Var =
+(
+background: currentColor;
 )
 }
 
