@@ -450,3 +450,11 @@ Var =
 code(Var)
 Send, {left 2}
 return
+
+::last::
+Var =
+(
+ary.slice(-1)
+)
+code(Var)
+return

@@ -12,7 +12,7 @@
     Menu, utilsIs, Add, isNaN, utilsHandler
     Menu, utilsIs, Add, isNodeList, utilsHandler
     Menu, utilsIs, Add, 判断是否为数字：!isNaN(+params.id), utilsHandler
-     
+
 
     Menu, utilsIs, Add, , utilsHandler
     Menu, utilsIs, Add, , utilsHandler
@@ -220,6 +220,7 @@
     Menu, utilsmy, Add, Vue 进度条组件, utilsHandler
     Menu, utilsmy, Add, utils.js, utilsHandler
     
+    Menu, utilsjuran, Add, 快速取整的新思路：1553 / 10 | 0, utilsHandler
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
     Menu, utilsjuran, Add, holder占位图, utilsHandler
@@ -344,6 +345,14 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "快速取整的新思路：1553 / 10 | 0") {
+Var = 
+(
+1553 / 10 | 0
 )
 }
 

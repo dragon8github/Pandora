@@ -5,9 +5,20 @@
 	Menu, PythonMenu, Add,🍁🍁🍁🍁🍁🍁🍁🍁  命令行  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
 
+	Menu, PythonMenu, Add, python manage.py runserver, PythonHandler2
 	Menu, PythonMenu, Add, python manage.py makemigrations, PythonHandler2
 	Menu, PythonMenu, Add, python manage.py migrate, PythonHandler2
 	Menu, PythonMenu, Add, python manage.py createsuperuser, PythonHandler2
+	Menu, PythonMenu, Add,
+	Menu, PythonMenu, Add, mkvirtualenv student-env, PythonHandler2
+	Menu, PythonMenu, Add, workon student-env, PythonHandler2
+	Menu, PythonMenu, Add,
+	Menu, PythonMenu, Add, django-admin startproject mysite, PythonHandler2
+	Menu, PythonMenu, Add, cd student_sys && python manage.py startapp student, PythonHandler2
+	Menu, PythonMenu, Add,
+	Menu, PythonMenu, Add, python -m pip install --upgrade pip, PythonHandler2
+	Menu, PythonMenu, Add, pip install virtualenv, PythonHandler2
+	Menu, PythonMenu, Add, pip install virtualenvwrapper-win, PythonHandler2
 
 	Menu, PythonMenu, Add,, PythonHandler
 	Menu, PythonMenu, Add,🍁🍁🍁🍁🍁🍁🍁🍁  常用函数  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler

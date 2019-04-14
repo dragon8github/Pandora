@@ -3891,10 +3891,11 @@ Return
 ::json.s::
 Var =
 (
-JSON.stringify()
+JSON.stringify({}, null, '\t')
 )
 code(Var)
-SendInput, {left}
+SendInput, {left 13}
+Send, +{left 2}
 Return
 
 ::json/::
