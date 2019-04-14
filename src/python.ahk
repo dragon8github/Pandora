@@ -1,25 +1,37 @@
 ﻿!p::
 	Menu, PythonMenu, Add, #-*- coding: utf-8 -*- , PythonHandler
 
+	Menu, PythonMenu, Add,, PythonHandler
+	Menu, PythonMenu, Add,🍁🍁🍁🍁🍁🍁🍁🍁  命令行  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
+	Menu, PythonMenu, Add,, PythonHandler
+
+	Menu, PythonMenu, Add, python manage.py makemigrations, PythonHandler2
+	Menu, PythonMenu, Add, python manage.py migrate, PythonHandler2
+	Menu, PythonMenu, Add, python manage.py createsuperuser, PythonHandler2
+
+	Menu, PythonMenu, Add,, PythonHandler
+	Menu, PythonMenu, Add,🍁🍁🍁🍁🍁🍁🍁🍁  常用函数  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
+	Menu, PythonMenu, Add,, PythonHandler
+
 	Menu, PythonMenu, Add,type(): 获取数据类型, PythonHandler
 	Menu, PythonMenu, Add,len(): 获取长度, PythonHandler
 	Menu, PythonMenu, Add,float()， int()， str() 数据类型转化, PythonHandler
 
 	Menu, PythonMenu, Add,, PythonHandler
-	Menu, PythonMenu, Add,🌳🌳🌳🌳🌳🌳🌳🌳  字典  🌳🌳🌳🌳🌳🌳🌳🌳, PythonHandler
+	Menu, PythonMenu, Add,🍁🍁🍁🍁🍁🍁🍁🍁  字典（既对象）  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
 
 	Menu, PythonMenu, Add, 字典定义 json 版：me = {'name':'Lee'}, PythonHandler
 	Menu, PythonMenu, Add, user = dict(age=19`, sex='nan'), PythonHandler
-	Menu, PythonMenu, Add, 字典 for 循环, PythonHandler
+	Menu, PythonMenu, Add, 字典 for 循环： for key in user:, PythonHandler
 
 
 	Menu, PythonMenu, Add,, PythonHandler
-	Menu, PythonMenu, Add, 🌳🌳🌳🌳🌳🌳🌳🌳  List 列表  🌳🌳🌳🌳🌳🌳🌳🌳, PythonHandler
+	Menu, PythonMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁  List 列表（既数组）  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
 
 	; List 列表
-	Menu, PythonMenu, Add, 定义 List 列表, PythonHandler
+	Menu, PythonMenu, Add, 定义 List 列表：fruits = ['orange'`, 'apple'], PythonHandler
 	Menu, PythonMenu, Add, List#count, PythonHandler
 	Menu, PythonMenu, Add, List#index, PythonHandler
 	Menu, PythonMenu, Add, List#reverse, PythonHandler
@@ -28,7 +40,7 @@
 	Menu, PythonMenu, Add, List#pop, PythonHandler
 
 	Menu, PythonMenu, Add,, PythonHandler
-	Menu, PythonMenu, Add, 🌳🌳🌳🌳🌳🌳🌳🌳  函数  🌳🌳🌳🌳🌳🌳🌳🌳, PythonHandler
+	Menu, PythonMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁  函数  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
 
 	; 函数
@@ -37,7 +49,7 @@
 
 
 	Menu, PythonMenu, Add,, PythonHandler
-	Menu, PythonMenu, Add, 🌳🌳🌳🌳🌳🌳🌳🌳  类与面向对象  🌳🌳🌳🌳🌳🌳🌳🌳 , PythonHandler
+	Menu, PythonMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁  类与面向对象  🍁🍁🍁🍁🍁🍁🍁🍁 , PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
 
 	Menu, PythonMenu, Add, class.init, PythonHandler
@@ -46,7 +58,7 @@
 	; Menu, PythonMenu, Add, python 基本功与认知 ╮(￣▽￣)╭, :pabase
 
 	Menu, PythonMenu, Add,, PythonHandler
-	Menu, PythonMenu, Add, 🌳🌳🌳🌳🌳🌳🌳🌳  其他  🌳🌳🌳🌳🌳🌳🌳🌳 , PythonHandler
+	Menu, PythonMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁  其他  🍁🍁🍁🍁🍁🍁🍁🍁 , PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
 	
 	Menu, PythonMenu, Add, socket 网络编程基本示例, PythonHandler
@@ -58,8 +70,13 @@
 
 return
 
-PythonHandler:
+PythonHandler2:
+v := A_ThisMenuItem
+Sleep, 100
+SendInput, % v
+Return
 
+PythonHandler:
 v := A_ThisMenuItem
 Var := 
 
@@ -160,10 +177,10 @@ showme(name='tanggu', sex=1)
 }
 
 
-if (v == "定义List列表") {
+if (v == "定义 List 列表：fruits = ['orange', 'apple']") {
 Var = 
 (
-fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
+fruits = ['orange', 'apple']
 )
 }
 
@@ -232,7 +249,7 @@ user = dict(age=19, sex='nan')
 )
 }
 
-if (v == "字典 for 循环") {
+if (v == "字典 for 循环： for key in user:") {
 Var = 
 (
 user = dict(age=19, sex='nan')
@@ -412,8 +429,7 @@ return
 
 ::pr::
 	t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-    SendInput, print('%t%'){left 2}
-	Send, ^+{left}
+    SendInput, print(%t%, ){left}
 return
 
 
