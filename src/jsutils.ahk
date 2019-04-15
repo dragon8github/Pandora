@@ -202,6 +202,7 @@
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     
+    Menu, utilsmy, Add, pureMap：纯洁无害的map函数, utilsHandler
     Menu, utilsmy, Add, chunk 数组分块函数, utilsHandler
     Menu, utilsmy, Add, deepset：超强！深度set（deepfind的兄弟方法）, utilsHandler
     Menu, utilsmy, Add, (=・ω・=)我的单例版ajax, utilsHandler
@@ -348,6 +349,10 @@ Var =
 )
 }
 
+if (v == "pureMap：纯洁无害的map函数") {
+_send("puremap", true, true)
+return
+}
 
 if (v == "快速取整的新思路：1553 / 10 | 0") {
 Var = 
@@ -4699,6 +4704,32 @@ const chunk = (ary, fn) => ary.reduce(({ hit, miss } = {}, v) => {
 	fn(v) ? hit.push(v) : miss.push(v)
 	return { hit, miss }
 }, { hit: [], miss: [] })
+)
+code(Var)
+return
+
+::puremap::
+Var =
+(
+const pureMap = (ary = [], validate = () => true, cb = () => undefined) => {
+  // copy
+  let _ary = JSON.parse(JSON.stringify(ary))
+
+  // filter
+  _ary = _ary.map(v => {
+    // validate
+      if (validate(v)) {
+        // callback
+        return cb(v) || v
+      } else {
+        // default
+        return v
+      }
+  });
+
+  // filter ary
+  return _ary
+}
 )
 code(Var)
 return

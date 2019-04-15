@@ -27,8 +27,28 @@ Gui, ISearch:Add, Button, w193 h30 gsublimeOpen ys h30, sublime
 Gui, ISearch:Add, Button, w193 h30 gcmderOpen ys h30, cmder打开
 
 ; 数据源
-__SEARCH_DATABASE__ := { "Cmder":"C:\Users\Lee\cmder\Cmder.exe", "http://localhost:4000": "http://localhost:4000", "http://localhost:8099": "http://localhost:8099", "chrome": "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", "xshell": "C:\Program Files (x86)\NetSarang\Xshell 6\Xshell.exe", "12345\dist": A_Desktop . "\12345-plus-new\dist", "印象笔记yxbj": "C:\Program Files (x86)\Evernote\Evernote\Evernote.exe", "ftp": A_Desktop . "\FlashFXP_4.3.1.1969\flashfxp.exe", "cylee.top": "https://cylee.top/","post": A_Desktop . "\my\source\_posts" , "hexo": A_Desktop . "\my", "12345": A_Desktop . "\12345-plus-new", "home": "/home/dc2-user/", "nginx安装目录": "/usr/local/nginx", "nginx.conf": "/usr/local/nginx/conf/nginx.conf", "php-fpm": "/usr/local/bin/php-fpm", "Nginx": "/usr/local/nginx/sbin/nginx", "nginx html": "/usr/local/nginx/html/", "php.ini": "/usr/local/php/php.ini" }
-
+__SEARCH_DATABASE__ := {}
+__SEARCH_DATABASE__[""] := ""
+__SEARCH_DATABASE__["datacenter"] := "C:\Users\Lee\Desktop\dataCenter"
+__SEARCH_DATABASE__["Cmder"] ="C:\Users\Lee\cmder\Cmder.exe"
+__SEARCH_DATABASE__["http://localhost:4000"] := "http://localhost:4000"
+__SEARCH_DATABASE__["http://localhost:8099"] := "http://localhost:8099"
+__SEARCH_DATABASE__["chrome"] := "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+__SEARCH_DATABASE__["xshell"] := "C:\Program Files (x86)\NetSarang\Xshell 6\Xshell.exe"
+__SEARCH_DATABASE__["12345\dist"] := A_Desktop . "\12345-plus-new\dist"
+__SEARCH_DATABASE__["印象笔记yxbj"] := "C:\Program Files (x86)\Evernote\Evernote\Evernote.exe"
+__SEARCH_DATABASE__["ftp"] := A_Desktop . "\FlashFXP_4.3.1.1969\flashfxp.exe"
+__SEARCH_DATABASE__["cylee.top"] := "https://cylee.top/"
+__SEARCH_DATABASE__["post"] := A_Desktop . "\my\source\_posts" 
+__SEARCH_DATABASE__["hexo"] := A_Desktop . "\my"
+__SEARCH_DATABASE__["12345"] := A_Desktop . "\12345-plus-new"
+__SEARCH_DATABASE__["home"] := "/home/dc2-user/"
+__SEARCH_DATABASE__["nginx安装目录"] := "/usr/local/nginx"
+__SEARCH_DATABASE__["nginx.conf"] := "/usr/local/nginx/conf/nginx.conf"
+__SEARCH_DATABASE__["php-fpm"] := "/usr/local/bin/php-fpm"
+__SEARCH_DATABASE__["Nginx"] := "/usr/local/nginx/sbin/nginx"
+__SEARCH_DATABASE__["nginx html"] := "/usr/local/nginx/html/"
+__SEARCH_DATABASE__["php.ini"] := "/usr/local/php/php.ini"
 
 ; 创建含名称和大小两列的 ListView:
 Gui, ISearch:Add, ListView, r7 w600 h400 gMyListView AltSubmit Section xs yp+40, Name|Path
@@ -336,8 +356,10 @@ Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心源码gitlab</a>
 Gui, Pandora:Add, Link,, <a href="https://www.xiaopiu.com/web/byId?type=project&id=5c7cc747126f63402c1e331f">数据中心web原型</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter">数据中心原型gitlab</a>
+Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/DUXBCem1Kd2dQdkNi?opendocxfrom=admin&tdsourcetag=s_pctim_aiomsg&ADUIN=928532756&ADSESSION=1555287968&ADTAG=CLIENT.QQ.5603_.0&ADPUBNO=26882&tab=BB08J2">腾讯文档</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心git lab</a>
-Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:8103/">日报</a>
+
+
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 私服仓库Nexus
 Gui, Pandora:Add, Link,, <a href="https://nexus.alltosea.com/">公司的Nexus</a>
