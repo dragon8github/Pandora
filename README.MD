@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://nodejs.org/">
     <img
-      src="https://github.com/dragon8github/ahk/raw/master/static/Pandorabg.png"
+      src="http://wx3.sinaimg.cn/large/006ar8zggy1g24gjfm9m7j313f0h5wr3.jpg"
       width="100%"
       height="390"
     />
@@ -36,7 +36,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 <p>
   <a href="https://nodejs.org/">
     <img
-      src="https://github.com/dragon8github/ahk/raw/master/static/通过快捷键呼出常用代码.gif"
+      src="http://wx4.sinaimg.cn/large/006ar8zggy1g24gkdbzbag30ff083u0x.gif"
     />
   </a>
 </p>
@@ -45,7 +45,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 <p>
   <a href="https://nodejs.org/">
     <img
-      src="https://github.com/dragon8github/ahk/raw/master/static/智能补全代码.gif"
+      src="http://wx1.sinaimg.cn/large/006ar8zggy1g24gkkbghjg30v709le86.gif"
     />
   </a>
 </p>
@@ -54,7 +54,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 <p>
   <a href="https://nodejs.org/">
     <img
-      src="https://github.com/dragon8github/ahk/raw/master/static/云代码.gif"
+      src="http://wx3.sinaimg.cn/large/006ar8zggy1g24gkgljh2g30f50fdqv6.gif"
     />
   </a>
 </p>
@@ -63,7 +63,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 <p>
   <a href="https://nodejs.org/">
     <img
-      src="https://github.com/dragon8github/ahk/raw/master/static/自动翻译命名.gif"
+      src="http://wx4.sinaimg.cn/large/006ar8zggy1g24gkn4nong30a704adqr.gif"
     />
   </a>
 </p>
@@ -72,7 +72,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 <p>
   <a href="https://nodejs.org/">
     <img
-      src="https://github.com/dragon8github/ahk/raw/master/static/GUI.png"
+      src="http://wx3.sinaimg.cn/large/006ar8zggy1g24gdodbouj30rw0rf75h.jpg"
     />
   </a>
 </p>
@@ -81,7 +81,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 <p>
   <a href="https://nodejs.org/">
     <img
-      src="https://github.com/dragon8github/ahk/raw/master/static/menu.png"
+      src="http://wx3.sinaimg.cn/large/006ar8zggy1g24gj5svy0j30jp0m2q4h.jpg"
     />
   </a>
 </p>

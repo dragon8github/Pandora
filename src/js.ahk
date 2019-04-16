@@ -551,7 +551,7 @@ return
 Var =
 (
 var img = new Image()
-img.src = "https://github.com/dragon8github/Pandora/blob/master/static/loading.gif?raw=true"
+img.src = "http://wx4.sinaimg.cn/large/006ar8zggy1g24gdwwu8cg300w00wq2p.gif"
 img.style = 'position: absolute; top: 50`%; left: 50`%;'
 )
 code(Var)

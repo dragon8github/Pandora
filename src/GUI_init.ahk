@@ -859,7 +859,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/shadow_visualizati
 ; 垃圾回收站
 Gui, Pandora:Tab, 15
 Gui, Pandora:Add, Text,  W140 Section, 垃圾1:
-Gui, Pandora:Add, Link,, <a href="https://raw.githubusercontent.com/dragon8github/Pandora/master/static/gitpic.jpg">git命令速查表</a>
+Gui, Pandora:Add, Link,, <a href="http://wx1.sinaimg.cn/large/006ar8zggy1g24gdlck3sj316h0u0gqu.jpg">git命令速查表</a>
 Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/video/av39807850?zw">Hexo bilibili教程</a>
 Gui, Pandora:Add, Link,, <a href="https://www.jiumodiary.com/">鸠摩搜书</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/30-seconds/30-seconds-of-code">30 seconds of code</a>
