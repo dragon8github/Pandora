@@ -22,6 +22,7 @@ CancelSelect:
 	; GuiControl,, SearchContent, 
 	GuiControl,, bd, 0
 	GuiControl,, google, 0
+    GuiControl,, npm, 0
 	GuiControl,, so, 0
 	GuiControl,, github, 0
 	GuiControl,, segmentfault, 0
@@ -73,17 +74,17 @@ AllSearchA:
 	if (isAllSearchA) {
 		GuiControl,, bd, 1 
 		GuiControl,, google, 1 
+        GuiControl,, npm, 1 
 		GuiControl,, so, 1 
 		GuiControl,, github, 1 
 		GuiControl,, segmentfault, 1 
-		GuiControl,, cylee, 1 
 	} else {
 		GuiControl,, bd, 0
 		GuiControl,, google, 0
+        GuiControl,, npm, 0
 		GuiControl,, so, 0
 		GuiControl,, github, 0
 		GuiControl,, segmentfault, 0
-		GuiControl,, cylee, 0
 	}
 return
 
@@ -129,11 +130,13 @@ AllSearchD:
 		GuiControl,, jianshu, 1 
 		GuiControl,, csdn, 1 
 		GuiControl,, zhihu, 1 
+        GuiControl,, cylee, 1 
 	} else {
 		GuiControl,, juejin, 0
 		GuiControl,, jianshu, 0
 		GuiControl,, csdn, 0
 		GuiControl,, zhihu, 0
+        GuiControl,, cylee, 0
 	}
 return
 
@@ -177,6 +180,11 @@ Fuck:
 	; Google
 	if (google == 1) {
 		RUN, https://www.google.com/search?q=%SearchContent%
+	}
+    
+    ; npm
+	if (npm == 1) {
+		RUN, https://www.npmjs.com/search?q=%SearchContent%
 	}
 
 	; Github

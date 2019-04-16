@@ -4634,6 +4634,34 @@ export const chunk = (ary, fn) => ary.reduce(({ hit, miss } = {}, v) => {
   return { hit, miss }
 }, { hit: [], miss: [] })
 
+export const poll = (conditionFn, callback, wait = 4, maxTimeout = 10, timeout = 0) => {
+  // 请求是否超出阈值
+  if (++timeout > maxTimeout * 1000 / wait) throw new Error('overtime')
+  // 如果条件满足，那么执行，否则轮询
+  conditionFn() ? callback() : setTimeout(() => {poll(conditionFn, callback, wait, maxTimeout, timeout) }, wait)
+}
+
+
+export const pureMap = (ary = [], validate = () => true, cb = () => undefined) => {
+  // copy
+  let _ary = JSON.parse(JSON.stringify(ary))
+
+  // filter
+  _ary = _ary.map(v => {
+    // validate
+      if (validate(v)) {
+        // callback
+        return cb(v) || v
+      } else {
+        // default
+        return v
+      }
+  });
+
+  // filter ary
+  return _ary
+}
+
 )
 code(Var)
 return

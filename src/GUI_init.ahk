@@ -81,7 +81,8 @@ Gui, Pandora:Menu, MyMenuBar
 ; Gui, Pandora:+Resize
 
 Gui, Pandora:Add, Text, gAllSearchA W120 Section xs yp+10, 搜索引擎类:
-Gui, Pandora:Add, Checkbox, gMySubroutine HwndMyEditHwnd vbd, 百度
+; Gui, Pandora:Add, Checkbox, gMySubroutine HwndMyEditHwnd vbd, 百度
+Gui, Pandora:Add, Checkbox, vnpm, npm
 Gui, Pandora:Add, Checkbox, vgoogle, Google
 Gui, Pandora:Add, Checkbox, vgithub Checked, Github
 Gui, Pandora:Add, Checkbox, vso, Stack Overflow
@@ -230,7 +231,7 @@ Gui, Pandora:Add, Link,, <a href="https://unsplash.com/">unsplash.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.foodiesfeed.com/">foodiesfeed.com</a>
 Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">pixabay.com</a>
 Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co</a>
-Gui, Pandora:Add, Link,, <a href="https://www.freepik.com/">freepik</a>
+Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
 
 
