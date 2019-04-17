@@ -4263,13 +4263,18 @@ Return
 ::for::
 ::for+::
 ::for++::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
-for (var i = 0; i < Things.length; i++) {
-    Things[i]
+for (let i = 0, len = Thing.length; i < len; i++) {
+	console.log(%t%, Thing[i])
 }
 )
 code(Var)
+Send, {up}
+Send, {end}
+Send, {left 4}
+Send, !{F3}
 Return
 
 >!m::
