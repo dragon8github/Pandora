@@ -202,6 +202,7 @@
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     
+    Menu, utilsmy, Add, exclude: 从对象中排除某个属性, utilsHandler
     Menu, utilsmy, Add, pureMap：纯洁无害的map函数, utilsHandler
     Menu, utilsmy, Add, chunk 数组分块函数, utilsHandler
     Menu, utilsmy, Add, deepset：超强！深度set（deepfind的兄弟方法）, utilsHandler
@@ -346,6 +347,23 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "exclude: 从对象中排除某个属性") {
+Var = 
+(
+export const exclude = (obj, ...attribute) =>  {
+  // copy
+  let _ = JSON.parse(JSON.stringify(obj))
+    // 删除属性
+  for (let i = 0, len = attribute.length; i < len; i++) {
+    const attr = attribute[i]
+      delete _[attr]
+  }
+  // pure obj
+  return _
+}
 )
 }
 
@@ -4233,6 +4251,19 @@ MdUuid() // "r1mca5d4z"
 )
 }
 
+
+if (v == "hasClass") {
+Var = 
+(
+export const hasClass = (el, className) => {
+  if (el.classList)
+    el.classList.contains(className);
+  else
+    new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+}
+)
+}
+
 if (v == "addClass") {
 Var = 
 (
@@ -4662,6 +4693,52 @@ export const pureMap = (ary = [], validate = () => true, cb = () => undefined) =
   return _ary
 }
 
+export const addClass = (el, cls) => {
+    if (el.classList) {
+        el.classList.add(cls)
+    } else {
+        var cur = ' ' + getClassName(el) + ' '
+        if (cur.indexOf(' ' + cls + ' ') < 0) {
+            el.setAttribute('class', (cur + cls).trim())
+        }
+    }
+}
+
+export const hasClass = (el, className) => {
+  if (el.classList)
+    el.classList.contains(className);
+  else
+    new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+}
+
+export const getClassName = (el) => {
+    return (el.className instanceof SVGAnimatedString ? el.className.baseVal : el.className)
+}
+
+export const removeClass = (el, cls) => {
+    if (el.classList) {
+        el.classList.remove(cls)
+    } else {
+        var cur = ' ' + getClassName(el) + ' ',
+            tar = ' ' + cls + ' '
+        while (cur.indexOf(tar) >= 0) {
+            cur = cur.replace(tar, ' ')
+        }
+        el.setAttribute('class', cur.trim())
+    }
+}
+
+export const exclude = (obj, ...attribute) =>  {
+  // copy
+  let _ = JSON.parse(JSON.stringify(obj))
+    // 删除属性
+  for (let i = 0, len = attribute.length; i < len; i++) {
+    const attr = attribute[i]
+      delete _[attr]
+  }
+  // pure obj
+  return _
+}
 )
 code(Var)
 return
@@ -4757,6 +4834,25 @@ const pureMap = (ary = [], validate = () => true, cb = () => undefined) => {
 
   // filter ary
   return _ary
+}
+)
+code(Var)
+return
+
+::paichu::
+::exclude::
+Var =
+(
+export const exclude = (obj, ...attribute) =>  {
+  // copy
+  let _ = JSON.parse(JSON.stringify(obj))
+    // 删除属性
+  for (let i = 0, len = attribute.length; i < len; i++) {
+    const attr = attribute[i]
+      delete _[attr]
+  }
+  // pure obj
+  return _
 }
 )
 code(Var)

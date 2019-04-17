@@ -1182,3 +1182,11 @@ Var =
 code(Var)
 Send, {up}
 return
+
+::or::
+Var =
+(
+oracle
+)
+code(Var)
+return

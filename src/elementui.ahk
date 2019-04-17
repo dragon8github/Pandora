@@ -1,4 +1,48 @@
-﻿::el.table::
+﻿::el-form::
+Var =
+(
+<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="125px" class="form">
+  <el-form-item label="任务名称：" prop="taskName">
+     <el-input v-model='form.taskName' class='l-field__value' placeholder="请输入任务名称"></el-input>
+  </el-form-item>
+
+  <el-form-item label="数据库类型：" prop="databaseType">
+    <el-select v-model="form.databaseType" placeholder="请输入数据库类型" class='l-field__value'>
+       <el-option
+         v-for="item in options"
+         :key="item.value"
+         :label="item.label"
+         :value="item.value">
+       </el-option>
+     </el-select>
+  </el-form-item>
+</el-form>
+)
+code(Var)
+return
+
+::el-form-item::
+Var =
+(
+<el-form-item label="任务名称：" prop="taskName">
+   <el-input v-model='form.taskName' class='l-field__value' placeholder="请输入任务名称"></el-input>
+</el-form-item>
+
+<el-form-item label="数据库类型：" prop="databaseType">
+  <el-select v-model="form.databaseType" placeholder="请输入数据库类型" class='l-field__value'>
+     <el-option
+       v-for="item in options"
+       :key="item.value"
+       :label="item.label"
+       :value="item.value">
+     </el-option>
+   </el-select>
+</el-form-item>
+)
+code(Var)
+return
+
+::el.table::
 ::el-table::
 Var =
 (

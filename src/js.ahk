@@ -3891,11 +3891,11 @@ Return
 ::json.s::
 Var =
 (
-JSON.stringify({}, null, '\t')
+JSON.stringify(temp1, null, '\t')
 )
 code(Var)
 SendInput, {left 13}
-Send, +{left 2}
+Send, +{left 5}
 Return
 
 ::json/::
@@ -6845,4 +6845,64 @@ Var =
 )
 code(Var)
 Send, {up}{tab}
+return
+
+::addclass::
+Var =
+(
+const addClass = (el, cls) => {
+    if (el.classList) {
+        el.classList.add(cls)
+    } else {
+        var cur = ' ' + utils.getClassName(el) + ' '
+        if (cur.indexOf(' ' + cls + ' ') < 0) {
+            el.setAttribute('class', (cur + cls).trim())
+        }
+    }
+}
+)
+code(Var)
+return
+
+::hasclass::
+Var =
+(
+export const hasClass = (el, className) => {
+  if (el.classList)
+    el.classList.contains(className);
+  else
+    new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+}
+)
+code(Var)
+return
+
+::removeclass::
+Var =
+(
+export const removeClass = (el, cls) => {
+    if (el.classList) {
+        el.classList.remove(cls)
+    } else {
+        var cur = ' ' + utils.getClassName(el) + ' ',
+            tar = ' ' + cls + ' '
+        while (cur.indexOf(tar) >= 0) {
+            cur = cur.replace(tar, ' ')
+        }
+        el.setAttribute('class', cur.trim())
+    }
+}
+)
+code(Var)
+return
+
+::getclass::
+::getclassname::
+Var =
+(
+export const getClassName = (el) => {
+    return (el.className instanceof SVGAnimatedString ? el.className.baseVal : el.className)
+}
+)
+code(Var)
 return

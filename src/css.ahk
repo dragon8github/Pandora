@@ -35,7 +35,7 @@
     Menu, Csssolution, Add, 原生实现switch, CssHandler
     Menu, Csssolution, Add, 不断闪闪发光的动画, CssHandler
     Menu, Csssolution, Add, 页面阅读进度条, CssHandler
-    Menu, Csssolution, Add, 更新提示波动图, CssHandler
+    Menu, Csssolution, Add, 更新提示波动图:point, CssHandler
     
     
 
@@ -125,7 +125,7 @@ background: currentColor;
 )
 }
 
-if (v == "更新提示波动图") {
+if (v == "更新提示波动图:point") {
 Var =
 (
 <!DOCTYPE html>
@@ -3379,6 +3379,104 @@ Var =
 <div class="loading-spinner">
     <svg viewBox="25 25 50 50" class="circular"><circle cx="50" cy="50" r="20" fill="none" class="path"></circle></svg>
 </div>
+)
+txtit(Var)
+return
+
+::point.css::
+::css.point::
+Var =
+(
+.point {
+    display: inline-block;
+    position: relative;
+    vertical-align: baseline;
+}
+
+.point:after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 80px;
+    height: 80px;
+    border-radius: 50`%;
+    background: #3cb371;
+    top: calc(50`% - 40px);
+    left: calc(50`% - 40px);
+    transform: scale(0);
+    will-change: transform, opacity;
+    opacity: 0
+}
+
+.point.changing:after {
+    animation: emph 1.25s;
+}
+
+@keyframes emph {
+    20`% {
+        transform: none;
+        opacity: .5
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.2)
+    }
+})
+
+---
+
+export const addClass = (el, cls) => {
+    if (el.classList) {
+        el.classList.add(cls)
+    } else {
+        var cur = ' ' + getClassName(el) + ' '
+        if (cur.indexOf(' ' + cls + ' ') < 0) {
+            el.setAttribute('class', (cur + cls).trim())
+        }
+    }
+}
+
+export const hasClass = (el, className) => {
+  if (el.classList)
+    el.classList.contains(className);
+  else
+    new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+}
+
+export const getClassName = (el) => {
+    return (el.className instanceof SVGAnimatedString ? el.className.baseVal : el.className)
+}
+
+export const removeClass = (el, cls) => {
+    if (el.classList) {
+        el.classList.remove(cls)
+    } else {
+        var cur = ' ' + getClassName(el) + ' ',
+            tar = ' ' + cls + ' '
+        while (cur.indexOf(tar) >= 0) {
+            cur = cur.replace(tar, ' ')
+        }
+        el.setAttribute('class', cur.trim())
+    }
+}
+
+---
+
+import { addClass, hasClass, removeClass } from '@/utils/utils.js'
+
+point (dom) {
+// 设置高亮
+if (hasClass(dom, 'changing')) {
+  removeClass(dom, 'changing')
+} else {
+  addClass(dom, 'changing')
+  dom.addEventListener("webkitAnimationEnd", function() {
+      removeClass(dom, 'changing')
+  })
+}
+},
+
 )
 txtit(Var)
 return
