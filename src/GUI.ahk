@@ -3530,6 +3530,7 @@ export const removeClass = (el, cls) => {
       removeClass(dom, 'changing')
    } else {
       addClass(dom, 'changing')
+      addClass(dom, 'point')
       dom.addEventListener("webkitAnimationEnd", function() {
           removeClass(dom, 'changing')
       })
@@ -3537,6 +3538,65 @@ export const removeClass = (el, cls) => {
  },
  */
 </script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+autowidth:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    #test {
+        min-width: 160px;
+    }
+    </style>
+</head>
+
+<body>
+    <input type="text" id='test'>
+    <div id='test2'></div>
+</body>
+<script>
+
+const autoWidth = input => {
+    // valiteda the input type
+    if (input instanceof HTMLInputElement === false) 
+        // target must be a input element
+        return console.warn('target must be a input element')
+
+    // function
+    const setWidth = e => {
+        // self or target
+        const { style, value } = e.target || e
+        // set the width style
+        style.width = value.length + 'em'
+    }
+
+    // init
+    setWidth(input)
+
+    // event
+    input.addEventListener('input', setWidth)
+}
+
+// 获取input
+const target = document.querySelector('#test')
+
+// 设置自动根据文本提高宽度
+autoWidth(target)
+
+</script>
+
 </html>
 ),  %name%
 RunBy(name)

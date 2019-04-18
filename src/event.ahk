@@ -95,9 +95,9 @@
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
 	
-	Menu, EventMenu, Add, clientX/clientY：触摸目标在视口中的x/y坐标, EventHandler2
-	Menu, EventMenu, Add, pageX/pageY：触摸目标在页面中的x/y坐标, EventHandler2
-	Menu, EventMenu, Add, screenX/screenY：触摸目标在屏幕中的x/y坐标, EventHandler2
+	Menu, EventMenu, Add, clientX/clientY：触摸目标在视口中的x/y坐标, EventHandler
+	Menu, EventMenu, Add, pageX/pageY：触摸目标在页面中的x/y坐标, EventHandler
+	Menu, EventMenu, Add, screenX/screenY：触摸目标在屏幕中的x/y坐标, EventHandler
 
 	
 	Menu, EventMenu, Add
@@ -142,10 +142,6 @@
 	
 return
 
-EventHandler2:
-v := A_ThisMenuItem
-code(v)
-return
 
 EventHandler:
 ; MsgBox You selected  from the menu .
@@ -913,12 +909,14 @@ Var =
 @keyup.enter = "doThat('hello', $event)"
 )
 }
+
 if (v == "@keyup.13") {
 Var = 
 (
 @keyup.13 = "doThat('hello', $event)"
 )
 }
+
 if (v == "@input") {
 Var = 
 (
@@ -996,3 +994,6 @@ this.myChart.on('legendselectchanged', params => {
 })
 )
 }
+
+code(Var)
+return

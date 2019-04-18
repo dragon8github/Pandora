@@ -1,17 +1,25 @@
 ﻿!s::
     Menu, cssknow, Add, currentColor 当前字体颜色, CssHandler2
+    Menu, cssknow, Add, calc：属性计算器，适合 position 居中解决方案, CssHandler2
 
     Menu, CssMenu, Add, css.debugger, CssHandler2
     Menu, CssMenu, Add, normalize.css, CssHandler2
     Menu, CssMenu, Add, chrome-yellow, CssHandler2
     Menu, CssMenu, Add, px2rem, CssHandler2
     Menu, CssMenu, Add, css.placeholder, CssHandler2
-    Menu, CssMenu, Add, css.animate, CssHandler2
+    Menu, CssMenu, Add, css.animate 语法和格式, CssHandler
+    Menu, CssMenu, Add, animate的钩子：webkitAnimationEnd, CssHandler
+    
+    Menu, CssMenu, Add, 
+    Menu, CssMenu, Add, 
+    
+    Menu, CssMenu, Add, (=・ω・=)css认知系列, :cssknow
     Menu, CssMenu, Add, function.scss, CssHandler2
     Menu, CssMenu, Add, utils.scss, CssHandler2
     Menu, CssMenu, Add, g.min.css, CssHandler2
     Menu, CssMenu, Add, layout.css, CssHandler2
-    Menu, CssMenu, Add, (=・ω・=)css认知系列, :cssknow
+    Menu, CssMenu, Add, transition.css, CssHandler
+    
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -115,6 +123,142 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+
+if (v == "animate的钩子：webkitAnimationEnd") {
+Var =
+(
+dom.addEventListener("webkitAnimationEnd", function() {
+   
+})
+)
+}
+
+if (v == "transition.css") {
+Var =
+(
+.point {
+    display: inline-block;
+    position: relative;
+    vertical-align: baseline;
+}
+
+.point:after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 80px;
+    height: 80px;
+    border-radius: 50`%;
+    background: #3cb371;
+    top: calc(50`% - 40px);
+    left: calc(50`% - 40px);
+    transform: scale(0);
+    will-change: transform, opacity;
+    opacity: 0
+}
+
+.point.changing:after {
+    animation: emph 1.25s;
+}
+
+@keyframes emph {
+    20`% {
+        transform: none;
+        opacity: .5
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.2)
+    }
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+
+  // 补丁
+  &.has-under-text::after {
+    top: 98`%;
+  }
+
+  // active补丁
+  &.is-active::after {
+    content: '';
+    position: absolute;
+    width: 100`%;
+    height: 2px;
+    left: 0;
+    transform: scaleX(1);
+    background-color: #fff;
+  }
+}
+
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100`%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #fff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hover-shadow-box-animation {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  transition-duration: 0.3s;
+  transition-property: box-shadow, transform;
+}
+
+.hover-shadow-box-animation:hover,
+.hover-shadow-box-animation:focus,
+.hover-shadow-box-animation:active {
+  box-shadow: 1px 10px 10px -10px rgba(0, 0, 24, 0.5);
+  transform: scale(1.2);
+}
+
+@keyframes Pulse {
+  0`% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+
+  50`% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+
+  100`% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+}
+)
+}
+
+if (v == "calc：属性计算器，适合 position 居中解决方案") {
+Var =
+(
+position: absolute;
+width: 80px;
+height: 80px;
+top: calc(50`% - 40px);
+left: calc(50`% - 40px);
+will-change: transform, opacity;
 )
 }
 
@@ -311,31 +455,8 @@ body {
 }
 
 
-if (v == "css.animate") {
-Var =
-(
-.banner1__earth--img {
-	width: 655px;
-	height: 660px;
-    animation: Pulse 3.5s infinite ease;
-}
-
-
-@-webkit-keyframes Pulse {
-    0`% {
-      -webkit-transform: translateY(0px);
-              transform: translateY(0px);
-    }
-    50`% {
-      -webkit-transform: translateY(-30px);
-              transform: translateY(-30px);
-    }
-    100`% {
-      -webkit-transform: translateY(0px);
-              transform: translateY(0px);
-    }
-}
-)
+if (v == "css.animate 语法和格式") {
+_send("css.animate", true, true)
 }
 
 
@@ -3471,6 +3592,7 @@ if (hasClass(dom, 'changing')) {
   removeClass(dom, 'changing')
 } else {
   addClass(dom, 'changing')
+  addClass(dom, 'point')
   dom.addEventListener("webkitAnimationEnd", function() {
       removeClass(dom, 'changing')
   })
@@ -3479,4 +3601,33 @@ if (hasClass(dom, 'changing')) {
 
 )
 txtit(Var)
+return
+
+::css.animate::
+::animate::
+Var =
+(
+.banner1__earth--img {
+	width: 655px;
+	height: 660px;
+    animation: Pulse 3.5s infinite ease;
+}
+
+
+@-webkit-keyframes Pulse {
+    0`% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+    }
+    50`% {
+      -webkit-transform: translateY(-30px);
+              transform: translateY(-30px);
+    }
+    100`% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+    }
+}
+)
+code(Var)
 return

@@ -2089,7 +2089,7 @@ return
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
-.addEventListener('click', (e) => {
+.addEventListener('click', e => {
     console.log(%t%, e.target)
 })
 )
@@ -2818,10 +2818,7 @@ $('.trajectoryTable').autoScroll('fuckyou')
 code(Var)
 return
 
-::animate::
-::animated::
 ::$.animate::
-::$.animated::
 Var =
 (
 $('#trajectoryUl').animate({ scrollTop: '40px' }, 1500);

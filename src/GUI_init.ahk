@@ -288,6 +288,7 @@ Gui, Pandora:Add, Text, gxuanliyanhua W160,新建点击绚丽烟花效果.html
 Gui, Pandora:Add, Text, gmaoboli W160,新建毛玻璃.html
 Gui, Pandora:Add, Text, gwangyejindutiao W160,新建网页进度条.html
 Gui, Pandora:Add, Text, gemphhtml W160,新建更新提示波动图.html
+Gui, Pandora:Add, Text, gautowidth W160,新建input动态宽度.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
@@ -331,7 +332,7 @@ Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/logi
 Gui, Pandora:Add, Text,  W140 ys, 12345大数据屏（vue）
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
-Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">v0</a>
+Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com:6080/#/overallSituation">v0</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v1.dgdatav.com:6080/#/dg/overallSituation">v1</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/">v2</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
@@ -633,6 +634,7 @@ Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/tutorial">jointjs
 
 Gui, Pandora:Add, Text, W140 Section xs yp+50, nodejs cms：
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repos/NodeJS/CMS">NodeJS/CMS</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/doramart/DoraCMS">（推荐）DoraCMS</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/awesome-javascript#node-powered-cms-frameworks">（推荐）powered-cms</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/NodeBB/NodeBB">NodeBB</a>
 Gui, Pandora:Add, Link,, <a href="https://www.graphql.com/">graphql</a>

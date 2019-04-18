@@ -11,6 +11,7 @@
     Menu, utilsIs, Add, isPromise, utilsHandler
     Menu, utilsIs, Add, isNaN, utilsHandler
     Menu, utilsIs, Add, isNodeList, utilsHandler
+    Menu, utilsIs, Add, isHtml：div instanceof HTMLElement, utilsHandler
     Menu, utilsIs, Add, 判断是否为数字：!isNaN(+params.id), utilsHandler
 
 
@@ -202,6 +203,7 @@
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     
+    Menu, utilsmy, Add, input动态宽度, utilsHandler
     Menu, utilsmy, Add, exclude: 从对象中排除某个属性, utilsHandler
     Menu, utilsmy, Add, pureMap：纯洁无害的map函数, utilsHandler
     Menu, utilsmy, Add, chunk 数组分块函数, utilsHandler
@@ -228,7 +230,7 @@
     Menu, utilsjuran, Add, holder占位图, utilsHandler
     Menu, utilsjuran, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
     
-    
+    Menu, utilsmaybe, Add, 数字格式化函数：numberFormatter(11923.4521`, 2) => 12.02k, utilsHandler
     Menu, utilsmaybe, Add, 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug, utilsHandler
     Menu, utilsmaybe, Add, Android 输入法键盘 和 input 问题:scrollIntoViewIfNeeded, utilsHandler
     Menu, utilsmaybe, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
@@ -279,7 +281,7 @@
     Menu, utilsMenu, Add, , utilsHandler
     
     Menu, utilsMenu, Add, !!Σ(゜Д゜) 居然还有这种操作？ Σ(ﾟдﾟ;), :utilsjuran
-    Menu, utilsMenu, Add, ╮(￣▽￣)╭ 没准将来会有用呢？ ╮(￣▽￣)╭, :utilsmaybe
+    Menu, utilsMenu, Add, ╮(￣▽￣)╭ 先收起来再说，没准将来会有用呢？ ╮(￣▽￣)╭, :utilsmaybe
  
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -347,6 +349,94 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "input动态宽度") {
+Var = 
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    #test {
+        min-width: 160px;
+    }
+    </style>
+</head>
+
+<body>
+    <input type="text" id='test'>
+    <div id='test2'></div>
+</body>
+<script>
+
+const autoWidth = input => {
+    // valiteda the input type
+    if (input instanceof HTMLInputElement === false) 
+        // target must be a input element
+        return console.warn('target must be a input element')
+
+    // function
+    const setWidth = e => {
+        // self or target
+        const { style, value } = e.target || e
+        // set the width style
+        style.width = value.length + 'em'
+    }
+
+    // init
+    setWidth(input)
+
+    // event
+    input.addEventListener('input', setWidth)
+}
+
+// 获取input
+const target = document.querySelector('#test')
+
+// 设置自动根据文本提高宽度
+autoWidth(target)
+
+</script>
+
+</html>
+)
+}
+
+if (v == "isdom：div instanceof HTMLElement") {
+Var = 
+(
+return div instanceof HTMLElement
+)
+}
+
+
+if (v == "数字格式化函数：numberFormatter(11923.4521, 2) => 12.02k") {
+Var = 
+(
+/* 数字 格式化*/
+export function numberFormatter(num, digits) {
+  const si = [
+    { value: 1E18, symbol: 'E' },
+    { value: 1E15, symbol: 'P' },
+    { value: 1E12, symbol: 'T' },
+    { value: 1E9, symbol: 'G' },
+    { value: 1E6, symbol: 'M' },
+    { value: 1E3, symbol: 'k' }
+  ]
+  for (let i = 0; i < si.length; i++) {
+    if (num >= si[i].value) {
+      return (num / si[i].value + 0.1).toFixed(digits).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, '$1') + si[i].symbol
+    }
+  }
+  return num.toString()
+}
 )
 }
 
