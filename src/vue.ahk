@@ -70,7 +70,7 @@
   Menu, vuesolution, Add, click-outside 指令, VueHandler
   Menu, vuesolution, Add, 组件复用的新套路: 合并配置，来代替mixin方案, VueHandler
   Menu, vuesolution, Add, 波浪效果组件, VueHandler
-  Menu, vuesolution, Add, 波浪效果指令, VueHandler
+  Menu, vuesolution, Add, 波浪效果指令：v-waves, VueHandler
   Menu, vuesolution, Add, NProgress页面加载组件, VueHandler
   Menu, vuesolution, Add, 宇宙流星雨canvas, VueHandler
   Menu, vuesolution, Add, $.scrollforevery 无缝滚动（Vue版本）, VueHandler
@@ -707,7 +707,7 @@ Vue.use(vueWaves)
 )
 }
 
-if (v == "波浪效果指令") {
+if (v == "波浪效果指令：v-waves") {
 url := "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/waves.zip"
 name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 FileCreateDir, %name%

@@ -1,4 +1,45 @@
-﻿::IIFEi::
+﻿::findobj::
+Var =
+(
+const findObj  = (obj, condition) => {
+  for (let [key, ele] of Object.entries(obj)) {
+      if (condition(key, ele)) {
+        return ele
+      }
+  }
+}
+)
+code(Var)
+return
+
+::mydata::
+Var =
+(
+myData () {
+    this.loading = true
+    this.$store.dispatch('Collection/collectIndex', {
+      queryType: 2,
+      le_synStartTime: this.starttime,
+      ge_synStartTime: this.endtime,
+      size: 10,
+      page: this.page,
+    }).then(({ message, code, data } = {}) => {
+      this.loading = false
+      if (code === 200) {
+        for (let [key, ele] of Object.entries(data)) {
+            this.items[key].count = ele
+        }
+      } else {
+        this.$message(message || '数据异常')
+      }
+    }).catch(err => {
+      this.loading = false
+    });
+)
+code(Var)
+return
+
+::IIFEi::
 ::iifet::
 ::iifetimer::
 ::iifetimeri::
@@ -2040,7 +2081,25 @@ Var =
 // moment(new Date()).format('YYYY/MM/DD HH:mm:ss')
 // moment.isMoment(obj);
 // moment('fuckyou').isValid()
-moment('%t%').format('YYYY/MM/DD HH:mm:ss')
+
+/*
+// get a moment for start
+const startMoment = moment()
+// get a moment for end
+const endMoment = moment()
+
+// set today start
+startMoment.set({'hour': 0, 'minute': 0, 'second': 0})
+// set today end
+endMoment.set({'hour': 23, 'minute': 59, 'second': 59})
+ */
+
+ /* 
+ startMoment.subtract(1, 'days')
+ endMoment.subtract(1, 'days')
+  */
+
+moment('2019/04/19 10:33:19').format('YYYY/MM/DD HH:mm:ss')
 )
 code(Var)
 return
@@ -5390,6 +5449,7 @@ return
 ::hanshuhuancun::
 ::hanshucache::
 ::funcache::
+::fncache::
 ::memoized::
 ::canshuhuancun::
 ::paramhuancun::

@@ -303,6 +303,7 @@
     Menu, utilsMenu, Add, memoized 函数缓存, utilsHandler
     Menu, utilsMenu, Add, timeChunk 分时分批处理函数 , utilsHandler
     Menu, utilsMenu, Add, compose 函数组合, utilsHandler
+    Menu, utilsMenu, Add, memoized：函数缓存器, utilsHandler
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -352,6 +353,10 @@ Var =
 )
 }
 
+if (v == "memoized：函数缓存器") {
+_send("fncache", true, true)
+return
+}
 
 if (v == "input动态宽度") {
 Var = 
