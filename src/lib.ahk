@@ -90,6 +90,8 @@ _sendinput(v, isSendLevel = false) {
     SendInput, % v
 }
 
+
+
 ;^!g::
 ;GitBy(Clipboard)
 ;return
@@ -265,3 +267,21 @@ For key, value in pidary {
 }
 return
 
+psdit(url, otherCommand = "") {
+ ; 找到最后一个/的位置
+ index := InStr(url, "/", false, 0) + 1
+ ; zip名字
+ zipname := SubStr(url, index)
+ ; 去除后缀
+ suffixIndex := InStr(zipname, ".", false, 1) - 1
+ ; 由于要使用git命令，所以要将window格式转化为unix格式的路径
+ desk := StrReplace(A_Desktop, "\", "/")
+ ; 文件夹的名字
+ name := desk . "/" . SubStr(zipname, 1, suffixIndex) . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+ command = 
+ (
+ mkdir %name% ; cd %name% ; Invoke-WebRequest -uri "%url%" -OutFile "%zipname%" ; Expand-Archive -Path %zipname% -DestinationPath . ; rm %zipname% ; %otherCommand%
+ )
+ run, powershell.exe %command%
+ RunBy(name)
+}

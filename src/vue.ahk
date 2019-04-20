@@ -18,6 +18,7 @@
   Menu, vuewatch, Add, vue.watch-deep-$route, VueHandler
 
   Menu, VueMenu, Add, vue.init, VueHandler
+  Menu, VueMenu, Add, vue3-template脚手架, VueHandler
   Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
   Menu, VueMenu, Add, css-scoped深度作用选择器：>>>（css） 与 /deep/（sass）, VueHandler
   Menu, VueMenu, Add, :style='{}' 表达式, VueHandler
@@ -79,6 +80,7 @@
   Menu, vuesolution, Add, 宇宙流星雨canvas, VueHandler
   Menu, vuesolution, Add, $.scrollforevery 无缝滚动（Vue版本）, VueHandler
   Menu, vuesolution, Add, el-menu简易封装, VueHandler
+  Menu, vuesolution, Add, npm rebuild node-sass, VueHandler
   
   
   Menu, VueMenu, Add, Vue 解决方案和组件, :vuesolution
@@ -96,6 +98,19 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "npm rebuild node-sass") {
+Var = 
+(
+npm rebuild node-sass
+)
+}
+
+if (v == "vue3-template脚手架") {
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue3-template.zip", "yarn `; npm rebuild node-sass `; npm run dev")
+return
 }
 
 if (v == "el-menu简易封装") {
