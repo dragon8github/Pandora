@@ -105,6 +105,7 @@ RunBy(name) {
     Run, %myIdea% %name%
 }
 
+
 ; a := RunWaitOne("node -v")
 ; MsgBox, % a
 RunWaitOne(command) {
@@ -115,6 +116,7 @@ RunWaitOne(command) {
     ; 读取并返回命令的输出
 	return exec.StdOut.ReadAll()
 }
+
 
 ; 下载内容
 ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")

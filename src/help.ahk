@@ -1190,3 +1190,30 @@ oracle
 )
 code(Var)
 return
+
+::ahkpwshell::
+::ahkpowsershell::
+::ahkpw::
+::ahkpws::
+::ahkshell::
+Var =
+(
+; zip名字
+zipname := "vue3-template.zip"
+; 文件夹名字
+zippath := "./vue3-template"
+; 下载文件的地址
+url := "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue3-template.zip"
+; 由于要使用git命令，所以要将window格式转化为unix格式的路径
+desk := StrReplace(A_Desktop, "\", "/")
+; 文件夹的名字
+name := desk . "/vue3_template_" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+; 一系列命令 
+command = 
+(
+mkdir `%name`% ; cd `%name`% ; Invoke-WebRequest -uri "`%url`%" -OutFile "`%zipname`%" ; Expand-Archive -Path `%zipname`% -DestinationPath . ; rm `%zipname`%
+`)
+run, powershell.exe `%command`%
+)
+code(Var)
+return

@@ -165,6 +165,8 @@
 	    
     Menu, ShellMenu, Add, PowserShell 压缩（必须有文件才成立）, ShellHandler3
     Menu, ShellMenu, Add, PowserShell 解压, ShellHandler3
+	Menu, ShellMenu, Add, PowserShell 下载：Invoke-WebRequest, ShellHandler3
+	
 	
 	Menu, ShellMenu, Show
 	Menu, ShellMenu, DeleteAll
@@ -915,6 +917,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "PowserShell 下载：Invoke-WebRequest") {
+Var = 
+(
+Invoke-WebRequest -uri "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue3-template.zip" -OutFile "vue3-template.zip"
 )
 }
 
