@@ -49,6 +49,9 @@ __SEARCH_DATABASE__["php-fpm"] := "/usr/local/bin/php-fpm"
 __SEARCH_DATABASE__["Nginx"] := "/usr/local/nginx/sbin/nginx"
 __SEARCH_DATABASE__["nginx html"] := "/usr/local/nginx/html/"
 __SEARCH_DATABASE__["php.ini"] := "/usr/local/php/php.ini"
+__SEARCH_DATABASE__["dataZ"] := "C:\Users\Lee\Desktop\dataZ"
+
+
 
 ; 创建含名称和大小两列的 ListView:
 Gui, ISearch:Add, ListView, r7 w600 h400 gMyListView AltSubmit Section xs yp+40, Name|Path

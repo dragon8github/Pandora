@@ -92,10 +92,10 @@
 	Menu, gitShellMenu, Add,	
 	
 	Menu, gitShellMenu, Add, git branch -a # 查看所有分支 , ShellHandler2
-	Menu, gitShellMenu, Add, git branch -d <分支名> # 删除本地分支 , ShellHandler2
-	Menu, gitShellMenu, Add, git push origin --delete <远程分支名> # 删除远程分支 , ShellHandler2
-	Menu, gitShellMenu, Add, git branch -b <分支名> # 新建分支并且切换到该分支 , ShellHandler2
-	
+	Menu, gitShellMenu, Add, git branch -d develop # 删除本地分支 , ShellHandler2
+	Menu, gitShellMenu, Add, git push origin --delete develop # 删除远程分支 , ShellHandler2
+	Menu, gitShellMenu, Add, git checkout -b develop # 新建分支并且切换到该分支 , ShellHandler2
+	Menu, gitShellMenu, Add, git push origin develop # 将本地分支提交到远程, ShellHandler2
 	Menu, gitShellMenu, Add,
 	Menu, gitShellMenu, Add,	
 	

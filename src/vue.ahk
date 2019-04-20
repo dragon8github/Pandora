@@ -44,19 +44,23 @@
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
+    
+  Menu, vuerouterhock, Add, 组件钩子beforeRouteLeave, VueHandler
+  Menu, vuerouterhock, Add, 组件钩子beforeRouteEnter, VueHandler
+  Menu, vuerouterhock, Add, 全局钩子router.afterEach, VueHandler
+  Menu, vuerouterhock, Add, 全局钩子router.beforeEach, VueHandler
   
   Menu, VueMenu, Add, router.init, VueHandler
+  
   Menu, VueMenu, Add, 获取参数this.$route.params.id, VueHandler
   Menu, VueMenu, Add, this.$router.push('index'), VueHandler
   Menu, VueMenu, Add, this.$router.back(), VueHandler
   Menu, VueMenu, Add, this.$router.currentRoute.meta.step, VueHandler
-  
+  Menu, VueMenu, Add, router路由钩子大全, :vuerouterhock  
   Menu, VueMenu, Add, <router-view></router-view>, VueHandler
   Menu, VueMenu, Add, <router-link></router-link>, VueHandler
-  Menu, VueMenu, Add, 组件钩子beforeRouteLeave, VueHandler
-  Menu, VueMenu, Add, 组件钩子beforeRouteEnter, VueHandler
-  Menu, VueMenu, Add, 全局钩子router.afterEach, VueHandler
-  Menu, VueMenu, Add, 全局钩子router.beforeEach, VueHandler
+  
+  
   Menu, VueMenu, Add, 路由 Layout 布局示例, VueHandler
   Menu, VueMenu, Add, 动态路由：router.addRoutes, VueHandler
   Menu, VueMenu, Add, next() 的三种参数形态, VueHandler
@@ -1167,66 +1171,8 @@ destroyed () {}
 
 
 if (v == "router.init") {
-Var = 
-(
-import Vue from 'vue'
-import Router from 'vue-router'
-import store from '../store'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
-
-Vue.use(Router)
-
-// layoutA
-const layoutA = r => require.ensure([], () => r(require('@/layout/layoutA')), 'layoutA')
-// 首页
-const Home = r => require.ensure([], () => r(require('@/pages/Home')), 'Home')
-
-// layoutB
-const layoutB = r => require.ensure([], () => r(require('@/layout/layoutB')), 'layoutB')
-// 数据采集
-const Collection = r => require.ensure([], () => r(require('@/pages/Collection')), 'Collection')
-
-// 路由配置
-var router = new Router({
-  mode: 'history',
-  routes: [
-	// 重定向首页
-	{ path: '/', redirect: '/dg/Home' },
-	// layoutA
-	{ path: '/dg', component: layoutA, children: [
-		// 重定向数据中心
-		{ path: '/', redirect: 'Home' },
-		// 数据中心
-		{ path: 'Home', name: 'Home', meta: { title: '数据中心' }, component: Home },
-	]},
-	// layoutB
-	{ path: '/am', component: layoutB, children: [
-		// 重定向数据采集
-		{ path: '/', redirect: 'Collection' },
-		// 数据采集
-		{ path: 'Collection', name: 'Collection', meta: { title: '数据采集' }, component: Collection },
-	]},
-  ]
-})
-
-router.beforeEach((to, from, next) => {
-	// page-loading  启动
-	NProgress.start()
-	// 更新 vuex 状态 - 标题
-	store.dispatch('SET_TITLE', to.meta.title + ' - 欢迎来到东莞市教育数据中心！')
-    // 放行页面
-    next()
-})
-
-// 全局路由钩子
-router.afterEach((to, from) => {
-	// page-loading 关闭
-	NProgress.done()
-})
-
-export default router
-)
+_send("router.init", true, true)
+return
 }
 
 
@@ -1577,84 +1523,58 @@ Var =
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 Vue.use(Router)
 
-// 总体情况
-const overallSituation = r => require.ensure([], () => r(require('@/pages/overallSituation/index.vue')), 'overallSituation')
-// 列表页面
-const list = r => require.ensure([], () => r(require('@/pages/list/index.vue')), 'list')
-// 部门看板
-const departmental = r => require.ensure([], () => r(require('@/pages/departmental/index.vue')), 'departmental')
-// 镇街看板
-const townStreet = r => require.ensure([], () => r(require('@/pages/townStreet/index.vue')), 'townStreet')
-// 事项分类
-const matters = r => require.ensure([], () => r(require('@/pages/matters/index.vue')), 'matters')
-// 专题看板
-const theme = r => require.ensure([], () => r(require('@/pages/theme/index.vue')), 'theme')
-// 专题看板 > 城市管理
-const cityManagement = r => require.ensure([], () => r(require('@/pages/theme/children_pages/cityManagement/index.vue')), 'cityManagement')
-// 专题看板 > 行政效能
-const efficiency = r => require.ensure([], () => r(require('@/pages/theme/children_pages/efficiency/index.vue')), 'efficiency')
-// 专题看板 > 环境保护
-const environmentalProtection = r => require.ensure([], () => r(require('@/pages/theme/children_pages/environmentalProtection/index.vue')), 'environmentalProtection')
-// 专题看板 > 交通管理
-const trafficControl = r => require.ensure([], () => r(require('@/pages/theme/children_pages/trafficControl/index.vue')), 'trafficControl')
-// 专题看板 > 地图看板
-const map = r => require.ensure([], () => r(require('@/pages/themeMap/index.vue')), 'map')
+// layoutA
+const layoutA = r => require.ensure([], () => r(require('@/layout/layoutA')), 'layoutA')
+// 首页
+const Home = r => require.ensure([], () => r(require('@/pages/Home')), 'Home')
+
+// layoutB
+const layoutB = r => require.ensure([], () => r(require('@/layout/layoutB')), 'layoutB')
+// 数据采集
+const Collection = r => require.ensure([], () => r(require('@/pages/Collection')), 'Collection')
 
 // 路由配置
 var router = new Router({
-  // 哈希模式
-  mode: 'hash',
-  // 路由导航
+  mode: 'history',
+  scrollBehavior: () => ({ y: 0 }),
   routes: [
-    // 首页 > 重定向 > 总体情况
-    { path: '/', redirect: '/overallSituation' },
-    // 总体情况
-    { path: '/overallSituation', name: 'overallSituation', meta: { title: '总体情况' }, component: overallSituation },
-    // 列表页面
-    { path: '/list', name: 'list', meta: { title: '详情明细' }, component: list },
-    // 部门看板
-    { path: '/departmental', name: 'departmental', meta: { title: '部门看板' }, component: departmental },
-    // 镇街看板
-    { path: '/townStreet', name: 'townStreet', meta: { title: '镇街看板' }, component: townStreet },
-    // 事项分类
-    { path: '/matters', name: 'matters', meta: { title: '事项分类' }, component: matters },
-    // 专题看板 > 重定向 > 城市管理
-    { path: '/theme/', redirect: '/theme/cityManagement' },
-    // 专题看板
-    { path: '/theme', name: 'theme', meta: { title: '专题看板' }, component: theme, children: [
-        // 专题看板 > 城市管理
-        { path: 'cityManagement', name: 'cityManagement', meta: { title: '城市管理' }, component: cityManagement },
-        // 专题看板 > 行政效能
-        { path: 'efficiency', name: 'efficiency', meta: { title: '行政效能' }, component: efficiency },
-        // 专题看板 > 环境保护
-        { path: 'environmentalProtection', name: 'environmentalProtection', meta: { title: '环境保护' },component: environmentalProtection },
-        // 专题看板 > 交通管理
-        { path: 'trafficControl', name: 'trafficControl', meta: { title: '交通管理' }, component: trafficControl },
-        // 专题看板 > 地图看板
-        { path: 'map', name: 'map', meta: { title: '地图看板' }, component: map },
-        
-      ]
-    },
+	// 重定向首页
+	{ path: '/', redirect: '/dg/Home' },
+	// layoutA
+	{ path: '/dg', component: layoutA, children: [
+		// 重定向数据中心
+		{ path: '/', redirect: 'Home' },
+		// 数据中心
+		{ path: 'Home', name: 'Home', meta: { title: '数据中心' }, component: Home },
+	]},
+	// layoutB
+	{ path: '/am', component: layoutB, children: [
+		// 重定向数据采集
+		{ path: '/', redirect: 'Collection' },
+		// 数据采集
+		{ path: 'Collection', name: 'Collection', meta: { title: '数据采集' }, component: Collection },
+	]},
   ]
 })
 
+router.beforeEach((to, from, next) => {
+	// page-loading  启动
+	NProgress.start()
+	// 更新 vuex 状态 - 标题
+	store.dispatch('SET_TITLE', to.meta.title + ' - 欢迎来到东莞市教育数据中心！')
+    // 放行页面
+    next()
+})
 
 // 全局路由钩子
 router.afterEach((to, from) => {
-   
-})
-
-router.beforeEach((to, from, next) => {
-    // 前往页面
-    let _to = to.fullPath.toUrl()
-    // 来路页面
-    let _from = from.fullPath.toUrl()
-    // 设置标题
-    setTitle(to.meta.title)
-    // 放行页面
-    next()
+	// page-loading 关闭
+	NProgress.done()
 })
 
 export default router
@@ -2559,6 +2479,46 @@ Var =
 SET_%a% (state, %OutputVar%) {
   state.%OutputVar% = %OutputVar%
 },
+)
+code(Var)
+return
+
+::vue.main::
+::vue.entry::
+::vue.main.js::
+Var =
+(
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import vueWaves from './directive/waves'
+import { maybe } from './utils/utils'
+
+import '@/scss/utils.scss'
+
+Vue.use(vueWaves)
+
+Vue.mixin({
+  methods: {
+	maybe,
+  }
+})
+
+new Vue({
+  render: h => h(App),
+  router,
+  store,
+}).$mount('#app')
+)
+code(Var)
+return
+
+::router-view::
+::route-view::
+Var =
+(
+<router-view></router-view>
 )
 code(Var)
 return

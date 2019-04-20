@@ -116,7 +116,6 @@ RunWaitOne(command) {
 	return exec.StdOut.ReadAll()
 }
 
-
 ; 下载内容
 ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
 {
