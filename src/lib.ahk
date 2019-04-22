@@ -278,10 +278,25 @@ psdit(url, otherCommand = "") {
  desk := StrReplace(A_Desktop, "\", "/")
  ; 文件夹的名字
  name := desk . "/" . SubStr(zipname, 1, suffixIndex) . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+ ; 核心命令 
  command = 
  (
  mkdir %name% ; cd %name% ; Invoke-WebRequest -uri "%url%" -OutFile "%zipname%" ; Expand-Archive -Path %zipname% -DestinationPath . ; rm %zipname% ; %otherCommand%
  )
+ ; 使用pw执行
  run, powershell.exe %command%
- RunBy(name)
+ ; 打开文件夹
+ run, % name
 }
+
+
+::ahkurl::
+::ahktemplate::
+::ahktmp::
+::ahkgithub::
+Var =
+(
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue3-template.zip", "yarn `; npm rebuild node-sass `; npm run dev")
+)
+code(Var)
+return

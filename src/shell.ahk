@@ -106,6 +106,8 @@
 	Menu, gitShellMenu, Add,	
 	
 	Menu, gitShellMenu, Add, git mergetool, ShellHandler
+	Menu, gitShellMenu, Add, git init && git checkout -b test && git checkout -b develop, ShellHandler2
+	
 	
 
 	Menu, ShellMenu, Add, #!/bin/bash（通过echo $SHELL确定）, ShellHandler
@@ -1078,4 +1080,13 @@ Var =
 find / -iname "nginx"
 )
 code(Var)
+return
+
+::git fuck::
+::fuck git::
+Var =
+(
+git init && git checkout -b test && git checkout -b develop
+)
+_send(Var)
 return

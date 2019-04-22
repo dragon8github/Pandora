@@ -1,6 +1,19 @@
 ﻿!s::
+    Menu, CsstransformHandler, Add, 上下翻滚：transform: rotateX(180deg), CssHandler
+    Menu, CsstransformHandler, Add, 左右翻滚：transform: rotateY(180deg), CssHandler
+    Menu, CsstransformHandler, Add, 原地旋转倒立：transform: rotate(180deg), CssHandler
+    
+    Menu, CsstransformHandler, Add, 
+    Menu, CsstransformHandler, Add, 
+    
+    Menu, CsstransformHandler, Add, transform: translate(-50`%`, -50`%), CssHandler
+    Menu, CsstransformHandler, Add, transform: translateY(-50`%), CssHandler
+    Menu, CsstransformHandler, Add, transform: translateX(-50`%), CssHandler   
+        
+
     Menu, cssknow, Add, currentColor 当前字体颜色, CssHandler2
     Menu, cssknow, Add, calc：属性计算器，适合 position 居中解决方案, CssHandler2
+    Menu, cssknow, Add, 背景透明还可以这样用：background: 0 0, CssHandler2
 
     Menu, CssMenu, Add, css.debugger, CssHandler2
     Menu, CssMenu, Add, normalize.css, CssHandler2
@@ -19,10 +32,7 @@
     Menu, CssMenu, Add, g.min.css, CssHandler2
     Menu, CssMenu, Add, layout.css, CssHandler2
     Menu, CssMenu, Add, transition.css, CssHandler
-    
-    
-    Menu, CssMenu, Add, 
-    Menu, CssMenu, Add, 
+    Menu, CssMenu, Add, transform系列, :CsstransformHandler
     
     Menu, cssoptimization, Add, 利用 translateZ(0) 提升速度, CssHandler
     Menu, cssoptimization, Add, will-change 代替 translate3D 优化, CssHandler
@@ -33,6 +43,7 @@
     Menu, Csssolution, Add, display: table 自动对齐策略, CssHandler
     Menu, Csssolution, Add, Calc()与background-position数学表达式, CssHandler
     Menu, Csssolution, Add, 三个DVI的Bouncing loader, CssHandler
+    Menu, Csssolution, Add, dataV三个元素实现的loading, CssHandler
     Menu, Csssolution, Add, 恒定宽高比, CssHandler
     Menu, Csssolution, Add, display:table垂直居中, CssHandler
     Menu, Csssolution, Add, 高度从0到auto的伸缩特效魔法, CssHandler
@@ -44,30 +55,22 @@
     Menu, Csssolution, Add, 不断闪闪发光的动画, CssHandler
     Menu, Csssolution, Add, 页面阅读进度条, CssHandler
     Menu, Csssolution, Add, 更新提示波动图:point, CssHandler
+    Menu, Csssolution, Add, 纯css下划线或上划线解决方案, CssHandler
+    Menu, Csssolution, Add, flex + column + flex: 1 全屏高度解决方案, CssHandler
+    Menu, Csssolution, Add, 纯css实现maquee 无缝轮播, CssHandler
+    Menu, Csssolution, Add, 不断一闪而过的顶部进度条loading, CssHandler
+    Menu, Csssolution, Add, DNA-loading, CssHandler
+    Menu, Csssolution, Add, DataV-DNA-loading, CssHandler
+    Menu, Csssolution, Add, 太空漫游404解决方案, CssHandler
     
     
-
-
-    Menu, CssMenu, Add, 上下翻滚：transform: rotateX(180deg), CssHandler
-    Menu, CssMenu, Add, 左右翻滚：transform: rotateY(180deg), CssHandler
-    Menu, CssMenu, Add, 原地旋转倒立：transform: rotate(180deg), CssHandler
     
-    Menu, CssMenu, Add, 
-    Menu, CssMenu, Add, 
-    
-    Menu, CssMenu, Add, transform: translate(-50`%`, -50`%), CssHandler
-    Menu, CssMenu, Add, transform: translateY(-50`%), CssHandler
-    Menu, CssMenu, Add, transform: translateX(-50`%), CssHandler   
-        
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
     
     Menu, CssMenu, Add, ell, CssHandler2
     Menu, CssMenu, Add, loading..., CssHandler2
     Menu, CssMenu, Add, loading, CssHandler2
-    Menu, CssMenu, Add, center, CssHandler2
-    Menu, CssMenu, Add, ycenter, CssHandler2
-    Menu, CssMenu, Add, xcenter, CssHandler2
     Menu, CssMenu, Add, 舒服的字体样式font, CssHandler
     Menu, CssMenu, Add, 使用系统默认字体：System font stack, CssHandler
     Menu, CssMenu, Add, 挺好玩的代码字体：comic sans ms, CssHandler
@@ -82,6 +85,7 @@
     Menu, CssMenu, Add, css.box-shadown, CssHandler
     Menu, CssMenu, Add, 框型阴影, CssHandler
     Menu, CssMenu, Add, lit.css极简系列：btn, CssHandler
+    Menu, CssMenu, Add, datav.btn.css, CssHandler
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -124,6 +128,619 @@ if (v == "") {
 Var =
 (
 )
+}
+
+
+if (v == "太空漫游404解决方案") {
+Var =
+(
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/404.zip")
+)
+}
+
+if (v == "DataV-DNA-loading") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {}
+
+    :root {
+        --bg-color: #15181d;
+        --dot-color1: #ccc;
+        --dot-color2: #00baff;
+    }
+
+    body {
+        background: var(--bg-color);
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .dna {
+        width: 120px;
+        transform: translateY(-50`%);
+        perspective: 270px;
+        transform-style: preserve-3d;
+        letter-spacing: -5px
+    }
+
+    .dna:after {
+        letter-spacing: 5px;
+        display: block;
+        padding-top: 34px;
+        color: #aaa;
+        text-align: center;
+        content: 'loading...'
+    }
+
+    .ele {
+        width: 2px;
+        height: 2px;
+        display: inline-block;
+        animation: rotate 3s linear infinite;
+        transform: rotateX(-360deg) translateZ(0);
+        transform-style: preserve-3d;
+        margin-left: 0
+    }
+
+    .ele:nth-of-type(2n) .dot:before {
+        background: #00baff
+    }
+
+    .dot {
+        width: inherit;
+        height: inherit;
+        transform: translateZ(-7px);
+        transform-style: preserve-3d
+    }
+
+    .dot:before {
+        content: '';
+        width: inherit;
+        height: inherit;
+        display: block;
+        background: #aaa;
+        border-radius: 50`%;
+        animation: rotate 3s linear infinite reverse;
+        transform: rotateX(-360deg) translateZ(0)
+    }
+
+    .ele:nth-of-type(1), .ele:nth-of-type(1) .dot:before { animation-delay: -.1s } .ele:nth-of-type(1):nth-of-type(odd) { animation-delay: -1.6s } .ele:nth-of-type(2), .ele:nth-of-type(2) .dot:before { animation-delay: -.2s } .ele:nth-of-type(2):nth-of-type(odd) { animation-delay: -1.7s } .ele:nth-of-type(3), .ele:nth-of-type(3) .dot:before { animation-delay: -.3s } .ele:nth-of-type(3):nth-of-type(odd) { animation-delay: -1.8s } .ele:nth-of-type(4), .ele:nth-of-type(4) .dot:before { animation-delay: -.4s } .ele:nth-of-type(4):nth-of-type(odd) { animation-delay: -1.9s } .ele:nth-of-type(5), .ele:nth-of-type(5) .dot:before { animation-delay: -.5s } .ele:nth-of-type(5):nth-of-type(odd) { animation-delay: -2s } .ele:nth-of-type(6), .ele:nth-of-type(6) .dot:before { animation-delay: -.6s } .ele:nth-of-type(6):nth-of-type(odd) { animation-delay: -2.1s } .ele:nth-of-type(7), .ele:nth-of-type(7) .dot:before { animation-delay: -.7s } .ele:nth-of-type(7):nth-of-type(odd) { animation-delay: -2.2s } .ele:nth-of-type(8), .ele:nth-of-type(8) .dot:before { animation-delay: -.8s } .ele:nth-of-type(8):nth-of-type(odd) { animation-delay: -2.3s } .ele:nth-of-type(9), .ele:nth-of-type(9) .dot:before { animation-delay: -.9s } .ele:nth-of-type(9):nth-of-type(odd) { animation-delay: -2.4s } .ele:nth-of-type(10), .ele:nth-of-type(10) .dot:before { animation-delay: -1s } .ele:nth-of-type(10):nth-of-type(odd) { animation-delay: -2.5s } .ele:nth-of-type(11), .ele:nth-of-type(11) .dot:before { animation-delay: -1.1s } .ele:nth-of-type(11):nth-of-type(odd) { animation-delay: -2.6s } .ele:nth-of-type(12), .ele:nth-of-type(12) .dot:before { animation-delay: -1.2s } .ele:nth-of-type(12):nth-of-type(odd) { animation-delay: -2.7s } .ele:nth-of-type(13), .ele:nth-of-type(13) .dot:before { animation-delay: -1.3s } .ele:nth-of-type(13):nth-of-type(odd) { animation-delay: -2.8s } .ele:nth-of-type(14), .ele:nth-of-type(14) .dot:before { animation-delay: -1.4s } .ele:nth-of-type(14):nth-of-type(odd) { animation-delay: -2.9s } .ele:nth-of-type(15), .ele:nth-of-type(15) .dot:before { animation-delay: -1.5s } .ele:nth-of-type(15):nth-of-type(odd) { animation-delay: -3s } .ele:nth-of-type(16), .ele:nth-of-type(16) .dot:before { animation-delay: -1.6s } .ele:nth-of-type(16):nth-of-type(odd) { animation-delay: -3.1s } .ele:nth-of-type(17), .ele:nth-of-type(17) .dot:before { animation-delay: -1.7s } .ele:nth-of-type(17):nth-of-type(odd) { animation-delay: -3.2s } .ele:nth-of-type(18), .ele:nth-of-type(18) .dot:before { animation-delay: -1.8s } .ele:nth-of-type(18):nth-of-type(odd) { animation-delay: -3.3s } .ele:nth-of-type(19), .ele:nth-of-type(19) .dot:before { animation-delay: -1.9s } .ele:nth-of-type(19):nth-of-type(odd) { animation-delay: -3.4s } .ele:nth-of-type(20), .ele:nth-of-type(20) .dot:before { animation-delay: -2s } .ele:nth-of-type(20):nth-of-type(odd) { animation-delay: -3.5s } .ele:nth-of-type(21), .ele:nth-of-type(21) .dot:before { animation-delay: -2.1s } .ele:nth-of-type(21):nth-of-type(odd) { animation-delay: -3.6s } .ele:nth-of-type(22), .ele:nth-of-type(22) .dot:before { animation-delay: -2.2s } .ele:nth-of-type(22):nth-of-type(odd) { animation-delay: -3.7s } .ele:nth-of-type(23), .ele:nth-of-type(23) .dot:before { animation-delay: -2.3s } .ele:nth-of-type(23):nth-of-type(odd) { animation-delay: -3.8s } .ele:nth-of-type(24), .ele:nth-of-type(24) .dot:before { animation-delay: -2.4s } .ele:nth-of-type(24):nth-of-type(odd) { animation-delay: -3.9s } .ele:nth-of-type(25), .ele:nth-of-type(25) .dot:before { animation-delay: -2.5s } .ele:nth-of-type(25):nth-of-type(odd) { animation-delay: -4s } .ele:nth-of-type(26), .ele:nth-of-type(26) .dot:before { animation-delay: -2.6s } .ele:nth-of-type(26):nth-of-type(odd) { animation-delay: -4.1s } .ele:nth-of-type(27), .ele:nth-of-type(27) .dot:before { animation-delay: -2.7s } .ele:nth-of-type(27):nth-of-type(odd) { animation-delay: -4.2s } .ele:nth-of-type(28), .ele:nth-of-type(28) .dot:before { animation-delay: -2.8s } .ele:nth-of-type(28):nth-of-type(odd) { animation-delay: -4.3s } .ele:nth-of-type(29), .ele:nth-of-type(29) .dot:before { animation-delay: -2.9s } .ele:nth-of-type(29):nth-of-type(odd) { animation-delay: -4.4s } .ele:nth-of-type(30), .ele:nth-of-type(30) .dot:before { animation-delay: -3s } .ele:nth-of-type(30):nth-of-type(odd) { animation-delay: -4.5s } .ele:nth-of-type(31), .ele:nth-of-type(31) .dot:before { animation-delay: -3.1s } .ele:nth-of-type(31):nth-of-type(odd) { animation-delay: -4.6s } .ele:nth-of-type(32), .ele:nth-of-type(32) .dot:before { animation-delay: -3.2s } .ele:nth-of-type(32):nth-of-type(odd) { animation-delay: -4.7s } .ele:nth-of-type(33), .ele:nth-of-type(33) .dot:before { animation-delay: -3.3s } .ele:nth-of-type(33):nth-of-type(odd) { animation-delay: -4.8s } .ele:nth-of-type(34), .ele:nth-of-type(34) .dot:before { animation-delay: -3.4s } .ele:nth-of-type(34):nth-of-type(odd) { animation-delay: -4.9s } .ele:nth-of-type(35), .ele:nth-of-type(35) .dot:before { animation-delay: -3.5s } .ele:nth-of-type(35):nth-of-type(odd) { animation-delay: -5s } .ele:nth-of-type(36), .ele:nth-of-type(36) .dot:before { animation-delay: -3.6s } .ele:nth-of-type(36):nth-of-type(odd) { animation-delay: -5.1s } .ele:nth-of-type(37), .ele:nth-of-type(37) .dot:before { animation-delay: -3.7s } .ele:nth-of-type(37):nth-of-type(odd) { animation-delay: -5.2s } .ele:nth-of-type(38), .ele:nth-of-type(38) .dot:before { animation-delay: -3.8s } .ele:nth-of-type(38):nth-of-type(odd) { animation-delay: -5.3s } .ele:nth-of-type(39), .ele:nth-of-type(39) .dot:before { animation-delay: -3.9s } .ele:nth-of-type(39):nth-of-type(odd) { animation-delay: -5.4s } .ele:nth-of-type(40), .ele:nth-of-type(40) .dot:before { animation-delay: -4s } .ele:nth-of-type(40):nth-of-type(odd) { animation-delay: -5.5s } .ele:nth-of-type(41), .ele:nth-of-type(41) .dot:before { animation-delay: -4.1s } .ele:nth-of-type(41):nth-of-type(odd) { animation-delay: -5.6s } .ele:nth-of-type(42), .ele:nth-of-type(42) .dot:before { animation-delay: -4.2s } .ele:nth-of-type(42):nth-of-type(odd) { animation-delay: -5.7s } .ele:nth-of-type(43), .ele:nth-of-type(43) .dot:before { animation-delay: -4.3s } .ele:nth-of-type(43):nth-of-type(odd) { animation-delay: -5.8s } .ele:nth-of-type(44), .ele:nth-of-type(44) .dot:before { animation-delay: -4.4s } .ele:nth-of-type(44):nth-of-type(odd) { animation-delay: -5.9s } .ele:nth-of-type(45), .ele:nth-of-type(45) .dot:before { animation-delay: -4.5s } .ele:nth-of-type(45):nth-of-type(odd) { animation-delay: -6s } .ele:nth-of-type(46), .ele:nth-of-type(46) .dot:before { animation-delay: -4.6s } .ele:nth-of-type(46):nth-of-type(odd) { animation-delay: -6.1s } .ele:nth-of-type(47), .ele:nth-of-type(47) .dot:before { animation-delay: -4.7s } .ele:nth-of-type(47):nth-of-type(odd) { animation-delay: -6.2s } .ele:nth-of-type(48), .ele:nth-of-type(48) .dot:before { animation-delay: -4.8s } .ele:nth-of-type(48):nth-of-type(odd) { animation-delay: -6.3s } .ele:nth-of-type(49), .ele:nth-of-type(49) .dot:before { animation-delay: -4.9s } .ele:nth-of-type(49):nth-of-type(odd) { animation-delay: -6.4s } .ele:nth-of-type(50), .ele:nth-of-type(50) .dot:before { animation-delay: -5s } .ele:nth-of-type(50):nth-of-type(odd) { animation-delay: -6.5s } .ele:nth-of-type(51), .ele:nth-of-type(51) .dot:before { animation-delay: -5.1s } .ele:nth-of-type(51):nth-of-type(odd) { animation-delay: -6.6s } .ele:nth-of-type(52), .ele:nth-of-type(52) .dot:before { animation-delay: -5.2s } .ele:nth-of-type(52):nth-of-type(odd) { animation-delay: -6.7s } .ele:nth-of-type(53), .ele:nth-of-type(53) .dot:before { animation-delay: -5.3s } .ele:nth-of-type(53):nth-of-type(odd) { animation-delay: -6.8s } .ele:nth-of-type(54), .ele:nth-of-type(54) .dot:before { animation-delay: -5.4s } .ele:nth-of-type(54):nth-of-type(odd) { animation-delay: -6.9s } .ele:nth-of-type(55), .ele:nth-of-type(55) .dot:before { animation-delay: -5.5s } .ele:nth-of-type(55):nth-of-type(odd) { animation-delay: -7s } .ele:nth-of-type(56), .ele:nth-of-type(56) .dot:before { animation-delay: -5.6s } .ele:nth-of-type(56):nth-of-type(odd) { animation-delay: -7.1s } .ele:nth-of-type(57), .ele:nth-of-type(57) .dot:before { animation-delay: -5.7s } .ele:nth-of-type(57):nth-of-type(odd) { animation-delay: -7.2s } .ele:nth-of-type(58), .ele:nth-of-type(58) .dot:before { animation-delay: -5.8s } .ele:nth-of-type(58):nth-of-type(odd) { animation-delay: -7.3s } .ele:nth-of-type(59), .ele:nth-of-type(59) .dot:before { animation-delay: -5.9s } .ele:nth-of-type(59):nth-of-type(odd) { animation-delay: -7.4s } .ele:nth-of-type(60), .ele:nth-of-type(60) .dot:before { animation-delay: -6s } .ele:nth-of-type(60):nth-of-type(odd) { animation-delay: -7.5s }
+
+    @keyframes rotate {
+        to {
+            transform: none
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="dna">
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+        <div class="ele"> <div class="dot"></div> </div>
+    </div>
+</body>
+<script>
+$(function() {
+    console.log('hello world');
+});
+</script>
+
+</html>
+)
+}
+
+if (v == "DNA-loading") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+
+    }
+
+    :root {
+        --bg-color: #15181d;
+        --dot-color1: #ccc;
+        --dot-color2: #00baff;
+    }
+    body {
+        background: var(--bg-color);
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .dna {
+        width: 360px;
+        height: 70px;
+        perspective: 400px;
+        transform-style: preserve-3d;
+    }
+    .dna:after {
+        letter-spacing: 5px;
+        display: block;
+        padding-top: 100px;
+        color: #aaa;
+        text-align: center;
+        content: 'loading...';
+    }
+    .ele {
+        width: 1px;
+        height: 70px;
+        float: left;
+        margin: 0 8px;
+        border-left: 1px #B0B0B0 dashed;
+        position: relative;
+        transform: rotateX(-360deg);
+        animation: run 2s linear infinite;
+    }
+    .ele:before,
+    .ele:after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background: var(--dot-color1);
+        border-radius: 50`%;
+        position: absolute;
+        left: 50`%;
+        transform: translateX(-50`%);
+    }
+    .ele:before {
+        top: -2px;
+        background: var(--dot-color2);
+    }
+    .ele:after {
+        bottom: -2px;
+    }
+    .ele:nth-of-type(1) {
+        animation-delay: -0.15s;
+    }
+    .ele:nth-of-type(2) {
+        animation-delay: -0.3s;
+    }
+    .ele:nth-of-type(3) {
+        animation-delay: -0.45s;
+    }
+    .ele:nth-of-type(4) {
+        animation-delay: -0.6s;
+    }
+    .ele:nth-of-type(5) {
+        animation-delay: -0.75s;
+    }
+    .ele:nth-of-type(6) {
+        animation-delay: -0.9s;
+    }
+    .ele:nth-of-type(7) {
+        animation-delay: -1.05s;
+    }
+    .ele:nth-of-type(8) {
+        animation-delay: -1.2s;
+    }
+    .ele:nth-of-type(9) {
+        animation-delay: -1.35s;
+    }
+    .ele:nth-of-type(10) {
+        animation-delay: -1.5s;
+    }
+    .ele:nth-of-type(11) {
+        animation-delay: -1.65s;
+    }
+    .ele:nth-of-type(12) {
+        animation-delay: -1.8s;
+    }
+    .ele:nth-of-type(13) {
+        animation-delay: -1.95s;
+    }
+    .ele:nth-of-type(14) {
+        animation-delay: -2.1s;
+    }
+    .ele:nth-of-type(15) {
+        animation-delay: -2.25s;
+    }
+    .ele:nth-of-type(16) {
+        animation-delay: -2.4s;
+    }
+    .ele:nth-of-type(17) {
+        animation-delay: -2.55s;
+    }
+    .ele:nth-of-type(18) {
+        animation-delay: -2.7s;
+    }
+    .ele:nth-of-type(19) {
+        animation-delay: -2.85s;
+    }
+    .ele:nth-of-type(20) {
+        animation-delay: -3s;
+    }
+    @keyframes run {
+        to {
+            transform: none;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="dna">
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+        <div class="ele"></div>
+    </div>
+</body>
+<script>
+$(function() {
+    console.log('hello world');
+});
+</script>
+</html>
+)
+}
+
+if (v == "不断一闪而过的顶部进度条loading") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        background: #333;
+        overflow: hidden;
+    }
+
+    #app {
+
+    }
+
+    .loading-indicator {
+        position: absolute;
+        top: 40px;
+        z-index: 101;
+        left: 0;
+        width: 100`%;
+        height: 0;
+        transition: height .5s;
+        background: -webkit-gradient(linear,80`% 46`%,10`% 21`%,from(#ff8754),to(#00baff));
+        animation: ladingAnimation 1s infinite ease-out;
+    }
+
+    .loading-indicator.loading {
+        height: 1px;
+    }
+
+    @-webkit-keyframes ladingAnimation {
+        0`% {
+            transform: translateX(-100`%);
+        }
+
+        100`% {
+            transform: translateX(150`%);
+        }
+    }
+
+    
+    </style>
+</head>
+
+<body>
+   <div class="loading-indicator loading"></div> 
+</body>
+<script>
+$(function() {
+    console.log('hello world');
+});
+</script>
+</html>
+)
+}
+
+if (v == "dataV三个元素实现的loading") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Document</title>
+</head>
+<style>
+body, html {
+	background: #333;
+}
+
+.datav-loading {
+    width: 100`%;
+    height: 100`%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #aaa;
+}
+
+.datav-loading .loading-icon.validating:nth-child(1) {
+    -webkit-animation-delay: .25s;
+    animation-delay: .25s;
+}
+
+.datav-loading .loading-icon.validating:nth-child(2) {
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+
+.datav-loading .loading-icon.validating {
+    -webkit-animation: validating 1s infinite ease-in-out;
+    animation: validating 1s infinite ease-in-out;
+}
+
+.datav-loading .loading-icon.validating {
+    -webkit-animation: validating 1s infinite ease-in-out;
+    animation: validating 1s infinite ease-in-out;
+}
+
+.datav-loading .loading-icon {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 1px;
+    margin-right: 4px;
+    background: #3de7c9;
+    transition: .2s;
+    vertical-align: middle;
+}
+
+
+@keyframes validating {
+    0`% {
+        opacity: 0;
+    }
+
+    50`% {
+        opacity: 1;
+    }
+
+    100`% {
+        opacity: 0;
+    }
+}
+</style>
+
+<body>
+    <div class="datav-loading">
+    	<i class="loading-icon validating"></i>
+    	<i class="loading-icon validating"></i>
+    	<i class="loading-icon validating"></i>
+    </div>
+</body>
+<script>
+</script>
+
+</html>
+)
+}
+
+if (v == "纯css实现maquee 无缝轮播") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Document</title>
+</head>
+<style>
+.datav-marquee {
+    max-width: 540px;
+    min-width: 320px;
+}
+
+.datav-marquee {
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    position: relative;
+}
+
+.datav-marquee .content {
+    display: inline-block;
+    position: relative;
+    padding-right: 0;
+    white-space: nowrap;
+    animation: marque-animation infinite linear;
+    z-index: 0;
+}
+
+.datav-marquee .content:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marque-animation {
+    0`% {
+        transform: translateX(0);
+    }
+
+    100`% {
+        transform: translateX(-33.3`%);
+    }
+}
+</style>
+
+<body>
+    <div class="datav-marquee">
+        <span class="content" style="animation-duration: 50s;">
+           1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
+            <span class="content-space"></span>1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
+            <span class="content-space"></span>1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
+            <span class="content-space"></span>
+        </span>
+    </div>
+</body>
+<script>
+</script>
+
+</html>
+)
+}
+
+if (v == "flex + column + flex: 1 全屏高度解决方案") {
+Var =
+(
+.studio {
+  width: 100`%;
+  height: 100`%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+	.main {
+	  /* full height */
+	  flex: 1;
+	}
+)
+}
+
+if (v == "背景透明还可以这样用：background: 0 0") {
+Var =
+(
+background: 0 0
+)
+}
+
+
+if (v == "纯css下划线或上划线解决方案") {
+Var =
+(
+border-top: 2px solid transparent;
+
+&:hover {
+  color: #00baff;
+  border-top-color: #00baff;
+}
+)
+}
+
+if (v == "datav.btn.css") {
+_send("btn.css", true, true)
+return
 }
 
 
@@ -3626,6 +4243,37 @@ Var =
     100`% {
       -webkit-transform: translateY(0px);
               transform: translateY(0px);
+    }
+}
+)
+code(Var)
+return
+
+::btn.css::
+Var =
+(
+.datav-btn {
+    height: 26px;
+    line-height: 26px;
+    padding: 0 20px;
+    font-size: 12px;
+
+    color: #24b1ff;
+    border: 1px solid #00baff;
+    background: 0 0;
+  
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    transition: .3s ease;
+    cursor: pointer;
+    user-select: none;
+    outline: 0;
+
+    &:hover {
+     color: #293f52;
+     background-image: linear-gradient(-225deg,#00d3f1 0,#12b3ff 100`%);
+     box-shadow: 0 0 15px 0 rgba(0,193,220,.37);
     }
 }
 )

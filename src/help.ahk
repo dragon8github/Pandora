@@ -643,6 +643,9 @@ return
 
 ^!o::
     str := Trim(Clipboard)
+    if (SubStr(str, 0, 2) == "//") {
+        str := "http:" . str
+    }
     If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") ) {
         RUN, % str
     } else {
@@ -656,6 +659,9 @@ return
     Send, ^c
     ClipWait, 2
     str := Trim(Clipboard)
+    if (SubStr(str, 0, 2) == "//") {
+        str := "http:" . str
+    }
     If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") ) {
         RUN, % str
     } else {

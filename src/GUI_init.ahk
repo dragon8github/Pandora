@@ -50,6 +50,7 @@ __SEARCH_DATABASE__["Nginx"] := "/usr/local/nginx/sbin/nginx"
 __SEARCH_DATABASE__["nginx html"] := "/usr/local/nginx/html/"
 __SEARCH_DATABASE__["php.ini"] := "/usr/local/php/php.ini"
 __SEARCH_DATABASE__["dataZ"] := "C:\Users\Lee\Desktop\dataZ"
+__SEARCH_DATABASE__["hz-12345"] := "C:\Users\Lee\Desktop\hz-12345"
 
 
 

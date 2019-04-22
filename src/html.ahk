@@ -1,4 +1,15 @@
-﻿::shipin::
+﻿::iconf::
+::iconfont::
+Var =
+(
+<i class='iconfont icon-back'></i>
+)
+code(Var)
+Send, {left 6}
+send, +{left 4}
+return
+
+::shipin::
 ::video::
 ::vedio::
 Var =

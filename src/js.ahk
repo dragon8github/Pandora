@@ -1659,13 +1659,15 @@ var maxTimeout = 10,
 const poll = (conditionFn, callback, wait = 4, maxTimeout = 10, timeout = 0) => {
   // 请求是否超出阈值
   if (++timeout > maxTimeout * 1000 / wait) throw new Error('overtime')
+  // 条件是否返回真值
+  const result = conditionFn()
   // 如果条件满足，那么执行，否则轮询
-  conditionFn() ? callback() : setTimeout(() => {poll(conditionFn, callback, wait, maxTimeout, timeout) }, wait)
+  result ? callback(result) : setTimeout(() => { poll(conditionFn, callback, wait, maxTimeout, timeout) }, wait)
 }
 
-var i = 0;
-poll(() => i === 1, () => {window.alert([20190209130827, 'ok'].join('  '));}) 
-// i = 1
+poll(() => document.querySelector('path[fill]'), e => {
+  e.setAttribute('fill', "rgb(0,0,0)");
+})
 )
 code(Var)
 return
