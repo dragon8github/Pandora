@@ -40,27 +40,40 @@
     Menu, cssoptimization, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
     
     
-    Menu, Csssolution, Add, display: table 自动对齐策略, CssHandler
-    Menu, Csssolution, Add, Calc()与background-position数学表达式, CssHandler
     Menu, Csssolution, Add, 三个DVI的Bouncing loader, CssHandler
     Menu, Csssolution, Add, dataV三个元素实现的loading, CssHandler
+    Menu, Csssolution, Add, 不断一闪而过的顶部进度条loading, CssHandler
+    Menu, Csssolution, Add, DNA-loading, CssHandler
+    Menu, Csssolution, Add, DataV-DNA-loading, CssHandler
+    Menu, Csssolution, Add, 页面阅读进度条, CssHandler
+    Menu, Csssolution, Add, 更新提示波动图:point, CssHandler
+    
+    Menu, Csssolution, Add
+    Menu, Csssolution, Add
+    
     Menu, Csssolution, Add, 恒定宽高比, CssHandler
+    Menu, Csssolution, Add, display: table 自动对齐策略, CssHandler
     Menu, Csssolution, Add, display:table垂直居中, CssHandler
     Menu, Csssolution, Add, 高度从0到auto的伸缩特效魔法, CssHandler
+    Menu, Csssolution, Add, Calc()与background-position数学表达式, CssHandler
+    
+    Menu, Csssolution, Add
+    Menu, Csssolution, Add
+    
     Menu, Csssolution, Add, 文字Hover Shadow Box Animation美化, CssHandler
     Menu, Csssolution, Add, 文字Hover underline animation美化, CssHandler
     Menu, Csssolution, Add, 向overflow溢出元素添加渐变, CssHandler
     Menu, Csssolution, Add, hover Sibling fade, CssHandler
     Menu, Csssolution, Add, 原生实现switch, CssHandler
     Menu, Csssolution, Add, 不断闪闪发光的动画, CssHandler
-    Menu, Csssolution, Add, 页面阅读进度条, CssHandler
-    Menu, Csssolution, Add, 更新提示波动图:point, CssHandler
+    
+    
+    Menu, Csssolution, Add
+    Menu, Csssolution, Add
+    
     Menu, Csssolution, Add, 纯css下划线或上划线解决方案, CssHandler
     Menu, Csssolution, Add, flex + column + flex: 1 全屏高度解决方案, CssHandler
     Menu, Csssolution, Add, 纯css实现maquee 无缝轮播, CssHandler
-    Menu, Csssolution, Add, 不断一闪而过的顶部进度条loading, CssHandler
-    Menu, Csssolution, Add, DNA-loading, CssHandler
-    Menu, Csssolution, Add, DataV-DNA-loading, CssHandler
     Menu, Csssolution, Add, 太空漫游404解决方案, CssHandler
     
     
