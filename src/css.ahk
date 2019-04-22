@@ -132,10 +132,8 @@ Var =
 
 
 if (v == "太空漫游404解决方案") {
-Var =
-(
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/404.zip")
-)
+return
 }
 
 if (v == "DataV-DNA-loading") {

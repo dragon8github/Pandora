@@ -285,6 +285,8 @@ psdit(url, otherCommand = "") {
  )
  ; 使用pw执行
  run, powershell.exe %command%
+ ; 等待一下时间
+ sleep, 3500
  ; 打开文件夹
  run, % name
 }
