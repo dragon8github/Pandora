@@ -1347,16 +1347,25 @@ a({state: {nums: 1, numGroup: 2, map: 3 } })
 if (v == "模拟真实点击click，专门对付clickoutside") {
 Var = 
 (
-var evmousedown = document.createEvent('HTMLEvents'); 
+var evmousedown = document.createEvent('HTMLEvents');
 // evmousedown.clientX = 88
 // evmousedown.clientY = 18
-evmousedown.initEvent('mousedown', false, true); 
-var evmouseup = document.createEvent('HTMLEvents'); 
+
+evmousedown.initEvent('mousedown', false, true);
+var evmouseup = document.createEvent('HTMLEvents');
 // evmouseup.clientX = 88
 // evmouseup.clientY = 18
-evmouseup.initEvent('mouseup', false, true); 
+
+evmouseup.initEvent('mouseup', false, true);
 document.dispatchEvent(evmousedown)
 document.dispatchEvent(evmouseup)
+var evmouseclick = document.createEvent('HTMLEvents');
+// evmouseclick.clientX = 88
+// evmouseclick.clientY = 18
+
+evmouseclick.initEvent('click', false, true);
+document.dispatchEvent(evmouseclick)
+document.dispatchEvent(evmouseclick)
 )
 }
 
@@ -5094,6 +5103,33 @@ export const exclude = (obj, ...attribute) =>  {
   // pure obj
   return _
 }
+)
+code(Var)
+return
+
+::fuckclickoutside::
+::handleclickoutside::
+Var =
+(
+var evmousedown = document.createEvent('HTMLEvents');
+// evmousedown.clientX = 88
+// evmousedown.clientY = 18
+
+evmousedown.initEvent('mousedown', false, true);
+var evmouseup = document.createEvent('HTMLEvents');
+// evmouseup.clientX = 88
+// evmouseup.clientY = 18
+
+evmouseup.initEvent('mouseup', false, true);
+document.dispatchEvent(evmousedown)
+document.dispatchEvent(evmouseup)
+var evmouseclick = document.createEvent('HTMLEvents');
+// evmouseclick.clientX = 88
+// evmouseclick.clientY = 18
+
+evmouseclick.initEvent('click', false, true);
+document.dispatchEvent(evmouseclick)
+document.dispatchEvent(evmouseclick)
 )
 code(Var)
 return

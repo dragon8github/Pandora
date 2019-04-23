@@ -113,6 +113,8 @@
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
 	
+	
+	Menu, EventMenu, Add, 模拟真实点击click，专门对付clickoutside, utilsHandler
 	Menu, EventMenu, Add, 用Input事件代替keyup事件：$('input').on('input'`, search), EventHandler
 	Menu, EventMenu, Add, click 与 e.clientX/e.clientY, EventHandler
 	Menu, EventMenu, Add, 长按longpress手势, EventHandler
