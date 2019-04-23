@@ -1401,12 +1401,6 @@ Send, vuex.modules{tab}
 return
 }
 
-if (v == "this.$store.dispatch") {
-Var = 
-(
-this.$store.dispatch
-)
-}
 if (v == "this.$store.state.list.loading") {
 Var = 
 (
@@ -1485,7 +1479,7 @@ this.$router.push('index')
 if (v == "this.$store.dispatch") {
 Var = 
 (
-this.$store.dispatch('deparmental/departmentalProblemRanking')
+this.$store.dispatch('Collection/departmentalProblemRanking')
 )
 }
 

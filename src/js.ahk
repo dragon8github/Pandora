@@ -149,7 +149,7 @@ export const request = (url, options = {}) => {
           sessionStorage.removeItem(${hashcode}:timestamp)
         }
     }
-    return axios(url, options).then(checkStatus).then(_cachedSave)
+    return axios(url, options).then(checkStatus).then(_cachedSave).catch(checkStatus)
 }
 )
 code(Var)
@@ -3831,6 +3831,7 @@ code(Var)
 SendInput, {left 1}
 Return
 
+::r::
 ::ret::
 ::re::
     SendRaw, return

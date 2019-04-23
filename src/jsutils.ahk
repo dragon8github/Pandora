@@ -193,7 +193,10 @@
     Menu, utilspractice, Add,
     Menu, utilspractice, Add,
     
-
+    
+    Menu, utilspractice, Add, promise.catch 全局处理与局部传播：在第一次catch的时候throw错误即可, utilsHandler
+    Menu, utilspractice, Add, JOJO - 砸瓦鲁多：浏览器暂停术 —— 直接在控制台输入debugger;, utilsHandler
+    Menu, utilspractice, Add, Promise.prototype.finally已经存在了, utilsHandler
     Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
     Menu, utilspractice, Add, async/await与箭头函数：async (to`, from`, next) => {}, utilsHandler
     Menu, utilspractice, Add, 对象字面量的变量键：this.setState({ [fuckyou]: 'true' }), utilsHandler
@@ -203,6 +206,8 @@
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     
+    
+    Menu, utilsmy, Add, Promise.prototype.before, utilsHandler
     Menu, utilsmy, Add, input动态宽度, utilsHandler
     Menu, utilsmy, Add, exclude: 从对象中排除某个属性, utilsHandler
     Menu, utilsmy, Add, pureMap：纯洁无害的map函数, utilsHandler
@@ -350,6 +355,67 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "promise.catch 全局处理与局部传播：在第一次catch的时候throw错误即可") {
+Var = 
+(
+new Promise((resolve, reject) => {
+   setTimeout(function () {
+        reject('fail')
+   }, 1000);
+}).catch(err => {
+    alert("全局错误处理");
+    // 继续传播错误，让下一个catch可以捕获
+    throw new Error(err)
+}).catch(err => {
+    alert("局部处误处理");
+})
+)
+}
+
+
+if (v == "JOJO - 砸瓦鲁多：浏览器暂停术 —— 直接在控制台输入debugger;") {
+Var = 
+(
+debugger;
+)
+}
+
+if (v == "Promise.prototype.before") {
+Var = 
+(
+Promise.prototype.before = function (fn) {
+	(fn instanceof Function || Object.prototype.toString.call(fn) === '[object Function]') && fn()
+	return this
+}
+
+// 注意，你必须resolve或reject才可以执行.then()
+new Promise((resolve, reject) => {
+   setTimeout(function () {
+        reject('fail')
+   }, 1000);
+}).before(() => {
+	console.log(20190422151455, 'before?')
+}).finally(() => {
+	console.log(20190422145923, 123)
+})
+)
+}
+
+
+if (v == "Promise.prototype.finally已经存在了") {
+Var = 
+(
+new Promise((resolve, reject) => {
+   setTimeout(function () {
+        reject('fail')
+   }, 1000);
+}).finally(() => {
+	console.log(20190422145923, 123)
+})
 )
 }
 
@@ -4493,6 +4559,8 @@ return
 ::utils::
 Var =
 (
+import { Message } from 'element-ui'
+
 /**
  * 最简单且最安全的方法显示一个值，举个例子: 
  * var obj = {a: 123 }
@@ -4833,6 +4901,83 @@ export const exclude = (obj, ...attribute) =>  {
   }
   // pure obj
   return _
+}
+
+
+// 补全
+export const pad = (target, n) => {
+    var zero = new Array(n).join('0');
+    var str = zero + target;
+    var result = str.substr(-n);
+    return result;
+}
+
+// 获取24小时，从指定的时间开始
+export const get24hourfrom = (start, count = 24) => {
+  return [...Array(count)].map((v, index, array) => {
+      return pad((index + start) `% 24, 2)
+  })
+}
+
+
+// 设置高亮 for point.css
+export const point = dom => {
+  if (hasClass(dom, 'changing')) {
+     removeClass(dom, 'changing')
+  } else {
+     addClass(dom, 'changing')
+     addClass(dom, 'point')
+     dom.addEventListener("webkitAnimationEnd", function() {
+       removeClass(dom, 'changing')
+     })
+  }
+}
+
+
+// 缓存器
+export const memoized = function (fn) {
+  // 缓存队列
+  var cache = {}
+  return function () {
+    // 以入参为key（todo:最好作为可配置）
+    var __KEY__ = Array.prototype.slice.call(arguments)
+    // 记录缓存
+    return cache[__KEY__] || (cache[__KEY__] = fn.apply(this, arguments))
+  }
+}
+
+// 对象查找器
+export const findObj = (obj = {}, condition = () => true) => {
+  for (let [key, ele] of Object.entries(obj)) {
+      if (condition(key, ele)) {
+        return ele
+      }
+  }
+}
+
+// catch error 
+export const catchErr = err => {
+  Message(err.message || '数据异常')
+  throw new Error(err.message)
+}
+
+
+/**
+ *  Promise.prototype.before 补丁
+ *
+ *  new Promise((resolve, reject) => {
+ *     setTimeout(function () {
+ *        resolve('success') // reject('fail')
+ *     }, 1000);
+ *  }).before(() => {
+ *    console.log(20190422151455, 'before')
+ *  }).finally(() => {
+ *    console.log(20190422145923, 'finally')
+ *  })
+ */
+Promise.prototype.before = function (fn) {
+  (fn instanceof Function || Object.prototype.toString.call(fn) === '[object Function]') && fn()
+  return this
 }
 )
 code(Var)
