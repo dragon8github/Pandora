@@ -113,12 +113,14 @@
 	Menu, ShellMenu, Add, #!/bin/bash（通过echo $SHELL确定）, ShellHandler
 	Menu, ShellMenu, Add, for循环, ShellHandler
 	Menu, ShellMenu, Add, if、then、else、elif、if, ShellHandler
-	Menu, ShellMenu, Add, export PATH添加一条路径, ShellHandler
+	Menu, ShellMenu, Add, export PATH添加一条路径, ShellHandler3
 	Menu, ShellMenu, Add, 如何echo输出多行内容文件, ShellHandler
 	Menu, ShellMenu, Add, wget 下载文件, ShellHandler3
 	Menu, ShellMenu, Add, tar 解压, ShellHandler3
 	Menu, ShellMenu, Add, tar 压缩, ShellHandler3
-
+	Menu, ShellMenu, Add, telnet 19.104.40.37 8082, ShellHandler3
+	Menu, ShellMenu, Add, ssh root@ip地址, ShellHandler3
+	
 		
 	Menu, ShellMenu, Add, , ShellHandler
 	Menu, ShellMenu, Add, , ShellHandler
@@ -148,11 +150,13 @@
 	Menu, ShellMenu, Add
 	Menu, ShellMenu, Add
 	
-	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler2
+	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler3
+	Menu, ShellMenu, Add, 默认的www目录：/usr/local/nginx/html, ShellHandler3
 	Menu, ShellMenu, Add, nginx默认路径：/usr/local/nginx/sbin/nginx, ShellHandler3
 	Menu, ShellMenu, Add, nginx配置路径：/usr/local/nginx/conf/nginx.conf, ShellHandler3
 	Menu, ShellMenu, Add, nginx -s reload 重启 nginx, ShellHandler
 	Menu, ShellMenu, Add, nginx -t 测试配置是否有语法错误，并且获取配置位置, ShellHandler
+	Menu, ShellMenu, Add, nginx server 端口配置, ShellHandler
 	
 	Menu, ShellMenu, Add
 	Menu, ShellMenu, Add
@@ -177,6 +181,104 @@
 return  
 
 
+ShellHandler3:
+Sleep, 100
+v := A_ThisMenuItem
+Var := 
+if (v == "") {
+Var = 
+(
+)
+}
+
+
+if (v == "ssh root@ip地址") {
+Var = 
+(
+ssh root@ip地址
+)
+}
+
+
+if (v == "telnet 19.104.40.37 8082") {
+Var = 
+(
+telnet 19.104.40.37 8082
+)
+}
+
+if (v == "export PATH添加一条路径") {
+Var = 
+(
+export PATH="$PATH:/home/user/bin"
+)
+}
+
+
+if (v == "默认的www目录：/usr/local/nginx/html") {
+Var = 
+(
+/usr/local/nginx/html
+)
+}
+
+if (v == "PowserShell 下载：Invoke-WebRequest") {
+Var = 
+(
+Invoke-WebRequest -uri "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue3-template.zip" -OutFile "vue3-template.zip"
+)
+}
+
+
+if (v == "nginx默认路径：/usr/local/nginx/sbin/nginx") {
+Var = 
+(
+/usr/local/nginx/sbin/nginx
+)
+}
+
+if (v == "nginx配置路径：/usr/local/nginx/conf/nginx.conf") {
+Var = 
+(
+/usr/local/nginx/conf/nginx.conf
+)
+}
+
+if (v == "灭霸响指：Thanos.sh - 删除系统一半的文件") {
+Var = 
+(
+let i=`find . -type f | wc -l`/2 ; find . -type f -print0 | shuf -z -n $i | xargs -0 -- cat 
+)
+}
+
+
+if (v == "PowserShell 压缩（必须有文件才成立）") {
+cs("Compress-Archive -Path * -DestinationPath ./test.zip")
+return
+}
+
+if (v == "PowserShell 解压") {
+cs(" Expand-Archive -Path test.zip -DestinationPath .")
+return
+}
+
+
+if (v == "wget 下载文件") {
+Var = 
+(
+wget -O nginx-1.15.8.tar.gz http://nginx.org/download/nginx-1.15.8.tar.gz
+)
+}
+
+if (v == "tar 解压") {
+Var = 
+(
+tar zxvf nginx-1.15.8.tar.gz
+)
+}
+
+_sendInput(Var)
+return
 
 ShellHandler:
 Sleep, 100
@@ -188,6 +290,30 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+
+
+if (v == "nginx server 端口配置") {
+Var = 
+(
+server {
+	listen       6080;
+	server_name  _;
+	index index.html index.htm ;
+	root /usr/local/nginx/html;
+
+
+	location ^~ /api/ {
+			proxy_pass    http://19.104.40.37:8082/api/;
+	}
+
+	location / {
+			 try_files $uri /index.html;
+	}
+}
 )
 }
 
@@ -454,13 +580,6 @@ if (v == "打印$PATH路径") {
 Var = 
 (
 echo $PATH
-)
-}
-
-if (v == "添加一条路径") {
-Var = 
-(
-export PATH="$PATH:/home/user/bin"
 )
 }
 
@@ -912,73 +1031,6 @@ Sleep, 100
 _send(A_ThisMenuItem,true, true)
 return
 
-ShellHandler3:
-Sleep, 100
-v := A_ThisMenuItem
-Var := 
-if (v == "") {
-Var = 
-(
-)
-}
-
-if (v == "PowserShell 下载：Invoke-WebRequest") {
-Var = 
-(
-Invoke-WebRequest -uri "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue3-template.zip" -OutFile "vue3-template.zip"
-)
-}
-
-
-if (v == "nginx默认路径：/usr/local/nginx/sbin/nginx") {
-Var = 
-(
-/usr/local/nginx/sbin/nginx
-)
-}
-
-if (v == "nginx配置路径：/usr/local/nginx/conf/nginx.conf") {
-Var = 
-(
-/usr/local/nginx/conf/nginx.conf
-)
-}
-
-if (v == "灭霸响指：Thanos.sh - 删除系统一半的文件") {
-Var = 
-(
-let i=`find . -type f | wc -l`/2 ; find . -type f -print0 | shuf -z -n $i | xargs -0 -- cat 
-)
-}
-
-
-if (v == "PowserShell 压缩（必须有文件才成立）") {
-cs("Compress-Archive -Path * -DestinationPath ./test.zip")
-return
-}
-
-if (v == "PowserShell 解压") {
-cs(" Expand-Archive -Path test.zip -DestinationPath .")
-return
-}
-
-
-if (v == "wget 下载文件") {
-Var = 
-(
-wget -O nginx-1.15.8.tar.gz http://nginx.org/download/nginx-1.15.8.tar.gz
-)
-}
-
-if (v == "tar 解压") {
-Var = 
-(
-tar zxvf nginx-1.15.8.tar.gz
-)
-}
-
-_sendInput(Var)
-return
 
 
 ::sh.curl::

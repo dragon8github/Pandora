@@ -250,6 +250,8 @@ Gui, Pandora:Add, Link,, <a href="http://www.51ym.me/User/MobileSMSCode.aspx">�
 Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer</a>
 Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/cmd.html">linux命令搜索</a>
 Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/ocr.html">OCR在线识别</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大全</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 Gui, Pandora:Add, Link,, <a href="http://photo.weibo.com/upload/index">新浪微博图床</a>
@@ -360,11 +362,10 @@ Gui, Pandora:Add, Link,, <a href="https://hui.dgjy.net">门户网站</a>
 Gui, Pandora:Add, Text,  W140 xs Section yp+100, 数据中心
 Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心源码gitlab</a>
-Gui, Pandora:Add, Link,, <a href="https://www.xiaopiu.com/web/byId?type=project&id=5c7cc747126f63402c1e331f">数据中心web原型</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter">数据中心原型gitlab</a>
 Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/DUXBCem1Kd2dQdkNi?opendocxfrom=admin&tdsourcetag=s_pctim_aiomsg&ADUIN=928532756&ADSESSION=1555287968&ADTAG=CLIENT.QQ.5603_.0&ADPUBNO=26882&tab=BB08J2">腾讯文档</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心git lab</a>
-
+Gui, Pandora:Add, Link,, <a href="https://top7bx.axshare.com">紫莹数据中心web原型</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 私服仓库Nexus
@@ -412,7 +413,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/olistic/warriorjs">warriorj
 Gui, Pandora:Add, Text,  W140 ys, nest框架中的django:
 Gui, Pandora:Add, Link,, <a href="https://github.com/nestjs/nest">nestjs github</a>
 
-Gui, Pandora:Add, Text, W140 Section xs yp+80, JS库：
+Gui, Pandora:Add, Text, W140 Section xs yp+180, JS库：
 Gui, Pandora:Add, Link,, <a href="https://github.com/KyleAMathews/deepmerge">deepmerge</a>
 
 Gui, Pandora:Add, Text, W140 Section ys, koajs：

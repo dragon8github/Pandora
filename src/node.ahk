@@ -1205,3 +1205,78 @@ return
 ::npm::
 _sendinput("cnpm i  -S{LEFT 3}")
 return
+
+::nest.c::
+Var =
+(
+import { Controller, Get, Post } from '@nestjs/common';
+import { CreateCatDto, ListAllEntities } from './dto';
+
+@Controller('cats')
+export class CatsController {
+
+  @Post()
+  create(@Body() createCatDto: CreateCatDto) {
+    return 'This action adds a new cat';
+  }
+
+  @Get()
+  findAll(@Query() query: ListAllEntities) {
+    return `This action returns all cats (limit: ${query.limit} items)`;
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return `This action returns a #${id} cat`;
+  }
+
+  @Post()
+  create(): string {
+    return 'This action adds a new cat';
+  }
+
+  @Get()
+  findAll(): string {
+    return 'This action returns all cats';
+  }
+}
+)
+code(Var)
+return
+
+::nest.main::
+::nest.init::
+::nest.bs::
+::nest.bootstrap::
+Var =
+(
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app/app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
+}
+bootstrap();
+)
+code(Var)
+return
+
+::nest.@get::
+::nest.get::
+Var =
+(
+@Get(':id')
+findOne(@Param() params): string {
+  console.log(params.id);
+  return `This action returns a #${params.id} cat`;
+}
+
+@Get(':id')
+findOne(@Param('id') id): string {
+  return `This action returns a #${id} cat`;
+}
+
+)
+code(Var)
+return

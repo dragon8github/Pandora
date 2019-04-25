@@ -681,12 +681,8 @@ return
 return
 
 
-AppsKey & s::
 >^s::
-    try {
-        run, %A_Desktop%\Sublime Text.lnk
-        run, %A_Desktop%\sublime_text.exe.lnk
-    }
+Send, npm run start
 return
 
 !Up::
@@ -1189,6 +1185,19 @@ code(Var)
 Send, {up}
 return
 
+::``````j::
+::``````jss::
+::``j::
+Var =
+(
+``````JavaScript
+
+``````
+)
+code(Var)
+Send, {up}
+return
+
 ::or::
 Var =
 (
@@ -1223,3 +1232,5 @@ run, powershell.exe `%command`%
 )
 code(Var)
 return
+
+

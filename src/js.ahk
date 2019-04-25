@@ -6971,3 +6971,21 @@ export const getClassName = (el) => {
 )
 code(Var)
 return
+
+::.tfb::
+Var =
+(
+.before(() => this.loading = true).then(({ message, code, data } = {}) => {
+ // 保存成功
+ if (code === 200) {
+   // 跳转到首页
+   this.$message('提交成功')
+ } else {
+   this.$message(message || '数据异常')
+ }
+}).finally(() => {
+ this.loading = false
+})
+)
+code(Var)
+return

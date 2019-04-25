@@ -199,6 +199,7 @@
     Menu, utilspractice, Add, Promise.prototype.finally已经存在了, utilsHandler
     Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
     Menu, utilspractice, Add, async/await与箭头函数：async (to`, from`, next) => {}, utilsHandler
+    Menu, utilspractice, Add, async/await与传统函数：async function bootstrap() {}, utilsHandler
     Menu, utilspractice, Add, 对象字面量的变量键：this.setState({ [fuckyou]: 'true' }), utilsHandler
     Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
     Menu, utilspractice, Add, 函数参数对象深度结构与重命名： var a = ({ state: { nums:list`, numGroup`, map } }) => {}, utilsHandler
@@ -309,7 +310,7 @@
     Menu, utilsMenu, Add, timeChunk 分时分批处理函数 , utilsHandler
     Menu, utilsMenu, Add, compose 函数组合, utilsHandler
     Menu, utilsMenu, Add, memoized：函数缓存器, utilsHandler
-    
+
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
@@ -355,6 +356,17 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "async/await与传统函数：async function bootstrap() {}") {
+Var = 
+(
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
+}
 )
 }
 
