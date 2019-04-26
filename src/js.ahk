@@ -3703,7 +3703,7 @@ return
 
 AppsKey & r::
 >^r::
-    SendRaw, npm run dev
+  SendRaw, npm run dev
 return
 
 

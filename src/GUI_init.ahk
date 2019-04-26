@@ -360,12 +360,13 @@ Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/pages/viewpage
 Gui, Pandora:Add, Link,, <a href="https://hui.dgjy.net">门户网站</a>
 
 Gui, Pandora:Add, Text,  W140 xs Section yp+100, 数据中心
-Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心</a>
+Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心 - 线上地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心源码gitlab</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter">数据中心原型gitlab</a>
 Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/DUXBCem1Kd2dQdkNi?opendocxfrom=admin&tdsourcetag=s_pctim_aiomsg&ADUIN=928532756&ADSESSION=1555287968&ADTAG=CLIENT.QQ.5603_.0&ADPUBNO=26882&tab=BB08J2">腾讯文档</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心git lab</a>
 Gui, Pandora:Add, Link,, <a href="https://top7bx.axshare.com">紫莹数据中心web原型</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/groups/DateCenter/-/boards">测试敏捷看板</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 私服仓库Nexus
@@ -373,7 +374,9 @@ Gui, Pandora:Add, Link,, <a href="https://nexus.alltosea.com/">公司的Nexus</a
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/xueyoucd/p/9538126.html">搭建 npm 私服教程</a>
 Gui, Pandora:Add, Link,, <a href="https://www.sonatype.com/nexus-repository-oss">官方网站</a>
 
-
+Gui, Pandora:Add, Text,  W140 ys xp+160, dataZ
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dataz">gitlab地址</a>
+Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:6082/#/Studio">在线预览地址</a>
 
 Gui, Pandora:Tab, 4
 Gui, Pandora:Add, Text,  W130 Section, Nodejs:
@@ -464,9 +467,10 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/airyland/vux">vux github</a
 Gui, Pandora:Add, Link,, <a href="https://vux.li/">vux 官网</a>
 
 Gui, Pandora:Add, Text,  W160 ys, 其他插件收录
-Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repo/jaweii/vueg">vueg转场动画</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/jaweii/Vueg----page-transition-plugin">vueg转场动画</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/1615450788/vue-cron">vue-cron</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/OYsun/VueCircleMenu">vue-圆环菜单</a>
+Gui, Pandora:Add, Link,, <a href="https://vuegg.now.sh/">vuegg 神器，找了好久了</a>
 ;@vue
 
 
