@@ -264,6 +264,7 @@ return
 ::ahkinput::
 ::ahkmsgbox::
 ::ahkbox::
+::ahkcomfig::
 Var =
 (
 InputBox, OutputVar, title, enter a name?,,,,,,,,test

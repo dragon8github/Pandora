@@ -4347,7 +4347,6 @@ Send, {left 5}
 return
 
 :?:.map::
-:?:.m::
 Var =
 (
 .map((v, index, array) => {
@@ -4355,6 +4354,15 @@ Var =
 });
 )
 code(Var)
+return
+
+:?:.m::
+Var =
+(
+.map(_ => _.)
+)
+code(Var)
+Send, {left}
 return
 
 ::switch::

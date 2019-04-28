@@ -277,7 +277,7 @@ tar zxvf nginx-1.15.8.tar.gz
 )
 }
 
-_sendInput(Var)
+_send(Var)
 return
 
 ShellHandler:

@@ -405,14 +405,6 @@ Var =
 code(Var)
 return
 
-:?:.m::
-Var =
-(
-.map(_ => _.)
-)
-code(Var)
-Send, {left}
-return
 
 :?:.mo::
 :?:.ma::

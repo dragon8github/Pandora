@@ -1280,3 +1280,304 @@ findOne(@Param('id') id): string {
 )
 code(Var)
 return
+
+::nest.app::
+Var =
+(
+import { Module } from '@nestjs/common';
+import { CatsModule } from './cats/cats.module';
+
+@Module({
+  imports: [CatsModule],
+})
+export class ApplicationModule {}
+)
+code(Var)
+return
+
+::nest.module::
+::nest.modules::
+:?:nest.mo::
+:?:nest.m::
+InputBox, OutputVar, title, enter a name?,,,,,,,,cats
+O := SubStr(OutputVar, 1, 1)
+StringUpper, String1, O
+OutputVar2 := String1 . SubStr(OutputVar, 2)
+Var =
+(
+import { Module } from '@nestjs/common';
+import { %OutputVar2%Controller } from './%OutputVar%.controller';
+import {%OutputVar2%Service } from './%OutputVar%.service';
+
+@Module({
+  controllers: [%OutputVar2%Controller],
+  providers: [%OutputVar2%Service],
+})
+export class %OutputVar2%Module {}
+)
+code(Var)
+return
+
+::nest.service::
+::nest.server::
+::nest.s::
+Var =
+(
+import { Injectable } from '@nestjs/common';
+import { Cat } from './interfaces/cat.interface';
+
+@Injectable()
+export class CatsService {
+  private readonly cats: Cat[] = [];
+
+  create(cat: Cat) {
+    this.cats.push(cat);
+  }
+
+  findAll(): Cat[] {
+    return this.cats;
+  }
+}
+---
+export interface Cat {
+  readonly name: string;
+  readonly age: number;
+  readonly breed: string;
+}
+
+)
+txtit(Var)
+return
+
+::nest.req::
+::nest.@req::
+::nest.express::
+Var =
+(
+import { Controller, Get, Req } from '@nestjs/common';
+import { Request } from 'express';
+
+@Controller('cats')
+export class CatsController {
+  @Get()
+  findAll(@Req() request: Request): string {
+    return 'This action returns all cats';
+  }
+}
+)
+code(Var)
+return
+
+:?:nest.next::
+::nest.middle::
+::nest.mid::
+Var =
+(
+// Nest 中间件可以是一个函数，也可以是一个带有 @Injectable() 装饰器的类。 这个类应该实现 NestMiddleware 接口, 而函数没有任何特殊的要求。
+import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Request, Response } from 'express';
+
+@Injectable()
+export class LoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: Function) {
+    console.log('Request...');
+    next();
+  }
+}
+---
+// 中间件不能在 @Module() 装饰器中列出。我们必须使用模块类的 configure() 方法来设置它们。包含中间件的模块必须实现 NestModule 接口。
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { LoggerMiddleware } from './common/middleware/logger.middleware';
+import { CatsModule } from './cats/cats.module';
+
+@Module({
+  imports: [CatsModule],
+})
+export class ApplicationModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes('cats');
+  }
+}
+)
+txtit(Var)
+return
+
+::nest.err::
+::nest.error::
+::nest.cache::
+Var =
+(
+@Get()
+async findAll() {
+  throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+}
+---
+@Get()
+async findAll() {
+  throw new HttpException({
+    status: HttpStatus.FORBIDDEN,
+    error: 'This is a custom message',
+  }, 403);
+}
+---
+import { ExceptionFilter, Catch, ArgumentsHost } from '@nestjs/common';
+import { HttpException } from '@nestjs/common';
+
+@Catch(HttpException)
+export class HttpExceptionFilter implements ExceptionFilter {
+  catch(exception: HttpException, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse();
+    const request = ctx.getRequest();
+    const status = exception.getStatus();
+
+    response
+      .status(status)
+      .json({
+        statusCode: exception.getStatus(),
+        timestamp: new Date().toISOString(),
+        path: request.url,
+      });
+  }
+}
+)
+txtit(Var)
+return
+
+::nest.pipe::
+::nest.liu::
+Var =
+(
+import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common';
+
+@Injectable()
+export class ValidationPipe implements PipeTransform {
+  transform(value: any, metadata: ArgumentMetadata) {
+    return value;
+  }
+}
+)
+code(Var)
+return
+
+::cpr::
+Var =
+(
+constructor(private readonly schema) {}
+)
+code(Var)
+return
+
+::nest.g::
+::nest.shouwei::
+::nest.show::
+Var =
+(
+import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class AuthGuard implements CanActivate {
+  canActivate(
+    context: ExecutionContext,
+  `): boolean | Promise<boolean> | Observable<boolean> {
+    const request = context.switchToHttp().getRequest();
+    return validateRequest(request);
+  }
+}
+)
+code(Var)
+return
+
+::fast.init::
+::fast.app::
+Var =
+(
+const fastify = require('fastify')({
+  logger: true
+})
+
+fastify.register(require('./route'))
+
+fastify.listen(3000, (err, address) => {
+  if (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
+  fastify.log.info(`server listening on ${address}`)
+})
+---
+// route.js
+
+async function routes (fastify, options) {
+  fastify.get('/', async (request, reply) => {
+    return { hello: 'world' }
+  })
+}
+
+module.exports = routes
+)
+txtit(Var)
+return
+
+::fast.mongo::
+::fast.mongodb::
+Var =
+(
+const fastify = require('fastify')({
+  logger: true
+})
+
+fastify.register(require('./mongodb-connector'), {
+  url: 'mongodb://localhost:27017/'
+})
+
+fastify.register(require('./route'))
+
+fastify.listen(3000, (err, address) => {
+  if (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
+  fastify.log.info(`server listening on ${address}`)
+})
+---
+// mongodb-connector
+// fastify-mongodb
+const fastifyPlugin = require('fastify-plugin')
+const MongoClient = require('mongodb').MongoClient
+
+async function dbConnector (fastify, options) {
+  const url = options.url
+  delete options.url
+
+  const db = await MongoClient.connect(url, Object.assign({}, options, { useNewUrlParser: true }))
+  fastify.decorate('mongo', db)
+}
+
+module.exports = fastifyPlugin(dbConnector)
+---
+// route.js
+async function routes (fastify, options) {
+  const database = fastify.mongo.db('test')
+  const collection = database.collection('user')
+
+  fastify.get('/', async (request, reply) => {
+    return { hello: 'world' }
+  })
+
+  fastify.get('/search/:id', async (request, reply) => {
+    const result = await collection.findOne({ id: +request.params.id })
+    if (result.value === null) {
+      throw new Error('Invalid value')
+    }
+    reply.send(result)
+  })
+}
+
+module.exports = routes
+)
+txtit(Var)
+return

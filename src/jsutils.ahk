@@ -331,6 +331,7 @@
     Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
     Menu, utilsMenu, Add, UMD、AMD, utilsHandler
     Menu, utilsMenu, Add, stackoverflow愚人节彩蛋效果, utilsHandler
+    Menu, utilsMenu, Add, 全屏F11最新解决方案, utilsHandler
     
 
     Menu, utilsMenu, Show
@@ -359,6 +360,10 @@ Var =
 )
 }
 
+if (v == "全屏F11最新解决方案") {
+_send("fullpage", true, true)
+return
+}
 
 if (v == "async/await与传统函数：async function bootstrap() {}") {
 Var = 
@@ -5142,6 +5147,55 @@ var evmouseclick = document.createEvent('HTMLEvents');
 evmouseclick.initEvent('click', false, true);
 document.dispatchEvent(evmouseclick)
 document.dispatchEvent(evmouseclick)
+)
+code(Var)
+return
+
+::fullpage::
+::maxapge::
+::f11::
+::maxchrome::
+Var =
+(
+var b = document.getElementById('view_container')
+
+var e = b.requestFullScreen || 
+		b.webkitRequestFullScreen || 
+		b.mozRequestFullScreen || 
+		b.msRequestFullScreen;
+
+e.call(b) // b.webkitRequestFullScreen()
+
+//////////////////////////////////////////////
+// say something...
+//////////////////////////////////////////////
+
+// 如果不是全屏的话，那么进入全屏
+if (!this.isFullScreen) {
+    var el = document.documentElement;
+    var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
+    if (typeof rfs != "undefined" && rfs) {
+        rfs.call(el);
+    } else if (typeof window.ActiveXObject != "undefined") {
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript != null) {
+            wscript.SendKeys("{F11}");
+        }
+    }
+// 否则退出全屏
+} else {
+    // 判断各种浏览器，找到正确的方法
+    var exitMethod = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.webkitExitFullscreen;
+    if (exitMethod) {
+        exitMethod.call(document);
+    } else if (typeof window.ActiveXObject !== "undefined") { //for Internet Explorer
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript !== null) {
+            wscript.SendKeys("{F11}");
+        }
+    }
+} 
+
 )
 code(Var)
 return

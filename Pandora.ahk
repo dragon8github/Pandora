@@ -26,15 +26,15 @@ FileDelete, .\src\*.bak
 #Include src/cdn.ahk              ; CDN   
 #Include src/html.ahk             ; HTML    
 #Include src/three.ahk            ; THREE    
-#Include src/vue.ahk              ; Vue
 #Include src/wx.ahk               ; wx
 #Include src/elementui.ahk	      ; elementUI
 #Include src/shell.ahk            ; shell
 #include src/css.ahk              ; css
 #Include src/arr.ahk              ; arr
 #Include src/python.ahk		      ; python
-#Include src/js.ahk               ; JavaScript  
 #Include src/node.ahk             ; nodejs 
+#Include src/vue.ahk              ; Vue
+#Include src/js.ahk               ; JavaScript  
 #Include src/canvas.ahk		      ; canvas
 #Include src/TypeScript.ahk       ; TypeScript
 #Include src/echarts.ahk	      ; echarts

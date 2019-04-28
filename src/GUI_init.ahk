@@ -624,6 +624,10 @@ Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repo/hakimel/reveal-js
 Gui, Pandora:Add, Text,  W140 ys, grafana：
 Gui, Pandora:Add, Link,, <a href="https://grafana.com/">grafana</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/grafana/grafana">grafana github</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/soWill666/grafana-echarts-panel">grafana-echarts</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/gbrian/grafana-echart-panel">grafana-echarts2</a>
+
+
 
 Gui, Pandora:Add, Text, W140 ys, 地图辅助库：
 Gui, Pandora:Add, Link,, <a href="http://turfjs.org/docs/#bearing">turfjs</a>
@@ -641,10 +645,10 @@ Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos/kitchensink
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos">jointjs demo大全</a>
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/tutorial">jointjs 入门指引</a>
 
+Gui, Pandora:Add, Text, W140 ys, 最强验证库joi
+Gui, Pandora:Add, Link,, <a href="https://github.com/hapijs/joi">hapijs joi</a>
 
-
-
-Gui, Pandora:Add, Text, W140 Section xs yp+50, nodejs cms：
+Gui, Pandora:Add, Text, W140 Section xs yp+200, nodejs cms：
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repos/NodeJS/CMS">NodeJS/CMS</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/doramart/DoraCMS">（推荐）DoraCMS</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/awesome-javascript#node-powered-cms-frameworks">（推荐）powered-cms</a>
@@ -667,6 +671,8 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/MoePlayer/APlayer">Aplay gi
 Gui, Pandora:Add, Text, W140 ys xp+180, 有趣有趣：
 Gui, Pandora:Add, Link,, <a href="https://github.com/e-oj/Magic-Grid">新时代瀑布流Magic-Grid</a>
 
+Gui, Pandora:Add, Text, W140 ys xp+180, 文档神器docsify：
+Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/docsify">docsify</a>
 ; @qimiao @qm @ku
 
 Gui, Pandora:Tab, 9
