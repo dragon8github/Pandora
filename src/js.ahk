@@ -62,27 +62,59 @@ Var =
 (
 import axios from 'axios'
 import hash from 'hash.js'
+import { isEmptyObject, catchErr } from '@/utils/utils.js'
 
-// 判断是否为一个空对象：{}
-const isEmptyObject = obj => {
-    if (Object.getOwnPropertyNames) {
-        return (Object.getOwnPropertyNames(obj).length === 0);
-    } else {
-        var k;
-        for (k in obj) {
-            if (obj.hasOwnProperty(k)) {
-                return false;
-            }
-        }
-        return true;
-    }
+// 请求队列
+let pending = []
+
+// 获取纯Url，不包含?后面的参数
+const getPureUrl = (url, start = 0) => {
+	const index = url.indexOf('?')
+	const pureUrl = url.substr(0, ~index ? index : url.length)
+  return pureUrl.substr(start)
 }
 
-// 检查状态码
-const checkStatus = (response) => {
-  // 判断请求状态
+// 添加请求拦截器，动态设置参数
+axios.interceptors.request.use(config => {
+
+    // 中文转为decode编码
+    config.url = encodeURI(config.url)
+
+    // 设置公共URL http://datacenter.dgdatav.com:6080/api
+    config.baseURL = process.env.NODE_ENV === 'development' ? 'http://datacenter.dgdatav.com:6080/api' : '/api'
+
+    // 获取纯Url（不包含?后面的参数）(也不包含baseURL的前缀)
+    const pureUrl =  getPureUrl(config.url) 
+
+    // 如果需要去重复（默认noRepeat为 'on'，即开启去重复），则中止队列中所有相同请求地址的xhr
+    config.noRepeat === 'on' && pending.forEach(_ => _.url === pureUrl && _.cancel('repeat abort' + pureUrl))
+
+    // 配置 CancelToken
+    config.cancelToken = new axios.CancelToken(cancel => {
+       // 移除所有中止的请求，并且将新的请求推入缓存
+       pending = [...pending.filter(_ => _.url != pureUrl), { url: pureUrl, cancel }]
+    })
+
+    // 返回最终配置
+    return config
+})
+
+// 响应拦截器
+axios.interceptors.response.use(res => {
+  // 成功响应之后清空队列中所有相同Url的请求
+  pending = pending.filter(_ => _.url != getPureUrl(res.config.url, res.config.baseURL.length))  
+  // 返回 <response></response>
+  return res
+}, error => {
+   return Promise.reject(error)
+});
+
+
+// 检查状态码（其实这个并没有什么卵用，如果真的返回404，那也是走catch的路线，哪能被.then捕获）
+const checkStatus = response => {
+	// 判断请求状态
     if (response.status >= 200 && response.status < 300) {
-        // 返回Promise
+        // 返回Promise 
         return response.data
     } else {
       // 服务器响应异常
@@ -92,7 +124,7 @@ const checkStatus = (response) => {
 
 // 缓存到sessionStorage
 const cachedSave = (hashcode, content) => {
-    try {
+  try {
     // 返回code500是后端固定的报错反馈 && 不能为空对象 && 数据的小于2M
     if (content.code != 500 && !isEmptyObject(content) && (JSON.stringify(content).length / 1024).toFixed(2) < 2048) {
       // 设置缓存
@@ -111,29 +143,29 @@ const cachedSave = (hashcode, content) => {
         sessionStorage.setItem(``${hashcode}:timestamp``, Date.now())
       }
   }
-
+  
   // 返回Promise
   return content
 }
 
 // 公共请求
 export const request = (url, options = {}) => {
-    // 指纹
+    // 指纹（必须加入日月报来做区别。）
     const fingerprint = url + JSON.stringify(options)
     // 加密指纹
     const hashcode = hash.sha256().update(fingerprint).digest('hex')
     // 预设值指纹
     const _cachedSave = cachedSave.bind(null, hashcode)
-    // 过期设置
-    const expirys = options && options.expirys || 60
+    // 过期设置(如果没有设置，默认就是空，那默认是开启的60秒缓存)
+    const expirys = options.expirys == null ? 60 : false
     // 本请求是否禁止缓存？
     if (expirys !== false) {
         // 获取缓存
         const cached = sessionStorage.getItem(hashcode)
         // 获取该缓存的时间
-        const whenCached = sessionStorage.getItem(${hashcode}:timestamp)
-        // 如果缓存都存在
-        if (cached !== null && whenCached !== null) {
+        const whenCached = sessionStorage.getItem(``${hashcode}:timestamp``)
+        // 如果缓存都存在（只有生产模式才开启）
+        if (cached !== null && whenCached !== null && process.env.NODE_ENV === 'production') {
           // 判断缓存是否过期
           const age = (Date.now() - whenCached) / 1000
           // 如果不过期的话直接返回该内容
@@ -146,10 +178,13 @@ export const request = (url, options = {}) => {
           // 删除缓存内容
           sessionStorage.removeItem(hashcode)
           // 删除缓存时间
-          sessionStorage.removeItem(${hashcode}:timestamp)
+          sessionStorage.removeItem(`${hashcode}:timestamp`)
         }
     }
-    return axios(url, options).then(checkStatus).then(_cachedSave).catch(checkStatus)
+    // 设置 noRepeat 默认为 true，即默认是去重复的。
+    options.noRepeat = options.noRepeat || 'on'
+    // 正式开始请求
+    return axios(url, options).then(checkStatus).then(_cachedSave).catch(catchErr)
 }
 )
 code(Var)
@@ -3947,7 +3982,16 @@ SendInput, {left}
 Return
 
 ::jsons::
-::json.s::
+Var =
+(
+JSON.stringify(temp1)
+)
+code(Var)
+SendInput, {left 1}
+Send, +{left 5}
+return
+
+::jsonss::
 Var =
 (
 JSON.stringify(temp1, null, '\t')
@@ -4326,7 +4370,7 @@ t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
 for (let i = 0, len = Thing.length; i < len; i++) {
-	console.log(%t%, Thing[i])
+	Thing[i]
 }
 )
 code(Var)
@@ -4804,24 +4848,19 @@ function array_random(target) {
 code(Var)
 return
 
-::removeindex::
-::removeAt::
-Var = 
-(
-function removeAt(target, index) {
-    return !!target.splice(index, 1).length
-}
-)
-code(Var)
-return
 
 ::remove::
 Var = 
 (
-function remove(target, item) {
-    var index = target.indexOf(item);
-    return ~index ? removeAt(target, index) : false
+function remove(arr, item) {
+  if (arr.length) {
+    const index = arr.indexOf(item)
+    if (index > -1) {
+      return arr.splice(index, 1)
+    }
+  }
 }
+
 )
 code(Var)
 return
@@ -6993,6 +7032,48 @@ Var =
  }
 }).finally(() => {
  this.loading = false
+})
+)
+code(Var)
+return
+
+::parsepath::
+Var =
+(
+function parsePath(path) {
+	if (/[^\w.$]/.test(path)) {
+		return
+	}
+	const segments = path.split('.')
+	return function (obj) {
+		for (let i = 0, len = segments.length; i < len; i++) {
+			obj = obj[segments[i]]
+		}
+		return obj
+	}
+}
+)
+code(Var)
+return
+
+::od::
+::odefine::
+::object.define::
+::objdefine::
+Var =
+(
+Object.defineProperty(data, key, {
+    enumerable: true,
+    configurable: true,
+    get: function () {
+        return val
+    },
+    set: function (newVal) {
+        if (val === newVal) {
+            return
+        }
+        val = newVal
+    }
 })
 )
 code(Var)

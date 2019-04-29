@@ -309,3 +309,16 @@ Var =
 )
 txtit(Var)
 return
+
+
+::el.tmp::
+::el.template::
+::el.scope::
+Var =
+(
+<template slot-scope="scope">
+  {{ scope.row.tableComment + scope.row.$index }}
+</template>
+)
+code(Var)
+return

@@ -194,6 +194,8 @@
     Menu, utilspractice, Add,
     
     
+    ; @认知
+    Menu, utilspractice, Add, 一个值的__proto__拦截器：数组为例, utilsHandler
     Menu, utilspractice, Add, promise.catch 全局处理与局部传播：在第一次catch的时候throw错误即可, utilsHandler
     Menu, utilspractice, Add, JOJO - 砸瓦鲁多：浏览器暂停术 —— 直接在控制台输入debugger;, utilsHandler
     Menu, utilspractice, Add, Promise.prototype.finally已经存在了, utilsHandler
@@ -208,6 +210,7 @@
     Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     
     
+    ; @my
     Menu, utilsmy, Add, Promise.prototype.before, utilsHandler
     Menu, utilsmy, Add, input动态宽度, utilsHandler
     Menu, utilsmy, Add, exclude: 从对象中排除某个属性, utilsHandler
@@ -332,6 +335,8 @@
     Menu, utilsMenu, Add, UMD、AMD, utilsHandler
     Menu, utilsMenu, Add, stackoverflow愚人节彩蛋效果, utilsHandler
     Menu, utilsMenu, Add, 全屏F11最新解决方案, utilsHandler
+    Menu, utilsMenu, Add, parsePath: 对象路径解析器, utilsHandler
+    Menu, utilsMenu, Add, diff: 对比两个json对象是否一致, utilsHandler
     
 
     Menu, utilsMenu, Show
@@ -360,6 +365,69 @@ Var =
 )
 }
 
+
+if (v == "一个值的__proto__拦截器：数组为例") {
+Var = 
+(
+const arrayProto = Array.prototype
+
+// export 
+const arrayMethods = Object.create(arrayProto)
+
+;['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'].forEach((key) => {
+	// raw
+	const original = arrayProto[key]
+	Object.defineProperty(arrayMethods, key, {
+		// 不可枚举
+	    enumerable: false,
+	    configurable: true,
+	    writable: true,
+	    value: function mutator (...args) {
+	    	console.log('mutator')
+	    	return original.apply(this, args)
+	    }
+	})
+})
+
+var a = []
+a.__proto__ = arrayMethods
+a.push(1) // mutator
+)
+}
+
+
+if (v == "diff: 对比两个json对象是否一致") {
+_send("diff", true, true)
+}
+
+if (v == "parsePath: 对象路径解析器") {
+Var = 
+(
+function parsePath(path) {
+	if (/[^\w.$]/.test(path)) {
+		return
+	}
+	const segments = path.split('.')
+	return function (obj) {
+		for (let i = 0, len = segments.length; i < len; i++) {
+			obj = obj[segments[i]]
+		}
+		return obj
+	}
+}
+
+var obj = {
+	"a": {
+		"b": {
+			"c": {
+				"d": 123
+			}
+		}
+	}
+}
+fn(obj) // 123
+)
+}
 if (v == "全屏F11最新解决方案") {
 _send("fullpage", true, true)
 return
@@ -5196,6 +5264,57 @@ if (!this.isFullScreen) {
     }
 } 
 
+)
+code(Var)
+return
+
+::def::
+Var =
+(
+export function def (obj, key, val, enumerable) {
+  Object.defineProperty(obj, key, {
+    value: val,
+    enumerable: !!enumerable,
+    writable: true,
+    configurable: true
+  })
+}
+)
+code(Var)
+return
+
+::diff::
+Var =
+(
+function isObject(v) {
+   return typeof v === 'object' && !!v
+}
+
+function diff(a, b) {
+  if(!isObject(a) || !isObject(b)) {
+    throw new TypeError(' a or b is invalid json' )
+  }
+
+  let keys = Object.keys(a)
+
+  if (keys.length == 0) {
+    return JSON.stringify(a) === JSON.stringify(b)
+  }
+
+  let aValue, bValue, key
+
+  for (key of keys) {
+    aValue = a[key]
+    bValue = b[key]
+    if (isObject(aValue) && isObject(bValue) === 'object') {
+      return diff(aValue, bValue)
+    } else if (aValue !== bValue) {
+      debugger;
+      return false
+    }
+  }
+  return true
+}
 )
 code(Var)
 return
