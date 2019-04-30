@@ -47,14 +47,6 @@ return
 SendInput, configure
 return
 
-::conf::
-::confi::
-::config::
-::configu::
-::configure::
-SendInput, {text}configure
-return
-
 
 ::ahkarr::
 ::ahkfor::
@@ -291,6 +283,19 @@ Var =
  --args --disable-web-security --user-data-dir
 )
 SendInput, % Var
+return
+
+::macnosafe::
+::iosodesafe::
+::macunsafe::
+::mac.safe::
+::mac.nosafe::
+::mac.unsafe::
+Var =
+(
+open -a Google\ Chrome --args --disable-web-security --user-data-dir
+)
+code(Var)
 return
 
 ::api.open::
@@ -1187,8 +1192,10 @@ Send, {up}
 return
 
 ::``````j::
+::``````js::
 ::``````jss::
 ::``j::
+::``js::
 Var =
 (
 ``````JavaScript
@@ -1235,3 +1242,35 @@ code(Var)
 return
 
 
+::shazan::
+::shaz::
+::shazam::
+::shazhan::
+::sz::
+Var =
+(
+━━━━━┒
+ ┓┏┓┏┓   改你mb的需求！！
+ ┛┗┛┗┛┃    ＼○／
+ ┓┏┓┏┓┃    　/
+ ┛┗┛┗┛┃    ノ)
+ ┓┏┓┏┓┃
+ ┛┗┛┗┛┃
+ ┓┏┓┏┓┃ 
+ ┛┗┛┗┛┃
+ ┓┏┓┏┓┃ 
+ ┛┗┛┗┛┃
+ ┓┏┓┏┓┃
+ ┃┃┃┃┃┃
+ ┻┻┻┻┻┻
+)
+code(Var)
+return
+
+::zyx::
+Var =
+(
+张宇煊
+)
+code(Var)
+return

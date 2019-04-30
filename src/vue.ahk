@@ -18,6 +18,7 @@
   Menu, vuewatch, Add, vue.watch-deep-$route, VueHandler
 
   Menu, VueMenu, Add, vue.init, VueHandler
+  Menu, VueMenu, Add, vue.config.js, VueHandler
   Menu, VueMenu, Add, vue3-template脚手架, VueHandler
   Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
   Menu, VueMenu, Add, css-scoped深度作用选择器：>>>（css） 与 /deep/（sass）, VueHandler
@@ -100,6 +101,11 @@ Var =
 )
 }
 
+
+if (v == "vue.config.js") {
+_send("vue.config.js", true, true)
+return
+}
 
 if (v == "npm rebuild node-sass") {
 Var = 
@@ -1527,6 +1533,9 @@ return
 
 ::router.init::
 ::route.init::
+::vue.router::
+::vue.route::
+::router.js::
 Var =
 (
 import Vue from 'vue'
@@ -2528,6 +2537,57 @@ return
 Var =
 (
 <router-view></router-view>
+)
+code(Var)
+return
+
+::vue.scss::
+::vue.scope::
+Var =
+(
+<style lang='scss' scoped>
+@import '~@/scss/functions.scss';
+.test {
+
+}
+</style>
+)
+code(Var)
+return
+
+:?:vue.config.js::
+:?:vue.config::
+Var =
+(
+// vue.config.js
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
+module.exports = {
+    publicPath: './',
+    assetsDir: 'assets',
+    productionSourceMap: false,
+    chainWebpack: config => {
+    	config.resolve.alias
+    	     .set('@', resolve('src'))
+    	     .set('@c', resolve('src/components'))
+	    config.output.filename('[name].[hash].js').end(); 
+    },
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://192.168.14.29:31006/xindai/',
+                changeOrigin: true,
+                ws: true,
+                pathRewrite: {
+                    '^/api': '/',
+                }
+            }
+        },
+    },
+}
 )
 code(Var)
 return
