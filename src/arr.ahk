@@ -1,41 +1,4 @@
 ﻿
-
-
-::forr::
-::for10::
-Var =
-(
-for (var i = 0; i < 10; i++) {
-    
-}
-)
-code(Var)
-Send, {up}{tab}
-return
-
-::newarr::
-Var =
-(
-// new Int8Array(100)
-// [...Array(100)].map(_ => 0);
-// [...Array(100)].map((v, index, array) => index);
-[...Array(100)].map((v, index, array) => {
-    return index
-});
-)
-code(Var)
-return
-
-:?:.filter::
-Var =
-(
-.filter((data) => {
-  return data === name;
-})
-)
-code(Var)
-return
-
 ::arr::
 ::arra::
 ::arrr::
@@ -48,7 +11,7 @@ return
 	Menu, arrayMenu, Add, 从数组中随机不重复取出指定数量的人, ForHandler
 	Menu, arrayMenu, Add, Array.prototype.remove, ForHandler
 	Menu, arrayMenu, Add, 类数组转数组：Array.prototype.slice.call(arguments), ForHandler
-	
+	Menu, arrayMenu, Add, 二维数组转一维数组：Array.prototype.flat(), ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -89,6 +52,25 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "二维数组转一维数组：Array.prototype.flat()") {
+Var = 
+(
+// es5 Array.prototype.reduce()
+[[1,2], [3, 4, [7,8]], [5, 6]].reduce((previousValue, currentValue) => {
+	return previousValue.concat(currentValue)
+}, []) // [1, 2, 3, 4, Array(2), 5, 6]
+
+// （推荐）es6 Array.prototype.flat()
+[[1,2], [3, 4, [7,8]], [5, 6]].flat() // [1, 2, 3, 4, Array(2), 5, 6]
+
+// 无限级解压
+var arr1 = [[0, 1], [2, 3], [4, 5, [6, 7, 8]]]
+const flatten = arr => [].concat( ...arr.map(x => Array.isArray(x) ? flatten(x) : x) )
+flatten(arr1) 
 )
 }
 
@@ -449,4 +431,62 @@ Var =
 ary.slice(-1)
 )
 code(Var)
+return
+
+
+
+
+::forr::
+::for10::
+Var =
+(
+for (var i = 0; i < 10; i++) {
+    
+}
+)
+code(Var)
+Send, {up}{tab}
+return
+
+::newarr::
+Var =
+(
+// new Int8Array(100)
+// [...Array(100)].map(_ => 0);
+// [...Array(100)].map((v, index, array) => index);
+[...Array(100)].map((v, index, array) => {
+    return index
+});
+)
+code(Var)
+return
+
+:?:.filter::
+Var =
+(
+.filter((data) => {
+  return data === name;
+})
+)
+code(Var)
+return
+
+
+::flat::
+Var =
+(
+// es5 Array.prototype.reduce()
+[[1,2], [3, 4, [7,8]], [5, 6]].reduce((previousValue, currentValue) => {
+	return previousValue.concat(currentValue)
+}, []) // [1, 2, 3, 4, Array(2), 5, 6]
+---
+// （推荐）es6 Array.prototype.flat()
+[[1,2], [3, 4, [7,8]], [5, 6]].flat() // [1, 2, 3, 4, Array(2), 5, 6]
+---
+// 无限级解压
+var arr1 = [[0, 1], [2, 3], [4, 5, [6, 7, 8]]]
+const flatten = arr => [].concat( ...arr.map(x => Array.isArray(x) ? flatten(x) : x) )
+flatten(arr1) 
+)
+txtit(Var)
 return

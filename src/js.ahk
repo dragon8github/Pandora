@@ -2356,7 +2356,7 @@ Var =
 .reduce((previousValue, currentValue, index, array) => {
     return previousValue + currentValue
 }, 0)
-
+---
 // 初始化为数组的示例
 children.reduce((previousValue, currentValue) => {
 	if (currentValue.hlPid === v.hlItemId)
@@ -2364,13 +2364,13 @@ children.reduce((previousValue, currentValue) => {
 	// 默认总是要返回一个数组的
 	return previousValue
 }, [])
-
+---
 // [1,2,3]	
 [1,2,3].reduce((previousValue, currentValue, index, array) => {
 	return [...previousValue, currentValue, 'childList']
 }, []).slice(0, -1)
 )
-code(Var)
+txtit(Var)
 return
 
 ::date2::

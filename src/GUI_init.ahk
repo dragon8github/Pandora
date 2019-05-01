@@ -432,6 +432,15 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/electron/electron-quick-sta
 Gui, Pandora:Add, Link,, <a href="https://electronjs.org/docs/api/client-request">electron-api文档</a>
 
 
+Gui, Pandora:Add, Text, W140 Section ys, nodejs cms：
+Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repos/NodeJS/CMS">NodeJS/CMS</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/doramart/DoraCMS">（推荐）DoraCMS</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/awesome-javascript#node-powered-cms-frameworks">（推荐）powered-cms</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/NodeBB/NodeBB">NodeBB</a>
+Gui, Pandora:Add, Link,, <a href="https://www.graphql.com/">graphql</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/apostrophecms/apostrophe">apostrophe</a>
+;@nodejs @node
+
 Gui, Pandora:Tab, 5
 Gui, Pandora:Add, Text,  W140 Section, Vue：
 Gui, Pandora:Add, Link,, <a href="http://vuejs.org/">vue</a>
@@ -552,6 +561,7 @@ Gui, Pandora:Add, Link,, <a href="https://v3.bootcss.com/css/#grid-options">全�
 Gui, Pandora:Add, Link,, <a href="https://v3.bootcss.com/components/#jumbotron">全局 js 组件</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/twbs/bootstrap">Bootstrap-github</a>
 Gui, Pandora:Add, Link,, <a href="http://www.youzhan.org/">示例网站</a>
+Gui, Pandora:Add, Link,, <a href="http://www.bootcss.com/p/layoutit/">layout可视化布局（未开源）</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/1000hz/bootstrap-validator">表单验证插件</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/uxsolutions/bootstrap-datepicker">datepicker时间插件</a>
 
@@ -648,17 +658,17 @@ Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/tutorial">jointjs
 Gui, Pandora:Add, Text, W140 ys, 最强验证库joi
 Gui, Pandora:Add, Link,, <a href="https://github.com/hapijs/joi">hapijs joi</a>
 
-Gui, Pandora:Add, Text, W140 Section xs yp+200, nodejs cms：
-Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repos/NodeJS/CMS">NodeJS/CMS</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/doramart/DoraCMS">（推荐）DoraCMS</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/awesome-javascript#node-powered-cms-frameworks">（推荐）powered-cms</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/NodeBB/NodeBB">NodeBB</a>
-Gui, Pandora:Add, Link,, <a href="https://www.graphql.com/">graphql</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/apostrophecms/apostrophe">apostrophe</a>
+
+
+Gui, Pandora:Add, Text, W140 Section xs yp+200, 响应式导航：
+Gui, Pandora:Add, Link,, <a href="https://github.com/viljamis/responsive-nav.js">responsive-nav</a>
+
 
 Gui, Pandora:Add, Text, W140 ys, 拖拽：
 Gui, Pandora:Add, Link,, <a href="https://ilyashubin.github.io/scrollbooster/">table拖动js</a>
 Gui, Pandora:Add, Link,, <a href="https://sortablejs.github.io/Sortable/">列表拖拽js</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/bevacqua/dragula">拖拽神器dragula</a>
+Gui, Pandora:Add, Link,, <a href="https://vuegg.now.sh/">vuegg</a>
 
 Gui, Pandora:Add, Text, W140 ys, 录制js：
 Gui, Pandora:Add, Link,, <a href="https://www.rrweb.io/replay">录制和回放</a>
@@ -673,6 +683,11 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/e-oj/Magic-Grid">新时代�
 
 Gui, Pandora:Add, Text, W140 ys xp+180, 文档神器docsify：
 Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/docsify">docsify</a>
+
+Gui, Pandora:Add, Text, W140 Section xs yp+50, stickUp黏住固定：
+Gui, Pandora:Add, Link,, <a href="https://github.com/LiranCohen/stickUp">stickUp</a>
+
+
 ; @qimiao @qm @ku
 
 Gui, Pandora:Tab, 9
