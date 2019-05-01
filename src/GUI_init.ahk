@@ -475,24 +475,32 @@ Gui, Pandora:Add, Text,  W100 ys, vux
 Gui, Pandora:Add, Link,, <a href="https://github.com/airyland/vux">vux github</a>
 Gui, Pandora:Add, Link,, <a href="https://vux.li/">vux 官网</a>
 
+
 Gui, Pandora:Add, Text,  W160 ys, 其他插件收录
 Gui, Pandora:Add, Link,, <a href="https://github.com/jaweii/Vueg----page-transition-plugin">vueg转场动画</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/1615450788/vue-cron">vue-cron</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/OYsun/VueCircleMenu">vue-圆环菜单</a>
 Gui, Pandora:Add, Link,, <a href="https://vuegg.now.sh/">vuegg 神器，找了好久了</a>
-;@vue
+Gui, Pandora:Add, Link,, <a href="https://github.com/xiaokaike/vue-color">vue-color 给力颜色器</a>
 
-
-Gui, Pandora:Add, Text, W140 Section xs yp+240, vue动画钩子：
+Gui, Pandora:Add, Text, W140 Section xs yp+150, vue动画钩子：
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes">vue-transition</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#JavaScript-Hooks">JavaScript-Hooks</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/api/#transition-group">transition-group</a>
 
-Gui, Pandora:Add, Text, W160 ys, admin-lte-free：
+Gui, Pandora:Add, Text, W140 ys, admin-lte-free：
 Gui, Pandora:Add, Link,, <a href="https://themequarry.com/category/free?page=2">admin-lte-free</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/creativetimofficial/material-dashboard">material-dashboard</a>
 Gui, Pandora:Add, Link,, <a href="https://www.creative-tim.com/product/vue-material-dashboard">material-dashboard-vue</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuematerial/vue-material">vue-material</a>
+
+Gui, Pandora:Add, Text, W160 ys, 轻量级组件收录：
+Gui, Pandora:Add, Link,, <a href="https://github.com/hekigan/vue-directive-tooltip">vue-directive-tooltip</a>
+
+Gui, Pandora:Add, Text, W140 ys, 冷门UI框架：
+Gui, Pandora:Add, Link,, <a href="https://github.com/stasson/vue-mdc-adapter">极简Material框架</a>
+
+;@vue
 
 Gui, Pandora:Tab, 6
 Gui, Pandora:Add, Text,  W140  Section, React：
@@ -562,6 +570,7 @@ Gui, Pandora:Add, Link,, <a href="https://v3.bootcss.com/components/#jumbotron">
 Gui, Pandora:Add, Link,, <a href="https://github.com/twbs/bootstrap">Bootstrap-github</a>
 Gui, Pandora:Add, Link,, <a href="http://www.youzhan.org/">示例网站</a>
 Gui, Pandora:Add, Link,, <a href="http://www.bootcss.com/p/layoutit/">layout可视化布局（未开源）</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/justjavac/layoutit">layout第三方源码</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/1000hz/bootstrap-validator">表单验证插件</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/uxsolutions/bootstrap-datepicker">datepicker时间插件</a>
 
@@ -658,11 +667,18 @@ Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/tutorial">jointjs
 Gui, Pandora:Add, Text, W140 ys, 最强验证库joi
 Gui, Pandora:Add, Link,, <a href="https://github.com/hapijs/joi">hapijs joi</a>
 
+Gui, Pandora:Add, Text,  W140 yp+50, 本地存储：
+Gui, Pandora:Add, Link,, <a href="https://github.com/localForage/localForage">localForage</a>
 
-
-Gui, Pandora:Add, Text, W140 Section xs yp+200, 响应式导航：
+Gui, Pandora:Add, Text, W140 Section xs yp+100, 响应式导航：
 Gui, Pandora:Add, Link,, <a href="https://github.com/viljamis/responsive-nav.js">responsive-nav</a>
 
+
+Gui, Pandora:Add, Text, W140 yp+50, stickUp黏住固定：
+Gui, Pandora:Add, Link,, <a href="https://github.com/LiranCohen/stickUp">stickUp</a>
+
+Gui, Pandora:Add, Text, W140 yp+50, clone-deep：
+Gui, Pandora:Add, Link,, <a href="https://github.com/jonschlinkert/clone-deep/blob/master/index.js">clone-deep</a>
 
 Gui, Pandora:Add, Text, W140 ys, 拖拽：
 Gui, Pandora:Add, Link,, <a href="https://ilyashubin.github.io/scrollbooster/">table拖动js</a>
@@ -670,22 +686,18 @@ Gui, Pandora:Add, Link,, <a href="https://sortablejs.github.io/Sortable/">列表
 Gui, Pandora:Add, Link,, <a href="https://github.com/bevacqua/dragula">拖拽神器dragula</a>
 Gui, Pandora:Add, Link,, <a href="https://vuegg.now.sh/">vuegg</a>
 
-Gui, Pandora:Add, Text, W140 ys, 录制js：
+Gui, Pandora:Add, Text, W120 ys, 录制js：
 Gui, Pandora:Add, Link,, <a href="https://www.rrweb.io/replay">录制和回放</a>
 Gui, Pandora:Add, Link,, <a href="https://scrimba.com/p/pV5eHk/c9EqQSD">录制灵感来源</a>
 
-
-Gui, Pandora:Add, Text, W140 ys, APlayer（优雅的MP3播放器，B站和iSearch都用，也支持Vue和各种版本）：
+Gui, Pandora:Add, Text, W140 ys, APlayer（优雅的MP3，B站和iSearch都用，也支持Vue和各种版本）：
 Gui, Pandora:Add, Link,, <a href="https://github.com/MoePlayer/APlayer">Aplay github</a>
 
-Gui, Pandora:Add, Text, W140 ys xp+180, 有趣有趣：
-Gui, Pandora:Add, Link,, <a href="https://github.com/e-oj/Magic-Grid">新时代瀑布流Magic-Grid</a>
+Gui, Pandora:Add, Text, W140 ys xp+160, 有趣有趣：
+Gui, Pandora:Add, Link,, <a href="https://github.com/e-oj/Magic-Grid">新瀑布流 Magic-Grid</a>
 
 Gui, Pandora:Add, Text, W140 ys xp+180, 文档神器docsify：
 Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/docsify">docsify</a>
-
-Gui, Pandora:Add, Text, W140 Section xs yp+50, stickUp黏住固定：
-Gui, Pandora:Add, Link,, <a href="https://github.com/LiranCohen/stickUp">stickUp</a>
 
 
 ; @qimiao @qm @ku
