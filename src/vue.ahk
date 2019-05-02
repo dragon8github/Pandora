@@ -58,6 +58,7 @@
   Menu, VueMenu, Add, this.$router.push('index'), VueHandler
   Menu, VueMenu, Add, this.$router.back(), VueHandler
   Menu, VueMenu, Add, this.$router.currentRoute.meta.step, VueHandler
+  Menu, VueMenu, Add, router.js 404 定义, VueHandler
   Menu, VueMenu, Add, router路由钩子大全, :vuerouterhock  
   Menu, VueMenu, Add, <router-view></router-view>, VueHandler
   Menu, VueMenu, Add, <router-link></router-link>, VueHandler
@@ -99,6 +100,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "router.js 404 定义") {
+_Send("router.404", true, true)
+return
 }
 
 
@@ -2560,6 +2566,7 @@ return
 Var =
 (
 // vue.config.js
+const path = require('path')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -2573,21 +2580,71 @@ module.exports = {
     	config.resolve.alias
     	     .set('@', resolve('src'))
     	     .set('@c', resolve('src/components'))
-	    config.output.filename('[name].[hash].js').end(); 
+	    config.output.filename('[name].[hash].js').end();
     },
     devServer: {
-        proxy: {
-            '/api': {
-                target: 'http://192.168.14.29:31006/xindai/',
-                changeOrigin: true,
-                ws: true,
-                pathRewrite: {
-                    '^/api': '/',
-                }
-            }
-        },
+        /**
+         * proxy: {
+         *     '/api': {
+         *         target: 'http://192.168.14.29:31006/xindai/',
+         *         changeOrigin: true,
+         *         ws: true,
+         *         pathRewrite: {
+         *             '^/api': '/',
+         *         }
+         *     }
+         * },
+         */
     },
 }
 )
 code(Var)
+return
+
+::router.404::
+::router404::
+::router.js.404::
+Var = 
+(
+import Vue from 'vue'
+import Router from 'vue-router'
+import Editor from '@/views/Editor'
+import Preview from '@/views/Preview'
+import NotFound from '@/views/404'
+
+Vue.use(Router)
+
+export default new Router({
+  mode: 'history',
+  routes: [
+    { path: '/', name: 'editor', component: Editor },
+    { path: '/preview', name: 'preview', component: Preview },
+    { path: '/auth', redirect: { name: 'main' } },
+    { path: '*', component: NotFound }
+  ]
+})
+---
+<template>
+<div class="not-found">
+  404 - Not found
+</div>
+</template>
+
+
+<script>
+export default { name: 'not-found' }
+</script>
+
+
+<style scoped>
+.not-found {
+  font-size: 47px;
+  text-align: center;
+  margin: 0 57px;
+  width: 100`%;
+  height: 100`%;
+}
+</style>
+)
+txtit(Var)
 return
