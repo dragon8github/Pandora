@@ -1101,7 +1101,6 @@ return
 Var =
 (
 https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
-http://lorempixel.com/1600/900
 )
 code(Var)
 return
@@ -1303,6 +1302,16 @@ return
 Var =
 (
 张宇煊
+)
+code(Var)
+return
+
+
+::ahkitem::
+::ahkmenuitem::
+Var =
+(
+Menu, PythonMenu, Add,🍁🍁🍁🍁🍁🍁🍁🍁  命令行  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
 )
 code(Var)
 return

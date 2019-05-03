@@ -120,8 +120,9 @@
 	Menu, ShellMenu, Add, tar 压缩, ShellHandler3
 	Menu, ShellMenu, Add, telnet 19.104.40.37 8082, ShellHandler3
 	Menu, ShellMenu, Add, ssh root@ip地址, ShellHandler3
+	Menu, ShellMenu, Add, chmod u+x fuck.sh, ShellHandler3
 	
-		
+
 	Menu, ShellMenu, Add, , ShellHandler
 	Menu, ShellMenu, Add, , ShellHandler
 	

@@ -33,7 +33,19 @@
 	Menu, JavaScriptEventMenu, Add, , EventHandler
 	Menu, JavaScriptEventMenu, Add, .onclick = (e) => {}, EventHandler
 	Menu, JavaScriptEventMenu, Add, .onsubmit = (e) => {}, EventHandler
+	Menu, JavaScriptEventMenu, Add, , EventHandler
+	Menu, JavaScriptEventMenu, Add, , EventHandler
 	
+	Menu, JavaScriptEventMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 drag: 在拖动目标上触发事件 (源元素) 🍁🍁🍁🍁🍁🍁🍁🍁, EventHandler
+	Menu, JavaScriptEventMenu, Add, .ondragstart - 用户开始拖动元素时触发, EventHandler
+	Menu, JavaScriptEventMenu, Add, .ondrag - 元素正在拖动时触发, EventHandler
+	Menu, JavaScriptEventMenu, Add, .ondragend - 用户完成元素拖动后触发, EventHandler
+	
+	Menu, JavaScriptEventMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 drop: 释放目标时触发的事件 🍁🍁🍁🍁🍁🍁🍁🍁, EventHandler
+	Menu, JavaScriptEventMenu, Add, .ondragenter - 当被鼠标拖动的对象进入其容器范围内时触发此事件, EventHandler
+	Menu, JavaScriptEventMenu, Add, .ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件, EventHandler
+	Menu, JavaScriptEventMenu, Add, .ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件, EventHandler
+	Menu, JavaScriptEventMenu, Add, .ondrop - 在一个拖动过程中，释放鼠标键时触发此事件, EventHandler
 
 
 	Menu, echartsEventMenu, Add, echarts.init, EventHandler
@@ -153,6 +165,57 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+
+if (v == ".ondragstart - 用户开始拖动元素时触发") {
+Var = 
+(
+.ondragstart
+)
+}
+
+if (v == ".ondrag - 元素正在拖动时触发") {
+Var = 
+(
+.ondrag
+)
+}
+
+if (v == ".ondragend - 用户完成元素拖动后触发") {
+Var = 
+(
+.ondragend
+)
+}
+
+if (v == ".ondragenter - 当被鼠标拖动的对象进入其容器范围内时触发此事件") {
+Var = 
+(
+.ondragenter
+)
+}
+
+if (v == ".ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件") {
+Var = 
+(
+.ondragover
+)
+}
+
+if (v == ".ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件") {
+Var = 
+(
+.ondragleave
+)
+}
+
+if (v == ".ondrop - 在一个拖动过程中，释放鼠标键时触发此事件") {
+Var = 
+(
+.ondrop
 )
 }
 

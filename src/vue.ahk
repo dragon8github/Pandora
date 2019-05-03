@@ -72,6 +72,7 @@
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
+  Menu, vuesolution, Add, svg-spinner-loader.vue, VueHandler
   Menu, vuesolution, Add, myprogress组件, VueHandler
   Menu, vuesolution, Add, msgbox组件, VueHandler
   Menu, vuesolution, Add, click-outside 指令, VueHandler
@@ -83,6 +84,7 @@
   Menu, vuesolution, Add, $.scrollforevery 无缝滚动（Vue版本）, VueHandler
   Menu, vuesolution, Add, el-menu简易封装, VueHandler
   Menu, vuesolution, Add, npm rebuild node-sass, VueHandler
+  Menu, vuesolution, Add, Vue.config.productionTip = false, VueHandler
   
   
   Menu, VueMenu, Add, Vue 解决方案和组件, :vuesolution
@@ -99,6 +101,119 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "Vue.config.productionTip = false") {
+Var = 
+(
+Vue.config.productionTip = false
+)
+}
+
+if (v == "svg-spinner-loader.vue") {
+Var = 
+(
+<template>
+  <div class="block-loader__modal">
+    <div class="spinner">
+     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1"
+      width="48px" height="48px" viewBox="0 0 28 28">
+        <g class="qp-circular-loader">
+         <path class="qp-circular-loader-path" fill="none" d="M 14,1.5 A 12.5,12.5 0 1 1 1.5,14" stroke-linecap="round" />
+        </g>
+     </svg>
+    </div>
+  </div>
+</template>
+
+
+<script>
+export default {
+  name: 'block-loader'
+}
+</script>
+
+
+<style scoped>
+.spinner {
+  margin: 10px 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.spinner svg {
+  background-color: rgb(255, 255, 255);
+  border-radius: 50`%;
+  padding: 8px;
+  box-shadow:
+    0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.qp-circular-loader {
+  width: 64px;
+  height: 64px;
+  stroke-width: 3px;
+}
+
+.qp-circular-loader-path {
+  stroke-dasharray: 58.9;
+  stroke-dashoffset: 58.9;
+}
+
+.qp-circular-loader,
+.qp-circular-loader * {
+  transform-origin: 50`% 50`%;
+}
+
+
+.qp-circular-loader {
+  animation-name: rotate;
+  animation-duration: 1568.63ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+
+.qp-circular-loader-path {
+  animation-name: fillunfill, rot, colors;
+  animation-duration: 1333ms, 5332ms, 5332ms;
+  animation-iteration-count: infinite, infinite, infinite;
+  animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1), steps(4), linear;
+  animation-play-state: running, running, running;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fillunfill {
+  from { stroke-dashoffset: 58.8 }
+  50`% { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -58.4 }
+}
+
+@keyframes rot {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes colors {
+  0`% { stroke: #ea493f; }
+  20`% { stroke: #ffa901; }
+  40`% { stroke: #ea493f; }
+  60`% { stroke: #2b6a73; }
+  80`% { stroke: #ea493f; }
+  100`% { stroke: #ffa901; }
+}
+
+
+</style>
 )
 }
 
@@ -1746,6 +1861,8 @@ return
 
 
 ::vue.style::
+::vue.css::
+::vue.scss::
 Var =
 (
 <style lang='scss' scoped>

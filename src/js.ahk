@@ -3838,13 +3838,14 @@ code(Var)
 SendInput, {left 3}
 return
 
-AppsKey & d::
 >^d::
 Var =
 (
+console.log('`%c DEBUG ' + '`%c ->' + name, 'background:#222; color: yellow', 'background: #fff; color: #000', )
 debugger;
 )
 code(Var)
+Send, {Up}{End}{left}
 Return
 
 
@@ -3855,9 +3856,9 @@ code(title)
 return
 
 
-AppsKey & c:: 
 >^c:: 
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+; console.log('`%c %t% ' + '`%c ->' + name, 'background:#222; color: yellow', 'background: #fff; color: #000', )
 Var =
 (
 console.log(%t%, )

@@ -239,7 +239,6 @@ Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
 
 
-
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng图片压缩</a>
@@ -263,7 +262,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.vultr.com/">vultr</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/Alvin9999/new-pac/wiki/自建ss服务器教程">自建ss服务器教程</a>
 Gui, Pandora:Add, Link,, <a href="https://36dcup.tk/user">36dcup加速度</a>
 Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
-
+Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
+;@1
 
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
@@ -657,6 +657,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/avajs/ava">ava</a>
 Gui, Pandora:Add, Text, W140 ys, 团队工具：
 Gui, Pandora:Add, Link,, <a href="https://www.atlassian.com/software/confluence">confluence知识库</a>
 
+
 Gui, Pandora:Add, Text, W140 ys, jointjs流程图
 Gui, Pandora:Add, Link,, <a href="https://www.jointjs.com/">jointjs官网</a>
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/docs/jointjs/v2.2/joint.html">jointjs api</a>
@@ -699,6 +700,11 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/e-oj/Magic-Grid">新瀑布�
 Gui, Pandora:Add, Text, W140 ys xp+180, 文档神器docsify：
 Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/docsify">docsify</a>
 
+
+Gui, Pandora:Add, Text, W140 yp+50, 模型live2D：
+Gui, Pandora:Add, Link,, <a href="https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02">教程博客</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/journey-ad/live2d_src">github</a>
+Gui, Pandora:Add, Link,, <a href="https://l2dwidget.js.org/docs/index.html">文档</a>
 
 ; @qimiao @qm @ku
 

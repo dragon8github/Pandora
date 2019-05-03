@@ -79,6 +79,22 @@
     Menu, utilsDOM, Add, clickOutSide：!el.contains(event.target), utilsHandler
     Menu, utilsDOM, Add, mask蒙版, utilsHandler
     
+    Menu, utilsDOM, Add
+    Menu, utilsDOM, Add
+    
+    Menu, utilsDOM, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 element 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
+    Menu, utilsDOM, Add, - el.clientHeight：可视高度 , utilsHandler
+    Menu, utilsDOM, Add, - el.scrollY：滚动高度 , utilsHandler
+    Menu, utilsDOM, Add, - el.getBoundingClientRect().top：相对窗口的距离 , utilsHandler
+
+    Menu, utilsDOM, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 event 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
+    Menu, utilsDOM, Add, - e.clientY： 距离页面顶部相对距离, utilsHandler
+    Menu, utilsDOM, Add, - e.pageY： 距离页面顶部绝对距离（含滚动条）, utilsHandler
+    Menu, utilsDOM, Add, - e.screenY：距离屏幕边缘的距离, utilsHandler
+
+    Menu, utilsDOM, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 offset 系列 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
+    Menu, utilsDOM, Add, - offsetWidth：getComputedStyle(el).width 返回的可能是百分比，offsetWidth总是返回数值, utilsHandler
+    Menu, utilsDOM, Add, - offsetTop：表示当前元素对象相对于其定位元素的垂直/水平偏移量（position）, utilsHandler
     
     Menu, utilsObject, Add, for#Object.keys, utilsHandler
     Menu, utilsObject, Add, for#o in obj, utilsHandler
@@ -365,6 +381,54 @@ Var =
 )
 }
 
+if (v == "- el.clientHeight：可视高度") {
+Var = 
+(
+el.clientHeight
+)
+}
+if (v == "- el.scrollY：滚动高度") {
+Var = 
+(
+el.scrollY
+)
+}
+if (v == "- el.getBoundingClientRect().top：相对窗口的距离") {
+Var = 
+(
+el.getBoundingClientRect().top
+)
+}
+if (v == "- e.clientY： 距离页面顶部相对距离") {
+Var = 
+(
+e.clientY
+)
+}
+if (v == "- e.pageY： 距离页面顶部绝对距离（含滚动条）") {
+Var = 
+(
+e.pageY
+)
+}
+if (v == "- e.screenY：距离屏幕边缘的距离") {
+Var = 
+(
+e.screenY
+)
+}
+if (v == "- offsetWidth：getComputedStyle(el).width 返回的可能是百分比，offsetWidth总是返回数值") {
+Var = 
+(
+offsetWidth
+)
+}
+if (v == "- offsetTop：表示当前元素对象相对于其定位元素的垂直/水平偏移量（position）") {
+Var = 
+(
+offsetTop
+)
+}
 
 if (v == "一个值的__proto__拦截器：数组为例") {
 Var = 

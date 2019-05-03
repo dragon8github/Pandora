@@ -7,7 +7,6 @@ FileEncoding, UTF-8
 FileDelete, *.bak 
 FileDelete, .\src\*.bak
 
-
 #include src/GUI_init.ahk	  ; GUI初始化系列
 #include src/GUI.ahk		  ; GUI系列
 #Include src/ISearch.ahk	  ; ISearch
