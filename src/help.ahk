@@ -1001,6 +1001,7 @@ return
     TrayTip, my title, current color is `n %Clipboard%, 20, 17
 return
 
+/*
 ^+d::
     InputBox, OutputVar, title, enter your download url?
     if (OutputVar != "") {
@@ -1017,7 +1018,7 @@ return
         }
     }
 return
-
+*/
 
 ::jss::
     Send, JavaScript
@@ -1280,20 +1281,20 @@ return
 ::sz::
 Var =
 (
-━━━━━┒
- ┓┏┓┏┓   改你mb的需求！！
- ┛┗┛┗┛┃    ＼○／
- ┓┏┓┏┓┃    　/
- ┛┗┛┗┛┃    ノ)
- ┓┏┓┏┓┃
- ┛┗┛┗┛┃
- ┓┏┓┏┓┃ 
- ┛┗┛┗┛┃
- ┓┏┓┏┓┃ 
- ┛┗┛┗┛┃
- ┓┏┓┏┓┃
- ┃┃┃┃┃┃
- ┻┻┻┻┻┻
+/*━━━━━┒   ⚡⚡⚡⚡⚡
+   ┓┏┓┏┓   
+   ┛┗┛┗┛┃  改你mb的需求！！
+   ┓┏┓┏┓┃    ＼○／
+   ┛┗┛┗┛┃    　/
+   ┓┏┓┏┓┃    ノ) 
+   ┛┗┛┗┛┃
+   ┓┏┓┏┓┃ 
+   ┛┗┛┗┛┃
+   ┓┏┓┏┓┃ 
+   ┛┗┛┗┛┃
+   ┓┏┓┏┓┃
+   ┃┃┃┃┃┃
+   ┻┻┻┻┻┻*/
 )
 code(Var)
 return

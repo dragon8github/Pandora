@@ -43,6 +43,7 @@
     Menu, utilsDOM, Add, setStyle, utilsHandler
     Menu, utilsDOM, Add, setattr, utilsHandler
     Menu, utilsDOM, Add, removeattr, utilsHandler
+    Menu, utilsDOM, Add, getComputedStyle(el)['height'], utilsHandler
     
     Menu, utilsDOM, Add
     Menu, utilsDOM, Add
@@ -223,8 +224,9 @@
     Menu, utilspractice, Add, 函数参数对象深度结构与重命名： var a = ({ state: { nums:list`, numGroup`, map } }) => {}, utilsHandler
     Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
-    Menu, utilspractice, Add, parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
-    
+    Menu, utilspractice, Add, parseInt/parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
+    Menu, utilspractice, Add, 将 if/else 转化为三元表达式示例, utilsHandler
+    ; renzhi
     
     ; @my
     Menu, utilsmy, Add, Promise.prototype.before, utilsHandler
@@ -374,10 +376,33 @@ utilsHandler:
 v := A_ThisMenuItem
 Var :=
 
-
+; @1
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "getComputedStyle(el)['height']") {
+Var = 
+(
+getComputedStyle(el)['height']
+)
+}
+
+if (v == "将 if/else 转化为三元表达式示例") {
+Var = 
+(
+return (
+  (!parent)
+    ? parseInt(window.getComputedStyle(document.getElementById(element.id))[prop])
+    : (typeof element[prop] !== 'string')
+      ? element[prop]
+      : (typeof parent[prop] !== 'string')
+        ? parent[prop] * parseInt(element[prop]) / 100
+        : parseInt(window.getComputedStyle(document.getElementById(parent.id))[prop]) * parseInt(element[prop]) / 100
+`)
 )
 }
 
@@ -1995,7 +2020,7 @@ _getData(_ => {console.log(20190126191340, _)}) // [...]
 }
 
 
-if (v == "parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162") {
+if (v == "parseInt/parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162") {
 Var = 
 (
 dict.offset = [

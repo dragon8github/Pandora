@@ -3838,6 +3838,7 @@ code(Var)
 SendInput, {left 3}
 return
 
+
 >^d::
 Var =
 (
@@ -3845,7 +3846,6 @@ console.log('`%c DEBUG ' + '`%c ->' + name, 'background:#222; color: yellow', 'b
 debugger;
 )
 code(Var)
-Send, {Up}{End}{left}
 Return
 
 
@@ -3855,10 +3855,21 @@ WinGetTitle, title, A
 code(title)
 return
 
+>+c::
+>+d::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+; console.log('`%c DEBUG ：%t% ' + '`%c ->' + name, 'background:#222; color: yellow', 'background: #fff; color: #000', )
+; console.log('`%c DEBUG ' + '`%c ->' + name, 'background:#222; color: yellow', 'background: #fff; color: #000', )
+Var =
+(
+console.log('`%c DEBUG ☀ %t% ' + '`%c ->' + name, 'background:#222; color: yellow', 'background: #fff; color: #000', )
+)
+code(Var)
+SendInput, {left 1}
+return
 
 >^c:: 
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-; console.log('`%c %t% ' + '`%c ->' + name, 'background:#222; color: yellow', 'background: #fff; color: #000', )
 Var =
 (
 console.log(%t%, )
