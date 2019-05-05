@@ -146,12 +146,12 @@
 	Menu, ShellMenu, Add, find + xargs + cat合并多个文件内容到一个文件, ShellHandler
 	Menu, ShellMenu, Add, 批量重命名, ShellHandler
 	Menu, ShellMenu, Add, 安装脚本shadowsocks-install.sh, ShellHandler
-	Menu, ShellMenu, Add, 灭霸响指：Thanos.sh - 删除系统一半的文件, ShellHandler3
 	
 	Menu, ShellMenu, Add
 	Menu, ShellMenu, Add
 	
 	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler3
+	Menu, ShellMenu, Add, 开机自启动配置文件：/etc/rc.d/rc.local, ShellHandler3
 	Menu, ShellMenu, Add, 默认的www目录：/usr/local/nginx/html, ShellHandler3
 	Menu, ShellMenu, Add, nginx默认路径：/usr/local/nginx/sbin/nginx, ShellHandler3
 	Menu, ShellMenu, Add, nginx配置路径：/usr/local/nginx/conf/nginx.conf, ShellHandler3
@@ -192,6 +192,22 @@ Var =
 )
 }
 
+
+if (v == "ps -ef | grep nginx") {
+Var = 
+(
+ps -ef | grep nginx
+)
+}
+
+
+
+if (v == "开机自启动配置文件：/etc/rc.d/rc.local") {
+Var = 
+(
+vi /etc/rc.d/rc.local
+)
+}
 
 if (v == "ssh root@ip地址") {
 Var = 
@@ -408,13 +424,6 @@ _send("nginx -t",true, true)
 return
 }
 
-
-if (v == "ps -ef | grep nginx") {
-Var = 
-(
-ps -ef | grep nginx
-)
-}
 
 if (v == "curl -O 下载") {
 Var = 

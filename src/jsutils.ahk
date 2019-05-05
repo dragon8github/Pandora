@@ -80,22 +80,19 @@
     Menu, utilsDOM, Add, clickOutSide：!el.contains(event.target), utilsHandler
     Menu, utilsDOM, Add, mask蒙版, utilsHandler
     
-    Menu, utilsDOM, Add
-    Menu, utilsDOM, Add
-    
-    Menu, utilsDOM, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 element 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
-    Menu, utilsDOM, Add, - el.clientHeight：可视高度 , utilsHandler
-    Menu, utilsDOM, Add, - el.scrollY：滚动高度 , utilsHandler
-    Menu, utilsDOM, Add, - el.getBoundingClientRect().top：相对窗口的距离 , utilsHandler
-
-    Menu, utilsDOM, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 event 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
-    Menu, utilsDOM, Add, - e.clientY： 距离页面顶部相对距离, utilsHandler
-    Menu, utilsDOM, Add, - e.pageY： 距离页面顶部绝对距离（含滚动条）, utilsHandler
-    Menu, utilsDOM, Add, - e.screenY：距离屏幕边缘的距离, utilsHandler
-
-    Menu, utilsDOM, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 offset 系列 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
-    Menu, utilsDOM, Add, - offsetWidth：getComputedStyle(el).width 返回的可能是百分比，offsetWidth总是返回数值, utilsHandler
-    Menu, utilsDOM, Add, - offsetTop：表示当前元素对象相对于其定位元素的垂直/水平偏移量（position）, utilsHandler
+    Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 element 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
+    Menu, utilsPosition, Add, - el.clientHeight：可视高度 , utilsHandler
+    Menu, utilsPosition, Add, - el.scrollHeight：真实高度 , utilsHandler
+    Menu, utilsPosition, Add, - el.scrollY：滚动位置 , utilsHandler
+    Menu, utilsPosition, Add, - el.getBoundingClientRect().top：相对窗口的距离 , utilsHandler
+    Menu, utilsPosition, Add, - el.scrollTop: 视口可见的顶部，到绝对顶部的距离, utilsHandler 
+    Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 event 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
+    Menu, utilsPosition, Add, - e.clientY： 距离页面顶部相对距离, utilsHandler
+    Menu, utilsPosition, Add, - e.pageY： 距离页面顶部绝对距离（含滚动条）, utilsHandler
+    Menu, utilsPosition, Add, - e.screenY：距离屏幕边缘的距离, utilsHandler
+    Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 offset 系列 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
+    Menu, utilsPosition, Add, - offsetWidth：getComputedStyle(el).width 返回的可能是百分比，offsetWidth总是返回数值, utilsHandler
+    Menu, utilsPosition, Add, - offsetTop：元素相对于定位元素（position默认是body）的偏移量（含scroll）, utilsHandler
     
     Menu, utilsObject, Add, for#Object.keys, utilsHandler
     Menu, utilsObject, Add, for#o in obj, utilsHandler
@@ -277,9 +274,10 @@
     
     
     
-    
+    ; @A @main @fuck @util @utils
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
+    Menu, utilsMenu , Add, Position 操作, :utilsPosition
     Menu, utilsMenu , Add, Object 操作, :utilsObject
     Menu, utilsMenu , Add, 原始之初ECMA5伏魔录, :utilses5
     
@@ -355,6 +353,7 @@
     Menu, utilsMenu, Add, 全屏F11最新解决方案, utilsHandler
     Menu, utilsMenu, Add, parsePath: 对象路径解析器, utilsHandler
     Menu, utilsMenu, Add, diff: 对比两个json对象是否一致, utilsHandler
+    Menu, utilsMenu, Add, fixPos: 根据父层界限调整宽高和位置, utilsHandler
     
 
     Menu, utilsMenu, Show
@@ -383,6 +382,35 @@ Var =
 )
 }
 
+
+if (v == "fixPos: 根据父层界限调整宽高和位置") {
+_send("fixpos", true, true)
+return
+}
+
+
+if (v == "- el.scrollHeight：真实高度") {
+Var = 
+(
+el.scrollHeight
+)
+}
+
+
+if (v == "- el.scrollTop: 视口可见的顶部，到绝对顶部的距离") {
+Var = 
+(
+/**
+ * scrollTop 新认知：https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop
+ *
+ * 1、他不是固定不变的，这个数据是根据滚动条的位置而定的（float）。
+ * 2、如果没有滚动条，那么值为0.
+ * 3、scrollTop 值是视口可见的顶部，到绝对顶部的距离。
+ * 4、但当我们向上滚的时候，实质是视口向上相对平移运动，由于该运动导致与容器顶部的距离拉近了。所以说：视口越接近顶部，数值越小（趋于0）。
+ */
+el.scrollTop
+)
+}
 
 if (v == "getComputedStyle(el)['height']") {
 Var = 
@@ -448,7 +476,7 @@ Var =
 offsetWidth
 )
 }
-if (v == "- offsetTop：表示当前元素对象相对于其定位元素的垂直/水平偏移量（position）") {
+if (v == "- offsetTop：元素相对于定位元素（position默认是body）的偏移量（含scroll）") {
 Var = 
 (
 offsetTop
@@ -5403,6 +5431,40 @@ function diff(a, b) {
     }
   }
   return true
+}
+)
+code(Var)
+return
+
+::fixpos::
+Var =
+(
+/**
+ * fixPos: 根据父层界限调整宽高和位置
+ */
+function fixPos ({height, width, top, left} = {}, {parentH, parentW} = {}) {
+  // Checks if position + size gets out-of-bounds (TOO FAR), if so, reposition...
+  if ((top + height) > parentH) 
+    top -= (top + height) - parentH
+
+  if ((left + width) > parentW)
+    left -= (left + width) - parentW
+
+  // Checks if position is out-of-bounds (NEGATIVE), if so reposition...
+  if (top <= 0) 
+    top = 0
+
+  if (left <= 0) 
+    left = 0
+
+  // Checks if, with a 0 position, the element is still out-of-bounds (TOO BIG), if so, resize
+  if (top === 0 && (height > parentH)) 
+    height = parentH
+
+  if (left === 0 && (width > parentW)) 
+    width = parentW
+
+  return { left, top, height, width }
 }
 )
 code(Var)

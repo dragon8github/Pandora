@@ -33,19 +33,23 @@
 	Menu, JavaScriptEventMenu, Add, , EventHandler
 	Menu, JavaScriptEventMenu, Add, .onclick = (e) => {}, EventHandler
 	Menu, JavaScriptEventMenu, Add, .onsubmit = (e) => {}, EventHandler
+	
 	Menu, JavaScriptEventMenu, Add, , EventHandler
+	Menu, JavaScriptEventMenu, Add, (〜￣△￣)〜认知：在HTML元素上绑定on事件的时候，需要手动加入event如：ondrop='drop(event)'～(￣▽￣～), EventHandler
+	Menu, JavaScriptEventMenu, Add, (〜￣△￣)〜教训：千万别手贱使用同名函数，会造成死循环，如：ondrop='ondrop(event)'～(￣▽￣～), EventHandler
 	Menu, JavaScriptEventMenu, Add, , EventHandler
 	
 	Menu, JavaScriptEventMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 drag: 在拖动目标上触发事件 (源元素) 🍁🍁🍁🍁🍁🍁🍁🍁, EventHandler
-	Menu, JavaScriptEventMenu, Add, .ondragstart - 用户开始拖动元素时触发, EventHandler
-	Menu, JavaScriptEventMenu, Add, .ondrag - 元素正在拖动时触发, EventHandler
-	Menu, JavaScriptEventMenu, Add, .ondragend - 用户完成元素拖动后触发, EventHandler
+	Menu, JavaScriptEventMenu, Add, draggable='true', EventHandler
+	Menu, JavaScriptEventMenu, Add, ondragstart - 用户开始拖动元素时触发, EventHandler
+	Menu, JavaScriptEventMenu, Add, ondrag - 元素正在拖动时触发, EventHandler
+	Menu, JavaScriptEventMenu, Add, ondragend - 用户完成元素拖动后触发, EventHandler
 	
 	Menu, JavaScriptEventMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 drop: 释放目标时触发的事件 🍁🍁🍁🍁🍁🍁🍁🍁, EventHandler
-	Menu, JavaScriptEventMenu, Add, .ondragenter - 当被鼠标拖动的对象进入其容器范围内时触发此事件, EventHandler
-	Menu, JavaScriptEventMenu, Add, .ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件, EventHandler
-	Menu, JavaScriptEventMenu, Add, .ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件, EventHandler
-	Menu, JavaScriptEventMenu, Add, .ondrop - 在一个拖动过程中，释放鼠标键时触发此事件, EventHandler
+	Menu, JavaScriptEventMenu, Add, ondragenter - 当被鼠标拖动的对象进入其容器范围内时触发此事件, EventHandler
+	Menu, JavaScriptEventMenu, Add, ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件, EventHandler
+	Menu, JavaScriptEventMenu, Add, ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件, EventHandler
+	Menu, JavaScriptEventMenu, Add, ondrop - 在一个拖动过程中，释放鼠标键时触发此事件, EventHandler
 
 
 	Menu, echartsEventMenu, Add, echarts.init, EventHandler
@@ -98,11 +102,13 @@
 	Menu, echartsEventMenu, Add, 坐标区域虚线（其实是Y轴不是x轴）, EventHandler
 	Menu, echartsEventMenu, Add, echarts 简单轮播器, EventHandler
 
-	Menu, EventMenu, Add, echarts, :echartsEventMenu
+	;@a @1
+	Menu, EventMenu, Add, JavaScript, :JavaScriptEventMenu
 	Menu, EventMenu, Add, Vue, :VueEventMenu
 	Menu, EventMenu, Add, React, :ReactEventMenu
 	Menu, EventMenu, Add, jquery, :jqueryEventMenu
-	Menu, EventMenu, Add, JavaScript, :JavaScriptEventMenu
+	Menu, EventMenu, Add, echarts, :echartsEventMenu
+	
 	
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
@@ -169,53 +175,59 @@ Var =
 }
 
 
-
-if (v == ".ondragstart - 用户开始拖动元素时触发") {
+if (v == "draggable='true'") {
 Var = 
 (
-.ondragstart
+draggable='true'
 )
 }
 
-if (v == ".ondrag - 元素正在拖动时触发") {
+if (v == "ondragstart - 用户开始拖动元素时触发") {
 Var = 
 (
-.ondrag
+ondragstart
 )
 }
 
-if (v == ".ondragend - 用户完成元素拖动后触发") {
+if (v == "ondrag - 元素正在拖动时触发") {
 Var = 
 (
-.ondragend
+ondrag
 )
 }
 
-if (v == ".ondragenter - 当被鼠标拖动的对象进入其容器范围内时触发此事件") {
+if (v == "ondragend - 用户完成元素拖动后触发") {
 Var = 
 (
-.ondragenter
+ondragend
 )
 }
 
-if (v == ".ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件") {
+if (v == "ondragenter - 当被鼠标拖动的对象进入其容器范围内时触发此事件") {
 Var = 
 (
-.ondragover
+ondragenter
 )
 }
 
-if (v == ".ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件") {
+if (v == "ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件") {
 Var = 
 (
-.ondragleave
+ondragover
 )
 }
 
-if (v == ".ondrop - 在一个拖动过程中，释放鼠标键时触发此事件") {
+if (v == "ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件") {
 Var = 
 (
-.ondrop
+ondragleave
+)
+}
+
+if (v == "ondrop - 在一个拖动过程中，释放鼠标键时触发此事件") {
+Var = 
+(
+ondrop
 )
 }
 
