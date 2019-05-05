@@ -2140,8 +2140,7 @@ return
 ::$refs::
 ::$ref::
 ::ref::
-::v-ref::
-::v-refs::
+::refs::
 Var =
 (
 this.$refs.myselect

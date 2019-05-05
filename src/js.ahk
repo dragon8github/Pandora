@@ -615,6 +615,11 @@ Var =
 (
 var div = document.createElement('div')
 div.style = 'position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337; background-color: rgba(0,0,0,.3);'
+// div.style.height = v.height + 'px'
+// div.style.width = v.width + 'px'
+// div.style.top = event.pageY + main.scrollTop - main.offsetTop - (v.height / 2) + 'px'
+// div.style.left = event.pageX + main.scrollLeft - main.offsetLeft - (v.width / 2) + 'px'
+// div.className = 'el'
 // document.body.append(div)
 document.body.insertBefore(div, document.body.firstChild)
 )

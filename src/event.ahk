@@ -40,17 +40,20 @@
 	Menu, JavaScriptEventMenu, Add, , EventHandler
 	
 	Menu, JavaScriptEventMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 drag: 在拖动目标上触发事件 (源元素) 🍁🍁🍁🍁🍁🍁🍁🍁, EventHandler
-	Menu, JavaScriptEventMenu, Add, draggable='true', EventHandler
 	Menu, JavaScriptEventMenu, Add, ondragstart - 用户开始拖动元素时触发, EventHandler
 	Menu, JavaScriptEventMenu, Add, ondrag - 元素正在拖动时触发, EventHandler
 	Menu, JavaScriptEventMenu, Add, ondragend - 用户完成元素拖动后触发, EventHandler
+	
+	Menu, JavaScriptEventMenu, Add
+	Menu, JavaScriptEventMenu, Add, 🎵🎵🎵🎵 拖拽四部曲 🎵🎵🎵🎵, EventHandler
+	Menu, JavaScriptEventMenu, Add
+
 	
 	Menu, JavaScriptEventMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 drop: 释放目标时触发的事件 🍁🍁🍁🍁🍁🍁🍁🍁, EventHandler
 	Menu, JavaScriptEventMenu, Add, ondragenter - 当被鼠标拖动的对象进入其容器范围内时触发此事件, EventHandler
 	Menu, JavaScriptEventMenu, Add, ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件, EventHandler
 	Menu, JavaScriptEventMenu, Add, ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件, EventHandler
 	Menu, JavaScriptEventMenu, Add, ondrop - 在一个拖动过程中，释放鼠标键时触发此事件, EventHandler
-
 
 	Menu, echartsEventMenu, Add, echarts.init, EventHandler
 	Menu, echartsEventMenu, Add, echarts 通过dom获取echarts实例，批量监听reset, EventHandler
@@ -131,7 +134,7 @@
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
 	
-	
+	Menu, EventMenu, Add, 辅助功能：网页添加ctrl + d = debugger的快捷键, EventHandler
 	Menu, EventMenu, Add, 模拟真实点击click，专门对付clickoutside, utilsHandler
 	Menu, EventMenu, Add, 用Input事件代替keyup事件：$('input').on('input'`, search), EventHandler
 	Menu, EventMenu, Add, click 与 e.clientX/e.clientY, EventHandler
@@ -175,11 +178,46 @@ Var =
 }
 
 
-if (v == "draggable='true'") {
+if (v == "辅助功能：网页添加ctrl + d = debugger的快捷键") {
+_send("setdebugger", true, true)
+return
+}
+
+if (v == "🎵🎵🎵🎵 拖拽四部曲 🎵🎵🎵🎵") {
 Var = 
 (
-draggable='true'
+<!-- 源元素 -->
+<div draggable='true' ondragstart='dragstart(event)'></div>
+
+<!-- 目的地 -->
+<div ondrop='drop(event)' ondragover="event.preventDefault()"></div>
+---
+/**
+* 拖拽四步骤：
+* 1、源元素：draggable='true' ondragstart='dragstart(event)'
+* 2、目的地：ondrop='drop(event)' + ondragover="event.preventDefault()"
+* 3、e.dataTransfer配置
+* 4、event.dataTransfer.getData()读取配置
+*/
+
+/**
+ * 在源元素中配置 dataTransfer
+ */
+function dragstart(e) {
+    e.dataTransfer.dropEffect = 'copy'
+    e.dataTransfer.effectAllowed = 'all'
+    e.dataTransfer.setData('text/plain', JSON.stringify({ width: 300, height: 300, name: 'div' }))
+}
+
+/**
+ * 在目的地中读取 dataTransfer 数据
+ */
+function drop(event) {
+    console.log(JSON.parse(event.dataTransfer.getData('text/plain')))
+}
 )
+txtit(Var)
+return
 }
 
 if (v == "ondragstart - 用户开始拖动元素时触发") {
@@ -1072,5 +1110,22 @@ this.myChart.on('legendselectchanged', params => {
 )
 }
 
+code(Var)
+return
+
+::setdebugger::
+::setd::
+::setdebug::
+::chrome.debuger::
+::chrome-debuger::
+Var =
+(
+window.addEventListener('keydown', function (event) {
+	// / 监听 Ctrl + D
+	if (event.ctrlKey && event.keyCode == 68) {
+		debugger;
+	}
+})
+)
 code(Var)
 return
