@@ -82,14 +82,15 @@
     
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 element 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
     Menu, utilsPosition, Add, - el.clientHeight：可视高度 , utilsHandler
-    Menu, utilsPosition, Add, - el.scrollHeight：真实高度 , utilsHandler
-    Menu, utilsPosition, Add, - el.scrollY：滚动位置 , utilsHandler
+    Menu, utilsPosition, Add, - el.scrollHeight：真实高度（含滚动条） , utilsHandler
     Menu, utilsPosition, Add, - el.getBoundingClientRect().top：相对窗口的距离 , utilsHandler
     Menu, utilsPosition, Add, - el.scrollTop: 视口可见的顶部，到绝对顶部的距离, utilsHandler 
+    
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 event 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
-    Menu, utilsPosition, Add, - e.clientY： 距离页面顶部相对距离, utilsHandler
-    Menu, utilsPosition, Add, - e.pageY： 距离页面顶部绝对距离（含滚动条）, utilsHandler
-    Menu, utilsPosition, Add, - e.screenY：距离屏幕边缘的距离, utilsHandler
+    Menu, utilsPosition, Add, - e.clientY：客户端浏览器视口所在的位置, utilsHandler
+    Menu, utilsPosition, Add, - e.pageY：页面所在的位置, utilsHandler
+    Menu, utilsPosition, Add, - e.screenY：屏幕所在的位置, utilsHandler
+    
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 offset 系列 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
     Menu, utilsPosition, Add, - offsetWidth：getComputedStyle(el).width 返回的可能是百分比，offsetWidth总是返回数值, utilsHandler
     Menu, utilsPosition, Add, - offsetTop：元素相对于定位元素（position默认是body）的偏移量（含scroll）, utilsHandler
@@ -389,7 +390,7 @@ return
 }
 
 
-if (v == "- el.scrollHeight：真实高度") {
+if (v == "- el.scrollHeight：真实高度（含滚动条）") {
 Var = 
 (
 el.scrollHeight
@@ -440,31 +441,26 @@ Var =
 el.clientHeight
 )
 }
-if (v == "- el.scrollY：滚动高度") {
-Var = 
-(
-el.scrollY
-)
-}
+
 if (v == "- el.getBoundingClientRect().top：相对窗口的距离") {
 Var = 
 (
 el.getBoundingClientRect().top
 )
 }
-if (v == "- e.clientY： 距离页面顶部相对距离") {
+if (v == "- e.clientY：客户端浏览器视口所在的位置") {
 Var = 
 (
 e.clientY
 )
 }
-if (v == "- e.pageY： 距离页面顶部绝对距离（含滚动条）") {
+if (v == "- e.pageY：页面所在的位置") {
 Var = 
 (
 e.pageY
 )
 }
-if (v == "- e.screenY：距离屏幕边缘的距离") {
+if (v == "- e.screenY：屏幕所在的位置") {
 Var = 
 (
 e.screenY
