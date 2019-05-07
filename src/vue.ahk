@@ -242,7 +242,7 @@ return
 }
 
 if (v == "vue2-template脚手架") {
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue2-template.zip", "yarn `; npm rebuild node-sass `; npm run dev")
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue2-template.zip", "cnpm install `; npm run dev")
 return
 }
 

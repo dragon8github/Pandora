@@ -931,8 +931,8 @@ Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/dg/maptheme
 
 ; 剪切框
 Gui, Pandora:Tab, 16
-Gui, Pandora:Add, Edit, vClipHistory w870 H420 Limit199307100337
-Gui, Pandora:Add, Button, gSaveClipHistory w870 h30, 保存到桌面
+Gui, Pandora:Add, Edit, vClipHistory w870 H550 Limit199307100337
+; Gui, Pandora:Add, Button, gSaveClipHistory w870 h30, 保存到桌面
 
 
 
@@ -952,7 +952,7 @@ ClipChanged(Type) {
 			b := "![](" . StrReplace(b, "small", "large") . ")"
 			return Clipboard := b
 		}
-		
+		 
 		; 必须复制的不是空内容但小于200，并且不是在GUI中复制的才进行储存。
 		if (StrLen(b) != 0 && StrLen(b) <= 200 && !WinActive("ahk_class AutoHotkeyGUI")) {
 			; 从文本框获取已有的内容，保存到OutputVar变量中
@@ -965,7 +965,10 @@ ClipChanged(Type) {
 			if (is == 0) {
 				time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 				WinGetTitle, title, A
-				content := "__________________ " . title . " 【" . time . "】 " . "__________________ `r`n`r`n" . Clipboard . "`r`n`r`n`r`n`r`n" . OutputVar
+				txt := "__________________ " . title . " 【" . time . "】 " . "__________________ `r`n`r`n" . Clipboard . "`r`n`r`n`r`n`r`n"
+				filename := A_Desktop . "/.pandora" . A_YYYY . "" . A_MM . "" . A_DD
+				FileAppend, %txt% ,  %filename%
+				content := txt . OutputVar
 				GuiControl, Pandora:Text, ClipHistory, %content%
 			}
 		}
