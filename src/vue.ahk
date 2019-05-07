@@ -20,6 +20,7 @@
   Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, vue.config.js, VueHandler
   Menu, VueMenu, Add, vue3-template脚手架, VueHandler
+  Menu, VueMenu, Add, vue2-template脚手架, VueHandler
   Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
   Menu, VueMenu, Add, css-scoped深度作用选择器：>>>（css） 与 /deep/（sass）, VueHandler
   Menu, VueMenu, Add, :style='{}' 表达式, VueHandler
@@ -237,6 +238,11 @@ npm rebuild node-sass
 
 if (v == "vue3-template脚手架") {
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue3-template.zip", "yarn `; npm rebuild node-sass `; npm run dev")
+return
+}
+
+if (v == "vue2-template脚手架") {
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue2-template.zip", "yarn `; npm rebuild node-sass `; npm run dev")
 return
 }
 
