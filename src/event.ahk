@@ -116,14 +116,6 @@
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
 	
-	Menu, EventMenu, Add, clientX/clientY：触摸目标在视口中的x/y坐标, EventHandler
-	Menu, EventMenu, Add, pageX/pageY：触摸目标在页面中的x/y坐标, EventHandler
-	Menu, EventMenu, Add, screenX/screenY：触摸目标在屏幕中的x/y坐标, EventHandler
-
-	
-	Menu, EventMenu, Add
-	Menu, EventMenu, Add
-	
 	Menu, EventMenu, Add, js 监听 enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + click, EventHandler
@@ -133,16 +125,22 @@
 	
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
-	
+
+	Menu, EventMenu, Add, 用Input事件代替keyup事件：$('input').on('input'`, search), EventHandler
+	Menu, EventMenu, Add, 对全体元素绑定事件：document.documentElement.addEventListener, EventHandler
 	Menu, EventMenu, Add, 辅助功能：网页添加ctrl + d = debugger的快捷键, EventHandler
 	Menu, EventMenu, Add, 模拟真实点击click，专门对付clickoutside, utilsHandler
-	Menu, EventMenu, Add, 用Input事件代替keyup事件：$('input').on('input'`, search), EventHandler
-	Menu, EventMenu, Add, click 与 e.clientX/e.clientY, EventHandler
+	Menu, EventMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
 	Menu, EventMenu, Add, 长按longpress手势, EventHandler
 	Menu, EventMenu, Add, String.fromCharCode(e.keycode), EventHandler
+
+	Menu, EventMenu, Add
+	Menu, EventMenu, Add
+	
 	Menu, EventMenu, Add, 用 passive 特性让页面滑动流畅, EventHandler
+	Menu, EventMenu, Add, click 与 e.clientX/e.clientY, EventHandler
 	Menu, EventMenu, Add, event.preventDefault(); event.stopPropagation();, EventHandler
-	Menu, EventMenu, Add, clickOutSide：!el.contains(event.target), utilsHandler
+	Menu, EventMenu, Add, capture模式的含义：由外而内, EventHandler
 	
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
@@ -177,6 +175,21 @@ Var =
 )
 }
 
+
+
+if (v == "对全体元素绑定事件：document.documentElement.addEventListener") {
+Var = 
+(
+document.documentElement.addEventListener('click', () => {
+	// logic
+}, true)	
+)
+}
+
+if (v == "capture模式的含义：由外而内") {
+run, https://segmentfault.com/q/1010000005875549?_ea=954179
+return
+}
 
 if (v == "辅助功能：网页添加ctrl + d = debugger的快捷键") {
 _send("setdebugger", true, true)
@@ -1121,8 +1134,8 @@ return
 Var =
 (
 window.addEventListener('keydown', function (event) {
-	// / 监听 Ctrl + D
-	if (event.ctrlKey && event.keyCode == 68) {
+	// / 监听 Ctrl + a
+	if (event.ctrlKey && event.keyCode == 65) {
 		debugger;
 	}
 })

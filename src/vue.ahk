@@ -5,7 +5,7 @@
   Menu, VueMenu, Add, this.$store.commit, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
-  Menu, VueMenu, Add, import { mapState`, mapActions } from 'vuex', VueHandler  
+  Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations } from 'vuex', VueHandler  
   Menu, VueMenu, Add, ElementUI 按需引入教程, VueHandler  
 
   Menu, VueMenu, Add, , VueHandler
@@ -1131,20 +1131,22 @@ this.$refs.myselect
 )
 }
 
-if (v == "import { mapState, mapActions } from 'vuex'") {
+if (v == "import { mapState, mapActions, mapMutations } from 'vuex'") {
 Var = 
 (
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 ---
 methods: {
     ...mapActions('themeDetails', {
       deparmenthandleChange: 'departmentSelect',
       cityChange: 'townstreetSelect',
       matterChange: 'matterSelect',
-      eq_problemTypeChange: 'eq_problemType',
-      eq_stateIdChange: 'eq_satisfyId',
-      eq_satisfyIdChange: 'eq_stateId',
-    })
+    }),
+    ...mapMutations('themeDetails', {
+      deparmenthandleChange: 'departmentSelect',
+      cityChange: 'townstreetSelect',
+      matterChange: 'matterSelect',
+    }),
 },
 ---
 computed: {

@@ -122,17 +122,33 @@
     Menu, utilsSolution, Add, cookie 库, utilsHandler
     Menu, utilsSolution, Add, Model 类, utilsHandler
     Menu, utilsSolution, Add, rem 解决方案 / 淘宝解决方案, utilsHandler
+
+    Menu, utilsSolution, Add
+    Menu, utilsSolution, Add
+
     Menu, utilsSolution, Add, AMD/CommonJS/factory/module, utilsHandler
+    Menu, utilsSolution, Add, UMD、AMD, utilsHandler
     Menu, utilsSolution, Add, cache request axios 缓存请求, utilsHandler
+
+    Menu, utilsSolution, Add
+    Menu, utilsSolution, Add
+
     Menu, utilsSolution, Add, $.autoscroll 自动滚动, utilsHandler
     Menu, utilsSolution, Add, $.scrollforevery 无缝滚动, utilsHandler
-    
     Menu, utilsSolution, Add, dragscroll 拖拽滚动, utilsHandler
+
+    Menu, utilsSolution, Add
+    Menu, utilsSolution, Add
+
     Menu, utilsSolution, Add, lazyload 图片懒加载, utilsHandler
     Menu, utilsSolution, Add, preloadimg 图片预加载, utilsHandler
+
+    Menu, utilsSolution, Add
+    Menu, utilsSolution, Add
+
     Menu, utilsSolution, Add, countDown 倒计时, utilsHandler
     Menu, utilsSolution, Add, copyToClipboard 剪切板, utilsHandler
-    
+    Menu, utilsSolution, Add, 全屏F11最新解决方案, utilsHandler
 
     Menu, utilsExtend, Add, extend 浅拷贝（继承模式中最后的圣杯）, utilsHandler
     Menu, utilsExtend, Add, deepExtend 深拷贝, utilsHandler
@@ -208,18 +224,21 @@
     Menu, utilspractice, Add,
     Menu, utilspractice, Add,
     
-    
-    ; @认知
-    Menu, utilspractice, Add, 一个值的__proto__拦截器：数组为例, utilsHandler
+    ; @认知 @renzhi
+    Menu, utilspractice, Add, 任意值的__proto__拦截器：数组为例, utilsHandler
     Menu, utilspractice, Add, promise.catch 全局处理与局部传播：在第一次catch的时候throw错误即可, utilsHandler
-    Menu, utilspractice, Add, JOJO - 砸瓦鲁多：浏览器暂停术 —— 直接在控制台输入debugger;, utilsHandler
     Menu, utilspractice, Add, Promise.prototype.finally已经存在了, utilsHandler
-    Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
     Menu, utilspractice, Add, async/await与箭头函数：async (to`, from`, next) => {}, utilsHandler
     Menu, utilspractice, Add, async/await与传统函数：async function bootstrap() {}, utilsHandler
-    Menu, utilspractice, Add, 对象字面量的变量键：this.setState({ [fuckyou]: 'true' }), utilsHandler
+    Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
     Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
     Menu, utilspractice, Add, 函数参数对象深度结构与重命名： var a = ({ state: { nums:list`, numGroup`, map } }) => {}, utilsHandler
+    
+    Menu, utilspractice, Add,
+    Menu, utilspractice, Add,
+    
+    Menu, utilspractice, Add, HTML缓存数据：e.dataset 与 data-fuck-you, utilsHandler
+    Menu, utilspractice, Add, 对象字面量的变量键：this.setState({ [fuckyou]: 'true' }), utilsHandler
     Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseInt/parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
@@ -260,6 +279,8 @@
     Menu, utilsmaybe, Add, Android 输入法键盘 和 input 问题:scrollIntoViewIfNeeded, utilsHandler
     Menu, utilsmaybe, Add, 获取手机归属地信息：中国移动/中国联通/中国电信, utilsHandler
     Menu, utilsmaybe, Add, js获取root（window）对象, utilsHandler
+    Menu, utilsmaybe, Add, stackoverflow愚人节彩蛋效果, utilsHandler
+    ;@maybe
     
     Menu, utilses5, Add, 将参数arguments转化为一个数组Array.prototype.slice.call(arguments), utilsHandler
     Menu, utilses5, Add, (...arr)数组解构的前辈：Array.prototype.push.apply(arr`, newArr), utilsHandler
@@ -299,9 +320,14 @@
     Menu, utilsMenu , Add, _(:3」∠)_算法与数据结构, :utilssf
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
+
+
+    ; @jiqiao
+    Menu, utilsjiqiao, Add, JOJO - 砸瓦鲁多：浏览器暂停术 —— 直接在控制台输入debugger;, utilsHandler
     
     Menu, utilsMenu, Add, (〜￣△￣)〜认知～(￣▽￣～), :utilspractice
     Menu, utilsMenu, Add, (=・ω・=) 我的 (｀・ω・´), :utilsmy
+    Menu, utilsMenu, Add, ←_←前端小技巧→_→, :utilsjiqiao
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -342,21 +368,21 @@
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
-    
-    Menu, utilsMenu, Add, 模拟真实点击click，专门对付clickoutside, utilsHandler
+
     Menu, utilsMenu, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
     Menu, utilsMenu, Add, encodeURI URI过滤, utilsHandler
     Menu, utilsMenu, Add, escapeHTML 防止XSS, utilsHandler
+    Menu, utilsMenu, Add, 模拟真实点击click，专门对付clickoutside, utilsHandler
     Menu, utilsMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
+
+    Menu, utilsMenu, Add, , utilsHandler
+    Menu, utilsMenu, Add, , utilsHandler
+    
     Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
-    Menu, utilsMenu, Add, UMD、AMD, utilsHandler
-    Menu, utilsMenu, Add, stackoverflow愚人节彩蛋效果, utilsHandler
-    Menu, utilsMenu, Add, 全屏F11最新解决方案, utilsHandler
     Menu, utilsMenu, Add, parsePath: 对象路径解析器, utilsHandler
     Menu, utilsMenu, Add, diff: 对比两个json对象是否一致, utilsHandler
     Menu, utilsMenu, Add, fixPos: 根据父层界限调整宽高和位置, utilsHandler
     
-
     Menu, utilsMenu, Show
     
 	Menu, utilsMenu, DeleteAll
@@ -383,6 +409,14 @@ Var =
 )
 }
 
+
+if (v == "HTML缓存数据：e.dataset 与 data-fuck-you") {
+Var = 
+(
+<div id="app" data-fuck-you="true"></div>
+document.getElementById('app').dataset.fuckYou    
+)
+}
 
 if (v == "fixPos: 根据父层界限调整宽高和位置") {
 _send("fixpos", true, true)
@@ -479,7 +513,7 @@ offsetTop
 )
 }
 
-if (v == "一个值的__proto__拦截器：数组为例") {
+if (v == "任意值的__proto__拦截器：数组为例") {
 Var = 
 (
 const arrayProto = Array.prototype
@@ -4149,27 +4183,8 @@ maybe(_=> obj.a.b.s.w.holy.shit.fuck.god, 0); // 0
 }
 
 if (v == "ClickOutside 点击外部冒泡") {
-Var = 
-(
-handle = e => {
-  const el = this.container
-  // 核心: el.contains()，这里的el就是弹窗本身，换句话就是inSide
-  if (el && !el.contains(e.target)) onClickOutside(e)
-}
-
-// 点击事件函数
-const func = e => {
-  // 如果点击的不是弹窗本身，那么关闭它
-  if (!this.$refs.tabbar.contains(e.target)) {
-    // 取消显示
-    this.isShow = false
-    // 取消点击事件
-    document.removeEventListener('mouseup', func)
-  }
-}
-// clickoutside
-document.addEventListener('mouseup', func)
-)
+_send("clickoutside", true, true)
+return
 }
 
 if (v == "addcss/link 样式加载器") {
@@ -4769,7 +4784,7 @@ Var =
 import { Message } from 'element-ui'
 
 /**
- * 最简单且最安全的方法显示一个值，举个例子: 
+ * 最简单且最安全的方法显示任意值，举个例子: 
  * var obj = {a: 123 }
    maybe(_=> obj.a, 0); // 123
    maybe(_=> obj.b, 0); // 0
@@ -5462,6 +5477,41 @@ function fixPos ({height, width, top, left} = {}, {parentH, parentW} = {}) {
 
   return { left, top, height, width }
 }
+)
+code(Var)
+return
+
+::clickoutside::
+Var =
+(
+beforeMount() {
+    // 绑定监听高亮事件
+    this.clickOutSide = e => {
+        // 如果点击的不是弹窗本身，那么关闭它
+        if (this.$refs.tree.$el.contains(e.target) === false && 
+            this.$refs.ruleFormBox.$el.contains(e.target) == false) 
+        {
+            // 取消显示
+            this.$nextTick(() => {
+                this.ruleForm.tagId = -1;
+                this.showBtn = false;
+                this.$refs.tree.setCurrentKey(null)
+            })
+        }
+    }
+    document.addEventListener('mouseup', this.clickOutSide)
+},
+destroyed () {
+    document.removeEventListener('mouseup', this.clickOutSide)
+},
+)
+code(Var)
+return
+
+::dr::
+Var =
+(
+document.removeEventListener('mouseup', this.clickOutSide)
 )
 code(Var)
 return
