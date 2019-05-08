@@ -1365,3 +1365,11 @@ Menu, PythonMenu, Add,🍁🍁🍁🍁🍁🍁🍁🍁  命令行  🍁🍁🍁�
 )
 code(Var)
 return
+
+::fafa::
+Var =
+(
+🍁🍁🍁🍁🍁🍁🍁🍁
+)
+code(Var)
+return
