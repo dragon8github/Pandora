@@ -247,8 +247,7 @@ Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=descr
 Gui, Pandora:Add, Link,, <a href="https://amazonaws-china.com/cn/ec2/">aws Amazon EC2</a>
 Gui, Pandora:Add, Link,, <a href="http://www.51ym.me/User/MobileSMSCode.aspx">易码平台</a>
 Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer</a>
-Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/cmd.html">linux命令搜索</a>
-Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/ocr.html">OCR在线识别</a>
+Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux命令搜索</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大全</a>
 
 
@@ -379,45 +378,44 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dataz">
 Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:6082/#/Studio">在线预览地址</a>
 
 Gui, Pandora:Tab, 4
-Gui, Pandora:Add, Text,  W130 Section, Nodejs:
-Gui, Pandora:Add, Link,, <a href="https://nodejs.org/dist/latest-v11.x/docs/api/">Nodejs API</a>
-Gui, Pandora:Add, Link,, <a href="https://nodejs.org/en/">Nodejs 官网</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/nodejs/node">Nodejs github</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/awesome-nodejs">awesome-nodejs</a>
+Gui, Pandora:Add, Text,  W130 Section, 工具库1：
+Gui, Pandora:Add, Link,, <a href="https://github.com/KyleAMathews/deepmerge">deepmerge</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/mysticatea/npm-run-all">npm-run-all</a>
 
-Gui, Pandora:Add, Text,  W140 ys, 工具库：
+Gui, Pandora:Add, Text,  W140 ys, 工具库2：
 Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/globby">globby</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/isaacs/minimatch#usage">minimatch</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/jhotmann/node-rename-cli">node-renames-cli</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/jprichardson/node-fs-extra">node-fs-extra</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/ora">ora</a>
 
-Gui, Pandora:Add, Text,  W140 ys, 工具库2：
+Gui, Pandora:Add, Text,  W140 ys, 工具库3：
 Gui, Pandora:Add, Link,, <a href="https://github.com/isaacs/rimraf">rimraf</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/substack/node-mkdirp">node-mkdirp</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/JacksonTian/anywhere">anywhere</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/opn">opn</a>
 Gui, Pandora:Add, Link,, <a href="https://www.npmjs.com/package/cross-env">cross-env</a>
 
-Gui, Pandora:Add, Text,  W140 ys, 工具库3：
+Gui, Pandora:Add, Text,  W140 ys, 工具库4：
 Gui, Pandora:Add, Link,, <a href="https://github.com/remy/nodemon/">nodemon</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/SBoudrias/Inquirer.js">inquirer</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/request/request">request</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/hapijs/joi">joi</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/execa">execa</a>
 
-Gui, Pandora:Add, Text,  W140 ys, 工具库4：
+Gui, Pandora:Add, Text,  W140 ys, 工具库5：
 Gui, Pandora:Add, Link,, <a href="https://github.com/shelljs/shelljs">shelljs</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/nodemailer/nodemailer">nodemailer</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/kvz/locutus">locutus</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/wiredjs/wired-elements">wired-elements</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/olistic/warriorjs">warriorjs</a>
 
-Gui, Pandora:Add, Text,  W140 ys, nest框架中的django:
-Gui, Pandora:Add, Link,, <a href="https://github.com/nestjs/nest">nestjs github</a>
 
-Gui, Pandora:Add, Text, W140 Section xs yp+180, JS库：
-Gui, Pandora:Add, Link,, <a href="https://github.com/KyleAMathews/deepmerge">deepmerge</a>
+Gui, Pandora:Add, Text, W140 Section xs yp+50, Nodejs:
+Gui, Pandora:Add, Link,, <a href="https://nodejs.org/en/">Nodejs 官网</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/awesome-nodejs">awesome-nodejs</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/nodejs/node">Nodejs github</a>
+Gui, Pandora:Add, Link,, <a href="https://nodejs.org/dist/latest-v11.x/docs/api/">Nodejs API</a>
 
 Gui, Pandora:Add, Text, W140 Section ys, koajs：
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs">koajs-github</a>
@@ -431,6 +429,8 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/electron">electron github</
 Gui, Pandora:Add, Link,, <a href="https://github.com/electron/electron-quick-start">electron-quick-start</a>
 Gui, Pandora:Add, Link,, <a href="https://electronjs.org/docs/api/client-request">electron-api文档</a>
 
+Gui, Pandora:Add, Text,  W140 ys, nest框架中的django:
+Gui, Pandora:Add, Link,, <a href="https://github.com/nestjs/nest">nestjs github</a>
 
 Gui, Pandora:Add, Text, W140 Section ys, nodejs cms：
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repos/NodeJS/CMS">NodeJS/CMS</a>
@@ -499,6 +499,10 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/hekigan/vue-directive-toolt
 
 Gui, Pandora:Add, Text, W140 ys, 冷门UI框架：
 Gui, Pandora:Add, Link,, <a href="https://github.com/stasson/vue-mdc-adapter">极简Material框架</a>
+
+Gui, Pandora:Add, Text, W140 ys, 强大的周边：
+Gui, Pandora:Add, Link,, <a href="https://cssfx.dev/">（神器）效果大全：cssfx</a>
+
 
 ;@vue
 
@@ -690,12 +694,16 @@ Gui, Pandora:Add, Link,, <a href="https://vuegg.now.sh/">vuegg</a>
 Gui, Pandora:Add, Text, W120 ys, 录制js：
 Gui, Pandora:Add, Link,, <a href="https://www.rrweb.io/replay">录制和回放</a>
 Gui, Pandora:Add, Link,, <a href="https://scrimba.com/p/pV5eHk/c9EqQSD">录制灵感来源</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/yaronn/GifW00t">纯js实现录屏</a>
 
 Gui, Pandora:Add, Text, W140 ys, APlayer（优雅的MP3，B站和iSearch都用，也支持Vue和各种版本）：
 Gui, Pandora:Add, Link,, <a href="https://github.com/MoePlayer/APlayer">Aplay github</a>
 
 Gui, Pandora:Add, Text, W140 ys xp+160, 有趣有趣：
 Gui, Pandora:Add, Link,, <a href="https://github.com/e-oj/Magic-Grid">新瀑布流 Magic-Grid</a>
+
+Gui, Pandora:Add, Text, W140 yp+60, 几乎实现所有轮播：slick
+Gui, Pandora:Add, Link,, <a href="http://kenwheeler.github.io/slick/">slick</a>
 
 Gui, Pandora:Add, Text, W140 ys xp+180, 文档神器docsify：
 Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/docsify">docsify</a>
@@ -708,6 +716,7 @@ Gui, Pandora:Add, Link,, <a href="https://l2dwidget.js.org/docs/index.html">文�
 
 ; @qimiao @qm @ku
 
+; @map @ditu
 Gui, Pandora:Tab, 9
 Gui, Pandora:Add, Text, W140 Section, 高德地图：
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/summary">高德地图-JavaScript</a>
@@ -783,6 +792,11 @@ Gui, Pandora:Add, Link, W140, <a href="https://www.cnblogs.com/CyLee/p/6429628.h
 Gui, Pandora:Add, Text, W140 ys, mapbox:
 Gui, Pandora:Add, Link, W140, <a href="https://docs.mapbox.com/">mapbox 官网</a>
 Gui, Pandora:Add, Link, W140, <a href="https://www.mapbox.com/mapbox-gl-js/api/">mapbox gl api</a>
+Gui, Pandora:Add, Link, W140, <a href="https://github.com/mapbox/mapbox-gl-js">mapbox gl github</a>
+
+Gui, Pandora:Add, Text, W140 ys, 天地图与国土地图:
+Gui, Pandora:Add, Link, W140, <a href="http://www.tianditu.gov.cn/">天地图 官网</a>
+Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/server/MapService.html">矢量地图api</a>
 Gui, Pandora:Add, Link, W140, <a href="https://github.com/mapbox/mapbox-gl-js">mapbox gl github</a>
 
 
@@ -888,6 +902,7 @@ Gui, Pandora:Add, Link,, <a href="http://dcloud.io/doc.html">Dcloud文档</a>
 Gui, Pandora:Add, Link,, <a href="http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/111">Dcloud 云打包</a>
 Gui, Pandora:Add, Link,, <a href="http://droid4x.haimawan.com/">海马玩模拟器下载</a>
 
+;@css 
 Gui, Pandora:Tab, 14
 Gui, Pandora:Add, Text,  W140 Section, 森罗万象:
 Gui, Pandora:Add, Link,, <a href="https://github.com/jobbole/awesome-css-cn">awesome-css</a>
@@ -907,6 +922,9 @@ Gui, Pandora:Add, Link,, <a href="https://foundation.zurb.com/">响应翘楚：f
 Gui, Pandora:Add, Text,  W140 ys, css工具:
 Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/shadow_visualization.html">css阴影生成器</a>
 
+Gui, Pandora:Add, Text,  W140 ys, Material Design:
+Gui, Pandora:Add, Link,, <a href="https://github.com/Dogfalo/">（推荐）materialize</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/zdhxiong/mdui">中文版md</a>
 
 
 ; 垃圾回收站

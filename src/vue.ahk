@@ -1980,7 +1980,6 @@ return
 Var =
 (
 import { request } from '@/utils/request.js'
-import Model from '@/utils/Model.js'
 
 let state = {
     AppData: {},
@@ -2002,13 +2001,14 @@ const mutations = {
 	SET_APP_DATA (state, userInfo) {
 	  return state.AppData = userInfo
 	}
-},
+}
 
 const getters = {
   AppData (state) {
     return state.AppData;
   }
 }
+
 export default {
   namespaced: true,
   state,

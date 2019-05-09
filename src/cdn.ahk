@@ -1,4 +1,15 @@
-﻿::cdn-alert::
+﻿::cdn-md::
+::cdn-mdui::
+Var =
+(
+<!-- https://materializecss.com/getting-started.html -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-alert::
 ::cdn-sweetalert::
 ::cdn-swal::
 ::cdn-swa::

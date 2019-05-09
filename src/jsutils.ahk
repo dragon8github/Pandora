@@ -5201,6 +5201,45 @@ Promise.prototype.before = function (fn) {
   (fn instanceof Function || Object.prototype.toString.call(fn) === '[object Function]') && fn()
   return this
 }
+
+
+// 字符串判断
+export const isString = (v) => Object.prototype.toString.call(v) === '[object String]'
+
+// 数组判断
+export const isArray = (input) => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
+
+// 对象判断
+export const isObject = (input) => input != null && Object.prototype.toString.call(input) === '[object Object]'
+
+// 仿 Array.prototype.map 函数。兼容数组、对象的遍历
+export const betterMap = (v, cb) => {
+    let result = []
+    if (isArray(v) || isString(v)) {
+        for (var i = 0; i < v.length; i++) {
+            result.push(cb && cb(v[i], i, v, result))
+        }
+    }
+    if (isObject(v)) {
+        for (var k in v) {
+            result.push(cb && cb(v[k], k, v, result))
+        }
+    }
+    return result
+}
+
+export const handleClickOutSide = () => {
+  var evmousedown = document.createEvent('HTMLEvents');
+  evmousedown.initEvent('mousedown', false, true);
+  var evmouseup = document.createEvent('HTMLEvents');
+  evmouseup.initEvent('mouseup', false, true);
+  document.dispatchEvent(evmousedown)
+  document.dispatchEvent(evmouseup)
+  var evmouseclick = document.createEvent('HTMLEvents');
+  evmouseclick.initEvent('click', false, true);
+  document.dispatchEvent(evmouseclick)
+  document.dispatchEvent(evmouseclick)
+}
 )
 code(Var)
 return

@@ -84,6 +84,7 @@
     Menu, CssMenu, Add, ell, CssHandler2
     Menu, CssMenu, Add, loading..., CssHandler2
     Menu, CssMenu, Add, loading, CssHandler2
+    Menu, CssMenu, Add, loading.svg, CssHandler2
     Menu, CssMenu, Add, 舒服的字体样式font, CssHandler
     Menu, CssMenu, Add, 使用系统默认字体：System font stack, CssHandler
     Menu, CssMenu, Add, 挺好玩的代码字体：comic sans ms, CssHandler
@@ -119,6 +120,8 @@
 
 	Menu, CssMenu, Show
 	Menu, CssMenu, DeleteAll
+    Menu, Csssolution, DeleteAll
+    Menu, CsstransformHandler, DeleteAll
 return
 
 
@@ -4289,4 +4292,53 @@ Var =
 }
 )
 code(Var)
+return
+
+::loading.svg::
+::loading-svg::
+::loading.svg::
+::loadingsvg::
+Var =
+(
+<svg viewBox="25 25 50 50">
+  <circle cx="50" cy="50" r="20"></circle>
+</svg>
+---
+svg {
+  width: 3.75em;
+  transform-origin: center;
+  animation: rotate 2s linear infinite;
+}
+
+circle {
+  fill: none;
+  stroke: #fc2f70;
+  stroke-width: 2;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100`% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0`% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50`% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+  100`% {
+    stroke-dashoffset: -125px;
+  }
+}
+)
+txtit(Var)
 return

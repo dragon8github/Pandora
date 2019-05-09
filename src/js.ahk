@@ -69,8 +69,8 @@ let pending = []
 
 // 获取纯Url，不包含?后面的参数
 const getPureUrl = (url, start = 0) => {
-	const index = url.indexOf('?')
-	const pureUrl = url.substr(0, ~index ? index : url.length)
+  const index = url.indexOf('?')
+  const pureUrl = url.substr(0, ~index ? index : url.length)
   return pureUrl.substr(start)
 }
 
@@ -103,16 +103,29 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(res => {
   // 成功响应之后清空队列中所有相同Url的请求
   pending = pending.filter(_ => _.url != getPureUrl(res.config.url, res.config.baseURL.length))  
-  // 返回 <response></response>
+  // 返回 response
   return res
 }, error => {
    return Promise.reject(error)
-});
+})
 
+// 错误处理
+const _catchErr = err => {
+  // 失败响应之后清空队列中所有相同Url的请求
+  pending = pending.filter(_ => _.url != getPureUrl(res.config.url, res.config.baseURL.length))  
+  // 如果是重复请求的问题，这是我自己暴漏出来的，并不需要出现error。吓唬人。
+  if (err.message.includes('repeat abort')) {
+     // 提示一下即可
+     console.warn(err.message)
+   } else {
+     // 弹出错误
+     catchErr(err)
+   }
+}
 
 // 检查状态码（其实这个并没有什么卵用，如果真的返回404，那也是走catch的路线，哪能被.then捕获）
 const checkStatus = response => {
-	// 判断请求状态
+  // 判断请求状态
     if (response.status >= 200 && response.status < 300) {
         // 返回Promise 
         return response.data
@@ -178,13 +191,13 @@ export const request = (url, options = {}) => {
           // 删除缓存内容
           sessionStorage.removeItem(hashcode)
           // 删除缓存时间
-          sessionStorage.removeItem(`${hashcode}:timestamp`)
+          sessionStorage.removeItem(``${hashcode}:timestamp``)
         }
     }
     // 设置 noRepeat 默认为 true，即默认是去重复的。
     options.noRepeat = options.noRepeat || 'on'
     // 正式开始请求
-    return axios(url, options).then(checkStatus).then(_cachedSave).catch(catchErr)
+    return axios(url, options).then(checkStatus).then(_cachedSave).catch(_catchErr)
 }
 )
 code(Var)
@@ -7091,6 +7104,19 @@ Object.defineProperty(data, key, {
         }
         val = newVal
     }
+})
+)
+code(Var)
+return
+
+
+::fetch::
+Var =
+(
+fetch('/api/admin/user/sysUser/fetchCurrentUser').then(response => {
+    return response.json()
+}).then(_ => {
+	console.log(20190509114053, _)
 })
 )
 code(Var)

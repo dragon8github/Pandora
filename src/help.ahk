@@ -1373,3 +1373,23 @@ Var =
 )
 code(Var)
 return
+
+::md::
+::mdui::
+Var =
+(
+Material Design
+)
+code(Var)
+return
+
+^3::
+!3::
+cs("admin_hmggwh")
+return
+
+
+^4::
+!4::
+cs("dgjy123")
+return
