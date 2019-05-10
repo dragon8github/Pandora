@@ -1,6 +1,8 @@
 ﻿!e::
 	Menu, VueEventMenu, Add, @click="doThat('hello'`, $event)", EventHandler
 	Menu, VueEventMenu, Add, @click.stop, EventHandler
+	Menu, VueEventMenu, Add, @click.prevent, EventHandler
+	Menu, VueEventMenu, Add, @click.capture, EventHandler
 	Menu, VueEventMenu, Add, @click.once, EventHandler
 	Menu, VueEventMenu, Add, @change, EventHandler
 	Menu, VueEventMenu, Add, @keyup, EventHandler
@@ -176,6 +178,19 @@ Var =
 }
 
 
+if (v == "@click.capture") {
+Var = 
+(
+@click.capture
+)
+}
+
+if (v == "@click.prevent") {
+Var = 
+(
+@click.prevent
+)
+}
 
 if (v == "对全体元素绑定事件：document.documentElement.addEventListener") {
 Var = 

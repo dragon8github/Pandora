@@ -334,23 +334,19 @@ Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/antd-dge
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/antd-dgedu-consult-b">b端 git（商家后台）</a>
 Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/login.jspx">前端菜单配置</a>
 
-Gui, Pandora:Add, Text,  W140 ys, 12345大数据屏（vue）
+Gui, Pandora:Add, Text,  W160 ys, 12345大数据屏（vue）
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/tree/master/DOC/">新的 UI gitlab 地址</a>
-Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com:6080/#/overallSituation">v0</a>
-Gui, Pandora:Add, Link,, <a href="http://12345v1.dgdatav.com:6080/#/dg/overallSituation">v1</a>
-Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/">v2</a>
-Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/boards">敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/api/sg/redis/cleanDefault">清空缓存</a>
 Gui, Pandora:Add, Link,, <a href="http://12345admin.dgdatav.com:6080/#">admin</a>
 
-; @gs
 
-
-Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
-Gui, Pandora:Add, Link,, <a href="http://kw.dgjy.net">extra-edu 线上</a>
+Gui, Pandora:Add, Text,  W120 ys, 12345预览地址：
+Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com:6080/#/overallSituation">v0</a>
+Gui, Pandora:Add, Link,, <a href="http://12345v1.dgdatav.com:6080/#/dg/overallSituation">v1</a>
+Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/">v2</a>
+Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 知识库
@@ -358,7 +354,12 @@ Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/dashboard.acti
 Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/pages/viewpage.action?pageId=1310755">confluence2</a>
 Gui, Pandora:Add, Link,, <a href="https://hui.dgjy.net">门户网站</a>
 
-Gui, Pandora:Add, Text,  W140 xs Section yp+100, 数据中心
+
+Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
+Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
+Gui, Pandora:Add, Link,, <a href="http://kw.dgjy.net">extra-edu 线上</a>
+
+Gui, Pandora:Add, Text,  W140 xs Section yp+150, 数据中心
 Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心 - 线上地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心源码gitlab</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter">数据中心原型gitlab</a>
@@ -367,6 +368,7 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-d
 Gui, Pandora:Add, Link,, <a href="https://top7bx.axshare.com">紫莹数据中心web原型</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/groups/DateCenter/-/boards">测试敏捷看板</a>
 
+; @gs
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 私服仓库Nexus
 Gui, Pandora:Add, Link,, <a href="https://nexus.alltosea.com/">公司的Nexus</a>
@@ -707,6 +709,8 @@ Gui, Pandora:Add, Link,, <a href="http://kenwheeler.github.io/slick/">slick</a>
 
 Gui, Pandora:Add, Text, W140 ys xp+180, 文档神器docsify：
 Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/docsify">docsify</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/awesome-docsify">awesome-docsify</a>
+
 
 
 Gui, Pandora:Add, Text, W140 yp+50, 模型live2D：
@@ -761,7 +765,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.chartjs.org/samples/latest/">chart
 Gui, Pandora:Add, Link,, <a href="https://www.chartjs.org/docs/latest/">charts.js doc</a>
 
 
-Gui, Pandora:Add, Text,  W140  Section xs yp+120, echart:
+Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/theme-builder/">echart 主题构建</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/tutorial.html#5 分钟上手 ECharts">echart 快速上手</a>
@@ -918,6 +922,8 @@ Gui, Pandora:Add, Link,, <a href="https://nostalgic-css.github.io/NES.css/">马�
 Gui, Pandora:Add, Link,, <a href="https://github.com/pure-css/pure/">雅虎：pure.css</a>
 Gui, Pandora:Add, Link,, <a href="https://bulma.io/">青铜王者：bulma.css</a>
 Gui, Pandora:Add, Link,, <a href="https://foundation.zurb.com/">响应翘楚：foundation 6</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/kognise/water.css">简单得一逼：water.css</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, css工具:
 Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/shadow_visualization.html">css阴影生成器</a>
@@ -972,7 +978,7 @@ ClipChanged(Type) {
 		}
 		 
 		; 必须复制的不是空内容但小于200，并且不是在GUI中复制的才进行储存。
-		if (StrLen(b) != 0 && StrLen(b) <= 200 && !WinActive("ahk_class AutoHotkeyGUI")) {
+		if (StrLen(b) != 0 && StrLen(b) <= 9999 && !WinActive("ahk_class AutoHotkeyGUI")) {
 			; 从文本框获取已有的内容，保存到OutputVar变量中
 			GuiControlGet, OutputVar, Pandora:, ClipHistory, Text
 			; 注意文本框中的文本是`n为换行符，但剪切板是`r`n

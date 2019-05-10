@@ -7110,7 +7110,7 @@ code(Var)
 return
 
 
-::fetch::
+::fetch2::
 Var =
 (
 fetch('/api/admin/user/sysUser/fetchCurrentUser').then(response => {

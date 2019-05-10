@@ -1,4 +1,12 @@
-﻿::cdn-md::
+﻿::cdn-water::
+Var =
+(
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css'>
+)
+code(Var)
+return
+
+::cdn-md::
 ::cdn-mdui::
 Var =
 (

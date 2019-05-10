@@ -78,7 +78,11 @@
     Menu, utilsDOM, Add, 是否隐藏：$('#div').is(':hidden'), utilsHandler
     Menu, utilsDOM, Add, 是否显示：$('#div').is(':visible'), utilsHandler
     Menu, utilsDOM, Add, clickOutSide：!el.contains(event.target), utilsHandler
+    Menu, utilsDOM, Add, e.dataset 给元素设置数据, utilsHandler
+    Menu, utilsDOM, Add, 获取当前所在的<script>：document.currentScript, utilsHandler
+    Menu, utilsDOM, Add, 获取当前所在的<iframe>：window.frameElement, utilsHandler
     Menu, utilsDOM, Add, mask蒙版, utilsHandler
+    
     
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 element 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
     Menu, utilsPosition, Add, - el.clientHeight：可视高度 , utilsHandler
@@ -243,6 +247,9 @@
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseInt/parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
     Menu, utilspractice, Add, 将 if/else 转化为三元表达式示例, utilsHandler
+    Menu, utilspractice, Add, const { log， warn， info， error， assert  } = console, utilsHandler
+    Menu, utilspractice, Add, 获取当前所在的<script>：document.currentScript, utilsHandler
+    Menu, utilspractice, Add, 获取当前所在的<iframe>：window.frameElement, utilsHandler
     ; renzhi
     
     ; @my
@@ -267,6 +274,7 @@
     Menu, utilsmy, Add, 微信群组随机取人头, utilsHandler
     Menu, utilsmy, Add, Vue 进度条组件, utilsHandler
     Menu, utilsmy, Add, utils.js, utilsHandler
+    Menu, utilsmy, Add, once函数装饰器, utilsHandler
     
     Menu, utilsjuran, Add, 快速取整的新思路：1553 / 10 | 0, utilsHandler
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
@@ -382,9 +390,10 @@
     Menu, utilsMenu, Add, parsePath: 对象路径解析器, utilsHandler
     Menu, utilsMenu, Add, diff: 对比两个json对象是否一致, utilsHandler
     Menu, utilsMenu, Add, fixPos: 根据父层界限调整宽高和位置, utilsHandler
+    Menu, utilsMenu, Add, e.dataset 给元素设置数据, utilsHandler
+    
     
     Menu, utilsMenu, Show
-    
 	Menu, utilsMenu, DeleteAll
     Menu, utilsIs, DeleteAll
     Menu, utilsDOM, DeleteAll
@@ -393,6 +402,8 @@
     Menu, utilspractice, DeleteAll
     Menu, utilses5, DeleteAll
     Menu, utilsDesignPattern, DeleteAll
+    Menu, utilsSolution, DeleteAll
+    
     
 return
 
@@ -409,6 +420,48 @@ Var =
 )
 }
 
+
+if (v == "once函数装饰器") {
+_send("once", true, true)
+}
+
+if (v == "获取当前所在的<iframe>：window.frameElement") {
+Var = 
+(
+console.log(window.frameElement);
+)
+}
+
+
+if (v == "e.dataset 给元素设置数据") {
+Var = 
+(
+// 方法一：通过js设置（设置完之后，html会出现data-fuck-you="true"的字样。）
+$0.dataset['fuckYou'] = 'true'
+
+// 方法二：通过HTML属性设置：
+data-fuck-you="true"
+
+// 注意点：
+// 1、可以设置多个Dataset
+// 2、js设置值必须是驼峰，但HTML设置必须是小写和-相连
+
+// 获取值：
+$0.dataset.fuckYou
+)
+}
+
+if (v == "获取当前所在的<script>：document.currentScript") {
+Var = 
+(
+https://github.com/lukeed/dimport/blob/master/src/module.js#L70
+document.currentScript
+)
+}
+
+if (v == "const { log， warn， info， error， assert  } = console") {
+_send("log", true, true)
+}
 
 if (v == "HTML缓存数据：e.dataset 与 data-fuck-you") {
 Var = 
@@ -5551,6 +5604,79 @@ return
 Var =
 (
 document.removeEventListener('mouseup', this.clickOutSide)
+)
+code(Var)
+return
+
+::log::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =
+(
+const { log, warn, info, error, assert } = console
+log(%t%, )
+)
+code(Var)
+SendInput, {left}
+return
+
+::asserts::
+::assert::
+Var =
+(
+console.assert(false, )
+)
+code(Var)
+SendInput, {left}
+return
+
+::once::
+Var =
+(
+/**
+ * es6 版本
+ *
+ */
+var once = f => {
+	// 计数器，采用闭包来保护私有变量
+	let count = 0
+	// 保存闭包执行结果
+	let cache
+	return (...args) => {
+	  // once 执行逻辑
+	  if (++count === 1) {
+	    // 执行函数
+	    cache = f(...args)
+	  }
+	  // 返回函数执行结果
+	  return cache
+	}
+}
+
+/**
+ * es5 版本
+ *
+ */
+var once = f => {
+	// 计数器，采用闭包来保护私有变量
+	let count = 0
+	// 保存闭包执行结果
+	let cache
+	return function () {
+	  // once 执行逻辑
+	  if (++count === 1) {
+	    // 执行函数
+	    cache = f.apply(null, arguments)
+	  }
+	  // 返回函数执行结果
+	  return cache
+	}
+}
+
+/**
+ * es6 极限版本
+ *
+ */
+var once = (f, cache, count = 0) => (...args) => ++count === 1 ? cache = f(...args) : cache
 )
 code(Var)
 return

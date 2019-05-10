@@ -22,6 +22,7 @@
   Menu, VueMenu, Add, vue3-template脚手架, VueHandler
   Menu, VueMenu, Add, vue2-template脚手架, VueHandler
   Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
+  Menu, VueMenu, Add, proxyTable 配置, VueHandler
   Menu, VueMenu, Add, css-scoped深度作用选择器：>>>（css） 与 /deep/（sass）, VueHandler
   Menu, VueMenu, Add, :style='{}' 表达式, VueHandler
   Menu, VueMenu, Add, vue.style, VueHandler
@@ -105,6 +106,10 @@ Var =
 )
 }
 
+
+if (v == "proxyTable 配置") {
+_send("proxyTable", true, true)
+}
 
 if (v == "Vue.config.productionTip = false") {
 Var = 
@@ -2771,4 +2776,58 @@ export default { name: 'not-found' }
 </style>
 )
 txtit(Var)
+return
+
+::vuex.user::
+Var =
+(
+import { request } from '@/utils/request.js'
+import { removeCookie } from '@/utils/cookie.js'
+import router from '@/router'
+import { Message } from 'element-ui'
+
+let state = {
+    user: null
+}
+
+const actions = {
+  getUserData ({ commit, state, dispatch, rootState }) {
+    request('/admin/user/sysUser/fetchCurrentUser', { noRepeat: 'off' }).then(data => {
+       state.user = data.user
+    })
+  },
+  quitLogin ({ commit, state, dispatch, rootState }, quitLogin) {
+    request('/dc/authorize/sso/prelogout', { noRepeat: 'off' }).then(data => {
+       removeCookie('authority-token')
+       state.user = null
+       router.push('/')
+       Message('退出成功')
+    })
+  },
+}
+
+export default {
+  namespaced: true,
+  state,
+  actions,
+}
+)
+code(Var)
+return
+
+::proxytable::
+Var =
+(
+proxyTable: {
+  '/api': {
+    target: 'http://datacenter.dgdatav.com:6080',
+    changeOrigin: true,
+    // 重写不能和baseURL HTTP 一起使用。所以baseURL必须不包含HTTP
+    pathRewrite: {
+      '^/api': '/api'
+    }
+  },
+},
+)
+code(Var)
 return
