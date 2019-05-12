@@ -275,6 +275,12 @@ for index, element in ary {
 return str
 }
 
+pshell(command) {
+ _command := "$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' `; " . command
+ run, powershell.exe %_command%
+}
+
+
 psdit(url, otherCommand = "") {
  ; 找到最后一个/的位置
  index := InStr(url, "/", false, 0) + 1
@@ -292,16 +298,12 @@ psdit(url, otherCommand = "") {
  mkdir %name% ; cd %name% ; Invoke-WebRequest -uri "%url%" -OutFile "%zipname%" ; Expand-Archive -Path %zipname% -DestinationPath . ; rm %zipname% ; %otherCommand%
  )
  ; 使用pw执行
- run, powershell.exe %command%
+ ; run, powershell.exe %command%
+ pshell(command)
  ; 等待一下时间
  sleep, 3500
  ; 打开文件夹
  run, % name
-}
-
-pshell(command) {
- _command := "$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' `; " . command
- run, powershell.exe %_command%
 }
 
 ::ahkurl::
