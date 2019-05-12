@@ -267,6 +267,14 @@ For key, value in pidary {
 }
 return
 
+join(ary, symbol = "; ") {
+str := 
+for index, element in ary {
+    str .= element . symbol
+}
+return str
+}
+
 psdit(url, otherCommand = "") {
  ; 找到最后一个/的位置
  index := InStr(url, "/", false, 0) + 1
@@ -291,10 +299,15 @@ psdit(url, otherCommand = "") {
  run, % name
 }
 
+pshell(command) {
+ _command := "$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8' `; " . command
+ run, powershell.exe %_command%
+}
 
 ::ahkurl::
 ::ahktemplate::
 ::ahktmp::
+::ahkpwd::
 ::ahkgithub::
 Var =
 (
@@ -312,6 +325,24 @@ Var =
 
 `)
 txtit(Var)
+)
+code(Var)
+return
+
+::ahkpshell::
+::pshellahk::
+Var =
+(
+name := "my-app" . "-" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+command := []
+command.push("cd " . A_Desktop)
+command.push("npx create-react-app " . name)
+command.push("cd" . name)
+command.push("echo SKIP_PREFLIGHT_CHECK=true > .env")
+command.push("npm start")
+command := join(command)
+pshell(command)
+return 
 )
 code(Var)
 return

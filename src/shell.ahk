@@ -506,7 +506,7 @@ return
 if (v == "git") {
 Var = 
 (
-git add . && git commit -m '迭代' --no-verify && git push -u origin master
+git add . && git commit -m '#' --no-verify && git push -u origin master
 )
 SendInput, % Var
 SendInput, {left 42}
@@ -1128,11 +1128,11 @@ return
 
 
 ::gitdd::
-_sendinput("git add . && git commit -m '{+} ' --no-verify && git push -u origin develop{LEFT 43}")
+_sendinput("git add . && git commit -m '{#} ' --no-verify && git push -u origin develop{LEFT 43}")
 return
 
 ::gitr::
-_sendinput("git add . && git commit -m '{+} ' --no-verify && git push -u origin release{LEFT 43}")
+_sendinput("git add . && git commit -m '{#} ' --no-verify && git push -u origin release{LEFT 43}")
 return
 
 ::sfind::

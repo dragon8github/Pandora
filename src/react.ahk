@@ -1,5 +1,6 @@
 ﻿!t::
 	Menu, reactMenu, Add, 新建create-react-app, ReactMenuHandler
+	Menu, reactMenu, Add, react-template, ReactMenuHandler
 	Menu, reactMenu, Add, React runtime for stackblitz, ReactMenuHandler
 	Menu, reactMenu, Add, React runtime for codesandbox, ReactMenuHandler
 	Menu, reactMenu, Add, import , ReactMenuHandler
@@ -64,6 +65,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "react-template") {
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/react-template.zip", "yarn `; npm start")
+return
 }
 
 if (v == "CSS module cssname") {
@@ -210,9 +217,16 @@ handle = e => {
 }
 
 if (v == "新建create-react-app") {
-	name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-	FileCreateDir, %name%
-	RunWaitOne("cd " . name . " && npm install -g create-react-app && create-react-app my-app && cd my-app && npm start")
+name := "my-app" . "-" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+command := []
+command.push("cd " . A_Desktop)
+command.push("npx create-react-app " . name)
+command.push("cd " . name)
+command.push("echo SKIP_PREFLIGHT_CHECK=true > .env")
+command.push("npm run start")
+command := join(command)
+pshell(command)
+return 
 }
 
 

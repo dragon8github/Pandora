@@ -237,6 +237,7 @@ Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">pixabay.com</a>
 Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
+Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：

@@ -769,7 +769,7 @@ return
 
 
 >^s::
-Send, npm run start
+cs("npm run start")
 return
 
 !Up::

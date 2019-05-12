@@ -2286,7 +2286,7 @@ Return
 ::vuefor::
 ::vue.for::
 ::v.for::
-    SendInput, v-for='(item, index) in items' :key='item'
+    SendInput, v-for='(item, index) in items' :key='index'
 Return
 
 
