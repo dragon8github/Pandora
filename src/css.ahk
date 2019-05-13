@@ -75,6 +75,7 @@
     Menu, Csssolution, Add, flex + column + flex: 1 全屏高度解决方案, CssHandler
     Menu, Csssolution, Add, 纯css实现maquee 无缝轮播, CssHandler
     Menu, Csssolution, Add, 太空漫游404解决方案, CssHandler
+    Menu, Csssolution, Add, 酷炫呼吸变色的棱角空间：hue-rotate, CssHandler
     
     
     
@@ -145,6 +146,58 @@ Var =
 (
 )
 }
+
+
+if (v == "酷炫呼吸变色的棱角空间：hue-rotate") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    #splash {
+        position: fixed; 
+        bottom: 0; left: 0; right: 0; top: 0; 
+        z-index: -1;
+
+        animation: rotate 15s alternate infinite;
+        background: url("https://s2.ax1x.com/2019/05/13/E5VSLd.png") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            filter: hue-rotate(0deg);
+        }
+
+        to {
+            filter: hue-rotate(360deg);
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="splash"></div>
+</body>
+
+</html>
+)
+}
+
 
 
 if (v == "太空漫游404解决方案") {
