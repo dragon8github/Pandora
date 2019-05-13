@@ -3602,3 +3602,177 @@ autoWidth(target)
 RunBy(name)
 run, % name
 return
+
+huxihtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    #splash {
+        position: fixed; 
+        bottom: 0; left: 0; right: 0; top: 0; 
+        z-index: -1;
+
+        animation: rotate 15s alternate infinite;
+        background: url("https://s2.ax1x.com/2019/05/13/E5VSLd.png") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            filter: hue-rotate(0deg);
+        }
+
+        to {
+            filter: hue-rotate(360deg);
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="splash"></div>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+huehtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    button,
+    [type="button"],
+    [type="submit"] {
+        outline: 0;
+    }
+
+    input.ui-button,
+    button.ui-button {
+        height: 20px;
+        box-sizing: content-box;
+    }
+
+    .ui-button {
+        display: inline-block;
+        line-height: 20px;
+        font-size: 14px;
+        text-align: center;
+        color: #4c5161;
+        border: 1px solid #d0d0d5;
+        border-radius: 4px;
+        padding: 9px 15px;
+        min-width: 50px;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: center;
+        text-decoration: none;
+        transition: border-color .15s, background-color .15s, opacity .15s;
+        cursor: pointer;
+        overflow: visible;
+    }
+
+
+    .ui-button-primary {
+        border: 1px solid #2486ff;
+        background-color: #2486ff;
+        color: #fff;
+    }
+
+    .ui-button-primary:hover {
+        background-color: #0160d5;
+        border-color: #0160d5;
+        color: #fff;
+    }
+
+    .ui-button-primary:not(.disabled):active,
+    .ui-button-primary:not(.loading):active {
+        background-color: #0057c3;
+        border-color: #0057c3;
+    }
+
+    button {
+        margin: 20px 50px;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button class='ui-button ui-button-primary'>原始色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(20deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(30deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(40deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(50deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(60deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(70deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(80deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(90deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(100deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(110deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(120deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(130deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(140deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(150deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(160deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(170deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(180deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(190deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(200deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(210deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(220deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(230deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(240deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(250deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(260deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(270deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(280deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(290deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(300deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(310deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(320deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(330deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(340deg);">其它色按钮</button>
+        <button class="ui-button ui-button-primary" style="filter:hue-rotate(350deg);">其它色按钮</button>
+    </div>
+</body>
+<script>
+$(function() {
+    console.log('hello world');
+});
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

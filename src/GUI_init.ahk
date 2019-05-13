@@ -296,6 +296,8 @@ Gui, Pandora:Add, Text, gmaoboli W160,新建毛玻璃.html
 Gui, Pandora:Add, Text, gwangyejindutiao W160,新建网页进度条.html
 Gui, Pandora:Add, Text, gemphhtml W160,新建更新提示波动图.html
 Gui, Pandora:Add, Text, gautowidth W160,新建input动态宽度.html
+Gui, Pandora:Add, Text, ghuxihtml W160, 新建呼吸变色棱角空间.html
+Gui, Pandora:Add, Text, ghuehtml W160, 新建hue-rotate.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
