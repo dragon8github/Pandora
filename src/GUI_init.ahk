@@ -250,6 +250,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.51ym.me/User/MobileSMSCode.aspx">�
 Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer</a>
 Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux命令搜索</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大全</a>
+Gui, Pandora:Add, Link,, <a href="https://hellogithub.com/report/db-engines/?url=/periodical/volume/15/">数据库排行榜</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：

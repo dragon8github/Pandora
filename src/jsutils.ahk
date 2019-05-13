@@ -253,6 +253,7 @@
     ; renzhi
     
     ; @my
+    Menu, utilsmy, Add, 把数组像分页一样分割为N段, utilsHandler
     Menu, utilsmy, Add, Promise.prototype.before, utilsHandler
     Menu, utilsmy, Add, input动态宽度, utilsHandler
     Menu, utilsmy, Add, exclude: 从对象中排除某个属性, utilsHandler
@@ -420,6 +421,39 @@ Var =
 )
 }
 
+
+
+if (v == "把数组像分页一样分割为N段") {
+Var = 
+(
+// 就像分页一样。
+// 1、页码 page：从 0 开始
+// 2、数量 num：3
+// 3、次数：Math.ceil
+// 4、使用Array.prototype.slice切割。不会改变原数组
+// 公式：a.slice(page * num, page + 1 * num)
+
+/*
+var ary = [1,2,3,4,5,6,7,8,9,10]
+var num = 3
+var count = Math.ceil(ary.length / num)
+for (var page = 0; page < count; page++) {
+	console.log(ary.slice(page * num, (page + 1) * num))
+}
+*/
+
+const ary = [1,2,3,4,5,6,7,8,9,10]
+const num = 3
+const division = (ary, num, container = {}) => {
+	for (let page = 0; page < Math.ceil(ary.length / num); page++) {
+	  container[page] = ary.slice(page * num, (page + 1) * num)
+	}
+	return container
+}
+// demo
+division(ary, num, {}) // or division(ary, num, [])
+)
+}
 
 if (v == "once函数装饰器") {
 _send("once", true, true)
