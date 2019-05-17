@@ -82,6 +82,7 @@
     Menu, utilsDOM, Add, 获取当前所在的<script>：document.currentScript, utilsHandler
     Menu, utilsDOM, Add, 获取当前所在的<iframe>：window.frameElement, utilsHandler
     Menu, utilsDOM, Add, mask蒙版, utilsHandler
+    Menu, utilsDOM, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     
     
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 element 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
@@ -98,6 +99,9 @@
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 offset 系列 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
     Menu, utilsPosition, Add, - offsetWidth：getComputedStyle(el).width 返回的可能是百分比，offsetWidth总是返回数值, utilsHandler
     Menu, utilsPosition, Add, - offsetTop：元素相对于定位元素（position默认是body）的偏移量（含scroll）, utilsHandler
+
+    Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 综合实战 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
+    Menu, utilsPosition, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     
     Menu, utilsObject, Add, for#Object.keys, utilsHandler
     Menu, utilsObject, Add, for#o in obj, utilsHandler
@@ -153,6 +157,7 @@
     Menu, utilsSolution, Add, countDown 倒计时, utilsHandler
     Menu, utilsSolution, Add, copyToClipboard 剪切板, utilsHandler
     Menu, utilsSolution, Add, 全屏F11最新解决方案, utilsHandler
+    Menu, utilsSolution, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
 
     Menu, utilsExtend, Add, extend 浅拷贝（继承模式中最后的圣杯）, utilsHandler
     Menu, utilsExtend, Add, deepExtend 深拷贝, utilsHandler
@@ -253,6 +258,7 @@
     ; renzhi
     
     ; @my
+    Menu, utilsmy, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     Menu, utilsmy, Add, 把数组像分页一样分割为N段, utilsHandler
     Menu, utilsmy, Add, Promise.prototype.before, utilsHandler
     Menu, utilsmy, Add, input动态宽度, utilsHandler
@@ -392,7 +398,7 @@
     Menu, utilsMenu, Add, diff: 对比两个json对象是否一致, utilsHandler
     Menu, utilsMenu, Add, fixPos: 根据父层界限调整宽高和位置, utilsHandler
     Menu, utilsMenu, Add, e.dataset 给元素设置数据, utilsHandler
-    
+    Menu, utilsMenu, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -421,38 +427,60 @@ Var =
 )
 }
 
-
-
-if (v == "把数组像分页一样分割为N段") {
+if (v == "滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop") {
 Var = 
 (
-// 就像分页一样。
-// 1、页码 page：从 0 开始
-// 2、数量 num：3
-// 3、次数：Math.ceil
-// 4、使用Array.prototype.slice切割。不会改变原数组
-// 公式：a.slice(page * num, page + 1 * num)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .box {
+        height: 500px;
+        overflow-y: scroll;
+    }
+    </style>
+</head>
 
-/*
-var ary = [1,2,3,4,5,6,7,8,9,10]
-var num = 3
-var count = Math.ceil(ary.length / num)
-for (var page = 0; page < count; page++) {
-	console.log(ary.slice(page * num, (page + 1) * num))
-}
-*/
+<body>
+    <div id="app">
+        
+        <div class="box">
+            <p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+            <p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+            <p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+            <p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+            <p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+        </div>
+        
+        <button onclick='cf()'>test</button>
+    </div>
+</body>
+<script>
 
-const ary = [1,2,3,4,5,6,7,8,9,10]
-const num = 3
-const division = (ary, num, container = {}) => {
-	for (let page = 0; page < Math.ceil(ary.length / num); page++) {
-	  container[page] = ary.slice(page * num, (page + 1) * num)
-	}
-	return container
+const el = document.querySelector('.box')
+
+el.addEventListener('scroll', (event) => {
+   if (el.scrollHeight - el.clientHeight === el.scrollTop) {
+    console.log(20190517110428, 123)
+   }
+})
+
+function cf() {
+    console.log(20190517105848, el.scrollHeight)
+    console.log(20190517105848, el.clientHeight)
+    console.log(20190517105848, el.scrollTop)
 }
-// demo
-division(ary, num, {}) // or division(ary, num, [])
+
+</script>
+</html>
 )
+}
+
+if (v == "把数组像分页一样分割为N段") {
+_send("fenye", true, true)
 }
 
 if (v == "once函数装饰器") {
@@ -4727,9 +4755,9 @@ Var =
 (
 export const hasClass = (el, className) => {
   if (el.classList)
-    el.classList.contains(className);
+    return el.classList.contains(className);
   else
-    new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+    return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
 }
 )
 }
@@ -5178,9 +5206,9 @@ export const addClass = (el, cls) => {
 
 export const hasClass = (el, className) => {
   if (el.classList)
-    el.classList.contains(className);
+    return el.classList.contains(className);
   else
-    new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+    return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
 }
 
 export const getClassName = (el) => {
@@ -5607,33 +5635,6 @@ function fixPos ({height, width, top, left} = {}, {parentH, parentW} = {}) {
 code(Var)
 return
 
-::clickoutside::
-Var =
-(
-beforeMount() {
-    // 绑定监听高亮事件
-    this.clickOutSide = e => {
-        // 如果点击的不是弹窗本身，那么关闭它
-        if (this.$refs.tree.$el.contains(e.target) === false && 
-            this.$refs.ruleFormBox.$el.contains(e.target) == false) 
-        {
-            // 取消显示
-            this.$nextTick(() => {
-                this.ruleForm.tagId = -1;
-                this.showBtn = false;
-                this.$refs.tree.setCurrentKey(null)
-            })
-        }
-    }
-    document.addEventListener('mouseup', this.clickOutSide)
-},
-destroyed () {
-    document.removeEventListener('mouseup', this.clickOutSide)
-},
-)
-code(Var)
-return
-
 ::dr::
 Var =
 (
@@ -5711,6 +5712,48 @@ var once = f => {
  *
  */
 var once = (f, cache, count = 0) => (...args) => ++count === 1 ? cache = f(...args) : cache
+)
+code(Var)
+return
+
+::!include::
+::!includes::
+Var =
+(
+a.filter(_ => !b.includes(_))
+)
+code(Var)
+return
+
+::fenye::
+Var =
+(
+// 就像分页一样。
+// 1、页码 page：从 0 开始
+// 2、数量 num：3
+// 3、次数：Math.ceil
+// 4、使用Array.prototype.slice切割。不会改变原数组
+// 公式：a.slice(page * num, page + 1 * num)
+
+/*
+var ary = [1,2,3,4,5,6,7,8,9,10]
+var num = 3
+var count = Math.ceil(ary.length / num)
+for (var page = 0; page < count; page++) {
+	console.log(ary.slice(page * num, (page + 1) * num))
+}
+*/
+
+const ary = [1,2,3,4,5,6,7,8,9,10]
+const num = 3
+const division = (ary, num, container = {}) => {
+	for (let page = 0; page < Math.ceil(ary.length / num); page++) {
+	  container[page] = ary.slice(page * num, (page + 1) * num)
+	}
+	return container
+}
+// demo
+division(ary, num, {}) // or division(ary, num, [])
 )
 code(Var)
 return

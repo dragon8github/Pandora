@@ -12,6 +12,7 @@
 	Menu, arrayMenu, Add, Array.prototype.remove, ForHandler
 	Menu, arrayMenu, Add, 类数组转数组：Array.prototype.slice.call(arguments), ForHandler
 	Menu, arrayMenu, Add, 二维数组转一维数组：Array.prototype.flat(), ForHandler
+	Menu, arrayMenu, Add, 删除数组成员, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -53,6 +54,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "删除数组成员") {
+_send("remove", true, true)
+return
 }
 
 

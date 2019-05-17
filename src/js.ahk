@@ -1771,9 +1771,29 @@ export default class ClickOutside extends Component {
     if (el && !el.contains(e.target)) onClickOutside(e)
   }
 }
-
+---
+beforeMount() {
+    // 绑定监听高亮事件
+    this.clickOutSide = e => {
+        // 如果点击的不是弹窗本身，那么关闭它
+        if (this.$refs.tree.$el.contains(e.target) === false && 
+            this.$refs.ruleFormBox.$el.contains(e.target) == false) 
+        {
+            // 取消显示
+            this.$nextTick(() => {
+                this.ruleForm.tagId = -1;
+                this.showBtn = false;
+                this.$refs.tree.setCurrentKey(null)
+            })
+        }
+    }
+    document.addEventListener('mouseup', this.clickOutSide)
+},
+destroyed () {
+    document.removeEventListener('mouseup', this.clickOutSide)
+},
 )
-code(Var)
+txtit(Var)
 return
 
 
@@ -3864,9 +3884,10 @@ console.log('`%c DEBUG ' + '`%c ->' + name, 'background:#222; color: yellow', 'b
 debugger;
 )
 code(Var)
+SendInput, {up}{home}
+SendInput, {right 36}
+SendInput, +{right 4}
 Return
-
-
 
 >!c::
 WinGetTitle, title, A
@@ -4882,15 +4903,7 @@ return
 ::remove::
 Var = 
 (
-function remove(arr, item) {
-  if (arr.length) {
-    const index = arr.indexOf(item)
-    if (index > -1) {
-      return arr.splice(index, 1)
-    }
-  }
-}
-
+const removeArrayReducer = (ary, index) => [...ary.slice(0, index), ...ary.slice(index + 1)]
 )
 code(Var)
 return

@@ -105,6 +105,7 @@
 	Menu, gitShellMenu, Add,
 	Menu, gitShellMenu, Add,	
 	
+	Menu, gitShellMenu, Add, 查看文件的修改历史：git log --pretty=oneline step3.vue, ShellHandler3
 	Menu, gitShellMenu, Add, git mergetool, ShellHandler
 	Menu, gitShellMenu, Add, git init && git checkout -b test && git checkout -b develop, ShellHandler2
 	
@@ -294,7 +295,14 @@ tar zxvf nginx-1.15.8.tar.gz
 )
 }
 
-_send(Var)
+if (v == "查看文件的修改历史：git log --pretty=oneline step3.vue") {
+Var = 
+(
+git log --pretty=oneline step3.vue
+)
+}
+
+cs(Var)
 return
 
 ShellHandler:
@@ -309,6 +317,7 @@ Var =
 (
 )
 }
+
 
 
 

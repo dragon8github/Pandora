@@ -204,6 +204,7 @@ Gui, Pandora:Add, Link,, <a href="https://camp.qianduan.group/koa2/2/1/2">ikcamp
 Gui, Pandora:Add, Link,, <a href="https://aotu.io/">凹凸实验室</a>
 Gui, Pandora:Add, Link,, <a href="https://scrimba.com/">学习代码新世界</a>
 Gui, Pandora:Add, Link,, <a href="https://www.shiyanlou.com/">实验楼</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/azl397985856/leetcode">leetcode JS版本</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/manageyourkindle">我的设备</a>
@@ -371,6 +372,7 @@ Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/DUXBCem1Kd2dQdkNi?op
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心git lab</a>
 Gui, Pandora:Add, Link,, <a href="https://top7bx.axshare.com">紫莹数据中心web原型</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/groups/DateCenter/-/boards">测试敏捷看板</a>
+Gui, Pandora:Add, Link,, <a href="http://dc.dgjy.net:8080/">Jenkins</a>
 
 ; @gs
 
