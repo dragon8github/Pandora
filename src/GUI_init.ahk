@@ -439,6 +439,8 @@ Gui, Pandora:Add, Link,, <a href="https://electronjs.org/docs/api/client-request
 
 Gui, Pandora:Add, Text,  W140 ys, nest框架中的django:
 Gui, Pandora:Add, Link,, <a href="https://github.com/nestjs/nest">nestjs github</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/juliandavidmr/awesome-nestjs">awesome-nestjs</a>
+
 
 Gui, Pandora:Add, Text, W140 Section ys, nodejs cms：
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repos/NodeJS/CMS">NodeJS/CMS</a>

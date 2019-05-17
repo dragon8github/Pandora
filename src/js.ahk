@@ -1792,6 +1792,24 @@ beforeMount() {
 destroyed () {
     document.removeEventListener('mouseup', this.clickOutSide)
 },
+---
+// 如果是关闭的，才需要打开
+  if (!this.showTree) {
+      this.showTree = true
+      // 获取左侧的高度
+      const treeHeight = document.querySelector('.container-left').clientHeight
+    // 设置右侧的高度
+    document.querySelector('.container-right ').style.setProperty('height', treeHeight + 'px')
+    const _clickOutSide = e => {
+        if (this.$refs.ctree.$el.contains(e.target) === false && hasClass(e.target, 'el-table__row') === false) {
+            // 关闭
+            this.showTree = false
+            // 移除事件
+            document.removeEventListener('mouseup', _clickOutSide)
+        }
+    }
+    document.addEventListener('mouseup', _clickOutSide)
+}
 )
 txtit(Var)
 return
