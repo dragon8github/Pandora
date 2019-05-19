@@ -258,6 +258,7 @@
     ; renzhi
     
     ; @my
+    Menu, utilsmy, Add, 堡垒模式：请求条件不满足则排队处理, utilsHandler
     Menu, utilsmy, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     Menu, utilsmy, Add, 把数组像分页一样分割为N段, utilsHandler
     Menu, utilsmy, Add, Promise.prototype.before, utilsHandler
@@ -425,6 +426,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "堡垒模式：请求条件不满足则排队处理") {
+_send("baoleimodel", true, true)
+return
 }
 
 if (v == "滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop") {
@@ -5757,3 +5764,50 @@ division(ary, num, {}) // or division(ary, num, [])
 )
 code(Var)
 return
+
+::baoleimodel::
+::baoleimoshi::
+::baoleimodal::
+Var =
+(
+var once = (f, cache, count = 0) => (...args) => ++count === 1 ? cache = f(...args) : cache
+
+var getUser = () => {
+    return new Promise((resolve, reject) => {
+       setTimeout(function () {
+            console.log(20190518201928, 'getUser success!')
+            resolve('userName')
+       }, 3000);
+    })
+}
+
+var request = (user) => {
+    return new Promise((resolve, reject) => {
+       setTimeout(function () {
+            resolve('request by ' + user)
+       }, 3000);
+    })
+}
+
+var once_getUser = once(getUser)
+
+var test = async (num) => {
+    // 假设这个是前提条件，且只执行一次
+    const user = await once_getUser()
+ 
+    // 这个是正式请求，要结合上面的值使用
+    const data =  await request(user + num)
+
+    return data
+}
+
+test('0').then(console.log)
+test('1').then(console.log)
+test('2').then(console.log)
+test('3').then(console.log)
+test('4').then(console.log)
+test('5').then(console.log)
+test('6').then(console.log)
+)
+code(Var)
+Return

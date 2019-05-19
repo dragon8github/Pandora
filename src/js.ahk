@@ -2477,6 +2477,7 @@ return
 ::before::
 Var =
 (
+// es5 版本
 Function.prototype.before = function(beforefn) {
     var __self = this;
 
@@ -2485,8 +2486,81 @@ Function.prototype.before = function(beforefn) {
         return __self.apply(this, arguments);
     }
 };
+---
+// es6 async/await 版本：支持异步before
+// 如果要保留this，那么不能使用this，依然需要使用原始的function
+Function.prototype.before = function (beforefn) {
+    var __self = this
+
+    return async (...args) => {
+        await beforefn(...args)
+        return __self(...args)
+    }
+}
+
+// 测试函数
+let fuck = () => {
+	console.log('fuck')
+}
+
+// 返回新的函数
+_fuck = fuck.before(() => {
+	return new Promise((resolve, reject) => {
+	   setTimeout(function () {
+	   		console.log('success')
+	        resolve('success')
+	   }, 1000);
+	})
+})
+
+// start fuck
+_fuck()
+
+/* 使用示例 */
+let fuck = () => {
+	console.log(20190519080323, 'fuck')
+}
+
+fuck = fuck.before(() => {
+	return new Promise((resolve, reject) => {
+	   setTimeout(function () {
+	   		console.log('success')
+	        resolve('success')
+	   }, 1000);
+	})
+})
+---
+// next的策略版本
+// 注意：用next版本，就意味着你无法直接从fuck()中拿到返回值了，你只能使用回调了。
+Function.prototype.before = function(beforefn) {
+    var __self = this;
+
+    // 所谓的next，就是把函数注入进去让他代理和执行
+    return (...args) => {
+        return beforefn(__self, ...args)
+    }
+};
+
+/* 使用示例 */
+
+// 我们约定，第一个参数就是before为我们注入的数据，其他数据是我们额外接受的
+let fuck = (beforeData, you) => {
+    // 使用before给我们注入的数据
+    console.log('use', beforeData)
+    // 使用我们自己接受的数据
+    console.log('fuck', you)
+}
+
+fuck = fuck.before((next, ...args) => {
+    setTimeout(() => {
+        // 为fuck注入新参数，可有可无。只是说明而已。实际情况可以灵活调整开发
+        next('durex', ...args)
+    }, 1000);
+})
+
+fuck('Lee')
 )
-code(Var)
+txtit(Var)
 return
 
 

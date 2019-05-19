@@ -118,6 +118,7 @@
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
 	
+	Menu, EventMenu, Add, keycode大全和打印方式, EventHandler
 	Menu, EventMenu, Add, js 监听 enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + click, EventHandler
@@ -175,6 +176,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "keycode大全和打印方式") {
+_send("keycode", true, true)
+return
 }
 
 
@@ -499,24 +506,24 @@ $('input').on('input', search)
 if (v == "js 组合键监听 ctrl + shift + p") {
 Var = 
 (
-$(window).keydown(function (event) {
-	 // 监听 Ctrl + Shift + p 打开搜索框
-	 if (event.ctrlKey && event.shiftKey && event.keyCode == 80) {
-		openPanel()
-	 }
-});
+document.addEventListener('keydown', (event) => {
+    // 监听 Ctrl + Shift + p 打开搜索框
+    if (event.ctrlKey && event.shiftKey && event.keyCode == 80) {
+    	openPanel()
+    }
+})
 )
 }
 
 if (v == "js esc键监听") {
 Var = 
 (
-$(window).keydown(function (event) {
-    // 监听esc键退出全屏
-    if (event.keyCode == 27) {
-      
-    }
-});
+document.addEventListener('keydown', (event) => {
+	// 监听esc键退出全屏
+	if (event.keyCode == 27) {
+	  
+	}
+})
 )
 }
 
@@ -770,16 +777,16 @@ splitLine: {
 if (v == "js 组合键监听 ctrl + enter") {
 Var = 
 (
-$(window).keydown(function (event) {
-	 // 监听esc键退出全屏
-	 if (event.keyCode == 27) {
-	   
-	 }
-	 // 监听 Ctrl + Enter 可全屏查看 
-	 if (event.ctrlKey && event.keyCode == 13) {
-		
-	 }
-});
+document.addEventListener('keydown', (event) => {
+	// 监听esc键退出全屏
+	if (event.keyCode == 27) {
+	  
+	}
+	// 监听 Ctrl + Enter 可全屏查看 
+	if (event.ctrlKey && event.keyCode == 13) {
+	
+	}
+})
 )
 }
 
@@ -1154,6 +1161,58 @@ window.addEventListener('keydown', function (event) {
 		debugger;
 	}
 })
+)
+code(Var)
+return
+
+::keycode::
+Var =
+(
+A	65	J	74	S	83	1	49
+B	66	K	75	T	84	2	50
+C	67	L	76	U	85	3	51
+D	68	M	77	V	86	4	52
+E	69	N	78	W	87	5	53
+F	70	O	79	X	88	6	54
+G	71	P	80	Y	89	7	55
+H	72	Q	81	Z	90	8	56
+I	73	R	82	0	48	9	57
+
+0	96		F1	112	
+1	97		F2	113	
+2	98		F3	114	
+3	99		F4	115	
+4	100		F5	116	
+5	101		F6	117	
+6	102		F7	118 	 	 	 
+7	103		F8	119 	 	 	 
+8	104     F9	120
+9	105     F10	121
+			F11	122
+			F12	123
+
+BackSpace	8
+Shift	    16
+Enter	    13
+Control	    17
+Alt	        18
+Esc	        27
+Home	    36
+
+Insert	    45
+Delete	    46
+Page Up	    33
+Page Down	34
+
+Left Arrow	37
+Up Arrow	38
+Right Arrow	39
+Dw Arrow	40
+
+
+window.addEventListener("keydown", function(e) {
+	console.log(e.keyCode)
+}, false);
 )
 code(Var)
 return

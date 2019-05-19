@@ -1,4 +1,96 @@
-﻿::el-page::
+﻿::el-search::
+Var =
+(
+<template>
+	<div>
+      <!-- search -->
+      <el-input class='l-field__value u-mt-3 u-mb-3' v-model='search' placeholder="请输入搜索内容"></el-input>
+
+      <!-- 表格 -->
+      <el-table border 
+                ref="multipleTable" 
+                :data="myTable" 
+                :highlight-current-row="true" 
+                @row-click='openTree'>
+      </el-table>
+
+      <!-- 分页 -->
+      <el-pagination class='u-tr u-mt-3' 
+                     background 
+                     @current-change="handleCurrentChange" 
+                     :total="selectTables.length" 
+                     :page-size="size" 
+                     :current-page="currentPage" 
+                     layout="total, prev, pager, next, jumper">
+      </el-pagination>
+	</div>	
+</template>
+<script>
+export default {
+	data() {
+	  return {
+	    // 搜索
+	    search: '',
+	    // 页码
+	    page: 0,
+	    // 每页固定10条
+	    size: 5,
+	    // 当前页码
+	    currentPage: 1,
+	  }
+	},
+	computed: {
+	  myTable() {
+	    // default
+	    let _table = this.selectTables
+	    // filter
+	    if (this.search) {
+	      this.page = 0
+	      this.currentPage = 1
+	      _table = this.selectTables.filter(_ => _.tableSource.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()))
+	    }
+	    return _table.slice(this.page * this.size, (this.page + 1) * this.size)
+	  }
+	},
+}
+</script>
+
+---
+
+<template>
+	<div>
+		<el-input class='l-field__value' v-model='search' placeholder="请输入搜索内容"></el-input>
+		<el-table  :row-class-name="tableRowClassName"></el-table>
+	</div>	
+</template>
+
+<script>
+	export default {
+		data() {
+		  return {
+		    search: '',
+		  }
+		},
+		methods: {
+			// 添加禁选样式
+			tableRowClassName({row, rowIndex}) {
+			  if (!row.tableSource.toLocaleLowerCase().includes(this.search.toLocaleLowerCase())) {
+			    return 'u-hide'
+			  } else if (row.existScheduleFlag == 1 && this.rawTables.find(_ => _.tableSource == row.tableSource) == null) {
+			    return 'disabled'
+			  }
+			  return ''
+			},
+		}
+	}
+</script>
+
+
+)
+txtit(Var)
+return
+
+::el-page::
 ::el-pages::
 Var =
 (

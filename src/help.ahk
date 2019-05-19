@@ -1393,3 +1393,38 @@ return
 !4::
 cs("dgjy123")
 return
+
+
+/*
+:*:[]::
+Var =
+(
+『』
+)
+code(Var)
+return
+*/
+
+^[::
+![::
+^]::
+!]::
+tmp := Clipboard
+Clipboard :=
+SendInput, ^x
+ClipWait, 2
+SendInput, 『%Clipboard%』
+Clipboard := tmp
+return
+
+^b::
+WinGetTitle, title, A
+if (InStr(title, "有道云笔记")) {
+tmp := Clipboard
+Clipboard :=
+SendInput, ^x
+ClipWait, 2
+SendInput, **%Clipboard%**
+Clipboard := tmp
+}
+return
