@@ -395,6 +395,11 @@ Gui, Pandora:Add, Text,  W140 ys xp+160, dataZ
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dataz">gitlab地址</a>
 Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:6082/#/Studio">在线预览地址</a>
 
+Gui, Pandora:Add, Text,  W140 ys xp+160, 统一门户网站
+Gui, Pandora:Add, Link,, <a href="http://dotnet.alltosea.com:6012/portalui/">入口</a>
+Gui, Pandora:Add, Link,, <a href="http://dotnet.alltosea.com:6012/portalapi/doc.html">API文档</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/unifiedfabric/dgjy/portalui/tree/newdev/vue-education/src">代码地址</a>
+
 Gui, Pandora:Tab, 4
 Gui, Pandora:Add, Text,  W130 Section, 工具库1：
 Gui, Pandora:Add, Link,, <a href="https://github.com/KyleAMathews/deepmerge">deepmerge</a>

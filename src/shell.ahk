@@ -1137,7 +1137,7 @@ return
 
 
 ::gitdd::
-_sendinput("git add . && git commit -m '{#} ' --no-verify && git push -u origin develop{LEFT 43}")
+_sendinput("git add . && git commit -m '{#}' --no-verify && git push -u origin develop{LEFT 43}")
 return
 
 ::gitr::

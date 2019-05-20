@@ -1424,7 +1424,7 @@ tmp := Clipboard
 Clipboard :=
 SendInput, ^x
 ClipWait, 2
-SendInput, **%Clipboard%**
+cs("**" . Clipboard . "**")
 Clipboard := tmp
 }
 return
