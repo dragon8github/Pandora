@@ -3895,3 +3895,7 @@ window.onload = function () {
 RunBy(name)
 run, % name
 return
+
+tianMapHtml:
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/tianmap.zip")
+return

@@ -322,6 +322,7 @@ Gui, Pandora:Add, Text, gNewEchartraduisHtml ,新建.raduis.html（圆环图）
 Gui, Pandora:Add, Text, gNewEchartPinBoderHtml ,新建.pinBoder.html（圆环断层图）
 Gui, Pandora:Add, Text, gNewEchartdoulecolorHtml ,新建.doulecolor.html（双色柱状图）
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ,新建.echartsDemo.html（官方示例脚手架）
+Gui, Pandora:Add, Text, gtianMapHtml ,新建.天地图国土地图.html
 
 
 Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+20, 新建nodejs爬虫模板
