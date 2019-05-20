@@ -299,6 +299,9 @@
     Menu, utilsmaybe, Add, stackoverflow愚人节彩蛋效果, utilsHandler
     ;@maybe
     
+    
+    
+    Menu, utilses5, Add, partial：偏应用ES5实现（局部函数工厂）, utilsHandler
     Menu, utilses5, Add, 将参数arguments转化为一个数组Array.prototype.slice.call(arguments), utilsHandler
     Menu, utilses5, Add, (...arr)数组解构的前辈：Array.prototype.push.apply(arr`, newArr), utilsHandler
     Menu, utilses5, Add, 函数调用注入args：successFn.apply(this`, arguments), utilsHandler
@@ -426,6 +429,29 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "partial：偏应用ES5实现（局部函数工厂）") {
+Var = 
+(
+function partial(fn, /* args... */) {
+	var args = [].slice.call( arguments, 1 );
+
+	return function () {
+		return fn.apply( this, args.concat( [].slice.call( arguments ) ) );
+	}
+}
+
+/* demo：实际上作用很类似 fn.prototype.bind */
+
+function add(a, b) {
+	return a + b;
+}
+
+var add100 = partial(add, 100);
+console.log(add100(14)) // 114
 )
 }
 

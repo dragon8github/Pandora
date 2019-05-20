@@ -3834,3 +3834,64 @@ myChart.setOption(option);
 RunBy(name)
 run, % name
 return
+
+csssearchtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style id='search_result'> /* something code will setting here */ </style>
+</head>
+
+<body>
+    <input type="text" id='search' autofocus />
+	<ul>
+		<li title='77774341'>77774341</li>
+		<li title='14584144'>14584144</li>
+		<li title='73423862'>73423862</li>
+		<li title='45665803'>45665803</li>
+		<li title='18754867'>18754867</li>
+		<li title='61372466'>61372466</li>
+		<li title='41944603'>41944603</li>
+		<li title='53205384'>53205384</li>
+		<li title='35774477'>35774477</li>
+		<li title='15751022'>15751022</li>
+		<li title='64247267'>64247267</li>
+		<li title='81699912'>81699912</li>
+		<li title='86101195'>86101195</li>
+		<li title='79282658'>79282658</li>
+		<li title='37371356'>37371356</li>
+		<li title='57512286'>57512286</li>
+		<li title='58434249'>58434249</li>
+		<li title='45291094'>45291094</li>
+		<li title='72808820'>72808820</li>
+		<li title='76441497'>76441497</li>
+		<li title='86552593'>86552593</li>
+		<li title='79945580'>79945580</li>
+	</ul>
+</body>
+<script>
+window.onload = function () {
+	var search = document.getElementById('search')
+	var	result = document.getElementById('search_result')
+
+	search.onkeyup = search.onkeydown = search.onchange = function () {
+		result.innerHTML = this.value ? ``
+			li:not([title*="${this.value}"]) {
+				height: 0;
+				display: block;
+				font-size: 0;
+			}
+		`` : null
+	}
+}
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

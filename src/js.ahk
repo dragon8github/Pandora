@@ -1,4 +1,14 @@
-﻿::findobj::
+﻿::wo::
+Var =
+(
+window.onload = function () {
+	
+}
+)
+code(Var)
+return
+
+::findobj::
 Var =
 (
 const findObj  = (obj, condition) => {
@@ -3972,12 +3982,13 @@ return
 >^d::
 Var =
 (
-console.log('`%c DEBUG ' + '`%c ->' + , 'background:#222; color: yellow', 'background: #fff; color: #000', )
+console.log('`%c DEBUG ' + '`%c ->' + '', 'background:#222; color: yellow', 'background: #fff; color: #000', )
 debugger;
 )
 code(Var)
 SendInput, {up}{home}
 SendInput, {right 36}
+SendInput, +{right 2}
 return
 
 >!c::

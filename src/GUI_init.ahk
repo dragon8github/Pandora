@@ -223,6 +223,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/trekhleb/javascript-algorit
 Gui, Pandora:Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">《React 小书》</a>
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/weuse?page=1">《大牛都在用什么？》</a>
 Gui, Pandora:Add, Link,, <a href="https://classroom.udacity.com/courses/ud905/lessons/92a39eec-0c04-4d98-b47f-c884b9cd5a3b/concepts/78143d19-8360-4f83-88ab-cfcb5b160465">「Flutter 教学视频」</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview">以面为练</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
@@ -306,6 +307,7 @@ Gui, Pandora:Add, Text, gemphhtml W160,新建更新提示波动图.html
 Gui, Pandora:Add, Text, gautowidth W160,新建input动态宽度.html
 Gui, Pandora:Add, Text, ghuxihtml W160, 新建呼吸变色棱角空间.html
 Gui, Pandora:Add, Text, ghuehtml W160, 新建hue-rotate.html
+Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
@@ -368,10 +370,6 @@ Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/pages/viewpage
 Gui, Pandora:Add, Link,, <a href="https://hui.dgjy.net">门户网站</a>
 
 
-Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
-Gui, Pandora:Add, Link,, <a href="http://kw.dgjy.net">extra-edu 线上</a>
-
 Gui, Pandora:Add, Text,  W140 xs Section yp+150, 数据中心
 Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心 - 线上地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心源码gitlab</a>
@@ -381,6 +379,10 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-d
 Gui, Pandora:Add, Link,, <a href="https://top7bx.axshare.com">紫莹数据中心web原型</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/groups/DateCenter/-/boards">测试敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://dc.dgjy.net:8080/">Jenkins</a>
+
+Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
+Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
+Gui, Pandora:Add, Link,, <a href="http://kw.dgjy.net">extra-edu 线上</a>
 
 ; @gs
 
@@ -687,15 +689,20 @@ Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos/kitchensink
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos">jointjs demo大全</a>
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/tutorial">jointjs 入门指引</a>
 
-Gui, Pandora:Add, Text, W140 ys, 最强验证库joi
+Gui, Pandora:Add, Text, W120 ys, 最强验证库joi
 Gui, Pandora:Add, Link,, <a href="https://github.com/hapijs/joi">hapijs joi</a>
 
-Gui, Pandora:Add, Text,  W140 yp+50, 本地存储：
+Gui, Pandora:Add, Text,  W120 yp+50, 本地存储：
 Gui, Pandora:Add, Link,, <a href="https://github.com/localForage/localForage">localForage</a>
+
+Gui, Pandora:Add, Text, W140 ys, 数字上下滚动插件：
+Gui, Pandora:Add, Link,, <a href="https://github.hubspot.com/odometer/docs/welcome/">odometer</a>
+
+Gui, Pandora:Add, Text,  W140 yp+50, 超好看拖拽上传：
+Gui, Pandora:Add, Link,, <a href="https://github.com/pqina/filepond">filepond</a>
 
 Gui, Pandora:Add, Text, W140 Section xs yp+100, 响应式导航：
 Gui, Pandora:Add, Link,, <a href="https://github.com/viljamis/responsive-nav.js">responsive-nav</a>
-
 
 Gui, Pandora:Add, Text, W140 yp+50, stickUp黏住固定：
 Gui, Pandora:Add, Link,, <a href="https://github.com/LiranCohen/stickUp">stickUp</a>
@@ -932,12 +939,13 @@ Gui, Pandora:Add, Link,, <a href="http://css3lib.alloyteam.com/#animation/Animat
 Gui, Pandora:Add, Link,, <a href="http://microjs.com/#">极简js大全：microjs</a>
 
 
-Gui, Pandora:Add, Text,  W140 ys, 极简库:
+Gui, Pandora:Add, Text,  W180 ys, 极简库:
 Gui, Pandora:Add, Link,, <a href="https://ajusa.github.io/lit/">极简风格：lit.css</a>
 Gui, Pandora:Add, Link,, <a href="https://nostalgic-css.github.io/NES.css/">马里奥风格：NES.css</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/pure-css/pure/">雅虎：pure.css</a>
 Gui, Pandora:Add, Link,, <a href="https://bulma.io/">青铜王者：bulma.css</a>
 Gui, Pandora:Add, Link,, <a href="https://foundation.zurb.com/">响应翘楚：foundation 6</a>
+Gui, Pandora:Add, Link,, <a href="https://milligram.io">只有2k的CSS框架：milligram.css</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/kognise/water.css">简单得一逼：water.css</a>
 
 
