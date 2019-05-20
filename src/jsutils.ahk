@@ -219,6 +219,8 @@
     
     Menu, utilsDesignPattern, Add, 优惠券条件分支：链式after解决方案, utilsHandler
     
+    ; @认知 @renzhi
+    Menu, utilspractice, Add, 拖拽位置公式, utilsHandler
     Menu, utilspractice, Add, 仿rxjs的观察者模式, utilsHandler
     Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
     Menu, utilspractice, Add, 超简单的currying与理财花销实例, utilsHandler
@@ -233,7 +235,6 @@
     Menu, utilspractice, Add,
     Menu, utilspractice, Add,
     
-    ; @认知 @renzhi
     Menu, utilspractice, Add, 任意值的__proto__拦截器：数组为例, utilsHandler
     Menu, utilspractice, Add, promise.catch 全局处理与局部传播：在第一次catch的时候throw错误即可, utilsHandler
     Menu, utilspractice, Add, Promise.prototype.finally已经存在了, utilsHandler
@@ -428,6 +429,17 @@ Var =
 )
 }
 
+
+if (v == "拖拽位置公式") {
+Var = 
+(
+https://github.com/vuegg/vuegg/blob/master/client/src/components/editor/main/Stage.vue#L123
+
+拖拽位置公式 = pageY  - <容器到顶部的距离> + 容器scrollTop - 元素高度/2
+
+容器到顶部的距离 = 容器offsetTop - 其他障碍高度
+)
+}
 
 if (v == "堡垒模式：请求条件不满足则排队处理") {
 _send("baoleimodel", true, true)

@@ -198,6 +198,8 @@ return
 ::cdn-bd::
 ::cdn-bdmap::
 ::cdn-bmap::
+::cdn-baidu::
+::cdn-baidumap::
 ::cdn-echartbd::
 ::cdn-echartsbd::
 Var =

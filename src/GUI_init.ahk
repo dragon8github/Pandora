@@ -139,7 +139,7 @@ Gui, Pandora:Add, Button, gCancelSelect w260 h30 xs, 取消选中
 
 
 ; Tab 选项卡 w830 h570 
-Gui, Pandora:Add, Tab3, Section ys ym Choose1 w900, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 奇妙工具 | 图表 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 回收站 | 剪切板 
+Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 奇妙工具 | 图表 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 回收站 | 剪切板 
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -184,14 +184,21 @@ Gui, Pandora:Add, Link,, <a href="https://nginxconfig.io/">生成器nginxconfig.
 Gui, Pandora:Add, Link,, <a href="http://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=955910">iconfont</a>
 Gui, Pandora:Add, Link,, <a href="https://carbon.now.sh/">carbon代码图片</a>
 
-
-Gui, Pandora:Add, Text, W140 ys, cdn：
+Gui, Pandora:Add, Text, W120 ys, cdn：
 Gui, Pandora:Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Pandora:Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://unpkg.com/#/">unpkg cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdnjs.com/">cdnjs.com</a>
 Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">75cdn</a>
+
+Gui, Pandora:Add, Text, W140 ys, ServerLess：
+Gui, Pandora:Add, Link,, <a href="https://www.amazonaws.cn/">AWS 官网</a>
+Gui, Pandora:Add, Link,, <a href="https://serverless.com/">Serverless框架</a>
+Gui, Pandora:Add, Link,, <a href="https://aws.amazon.com/cn/cloud9/">AWS Cloud9</a>
+Gui, Pandora:Add, Link,, <a href="https://console.aws.amazon.com/iam/home?#/home">IMA管理</a>
+Gui, Pandora:Add, Link,, <a href="https://signin.aws.amazon.com/signin">AWS登录</a>
+Gui, Pandora:Add, Link,, <a href="https://console.aws.amazon.com/billing/home?#/paymentmethods">付费绑定</a>
 
 
 Gui, Pandora:Add, Text,  W140 Section xs yp+50, 最近学习：
@@ -312,6 +319,7 @@ Gui, Pandora:Add, Text, gNewEchartsareaStyleHtml ,新建.areaStyle.html（折线
 Gui, Pandora:Add, Text, gNewEchartraduisHtml ,新建.raduis.html（圆环图）
 Gui, Pandora:Add, Text, gNewEchartPinBoderHtml ,新建.pinBoder.html（圆环断层图）
 Gui, Pandora:Add, Text, gNewEchartdoulecolorHtml ,新建.doulecolor.html（双色柱状图）
+Gui, Pandora:Add, Text, gNewEchartDemoHtml ,新建.echartsDemo.html（官方示例脚手架）
 
 
 Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+20, 新建nodejs爬虫模板
@@ -939,7 +947,6 @@ Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/shadow_visualizati
 Gui, Pandora:Add, Text,  W140 ys, Material Design:
 Gui, Pandora:Add, Link,, <a href="https://github.com/Dogfalo/">（推荐）materialize</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/zdhxiong/mdui">中文版md</a>
-
 
 ; 垃圾回收站
 Gui, Pandora:Tab, 15

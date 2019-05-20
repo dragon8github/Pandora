@@ -1,5 +1,5 @@
 ﻿!space::
-	Gui, Pandora:Show,, Pandora
+	Gui, Pandora:Show, W1350, Pandora
 return 
 
 
@@ -3771,6 +3771,64 @@ $(function() {
 });
 </script>
 
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+NewEchartDemoHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- echarts -->
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
+    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
+
+	<!-- 百度地图插件 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <!-- 百度地图 - 聚合图相关的插件 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    
+    <!-- echarts 百度地图扩展插件 -->
+    <script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+</head>
+<style>
+	#main {
+		width: 100`%; 
+		height:100vh;
+	}
+</style>
+
+<body>
+    <div id="main"></div>
+</body>
+
+<script type="text/javascript">
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+
+// 预定义配置
+var option = {}
+
+var baseURL = 'https://gallery.echartsjs.com'
+
+//////////////////////////////////////////////
+// 这里放置官方示例代码
+
+//////////////////////////////////////////////
+
+myChart.setOption(option);
+</script>
 </html>
 ),  %name%
 RunBy(name)

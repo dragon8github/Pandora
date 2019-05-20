@@ -1428,3 +1428,7 @@ SendInput, **%Clipboard%**
 Clipboard := tmp
 }
 return
+
+#p::
+run, powershell.exe
+return

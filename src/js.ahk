@@ -3972,14 +3972,13 @@ return
 >^d::
 Var =
 (
-console.log('`%c DEBUG ' + '`%c ->' + name, 'background:#222; color: yellow', 'background: #fff; color: #000', )
+console.log('`%c DEBUG ' + '`%c ->' + , 'background:#222; color: yellow', 'background: #fff; color: #000', )
 debugger;
 )
 code(Var)
 SendInput, {up}{home}
 SendInput, {right 36}
-SendInput, +{right 4}
-Return
+return
 
 >!c::
 WinGetTitle, title, A

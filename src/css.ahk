@@ -105,6 +105,7 @@
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
     
+    Menu, CssMenu, Add, 发廊Loading也挺好看的, CssHandler
     Menu, CssMenu, Add, 发廊进度条, CssHandler
     Menu, CssMenu, Add, 七喜冒泡进度条, CssHandler
     Menu, CssMenu, Add, 光之波动进度条, CssHandler
@@ -144,6 +145,90 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+
+if (v == "发廊Loading也挺好看的") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+
+    }
+
+   .btn.loading {
+       -webkit-animation: loading 20s linear infinite;
+       animation: loading 20s linear infinite;
+       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABQCAYAAACpv3NFAAADGklEQVR4AWIYSPD//39AsXah4ooORWGYcam767i7+/u/1F3XFxDOrp3+wMcKkZKZhF1dmce/j+GPN+3j0v+AVdgKffprsBX69Ndl7Z/09lpSPN/7Imv09V9P2LD0djw+Pfz0N0Dr+OnLJmiNLn5bsBX09G0j25bLskFf/22zYyne5xY6f5Uufjugbfr0t2QXtE4XvwyJLn4bkpWMZAH49c9IzknW0tuLGnfoc/+a5H6DvKVYn5EMffo7kgdt0sWvAFuhn/qKoF36+uek9I+ipbUT4yacnxg36/Tr/rJvKFC29HY8npbHn/qkDNqmi18FtkI/9VVBWfr6l6TmpGop1rd4G/Tr/toE6pbennd+iT79vNRBO/SHHnVpQOr0pz670gQV6OtfldY/mpZifYFZ19PFb1Na0p5Qy9LaM4/X6NMvSnuJOpZ/yqDFzzZDaNPFLytdDv/c35QeaJMufr2EvqW343EXz2/Sp1+RvgwsxfoC0fpgPIsWP9sIoU8Xv5wMQVX6+ndkBNqiP/Ed22bGlimjqebHuvTp12XPjC1jtsbbU8zPo8XPNkMY08WvIPugOn39+3IA2qZ/53MoB5ZifcF4IFo/wF/3y5EcWor1BaL1wXiRLn5Hcuy5RId08SvJMYd/4zOSE9AO/XXXqW3m1HIZxvTpt+XMnFqm+Bxvx+NpZfqHTidyLmfOnFuK9UXi9Sf0L73Kcg7q0Nf/QC4odPHblUvQAX36PblKuLQU75t/vqnQxe9CruTaMsHmBHxusP6CLn5VuQb16Ot/LDegXbr43YKO6dMfyN0v3Fp6OxyfUJUufjdyZ+4trZ0Yj8Trb+niV0ts+MFSrG/xhvT1P5MHUIb+je8j6Bz/0EOeQHW6+D3K8wSeLBNsjrWD8Ue6+DXkeUYvltaeZj3/qc+lvICy9A+dXkFX9OnvyxuoSRe/V3mfwpultWea/0oXv6a8Bz4sE2zORHwN/6nPjXyAcvQPnT5Bt/TpH8oXqE0Xvw/5nsGXpbfDcfMh6/TXXT//+LZMsDneToxHbO4Rff3v4z8wHp+Wrc2Rf/8fKrJDJf0nqJwAAAAASUVORK5CYII=);
+       background-origin: border-box;
+       background-position: 0 0;
+       background-repeat: repeat-x;
+       background-size: contain;
+       pointer-events: none;
+   }
+
+    .btn:disabled {
+        box-shadow: none;
+        cursor: not-allowed;
+        opacity: .5;
+        pointer-events: none;
+    }
+
+    .btn {
+       padding: 7px 15px;
+    }
+
+    .btn-primary {
+        background-color: #00ad9e;
+        border-color: transparent;
+        color: #fff;
+    }
+
+    .banner1__earth--img {
+        width: 655px;
+        height: 660px;
+        animation: Pulse 3.5s infinite ease;
+    }
+
+    @-webkit-keyframes loading {
+        0`% {
+            background-position: 0 0;
+        }
+
+        100`% {
+            background-position: 700`% 0;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button type="submit" class="btn btn-primary loading" disabled="">Save &amp; Deploy</button>
+    </div>
+</body>
+<script>
+$(function() {
+    console.log('hello world');
+});
+</script>
+</html>
 )
 }
 
