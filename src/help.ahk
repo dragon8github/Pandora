@@ -1417,6 +1417,7 @@ SendInput, 『%Clipboard%』
 Clipboard := tmp
 return
 
+/*
 ^b::
 WinGetTitle, title, A
 if (InStr(title, "有道云笔记")) {
@@ -1428,7 +1429,18 @@ cs("**" . Clipboard . "**")
 Clipboard := tmp
 }
 return
+*/
 
 #p::
 run, powershell.exe
+return
+
+::dgcenter::
+::dg.center::
+::dg-center::
+Var =
+(
+center: [113.843319, 22.921901],
+)
+code(Var)
 return

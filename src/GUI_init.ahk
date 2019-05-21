@@ -139,7 +139,7 @@ Gui, Pandora:Add, Button, gCancelSelect w260 h30 xs, 取消选中
 
 
 ; Tab 选项卡 w830 h570 
-Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 奇妙工具 | 图表 | PHP | 微信  | 爬虫 | 移动开发 | CSS | 回收站 | 剪切板 
+Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs | Vue | React | 库 | 奇妙工具 | 地图 与 chart | PHP | 微信  | 爬虫 | 移动开发 | CSS | 回收站 | 剪切板 
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -273,6 +273,9 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/Alvin9999/new-pac/wiki/自�
 Gui, Pandora:Add, Link,, <a href="https://36dcup.tk/user">36dcup加速度</a>
 Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
+
+Gui, Pandora:Add, Text,  W140 ys, 好东西：
+Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>
 ;@1
 
 Gui, Pandora:Tab, 2
@@ -323,6 +326,7 @@ Gui, Pandora:Add, Text, gNewEchartPinBoderHtml ,新建.pinBoder.html（圆环断
 Gui, Pandora:Add, Text, gNewEchartdoulecolorHtml ,新建.doulecolor.html（双色柱状图）
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ,新建.echartsDemo.html（官方示例脚手架）
 Gui, Pandora:Add, Text, gtianMapHtml ,新建.天地图国土地图.html
+Gui, Pandora:Add, Text, gtianMaparcgisHtml ,新建.arcgis和天地图.html
 
 
 Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+20, 新建nodejs爬虫模板
@@ -793,6 +797,13 @@ Gui, Pandora:Add, Link,, <a href="https://www.chartjs.org/">charts.js 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://www.chartjs.org/samples/latest/">charts.js samples</a>
 Gui, Pandora:Add, Link,, <a href="https://www.chartjs.org/docs/latest/">charts.js doc</a>
 
+Gui, Pandora:Add, Text, W140 ys, arcgis：
+Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/">arcgis js官网</a>
+Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/latest/showcase/">arcgis showcase</a>
+Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/latest/api-reference/">api文档</a>
+Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/latest/guide/">入门指引</a>
+
+
 
 Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
@@ -829,6 +840,7 @@ Gui, Pandora:Add, Link, W140, <a href="https://github.com/mapbox/mapbox-gl-js">m
 
 Gui, Pandora:Add, Text, W140 ys, 天地图与国土地图:
 Gui, Pandora:Add, Link, W140, <a href="http://www.tianditu.gov.cn/">天地图 官网</a>
+Gui, Pandora:Add, Link, W140, <a href="http://service.tianditu.gov.cn/">服务搜索</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/server/MapService.html">矢量地图api</a>
 Gui, Pandora:Add, Link, W140, <a href="https://github.com/mapbox/mapbox-gl-js">mapbox gl github</a>
 
