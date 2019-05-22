@@ -5849,3 +5849,11 @@ test('6').then(console.log)
 )
 code(Var)
 Return
+
+::dpr::
+Var =
+(
+window.devicePixelRatio
+)
+code(Var)
+return

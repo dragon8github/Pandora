@@ -1444,3 +1444,12 @@ center: [113.843319, 22.921901],
 )
 code(Var)
 return
+
+::ok::
+::gou::
+Var =
+(
+✔
+)
+code(Var)
+return

@@ -276,6 +276,10 @@ Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书�
 
 Gui, Pandora:Add, Text,  W140 ys, 好东西：
 Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>
+Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
+Gui, Pandora:Add, Link,, <a href="https://nodelover.me/courses">NodeLove大前端</a>
+
+
 ;@1
 
 Gui, Pandora:Tab, 2
@@ -329,7 +333,7 @@ Gui, Pandora:Add, Text, gtianMapHtml ,新建.天地图国土地图.html
 Gui, Pandora:Add, Text, gtianMaparcgisHtml ,新建.arcgis和天地图.html
 
 
-Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+20, 新建nodejs爬虫模板
+Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+110, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
 Gui, Pandora:Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
 Gui, Pandora:Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
@@ -362,6 +366,7 @@ Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/api/sg/redis/
 Gui, Pandora:Add, Link,, <a href="http://12345admin.dgdatav.com:6080/#">admin</a>
 
 
+
 Gui, Pandora:Add, Text,  W120 ys, 12345预览地址：
 Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com:6080/#/overallSituation">v0</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v1.dgdatav.com:6080/#/dg/overallSituation">v1</a>
@@ -369,10 +374,17 @@ Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/">v2</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
 
 
+
 Gui, Pandora:Add, Text,  W140 ys, 知识库
 Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/dashboard.action#all-updates">confluence</a>
 Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/pages/viewpage.action?pageId=1310755">confluence2</a>
 Gui, Pandora:Add, Link,, <a href="https://hui.dgjy.net">门户网站</a>
+
+
+Gui, Pandora:Add, Text,  W120 ys, hz-12345：
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/hz-12345">hz-12345 源码</a>
+Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:6083/#/dg/Index">预览地址</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 xs Section yp+150, 数据中心
