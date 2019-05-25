@@ -106,6 +106,8 @@
 	Menu, echartsEventMenu, Add, 隐藏xy轴, EventHandler
 	Menu, echartsEventMenu, Add, 坐标区域虚线（其实是Y轴不是x轴）, EventHandler
 	Menu, echartsEventMenu, Add, echarts 简单轮播器, EventHandler
+	Menu, echartsEventMenu, Add, echarts geo地图坐标转换为页面Offset坐标, EventHandler
+	Menu, echartsEventMenu, Add, map.js 类库持续集成, EventHandler
 
 	;@a @1
 	Menu, EventMenu, Add, JavaScript, :JavaScriptEventMenu
@@ -175,6 +177,27 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "map.js 类库持续集成") {
+_send("map.js", true, true)
+}
+
+
+
+if (v == "echarts geo地图坐标转换为页面Offset坐标") {
+Var = 
+(
+// 获取系列
+var seriesModel = myChart.getModel().getSeriesByIndex(opts.series.length - 1)
+// 获取地理坐标系实例
+var coordSys = seriesModel.coordinateSystem;
+// dataToPoint 相当于 getPosByGeo
+var point = coordSys.dataToPoint([current.lng, current.lat]);
+// 直接显示layer
+showkeySupervision__layer(point[0], point[1], current)
 )
 }
 
@@ -1213,6 +1236,230 @@ Dw Arrow	40
 window.addEventListener("keydown", function(e) {
 	console.log(e.keyCode)
 }, false);
+)
+code(Var)
+return
+
+
+::map.js::
+Var =
+(
+import { maybe } from '@/utils/utils.js'
+const colorMap = ["#E83035", "#E88234", "#ECED08", "#01F1C4"]
+
+// 东莞市的geo地理数据
+const DongGuan = require('@/mapSources/DongGuan.geo.json');
+// 东莞市所有镇区的geo地理数据
+const DongGuanGrid = require('@/mapSources/DongGuanGrid.geo.json');
+
+// 注册 <东莞市> 地图
+echarts.registerMap('DongGuan', JSON.stringify(DongGuan));
+// 注册 <东莞市网格> 地图
+echarts.registerMap('DongGuanGrid', JSON.stringify(DongGuanGrid));
+
+
+// 核心地图类
+class AggregationMap {
+    // 构造函数
+    constructor(el) {
+        // ehcarts 实例
+        this.myChart = echarts.init(el)
+    }
+
+    createVisualMap (min = 0, max = 500) {
+        return {
+            show: false,
+            min,
+            max,
+            splitNumber: 5,
+            seriesIndex: 1,  // 这里需要指定，是映射哪个series配置，我的是第二个的
+            inRange: { color: ['#d94e5d','#eac736','#50a3ba'].reverse() }
+        }
+    }
+
+    createHeatmap (data) {
+        return {   
+            // 设置为热力图类型
+            type: 'heatmap',  // heatmap  effectScatter
+            // 热力点的粗细值
+            pointSize: 6,
+            // 不会生效，因为我开启了silent: true
+            blurSize: 6,    
+            // 设置坐标类型为geo
+            coordinateSystem: 'geo',
+            // 指定geo的ID
+            geoIndex: 0,
+            // 设置地图数据：[[ "113.797669", "23.027844", 1 ], [ "113.807751", "23.026374", 1 ]]
+            data: data,
+            // 层级
+            zlevel: 2,
+        }
+    }
+
+    // 创建散点配置项
+    createPoints (data) {
+        // 返回的这个配置对象，直接插入到series即可
+        return {
+            // 散点类型
+            type: 'effectScatter',
+            // 坐标系（默认上面的geo配置作为坐标系）
+            coordinateSystem: 'geo',
+            // 图形
+            symbol: 'circle', // 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'，'image://url'
+            // 层级
+            zlevel: 2,
+            // 绘制完成后显示特效
+            showEffectOn: 'render',
+            // 是否开启鼠标 hover 的提示动画效果
+            hoverAnimation: true,
+            // 散点大小
+            symbolSize: 30,
+            // 涟漪效果
+            // rippleEffect: { period: 15, scale: 6, brushType: 'fill' },
+            itemStyle: {
+                normal: {
+                    // 根据不同的 twoconsTypeId 渲染不同的颜色
+                    color: params => colorMap[params.value[2]],
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            // 散点数据，格式如下:
+            // [{name: '不重要随便写点什么都可以', value: [经度, 纬度, 其他值]}, {...}, , {...}, , {...}]
+            data: data
+        }
+    }
+
+    // 获取默认配置
+    getDefaultConfig() {
+        // 默认配置
+        const defaultConfig = {
+            // 地图的geo配置（这里选择东莞市地图作为底层背景图，同时也可以作为热力图的坐标系）
+            geo: {
+                // 当作为坐标系的时候需要被指定的Id
+                id: 0,
+                // 是否禁止鼠标事件（default: false）
+                silent: true,
+                // <东莞市>
+                map: 'DongGuan',
+                // 设置缩放比（default: 0.75）
+                aspectScale: '1',
+                // 地图样式
+                itemStyle: {
+                    // 区域颜色
+                    areaColor: 'transparent',
+                    // 边界颜色
+                    borderColor: 'transparent',
+                }
+            },
+            series: [
+                // 东莞市网格的基本配置
+                {
+                    // 是否禁止鼠标事件（default: false）
+                    silent: false,
+                    // 渲染类型为地图
+                    type: 'map',
+                    // <东莞市网格>
+                    mapType: 'DongGuanGrid',
+                    // 设置缩放比（default: 0.75）
+                    aspectScale: '1',
+                    // 层级结构
+                    zlevel: 1,
+                    // 标签样式 
+                    label: {
+                        // 是否显示
+                        show: false,
+                        // 文字颜色
+                        color: '#fff',
+                        // 文字大小
+                        fontSize: "90`%"
+                    },
+                    // 地图样式
+                    itemStyle: {
+                        borderWidth: 1,
+                        // 边界颜色
+                        borderColor: '#8ddeff',
+                        // 地图颜色
+                        areaColor: '#143248',
+                        // 边界颜色
+                        shadowColor: '#10faff',
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 0,
+                        shadowBlur: 10
+                    },
+                    // 鼠标hover网格时的配置
+                    emphasis: {
+                        // 鼠标hover时的网块样式
+                        itemStyle: {
+                            // 区域颜色（这里必须设置一个值，才可以方便覆盖，覆盖也是为了取消hover的效果而已。）
+                            areaColor: '#00ffff',
+                        },
+                        // 鼠标hover时标签的样式
+                        label: {
+                            // 文字颜色
+                            color: '#112e43',
+                            fontSize: '90`%',
+                            show: false,
+                        },
+                    }
+                },
+                
+            ]
+        }
+        // 返回配置（使用$.extend避免深拷贝事件）
+        return $.extend(true, {}, defaultConfig)
+    }
+
+    clear() {
+        this.myChart.clear()
+    }
+
+    // 默认地图渲染
+    render() {
+        // 按照默认配置渲染地图
+        this.myChart.setOption(this.getDefaultConfig())
+    }
+
+    // 渲染散点
+    renderScatter (data) {
+        // 获取散点的配置
+        const config = this.createPoints(data)
+        // 获取默认配置
+        const defaultConfig = this.getDefaultConfig()
+        // 从默认配置中插入散点配置
+        defaultConfig.series.push(config)
+        // 开始渲染
+        this.myChart.setOption(defaultConfig)
+    }
+
+    renderHeatmap (data) {
+        // 创建VisualMap
+        const visualMap =  this.createVisualMap()
+        // 创建热力图层
+        const heatmap = this.createHeatmap(data)
+        // 获取散点的配置
+        const defaultConfig = this.getDefaultConfig()
+        // 从默认配置中插入散点配置
+        defaultConfig.series.push(heatmap)
+        // 从默认配置中插入VisualMap
+        defaultConfig.visualMap = visualMap
+
+        console.log(20190525105251, defaultConfig)
+        // 开始渲染
+        this.myChart.setOption(defaultConfig)
+    }
+
+    getPosByGeo (lng, lat) {
+        // 获取系列
+        var seriesModel = this.myChart.getModel().getSeriesByIndex(0)
+        // 获取地理坐标系实例
+        var coordSys = seriesModel.coordinateSystem;
+        // dataToPoint 相当于 getPosByGeo
+        return coordSys.dataToPoint([lng, lat]);
+    }
+}
+
+export default AggregationMap
 )
 code(Var)
 return

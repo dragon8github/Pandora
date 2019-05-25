@@ -1749,6 +1749,21 @@ watch: {
 code(Var)
 return
 
+::vuex.g::
+::vuex.get::
+::vuex.getter::
+::vuex.getters::
+Var =
+(
+const getters = {
+    GET_HEATMAP (state) {
+        return state.mode
+    },
+}
+)
+code(Var)
+return
+
 
 ::vuex.action::
 ::vuex.actions::
@@ -1757,7 +1772,7 @@ return
 InputBox, OutputVar, title, enter a name?,,,,,,,,test
 Var =
 (
-%OutputVar% ({ commit, state, dispatch, rootState }, %OutputVar%) {
+%OutputVar% ({ commit, state, dispatch, rootState, getters, rootGetters }, %OutputVar%) {
   return request('/dc/record/dcColumnRule/showAllColumnByTable', { params: { datasourceId: state.datasourceId, databaseName: state.selectDatabase, tableName }})
   return request('/dc/record/dcTableRule/queryTableWithColumn', { 
       method: 'POST', 
@@ -2820,6 +2835,7 @@ Var =
 (
 proxyTable: {
   '/api': {
+    // 请注意，这个链接就不需要带/api了
     target: 'http://datacenter.dgdatav.com:6080',
     changeOrigin: true,
     // 重写不能和baseURL HTTP 一起使用。所以baseURL必须不包含HTTP

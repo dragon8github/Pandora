@@ -1,4 +1,27 @@
-﻿::tsc::
+﻿::ts.config::
+::tsconfig::
+Var =
+(
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "sourceMap": true,
+
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "allowUnreachableCode": true,
+    "allowUnusedLabels": true,
+    "noStrictGenericChecks": true,
+    "skipLibCheck": true
+  }
+}
+)
+code(Var)
+return
+
+::tsc::
 ::sc::
 InputBox, OutputVar, title, enter a name?,,,,,,,,test
 SendRaw, tsc %OutputVar%.ts && node %OutputVar%.js

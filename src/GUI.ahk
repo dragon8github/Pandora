@@ -4044,3 +4044,60 @@ require([
 )
 code(Var)
 return
+
+::video::
+::vedio::
+::vedio.js::
+::video.js::
+::vedio.html::
+::video.html::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://vjs.zencdn.net/7.5.4/video-js.css" rel="stylesheet">
+</head>
+
+<body>
+    <video id='my-video' class='video-js' controls preload='auto' width='640' height='264' poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
+        <source src='http://192.168.31.97:8080/20190520_104851.mp4' type='video/mp4'>
+        <p class='vjs-no-js'>
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+        </p>
+    </video>
+    <script src='https://vjs.zencdn.net/7.5.4/video.js'></script>
+</body>
+
+</html>
+)
+code(Var)
+return
+
+videohtml:
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://vjs.zencdn.net/7.5.4/video-js.css" rel="stylesheet">
+</head>
+
+<body>
+    <video id='my-video' class='video-js' controls preload='auto' width='640' height='264' poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
+        <source src='http://192.168.31.97:8080/20190520_104851.mp4' type='video/mp4'>
+        <p class='vjs-no-js'>
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+        </p>
+    </video>
+    <script src='https://vjs.zencdn.net/7.5.4/video.js'></script>
+</body>
+
+</html>
+)
+code(Var)
+return

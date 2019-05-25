@@ -224,6 +224,7 @@ Gui, Pandora:Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/l
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/weuse?page=1">《大牛都在用什么？》</a>
 Gui, Pandora:Add, Link,, <a href="https://classroom.udacity.com/courses/ud905/lessons/92a39eec-0c04-4d98-b47f-c884b9cd5a3b/concepts/78143d19-8360-4f83-88ab-cfcb5b160465">「Flutter 教学视频」</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview">以面为练</a>
+Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/05/22.html">个人开发者的前端日报</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
@@ -247,6 +248,7 @@ Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co</
 Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
 Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</a>
+Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/ruanyf/share/free-photos">阮一峰的资源</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
@@ -278,7 +280,8 @@ Gui, Pandora:Add, Text,  W140 ys, 好东西：
 Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>
 Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
 Gui, Pandora:Add, Link,, <a href="https://nodelover.me/courses">NodeLove大前端</a>
-
+Gui, Pandora:Add, Link,, <a href="https://www.fontke.com/tool/convfont/">字体在线转换工具</a>
+Gui, Pandora:Add, Link,, <a href="http://www.lurena.vip/">路人A</a>
 
 ;@1
 
@@ -315,6 +318,7 @@ Gui, Pandora:Add, Text, gautowidth W160,新建input动态宽度.html
 Gui, Pandora:Add, Text, ghuxihtml W160, 新建呼吸变色棱角空间.html
 Gui, Pandora:Add, Text, ghuehtml W160, 新建hue-rotate.html
 Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索.html
+Gui, Pandora:Add, Text, gvideohtml W160, 新建video.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
@@ -481,6 +485,14 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/awesome-javas
 Gui, Pandora:Add, Link,, <a href="https://github.com/NodeBB/NodeBB">NodeBB</a>
 Gui, Pandora:Add, Link,, <a href="https://www.graphql.com/">graphql</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/apostrophecms/apostrophe">apostrophe</a>
+
+
+Gui, Pandora:Add, Text, W140 Section ys, typescript:
+Gui, Pandora:Add, Link,, <a href="http://www.typescriptlang.org/docs/home.html">typescript official</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/jkchao/typescript-book-chinese">深入理解 TypeScript</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/dzharii/awesome-typescript">typescript awesome</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/bitjson/typescript-starter">typescript-starter</a>
+
 ;@nodejs @node
 
 Gui, Pandora:Tab, 5
@@ -714,8 +726,9 @@ Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/tutorial">jointjs
 Gui, Pandora:Add, Text, W120 ys, 最强验证库joi
 Gui, Pandora:Add, Link,, <a href="https://github.com/hapijs/joi">hapijs joi</a>
 
-Gui, Pandora:Add, Text,  W120 yp+50, 本地存储：
-Gui, Pandora:Add, Link,, <a href="https://github.com/localForage/localForage">localForage</a>
+Gui, Pandora:Add, Text,  W120 yp+50, 明星验证库validator
+Gui, Pandora:Add, Link,, <a href="https://github.com/chriso/validator.js">validator.js</a>
+
 
 Gui, Pandora:Add, Text, W140 ys, 数字上下滚动插件：
 Gui, Pandora:Add, Link,, <a href="https://github.hubspot.com/odometer/docs/welcome/">odometer</a>
@@ -732,6 +745,10 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/LiranCohen/stickUp">stickUp
 Gui, Pandora:Add, Text, W140 yp+50, clone-deep：
 Gui, Pandora:Add, Link,, <a href="https://github.com/jonschlinkert/clone-deep/blob/master/index.js">clone-deep</a>
 
+
+Gui, Pandora:Add, Text,  W120 yp+50, 本地存储：
+Gui, Pandora:Add, Link,, <a href="https://github.com/localForage/localForage">localForage</a>
+
 Gui, Pandora:Add, Text, W140 ys, 拖拽：
 Gui, Pandora:Add, Link,, <a href="https://ilyashubin.github.io/scrollbooster/">table拖动js</a>
 Gui, Pandora:Add, Link,, <a href="https://sortablejs.github.io/Sortable/">列表拖拽js</a>
@@ -743,8 +760,12 @@ Gui, Pandora:Add, Link,, <a href="https://www.rrweb.io/replay">录制和回放</
 Gui, Pandora:Add, Link,, <a href="https://scrimba.com/p/pV5eHk/c9EqQSD">录制灵感来源</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/yaronn/GifW00t">纯js实现录屏</a>
 
-Gui, Pandora:Add, Text, W140 ys, APlayer（优雅的MP3，B站和iSearch都用，也支持Vue和各种版本）：
+Gui, Pandora:Add, Text, W140 ys, 最强MP3播放器APlayer
 Gui, Pandora:Add, Link,, <a href="https://github.com/MoePlayer/APlayer">Aplay github</a>
+
+Gui, Pandora:Add, Text, W140 yp+50, bilibili开源播放器：
+Gui, Pandora:Add, Link,, <a href="https://github.com/Bilibili/flv.js">flv.js</a>
+
 
 Gui, Pandora:Add, Text, W140 ys xp+160, 有趣有趣：
 Gui, Pandora:Add, Link,, <a href="https://github.com/e-oj/Magic-Grid">新瀑布流 Magic-Grid</a>
@@ -815,14 +836,13 @@ Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/lates
 Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/latest/api-reference/">api文档</a>
 Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/latest/guide/">入门指引</a>
 
-
-
 Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/theme-builder/">echart 主题构建</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/tutorial.html#5 分钟上手 ECharts">echart 快速上手</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/api.html">echart API</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
+Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=heatmap-map">热力图示例</a>
 
 Gui, Pandora:Add, Text, W140 ys, ECharts 相关资料：
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/editor.html?c=map-HK">echarts HK示例</a>
