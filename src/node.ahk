@@ -74,6 +74,7 @@
 	Menu, NodeMenu, Add
 	
 	Menu, NodeMenu, Add, clearconsole, NodeHandler
+	Menu, NodeMenu, Add, TJ commander 命令行神器（入门极简版）, NodeHandler
 	Menu, NodeMenu, Add, TJ commander 命令行神器（简单版）, NodeHandler
 	Menu, NodeMenu, Add, TJ commander 命令行神器（加强版）, NodeHandler
 
@@ -94,6 +95,29 @@ Var =
 }
 
 
+if (v == "TJ commander 命令行神器（入门极简版）") {
+Var = 
+(
+const colors = require('colors');
+const commander = require('commander');
+const pkg = require('../package.json');
+
+commander
+  .version(pkg.version)
+  .description(pkg.description)
+  .usage('[options] <command> [...]')
+  .option('-c, --city [name]', 'Add city name')
+  .parse(process.argv);
+
+if (process.argv.slice(2).length === 0) {
+    commander.outputHelp(colors.red);
+    process.exit()
+}
+
+// $ yarn ts-node src/index.ts
+console.log(commander.city) // => dongguan
+)
+}
 
 if (v == "Chai.js断言库API中文文档") {
 run, https://www.jianshu.com/p/f200a75a15d2
@@ -489,8 +513,9 @@ const handleResponse = (err, res, body) => {
 
 program.parse(process.argv)
 
-if (!program.args.filter(arg => typeof arg === 'object').length) {
-  program.help()
+if (process.argv.slice(2).length === 0) {
+    commander.help();
+    process.exit()
 }
 )
 }
@@ -519,8 +544,12 @@ program
 
 program.parse(process.argv);
 
-if (!program.args.filter(arg => typeof arg === 'object').length) {
-  program.help();
+// $ node index.js --port 8080
+console.log(commander.port) // => 8080
+
+if (process.argv.slice(2).length === 0) {
+    commander.help();
+    process.exit()
 }
 )
 }

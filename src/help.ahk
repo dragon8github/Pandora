@@ -585,7 +585,7 @@ return
 
 
 !l:: 
-    lifeArray := ["beforeMount", "beforeCreate", "created", "mounted", "destroyed", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate", "", "", "primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥1024px)", "lg —— 大屏幕 大桌面显示器 (≥1280px)", "iPhone6 750*1334", "普通设计稿：1160/980", "", "",  "public", "private", "protected", "","","String", "Number", "Boolean", "Object", "Function", "Array", "","", "thumbnail", "small", "bmiddle", "large", "", "", "✔", "✖", "✖的html形态：&times;"]
+    lifeArray := ["beforeMount", "beforeCreate", "created", "mounted", "destroyed", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate", "", "", "primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥1024px)", "lg —— 大屏幕 大桌面显示器 (≥1280px)", "iPhone6 750*1334", "普通设计稿：1160/980", "", "",  "public", "private", "protected", "","","String", "Number", "Boolean", "Object", "Function", "Array", "","", "thumbnail", "small", "bmiddle", "large", "", "", "✔", "✖", "JavaScript七大基本类型：boolean，null，undefined，number，string，object，symbol"]
     Loop % lifeArray.MaxIndex() {
         this_life := lifeArray[a_index]
         Menu, LifeMenu, Add, %this_life%, MenuHandlerlifeArray
@@ -1287,6 +1287,20 @@ code(Var)
 Send, {up}
 return
 
+
+::``````t::
+::``````ts::
+Var =
+(
+``````Typescript
+
+``````
+)
+code(Var)
+Send, {up}
+return
+
+
 ::or::
 Var =
 (
@@ -1413,7 +1427,8 @@ tmp := Clipboard
 Clipboard :=
 SendInput, ^x
 ClipWait, 2
-SendInput, 『%Clipboard%』
+a := "『" . Clipboard . "』"
+cs(a)
 Clipboard := tmp
 return
 
@@ -1452,4 +1467,73 @@ Var =
 ✔
 )
 code(Var)
+return
+
+::ts::
+cs("Typescript")
+return
+
+
+::0::
+Send, 0️⃣
+return
+::1::
+Send, 1️⃣
+return
+::2::
+Send, 2️⃣
+return
+::3::
+Send, 3️⃣
+return
+::4::
+Send, 4️⃣
+return
+::5::
+Send, 5️⃣
+return
+::6::
+Send, 6️⃣
+return
+::7::
+Send, 7️⃣
+return
+::8::
+Send, 8️⃣
+return
+::9::
+Send, 9️⃣
+return
+::10::
+Send, 1️⃣0️⃣
+return
+::11::
+Send, 1️⃣1️⃣
+return
+::12::
+Send, 1️⃣2️⃣
+return
+::13::
+Send, 1️⃣3️⃣
+return
+::14::
+Send, 1️⃣4️⃣
+return
+::15::
+Send, 1️⃣5️⃣
+return
+::16::
+Send, 1️⃣6️⃣
+return
+::17::
+Send, 1️⃣7️⃣
+return
+::18::
+Send, 1️⃣8️⃣
+return
+::19::
+Send, 1️⃣9️⃣
+return
+::20::
+Send, 2️⃣0️⃣
 return

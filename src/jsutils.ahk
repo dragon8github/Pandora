@@ -83,6 +83,8 @@
     Menu, utilsDOM, Add, 获取当前所在的<iframe>：window.frameElement, utilsHandler
     Menu, utilsDOM, Add, mask蒙版, utilsHandler
     Menu, utilsDOM, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
+    Menu, utilsDOM, Add, mvDOM：移动dom元素到指定目标位置, utilsHandler
+    
     
     
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 element 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
@@ -259,6 +261,7 @@
     ; renzhi
     
     ; @my
+    Menu, utilsmy, Add, mvDOM：移动dom元素到指定目标位置, utilsHandler
     Menu, utilsmy, Add, 堡垒模式：请求条件不满足则排队处理, utilsHandler
     Menu, utilsmy, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     Menu, utilsmy, Add, 把数组像分页一样分割为N段, utilsHandler
@@ -432,6 +435,11 @@ Var =
 )
 }
 
+
+if (v == "mvDOM：移动dom元素到指定目标位置") {
+_send("mvDOM", true, true)
+return
+}
 
 if (v == "partial：偏应用ES5实现（局部函数工厂）") {
 Var = 
@@ -5004,6 +5012,20 @@ export const obj2formdata = (json) => {
     return data
 }
 
+/**
+ * 移动dom元素到指定目标位置
+ *
+ * @source {DOM} 你要移动的DOM
+ * @target {DOM} 你要移动的位置
+ */
+const mvDOM = function (source, target) {
+	// 深度拷贝（含子元素）
+	let _source = source.cloneNode(true)
+	// 删除本身
+	source.remove()
+	// 默认插入到容器最前面，如果想在后面可以这样处理：target.append(source)
+	target.insertBefore(_source, target.firstChild)
+}
 
 /**
  * 将对象转化为GET参数
@@ -5854,6 +5876,29 @@ Return
 Var =
 (
 window.devicePixelRatio
+)
+code(Var)
+return
+
+::mvDOM::
+::movedom::
+::copydom::
+Var =
+(
+/**
+ * 移动dom元素到指定目标位置
+ *
+ * @source {DOM} 你要移动的DOM
+ * @target {DOM} 你要移动的位置
+ */
+const mvDOM = function (source, target) {
+	// 深度拷贝（含子元素）
+	let _source = source.cloneNode(true)
+	// 删除本身
+	source.remove()
+	// 默认插入到容器最前面，如果想在后面可以这样处理：target.append(source)
+	target.insertBefore(_source, target.firstChild)
+}
 )
 code(Var)
 return

@@ -5222,6 +5222,7 @@ return
 ::jqueryready::
 ::loadscript::
 ::loadjs::
+::ijs::
 Var = 
 (
 /**
@@ -5262,6 +5263,8 @@ onscriptload('https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js', function
 )
 code(Var)
 return
+
+
 
 ::is-ie::
 ::isie::
@@ -6944,6 +6947,21 @@ export const on = (function() {
   }
 })();
 
+/**
+ * 移动dom元素到指定目标位置
+ *
+ * @source {DOM} 你要移动的DOM
+ * @target {DOM} 你要移动的位置
+ */
+const mvDOM = function (source, target) {
+	// 深度拷贝（含子元素）
+	let _source = source.cloneNode(true)
+	// 删除本身
+	source.remove()
+	// 默认插入到容器最前面，如果想在后面可以这样处理：target.append(source)
+	target.insertBefore(_source, target.firstChild)
+}
+
 /* istanbul ignore next */
 export const off = (function() {
   if (document.removeEventListener) {
@@ -7233,6 +7251,31 @@ fetch('/api/admin/user/sysUser/fetchCurrentUser').then(response => {
 }).then(_ => {
 	console.log(20190509114053, _)
 })
+)
+code(Var)
+return
+
+::commander::
+Var =
+(
+const colors = require('colors');
+const commander = require('commander');
+const pkg = require('../package.json');
+
+commander
+  .version(pkg.version)
+  .description(pkg.description)
+  .usage('[options] <command> [...]')
+  .option('-c, --city [name]', 'Add city name')
+  .parse(process.argv);
+
+if (process.argv.slice(2).length === 0) {
+    commander.outputHelp(colors.red);
+    process.exit()
+}
+
+// $ yarn ts-node src/index.ts
+console.log(commander.city) // => dongguan
 )
 code(Var)
 return
