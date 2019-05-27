@@ -4101,3 +4101,7 @@ Var =
 )
 code(Var)
 return
+
+dgechartmaphtml:
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/map_dome.zip")
+return

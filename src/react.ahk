@@ -230,11 +230,6 @@ return
 }
 
 
-if (v == "新建react-redux.html") {
-	run, https://github.com/dragon8github/Pandora/blob/master/template/layui_template.zip?raw=true
-}
-
-
 if (v == "this.state") {
 Var = 
 (

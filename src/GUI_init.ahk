@@ -319,6 +319,7 @@ Gui, Pandora:Add, Text, ghuxihtml W160, 新建呼吸变色棱角空间.html
 Gui, Pandora:Add, Text, ghuehtml W160, 新建hue-rotate.html
 Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索.html
 Gui, Pandora:Add, Text, gvideohtml W160, 新建video.html
+Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
