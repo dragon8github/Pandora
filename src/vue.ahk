@@ -2847,3 +2847,12 @@ proxyTable: {
 )
 code(Var)
 return
+
+::vcount::
+::v-count::
+Var =
+(
+<countTo :startVal='0' :endVal="sgProblemCount" :duration="1500"></countTo>
+)
+code(Var)
+return

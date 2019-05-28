@@ -53,6 +53,7 @@
     Menu, utilsDOM, Add, 插入body前面, utilsHandler
     Menu, utilsDOM, Add, 插入body后面, utilsHandler
     Menu, utilsDOM, Add, img判断加载完成, utilsHandler
+    Menu, utilsDOM, Add, 克隆dom的认知：深浅克隆 document.querySelector('.layer').cloneNode(true), utilsHandler
     
     Menu, utilsDOM, Add
     Menu, utilsDOM, Add
@@ -261,6 +262,7 @@
     ; renzhi
     
     ; @my
+    Menu, utilsmy, Add, StorageEvent：监听 localStorage 数据变化的解决方案, utilsHandler
     Menu, utilsmy, Add, mvDOM：移动dom元素到指定目标位置, utilsHandler
     Menu, utilsmy, Add, 堡垒模式：请求条件不满足则排队处理, utilsHandler
     Menu, utilsmy, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
@@ -435,6 +437,53 @@ Var =
 )
 }
 
+if (v == "StorageEvent：监听 localStorage 数据变化的解决方案") {
+Var = 
+(
+// Storage 类
+var Storage = {
+    setItem(key, newVal) {
+        // 获取旧值
+        const oldVal = this.getItem(key)
+        // 设置新值
+        localStorage.setItem(key, newVal)
+        // 推送
+        this.fire(key, newVal, oldVal)
+    },
+    removeItem(key) {
+        // 获取旧值
+        const oldVal = this.getItem(key)
+        // 删除
+        localStorage.removeItem(key)
+        // 推送
+        this.fire(key, null, oldVal)
+    },
+    getItem(k) {
+      return localStorage.getItem(k)
+    },
+    fire(...args) {
+        var se = document.createEvent('StorageEvent')
+        se.initStorageEvent('storage', false, false, ...args)
+        window.dispatchEvent(se)
+    }
+}
+
+// 监听 storage 事件
+window.addEventListener('storage', ({ key, newValue, oldValue } = {}) => {
+     console.log(key, newValue, oldValue)
+}, false)
+
+// 触发条件
+Storage.setItem('a', 123)
+)
+}
+
+if (v == "克隆dom的认知：深浅克隆 document.querySelector('.layer').cloneNode(true)") {
+Var = 
+(
+document.querySelector('.layer').cloneNode(true)
+)
+}
 
 if (v == "mvDOM：移动dom元素到指定目标位置") {
 _send("mvDOM", true, true)
@@ -5880,6 +5929,7 @@ window.devicePixelRatio
 code(Var)
 return
 
+::mvNode::
 ::mvDOM::
 ::movedom::
 ::copydom::
