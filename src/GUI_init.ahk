@@ -318,8 +318,10 @@ Gui, Pandora:Add, Text, gautowidth W160,新建input动态宽度.html
 Gui, Pandora:Add, Text, ghuxihtml W160, 新建呼吸变色棱角空间.html
 Gui, Pandora:Add, Text, ghuehtml W160, 新建hue-rotate.html
 Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索.html
-Gui, Pandora:Add, Text, gvideohtml W160, 新建video.html
-Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
+Gui, Pandora:Add, Text, gvideohtml W160, 新建video视频.html
+Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
+Gui, Pandora:Add, Text, grightmenuhtml W160, 新建右键菜单拦截.html
+Gui, Pandora:Add, Text, gAEhtml W160, 新建AE-bodymovin-lottie.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
@@ -334,9 +336,9 @@ Gui, Pandora:Add, Text, gNewEchartraduisHtml ,新建.raduis.html（圆环图）
 Gui, Pandora:Add, Text, gNewEchartPinBoderHtml ,新建.pinBoder.html（圆环断层图）
 Gui, Pandora:Add, Text, gNewEchartdoulecolorHtml ,新建.doulecolor.html（双色柱状图）
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ,新建.echartsDemo.html（官方示例脚手架）
-Gui, Pandora:Add, Text, gtianMapHtml ,新建.天地图国土地图.html
-Gui, Pandora:Add, Text, gtianMaparcgisHtml ,新建.arcgis和天地图.html
-
+Gui, Pandora:Add, Text, gtianMapHtml ,新建天地图国土地图.html
+Gui, Pandora:Add, Text, gtianMaparcgisHtml ,新建arcgis和天地图.html
+Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
 
 Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+110, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板

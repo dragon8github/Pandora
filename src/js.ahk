@@ -122,7 +122,7 @@ axios.interceptors.response.use(res => {
 // 错误处理
 const _catchErr = err => {
   // 失败响应之后清空队列中所有相同Url的请求
-  pending = pending.filter(_ => _.url != getPureUrl(res.config.url, res.config.baseURL.length))  
+  pending = []
   // 如果是重复请求的问题，这是我自己暴漏出来的，并不需要出现error。吓唬人。
   if (err.message.includes('repeat abort')) {
      // 提示一下即可

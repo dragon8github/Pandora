@@ -4105,3 +4105,281 @@ return
 dgechartmaphtml:
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/map_dome.zip")
 return
+
+rightmenuhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .menu {
+        position: absolute;
+        display: none;
+    }
+
+    .menu ul {
+        list-style: none;
+        background: #eee;
+        padding: 0;
+    }
+
+    ul ul {
+        display: none;
+        position: absolute;
+    }
+
+    ul li {
+        padding-left: 10px;
+        padding-right: 20px;
+        white-space: nowrap;
+        height: 40px;
+        line-height: 40px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #999;
+        cursor: pointer;
+    }
+
+    li:hover {
+        background: #ccc;
+    }
+
+    li.hasNext::after {
+        content: ' > ';
+        position: absolute;
+        right: 5px;
+    }
+
+    li.active>ul {
+        display: block;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="menu">
+            <ul>
+                <li>春眠不觉晓，处处闻啼鸟。</li>
+                <li>Any
+                    <ul>
+                        <li>lover</li>
+                        <li>Gold
+                            <ul>
+                                <li>Dog</li>
+                                <li>Cat</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>华为
+                    <ul>
+                        <li>荣耀</li>
+                        <li>青春
+                            <ul>
+                                <li>荷月</li>
+                                <li>池塘</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+const liNodeList = document.querySelectorAll('li')
+const menu = document.querySelector('.menu')
+
+// 设置obj的宽度，拿到下面li标签里面最宽的，设置为ul的宽度
+function setWidth(obj) {
+    let maxWidth = 0
+
+    for (i = 0; i < obj.children.length; i++) {
+        let oLi = obj.children[i]
+        let iWidth = oLi.clientWidth
+        if (iWidth > maxWidth) maxWidth = iWidth
+    }
+
+    for (i = 0; i < obj.children.length; i++) {
+        obj.children[i].style.width = maxWidth + "px"
+    }
+}
+
+// 隐藏菜单方法
+function hidden(target) {
+    target.style.display = 'none'
+    target.style.left = '-9999px'
+    target.style.top = '-9999px'
+}
+
+Array.from(liNodeList).forEach(li => {
+    const innerUlDom = li.querySelector('ul')
+    // 当 li 下面有 ul标签的时候，添加一个小箭头的样式
+    innerUlDom && li.classList.add('hasNext')
+
+    li.addEventListener('mouseover', (e) => {
+        if (innerUlDom) {
+            li.classList.add('active')
+            // 设置当前UL的宽度
+            setWidth(innerUlDom)
+            // 当前的top，就为li所在的top值
+            let top = li.offsetTop
+            // lef 就是li的宽度
+            let left = li.offsetWidth
+            innerUlDom.style.left = left + 'px'
+            innerUlDom.style.top = top + 'px'
+        }
+        // 阻止冒泡，让逻辑正常
+    }, true)
+
+    // 为每一个li绑定一下事件
+    li.onclick = (e) => {
+        console.log('你点击了', e.target)
+        e.stopPropagation()
+        hidden(menu)
+    }
+
+    // 鼠标移出的时候，隐藏菜单
+    li.onmouseout = () => {
+        // 鼠标移开去掉 active 类
+        li.classList.remove('active')
+    }
+})
+
+window.onload = (e) => {
+    // 这就是核心的拦截事件
+    document.oncontextmenu = (e) => {
+        // 拦截浏览器默认右键行为
+        e.preventDefault()
+
+        // 显示出菜单栏
+        menu.style.display = 'block'
+
+        const uls = document.querySelectorAll('ul')
+
+        // 设置 ul 的宽度
+        setWidth(uls[0])
+
+        // 让菜单栏显示在鼠标所点的位置
+        menu.style.left = e.pageX + 'px'
+        menu.style.top = e.pageY + 'px'
+
+        return false
+    }
+
+    // 当在其他地方点击的时候，隐藏菜单
+    document.onclick = (e) => {
+        console.log('你取消了菜单')
+        hidden(menu)
+    }
+}
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+dropdivhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .dialog {
+        position: absolute;
+
+        width: 480px;
+        height: 300px;
+
+        background: #eee;
+    }
+
+    .dialog-title {
+        width: 480px;
+        height: 40px;
+        line-height: 40px;
+
+        background: #999;
+        text-align: center;
+        cursor: move;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="dialog" id="canMove">
+            <div class="dialog-title" id="canDrag">Title</div>
+            <div class="content"></div>
+        </div>
+    </div>
+</body>
+<script>
+
+// 定时器
+let timer = null
+
+const dragEle = document.getElementById('canDrag')
+const canMove = document.getElementById('canMove')
+
+// 禁止被选中
+dragEle.onselectstart = canMove.onselectstart = () => false
+
+// 记录当前鼠标移动的坐标点
+const mouse = { x: 0, y: 0 }
+
+// 鼠标按下时候距离 CanMove 左上角的距离
+const distance = { topTop: 0, topLeft: 0 }
+
+// 记录鼠标坐标
+document.onmousemove = (e) => {
+    mouse.x = e.pageX
+    mouse.y = e.pageY
+}
+
+dragEle.onmousedown = (e) => {
+    distance.topLeft = e.pageX - canMove.offsetLeft
+    distance.topTop = e.pageY - canMove.offsetTop
+    timer = setInterval(setPosition, 10)
+}
+
+// 鼠标弹起，清空定时器
+document.onmouseup = document.ondrag = (e) => {
+    clearInterval(timer)
+    timer = null
+}
+
+function setPosition() {
+    const maxX = (document.body.clientWidth || document.documentElement.clientWidth) - canMove.offsetWidth
+    const maxY = (document.body.clientHeight || document.documentElement.clientHeight) - canMove.offsetHeight
+
+    canMove.style.left = Math.max(Math.min((mouse.x - distance.topLeft), maxX), 0) + 'px'
+    canMove.style.top = Math.max(Math.min((mouse.y - distance.topTop), maxY), 0) + 'px'
+}
+
+
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+AEhtml:
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/bodymovin-lottie.zip")
+return

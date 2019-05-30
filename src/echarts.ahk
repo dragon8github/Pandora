@@ -167,12 +167,13 @@ return
 ::echarts.effectScatter::
 Var =
 (
+const colorMap = ["#E83035", "#E88234", "#ECED08", "#01F1C4"]
 // 创建散点配置项
 const createPoints = (name, data) => {
 	// 返回的这个配置对象，直接插入到series即可
     return {
     	// 设置名称，这和legend关联
-    	name: name,
+    	name,
     	// 散点类型
         type: 'effectScatter',
         // 坐标系（默认上面的geo配置作为坐标系）
@@ -186,16 +187,25 @@ const createPoints = (name, data) => {
         // 是否开启鼠标 hover 的提示动画效果
         hoverAnimation: true,
         // 散点大小
-        symbolSize: 10,
+        symbolSize: 30,
         // 涟漪效果
         // rippleEffect: { period: 15, scale: 6, brushType: 'fill' },
         itemStyle: {
             normal: {            	
             	// 根据不同的 twoconsTypeId 渲染不同的颜色
-                color: params => colorMap[params.value[3]], 
+                color: params => colorMap[params.value[3]] || "#ECED08", 
                 shadowBlur: 10,
                 shadowColor: '#333'
             }
+        },
+        // 涟漪的配置
+        rippleEffect: {
+            // 动画中波纹的最大缩放比例。
+            scale: 7,
+            // 动画的周期，秒数。
+            period: 4,
+            // 波纹的绘制方式，可选 'stroke' 和 'fill'
+            brushType: 'fill'
         },
         // 散点数据，格式如下:
         // [{name: '不重要随便写点什么都可以', value: [经度, 纬度, 其他值]}, {...}, , {...}, , {...}]

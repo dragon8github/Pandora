@@ -5952,3 +5952,25 @@ const mvDOM = function (source, target) {
 )
 code(Var)
 return
+
+::href::
+Var =
+(
+window.location.href
+)
+code(Var)
+return
+
+
+::promiseall::
+::promise.all::
+::promise.a::
+Var =
+(
+// 请注意，a和b都是一个promise对象。而且Promise.all返回的也是一个promise对象，所以它也是可以被await的。
+Promise.all([a, b]).then(args => {
+    const [a, b] = args
+})
+)
+code(Var)
+return
