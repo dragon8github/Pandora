@@ -1,4 +1,88 @@
-﻿::ts.config::
+﻿!y::
+    Menu, ShellMenu, Add, 新建create-react-app-Typescript, ReactMenuHandler
+	Menu, ShellMenu, Add, 生成 tsconfig.json 配置：$ yarn tsc -init, tsHandler
+    Menu, ShellMenu, Add, 生成 tslint.json：$ yarn tslint --init, tsHandler
+    Menu, ShellMenu, Add, npm install Typescript -g, tsHandler
+    Menu, ShellMenu, Add, npm install -g ts-node, tsHandler
+    Menu, ShellMenu, Add, 直接运行.ts文件： ts-node hello.ts, tsHandler
+
+	Menu, ShellMenu, Show
+	Menu, ShellMenu, DeleteAll
+return
+
+
+tsHandler:
+v := A_ThisMenuItem
+Var :=
+Sleep, 300
+if (v == "") {
+Var =
+(
+
+)
+}
+
+if (v == "") {
+Var =
+(
+
+)
+cs(Var)
+return
+}
+
+
+if (v == "生成 tslint.json：$ yarn tslint --init") {
+Var =
+(
+yarn tslint --init
+)
+cs(Var)
+return
+}
+
+if (v == "直接运行.ts文件： ts-node hello.ts") {
+Var =
+(
+ts-node hello.ts
+)
+cs(Var)
+return
+}
+
+if (v == "npm install -g ts-node") {
+Var =
+(
+npm install -g ts-node
+)
+cs(Var)
+return
+}
+
+
+if (v == "npm install Typescript -g") {
+Var =
+(
+npm install Typescript -g
+)
+cs(Var)
+return
+}
+
+if (v == "生成 tsconfig.json 配置：$ yarn tsc -init") {
+Var =
+(
+yarn tsc -init
+)
+cs(Var)
+return
+}
+
+
+code(Var)
+return
+
+::ts.config::
 ::tsconfig::
 Var =
 (

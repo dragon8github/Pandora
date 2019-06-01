@@ -1,5 +1,6 @@
 ﻿!t::
 	Menu, reactMenu, Add, 新建create-react-app, ReactMenuHandler
+	Menu, reactMenu, Add, 新建create-react-app-Typescript, ReactMenuHandler
 	Menu, reactMenu, Add, react-template, ReactMenuHandler
 	Menu, reactMenu, Add, React runtime for stackblitz, ReactMenuHandler
 	Menu, reactMenu, Add, React runtime for codesandbox, ReactMenuHandler
@@ -229,6 +230,19 @@ pshell(command)
 return 
 }
 
+
+if (v == "新建create-react-app-Typescript") {
+name := "my-app" . "-" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+command := []
+command.push("cd " . A_Desktop)
+command.push("yarn create react-app " . my-app . " --typescript")
+command.push("cd " . name)
+command.push("echo SKIP_PREFLIGHT_CHECK=true > .env")
+command.push("yarn start")
+command := join(command)
+pshell(command)
+return 
+}
 
 if (v == "this.state") {
 Var = 

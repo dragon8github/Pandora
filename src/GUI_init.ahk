@@ -321,7 +321,7 @@ Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索.html
 Gui, Pandora:Add, Text, gvideohtml W160, 新建video视频.html
 Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
 Gui, Pandora:Add, Text, grightmenuhtml W160, 新建右键菜单拦截.html
-Gui, Pandora:Add, Text, gAEhtml W160, 新建AE-bodymovin-lottie.html
+Gui, Pandora:Add, Text, gAEhtml W180, 新建AE-bodymovin-lottie.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
@@ -539,6 +539,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/1615450788/vue-cron">vue-cr
 Gui, Pandora:Add, Link,, <a href="https://github.com/OYsun/VueCircleMenu">vue-圆环菜单</a>
 Gui, Pandora:Add, Link,, <a href="https://vuegg.now.sh/">vuegg 神器，找了好久了</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/xiaokaike/vue-color">vue-color 给力颜色器</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/kirillmurashov/vue-drag-resize">vue-drag-resize</a>
 
 Gui, Pandora:Add, Text, W140 Section xs yp+150, vue动画钩子：
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes">vue-transition</a>

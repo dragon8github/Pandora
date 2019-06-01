@@ -580,15 +580,16 @@ return
 ::imageonload::
 Var =
 (
-//js
+// js
 var pic = new Image()
-pic.src = 'http://caibaojian.com/a/a3.png'
-pic.onload = pic.onreadystatechange = function(){
-	if(!this.readyState||this.readyState=='loaded'||this.readyState=='complete'){
-	// 加载完成 
-	}
-};
-
+pic.src = require('@/assets/bg.png')
+pic.onload = pic.onreadystatechange = () => {
+    // 加载完成
+    if (!this.readyState || this.readyState=='loaded' || this.readyState=='complete') {
+        
+    }
+}
+    
 //jquery
 $('<img/>').attr('src', 'http://caibaojian.com/a/a3.png').on('load', function() {
    $(this).remove(); // 防止内存泄露
