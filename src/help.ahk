@@ -769,6 +769,7 @@ return
 
 
 >^s::
+Sleep, 100
 cs("npm run start")
 return
 
@@ -968,7 +969,7 @@ return
 
 ::aliip::
 ::vip::
-SendRaw, 207.148.115.156
+SendRaw, 45.76.182.187
 return
 
 
@@ -1070,7 +1071,8 @@ return
 */
 
 ::jss::
-    Send, JavaScript
+::js::
+cs("JavaScript")
 return
 
 ; 不知道从什么时候开始，大写的C盘写不出来了。这里我用小写吧无所谓，反正window不区分大小写
@@ -1432,7 +1434,7 @@ cs(a)
 Clipboard := tmp
 return
 
-/*
+
 ^b::
 WinGetTitle, title, A
 if (InStr(title, "有道云笔记")) {
@@ -1444,7 +1446,7 @@ cs("**" . Clipboard . "**")
 Clipboard := tmp
 }
 return
-*/
+
 
 #p::
 run, powershell.exe

@@ -21,6 +21,7 @@
   Menu, VueMenu, Add, vue.config.js, VueHandler
   Menu, VueMenu, Add, vue3-template脚手架, VueHandler
   Menu, VueMenu, Add, vue2-template脚手架, VueHandler
+  
   Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
   Menu, VueMenu, Add, proxyTable 配置, VueHandler
   Menu, VueMenu, Add, css-scoped深度作用选择器：>>>（css） 与 /deep/（sass）, VueHandler
@@ -74,6 +75,7 @@
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
+  Menu, vuesolution, Add, 我的layer组件：通过js来操作.vue组件，只有插入任何位置, VueHandler
   Menu, vuesolution, Add, svg-spinner-loader.vue, VueHandler
   Menu, vuesolution, Add, myprogress组件, VueHandler
   Menu, vuesolution, Add, msgbox组件, VueHandler
@@ -106,6 +108,135 @@ Var =
 )
 }
 
+
+if (v == "我的layer组件：通过js来操作.vue组件，只有插入任何位置") {
+Var =
+(
+// 继承组件
+const layerConstructor = Vue.extend(layer)
+// 实例化组件
+this.__layer__ = new layerConstructor({
+    el: document.createElement('div')
+})
+// 插入到地图容器之中。因为我获取的xy是相对于地图容器的
+document.querySelector('#map_container > div').append(this.__layer__.$el)
+---
+<template>
+    <div class="layer" :style="{ left: x + 'px', top: y + 'px' }" v-if='value'>
+        <div class='layer__line'></div>
+        <div class='layer__box'>
+            <article class='box__title'>{{ streetName }}</article>
+            <div class='box__form'>
+                <div class="form__field">
+                    <span class="field__key">事件总数 : </span>
+                    <span class="field__value">
+                        <countTo :startVal='0' :endVal="problemAmount_data" :duration="1500"></countTo>
+                    </span>
+                </div>
+                <div class="form__field">
+                    <span class="field__key">满意度 : </span>
+                    <span class="field__value"><i class='icon-star' v-for='(item, index) in [1,2,3,4,5]' :key='index'></i></span>
+                </div>
+                <div class="form__field u-mt-1">
+                    <span class="field__key">环比 : </span>
+                    <span class="field__value" :class="qoq">{{ qoq_data }}</span>
+                </div>
+                <div class="form__field u-mt-1">
+                    <span class="field__key">办结率 : </span>
+                    <span class="field__value">{{ rate_data }}</span>
+                </div>
+                <div class="form__field u-mt-1">
+                    <span class="field__key">同比 : </span>
+                    <span class="field__value" :class="yoy">{{ yoy_data }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+export default {
+    name: 'layer',
+    data() {
+        return {
+            value: true,
+            x: '',
+            y: '',
+            qoq: '',
+            yoy: '',
+            streetName: '',
+            qoq_data: '',
+            rate_data: '',
+            yoy_data: '',
+            problemAmount_data: 0,
+        }
+    },
+}
+</script>
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+
+.layer {
+    position: absolute;
+    z-index: 9999;
+    width: rem(754);
+    height: rem(327);
+    transition: .3s all ease;
+
+    .icon-star {
+        @include bg(rem(24), rem(23), '~@/assets/star.png');
+        display: inline-block;
+        margin-right: rem(4);
+    }
+
+    .layer__box {
+        position: absolute;
+        left: rem(147);
+        top: rem(-168);
+        padding: rem(52) rem(50) rem(32) rem(70);
+        @include bg(rem(581 + 24), rem(327 + 6), '~@/assets/layer.png');
+    }
+
+    .box__title {
+        font-size: rem(39);
+    }
+
+    .box__form {
+        margin-top: rem(20);
+        @include flex(b, s);
+        flex-wrap: wrap;
+    }
+
+    .form__field {
+        width: 50`%;
+        font-size: rem(27);
+    }
+
+    .field__key {}
+
+    .field__value {
+        white-space: nowrap;
+
+        &.is-up {
+            color: #11ee4f;
+        }
+
+        &.is-down {
+            color: #ED1F51;
+        }
+    }
+
+    .layer__line {
+        // position: absolute;
+        // width: rem(173);
+        // height: rem(168);
+        // border-left: solid 1px #51d0ff;
+        // border-top: solid 1px #51d0ff;
+    }
+}
+</style>
+)
+txtit(Var)
+}
 
 if (v == "proxyTable 配置") {
 _send("proxyTable", true, true)

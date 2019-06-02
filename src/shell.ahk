@@ -194,6 +194,13 @@ Var =
 }
 
 
+if (v == "chmod u+x fuck.sh") {
+Var = 
+(
+chmod u+x fuck.sh
+)
+}
+
 if (v == "ps -ef | grep nginx") {
 Var = 
 (

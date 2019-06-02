@@ -234,7 +234,7 @@ code(code) {
   }
   
   ; 一行显示几个？
-  xsize := 3
+  xsize := len <= 2 ? 2 : 3
   ; 一共有几行
   ycount := Ceil(len / xsize)
   ; 开始遍历

@@ -212,6 +212,7 @@ Gui, Pandora:Add, Link,, <a href="https://aotu.io/">凹凸实验室</a>
 Gui, Pandora:Add, Link,, <a href="https://scrimba.com/">学习代码新世界</a>
 Gui, Pandora:Add, Link,, <a href="https://www.shiyanlou.com/">实验楼</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/azl397985856/leetcode">leetcode JS版本</a>
+Gui, Pandora:Add, Link,, <a href="https://miyogurt.github.io/nodelover-books">NodeLover 黄金屋</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/manageyourkindle">我的设备</a>
@@ -468,6 +469,8 @@ Gui, Pandora:Add, Text, W140 Section ys, koajs：
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs">koajs-github</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs/jwt">koajs-jwt</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs/bodyparser">koajs-bodyparser</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/koajs/koa/wiki">所有koa插件</a>
+
 
 Gui, Pandora:Add, Text, W140 Section ys, electron：
 Gui, Pandora:Add, Link,, <a href="https://github.com/electron/electron-api-demos">electron-api-demos</a>
@@ -715,6 +718,7 @@ Gui, Pandora:Add, Link,, <a href="http://turfjs.org/docs/#bearing">turfjs</a>
 
 Gui, Pandora:Add, Text,  W140 yp+50, 顺眼测试框架：
 Gui, Pandora:Add, Link,, <a href="https://github.com/avajs/ava">ava</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/avajs/ava-docs/blob/master/zh_CN/readme.md">ava 中文文档</a>
 
 Gui, Pandora:Add, Text, W140 ys, 团队工具：
 Gui, Pandora:Add, Link,, <a href="https://www.atlassian.com/software/confluence">confluence知识库</a>
@@ -782,11 +786,15 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/docsify">docsify<
 Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/awesome-docsify">awesome-docsify</a>
 
 
-
 Gui, Pandora:Add, Text, W140 yp+50, 模型live2D：
 Gui, Pandora:Add, Link,, <a href="https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02">教程博客</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/journey-ad/live2d_src">github</a>
 Gui, Pandora:Add, Link,, <a href="https://l2dwidget.js.org/docs/index.html">文档</a>
+
+Gui, Pandora:Add, Text, W140 ys xp+150, 简易HTTP：
+Gui, Pandora:Add, Link,, <a href="https://github.com/tapio/live-server">live-server</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/JacksonTian/anywhere">anywhere</a>
+
 
 ; @qimiao @qm @ku
 
@@ -1049,8 +1057,13 @@ ClipChanged(Type) {
    if (type == 1) {
 		b := Trim(StrReplace(Clipboard, "`r`n"))
 		
-		if (InStr(b, "sinaimg.cn/small") && StrLen(b) <= 100) {
+		if (InStr(b, "sinaimg.cn/small") && StrLen(b) <= 100 && !InStr(b, "![](")) {
 			b := "![](" . StrReplace(b, "small", "large") . ")"
+			return Clipboard := b
+		}
+		
+		if (InStr(b, "ax1x.com") && StrLen(b) <= 100 && !InStr(b, "![](")) {
+			b := "![](" . b . ")"
 			return Clipboard := b
 		}
 		 

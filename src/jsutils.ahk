@@ -232,6 +232,7 @@
     Menu, utilspractice, Add,
     Menu, utilspractice, Add,
     
+    Menu, utilspractice, Add, FormData（multipart/form-data）与URLSearchParams（application/x-www-form-urlencoded）的区别, utilsHandler
     Menu, utilspractice, Add, 多个异步操作时，请毫不犹豫用Pormise.all, utilsHandler
     Menu, utilspractice, Add, Promise.race只返回最快的一个, utilsHandler
     
@@ -261,7 +262,9 @@
     Menu, utilspractice, Add, 获取当前所在的<iframe>：window.frameElement, utilsHandler
     ; renzhi
     
+    
     ; @my
+    Menu, utilsmy, Add, 数组成员冲排列：以大带小 drive, utilsHandler
     Menu, utilsmy, Add, StorageEvent：监听 localStorage 数据变化的解决方案, utilsHandler
     Menu, utilsmy, Add, mvDOM：移动dom元素到指定目标位置, utilsHandler
     Menu, utilsmy, Add, 堡垒模式：请求条件不满足则排队处理, utilsHandler
@@ -434,6 +437,68 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "FormData（multipart/form-data）与URLSearchParams（application/x-www-form-urlencoded）的区别") {
+Var = 
+(
+import ky from 'ky';
+(async () => {
+	// `multipart/form-data`
+	const formData = new FormData();
+	formData.append('food', 'fries');
+	formData.append('drink', 'icetea');
+
+	await ky.post(url, {
+		body: formData
+	});
+})();
+
+
+import ky from 'ky';
+(async () => {
+	// `application/x-www-form-urlencoded`
+	const searchParams = new URLSearchParams();
+	searchParams.set('food', 'fries');
+	searchParams.set('drink', 'icetea');
+
+	await ky.post(url, {
+		body: searchParams
+	});
+})();
+)
+}
+
+if (v == "数组成员冲排列：以大带小 drive") {
+Var = 
+(
+// 以大带小
+var drive = (ary, fn) => {
+	// 数组长度
+	const len = ary.length
+	// 偶数长度
+	const isEven = len `% 2 === 0
+	// 从大到小排序
+	const _ary = ary.sort(fn)
+	// 循环的次数
+	const time = isEven ? len / 2 : Math.floor(len / 2) + 1
+	// 返回新的数组
+	return [...Array(time)].reduce((previousValue, currentValue, index) => {
+		// 是否循环的最后一次
+		const isLastTime = index === time - 1
+		// 如果是奇数的，且最后一次的情况下
+		if (!isEven && isLastTime) {
+			// 没人可带，带我自己就够了
+			return [...previousValue, _ary[index]]
+		// 默认都带一个小弟
+		} else {
+			// 带上小弟
+			return [...previousValue, _ary[index], _ary[len - 1 - index]]
+		}
+	}, [])
+}
 )
 }
 

@@ -1,15 +1,15 @@
 ﻿!t::
 	Menu, reactMenu, Add, 新建create-react-app, ReactMenuHandler
 	Menu, reactMenu, Add, 新建create-react-app-Typescript, ReactMenuHandler
-	Menu, reactMenu, Add, react-template, ReactMenuHandler
-	Menu, reactMenu, Add, React runtime for stackblitz, ReactMenuHandler
-	Menu, reactMenu, Add, React runtime for codesandbox, ReactMenuHandler
+	Menu, reactMenu, Add, 新建 react-template, ReactMenuHandler
+	Menu, reactMenu, Add, 在线编辑器：React runtime for stackblitz, ReactMenuHandler
+	Menu, reactMenu, Add, 在线编辑器：React runtime for codesandbox, ReactMenuHandler
+	
+	Menu, reactMenu, Add
+	Menu, reactMenu, Add
+	
 	Menu, reactMenu, Add, import , ReactMenuHandler
 	Menu, reactMenu, Add, react-init, ReactMenuHandler
-	
-	Menu, reactMenu, Add
-	Menu, reactMenu, Add
-	
 	Menu, reactMenu, Add, class App extends Component, ReactMenuHandler
 	Menu, reactMenu, Add, constructor, ReactMenuHandler
 	Menu, reactMenu, Add, static defaultProps, ReactMenuHandler
@@ -69,7 +69,7 @@ Var =
 }
 
 
-if (v == "react-template") {
+if (v == "新建 react-template") {
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/react-template.zip", "yarn `; npm start")
 return
 }
@@ -164,7 +164,7 @@ ReactDOM.render(<Parent />, document.getElementById("root"));
 }
 
 
-if (v == "React runtime for codesandbox") {
+if (v == "在线编辑器：React runtime for codesandbox") {
 Run, https://codesandbox.io/s/new
 }
 
@@ -174,7 +174,7 @@ Send, react-init{tab}
 return
 }
 
-if (v == "import 基本内容") {
+if (v == "import") {
 Var = 
 (
 import React, { Component } from "react";
@@ -446,7 +446,7 @@ this.forceUpdate()
 )
 }
 
-if (v == "React runtime for stackblitz") {
+if (v == "在线编辑器：React runtime for stackblitz") {
 	Run, https://stackblitz.com/fork/react
 }
 
@@ -706,26 +706,26 @@ return
 
 
 
+::rinit::
+::reactinit::
+::react.init::
 ::react-init::
+InputBox, OutputVar, title, enter a name?,,,,,,,,Test
 Var =
 (
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from "react";
 
-import "./styles.css";
+class %OutputVar% extends Component {
+    render() {
+        return (
+            <div>
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
-  `);
+            </div>
+        `)
+    }
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
-
+export default %OutputVar%
 )
 code(Var)
 return

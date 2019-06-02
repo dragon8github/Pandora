@@ -2036,13 +2036,15 @@ code(Var)
 return
 
 ::imp::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
 Var =
 (
-import moment from 'moment'
-import card from '@/components/card'
-import { deepFind } from '@/utils/utils.js'
+import {} from '%OutputVar%'
 )
 code(Var)
+SendInput, {Home}
+SendInput, {right 7}
+SendInput, +{right 2}
 return
 
 ::cimp::
@@ -4740,6 +4742,7 @@ var random = function(min, max) {
 */
 // ~~(0 + Math.random() * 51)      // 0-50
 // parseInt(Math.random() * 5)     // 0-4
+// const isChecked = () => Math.random() >= .5
 parseInt(Math.random() * 10 + 1);  // 获取 1 - 10 到随机数
 )
 code(Var)
@@ -7279,4 +7282,13 @@ if (process.argv.slice(2).length === 0) {
 console.log(commander.city) // => dongguan
 )
 code(Var)
+return
+
+::ed::
+Var =
+(
+export default {}
+)
+code(Var)
+SendInput, +{left 2}
 return
