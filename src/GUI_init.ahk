@@ -263,6 +263,7 @@ Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer<
 Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux-command 命令搜索</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大全</a>
 Gui, Pandora:Add, Link,, <a href="https://hellogithub.com/report/db-engines/?url=/periodical/volume/15/">数据库排行榜</a>
+Gui, Pandora:Add, Link,, <a href="https://serverless.css-tricks.com/ideas/">前端开发Serverless</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
@@ -373,27 +374,20 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/api/sg/redis/cleanDefault">清空缓存</a>
 Gui, Pandora:Add, Link,, <a href="http://12345admin.dgdatav.com:6080/#">admin</a>
 
-
-
 Gui, Pandora:Add, Text,  W120 ys, 12345预览地址：
 Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com:6080/#/overallSituation">v0</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v1.dgdatav.com:6080/#/dg/overallSituation">v1</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/">v2</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
 
-
-
 Gui, Pandora:Add, Text,  W140 ys, 知识库
 Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/dashboard.action#all-updates">confluence</a>
 Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/pages/viewpage.action?pageId=1310755">confluence2</a>
 Gui, Pandora:Add, Link,, <a href="https://hui.dgjy.net">门户网站</a>
 
-
 Gui, Pandora:Add, Text,  W120 ys, hz-12345：
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/hz-12345">hz-12345 源码</a>
 Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:6083/#/dg/Index">预览地址</a>
-
-
 
 Gui, Pandora:Add, Text,  W140 xs Section yp+150, 数据中心
 Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心 - 线上地址</a>
@@ -426,65 +420,33 @@ Gui, Pandora:Add, Link,, <a href="http://dotnet.alltosea.com:6012/portalapi/doc.
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/unifiedfabric/dgjy/portalui/tree/newdev/vue-education/src">代码地址</a>
 
 Gui, Pandora:Tab, 4
-Gui, Pandora:Add, Text,  W130 Section, 工具库1：
-Gui, Pandora:Add, Link,, <a href="https://github.com/KyleAMathews/deepmerge">deepmerge</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/mysticatea/npm-run-all">npm-run-all</a>
 
-Gui, Pandora:Add, Text,  W140 ys, 工具库2：
-Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/globby">globby</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/isaacs/minimatch#usage">minimatch</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/jhotmann/node-rename-cli">node-renames-cli</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/jprichardson/node-fs-extra">node-fs-extra</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/ora">ora</a>
-
-Gui, Pandora:Add, Text,  W140 ys, 工具库3：
-Gui, Pandora:Add, Link,, <a href="https://github.com/isaacs/rimraf">rimraf</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/substack/node-mkdirp">node-mkdirp</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/JacksonTian/anywhere">anywhere</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/opn">opn</a>
-Gui, Pandora:Add, Link,, <a href="https://www.npmjs.com/package/cross-env">cross-env</a>
-
-Gui, Pandora:Add, Text,  W140 ys, 工具库4：
-Gui, Pandora:Add, Link,, <a href="https://github.com/remy/nodemon/">nodemon</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/SBoudrias/Inquirer.js">inquirer</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/request/request">request</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/hapijs/joi">joi</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/execa">execa</a>
-
-Gui, Pandora:Add, Text,  W140 ys, 工具库5：
-Gui, Pandora:Add, Link,, <a href="https://github.com/shelljs/shelljs">shelljs</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/nodemailer/nodemailer">nodemailer</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/kvz/locutus">locutus</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/wiredjs/wired-elements">wired-elements</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/olistic/warriorjs">warriorjs</a>
-
-
-Gui, Pandora:Add, Text, W140 Section xs yp+50, Nodejs:
+Gui, Pandora:Add, Text, W140 Section, Nodejs:
 Gui, Pandora:Add, Link,, <a href="https://nodejs.org/en/">Nodejs 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/sindresorhus/awesome-nodejs">awesome-nodejs</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/nodejs/node">Nodejs github</a>
 Gui, Pandora:Add, Link,, <a href="https://nodejs.org/dist/latest-v11.x/docs/api/">Nodejs API</a>
 
-Gui, Pandora:Add, Text, W140 Section ys, koajs：
+Gui, Pandora:Add, Text, W140 ys, koajs：
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs">koajs-github</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs/jwt">koajs-jwt</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs/bodyparser">koajs-bodyparser</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/koajs/koa/wiki">所有koa插件</a>
 
 
-Gui, Pandora:Add, Text, W140 Section ys, electron：
+Gui, Pandora:Add, Text, W160 ys, electron：
 Gui, Pandora:Add, Link,, <a href="https://github.com/electron/electron-api-demos">electron-api-demos</a>
 Gui, Pandora:Add, Link,, <a href="https://electronjs.org/">electron 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/electron">electron github</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/electron/electron-quick-start">electron-quick-start</a>
 Gui, Pandora:Add, Link,, <a href="https://electronjs.org/docs/api/client-request">electron-api文档</a>
 
-Gui, Pandora:Add, Text,  W140 ys, nest框架中的django:
+Gui, Pandora:Add, Text,  W160 ys, nest框架中的django:
 Gui, Pandora:Add, Link,, <a href="https://github.com/nestjs/nest">nestjs github</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/juliandavidmr/awesome-nestjs">awesome-nestjs</a>
 
 
-Gui, Pandora:Add, Text, W140 Section ys, nodejs cms：
+Gui, Pandora:Add, Text, W160 ys, nodejs cms：
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repos/NodeJS/CMS">NodeJS/CMS</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/doramart/DoraCMS">（推荐）DoraCMS</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/awesome-javascript#node-powered-cms-frameworks">（推荐）powered-cms</a>
@@ -493,11 +455,41 @@ Gui, Pandora:Add, Link,, <a href="https://www.graphql.com/">graphql</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/apostrophecms/apostrophe">apostrophe</a>
 
 
-Gui, Pandora:Add, Text, W140 Section ys, typescript:
+Gui, Pandora:Add, Text, W140 ys, typescript:
 Gui, Pandora:Add, Link,, <a href="http://www.typescriptlang.org/docs/home.html">typescript official</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/jkchao/typescript-book-chinese">深入理解 TypeScript</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/dzharii/awesome-typescript">typescript awesome</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/bitjson/typescript-starter">typescript-starter</a>
+
+Gui, Pandora:Add, Link, W450 Section xs yp+120, <a href="https://github.com/KyleAMathews/deepmerge">对象深度合并，单纯的使用Object.assign会导致覆盖：deepmerge</a>
+Gui, Pandora:Add, Link, ys, <a href="https://github.com/SBoudrias/Inquirer.js">命令行问答交互神器，比Commander更简洁专注问答：inquirer</a>
+
+Gui, Pandora:Add, Link, W450 Section xs yp+30, <a href="https://github.com/KyleAMathews/deepmerge">一次性执行多个npm script：npm-run-all</a>
+Gui, Pandora:Add, Link, ys, <a href="https://github.com/request/request">元老级别的nodejs请求库，但现在推荐axios：request</a>
+
+Gui, Pandora:Add, Link, W450 Section xs yp+30, <a href="https://github.com/sindresorhus/globby">使用正则表达式规则匹配目录和文件：globby</a>
+Gui, Pandora:Add, Link, ys, <a href="https://github.com/hapijs/joi">最强大的验证库：joi</a>
+
+Gui, Pandora:Add, Link, W450 Section xs yp+30, <a href="https://github.com/isaacs/minimatch">更简单的正则表达式match匹配库：minimatch</a>
+Gui, Pandora:Add, Link, ys, <a href="https://github.com/sindresorhus/execa">更好的 child_process 流管理，stdout，stderr，stdin：execa</a>
+
+Gui, Pandora:Add, Link, W450 Section xs yp+30, <a href="https://github.com/KyleAMathews/deepmerge">华丽的命令行界面，值得一看，功能本身一般：node-rename-cli</a>
+Gui, Pandora:Add, Link, ys, <a href="https://github.com/shelljs/shelljs">nodejs 中使用 shell bash，神器来着：shelljs</a>
+
+Gui, Pandora:Add, Link, W450 Section xs yp+30, <a href="https://github.com/jprichardson/node-fs-extra">文件IO操作库，十分常用，比官方的好太多了：node-fs-extra</a>
+Gui, Pandora:Add, Link, ys, <a href="https://github.com/nodemailer/nodemailer">nodejs email 库：nodemailer</a>
+
+Gui, Pandora:Add, Link, W450 Section xs yp+30, <a href="https://github.com/sindresorhus/ora">命令行loading，很多库都在使用：ora</a>
+Gui, Pandora:Add, Link, ys, <a href="https://github.com/wiredjs/wired-elements">手绘的线框或有趣的外观，非常好玩：wired-elements</a>	
+
+Gui, Pandora:Add, Link, W450 Section xs yp+30, <a href="https://github.com/isaacs/rimraf">rm -rf 命令的nodejs版本，其实就是删除文件：rimraf</a>
+Gui, Pandora:Add, Link, ys, <a href="https://github.com/olistic/warriorjs">圣剑！一个JavaScript逻辑游戏：warriorjs</a>
+
+Gui, Pandora:Add, Link, W450 Section xs yp+30, <a href="https://github.com/substack/node-mkdirp">创建文件夹：node-mkdirp</a>
+Gui, Pandora:Add, Link, ys, <a href="https://github.com/sindresorhus/open">打开默认浏览器：open</a>
+
+Gui, Pandora:Add, Link, W450 Section xs yp+30, <a href="https://github.com/kentcdodds/cross-env">设置环境变量的库，很常用很实用：cross-env</a>
+Gui, Pandora:Add, Link, ys, <a href="https://github.com/remy/nodemon">自动重启nodejs的神器，很常用很实用，开发nodejs必备：nodemon</a>
 
 ;@nodejs @node
 
@@ -507,8 +499,10 @@ Gui, Pandora:Add, Link,, <a href="http://vuejs.org/">vue</a>
 Gui, Pandora:Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
 Gui, Pandora:Add, Link,, <a href="http://router.vuejs.org ">vue-router</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
+Gui, Pandora:Add, Link,, <a href="https://cli.vuejs.org/">vue-cli</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vuepress">vuepress</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/PanJiaChen/vue-element-admin">vue-element-admin</a>
-Gui, Pandora:Add, Link,, <a href="https://ssr.vuejs.org/zh/">vue-ssr </a>
+Gui, Pandora:Add, Link,, <a href="https://ssr.vuejs.org/zh/">vue-ssr</a>
 
 Gui, Pandora:Add, Text,  W140 ys, vue ssr nuxt：
 Gui, Pandora:Add, Link,, <a href="https://nuxtjs.org/">nuxt官网</a>
