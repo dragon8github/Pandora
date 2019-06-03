@@ -1071,7 +1071,6 @@ return
 */
 
 ::jss::
-::js::
 cs("JavaScript")
 return
 

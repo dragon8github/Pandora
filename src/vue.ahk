@@ -75,6 +75,7 @@
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
+  Menu, vuesolution, Add, DataV - 顶部一闪过儿的loading封装, VueHandler
   Menu, vuesolution, Add, 我的layer组件：通过js来操作.vue组件，只有插入任何位置, VueHandler
   Menu, vuesolution, Add, svg-spinner-loader.vue, VueHandler
   Menu, vuesolution, Add, myprogress组件, VueHandler
@@ -108,6 +109,82 @@ Var =
 )
 }
 
+
+if (v == "DataV - 顶部一闪过儿的loading封装") {
+Var =
+(
+<template>
+    <div class="loading-indicator" v-if='value'></div>
+</template>
+<script>
+export default {
+    name: 'topLoading',
+    data() {
+        return {
+            value: false
+        }
+    },
+}
+</script>
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.loading-indicator {
+    position: absolute;
+    top: 0;
+    z-index: 101;
+    left: 0;
+    width: 100`%;
+    height: rem(5);
+    background: -webkit-gradient(linear, 80`% 46`%, 10`% 21`%, from(#ff8754), to(#00baff));
+    animation: ladingAnimation 1s infinite ease-out;
+}
+
+@-webkit-keyframes ladingAnimation {
+    0`% {
+        transform: translateX(-100`%);
+    }
+
+    100`% {
+        transform: translateX(150`%);
+    }
+}
+</style>
+---
+import Vue from 'vue';
+import topLoading from './topLoading.vue'
+
+const topLoadingConstructor = Vue.extend(topLoading);
+
+let _initInstance;
+
+const initInstance = () => {
+  _initInstance = new topLoadingConstructor({
+    el: document.createElement('div')
+  });
+  document.body.appendChild(_initInstance.$el);
+};
+
+const show = () => {
+	if (!_initInstance) {
+	  initInstance();
+	}
+	_initInstance.value = true
+}
+
+const hide = () => {
+	Vue.nextTick(() => {
+		_initInstance && (_initInstance.value = false)
+	});
+}
+
+export default {
+	show,
+	hide,
+}
+)
+txtit(Var)
+return
+}
 
 if (v == "我的layer组件：通过js来操作.vue组件，只有插入任何位置") {
 Var =

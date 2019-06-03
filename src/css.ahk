@@ -42,7 +42,7 @@
     
     Menu, Csssolution, Add, 三个DVI的Bouncing loader, CssHandler
     Menu, Csssolution, Add, dataV三个元素实现的loading, CssHandler
-    Menu, Csssolution, Add, 不断一闪而过的顶部进度条loading, CssHandler
+    Menu, Csssolution, Add, DataV-不断一闪而过的顶部进度条loading, CssHandler
     Menu, Csssolution, Add, DNA-loading, CssHandler
     Menu, Csssolution, Add, DataV-DNA-loading, CssHandler
     Menu, Csssolution, Add, 页面阅读进度条, CssHandler
@@ -632,7 +632,7 @@ $(function() {
 )
 }
 
-if (v == "不断一闪而过的顶部进度条loading") {
+if (v == "DataV-不断一闪而过的顶部进度条loading") {
 Var =
 (
 <!DOCTYPE html>
