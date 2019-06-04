@@ -324,6 +324,7 @@ Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
 Gui, Pandora:Add, Text, grightmenuhtml W160, 新建右键菜单拦截.html
 Gui, Pandora:Add, Text, gAEhtml W180, 新建AE-bodymovin-lottie.html
 Gui, Pandora:Add, Text, gworkerhtml W180, 新建worker.js.html
+Gui, Pandora:Add, Text, glocalForagehtml W180, 新建localForage缓存示例.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)

@@ -4410,3 +4410,42 @@ onmessage = function (event) {
 )
 txtit(Var)
 return
+
+localForagehtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js"></script>
+    <script src="./data.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+// https://localforage.github.io/localForage/#settings-api-config
+localforage.config({
+    driver: [localforage.WEBSQL,
+             localforage.INDEXEDDB,
+             localforage.LOCALSTORAGE],
+    name: 'WebSQL-Rox',
+    size: 1024 * 1024
+});
+
+localforage.setItem('key', data)
+localforage.getItem('key').then(data => {
+    console.log(data)
+})
+localforage.clear()
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
