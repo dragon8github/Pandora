@@ -323,6 +323,7 @@ Gui, Pandora:Add, Text, gvideohtml W160, 新建video视频.html
 Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
 Gui, Pandora:Add, Text, grightmenuhtml W160, 新建右键菜单拦截.html
 Gui, Pandora:Add, Text, gAEhtml W180, 新建AE-bodymovin-lottie.html
+Gui, Pandora:Add, Text, gworkerhtml W180, 新建worker.js.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
@@ -778,15 +779,18 @@ Gui, Pandora:Add, Text, W140 ys xp+180, 文档神器docsify：
 Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/docsify">docsify</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/awesome-docsify">awesome-docsify</a>
 
+Gui, Pandora:Add, Text, W140 yp+50, 文档神器 docz：
+Gui, Pandora:Add, Link,, <a href="https://github.com/pedronauck/docz">docz</a>
+
+
+Gui, Pandora:Add, Text, W140 ys xp+150, 简易HTTP：
+Gui, Pandora:Add, Link,, <a href="https://github.com/tapio/live-server">live-server</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/JacksonTian/anywhere">anywhere</a>
 
 Gui, Pandora:Add, Text, W140 yp+50, 模型live2D：
 Gui, Pandora:Add, Link,, <a href="https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02">教程博客</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/journey-ad/live2d_src">github</a>
 Gui, Pandora:Add, Link,, <a href="https://l2dwidget.js.org/docs/index.html">文档</a>
-
-Gui, Pandora:Add, Text, W140 ys xp+150, 简易HTTP：
-Gui, Pandora:Add, Link,, <a href="https://github.com/tapio/live-server">live-server</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/JacksonTian/anywhere">anywhere</a>
 
 
 ; @qimiao @qm @ku

@@ -919,7 +919,12 @@ return
 
 ; https://tool.lu/imageholder/ 其实完全可以自己实现。算了，网上有的是这种服务
 ::img::
-    SendInput, <img src="https://iph.href.lu/400x400" alt="..." />{left 14}{ShiftDown}{left 7}{ShiftUp}
+Var =
+(
+<!-- <img src="https://iph.href.lu/400x400" alt="..." /> -->
+<img src="https://picsum.photos/400x400" alt="..." />
+)
+code(Var)
 Return
 
 

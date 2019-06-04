@@ -3983,33 +3983,20 @@ return
 
 
 >^d::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
-console.log('`%c DEBUG ' + '`%c ->' + '', 'background:#222; color: yellow', 'background: #fff; color: #000', )
+console.log(%t%, )
 debugger;
 )
 code(Var)
-SendInput, {up}{home}
-SendInput, {right 36}
-SendInput, +{right 2}
+SendInput, {up}{end}
+SendInput, +{left 1}
 return
 
 >!c::
 WinGetTitle, title, A
 code(title)
-return
-
->+c::
->+d::
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-; console.log('`%c DEBUG ：%t% ' + '`%c ->' + name, 'background:#222; color: yellow', 'background: #fff; color: #000', )
-; console.log('`%c DEBUG ' + '`%c ->' + name, 'background:#222; color: yellow', 'background: #fff; color: #000', )
-Var =
-(
-console.log('`%c DEBUG ☀ %t% ' + '`%c ->' + name, 'background:#222; color: yellow', 'background: #fff; color: #000', )
-)
-code(Var)
-SendInput, {left 1}
 return
 
 >^c:: 

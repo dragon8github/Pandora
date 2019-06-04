@@ -4383,3 +4383,30 @@ return
 AEhtml:
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/bodymovin-lottie.zip")
 return
+
+workerhtml:
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Worker.js</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+var worker = new Worker("worker.js")
+var num = 1000
+worker.postMessage(num)
+</script>
+</html>
+---
+// http://localhost/worker.js
+onmessage = function (event) {
+    console.log(event.data)
+}
+)
+txtit(Var)
+return
