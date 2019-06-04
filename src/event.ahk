@@ -1244,8 +1244,8 @@ return
 ::map.js::
 Var =
 (
-import { maybe } from '@/utils/utils.js'
-const colorMap = ["#E83035", "#E88234", "#ECED08", "#01F1C4"]
+import { maybe, division } from '@/utils/utils.js'
+const colorMap = ["#E83035", "#E88234", "#ECED08", "#01F1C4", "#01F1C4"]
 
 // 东莞市的geo地理数据
 const DongGuan = require('@/mapSources/DongGuan.geo.json');
@@ -1266,33 +1266,41 @@ class AggregationMap {
         this.myChart = echarts.init(el)
     }
 
-    createVisualMap (min = 0, max = 500) {
+    // 热力图必须和这个结合才能生效，至于最大值最小值，实际上并没有。只是按照一般情况是需要的而已。
+    createVisualMap (min = 0, max = 1) {
         return {
             show: false,
             min,
             max,
-            splitNumber: 5,
+            splitNumber: 3,
             seriesIndex: 1,  // 这里需要指定，是映射哪个series配置，我的是第二个的
-            inRange: { color: ['#d94e5d','#eac736','#50a3ba'].reverse() }
+            inRange: {       
+                color: ["#ab1653", '#04af43', '#d4dd7a'],
+            },
         }
     }
 
+    // 热力图配置
     createHeatmap (data) {
         return {   
             // 设置为热力图类型
-            type: 'heatmap',  // heatmap  effectScatter
+            type: 'heatmap',
             // 热力点的粗细值
-            pointSize: 6,
-            // 不会生效，因为我开启了silent: true
-            blurSize: 6,    
+            pointSize: 5,
+            // 每个点模糊的大小，在地理坐标系(coordinateSystem: 'geo')上有效。
+            blurSize: 50, // 30 50
             // 设置坐标类型为geo
             coordinateSystem: 'geo',
             // 指定geo的ID
             geoIndex: 0,
-            // 设置地图数据：[[ "113.797669", "23.027844", 1 ], [ "113.807751", "23.026374", 1 ]]
-            data: data,
+            // 每帧渲染的个数，默认400
+            progressive: 1000,
+            // 关闭动画
+            animation: false,
             // 层级
             zlevel: 2,
+            // 设置地图数据：[[ "113.797669", "23.027844", 1 ], [ "113.807751", "23.026374", 1 ]]
+            data: data,
         }
     }
 
@@ -1323,6 +1331,15 @@ class AggregationMap {
                     shadowBlur: 10,
                     shadowColor: '#333'
                 }
+            },
+            // 涟漪的配置
+            rippleEffect: {
+                // 动画中波纹的最大缩放比例。
+                scale: 7,
+                // 动画的周期，秒数。
+                period: 4,
+                // 波纹的绘制方式，可选 'stroke' 和 'fill'
+                brushType: 'fill'
             },
             // 散点数据，格式如下:
             // [{name: '不重要随便写点什么都可以', value: [经度, 纬度, 其他值]}, {...}, , {...}, , {...}]
@@ -1376,34 +1393,29 @@ class AggregationMap {
                     },
                     // 地图样式
                     itemStyle: {
-                        borderWidth: 1,
-                        // 边界颜色
-                        borderColor: '#8ddeff',
-                        // 地图颜色
-                        areaColor: '#143248',
-                        // 边界颜色
-                        shadowColor: '#10faff',
-                        shadowOffsetX: 0,
-                        shadowOffsetY: 0,
-                        shadowBlur: 10
+                        borderWidth: 5,
+                        // 边界颜色 #8ddeff yellow transparent
+                        borderColor: 'transparent',
+                        // 地图颜色 transparent  #143248
+                        areaColor: 'transparent',
                     },
+
                     // 鼠标hover网格时的配置
                     emphasis: {
                         // 鼠标hover时的网块样式
                         itemStyle: {
                             // 区域颜色（这里必须设置一个值，才可以方便覆盖，覆盖也是为了取消hover的效果而已。）
-                            areaColor: '#00ffff',
+                            areaColor: 'rgba(17, 132, 187, .5)',
                         },
                         // 鼠标hover时标签的样式
                         label: {
                             // 文字颜色
-                            color: '#112e43',
+                            color: '#ffffff',
                             fontSize: '90`%',
                             show: false,
                         },
-                    }
+                    },
                 },
-                
             ]
         }
         // 返回配置（使用$.extend避免深拷贝事件）
@@ -1416,25 +1428,32 @@ class AggregationMap {
 
     // 默认地图渲染
     render() {
+        this.myChart.clear()
         // 按照默认配置渲染地图
         this.myChart.setOption(this.getDefaultConfig())
     }
 
+    getChart () {
+        return this.myChart
+    }
+
     // 渲染散点
     renderScatter (data) {
+        // 第一个数据就是第一名
+        const first = data.first()
         // 获取散点的配置
         const config = this.createPoints(data)
         // 获取默认配置
         const defaultConfig = this.getDefaultConfig()
         // 从默认配置中插入散点配置
         defaultConfig.series.push(config)
+        // 需求：第一名需要区域高亮
+        defaultConfig.series.first().data = [{ name: first.name, selected: true }]
         // 开始渲染
         this.myChart.setOption(defaultConfig)
     }
 
     renderHeatmap (data) {
-        // 创建VisualMap
-        const visualMap =  this.createVisualMap()
         // 创建热力图层
         const heatmap = this.createHeatmap(data)
         // 获取散点的配置
@@ -1442,9 +1461,7 @@ class AggregationMap {
         // 从默认配置中插入散点配置
         defaultConfig.series.push(heatmap)
         // 从默认配置中插入VisualMap
-        defaultConfig.visualMap = visualMap
-
-        console.log(20190525105251, defaultConfig)
+        defaultConfig.visualMap = this.createVisualMap()
         // 开始渲染
         this.myChart.setOption(defaultConfig)
     }
