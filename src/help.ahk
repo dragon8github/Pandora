@@ -969,7 +969,7 @@ return
 
 ::aliip::
 ::vip::
-SendRaw, 45.76.182.187
+SendRaw, 66.42.42.29
 return
 
 
