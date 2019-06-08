@@ -26,35 +26,86 @@
 	Menu, A, Add, 23、.keys(key1，[key2]，[...])： 是否包含属性名，可以同any/all/container结合使用。, NodeHandler
 	Menu, A, Add, 24、.Throw(Error), NodeHandler
 	
-	Menu, NodeMenu, Add, 'use strict';, NodeHandler
-	Menu, NodeMenu, Add, module.exports, NodeHandler
-	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
-	Menu, NodeMenu, Add, 命令行参数process.argv, NodeHandler
-	Menu, NodeMenu, Add, $ npm install -g nodemon && nodemom index.js, NodeHandler
-	Menu, NodeMenu, Add, $ npm install pm2 -g && pm2 start hello.js --watch, NodeHandler
-	Menu, NodeMenu, Add, mocha/chai, :A
 
-	Menu, NodeMenu, Add
-	Menu, NodeMenu, Add
+	Menu, NodeFileHandler, Add, fs.write, NodeHandler
+	Menu, NodeFileHandler, Add, fs.read, NodeHandler
+	Menu, NodeFileHandler, Add, fs.readFileSync, NodeHandler
+	Menu, NodeFileHandler, Add, fs.rename, NodeHandler
+	Menu, NodeFileHandler, Add, fs.rm, NodeHandler
+	Menu, NodeFileHandler, Add, fs.mkdir, NodeHandler
+	Menu, NodeFileHandler, Add, fs.ls, NodeHandler
+	Menu, NodeFileHandler, Add, fs.watch, NodeHandler
+	Menu, NodeFileHandler, Add, fs.stat, NodeHandler
+	Menu, NodeFileHandler, Add, fs.exists, NodeHandler
+	Menu, NodeFileHandler, Add, node-dir 遍历目录, NodeHandler
 
-	Menu, NodeMenu, Add, sequelize.connect, NodeHandler
+	
+	
+	Menu, DataType, Add, Sequelize.STRING, NodeHandler2
+	Menu, DataType, Add, Sequelize.STRING(1234), NodeHandler2
+	Menu, DataType, Add, Sequelize.STRING.BINARY, NodeHandler2
+	Menu, DataType, Add, Sequelize.TEXT, NodeHandler2
+	Menu, DataType, Add, Sequelize.TEXT('tiny'), NodeHandler2
+
+	Menu, DataType, Add
+	Menu, DataType, Add
+
+	Menu, DataType, Add, Sequelize.INTEGER, NodeHandler2
+	Menu, DataType, Add, Sequelize.BIGINT, NodeHandler2
+	Menu, DataType, Add, Sequelize.BIGINT(11), NodeHandler2
+
+	Menu, DataType, Add
+	Menu, DataType, Add
+
+	Menu, DataType, Add, Sequelize.FLOAT, NodeHandler2
+	Menu, DataType, Add, Sequelize.FLOAT(11), NodeHandler2
+	Menu, DataType, Add, Sequelize.FLOAT(11`, 10), NodeHandler2
+
+	Menu, DataType, Add
+	Menu, DataType, Add
+
+	Menu, DataType, Add, Sequelize.DOUBLE, NodeHandler2
+	Menu, DataType, Add, Sequelize.DOUBLE(11), NodeHandler2
+	Menu, DataType, Add, Sequelize.DOUBLE(11`, 10), NodeHandler2
+
+	Menu, DataType, Add
+	Menu, DataType, Add
+
+	Menu, DataType, Add, Sequelize.DECIMAL, NodeHandler2
+	Menu, DataType, Add, Sequelize.DECIMAL(10`, 2), NodeHandler2
+
+	Menu, DataType, Add
+	Menu, DataType, Add
+
+	Menu, DataType, Add, Sequelize.DATE, NodeHandler2
+	Menu, DataType, Add, Sequelize.DATE(6), NodeHandler2
+	Menu, DataType, Add, Sequelize.DATEONLY, NodeHandler2
+
+	Menu, DataType, Add
+	Menu, DataType, Add
+
+	Menu, DataType, Add, Sequelize.BOOLEAN, NodeHandler2
+	Menu, DataType, Add, Sequelize.UUID, NodeHandler2
+
+	Menu, NodeMenu, Add, DataType, :DataType
+
+	Menu, NodeMenu, Add, $ npx sequelize-cli init --force, NodeHandler 
+	Menu, NodeMenu, Add, $ sequelize db:create, NodeHandler
+	Menu, NodeMenu, Add, $ npx sequelize-cli model:generate --name User, NodeHandler
+	Menu, NodeMenu, Add, $ npx sequelize-cli db:migrate, NodeHandler
+	Menu, NodeMenu, Add, $ npx sequelize-cli db:migrate:undo, NodeHandler
+	Menu, NodeMenu, Add, sequelize Testing the connection, NodeHandler
 	Menu, NodeMenu, Add, sequelize.createmodel, NodeHandler
 
-
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
 
-	Menu, NodeMenu, Add, fs.write, NodeHandler
-	Menu, NodeMenu, Add, fs.read, NodeHandler
-	Menu, NodeMenu, Add, fs.readFileSync, NodeHandler
-	Menu, NodeMenu, Add, fs.rename, NodeHandler
-	Menu, NodeMenu, Add, fs.rm, NodeHandler
-	Menu, NodeMenu, Add, fs.mkdir, NodeHandler
-	Menu, NodeMenu, Add, fs.ls, NodeHandler
-	Menu, NodeMenu, Add, fs.watch, NodeHandler
-	Menu, NodeMenu, Add, fs.stat, NodeHandler
-	Menu, NodeMenu, Add, fs.exists, NodeHandler
-	Menu, NodeMenu, Add, node-dir 遍历目录, NodeHandler
+	Menu, NodeMenu, Add, 'use strict';, NodeHandler
+	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
+	Menu, NodeMenu, Add, module.exports, NodeHandler
+	
+	Menu, NodeMenu, Add, $ npm install -g nodemon && nodemom index.js, NodeHandler
+	Menu, NodeMenu, Add, $ npm install pm2 -g && pm2 start hello.js --watch, NodeHandler
 
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
@@ -67,21 +118,37 @@
 	Menu, NodeMenu, Add, request.proxy, NodeHandler
 	Menu, NodeMenu, Add, node-http, NodeHandler
 	Menu, NodeMenu, Add, http.request, NodeHandler
+	
+	
+	
+	Menu, NodeMenu, Add
+	Menu, NodeMenu, Add
+	
+	Menu, NodeMenu, Add, 命令行参数process.argv, NodeHandler
 	Menu, NodeMenu, Add, 新建子进程（执行shell）：child_process.spawn 与 stdout, NodeHandler
 	Menu, NodeMenu, Add, 子进程与EventEmitter：on('data')/on('close'), NodeHandler
-	
-	Menu, NodeMenu, Add
-	Menu, NodeMenu, Add
-	
 	Menu, NodeMenu, Add, clearconsole, NodeHandler
 	Menu, NodeMenu, Add, TJ commander 命令行神器（入门极简版）, NodeHandler
 	Menu, NodeMenu, Add, TJ commander 命令行神器（简单版）, NodeHandler
 	Menu, NodeMenu, Add, TJ commander 命令行神器（加强版）, NodeHandler
+	
+
+	Menu, NodeMenu, Add
+	Menu, NodeMenu, Add
+	
+	Menu, NodeMenu, Add, mocha/chai, :A
+	Menu, NodeMenu, Add, fs 文件IO, :NodeFileHandler
+	
 
 	Menu, NodeMenu, Show
 	Menu, NodeMenu, DeleteAll
 return
 
+
+NodeHandler2:
+v := A_ThisMenuItem
+code(v)
+return
 
 NodeHandler:
 ; MsgBox You selected unique 数组去重复 from the menu utilsMenu.
@@ -94,6 +161,46 @@ Var =
 )
 }
 
+if (v == "$ npx sequelize-cli init --force") {
+cs("npx sequelize-cli init --force")
+return
+}
+
+if (v == "$ sequelize db:create") {
+cs("sequelize db:create")
+return
+}
+
+if (v == "$ npx sequelize-cli model:generate --name User") {
+Var = 
+(
+npx sequelize-cli model:generate --name Project --attributes \
+name:string,\
+desc:text,\
+users:string\
+--force
+)
+}
+
+if (v == "$ npx sequelize-cli db:migrate") {
+cs("npx sequelize-cli db:migrate")
+return
+}
+
+if (v == "$ npx sequelize-cli db:migrate:undo") {
+cs("npx sequelize-cli db:migrate:undo")
+return
+}
+
+if (v == "sequelize.createmodel") {
+_send("seq.model", true, true)
+return
+}
+
+if (v == "sequelize.init") {
+_send("seq.init", true,true)
+return
+}
 
 if (v == "TJ commander 命令行神器（入门极简版）") {
 Var = 
@@ -645,16 +752,30 @@ Send, fs.watch{tab}
 return
 }
 
-if (v == "sequelize.connect") {
-SendLevel 1
-Send, sequelize.connect{tab}
-return
-}
+if (v == "sequelize Testing the connection") {
+Var =
+(
+const Sequelize = require('sequelize');
 
-if (v == "sequelize.createmodel") {
-SendLevel 1
-Send, sequelize.createmodel{tab}
-return
+const connect = new Sequelize('sequelize_test', 'root', 'root', {
+    host: 'localhost',
+    port: 3306,
+    dialect: 'mysql',
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    },
+});
+
+connect.authenticate().then(() => {
+    console.log('Connection has been established successfully.');
+})
+.catch(err => {
+    console.error('Unable to connect to the database:', err);
+});
+)
 }
 
 if (v == "request") {
@@ -831,75 +952,6 @@ function clearConsole() {
 code(Var)
 return
 
-::sequelize.create::
-::sequelize.createmodel::
-::sequelize.define::
-::sequelize.definemodel::
-::sequelize.sync::
-::sequelize.user::
-Var =
-(
-// 模型定义API：http://docs.sequelizejs.com/manual/tutorial/models-definition.html
-const User = sequelize.define('user', {
-    firstName: { type: Sequelize.STRING },
-    lastName: { type: Sequelize.STRING },
-}, {
-	// 省略 createdAt 和 updateAt
-	timestamps: false
-});
-
-// 第一次没有表的时候需要同步来创建
-// http://docs.sequelizejs.com/manual/tutorial/instances.html
-// 官方还有两种额外的做法，一种是先build一个实例，然后save()，一种是直接create
-sequelize.sync({
-    force: true
-}).then(() => {
-	return User.create({
-        firstName: 'John',
-        lastName: 'Hancock'
-    })
-}).then(() => {
-    return User.find({
-        where: {
-            firstName: 'John'
-        }
-    })
-}).then(console.log)
-)
-code(Var)
-return
-
-::node.db::
-::node.mysql::
-::node.mysql2::
-::node.sequelize::
-::sequelize.init::
-::sequelize.connect::
-Var =
-(
-const Sequelize = require('sequelize');
-
-const connect = new Sequelize('database', 'username', 'password', {
-    host: 'localhost',
-    port: 3306,
-    dialect: 'mysql',
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    },
-});
-
-connect.authenticate().then(() => {
-    console.log('Connection has been established successfully.');
-})
-.catch(err => {
-    console.error('Unable to connect to the database:', err);
-});
-)
-code(Var)
-return
 
 ::node.dir::
 ::node.ls::
@@ -1609,4 +1661,81 @@ async function routes (fastify, options) {
 module.exports = routes
 )
 txtit(Var)
+return
+
+
+::seq.model::
+::seq.modal::
+::seq.m::
+Var =
+(
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('sequelize_test', 'root', 'root', {
+    host: 'localhost',
+    port: 3306,
+    dialect: 'mysql',
+})
+
+// 模型定义API：http://docs.sequelizejs.com/manual/tutorial/models-definition.html
+const User = sequelize.define('user', {
+    firstName: { type: Sequelize.STRING },
+    lastName: { type: Sequelize.STRING },
+}, {
+	// 省略 createdAt 和 updateAt
+	timestamps: false
+});
+
+// 第一次没有表的时候需要同步来创建
+// http://docs.sequelizejs.com/manual/tutorial/instances.html
+// 官方还有两种额外的做法，一种是先build一个实例，然后save()，一种是直接create
+sequelize.sync({
+    force: true
+}).then(() => {
+	return User.create({
+        firstName: 'John',
+        lastName: 'Hancock'
+    })
+}).then(() => {
+    return User.find({
+        where: {
+            firstName: 'John'
+        }
+    })
+}).then(console.log)
+---
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('sequelize_test', 'root', 'root', {
+    host: 'localhost',
+    port: 3306,
+    dialect: 'mysql',
+})
+
+class User extends Sequelize.Model {}
+User.init({
+  username: Sequelize.STRING,
+  birthday: Sequelize.DATE
+}, { sequelize, modelName: 'user' });
+
+sequelize.sync()
+  .then(() => User.create({
+    username: 'janedoe',
+    birthday: new Date(1980, 6, 20)
+  }))
+  .then(jane => {
+    console.log(jane.toJSON());
+  });
+)
+txtit(Var)
+return
+
+::ava::
+InputBox, OutputVar, title, enter a name?,,,,,,,,应该返回一个数组
+Var =
+(
+test('%OutputVar%', async t => {
+	const users = await model.User.findAll()
+	t.truthy(users instanceof Array)
+})
+)
+code(Var)
 return

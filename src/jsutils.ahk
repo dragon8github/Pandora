@@ -270,7 +270,6 @@
     Menu, utilsmy, Add, 堡垒模式：请求条件不满足则排队处理, utilsHandler
     Menu, utilsmy, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     Menu, utilsmy, Add, 把数组像分页一样分割为N段, utilsHandler
-    Menu, utilsmy, Add, Promise.prototype.before, utilsHandler
     Menu, utilsmy, Add, input动态宽度, utilsHandler
     Menu, utilsmy, Add, exclude: 从对象中排除某个属性, utilsHandler
     Menu, utilsmy, Add, pureMap：纯洁无害的map函数, utilsHandler

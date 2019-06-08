@@ -4532,7 +4532,7 @@ Var =
 code(Var)
 return
 
-:?:.then::
+:?:.then2::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
@@ -4542,6 +4542,22 @@ Var =
 })
 )
 code(Var)
+Return
+
+:?:.then::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =
+(
+.then(result => {
+	console.log(%t%, result)
+})
+)
+code(Var)
+Send, {up 2}
+Send, {End}
+Send, {left 5}
+Send, +{left 6}
+Send, ^d
 Return
 
 :?:.catch::

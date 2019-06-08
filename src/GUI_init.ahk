@@ -195,7 +195,7 @@ Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">75cdn</a>
 Gui, Pandora:Add, Text, W140 ys, ServerLess：
 Gui, Pandora:Add, Link,, <a href="https://www.amazonaws.cn/">AWS 官网</a>
 Gui, Pandora:Add, Link,, <a href="https://serverless.com/">Serverless框架</a>
-Gui, Pandora:Add, Link,, <a href="https://aws.amazon.com/cn/cloud9/">AWS Cloud9</a>
+Gui, Pandora:Add, Link,, <a href="https://aws.amazon.com/cn/cloud9/">AWS Cloud9 Web IDE</a>
 Gui, Pandora:Add, Link,, <a href="https://console.aws.amazon.com/iam/home?#/home">IMA管理</a>
 Gui, Pandora:Add, Link,, <a href="https://signin.aws.amazon.com/signin">AWS登录</a>
 Gui, Pandora:Add, Link,, <a href="https://console.aws.amazon.com/billing/home?#/paymentmethods">付费绑定</a>

@@ -13,6 +13,8 @@
 	Menu, arrayMenu, Add, 类数组转数组：Array.prototype.slice.call(arguments), ForHandler
 	Menu, arrayMenu, Add, 二维数组转一维数组：Array.prototype.flat(), ForHandler
 	Menu, arrayMenu, Add, 删除数组成员, ForHandler
+	Menu, arrayMenu, Add, 随机从数组中取N个数据, ForHandler
+	
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -56,6 +58,22 @@ Var =
 )
 }
 
+
+if (v == "随机从数组中取N个数据") {
+Var = 
+(
+function getRandomArrayElements(arr, count) {
+    var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+    while (i-- > min) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(min);
+}
+)
+}
 
 if (v == "删除数组成员") {
 _send("remove", true, true)

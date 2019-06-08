@@ -4077,7 +4077,8 @@ code(Var)
 return
 
 videohtml:
-Var =
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
 (
 <!DOCTYPE html>
 <html lang="en">
@@ -4098,8 +4099,9 @@ Var =
 </body>
 
 </html>
-)
-code(Var)
+),  %name%
+RunBy(name)
+run, % name
 return
 
 dgechartmaphtml:

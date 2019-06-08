@@ -1538,3 +1538,7 @@ return
 ::20::
 Send, 2️⃣0️⃣
 return
+
+::seq::
+cs("sequelize")
+return
