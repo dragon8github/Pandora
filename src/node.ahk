@@ -142,6 +142,7 @@
 
 	Menu, NodeMenu, Show
 	Menu, NodeMenu, DeleteAll
+	Menu, DataType, DeleteAll
 return
 
 
@@ -174,11 +175,12 @@ return
 if (v == "$ npx sequelize-cli model:generate --name User") {
 Var = 
 (
-npx sequelize-cli model:generate --name Project --attributes \
+npx sequelize-cli model:generate --name Group --attributes \
 name:string,\
 desc:text,\
-users:string\
---force
+users:string,\
+project:INTEGER\
+ --force
 )
 }
 
@@ -1733,8 +1735,42 @@ InputBox, OutputVar, title, enter a name?,,,,,,,,应该返回一个数组
 Var =
 (
 test('%OutputVar%', async t => {
-	const users = await model.User.findAll()
+	t.pass()
+})
+)
+code(Var)
+return
+
+::ava.init::
+Var =
+(
+// npm ava init
+import test from 'ava'
+import model from '../models'
+
+const mock = { name: 'test', desc: 'test', project: 1, users: 'test' }
+
+test('应该返回一个数组', async t => {
+	const users = await model.Task.findAll()
 	t.truthy(users instanceof Array)
+})
+
+test.serial('删除 test 用户', async t => {
+	const result = await model.Task.destroy({ where: {name: mock.name} })
+ 	t.truthy(typeof result === 'number')
+})
+
+test('添加一个任务', async (t, task) => {
+	task = await model.Task.create(mock)
+	t.is(task.dataValues.name, mock.name)
+})
+
+test('用户名重复，报错SequelizeUniqueConstraintError', async (t, task) => {
+	try {
+		task = await model.Task.create(mock)
+	} catch (err) {
+		t.is(err.name, 'SequelizeUniqueConstraintError')
+	}
 })
 )
 code(Var)

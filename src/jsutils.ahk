@@ -288,6 +288,7 @@
     Menu, utilsmy, Add, setInterval 强大的解决方案, utilsHandler
     Menu, utilsmy, Add, setInterval Switch超简单开关, utilsHandler
     Menu, utilsmy, Add, 微信群组随机取人头, utilsHandler
+    Menu, utilsmy, Add, 微信获取头像和人员名册, utilsHandler
     Menu, utilsmy, Add, Vue 进度条组件, utilsHandler
     Menu, utilsmy, Add, utils.js, utilsHandler
     Menu, utilsmy, Add, once函数装饰器, utilsHandler
@@ -436,6 +437,19 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "微信获取头像和人员名册") {
+Var = 
+(
+var users = [...document.querySelectorAll('.member.ng-scope')]
+users.map(_ => {
+    const name = _.querySelector('.nickname').innerText
+    const icon = _.querySelector('.avatar').getAttribute('src')
+    return { name, icon: `https://wx.qq.com/${icon}` }
+})
 )
 }
 
