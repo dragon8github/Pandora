@@ -1542,3 +1542,7 @@ return
 ::seq::
 cs("sequelize")
 return
+
+::jek::
+cs(" Jenkins")
+return

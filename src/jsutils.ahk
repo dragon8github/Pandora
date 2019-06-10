@@ -352,6 +352,8 @@
 
     ; @jiqiao
     Menu, utilsjiqiao, Add, JOJO - 砸瓦鲁多：浏览器暂停术 —— 直接在控制台输入debugger;, utilsHandler
+    Menu, utilsjiqiao, Add, console.save 在控制台保存json变量到本地, utilsHandler
+
     
     Menu, utilsMenu, Add, (〜￣△￣)〜认知～(￣▽￣～), :utilspractice
     Menu, utilsMenu, Add, (=・ω・=) 我的 (｀・ω・´), :utilsmy
@@ -441,6 +443,12 @@ Var =
 }
 
 
+if (v == "console.save 在控制台保存json变量到本地") {
+_send("console.save", true, true)
+return
+}
+
+
 if (v == "微信获取头像和人员名册") {
 Var = 
 (
@@ -448,7 +456,7 @@ var users = [...document.querySelectorAll('.member.ng-scope')]
 users.map(_ => {
     const name = _.querySelector('.nickname').innerText
     const icon = _.querySelector('.avatar').getAttribute('src')
-    return { name, icon: `https://wx.qq.com/${icon}` }
+    return { name, icon: ``https://wx.qq.com/${icon}`` }
 })
 )
 }
@@ -6049,6 +6057,34 @@ Var =
 Promise.all([a, b]).then(args => {
     const [a, b] = args
 })
+)
+code(Var)
+return
+
+::console.save::
+Var =
+(
+(function(console) {
+    console.save = function(data, filename) {
+        if (!data) {
+            console.error('Console.save: No data')
+            return;
+        }
+        if (!filename) filename = (+new Date) + 'console.json'
+        if (typeof data === "object") {
+            data = JSON.stringify(data, undefined, 4)
+        }
+        var blob = new Blob([data], { type: 'text/json' }),
+            e = document.createEvent('MouseEvents'),
+            a = document.createElement('a')
+
+        a.download = filename
+        a.href = window.URL.createObjectURL(blob)
+        a.dataset.downloadurl = ['text/json', a.download, a.href].join(':')
+        e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+        a.dispatchEvent(e)
+    }
+})(console)
 )
 code(Var)
 return
