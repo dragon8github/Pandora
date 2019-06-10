@@ -5135,6 +5135,36 @@ export const maybe = (fn, n = '') => {
 }
 
 /**
+ * delay工具函数
+ *
+    (async function(){
+        // 启动计时器
+        console.time('🚀')
+        // 测试专用函数
+        const test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 1000))
+        // wait
+        const result = await wait(test, 3000)
+        // success
+        console.log(result)
+        // 停止计时，输出时间
+        console.timeEnd('🚀') // => 🚀: 3002.038818359375ms
+    }())
+ */
+export const wait = async (fn, t = 0) => {
+    // 计时器（开始）
+    const startTime = +new Date
+    // 执行并等待该函数
+    const result = await fn()
+    // 计时器停止
+    const endTime = +new Date
+    // 获取请求消耗的时间
+    const intervalTime = t - (endTime - startTime)
+    // 返回
+    return new Promise((resolve, reject) => setTimeout(() => resolve(result), intervalTime))
+}
+
+
+/**
  * 延迟工具，必须配合 async/await使用 ...
  *
     (async function(){
