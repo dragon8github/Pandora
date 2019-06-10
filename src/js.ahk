@@ -2825,38 +2825,6 @@ window.__EVENT__ = {
 code(Var)
 return
 
-::delay::
-Var =
-(
-var upload = function (id) {
-	console.log('开始同步文件, id为'： id)
-}
-
-var proxySync = ;(function(){
-	var cache = [], // 一定时间内需要同步的id
-			 timer;	// 定时器
-
-	return function (id) {
-		// 塞入缓存，等待上传
-		cache.push(id)
-
-		// 保证不会覆盖已经启动的定时器
-		if ( timer ) {
-			return;
-		}
-
-		timer = setTimeout(() => {
-			// 上传
-			upload( cache.join(',') )
-			// 清空
-			clearTimeout(timer); timer = null; cache.length = 0;
-		}, 2000);
-	}
-}());
-)
-code(Var)
-return
-
 ::unique::
 ::norepeatarr::
 ::norepeat::
@@ -4229,6 +4197,41 @@ application/x-www-form-urlencoded;charset=utf-8
 code(Var)
 Return
 
+::wait::
+Var =
+(
+/**
+ * delay工具函数
+ *
+    (async function(){
+        // 启动计时器
+        console.time('🚀')
+        // 测试专用函数
+        const test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 1000))
+        // wait
+        const result = await wait(test, 3000)
+        // success
+        console.log(result)
+        // 停止计时，输出时间
+        console.timeEnd('🚀') // => 🚀: 3002.038818359375ms
+    }())
+ */
+export const wait = async (fn, t = 0) => {
+    // 计时器（开始）
+    const startTime = +new Date
+    // 执行并等待该函数
+    const result = await fn()
+    // 计时器停止
+    const endTime = +new Date
+    // 获取请求消耗的时间
+    const intervalTime = t - (endTime - startTime)
+    // 返回
+    return new Promise((resolve, reject) => setTimeout(() => resolve(result), intervalTime))
+}
+)
+code(Var)
+return
+
 
 ::$()::
 ::$()()::
@@ -4243,7 +4246,7 @@ return
 ::()()::
 Var = 
 (
-;(function(){
+;(async function(){
 	
 }());
 )

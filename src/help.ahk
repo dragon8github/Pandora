@@ -1546,3 +1546,15 @@ return
 ::jek::
 cs(" Jenkins")
 return
+
+::ahksend::
+::_send::
+::ahk_send::
+::ahk.send::
+Var =
+(
+_send("delay", true, true)
+return
+)
+code(Var)
+Return

@@ -264,6 +264,8 @@
     
     
     ; @my
+    Menu, utilsmy, Add, wait等待工具，必须配合 async/await使用, utilsHandler
+    Menu, utilsmy, Add, delay延迟工具，必须配合 async/await使用, utilsHandler
     Menu, utilsmy, Add, 数组成员冲排列：以大带小 drive, utilsHandler
     Menu, utilsmy, Add, StorageEvent：监听 localStorage 数据变化的解决方案, utilsHandler
     Menu, utilsmy, Add, mvDOM：移动dom元素到指定目标位置, utilsHandler
@@ -440,6 +442,17 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "wait等待工具，必须配合 async/await使用") {
+_send("wait", true, true)
+return
+}
+
+if (v == "delay延迟工具，必须配合 async/await使用") {
+_send("delay", true, true)
+return
 }
 
 
@@ -5078,6 +5091,25 @@ export default {
 code(Var)
 return
 
+::delay::
+Var =
+(
+/**
+ * 延迟工具，必须配合 async/await使用 ...
+ *
+    (async function(){
+        await delay(1000)
+        console.log('test')
+    }())
+ */
+export const delay = t => new Promise((resolve, reject) => {
+   setTimeout(() => {
+        resolve(t)
+   }, t)
+})
+)
+code(Var)
+return
 
 
 ::utils.js::
@@ -5101,6 +5133,20 @@ export const maybe = (fn, n = '') => {
         return n
     }
 }
+
+/**
+ * 延迟工具，必须配合 async/await使用 ...
+ *
+    (async function(){
+        await delay(1000)
+        console.log('test')
+    }())
+ */
+export const delay = t => new Promise((resolve, reject) => {
+   setTimeout(() => {
+        resolve(t)
+   }, t)
+})
 
 /**
  * 获取数组最后一位

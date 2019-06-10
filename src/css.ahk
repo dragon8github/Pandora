@@ -61,6 +61,7 @@
     Menu, Csssolution, Add
     
     Menu, Csssolution, Add, 文字Hover Shadow Box Animation美化, CssHandler
+    Menu, Csssolution, Add, 文字Hover underline animation美化（从中间开始）, CssHandler
     Menu, Csssolution, Add, 文字Hover underline animation美化, CssHandler
     Menu, Csssolution, Add, 向overflow溢出元素添加渐变, CssHandler
     Menu, Csssolution, Add, hover Sibling fade, CssHandler
@@ -145,6 +146,44 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+
+if (v == "文字Hover underline animation美化（从中间开始）") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style> 
+    .link {
+        display: inline-block;
+        text-decoration: none;
+    }
+
+        .link::after {
+            content: '';
+            display: block;
+            height: 5px;
+            margin-top: 10px;
+            width: 100`%;
+            background-color: #8daa97;
+            transition: all 250ms ease;
+            transform: scaleX(0);
+        }
+
+        .link:hover::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="###" class='link'>123123123123</a>
+</body>
+</html>
 )
 }
 
