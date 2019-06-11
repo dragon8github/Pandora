@@ -185,11 +185,11 @@ Gui, Pandora:Add, Link,, <a href="http://www.iconfont.cn/manage/index?manage_typ
 Gui, Pandora:Add, Link,, <a href="https://carbon.now.sh/">carbon代码图片</a>
 
 Gui, Pandora:Add, Text, W120 ys, cdn：
+Gui, Pandora:Add, Link,, <a href="https://cdnjs.com/">cdnjs.com</a>
 Gui, Pandora:Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Pandora:Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://unpkg.com/#/">unpkg cdn</a>
-Gui, Pandora:Add, Link,, <a href="https://cdnjs.com/">cdnjs.com</a>
 Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">75cdn</a>
 
 Gui, Pandora:Add, Text, W140 ys, ServerLess：
@@ -283,6 +283,8 @@ Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
 Gui, Pandora:Add, Link,, <a href="https://nodelover.me/courses">NodeLove大前端</a>
 Gui, Pandora:Add, Link,, <a href="https://www.fontke.com/tool/convfont/">字体在线转换工具</a>
 Gui, Pandora:Add, Link,, <a href="http://www.lurena.vip/">路人A</a>
+Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/">羽雀团队知识库</a>
+Gui, Pandora:Add, Link,, <a href="http://strapdownjs.com/">html转化为md</a>
 
 ;@1
 
@@ -304,8 +306,8 @@ Gui, Pandora:Add, Text, gNewjointjsHtml W160,新建去重复jointjs流程图
 Gui, Pandora:Add, Text, gNewuploadHtml W160,新建读取本地目录/文件内容
 Gui, Pandora:Add, Text, gNewlshtml W160,新建读取本地目录列表
 Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条
-Gui, Pandora:Add, Text, ghtml2mdhtml W160,新建HTML2MD
-
+Gui, Pandora:Add, Text, ghtml2mdhtml W160,新建HTML2Markdown
+Gui, Pandora:Add, Text, gwebidehtml W160,新建在线编辑器webide
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
@@ -390,14 +392,13 @@ Gui, Pandora:Add, Link,, <a href="https://hui.dgjy.net">门户网站</a>
 Gui, Pandora:Add, Text,  W120 ys, hz-12345：
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/hz-12345">hz-12345 源码</a>
 Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:6083/#/dg/Index">预览地址</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/big-bcreen/boards">敏捷看板</a>
 
 Gui, Pandora:Add, Text,  W140 xs Section yp+150, 数据中心
-Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">数据中心 - 线上地址</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心源码gitlab</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter">数据中心原型gitlab</a>
+Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">预览地址</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">源码gitlab</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter">原型gitlab</a>
 Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/DUXBCem1Kd2dQdkNi?opendocxfrom=admin&tdsourcetag=s_pctim_aiomsg&ADUIN=928532756&ADSESSION=1555287968&ADTAG=CLIENT.QQ.5603_.0&ADPUBNO=26882&tab=BB08J2">腾讯文档</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">数据中心git lab</a>
-Gui, Pandora:Add, Link,, <a href="https://top7bx.axshare.com">紫莹数据中心web原型</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/groups/DateCenter/-/boards">测试敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://dc.dgjy.net:8080/">Jenkins</a>
 
@@ -739,6 +740,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.hubspot.com/odometer/docs/welco
 
 Gui, Pandora:Add, Text,  W140 yp+50, 超好看拖拽上传：
 Gui, Pandora:Add, Link,, <a href="https://github.com/pqina/filepond">filepond</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/ThalKod/DropIt">DropIt</a>
 
 Gui, Pandora:Add, Text, W140 Section xs yp+100, 响应式导航：
 Gui, Pandora:Add, Link,, <a href="https://github.com/viljamis/responsive-nav.js">responsive-nav</a>
@@ -1016,6 +1018,10 @@ Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/shadow_visualizati
 Gui, Pandora:Add, Text,  W140 ys, Material Design:
 Gui, Pandora:Add, Link,, <a href="https://github.com/Dogfalo/">（推荐）materialize</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/zdhxiong/mdui">中文版md</a>
+
+Gui, Pandora:Add, Text,  W140 ys, 主题收录:
+Gui, Pandora:Add, Link,, <a href="https://bootswatch.com">bootstrap主题收录</a>
+Gui, Pandora:Add, Link,, <a href="https://jenil.github.io/bulmaswatch/">Bluma主题收录</a>
 
 ; 垃圾回收站
 Gui, Pandora:Tab, 15

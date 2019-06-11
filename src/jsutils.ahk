@@ -14,7 +14,6 @@
     Menu, utilsIs, Add, isHtml：div instanceof HTMLElement, utilsHandler
     Menu, utilsIs, Add, 判断是否为数字：!isNaN(+params.id), utilsHandler
 
-
     Menu, utilsIs, Add, , utilsHandler
     Menu, utilsIs, Add, , utilsHandler
 
@@ -161,6 +160,7 @@
     Menu, utilsSolution, Add, copyToClipboard 剪切板, utilsHandler
     Menu, utilsSolution, Add, 全屏F11最新解决方案, utilsHandler
     Menu, utilsSolution, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
+    Menu, utilsSolution, Add, 延迟上传解决ajax压力的解决方案, utilsHandler
 
     Menu, utilsExtend, Add, extend 浅拷贝（继承模式中最后的圣杯）, utilsHandler
     Menu, utilsExtend, Add, deepExtend 深拷贝, utilsHandler
@@ -188,6 +188,7 @@
     Menu, utilsDesignPattern, Add, , utilsHandler
     Menu, utilsDesignPattern, Add, , utilsHandler
     
+    Menu, utilsDesignPattern, Add, 延迟上传解决ajax压力的解决方案, utilsHandler
     Menu, utilsDesignPattern, Add, 闭包与Cache, utilsHandler
     Menu, utilsDesignPattern, Add, 参数缓存器, utilsHandler
     Menu, utilsDesignPattern, Add, 模块模式：现代模块实现的基石, utilsHandler
@@ -417,6 +418,7 @@
     Menu, utilsMenu, Add, e.dataset 给元素设置数据, utilsHandler
     Menu, utilsMenu, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     
+    
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
     Menu, utilsIs, DeleteAll
@@ -443,6 +445,13 @@ Var =
 (
 )
 }
+
+
+if (v == "延迟上传解决ajax压力的解决方案") {
+_send("delay_upload", true, true)
+return
+}
+
 
 
 if (v == "wait等待工具，必须配合 async/await使用") {
@@ -6161,6 +6170,42 @@ Var =
         a.dispatchEvent(e)
     }
 })(console)
+)
+code(Var)
+return
+
+
+::delayupload::
+::delay.upload::
+::delay-upload::
+::delay_upload::
+Var =
+(
+var upload = function (id) {
+    console.log('开始同步文件, id为'： id)
+}
+
+var proxySync = ;(function(){
+    var cache = [], // 一定时间内需要同步的id
+             timer; // 定时器
+
+    return function (id) {
+        // 塞入缓存，等待上传
+        cache.push(id)
+
+        // 保证不会覆盖已经启动的定时器
+        if ( timer ) {
+            return;
+        }
+
+        timer = setTimeout(() => {
+            // 上传
+            upload( cache.join(',') )
+            // 清空
+            clearTimeout(timer); timer = null; cache.length = 0;
+        }, 2000);
+    }
+}());
 )
 code(Var)
 return

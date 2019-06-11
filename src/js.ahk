@@ -5336,7 +5336,6 @@ onscriptload('https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js', function () {
 onscriptload('https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js', function () {
    console.log(_)
 })
-
 )
 code(Var)
 return
@@ -7364,4 +7363,64 @@ export default {}
 )
 code(Var)
 SendInput, +{left 2}
+return
+
+::editor::
+::webide::
+::ide::
+::jside::
+::ace::
+::iide::
+Var =
+(
+/**
+ * 加载script并且执行回调
+ * @param {String} url 资源地址
+ * @param {Function} cb 回调方法
+ * https://www.cnblogs.com/_franky/archive/2010/06/20/1761370.html
+ */
+var onscriptload = function (url, cb) {
+  var node = document.createElement("script")
+  var head = document.getElementsByTagName('head')[0]
+  var timeID
+  var supportLoad = "onload" in node
+  var onEvent = supportLoad ? "onload" : "onreadystatechange"
+  node[onEvent] = function onLoad() {
+      if (!supportLoad && !timeID && /complete|loaded/.test(node.readyState)) {
+          timeID = setTimeout(onLoad)
+          return
+      }
+      if (supportLoad || timeID) {
+          clearTimeout(timeID)
+          cb && cb()
+      }
+  }
+  head.insertBefore(node, head.firstChild)
+  node.src = url
+}
+
+// https://cdnjs.com/libraries/ace
+onscriptload('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/ace.js', function () {
+	onscriptload('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/mode-javascript.js', function () {
+		onscriptload('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/theme-monokai.js', function () {
+			var div = document.createElement('div')
+			div.style = 'position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337;'
+			div.id = 'editor'
+			document.body.insertBefore(div, document.body.firstChild) 
+
+			var editor = ace.edit('editor');
+			var JavaScriptMode = ace.require("ace/mode/javascript").Mode;
+			editor.session.setMode(new JavaScriptMode());	
+
+			editor.setTheme("ace/theme/monokai");
+
+			document.addEventListener('keydown', event => {
+				if (event.keyCode == 27) 
+                    div.style.display = div.style.display === 'none' ? 'block' : 'none'
+			})
+		})
+	})
+})
+)
+code(Var)
 return
