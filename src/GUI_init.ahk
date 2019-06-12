@@ -151,13 +151,14 @@ Gui, Pandora:Add, Link,, <a href="https://cylee.top/">cylee.top</a>
 Gui, Pandora:Add, Link,, <a href="https://ecs.console.aliyun.com/#/home">阿里云控制台</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 其他:
-Gui, Pandora:Add, Link, gInspect ,  <a>安卓调试</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need/You-Dont-Need-Momentjs">notMomentjs</a>
 Gui, Pandora:Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</a>
+Gui, Pandora:Add, Link, gInspect ,  <a>安卓调试</a>
 Gui, Pandora:Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
 Gui, Pandora:Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AutoHotkey官网</a>
 BabelUrl := "http://babeljs.io/repl#?babili=true&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=true&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cbabili&prettier=false&targets=&version=6.26.0"
 Gui, Pandora:Add, Link,, <a href="%BabelUrl%">Babel在线转换</a>
-Gui, Pandora:Add, Link,, <a href="https://codesandbox.io/u/dragon8github">CodeSandbox</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 娱乐:
 Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
@@ -1085,7 +1086,13 @@ ClipChanged(Type) {
 				time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 				WinGetTitle, title, A
 				txt := "__________________ " . title . " 【" . time . "】 " . "__________________ `r`n`r`n" . Clipboard . "`r`n`r`n`r`n`r`n"
-				filename := A_Desktop . "/.pandora" . A_YYYY . "" . A_MM . "" . A_DD
+				DIRECTORY := A_Desktop . "\.pandora"
+				AttributeString := FileExist(DIRECTORY)
+				; 说明找到目录了
+				if (AttributeString != "D") {
+					FileCreateDir, % DIRECTORY
+				}
+				filename := DIRECTORY . "/.pandora" . A_YYYY . "" . A_MM . "" . A_DD
 				FileAppend, %txt% ,  %filename%
 				content := txt . OutputVar
 				GuiControl, Pandora:Text, ClipHistory, %content%

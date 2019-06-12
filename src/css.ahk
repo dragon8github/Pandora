@@ -10,7 +10,7 @@
     Menu, CsstransformHandler, Add, transform: translateY(-50`%), CssHandler
     Menu, CsstransformHandler, Add, transform: translateX(-50`%), CssHandler   
         
-
+    Menu, cssknow, Add, position: sticky; 随着页面的滚动，当元素距离上边缘0距离的时候，黏在了上边缘, CssHandler
     Menu, cssknow, Add, currentColor 当前字体颜色, CssHandler
     Menu, cssknow, Add, calc：属性计算器，适合 position 居中解决方案, CssHandler
     Menu, cssknow, Add, 背景透明还可以这样用：background: 0 0, CssHandler
@@ -149,6 +149,13 @@ Var =
 )
 }
 
+
+if (v == "position: sticky; 随着页面的滚动，当元素距离上边缘0距离的时候，黏在了上边缘") {
+Var =
+(
+position: sticky;
+)
+}
 
 if (v == "文字Hover underline animation美化（从中间开始）") {
 Var =

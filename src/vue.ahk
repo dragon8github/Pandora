@@ -75,6 +75,7 @@
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
+  Menu, vuesolution, Add, setTitle: 解决微信、QQ、闪银等内置浏览器单页应用无法刷新title的问题, VueHandler
   Menu, vuesolution, Add, DataV - 顶部一闪过儿的loading封装, VueHandler
   Menu, vuesolution, Add, 我的layer组件：通过js来操作.vue组件，只有插入任何位置, VueHandler
   Menu, vuesolution, Add, svg-spinner-loader.vue, VueHandler
@@ -109,6 +110,10 @@ Var =
 )
 }
 
+if (v == "setTitle: 解决微信、QQ、闪银等内置浏览器单页应用无法刷新title的问题") {
+_send("setTitle", true, true)
+return
+}
 
 if (v == "DataV - 顶部一闪过儿的loading封装") {
 Var =

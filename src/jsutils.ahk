@@ -128,7 +128,7 @@
     Menu, utilsObject, Add, Object.getOwnPropertyDescriptor({a: 123}`, 'a') 获取属性的配置, utilsHandler
     Menu, utilsObject, Add, getter / setter , utilsHandler
 
-
+    Menu, utilsSolution, Add, setTitle: 解决微信、QQ、闪银等内置浏览器单页应用无法刷新title的问题, utilsHandler
     Menu, utilsSolution, Add, cookie 库, utilsHandler
     Menu, utilsSolution, Add, Model 类, utilsHandler
     Menu, utilsSolution, Add, rem 解决方案 / 淘宝解决方案, utilsHandler
@@ -445,6 +445,13 @@ Var =
 (
 )
 }
+
+
+if (v == "setTitle: 解决微信、QQ、闪银等内置浏览器单页应用无法刷新title的问题") {
+_send("setTitle", true, true)
+return
+}
+
 
 
 if (v == "延迟上传解决ajax压力的解决方案") {
