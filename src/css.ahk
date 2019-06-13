@@ -40,6 +40,7 @@
     Menu, cssoptimization, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
     
     
+    Menu, Csssolution, Add, 走路崴脚的loading, CssHandler
     Menu, Csssolution, Add, 三个DVI的Bouncing loader, CssHandler
     Menu, Csssolution, Add, dataV三个元素实现的loading, CssHandler
     Menu, Csssolution, Add, DataV-不断一闪而过的顶部进度条loading, CssHandler
@@ -67,6 +68,7 @@
     Menu, Csssolution, Add, hover Sibling fade, CssHandler
     Menu, Csssolution, Add, 原生实现switch, CssHandler
     Menu, Csssolution, Add, 不断闪闪发光的动画, CssHandler
+    Menu, Csssolution, Add, 俊峰UI喜欢的涟漪客服波动图, CssHandler
     
     
     Menu, Csssolution, Add
@@ -149,6 +151,226 @@ Var =
 )
 }
 
+
+if (v == "俊峰UI喜欢的涟漪客服波动图") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .animated-circles .circle {
+        background: rgba(38, 199, 252, .25);
+        width: 60px;
+        height: 60px;
+        border-radius: 50`%;
+        position: absolute;
+        z-index: 49;
+        transform: scale(1);
+        -webkit-transform: scale(1)
+    }
+
+    .animated-circles.animated .c-1 {
+        animation: 2s scaleToggleOne cubic-bezier(.25, .46, .45, .94) forwards
+    }
+
+    .animated-circles.animated .c-2 {
+        animation: 2.5s scaleToggleTwo cubic-bezier(.25, .46, .45, .94) forwards
+    }
+
+    .animated-circles.animated .c-3 {
+        animation: 3s scaleToggleThree cubic-bezier(.25, .46, .45, .94) forwards
+    }
+
+
+    @keyframes scaleToggleOne {
+        0 {
+            transform: scale(1);
+            -webkit-transform: scale(1)
+        }
+
+        50`% {
+            transform: scale(2);
+            -webkit-transform: scale(2)
+        }
+
+        100`% {
+            transform: scale(1);
+            -webkit-transform: scale(1)
+        }
+    }
+
+    @keyframes scaleToggleTwo {
+        0 {
+            transform: scale(1);
+            -webkit-transform: scale(1)
+        }
+
+        20`% {
+            transform: scale(1);
+            -webkit-transform: scale(1)
+        }
+
+        60`% {
+            transform: scale(2);
+            -webkit-transform: scale(2)
+        }
+
+        100`% {
+            transform: scale(1);
+            -webkit-transform: scale(1)
+        }
+    }
+
+    @keyframes scaleToggleThree {
+        0 {
+            transform: scale(1);
+            -webkit-transform: scale(1)
+        }
+
+        33`% {
+            transform: scale(1);
+            -webkit-transform: scale(1)
+        }
+
+        66`% {
+            transform: scale(2);
+            -webkit-transform: scale(2)
+        }
+
+        100`% {
+            transform: scale(1);
+            -webkit-transform: scale(1)
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="animated-circles animated">
+        <div class="circle c-1"></div>
+        <div class="circle c-2"></div>
+        <div class="circle c-3"></div>
+    </div>
+</body>
+</html>
+)
+}
+
+
+if (v == "走路崴脚的loading") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+    .load-container {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+
+    .load-container .boxLoading {
+        width: 50px;
+        height: 50px;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .load-container .boxLoading:before {
+        content: "";
+        width: 50px;
+        height: 5px;
+        background: #000;
+        opacity: 0.1;
+        position: absolute;
+        top: 59px;
+        left: 0;
+        border-radius: 50`%;
+        animation: shadow 0.5s linear infinite;
+    }
+
+    .load-container .boxLoading:after {
+        content: "";
+        width: 50px;
+        height: 50px;
+        background: #00adb5;
+        animation: animate 0.5s linear infinite;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 3px;
+    }
+
+    @keyframes animate {
+        17`% {
+            border-bottom-right-radius: 3px;
+        }
+
+        25`% {
+            transform: translateY(9px) rotate(22.5deg);
+        }
+
+        50`% {
+            transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+            border-bottom-right-radius: 40px;
+        }
+
+        75`% {
+            transform: translateY(9px) rotate(67.5deg);
+        }
+
+        100`% {
+            transform: translateY(0) rotate(90deg);
+        }
+    }
+
+    @keyframes shadow {
+
+        0`%,
+        100`% {
+            transform: scale(1, 1);
+        }
+
+        50`% {
+            transform: scale(1.2, 1);
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="load-container">
+        <div class="boxLoading"></div>
+    </div>
+</body>
+<script>
+$(function() {
+    console.log('hello world');
+});
+</script>
+
+</html>
+)
+}
 
 if (v == "position: sticky; 随着页面的滚动，当元素距离上边缘0距离的时候，黏在了上边缘") {
 Var =
@@ -2544,12 +2766,26 @@ Var =
 /*
  (function flexible (window, document) {
    var docEl = document.documentElement
+
    // set 1rem = viewWidth / 10
+   // 这个可以是4320、也可以是1920，要看你的效果图而定
    function setRemUnit () {
      var rem = docEl.clientWidth / 10
      docEl.style.fontSize = rem + 'px'
    }
+
+   /* 
+   window.px2px = function (v) {
+      return v / 192 * rem
+   }
+
+   window.px2rem = function (v) {
+    return v / 192
+   }
+    */
+  
    setRemUnit()
+
    // reset rem unit on page resize
    window.addEventListener('resize', setRemUnit)
    window.addEventListener('pageshow', function (e) {
@@ -2559,6 +2795,15 @@ Var =
    })
  }(window, document))
 */
+
+
+/*
+$root_fontsize: 432; // 因为效果图是4320 / 10
+
+@function rem($px) {
+    @return ($px / $root_fontsize) * 1rem;
+} 
+ */
 
 // rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推
 $vw_fontsize: 75; // iPhone 6尺寸的根元素大小基准值

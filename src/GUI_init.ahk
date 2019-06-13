@@ -292,23 +292,20 @@ Gui, Pandora:Add, Link,, <a href="http://strapdownjs.com/">html转化为md</a>
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
 Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建index.html
-Gui, Pandora:Add, Text, gNewreactbabelHtml W140, 新建react.babel.html
-Gui, Pandora:Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
-Gui, Pandora:Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
 Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
-Gui, Pandora:Add, Text, gNewRxjsIndexHtml W140,新建Rxjs.html
-Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
-Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
-Gui, Pandora:Add, Text, gNewassertHtml W160,新建assert.html
-Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建异步assert.html
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
 Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
+Gui, Pandora:Add, Text, gNewRxjsIndexHtml W140,新建Rxjs.html
+Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
+Gui, Pandora:Add, Text, gNewassertHtml W160,新建assert.html
+Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建异步assert.html
 Gui, Pandora:Add, Text, gNewjointjsHtml W160,新建去重复jointjs流程图
 Gui, Pandora:Add, Text, gNewuploadHtml W160,新建读取本地目录/文件内容
 Gui, Pandora:Add, Text, gNewlshtml W160,新建读取本地目录列表
 Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条
 Gui, Pandora:Add, Text, ghtml2mdhtml W160,新建HTML2Markdown
 Gui, Pandora:Add, Text, gwebidehtml W160,新建在线编辑器webide
+Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建图片上传ajax-formdata-upload.html
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
@@ -356,6 +353,10 @@ Gui, Pandora:Add, Text, gNewNodejsRenamechName W190, 新建nodejs批量改名中
 Gui, Pandora:Add, Text, gNewmochachai W190, 新建mocha+chai单元测试模板
 Gui, Pandora:Add, Text, gNewesmodule W190, 新建nodejs运行es Module模板
 
+Gui, Pandora:Add, Text, gNewreactbabelHtml W140  ys x+30, 新建react.babel.html
+Gui, Pandora:Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
+Gui, Pandora:Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
+Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
 
 Gui, Pandora:Tab, 3
 Gui, Pandora:Add, Text,  W130 Section, 油气管道（react）:
@@ -541,6 +542,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/OYsun/VueCircleMenu">vue-�
 Gui, Pandora:Add, Link,, <a href="https://vuegg.now.sh/">vuegg 神器，找了好久了</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/xiaokaike/vue-color">vue-color 给力颜色器</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/kirillmurashov/vue-drag-resize">vue-drag-resize</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/SortableJS/Vue.Draggable">拖拽Vue.Draggable</a>
 
 Gui, Pandora:Add, Text, W140 Section xs yp+150, vue动画钩子：
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes">vue-transition</a>
@@ -760,6 +762,7 @@ Gui, Pandora:Add, Text, W140 ys, 拖拽：
 Gui, Pandora:Add, Link,, <a href="https://ilyashubin.github.io/scrollbooster/">table拖动js</a>
 Gui, Pandora:Add, Link,, <a href="https://sortablejs.github.io/Sortable/">列表拖拽js</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/bevacqua/dragula">拖拽神器dragula</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/SortableJS/Vue.Draggable">拖拽Vue.Draggable</a>
 Gui, Pandora:Add, Link,, <a href="https://vuegg.now.sh/">vuegg</a>
 
 Gui, Pandora:Add, Text, W120 ys, 录制js：

@@ -4553,3 +4553,48 @@ onscriptload('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/ace.js', function
 RunBy(name)
 run, % name
 return
+
+ajaxuploadhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <input type="file" name="" id="file">
+</body>
+<script>
+document.getElementById('file').addEventListener('change', function(e) {
+    const data  = new FormData()
+    // https://www.cnblogs.com/qiumingcheng/p/6854933.html
+    data.append('file', this.files[0])
+
+    $.ajax({
+        url: "http://192.168.8.89/index.php",
+        type: "POST",
+        data: data,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            
+        },
+        error: function(data) {
+            
+        }
+    });
+})
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
