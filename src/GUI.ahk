@@ -4598,3 +4598,51 @@ document.getElementById('file').addEventListener('change', function(e) {
 RunBy(name)
 run, % name
 return
+
+dgmap3Dhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>设置地图显示要素</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <style>
+    html,
+    body,
+    #container {
+        width: 100`%;
+        height: 100`%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    </div>
+    <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=9f1c132e77dc10edf34fe44bec1208a9"></script>
+    <script>
+    //初始化地图
+    var map = new AMap.Map('container', {
+        resizeEnable: true, //是否监控地图容器尺寸变化
+        zoom: 17,
+        center: [113.758806, 23.024336],
+        rotation: -15,
+        pitch: 70,
+        viewMode: '3D', //开启3D视图,默认为关闭
+        features: ['bg', 'road', 'point'] // 'building' 
+    });
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

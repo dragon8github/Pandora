@@ -343,6 +343,7 @@ Gui, Pandora:Add, Text, gNewEchartDemoHtml ,新建.echartsDemo.html（官方示�
 Gui, Pandora:Add, Text, gtianMapHtml ,新建天地图国土地图.html
 Gui, Pandora:Add, Text, gtianMaparcgisHtml ,新建arcgis和天地图.html
 Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
+Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
 
 Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+110, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
@@ -698,6 +699,11 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/axios/axios">axios github</
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/CyLee/p/9827489.html">axios 简易教程</a>
 
 
+Gui, Pandora:Add, Text,  W140 ys, storybook：
+Gui, Pandora:Add, Link,, <a href="https://github.com/storybookjs/storybook">storybook github</a>
+Gui, Pandora:Add, Link,, <a href="https://storybook.js.org/docs/guides/guide-vue/">guide-vue</a>
+Gui, Pandora:Add, Link,, <a href="https://storybook.js.org/docs/configurations/custom-webpack-config/">webpack-config</a>
+
 Gui, Pandora:Tab, 8
 Gui, Pandora:Add, Text,  W180 Section, 库1：
 Gui, Pandora:Add, Link,, <a href="https://github.com/GoogleChromeLabs/quicklink/tree/master/translations/zh-cn">quicklink</a>
@@ -710,8 +716,6 @@ Gui, Pandora:Add, Link,, <a href="https://grafana.com/">grafana</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/grafana/grafana">grafana github</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/soWill666/grafana-echarts-panel">grafana-echarts</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/gbrian/grafana-echart-panel">grafana-echarts2</a>
-
-
 
 Gui, Pandora:Add, Text, W140 ys, 地图辅助库：
 Gui, Pandora:Add, Link,, <a href="http://turfjs.org/docs/#bearing">turfjs</a>
@@ -804,10 +808,12 @@ Gui, Pandora:Add, Link,, <a href="https://l2dwidget.js.org/docs/index.html">文�
 ; @qimiao @qm @ku
 
 ; @map @ditu
+
+; @echarts @ehcart @chart
 Gui, Pandora:Tab, 9
 Gui, Pandora:Add, Text, W140 Section, 高德地图：
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/summary">高德地图-JavaScript</a>
-Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/map/map-show">高德地图-Demo</a>
+Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/personalized-map/map-showlabel">高德地图-Demo</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/reference/core">高德地图-API</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/demo-center/amap-ui">高德地图-轨迹图</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/map/3d-map">高德地图-3D地图</a>
@@ -854,6 +860,7 @@ Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/lates
 Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/latest/guide/">入门指引</a>
 
 Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
+Gui, Pandora:Add, Link,, <a href="https://github.com/ecomfe/awesome-echarts">awesome-echarts</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/theme-builder/">echart 主题构建</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/tutorial.html#5 分钟上手 ECharts">echart 快速上手</a>
