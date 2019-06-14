@@ -1,4 +1,14 @@
-﻿::wo::
+﻿::me::
+Var =
+(
+module.exports = function ({ config }) {
+    
+}
+)
+code(Var)
+Return
+
+::wo::
 Var =
 (
 window.onload = function () {

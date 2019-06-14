@@ -216,17 +216,17 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/azl397985856/leetcode">leet
 Gui, Pandora:Add, Link,, <a href="https://miyogurt.github.io/nodelover-books">NodeLover 黄金屋</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
+
+Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly">阮一峰的周刊</a>
+Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/">羽雀团队知识库</a>
+Gui, Pandora:Add, Link,, <a href="https://nodelover.me/courses">NodeLove大前端</a>
+Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/05/22.html">个人开发者的前端日报</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview">以面为练</a>
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/manageyourkindle">我的设备</a>
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/Kindle免费电子书/b?node=116175071">kindle官方</a>
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&node=1337022071">Kindle Unlimited</a>
-Gui, Pandora:Add, Link,, <a href="https://baideye.com/article/123#menu_index_24">免费游戏1500G</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/phodal/serverless">《Serverless》</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md">《JavaScript 算法》</a>
-Gui, Pandora:Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">《React 小书》</a>
-Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/weuse?page=1">《大牛都在用什么？》</a>
-Gui, Pandora:Add, Link,, <a href="https://classroom.udacity.com/courses/ud905/lessons/92a39eec-0c04-4d98-b47f-c884b9cd5a3b/concepts/78143d19-8360-4f83-88ab-cfcb5b160465">「Flutter 教学视频」</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview">以面为练</a>
-Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/05/22.html">个人开发者的前端日报</a>
+Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
+Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
@@ -241,28 +241,23 @@ Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/526d58e01a748
 
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
+Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng熊猫图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
-Gui, Pandora:Add, Link,, <a href="http://iconstore.co/">iconstore.co</a>
-Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">pexels.com</a>
-Gui, Pandora:Add, Link,, <a href="https://unsplash.com/">unsplash.com</a>
-Gui, Pandora:Add, Link,, <a href="https://www.foodiesfeed.com/">foodiesfeed.com</a>
-Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">pixabay.com</a>
-Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
-Gui, Pandora:Add, Link,, <a href="http://photo.weibo.com/upload/index">新浪微博图床</a>
 Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</a>
+Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/ruanyf/share/free-photos">阮一峰的资源</a>
+Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
-Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng图片压缩</a>
+
 Gui, Pandora:Add, Link,, <a href="https://app.didiyun.com/#/dc2/detail?uuid=a289c3f607fd5bbd8261df9b266ae211">滴滴云</a>
 Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub 镜像仓库</a>
 Gui, Pandora:Add, Link,, <a href="http://www.51ym.me/User/MobileSMSCode.aspx">易码平台</a>
 Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer</a>
 Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux-command 命令搜索</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大全</a>
-Gui, Pandora:Add, Link,, <a href="https://hellogithub.com/report/db-engines/?url=/periodical/volume/15/">数据库排行榜</a>
 Gui, Pandora:Add, Link,, <a href="https://serverless.css-tricks.com/ideas/">前端开发Serverless</a>
 
 
@@ -274,17 +269,13 @@ Gui, Pandora:Add, Link,, <a href="https://www.vultr.com/">vultr</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/Alvin9999/new-pac/wiki/自建ss服务器教程">自建ss服务器教程</a>
 Gui, Pandora:Add, Link,, <a href="https://36dcup.tk/user">36dcup加速度</a>
 Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
-Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
-Gui, Pandora:Add, Link,, <a href="https://www.zhihu.com/question/23054572">100块以内的礼物</a>
-Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 好东西：
-Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/ruanyf/share/free-photos">阮一峰的资源</a>
-Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
-Gui, Pandora:Add, Link,, <a href="https://nodelover.me/courses">NodeLove大前端</a>
+Gui, Pandora:Add, Link,, <a href="https://www.zhihu.com/question/23054572">100块以内的礼物</a>
 Gui, Pandora:Add, Link,, <a href="https://www.fontke.com/tool/convfont/">字体在线转换工具</a>
 Gui, Pandora:Add, Link,, <a href="http://www.lurena.vip/">路人A</a>
-Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/">羽雀团队知识库</a>
+
 Gui, Pandora:Add, Link,, <a href="http://strapdownjs.com/">html转化为md</a>
 
 ;@1
@@ -306,6 +297,7 @@ Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条
 Gui, Pandora:Add, Text, ghtml2mdhtml W160,新建HTML2Markdown
 Gui, Pandora:Add, Text, gwebidehtml W160,新建在线编辑器webide
 Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建图片上传ajax-formdata-upload.html
+Gui, Pandora:Add, Text, gprismhtml W160,prism代码高亮.html
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
@@ -703,6 +695,12 @@ Gui, Pandora:Add, Text,  W140 ys, storybook：
 Gui, Pandora:Add, Link,, <a href="https://github.com/storybookjs/storybook">storybook github</a>
 Gui, Pandora:Add, Link,, <a href="https://storybook.js.org/docs/guides/guide-vue/">guide-vue</a>
 Gui, Pandora:Add, Link,, <a href="https://storybook.js.org/docs/configurations/custom-webpack-config/">webpack-config</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/lauthieb/awesome-storybook">awesome-storybook</a>
+Gui, Pandora:Add, Link,, <a href="https://storybook.js.org/docs/addons/addon-gallery/">插件大全</a>
+Gui, Pandora:Add, Link,, <a href="https://storybooks-official.netlify.com/?path=/story/ui-panel--default">demo-1</a>
+Gui, Pandora:Add, Link,, <a href="https://axaguildev.github.io/react-toolkit/v1.1.0/storybook/?selectedKind=Form.Demo`%20Statefull&selectedStory=Form%20with%20recompose&full=0&addons=1&stories=1&panelRight=1&addonPanel=storybook%2Factions%2Factions-panel">demo-2</a>
+
+
 
 Gui, Pandora:Tab, 8
 Gui, Pandora:Add, Text,  W180 Section, 库1：
@@ -1053,6 +1051,21 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-o
 Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">旧版测试地址174</a>
 Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">旧版演示地址</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/dg/maptheme">新版 plus 测试地址174</a>
+
+
+Gui, Pandora:Add, Text,  W140 ys, 垃圾3:
+Gui, Pandora:Add, Link,, <a href="http://iconstore.co/">iconstore.co</a>
+Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">pexels.com</a>
+Gui, Pandora:Add, Link,, <a href="https://unsplash.com/">unsplash.com</a>
+Gui, Pandora:Add, Link,, <a href="https://www.foodiesfeed.com/">foodiesfeed.com</a>
+Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">pixabay.com</a>
+Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co</a>
+Gui, Pandora:Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">《React 小书》</a>
+Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/weuse?page=1">《大牛都在用什么？》</a>
+Gui, Pandora:Add, Link,, <a href="https://classroom.udacity.com/courses/ud905/lessons/92a39eec-0c04-4d98-b47f-c884b9cd5a3b/concepts/78143d19-8360-4f83-88ab-cfcb5b160465">「Flutter 教学视频」</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/phodal/serverless">《Serverless》</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md">《JavaScript 算法》</a>
+
 
 ; 剪切框
 Gui, Pandora:Tab, 16

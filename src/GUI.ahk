@@ -4646,3 +4646,47 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+prismhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism-okaidia.min.css">
+</head>
+
+<body>
+    <pre class="language-js"><code>
+        $.ajax({
+            url: "http://localhost:3000",
+            type: "post",
+            data: JSON.stringify({
+                test: 123
+            }),
+            headers: {
+                token: '123'
+            },
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (data) {
+                console.log(20190614095436, data);
+            },
+            error: function(e, m){
+               console.log('数据接口请求异常', e, m);
+            }
+        })
+    </code></pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.js"></script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
