@@ -296,8 +296,9 @@ Gui, Pandora:Add, Text, gNewlshtml W160,新建读取本地目录列表
 Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条
 Gui, Pandora:Add, Text, ghtml2mdhtml W160,新建HTML2Markdown
 Gui, Pandora:Add, Text, gwebidehtml W160,新建在线编辑器webide
-Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建图片上传ajax-formdata-upload.html
+Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
 Gui, Pandora:Add, Text, gprismhtml W160,prism代码高亮.html
+Gui, Pandora:Add, Text, gdeepmergehtml W160,deepmerge.html
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
@@ -741,7 +742,9 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/chriso/validator.js">valida
 
 
 Gui, Pandora:Add, Text, W140 ys, 数字上下滚动插件：
-Gui, Pandora:Add, Link,, <a href="https://github.hubspot.com/odometer/docs/welcome/">odometer</a>
+Gui, Pandora:Add, Link,, <a href="https://github.hubspot.com/odometer/docs/welcome/">odometer（已废弃）</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/gitWhatever/vue-digitroll">vue-digitroll</a>
+
 
 Gui, Pandora:Add, Text,  W140 yp+50, 超好看拖拽上传：
 Gui, Pandora:Add, Link,, <a href="https://github.com/pqina/filepond">filepond</a>
@@ -857,6 +860,8 @@ Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/lates
 Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/latest/api-reference/">api文档</a>
 Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/latest/guide/">入门指引</a>
 
+; chart echarts
+
 Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
 Gui, Pandora:Add, Link,, <a href="https://github.com/ecomfe/awesome-echarts">awesome-echarts</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
@@ -897,6 +902,9 @@ Gui, Pandora:Add, Link, W140, <a href="http://www.tianditu.gov.cn/">天地图 �
 Gui, Pandora:Add, Link, W140, <a href="http://service.tianditu.gov.cn/">服务搜索</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/server/MapService.html">矢量地图api</a>
 Gui, Pandora:Add, Link, W140, <a href="https://github.com/mapbox/mapbox-gl-js">mapbox gl github</a>
+
+Gui, Pandora:Add, Text, W140 ys, 优秀的echarts示例:
+Gui, Pandora:Add, Link, W140, <a href="https://gallery.echartsjs.com/editor.html?c=xH2DfA0Olu">幻影之舞</a>
 
 
 Gui, Pandora:Tab, 10

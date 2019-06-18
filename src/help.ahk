@@ -22,6 +22,14 @@ return
 	Hotstring("Reset")
 return
 
+::dgxy::
+Var =
+(
+113.843319, 22.921901
+)
+code(Var)
+Return
+
 ::vpwd::
 SendRaw, R+m3{]H]m11D1e!h
 return

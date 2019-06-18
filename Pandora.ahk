@@ -28,6 +28,7 @@ FileDelete, .\src\*.bak
 #Include src/wx.ahk               ; wx
 #Include src/elementui.ahk	      ; elementUI
 #Include src/shell.ahk            ; shell
+#Include src/echarts.ahk	      ; echarts
 #include src/css.ahk              ; css
 #Include src/arr.ahk              ; arr
 #Include src/python.ahk		      ; python
@@ -36,7 +37,6 @@ FileDelete, .\src\*.bak
 #Include src/js.ahk               ; JavaScript  
 #Include src/canvas.ahk		      ; canvas
 #Include src/TypeScript.ahk       ; TypeScript
-#Include src/echarts.ahk	      ; echarts
 #Include src/jsutils.ahk          ; jsutils
 #Include src/php.ahk              ; php
 #Include src/sql.ahk		      ; sql

@@ -1,4 +1,21 @@
-﻿::me::
+﻿::sb::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+Var =
+(
+// %OutputVar%
+storiesOf('%OutputVar%', module).addParameters({
+	readme: {
+		sidebar: %OutputVar%.__docs
+	}
+}).add('%OutputVar%', () => ({
+    components: { %OutputVar% },
+    template: ``<%OutputVar%></%OutputVar%>``,
+}))
+)
+code(Var)
+return
+
+::me::
 Var =
 (
 module.exports = function ({ config }) {
@@ -4036,7 +4053,7 @@ debugger;
 )
 code(Var)
 SendInput, {up}{end}
-SendInput, +{left 1}
+SendInput, {left 1}
 return
 
 >!c::

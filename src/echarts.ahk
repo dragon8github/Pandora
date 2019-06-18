@@ -735,8 +735,8 @@ myChart.setOption(options);
 code(Var)
 return
 
-::echarts.load::
-::echarts.loading::
+:?:echarts.load::
+:?:echarts.loading::
 Var =
 (
 this.myChart.showLoading({

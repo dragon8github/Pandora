@@ -1,4 +1,14 @@
-﻿::el-search::
+﻿::count-to::
+::countto::
+Var =
+(
+import countTo from 'vue-count-to';
+<countTo :startVal='0' :endVal="65491" :duration="1500" class="total-num"></countTo>
+)
+code(Var)
+return
+
+::el-search::
 Var =
 (
 <template>

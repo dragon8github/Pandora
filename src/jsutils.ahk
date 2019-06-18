@@ -740,6 +740,7 @@ document.currentScript
 
 if (v == "const { log， warn， info， error， assert  } = console") {
 _send("log", true, true)
+return
 }
 
 if (v == "HTML缓存数据：e.dataset 与 data-fuck-you") {

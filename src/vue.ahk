@@ -13,6 +13,7 @@
   
   Menu, vuewatch, Add, vue.watch, VueHandler
   Menu, vuewatch, Add, vue.watch.deep, VueHandler
+  Menu, vuewatch, Add, vue.watch.deep-$props, VueHandler
   Menu, vuewatch, Add, vue.watch-vuex, VueHandler
   Menu, vuewatch, Add, vue.watch-$route, VueHandler
   Menu, vuewatch, Add, vue.watch-deep-$route, VueHandler
@@ -107,6 +108,21 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "vue.watch.deep-$props") {
+Var = 
+(
+watch: {
+    '$props': {
+        deep: true,
+        handler (newV, oldV) {
+            
+        }
+    }
+},
 )
 }
 

@@ -4690,3 +4690,41 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+deepmergehtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='https://unpkg.com/deepmerge@3.2.0/dist/umd.js'></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+const storybook_json = {"name": "echarts-story-book", "version": "1.0.0", "description": "", "main": "index.js", "dependencies": {"_common-tags@1.8.0@common-tags": "^1.8.0", "_core-js@3.1.3@core-js": "^3.1.3", "_dom-walk@0.1.1@dom-walk": "^0.1.1", "_global@4.4.0@global": "^4.4.0", "_min-document@2.19.0@min-document": "^2.19.0", "_process@0.11.10@process": "^0.11.10", "_regenerator-runtime@0.12.1@regenerator-runtime": "^0.12.1", "highlight.js": "^9.15.8", "vue": "^2.6.10"}, "devDependencies": {"@babel/core": "^7.4.5", "@storybook/addon-actions": "^5.1.3", "@storybook/addon-info": "^5.1.4", "@storybook/addon-knobs": "^5.1.4", "@storybook/addon-links": "^5.1.3", "@storybook/addon-notes": "^5.1.4", "@storybook/addon-storysource": "^5.1.4", "@storybook/vue": "^5.1.3", "babel-loader": "^8.0.6", "babel-preset-vue": "^2.0.2", "css-loader": "^3.0.0", "html-loader": "^0.5.5", "markdown-loader": "^5.0.0", "storybook-readme": "^5.0.3", "style-loader": "^0.23.1", "vue-loader": "^15.7.0", "vue-template-compiler": "^2.6.10", "vuex": "^3.1.1"}, "scripts": {"start": "start-storybook"}, "keywords": [], "author": "", "license": "ISC"}
+const my_project_json = {"name": "my-project", "version": "1.0.0", "description": "A Vue.js project", "author": "lizhaohong <928532756@qq.com>", "private": true, "scripts": {"dev": "webpack-dev-server --inline --host 0.0.0.0 --progress --config  build/webpack.dev.conf.js", "start": "npm run dev", "build": "node build/build.js"}, "dependencies": {"animate.css": "^3.7.0", "axios": "^0.18.0", "babel-polyfill": "^6.26.0", "compression-webpack-plugin": "^2.0.0", "echarts": "^4.2.0-rc.1", "element-ui": "^2.4.7", "fundebug-javascript": "^1.5.1", "jquery": "^3.3.1", "localforage": "^1.7.3", "moment": "^2.22.2", "node-sass": "^4.9.3", "nprogress": "^0.2.0", "quicklink": "^1.0.0", "sass-loader": "^7.1.0", "velocity-animate": "^1.5.2", "vue": "^2.5.2", "vue-awesome-swiper": "^3.1.3", "vue-count-to": "^1.0.13", "vue-router": "^3.0.1", "vuex": "^3.0.1", "whatwg-fetch": "^3.0.0"}, "devDependencies": {"autoprefixer": "^7.1.2", "babel-core": "^6.22.1", "babel-helper-vue-jsx-merge-props": "^2.0.0", "babel-loader": "^7.1.1", "babel-plugin-component": "^0.11.0", "babel-plugin-syntax-jsx": "^6.8.0", "babel-plugin-transform-runtime": "^6.22.0", "babel-plugin-transform-vue-jsx": "^3.3.0", "babel-preset-env": "^1.3.2", "babel-preset-es2015": "^6.24.1", "babel-preset-stage-2": "^6.22.0", "chalk": "^2.0.1", "copy-webpack-plugin": "^4.0.1", "css-loader": "^0.28.0", "extract-text-webpack-plugin": "^3.0.0", "file-loader": "^1.1.4", "friendly-errors-webpack-plugin": "^1.6.1", "html-webpack-plugin": "^2.30.1", "node-notifier": "^5.1.2", "optimize-css-assets-webpack-plugin": "^3.2.0", "ora": "^1.2.0", "page-skeleton-webpack-plugin": "^0.10.12", "portfinder": "^1.0.13", "postcss-import": "^11.0.0", "postcss-loader": "^2.0.8", "postcss-url": "^7.2.1", "rimraf": "^2.6.0", "semver": "^5.3.0", "shelljs": "^0.7.6", "uglifyjs-webpack-plugin": "^1.1.1", "url-loader": "^0.5.8", "vue-loader": "^13.3.0", "vue-style-loader": "^3.0.1", "vue-template-compiler": "^2.5.2", "webpack": "^3.6.0", "webpack-bundle-analyzer": "^2.9.0", "webpack-dev-server": "^2.9.1", "webpack-merge": "^4.1.0"}, "engines": {"node": ">= 6.0.0", "npm": ">= 3.0.0"}, "browserslist": ["last 99 versions"] }
+const mergejson = deepmerge(storybook_json, my_project_json)
+console.log(20190614144338, mergejson)
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

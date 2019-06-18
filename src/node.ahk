@@ -103,7 +103,7 @@
 	Menu, NodeMenu, Add, 'use strict';, NodeHandler
 	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
 	Menu, NodeMenu, Add, module.exports, NodeHandler
-	
+	Menu, NodeMenu, Add, os.EOL, NodeHandler
 	Menu, NodeMenu, Add, $ npm install -g nodemon && nodemom index.js, NodeHandler
 	Menu, NodeMenu, Add, $ npm install pm2 -g && pm2 start hello.js --watch, NodeHandler
 
@@ -159,6 +159,14 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "os.EOL") {
+Var = 
+(
+os.EOL
 )
 }
 

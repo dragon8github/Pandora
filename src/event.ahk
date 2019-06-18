@@ -119,7 +119,8 @@
 	
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
-	
+
+    Menu, EventMenu, Add, 监听动画结束：animationend, EventHandler  
 	Menu, EventMenu, Add, keycode大全和打印方式, EventHandler
 	Menu, EventMenu, Add, js 监听 enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + enter, EventHandler
@@ -179,7 +180,16 @@ Var =
 (
 )
 }
+	
 
+if (v == "监听动画结束：animationend") {
+Var = 
+(
+.addEventListener('animationend', (event) => {
+  
+})
+)
+}
 
 if (v == "map.js 类库持续集成") {
 _send("map.js", true, true)
