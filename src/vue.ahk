@@ -13,10 +13,10 @@
   
   Menu, vuewatch, Add, vue.watch, VueHandler
   Menu, vuewatch, Add, vue.watch.deep, VueHandler
-  Menu, vuewatch, Add, vue.watch.deep-$props, VueHandler
   Menu, vuewatch, Add, vue.watch-vuex, VueHandler
   Menu, vuewatch, Add, vue.watch-$route, VueHandler
   Menu, vuewatch, Add, vue.watch-deep-$route, VueHandler
+  Menu, vuewatch, Add, vue.watch.deep-$props, VueHandler
 
   Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, vue.config.js, VueHandler
@@ -34,18 +34,21 @@
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
   
   
+  Menu, vuetranstion, Add, <transition>, VueHandler
+  Menu, vuetranstion, Add, <transition v-on...>, VueHandler
+  Menu, vuetranstion, Add, <transition-group>, VueHandler
+  Menu, vuetranstion, Add, <transition>与路由动画, VueHandler
+  
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
-  Menu, VueMenu, Add, this.$forceUpdate(), VueHandler
+  Menu, VueMenu, Add, <transition>, :vuetranstion
   Menu, VueMenu, Add, <keep-alive>, VueHandler
-  Menu, VueMenu, Add, <transition>, VueHandler
-  Menu, VueMenu, Add, <transition v-on...>, VueHandler
-  Menu, VueMenu, Add, <transition-group>, VueHandler
   Menu, VueMenu, Add, render(h), VueHandler
   Menu, VueMenu, Add, render(h) jsx用法, VueHandler
   Menu, VueMenu, Add, vue.directive 指令, VueHandler
   Menu, VueMenu, Add, this.$set 深度赋值, VueHandler
+  Menu, VueMenu, Add, this.$forceUpdate(), VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -111,6 +114,27 @@ Var =
 )
 }
 
+if (v == "<transition>与路由动画") {
+Var = 
+(
+<transition name="fade-transform" mode="out-in">
+  <router-view></router-view>
+</transition>
+
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all .3s;
+}
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(10px);
+}
+)
+}
 
 if (v == "vue.watch.deep-$props") {
 Var = 

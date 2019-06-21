@@ -216,7 +216,6 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/azl397985856/leetcode">leet
 Gui, Pandora:Add, Link,, <a href="https://miyogurt.github.io/nodelover-books">NodeLover 黄金屋</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
-
 Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly">阮一峰的周刊</a>
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/">羽雀团队知识库</a>
 Gui, Pandora:Add, Link,, <a href="https://nodelover.me/courses">NodeLove大前端</a>
@@ -819,6 +818,8 @@ Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/refere
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/demo-center/amap-ui">高德地图-轨迹图</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/map/3d-map">高德地图-3D地图</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/services/weather/?sug_index=0">高德地图-天气预报</a>
+Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/thirdlayer/wmts">高德地图-WMTS</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 百度地图：
 Gui, Pandora:Add, Link,, <a href="http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a3b0">百度地图-API</a>
@@ -870,6 +871,10 @@ Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/tutorial.html#5 分�
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/api.html">echart API</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=heatmap-map">热力图示例</a>
+Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xkeSbXdmhp">三角形Echarts</a>
+Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xSk6VBUGuG">冰山图</a>
+
+
 
 Gui, Pandora:Add, Text, W140 ys, ECharts 相关资料：
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/editor.html?c=map-HK">echarts HK示例</a>
