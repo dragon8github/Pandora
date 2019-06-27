@@ -156,7 +156,7 @@ Gui, Pandora:Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</
 Gui, Pandora:Add, Link, gInspect ,  <a>安卓调试</a>
 Gui, Pandora:Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
 Gui, Pandora:Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AutoHotkey官网</a>
-BabelUrl := "http://babeljs.io/repl#?babili=true&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=true&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cbabili&prettier=false&targets=&version=6.26.0"
+BabelUrl := "https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=FAMwrgdgxgLglgewgAgM4FMYGV0Cc7qoDC6EMeACgqsgBQB0jAhrgOaoCUyA3sAJBQkqBABt09EQlYNmbTsAC-wUJFiIURABYsYAMQS4AtgBF0UOgGt0ATwA0yQ5k0IAJl17JkuTGFwpw0PBIdAAqLKyYRCJMqJw8wJ6ecCB0AIRhbJHRsfQgBoYAsk6ucR6JnhkRMFExqLn5RTDOLjQAvDxK5UoJiZVZtfVGjc2oANpW1gC6yO2OTa49St0AAlo6-kamULQA5GIREC5UxNoQETv2GNh4BMSk5LjHHMBQ2TQUBGu4MB3KghDCMQSKS0ABMAAYAIwATnBADZQQAWCGQgAcoNB9g-6C-MEGhWKLS4wCAA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&timeTravel=false&sourceType=module&lineWrap=false&presets=es2017%2Creact%2Cstage-2%2Ctypescript&prettier=false&targets=&version=7.4.5&externalPlugins="
 Gui, Pandora:Add, Link,, <a href="%BabelUrl%">Babel在线转换</a>
 
 
@@ -298,6 +298,7 @@ Gui, Pandora:Add, Text, gwebidehtml W160,新建在线编辑器webide
 Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
 Gui, Pandora:Add, Text, gprismhtml W160,prism代码高亮.html
 Gui, Pandora:Add, Text, gdeepmergehtml W160,deepmerge.html
+Gui, Pandora:Add, Text, gdom2imghtml W160,dom-to-image.html
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
@@ -388,6 +389,7 @@ Gui, Pandora:Add, Text,  W120 ys, hz-12345：
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/hz-12345">hz-12345 源码</a>
 Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:6083/#/dg/Index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/big-bcreen/boards">敏捷看板</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/blob/master/DOC/东莞市社会治理可视化分析平台/05UIUE文档/大屏UI/">UI资源</a>
 
 Gui, Pandora:Add, Text,  W140 xs Section yp+150, 数据中心
 Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">预览地址</a>
@@ -401,7 +403,7 @@ Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
 Gui, Pandora:Add, Link,, <a href="http://kw.dgjy.net">extra-edu 线上</a>
 
-; @gs
+
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 私服仓库Nexus
 Gui, Pandora:Add, Link,, <a href="https://nexus.alltosea.com/">公司的Nexus</a>
@@ -417,6 +419,13 @@ Gui, Pandora:Add, Link,, <a href="http://dotnet.alltosea.com:6012/portalui/">入
 Gui, Pandora:Add, Link,, <a href="http://dotnet.alltosea.com:6012/portalapi/doc.html">API文档</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/unifiedfabric/dgjy/portalui/tree/newdev/vue-education/src">代码地址</a>
 
+Gui, Pandora:Add, Text,  W140 ys xp+160, visual可视化
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual">源码地址</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual/issues">issue</a>
+Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0/#g=1&p=%E6%96%B0%E5%BB%BA%E8%87%AA%E5%8A%A9%E6%8A%A5%E8%A1%A8--%E9%80%9A%E7%94%A8">原型</a>
+
+
+; @gs
 Gui, Pandora:Tab, 4
 
 Gui, Pandora:Add, Text, W140 Section, Nodejs:
@@ -769,6 +778,13 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/bevacqua/dragula">拖拽神
 Gui, Pandora:Add, Link,, <a href="https://github.com/SortableJS/Vue.Draggable">拖拽Vue.Draggable</a>
 Gui, Pandora:Add, Link,, <a href="https://vuegg.now.sh/">vuegg</a>
 
+
+Gui, Pandora:Add, Text,  W120 yp+50, 模板引擎：
+Gui, Pandora:Add, Link,, <a href="https://aui.github.io/art-template/zh-cn/docs/">art-template</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/tj/ejs">ejs</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/pugjs/pug">pug</a>
+
+
 Gui, Pandora:Add, Text, W120 ys, 录制js：
 Gui, Pandora:Add, Link,, <a href="https://www.rrweb.io/replay">录制和回放</a>
 Gui, Pandora:Add, Link,, <a href="https://scrimba.com/p/pV5eHk/c9EqQSD">录制灵感来源</a>
@@ -873,6 +889,7 @@ Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/option.html#series-ma
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=heatmap-map">热力图示例</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xkeSbXdmhp">三角形Echarts</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xSk6VBUGuG">冰山图</a>
+Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xpO_B8IDmq">饼图花瓣图</a>
 
 
 

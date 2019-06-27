@@ -1,4 +1,12 @@
-﻿::sb::
+﻿::removedom::
+Var =
+(
+el.parentNode.removeChild(el))
+)
+code(Var)
+return
+
+::sb::
 InputBox, OutputVar, title, enter a name?,,,,,,,,test
 Var =
 (
@@ -3326,8 +3334,8 @@ return
 ::const::
 Var = 
 (
-constructor(props) {
-    super(props)
+constructor(...props) {
+    super(...props)
 }
 )
 code(Var)
@@ -4355,6 +4363,7 @@ Return
 Var = 
 (
 clearTimeout(timer);
+timer = null
 )
 code(Var)
 Return
@@ -6706,7 +6715,7 @@ return
 ::throttle::
 Var =
 (
-// 函数节流（throttle）
+// 函数节流（throttle）：3秒之后你执行一万次也只会执行一次
 var throttle = function(func, wait, options) {
   var timeout, context, args, result;
   // 标记时间戳
@@ -6776,14 +6785,12 @@ fn2(123) // 请手动不停的执行这个函数
 code(Var)
 return
 
-
 ::hanshuqudou::
 ::hanshufangdou::
-::debounce::
 Var =
 (
 
-// 函数去抖（debounce）：让函数只有在过完一段时间后再执行，并且该段时间内不被调用才会被执行
+// 函数去抖（debounce）：比如5秒后执行一个函数，如果这期间又被调用，那倒计时重头来。你一抖就重新来，看你抖不抖
 var debounce = function(func, wait, immediate) {
     var timeout, result;
 

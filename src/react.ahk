@@ -235,7 +235,7 @@ if (v == "新建create-react-app-Typescript") {
 name := "my-app" . "-" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 command := []
 command.push("cd " . A_Desktop)
-command.push("yarn create react-app " . my-app . " --typescript")
+command.push("yarn create react-app " . name . " --typescript")
 command.push("cd " . name)
 command.push("echo SKIP_PREFLIGHT_CHECK=true > .env")
 command.push("yarn start")

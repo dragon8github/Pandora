@@ -4212,71 +4212,8 @@ fn2(123) // 请手动不停的执行这个函数
 }
 
 if (v == "debounce 函数去抖") {
-Var = 
-(
-
-// 函数去抖（debounce）：让函数只有在过完一段时间后再执行，并且该段时间内不被调用才会被执行
-var debounce = function(func, wait, immediate) {
-    var timeout, result;
-
-     // 定时器设置的回调，清除定时器，执行回调函数func
-    var later = function(context, args) {
-      timeout = null;
-      if (args) result = func.apply(context, args);
-    };
-
-    var restArgs = function(func, startIndex) {
-      startIndex = startIndex == null ? func.length - 1 : +startIndex;
-      return function() {
-        var length = Math.max(arguments.length - startIndex, 0);
-        var rest = Array(length);
-        for (var index = 0; index < length; index++) {
-          rest[index] = arguments[index + startIndex];
-        }
-        switch (startIndex) {
-          case 0: return func.call(this, rest);
-          case 1: return func.call(this, arguments[0], rest);
-          case 2: return func.call(this, arguments[0], arguments[1], rest);
-        }
-        var args = Array(startIndex + 1);
-        for (index = 0; index < startIndex; index++) {
-          args[index] = arguments[index];
-        }
-        args[startIndex] = rest;
-        return func.apply(this, args);
-      };
-    };
-
-    var delay = restArgs(function(func, wait, args) {
-      return setTimeout(function(){
-        return func.apply(null, args);
-      }, wait);
-    });
-
-     // restArgs函数将传入的func的参数改造成Rest Parameters —— 一个参数数组
-    var debounced = restArgs(function(args) {
-      if (timeout) clearTimeout(timeout);
-      if (immediate) {
-        // 立即触发的条件：immediate为true且timeout为空
-        var callNow = !timeout;
-        timeout = setTimeout(later, wait);
-        if (callNow) result = func.apply(this, args);
-      } else {
-        // _.delay方法实际上是setTimeout()包裹了一层参数处理的逻辑
-        timeout = delay(later, wait, this, args);
-      }
-
-      return result;
-    });
-
-    debounced.cancel = function() {
-      clearTimeout(timeout);
-      timeout = null;
-    };
-
-    return debounced;
-};
-)
+_send("hanshuqudou", true, true)
+return
 }
 
 if (v == "is-ie") {
@@ -6214,6 +6151,38 @@ var proxySync = ;(function(){
         }, 2000);
     }
 }());
+)
+code(Var)
+return
+
+::zhuangshiqi::
+::dec::
+Var =
+(
+function setSeriesCenterPos (...args) {
+    console.log(...args)
+}
+
+function testable(target) {
+  target.isTestable = true;
+}
+
+function ChartFormDec (key, method) {
+  return function (TargetClass) {
+    if (!TargetClass.formMethods) {
+      TargetClass.formMethods = {}
+    }
+
+    TargetClass.formMethods[key] = method
+  }
+}
+
+@ChartFormDec('legendPosChange', setSeriesCenterPos)
+@testable
+class PieChart {}
+
+console.log(20190624201822, PieChart.formMethods) 
+console.log(20190624201822, PieChart.isTestable ) 
 )
 code(Var)
 return

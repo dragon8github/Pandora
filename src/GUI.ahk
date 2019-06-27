@@ -4728,3 +4728,71 @@ console.log(20190614144338, mergejson)
 RunBy(name)
 run, % name
 return
+
+dom2imghtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+
+    }
+
+    .datav-btn {
+        height: 26px;
+        line-height: 26px;
+        padding: 0 20px;
+        font-size: 12px;
+
+        color: #24b1ff;
+        border: 1px solid #00baff;
+        background: 0 0;
+
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+        transition: .3s ease;
+        cursor: pointer;
+        user-select: none;
+        outline: 0;
+
+        &:hover {
+         color: #293f52;
+         background-image: linear-gradient(-225deg,#00d3f1 0,#12b3ff 100`%);
+         box-shadow: 0 0 15px 0 rgba(0,193,220,.37);
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button class='datav-btn'>123</button>
+    </div>
+</body>
+<script>
+    domtoimage.toPng(document.getElementById('app')).then(function (dataUrl) {
+        var img = new Image();
+        img.src = dataUrl;
+        document.body.appendChild(img);
+    }).catch(function (error) {
+        console.error('oops, something went wrong!', error);
+    });
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

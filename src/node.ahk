@@ -121,6 +121,7 @@
 	
 	
 	
+	
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
 	
@@ -138,7 +139,7 @@
 	
 	Menu, NodeMenu, Add, mocha/chai, :A
 	Menu, NodeMenu, Add, fs 文件IO, :NodeFileHandler
-	
+	Menu, NodeMenu, Add, nodejs实现最简单的模板引擎替换, NodeHandler
 
 	Menu, NodeMenu, Show
 	Menu, NodeMenu, DeleteAll
@@ -162,6 +163,26 @@ Var =
 )
 }
 
+
+if (v == "nodejs实现最简单的模板引擎替换") {
+Var = 
+(
+const fs = require('fs')
+const path = require('path')
+
+// 局部变量
+const name = 'Lee'
+
+// eval
+const makeEvaluate = _ => eval('`'+_+'`')
+
+// 读取文本 => 你的名字是：${name}
+const data = fs.readFileSync(path.join(__dirname, './test.tmp'), { encoding: 'utf-8' })
+
+// 输出转化的结果
+console.log(makeEvaluate(data))
+)
+}
 
 if (v == "os.EOL") {
 Var = 
