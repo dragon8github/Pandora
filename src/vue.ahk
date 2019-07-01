@@ -5,7 +5,8 @@
   Menu, VueMenu, Add, this.$store.commit, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
-  Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations } from 'vuex', VueHandler  
+  Menu, VueMenu, Add, this.$store.getters['app/master'], VueHandler
+  Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations`, mapGetters } from 'vuex', VueHandler  
   Menu, VueMenu, Add, ElementUI 按需引入教程, VueHandler  
 
   Menu, VueMenu, Add, , VueHandler
@@ -97,6 +98,8 @@
   Menu, vuesolution, Add, npm rebuild node-sass, VueHandler
   Menu, vuesolution, Add, Vue.config.productionTip = false, VueHandler
   Menu, vuesolution, Add, Vue 404 页面, VueHandler
+  Menu, vuesolution, Add, vue-drag-drop, VueHandler
+  Menu, vuesolution, Add, vue-drag-resize, VueHandler
   
   
   Menu, VueMenu, Add, Vue 解决方案和组件, :vuesolution
@@ -113,6 +116,134 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "vue-drag-resize") {
+Var = 
+(
+<template>
+    <div id="app">
+        <VueDragResize class='VueDragResize' ref='VueDragResize' :isActive="isActive" :w="200" :h="200" @resizing="resize" @dragging="drag">
+            <h3>Hello World!</h3>
+            <p>{{ top }} х {{ left }} </p>
+            <p>{{ width }} х {{ height }}</p>
+        </VueDragResize>
+    </div>
+</template>
+<script>
+// https://github.com/kirillmurashov/vue-drag-resize
+import VueDragResize from 'vue-drag-resize';
+
+export default {
+    name: 'app',
+    data() {
+        return {
+            width: 0,
+            height: 0,
+            top: 0,
+            left: 0,
+            isActive: true
+        }
+    },
+    methods: {
+        resize(newRect) {
+            this.width = newRect.width;
+            this.height = newRect.height;
+        },
+        drag(newRect) {
+            this.top = newRect.top;
+            this.left = newRect.left;
+        },
+    },
+    components: {
+        VueDragResize
+    },
+    beforeMount() {
+        this.clickOutSide = e => {
+            if (this.$refs.VueDragResize.$el.contains(e.target) === false) {
+                this.isActive = false
+            }
+        }
+        document.addEventListener('mouseup', this.clickOutSide)
+    },
+}
+</script>
+<style scoped>
+.VueDragResize {
+    color: #333;
+    background-color: #159957;
+    background-image: linear-gradient(120deg, #155799, #159957);
+    color: #fff;
+    text-align: center;
+}
+</style>
+)
+}
+
+if (v == "vue-drag-drop") {
+Var = 
+(
+<template>
+    <div>
+        <drag v-for="item in topLists" class="drag-item" :key="item" :transfer-data="{ fuck: '写上你要传递的内容，虽然什么类型都可以，不一定要object' }">
+            {{ item }}
+        </drag>
+        
+        <drop class="drop" @drop="handleDrop(bottomList, ...arguments)">
+            <div class='drop-item' v-for="(item, i) in bottomList" :key="i">{{ item }}</div>
+        </drop>
+    </div>
+</template>
+<script>
+// npm install --save vue-drag-drop
+import { Drag, Drop } from 'vue-drag-drop';
+export default {
+    components: { Drag, Drop },
+    data() {
+        return {
+            topLists: ['A', 'B', 'C'],
+            bottomList: ['D', 'E', 'F'],
+        };
+    },
+    methods: {
+        handleDrop(toList, data) {
+            const fromList = data.list;
+            if (fromList) {
+                toList.push(data.item);
+                fromList.splice(fromList.indexOf(data.item), 1);
+                toList.sort((a, b) => a > b);
+            }
+        },
+    },
+};
+</script>
+<style scoped>
+.drag-item,
+.drop-item {
+    margin: 20px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+
+    background: #666;
+    text-align: center;
+    display: inline-block;
+}
+
+.drop {
+    margin-bottom: 20px;
+    width: auto;
+    height: auto;
+}
+</style>
+}
+
+if (v == "this.$store.getters['app/master']") {
+Var = 
+(
+this.$store.getters['app/master']
 )
 }
 
@@ -1430,7 +1561,7 @@ this.$refs.myselect
 )
 }
 
-if (v == "import { mapState, mapActions, mapMutations } from 'vuex'") {
+if (v == "import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'") {
 Var = 
 (
 import { mapState, mapActions, mapMutations } from 'vuex'
@@ -1458,7 +1589,10 @@ computed: {
     'eq_problemType',
     'eq_stateId',
     'eq_satisfyId',
-  ])
+  ])，
+  ...mapGetters('app', [
+     'master',
+   ])
 },
 )
 txtit(Var)
@@ -3351,6 +3485,27 @@ export default {
 
 </style>
 
+)
+code(Var)
+return
+
+::getter::
+::getters::
+Var =
+(
+const getters = {
+  master (state, getters) {
+    return maybe(_ => state.stage.find(_ => _.id === state.master)) 
+  }
+}
+)
+code(Var)
+return
+
+::v-for-obj::
+Var =
+(
+v-for='(value, key) in obj' :key='key'
 )
 code(Var)
 return

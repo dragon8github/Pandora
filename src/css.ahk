@@ -22,7 +22,10 @@
     Menu, CssMenu, Add, css.placeholder, CssHandler2
     Menu, CssMenu, Add, css.animate 语法和格式, CssHandler
     Menu, CssMenu, Add, animate的钩子：webkitAnimationEnd, CssHandler
-    
+    Menu, CssMenu, Add, background-image: linear-gradient, CssHandler
+    Menu, CssMenu, Add, ::scrollbar 滚动条样式, CssHandler
+    Menu, CssMenu, Add, flex 高度占满全屏策略, CssHandler
+
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
     
@@ -148,6 +151,31 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+
+if (v == "flex 高度占满全屏策略") {
+Var =
+(
+height: 100`%;
+display: flex;
+flex-direction: column;
+)
+}
+
+if (v == "::scrollbar 滚动条样式") {
+_send("::scroll", true, true)
+return
+}
+
+if (v == "background-image: linear-gradient") {
+Var =
+(
+background-color: #159957;
+background-image: linear-gradient(120deg, #155799, #159957);
+color: #fff;
+text-align: center;
 )
 }
 
@@ -1309,69 +1337,70 @@ background: currentColor;
 if (v == "更新提示波动图:point") {
 Var =
 (
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- jquery -->
-    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-    <style>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- jquery -->
+        <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+        <style>
 
-    .point {
-        display: inline-block;
-        position: relative;
-        vertical-align: baseline;
-        color: #3cb371;
-    }
-
-    .point:after {
-        display: block;
-        position: absolute;
-        content: "";
-        width: 80px;
-        height: 80px;
-        border-radius: 50`%;
-        background: currentColor;
-        top: calc(50`% - 40px);
-        left: calc(50`% - 40px);
-        transform: scale(0);
-        will-change: transform, opacity;
-        opacity: 0
-    }
-
-    .point.changing:after {
-        animation: emph 1.25s;
-    }
-
-    @keyframes emph {
-        20`% {
-            transform: none;
-            opacity: .5
+        .point {
+            display: inline-block;
+            position: relative;
+            vertical-align: baseline;
+            color: #3cb371;
         }
 
-        to {
-            opacity: 0;
-            transform: scale(1.2)
+        .point:after {
+            display: block;
+            position: absolute;
+            content: "";
+            width: 80px;
+            height: 80px;
+            border-radius: 50`%;
+            background: currentColor;
+            top: calc(50`% - 40px);
+            left: calc(50`% - 40px);
+            transform: scale(0);
+            will-change: transform, opacity;
+            opacity: 0
         }
-    }
-    </style>
-</head>
 
-<body>
-    <code class="point" data-point="1">0 71`%</code>
-</body>
-<script>
-$('.point').click(function (e) {
-    $(e.target).addClass('changing')
+        .point.changing:after {
+            animation: emph 1.25s;
+        }
 
-    setTimeout(() => {
+        @keyframes emph {
+            20`% {
+                transform: none;
+                opacity: .5
+            }
+
+            to {
+                opacity: 0;
+                transform: scale(1.2)
+            }
+        }
+        </style>
+    </head>
+
+    <body>
+        <code class="point" data-point="1">0 71`%</code>
+    </body>
+    <script>
+    $('.point').click(function (e) {
+        // 先删除
         $(e.target).removeClass('changing')
-    }, 1250);
-});
-</script>
-</html>
+        // 需要等待删除，再加上才能触发动画
+        setTimeout(() => {
+            $(e.target).addClass('changing')
+        }, 10);
+    });
+    </script>
+    </html>
 )
 }
 
@@ -2256,6 +2285,7 @@ code(Var)
 return
 
 
+::`:`:scroll::
 ::css.scroll::
 ::css.scrollbar::
 Var =

@@ -1,4 +1,16 @@
-﻿::removedom::
+﻿::methods::
+Var =
+(
+methods: {
+    handler (v) {
+      console.log(20190627160125, v)
+    }
+},
+)
+code(Var)
+return
+
+::removedom::
 Var =
 (
 el.parentNode.removeChild(el))

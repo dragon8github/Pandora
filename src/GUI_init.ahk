@@ -51,7 +51,8 @@ __SEARCH_DATABASE__["nginx html"] := "/usr/local/nginx/html/"
 __SEARCH_DATABASE__["php.ini"] := "/usr/local/php/php.ini"
 __SEARCH_DATABASE__["dataZ"] := "C:\Users\Lee\Desktop\dataZ"
 __SEARCH_DATABASE__["hz-12345"] := "C:\Users\Lee\Desktop\hz-12345"
-
+__SEARCH_DATABASE__["visual可视化"] := "C:\Users\Lee\Desktop\可视化2\ioc-visual-ui\src"
+__SEARCH_DATABASE__["quanhuang拳皇"] := "C:\Users\Lee\Desktop\quanhuangquanji\Winkawaks.exe"
 
 
 ; 创建含名称和大小两列的 ListView:
@@ -424,6 +425,8 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visua
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual/issues">issue</a>
 Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0/#g=1&p=%E6%96%B0%E5%BB%BA%E8%87%AA%E5%8A%A9%E6%8A%A5%E8%A1%A8--%E9%80%9A%E7%94%A8">原型</a>
 
+Gui, Pandora:Add, Text,  W140 ys xp+160, 数据胡
+Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/BYUGGC0qYCqw1ExcFQ3R1HUs2l2ehA2H3E2L3">腾讯文档</a>
 
 ; @gs
 Gui, Pandora:Tab, 4

@@ -635,7 +635,7 @@ https://github.com/vuegg/vuegg/blob/master/client/src/components/editor/main/Sta
 
 拖拽位置公式 = pageY  - <容器到顶部的距离> + 容器scrollTop - 元素高度/2
 
-容器到顶部的距离 = 容器offsetTop - 其他障碍高度
+容器到顶部的距离 = 容器offsetTop + 其他障碍高度
 )
 }
 
