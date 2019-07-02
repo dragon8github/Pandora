@@ -105,6 +105,12 @@
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 综合实战 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
     Menu, utilsPosition, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     
+
+    Menu, utilsObject, Add, 对象交集 , utilsHandler
+
+    Menu, utilsObject, Add,, utilsHandler
+    Menu, utilsObject, Add,, utilsHandler
+
     Menu, utilsObject, Add, for#Object.keys, utilsHandler
     Menu, utilsObject, Add, for#o in obj, utilsHandler
     Menu, utilsObject, Add, for#Object.entries(), utilsHandler
@@ -446,6 +452,11 @@ Var =
 )
 }
 
+
+if (v == "对象交集") {
+_send("objectjiaoji", true, true)
+return
+}
 
 if (v == "setTitle: 解决微信、QQ、闪银等内置浏览器单页应用无法刷新title的问题") {
 _send("setTitle", true, true)

@@ -1,4 +1,12 @@
-﻿::count-to::
+﻿::el-color::
+Var =
+(
+<el-color-picker v-model="stage.backgroundColor" show-alpha></el-color-picker>
+)
+code(Var)
+Return
+
+::count-to::
 ::countto::
 Var =
 (

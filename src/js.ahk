@@ -5147,14 +5147,71 @@ function compact(target) {
 code(Var)
 return
 
+::object.jiaoji::
+::objectjiaoji::
+::duixiangjiaoji::
+Var =
+(
+const intersection = (O1, O2) => Object.assign(...Object.keys(O1).map(k => {
+    let temp
+
+    if (!(k in O2)) {
+        return {}
+    }
+
+    if (O1[k] && typeof O1[k] === 'object' && O2[k] && typeof O2[k] === 'object') {
+        temp = intersection(O1[k], O2[k])
+        return Object.keys(temp).length ? { [k]: temp } : {}
+    }
+
+    if (O1[k] === O2[k]) {
+       return { [k]: O1[k] }
+    }
+
+    return {}
+}))
+
+
+const a = { name: 'Alice', features: { speed: 3, strength: 90, mind: { power: 42 } } }
+const b = { name: 'Bob', features: { speed: 3, stamina: 1, mind: { power: 42, flexibility: 0, telekinesis: 42 } } }
+console.log(intersection(a, b))
+)
+code(Var)
+return
+
 ::jiaoji::
 Var = 
 (
+// array
 function intersect(target, array) {
     return target.filter(function (n) {
         return ~array.indexOf(n);
     });
 }
+// object
+const intersection = (O1, O2) => Object.assign(...Object.keys(O1).map(k => {
+    let temp
+
+    if (!(k in O2)) {
+        return {}
+    }
+
+    if (O1[k] && typeof O1[k] === 'object' && O2[k] && typeof O2[k] === 'object') {
+        temp = intersection(O1[k], O2[k])
+        return Object.keys(temp).length ? { [k]: temp } : {}
+    }
+
+    if (O1[k] === O2[k]) {
+       return { [k]: O1[k] }
+    }
+
+    return {}
+}))
+
+
+const a = { name: 'Alice', features: { speed: 3, strength: 90, mind: { power: 42 } } }
+const b = { name: 'Bob', features: { speed: 3, stamina: 1, mind: { power: 42, flexibility: 0, telekinesis: 42 } } }
+console.log(intersection(a, b))
 )
 code(Var)
 return

@@ -2367,17 +2367,48 @@ return
 ::vue.mixins::
 Var =
 (
-// 全局Mixin，任何一个组件都会被影响，无论是页面、入口、还是组件
+// Mixin 注入全局
 Vue.mixin({
+  data () {
+    return {
+      fontOptions,
+    } 
+  },
   methods: {
-	maybe () {
-		try { 
-		   return fn() || n 
-		} catch (err) {
-		   return n 
-		}
-	}
-  }
+    // 方便所有组件都轻松操作 『舞台/成员/主角』
+    ...mapActions('app', {
+      // 设置 『主角』 的配置
+      setOption: 'setOption',
+      // 设置 『主角』 的大小（w/h）
+      setSize: 'setSize',
+      // 设置 『主角』 的位置(x/y)
+      setPos: 'setPos',
+      // 向 『舞台』 中添加 『成员』
+      addMember: 'addMember',
+      // 删除当前的 『主角』
+      removeMaster: 'removeMaster',
+      // 清空成员
+      clearMember: 'clearMember',
+      // 重置舞台
+      resetStage: 'resetStage',
+      // 步进
+      stepPos: 'stepPos',
+    }),
+    ...mapMutations('app', [
+      'SET_MASTER',
+      'KILL_MASTER',
+      'SET_ACTIVEPANEL',
+    ]),
+    maybe, 
+  },
+  computed: {
+     // 方便所有组件都轻松访问当前『主角』
+     ...mapGetters('app', [
+       'master',
+       'member',
+       'stage',
+     ]),
+  },
 })
 )
 code(Var)

@@ -45,7 +45,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 <p>
   <a href="https://nodejs.org/">
     <img
-      src="http://wx1.sinaimg.cn/large/006ar8zggy1g24gkkbghjg30v709le86.gif"
+      src="https://s2.ax1x.com/2019/07/02/ZJXKEt.gif"
     />
   </a>
 </p>
