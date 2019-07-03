@@ -782,36 +782,36 @@ cs("npm run start")
 return
 
 !Up::
-    Send, {PGUP}
+    SendInput, {PGUP}
 return
 
 +!Up::
-    Send, +{PGUP}
+    SendInput, +{PGUP}
 return
 
 !Down::
-    Send, {PGDN}
+    SendInput, {PGDN}
 return
 
 +!Down::
-    Send, +{PGDN}
+    SendInput, +{PGDN}
 return
 
 !Right::
-    Send, {end}       
+    SendInput, {end}       
 return
 
 
 +!Right::
-    Send, +{end} 
+    SendInput, +{end} 
 return
 
 !Left::
-    Send, {Home}
+    SendInput, {Home}
 return
 
 +!Left::
-    Send, +{Home}
+    SendInput, +{Home}
 return
 
 /*
@@ -977,7 +977,7 @@ return
 
 ::aliip::
 ::vip::
-SendRaw, 66.42.42.29
+SendRaw, 149.129.65.63 
 return
 
 

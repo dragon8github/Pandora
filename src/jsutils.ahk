@@ -2295,33 +2295,34 @@ if (v == "获取localStorage剩余容量和最大容量") {
 Var = 
 (
 // 获取localStorage最大容量
-(function() {
-   if(!window.sessionStorage) {
-        console.log('当前浏览器不支持sessionStorage!')
-   }    
-   var test = '0123456789';
-   var add = function(num) {
-     num += num;
-     if(num.length == 10240) {
-       test = num;
-       return;
-     }
-     add(num);
-   }
-   add(test);
-   var sum = test;
-   var show = setInterval(function(){
-      sum += test;
-      try {
-       window.sessionStorage.removeItem('test');
-       window.sessionStorage.setItem('test', sum);
-       console.log(sum.length / 1024 + 'KB');
-      } catch(e) {
-       console.log(sum.length / 1024 + 'KB超出最大限制');
-       clearInterval(show);
-      }
-   }, 0.1)
- })()
+(function(sum = '') {
+    // 1kb 
+    const unit = (function poll(num) {
+        return num.length == 10240 ? num : poll(num += num)
+    }('0123456789'))
+    // 轮询
+    const timer = setInterval(function() {
+        const prev = sum
+        // 叠加字符串
+        sum += unit
+        // 开始
+        try {
+            // 先删除旧的缓存，这样会加快测试速度
+            window.localStorage.removeItem('test')
+            // 设置新缓存
+            window.localStorage.setItem('test', sum)
+            // 打印当前进度
+            console.log(sum.length / 1024 + 'KB')
+        } catch (e) {
+            // （可选）保存最后一次可行的缓存
+            window.localStorage.setItem('test', prev)
+            // 打印出总缓存大小
+            console.log(sum.length / 1024 + 'KB超出最大限制')
+            // 清除定时器
+            clearInterval(timer)
+        }
+    }, 1)
+}())
 
 
 // 获取sessionStorage的剩余容量

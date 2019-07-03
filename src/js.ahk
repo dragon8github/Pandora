@@ -1,4 +1,40 @@
-﻿::methods::
+﻿::lstest::
+::lgtest::
+Var =
+(
+(function(sum = '') {
+    // 1kb 
+    const unit = (function poll(num) {
+        return num.length == 10240 ? num : poll(num += num)
+    }('0123456789'))
+    // 轮询
+    const timer = setInterval(function() {
+        const prev = sum
+        // 叠加字符串
+        sum += unit
+        // 开始
+        try {
+            // 先删除旧的缓存，这样会加快测试速度
+            window.localStorage.removeItem('test')
+            // 设置新缓存
+            window.localStorage.setItem('test', sum)
+            // 打印当前进度
+            console.log(sum.length / 1024 + 'KB')
+        } catch (e) {
+            // （可选）保存最后一次可行的缓存
+            window.localStorage.setItem('test', prev)
+            // 打印出总缓存大小
+            console.log(sum.length / 1024 + 'KB超出最大限制')
+            // 清除定时器
+            clearInterval(timer)
+        }
+    }, 1)
+}())
+)
+code(Var)
+Return
+
+::methods::
 Var =
 (
 methods: {
@@ -4293,9 +4329,9 @@ return
 ::()()::
 Var = 
 (
-;(async function(){
+(async function(){
 	
-}());
+}())
 )
 code(Var)
 SendInput, {up}{tab}

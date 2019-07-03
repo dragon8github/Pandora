@@ -7,6 +7,7 @@
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
   Menu, VueMenu, Add, this.$store.getters['app/master'], VueHandler
   Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations`, mapGetters } from 'vuex', VueHandler  
+  Menu, VueMenu, Add, this.$store.subscribe, VueHandler
   Menu, VueMenu, Add, ElementUI 按需引入教程, VueHandler  
 
   Menu, VueMenu, Add, , VueHandler
@@ -117,6 +118,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "this.$store.subscribe") {
+_send("vuex.sub", true, true)
+return
 }
 
 
@@ -3537,6 +3544,42 @@ return
 Var =
 (
 v-for='(value, key) in obj' :key='key'
+)
+code(Var)
+return
+
+::vuexsub::
+::vuex.sub::
+::store.sub::
+Var =
+(
+// 注意，这个不能放在 Mixin.create 之中，否则会创建N次
+// 注意，这个不能放在 Mixin.create 之中，否则会创建N次
+// 注意，这个不能放在 Mixin.create 之中，否则会创建N次
+this.$store.subscribe(({ type, payload }, rootState) => {
+    // 每次设置 『主角』 之后
+    if (type.includes('SET_MASTER')) {
+        // 都切换到 『组件配置栏』
+        this.SET_ACTIVEPANEL('setting')
+        // 每次移除主角之后，都切换到 『页面配置栏』
+    } else if (type.includes('KILL_MASTER')) {
+        this.SET_ACTIVEPANEL('page')
+    }
+})
+
+// 监听 action 的调用
+this.$store.subscribeAction({
+    // 前
+    before: ({ type, payload }, state) => {},
+    // 后
+    after: ({ type, payload }, state) => {
+        // app模块下的 action 操作，都是需要更新缓存的
+        if (type.includes('app')) {
+            // 更新缓存
+            SET_CACHE()
+        }
+    }
+})
 )
 code(Var)
 return
