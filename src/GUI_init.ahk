@@ -793,6 +793,12 @@ Gui, Pandora:Add, Link,, <a href="https://www.rrweb.io/replay">录制和回放</
 Gui, Pandora:Add, Link,, <a href="https://scrimba.com/p/pV5eHk/c9EqQSD">录制灵感来源</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/yaronn/GifW00t">纯js实现录屏</a>
 
+Gui, Pandora:Add, Text, W140 yp+50, 截屏HTML2CANVAS：
+Gui, Pandora:Add, Link,, <a href="https://html2canvas.hertzen.com/">html2canvas.js</a>
+
+Gui, Pandora:Add, Text, W140 yp+50, Element Resize 事件：
+Gui, Pandora:Add, Link,, <a href="https://github.com/Justineo/resize-detector">resize-detector</a>
+ 
 Gui, Pandora:Add, Text, W140 ys, 最强MP3播放器APlayer
 Gui, Pandora:Add, Link,, <a href="https://github.com/MoePlayer/APlayer">Aplay github</a>
 

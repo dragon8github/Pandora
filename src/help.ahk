@@ -1586,3 +1586,43 @@ return
 ::shutong::
 cs("数通HCIA-Routing & Switching")
 return
+
+::new chart::
+::chart::
+::new charts::
+::chart.init::
+InputBox, OutputVar, title, enter a name?,,,,,,,,BaseLineChart
+Var =
+(
+import echarts from 'vue-echarts'
+import Chart from '../Chart.js'
+import {  } from '@/components/FormItem'
+
+export default class %OutputVar% extends Chart {
+      constructor(...props) {
+        super(...props)
+
+        // 第一步：定义显示名称
+        this.__NAME__ = ''
+
+        // 第二步：定义依赖配置
+        this.setForm()
+
+        // 第三步：初始示例数据
+        this.demo = {}
+
+        // 第四步： 定义 setData
+        this.setData = ({data, xAxis} = {}) => {
+            this.option.xAxis[0].data = data.map(_ => _.name)
+            this.option.series = getBar(data)
+        }
+
+        // 第五步： 初始化配置
+        this.setOption({
+            
+        })
+    }
+}
+)
+code(Var)
+Return

@@ -51,7 +51,7 @@
   Menu, VueMenu, Add, render(h) jsx用法, VueHandler
   Menu, VueMenu, Add, vue.directive 指令, VueHandler
   Menu, VueMenu, Add, this.$set 深度赋值, VueHandler
-  Menu, VueMenu, Add, this.$forceUpdate(), VueHandler
+  Menu, VueMenu, Add, this.$root.$on 事件总线, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -118,6 +118,26 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "this.$root.$on 事件总线") {
+Var =
+(
+created: function () {
+  this.$root.$on('undo', this.undo)
+  this.$root.$on('redo', this.redo)
+},
+beforeDestroy: function () {
+  this.$root.$off('undo', this.undo)
+  this.$root.$off('redo', this.redo)
+},
+---
+<button v-tooltip="'Undo'" class="action-btn" :disabled="!canUndo" @click="$root.$emit('undo')">
+<button v-tooltip="'Redo'" class="action-btn" :disabled="!canRedo" @click="$root.$emit('redo')">
+)
+txtit(Var)
+return
 }
 
 
@@ -1569,40 +1589,7 @@ this.$refs.myselect
 }
 
 if (v == "import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'") {
-Var = 
-(
-import { mapState, mapActions, mapMutations } from 'vuex'
----
-methods: {
-    ...mapActions('themeDetails', {
-      deparmenthandleChange: 'departmentSelect',
-      cityChange: 'townstreetSelect',
-      matterChange: 'matterSelect',
-    }),
-    ...mapMutations('themeDetails', {
-      deparmenthandleChange: 'departmentSelect',
-      cityChange: 'townstreetSelect',
-      matterChange: 'matterSelect',
-    }),
-},
----
-computed: {
-  ...mapState('themeDetails', [
-    'departmentItems', 
-    'matterItems', 
-    'departmentSelect', 
-    'townstreetSelect', 
-    'matterSelect',
-    'eq_problemType',
-    'eq_stateId',
-    'eq_satisfyId',
-  ])，
-  ...mapGetters('app', [
-     'master',
-   ])
-},
-)
-txtit(Var)
+_send("vuex.map", true, true)
 return
 }
 
@@ -3172,24 +3159,17 @@ Var =
 // vue.config.js
 const path = require('path')
 
-function resolve(dir) {
-  return path.join(__dirname, dir)
-}
+const resolve = dir => path.join(__dirname, dir)
 
 module.exports = {
     publicPath: './',
     assetsDir: 'assets',
     productionSourceMap: false,
-    chainWebpack: config => {
-    	config.resolve.alias
-    	     .set('@', resolve('src'))
-    	     .set('@c', resolve('src/components'))
-	    config.output.filename('[name].[hash].js').end();
-    },
+    // 服务器配置
     devServer: {
-        open: true, // 启动服务后是否打开浏览器
+        open: true,
         host: '0.0.0.0',
-        port: 8080, // 服务端口
+        port: 8080,
         https: false,
         hotOnly: false,
         /**
@@ -3205,6 +3185,33 @@ module.exports = {
          * },
          */
     },
+    // webpack 配置
+    configureWebpack: {
+        resolve: {
+          extensions: ['.js', '.vue', '.json'],
+          alias: {
+            '@': resolve('src'),
+          },
+        },
+    }, 
+    // webpack 链式扩展
+    chainWebpack: config => {
+        /* 测试扩展 ts-loader，需要结合 tsconfig.json 使用哦
+        config.module
+               .rule('ts')
+               .test(/\.tsx?$/)
+               .use('ts-loader')
+               .loader('ts-loader')
+               .end()
+        */
+
+        /* 别名和输出名
+        config.resolve.alias
+             .set('@', resolve('src'))
+             .set('@c', resolve('src/components'))
+        config.output.filename('[name].[hash].js').end();
+         */
+    }
 }
 )
 code(Var)
@@ -3582,4 +3589,81 @@ this.$store.subscribeAction({
 })
 )
 code(Var)
+return
+
+::vuex.map::
+Var = 
+(
+/**
+ * 必读：
+ * 1. 如果没有任何模块，那第一个参数可以省略。
+ * 2. 如果要重命名，数组可以切换为对象。
+ * 3. 不懂的直接访问官网：https://vuex.vuejs.org/guide/actions.html
+ */
+import { mapState, mapActions, mapMutations } from 'vuex'
+---
+methods: {
+   ...mapActions('app', [
+       // 设置 『主角』 的配置
+       'setOption',
+       // 设置 『主角』 的大小（w/h）
+       'setSize',
+       // 设置 『主角』 的位置(x/y)
+       'setPos',
+       // 向 『舞台』 中添加 『成员』
+       'addMember',
+       // 删除当前的 『主角』
+       'removeMaster',
+       // 清空成员
+       'clearMember',
+       // 重置舞台
+       'resetStage',
+       // 步进
+       'stepPos',
+   ]),
+   ...mapMutations('app', [
+       'SET_MASTER',
+       'SET_MEMBER',
+       'SET_STAGE',
+       'KILL_MASTER',
+       'SET_ACTIVEPANEL',
+   ]),
+},
+---
+computed: {
+  ...mapState('app', [
+    'member',
+    'stage',
+  ]),
+  ...mapGetters('app', [
+      'master',
+  ]),
+},
+)
+txtit(Var)
+return
+
+
+::vue.shangxiawen::
+::vue.context::
+::vue.inject::
+Var =
+(
+provide() {
+    return {
+        // provide/inject API 有个很坑爹的点，那就是无法响应式更新数据。
+        // 比如说，我提供一个 CACHE_CHAIN 给子组件们，但如果 CACHE_CHAIN 更新了，子组件是不会更新的。
+        // 官方说除非是传入一个『可监听的对象』，老实说我不知道啥意思，但我直接传入这个组件本身过去给子组件使用。
+        // 就可以满足数据响应的需求了。虽然感觉不太好，但这样确实方便不少，比起vuex。
+        // 表现形式有很多种：
+        // https://cn.vuejs.org/v2/api/#provide-inject
+        // https://blog.csdn.net/viewyu12345/article/details/83011618
+        // https://blog.csdn.net/Dream_xun/article/details/83024487
+        app: this,
+    }
+},
+---
+inject: ['app'],
+)
+txtit(Var)
 return

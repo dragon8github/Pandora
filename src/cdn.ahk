@@ -1,4 +1,14 @@
-﻿::cdn-water::
+﻿::cdn-vchart::
+::cdn-vuechart::
+::cdn-vuechart::
+Var =
+(
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-chartjs/3.4.2/vue-chartjs.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-water::
 Var =
 (
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css'>
@@ -356,8 +366,7 @@ Return
 ::cdn-vue::
 Var = 
 (
-<script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
-<script crossorigin="anonymous" integrity="sha384-c8inZyD0O4L/ErSuX3RVWgqsgtiAUw34TeSWiUwbKaXaI2RQg8SKVe80cipDBf0D" src="https://lib.baomitu.com/vue/2.6.7/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 )
 code(Var)
 Return

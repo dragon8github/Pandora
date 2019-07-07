@@ -38,6 +38,13 @@
 	Menu, NodeFileHandler, Add, fs.stat, NodeHandler
 	Menu, NodeFileHandler, Add, fs.exists, NodeHandler
 	Menu, NodeFileHandler, Add, node-dir 遍历目录, NodeHandler
+	
+	Menu, NodeFileHandler, Add, 
+	Menu, NodeFileHandler, Add, 
+	
+	Menu, NodeFileHandler, Add, path/fs-extra基础依赖, NodeHandler
+	Menu, NodeFileHandler, Add, fs-extra.writeFile, NodeHandler
+	Menu, NodeFileHandler, Add, fs-extra.readFile, NodeHandler
 
 	
 	
@@ -137,6 +144,7 @@
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
 	
+	Menu, NodeMenu, Add, ejs, NodeHandler
 	Menu, NodeMenu, Add, mocha/chai, :A
 	Menu, NodeMenu, Add, fs 文件IO, :NodeFileHandler
 	Menu, NodeMenu, Add, nodejs实现最简单的模板引擎替换, NodeHandler
@@ -160,6 +168,49 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "ejs") {
+Var = 
+(
+const path = require('path')
+const ejs = require('ejs')
+
+const getPath = dir => path.join(__dirname, '..' ,dir)
+
+// 读取路径（注意使用__dirname）
+const content = await ejs.renderFile(getPath('public/index.html'), data, { async: true })
+
+// 直接渲染模板
+const content = ejs.render(template, data)
+)
+}
+
+if (v == "path/fs-extra基础依赖") {
+Var = 
+(
+const path = require('path')
+const ejs = require('ejs')
+const fs = require('fs-extra')
+
+const getPath = dir => path.join(__dirname, '..' ,dir)
+)
+}
+
+if (v == "fs-extra.writeFile") {
+Var = 
+(
+// 新建文件
+await fs.writeFile(getPath(``cache/${id}.html``), HTML)
+)
+}
+
+if (v == "fs-extra.readFile") {
+Var = 
+(
+// 获取HTML
+const HTML = await fs.readFile(getPath(``cache/${id}.html``), 'utf8')
 )
 }
 

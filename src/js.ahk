@@ -4592,6 +4592,23 @@ code(Var)
 SendInput, {left 2} 
 return
 
+::fetch.post::
+::fetchpost::
+Var =
+(
+fetch('http://127.0.0.1:7001/', {
+method: 'POST',
+mode: 'cors',
+headers: {'Content-Type': 'application/json;charset=utf-8'},
+body: JSON.stringify({ stage: this.stage, member: this.member })
+}).then(response => response.json())
+  .then(data => console.log(20180916201855, data))
+  .catch(err => { Notification.error({ title: 'Sorry...', message: err.message }) })
+  .finally(_ => this.loading = false)
+)
+code(Var)
+Return
+
 ::fetch::
 Var =
 (

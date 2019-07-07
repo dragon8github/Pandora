@@ -1,8 +1,4 @@
-﻿
-::arr::
-::arra::
-::arrr::
-!a::
+﻿!a::
 	Menu, arrayMenu, Add, 加强版map遍历:fuckmap, ForHandler
 	Menu, arrayMenu, Add, 新建长度为N的数组[...Array(100)], ForHandler
     Menu, arrayMenu, Add, unique 数组去重复, ForHandler
@@ -15,11 +11,9 @@
 	Menu, arrayMenu, Add, 删除数组成员, ForHandler
 	Menu, arrayMenu, Add, 随机从数组中取N个数据, ForHandler
 	
-	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
 	
-	Menu, arrayMenu, Add,  for i++, ForHandler
 	Menu, arrayMenu, Add,  for-- 循环中splice需要使用, ForHandler
 	Menu, arrayMenu, Add,  for in, ForHandler
 	Menu, arrayMenu, Add,  for of, ForHandler
@@ -37,6 +31,17 @@
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
+	
+	Menu, arrayMenu, Add, unshift： 插入到第一位 , ForHandler
+	Menu, arrayMenu, Add, push: 插入到最后一位 , ForHandler
+	Menu, arrayMenu, Add, shift： 弹出并删除第一个 , ForHandler
+	Menu, arrayMenu, Add, pop： 弹出并删除最后一个 , ForHandler
+	Menu, arrayMenu, Add, slice： 无损截取数组 , ForHandler
+	Menu, arrayMenu, Add, splice： 有损截取数组 , ForHandler
+	
+	Menu, arrayMenu, Add,, ForHandler
+	Menu, arrayMenu, Add,, ForHandler
+	
 	Menu, arrayMenu, Add,  jQuery $.each, ForHandler
 	Menu, arrayMenu, Add,  jQuery $('.img').each, ForHandler
 	Menu, arrayMenu, Add,  ((________ = '________') => [...Array(________.length)].reduce((_`, __`, ___) => ++___))('________'), ForHandler
@@ -55,6 +60,48 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "unshift： 插入到第一位") {
+Var = 
+(
+unshift
+)
+}
+
+if (v == "push: 插入到最后一位") {
+Var = 
+(
+pus
+)
+}
+
+if (v == "shift： 弹出并删除第一个") {
+Var = 
+(
+shift
+)
+}
+
+if (v == "pop： 弹出并删除最后一个") {
+Var = 
+(
+pop
+)
+}
+
+if (v == "slice： 无损截取数组") {
+Var = 
+(
+slice
+)
+}
+
+if (v == "splice： 有损截取数组") {
+Var = 
+(
+splice
 )
 }
 

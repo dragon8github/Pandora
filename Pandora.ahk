@@ -30,10 +30,10 @@ FileDelete, .\src\*.bak
 #Include src/shell.ahk            ; shell
 #Include src/echarts.ahk	      ; echarts
 #include src/css.ahk              ; css
+#Include src/vue.ahk              ; Vue
 #Include src/arr.ahk              ; arr
 #Include src/python.ahk		      ; python
 #Include src/node.ahk             ; nodejs 
-#Include src/vue.ahk              ; Vue
 #Include src/js.ahk               ; JavaScript  
 #Include src/canvas.ahk		      ; canvas
 #Include src/TypeScript.ahk       ; TypeScript

@@ -1,4 +1,87 @@
-﻿::iconf::
+﻿::table::
+Var =
+(
+<table class="bordered">
+    <thead>
+        <tr>
+            <th>字段</th>
+            <th>类型</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>x</td>
+            <td>OBJECT</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td>data</td>
+            <td>OBJECT</td>
+        </tr>
+    </tbody>
+</table>
+---
+.bordered {
+    width: 100`%;
+    border-spacing: 0;
+    border: solid #ccc 1px;
+    border-radius: 6px;
+    box-shadow: 0 1px 1px #ccc;
+    font-size: 12px;
+    font-family: 'trebuchet MS', 'Lucida sans', Arial;
+
+    tr {
+        transition: all 0.1s ease-in-out;
+    }
+
+    .highlight,
+    tr:hover {
+        background: #fbf8e9;
+    }
+
+    td,
+    th {
+        border-left: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #dce9f9;
+        background-image: linear-gradient(top, #ebf3fc, #dce9f9);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+        border-top: none;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+    }
+
+    td:first-child,
+    th:first-child {
+        border-left: none;
+    }
+
+    th:first-child {
+        border-radius: 6px 0 0 0;
+    }
+
+    th:last-child {
+        border-radius: 0 6px 0 0;
+    }
+
+    tr:last-child td:first-child {
+        border-radius: 0 0 0 6px;
+    }
+
+    tr:last-child td:last-child {
+        border-radius: 0 0 6px 0;
+    }
+}
+)
+txtit(Var)
+return
+
+::iconf::
 ::iconfont::
 Var =
 (
