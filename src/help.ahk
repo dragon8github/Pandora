@@ -1626,3 +1626,11 @@ export default class %OutputVar% extends Chart {
 )
 code(Var)
 Return
+
+::sw::
+Var =
+(
+Swagger
+)
+code(Var)
+return

@@ -6198,3 +6198,24 @@ console.log(20190624201822, PieChart.isTestable )
 )
 code(Var)
 return
+
+::html2canvas::
+::canvas2html::
+Var =
+(
+ <img v-if='src' :src="src" class='thumbnail' />
+
+// 截图工具
+import html2canvas from 'html2canvas'
+
+methods: {
+    screenshot (v) {
+      html2canvas(document.querySelector('.Stage')).then(canvas => {
+            console.log(20190708095523, canvas.toDataURL("image/png"))
+            this.src = canvas.toDataURL("image/png")
+      })
+    }
+},
+)
+code(Var)
+Return
