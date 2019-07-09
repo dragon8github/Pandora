@@ -3667,3 +3667,15 @@ inject: ['app'],
 )
 txtit(Var)
 return
+
+::watch::
+Var =
+(
+watch: {
+  radio (newV, oldV) {
+      
+  }
+},
+)
+code(Var)
+return

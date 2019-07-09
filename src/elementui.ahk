@@ -1,9 +1,19 @@
 ﻿::el-color::
 Var =
 (
-<el-color-picker v-model="stage.backgroundColor" show-alpha></el-color-picker>
+<el-color-picker v-model="master.option.backgroundColor" @change='changeHandler' @active-change='activeChange' show-alpha></el-color-picker>
+---
+activeChange (v) {
+  this.master.option.backgroundColor = v
+},
+changeHandler (v) {
+  // 点击了 『清空』
+  if (v === null) {
+    this.master.option.backgroundColor = 'rgba(255, 255, 255, 0.8)'
+  }
+}
 )
-code(Var)
+txtit(Var)
 Return
 
 ::count-to::

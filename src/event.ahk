@@ -1284,7 +1284,7 @@ class AggregationMap {
             max,
             splitNumber: 3,
             seriesIndex: 1,  // 这里需要指定，是映射哪个series配置，我的是第二个的
-            inRange: {       
+            inRange: {
                 color: ["#ab1653", '#04af43', '#d4dd7a'],
             },
         }
@@ -1292,7 +1292,7 @@ class AggregationMap {
 
     // 热力图配置
     createHeatmap (data) {
-        return {   
+        return {
             // 设置为热力图类型
             type: 'heatmap',
             // 热力点的粗细值
@@ -1310,6 +1310,43 @@ class AggregationMap {
             // 层级
             zlevel: 2,
             // 设置地图数据：[[ "113.797669", "23.027844", 1 ], [ "113.807751", "23.026374", 1 ]]
+            data: data,
+        }
+    }
+
+    // 气泡图
+    createaPin (data = [], max = 1, min = 0, maxSizePin = 230, minSizePin = 145) {
+        return {
+            type: 'scatter',
+            // 坐标系（默认上面的geo配置作为坐标系）
+            coordinateSystem: 'geo',
+            // 图形
+            symbol: 'pin', // 'circle', 'pin', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'，'image://url'
+            // 动态设置气泡的大小
+            symbolSize: val => {
+                var a = (maxSizePin - minSizePin) / (max - min);
+                var b = minSizePin - a * min;
+                b = maxSizePin - a * max;
+                return a * val[2] + b;
+            },
+            label: {
+                normal: {
+                    show: true,
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'30',
+                    },
+                    formatter: function (params) {
+                        return params.value[2]
+                    }
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#F34234',
+                }
+            },
+            zlevel: 6,
             data: data,
         }
     }
@@ -1392,36 +1429,36 @@ class AggregationMap {
                     aspectScale: '1',
                     // 层级结构
                     zlevel: 1,
-                    // 标签样式 
+                    // 标签样式
                     label: {
                         // 是否显示
                         show: false,
                         // 文字颜色
                         color: '#fff',
                         // 文字大小
-                        fontSize: "90`%"
+                        fontSize: "20"
                     },
                     // 地图样式
                     itemStyle: {
-                        borderWidth: 5,
-                        // 边界颜色 #8ddeff yellow transparent
-                        borderColor: 'transparent',
-                        // 地图颜色 transparent  #143248
-                        areaColor: 'transparent',
+                        // 边界颜色
+                        borderColor: 'rgba(147, 235, 248, 1)',
+                        // 地图颜色
+                        areaColor: '#143248',
+                        // 阴影
+                        shadowColor: 'rgba(128, 217, 248, 1)', shadowOffsetX: 0, shadowOffsetY: 0, shadowBlur: 10
                     },
-
                     // 鼠标hover网格时的配置
                     emphasis: {
                         // 鼠标hover时的网块样式
                         itemStyle: {
                             // 区域颜色（这里必须设置一个值，才可以方便覆盖，覆盖也是为了取消hover的效果而已。）
-                            areaColor: 'rgba(17, 132, 187, .5)',
+                            areaColor: '#00ffff',
                         },
                         // 鼠标hover时标签的样式
                         label: {
                             // 文字颜色
-                            color: '#ffffff',
-                            fontSize: '90`%',
+                            color: '#112e43',
+                            fontSize: '30',
                             show: false,
                         },
                     },
@@ -1462,6 +1499,18 @@ class AggregationMap {
         // 开始渲染
         this.myChart.setOption(defaultConfig)
     }
+    
+    // 渲染气泡数据
+    renderPin (data, max, min) {
+        // 获取散点的配置
+        const config = this.createaPin(data, max, min)
+        // 获取默认配置
+        const defaultConfig = this.getDefaultConfig()
+        // 从默认配置中插入散点配置
+        defaultConfig.series.push(config)
+        // 开始渲染
+        this.myChart.setOption(defaultConfig)
+    }
 
     renderHeatmap (data) {
         // 创建热力图层
@@ -1487,6 +1536,7 @@ class AggregationMap {
 }
 
 export default AggregationMap
+}
 )
 code(Var)
 return
