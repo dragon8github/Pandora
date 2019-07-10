@@ -339,6 +339,7 @@ Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
+Gui, Pandora:Add, Text, gechartsZGDT W160, echarts中国地图.html
 
 Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+110, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
