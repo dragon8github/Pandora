@@ -106,6 +106,7 @@
     Menu, utilsPosition, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     
 
+    Menu, utilsObject, Add, 双向数据绑定原理：Object.defineProperty, utilsHandler
     Menu, utilsObject, Add, 对象交集 , utilsHandler
 
     Menu, utilsObject, Add,, utilsHandler
@@ -417,12 +418,11 @@
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
-    Menu, utilsMenu, Add, 高度从0到auto的伸缩特效魔法, utilsHandler
     Menu, utilsMenu, Add, parsePath: 对象路径解析器, utilsHandler
     Menu, utilsMenu, Add, diff: 对比两个json对象是否一致, utilsHandler
     Menu, utilsMenu, Add, fixPos: 根据父层界限调整宽高和位置, utilsHandler
     Menu, utilsMenu, Add, e.dataset 给元素设置数据, utilsHandler
-    Menu, utilsMenu, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
+    Menu, utilsMenu, Add, 颜色逻辑转换：hex2rgba, utilsHandler
     
     
     Menu, utilsMenu, Show
@@ -452,6 +452,15 @@ Var =
 )
 }
 
+if (v == "hex2rgba") {
+_send("color2Rgb", true, true)
+return
+}
+
+if (v == "双向数据绑定原理：Object.defineProperty") {
+_send("odf", true, true)
+return
+}
 
 if (v == "对象交集") {
 _send("objectjiaoji", true, true)
@@ -6219,3 +6228,97 @@ methods: {
 )
 code(Var)
 Return
+
+::odf::
+Var =
+(
+function defineReactive(obj, key, val) {
+	Object.defineProperty(obj, key, {
+		enumerable: true,
+		configurable: true,
+		get () {
+			console.log('get hook')
+			return val
+		},
+		set (newVal) {
+			console.log('set hook')
+			if (val === newVal) {
+				return
+			}
+			val = newVal
+		}
+	})
+}
+
+// demo
+var obj = {}
+
+// 初始化对象的 foo 属性
+defineReactive(obj, 'foo', 123)
+
+// 访问对象的foo属性，触发 get 钩子
+console.log(obj.foo) 
+// => get hook
+// => 123
+
+// 设置 foo 属性，触发 set 钩子
+obj.foo = '456'
+// => set hook
+// => 456
+)
+code(Var)
+return
+
+::hex::
+::rgba::
+::hex2rgba::
+::hex2rgb::
+::color2Rgb::
+::color::
+Var =
+(
+String.prototype.colorRgb = function() {
+    var sColor = this.toLowerCase();
+    if (sColor && /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/.test(sColor)) {
+        if (sColor.length === 4) {
+            var sColorNew = "#";
+            for (var i = 1; i < 4; i += 1) {
+                sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1));
+            }
+            sColor = sColorNew;
+        }
+        var sColorChange = [];
+        for (var i = 1; i < 7; i += 2) {
+            sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
+        }
+        return { red: sColorChange[0], green: sColorChange[1], blue: sColorChange[2], alpha: null };
+    } else {
+        return sColor;
+    }
+}
+
+var color = '#ffffff';
+color.colorRgb()
+
+//////////////////////////////////////////////
+// say something...
+//////////////////////////////////////////////
+
+function colorHex(value) {
+    if (!value) return '#ffffff';
+    if (!isObj(value) && value.includes('#')) return value;
+    var sColor = [value.red.toString(), value.green.toString(), value.blue.toString()];
+    value = '';
+    sColor.map(v => {
+        v = parseInt(v.replace(/[^\d]/gi, ''), 10).toString(16);
+        console.log(v.length == 1 ? "0" + v : v);
+        value += v.length == 1 ? '0' + v : v;
+    }).join('');
+    return '#' + value;
+}
+
+var obj = { red: 255, green: 255, blue: 255, alpha: null }
+colorHex(obj) // #ffffff
+)
+txtit(Var)
+return

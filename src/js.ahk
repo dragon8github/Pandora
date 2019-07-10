@@ -2597,16 +2597,20 @@ return
 ::date.all::
 Var =
 (
-var date = new Date()
-var year = date.getFullYear()
-var month = date.getMonth() + 1
-var day = date.getDate()
-var hours = date.getHours()
-var minu = date.getMinutes()
-var second = date.getSeconds()
-var week = ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'][date.getDay()]
-var arr = [hours, minu, second].map(item => item < 10 ? "0" + item : item)
-console.log(``${year}年${month}月${day}日 ${week} ${arr[0]}:${arr[1]}:${arr[2]}``)
+const date2week = t => {
+	var date = new Date()
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    var day = date.getDate()
+    var hours = date.getHours()
+    var minu = date.getMinutes()
+    var second = date.getSeconds()
+    var week = ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'][date.getDay()]
+    var arr = [hours, minu, second].map(item => item < 10 ? "0" + item : item)
+	return `${year}年${month}月${day}日 ${week} ${arr[0]}:${arr[1]}:${arr[2]}`
+}
+
+date2week(1562737742012)
 )
 code(Var)
 return
@@ -4770,6 +4774,8 @@ const dateYYYYMMDDHHmmss =  t => {
 	const arr = [month, day, hours, minu, second].map((item, index) => item < 10 ? '0' + item : item)
 	return year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4]
 }
+
+dateYYYYMMDDHHmmss(1562737742012)
 )
 code(Var)
 return
@@ -7085,7 +7091,6 @@ return
 
 ::script::
 ::script`:src::
-::src::
 Var =
 (
 <script src='.js'></script>

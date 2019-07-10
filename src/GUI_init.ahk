@@ -338,6 +338,7 @@ Gui, Pandora:Add, Text, gtianMaparcgisHtml ,新建arcgis和天地图.html
 Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
+Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
 
 Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+110, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
@@ -739,11 +740,11 @@ Gui, Pandora:Add, Link,, <a href="https://www.atlassian.com/software/confluence"
 
 
 Gui, Pandora:Add, Text, W140 ys, jointjs流程图
-Gui, Pandora:Add, Link,, <a href="https://www.jointjs.com/">jointjs官网</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/clientIO/joint">jointjs github</a>
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/docs/jointjs/v2.2/joint.html">jointjs api</a>
-Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos/kitchensink">jointjs 在线体验</a>
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/demos">jointjs demo大全</a>
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/tutorial">jointjs 入门指引</a>
+
 
 Gui, Pandora:Add, Text, W120 ys, 最强验证库joi
 Gui, Pandora:Add, Link,, <a href="https://github.com/hapijs/joi">hapijs joi</a>
@@ -891,30 +892,21 @@ Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/lates
 Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
 Gui, Pandora:Add, Link,, <a href="https://github.com/ecomfe/awesome-echarts">awesome-echarts</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
-Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/theme-builder/">echart 主题构建</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/tutorial.html#5 分钟上手 ECharts">echart 快速上手</a>
+Gui, Pandora:Add, Link,, <a href="https://www.oschina.net/translate/geojson-spec#positions">GeoJSON 格式规范</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/api.html">echart API</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
+Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/explore.html">ECharts 官方论坛</a>
+Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts 论坛示例</a>
+Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/editor.html?c=xSy3KhFV4M">ECharts 3D地图</a>
+
+
+Gui, Pandora:Add, Text, W140 ys, 优秀的echarts示例:
+Gui, Pandora:Add, Link, W140, <a href="https://gallery.echartsjs.com/editor.html?c=xH2DfA0Olu">幻影之舞</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=heatmap-map">热力图示例</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xkeSbXdmhp">三角形Echarts</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xSk6VBUGuG">冰山图</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xpO_B8IDmq">饼图花瓣图</a>
-
-
-
-Gui, Pandora:Add, Text, W140 ys, ECharts 相关资料：
-Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/editor.html?c=map-HK">echarts HK示例</a>
-Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/data/asset/geo/HK.json">HK GeoJson 数据示例</a>
-Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.itemStyle.color">echart 覆盖物配置</a>
-Gui, Pandora:Add, Link, W140, <a href="https://www.oschina.net/translate/geojson-spec#positions">GeoJSON 格式规范</a>
-
-
-Gui, Pandora:Add, Text, W140 ys, ECharts Gallery:
-Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html">ECharts 官方论坛</a>
-Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts 论坛示例</a>
-Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xB1jgoJnDf">ECharts 安徽示例</a>
-Gui, Pandora:Add, Link, W140, <a href="http://gallery.echartsjs.com/editor.html?c=xSy3KhFV4M">ECharts 3D地图</a>
-
 
 Gui, Pandora:Add, Text, W140 ys, openlayers:
 Gui, Pandora:Add, Link, W140, <a href="https://github.com/openlayers/openlayers">openlayers github</a>
@@ -933,9 +925,6 @@ Gui, Pandora:Add, Link, W140, <a href="http://www.tianditu.gov.cn/">天地图 �
 Gui, Pandora:Add, Link, W140, <a href="http://service.tianditu.gov.cn/">服务搜索</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/server/MapService.html">矢量地图api</a>
 Gui, Pandora:Add, Link, W140, <a href="https://github.com/mapbox/mapbox-gl-js">mapbox gl github</a>
-
-Gui, Pandora:Add, Text, W140 ys, 优秀的echarts示例:
-Gui, Pandora:Add, Link, W140, <a href="https://gallery.echartsjs.com/editor.html?c=xH2DfA0Olu">幻影之舞</a>
 
 
 Gui, Pandora:Tab, 10

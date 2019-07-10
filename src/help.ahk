@@ -1599,6 +1599,8 @@ import Chart from '../Chart.js'
 import {  } from '@/components/FormItem'
 
 export default class %OutputVar% extends Chart {
+      static w = 400;
+      static h = 400;
       constructor(...props) {
         super(...props)
 
