@@ -332,7 +332,8 @@
     Menu, utilses5, Add, 超简单的currying与理财花销实例, utilsHandler
     Menu, utilses5, Add, 超简单的链式调用套路：即让方法调用结束后返回对象本身, utilsHandler
     
-    
+
+    Menu, utilsJstest, Add, match 捕获匹配, utilsHandler
     
     ; @A @main @fuck @util @utils
     Menu, utilsMenu , Add, is 判断, :utilsIs
@@ -340,6 +341,7 @@
     Menu, utilsMenu , Add, Position 操作, :utilsPosition
     Menu, utilsMenu , Add, Object 操作, :utilsObject
     Menu, utilsMenu , Add, 原始之初ECMA5伏魔录, :utilses5
+    Menu, utilsMenu , Add, 正则表达式, :utilsJstest
     
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
@@ -449,6 +451,17 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "match 捕获匹配") {
+Var = 
+(
+match (value) {
+    const type = Object.prototype.toString.call(value)
+    return type.match(/\[object (.+?)\]/)[1]
+},
 )
 }
 
