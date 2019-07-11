@@ -164,9 +164,7 @@ import { maybe, isEmptyObject, throttle, catchErr } from '../utils/utils'
 
 
 localforage.config({
-    driver: [localforage.WEBSQL,
-             localforage.INDEXEDDB,
-             localforage.LOCALSTORAGE],
+    driver: [localforage.WEBSQL, localforage.INDEXEDDB, localforage.LOCALSTORAGE],
     name: 'WebSQL-Rox',
     size: 1024 * 1024
 });
@@ -239,7 +237,6 @@ axios.interceptors.request.use(config => {
     // 从vuex中获取当前日月报类型
     const reportType = store.state.reportType
 
-   
     // 设置公共GET参数(由于本项目的后端接口只有GET请求,所以只需要处理GET请求即可，如果需要POST则设置data参数)
     config.params = Object.assign({}, getCommonParams(), config.params)
 
@@ -297,24 +294,20 @@ const checkStatus = (response) => {
 
 // 缓存到localforage
 const cachedSave = (hashcode, content) => {
-    try {
-        // 返回code500是后端固定的报错反馈 && 不能为空对象 && 数据的小于2M
-        if (content.code != 500 && !isEmptyObject(content) && (JSON.stringify(content).length / 1024).toFixed(2) < 2048) {
-            // 设置缓存
-            localforage.setItem(hashcode, JSON.stringify(content))
-            // 设置缓存时间
-            localforage.setItem(`${hashcode}:timestamp`, Date.now())
-        }
-    } catch (err) {
-        // 超出缓存大小
-        if (err.name === 'QuotaExceededError') {
-            // 清空所有缓存
-            localforage.clear()
-            // 重新设置缓存
-            localforage.setItem(hashcode, JSON.stringify(content))
-            // 重新设置缓存时间
-            localforage.setItem(`${hashcode}:timestamp`, Date.now())
-        }
+    // 返回code500是后端固定的报错反馈 && 不能为空对象 && 数据的小于2M
+    if (content.code != 500 && !isEmptyObject(content) && (JSON.stringify(content).length / 1024).toFixed(2) < 2048) {
+        // 设置缓存
+        localforage.setItem(hashcode, JSON.stringify(content)).catch(err => {
+            console.log('cache err', err)
+            // 说明内存满了，直接清空
+            if (err.message.includes('quota')) localforage.clear()
+        })
+        // 设置缓存时间
+        localforage.setItem(`${hashcode}:timestamp`, Date.now()).catch(err => {
+            console.log('cache err', err)
+            // 说明内存满了，直接清空
+            if (err.message.includes('quota')) localforage.clear()
+        })
     }
 
     // 返回Promise
@@ -337,8 +330,8 @@ export const request = async (url, options = {}) => {
         const cached = await localforage.getItem(hashcode)
         // 获取该缓存的时间
         const whenCached = await localforage.getItem(`${hashcode}:timestamp`)
-        // 如果缓存都存在（如果希望只有生产模式才开启那么就加入这个判断条件 && process.env.NODE_ENV === 'production'）
-        if (cached !== null && whenCached !== null) {
+        // 如果缓存都存在（如果希望只有生产模式才开启那么就加入这个判断条件
+        if (cached !== null && whenCached !== null && process.env.NODE_ENV === 'production') {
             // 判断缓存是否过期
             const age = (Date.now() - whenCached) / 1000
             // 如果不过期的话直接返回该内容
