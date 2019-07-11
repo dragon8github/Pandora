@@ -123,7 +123,7 @@ Gui, Pandora:Add, Checkbox, vamazon, 亚马逊
 Gui, Pandora:Add, Checkbox, vkongzi, 孔夫子二手书
 
 ; 搜索框
-Gui, Pandora:Add, Edit, vSearchContent gSearchContent w260 Limit50 yp+40 Section xs, dragon8github/Pandora
+Gui, Pandora:Add, Edit, vSearchContent gSearchContent w260 H270 Limit150 yp+40 Section xs, dragon8github/Pandora
 
 ; 背景色
 Gui, Pandora:Color, E6FFE6
@@ -132,7 +132,7 @@ Gui, Pandora:Color, E6FFE6
 Gui, Pandora:Margin, 10, 10
 
 ; submit 按钮
-Gui, Pandora:Add, Button, w260 h30 gFuck Section xs h30 yp+40 Default, FUCK
+Gui, Pandora:Add, Button, w260 h30 gFuck Section xs h30 yp+290 Default, FUCK
 
 ; 取消按钮
 Gui, Pandora:Add, Button, gCancelSelect w260 h30 xs, 取消选中

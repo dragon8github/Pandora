@@ -2,9 +2,6 @@
 	Gui, Pandora:Show, W1350, Pandora
 return 
 
-
-
-
 PandoraGuiEscape:
 PandoraGuiClose:
 	Gui, Pandora:Hide
@@ -166,6 +163,9 @@ return
 Fuck:
 	; 保存用户的输入到每个控件的关联变量中.
 	Gui, Submit, NoHide 
+    
+    ; 在URL中，换行符需要替换为 %0A
+    SearchContent := StrReplace(SearchContent, "`n", "%0A")
 
 	; 贝尔塔猫'博客园
 	if (cylee == 1) {
@@ -4948,6 +4948,9 @@ body,
     <div id="app"></div>
 </body>
 <script>
+/*注：源码就是下面这些，只要复制到开发工具就行，然后把
+地图json数据（下载地址：https://share.weiyun.com/5x12K4r）的路径放对，
+并且要导入echarts就可以渲染出来地图了*/
 const ROOT = 'https://gallery.echartsjs.com/asset/get/s/'
 
 var zhongguo = ROOT + "data-1528971808162-BkOXf61WX.json"
@@ -4990,6 +4993,7 @@ echarts.extendsMap = function(id, opt) {
     var chart = this.init(document.getElementById(id));
 
     var curGeoJson = {};
+
     var cityMap = { '中国': zhongguo, '上海': shanghai, '河北': hebei, '山西': shangxi, '内蒙古': neimenggu, '辽宁': liaoning, '吉林': jilin, '黑龙江': heilongjiang, '江苏': jiangsu, '浙江': zhejiang, '安徽': anhui, '福建': fujian, '江西': jiangxi, '山东': shangdong, '河南': henan, '湖北': hubei, '湖南': hunan, '广东': guangdong, '广西': guangxi, '海南': hainan, '四川': sichuan, '贵州': guizhou, '云南': yunnan, '西藏': xizang, '陕西': shanxi, '甘肃': gansu, '青海': qinghai, '宁夏': ningxia, '新疆': xinjiang, '北京': beijing, '天津': tianjin, '重庆': chongqing, '香港': xianggang, '澳门': aomen };
 
     var levelColorMap = {
@@ -5007,29 +5011,19 @@ echarts.extendsMap = function(id, opt) {
         // 下钻回调(点击的地图名、实例对象option、实例对象)
         callback: function(name, option, instance) {}
     };
+
     if (opt) opt = this.util.extend(defaultOpt, opt);
 
     // 层级索引
     var name = [opt.mapName];
-    var idx = 0;
-    var pos = {
-        leftPlus: 115,
-        leftCur: 150,
-        left: 198,
-        top: 50
-    };
 
-    var line = [
-        [0, 0],
-        [8, 11],
-        [0, 22]
-    ];
-    // style
-    var style = {
-        font: '18px "Microsoft YaHei", sans-serif',
-        textColor: '#eee',
-        lineColor: 'rgba(147, 235, 248, .8)'
-    };
+    var idx = 0;
+
+    var pos = { leftPlus: 115, leftCur: 150, left: 198, top: 50 };
+
+    var line = [[0, 0], [8, 11], [0, 22] ];
+
+    var style = {font: '18px "Microsoft YaHei", sans-serif', textColor: '#eee', lineColor: 'rgba(147, 235, 248, .8)'};
 
     var handleEvents = {
         /**
@@ -5056,14 +5050,11 @@ echarts.extendsMap = function(id, opt) {
                             })
                         }
                     }
-
                     if (cityData != null) {
                         o.series[0].data = handleEvents.initSeriesData(cityData);
                     } else {
                         o.series[0].data = [];
                     }
-
-
                 }
                 name.push(n);
                 idx++;
@@ -5139,7 +5130,6 @@ echarts.extendsMap = function(id, opt) {
                     }
                 }]
             }
-
             pos.leftCur += pos.leftPlus;
 
             return breadcrumb;
@@ -5243,32 +5233,30 @@ echarts.extendsMap = function(id, opt) {
                 }
             },
             itemStyle: {
-                normal: {
-                    borderColor: 'rgba(147, 235, 248, 1)',
-                    borderWidth: 1,
-                    areaColor: {
-                        type: 'radial',
-                        x: 0.5,
-                        y: 0.5,
-                        r: 0.8,
-                        colorStops: [{
-                            offset: 0,
-                            color: 'rgba(147, 235, 248, 0)'
-                        }, {
-                            offset: 1,
-                            color: 'rgba(147, 235, 248, .2)'
-                        }],
-                        globalCoord: false
-                    },
-                    shadowColor: 'rgba(128, 217, 248, 1)',
-                    shadowOffsetX: -2,
-                    shadowOffsetY: 2,
-                    shadowBlur: 10
+                borderColor: 'rgba(147, 235, 248, 1)',
+                borderWidth: 1,
+                areaColor: {
+                    type: 'radial',
+                    x: 0.5,
+                    y: 0.5,
+                    r: 0.8,
+                    colorStops: [{
+                        offset: 0,
+                        color: 'rgba(147, 235, 248, 0)'
+                    }, {
+                        offset: 1,
+                        color: 'rgba(147, 235, 248, .2)'
+                    }],
+                    globalCoord: false
                 },
-                emphasis: {
-                    areaColor: '#389BB7',
-                    borderWidth: 0
-                }
+                shadowColor: 'rgba(128, 217, 248, 1)',
+                shadowOffsetX: -2,
+                shadowOffsetY: 2,
+                shadowBlur: 10
+            },
+            // 鼠标hover网格时的配置
+            emphasis: {
+
             },
             regions: opt.activeArea.map(function(item) {
                 if (typeof item !== 'string') {

@@ -1596,9 +1596,9 @@ Var =
 (
 import echarts from 'vue-echarts'
 import Chart from '../Chart.js'
-import {  } from '@/components/FormItem'
+import FormItem from '@/components/FormItem'
 
-export default class %OutputVar% extends Chart {
+export default class ChinaMap extends Chart {
       static w = 400;
       static h = 400;
       constructor(...props) {
@@ -1621,7 +1621,7 @@ export default class %OutputVar% extends Chart {
 
         // 第五步： 初始化配置
         this.setOption({
-            
+
         })
     }
 }
