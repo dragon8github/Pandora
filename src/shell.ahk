@@ -108,8 +108,10 @@
 	Menu, gitShellMenu, Add, 查看文件的修改历史：git log --pretty=oneline step3.vue, ShellHandler3
 	Menu, gitShellMenu, Add, git mergetool, ShellHandler
 	Menu, gitShellMenu, Add, git init && git checkout -b test && git checkout -b develop, ShellHandler2
-	
-	
+		
+	Menu, gitShellMenu, Add,
+	Menu, gitShellMenu, Add,		
+	Menu, gitShellMenu, Add, 删除远程文件/文件夹：git rm -r --cached node_modules/, ShellHandler3
 
 	Menu, ShellMenu, Add, #!/bin/bash（通过echo $SHELL确定）, ShellHandler
 	Menu, ShellMenu, Add, for循环, ShellHandler
@@ -190,6 +192,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "删除远程文件/文件夹：git rm -r --cached node_modules/") {
+Var = 
+(
+git rm -r --cached node_modules/
 )
 }
 

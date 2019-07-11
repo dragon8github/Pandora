@@ -151,6 +151,7 @@
 
 	Menu, NodeMenu, Show
 	Menu, NodeMenu, DeleteAll
+	Menu, NodeFileHandler, DeleteAll
 	Menu, DataType, DeleteAll
 return
 
@@ -179,7 +180,7 @@ const ejs = require('ejs')
 
 const getPath = dir => path.join(__dirname, '..' ,dir)
 
-// 读取路径（注意使用__dirname）
+// 渲染与读取
 const content = await ejs.renderFile(getPath('public/index.html'), data, { async: true })
 
 // 直接渲染模板
@@ -194,6 +195,10 @@ const path = require('path')
 const ejs = require('ejs')
 const fs = require('fs-extra')
 
+// 获取命令当前执行路径
+const getCurrentPath = dir => path.join(process.cwd(), dir)
+
+// 获取项目当前路径
 const getPath = dir => path.join(__dirname, '..' ,dir)
 )
 }

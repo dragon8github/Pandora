@@ -308,6 +308,7 @@
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
     Menu, utilsjuran, Add, holder占位图, utilsHandler
     Menu, utilsjuran, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
+    Menu, utilsjuran, Add, 光标移动到最后，对于div contenteditable 特别有效果, utilsHandler
     
     Menu, utilsmaybe, Add, 数字格式化函数：numberFormatter(11923.4521`, 2) => 12.02k, utilsHandler
     Menu, utilsmaybe, Add, 处理iOS 微信客户端6.7.4 键盘收起页面未下移bug, utilsHandler
@@ -457,6 +458,25 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "光标移动到最后，对于div contenteditable 特别有效果") {
+Var = 
+(
+// https://blog.csdn.net/arthurwanggang/article/details/62416283
+// https://segmentfault.com/a/1190000005869372
+setTimeout(() => {
+	// 先聚焦
+    e.target.focus()
+	// 获取当前的光标
+    var range = window.getSelection()
+	// 获取所有内容
+    range.selectAllChildren(e.target)
+	// 跳转到最后光标
+    range.collapseToEnd()
+}, 10)
 )
 }
 
@@ -6341,6 +6361,7 @@ return
 
 ::hex::
 ::rgba::
+::rgb::
 ::hex2rgba::
 ::hex2rgb::
 ::color2Rgb::
@@ -6369,11 +6390,7 @@ String.prototype.colorRgb = function() {
 
 var color = '#ffffff';
 color.colorRgb()
-
-//////////////////////////////////////////////
-// say something...
-//////////////////////////////////////////////
-
+---
 function colorHex(value) {
     if (!value) return '#ffffff';
     if (!isObj(value) && value.includes('#')) return value;
@@ -6450,7 +6467,7 @@ return
 ::wmp::
 Var =
 (
-import(/* webpackChunkName: "print" */ './print').then(module => {
+import(/* webpackChunkName: "fuckyou" */ './fuckyou.json').then(module => {
   var print = module.default
   print()
 })
