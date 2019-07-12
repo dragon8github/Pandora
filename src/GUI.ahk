@@ -164,8 +164,6 @@ Fuck:
 	; 保存用户的输入到每个控件的关联变量中.
 	Gui, Submit, NoHide 
     
-    ; 在URL中，换行符需要替换为 %0A
-    SearchContent := StrReplace(SearchContent, "`n", "%0A")
 
 	; 贝尔塔猫'博客园
 	if (cylee == 1) {
@@ -5323,6 +5321,122 @@ $.getJSON(zhongguo, function(geoJson) {
         callback: function(name, option, instance) {},
     });
     window.onresize = myChart.resize
+})
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+echartsZGDTchun:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<style>
+html,
+body,
+#app {
+    margin: 0;
+    width: 100`%;
+    height: 100`%;
+}
+</style>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+// 省份数据
+const province = [{ "name": "黑龙江", "value": 7 }, { "name": "吉林", "value": 7 }, { "name": "辽宁", "value": 7 }, { "name": "上海", "value": 1 }, { "name": "江苏", "value": 1 }, { "name": "浙江", "value": 9 }, { "name": "安徽", "value": 5 }, { "name": "福建", "value": 9 }, { "name": "江西", "value": 4 }, { "name": "山东", "value": 5 }, { "name": "台湾", "value": 11 }, { "name": "北京", "value": 6 }, { "name": "天津", "value": 6 }, { "name": "山西", "value": 8 }, { "name": "河北", "value": 6 }, { "name": "内蒙古", "value": 8 }, { "name": "河南", "value": 3 }, { "name": "湖北", "value": 4 }, { "name": "湖南", "value": 4 }, { "name": "广东", "value": 2 }, { "name": "广西", "value": 2 }, { "name": "海南", "value": 2 }, { "name": "香港", "value": 2 }, { "name": "澳门", "value": 2 }, { "name": "重庆", "value": 10 }, { "name": "四川", "value": 10 }, { "name": "贵州", "value": 10 }, { "name": "云南", "value": 10 }, { "name": "西藏", "value": 10 }, { "name": "陕西", "value": 3 }, { "name": "甘肃", "value": 3 }, { "name": "青海", "value": 3 }, { "name": "宁夏", "value": 8 }, { "name": "新疆", "value": 8 }, { "name": "南海诸岛", "value": 11 }]
+// 散点 - 示例数据
+const demo = [{"name": "中西", "value": "33.96", }, {"name": "中西", "value": "58.84", }, {"name": "中西", "value": "17.83", }, {"name": "中西", "value": "0.45", }, {"name": "江苏", "value": "48.81", }, {"name": "江苏", "value": "55.50", }, {"name": "华中", "value": "88.00", }, {"name": "华中", "value": "73.87", }, {"name": "华中", "value": "38.12", }, {"name": "西南", "value": "95.73", }, {"name": "西南", "value": "56.44", }, {"name": "西南", "value": "80.01", }, {"name": "西南", "value": "73.73", }, {"name": "西南", "value": "88.67", }, {"name": "东南", "value": "85.35", }, {"name": "东南", "value": "74.98", }, {"name": "华南", "value": "61.26", }, {"name": "华南", "value": "43.11", }, {"name": "华南", "value": "67.06", }]
+// 散点对应的坐标位置
+const geoCoordMap = { "东北": [123.38, 41.8], "北方": [111.65, 40.82], "华北": [116.46, 39.92], "华东": [117, 36.65], "中西": [113.65, 34.76], "江苏": [118.78, 32.04], "华中": [114.31, 30.52], "西南": [104.06, 30.67], "东南": [119.3, 26.08], "华南": [113.23, 23.16], "河南1": [112.586911, 32.718346], "河南2": [112.812566, 32.70498], "河南3": [113.361286, 33.632491], };
+
+// 异步请求中国地图数据
+// 地图json数据（下载地址：https://share.weiyun.com/5x12K4r）
+$.getJSON("https://gallery.echartsjs.com/asset/get/s/data-1528971808162-BkOXf61WX.json", geoJson => {
+	// 注册地图
+    echarts.registerMap('china', geoJson);
+
+    // 初始化
+    const chart = echarts.init(document.getElementById('app'));
+
+    window.onresize = chart.resize
+
+    // 初始化散点数据
+    const initSeriesData = data => data.map(_ => ({ name: _.name, value: geoCoordMap[_.name].concat(_.value) }))
+
+    chart.setOption({
+        backgroundColor: '#154e90',
+        tooltip: {
+            show: true,
+            alwaysShowContent: false,
+            backgroundColor: 'rgba(50,50,50,0.7)',
+            hideDelay: 100,
+            triggerOn: 'mousemove',
+            enterable: true,
+            formatter: params => '大区名称：' + params.name + '<br/>' + '年累容量：' + params.value[2] + ' MW'
+        },
+        geo: {
+            map: 'china',
+            roam: true,
+            zoom: 1,
+            label: {normal: {show: true, textStyle: {color: '#fff'} }, emphasis: {textStyle: {color: '#fff'} } },
+            itemStyle: {
+                normal: {
+                    borderColor: 'rgba(255, 255, 255, .5)',
+                    borderWidth: 1,
+                    areaColor: {type: 'radial', x: 0.5, y: 0.5, r: 0.8, colorStops: [{offset: 0, color: 'rgba(147, 235, 248, 0)'}, {offset: 1, color: 'rgba(147, 235, 248, .5)'}], globalCoord: false },
+                    shadowColor: 'rgba(255, 255, 255, .5)',
+                    shadowOffsetX: -2,
+                    shadowOffsetY: 2,
+                    shadowBlur: 10
+                },
+                emphasis: {
+                    areaColor: 'rgba(249,157,51, .9)',
+                    borderWidth: 0
+                }
+            },
+        },
+        series: [{
+            type: 'effectScatter',
+            coordinateSystem: 'geo',
+            showEffectOn: 'render',
+            hoverAnimation: true,
+	        rippleEffect: {scale: 7, period: 4, brushType: 'fill'},
+            itemStyle: {color: '#FABC61', shadowBlur: 20, shadowColor: '#333'},
+            data: initSeriesData(demo)
+        }, {
+            name: "map",
+            type: 'map',
+            mapType: 'china',
+            geoIndex: 0,
+            label: { normal: { show: true }, emphasis: { show: true } },
+            tooltip: { show: false, },
+            data: province,
+        }],
+        visualMap: {
+            min: 0,
+            max: 11,
+            calculable: true,
+            seriesIndex: '1',
+            show: false,
+            inRange: {color: ["#ffffff", "#ffc188", "#479fd2", "#fba853", "#48c7c0", "#fa8737", "#4bbdd6", "#ff6f5b", "#F4D5B1", "#ADE1E3", "#F4B387", "#F0F3F4"] }
+        },
+    });
+
 })
 </script>
 

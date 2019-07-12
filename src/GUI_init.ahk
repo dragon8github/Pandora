@@ -333,15 +333,15 @@ Gui, Pandora:Add, Text, gNewEchartraduisHtml ,新建.raduis.html（圆环图）
 Gui, Pandora:Add, Text, gNewEchartPinBoderHtml ,新建.pinBoder.html（圆环断层图）
 Gui, Pandora:Add, Text, gNewEchartdoulecolorHtml ,新建.doulecolor.html（双色柱状图）
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ,新建.echartsDemo.html（官方示例脚手架）
-Gui, Pandora:Add, Text, gtianMapHtml ,新建天地图国土地图.html
 Gui, Pandora:Add, Text, gtianMaparcgisHtml ,新建arcgis和天地图.html
 Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
-Gui, Pandora:Add, Text, gechartsZGDT W160, echarts中国地图.html
+Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
+Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 
-Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+110, 新建nodejs爬虫模板
+Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+80, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
 Gui, Pandora:Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
 Gui, Pandora:Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
@@ -923,9 +923,12 @@ Gui, Pandora:Add, Link, W140, <a href="https://github.com/mapbox/mapbox-gl-js">m
 
 Gui, Pandora:Add, Text, W140 ys, 天地图与国土地图:
 Gui, Pandora:Add, Link, W140, <a href="http://www.tianditu.gov.cn/">天地图 官网</a>
+Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/api/js4.0/guide.html">天地图 入门指导</a>
 Gui, Pandora:Add, Link, W140, <a href="http://service.tianditu.gov.cn/">服务搜索</a>
-Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/server/MapService.html">矢量地图api</a>
-Gui, Pandora:Add, Link, W140, <a href="https://github.com/mapbox/mapbox-gl-js">mapbox gl github</a>
+Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/server/MapService.html">地图服务-矢量API</a>
+Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/api/js4.0/examples.html">示例中心：散点、mark</a>
+Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/api/js4.0/opensource/source.html">集成D3效果</a>
+
 
 
 Gui, Pandora:Tab, 10
