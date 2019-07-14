@@ -23,6 +23,7 @@ FileDelete, .\src\*.bak
 #Include src/help.ahk             ; 辅助功能
 #Include src/makedown.ahk         ; makedown
 #Include src/cdn.ahk              ; CDN   
+#Include src/taro.ahk	          ; taro
 #Include src/html.ahk             ; HTML    
 #Include src/three.ahk            ; THREE    
 #Include src/wx.ahk               ; wx
@@ -34,10 +35,10 @@ FileDelete, .\src\*.bak
 #Include src/arr.ahk              ; arr
 #Include src/python.ahk		      ; python
 #Include src/node.ahk             ; nodejs 
+#Include src/jsutils.ahk          ; jsutils
 #Include src/js.ahk               ; JavaScript  
 #Include src/canvas.ahk		      ; canvas
 #Include src/TypeScript.ahk       ; TypeScript
-#Include src/jsutils.ahk          ; jsutils
 #Include src/php.ahk              ; php
 #Include src/sql.ahk		      ; sql
 #Include src/reactNative.ahk      ; ReactNative
@@ -52,6 +53,6 @@ FileDelete, .\src\*.bak
 #Include src/bilibili.ahk	      ; bilibili
 #Include src/elasticsearch.ahk	  ; elasticsearch
 #Include src/golang.ahk	          ; golang
-#Include src/wilddog.ahk	      ; wilddog
+
 
 

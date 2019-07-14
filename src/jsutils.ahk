@@ -231,6 +231,7 @@
     Menu, utilsDesignPattern, Add, 优惠券条件分支：链式after解决方案, utilsHandler
     
     ; @认知 @renzhi
+    Menu, utilspractice, Add, !function(){}()：被遗忘的另一个IIFE, utilsHandler
     Menu, utilspractice, Add, 拖拽位置公式, utilsHandler
     Menu, utilspractice, Add, 仿rxjs的观察者模式, utilsHandler
     Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
@@ -459,6 +460,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "!function(){}()：被遗忘的另一个IIFE") {
+_send("iife", true, true)
+return
 }
 
 
@@ -6473,4 +6480,16 @@ import(/* webpackChunkName: "fuckyou" */ './fuckyou.json').then(module => {
 })
 )
 code(Var)
+return
+
+::iife::
+:?:!f::
+Var =
+(
+!function(){
+
+}()
+)
+code(Var)
+Send, {up}{tab}
 return

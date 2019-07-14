@@ -1636,3 +1636,11 @@ Swagger
 )
 code(Var)
 return
+
+::wx::
+Var =
+(
+wx926e9eb2e54b3e1b
+)
+code(Var)
+return

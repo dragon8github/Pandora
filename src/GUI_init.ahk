@@ -285,7 +285,7 @@ Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建index.html
 Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
 Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
-Gui, Pandora:Add, Text, gNewRxjsIndexHtml W140,新建Rxjs.html
+; Gui, Pandora:Add, Text, gNewRxjsIndexHtml W140,新建Rxjs.html
 Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
 Gui, Pandora:Add, Text, gNewassertHtml W160,新建assert.html
 Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建异步assert.html
@@ -299,6 +299,7 @@ Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
 Gui, Pandora:Add, Text, gprismhtml W160,prism代码高亮.html
 Gui, Pandora:Add, Text, gdeepmergehtml W160,deepmerge.html
 Gui, Pandora:Add, Text, gdom2imghtml W160,dom-to-image.html
+Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html

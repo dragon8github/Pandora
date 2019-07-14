@@ -1,6 +1,4 @@
 ﻿!w::
-
-
     Menu, dogpractice, Add, 1、 ref 可以传入 child 参数（哪怕还没有创建）如：wilddog.sync().ref('/__LAYER__'), dogHandler
     Menu, dogpractice, Add, 2、 ref 返回的对象叫 Reference 对象，我们主要学习关于它的API, dogHandler
     
@@ -28,12 +26,6 @@
     Menu, dogMenu, Add, on 所有事件API 文档, dogHandler
     Menu, dogMenu, Add, EventType 所有的事件类型on/once, dogHandler
     
-    Menu, dogMenu, Add,, dogHandler
-    Menu, dogMenu, Add,, dogHandler
-    
-    Menu, dogMenu, Add, PowserShell 压缩（必须有文件才成立）, dogHandler
-    Menu, dogMenu, Add, PowserShell 解压, dogHandler
-
 	Menu, dogMenu, Show
 	Menu, dogMenu, DeleteAll
 return
