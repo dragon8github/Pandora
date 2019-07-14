@@ -380,23 +380,35 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image, Button, } from '@tarojs/components'
 import './index.scss'
 
+//////////////////////////////////////////////
+// 图片
+import ICON1 from '../../assets/icon1.png'
+//////////////////////////////////////////////
+
 export default class %OutputVar% extends Component {
 
   config = {
     navigationBarTitleText: '%OutputVar%'
   }
+  
+  constructor (props) {
+    super(props)
+    this.state = { 
+      date: new Date(),
+    }
+  }
 
   //////////////////////////////////////////////
   // life hook
-  componentWillMount () { }
+  componentWillMount() {}
 
-  componentDidMount () { }
+  componentDidMount() {}
 
-  componentWillUnmount () { }
+  componentWillUnmount() {}
 
-  componentDidShow () { }
+  componentDidShow() {}
 
-  componentDidHide () { }
+  componentDidHide() {}
   //////////////////////////////////////////////
 
   go = () => {

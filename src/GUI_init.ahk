@@ -1131,8 +1131,8 @@ ClipChanged(Type) {
 		; 左键是否按紧了
 		KeyIsDown := GetKeyState("LButton")
 		
-		if (InStr(b, "rpx;")) {
-			b := StrReplace(b, "rpx;", "px;")
+		if (InStr(b, "rpx")) {
+			b := StrReplace(b, "rpx", "px")
 			Clipboard := b
 		}
 		

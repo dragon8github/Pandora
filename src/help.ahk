@@ -376,9 +376,11 @@ V := ""
 repeatArr := []
 Loop, parse, MyVar, `n, `r
 {
-	if (StrLen(A_LoopField) and InStr(A_LoopField, " class")) {
+	if (StrLen(A_LoopField) and (InStr(A_LoopField, " class") or InStr(A_LoopField, " className"))) {
+        
 		; 获取class值
-		RegExMatch(A_LoopField, "mi`a)class\s*=\s*['|""]{1}(.+?)['|""]{1}", OutputVar)
+		RegExMatch(A_LoopField, "mi`a)[class|className]\s*=\s*['|""]{1}(.+?)['|""]{1}", OutputVar)
+        
 		; 获取缩进
 		RegExMatch(A_LoopField, "^(\s*)(.*)<", spaceValue)
 
