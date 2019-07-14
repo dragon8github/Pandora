@@ -1128,14 +1128,24 @@ ClipChanged(Type) {
    if (type == 1) {
 		b := Trim(StrReplace(Clipboard, "`r`n"))
 		
-		if (InStr(b, "sinaimg.cn/small") && StrLen(b) <= 100 && !InStr(b, "![](")) {
-			b := "![](" . StrReplace(b, "small", "large") . ")"
-			return Clipboard := b
+		; 左键是否按紧了
+		KeyIsDown := GetKeyState("LButton")
+		
+		if (InStr(b, "rpx;")) {
+			b := StrReplace(b, "rpx;", "px;")
+			Clipboard := b
 		}
 		
-		if (InStr(b, "ax1x.com") && StrLen(b) <= 100 && !InStr(b, "![](")) {
+		; 我们约定只有当左键的时候才可以
+		if (KeyIsDown && InStr(b, "sinaimg.cn/small") && StrLen(b) <= 100 && !InStr(b, "![](")) {
+			b := "![](" . StrReplace(b, "small", "large") . ")"
+			Clipboard := b
+		}
+		
+		; 我们约定只有当左键的时候才可以
+		if (KeyIsDown && InStr(b, "ax1x.com") && StrLen(b) <= 100 && !InStr(b, "![](")) {
 			b := "![](" . b . ")"
-			return Clipboard := b
+			Clipboard := b
 		}
 		 
 		; 必须复制的不是空内容但小于200，并且不是在GUI中复制的才进行储存。

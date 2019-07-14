@@ -14,8 +14,6 @@
     Menu, taronpx, Add, npx taro build --type weapp --watch, taroHandler2
     Menu, taronpx, Add, npx taro build --type weapp, taroHandler2
 
-
-
     Menu, taronpx, Add
     Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁  H5  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
     Menu, taronpx, Add
@@ -85,12 +83,54 @@
     Menu, taronpx, Add, npx taro build --type weapp --watch, taroHandler2
     Menu, taronpx, Add, npx taro build --type weapp, taroHandler2
 
+
+    Menu, taroc, Add, import { View， Text } from '@tarojs/components', taroHandler
+    Menu, taroc, Add, View, taroHandler2
+    Menu, taroc, Add, Block, taroHandler2
+    Menu, taroc, Add, Image, taroHandler2
+    Menu, taroc, Add, Text, taroHandler2
+    Menu, taroc, Add, Switch, taroHandler2
+    Menu, taroc, Add, Button, taroHandler2
+    Menu, taroc, Add, Icon, taroHandler2
+    Menu, taroc, Add, Radio, taroHandler2
+    Menu, taroc, Add, Input, taroHandler2
+    Menu, taroc, Add, ScrollView, taroHandler2
+    Menu, taroc, Add, Swiper， SwiperItem, taroHandler2
+    Menu, taroc, Add, Checkbox, taroHandler2
+    Menu, taroc, Add, Picker, taroHandler2
+    Menu, taroc, Add, Label, taroHandler2
+    Menu, taroc, Add, Textarea, taroHandler2
+    Menu, taroc, Add, Slider, taroHandler2
+    Menu, taroc, Add, Video, taroHandler2
+    Menu, taroc, Add, Audio, taroHandler2
+    Menu, taroc, Add, Camera, taroHandler2
+    Menu, taroc, Add, Progress, taroHandler2
+    Menu, taroc, Add, RichText, taroHandler2
+    Menu, taroc, Add, Form, taroHandler2
+    Menu, taroc, Add, RadioGroup, taroHandler2
+    Menu, taroc, Add, CheckboxGroup, taroHandler2
+    Menu, taroc, Add, Tabbar, taroHandler2
+    Menu, taroc, Add, TabbarContainer, taroHandler2
+    Menu, taroc, Add, TabbarPanel, taroHandler2
+    Menu, taroc, Add, Navigator, taroHandler2
+    Menu, taroc, Add, WebView, taroHandler2
+    Menu, taroc, Add, OpenData, taroHandler2
+    Menu, taroc, Add, Canvas, taroHandler2
+    Menu, taroc, Add, MovableArea， MovableView, taroHandler2
+    Menu, taroc, Add, CoverImage， CoverView, taroHandler2
+    Menu, taroc, Add, PickerView, taroHandler2
+    Menu, taroc, Add, PickerViewColumn, taroHandler2
+    Menu, taroc, Add, PullDownRefresh, taroHandler2
+
+
+
     Menu, taroMenu, Add, npm run dev:weapp, taroHandler
-    Menu, taroMenu, Add, npm run dev:h5, taroHandler
+    Menu, taroMenu, Add, npm run dev:h5, taroHandler2
 	
     Menu, taroMenu, Add, taro template脚手架 , taroHandler
     
     Menu, taroMenu, Add, taro cli , :taronpx
+    Menu, taroMenu, Add, taro component , :taroc
     
     Menu, taroMenu, Add
     Menu, taroMenu, Add
@@ -98,14 +138,15 @@
     Menu, taroMenu, Add, import { ... } from '@tarojs/components', taroHandler
     
 
-	Menu, taroMenu, Show
-	Menu, taronpx, DeleteAll
+	  Menu, taroMenu, Show
+	  Menu, taronpx, DeleteAll
     Menu, taroMenu, DeleteAll
     
 return
 
 taroHandler2:
 v := A_ThisMenuItem
+v := StrReplace(v, "，", ",")
 cs(v)
 return
 
@@ -118,6 +159,15 @@ Var =
 (
 )
 }
+
+
+if (v == "import { View， Text } from '@tarojs/components'") {
+Var =
+(
+import { View， Text } from '@tarojs/components'
+)
+}
+
 
 if (v == "taro template脚手架") {
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/taroTemplate.zip", "cnpm install `; npm rebuild node-sass `; npm run dev:weapp")
@@ -322,10 +372,12 @@ return
 :?:taro.c::
 ::taro.init::
 InputBox, OutputVar, title, enter a name?,,,,,,,,Index
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+OutputVar := toUpFir(OutputVar)
 Var =
 (
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Image, Button, } from '@tarojs/components'
 import './index.scss'
 
 export default class %OutputVar% extends Component {
@@ -334,6 +386,8 @@ export default class %OutputVar% extends Component {
     navigationBarTitleText: '%OutputVar%'
   }
 
+  //////////////////////////////////////////////
+  // life hook
   componentWillMount () { }
 
   componentDidMount () { }
@@ -343,16 +397,20 @@ export default class %OutputVar% extends Component {
   componentDidShow () { }
 
   componentDidHide () { }
+  //////////////////////////////////////////////
+
+  go = () => {
+    console.log(%t%, '%OutputVar%')
+  }  
 
   render () {
     return (
       <View className='%OutputVar%'>
-        <Text>Hello %OutputVar%!</Text>
+        <Text onClick={ this.go }>Hello %OutputVar%!</Text>
       </View>
     `)
   }
 }
-
 )
 code(Var)
 return
@@ -456,4 +514,13 @@ Var =
 </html>
 )
 code(Var)
+return
+
+::image::
+Var =
+(
+<Image src={backgroud} className=''></Image>
+)
+code(Var)
+Send, {left 10}
 return

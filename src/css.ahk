@@ -2490,7 +2490,7 @@ return
 
 ::flex::
 
-	; try 异常处理
+	
     Menu, A, Add, justify-content: flex-start , flexHandler
     Menu, A, Add, justify-content: center , flexHandler
     Menu, A, Add, justify-content: flex-end, flexHandler
@@ -2506,7 +2506,7 @@ return
     Menu, C, Add, row(默认)：从左到右, flexHandler
     Menu, C, Add, column：从上到下, flexHandler
 	
-
+    Menu, flexMenu, Add, display: flex;, flexHandler
     Menu, flexMenu, Add, justify-content, :A
     Menu, flexMenu, Add, align-items, :B
     Menu, flexMenu, Add, flex-direction, :C
@@ -2522,6 +2522,12 @@ flexHandler:
 v := A_ThisMenuItem
 Var :=
 
+if (v == "display: flex;") {
+Var = 
+(
+display: flex;
+)
+}
 
 if (v == "justify-content: flex-start") {
 Var = 
@@ -4005,6 +4011,8 @@ Var =
 code(Var)
 return
 
+::util.scss::
+::util.css::
 ::utils.scss::
 ::utils.css::
 Var =
@@ -4415,6 +4423,122 @@ a {
     transform: translateY(0px);
   }
 }
+---
+@charset 'utf-8';
+
+@mixin size($width, $height, $lineHeight: false) {
+    width: $width;
+    height: $height;
+
+    @if $lineHeight {
+        line-height: $lineHeight
+    }
+}
+
+@mixin ycenter {
+    position: absolute;
+    top: 50`%;
+    transform: translateY(-50`%);
+}
+
+@mixin xcenter {
+    position: absolute;
+    left: 50`%;
+    transform: translateX(-50`%);
+}
+
+@mixin ell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin center {
+    position: absolute;
+    left: 50`%;
+    top: 50`%;
+    transform: translate(-50`%, -50`%);
+}
+
+@mixin flex ($x: false, $y: false, $direction: false) {
+    display: flex;
+
+    @if $x {
+        @if $x==s or $x==start {
+            justify-content: flex-start;
+        }
+
+        @else if $x==c or $x==center {
+            justify-content: center;
+        }
+
+        @else if $x==e or $x==end {
+            justify-content: flex-end;
+        }
+
+        @else if $x==a or $x==around {
+            justify-content: space-around;
+        }
+
+        @else if $x==b or $x==between {
+            justify-content: space-between;
+        }
+
+        @else {
+            justify-content: $x;
+        }
+    }
+
+    @if $y {
+        @if $y==s or $y==start {
+            align-items: flex-start;
+        }
+
+        @else if $y==c or $y==center {
+            align-items: center;
+        }
+
+        @else if $y==e or $y==end {
+            align-items: flex-end;
+        }
+
+        @else if $y==stretch or $y==full or $y==f {
+            align-items: stretch;
+        }
+
+        @else if $y==baseline or $y==base or $y==b or $y==line or $y==l {
+            align-items: baseline;
+        }
+
+        @else {
+            align-items: $y;
+        }
+    }
+
+    @if $direction {
+        @if $direction==c or $direction==col {
+            flex-direction: column;
+        }
+
+        @else {
+            flex-direction: $direction;
+        }
+    }
+}
+
+@mixin bg ($width, $height, $url) {
+    width: $width;
+    height: $height;
+    background: transparent url($url) center / $width $height no-repeat;
+    display: inline-block;
+}
+
+@mixin fullbg ($width, $height, $url) {
+    width: $width;
+    height: $height;
+    background: url($url) center / 100`% no-repeat content-box;
+}
+
 )
 txtit(Var)
 return

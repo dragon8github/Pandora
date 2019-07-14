@@ -36,7 +36,11 @@ MsgBox, %InputLocaleID%
 return
 */
 
-
+toUpFir(v) {
+    f := SubStr(v, 1, 1)
+    StringUpper, f, f
+    return f . SubStr(v, 2)
+}
 
 tip(title=" ", content=" ") {
     TrayTip, %title%, %content%, 20 ,16
