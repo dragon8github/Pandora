@@ -108,6 +108,7 @@
 	Menu, echartsEventMenu, Add, echarts 简单轮播器, EventHandler
 	Menu, echartsEventMenu, Add, echarts geo地图坐标转换为页面Offset坐标, EventHandler
 	Menu, echartsEventMenu, Add, map.js 类库持续集成, EventHandler
+    Menu, echartsEventMenu, Add, toolbox：下载图片的工具, EventHandler
 
 	;@a @1
 	Menu, EventMenu, Add, JavaScript, :JavaScriptEventMenu
@@ -178,6 +179,21 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "toolbox：下载图片的工具") {
+Var = 
+(
+toolbox: {
+    left: "160",
+    feature: {
+        saveAsImage: {
+            show: true
+        },
+    }
+},
 )
 }
 	

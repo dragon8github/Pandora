@@ -254,13 +254,21 @@ code(code) {
      ; 当前高度
      _h := A_ScreenHeight / ycount
     
-     ; 开始执行
-     Run, notepad2,,, pid
-     pidary.push(pid)
-     WinWait, ahk_pid %pid%
-     WinActivate, ahk_pid %pid%
-     WinMove, ahk_pid %pid%,, _x, _y, _w, _h
-     code(value)
+     try {
+        
+         ; 开始执行
+         Run, notepad2,,, pid     
+         pidary.push(pid)
+         WinWait, ahk_pid %pid%
+         WinActivate, ahk_pid %pid%
+         WinMove, ahk_pid %pid%,, _x, _y, _w, _h
+         code(value)
+     }
+     catch e {
+        MsgBox, 你的电脑没有安装nodepad2，请先安装再执行。
+        run, http://www.flos-freeware.ch/zip/Notepad2_4.2.25_x64.exe
+        Exit
+     }
   }
   return
 }

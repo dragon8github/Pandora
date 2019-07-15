@@ -1600,7 +1600,7 @@ import echarts from 'vue-echarts'
 import Chart from '../Chart.js'
 import FormItem from '@/components/FormItem'
 
-export default class ChinaMap extends Chart {
+export default class %OutputVar% extends Chart {
       static w = 400;
       static h = 400;
       constructor(...props) {

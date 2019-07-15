@@ -342,6 +342,7 @@ Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
 Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 
+
 Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+80, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
 Gui, Pandora:Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
@@ -350,6 +351,8 @@ Gui, Pandora:Add, Text, gNewNodejsSequelize W190, 新建nodejs-sequelize-mysql�
 Gui, Pandora:Add, Text, gNewNodejsRenamechName W190, 新建nodejs批量改名中文模板
 Gui, Pandora:Add, Text, gNewmochachai W190, 新建mocha+chai单元测试模板
 Gui, Pandora:Add, Text, gNewesmodule W190, 新建nodejs运行es Module模板
+Gui, Pandora:Add, Text, gsandianchart W180, 散点图.html
+Gui, Pandora:Add, Text, gyibiaopan W180, 仪表盘刻度.html
 
 Gui, Pandora:Add, Text, gNewreactbabelHtml W140  ys x+30, 新建react.babel.html
 Gui, Pandora:Add, Text, gNewcreateareactapp, 新建create-react-app脚手架

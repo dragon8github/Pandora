@@ -5519,3 +5519,382 @@ $(function() {
 RunBy(name)
 run, % name
 return
+
+sandianchart:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="app" style="width: 600px; height:400px;"></div>
+</body>
+<script>
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('app'))
+
+// 随机配色1
+const colors1 = ["#FFEE7D","#448EF6", "#769353", "#6DB193", "#FDBE34", "#75C2F6"];
+
+// 随机配色2
+const colors2 = ["#79DC96","#6E7DA2", "#346473", "#B689B0", "#FFE981", "#E4F9F5"];
+
+// 获取 Series
+const getSeries = data => data.map((_, index) => ({
+    name: _.name,
+    data: _.data,
+    type: 'scatter',
+    symbolSize: data => Math.sqrt(data[2]) * 2,
+    label: {
+        normal: { show: true, formatter: "", position: 'top', },
+        emphasis: { show: true, formatter: param => param.data[3], position: 'top' }
+    },
+    itemStyle: {
+        shadowBlur: 10,
+        shadowColor: 'rgba(25, 100, 150, 0.5)',
+        shadowOffsetY: 5,
+        color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [
+            { offset: 0, color: colors1[index] },
+            { offset: 1, color: colors2[index] }
+        ])
+    }
+}))
+
+const data = [{
+        name: '15届',
+        data: [
+            [66, 0.1935483870967742, 341, "土木工程学院"],
+            [300, 0.7537688442211056, 398, "新闻与传播学院"],
+            [118, 0.5728155339805825, 206, "化学化工学院"],
+            [37, 0.22424242424242424, 165, "物理与电子工程学院"],
+            [67, 0.4785714285714286, 140, "建筑与城市规划学院"],
+            [167, 0.5921985815602837, 282, "美术与设计学院"],
+            [120, 0.2146788990825688, 109, "生命科学学院"],
+            [7, 0.07142857142857142, 98, "体育学院"],
+        ]
+    },
+    {
+        name: '14届',
+        data: [
+            [98, 0.6901408450704225, 142, "法学院"],
+            [223, 0.2121212121212121, 165, "公共管理学院"],
+            [168, 0.835820895522388, 201, "人文学院"],
+            [47, 0.2974683544303797, 158, "生命科学学院"],
+            [16, 0.15384615384615385, 104, "体育学院"],
+            [165, 0.8918918918918919, 185, "外国语学院"],
+            [235, 0.7704918032786885, 305, "新闻与传播学院"],
+            [210, 0.5108108108108109, 111, "音乐舞蹈学院"],
+        ]
+    },
+    {
+        name: '13届',
+        data: [
+            [82, 0.5616438356164384, 146, "数学与信息科学学院"],
+            [172, 0.6539923954372624, 263, "美术与设计学院"],
+            [175, 0.8293838862559242, 211, "人文学院"],
+            [213, 0.7526501766784452, 283, "新闻与传播学院"],
+            [72, 0.35467980295566504, 203, "生命科学学院"],
+            [270, 0.3649122807017544, 285, "土木工程学院"],
+            [25, 0.10909090909090909, 110, "体育学院"],
+            [160, 0.2962962962962963, 108, "音乐舞蹈学院"],
+        ]
+    },
+]
+
+
+var option = {
+    tooltip: {
+        trigger: "item",
+        formatter: function(params) {
+            return params.value[3] + ":" + parseInt(params.value[1] * 1000) / 10 + "`%"
+        }
+    },
+    title: {
+        text: "广州大学数据分析",
+        subtext: "各学院人数比例及基数-Acring",
+        left: "center"
+    },
+    legend: {
+        right: 10,
+        top: 5,
+        data: data.map(_ => _.name)
+    },
+    grid: {
+        top: '20`%',
+        bottom: '10`%',
+    },
+    xAxis: {
+        name: "数量",
+        splitLine: {
+            lineStyle: {
+                type: 'dashed'
+            }
+        }
+    },
+    yAxis: {
+        name: "占比",
+        splitLine: {
+            lineStyle: {
+                type: 'dashed'
+            }
+        },
+        scale: true
+    },
+    series: getSeries(data)
+};
+
+myChart.setOption(option);
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+yibiaopan:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="app" style="width: 600px; height:400px;"></div>
+</body>
+<script>
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('app'))
+var highlight = 'white';
+
+this.demo = {
+    data: {
+        name: '项目进度',
+        value: 60,
+        unit: '`%',
+        pos: ['50`%', '50`%'],
+        range: [0, 100],
+        colora: 'rgba(193,136,244,0.9)',
+        colorb: 'rgba(242,166,200,0.6)'
+    }
+}
+
+var option = {
+    backgroundColor: '#212121',
+    series: [
+        // 内侧指针、数值显示
+        {
+            name: this.demo.data.name,
+            type: 'gauge',
+            center: this.demo.data.pos,
+            radius: '60`%',
+            startAngle: 225,
+            endAngle: -45,
+            min: 0,
+            max: 100,
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    width: 2,
+                    color: [
+                        [
+                            this.demo.data.value / 100, new echarts.graphic.LinearGradient(
+                                0, 0, 1, 0, [{
+                                        offset: 0,
+                                        color: 'rgba(255,255,255,0)',
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: 'white',
+                                    }
+                                ]
+                            `)
+                        ],
+                        [
+                            1, 'rgba(255,255,255, 0)'
+                        ]
+                    ]
+                }
+            },
+            axisTick: {
+                show: 0,
+            },
+            splitLine: {
+                show: 0,
+            },
+            axisLabel: {
+                show: 0
+            },
+            pointer: {
+                show: 0,
+            },
+            detail: {
+                show: 0
+            },
+            data: [{
+                value: this.demo.data.value,
+            }]
+        },
+        // 外围刻度
+        {
+            type: 'gauge',
+            center: this.demo.data.pos,
+            radius: '50`%', // 1行3个
+            splitNumber: this.demo.data.splitNum || 10,
+            min: 0,
+            max: 100,
+            startAngle: 225,
+            endAngle: -45,
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    width: 1,
+                    color: [
+                        [1, 'rgba(0,0,0,0)']
+                    ]
+                }
+            }, //仪表盘轴线
+            axisTick: {
+                show: true,
+                lineStyle: {
+                    color: 'rgba(255,255,255,0.6)',
+                    width: 1
+                },
+                length: -6
+            }, //刻度样式
+            splitLine: {
+                show: true,
+                length: 10,
+                lineStyle: {
+                    color: 'rgba(255,255,255,0.6)'
+                }
+            }, //分隔线样式
+            axisLabel: {
+                show: true,
+                distance: 2,
+                textStyle: {
+                    color: highlight,
+                    fontSize: '12',
+                    fontWeight: 'bold'
+                }
+            },
+            pointer: {
+                show: 0
+            },
+            detail: {
+                show: 0
+            }
+        },
+        // 内侧指针、数值显示
+        {
+            name: this.demo.data.name,
+            type: 'gauge',
+            center: this.demo.data.pos,
+            radius: '54`%',
+            startAngle: 225,
+            endAngle: -45,
+            min: 0,
+            max: 100,
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    width: 50,
+                    color: [
+                        [
+                            this.demo.data.value / 100, new echarts.graphic.LinearGradient(
+                                0, 0, 1, 0, [{
+                                        offset: 0,
+                                        color: 'rgba(0,0,0, 0)',
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: this.demo.data.colorb,
+                                    }
+                                ]
+                            `)
+                        ],
+                        [
+                            1, 'rgba(255,255,255, 0)'
+                        ]
+                    ]
+                }
+            },
+            axisTick: {
+                show: 0,
+            },
+            splitLine: {
+                show: 0,
+            },
+            axisLabel: {
+                show: 0
+            },
+            pointer: {
+                show: true,
+                length: '102`%',
+                width: 3
+            },
+            title: {
+                show: true,
+                offsetCenter: [0, '65`%'],
+                color: 'white',
+                fontSize: 20,
+                borderRadius: 21,
+                padding: 5
+            },
+            detail: {
+                show: true,
+                offsetCenter: [0, 0],
+                textStyle: {
+                    fontSize: 25,
+                    color: '#fff'
+                },
+                formatter: [
+                    '{value}' + (this.demo.data.unit || ''),
+                ].join('\n'),
+
+                rich: {
+                    name: {
+                        fontSize: 20,
+                        lineHeight: 10,
+                        color: '#ddd',
+                        padding: [30, 0, 0, 0]
+                    }
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: highlight,
+                }
+            },
+            data: [{
+                value: this.demo.data.value,
+                name: this.demo.data.name
+            }]
+        }
+
+    ]
+};
+
+myChart.setOption(option);
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

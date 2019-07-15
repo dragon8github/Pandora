@@ -432,6 +432,7 @@
     Menu, utilsMenu, Add, fixPos: 根据父层界限调整宽高和位置, utilsHandler
     Menu, utilsMenu, Add, e.dataset 给元素设置数据, utilsHandler
     Menu, utilsMenu, Add, 颜色逻辑转换：hex2rgba, utilsHandler
+    Menu, utilsMenu, Add, 获取一个颜色的反色：#000 = #fff, utilsHandler
     Menu, utilsMenu, Add, 路径获取文件名和后缀, utilsHandler
     
     
@@ -459,6 +460,18 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "获取一个颜色的反色：#000 = #fff") {
+Var = 
+(
+function colorReverse(oldColor){
+    var oldColor = '0x' + oldColor.replace(/#/g, '');
+    var str = '000000' + (0xFFFFFF - oldColor).toString(16);
+   return str.substring(str.length - 6, str.length);
+}
 )
 }
 
@@ -6413,6 +6426,13 @@ function colorHex(value) {
 
 var obj = { red: 255, green: 255, blue: 255, alpha: null }
 colorHex(obj) // #ffffff
+---
+function colorReverse(oldColor){
+    var oldColor = '0x' + oldColor.replace(/#/g, '');
+    var str = '000000' + (0xFFFFFF - oldColor).toString(16);
+   return str.substring(str.length - 6, str.length);
+}
+colorReverse('#000000') // #ffffff
 )
 txtit(Var)
 return
