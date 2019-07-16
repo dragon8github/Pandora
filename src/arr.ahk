@@ -476,9 +476,9 @@ return
 ::for in::
 Var =
 (
-for (var property in source) {
-	if (source.hasOwnProperty(property)) {
-		console.log(source[property]);
+for (var key in obj) {
+	if (obj.hasOwnProperty(obj)) {
+		console.log(obj[key])
 	}
 }
 )

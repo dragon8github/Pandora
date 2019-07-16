@@ -1,4 +1,28 @@
 ﻿!v::
+    
+  Menu, vuerouterhock, Add, 组件钩子beforeRouteLeave, VueHandler
+  Menu, vuerouterhock, Add, 组件钩子beforeRouteEnter, VueHandler
+  Menu, vuerouterhock, Add, 全局钩子router.afterEach, VueHandler
+  Menu, vuerouterhock, Add, 全局钩子router.beforeEach, VueHandler
+
+  Menu, Vuerouter, Add, router.init, VueHandler
+  Menu, Vuerouter, Add, 获取参数this.$route.params.id, VueHandler
+  Menu, Vuerouter, Add, this.$router.push('index'), VueHandler
+  Menu, Vuerouter, Add, this.$router.back(), VueHandler
+  Menu, Vuerouter, Add, this.$router.currentRoute.meta.step, VueHandler
+  Menu, Vuerouter, Add, router.js 404 定义, VueHandler
+  Menu, Vuerouter, Add, router路由钩子大全, :vuerouterhock  
+  Menu, Vuerouter, Add, <router-view></router-view>, VueHandler
+  Menu, Vuerouter, Add, <router-link></router-link>, VueHandler
+
+
+  Menu, Vuerouter, Add, 路由 Layout 布局示例, VueHandler
+  Menu, Vuerouter, Add, 动态路由：router.addRoutes, VueHandler
+  Menu, Vuerouter, Add, next() 的三种参数形态, VueHandler
+  Menu, Vuerouter, Add, 路由验证token并跳转登录与重定向的套路, VueHandler
+
+
+  Menu, VueMenu, Add, vuex.router, :Vuerouter
   Menu, VueMenu, Add, vuex.init, VueHandler
   Menu, VueMenu, Add, vuex.modules, VueHandler
   Menu, VueMenu, Add, vuex.action, VueHandler
@@ -8,7 +32,7 @@
   Menu, VueMenu, Add, this.$store.getters['app/master'], VueHandler
   Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations`, mapGetters } from 'vuex', VueHandler  
   Menu, VueMenu, Add, this.$store.subscribe, VueHandler
-  Menu, VueMenu, Add, ElementUI 按需引入教程, VueHandler  
+  
 
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -57,56 +81,43 @@
   Menu, VueMenu, Add, , VueHandler
   
     
-  Menu, vuerouterhock, Add, 组件钩子beforeRouteLeave, VueHandler
-  Menu, vuerouterhock, Add, 组件钩子beforeRouteEnter, VueHandler
-  Menu, vuerouterhock, Add, 全局钩子router.afterEach, VueHandler
-  Menu, vuerouterhock, Add, 全局钩子router.beforeEach, VueHandler
-  
-  Menu, VueMenu, Add, router.init, VueHandler
-  
-  Menu, VueMenu, Add, 获取参数this.$route.params.id, VueHandler
-  Menu, VueMenu, Add, this.$router.push('index'), VueHandler
-  Menu, VueMenu, Add, this.$router.back(), VueHandler
-  Menu, VueMenu, Add, this.$router.currentRoute.meta.step, VueHandler
-  Menu, VueMenu, Add, router.js 404 定义, VueHandler
-  Menu, VueMenu, Add, router路由钩子大全, :vuerouterhock  
-  Menu, VueMenu, Add, <router-view></router-view>, VueHandler
-  Menu, VueMenu, Add, <router-link></router-link>, VueHandler
-  
-  
-  Menu, VueMenu, Add, 路由 Layout 布局示例, VueHandler
-  Menu, VueMenu, Add, 动态路由：router.addRoutes, VueHandler
-  Menu, VueMenu, Add, next() 的三种参数形态, VueHandler
-  Menu, VueMenu, Add, 路由验证token并跳转登录与重定向的套路, VueHandler
-  
-  Menu, VueMenu, Add, , VueHandler
-  Menu, VueMenu, Add, , VueHandler
-  
+  Menu, vuesolution, Add, ElementUI 按需引入教程, VueHandler  
+  Menu, vuesolution, Add, npm rebuild node-sass, VueHandler
+  Menu, vuesolution, Add, 组件复用的新套路: 合并配置，来代替mixin方案, VueHandler
+  Menu, vuesolution, Add, Vue.config.productionTip = false, VueHandler
   Menu, vuesolution, Add, setTitle: 解决微信、QQ、闪银等内置浏览器单页应用无法刷新title的问题, VueHandler
+  
+  Menu, vuesolution, Add
+  Menu, vuesolution, Add
+  
+  Menu, vuesolution, Add, $.scrollforevery 无缝滚动（Vue版本）, VueHandler
+  Menu, vuesolution, Add, click-outside 指令, VueHandler
   Menu, vuesolution, Add, DataV - 顶部一闪过儿的loading封装, VueHandler
   Menu, vuesolution, Add, 我的layer组件：通过js来操作.vue组件，只有插入任何位置, VueHandler
   Menu, vuesolution, Add, svg-spinner-loader.vue, VueHandler
   Menu, vuesolution, Add, myprogress组件, VueHandler
   Menu, vuesolution, Add, msgbox组件, VueHandler
-  Menu, vuesolution, Add, click-outside 指令, VueHandler
-  Menu, vuesolution, Add, 组件复用的新套路: 合并配置，来代替mixin方案, VueHandler
   Menu, vuesolution, Add, 波浪效果组件, VueHandler
   Menu, vuesolution, Add, 波浪效果指令：v-waves, VueHandler
   Menu, vuesolution, Add, NProgress页面加载组件, VueHandler
-  Menu, vuesolution, Add, 宇宙流星雨canvas, VueHandler
-  Menu, vuesolution, Add, $.scrollforevery 无缝滚动（Vue版本）, VueHandler
-  Menu, vuesolution, Add, el-menu简易封装, VueHandler
-  Menu, vuesolution, Add, npm rebuild node-sass, VueHandler
-  Menu, vuesolution, Add, Vue.config.productionTip = false, VueHandler
-  Menu, vuesolution, Add, Vue 404 页面, VueHandler
   Menu, vuesolution, Add, vue-drag-drop, VueHandler
   Menu, vuesolution, Add, vue-drag-resize, VueHandler
+  Menu, vuesolution, Add, Vue 404 页面, VueHandler
+  Menu, vuesolution, Add, 宇宙流星雨canvas, VueHandler
+  Menu, vuesolution, Add, el-menu简易封装, VueHandler  
+  
+  Menu, vuesolution, Add
+  Menu, vuesolution, Add
   
   
   Menu, VueMenu, Add, Vue 解决方案和组件, :vuesolution
   
   
   Menu, VueMenu, Show
+  Menu, vuewatch, DeleteAll
+  Menu, vuewatch, DeleteAll
+  Menu, Vuerouter, DeleteAll
+  Menu, vuerouterhock, DeleteAll
   Menu, VueMenu, DeleteAll
 return
 
@@ -3600,7 +3611,7 @@ Var =
  * 2. 如果要重命名，数组可以切换为对象。
  * 3. 不懂的直接访问官网：https://vuex.vuejs.org/guide/actions.html
  */
-import { mapState, mapActions, mapMutations } from 'vuex'
+import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 ---
 methods: {
    ...mapActions('app', [

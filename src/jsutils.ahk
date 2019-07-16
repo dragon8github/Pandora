@@ -108,6 +108,7 @@
 
     Menu, utilsObject, Add, 双向数据绑定原理：Object.defineProperty, utilsHandler
     Menu, utilsObject, Add, 对象交集 , utilsHandler
+    Menu, utilsmy, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
 
     Menu, utilsObject, Add,, utilsHandler
     Menu, utilsObject, Add,, utilsHandler
@@ -273,6 +274,8 @@
     
     
     ; @my
+    Menu, utilsmy, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
+    Menu, utilsmy, Add, 随机在配色网站上获取颜色, utilsHandler
     Menu, utilsmy, Add, wait等待工具，必须配合 async/await使用, utilsHandler
     Menu, utilsmy, Add, delay延迟工具，必须配合 async/await使用, utilsHandler
     Menu, utilsmy, Add, 数组成员冲排列：以大带小 drive, utilsHandler
@@ -340,7 +343,58 @@
     Menu, utilswebpack, Add, require.context, utilsHandler
     Menu, utilswebpack, Add, 异步引入：await import(/* webpackChunkName: 'lodash' */ 'lodash'), utilsHandler
     
+        
+    Menu, utils2, Add, uuid 超简易版, utilsHandler
+    Menu, utils2, Add, urlparams 获取路由参数, utilsHandler
+    Menu, utils2, Add, device 获取设备信息, utilsHandler
+    Menu, utils2, Add, merge（既$.extend，这个概念更好，不会与面向对象的继承混淆）, utilsHandler
+    Menu, utils2, Add, 获取localStorage剩余容量和最大容量, utilsHandler
+
+    Menu, utils2, Add, , utilsHandler
+    Menu, utils2, Add, , utilsHandler
+
+
+
+    Menu, utils2, Add, debounce 函数去抖, utilsHandler
+    Menu, utils2, Add, throttle 函数节流, utilsHandler
+    Menu, utils2, Add, memoized 函数缓存, utilsHandler
+    Menu, utils2, Add, timeChunk 分时分批处理函数 , utilsHandler
+    Menu, utils2, Add, compose 函数组合, utilsHandler
+    Menu, utils2, Add, memoized：函数缓存器, utilsHandler
+
+    Menu, utils2, Add, , utilsHandler
+    Menu, utils2, Add, , utilsHandler
+
+    Menu, utils2, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
+    Menu, utils2, Add, window.requestAnimFrame, utilsHandler
+    Menu, utils2, Add, poll 递归, utilsHandler
+    Menu, utils2, Add, pad 自动补全, utilsHandler
+    Menu, utils2, Add, 首字母大写 _.charAt(0) 的使用, utilsHandler
+
+    Menu, utils2, Add, , utilsHandler
+    Menu, utils2, Add, , utilsHandler
+
+    Menu, utils2, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
+    Menu, utils2, Add, encodeURI URI过滤, utilsHandler
+    Menu, utils2, Add, escapeHTML 防止XSS, utilsHandler
+    Menu, utils2, Add, 模拟真实点击click，专门对付clickoutside, utilsHandler
+    Menu, utils2, Add, ClickOutside 点击外部冒泡, utilsHandler
+
+    Menu, utils2, Add, , utilsHandler
+    Menu, utils2, Add, , utilsHandler
+
+    Menu, utils2, Add, parsePath: 对象路径解析器, utilsHandler
+    Menu, utils2, Add, diff: 对比两个json对象是否一致, utilsHandler
+    Menu, utils2, Add, fixPos: 根据父层界限调整宽高和位置, utilsHandler
+    Menu, utils2, Add, e.dataset 给元素设置数据, utilsHandler
+    Menu, utils2, Add, 颜色逻辑转换：hex2rgba, utilsHandler
+    Menu, utils2, Add, 获取一个颜色的反色：#000 = #fff, utilsHandler
+    Menu, utils2, Add, 路径获取文件名和后缀, utilsHandler
+
+
+    
     ; @A @main @fuck @util @utils
+    Menu, utilsMenu , Add, 第二页, :utils2
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     Menu, utilsMenu , Add, Position 操作, :utilsPosition
@@ -384,60 +438,9 @@
     Menu, utilsMenu, Add, !!Σ(゜Д゜) 居然还有这种操作？ Σ(ﾟдﾟ;), :utilsjuran
     Menu, utilsMenu, Add, ╮(￣▽￣)╭ 先收起来再说，没准将来会有用呢？ ╮(￣▽￣)╭, :utilsmaybe
  
-    Menu, utilsMenu, Add, , utilsHandler
-    Menu, utilsMenu, Add, , utilsHandler
-    
-
-    Menu, utilsMenu, Add, uuid 超简易版, utilsHandler
-    Menu, utilsMenu, Add, urlparams 获取路由参数, utilsHandler
-    Menu, utilsMenu, Add, device 获取设备信息, utilsHandler
-    Menu, utilsMenu, Add, merge（既$.extend，这个概念更好，不会与面向对象的继承混淆）, utilsHandler
-    Menu, utilsMenu, Add, 获取localStorage剩余容量和最大容量, utilsHandler
-
-    Menu, utilsMenu, Add, , utilsHandler
-    Menu, utilsMenu, Add, , utilsHandler
-    
-    
-    
-    Menu, utilsMenu, Add, debounce 函数去抖, utilsHandler
-    Menu, utilsMenu, Add, throttle 函数节流, utilsHandler
-    Menu, utilsMenu, Add, memoized 函数缓存, utilsHandler
-    Menu, utilsMenu, Add, timeChunk 分时分批处理函数 , utilsHandler
-    Menu, utilsMenu, Add, compose 函数组合, utilsHandler
-    Menu, utilsMenu, Add, memoized：函数缓存器, utilsHandler
-
-    Menu, utilsMenu, Add, , utilsHandler
-    Menu, utilsMenu, Add, , utilsHandler
-    
-    Menu, utilsMenu, Add, JSON.parse(JSON.stringify(...)) 超简易拷贝, utilsHandler
-    Menu, utilsMenu, Add, window.requestAnimFrame, utilsHandler
-    Menu, utilsMenu, Add, poll 递归, utilsHandler
-    Menu, utilsMenu, Add, pad 自动补全, utilsHandler
-    Menu, utilsMenu, Add, 首字母大写 _.charAt(0) 的使用, utilsHandler
-    
-    Menu, utilsMenu, Add, , utilsHandler
-    Menu, utilsMenu, Add, , utilsHandler
-
-    Menu, utilsMenu, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
-    Menu, utilsMenu, Add, encodeURI URI过滤, utilsHandler
-    Menu, utilsMenu, Add, escapeHTML 防止XSS, utilsHandler
-    Menu, utilsMenu, Add, 模拟真实点击click，专门对付clickoutside, utilsHandler
-    Menu, utilsMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
-
-    Menu, utilsMenu, Add, , utilsHandler
-    Menu, utilsMenu, Add, , utilsHandler
-    
-    Menu, utilsMenu, Add, parsePath: 对象路径解析器, utilsHandler
-    Menu, utilsMenu, Add, diff: 对比两个json对象是否一致, utilsHandler
-    Menu, utilsMenu, Add, fixPos: 根据父层界限调整宽高和位置, utilsHandler
-    Menu, utilsMenu, Add, e.dataset 给元素设置数据, utilsHandler
-    Menu, utilsMenu, Add, 颜色逻辑转换：hex2rgba, utilsHandler
-    Menu, utilsMenu, Add, 获取一个颜色的反色：#000 = #fff, utilsHandler
-    Menu, utilsMenu, Add, 路径获取文件名和后缀, utilsHandler
-    
-    
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
+    Menu, utils2, DeleteAll
     Menu, utilsIs, DeleteAll
     Menu, utilsDOM, DeleteAll
     Menu, utilsObject, DeleteAll
@@ -460,6 +463,89 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "ObjectSearch:深度搜索对象/数组") {
+Var = 
+(
+// 是否为对象
+const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
+
+// 是否为数组
+const isArray = input => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
+
+/**
+ * 深度搜索对象/数组的key ...
+ * @target           {Object}   要搜索的对象/数组
+ * @searchExpression {Function} 搜索表达式
+ * @targetHande      {Function} 命中后的回调函数
+ * @maxDeep          {Number}   深入的层级
+ *
+ */
+const ObjectSearch = (target, searchExpression, targetHande, maxDeep = 10) => {
+    // 是否为一个对象或者数组
+    if (isObject(target) || isArray(target)) {
+        // 目标是否满足表达式，如果满足直接操作
+        searchExpression(target) && targetHande(target)
+        // 遍历
+        for (let k in target) {
+            // 递归
+            ObjectSearch(target[k], searchExpression, targetHande, maxDeep)
+        }
+    }
+}
+
+const demo1 = { a: {b: {c: {fuckyou: 'demo1'}}} }
+const demo2 = [ { a: {b: {c: {fuckyou: 'demo2'}}} } ]
+const demo3 = { a: { b: { c: [ { a: {b: {c: {fuckyou: 'demo3'}}} } ] } } }
+
+ObjectSearch(demo1, target => 'fuckyou' in target, v => { console.log(20190716140318, v) })
+ObjectSearch(demo2, target => 'fuckyou' in target, v => { console.log(20190716140319, v) })
+ObjectSearch(demo3, target => 'fuckyou' in target, v => { console.log(20190716140319, v) })
+
+// update demo
+ObjectSearch(demo1, target => 'fuckyou' in target, v => { 
+    v.fuckyou = 'thinkyou'
+    console.log(20190716140939, JSON.stringify(demo1))
+})
+)
+}
+
+if (v == "随机在配色网站上获取颜色") {
+Var = 
+(
+// 从数组中随机获取指定数量的成员
+var getRandomArrayElements = (arr, count) => {
+    var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+    while (i-- > min) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(min);
+}
+
+// 反色
+var colorReverse = oldColor => {
+    var oldColor = '0x' + oldColor.replace(/#/g, '');
+    var str = '000000' + (0xFFFFFF - oldColor).toString(16);
+   return str.substring(str.length - 6, str.length);
+}
+
+// 随机在 https://colorhunt.co/palettes/random 中获取
+var randColorHunt = num => getRandomArrayElements([...document.querySelectorAll('span[onclick]')].map(_ => _.innerText), num)
+
+// 获取10个
+var randColors = randColorHunt(10)
+
+// 打印出颜色的结果
+randColors.forEach((val, key) => console.log('`%c' + val, `background: ${val}; color: #${colorReverse(val.substr(1))}; font-size: 20px`))
+
+// 打印出所有颜色
+console.log(randColors)
 )
 }
 
@@ -4905,9 +4991,8 @@ function pad (target, n) {
 if (v == "isArray") {
 Var = 
 (
-export default function isArray(input) {
-    return input instanceof Array || Object.prototype.toString.call(input) === '[object Array]';
-}
+// 是否为数组
+const isArray = input => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
 )
 }
 
@@ -4960,12 +5045,8 @@ export default function isEmptyObject(obj) {
 if (v == "isObject") {
 Var = 
 (
-export default function isObject(input) {
-    // IE8 will treat undefined and null as object if it wasn't for
-    // input != null
-    return input != null && Object.prototype.toString.call(input) === '[object Object]';
-}
-
+// 是否为对象
+const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
 )
 }
 
@@ -6367,14 +6448,21 @@ var obj = {}
 defineReactive(obj, 'foo', 123)
 
 // 访问对象的foo属性，触发 get 钩子
-console.log(obj.foo) 
-// => get hook
-// => 123
+console.log(obj.foo)
 
 // 设置 foo 属性，触发 set 钩子
 obj.foo = '456'
-// => set hook
-// => 456
+
+
+//////////////////////////////////////////////
+// 注意，js 无法监听对象属性的添加和删除
+//////////////////////////////////////////////
+
+defineReactive(obj, 'list', [1,2,3])
+
+obj.list[0] = 'fuck' // 不会触发set hook，但居然还额外触发了 get hook。
+
+obj.list = 123 // 触发 set hook
 )
 code(Var)
 return
@@ -6512,4 +6600,56 @@ Var =
 )
 code(Var)
 Send, {up}{tab}
+return
+
+::objfind::
+::deepfind::
+::ObjectSearch::
+::objsearch::
+::searchObject::
+::searchObj::
+Var =
+(
+// 是否为对象
+const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
+
+// 是否为数组
+const isArray = input => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
+
+/**
+ * 深度搜索对象/数组的key ...
+ * @target           {Object}   要搜索的对象/数组
+ * @searchExpression {Function} 搜索表达式
+ * @targetHande      {Function} 命中后的回调函数
+ * @maxDeep          {Number}   深入的层级
+ *
+ */
+const ObjectSearch = (target, searchExpression, targetHande, maxDeep = 10) => {
+    // 是否为一个对象或者数组
+    if (isObject(target) || isArray(target)) {
+        // 目标是否满足表达式，如果满足直接操作
+        searchExpression(target) && targetHande(target)
+        // 遍历
+        for (let k in target) {
+            // 递归
+            ObjectSearch(target[k], searchExpression, targetHande, maxDeep)
+        }
+    }
+}
+
+const demo1 = { a: {b: {c: {fuckyou: 'demo1'}}} }
+const demo2 = [ { a: {b: {c: {fuckyou: 'demo2'}}} } ]
+const demo3 = { a: { b: { c: [ { a: {b: {c: {fuckyou: 'demo3'}}} } ] } } }
+
+ObjectSearch(demo1, target => 'fuckyou' in target, v => { console.log(20190716140318, v) })
+ObjectSearch(demo2, target => 'fuckyou' in target, v => { console.log(20190716140319, v) })
+ObjectSearch(demo3, target => 'fuckyou' in target, v => { console.log(20190716140319, v) })
+
+// update demo
+ObjectSearch(demo1, target => 'fuckyou' in target, v => {
+    v.fuckyou = 'thinkyou'
+    console.log(20190716140939, JSON.stringify(demo1))
+})
+)
+code(Var)
 return
