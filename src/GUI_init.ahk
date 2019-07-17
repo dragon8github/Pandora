@@ -281,15 +281,15 @@ Gui, Pandora:Add, Link,, <a href="http://strapdownjs.com/">html转化为md</a>
 
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建纯index.html
-Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建index.html
+Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建vue-form.html
+Gui, Pandora:Add, Text, greactHtml W140, 新建react.html
 Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
 Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
 ; Gui, Pandora:Add, Text, gNewRxjsIndexHtml W140,新建Rxjs.html
 Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
-Gui, Pandora:Add, Text, gNewassertHtml W160,新建assert.html
-Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建异步assert.html
-Gui, Pandora:Add, Text, gNewjointjsHtml W160,新建去重复jointjs流程图
+Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建assert.html
+Gui, Pandora:Add, Text, gNewjointjsHtml W160,新建jointjs流程图
 Gui, Pandora:Add, Text, gNewuploadHtml W160,新建读取本地目录/文件内容
 Gui, Pandora:Add, Text, gNewlshtml W160,新建读取本地目录列表
 Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条

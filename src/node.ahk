@@ -148,6 +148,7 @@
 	Menu, NodeMenu, Add, mocha/chai, :A
 	Menu, NodeMenu, Add, fs 文件IO, :NodeFileHandler
 	Menu, NodeMenu, Add, nodejs实现最简单的模板引擎替换, NodeHandler
+	Menu, NodeMenu, Add, npx lite-server, NodeHandler
 
 	Menu, NodeMenu, Show
 	Menu, NodeMenu, DeleteAll
@@ -170,6 +171,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "npx lite-server") {
+cs("npx lite-server")
+return
 }
 
 if (v == "ejs") {
