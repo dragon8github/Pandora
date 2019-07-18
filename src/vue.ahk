@@ -105,6 +105,7 @@
   Menu, vuesolution, Add, Vue 404 页面, VueHandler
   Menu, vuesolution, Add, 宇宙流星雨canvas, VueHandler
   Menu, vuesolution, Add, el-menu简易封装, VueHandler  
+  Menu, vuesolution, Add, el-enum简易封装, VueHandler  
   
   Menu, vuesolution, Add
   Menu, vuesolution, Add
@@ -129,6 +130,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "el-enum简易封装") {
+_send("el-enum", true, true)
+return
 }
 
 
@@ -3004,6 +3010,12 @@ return
 ::elementui::
 Var =
 (
+0、还是推荐直接点先： cnpm install element-ui --save
+import ElementUI from 'element-ui'
+
+Vue.use(ElementUI)
+import 'element-ui/lib/theme-chalk/index.css'
+
 1、需要安装
 
 cnpm install babel-plugin-component -D
@@ -3020,7 +3032,7 @@ cnpm install babel-plugin-component -D
     "stage-2"
   ],
   "plugins": [
-    "transform-vue-jsx", 
+    "transform-vue-jsx",
     "transform-runtime",
     ["component", {
       "libraryName": "element-ui",
@@ -3687,6 +3699,126 @@ watch: {
       
   }
 },
+)
+code(Var)
+return
+
+::el-enum::
+Var =
+(
+<usage-docs>
+  ``````html
+  <dgenum :value='value' url="http://localhost:3000/data" @change='changeHandler'></dgenum>
+  ``````
+
+  ``````JavaScript
+  <script>
+  import dgenum from './enum.vue'
+  export default {
+    name: 'app',
+    data () {
+      return {
+        value: "1"
+      }
+    },
+    components: {
+      dgenum
+    },
+    methods: {
+      changeHandler (...args) {
+        console.log(20190718172918, ...args)
+      }
+    }
+  }
+  </script>
+  ``````
+</usage-docs>
+
+<template>
+    <el-select class='enum' v-model='current' @change='changeHandler'>
+        <el-option v-for="(item, index) in options" :key="item.index" :label="item.label" :value="item.value">
+        </el-option>
+    </el-select>
+</template>
+
+<script>
+export default {
+    name: 'enum',
+    data() {
+        return {
+            current: '',
+            options: []
+        }
+    },
+    props: {
+        // 需要请求的url
+        url: {
+            type: String,
+            default: '',
+            required: true,
+        },
+        // 需要请求的url
+        value: {
+            type: String,
+            default: '',
+        },
+        // label
+        labelKey: {
+            type: String,
+            default: 'codename'
+        },
+        // value
+        valueKey: {
+            type: String,
+            default: 'code'
+        },
+    },
+    methods: {
+        changeHandler(...args) {
+            this.$emit('change', ...args)
+        },
+        getData() {
+            // 请求接口
+            fetch(this.url)
+                .then(response => response.json())
+                .then(data => {
+                    // 设置最新内容
+                    this.options = data.map(_ => ({ label: _[this.labelKey], value: _[this.valueKey] }))
+                    // 放入缓存缓存
+                    window.localStorage.setItem(this.url, JSON.stringify(this.options))
+                })
+                .catch(err => { throw new Error(err.message) })
+        },
+        // 初始化选项
+        init() {
+            // 获取缓存
+            const cache = window.localStorage.getItem(this.url)
+            // 判断是否存在缓存
+            if (cache) {
+                // 直接使用缓存
+                this.options = JSON.parse(cache)
+                // （可选）无脑获取最新数据
+                this.getData()
+                // 如果缓存不存在
+            } else {
+                // 请求数据
+                this.getData()
+            }
+        },
+    },
+    beforeMount() {
+        // 默认值
+        this.current = this.value
+
+        // 初始化数据
+        this.init()
+    },
+}
+</script>
+
+<style lang="scss" scoped>
+.enum {}
+</style>
 )
 code(Var)
 return
