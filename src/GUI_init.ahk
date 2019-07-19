@@ -300,6 +300,7 @@ Gui, Pandora:Add, Text, gprismhtml W160,prism代码高亮.html
 Gui, Pandora:Add, Text, gdeepmergehtml W160,deepmerge.html
 Gui, Pandora:Add, Text, gdom2imghtml W160,dom-to-image.html
 Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
+Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog.skeleton
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
@@ -429,7 +430,7 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/unifiedfabric/dg
 Gui, Pandora:Add, Text,  W140 ys xp+160, visual可视化
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual/issues">issue</a>
-Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0/#g=1&p=%E9%A2%84%E8%A7%88">原型</a>
+Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0/新建仪表板.html">原型</a>
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 数据胡
 Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/BYUGGC0qYCqw1ExcFQ3R1HUs2l2ehA2H3E2L3">腾讯文档</a>

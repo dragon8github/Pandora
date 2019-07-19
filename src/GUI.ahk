@@ -6288,3 +6288,158 @@ ReactDOM.render(
 RunBy(name)
 run, % name
 return
+
+dialogHTML:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - &lt;dialog&gt;</title>
+    <style>
+        dialog {
+          padding: 0;
+          border: 0;
+          border-radius: 0.6rem;
+          box-shadow: 0 0 1em black;
+        }
+
+        dialog + .backdrop {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        dialog[open] {
+            animation: slide-up 0.4s ease-out;
+        }
+
+        dialog {
+          display: none;
+          position: absolute;
+          margin: 0 auto;
+          max-width: 80vw;
+          background-color: white;
+        }
+
+        dialog[open] {
+          display: block;
+        }
+
+        .close {
+          position: absolute;
+          top: 0.2em;
+          right: 0.2em;
+          padding: 0.3em;
+          line-height: 0.6;
+          background-color: transparent;
+          border: 0;
+          font-size: 2em;
+        }
+
+        .modal-header,
+        .modal-body,
+        .modal-footer {
+          padding: 1em;
+        }
+
+        .modal-header {
+          margin: 0;
+          padding-bottom: 0.6em;
+          background-color: #ddedfd;
+          border-top-left-radius: 0.6rem;
+          border-top-right-radius: 0.6rem;
+          border-bottom: 1px solid #78a4d3;
+        }
+
+        .modal-footer {
+          border-top: 1px solid #78a4d3;
+        }
+
+        dialog button {
+          padding: 0.4em 1em 0.2em;
+          font-family: Glober, Helvetica, sans-serif;
+        }
+
+        @keyframes slide-up {
+          0`% {
+            opacity: 0;
+            -webkit-transform: translate(0, 15px);
+                    transform: translate(0, 15px);
+          }
+          100`% {
+            opacity: 1;
+            -webkit-transform: translate(0, 0);
+                    transform: translate(0, 0);
+          }
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <button id="open-modal" type="button">Show me the modal</button>
+    <dialog id="demo-modal">
+        <h3 class="modal-header">A native modal dialog box</h3>
+        <div class="modal-body">
+            <p>Finally, HTML has a native dialog box element! This is fantastic.</p>
+            <p>And a polyfill makes this usable today.</p>
+        </div>
+        <footer class="modal-footer">
+            <button id="like-it" type="button">I like it</button>
+            <button id="love-it" type="button">I love it</button>
+        </footer>
+        <button id="close" class="close" type="button">&times;</button>
+    </dialog>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.9/dialog-polyfill.min.js'></script>
+    <script id="rendered-js">
+    const modal = document.getElementById('demo-modal');
+    const open = document.getElementById('open-modal');
+    const close = document.getElementById('close');
+    const likeIt = document.getElementById('like-it');
+    const loveIt = document.getElementById('love-it');
+    const returnSpan = document.getElementById('return-value');
+
+    dialogPolyfill.registerDialog(modal);
+    open.addEventListener('click', () => {
+        modal.showModal();
+    });
+
+    likeIt.addEventListener('click', () => {
+        modal.close('Like it');
+    });
+
+    loveIt.addEventListener('click', () => {
+        modal.close('Love it');
+    });
+
+    close.addEventListener('click', () => {
+        modal.close('cancelled');
+    });
+
+    modal.addEventListener('cancel', () => {
+        modal.close('cancelled');
+    });
+
+    modal.addEventListener('click', event => {
+        if (event.target === modal) {
+            modal.close('cancelled');
+        }
+    });
+
+    modal.addEventListener('close', () => {
+        returnSpan.innerHTML = modal.returnValue;
+    });
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

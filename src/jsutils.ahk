@@ -390,6 +390,7 @@
     Menu, utils2, Add, 颜色逻辑转换：hex2rgba, utilsHandler
     Menu, utils2, Add, 获取一个颜色的反色：#000 = #fff, utilsHandler
     Menu, utils2, Add, 路径获取文件名和后缀, utilsHandler
+    Menu, utils2, Add, 前端加解密：btoa 和 atob, utilsHandler
 
 
     
@@ -464,6 +465,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "前端加解密：btoa 和 atob") {
+_send("atob", true, true)
+return
 }
 
 
@@ -6650,6 +6657,19 @@ ObjectSearch(demo1, target => 'fuckyou' in target, v => {
     v.fuckyou = 'thinkyou'
     console.log(20190716140939, JSON.stringify(demo1))
 })
+)
+code(Var)
+return
+
+::atob::
+::btoa::
+Var =
+(
+window.btoa(JSON.stringify({ password: 123456 }))
+// "eyJwYXNzd29yZCI6MTIzNDU2fQ=="
+
+window.atob("eyJwYXNzd29yZCI6MTIzNDU2fQ==")
+// "{"password":123456}"
 )
 code(Var)
 return

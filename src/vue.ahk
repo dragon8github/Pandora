@@ -3757,7 +3757,7 @@ export default {
             default: '',
             required: true,
         },
-        // 需要请求的url
+        // 默认值
         value: {
             type: String,
             default: '',
@@ -3799,7 +3799,7 @@ export default {
                 this.options = JSON.parse(cache)
                 // （可选）无脑获取最新数据
                 this.getData()
-                // 如果缓存不存在
+            // 如果缓存不存在
             } else {
                 // 请求数据
                 this.getData()

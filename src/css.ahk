@@ -82,6 +82,8 @@
     Menu, Csssolution, Add, 纯css实现maquee 无缝轮播, CssHandler
     Menu, Csssolution, Add, 太空漫游404解决方案, CssHandler
     Menu, Csssolution, Add, 酷炫呼吸变色的棱角空间：hue-rotate, CssHandler
+    Menu, Csssolution, Add, 常用的弹窗slide-up特效, CssHandler
+    Menu, Csssolution, Add, 高亮文本 highlight, CssHandler
     
     
     
@@ -152,6 +154,24 @@ if (v == "") {
 Var =
 (
 )
+}
+
+
+if (v == "高亮文本 highlight") {
+Var =
+(
+.highlight {
+    background: linear-gradient(to right, rgb(73, 200, 149), rgb(38, 198, 218));
+    color: white;
+    border-width: 0.25em 0px;
+    padding: 2px 4px;
+}
+)
+}
+
+if (v == "常用的弹窗slide-up特效") {
+_send("slideup", true, true)
+return
 }
 
 
@@ -4924,4 +4944,27 @@ circle {
 }
 )
 txtit(Var)
+return
+
+::slideup::
+Var =
+(
+@keyframes slide-up {
+  0`% {
+    opacity: 0;
+    -webkit-transform: translate(0, 15px);
+            transform: translate(0, 15px);
+  }
+  100`% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+dialog[open] {
+    animation: slide-up 0.4s ease-out;
+}
+)
+code(Var)
 return
