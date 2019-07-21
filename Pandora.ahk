@@ -1,24 +1,29 @@
-﻿#IfWinNotActive 神武3
-; #InstallKeybdHook
-#Persistent ; 让脚本持续运行, 直到用户退出.
-Hotstring("EndChars", "`t")  ; 设置为tab键作为终止符（也可以加入回车键）`n
+﻿; 强制无条件安装键盘钩子.
+#InstallKeybdHook 
 
+; 让脚本持续运行, 直到用户退出.
+#Persistent 
+
+; 设置为tab键作为终止符（也可以加入回车键）`n
+Hotstring("EndChars", "`t")  
+
+; 设置文本格式UTF-8
 FileEncoding, UTF-8
+
+; 删除一些无用的备份文件
 FileDelete, *.bak 
 FileDelete, .\src\*.bak
 
+/**
+//////////////////////////////////////////////
+说明一下： GUI的初始化必须置顶 
+*/
 #include src/GUI_init.ahk	  ; GUI初始化系列
 #include src/GUI.ahk		  ; GUI系列
 #Include src/ISearch.ahk	  ; ISearch
+/**//////////////////////////////////////////////
+*/
 
-/**
-//////////////////////////////////////////////
-说明一下： GUI的初始化必须置顶
-//////////////////////////////////////////////
- */
-
-
- 
 #Include src/lib.ahk              ; 公共函数
 #Include src/help.ahk             ; 辅助功能
 #Include src/makedown.ahk         ; makedown
@@ -53,6 +58,5 @@ FileDelete, .\src\*.bak
 #Include src/bilibili.ahk	      ; bilibili
 #Include src/elasticsearch.ahk	  ; elasticsearch
 #Include src/golang.ahk	          ; golang
-
 
 

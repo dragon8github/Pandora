@@ -83,7 +83,8 @@
     Menu, Csssolution, Add, 太空漫游404解决方案, CssHandler
     Menu, Csssolution, Add, 酷炫呼吸变色的棱角空间：hue-rotate, CssHandler
     Menu, Csssolution, Add, 常用的弹窗slide-up特效, CssHandler
-    Menu, Csssolution, Add, 高亮文本 highlight, CssHandler
+    Menu, Csssolution, Add, 高亮文本 highlight（背景）, CssHandler
+    Menu, Csssolution, Add, 高亮文本 highlight（文字）, CssHandler
     
     
     
@@ -156,8 +157,19 @@ Var =
 )
 }
 
-
-if (v == "高亮文本 highlight") {
+if (v == "高亮文本 highlight（文字）") {
+Var =
+(
+.highlight {
+    height: 60px;
+    display: inline-block;
+    background-image: linear-gradient(to right, rgb(255, 83, 253) 0px, rgb(251, 240, 118) 100`%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+)
+}
+if (v == "高亮文本 highlight（背景）") {
 Var =
 (
 .highlight {

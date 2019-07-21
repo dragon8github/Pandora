@@ -121,6 +121,7 @@
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
 
+	
     Menu, EventMenu, Add, 监听动画结束：animationend, EventHandler  
 	Menu, EventMenu, Add, keycode大全和打印方式, EventHandler
 	Menu, EventMenu, Add, js 监听 enter, EventHandler
@@ -133,6 +134,9 @@
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
 
+	Menu, EventMenu, Add, 轮询监听URL变化：onUrlChange, EventHandler
+	Menu, EventMenu, Add, 监听 history API 变化 , EventHandler
+	Menu, EventMenu, Add, 哈希变化hashchange, EventHandler
 	Menu, EventMenu, Add, 用Input事件代替keyup事件：$('input').on('input'`, search), EventHandler
 	Menu, EventMenu, Add, 对全体元素绑定事件：document.documentElement.addEventListener, EventHandler
 	Menu, EventMenu, Add, 辅助功能：网页添加ctrl + d = debugger的快捷键, EventHandler
@@ -182,6 +186,59 @@ Var =
 )
 }
 
+
+if (v == "轮询监听URL变化：onUrlChange") {
+_send("onurl", true, true)
+return
+}
+
+if (v == "监听 history API 变化") {
+Var = 
+(
+const regHistoryEvent = (EVENT_NAME = 'history') => {
+	// 获取 history.pushState 函数引用（这里的bind是history.pushState的特性决定的）
+	const PUSH_STATE =  history.pushState.bind(history)
+
+	// 获取 history.replaceState 函数引用（这里的bind是history.replaceState的特性决定的）
+	const REPLACE_STATE =  history.replaceState.bind(history)
+
+	// 为函数注册事件，返回一个函数，需要手动替换。
+	const regEvent = (origin, name) => (...args) => {
+		// 执行原函数
+		const result = origin(...args)
+		// 新建一个事件
+		const event = new Event(name)
+		// （可选）注入参数，爱用不用
+		event.args = args
+		// 推送事件
+		window.dispatchEvent(event)
+		// 返回原函数结果
+		return result
+	}
+
+	// 手动替换history.pushState
+	history.pushState = regEvent(PUSH_STATE, EVENT_NAME)
+
+	// 手动替换history.replaceState
+	history.replaceState = regEvent(REPLACE_STATE, EVENT_NAME)
+}
+
+// 注册 history 事件
+regHistoryEvent()
+
+window.addEventListener('history', e => {
+	console.log(20190721121908, e.args)
+})
+
+history.pushState(null, null, '123')
+)
+}
+
+
+if (v == "哈希变化hashchange") {
+_send("onhash", true, true)
+return
+}
 
 if (v == "toolbox：下载图片的工具") {
 Var = 
@@ -1553,6 +1610,66 @@ class AggregationMap {
 
 export default AggregationMap
 }
+)
+code(Var)
+return
+
+::onhash::
+Var =
+(
+window.addEventListener('hashchange', function () {
+	console.log(20190721153615, 123)
+})
+)
+code(Var)
+return
+
+::onurl::
+::onurlchange::
+::onurlupdate::
+Var =
+(
+/**
+ * url变化轮询监听器。 为了同时处理hash和history
+ *
+ */
+const onUrlChange = (function() {
+    // 获取当前url
+    let url = window.location.href
+    // 消息队列
+    let queue = []
+    // 计时器
+    let timer = null
+    // 开始
+    const start = () => {
+        // 轮询
+        timer = setInterval(() => {
+            // 获取当前url
+            const _url = window.location.href
+            // 如果不一致的话，说明更新了
+            if (url != _url) {
+                // 存储最新的url
+                url = _url
+                // 通知消息队列
+                queue.forEach(fn => fn && fn(window.location))
+            }
+        }, 100)
+    }
+    // 返回一个函数，用于加入队列
+    return fn => {
+        // 推入队列
+        queue.push(fn)
+        // 开始轮询
+        !timer && start()
+    }
+}())
+
+
+// history.replaceState(null, null, '123')
+// window.location.hash = 123
+onUrlChange(location => {
+	console.log(20190721203153, location)
+})
 )
 code(Var)
 return

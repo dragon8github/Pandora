@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://nodejs.org/">
+  <a href="http://wx3.sinaimg.cn/large/006ar8zggy1g24gjfm9m7j313f0h5wr3.jpg">
     <img
       src="http://wx3.sinaimg.cn/large/006ar8zggy1g24gjfm9m7j313f0h5wr3.jpg"
       width="100%"
@@ -34,7 +34,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 ## Demo
 <p>一、通过快捷键呼出常用代码，分别演示了 右ctrl + c、 右ctrl + d、 右ctrl + a、</p>
 <p>
-  <a href="https://nodejs.org/">
+  <a href="http://wx4.sinaimg.cn/large/006ar8zggy1g24gkdbzbag30ff083u0x.gif">
     <img
       src="http://wx4.sinaimg.cn/large/006ar8zggy1g24gkdbzbag30ff083u0x.gif"
     />
@@ -43,7 +43,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 
 <p>二、联想代码补全，根据自己的联想，预设置的关键字，然后按下 Tab 显示全文</p>
 <p>
-  <a href="https://nodejs.org/">
+  <a href="https://s2.ax1x.com/2019/07/02/ZJXKEt.gif">
     <img
       src="https://s2.ax1x.com/2019/07/02/ZJXKEt.gif"
     />
@@ -52,7 +52,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 
 <p>三、云代码，将代码部署在github上，该功能有利于团队效率开发。建立真正意义上的云代码库</p>
 <p>
-  <a href="https://nodejs.org/">
+  <a href="http://wx3.sinaimg.cn/large/006ar8zggy1g24gkgljh2g30f50fdqv6.gif">
     <img
       src="http://wx3.sinaimg.cn/large/006ar8zggy1g24gkgljh2g30f50fdqv6.gif"
     />
@@ -61,7 +61,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 
 <p>四、自动翻译命名，程序员梦寐以求的神器功能！选中文字，按下ctrl + Alt + Q , 如果直接使用 Alt + Q 则是直接翻译。</p>
 <p>
-  <a href="https://nodejs.org/">
+  <a href="http://wx4.sinaimg.cn/large/006ar8zggy1g24gkn4nong30a704adqr.gif">
     <img
       src="http://wx4.sinaimg.cn/large/006ar8zggy1g24gkn4nong30a704adqr.gif"
     />
@@ -70,7 +70,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 
 <p>五、GUI用户交互界面，AHK还支持开发UI界面，这里我模仿Wow和alfred开发了属于自己的高效工具。持续迭代</p>
 <p>
-  <a href="https://nodejs.org/">
+  <a href="http://wx3.sinaimg.cn/large/006ar8zggy1g24gdodbouj30rw0rf75h.jpg">
     <img
       src="http://wx3.sinaimg.cn/large/006ar8zggy1g24gdodbouj30rw0rf75h.jpg"
     />
@@ -79,7 +79,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 
 <p>六、快捷菜单，可以更舒适的记录并使用代码块</p>
 <p>
-  <a href="https://nodejs.org/">
+  <a href="http://wx3.sinaimg.cn/large/006ar8zggy1g24gj5svy0j30jp0m2q4h.jpg">
     <img
       src="http://wx3.sinaimg.cn/large/006ar8zggy1g24gj5svy0j30jp0m2q4h.jpg"
     />

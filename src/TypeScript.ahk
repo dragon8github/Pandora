@@ -1,13 +1,14 @@
 ﻿!y::
-    Menu, ShellMenu, Add, 新建create-react-app-Typescript, ReactMenuHandler
-	Menu, ShellMenu, Add, 生成 tsconfig.json 配置：$ yarn tsc -init, tsHandler
-    Menu, ShellMenu, Add, 生成 tslint.json：$ yarn tslint --init, tsHandler
-    Menu, ShellMenu, Add, npm install Typescript -g, tsHandler
-    Menu, ShellMenu, Add, npm install -g ts-node, tsHandler
-    Menu, ShellMenu, Add, 直接运行.ts文件： ts-node hello.ts, tsHandler
+    Menu, tsMenu, Add, 新建官方create-react-app-Typescript（超级严格）, ReactMenuHandler
+    Menu, tsMenu, Add, 新建codesandbox-react-ts（十分宽松）, ReactMenuHandler
+	Menu, tsMenu, Add, 生成 tsconfig.json 配置：$ yarn tsc -init, tsHandler
+    Menu, tsMenu, Add, 生成 tslint.json：$ yarn tslint --init, tsHandler
+    Menu, tsMenu, Add, npm install Typescript -g, tsHandler
+    Menu, tsMenu, Add, npm install -g ts-node, tsHandler
+    Menu, tsMenu, Add, 直接运行.ts文件： ts-node hello.ts, tsHandler
 
-	Menu, ShellMenu, Show
-	Menu, ShellMenu, DeleteAll
+	Menu, tsMenu, Show
+	Menu, tsMenu, DeleteAll
 return
 
 

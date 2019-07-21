@@ -1,42 +1,4 @@
-﻿/* （已废弃。将来再考虑重启。必须放在最外面才有效）
-; 创建专属目录
-if !FileExist(".pandora")
-	FileCreateDir, .pandora
-	; 创建缓存目录
-	if !FileExist(".pandora/.cache")
-		FileCreateDir, .pandora/.cache
-
-; 其实不应该放在这里的，但不知道为啥必须放在这里才生效
-OnClipboardChange("ClipChanged")
-ClipChanged(Type) {
-	MsgBox, 123
-    try {
-       if (type == 1) {
-            filename := A_WorkingDir . "\.pandora\.cache\" . A_YYYY . A_MM . A_DD . ".txt"
-            if (Var != Clipboard and StrLen(Trim(StrReplace(Clipboard, "`r`n"))) != 0) {
-                time := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
-                FileAppend, __________________%time%__________________`r`n`r`n%Clipboard%`r`n`r`n, *%filename%
-            }
-        }  
-    } catch e {
-        
-    }
-}
-*/
-
-; (获取当前输入法的代码， 注册表位置： HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\  https://blog.csdn.net/liuyukuan/article/details/53836287)
-/*
-#z::
-SetFormat, Integer, H 
-WinID:=WinActive("A")
-ThreadID:=DllCall("GetWindowThreadProcessId", "UInt", WinID, "UInt", 0) 
-InputLocaleID:=DllCall("GetKeyboardLayout", "UInt", ThreadID, "UInt") 
-Clipboard:=InputLocaleID
-MsgBox, %InputLocaleID% 
-return
-*/
-
-toUpFir(v) {
+﻿toUpFir(v) {
     f := SubStr(v, 1, 1)
     StringUpper, f, f
     return f . SubStr(v, 2)
@@ -96,10 +58,6 @@ _sendinput(v, isSendLevel = false) {
 
 
 
-;^!g::
-;GitBy(Clipboard)
-;return
-
 RunBy(name) {
     myIdea := "C:\Program Files\Sublime Text 3\sublime_text3.exe"
     if (!FileExist(myIdea)) {
@@ -112,8 +70,6 @@ RunBy(name) {
 }
 
 
-; a := RunWaitOne("node -v")
-; MsgBox, % a
 RunWaitOne(command) {
     ; WshShell 对象: http://msdn.microsoft.com/en-us/library/aew9yb99
     shell := ComObjCreate("WScript.Shell")
@@ -130,11 +86,8 @@ ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
     whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
     whr.Open("GET", url, true)
     whr.Send()
-    ;if (text != "") {
-    ;    TrayTip, 请稍后, % text, 20, 17
-    ;}   
+
     whr.WaitForResponse()
-    
     
     if (q==false) {
         if (whr.ResponseText) {
@@ -155,9 +108,6 @@ post(url, data, q:=false, text:="正在为你下载代码，请保持网络顺�
     whr.Open("POST", url, true)
     whr.SetRequestHeader("Content-Type", "application/json;charset=utf-8")
     whr.Send(data)
-    ;if (text != "") {
-    ;    TrayTip, 请稍后, % text, 20, 17
-    ;}   
     whr.WaitForResponse()
     
     if (q==false) {
@@ -222,10 +172,24 @@ code(code) {
     Clipboard := tmp
 }
 
+; 生成快捷键： alt + ctrl + 0~9
+^!1::
+^!2::
+^!3::
+^!4::
+^!5::
+^!6::
+    num := SubStr(A_ThisHotkey, 0, 1)
+    code(__ALTCTRL__[num])
+return
+
  ; 暂时只支持6大txt显示。不够再添加吧。控制一下体积。
  txtit(ary, spliter="---") {
   ; 全局变量真的只能这样用了，定义在外面没有办法生存。
   global pidary := pidary ? pidary : []
+  ; 存储
+  global __ALTCTRL__ := []
+  
   ; 数组长度，一共有几个需要显示的？
   len := ary.Length()
   
@@ -253,9 +217,9 @@ code(code) {
      _w := A_ScreenWidth / xsize
      ; 当前高度
      _h := A_ScreenHeight / ycount
-    
+    ; 存储到 __ALTCTRL__
+    __ALTCTRL__.push(value)
      try {
-        
          ; 开始执行
          Run, notepad2,,, pid     
          pidary.push(pid)

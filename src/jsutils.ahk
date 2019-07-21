@@ -108,7 +108,7 @@
 
     Menu, utilsObject, Add, 双向数据绑定原理：Object.defineProperty, utilsHandler
     Menu, utilsObject, Add, 对象交集 , utilsHandler
-    Menu, utilsmy, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
+    
 
     Menu, utilsObject, Add,, utilsHandler
     Menu, utilsObject, Add,, utilsHandler
@@ -274,6 +274,9 @@
     
     
     ; @my
+    Menu, EventMenu, Add, 轮询监听URL变化：onUrlChange, EventHandler
+    Menu, utilsmy, Add, 为函数注册全局事件: regEvent, utilsHandler
+    Menu, utilsmy, Add, 前端日志上传新姿势 navigator.sendBeacon（信标）, utilsHandler
     Menu, utilsmy, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
     Menu, utilsmy, Add, 随机在配色网站上获取颜色, utilsHandler
     Menu, utilsmy, Add, wait等待工具，必须配合 async/await使用, utilsHandler
@@ -465,6 +468,18 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "为函数注册全局事件: regEvent") {
+_send("regEvent", true, true)
+return
+}
+
+
+if (v == "前端日志上传新姿势 navigator.sendBeacon（信标）") {
+_send("xinbiao", true, true)
+return
 }
 
 
@@ -1106,29 +1121,24 @@ _send("diff", true, true)
 if (v == "parsePath: 对象路径解析器") {
 Var = 
 (
-function parsePath(path) {
-	if (/[^\w.$]/.test(path)) {
-		return
-	}
-	const segments = path.split('.')
-	return function (obj) {
-		for (let i = 0, len = segments.length; i < len; i++) {
-			obj = obj[segments[i]]
-		}
-		return obj
-	}
+function parsePath(obj, path) {
+    const segments = path.split('.')
+    for (let i = 0, len = segments.length; i < len; i++) {
+        obj = obj[segments[i]]
+    }
+    return obj
 }
 
 var obj = {
-	"a": {
-		"b": {
-			"c": {
-				"d": 123
-			}
-		}
-	}
+    "a": {
+        "b": {
+            "c": {
+                "d": 123
+            }
+        }
+    }
 }
-fn(obj) // 123
+parsePath(obj, 'a.b.c.d') // 123
 )
 }
 if (v == "全屏F11最新解决方案") {
@@ -4863,19 +4873,17 @@ return
 if (v == "isString") {
 Var = 
 (
-export default function isString(input) {
-	return Object.prototype.toString.call(input) === '[object String]'
-}
+export const isString = input => Object.prototype.toString.call(input) === '[object String]'
 )
 }
+
 if (v == "isBoolean") {
 Var = 
 (
-export default function isBoolean(input) {
-	return Object.prototype.toString.call(input) === '[object Boolean]'
-}
+export const isBoolean = input => Object.prototype.toString.call(input) === '[object Boolean]'
 )
 }
+
 if (v == "isZH-Cn") {
 Var = 
 (
@@ -6670,6 +6678,92 @@ window.btoa(JSON.stringify({ password: 123456 }))
 
 window.atob("eyJwYXNzd29yZCI6MTIzNDU2fQ==")
 // "{"password":123456}"
+)
+code(Var)
+return
+
+
+::xinbiao::
+Var =
+(
+var data = JSON.stringify({
+  name: 'Berwin'
+});
+navigator.sendBeacon('http://localhost:80/index.php', data)
+---
+<?php 
+/**
+ * 由于是信标发送的 POST 请求，并且是 "text/plain" 数据类型，所以适合用 $GLOBALS['HTTP_RAW_POST_DATA'] 接受。
+ *
+ */
+header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Headers:x-requested-with,content-type'); 
+
+function WriteLog($msg,$module = null,$logLevel = "DEBUG")
+{
+    $filepath = "./log/";
+    if(!is_dir($filepath)) mkdir($filepath,'0777');
+    $MyLogFile = @fopen($filepath.date("Y-m-d").".txt",'a+');
+
+    $time = date("Y-m-d H:i:s");
+    if(isset($module)){$module =  sprintf("\r\n归属模块：".$module."\r\n");}
+    $logLine = "\r\n-------------------------------  $time -------------------------------\r\n";
+    $logLine .= $module;
+    $logLine .= "\r\n异常信息：$msg\r\n";
+    $logLine .= "\r\n错误等级：$logLevel\r\n";
+    fwrite($MyLogFile,$logLine);
+}
+
+WriteLog($GLOBALS['HTTP_RAW_POST_DATA']);
+)
+txtit(Var)
+Return
+
+::regEvent::
+Var =
+(
+/**
+ * 为函数注册全局事件
+ * https://stackoverflow.com/questions/4570093/how-to-get-notified-about-changes-of-the-history-via-history-pushstate
+ * demo1:
+       var fuck = () => {}
+       regEvent('fuck')
+       window.addEventListener('fuck', e => {
+        console.log(20190721150339, e.args)
+       })
+       fuck()
+
+ * demo2:
+       regEvent.bind(history)('pushState')
+       window.addEventListener('pushState', e => console.log(20190721150339, e.args))
+       history.pushState(null, null, '123')
+
+ * demo3:
+       var obj = {a: 123, b () {console.log(20190721151400, this.a)}}
+       regEvent.bind(obj)('b')
+       window.addEventListener('b', _ => console.log(20190721151537, '123'))
+       obj.b()
+ */
+const regEvent = function (name) {
+    // 由于需要使用bind，所以最外围不能使用箭头函数
+    // （可选）注入环境，解决 history.pushState 『Illegal invocation』 的问题
+    const origin = this[name].bind(this)
+
+    // 新建事件
+    let event = new Event(name)
+
+    // 替换函数引用
+    this[name] = (...args) => {
+        // 调用该函数
+        const result = origin(...args)
+        // （可选）注入参数
+        event.args = args
+        // 推送事件
+        window.dispatchEvent(event)
+        // 返回函数的调用结果
+        return result
+    }
+}
 )
 code(Var)
 return

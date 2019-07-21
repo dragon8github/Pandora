@@ -250,7 +250,6 @@ Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
-
 Gui, Pandora:Add, Link,, <a href="https://app.didiyun.com/#/dc2/detail?uuid=a289c3f607fd5bbd8261df9b266ae211">滴滴云</a>
 Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub 镜像仓库</a>
 Gui, Pandora:Add, Link,, <a href="http://www.51ym.me/User/MobileSMSCode.aspx">易码平台</a>
@@ -274,8 +273,8 @@ Gui, Pandora:Add, Text,  W140 ys, 好东西：
 Gui, Pandora:Add, Link,, <a href="https://www.zhihu.com/question/23054572">100块以内的礼物</a>
 Gui, Pandora:Add, Link,, <a href="https://www.fontke.com/tool/convfont/">字体在线转换工具</a>
 Gui, Pandora:Add, Link,, <a href="http://www.lurena.vip/">路人A</a>
-
 Gui, Pandora:Add, Link,, <a href="http://strapdownjs.com/">html转化为md</a>
+Gui, Pandora:Add, Link,, <a href="https://codesandbox.io/">codesandbox</a>
 
 ;@1
 
@@ -821,6 +820,9 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/MoePlayer/APlayer">Aplay gi
 Gui, Pandora:Add, Text, W140 yp+50, bilibili开源播放器：
 Gui, Pandora:Add, Link,, <a href="https://github.com/Bilibili/flv.js">flv.js</a>
 
+Gui, Pandora:Add, Text, W140 yp+50, jsdiff数据对比神器：
+Gui, Pandora:Add, Link,, <a href="https://github.com/kpdecker/jsdiff">jsdiff.js</a>
+
 
 Gui, Pandora:Add, Text, W140 ys xp+160, 有趣有趣：
 Gui, Pandora:Add, Link,, <a href="https://github.com/e-oj/Magic-Grid">新瀑布流 Magic-Grid</a>
@@ -997,6 +999,7 @@ Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp
 
 Gui, Pandora:Tab, 11
 Gui, Pandora:Add, Text,  W140 Section, 微信小程序：
+Gui, Pandora:Add, Link, W140, <a href="https://github.com/justjavac/awesome-wechat-weapp">awesome-wechat-weapp</a>
 Gui, Pandora:Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html">微信小程序开发工具</a>
 Gui, Pandora:Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/">微信内置API</a>
 Gui, Pandora:Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/component/">内置组件</a>
@@ -1152,7 +1155,7 @@ ClipChanged(Type) {
 			Clipboard := b
 		}
 		 
-		; 必须复制的不是空内容但小于200，并且不是在GUI中复制的才进行储存。
+		; 必须复制的不是空内容但小于N，并且不是在GUI中复制的才进行储存。
 		if (StrLen(b) != 0 && StrLen(b) <= 9999 && !WinActive("ahk_class AutoHotkeyGUI")) {
 			; 从文本框获取已有的内容，保存到OutputVar变量中
 			GuiControlGet, OutputVar, Pandora:, ClipHistory, Text

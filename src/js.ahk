@@ -303,7 +303,7 @@ const cachedSave = (hashcode, content) => {
             if (err.message.includes('quota')) localforage.clear()
         })
         // 设置缓存时间
-        localforage.setItem(`${hashcode}:timestamp`, Date.now()).catch(err => {
+        localforage.setItem(``${hashcode}:timestamp``, Date.now()).catch(err => {
             console.log('cache err', err)
             // 说明内存满了，直接清空
             if (err.message.includes('quota')) localforage.clear()
