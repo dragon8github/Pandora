@@ -1655,3 +1655,12 @@ v := StrReplace(v, "，", ",")
 )
 code(Var)
 return
+
+
+::se::
+Var =
+(
+segmentfault
+)
+code(Var)
+return

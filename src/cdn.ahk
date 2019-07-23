@@ -1,4 +1,16 @@
-﻿::cdn-qiliao::
+﻿::cdn-ele::
+::cdn-element::
+::cdn-elm::
+Var =
+(
+<!-- element -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/index.js'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/theme-chalk/index.css">
+)
+code(Var)
+return
+
+::cdn-qiliao::
 ::cdn-live::
 Var =
 (
@@ -377,7 +389,7 @@ Return
 ::cdn-vue::
 Var = 
 (
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
 )
 code(Var)
 Return

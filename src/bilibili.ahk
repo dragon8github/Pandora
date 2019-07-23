@@ -26,6 +26,8 @@
 	Menu, bilibiliMenu, Add, (｡･ω･｡), bilibiliHandler2
 	Menu, bilibiliMenu, Add, （#-_-)┯━┯, bilibiliHandler2
 	Menu, bilibiliMenu, Add, _(:3」∠)_, bilibiliHandler2
+	Menu, bilibiliMenu, Add, ╰(‵□′)╯砸瓦鲁多, bilibiliHandler2
+	
 
 	Menu, bilibiliMenu, Add,,
 	Menu, bilibiliMenu, Add,,

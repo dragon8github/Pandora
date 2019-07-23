@@ -6384,6 +6384,7 @@ return
 
 ::zhuangshiqi::
 ::dec::
+::@dec::
 Var =
 (
 function setSeriesCenterPos (...args) {
@@ -6764,6 +6765,44 @@ const regEvent = function (name) {
         return result
     }
 }
+)
+code(Var)
+return
+
+
+::bibao::
+Var =
+(
+ const onUrlChange = (function() {
+     // 获取当前url
+     let url = window.location.href
+     // 消息队列
+     let queue = []
+     // 计时器
+     let timer = null
+     // 开始
+     const start = () => {
+         // 轮询
+         timer = setInterval(() => {
+             // 获取当前url
+             const _url = window.location.href
+             // 如果不一致的话，说明更新了
+             if (url != _url) {
+                 // 存储最新的url
+                 url = _url
+                 // 通知消息队列
+                 queue.forEach(fn => fn && fn(window.location))
+             }
+         }, 100)
+     }
+     // 返回一个函数，用于加入队列
+     return fn => {
+         // 推入队列
+         queue.push(fn)
+         // 开始轮询
+         !timer && start()
+     }
+ }())
 )
 code(Var)
 return

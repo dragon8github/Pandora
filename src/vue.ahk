@@ -2765,7 +2765,7 @@ Return
 ::vuefor::
 ::vue.for::
 ::v.for::
-    SendInput, v-for='(item, index) in items' :key='index'
+    SendInput, v-for='(item, index) in items' :key='item'
 Return
 
 
@@ -3185,9 +3185,10 @@ const path = require('path')
 const resolve = dir => path.join(__dirname, dir)
 
 module.exports = {
-    publicPath: './',
     assetsDir: 'assets',
     productionSourceMap: false,
+    //  可以模仿线上资源地址，如：process.env.NODE_ENV === 'development' ? '/biweb/' : '/biweb/',
+    publicPath: './',
     // 服务器配置
     devServer: {
         open: true,

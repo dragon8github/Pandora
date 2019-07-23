@@ -130,6 +130,7 @@
 	Menu, EventMenu, Add, js 组合键监听 ctrl + shift + p, EventHandler
 	Menu, EventMenu, Add, js esc键监听, EventHandler
 	Menu, EventMenu, Add, 监听paste复制黏贴事件, EventHandler
+	Menu, EventMenu, Add, window.addEventListener('load'), EventHandler
 	
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
@@ -186,6 +187,12 @@ Var =
 )
 }
 
+
+
+if (v == "window.addEventListener('load')") {
+_send("onload", true, true)
+return
+}
 
 if (v == "轮询监听URL变化：onUrlChange") {
 _send("onurl", true, true)
@@ -1627,6 +1634,8 @@ return
 ::onurl::
 ::onurlchange::
 ::onurlupdate::
+::urlchange::
+::urlupdate::
 Var =
 (
 /**
@@ -1669,6 +1678,16 @@ const onUrlChange = (function() {
 // window.location.hash = 123
 onUrlChange(location => {
 	console.log(20190721203153, location)
+})
+)
+code(Var)
+return
+
+::onload::
+Var =
+(
+window.addEventListener('load', (event) => {
+    window.alert([20190721211756, ].join('  '));
 })
 )
 code(Var)
