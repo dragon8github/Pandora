@@ -37,7 +37,7 @@
 	Menu, arrayMenu, Add, shift： 弹出并删除第一个 , ForHandler
 	Menu, arrayMenu, Add, pop： 弹出并删除最后一个 , ForHandler
 	Menu, arrayMenu, Add, slice： 无损截取数组 , ForHandler
-	Menu, arrayMenu, Add, splice： 有损截取数组 , ForHandler
+	Menu, arrayMenu, Add, splice： 有损截取数组，可用于替换 , ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -98,7 +98,7 @@ slice
 )
 }
 
-if (v == "splice： 有损截取数组") {
+if (v == "splice： 有损截取数组，可用于替换") {
 Var = 
 (
 splice

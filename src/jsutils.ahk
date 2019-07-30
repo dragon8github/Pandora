@@ -274,6 +274,7 @@
     
     
     ; @my
+    Menu, EventMenu, Add, 又是一个比较骚的工具函数: loadExec, EventHandler
     Menu, EventMenu, Add, 轮询监听URL变化：onUrlChange, EventHandler
     Menu, utilsmy, Add, 为函数注册全局事件: regEvent, utilsHandler
     Menu, utilsmy, Add, 前端日志上传新姿势 navigator.sendBeacon（信标）, utilsHandler
@@ -6803,6 +6804,33 @@ Var =
          !timer && start()
      }
  }())
+)
+code(Var)
+return
+
+::loadExec::
+Var =
+(
+/**
+ * 又是一个比较骚的工具函数
+ *
+ * @fn      {Function} 将要执行的函数 ...
+ * @loading {String}   loading 字段 ...
+ * @success {Function} 执行成功时会触发函数 ...
+ * @error   {Function} 执行失败时会触发函数 ...
+ */
+export const loadingExec = async function (loadingName, fn, { success = () => {}, error = () => {}, complete = () => {} } = {}) {
+  try {
+    this[loadingName] = true
+    const result = await fn()
+    this[loadingName] = false
+    success(result)
+  } catch (err) {
+    this[loadingName] = false
+    error(err)
+  }
+  complete()
+}
 )
 code(Var)
 return

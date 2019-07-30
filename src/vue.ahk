@@ -2127,6 +2127,8 @@ const Collection = r => require.ensure([], () => r(require('@/pages/Collection')
 var router = new Router({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
+  // 当配置 vue.config.js publicPath 时就需要配置。实际上总是配置就行了。
+  base: process.env.BASE_URL,
   routes: [
 	// 重定向首页
 	{ path: '/', redirect: '/dg/Home' },
@@ -3705,6 +3707,7 @@ code(Var)
 return
 
 ::el-enum::
+::enum.vue::
 Var =
 (
 <usage-docs>
@@ -3820,6 +3823,23 @@ export default {
 <style lang="scss" scoped>
 .enum {}
 </style>
+)
+code(Var)
+return
+
+::computed::
+::vue.computed::
+Var =
+(
+computed: {
+  gridLeft: {
+      get () { return parseInt(this.master.option.grid.left) },
+      set (newV) {this.master.option.grid.left = newV + '`%'},
+  },
+  master () {
+    return this.$store.state.master
+  },
+},
 )
 code(Var)
 return

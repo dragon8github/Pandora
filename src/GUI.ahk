@@ -6448,3 +6448,595 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+quickbianimhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+
+CSS =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .animation-box {
+        position: relative;
+        margin: 0 auto;
+        width: 1258px;
+        height: 592px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/animation-bg.png');
+        background-repeat: no-repeat;
+        background-size: contain
+    }
+
+    .animation-box div {
+        position: absolute
+    }
+
+    .animation-box .factory-lights {
+        left: 522px;
+        top: 151px;
+        width: 475.82px;
+        height: 347.8px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/factory-lights.gif');
+        background-repeat: no-repeat;
+        background-size: contain
+    }
+
+    .animation-box .datasource-base-shell {
+        left: 75px;
+        top: 156px;
+        width: 321.9px;
+        height: 283.42px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/datasource-base-shell.gif');
+        background-repeat: no-repeat;
+        background-size: contain
+    }
+
+    .animation-box .dataset-base {
+        left: 280px;
+        top: 375px;
+        width: 296.74px;
+        height: 182.78px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/dataset-base.gif');
+        background-repeat: no-repeat;
+        background-size: contain
+    }
+
+    .animation-box .dataset-base .dataset-conveyor {
+        left: 73px;
+        top: -151px;
+        width: 276.02px;
+        height: 223.48px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/conveyor.gif');
+        background-repeat: no-repeat;
+        background-size: contain
+    }
+
+    .animation-box .worksheet-base {
+        left: 456px;
+        top: 70px;
+        width: 162.8px;
+        height: 156.14px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -13.32px -291.56px;
+        background-repeat: no-repeat
+    }
+
+    .animation-box .worksheet-base .worksheet-updown {
+        left: 37px;
+        top: -21px;
+        width: 86.58px;
+        height: 110.26px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/worksheet-updown.gif');
+        background-repeat: no-repeat;
+        background-size: contain
+    }
+
+    .animation-box .fullscreen-base {
+        left: 595px;
+        top: 65px;
+        width: 210.9px;
+        height: 122.1px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -199.06px -307.1px;
+        background-repeat: no-repeat
+    }
+
+    .animation-box .fullscreen-base .fullscreen-computer {
+        left: 50px;
+        top: -64px;
+        width: 110.26px;
+        height: 140.6px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -432.9px -288.6px;
+        background-repeat: no-repeat
+    }
+
+    .animation-box .fullscreen-base .fullscreen-computer .fullscreen-computer-scale {
+        left: 22px;
+        top: 15px;
+        width: 76.96px;
+        height: 82.88px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/fullscreen-computer-scale.gif');
+        background-repeat: no-repeat;
+        background-size: contain
+    }
+
+    .animation-box .dashboard-base {
+        left: 516px;
+        top: 153px;
+        width: 281.94px;
+        height: 99.9px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -814px -53.28px;
+        background-repeat: no-repeat
+    }
+
+    .animation-box .dashboard-base .dashboard-updown {
+        left: 114px;
+        top: -31px;
+        width: 76.22px;
+        height: 91.02px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/dashboard-updown.gif');
+        background-repeat: no-repeat;
+        background-size: contain
+    }
+
+    .animation-box .data-display {
+        left: 706px;
+        top: 284px
+    }
+
+    .animation-box .data-display .laptop {
+        width: 271.58px;
+        height: 257.52px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -566.1px -239.02px;
+        background-repeat: no-repeat
+    }
+
+    .animation-box .data-display .laptop .laptop-light-data {
+        top: 29px;
+        left: 23px;
+        width: 122.1px;
+        height: 123.58px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/laptop-light-data.gif');
+        background-repeat: no-repeat;
+        background-size: contain
+    }
+
+    .animation-box .data-display .email-sender {
+        left: 159px;
+        top: -32px;
+        width: 376.65999999999997px;
+        height: 216.07999999999998px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -846.56px -180.56px;
+        background-repeat: no-repeat
+    }
+
+    .animation-box .data-display .email-sender .sendmail-gif {
+        top: -55px;
+        left: 53px;
+        width: 227.18px;
+        height: 224.22px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sendmail.gif');
+        background-repeat: no-repeat;
+        background-size: contain
+    }
+
+    .hover-container.step-1 {
+        top: 288px;
+        left: 10px
+    }
+
+    .hover-container.step-1 .hover-trigger {
+        left: 56px;
+        top: -14px;
+        width: 233px;
+        height: 152px
+    }
+
+    .hover-container.step-2 {
+        top: 389px;
+        left: 224px
+    }
+
+    .hover-container.step-2 .hover-trigger {
+        left: 55px;
+        top: -1px;
+        width: 274px;
+        height: 151px
+    }
+
+    .hover-container.step-3-left .hover-trigger {
+        left: 0;
+        top: -9px;
+        width: 140px;
+        height: 102px
+    }
+
+    .hover-container.step-3-right .hover-trigger {
+        left: 41px;
+        top: -66px;
+        width: 140px;
+        height: 140px
+    }
+
+    .hover-container.step-3-bottom .hover-trigger {
+        left: 33px;
+        top: 7px;
+        width: 244px;
+        height: 92px
+    }
+
+    .hover-container.step-4-laptop {
+        left: -56px;
+        top: 106px
+    }
+
+    .hover-container.step-4-laptop .hover-trigger {
+        left: 30px;
+        top: -23px;
+        width: 303px;
+        height: 177px
+    }
+
+    .hover-container.step-4-sendmail {
+        top: 37px;
+        left: -1px
+    }
+
+    .hover-container.step-4-sendmail .hover-trigger {
+        left: 38px;
+        top: -52px;
+        width: 282px;
+        height: 185px
+    }
+
+    .create-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        overflow: auto;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/creation-bg-repeat.jpg')
+    }
+
+    .step-label {
+        font-size: 14px
+    }
+
+    .step-label>i {
+        position: absolute;
+        display: block
+    }
+
+    .step-label .label-text {
+        display: inline-block;
+        -webkit-transform-origin: left top;
+        transform-origin: left top;
+        -webkit-transform: rotateX(56deg) rotateY(2deg) rotateZ(38deg) translateX(25px) translateY(-22px);
+        transform: rotateX(56deg) rotateY(2deg) rotateZ(38deg) translateX(25px) translateY(-22px);
+        font-size: 16px
+    }
+
+    .step-label.one {
+        top: 388px;
+        left: 45px
+    }
+
+    .step-label.one>i {
+        top: -39px;
+        left: -13px;
+        width: 22.2px;
+        height: 41.44px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -13.32px -591.26px;
+        background-repeat: no-repeat
+    }
+
+    .step-label.two {
+        top: 491px;
+        left: 260px
+    }
+
+    .step-label.two>i {
+        top: -66px;
+        left: -10px;
+        width: 22.2px;
+        height: 41.44px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -45.14px -591.26px;
+        background-repeat: no-repeat
+    }
+
+    .step-label.three {
+        top: 417px;
+        left: 522px
+    }
+
+    .step-label.three>i {
+        top: -53px;
+        left: 1px;
+        width: 22.2px;
+        height: 41.44px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -76.96px -591.26px;
+        background-repeat: no-repeat
+    }
+
+    .step-label.four {
+        top: 442px;
+        left: 975px
+    }
+
+    .step-label.four>i {
+        top: -8px;
+        left: -15px;
+        width: 20.72px;
+        height: 34.78px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -108.78px -591.26px;
+        background-repeat: no-repeat
+    }
+
+    .step-label.four .label-text {
+        -webkit-transform: rotateX(56deg) rotateY(2deg) rotateZ(-44deg) translateX(25px) translateY(22px);
+        transform: rotateX(56deg) rotateY(2deg) rotateZ(-44deg) translateX(25px) translateY(22px)
+    }
+
+    .outside-label {
+        font-size: 14px
+    }
+
+    .outside-label.worksheet {
+        top: 101px;
+        left: 311px
+    }
+
+    .outside-label.worksheet .link-line {
+        left: 61px;
+        top: 11px;
+        width: 78.44px;
+        height: 25.16px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -129.5px -684.5px;
+        background-repeat: no-repeat
+    }
+
+    .outside-label.dashboard {
+        top: 241px;
+        left: 842px
+    }
+
+    .outside-label.dashboard .link-line {
+        left: -86px;
+        top: -10px;
+        width: 78.44px;
+        height: 25.16px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -21.46px -746.66px;
+        background-repeat: no-repeat
+    }
+
+    .outside-label.fullscreen {
+        top: 91px;
+        left: 895px
+    }
+
+    .outside-label.fullscreen .link-line {
+        left: -87px;
+        top: 10px;
+        width: 78.44px;
+        height: 25.16px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -21.46px -684.5px;
+        background-repeat: no-repeat
+    }
+
+    .workspace-modal-content {
+        text-align: center;
+        margin-bottom: 15px;
+        padding-top: 5px
+    }
+
+    .workspace-modal-content .perm-list {
+        color: #17b4d6
+    }
+
+    .hover-container .hover-shape {
+        opacity: 0;
+        transition: transform .5s ease;
+    }
+
+    .hover-container .hover-trigger {
+        cursor: pointer;
+        z-index: 99
+    }
+
+    .hover-container .hover-trigger:hover~.hover-shape.layer-1 {
+        opacity: 1;
+        -webkit-transform: translateY(-15px);
+        transform: translateY(-15px)
+    }
+
+    .hover-container .hover-trigger:hover~.hover-shape.layer-2 {
+        opacity: .7;
+        -webkit-transform: translateY(-7.5px);
+        transform: translateY(-7.5px)
+    }
+
+    .hover-container .hover-trigger:hover~.hover-shape.layer-3 {
+        opacity: .3
+    }
+
+    .hover-container.diamond .hover-shape {
+        width: 378.14px;
+        height: 180.56px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -250.85999999999999px -529.1px;
+        background-repeat: no-repeat
+    }
+
+    .hover-container.left-cornor .hover-shape {
+        width: 162.8px;
+        height: 133.94px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -651.2px -529.84px;
+        background-repeat: no-repeat
+    }
+
+    .hover-container.right-cornor .hover-shape {
+        width: 210.9px;
+        height: 99.9px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -836.9399999999999px -529.84px;
+        background-repeat: no-repeat
+    }
+
+    .hover-container.bottom-cornor .hover-shape {
+        width: 281.94px;
+        height: 77.7px;
+        background-image: url('http://g.alicdn.com/qbi/qbi/3.3.32/release/sprites.png');
+        background-size: 1258px;
+        background-position: -923.52px -421.8px;
+        background-repeat: no-repeat
+    }
+    </style>
+</head>
+)
+
+FileAppend,
+(
+%CSS%
+<body>
+    <div id="app">
+        <div class="create-container">
+            <div class="animation-box">
+                <div class="factory-lights"></div>
+                <qbi-hover-shape wrapclass="step-1">
+                    <div class="hover-container step-1 diamond">
+                        <div class="hover-trigger"></div>
+                        <div class="hover-shape layer-3"></div>
+                        <div class="hover-shape layer-2"></div>
+                        <div class="hover-shape layer-1"></div>
+                    </div>
+                </qbi-hover-shape>
+                <qbi-hover-shape wrapclass="step-2">
+                    <div class="hover-container step-2 diamond">
+                        <div class="hover-trigger"></div>
+                        <div class="hover-shape layer-3"></div>
+                        <div class="hover-shape layer-2"></div>
+                        <div class="hover-shape layer-1"></div>
+                    </div>
+                </qbi-hover-shape>
+                <div class="datasource-base-shell"></div>
+                <div class="dataset-base">
+                    <div class="dataset-conveyor"></div>
+                </div>
+                <div class="worksheet-base">
+                    <qbi-hover-shape shape="left-cornor" wrapclass="step-3-left">
+                        <div class="hover-container step-3-left left-cornor">
+                            <div class="hover-trigger"></div>
+                            <div class="hover-shape layer-3"></div>
+                            <div class="hover-shape layer-2"></div>
+                            <div class="hover-shape layer-1"></div>
+                        </div>
+                    </qbi-hover-shape>
+                    <div class="worksheet-updown"></div>
+                </div>
+                <div class="fullscreen-base">
+                    <qbi-hover-shape shape="right-cornor" wrapclass="step-3-right">
+                        <div class="hover-container step-3-right right-cornor">
+                            <div class="hover-trigger"></div>
+                            <div class="hover-shape layer-3"></div>
+                            <div class="hover-shape layer-2"></div>
+                            <div class="hover-shape layer-1"></div>
+                        </div>
+                    </qbi-hover-shape>
+                    <div class="fullscreen-computer">
+                        <div class="fullscreen-computer-scale"></div>
+                    </div>
+                </div>
+                <div class="dashboard-base">
+                    <qbi-hover-shape shape="bottom-cornor" wrapclass="step-3-bottom">
+                        <div class="hover-container step-3-bottom bottom-cornor">
+                            <div class="hover-trigger"></div>
+                            <div class="hover-shape layer-3"></div>
+                            <div class="hover-shape layer-2"></div>
+                            <div class="hover-shape layer-1"></div>
+                        </div>
+                    </qbi-hover-shape>
+                    <div class="dashboard-updown"></div>
+                </div>
+                <div class="data-display">
+                    <qbi-hover-shape wrapclass="step-4-laptop">
+                        <div class="hover-container step-4-laptop diamond">
+                            <div class="hover-trigger"></div>
+                            <div class="hover-shape layer-3"></div>
+                            <div class="hover-shape layer-2"></div>
+                            <div class="hover-shape layer-1"></div>
+                        </div>
+                    </qbi-hover-shape>
+                    <div class="laptop">
+                        <div class="laptop-light-data"></div>
+                    </div>
+                    <div class="email-sender">
+                        <qbi-hover-shape wrapclass="step-4-sendmail">
+                            <div class="hover-container step-4-sendmail diamond">
+                                <div class="hover-trigger"></div>
+                                <div class="hover-shape layer-3"></div>
+                                <div class="hover-shape layer-2"></div>
+                                <div class="hover-shape layer-1"></div>
+                            </div>
+                        </qbi-hover-shape>
+                        <div class="sendmail-gif"></div>
+                    </div>
+                </div>
+                <div class="step-label one"><i></i><span class="label-text">获取数据</span></div>
+                <div class="step-label two"><i></i><span class="label-text">创建数据集</span></div>
+                <div class="step-label three"><i></i><span class="label-text">数据分析</span></div>
+                <div class="step-label four"><i></i><span class="label-text">数据展示</span></div>
+                <div class="outside-label worksheet"> 电子表格 <div class="link-line"></div>
+                </div>
+                <div class="outside-label dashboard"> 仪表板 <div class="link-line"></div>
+                </div>
+                <div class="outside-label fullscreen"> 全屏模式 <div class="link-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

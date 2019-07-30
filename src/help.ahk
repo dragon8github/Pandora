@@ -191,6 +191,32 @@ Var =
 code(Var)
 return
 
+::ahkhtml2::
+Var =
+(
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+
+A = 
+(
+
+) 
+
+B = 
+(
+
+)
+
+FileAppend,
+(
+%A% . %B%
+`),  `%name`%
+RunBy(name) 
+run, `% name
+)
+code(Var)
+return
+
+
 ::ahknewhtml::
 ::ahknew::
 ::ahkhtml::
@@ -1663,4 +1689,10 @@ Var =
 segmentfault
 )
 code(Var)
+return
+
+^5::
+Send, iocadmin{tab}
+Sleep, 10
+Send, iocadmin{enter}
 return

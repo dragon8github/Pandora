@@ -85,6 +85,7 @@
     Menu, Csssolution, Add, 常用的弹窗slide-up特效, CssHandler
     Menu, Csssolution, Add, 高亮文本 highlight（背景）, CssHandler
     Menu, Csssolution, Add, 高亮文本 highlight（文字）, CssHandler
+    Menu, Csssolution, Add, quickbi控制台入口动画, CssHandler
     
     
     
@@ -155,6 +156,11 @@ if (v == "") {
 Var =
 (
 )
+}
+
+
+if (v == "quickbi控制台入口动画") {
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/quickbi-template.zip")
 }
 
 if (v == "高亮文本 highlight（文字）") {
@@ -987,7 +993,7 @@ Var =
 
     .loading-indicator {
         position: absolute;
-        top: 40px;
+        top: 0;
         z-index: 101;
         left: 0;
         width: 100`%;
@@ -998,7 +1004,7 @@ Var =
     }
 
     .loading-indicator.loading {
-        height: 1px;
+        height: 3px;
     }
 
     @-webkit-keyframes ladingAnimation {
@@ -1010,13 +1016,11 @@ Var =
             transform: translateX(150`%);
         }
     }
-
-    
     </style>
 </head>
 
 <body>
-   <div class="loading-indicator loading"></div> 
+   <div class="loading-indicator loading"></div>
 </body>
 <script>
 $(function() {

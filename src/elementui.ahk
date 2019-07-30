@@ -202,8 +202,8 @@ Var =
 code(Var)
 return
 
-::el.table::
-::el-table::
+:?:el.table::
+:?:el-table::
 Var =
 (
 <div class='table'>

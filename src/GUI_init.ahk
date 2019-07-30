@@ -226,6 +226,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/Kindle免费电子书/b?
 Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&node=1337022071">Kindle Unlimited</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
 Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>
+Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/explore/headlines">语雀『发现』</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
@@ -320,6 +322,7 @@ Gui, Pandora:Add, Text, grightmenuhtml W160, 新建右键菜单拦截.html
 Gui, Pandora:Add, Text, gAEhtml W180, 新建AE-bodymovin-lottie.html
 Gui, Pandora:Add, Text, gworkerhtml W180, 新建worker.js.html
 Gui, Pandora:Add, Text, glocalForagehtml W180, 新建localForage缓存示例.html
+Gui, Pandora:Add, Text, gquickbianimhtml W180, 新建quickbi的过场动画.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
@@ -430,6 +433,9 @@ Gui, Pandora:Add, Text,  W140 ys xp+160, visual可视化
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual/issues">issue</a>
 Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0/新建仪表板.html">原型</a>
+Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0">原型入口</a>
+Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:31088/doc.html">Swagger</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 数据胡
 Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/BYUGGC0qYCqw1ExcFQ3R1HUs2l2ehA2H3E2L3">腾讯文档</a>
