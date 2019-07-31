@@ -810,36 +810,36 @@ cs("npm run start")
 return
 
 !Up::
-    Send, {PGUP}
+    SendEvent, {PGUP}
 return
 
 +!Up::
-    Send, +{PGUP}
+    SendEvent, +{PGUP}
 return
 
 !Down::
-    Send, {PGDN}
+    SendEvent, {PGDN}
 return
 
 +!Down::
-    Send, +{PGDN}
+    SendEvent, +{PGDN}
 return
 
 !Right::
-    Send, {end}       
+    SendEvent, {end}       
 return
 
 
 +!Right::
-    Send, +{end} 
+    SendEvent, +{end} 
 return
 
 !Left::
-    Send, {Home}
+    SendEvent, {Home}
 return
 
 +!Left::
-    Send, +{Home}
+    SendEvent, +{Home}
 return
 
 /*

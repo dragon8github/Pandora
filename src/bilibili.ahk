@@ -4,6 +4,7 @@
 	Menu, bilibiliMenu, Add, ❓, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🚀, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ✅, bilibiliHandler2
+	Menu, bilibiliMenu, Add, ❎, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ⚠️, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 📝, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🌈, bilibiliHandler2
@@ -47,7 +48,7 @@ return
 
 bilibiliHandler2:
 v := A_ThisMenuItem
-SendInput, {text}%v%
+SendEvent, {text}%v%
 return
 
 bilibiliHandler:

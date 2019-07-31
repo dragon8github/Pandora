@@ -5150,6 +5150,7 @@ const scrollToTop = () => {
 code(Var)
 Return
 
+::randary::
 ::randarr::
 ::shuffle::
 Var = 
@@ -6095,7 +6096,7 @@ var arr = [8, 5,5,3,2]
 // 为什么要-1，因为最后一次的时候是不需要与自己比较，所以绕过了。当然你不-1也无所谓，只是优化而已
 for (var i = 0;i < arr.length - 1; i++) {
     // 同理，你减不减i都无所谓。只是优化而已。但这个优化的幅度比较大推荐加上。
-    for (var j = 0; j < arr.length - i; j++) {
+    for (var j = 0; j < arr.length - 1 - i; j++) {
         // a > b(从小到大正序) / a < b(从大到小倒序)
         if (arr[j] > arr[j+1]) {
             // [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]

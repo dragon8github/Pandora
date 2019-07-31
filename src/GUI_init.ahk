@@ -1,4 +1,49 @@
-﻿
+﻿/**
+//////////////////////////////////////////////
+初始化 Book GUI 的代码逻辑
+//////////////////////////////////////////////
+ */
+GUI, Book:Default
+
+Gui, Book:Color, E6FFE6
+
+; margin 布局
+Gui, Book:Margin, 10, 10
+
+
+Gui, Book:Add, TreeView, vBookTree HScroll H610 W250
+
+A := TV_Add("代码复用模式")
+A1 := TV_Add("类式继承模式#1 —— 默认模式", A)
+A2 := TV_Add("类式继承模式#2 —— 借用构造函数", A)
+A3 := TV_Add("类式继承模式#3 —— 借用和设置原型", A)
+A4 := TV_Add("类式继承模式#4 —— 共享原型", A)
+A5 := TV_Add("类式继承模式#5 —— 临时构造函数", A)
+A6 := TV_Add("通过复制属性实现继承", A)
+A6 := TV_Add("原型继承", A)
+
+B := TV_Add("设计模式")
+B1 := TV_Add("工厂模式", B)
+B1 := TV_Add("策略模式", B)
+B2 := TV_Add("装饰者模式", B)
+B3 := TV_Add("代理模式", B)
+B4 := TV_Add("中介者模式", B)
+B5 := TV_Add("观察者模式", B)
+
+;获取节点信息
+top := TV_GetSelection()
+
+; 展开所有节点
+var_dump(expandallchild(top))
+
+Gui, Book:Add, Edit, ys vBookContent w770 H610 Limit199307100337
+
+
+; Tab 选项卡
+Gui, Book:Add, Tab3, gSwitchBook Section xs Choose1 w1050 h20, 《JavaScript 模式》 | 《JavaScript 设计模式》
+
+
+
 /**
 //////////////////////////////////////////////
 初始化 ISearch GUI 的代码逻辑
@@ -258,7 +303,8 @@ Gui, Pandora:Add, Link,, <a href="http://www.51ym.me/User/MobileSMSCode.aspx">�
 Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer</a>
 Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux-command 命令搜索</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大全</a>
-Gui, Pandora:Add, Link,, <a href="https://serverless.css-tricks.com/ideas/">前端开发Serverless</a>
+Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
@@ -301,7 +347,7 @@ Gui, Pandora:Add, Text, gprismhtml W160,prism代码高亮.html
 Gui, Pandora:Add, Text, gdeepmergehtml W160,deepmerge.html
 Gui, Pandora:Add, Text, gdom2imghtml W160,dom-to-image.html
 Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
-Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog.skeleton
+Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
@@ -356,6 +402,7 @@ Gui, Pandora:Add, Text, gNewmochachai W190, 新建mocha+chai单元测试模板
 Gui, Pandora:Add, Text, gNewesmodule W190, 新建nodejs运行es Module模板
 Gui, Pandora:Add, Text, gsandianchart W180, 散点图.html
 Gui, Pandora:Add, Text, gyibiaopan W180, 仪表盘刻度.html
+Gui, Pandora:Add, Text, gdataSetBar W180, dataSet柱状图.html
 
 Gui, Pandora:Add, Text, gNewreactbabelHtml W140  ys x+30, 新建react.babel.html
 Gui, Pandora:Add, Text, gNewcreateareactapp, 新建create-react-app脚手架

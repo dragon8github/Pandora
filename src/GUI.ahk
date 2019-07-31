@@ -7040,3 +7040,90 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+dataSetBar:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    myChart.setOption({
+        dataset: {
+            source: {
+                '时间': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                '数值': [220, 182, 191, 234, 290, 330, 310],
+            }
+        },
+        xAxis: {
+            type: 'category',
+            show: true,
+            axisLabel: {
+                fontSize: '12',
+                color: '#333',
+                fontWeight: 'normal',
+            },
+        },
+        yAxis: {
+            axisLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                fontSize: '12',
+                color: '#333',
+                fontWeight: 'normal',
+            },
+        },
+        tooltip: {},
+        series: [{
+            type: 'bar',
+            barWidth: 25,
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            { offset: 0, color: '#83bff6' },
+                            { offset: 0.5, color: '#188df0' },
+                            { offset: 1, color: '#188df0' }
+                        ]
+                    `)
+                },
+                emphasis: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            { offset: 0, color: '#2378f7' },
+                            { offset: 0.7, color: '#2378f7' },
+                            { offset: 1, color: '#83bff6' }
+                        ]
+                    `)
+                }
+            },
+        }]
+    });
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

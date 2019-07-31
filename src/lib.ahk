@@ -13,6 +13,70 @@ _HideTrayTip() {  ; NOTE: For Windows 10, replace this function with the one def
     TrayTip
 }
 
+
+gettvchild(id){
+    ret =
+    if(firstid := TV_GetChild(id)){
+        ret := [],first := true
+        ret[firstid] := ""
+        while(nextid := TV_GetNext(first ? (firstid,first:=false) : nextid)){
+            ret[nextid] := ""
+        }
+    }
+    for k,v in ret
+    {
+        if (TV_GetChild(k))
+            ret[k] := gettvchild(k)
+    }
+    return ret
+}
+ 
+expandallchild(id){
+    ret := "",TV_Modify(id,"Expand")
+    if(firstid := TV_GetChild(id)){
+        ret := [],first := true
+        ret[firstid] := ""
+        while(nextid := TV_GetNext(first ? (firstid,first:=false) : nextid)){
+            ret[nextid] := ""
+        }
+    }
+    for k,v in ret
+    {
+        if (TV_GetChild(k))
+            TV_Modify(k,"Expand"),ret[k] := expandallchild(k)
+    }
+    return ret
+}
+ 
+var_dump(obj,level:=0){
+    static str
+    if !level
+        str := ""
+    if IsObject(obj)
+    {
+        space =
+        loop % level
+            space .= A_Tab
+        str .= space "{`n"
+        for k,v in obj
+        {
+            if IsObject(v)
+            {
+                str .= space A_Tab (RegExMatch(k,"^\d+$") ? k : """" k """") ":`n"
+                var_dump(v,level+1)
+                str := RegExReplace(str,"(*ANYCRLF)\n$",",`n")
+            }
+            else
+                str .= space A_Tab (RegExMatch(k,"^\d+$") ? k : """" k """") ":""" RegExReplace(v,"""","""""") """,`n"
+        }
+        str := RegExReplace(str,"(*ANYCRLF),\n*$","`n")
+        str .= space "}`n"
+    }
+    else
+        str := obj
+    return str
+}
+
 arrincludes(myarr, v) {
 	b := false
 	For key, value in myarr {
@@ -150,7 +214,7 @@ return
 cs(code) {
     ; 这个函数的主要意义是保存到剪切板，也是为了统一收集send请求。如果以后有需要再移除也行。
     Clipboard := code
-    Send, {Text}%code%
+    SendInput, {Text}%code%
 }
 
 

@@ -62,5 +62,4 @@ FileDelete, .\src\*.bak
 #Include src/bilibili.ahk	      ; bilibili
 #Include src/elasticsearch.ahk	  ; elasticsearch
 #Include src/golang.ahk	          ; golang
-
-
+#Include src/book.ahk	          ; book
