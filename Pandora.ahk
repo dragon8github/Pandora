@@ -29,7 +29,6 @@ FileDelete, .\src\*.bak
 */
 
 #Include src/lib.ahk              ; 公共函数
-#include src/Chrome.ahk
 #Include src/help.ahk             ; 辅助功能
 #Include src/makedown.ahk         ; makedown
 #Include src/cdn.ahk              ; CDN   
