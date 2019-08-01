@@ -1446,6 +1446,7 @@ cs("dgjy123")
 return
 
 
+
 /*
 :*:[]::
 Var =
@@ -1467,19 +1468,6 @@ ClipWait, 2
 a := "『" . Clipboard . "』"
 cs(a)
 Clipboard := tmp
-return
-
-
-^b::
-WinGetTitle, title, A
-if (InStr(title, "有道云笔记")) {
-tmp := Clipboard
-Clipboard :=
-SendInput, ^x
-ClipWait, 2
-cs("**" . Clipboard . "**")
-Clipboard := tmp
-}
 return
 
 

@@ -11,7 +11,7 @@ Gui, Book:Color, E6FFE6
 Gui, Book:Margin, 10, 10
 
 
-Gui, Book:Add, TreeView, vBookTree HScroll H610 W250
+Gui, Book:Add, TreeView, vBookTree gBookTreeSelect HScroll H610 W250
 
 A := TV_Add("代码复用模式")
 A1 := TV_Add("类式继承模式#1 —— 默认模式", A)
@@ -36,11 +36,13 @@ top := TV_GetSelection()
 ; 展开所有节点
 var_dump(expandallchild(top))
 
+; 代码容器
 Gui, Book:Add, Edit, ys vBookContent w770 H610 Limit199307100337
 
 
+
 ; Tab 选项卡
-Gui, Book:Add, Tab3, gSwitchBook Section xs Choose1 w1050 h20, 《JavaScript 模式》 | 《JavaScript 设计模式》
+Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1050 h20, 《JavaScript 模式》 | 《JavaScript 设计模式》
 
 
 
