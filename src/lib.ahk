@@ -275,7 +275,7 @@ return
      i := index - 1
      ; x轴的位置
      _x := A_ScreenWidth * (Mod(i, xsize) / xsize)
-     ; y轴的位置（如果是第一行普遍都是0)
+     ; y轴的位置（如果只有一行普遍都是0即可)
      _y := i < xsize ? 0 : A_ScreenHeight / (Abs(index / xsize) + 1)
      ; 当前宽度
      _w := A_ScreenWidth / xsize
@@ -285,11 +285,11 @@ return
     __ALTCTRL__.push(value)
      try {
          ; 开始执行
-         Run, notepad2,,, pid     
+         Run, notepad2,,, pid
          pidary.push(pid)
          WinWait, ahk_pid %pid%
-         WinActivate, ahk_pid %pid%
          WinMove, ahk_pid %pid%,, _x, _y, _w, _h
+         WinActivate, ahk_pid %pid%
          code(value)
      }
      catch e {

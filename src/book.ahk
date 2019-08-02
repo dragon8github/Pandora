@@ -1,5 +1,4 @@
-﻿^b::
-+b::
+﻿+b::
 ; 显示
 	Gui, Book:Show,, Book
 return

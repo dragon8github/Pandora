@@ -355,6 +355,7 @@ Gui, Pandora:Add, Text, gdeepmergehtml W160,deepmerge.html
 Gui, Pandora:Add, Text, gdom2imghtml W160,dom-to-image.html
 Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog
+Gui, Pandora:Add, Text, ghackdiguo W140,黑客帝国
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html

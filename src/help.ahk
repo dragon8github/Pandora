@@ -605,12 +605,9 @@ return
 
 ^1::
 !1::
-    Send, {text}dgdp
-return
-
-^2::
-!2::
-    Send, {text}ch#ks!690
+Send, {text}dgdp
+Sleep, 100
+Send, {text}ch#ks!690
 return
 
 ::hosts::
@@ -811,35 +808,42 @@ return
 
 !Up::
     SendEvent, {PGUP}
+    SendEvent, {Alt up}
 return
 
 +!Up::
     SendEvent, +{PGUP}
+    SendEvent, {Alt up}
 return
 
 !Down::
     SendEvent, {PGDN}
+    SendEvent, {Alt up}
 return
 
 +!Down::
     SendEvent, +{PGDN}
+    SendEvent, {Alt up}
 return
 
 !Right::
     SendEvent, {end}       
+    SendEvent, {Alt up}
 return
-
 
 +!Right::
     SendEvent, +{end} 
+    SendEvent, {Alt up}
 return
 
 !Left::
     SendEvent, {Home}
+    SendEvent, {Alt up}
 return
 
 +!Left::
     SendEvent, +{Home}
+    SendEvent, {Alt up}
 return
 
 /*

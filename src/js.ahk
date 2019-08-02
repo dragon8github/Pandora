@@ -1845,6 +1845,8 @@ $(window).resize(function(e){
 code(Var)
 return
 
+::lunxun::
+::loop::
 ::poll::
 Var =
 (
@@ -1861,8 +1863,7 @@ var maxTimeout = 10,
     };
     <这里写上你的判断> ? callback() : setTimeout(poll, wait);
 }());
-
-
+---
 const poll = (conditionFn, callback, wait = 4, maxTimeout = 10, timeout = 0) => {
   // 请求是否超出阈值
   if (++timeout > maxTimeout * 1000 / wait) throw new Error('overtime')
@@ -1875,8 +1876,75 @@ const poll = (conditionFn, callback, wait = 4, maxTimeout = 10, timeout = 0) => 
 poll(() => document.querySelector('path[fill]'), e => {
   e.setAttribute('fill', "rgb(0,0,0)");
 })
+---
+const getsms = (mobile) => {
+    var count = 0
+    var _getsms = function () {
+        request({
+            method: 'GET',
+            uri: `http://api.fxhyd.cn/UserInterface.aspx?action=getsms&token=${token}&itemid=${itemid}&mobile=${mobile}&release=1`
+        }, function (err, _res, body) {
+            if (err) throw new Error(err)
+            // 如果短信未收到
+            if (body == '3001' && count <= 60) {
+                // 官方推荐5秒之后再请求
+                setTimeout(function () {
+                    count += 5
+                    console.log("短信未收到，正在重新获取...", count);
+                    _getsms()
+                }, 5000);
+            } else {
+                // 截取验证码
+                var code = body.match(/\d{4,}/)[0]
+                console.log("获取了验证码", code);
+                register(mobile, code)
+            }
+        })
+    }
+    _getsms();
+};
+---
+ // 适合轮询条件查找执行
+;(function fuck(i){
+    const name = router.history.current.name
+    // 先把需要轮询的条件写出来：如果找不到元素，并且次数小于
+    if (document.querySelectorAll(`.${name} [data-title]`).length <= 0) {
+        // 再把最多循环的次数写出来：最多5次，间隔也可以动态，我这里是100/200/300/400/500，也就是一共才1500秒。
+        i < 5 && window.setTimeout(_ => fuck(++i), i * 100 + 100);
+    } else {
+        // 条件成立的放在这里执行
+        document.querySelectorAll(`.${name} [data-title]`).forEach(function (e, i) {
+            const rootname = e.getAttribute('class')
+            const classname = e.querySelector('div').getAttribute('class')
+            const vuename = `${classname}.vue`
+            const title = `【${rootname.substring(0, rootname.indexOf('__'))}】 ${e.getAttribute('data-title')} 【${vuename}】`
+            e.setAttribute('title', title)
+            const _copyToClipboard = () => {copyToClipboard(vuename); Message('复制成功：' + vuename); }
+            e.removeEventListener('click', _copyToClipboard)
+            e.addEventListener('click', _copyToClipboard) 
+        }); 
+        document.querySelector('.header__title').addEventListener('click', (e) => {
+            const indexvuename = `${name}/index.vue`
+            copyToClipboard(indexvuename); 
+            Message('复制成功：' + indexvuename);
+        })
+    }
+}(0));
+---
+function loop(fn, delay) {
+    let stamp = Date.now();
+
+    function _loop() {
+        if (Date.now() - stamp >= delay) {
+            fn();
+            stamp = Date.now();
+        }
+        requestAnimationFrame(_loop);
+    }
+    requestAnimationFrame(_loop);
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::clickoutsize::
@@ -3528,66 +3596,6 @@ Var =
 (
 var a = `[ 'PHPSESSID=sglvjui97o18bg6qsqobj77p86; path=/; HttpOnly' ]`;
 /PHPSESSID=(.*?);/g.exec(a)
-)
-code(Var)
-return
-
-::lunxun::
-Var = 
-(
-const getsms = (mobile) => {
-    var count = 0
-    var _getsms = function () {
-        request({
-            method: 'GET',
-            uri: `http://api.fxhyd.cn/UserInterface.aspx?action=getsms&token=${token}&itemid=${itemid}&mobile=${mobile}&release=1`
-        }, function (err, _res, body) {
-            if (err) throw new Error(err)
-            // 如果短信未收到
-            if (body == '3001' && count <= 60) {
-                // 官方推荐5秒之后再请求
-                setTimeout(function () {
-                    count += 5
-                    console.log("短信未收到，正在重新获取...", count);
-                    _getsms()
-                }, 5000);
-            } else {
-                // 截取验证码
-                var code = body.match(/\d{4,}/)[0]
-                console.log("获取了验证码", code);
-                register(mobile, code)
-            }
-        })
-    }
-    _getsms();
-};
-
- // 适合轮询条件查找执行
-;(function fuck(i){
-    const name = router.history.current.name
-    // 先把需要轮询的条件写出来：如果找不到元素，并且次数小于
-    if (document.querySelectorAll(`.${name} [data-title]`).length <= 0) {
-        // 再把最多循环的次数写出来：最多5次，间隔也可以动态，我这里是100/200/300/400/500，也就是一共才1500秒。
-        i < 5 && window.setTimeout(_ => fuck(++i), i * 100 + 100);
-    } else {
-        // 条件成立的放在这里执行
-        document.querySelectorAll(`.${name} [data-title]`).forEach(function (e, i) {
-            const rootname = e.getAttribute('class')
-            const classname = e.querySelector('div').getAttribute('class')
-            const vuename = `${classname}.vue`
-            const title = `【${rootname.substring(0, rootname.indexOf('__'))}】 ${e.getAttribute('data-title')} 【${vuename}】`
-            e.setAttribute('title', title)
-            const _copyToClipboard = () => {copyToClipboard(vuename); Message('复制成功：' + vuename); }
-            e.removeEventListener('click', _copyToClipboard)
-            e.addEventListener('click', _copyToClipboard) 
-        }); 
-        document.querySelector('.header__title').addEventListener('click', (e) => {
-            const indexvuename = `${name}/index.vue`
-            copyToClipboard(indexvuename); 
-            Message('复制成功：' + indexvuename);
-        })
-    }
-}(0));
 )
 code(Var)
 return
