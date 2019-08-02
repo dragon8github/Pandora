@@ -500,15 +500,15 @@ const f = (...args) => args.reduce((prev, curr) => {
         return Object.assign({}, prev, curr)
     }
 
-    // 如果是相同的属性，则相加（前提是需要是Number类型），但这里就不判断了。
-    for (let key in curr) {
+    // 对象遍历，如果是相同的属性，则相加（前提是需要是Number类型），但这里就不判断了。
+    for (let [key, val] of Object.entries(curr)) {
         // 如果包含key，那么这两个属性相加
-        if (Object.keys(prev).includes(key)) {
+        if (key in prev) {
             // ⚠️ 相加. 这里没有判断是否为Number类型
-            prev[key] += curr[key]
+            prev[key] += val
         // 否则直接迭代
         } else {
-            prev[key] = curr[key]
+            prev[key] = val
         }
     }
 
@@ -521,10 +521,7 @@ f(a, b) // => {a: 4, b: 2, c: 5}
 }
 
 if (v == "判断两个数组是否互相包含") {
-Var = 
-(
-ary1.filter(_ => ary2.includes(_)).length
-)
+_send("arrbaohan")
 }
 
 if (v == "为函数注册全局事件: regEvent") {
@@ -6888,4 +6885,38 @@ export const loadingExec = async function (loadingName, fn, { success = () => {}
 }
 )
 code(Var)
+return
+
+::arrbaohan::
+::arybaohan::
+::shuzubaohan::
+::jiaoji::
+Var =
+(
+ary1.filter(_ => ary2.includes(_)).length
+---
+const intersection = (O1, O2) => Object.assign(...Object.keys(O1).map(k => {
+    let temp
+
+    if (!(k in O2)) {
+        return {}
+    }
+
+    if (O1[k] && typeof O1[k] === 'object' && O2[k] && typeof O2[k] === 'object') {
+        temp = intersection(O1[k], O2[k])
+        return Object.keys(temp).length ? { [k]: temp } : {}
+    }
+
+    if (O1[k] === O2[k]) {
+       return { [k]: O1[k] }
+    }
+
+    return {}
+}))
+
+const a = { name: 'Alice', features: { speed: 3, strength: 90, mind: { power: 42 } } }
+const b = { name: 'Bob', features: { speed: 3, stamina: 1, mind: { power: 42, flexibility: 0, telekinesis: 42 } } }
+console.log(intersection(a, b))
+)
+txtit(Var)
 return
