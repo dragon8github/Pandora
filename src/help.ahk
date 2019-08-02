@@ -1680,7 +1680,7 @@ code(Var)
 return
 
 ^5::
-Send, iocadmin{tab}
+SendInput, iocadmin{tab}
 Sleep, 10
-Send, iocadmin{enter}
+SendInput, iocadmin{enter}
 return

@@ -14,21 +14,27 @@ Gui, Book:Margin, 10, 10
 Gui, Book:Add, TreeView, vBookTree gBookTreeSelect HScroll H610 W250
 
 A := TV_Add("代码复用模式")
-A1 := TV_Add("类式继承模式#1 —— 默认模式", A)
-A2 := TV_Add("类式继承模式#2 —— 借用构造函数", A)
-A3 := TV_Add("类式继承模式#3 —— 借用和设置原型", A)
-A4 := TV_Add("类式继承模式#4 —— 共享原型", A)
-A5 := TV_Add("类式继承模式#5 —— 临时构造函数", A)
-A6 := TV_Add("通过复制属性实现继承", A)
-A6 := TV_Add("原型继承", A)
+A1 := TV_Add("类式继承模式#1 —— 克隆模式", A)
+TV_Add("类式继承模式#2 —— 借用模式", A)
+TV_Add("类式继承模式#3 —— 借用模式 + 克隆模式", A)
+TV_Add("类式继承模式#4 —— 共享原型", A)
+TV_Add("类式继承模式#5 —— 临时构造函数", A)
+TV_Add("通过复制属性实现继承", A)
+TV_Add("原型继承", A)
 
+	
 B := TV_Add("设计模式")
-B1 := TV_Add("工厂模式", B)
-B1 := TV_Add("策略模式", B)
-B2 := TV_Add("装饰者模式", B)
-B3 := TV_Add("代理模式", B)
-B4 := TV_Add("中介者模式", B)
-B5 := TV_Add("观察者模式", B)
+TV_Add("工厂模式", B)
+TV_Add("策略模式", B)
+TV_Add("装饰者模式", B)
+TV_Add("代理模式", B)
+TV_Add("中介者模式", B)
+TV_Add("观察者模式", B)
+
+C := TV_Add("原型知识")
+TV_Add("__proto__ 和 prototype 的关系", C)
+TV_Add("实现 Object.create 方法", C)
+TV_Add("实现 new 运算符的过程", C)
 
 ;获取节点信息
 top := TV_GetSelection()
@@ -37,9 +43,7 @@ top := TV_GetSelection()
 var_dump(expandallchild(top))
 
 ; 代码容器
-Gui, Book:Add, Edit, ys vBookContent w770 H610 Limit199307100337
-
-
+Gui, Book:Add, Edit, ys vBookContent w790 H610 Limit199307100337
 
 ; Tab 选项卡
 Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1050 h20, 《JavaScript 模式》 | 《JavaScript 设计模式》
@@ -261,6 +265,7 @@ Gui, Pandora:Add, Link,, <a href="https://scrimba.com/">学习代码新世界</a
 Gui, Pandora:Add, Link,, <a href="https://www.shiyanlou.com/">实验楼</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/azl397985856/leetcode">leetcode JS版本</a>
 Gui, Pandora:Add, Link,, <a href="https://miyogurt.github.io/nodelover-books">NodeLover 黄金屋</a>
+Gui, Pandora:Add, Link,, <a href="https://gitee.com/explore">码云逛逛源码</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly">阮一峰的周刊</a>

@@ -274,6 +274,8 @@
     
     
     ; @my
+    Menu, EventMenu, Add, 求同存异：金强的对象特殊合并, EventHandler
+    Menu, EventMenu, Add, 判断两个数组是否互相包含, EventHandler
     Menu, EventMenu, Add, 又是一个比较骚的工具函数: loadExec, EventHandler
     Menu, EventMenu, Add, 轮询监听URL变化：onUrlChange, EventHandler
     Menu, utilsmy, Add, 为函数注册全局事件: regEvent, utilsHandler
@@ -471,6 +473,59 @@ Var =
 )
 }
 
+
+if (v == "求同存异：金强的对象特殊合并") {
+Var = 
+(
+var a = {a: 1, b: 2}
+var b = {a: 3, c: 5}
+
+// 是否是一个对象？
+const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
+
+// 判断两个对象的属性是否重合？
+const isKeysRepeat = (a, b) => Object.keys(a).filter(_ => Object.keys(b).includes(_)).length
+
+/**
+ * 求同存异 ...
+ */
+const f = (...args) => args.reduce((prev, curr) => {
+    // 如果不是对象，直接返回进入下一次
+    if (!isObject(curr)) {
+        return prev
+    }
+
+    // 判断属性是否重复，如果不重复的话，直接合并即可。
+    if (!isKeysRepeat(prev, curr)) {
+        return Object.assign({}, prev, curr)
+    }
+
+    // 如果是相同的属性，则相加（前提是需要是Number类型），但这里就不判断了。
+    for (let key in curr) {
+        // 如果包含key，那么这两个属性相加
+        if (Object.keys(prev).includes(key)) {
+            // ⚠️ 相加. 这里没有判断是否为Number类型
+            prev[key] += curr[key]
+        // 否则直接迭代
+        } else {
+            prev[key] = curr[key]
+        }
+    }
+
+    // 返回修改后的 prev
+    return prev
+}, {})
+
+f(a, b) // => {a: 4, b: 2, c: 5}
+)
+}
+
+if (v == "判断两个数组是否互相包含") {
+Var = 
+(
+ary1.filter(_ => ary2.includes(_)).length
+)
+}
 
 if (v == "为函数注册全局事件: regEvent") {
 _send("regEvent", true, true)
