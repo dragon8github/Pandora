@@ -170,52 +170,14 @@
     Menu, utilsSolution, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     Menu, utilsSolution, Add, 延迟上传解决ajax压力的解决方案, utilsHandler
 
-    Menu, utilsExtend, Add, extend 浅拷贝（继承模式中最后的圣杯）, utilsHandler
-    Menu, utilsExtend, Add, deepExtend 深拷贝, utilsHandler
-    Menu, utilsExtend, Add, multi 多重拷贝, utilsHandler
-    Menu, utilsExtend, Add, 寄生式继承, utilsHandler
-    Menu, utilsExtend, Add, 构造器借用, utilsHandler
-    
-    
-    Menu, utilsThis, Add, 1、作为对象的方法调用, utilsHandler
-    Menu, utilsThis, Add, 2、作为普通函数调用时, utilsHandler
-    Menu, utilsThis, Add, 3、作为构造器调用, utilsHandler
-    Menu, utilsThis, Add, 4、Function.prototype.call 或 Function.prototype.apply 调用, utilsHandler
-    Menu, utilsThis, Add, 5、es6箭头函数调用时, utilsHandler
-    Menu, utilsThis, Add, 6、es6 class 中的, utilsHandler
-    
-    Menu, utilsDesignPattern, Add, this , :utilsThis
-    Menu, utilsDesignPattern, Add, 封装, utilsHandler
-    Menu, utilsDesignPattern, Add, 多态, utilsHandler
-    Menu, utilsDesignPattern, Add, 继承（浅拷贝/深拷贝/多重拷贝/寄生式继承/构造器借用）, :utilsExtend
-    
-    Menu, utilsDesignPattern, Add, call 和 apply, utilsHandler
-    Menu, utilsDesignPattern, Add, Function.prototype.before, utilsHandler
-    Menu, utilsDesignPattern, Add, Function.prototype.after, utilsHandler
-    
     Menu, utilsDesignPattern, Add, , utilsHandler
     Menu, utilsDesignPattern, Add, , utilsHandler
     
     Menu, utilsDesignPattern, Add, 延迟上传解决ajax压力的解决方案, utilsHandler
-    Menu, utilsDesignPattern, Add, 闭包与Cache, utilsHandler
-    Menu, utilsDesignPattern, Add, 参数缓存器, utilsHandler
-    Menu, utilsDesignPattern, Add, 模块模式：现代模块实现的基石, utilsHandler
     Menu, utilsDesignPattern, Add, 超简单的currying与理财花销实例, utilsHandler
     Menu, utilsDesignPattern, Add, 超简单的链式调用套路：即让方法调用结束后返回对象本身, utilsHandler
-    Menu, utilsDesignPattern, Add, AOP - 面向切面编程, utilsHandler
-    Menu, utilsDesignPattern, Add, 模板抽象类接口：咖啡与茶, utilsHandler
-    
-    Menu, utilsDesignPattern, Add, , utilsHandler
-    Menu, utilsDesignPattern, Add, , utilsHandler
     
     
-    Menu, utilsDesignPattern, Add, (=・ω・=)我的单例版ajax, utilsHandler
-    Menu, utilsDesignPattern, Add, 惰性单例, utilsHandler
-    Menu, utilsDesignPattern, Add, 透明单例, utilsHandler
-    Menu, utilsDesignPattern, Add, 代理单例, utilsHandler
-    Menu, utilsDesignPattern, Add, 通用的惰性单例, utilsHandler
-    Menu, utilsDesignPattern, Add, （回调版）单例模式，通常用于ajax类, utilsHandler
-    Menu, utilsDesignPattern, Add, 单例模式：生成不重复的随机数, utilsHandler
     
     
     Menu, utilsDesignPattern, Add, , utilsHandler
@@ -1989,11 +1951,6 @@ console.log(new User().setId(1234).setName('Lee'))
 )
 }
 
-if (v == "单例模式：生成不重复的随机数") {
-_send("singlerand", true, true)
-return
-}
-
 if (v == "欧几里得算法（分而治之）：目标使土地分配最大化，不断让宽与高求余，直到整数倍为止") {
 _send("oujilide", true, true)
 return
@@ -2113,14 +2070,12 @@ successFn.apply(this, arguments)
 
 
 if (v == "去重复版本的axios") {
-SendLevel 1
-Send, singaxios{tab}
+_send(singaxios)
 return
 }
 
 if (v == "(=・ω・=)我的单例版ajax") {
-SendLevel 1
-Send, singeajax{tab}
+_send(singeajax)
 return
 }
 if (v == "强制转化为Boolean类型：!!(a && b)") {
@@ -2132,22 +2087,19 @@ console.log(!!(a && b))
 }
 
 if (v == "img判断加载完成") {
-SendLevel 1
-SendInput, imgonload{tab}
+_send(imgonload)
 return
 }
 
 
 if (v == "create 创建img") {
-SendLevel 1
-SendInput, createimg{tab}
+_send(createimg)
 return
 }
 
 
 if (v == "mask蒙版") {
-SendLevel 1
-SendInput, mask{tab}
+_send(mask)
 return
 }
 
@@ -2617,8 +2569,7 @@ Var =
 }
 
 if (v == "memoized 函数缓存") {
-SendLevel 1
-Send, funcache{tab}
+_send(funcache)
 return
 }
 
@@ -2660,43 +2611,6 @@ document.addEventListener('mouseup', func)
 )
 }
 
-if (v == "（回调版）单例模式，通常用于ajax类") {
-Var = 
-(
-// （回调版）单例模式，通常用于ajax类
-var getCallBackSingle = function(fn) {
-    // 缓存
-    var cache;
-    // 接受一个回调函数
-    return function (cb) {
-        // 如果有缓存存在，那么直接使用缓存作为回调值，否则使用默认函数
-        cache ? cb.apply(this, cache) : fn(function () {
-            console.log('no cache')
-            // 保存到缓存并且执行回调
-            cb.apply(this, cache = arguments)
-        })
-    }
-};
-
-// demo：获取所有内容
-var getData = function (successcb) {
-    $.ajax({
-        url: "/search.json",
-        dataType: 'json',
-        success: successcb,
-        error: function(e, m){
-           console.log('数据接口请求异常', e, m);
-        }
-    })
-}
-
-// 使用示例
-var _getData = getCallBackSingle(getData)
-_getData(_ => {console.log(20190126191340, _)}) // no cache，[...]
-_getData(_ => {console.log(20190126191340, _)}) // [...]
-)
-}
-
 
 if (v == "parseInt/parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162") {
 Var = 
@@ -2710,14 +2624,12 @@ dict.offset = [
 
 
 if (v == "filterhtml: 移除html标签，只提取文本text()") {
-SendLevel 1
-Send, filterhtml{tab}
+_send(filterhtml)
 return
 }
 
 if (v == "window.onunload 刷新/关闭页面之前发送请求") {
-SendLevel 1
-Send, window.onunload{tab}
+_send(window.onunload)
 return
 }
 
@@ -2866,44 +2778,6 @@ var getPhoneData = function(phoneNo, callback) {
 )
 }
 
-if (v == "闭包与Cache") {
-Var = 
-(
-/**
- * @func
- * @desc - 灵活使用闭包的概念。
-           以下简单的实验说明他们是不同的实例。所以他们各自闭包内的_cache是不相干也不相同的
-           其实是简单的类与实例的概念。但还是说明一下比较好
-           毕竟大部分的插件也是这样制作的
- */
-var Cache = (function () {
-    var _cache = {};
-
-    return {
-      getCache: function (key) {
-        return _cache[key]
-      },
-      setCache: function (key, value) {
-        _cache[key] = value;
-      },
-      showAllCache: function () {
-        console.log(_cache);
-      }
-    }
-});
-
-
-var a = new Cache();
-a.setCache('foo', 'bar');
-a.showAllCache();
-
-var b = new Cache();
-b.setCache('foo', 'bar2');
-b.showAllCache();
-
-/* 从输出的结果得知两者的闭包互不相干 */
-)
-}
 
 if (v == "Android 输入法键盘 和 input 问题:scrollIntoViewIfNeeded") {
 Var = 
@@ -2968,62 +2842,6 @@ order( 1, false, 500 );
 )
 }
 
-if (v == "Function.prototype.before") {
-SendLevel 1
-Send, fn.before{tab}
-return
-}
-
-if (v == "Function.prototype.after") {
-SendLevel 1
-Send, fn.after{tab}
-return
-}
-
-if (v == "模板抽象类接口：咖啡与茶") {
-Var = 
-(
-// 继承抽象类的目的，通常是可以为了可以省略很多重复的操作，或者帮你完成了很多基础工作，譬如本例的煮水（boilWater）
-// 但接口还强制你重写/实现/覆盖指定方法譬如brew, pourIncup, addCondiments来搜集配置和个性化需求。
-// 这种模式也成为模板模式。可以脑补【模板页面】的场景
-var Beverage = function() {};
-Beverage.prototype.boilWater = function() {
-	console.log( '把水煮沸' );
-};
-Beverage.prototype.brew = function() {
-	throw new Error( '子类必须重写 brew 方法' );
-};
-Beverage.prototype.pourIncup = function() {
-	throw new Error( '子类必须重写 pourIncup 方法' );
-};
-Beverage.prototype.addCondiments = function() {
-	throw new Error( '子类必须重写 addCondiments 方法' );
-};
-Beverage.prototype.init = function() {
-    this.boilWater();
-    this.bubbleBeverage();
-    this.pourCup();
-    this.addCondiments();
-};
-
-var Coffee = function() {};
-// 原型继承抽象类
-Coffee.prototype = new Beverage();
-
-Coffee.prototype.bubbleBeverage = function() {
-    console.log("开水冲泡咖啡.");
-};
-Coffee.prototype.pourCup = function() {
-    console.log("咖啡倒入杯中.");
-};
-Coffee.prototype.addCondiments = function() {
-    console.log("添加糖和牛奶.");
-};
-
-var coffee = new Coffee();
-coffee.init();
-)
-}
 
 if (v == "解构与split结合：const [language, country] = locale.split('-')") {
 Var = 
@@ -3090,222 +2908,12 @@ Var =
 }
 
 if (v == "urlparams 获取路由参数") {
-SendLevel 1
-Send, urlparams{tab}
+_send(urlparams)
 return
 }
 
-if (v == "构造器借用") {
-Var = 
-(
-function Shape(id) {
-  this.id = id;
-}
-Shape.prototype.name = 'shape'
-Shape.prototype.toString = function () {
-  return this.name
-}
-
-function Triangle() {
-  Shape.apply(this, arguments)
-}
-Triangle.prototype.name = 'Triangle'
-
-var t = new Triangle(101);
-t.name; // "Triangle"
-)
-}
-
-if (v == "寄生式继承") {
-Var = 
-(
-// 在创建对象的函数中直接吸收其他对象的功能，然后对其进行扩展并返回。“就好像所有的工作都是自己做的一样无耻！”
-// 寄生式继承并没有涉及什么新的模式和语法，只是一种概念认知。
-var twoD = {
-  name: '2D shape',
-  dimensions: 2
-}
-
-function triangle(s, h) {
-  var that = Object(twoD);
-  that.name = 'TRIANGLE';
-  that.side = s;
-  that.height = h;
-  that.getArea = function () {
-    return this.side * this.height / 2;
-  };
-  return that;
-}
-
-var t = triangle(5, 10);
-t.dimensions; // 2
-)
-}
-
-if (v == "multi 多重拷贝") {
-Var = 
-(
-function multi() {
-  var n = {}, stuff, j = 0, len = arguments.length;
-  for (var i = 0; i < len; i++) {
-      stuff = arguments[j];
-      for (var i in stuff) {
-        if (stuff hasOwnProperty(i)) {
-          n[i] = stuff[i];
-        }
-      }
-  }
-  return n
-}
-)
-}
-
-if (v == "通用的惰性单例") {
-Var = 
-(
-var getSingle = function(fn) {
-     var result;
-     return function() {
-         return result || (result = fn.apply(this, arguments));
-     }
-};
-)
-}
 
 
-if (v == "惰性单例") {
-Var = 
-(
-var Singleton = function(name) {
-     this.name = name;
-};
-Singleton.getInstance = (function() {
-     var instance = null;
-     return function(name) {
-         if (!instance) {
-             instance = new Singleton(name);
-         }
-         return instance;
-     }
-})();
-var a = Singleton.getInstance( 'sven1' );
-var b = Singleton.getInstance( 'sven2' );
-alert ( a === b ); // true
-)
-}
-
-if (v == "透明单例") {
-Var = 
-(
-var CreateDiv = (function() {
-     var instance;
-     var _CreateDiv = function(html) {
-         if (instance) {
-             return instance;
-         }
-         this.html = html;
-         this.init();
-         return instance = this;
-     };
-     _CreateDiv.prototype.init = function() {
-         var div = document.createElement('div');
-         div.innerHTML = this.html;
-         document.body.appendChild(div);
-     };
-     return _CreateDiv;
-})();
-
-var a = new CreateDiv('sven1');
-var b = new CreateDiv('sven2');
-alert(a === b); // => true
-)
-}
-
-if (v == "代理单例") {
-Var = 
-(
-// 普通的创建 div 的类：
-var CreateDiv = function(html) {
-     this.html = html;
-     this.init();
-};
-CreateDiv.prototype.init = function() {
-     var div = document.createElement('div');
-     div.innerHTML = this.html;
-     document.body.appendChild(div);
-};
-// 引入代理类
-var ProxySingletonCreateDiv = (function() {
-    var instance;
-    return function(html) {
-        if (!instance) {
-            instance = new CreateDiv(html);
-        }
-        return instance;
-    }
-})();
-var a = new ProxySingletonCreateDiv('sven1');
-var b = new ProxySingletonCreateDiv('sven2');
-alert(a === b);
-)
-}
-
-if (v == "封装") {
-Var = 
-(
-// JavaScript并没有提供private、public、protected 关键字来提供不同的访问权限，我们只能依赖变量的 作用域来实现封装特性
-var Module = (function(){
-    var _private = "safe now";
-    var foo = function(){
-        console.log(_private)
-    }
-
-    return {
-        foo: foo
-    }
-})()
-
-Module.foo();    // "safe now"
-Module._private; // undefined
-)
-}
-
-
-if (v == "多态") {
-Var = 
-(
-var makeSound = function(animal) {
-    if (animal instanceof Duck) {
-        console.log('嘎嘎嘎');
-    } else if (animal instanceof Chicken) {
-        console.log('咯咯咯');
-    }
-};
-var Duck = function() {};
-var Chicken = function() {};
-makeSound(new Duck());    // 嘎嘎嘎
-makeSound(new Chicken()); // 咯咯咯
-
-//////////////////////////////////////////////
-// 
-//////////////////////////////////////////////
-var renderMap = function( map ){
-  if ( map.show instanceof Function ){
-     map.show();
-  }
-};
-renderMap( googleMap ); // 输出：开始渲染谷歌地图
-renderMap( baiduMap );  // 输出：开始渲染百度地图
-
-// 即使以后增加了搜搜地图， renderMap 函数仍、然不需要做任何改变，如下所示：
-var sosoMap = {
-  show: function(){
-     console.log( '开始渲染搜搜地图' );
-  }
-};
-renderMap( sosoMap ); // 输出：开始渲染搜搜地图
-)
-}
 
 
 if (v == "基于原型模式的继承") {
@@ -3381,119 +2989,19 @@ func();
 }
 
 
-
-if (v == "1、作为对象的方法调用") {
-Var = 
-(
-var obj = {
-     a: 1,
-     getA: function(){
-        alert ( this === obj ); // 输出：true
-        alert ( this.a );       // 输出: 1
-     }
-};
-obj.getA();
-)
-}
-
-if (v == "2、作为普通函数调用时") {
-Var = 
-(
-//////////////////////////////////////////////
-// 当函数作为普通函数方式被调用时，此时的 this 总是指向全局对象。
-// 如果是在浏览器里，全局对象就是 window。
-//////////////////////////////////////////////
-window.name = 'windowName';
-var getName = function () {
-     return this.name;
-};
-console.log( getName() ); // windowName
-
-// 以下写法和（1）很相似，所以容易混淆，但实际上这种调用函数的方式和（2）也是一样的道理，它指向的是函数执行时的环境，所以需要额外注意一下：
-window.name = 'windowName';
-var myObject = {
-     name: 'sven',
-     getName: function(){
-        return this.name;
-     }
-};
-var getName = myObject.getName;
-console.log( getName() ); // windowName
-)
-}
-
-if (v == "3、作为构造器调用") {
-Var = 
-(
-//////////////////////////////////////////////
-// JavaScript 中没有类，但是可以从构造器中创建对象，同时也提供了 new 运算符，使得构造器看起来更像一个类。
-// 所有 JavaScript 函数都可以当作构造器使用。当用 new 运算符调用函数时，该函数总会返回一个对象，通常情况下，构造器里的 this 就指向返回的这个对象。
-//////////////////////////////////////////////
-var MyClass = function(){
-     this.name = 'sven';
-};
-var obj = new MyClass();
-alert ( obj.name ); // 输出：sven
-)
-}
-
-
-if (v == "4、Function.prototype.call 或 Function.prototype.apply 调用") {
-Var = 
-(
-window.name = 'foo';
-var obj1 = {name: 'sven'};
-var obj2 = {name: 'anne'};
-
-var getName = function () {
-    alert ( this.name );
-};
-getName();            // 输出: foo
-getName.call( obj1 ); // 输出: sven
-getName.call( obj2 ); // 输出: anne
-)
-}
-
-
-if (v == "6、es6 class 中的") {
-Var = 
-(
-
-)
-}
-
-if (v == "5、es6箭头函数调用时") {
-Var = 
-(
-// 箭头函数自己没有this，只能往上找对象。
-
-
-// 不适用场合
-var fuck = {
-	bb: 'bb',
-	methods: () =>  {
-		console.log(this.bb) // undefined
-	}
-}
-)
-}
-
 if (v == "JavaScript版 策略模式") {
-SendLevel 1
-Send, celue{tab}
+_send(celue)
 return
 }
 
 
 if (v == "加强版map遍历:bettermap") {
-SendLevel 1
-Send, fuckmap{tab}
+_send(fuckmap)
 return
 }
 
 if (v == "injectCss 往页面插入style") {
-SendLevel 1
-Send, addstyle{tab}
+_send(addstyle)
 return
 }
 
@@ -3762,8 +3270,7 @@ $('.trajectoryTable').autoScroll()
 }
 
 if (v == "window.requestAnimFrame") {
-SendLevel 1
-Send, requestanimate{tab}
+_send(requestanimate)
 return
 }
 
@@ -4281,8 +3788,7 @@ function curry2(fn) {
 }
 
 if (v == "es6.class") {
-SendLevel 1
-Send, js.class{tab}
+_send(js.class)
 return
 }
 
@@ -4627,8 +4133,7 @@ function countDown ($dom) {
 }
 
 if (v == "rem 解决方案 / 淘宝解决方案") {
-SendLevel 1
-Send, taobao{tab}
+_send(taobao)
 return 
 }
 
@@ -4917,8 +4422,7 @@ var device = function(key){
 
 
 if (v == "isBottom 是否滚动到底部") {
-SendLevel 1
-Send, isbottom{tab}
+_send(isbottom)
 return
 }
 
@@ -5136,17 +4640,6 @@ function isNaN(obj) {
 )
 }
 
-if (v == "extend 浅拷贝（继承模式中最后的圣杯）") {
-SendLevel 1
-Send, extend{tab}
-return
-}
-
-if (v == "deepExtend 深拷贝") {
-SendLevel 1
-Send, deepextend{tab}
-return
-}
 
 if (v == "getElementPosition 获取元素的定位") {
 Var = 

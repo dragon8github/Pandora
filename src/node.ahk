@@ -921,8 +921,7 @@ return
 }
 
 if (v == "fs.mkdir") {
-SendLevel 1
-Send, fs.mkdir{tab}
+_send("node-mkdir")
 return
 }
 
@@ -1265,10 +1264,10 @@ return
 ::fs.mkdir::
 Var = 
 (
-var mkdirp = require('mkdirp');
-mkdirp(path.join(__dirname,`/data/`), function (err) {
-    if (err) console.error(err)
-})
+if (!fs.existsSync(Recognize.downloadDir)) {
+  fs.mkdirSync(Recognize.downloadDir);
+  console.log(`创建了 ${Recognize.downloadDir} 文件夹`);
+}
 )
 code(Var)
 return

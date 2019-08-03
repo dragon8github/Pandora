@@ -11,30 +11,9 @@ Gui, Book:Color, E6FFE6
 Gui, Book:Margin, 10, 10
 
 
-Gui, Book:Add, TreeView, vBookTree gBookTreeSelect HScroll H610 W250
+Gui, Book:Add, TreeView, vBookTree gBookTreeSelect HScroll H700 W250
 
-A := TV_Add("代码复用模式")
-A1 := TV_Add("类式继承模式#1 —— 克隆模式", A)
-TV_Add("类式继承模式#2 —— 借用模式", A)
-TV_Add("类式继承模式#3 —— 借用模式 + 克隆模式", A)
-TV_Add("类式继承模式#4 —— 共享原型", A)
-TV_Add("类式继承模式#5 —— 临时构造函数", A)
-TV_Add("通过复制属性实现继承", A)
-TV_Add("原型继承", A)
-
-	
-B := TV_Add("设计模式")
-TV_Add("工厂模式", B)
-TV_Add("策略模式", B)
-TV_Add("装饰者模式", B)
-TV_Add("代理模式", B)
-TV_Add("中介者模式", B)
-TV_Add("观察者模式", B)
-
-C := TV_Add("原型知识")
-TV_Add("__proto__ 和 prototype 的关系", C)
-TV_Add("实现 Object.create 方法", C)
-TV_Add("实现 new 运算符的过程", C)
+initbook()
 
 ;获取节点信息
 top := TV_GetSelection()
@@ -43,10 +22,10 @@ top := TV_GetSelection()
 var_dump(expandallchild(top))
 
 ; 代码容器
-Gui, Book:Add, Edit, ys vBookContent w790 H610 Limit199307100337
+Gui, Book:Add, Edit, ys vBookContent w790 H700 Limit199307100337
 
 ; Tab 选项卡
-Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1050 h20, 《JavaScript 模式》 | 《JavaScript 设计模式》
+Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1050 h20, 《JavaScript 设计模式》
 
 
 
@@ -269,17 +248,14 @@ Gui, Pandora:Add, Link,, <a href="https://gitee.com/explore">码云逛逛源码<
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly">阮一峰的周刊</a>
+Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.html">前端日报</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/GitHubDaily/GitHubDaily">GitHubDaily</a>
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/">羽雀团队知识库</a>
 Gui, Pandora:Add, Link,, <a href="https://nodelover.me/courses">NodeLove大前端</a>
 Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/05/22.html">个人开发者的前端日报</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview">以面为练</a>
-Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/manageyourkindle">我的设备</a>
-Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/Kindle免费电子书/b?node=116175071">kindle官方</a>
-Gui, Pandora:Add, Link,, <a href="https://www.amazon.cn/b/ref=sv_kinc_4?ie=UTF8&node=1337022071">Kindle Unlimited</a>
-Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
-Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/explore/headlines">语雀『发现』</a>
-
+Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
@@ -292,7 +268,6 @@ Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/ec4f5a86d6f29
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/3aa99766c2834cdcf0f9efe553f79177/dev">apizza-Live</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/526d58e01a7480bf15c97fd4e5038d9d/dev">apizza-数据中心</a>
 
-
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng熊猫图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
@@ -301,6 +276,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</a>
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/ruanyf/share/free-photos">阮一峰的资源</a>
 Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
+Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
@@ -330,6 +307,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.fontke.com/tool/convfont/">字体�
 Gui, Pandora:Add, Link,, <a href="http://www.lurena.vip/">路人A</a>
 Gui, Pandora:Add, Link,, <a href="http://strapdownjs.com/">html转化为md</a>
 Gui, Pandora:Add, Link,, <a href="https://codesandbox.io/">codesandbox</a>
+Gui, Pandora:Add, Link,, <a href="https://unbug.github.io/codelf">codeif变量神器</a>
 
 ;@1
 
