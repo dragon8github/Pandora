@@ -25,6 +25,7 @@
     Menu, CssMenu, Add, background-image: linear-gradient, CssHandler
     Menu, CssMenu, Add, ::scrollbar 滚动条样式, CssHandler
     Menu, CssMenu, Add, flex 高度占满全屏策略, CssHandler
+    Menu, CssMenu, Add, font-size: 62.5`%, CssHandler
 
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -158,6 +159,23 @@ Var =
 )
 }
 
+
+if (v == "font-size: 62.5%") {
+Var =
+(
+/*
+    浏览器的 font-size 默认值为16px，既 16px = 1rem
+    如果此时将 rem 与 px 进行换算很麻烦，比如 12px，那么对应的是 12 / 16 = 0.75rem
+    设置了 62.5`% 以后，就是 1rem=10px
+    那么12px，就是 1.2rem
+    那么14px，就是 1.4rem
+    用rem定义尺寸的另一个好处是更能适应 缩放／浏览
+*/
+html,body{
+  font-size: 62.5`%;  
+}
+)
+}
 
 if (v == "quickbi控制台入口动画") {
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/quickbi-template.zip")

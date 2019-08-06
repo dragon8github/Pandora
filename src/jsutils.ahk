@@ -236,10 +236,10 @@
     
     
     ; @my
-    Menu, EventMenu, Add, 求同存异：金强的对象特殊合并, EventHandler
-    Menu, EventMenu, Add, 判断两个数组是否互相包含, EventHandler
-    Menu, EventMenu, Add, 又是一个比较骚的工具函数: loadExec, EventHandler
-    Menu, EventMenu, Add, 轮询监听URL变化：onUrlChange, EventHandler
+    Menu, utilsmy, Add, 求同存异：金强的对象特殊合并, utilsHandler
+    Menu, utilsmy, Add, 判断两个数组是否互相包含, utilsHandler
+    Menu, utilsmy, Add, loadExec：又是一个比较骚的工具函数 , utilsHandler
+    Menu, utilsmy, Add, 轮询监听URL变化：onUrlChange, utilsHandler
     Menu, utilsmy, Add, 为函数注册全局事件: regEvent, utilsHandler
     Menu, utilsmy, Add, 前端日志上传新姿势 navigator.sendBeacon（信标）, utilsHandler
     Menu, utilsmy, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
@@ -364,6 +364,7 @@
     
     ; @A @main @fuck @util @utils
     Menu, utilsMenu , Add, 第二页, :utils2
+    Menu, utilsMenu, Add, (=・ω・=) 我的 (｀・ω・´), :utilsmy
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     Menu, utilsMenu , Add, Position 操作, :utilsPosition
@@ -397,8 +398,7 @@
     Menu, utilsjiqiao, Add, console.save 在控制台保存json变量到本地, utilsHandler
 
     
-    Menu, utilsMenu, Add, (〜￣△￣)〜认知～(￣▽￣～), :utilspractice
-    Menu, utilsMenu, Add, (=・ω・=) 我的 (｀・ω・´), :utilsmy
+    Menu, utilsMenu, Add, (〜￣△￣)〜认知～(￣▽￣～), :utilspractice    
     Menu, utilsMenu, Add, ←_←前端小技巧→_→, :utilsjiqiao
     
     Menu, utilsMenu, Add, , utilsHandler
@@ -433,6 +433,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "loadExec：又是一个比较骚的工具函数") {
+_send("loadexec", true, true)
+return
 }
 
 
@@ -6354,8 +6360,39 @@ code(Var)
 return
 
 ::loadExec::
+::loadingexec::
 Var =
 (
+/**
+ * delay工具函数
+ *
+    (async function(){
+        // 启动计时器
+        console.time('🚀')
+        // 测试专用函数
+        const test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 1000))
+        // wait
+        const result = await wait(test, 3000)
+        // success
+        console.log(result)
+        // 停止计时，输出时间
+        console.timeEnd('🚀') // => 🚀: 3002.038818359375ms
+    }())
+ */
+export const wait = async (fn, t = 0) => {
+    // 计时器（开始）
+    const startTime = +new Date
+    // 执行并等待该函数
+    const result = await fn()
+    // 计时器停止
+    const endTime = +new Date
+    // 获取请求消耗的时间
+    const intervalTime = t - (endTime - startTime)
+    // 返回
+    return new Promise((resolve, reject) => setTimeout(() => resolve(result), intervalTime))
+}
+
+
 /**
  * 又是一个比较骚的工具函数
  *
@@ -6363,19 +6400,55 @@ Var =
  * @loading {String}   loading 字段 ...
  * @success {Function} 执行成功时会触发函数 ...
  * @error   {Function} 执行失败时会触发函数 ...
+ * @time      {Number}   比如请求1秒完成，但我就是想2秒之后才回调 ...
+ * @notRepeat {String}   是否重复，传入字符串作为key标志 ...
+ * 示例1：
+   var loading = false
+   var test = () => {
+      return new Promise((resolve, reject) => {
+         setTimeout(function () {
+              resolve('success')
+         }, 1000);
+      })
+   }
+   loadingExec('loading', test, {success: result => console.log(result) }, 2000)
+
+   示例2：
+   for (var i = 0; i < 10; i++) {
+      // 只会执行最后一次。
+      loadingExec('loading', test, {success: result => console.log(result) }, 2000, 'A')
+   }  
  */
-export const loadingExec = async function (loadingName, fn, { success = () => {}, error = () => {}, complete = () => {} } = {}) {
-  try {
-    this[loadingName] = true
-    const result = await fn()
-    this[loadingName] = false
-    success(result)
-  } catch (err) {
-    this[loadingName] = false
-    error(err)
+export const loadingExec = (function(){
+  // 缓存
+  let __CACHE__ = {}
+
+  // 这才是 real 函数
+  return async function (loadingName, fn, { success = () => {}, error = () => {}, complete = () => {} } = {}, time = 0, notRepeat = '') {
+
+    // 生成一个固定id
+    const MdUuid = () => Math.random().toString(36).slice(4)
+
+    // 占位符
+    __CACHE__[notRepeat] = MdUuid
+
+    // 是否允许执行
+    const isAllow = () => notRepeat ? __CACHE__[notRepeat] === MdUuid : true
+
+    try {
+      this[loadingName] = true
+      const result = await wait(fn, time)
+      this[loadingName] = false
+      isAllow() && success(result)
+    } catch (err) {
+      this[loadingName] = false
+      isAllow() && error(err)
+    }
+
+    isAllow() && complete()
   }
-  complete()
-}
+}())
+
 )
 code(Var)
 return
