@@ -5248,8 +5248,8 @@ return
 Var = 
 (
 // 正序（从小到大）是a - b ，(倒序)从大到小 -(a-b)
-// 如果是对象的话（从小到大）：data.sort((a, b) => +a.sort - +b.sort)
-// 如果是对象的话（从大到小）：data.sort((a, b) => +b.sort - +a.sort)
+// 如果是对象的话（从小到大）：data.sort((a, b) => +a.fuck - +b.fuck)
+// 如果是对象的话（从大到小）：data.sort((a, b) => +b.fuck - +a.fuck)
 arr.sort((a, b) => { return a - b })
 )
 code(Var)

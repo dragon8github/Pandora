@@ -25,7 +25,7 @@ var_dump(expandallchild(top))
 Gui, Book:Add, Edit, ys vBookContent w790 H700 Limit199307100337
 
 ; Tab 选项卡
-Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1050 h20, 《JavaScript 设计模式》
+Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1050 h20, 《JavaScript 设计模式》|《康奈尔笔记》
 
 
 
@@ -286,6 +286,9 @@ Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/ruanyf/share/free-photos">阮一峰的资源</a>
 Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
+Gui, Pandora:Add, Link,, <a href="http://www.glxxw2018.com/study/index.html">技术资源共享社区</a>
+Gui, Pandora:Add, Link,, <a href="https://itpdf.online/?tdsourcetag=s_pctim_aiomsg">电子书列表</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 宁可错过：

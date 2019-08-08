@@ -26,6 +26,10 @@ if (currentBook == "《JavaScript 设计模式》") {
 initbook()
 }
 
+if (currentBook == "《康奈尔笔记》") {
+	cornell("焦虑专题")
+}
+
 
 ;获取节点信息
 _top := TV_GetSelection()
@@ -94,7 +98,10 @@ initbook() {
 	
 	H := TV_Add("_模板模式")
 	TV_Add("咖啡与茶", H)
+	TV_Add("通用模板 StateFactory", H)
 }
+
+
 
 
 BookTreeSelect:
@@ -113,6 +120,11 @@ if (SubStr(v, 1, 1) == "_") {
 	TV_Modify(childId, "Select")
 }	
 
+; 首字母为@，说明是康奈尔笔记。使用康奈尔专用数组中进行渲染
+if (InStr(v, "@")) {
+	; 获取康奈尔数组中的值
+	Var := cornellAry[v]
+}
 
 if (v == "") {
 Var = 
@@ -120,6 +132,36 @@ Var =
 )
 }
 
+if (v == "通用模板 StateFactory") {
+Var = 
+(
+var StateFactory = (function() {
+    var State = function() {}
+
+    State.prototype.clickHandler1 = function() {
+        throw new Error(`子类必须重写父类的${arguments.callee.name}方法`)
+    }
+
+    State.prototype.clickHandler2 = function() {
+        throw new Error(`子类必须重写父类的${arguments.callee.name}方法`)
+    }
+
+    return function(params) {
+        var F = function( /* ... */ ) {
+        	/* ... */
+        }
+
+        F.prototype = new State()
+
+        for (var i in params) {
+            F.prototype[i] = params[i]
+        }
+
+        return F
+    }
+}())
+)
+}
 
 if (v == "咖啡与茶") {
 Var = 
@@ -1288,3 +1330,70 @@ _Var := StrReplace(Var, "`t", "    ")
 
 GuiControl, Book:Text, BookContent, %_Var%
 return
+
+cornell(v) {
+Var := 
+
+if (v == "") {
+Var = 
+(
+)
+}
+
+
+if (v == "焦虑专题") {
+Var = 
+(
+@什么是焦虑？
+焦虑是对未来不确定性产生的应急反应。
+本质是一种缺乏安全感的表现。
+知识焦虑的原因在于个体掌握的知识量不够，同时缺乏存储方法，导致面对大量知识迷茫不知所措，产生焦虑。
+
+@为什么会焦虑？
+知识焦虑源于人类的规避损失心理，类似"不看就落后"、"别人都再学我也要学"、加之媒体推波助澜，社会媒体导向，人为制造的焦虑。
+
+@焦虑的来源？
+焦虑来源于不之所从，要做的事情很多，每件事看上去都很有价值，正因如此，我们变得难以抉择，从而焦虑。
+因为我们没有一个标准来判断一件事的价值。这个标准就算我们的目标、我们的愿望。
+
+@知识焦虑的解药
+知识付费其实和小时候花钱请学霸写作业的行为没什么区别。
+如何缓解知识焦虑，并不是一个难解的问题，首先你要知道：
+1. 不是所有知识都是我们需要的。
+2. 学习是一个短期内并不能快速见效的行为. 是需要我们花费精力和意志去坚持的过程。
+)
+}
+
+
+getDec(Var, v)
+}
+
+
+getDec(txt, top) {
+	
+if (InStr(txt, "@")) {
+	cornellTop := TV_Add("_" . top)
+	
+	ary := StrSplit(txt, "@")
+	; 康奈尔专用数组
+	global cornellAry := {}
+	
+	For key, value in ary
+		; 如果是第一条的话，那么直接加入全体把
+		if (key == 1) {
+			TV_Add("@All", cornellTop)
+			cornellAry["@All"] := txt
+		; 索引是从1开始的，而1是没有任何内容的
+		} else if (key > 1) {
+			; 标题
+			title := StrSplit(value, "`n")[1]
+			; 内容
+			v := SubStr(value, StrLen(title) + 1)
+			; 塞入数组
+			cornellAry["@" . title] := v
+			; 并且加入当前的树中， 但需要先找到树
+			TV_Add("@" . title, cornellTop)
+		}
+	
+}
+}
