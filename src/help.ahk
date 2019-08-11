@@ -18,8 +18,8 @@ return
 ; 通过两个热字符串的触发角，优雅自然无障碍的重置。
 ;~Enter:: ; 要养成tab的习惯，默认要关闭这个了。不过我在F11的时候会加入，没关系的。
 ~Tab::
-	; 热字串识别器也可以通过调用 Hotstring("Reset") 来重置.
-	Hotstring("Reset")
+    ; 热字串识别器也可以通过调用 Hotstring("Reset") 来重置.
+    Hotstring("Reset")
 return
 
 ::dgxy::
@@ -52,7 +52,7 @@ code(Var)
 return
 
 ::cfg::
-SendInput, configure
+Send, configure
 return
 
 
@@ -228,14 +228,14 @@ FileAppend,
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+    <title></title>
 </head>
 <body>
 
 </body>
 </html>
 `),  `%name`%
-RunBy(name)	
+RunBy(name) 
 run, `% name
 )
 code(Var)
@@ -316,7 +316,7 @@ Var =
 (
  --args --disable-web-security --user-data-dir
 )
-SendInput, % Var
+Send, % Var
 return
 
 ::macnosafe::
@@ -375,9 +375,9 @@ document.querySelectorAll('.nostyle[href]').forEach(function (e, i) {
 
 document.querySelectorAll('.opblock-summary').forEach(function (e, i) {
     e.addEventListener('click', function (event) {
-	    console.log(20180929161401, e.querySelector('.opblock-summary-path').innerText)
-	    copyToClipboard(e.querySelector('.opblock-summary-path').innerText.trim())
-	})
+        console.log(20180929161401, e.querySelector('.opblock-summary-path').innerText)
+        copyToClipboard(e.querySelector('.opblock-summary-path').innerText.trim())
+    })
 });
 )
 code(Var)
@@ -402,16 +402,16 @@ V := ""
 repeatArr := []
 Loop, parse, MyVar, `n, `r
 {
-	if (StrLen(A_LoopField) and (InStr(A_LoopField, " class") or InStr(A_LoopField, " className"))) {
+    if (StrLen(A_LoopField) and (InStr(A_LoopField, " class") or InStr(A_LoopField, " className"))) {
         
-		; 获取class值
-		RegExMatch(A_LoopField, "mi`a)[class|className]\s*=\s*['|""]{1}(.+?)['|""]{1}", OutputVar)
+        ; 获取class值
+        RegExMatch(A_LoopField, "mi`a)[class|className]\s*=\s*['|""]{1}(.+?)['|""]{1}", OutputVar)
         
-		; 获取缩进
-		RegExMatch(A_LoopField, "^(\s*)(.*)<", spaceValue)
+        ; 获取缩进
+        RegExMatch(A_LoopField, "^(\s*)(.*)<", spaceValue)
 
-		; MsgBox, %spaceValue1%
-		; MsgBox, %OutputVar1%
+        ; MsgBox, %spaceValue1%
+        ; MsgBox, %OutputVar1%
         
         ; 如果没有重复的话
         if (arrincludes(repeatArr, OutputVar1) == false) {
@@ -428,7 +428,7 @@ Loop, parse, MyVar, `n, `r
                 V .= spaceValue1 . "}" . "`r`n`r`n"
             }
         }
-	}
+    }
 }
 Clipboard := V
 tip("生成完毕", "已将生成代码加入到剪切板中")
@@ -452,40 +452,40 @@ code(Var)
 return
 
 ^!r::
-	Clipboard :=
-	Send, ^c
-	ClipWait
-	tmp := Trim(Clipboard)
-	_array := StrSplit(tmp, "`r`n")
-	myarr := []
+    Clipboard :=
+    Send, ^c
+    ClipWait
+    tmp := Trim(Clipboard)
+    _array := StrSplit(tmp, "`r`n")
+    myarr := []
     repeatarr := []
     
-	if (_array.Length() > 1) {
-		For key, value in _array {
-			if (!arrincludes(myarr, value)) {
-				myarr.push(value)
-			} else {
+    if (_array.Length() > 1) {
+        For key, value in _array {
+            if (!arrincludes(myarr, value)) {
+                myarr.push(value)
+            } else {
                 repeatarr.push(value)
             }
-		}
-	}
+        }
+    }
     
-	str := 
-	For index, value in myarr {
-		str .= value
-		if (index != myarr.Length()) {
-			str.= "`r`n"
-		}
-	}
+    str := 
+    For index, value in myarr {
+        str .= value
+        if (index != myarr.Length()) {
+            str.= "`r`n"
+        }
+    }
     code(str)
     
     repstr :=
     For index, value in repeatarr {
         repstr .= value
-		if (index != repeatarr.Length()) {
-			repstr.= "`r`n"
-		}
-	}
+        if (index != repeatarr.Length()) {
+            repstr.= "`r`n"
+        }
+    }
     Clipboard := repstr
 return
 
@@ -547,20 +547,20 @@ Var =
 (
 !n::
 
-	; try 异常处理
-	Menu, A, Add, try / except, ShellHandler
+    ; try 异常处理
+    Menu, A, Add, try / except, ShellHandler
 
-	Menu, ShellMenu, Add, 环境变量, :A
-	Menu, ShellMenu, Add, 时间, :B
-	Menu, ShellMenu, Add, find , :C
-	Menu, ShellMenu, Add, xargs, :D
-	Menu, ShellMenu, Add, tr（文本转换）, :E
-	Menu, ShellMenu, Add, grep（搜索文本）, :F
-	Menu, ShellMenu, Add, sed（替换文本）, :G
-	
-	
-	Menu, ShellMenu, Show
-	Menu, ShellMenu, DeleteAll
+    Menu, ShellMenu, Add, 环境变量, :A
+    Menu, ShellMenu, Add, 时间, :B
+    Menu, ShellMenu, Add, find , :C
+    Menu, ShellMenu, Add, xargs, :D
+    Menu, ShellMenu, Add, tr（文本转换）, :E
+    Menu, ShellMenu, Add, grep（搜索文本）, :F
+    Menu, ShellMenu, Add, sed（替换文本）, :G
+    
+    
+    Menu, ShellMenu, Show
+    Menu, ShellMenu, DeleteAll
 return
 
 ShellHandler2:
@@ -600,20 +600,20 @@ return
 
 :*:d]::  ; 此热字串通过后面的命令把 "]d" 替换成当前日期和时间.
 FormatTime, CurrentDateTime,, yyyy/MM/dd hh:mm:ss
-SendInput %CurrentDateTime%
+Send %CurrentDateTime%
 return
 
 ^1::
 !1::
-Send, {text}dgdp
+cs("dgdp")
 Sleep, 100
-Send, {text}ch#ks!690
+cs("ch#ks!690")
 return
 
 ::hosts::
 ::host::
 ::vhost::
-    SendInput, {text}C:\Windows\System32\drivers\etc
+    Send, {text}C:\Windows\System32\drivers\etc
 return
 
 
@@ -680,7 +680,7 @@ if (v == "beforeMount") {
 Var =
 (
 beforeMount () {
-	
+    
 },
 )
 }
@@ -688,7 +688,7 @@ if (v == "beforeCreate") {
 Var =
 (
 beforeCreate () {
-	
+    
 },
 )
 }
@@ -696,7 +696,7 @@ if (v == "created") {
 Var =
 (
 created () {
-	
+    
 },
 )
 }
@@ -704,7 +704,7 @@ if (v == "mounted") {
 Var =
 (
 mounted () {
-	
+    
 },
 )
 }
@@ -712,7 +712,7 @@ if (v == "destroyed") {
 Var =
 (
 destroyed () {
-	
+    
 },
 )
 }
@@ -720,7 +720,7 @@ if (v == "activated") {
 Var =
 (
 activated () {
-	
+    
 },
 )
 }
@@ -807,50 +807,50 @@ cs("npm run start")
 return
 
 !Up::
-    SendEvent, {PGUP}
-    SendEvent, {Alt up}
+    Send, {PGUP}
+    Send, {Alt Up}
 return
 
 +!Up::
-    SendEvent, +{PGUP}
-    SendEvent, {Alt up}
+    Send, +{PGUP}
+    Send, {Alt Up}
 return
 
 !Down::
-    SendEvent, {PGDN}
-    SendEvent, {Alt up}
+    Send, {PGDN}
+    Send, {Alt Up}
 return
 
 +!Down::
-    SendEvent, +{PGDN}
-    SendEvent, {Alt up}
+    Send, +{PGDN}
+    Send, {Alt Up}
 return
 
 !Right::
-    SendEvent, {end}       
-    SendEvent, {Alt up}
+    Send, {end}
+    Send, {Alt Up}
 return
 
 +!Right::
-    SendEvent, +{end} 
-    SendEvent, {Alt up}
+    Send, +{end} 
+    Send, {Alt Up}
 return
 
 !Left::
-    SendEvent, {Home}
-    SendEvent, {Alt up}
+    Send, {Home}
+    Send, {Alt Up}
 return
 
 +!Left::
-    SendEvent, +{Home}
-    SendEvent, {Alt up}
+    Send, +{Home}
+    Send, {Alt Up}
 return
 
 /*
 ^!p::
     ; FileSelectFile / FileSelectFolder
-	FileSelectFile, OutputVar,,3 
-	Clipboard := OutputVar
+    FileSelectFile, OutputVar,,3 
+    Clipboard := OutputVar
 return
 */
 
@@ -899,7 +899,7 @@ Return
     tmp := Clipboard
     Clipboard =
     ; 第二步，复制当前选中内容
-    SendInput, ^c
+    Send, ^c
     ClipWait, 2
     if (StrLen(Clipboard) >= 50) {
         MsgBox, 请不要把此功能当做翻译机
@@ -918,7 +918,7 @@ Return
     tmp := Clipboard
     Clipboard =
     ; 第二步，复制当前选中内容
-    SendInput, ^c
+    Send, ^c
     ClipWait, 2
     if (StrLen(Clipboard) >= 50) {
         MsgBox, 请不要把此功能当做翻译机
@@ -937,7 +937,7 @@ Return
     ; 必须add一下才可以使用DeletaAll
     Menu, MyMenu, add
     Menu, MyMenu, DeleteAll
-    SendInput, ^c
+    Send, ^c
     Sleep, 150 
     MyVar := clipboard
     clipboard := ""
@@ -975,19 +975,19 @@ return
 
 ; 获取当前ip，分为1234四个网卡
 ::ip1::
-    SendInput, % A_IPAddress1
+    Send, % A_IPAddress1
 return
 
 ::ip2::
-    SendInput, % A_IPAddress2
+    Send, % A_IPAddress2
 return
 
 ::ip3::
-    SendInput, % A_IPAddress3
+    Send, % A_IPAddress3
 return
 
 ::ip4::
-    SendInput, % A_IPAddress4
+    Send, % A_IPAddress4
 return
 
 AppsKey & l::
@@ -1027,13 +1027,13 @@ return
 ::git-push::
 ::gitpush::
 ::git push::
-    SendInput, git push -u origin master
+    Send, git push -u origin master
 return
 
 ::git-pull::
 ::gitpull::
 ::git pull::
-    SendInput, git pull origin master
+    Send, git pull origin master
 return
 
 :?:.git::
@@ -1063,25 +1063,25 @@ code(Var)
 return
 
 ::git::
-_sendinput("git add . && git commit -m '{+} ' --no-verify && git push -u origin master{LEFT 42}")
+_Send("git add . && git commit -m '{+} ' --no-verify && git push -u origin master{LEFT 42}")
 Return
 
 ::gitdev::
 ::gitd::
 ::git dev::
-    _sendinput("git add . && git commit -m '{+ } ' --no-verify && git push -u origin dev{LEFT 39}")
+    _Send("git add . && git commit -m '{+ } ' --no-verify && git push -u origin dev{LEFT 39}")
 return
 
 
 ::gittest::
 ::gitt::
 ::git test::
-    _sendinput("git add . && git commit -m '{+ } ' --no-verify && git push -u origin test{LEFT 40}")
+    _Send("git add . && git commit -m '{+ } ' --no-verify && git push -u origin test{LEFT 40}")
 return
 
 
 ::auth::
-    SendInput, Authorization
+    Send, Authorization
 return
 
 +a::
@@ -1118,7 +1118,7 @@ return
 ::desk::
 ::~::
 ::desktop::
-    SendInput, %A_Desktop%
+    Send, %A_Desktop%
 return
 
 ::desk/::
@@ -1176,11 +1176,13 @@ return
 
 
 !PGUP::
-    SendInput, {PGUP 100}
+    Send, {PGUP 30}
+    Send, {Alt Up}
 return
 
 !PGDN::
-    SendInput, {PGDN 100}
+    Send, {PGDN 30}
+    Send, {Alt Up}
 return
 
 
@@ -1320,7 +1322,7 @@ return
 ::``js::
 Var =
 (
-``````JavaScript
+``````javascript
 
 ``````
 )
@@ -1467,7 +1469,7 @@ return
 !]::
 tmp := Clipboard
 Clipboard :=
-SendInput, ^x
+Send, ^x
 ClipWait, 2
 a := "『" . Clipboard . "』"
 cs(a)
@@ -1684,7 +1686,9 @@ code(Var)
 return
 
 ^5::
-SendInput, iocadmin{tab}
-Sleep, 10
-SendInput, iocadmin{enter}
+cs("iocadmin")
+Send, {tab}
+Sleep, 100
+cs("iocadmin")
+Send, {enter}
 return

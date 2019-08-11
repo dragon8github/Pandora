@@ -5,14 +5,19 @@
  */
 GUI, Book:Default
 
+; 背景颜色
 Gui, Book:Color, E6FFE6
 
 ; margin 布局
 Gui, Book:Margin, 10, 10
 
+; 字体大小
+Gui, Book:Font, s12, Verdana
 
-Gui, Book:Add, TreeView, vBookTree gBookTreeSelect HScroll H700 W250
+; 树
+Gui, Book:Add, TreeView, vBookTree gBookTreeSelect HScroll H700 W350
 
+; 初始化树
 initbook()
 
 ;获取节点信息
@@ -22,10 +27,10 @@ top := TV_GetSelection()
 var_dump(expandallchild(top))
 
 ; 代码容器
-Gui, Book:Add, Edit, ys vBookContent w790 H700 Limit199307100337
+Gui, Book:Add, Edit, ys vBookContent w890 H700 Limit199307100337 ReadOnly  
 
 ; Tab 选项卡
-Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1050 h20, 《JavaScript 设计模式》|《康奈尔笔记》
+Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》
 
 
 
@@ -468,6 +473,7 @@ Gui, Pandora:Add, Link,, <a href="http://dotnet.alltosea.com:6012/portalapi/doc.
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/unifiedfabric/dgjy/portalui/tree/newdev/vue-education/src">代码地址</a>
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, visual可视化
+Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:30003/visualweb/ ">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual/issues">issue</a>
 Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0/新建仪表板.html">原型</a>

@@ -2674,13 +2674,13 @@ FileAppend,
     <!-- lodash -->
     <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
     <style>
-    html, body{ 
+    html, body{
         margin: 0;
         padding: 0;
     }
 
     #app {
-      
+
     }
     </style>
 </head>
@@ -2692,6 +2692,21 @@ FileAppend,
 $(function() {
     console.log('hello world');
 });
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: []
+    },
+    methods: {
+        handleClick: function () {
+
+        }
+    },
+    beforeMount: function () {
+
+    }
+})
 </script>
 </html>
 ),  %name%

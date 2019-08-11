@@ -9,6 +9,13 @@
     Menu, CsstransformHandler, Add, transform: translate(-50`%`, -50`%), CssHandler
     Menu, CsstransformHandler, Add, transform: translateY(-50`%), CssHandler
     Menu, CsstransformHandler, Add, transform: translateX(-50`%), CssHandler   
+    
+    
+    Menu, transitionHandler, Add, Linear：平淡无奇的人生 , CssHandler   
+    Menu, transitionHandler, Add, ease-in 表示属性值先以较慢速度变化，然后速度越来越快，就好比一个球从高处落下，一开始下降的速度很慢，然后越来越快。 , CssHandler   
+    Menu, transitionHandler, Add, ease-out，一开始速度快，然后速度越来越慢。最适合元素从屏外进入屏内进行显示的情况。, CssHandler   
+    Menu, transitionHandler, Add, ease-in-out 是上面两个的合成，一开始慢，然后变快，然后又变慢。做加载的效果时用这个时间函数效果会很不错。, CssHandler   
+    Menu, transitionHandler, Add, 啪~Duang , CssHandler   
         
     Menu, cssknow, Add, position: sticky; 随着页面的滚动，当元素距离上边缘0距离的时候，黏在了上边缘, CssHandler
     Menu, cssknow, Add, currentColor 当前字体颜色, CssHandler
@@ -31,12 +38,9 @@
     Menu, CssMenu, Add, 
     
     Menu, CssMenu, Add, (=・ω・=)css认知系列, :cssknow
-    Menu, CssMenu, Add, function.scss, CssHandler2
     Menu, CssMenu, Add, utils.scss, CssHandler2
-    Menu, CssMenu, Add, g.min.css, CssHandler2
-    Menu, CssMenu, Add, layout.css, CssHandler2
-    Menu, CssMenu, Add, transition.css, CssHandler
     Menu, CssMenu, Add, transform系列, :CsstransformHandler
+    Menu, CssMenu, Add, transition 过渡大全, :transitionHandler
     
     Menu, cssoptimization, Add, 利用 translateZ(0) 提升速度, CssHandler
     Menu, cssoptimization, Add, will-change 代替 translate3D 优化, CssHandler
@@ -72,6 +76,7 @@
     Menu, Csssolution, Add, hover Sibling fade, CssHandler
     Menu, Csssolution, Add, 原生实现switch, CssHandler
     Menu, Csssolution, Add, 不断闪闪发光的动画, CssHandler
+    Menu, Csssolution, Add, 经典一闪而过的光柱图, CssHandler
     Menu, Csssolution, Add, 俊峰UI喜欢的涟漪客服波动图, CssHandler
     
     
@@ -156,6 +161,99 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+
+if (v == "ease-in-out 是上面两个的合成，一开始慢，然后变快，然后又变慢。做加载的效果时用这个时间函数效果会很不错。") {
+Var =
+(
+ease-in-out
+)
+}
+
+if (v == "ease-out，一开始速度快，然后速度越来越慢。最适合元素从屏外进入屏内进行显示的情况。") {
+Var =
+(
+ease-out
+)
+}
+
+
+
+if (v == "ease-in 表示属性值先以较慢速度变化，然后速度越来越快，就好比一个球从高处落下，一开始下降的速度很慢，然后越来越快。") {
+Var =
+(
+ease-in
+)
+}
+
+
+if (v == "Linear：平淡无奇的人生") {
+Var =
+(
+Linear
+)
+}
+
+if (v == "啪~Duang") {
+Var =
+(
+transition: .75s all cubic-bezier(.77,-0.7,.24,1.64);
+)
+}
+
+
+if (v == "经典一闪而过的光柱图") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    button {
+      background: #e5ac8e;
+      color: #fff;
+      font-size: 14px;
+      border-radius: 0.5em;
+      padding: 0 1em;
+      position: relative;
+      overflow: hidden;
+      line-height: 32px;
+    }
+
+    button:hover::after, button:focus::after {
+      animation: sheen 100s forwards;
+    }
+
+    button::after {
+      content: '';
+      position: absolute;
+      top: -50`%;
+      right: -50`%;
+      bottom: -50`%;
+      left: -50`%;
+      background: linear-gradient(to bottom, rgba(229, 172, 142, 0), rgba(255,255,255,0.5) 50`%, rgba(229, 172, 142, 0));
+      transform: rotateZ(60deg) translate(-5em, 7.5em);
+    }
+
+    @keyframes sheen {
+      100`% {
+        transform: rotateZ(60deg) translate(1em, -9em);
+      }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button>Oooh SHINY</button>
+    </div>
+</body>
+</html>
 )
 }
 
@@ -2340,6 +2438,7 @@ return
 
 
 ::`:`:scroll::
+::scrollbar::
 ::css.scroll::
 ::css.scrollbar::
 Var =
@@ -2358,8 +2457,40 @@ Var =
     border-radius: 0px;
     background: #EDEDED;
 }
+---
+/**
+ * 滚动条样式 ...
+ * 必须配合 overflow-y: scroll; 使用
+ * @include scrollbar()
+ */
+@mixin scrollbar {
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    border: 5px solid transparent;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: 1px 1px 5px rgba(0,0,0,.2) inset;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    min-height: 20px;
+    background-clip: content-box;
+    box-shadow: 0 0 0 5px rgba(0,0,0,.2) inset;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::css.table::
