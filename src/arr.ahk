@@ -39,6 +39,8 @@
 	Menu, arrayMenu, Add, pop： 弹出并删除最后一个 , ForHandler
 	Menu, arrayMenu, Add, slice： 无损截取数组 , ForHandler
 	Menu, arrayMenu, Add, splice： 有损截取数组，可用于替换 , ForHandler
+	Menu, arrayMenu, Add, splice： 可用于插入：ary.splice(1`, 0`, 'fuckyou') , ForHandler
+	
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -63,6 +65,15 @@ Var =
 (
 )
 }
+
+
+if (v == "splice： 可用于插入：ary.splice(1, 0, 'fuckyou')") {
+Var = 
+(
+ary.splice(1, 0, 'fuckyou')
+)
+}
+
 
 if (v == "unshift： 插入到第一位") {
 Var = 
@@ -562,4 +573,13 @@ const flatten = arr => [].concat( ...arr.map(x => Array.isArray(x) ? flatten(x) 
 flatten(arr1) 
 )
 txtit(Var)
+return
+
+::arr.insert::
+::insert::
+Var =
+(
+ary.splice(1, 0, 'fuckyou')
+)
+code(Var)
 return

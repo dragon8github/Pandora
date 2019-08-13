@@ -114,9 +114,11 @@ _sendinput(v, isSendLevel = false) {
     if (isSendLevel) {
         SendLevel 1
     }
+
     if (WinExist("ahk_class SoPY_Comp")) {
         send, {Shift}
     }
+    
     SendInput, % v
 }
 

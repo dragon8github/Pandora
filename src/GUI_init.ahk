@@ -604,6 +604,7 @@ Gui, Pandora:Add, Link,, <a href="https://vuegg.now.sh/">vuegg 神器，找了�
 Gui, Pandora:Add, Link,, <a href="https://github.com/xiaokaike/vue-color">vue-color 给力颜色器</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/kirillmurashov/vue-drag-resize">vue-drag-resize</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/SortableJS/Vue.Draggable">拖拽Vue.Draggable</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/jbaysolutions/vue-grid-layout">bi拖拽神器vue-grid-layout</a>
 
 Gui, Pandora:Add, Text, W140 Section xs yp+150, vue动画钩子：
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes">vue-transition</a>

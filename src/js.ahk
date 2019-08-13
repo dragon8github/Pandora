@@ -3757,25 +3757,46 @@ return
 
 ::setattr::
 ::attr::
-    sendInput, el.setAttribute('tabindex', 3);
+Var =
+(
+el.setAttribute('tabindex', 3);
+
+)
+code(Var)
 return
 
 ::el.getattr::
 ::getattr::
-    sendInput, el.getAttribute('tabindex');
+Var =
+(
+el.getAttribute('tabindex');
+)
+code(Var)
 return
 
 ::el.setattr::
 ::setattr::
-    sendInput, el.setAttribute('tabindex', '1');
+Var =
+(
+el.setAttribute('tabindex', '1');
+)
+code(Var)
 return
 
 ::getstyle::
-    SendInput, getComputedStyle(el)[ruleName];
+Var =
+(
+getComputedStyle(el)[ruleName];
+)
+code(Var)
 return
 
 ::setstyle::
-    SendInput, el.style.borderWidth = '20px';
+Var =
+(
+el.style.borderWidth = '20px';
+)
+code(Var)
 return
 
 

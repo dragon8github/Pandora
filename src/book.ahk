@@ -38,6 +38,7 @@ if (currentBook == "《康奈尔笔记》") {
 	cornell("打破认知天花板")
 	cornell("成就感")
 	cornell("见微知著的认知能力")	
+	cornell("想少干活就要多思考")	
 }
 
 
@@ -1349,6 +1350,30 @@ Var =
 }
 
 
+if (v == "想少干活就要多思考") {
+Var = 
+(
+不要用战术上的勤奋掩盖战略上的懒惰。
+
+不做思考者，就要做执行者。
+
+看能力如何，本质就是看这个人做的事情的结果如何？
+
+一年365天，如果每天都是重复做一件事情。
+
+不去思考如何做好，过365天和过一天有什么本质区别。
+
+每天工作结束后，多问自己几个问题。
+
+今天做了些什么事，哪些事是最有价值的。
+
+有没有更好的解决方法，怎样才能做得更好。
+
+这些事情是不是真的有价值，有没有识别出哪些事情有价值，最关键的那个点找到没有，它在哪里？
+)
+}
+
+
 if (v == "见微知著的认知能力") {
 Var = 
 (
@@ -1485,28 +1510,25 @@ getDec(Var, v)
 
 
 getDec(txt, top) {
-	
-if (InStr(txt, "@")) {
-	; 插入顶级菜单
-	cornellTop := TV_Add("@" . top)
-	
-	; 分割 @ 符号
-	ary := StrSplit(txt, "@")
-	
-	For key, value in ary
-		; 如果是第一条的话，那么直接加入全体把
-		if (key == 1) {
-			cornellAry["@" . top] := txt
-		; 索引是从1开始的，而1是没有任何内容的
-		} else if (key > 1) {
-			; 标题
-			title := StrSplit(value, "`n")[1]
-			; 内容
-			v := SubStr(value, StrLen(title) + 1)
-			; 塞入数组
-			cornellAry["@" . title] := v
-			; 并且加入当前的树中， 但需要先找到树
-			TV_Add("@" . title, cornellTop)
-		}
-}
+; 插入顶级菜单
+cornellTop := TV_Add("@" . top)
+
+; 分割 @ 符号
+ary := StrSplit(txt, "@")
+
+For key, value in ary
+	; 如果是第一条的话，那么直接加入全体把
+	if (key == 1) {
+		cornellAry["@" . top] := txt
+	; 索引是从1开始的，而1是没有任何内容的
+	} else if (key > 1) {
+		; 标题
+		title := StrSplit(value, "`n")[1]
+		; 内容
+		v := SubStr(value, StrLen(title) + 1)
+		; 塞入数组
+		cornellAry["@" . title] := v
+		; 并且加入当前的树中， 但需要先找到树
+		TV_Add("@" . title, cornellTop)
+	}
 }

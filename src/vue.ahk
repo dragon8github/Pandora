@@ -43,6 +43,9 @@
   Menu, vuewatch, Add, vue.watch-$route, VueHandler
   Menu, vuewatch, Add, vue.watch-deep-$route, VueHandler
   Menu, vuewatch, Add, vue.watch.deep-$props, VueHandler
+  
+  
+  Menu, vuecognition, Add, watch props 与 data 结合来初始化, VueHandler
 
   Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, vue.config.js, VueHandler
@@ -59,6 +62,7 @@
   Menu, VueMenu, Add, vue.props, VueHandler
   Menu, VueMenu, Add, 动态组件：<component :is='xxx'></component>, VueHandler
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
+  Menu, VueMenu, Add, vue 认知, :vuecognition
   
   
   Menu, vuetranstion, Add, <transition>, VueHandler
@@ -119,6 +123,8 @@
   Menu, vuewatch, DeleteAll
   Menu, Vuerouter, DeleteAll
   Menu, vuerouterhock, DeleteAll
+  Menu, vuesolution, DeleteAll
+  Menu, vuecognition, DeleteAll
   Menu, VueMenu, DeleteAll
 return
 
@@ -131,6 +137,30 @@ Var =
 (
 )
 }
+
+
+if (v == "watch props 与 data 结合来初始化") {
+Var = 
+(
+data () {
+  return {
+      mytext: ''
+  }
+},
+props: {
+   text: {
+       type: String,
+       default: ''
+   }
+},
+watch: {
+  text (newV, oldV) {
+    this.mytext = this.text
+  }
+},
+)
+}
+
 
 if (v == "el-enum简易封装") {
 _send("el-enum", true, true)
