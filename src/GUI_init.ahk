@@ -365,6 +365,7 @@ Gui, Pandora:Add, Text, gAEhtml W180, 新建AE-bodymovin-lottie.html
 Gui, Pandora:Add, Text, gworkerhtml W180, 新建worker.js.html
 Gui, Pandora:Add, Text, glocalForagehtml W180, 新建localForage缓存示例.html
 Gui, Pandora:Add, Text, gquickbianimhtml W180, 新建quickbi的过场动画.html
+Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令.html
 
 
 Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)

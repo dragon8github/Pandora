@@ -438,6 +438,12 @@ Var =
 }
 
 
+if (v == "is-mobile") {
+_send("is-mobile", true, true)
+return
+}
+
+
 if (v == "parents") {
 _send("parents", true, true)
 }
@@ -1443,7 +1449,11 @@ return
 if (v == "判断是否为数字：!isNaN(+params.id)") {
 Var = 
 (
-!isNaN(+params.id)
+// 如果不是数字的话，那么清空
+if (!isNaN(+v) === false) {
+  e.target.value = ''
+  return
+}
 )
 }
 
@@ -4623,27 +4633,21 @@ const isArray = input => input instanceof Array || Object.prototype.toString.cal
 if (v == "isDate") {
 Var = 
 (
-export default function isDate(input) {
-    return input instanceof Date || Object.prototype.toString.call(input) === '[object Date]';
-}
+export default isDate = input => input instanceof Date || Object.prototype.toString.call(input) === '[object Date]'
 )
 }
 
 if (v == "isFunction") {
 Var = 
 (
-export default function isFunction(input) {
-    return input instanceof Function || Object.prototype.toString.call(input) === '[object Function]';
-}
+export default isFunction = input => input instanceof Function || Object.prototype.toString.call(input) === '[object Function]'
 )
 }
 
 if (v == "isNumber") {
 Var = 
 (
-export default function isNumber(input) {
-    return typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]';
-}
+export default isNumber = input => (typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]') && input === input
 )
 }
 
@@ -6649,6 +6653,8 @@ console.log(intersection(a, b))
 txtit(Var)
 return
 
+::mobile::
+::ismobile::
 ::is-mobile::
 Var =
 (

@@ -5191,8 +5191,8 @@ function shuffle(target) {
     return target
 }
 
-const arr = [0, 1, 2, 3, 4];
-arr.sort(() => Math.random() > .5);
+var a = [0, 1, 2, 3, 4, 5]
+a.sort(() => Math.random() - Math.random())
 )
 code(Var)
 return

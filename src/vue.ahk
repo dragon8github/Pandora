@@ -110,9 +110,8 @@
   Menu, vuesolution, Add, 宇宙流星雨canvas, VueHandler
   Menu, vuesolution, Add, el-menu简易封装, VueHandler  
   Menu, vuesolution, Add, el-enum简易封装, VueHandler  
+  Menu, vuesolution, Add, vuedraggable 示例demo, VueHandler  
   
-  Menu, vuesolution, Add
-  Menu, vuesolution, Add
   
   
   Menu, VueMenu, Add, Vue 解决方案和组件, :vuesolution
@@ -137,6 +136,79 @@ Var =
 (
 )
 }
+
+
+if (v == "vuedraggable 示例demo") {
+Var =
+(
+https://sortablejs.github.io/Vue.Draggable/#/two-lists
+<draggable v-bind="dragOptions" class="list-group" v-list="layout" group='people'  @change="log">
+         <div class="list-group-item" v-for="element in layout" :key="element.i">{{element.i}}</div>
+</draggable>
+
+<draggable  v-bind="dragOptions" class="list-group" v-list="layout2" group='people'  @change="log">
+         <div class="list-group-item" v-for="element in layout2" :key="element.i">{{element.i}}</div>
+</draggable>
+---
+import draggable from 'vuedraggable'
+export default {
+	computed: {
+	    dragOptions() {
+	      return {
+	        animation: 200,
+	        disabled: false,
+	        ghostClass: "ghost"
+	      };
+	    }
+	},
+	components: {
+	    draggable,
+	},
+}
+</script>
+---
+
+<style>
+.flip-list-move {
+  transition: transform 0.5s;
+}
+
+.no-move {
+  transition: transform 0s;
+}
+
+.ghost {
+  opacity: 0.5;
+  background: #c8ebfb;
+}
+
+.list-group {
+  width: 300px;
+  min-height: 300px;
+  margin-top: 50px;
+  color: #000;
+  background-color: red;
+
+}
+
+.list-group-item {
+  cursor: move;
+  height: 35px;
+  line-height: 35px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.list-group-item i {
+  cursor: pointer;
+}
+
+</style>
+)
+txtit(Var)
+return
+}
+
 
 
 if (v == "watch props 与 data 结合来初始化") {

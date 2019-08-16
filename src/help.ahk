@@ -22,6 +22,11 @@ return
     Hotstring("Reset")
 return
 
+
+::zhiling::
+cs("directive")
+return
+
 ::dgxy::
 Var =
 (
@@ -607,6 +612,7 @@ return
 !1::
 cs("dgdp")
 Sleep, 100
+Send, {tab}
 cs("ch#ks!690")
 return
 

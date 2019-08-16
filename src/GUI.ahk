@@ -7309,3 +7309,83 @@ for (let i = 0; i < 50; ++i) {
 RunBy(name)
 run, % name
 return
+
+directivehtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model='text' v-max-number=100></input>
+    </div>
+</body>
+<script>
+
+Vue.directive('max-number', {
+  bind(el, binding) {
+    // 用户传入的参数
+    const max = binding.value
+
+    // 监听Input事件
+    el.addEventListener('input', e => {
+      // 当前值
+      const v = e.target.value
+
+      // 如果不是数字的话，那么清空
+      if (!isNaN(+v) === false) {
+        e.target.value = ''
+        return
+      }
+
+      // 如果超出最大值的话，那么变成最大值
+      if (v > max) {
+        e.target.value = max
+        return
+      }
+    }, false);
+  }
+})
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        text: 0
+    },
+})
+
+/* 
+const maxNumber = {};
+maxNumber.install = (Vue, options = {}) => {
+  Vue.directive('maxNumber', {
+    bind(el, binding) { 
+       // ...
+    }
+  })
+};
+
+export default maxNumber;
+
+//////////////////////////////////////////////
+main.js 中这样注册使用
+import maxNumber from './directive/maxNumber.js'
+Vue.use(maxNumber)
+
+<input type="text" v-model='text' v-max-number=100></input>
+//////////////////////////////////////////////
+ */
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
