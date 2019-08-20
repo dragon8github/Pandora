@@ -113,6 +113,7 @@
   Menu, vuesolution, Add, el-menu简易封装, VueHandler  
   Menu, vuesolution, Add, el-enum简易封装, VueHandler  
   Menu, vuesolution, Add, vuedraggable 示例demo, VueHandler  
+  Menu, vuesolution, Add, 我的 transition-group 列表动画示例, VueHandler  
   
   
   
@@ -136,6 +137,111 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+
+if (v == "我的 transition-group 列表动画示例") {
+Var = 
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+        
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 0;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.2);
+        background: #d1d4db;
+    }
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: none;
+        border-radius: 0px;
+        background: #EDEDED;
+    }
+
+    .container {
+        overflow: scroll;
+        height: 145px;
+        width: 250px;
+    }
+
+    /* 只要数据变化，就会调用这个钩子。所以你是动画移动的 */
+    .cell-move {
+       transition: all .8s ease-out;
+    }
+
+    /* 运动过程中会执行 */
+    .cell-enter-active {
+       transition: all .8s ease-out;
+    }
+
+    /* 定义开始状态 */
+    .cell-enter {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    
+    /* 定义目标状态 */
+    .cell-enter-to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <transition-group name="cell" tag="ul" class="container">
+            <li v-for='(item, index) in items' :key='item'>{{ item }}</li>
+        </transition-group>
+        <button class="shuffle" @click="handleClick"> add </button>
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: [
+            '三亚发生3.2级地震新',
+            '刘强东章泽天同框',
+            '五部门打击校闹新',
+            '汶川泥石流',
+            '梁铉锡被禁止出国新',
+            '老挝车祸13人遇难',
+            '张予曦承认分手',
+        ],
+        text: '',
+    },
+    methods: {
+        handleClick: function () {
+            this.items.unshift(+new Date())
+        }
+    },
+    beforeMount: function () {
+
+    }
+})
+</script>
+</html>
 )
 }
 

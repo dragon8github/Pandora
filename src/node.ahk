@@ -146,6 +146,7 @@
 	
 	Menu, NodeMenu, Add, ejs, NodeHandler
 	Menu, NodeMenu, Add, mocha/chai, :A
+	Menu, NodeMenu, Add, mocha + wish 极简TDD, NodeHandler
 	Menu, NodeMenu, Add, fs 文件IO, :NodeFileHandler
 	Menu, NodeMenu, Add, nodejs实现最简单的模板引擎替换, NodeHandler
 	Menu, NodeMenu, Add, npx lite-server, NodeHandler
@@ -171,6 +172,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "mocha + wish 极简TDD") {
+_send("tdd", true, true)
+return
 }
 
 
@@ -1865,4 +1872,35 @@ test('用户名重复，报错SequelizeUniqueConstraintError', async (t, task) =
 })
 )
 code(Var)
+return
+
+::mocha::
+::tdd::
+Var =
+(
+npm install --global mocha
+
+npm install wish deep-equal
+
+mocha -w test/app.test.js
+
+---
+
+const wish = require('wish')
+
+describe('Array', function() {
+  describe('#indexOf()', function() {
+    it('should return -1 when the value is not present', function() {
+    	wish([1, 2, 3].indexOf(4) === -1)
+    })
+  })
+})
+
+---
+// 比较 『对象』 和 『数组』 可以用 deep-equal
+var deepEqual = require('deep-equal')
+
+wish(deepEqual([1,2,3], [1,2,3]))
+)
+txtit(Var)
 return

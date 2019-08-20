@@ -1,4 +1,14 @@
-﻿::cdn-ele::
+﻿::cdn-fake::
+::cdn-faker::
+Var =
+(
+<!-- faker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-ele::
 ::cdn-element::
 ::cdn-elm::
 Var =

@@ -7380,3 +7380,51 @@ Vue.use(maxNumber)
 RunBy(name)
 run, % name
 return
+
+fakerHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- faker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+    	<p>{{ randomName }}</p>
+    	<p>{{ randomEmail }}</p>
+    	<p>{{ randomCard }}</p>
+    </div>
+</body>
+<script>
+	
+// zh_CN
+faker.locale = "en"
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        randomName: '',
+        randomEmail: '',
+        randomCard: '',
+    },
+    beforeMount: function () {
+	    this.randomName = faker.name.findName();   // Caitlyn Kerluke
+	    this.randomEmail = faker.internet.email(); // Rusty@arne.info
+	    this.randomCard = faker.date.recent();     // random contact card containing many properties
+    }
+})
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
