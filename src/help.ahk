@@ -608,7 +608,6 @@ FormatTime, CurrentDateTime,, yyyy/MM/dd hh:mm:ss
 Send %CurrentDateTime%
 return
 
-^1::
 !1::
 cs("dgdp")
 Sleep, 100
@@ -1446,16 +1445,6 @@ Material Design
 code(Var)
 return
 
-^3::
-!3::
-cs("admin_hmggwh")
-return
-
-
-^4::
-!4::
-cs("dgjy123")
-return
 
 
 

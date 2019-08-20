@@ -2696,7 +2696,8 @@ $(function() {
 var vue = new Vue({
     el: '#app',
     data: {
-        items: []
+        items: [],
+        text: '',
     },
     methods: {
         handleClick: function () {
@@ -5474,10 +5475,6 @@ FileAppend,
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Vue -->
-    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
-    <!-- jquery -->
-    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <style>
     html,
     body {
@@ -5503,11 +5500,10 @@ FileAppend,
 
     .skeleton-list .skeleton-row {
         height: 1.2rem;
-        background-color: #f3f3f3;
         margin-bottom: 1.5em;
-        background: linear-gradient(90deg, #fff, #edeff1, #fff);
+        background: linear-gradient(90deg, #fff, #c6cace, #fff);
         background-size: 480px 480px;
-        animation: skeleton .6s linear infinite;
+        animation: skeleton 1.5s linear infinite;
     }
 
     @keyframes skeleton {
@@ -5528,11 +5524,6 @@ FileAppend,
         <div class="skeleton-row"></div>
     </div>
 </body>
-<script>
-$(function() {
-    console.log('hello world');
-});
-</script>
 
 </html>
 ),  %name%

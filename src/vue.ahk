@@ -60,6 +60,8 @@
   Menu, VueMenu, Add, vue.computed: get/set, VueHandler
   Menu, VueMenu, Add, $refs, VueHandler
   Menu, VueMenu, Add, vue.props, VueHandler
+  Menu, VueMenu, Add, v-slot 插槽, VueHandler
+  
   Menu, VueMenu, Add, 动态组件：<component :is='xxx'></component>, VueHandler
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
   Menu, VueMenu, Add, vue 认知, :vuecognition
@@ -135,6 +137,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "v-slot 插槽") {
+_send("v-slot", true, true)
+return
 }
 
 
@@ -3944,4 +3952,40 @@ computed: {
 },
 )
 code(Var)
+return
+
+::v-slot::
+::vue-slot::
+::vue.slot::
+Var =
+(
+<div class="container">
+  <header>
+    <slot name="header"></slot>
+  </header>
+  
+  <main>
+    <!-- Defalut -->
+    <slot></slot>
+  </main>
+  
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+</div>
+---
+<base-layout>
+  <template v-slot:header>
+    <h1>Here might be a page title</h1>
+  </template>
+
+  <p>A paragraph for the main content.</p>
+  <p>And another one.</p>
+
+  <template v-slot:footer>
+    <p>Here's some contact info</p>
+  </template>
+</base-layout>
+)
+txtit(Var)
 return
