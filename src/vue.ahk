@@ -61,7 +61,7 @@
   Menu, VueMenu, Add, $refs, VueHandler
   Menu, VueMenu, Add, vue.props, VueHandler
   Menu, VueMenu, Add, v-slot 插槽, VueHandler
-  
+  Menu, VueMenu, Add, filters 过滤器的使用, VueHandler
   Menu, VueMenu, Add, 动态组件：<component :is='xxx'></component>, VueHandler
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
   Menu, VueMenu, Add, vue 认知, :vuecognition
@@ -114,6 +114,7 @@
   Menu, vuesolution, Add, el-enum简易封装, VueHandler  
   Menu, vuesolution, Add, vuedraggable 示例demo, VueHandler  
   Menu, vuesolution, Add, 我的 transition-group 列表动画示例, VueHandler  
+  Menu, vuesolution, Add, elementUI dispatch 组件传播攻略, VueHandler  
   
   
   
@@ -141,6 +142,15 @@ Var =
 }
 
 
+if (v == "elementUI dispatch 组件传播攻略") {
+_send("dispatch", true, true)
+return
+}
+
+if (v == "filters 过滤器的使用") {
+_send("v-filter", true, true)
+return
+}
 
 if (v == "我的 transition-group 列表动画示例") {
 Var = 
@@ -2975,7 +2985,49 @@ code(Var)
 return
 
 ::dispatch:: 
-    SendInput, this.$store.dispatch('').then(_ => {{} {}}){left 2}{enter 2}{up}{tab} // ...
+Var =
+(
+/**
+ * https://github.com/ElemeFE/element/blob/dev/src/mixins/emitter.js#L12
+ * this.dispatch('ElFormItem', 'el.form.change', [val]);
+ */
+ 
+function broadcast(componentName, eventName, params) {
+  this.$children.forEach(child => {
+    var name = child.$options.componentName;
+
+    if (name === componentName) {
+      child.$emit.apply(child, [eventName].concat(params));
+    } else {
+      broadcast.apply(child, [componentName, eventName].concat([params]));
+    }
+  });
+}
+
+export default {
+  methods: {
+    dispatch(componentName, eventName, params) {
+      var parent = this.$parent || this.$root;
+      var name = parent.$options.componentName;
+
+      while (parent && (!name || name !== componentName)) {
+        parent = parent.$parent;
+
+        if (parent) {
+          name = parent.$options.componentName;
+        }
+      }
+      if (parent) {
+        parent.$emit.apply(parent, [eventName].concat(params));
+      }
+    },
+    broadcast(componentName, eventName, params) {
+      broadcast.call(this, componentName, eventName, params);
+    }
+  }
+};
+)
+code(Var)
 Return
 
 ::v-for::
@@ -4092,6 +4144,45 @@ Var =
     <p>Here's some contact info</p>
   </template>
 </base-layout>
+)
+txtit(Var)
+return
+
+::v-filter::
+::vue-filter::
+::v-filters::
+::vue-filters::
+Var =
+(
+<!-- 模板 -->
+{{ message | capitalize }}
+
+<!-- v-bind -->
+<div :text='message | capitalize'></div>
+
+<!-- 过滤器可以多个 -->
+{{ message | filterA | filterB }}
+
+<!-- 过滤器可以入参，这样的话 filterA 函数会接受三个参数 -->
+{{ message | filterA('args1', 'args2')) }}
+---
+// 局部定义
+{
+	filters: {
+		capitalize (value) {
+			if (!value) return ''
+			value = value.toString()
+			return value.charAt(0).toUpperase() + value.slice(1)
+		}
+	}
+}
+
+// 全局定义
+Vue.filter('capitalize', function (value) {
+	if (!value) return ''
+	value = value.toString()
+	return value.charAt(0).toUpperase() + value.slice(1)
+})
 )
 txtit(Var)
 return

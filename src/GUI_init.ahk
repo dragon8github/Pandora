@@ -390,10 +390,11 @@ Gui, Pandora:Add, Text, gsandianchart W180, 散点图.html
 Gui, Pandora:Add, Text, gyibiaopan W180, 仪表盘刻度.html
 Gui, Pandora:Add, Text, gdataSetBar W180, dataSet柱状图.html
 
-Gui, Pandora:Add, Text, gNewreactbabelHtml W140  ys x+30, 新建react.babel.html
+Gui, Pandora:Add, Text, gNewreactbabelHtml W150  ys x+30, 新建react.babel.html
 Gui, Pandora:Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
 Gui, Pandora:Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
+Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group列表
 Gui, Pandora:Add, Text, gfakerHtml W160,新建faker.html
 
 Gui, Pandora:Tab, 3
