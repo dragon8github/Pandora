@@ -1,5 +1,5 @@
 ﻿; 强制无条件安装键盘钩子.
-; #InstallKeybdHook 
+#InstallKeybdHook 
 
 ; 决定当脚本已经运行时是否允许它再次运行. Force: 跳过对话框并自动替换旧实例, 效果类似于 Reload 命令.
 #SingleInstance, Force

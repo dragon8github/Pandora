@@ -551,3 +551,7 @@ Me.version() # 1.0
 )
 code(Var)
 Return
+
+:*:ipp::
+_sendInput("python --pylab")
+return

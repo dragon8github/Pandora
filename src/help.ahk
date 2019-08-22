@@ -1068,20 +1068,20 @@ code(Var)
 return
 
 ::git::
-_Send("git add . && git commit -m '{+} ' --no-verify && git push -u origin master{LEFT 42}")
+_sendinput("git add . && git commit -m '{+} ' --no-verify && git push -u origin master{LEFT 42}")
 Return
 
 ::gitdev::
 ::gitd::
 ::git dev::
-    _Send("git add . && git commit -m '{+ } ' --no-verify && git push -u origin dev{LEFT 39}")
+    _sendinput("git add . && git commit -m '{+ } ' --no-verify && git push -u origin dev{LEFT 39}")
 return
 
 
 ::gittest::
 ::gitt::
 ::git test::
-    _Send("git add . && git commit -m '{+ } ' --no-verify && git push -u origin test{LEFT 40}")
+    _sendinput("git add . && git commit -m '{+ } ' --no-verify && git push -u origin test{LEFT 40}")
 return
 
 

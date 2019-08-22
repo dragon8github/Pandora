@@ -15,7 +15,8 @@
     Menu, transitionHandler, Add, ease-in 表示属性值先以较慢速度变化，然后速度越来越快，就好比一个球从高处落下，一开始下降的速度很慢，然后越来越快。 , CssHandler   
     Menu, transitionHandler, Add, ease-out，一开始速度快，然后速度越来越慢。最适合元素从屏外进入屏内进行显示的情况。, CssHandler   
     Menu, transitionHandler, Add, ease-in-out 是上面两个的合成，一开始慢，然后变快，然后又变慢。做加载的效果时用这个时间函数效果会很不错。, CssHandler   
-    Menu, transitionHandler, Add, 啪~Duang , CssHandler   
+    Menu, transitionHandler, Add, 贝塞尔曲线：啪~Duang , CssHandler   
+    Menu, transitionHandler, Add, 贝塞尔曲线：温柔的啪~Duang , CssHandler   
         
     Menu, cssknow, Add, position: sticky; 随着页面的滚动，当元素距离上边缘0距离的时候，黏在了上边缘, CssHandler
     Menu, cssknow, Add, currentColor 当前字体颜色, CssHandler
@@ -165,6 +166,13 @@ Var =
 }
 
 
+if (v == "贝塞尔曲线：温柔的啪~Duang") {
+Var =
+(
+transition: all 0.5s cubic-bezier(.48,-0.28,.41,1.4);
+)
+}
+
 if (v == "ease-in-out 是上面两个的合成，一开始慢，然后变快，然后又变慢。做加载的效果时用这个时间函数效果会很不错。") {
 Var =
 (
@@ -196,7 +204,7 @@ Linear
 )
 }
 
-if (v == "啪~Duang") {
+if (v == "贝塞尔曲线：啪~Duang") {
 Var =
 (
 transition: .75s all cubic-bezier(.77,-0.7,.24,1.64);

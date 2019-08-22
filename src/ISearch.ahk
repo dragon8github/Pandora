@@ -76,6 +76,13 @@ cmderOpen:
 	}
 return
 
+vscodeOpen:
+	data := openthepath(__AINFO__)
+	if (data) {
+		RunByVsCode(data)
+	}
+return
+
 sublimeOpen:
 	data := openthepath(__AINFO__)
 	if (data) {

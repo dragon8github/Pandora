@@ -158,7 +158,6 @@ v := A_ThisMenuItem
 SendInput, %A_ThisMenuItem%
 return
 
-^!n::
 ::rn.init::
 ::rninit::
 ::rntmp::

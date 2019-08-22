@@ -53,13 +53,16 @@ Gui, ISearch:Margin, 10, 10
 Gui, ISearch:Add, Edit, vISearchContent gISearchContent w600 Limit50 Section
 
 ; 提交按钮
-Gui, ISearch:Add, Button, w193 h30 gOpen Section xs h30 yp+30 Default, 打开
+Gui, ISearch:Add, Button, w140 h30 gOpen Section xs h30 yp+30 Default, 打开
 
-; 提交按钮
-Gui, ISearch:Add, Button, w193 h30 gsublimeOpen ys h30, sublime
+; sublime
+Gui, ISearch:Add, Button, w140 h30 gsublimeOpen ys h30, sublime
 
-; 提交按钮
-Gui, ISearch:Add, Button, w193 h30 gcmderOpen ys h30, cmder打开
+; vscode打开
+Gui, ISearch:Add, Button, w140 h30 gvscodeOpen ys h30, vscode
+
+; cmder打开
+Gui, ISearch:Add, Button, w140 h30 gcmderOpen ys h30, cmder打开
 
 ; 数据源
 __SEARCH_DATABASE__ := {}
@@ -255,7 +258,6 @@ Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.
 Gui, Pandora:Add, Link,, <a href="https://github.com/GitHubDaily/GitHubDaily">GitHubDaily</a>
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/">羽雀团队知识库</a>
 Gui, Pandora:Add, Link,, <a href="https://nodelover.me/courses">NodeLove大前端</a>
-Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/05/22.html">个人开发者的前端日报</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview">以面为练</a>
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/explore/headlines">语雀『发现』</a>
 Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>

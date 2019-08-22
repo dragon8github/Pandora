@@ -135,6 +135,11 @@ RunBy(name) {
     Run, %myIdea% %name%
 }
 
+RunByVsCode(name) {
+    myIdea := "C:\Program Files\Microsoft VS Code\Code.exe"
+    Run, %myIdea% %name%
+}
+
 
 RunWaitOne(command) {
     ; WshShell 对象: http://msdn.microsoft.com/en-us/library/aew9yb99
