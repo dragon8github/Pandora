@@ -1237,15 +1237,13 @@ Var =
 onMouseLeave = { this.MouseLeaveHandle }
 )
 }
+
 if (v == "ehcarts.click") {
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-Var = 
-(
-this.myChart.on('click', params => {
-	console.log(%t%, params)
-})
-)
+_send("eclick", true, true)
+return
 }
+
+
 if (v == "ehcarts.mouseover") {
 Var = 
 (
@@ -1703,6 +1701,26 @@ Var =
 (
 window.addEventListener('load', (event) => {
     window.alert([20190721211756, ].join('  '));
+})
+)
+code(Var)
+return
+
+
+::eclick::
+Var =
+(
+this.myChart.on('click', params => {
+    const { componentSubType, name, value } = params
+
+    if (componentSubType === 'pie') {
+        // 第二个参数，我记录了是整个数据。
+        const id = value[1].id
+        // 设置参数
+        this.$store.dispatch('MapDetails/setParam', { matterSelect: id })
+        // 跳转到详情页
+        this.$router.push({ name: 'mapDetails'})
+    }
 })
 )
 code(Var)

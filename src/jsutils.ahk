@@ -3332,7 +3332,7 @@ $('.trajectoryTable').autoScroll()
 }
 
 if (v == "window.requestAnimFrame") {
-_send(requestanimate)
+_send("requestanimate", true, true)
 return
 }
 
@@ -5378,26 +5378,10 @@ Promise.prototype.before = function (fn) {
   return this
 }
 
-
-// 字符串判断
-export const isString = (v) => Object.prototype.toString.call(v) === '[object String]'
-
-// 数组判断
-export const isArray = (input) => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
-
-// 对象判断
-export const isObject = (input) => input != null && Object.prototype.toString.call(input) === '[object Object]'
-
-// 仿 Array.prototype.map 函数。兼容数组、对象的遍历
 export const betterMap = (v, cb) => {
     let result = []
-    if (isArray(v) || isString(v)) {
-        for (var i = 0; i < v.length; i++) {
-            result.push(cb && cb(v[i], i, v, result))
-        }
-    }
-    if (isObject(v)) {
-        for (var k in v) {
+    for (var k in v) {
+        if (v.hasOwnProperty(k)) {
             result.push(cb && cb(v[k], k, v, result))
         }
     }

@@ -1,32 +1,4 @@
 ﻿!j::
-
-	Menu, A, Add, Chai.js断言库API中文文档, NodeHandler
-	Menu, A, Add, 1、expect, NodeHandler
-	Menu, A, Add, 2、.all.keys('bar'，'baz'), NodeHandler
-	Menu, A, Add, 3、.any.keys('bar'，'baz'), NodeHandler
-	Menu, A, Add, 4、.not 对之后的断言取反, NodeHandler
-	Menu, A, Add, 5、.a(String) / .an(String) 被测试的值的类型, NodeHandler
-	Menu, A, Add, 6、.include / .contains(Object | String | Number)：为判断数组、字符串是否包含某值的断言使用, NodeHandler
-	Menu, A, Add, 7、.ok / .true / .false / .null / .undefined： 断言目标为真值。, NodeHandler
-	Menu, A, Add, 8、.exist ：即非null也非undefined, NodeHandler
-	Menu, A, Add, 9、.empty： 断言目标的长度为0。对于数组和字符串，它检查length属性，对于对象，它检查可枚举属性的数量, NodeHandler
-	Menu, A, Add, 10、.equal（value）： 断言目标严格等于(===)value, NodeHandler
-	Menu, A, Add, 11、.eql(value) ： 深度等于，相当于deep.equal(value)的简写。可用于对象和数组的比较。, NodeHandler
-	Menu, A, Add, 12、.above(Number)： 大于（超过）value。可用于比较数字，也可用于判断数组和字符串的长度：, NodeHandler
-	Menu, A, Add, 13、.least(Number)：大于或等于value, NodeHandler
-	Menu, A, Add, 14、.below(Number)： 小于value, NodeHandler
-	Menu, A, Add, 15、.most(Number)：小于或等于value, NodeHandler
-	Menu, A, Add, 16、.within(start，finish)：区间, NodeHandler
-	Menu, A, Add, 17、.property(name，[value])： 是否拥有某个名为name的属性，如果填写了value则该还需要严格等于（===）value。如果Value是对象和数组还需要使用deep标记。, NodeHandler
-	Menu, A, Add, 18、.ownProperty(name)： 断言目标拥有名为name的自有属性。, NodeHandler
-	Menu, A, Add, 19、.length：设置.have.length标记作为比较length属性值的前缀, NodeHandler
-	Menu, A, Add, 20、.lengthOf(value)：断言目标的length属性为期望的值, NodeHandler
-	Menu, A, Add, 21、.match(regexp)： 匹配到一个正则表达式, NodeHandler
-	Menu, A, Add, 22、.string(string)：字符串包含另一个字符串, NodeHandler
-	Menu, A, Add, 23、.keys(key1，[key2]，[...])： 是否包含属性名，可以同any/all/container结合使用。, NodeHandler
-	Menu, A, Add, 24、.Throw(Error), NodeHandler
-	
-
 	Menu, NodeFileHandler, Add, fs.write, NodeHandler
 	Menu, NodeFileHandler, Add, fs.read, NodeHandler
 	Menu, NodeFileHandler, Add, fs.readFileSync, NodeHandler
@@ -145,8 +117,6 @@
 	Menu, NodeMenu, Add
 	
 	Menu, NodeMenu, Add, ejs, NodeHandler
-	Menu, NodeMenu, Add, mocha/chai, :A
-	Menu, NodeMenu, Add, mocha + wish 极简TDD, NodeHandler
 	Menu, NodeMenu, Add, fs 文件IO, :NodeFileHandler
 	Menu, NodeMenu, Add, nodejs实现最简单的模板引擎替换, NodeHandler
 	Menu, NodeMenu, Add, npx lite-server, NodeHandler
@@ -1828,7 +1798,10 @@ sequelize.sync()
 txtit(Var)
 return
 
-::ava::
+::av::
+::avaa::
+::ava.test::
+::ava.module::
 InputBox, OutputVar, title, enter a name?,,,,,,,,应该返回一个数组
 Var =
 (
@@ -1839,35 +1812,66 @@ test('%OutputVar%', async t => {
 code(Var)
 return
 
+::ava::
 ::ava.init::
+::avainit::
 Var =
 (
-// npm ava init
+// npm init ava
 import test from 'ava'
-import model from '../models'
-
-const mock = { name: 'test', desc: 'test', project: 1, users: 'test' }
 
 test('应该返回一个数组', async t => {
-	const users = await model.Task.findAll()
+	const users = []
 	t.truthy(users instanceof Array)
 })
 
-test.serial('删除 test 用户', async t => {
-	const result = await model.Task.destroy({ where: {name: mock.name} })
- 	t.truthy(typeof result === 'number')
+test('直接通过', t => {
+	t.pass()
 })
 
-test('添加一个任务', async (t, task) => {
-	task = await model.Task.create(mock)
-	t.is(task.dataValues.name, mock.name)
+test('async/await判断', async t => {
+	const bar = Promise.resolve('bar')
+	t.is(await bar, 'bar')
 })
 
-test('用户名重复，报错SequelizeUniqueConstraintError', async (t, task) => {
-	try {
-		task = await model.Task.create(mock)
-	} catch (err) {
-		t.is(err.name, 'SequelizeUniqueConstraintError')
+test.cb('回调专用t.end()', t => {
+	fs.readFile('package.json', t.end)
+})
+
+test('主动报错t.fail()', t => {
+	t.fail()
+})
+
+test.before(async t => {
+	await promiseFn()
+})
+
+
+test.after('cleanup', t => {
+	
+})
+
+test.beforeEach.cb(t => {
+	setTimeout(t.end)
+})
+
+test.afterEach.cb(t => {
+	setTimeout(t.end)
+})
+
+test.before(t => {
+	t.context = 'unicorn'
+})
+
+test('context is unicorn', t => {
+	t.is(t.context, 'unicorn')
+})
+
+test('plan + true', t => {
+	t.plan(2)
+
+	for (let i = 0 i < 3 i++) {
+		t.true(i < 3)
 	}
 })
 )

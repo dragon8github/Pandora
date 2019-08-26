@@ -7534,3 +7534,121 @@ var vue = new Vue({
 RunBy(name)
 run, % name
 return
+
+
+socketHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {}
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='(item, index) in items' :key='item'>{{ item }}</li>
+        </ul>
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: []
+    },
+    methods: {
+        initWebSocket() {
+            this.websock = new WebSocket("ws://api/websocket/total/")
+            this.websock.onopen = this.websocketonopen;
+            this.websock.onerror = this.websocketonerror;
+            this.websock.onmessage = this.websocketonmessage;
+            this.websock.onclose = this.websocketclose;
+        },
+        websocketonopen() {
+            console.log("WebSocket连接成功");
+        },
+        websocketonerror: function(e) {
+            console.log("WebSocket连接发生错误");
+        },
+        websocketonmessage: function(e) {
+            var da = JSON.parse(e.data);
+            console.log(da);
+            this.items.unshift(da);
+        },
+        websocketclose: function(e) {
+            console.log("connection closed (" + e.code + ")");
+        }
+    },
+    created() {
+        this.initWebSocket()
+    },
+    destroyed() {
+        this.websocketclose();
+    },
+})
+
+/* 
+如果是vue 的话，一般地址是会用 proxyTable改写的。所以是这样：
+proxyTable: {
+    '/api': {
+        // 我要请求的地址
+        target: 'http://12345v2.alltosea.com:6080/',  
+        //是否跨域 
+        changeOrigin: true, 
+        pathRewrite: {
+          '^/api': '/api'
+        }
+    }
+},
+
+methods: {
+      initWebSocket() {
+          this.websock = new WebSocket("ws://12345v2.alltosea.com:6080/api/websocket/total/")
+          this.websock.onopen = this.websocketonopen;
+          this.websock.onerror = this.websocketonerror;
+          this.websock.onmessage = this.websocketonmessage;
+          this.websock.onclose = this.websocketclose;
+      },
+      websocketonopen() {
+          console.log("WebSocket连接成功");
+      },
+      websocketonerror: function(e) {
+          console.log("WebSocket连接发生错误");
+      },
+      websocketonmessage: function(e) {
+          var da = JSON.parse(e.data);
+          console.log(da);
+          // this.items.unshift(da);
+      },
+      websocketclose: function(e) {
+          console.log("connection closed (" + e.code + ")");
+      }
+  },
+  created() {
+      this.initWebSocket()
+  },
+  destroyed() {
+      this.websocketclose();
+  },
+ */
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

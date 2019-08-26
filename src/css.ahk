@@ -30,6 +30,7 @@
     Menu, CssMenu, Add, css.placeholder, CssHandler2
     Menu, CssMenu, Add, css.animate 语法和格式, CssHandler
     Menu, CssMenu, Add, animate的钩子：webkitAnimationEnd, CssHandler
+    Menu, CssMenu, Add, transition的钩子：webkitTransitionEnd, CssHandler
     Menu, CssMenu, Add, background-image: linear-gradient, CssHandler
     Menu, CssMenu, Add, ::scrollbar 滚动条样式, CssHandler
     Menu, CssMenu, Add, flex 高度占满全屏策略, CssHandler
@@ -162,6 +163,16 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+
+if (v == "transition的钩子：webkitTransitionEnd") {
+Var =
+(
+liArr[key].addEventListener('webkitTransitionEnd', function (e) {
+    removeClass(this, 'move')
+})
 )
 }
 

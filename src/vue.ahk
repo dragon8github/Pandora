@@ -75,7 +75,7 @@
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
-  Menu, VueMenu, Add, <transition>, :vuetranstion
+  Menu, VueMenu, Add, vue 动画组件<transition>, :vuetranstion
   Menu, VueMenu, Add, <keep-alive>, VueHandler
   Menu, VueMenu, Add, render(h), VueHandler
   Menu, VueMenu, Add, render(h) jsx用法, VueHandler
@@ -2548,7 +2548,8 @@ export default {
 code(Var)
 return
 
-
+::style::
+::vuestyle::
 ::vue.style::
 ::vue.css::
 ::vue.scss::
@@ -4185,4 +4186,14 @@ Vue.filter('capitalize', function (value) {
 })
 )
 txtit(Var)
+return
+
+::modell::
+::model.class::
+::model.loading::
+Var =
+(
+:class="{ 'emptying': town.empty, 'loading': town.loading }"
+)
+code(Var)
 return

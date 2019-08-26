@@ -466,7 +466,7 @@ Var =
 (
 .map((v, index, array) => {
     return v
-});
+})
 )
 code(Var)
 return

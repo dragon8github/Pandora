@@ -1018,25 +1018,10 @@ return
 ::mymap::
 Var =
 (
-// 字符串判断
-export const isString = (v) => Object.prototype.toString.call(v) === '[object String]'
-
-// 数组判断
-export const isArray = (input) => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
-
-// 对象判断
-export const isObject = (input) => input != null && Object.prototype.toString.call(input) === '[object Object]'
-
-// 仿 Array.prototype.map 函数。兼容数组、对象的遍历
 export const betterMap = (v, cb) => {
     let result = []
-    if (isArray(v) || isString(v)) {
-        for (var i = 0; i < v.length; i++) {
-            result.push(cb && cb(v[i], i, v, result))
-        }
-    }
-    if (isObject(v)) {
-        for (var k in v) {
+    for (var k in v) {
+        if (v.hasOwnProperty(k)) {
             result.push(cb && cb(v[k], k, v, result))
         }
     }
@@ -4130,12 +4115,9 @@ return
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
-console.log(%t%, )
 debugger;
 )
 code(Var)
-SendInput, {up}{end}
-SendInput, {left 1}
 return
 
 >!c::
@@ -4768,13 +4750,13 @@ return
 ::switch::
 Var =
 (
-switch (data) {
-	case 0:
-	  	break;
-  	case 1:
-    	break;
-    default:
-    	return 0
+switch(arguments.length) {
+    case 0: return 0;
+    case 1: return arguments[0];
+    case 2: return arguments[0] + arguments[1];
+    default: 
+        let [first, ...rest] = arguments;
+        return first + add.apply(null, rest);
 }
 )
 code(Var)
@@ -6349,33 +6331,82 @@ code(Var)
 return
 
 ::hanzi::
+::maybe.js::
+::maybee::
 Var =
 (
-var MayBe = function (val) {
-	this.value = val;
+/**
+ * MayBe 函子 ...
+ *
+ */
+export const MayBe = function (value) {
+    this.value = value
 }
 
-MayBe.of = function (val) {
-	return new MayBe(val);
+// 实例工厂
+MayBe.of = function (value) {
+    return new MayBe(value)
 }
 
+// 检查 value 是否为 null 或 undefined
 MayBe.prototype.isNothing = function () {
-	return (this.value === null || this.value === undefined);
+    return this.value == null
 }
 
 MayBe.prototype.map = function (fn) {
-	return this.isNothing() ? MayBe.of(null) : MayBe.of(fn(this.value));
+    // 这样验证的好处是，不会因为上游的 value 为 null而报错中断。
+    return this.isNothing() ? MayBe.of(null) : MayBe.of(fn(this.value))
 }
 
-// demo1： MayBe?{value: "Mr. GOOGLE"}
-MayBe.of('Google')
-     .map(_ => _.toUpperCase())
-     .map(_ => "Mr. " + _)
+// 返回 value 
+MayBe.prototype.join = function () {
+    return this.isNothing() ? Maybe.of(null) : this.value
+}
 
-// demo2： MayBe?{value: null}
-MayBe.of('Google')
-     .map(_ => undefined)
-     .map(_ => "Mr. " + _)
+// 执行 map 并且返回 value
+Maybe.prototype.chain = function (f) {
+    return this.map(f).join()
+}
+
+/**
+ * Either 函子  = 『纯函子 Some』 + 『无 map 函子 Nothing』
+ *
+ */
+export const Either = {
+    Some: Some,
+    Nothing: Nothing
+}
+
+/**
+ * Nothing 函子的实现
+ */
+const Nothing = function (value) {
+    this.value = value
+}
+
+Nothing.of = function (value) {
+    return new Nothing(value)
+}
+
+// ⚠️ 核心：不执行任何操作，只是返回函子本身
+Nothing.prototype.map = function (f) {
+    return this
+}
+
+/**
+ * Some 纯函子的实现
+ */
+const Some = function (value) {
+    this.value = value
+}
+
+Some.of = function (value) {
+    return new Some(value)
+}
+
+Some.prototype.map = function (fn) {
+    return Some.of(fn(this.value))
+}
 )
 code(Var)
 return

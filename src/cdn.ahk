@@ -1,4 +1,13 @@
-﻿::cdn-fake::
+﻿::cdn-image::
+Var =
+(
+<!-- https://github.com/tsayen/dom-to-image -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-fake::
 ::cdn-faker::
 Var =
 (

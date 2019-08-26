@@ -331,7 +331,7 @@ Gui, Pandora:Add, Text, gwebidehtml W160,新建在线编辑器webide
 Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
 Gui, Pandora:Add, Text, gprismhtml W160,prism代码高亮.html
 Gui, Pandora:Add, Text, gdeepmergehtml W160,deepmerge.html
-Gui, Pandora:Add, Text, gdom2imghtml W160,dom-to-image.html
+Gui, Pandora:Add, Text, gdom2imghtml W160,网页截图dom-to-image.html
 Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog
 Gui, Pandora:Add, Text, ghackdiguo W140,黑客帝国
@@ -398,6 +398,7 @@ Gui, Pandora:Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
 Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group列表
 Gui, Pandora:Add, Text, gfakerHtml W160,新建faker.html
+Gui, Pandora:Add, Text, gsocketHtml W160,新建socket.html
 
 Gui, Pandora:Tab, 3
 Gui, Pandora:Add, Text,  W130 Section, 油气管道（react）:
