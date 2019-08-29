@@ -2656,6 +2656,22 @@ Vue.mixin({
      ]),
   },
 })
+
+// 导出局部
+// mixins: [appMixin],
+export default {
+  beforeRouteLeave(to, from, next) {
+    // 获取页面中所有echarts的示例宿主
+    const _echarts_instance_ = document.querySelectorAll("[_echarts_instance_]")
+    // 遍历所有的宿主元素
+    _echarts_instance_.forEach(function(e, i) {
+      // 通过宿主进而获取对应的echarts，并且重置大小
+      echarts.getInstanceByDom(e).clear()
+    })
+    // 放行
+    next()
+  }
+}
 )
 code(Var)
 return
