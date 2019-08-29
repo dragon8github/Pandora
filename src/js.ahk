@@ -4110,7 +4110,6 @@ code(Var)
 SendInput, {left 3}
 return
 
-
 >^d::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
@@ -4125,6 +4124,7 @@ WinGetTitle, title, A
 code(title)
 return
 
+AppsKey & c::
 >^c:: 
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =

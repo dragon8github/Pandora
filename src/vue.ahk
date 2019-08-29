@@ -114,7 +114,8 @@
   Menu, vuesolution, Add, el-enum简易封装, VueHandler  
   Menu, vuesolution, Add, vuedraggable 示例demo, VueHandler  
   Menu, vuesolution, Add, 我的 transition-group 列表动画示例, VueHandler  
-  Menu, vuesolution, Add, elementUI dispatch 组件传播攻略, VueHandler  
+  Menu, vuesolution, Add, elementUI dispatch 组件传播攻略, VueHandler
+Menu, vuesolution, Add, 我的 CardNumber 数字翻滚器, VueHandler  
   
   
   
@@ -141,6 +142,11 @@ Var =
 )
 }
 
+
+if (v == "我的 CardNumber 数字翻滚器") {
+_send("cardnum", true, true)
+return
+}
 
 if (v == "elementUI dispatch 组件传播攻略") {
 _send("dispatch", true, true)
@@ -4194,6 +4200,91 @@ return
 Var =
 (
 :class="{ 'emptying': town.empty, 'loading': town.loading }"
+)
+code(Var)
+return
+
+::cardnum::
+::cardnumber::
+Var =
+(
+<template>
+    <div class='roll-warp'>
+        <DigitRoll :rollDigits="beautifyNum" :dur='dur' ref='digitroll' :flipStra="flipStra" />
+    </div>
+</template>
+<script>
+import DigitRoll from '@huoyu/vue-digitroll'
+import { PrefixInteger } from '@/utils/utils'
+
+export default {
+    data () {
+        return {
+            beautifyNum: '00000',
+        }
+    },
+    components: { DigitRoll },
+    props: {
+        num: {
+            default: '00000'
+        },
+        dur: {
+            default: 1500
+        }
+    },
+    watch: {
+      num (newV, oldV) {
+        this.changeDigit(PrefixInteger(newV, 5))
+      }
+    },
+    methods: {
+        changeDigit(v) {
+            // 刷新
+            this.$refs.digitroll.setDigit(v);
+        },
+        // 没有变化也要动画
+        flipStra(before, next) {
+            if (next <= before && (before != 0 && next != 0)) {
+                return true;
+            }
+            return false;
+        },
+    }
+}
+</script>
+<style lang="scss">
+@import "~@/scss/functions.scss";
+
+.roll-warp {
+    width: rem(320);
+}
+
+.d-roll-bar {
+    div {
+        font-family: 'LESLIE-Regular';
+        font-size: rem(67);
+        color: #37e5fc;
+        width: rem(50);
+        height: rem(70);
+        line-height: rem(70) !important;
+        background-color: #00263c;
+    }
+}
+</style>
+<docs>
+# Usage
+
+https://github.com/gitWhatever/vue-digitroll
+
+```html
+<CardNumber :rollDigits="123456" :dur='1500'></CardNumber>
+```
+
+### 立即刷新
+```JavaScript
+this.$refs.CardNumber.changeDigit()
+```
+</docs>
 )
 code(Var)
 return

@@ -6679,3 +6679,56 @@ export const parents = (el = {}, exp = () => false, maxDeep = 100) => {
 )
 code(Var)
 return
+
+::socket.js::
+Var =
+(
+import store from "@/store";
+
+export default class AppSocket {
+  constructor(url, { onopen, onerror, onmessage, onclose } = {}) {
+    this.websock = new WebSocket(url);
+    this.websock.onopen = onopen || this.onopen;
+    this.websock.onerror = onerror || this.onerror;
+    this.websock.onmessage = onmessage || this.onmessage;
+    this.websock.onclose = onclose || this.onclose;
+  }
+
+  onopen() {
+    console.log("WebSocket连接成功");
+  }
+
+  onerror() {
+    console.log("WebSocket连接发生错误");
+  }
+
+  onclose() {
+    console.log("WebSocket已断开");
+  }
+
+  onmessage(message) {
+    // 对象遍历
+    for (let [key, val] of Object.entries(message)) {
+      // 拆解 key = module/state
+      const [module, state] = key.split("/");
+      // 为模块中的 state 赋值
+      store.state[module][state] = val;
+    }
+  }
+
+  send(message) {
+    this.websock.send(message);
+  }
+
+  close() {
+    this.websock.close();
+  }
+
+  getSocket() {
+    return this.websock;
+  }
+}
+
+)
+code(Var)
+return
