@@ -300,7 +300,7 @@ return
          code(value)
      }
      catch e {
-        MsgBox, 你的电脑没有安装nodepad2，请先安装再执行。
+        MsgBox, 你的电脑没有安装nodepad2，请先下载安装并且加入到Path，然后重启电脑重试。
         run, http://www.flos-freeware.ch/zip/Notepad2_4.2.25_x64.exe
         Exit
      }

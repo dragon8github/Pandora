@@ -361,6 +361,9 @@
     Menu, utils2, Add, 获取一个颜色的反色：#000 = #fff, utilsHandler
     Menu, utils2, Add, 路径获取文件名和后缀, utilsHandler
     Menu, utils2, Add, 前端加解密：btoa 和 atob, utilsHandler
+    Menu, utils2, Add, 求两个时间之间的有效日期, utilsHandler
+    Menu, utils2, Add, 用 settimeout 模拟 setInterval, utilsHandler
+    Menu, utils2, Add, dialog 对话框类，支持拖拽, utilsHandler
 
 
     
@@ -432,6 +435,38 @@ Var =
 (
 )
 }
+
+
+if (v == "dialog 对话框类，支持拖拽") {
+_send("dialog", true, true)
+return
+}
+
+if (v == "用 settimeout 模拟 setInterval") {
+Var = 
+(
+const _setInterval = (fn, interval) => {
+	_setInterval.timer = setTimeout(() => {
+		fn()
+		_setInterval(fn, interval)
+	}, interval)
+}
+
+_setInterval.clear = () => clearTimeout(_setInterval.timer)
+
+// demo 
+_setInterval(() => console.log(1), 1000)
+
+// 5秒后清除
+setTimeout(() => _setInterval.clear(), 5000);
+)
+}
+
+if (v == "求两个时间之间的有效日期") {
+_send("rangeDate", true, true)
+return
+}
+
 
 
 if (v == "is-mobile") {
@@ -4898,6 +4933,16 @@ Var =
 (
 import { Message } from 'element-ui'
 
+// 数值补全0
+// 迭代：如果实际长度超出length，那么使用实际长度，否则使用lenght
+// 比如： PrefixInteger(123456, 5); 实际长度是6，那么还是会返回123456.
+export const PrefixInteger = (num, length) => {
+    const n = (Array(length).join('0') + num)
+    const len = num.toString().length
+    const l = len > length ? len : length
+    return n.slice(-l)
+}
+
 /**
  * 最简单且最安全的方法显示任意值，举个例子: 
  * var obj = {a: 123 }
@@ -6677,10 +6722,138 @@ export const parents = (el = {}, exp = () => false, maxDeep = 100) => {
 code(Var)
 return
 
+
+::dialog::
+::dialog.class::
+Var =
+(
+class Dialog {
+    constructor(text) {
+        this.lastX = 0
+        this.lastY = 0
+        this.x
+        this.y
+        this.text = text || ''
+        this.isMoving = false
+        this.dialog
+    }
+    open() {
+        const modal = document.createElement('div')
+        modal.id = 'modal'
+        modal.style = `
+            position:absolute; top:0; left:0; bottom:0; right:0;
+            background-color:rgba(0,0,0,.3);
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        `
+        modal.addEventListener('click', this.close.bind(this))
+        document.body.appendChild(modal)
+
+        this.dialog = document.createElement('div')
+        this.dialog.style = ` padding:20px; background-color:white`
+        this.dialog.innerText = this.text
+        this.dialog.addEventListener('click', e => { e.stopPropagation() })
+        this.dialog.addEventListener('mousedown', this.handleMousedown.bind(this))
+        document.addEventListener('mousemove', this.handleMousemove.bind(this))
+        document.addEventListener('mouseup', this.handleMouseup.bind(this))
+        modal.appendChild(this.dialog)
+    }
+    close() {
+        this.dialog.removeEventListener('mousedown', this.handleMousedown)
+        document.removeEventListener('mousemove', this.handleMousemove)
+        document.removeEventListener('mouseup', this.handleMouseup)
+        document.body.removeChild(document.querySelector('#modal'))
+    }
+    handleMousedown(e) {
+        this.isMoving = true
+        this.x = e.clientX
+        this.y = e.clientY
+    }
+    handleMousemove(e) {
+        if (this.isMoving) {
+            // 拖动的距离 = 鼠标拖动位置 - 鼠标点击位置
+            const distanceX = e.clientX - this.x
+            const distanceY = e.clientY - this.y
+            
+            // 最终位置 = 拖动距离 + 相对位置
+            const posX = distanceX + this.lastX
+            const posY = distanceY + this.lastY
+
+            this.dialog.style.transform = `translate(${posX}px, ${posY}px)`
+        }
+    }
+    handleMouseup(e) {
+        // 拖动结束，重新标记相对位置
+        this.lastX = e.clientX - this.x + this.lastX
+        this.lastY = e.clientY - this.y + this.lastY
+        this.isMoving = false
+    }
+}
+let dialog = new Dialog('Hello')
+dialog.open()
+)
+code(Var)
+return
+
+::socket.js::
+::socket.class::
+Var =
+(
+import store from "@/store";
+
+export default class AppSocket {
+  constructor(url, { onopen, onerror, onmessage, onclose } = {}) {
+    this.websock = new WebSocket(url);
+    this.websock.onopen = onopen || this.onopen;
+    this.websock.onerror = onerror || this.onerror;
+    this.websock.onmessage = onmessage || this.onmessage;
+    this.websock.onclose = onclose || this.onclose;
+  }
+
+  onopen() {
+    console.log("WebSocket连接成功");
+  }
+
+  onerror() {
+    console.log("WebSocket连接发生错误");
+  }
+
+  onclose() {
+    console.log("WebSocket已断开");
+  }
+
+  onmessage(message) {
+    // 对象遍历
+    for (let [key, val] of Object.entries(message)) {
+      // 拆解 key = module/state
+      const [module, state] = key.split("/");
+      // 为模块中的 state 赋值
+      store.state[module][state] = val;
+    }
+  }
+
+  send(message) {
+    this.websock.send(message);
+  }
+
+  close() {
+    this.websock.close();
+  }
+
+  getSocket() {
+    return this.websock;
+  }
+}
+
+)
+code(Var)
+return
+
 ::proxy::
 ::es.proxy::
 ::es6.proxy::
-Var =
+Var = 
 (
 /**
  * say something ...
@@ -6743,4 +6916,27 @@ fproxy.prototype === Object.prototype // true
 fproxy.foo // => "hello, foo"
 )
 txtit(Var)
+return
+
+::rangeDate::
+::randdate::
+Var =
+(
+ */
+const rangeDate = (start, end) => {
+    let days = []
+    const startTime = new Date(start)
+    const endTime = new Date(end)
+
+    while(startTime <= endTime) {
+        days.push(startTime.getFullYear() + '/' + startTime.getMonth() + 1 + '/' + startTime.getDate())
+        startTime.setDate(startTime.getDate() + 1)
+    }   
+
+    return days
+}
+
+rangeDate('2015/2/8', '2015/3/3')
+)
+code(Var)
 return

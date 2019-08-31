@@ -58,7 +58,8 @@
 	Menu, JavaScriptEventMenu, Add, ondrop - 在一个拖动过程中，释放鼠标键时触发此事件, EventHandler
 
 	Menu, echartsEventMenu, Add, echarts.init, EventHandler
-	Menu, echartsEventMenu, Add, echarts 通过dom获取echarts实例，批量监听reset, EventHandler
+	Menu, echartsEventMenu, Add, echarts 通过dom获取echarts实例，批量监听resize, EventHandler
+	Menu, echartsEventMenu, Add, echarts 通过dom获取echarts实例，批量监听clear, EventHandler
 	Menu, echartsEventMenu, Add, echarts.options, EventHandler
 	Menu, echartsEventMenu, Add, echarts.loading, EventHandler
 
@@ -551,7 +552,29 @@ document.getElementById('app').addEventListener('mouseout', () => {
 )
 }
 
-if (v == "echarts 通过dom获取echarts实例，批量监听reset") {
+
+
+if (v == "echarts 通过dom获取echarts实例，批量监听clear") {
+Var = 
+(
+export default {
+  beforeRouteLeave(to, from, next) {
+    // 获取页面中所有echarts的示例宿主
+    const _echarts_instance_ = document.querySelectorAll("[_echarts_instance_]")
+    // 遍历所有的宿主元素
+    _echarts_instance_.forEach(function(e, i) {
+      // 通过宿主进而获取对应的echarts，并且重置大小
+      echarts.getInstanceByDom(e).clear()
+    })
+    // 放行
+    next()
+  }
+}
+)
+}
+
+
+if (v == "echarts 通过dom获取echarts实例，批量监听resize") {
 Var = 
 (
 // 懒加载优化：滚动节流策略

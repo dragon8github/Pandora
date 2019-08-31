@@ -1467,7 +1467,7 @@ Clipboard :=
 Send, ^x
 ClipWait, 2
 a := "『" . Clipboard . "』"
-cs(a)
+code(a)
 Clipboard := tmp
 return
 

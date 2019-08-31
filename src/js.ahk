@@ -1515,154 +1515,229 @@ return
 ::model::
 Var =
 (
-// import { getUUID, isEmptyObject } from '@/utils/utils.js'
-
-function isEmptyObject(obj) {
-     if (Object.getOwnPropertyNames) {
-         return (Object.getOwnPropertyNames(obj).length === 0);
-     } else {
-         var k;
-         for (k in obj) {
-             if (obj.hasOwnProperty(k)) {
-                 return false;
-             }
-         }
-         return true;
-     }
- }
-
- // 9位 简易版
- const getUUID = () => Math.random().toString(36).slice(4)
-
- class Model {
-	constructor ({ size = 20 } = {}) {
-		// 核心数据
-		this.data = null
-		// token
-		this.token = ''
-		// 是否加载中
-		this.loading = false
-		// 是否数据为空
-		this.empty = false
-		// 是否正在加载更多
-		this.loadingmore = false
-		// 是否没有更多了
-		this.nomore = false
-		// 总数
-		this.total = 0
-		// 页码
-		this.page = 0
-		// 数量
-		this.size = this._size = size
-		// 是否报错了
-		this.error = ''
-	}
-
-	// 重置
-  resetWhere () {
-	  this.token = ''
-	  this.loading = false
-	  this.empty = false
-	  this.loadingmore = false
-	  this.nomore = false
-	  this.total = 0
-	  this.page = 0
-	  this.size = this._size 
-	  this.error = ''
-  }
-
-  // 显示loading并且返回token
-  showLoading () {
-    this.loading = true
-  }
-
-  // 显示loadingmore并且返回token
-  showLoadingmore () {
-    this.loadingmore = true
-  }
-
-  // 隐藏loading
-  hideLoading () {
-    this.loading = false
-  }
-
-  // 隐藏Loadingmore
-  hideLoadingmore () {
-    this.loadingmore = false
-  }
-
-  // 页码++
-  pagePlus () {
-	  this.page++
-  }
-
-  // 是否是第一次加载
-  isFirstPage () {
-    return this.page === 0
-  }
-
-  // 刷新token并且返回token
-  refreshToken () {
-    return this.token = getUUID()
-  }
-
-  // 设置data以及一系列逻辑
-  setData ({ data = [], total = 0, token = ''} = {}, cb = null) {
-    // 如果token不一致，说明请求被覆盖了。应该中止逻辑演变
-    if (token && this.token != token) return
-
-    console.log(+new Date())
-
-    this.total = total
-    this.loading = false
-    this.loadingmore = false
-    
-    const isEmptyData = data.length === 0 || isEmptyObject(data)
-
-    // empty 表示没有数据
-    if (this.isFirstPage() && isEmptyData) 
-      this.empty = true
-    
-    // nomore 表示没有更多数据
-    if (data.length < this.size || (!this.isFirstPage() && isEmptyData)) 
-      this.nomore = true
-    
-    // 如果有数据，应该重置标识
-    if (!isEmptyData) {
-      this.empty = false
-      // 就算有数据，如果不够长度，也是数据nomore
-      if (data.length === this.size)
+class Model {
+    constructor({ size = 20 } = {}) {
+        // 核心数据
+        this.data = []
+        // 总数
+        this.total = 0
+        // 页码
+        this.page = 0
+        // 数量
+        this.size = this._size = size
+        // 是否加载中
+        this.loading = false
+        // 是否正在加载更多
+        this.loadingmore = false
+        // 是否数据为空
+        this.empty = false
+        // 是否没有更多了
         this.nomore = false
     }
 
-    if (this.isFirstPage())
-      this.data = data
-    else
-      this.data = Array.prototype.concat.call(this.data || [], data)
+    // 重置
+    resetWhere() {
+        this.loading = false
+        this.empty = false
+        this.loadingmore = false
+        this.nomore = false
+        this.total = 0
+        this.page = 0
+        this.size = this._size
+    }
 
-    // 执行回调
-    cb && cb(this)
+    // 显示loading
+    showLoading() {
+        this.loading = true
+    }
+
+    // 显示loadingmore
+    showLoadingmore() {
+        this.loadingmore = true
+    }
+
+    // 隐藏loading
+    hideLoading() {
+        this.loading = false
+    }
+
+    // 隐藏Loadingmore
+    hideLoadingmore() {
+        this.loadingmore = false
+    }
+
+    // 条数
+    size(size) {
+    	this.size = this._size = size
+    }
+
+    // 设置当前页码
+    page(page) {
+        this.page = page
+    }
+
+    // 页码++
+    pageAdd() {
+        this.page++
+    }
+
+    // 頁碼--
+    pageSub() {
+        this.page--
+    }
+
+    // 是否是第一次加载
+    isFirstPage() {
+        return this.page === 0
+    }
+
+    // 设置data以及一系列逻辑
+    setData({ data = [], total = 0 } = {}, cb = null) {
+        this.total = total
+        this.loading = false
+        this.loadingmore = false
+
+        const isEmptyData = data.length === 0
+
+        // empty 表示没有数据
+        if (this.isFirstPage() && isEmptyData)
+            this.empty = true
+
+        // nomore 表示没有更多数据
+        if (data.length < this.size || (!this.isFirstPage() && isEmptyData))
+            this.nomore = true
+
+        // 如果有数据，应该重置标识
+        if (!isEmptyData) {
+            this.empty = false
+            // 就算有数据，如果不够长度，也是数据nomore
+            if (data.length === this.size)
+                this.nomore = false
+        }
+
+        if (this.isFirstPage())
+            this.data = data
+        else
+            this.data = Array.prototype.concat.call(this.data || [], data)
+
+        // 执行回调
+        cb && cb(this)
+    }
+}
+---
+import { obj2formdatastr } from '@/utils/utils'
+import { request } from '@/utils/request.js'
+import Model from '@/utils/Model'
+
+let state = {
+    tableData: new Model(),
+}
+
+const actions = {
+    getTableData({ commit, state, dispatch, rootState, getters, rootGetters }, test) {
+        // loading
+        tableData.showLoading()
+
+        // 整理参数
+        const params = obj2formdatastr({
+          // 当前页码
+          page: state.tableData.page,
+          // 每页数量
+          size: state.tableData.size,
+          // ... other params
+        })
+
+        // 请求数据
+        return request('/dc/record/dcTableRule/queryTableWithColumn' + params).then(result => {
+            // setData 会自动关闭 loading
+            tableData.setData({
+              // 数据集（核心）
+              data: result.rows,
+              // 后端返回的总条数
+              total: result.total
+            })
+        })
+    },
+}
+
+const mutations = {
+
+}
+
+const getters = {
+  
+}
+
+export default {
+    namespaced: true,
+    state,
+    mutations,
+    actions,
+    getters,
+}
+---
+<template>
+    <div class="test">
+       <el-table :data="tableData" v-loading='tableData.loading' style="width: 100`%">
+           <el-table-column prop="date"label="日期" width="180"></el-table-column>
+           <el-table-column prop="name" label="姓名" width="180"></el-table-column>
+           <el-table-column prop="address"label="地址"></el-table-column>
+       </el-table>
+
+       <el-pagination
+         @size-change="handleSizeChange"
+         @current-change="handleCurrentChange"
+         :current-page="tableData.page"
+         :total="tableData.total"
+         :page-size="tableData.size"
+         :page-sizes="[10, 20, 30, 40]"
+         layout="total, sizes, prev, pager, next, jumper">
+       </el-pagination>
+    </div>
+</template>
+
+<script>
+import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
+export default {
+  name: 'test',
+  data () {
+    return {
+        
+    }
+  },
+  methods: {
+    ...mapActions('app', [
+        'getTableData',
+    ]),
+    handleSizeChange(v) {
+      this.tableData.size(v)
+      this.getTableData()
+    },
+    handleCurrentChange(v) {
+      this.tableData.page(v)
+      this.getTableData()
+    }
+  },
+  computed: {
+    ...mapGetters('app', [
+        'tableData',
+    ]),
+  },
+  beforeMount () {
+      // 请求接口 - 初始化数据
+      this.getTableData()
   }
 }
+</script>
 
-//////////////////////////////////////////////
-// 使用示例：演示refreshToken阻止重复的使用。
-//////////////////////////////////////////////
-var m = new Model()
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.test {
 
-var f = (i) => {
-	const token = m.refreshToken()
-	setTimeout(() => {
-		m.setData({ data: [i], token: token })
-		console.log(i)
-	}, 3500);
 }
-
-for (var i = 0; i < 10; i++) {
-	f(i)
-}
+</style>
 )
-code(Var)
+txtit(Var)
 return
 
 ::link::
@@ -4110,7 +4185,6 @@ code(Var)
 SendInput, {left 3}
 return
 
-
 >^d::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
@@ -4125,6 +4199,7 @@ WinGetTitle, title, A
 code(title)
 return
 
+AppsKey & c::
 >^c:: 
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
