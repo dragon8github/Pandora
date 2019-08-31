@@ -1908,3 +1908,7 @@ wish(deepEqual([1,2,3], [1,2,3]))
 )
 txtit(Var)
 return
+
+::cnpm::
+_sendInput("npm install cnpm -g --registry=https://registry.npm.taobao.org")
+return
