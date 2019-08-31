@@ -10,7 +10,7 @@
 	Menu, arrayMenu, Add, 二维数组转一维数组：Array.prototype.flat(), ForHandler
 	Menu, arrayMenu, Add, 删除数组成员, ForHandler
 	Menu, arrayMenu, Add, 随机从数组中取N个数据, ForHandler
-	Menu, arrayMenu, Add, 判断两个数组是否互相包含, EventHandler
+	Menu, arrayMenu, Add, 判断两个数组是否互相包含, utilsHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler

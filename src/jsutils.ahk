@@ -541,7 +541,8 @@ f(a, b) // => {a: 4, b: 2, c: 5}
 }
 
 if (v == "判断两个数组是否互相包含") {
-_send("arrbaohan")
+_send("arrbaohan", true, true)
+return
 }
 
 if (v == "为函数注册全局事件: regEvent") {
