@@ -366,12 +366,13 @@
     
     ; @A @main @fuck @util @utils
     Menu, utilsMenu , Add, 第二页, :utils2
+    Menu, utilsMenu, Add, (〜￣△￣)〜认知～(￣▽￣～), :utilspractice    
     Menu, utilsMenu, Add, (=・ω・=) 我的 (｀・ω・´), :utilsmy
+    Menu, utilsMenu , Add, es5时代的技巧, :utilses5
     Menu, utilsMenu , Add, is 判断, :utilsIs
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     Menu, utilsMenu , Add, Position 操作, :utilsPosition
     Menu, utilsMenu , Add, Object 操作, :utilsObject
-    Menu, utilsMenu , Add, 原始之初ECMA5伏魔录, :utilses5
     Menu, utilsMenu , Add, 正则表达式, :utilsJstest
     Menu, utilsMenu , Add, webpack与动态引入, :utilswebpack
     
@@ -391,24 +392,19 @@
     Menu, utilsMenu , Add, (#-_-)┯━┯  解决方案, :utilsSolution
     Menu, utilsMenu , Add, (╯°口°)╯(┴—┴  设计模式与原型面向对象, :utilsDesignPattern
     Menu, utilsMenu , Add, _(:3」∠)_算法与数据结构, :utilssf
-    Menu, utilsMenu, Add, , utilsHandler
-    Menu, utilsMenu, Add, , utilsHandler
-
 
     ; @jiqiao
     Menu, utilsjiqiao, Add, JOJO - 砸瓦鲁多：浏览器暂停术 —— 直接在控制台输入debugger;, utilsHandler
     Menu, utilsjiqiao, Add, console.save 在控制台保存json变量到本地, utilsHandler
 
     
-    Menu, utilsMenu, Add, (〜￣△￣)〜认知～(￣▽￣～), :utilspractice    
-    Menu, utilsMenu, Add, ←_←前端小技巧→_→, :utilsjiqiao
-    
     Menu, utilsMenu, Add, , utilsHandler
     Menu, utilsMenu, Add, , utilsHandler
     
     Menu, utilsMenu, Add, !!Σ(゜Д゜) 居然还有这种操作？ Σ(ﾟдﾟ;), :utilsjuran
     Menu, utilsMenu, Add, ╮(￣▽￣)╭ 先收起来再说，没准将来会有用呢？ ╮(￣▽￣)╭, :utilsmaybe
- 
+    Menu, utilsMenu, Add, ←_←前端小技巧→_→, :utilsjiqiao
+    
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
     Menu, utils2, DeleteAll
@@ -6679,4 +6675,72 @@ export const parents = (el = {}, exp = () => false, maxDeep = 100) => {
 }
 )
 code(Var)
+return
+
+::proxy::
+::es.proxy::
+::es6.proxy::
+Var =
+(
+/**
+ * say something ...
+ *
+ * 调用示例
+ * 
+    pobj.a
+    // getting a
+
+    ++pobj.a
+    //  getting a
+    //  setting a
+    //  2
+ */
+var obj = { a: 1 }
+const pobj = new Proxy(obj, {
+    get(target, key, context) {
+        // ⚠️ target === obj
+        // 📝 context === pobj 
+        console.log('getting', key);
+
+        // 几乎可以确定 Proxy 和 Reflect 总是协同工作的。
+        return Reflect.get(target, key, context)
+    },
+    set(target, key, value, receiver) {
+        console.log('setting', key);
+        return Reflect.set(target, key, value, receiver);
+     }
+})
+---
+var hander = {
+    get(target, name, context) {
+        if (name === 'prototype') {
+            return Object.prototype
+        }
+        return 'hello, ' + name
+    },
+    apply(target, thisBinding, args) {
+        return args
+    },
+    construct(target, args) {
+        return { value: args }
+    }
+}
+
+var fproxy = new Proxy(function (x, y) {
+    return x + y
+}, hander)
+
+// 触发 apply
+fproxy(1, 2) // =>  [1, 2]
+
+// 触发 construct
+new fproxy(1, 2) // => {value: Array(2)}
+
+// 触发 get 
+fproxy.prototype === Object.prototype // true
+
+// 触发 get 
+fproxy.foo // => "hello, foo"
+)
+txtit(Var)
 return

@@ -101,7 +101,7 @@ _send(v, isSendLevel = false, isTab = false) {
     
     Send, % v
     
-    if (WinExist("ahk_class SoPY_Comp")) {
+    if (WinExist("ahk_class SoPY_Comp") || WinExist("ahk_class Microsoft.IME.UIManager.CandidateWindow.Host")) {
         send, {shift}
     }
 
@@ -115,7 +115,7 @@ _sendinput(v, isSendLevel = false) {
         SendLevel 1
     }
 
-    if (WinExist("ahk_class SoPY_Comp")) {
+    if (WinExist("ahk_class SoPY_Comp") || WinExist("ahk_class Microsoft.IME.UIManager.CandidateWindow.Host")) {
         send, {Shift}
     }
     
