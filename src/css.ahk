@@ -33,8 +33,10 @@
     Menu, CssMenu, Add, transition的钩子：webkitTransitionEnd, CssHandler
     Menu, CssMenu, Add, background-image: linear-gradient, CssHandler
     Menu, CssMenu, Add, ::scrollbar 滚动条样式, CssHandler
-    Menu, CssMenu, Add, flex 高度占满全屏策略, CssHandler
     Menu, CssMenu, Add, font-size: 62.5`%, CssHandler
+    Menu, CssMenu, Add, flex 高度占满全屏策略, CssHandler
+    Menu, CssMenu, Add, 让body高度自适应屏幕, CssHandler
+    
 
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
@@ -50,6 +52,7 @@
     Menu, cssoptimization, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
     
     
+    Menu, Csssolution, Add, 网格gridloading, CssHandler
     Menu, Csssolution, Add, 走路崴脚的loading, CssHandler
     Menu, Csssolution, Add, 三个DVI的Bouncing loader, CssHandler
     Menu, Csssolution, Add, dataV三个元素实现的loading, CssHandler
@@ -164,6 +167,23 @@ if (v == "") {
 Var =
 (
 )
+}
+
+
+if (v == "让body高度自适应屏幕") {
+Var =
+(
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100`%; /* 注意，应该是html和body同时设置才可以 */ 
+}
+)
+}
+
+if (v == "网格gridloading") {
+_send("gridloading", true, true)
+return
 }
 
 
@@ -5149,6 +5169,69 @@ Var =
 dialog[open] {
     animation: slide-up 0.4s ease-out;
 }
+)
+code(Var)
+return
+
+::gridloading::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .boxLoading::before {
+        position: absolute;
+        top: 50`%;
+        left: 50`%;
+        display: block;
+        width: 10px;
+        height: 10px;
+        transform: translate(-50`%, -50`%);
+        content: "";
+        border-radius: 5px;
+        animation: 2s ease 0s infinite normal none running a1;
+    }
+
+    .boxLoading::after {
+        position: absolute;
+        top: 50`%;
+        left: 50`%;
+        display: block;
+        width: 10px;
+        height: 10px;
+        transform: translate(-50`%, -50`%);
+        content: "";
+        border-radius: 5px;
+        animation: 2s ease 0s infinite normal none running a2;
+    }
+
+    @-webkit-keyframes a1 {
+        0`% {width: 10px; box-shadow: rgba(54, 215, 183, 0.75) 20px -10px, rgba(54, 215, 183, 0.75) -20px 10px; }
+        35`% {width: 50px; box-shadow: rgba(54, 215, 183, 0.75) 0px -10px, rgba(54, 215, 183, 0.75) 0px 10px; }
+        70`% {width: 10px; box-shadow: rgba(54, 215, 183, 0.75) -20px -10px, rgba(54, 215, 183, 0.75) 20px 10px; }
+        100`% {box-shadow: rgba(54, 215, 183, 0.75) 20px -10px, rgba(54, 215, 183, 0.75) -20px 10px; } 
+    }
+    @-webkit-keyframes a2 {
+        0`% {height: 10px; box-shadow: rgba(54, 215, 183, 0.75) 10px 20px, rgba(54, 215, 183, 0.75) -10px -20px; }
+        35`% {height: 50px; box-shadow: rgba(54, 215, 183, 0.75) 10px 0px, rgba(54, 215, 183, 0.75) -10px 0px; }
+        70`% {height: 10px; box-shadow: rgba(54, 215, 183, 0.75) 10px -20px, rgba(54, 215, 183, 0.75) -10px 20px; }
+        100`% {box-shadow: rgba(54, 215, 183, 0.75) 10px 20px, rgba(54, 215, 183, 0.75) -10px -20px; } 
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="boxLoading">
+        </div>
+    </div>
+</body>
+
+</html>
 )
 code(Var)
 return

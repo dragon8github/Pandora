@@ -2563,7 +2563,7 @@ Var =
 		...
 	}
 }, this);
-
+---
 // 方式二
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
@@ -2592,7 +2592,7 @@ Var =
 } else {
   root._ = _;
 }
-
+---
 // 方式四：flexSearch的解决方案（https://github.com/nextapps-de/flexsearch/edit/master/flexsearch.js）
 /**!
  * @preserve yourName v0.6.21
@@ -2609,15 +2609,6 @@ Var =
     }(
     	// ... args
     `)), this);
-
-    /* --------------------------------------------------------------------------------------
-     * UMD Wrapper for Browser and Node.js
-     * @param {!string} name
-     * @param {!Function|Object} factory
-     * @param {!Function|Object=} root
-     * @suppress {checkVars}
-     * @const
-     */
 
     function provide(name, factory, root){
 
@@ -2650,9 +2641,7 @@ Var =
     }
 
 }).call(this);
-
-
-
+---
 // 方式五（elemetui的popper.js ）：https://github.com/ElemeFE/element/blob/dev/src/utils/popper.js
 //
 // Cross module loader
@@ -2682,9 +2671,17 @@ Var =
 
     return Popper;
 }));
+---
+(function (global) {
+    'use strict';
 
+    if (typeof module !== 'undefined')
+            module.exports = domtoimage;
+        else
+            global.domtoimage = domtoimage;
+})(this);
 )
-code(Var)
+txtit(Var)
 return
 
 

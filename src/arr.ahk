@@ -1,16 +1,17 @@
 ﻿!a::
 	Menu, arrayMenu, Add, 加强版map遍历:fuckmap, ForHandler
-	Menu, arrayMenu, Add, 新建长度为N的数组[...Array(100)], ForHandler
+	Menu, arrayMenu, Add, 新建长度为N的数组[...Array(100)]或者Array.from({ length: 100 }), ForHandler
     Menu, arrayMenu, Add, unique 数组去重复, ForHandler
     Menu, arrayMenu, Add, Math.max.apply 获取数组最大值, ForHandler
     Menu, arrayMenu, Add, 使用了es6的set生产1W条不重复8位的数字, ForHandler
 	Menu, arrayMenu, Add, 从数组中随机不重复取出指定数量的人, ForHandler
 	Menu, arrayMenu, Add, Array.prototype.remove, ForHandler
 	Menu, arrayMenu, Add, 类数组转数组：Array.prototype.slice.call(arguments), ForHandler
-	Menu, arrayMenu, Add, 二维数组转一维数组：Array.prototype.flat(), ForHandler
+	Menu, arrayMenu, Add, 二维数组转一维数组：Array.prototype.flat(maxDeep), ForHandler
 	Menu, arrayMenu, Add, 删除数组成员, ForHandler
 	Menu, arrayMenu, Add, 随机从数组中取N个数据, ForHandler
 	Menu, arrayMenu, Add, 判断两个数组是否互相包含, utilsHandler
+	Menu, arrayMenu, Add, 数组的交集、并集、差集、补集, utilsHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -65,6 +66,19 @@ Var =
 (
 )
 }
+
+
+if (v == "数组的交集、并集、差集、补集") {
+Var = 
+(
+const intersect = (a, b) => a.filter(i => b.includes(i)) // 交
+const exclude = (a, b) => a.filter(i => !b.includes(i)) // 差
+const union = (a, b) => exclude(a, b).concat(b) // 并
+const unionAll = (a, b) => a.concat(b) // 重复并
+const xor = (a, b) => exclude(a, b).concat(exclude(b, a)) // 补
+)
+}
+
 
 
 if (v == "splice： 可用于插入：ary.splice(1, 0, 'fuckyou')") {
@@ -140,7 +154,7 @@ return
 }
 
 
-if (v == "二维数组转一维数组：Array.prototype.flat()") {
+if (v == "二维数组转一维数组：Array.prototype.flat(maxDeep)") {
 Var = 
 (
 // es5 Array.prototype.reduce()
@@ -155,6 +169,10 @@ Var =
 var arr1 = [[0, 1], [2, 3], [4, 5, [6, 7, 8]]]
 const flatten = arr => [].concat( ...arr.map(x => Array.isArray(x) ? flatten(x) : x) )
 flatten(arr1) 
+
+// 其实没那么复杂，默认就支持无限级解压
+const ary = [1,2,[1,2, [3, 4, [5,6]]]];
+temp.flat(ary) // => [1, 2, 1, 2, 3, 4, 5, 6]
 )
 }
 
@@ -264,7 +282,7 @@ Send, fuckmap{tab}
 return
 }
 
-if (v == "新建长度为N的数组[...Array(100)]") {
+if (v == "新建长度为N的数组[...Array(100)]或者Array.from({ length: 100 })") {
 SendLevel 1
 Send, newarr{tab}
 return
@@ -533,11 +551,14 @@ Send, {up}{tab}
 return
 
 ::newarr::
+::arr100::
+::arr10::
 Var =
 (
 // new Int8Array(100)
 // [...Array(100)].map(_ => 0);
 // [...Array(100)].map((v, index, array) => index);
+// （新）Array.from({ length: 100 }).map((v, index, array) => index);
 [...Array(100)].map((v, index, array) => {
     return index
 });

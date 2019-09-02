@@ -60,6 +60,7 @@ initbook() {
 	TV_Add("类式继承模式#3 —— 借用模式 + 克隆模式", A)
 	TV_Add("类式继承模式#4 —— 共享原型", A)
 	TV_Add("类式继承模式#5 —— 临时构造函数", A)
+	TV_Add("类式继承模式#6 —— 最后的圣杯", A)
 	TV_Add("通过复制属性实现继承", A)
 	TV_Add("原型继承", A)
 
@@ -78,9 +79,11 @@ initbook() {
 	TV_Add("实现 new 运算符的过程", C)
 	TV_Add("闭包封装实现private", C)
 	TV_Add("多态", C)
+	TV_Add("Function.prototype.bind", C)
 	TV_Add("Function.prototype.before", C)
 	TV_Add("Function.prototype.after", C)
 	TV_Add("AOP - 面向切面编程", C)
+	
 	
 	D := TV_Add("_继承")
 	TV_Add("extend 浅拷贝（继承模式中最后的圣杯）", D)
@@ -94,10 +97,14 @@ initbook() {
 	TV_Add("2. Function.prototype.bind", E)
 	TV_Add("3. 借用其他对象的方法", E)
 	
-	F := TV_Add("_闭包")
+	F := TV_Add("_闭包与缓存")
 	TV_Add("简易Cache", F)
 	TV_Add("参数标记缓存器 memoized", F)
 	TV_Add("模块模式：现代模块实现的基石", F)
+	TV_Add("延迟上传：解决ajax压力", F)
+	
+	I := TV_Add("_链式操作")
+	TV_Add("让方法调用结束后返回对象本身", I)
 	
 	G := TV_Add("_单例模式")
 	TV_Add("惰性单例", G)
@@ -110,6 +117,20 @@ initbook() {
 	H := TV_Add("_模板模式")
 	TV_Add("咖啡与茶", H)
 	TV_Add("通用模板 StateFactory", H)
+	
+	J := TV_Add("_策略模式")
+	TV_Add("最简单的策略模式", J)
+	
+	K := TV_Add("_观察者模式")
+	TV_Add("window.__EVENT__消息订阅", K)
+	TV_Add("超简洁版Event事件模块", K)
+	TV_Add("仿rxjs的观察者模式", K)
+	
+	L := TV_Add("_责任链模式")
+	TV_Add("优惠券条件分支：链式after解决方案", L)
+	
+	M := TV_Add("_curry科里化模式")
+	TV_Add("超简单的currying与理财花销实例", M)
 }
 
 
@@ -138,6 +159,328 @@ if (InStr(v, "@")) {
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "Function.prototype.bind") {
+Var = 
+(
+if (typeof Function.prototype.bind === 'undefined') {
+	Function.prototype.bind = function (context) {
+		var fn = this,
+			slice = Array.prototype.slice,
+			args = slice.call(arguments, 1)
+
+		// bind 总是返回一个新的函数。
+		return function () {
+			// 新参数
+			var newArgs = slice.call(arguments)
+			// 合并新旧参数
+			var params = args.concat(newArgs)
+			// 执行
+			return fn.apply(context, params)
+		};
+	}
+}
+)
+}
+
+if (v == "超简单的currying与理财花销实例") {
+Var = 
+(
+var currying = function (fn) {
+    var args = [];
+    return function () {
+        // 新设计：如果不传参数则立刻返回当前计算结果
+        if ( arguments.length === 0 ) {
+            // 返回执行结果
+            return fn.apply(this, args);
+        } else {
+            // 将参数加入缓存
+            Array.prototype.push.apply( args, arguments );
+            // 返回本函数
+            return arguments.callee;
+        }
+    }
+}
+
+// 测试：理财函数
+var cost = function(){
+    return Array.prototype.reduce.call(arguments, function (previousValue, currentValue, index, array) {
+        return previousValue + currentValue
+    }, 0)
+};
+
+// cost(100, 200, 300, 400)
+
+var curring_cost = currying(cost)
+
+curring_cost( 1000 )
+curring_cost( 1000 )
+curring_cost( 1000 )
+curring_cost( 1000 )
+
+curring_cost(  )
+)
+}
+
+if (v == "优惠券条件分支：链式after解决方案") {
+Var = 
+(
+Function.prototype.after = function(fn) {
+    var self = this;
+    return function() {
+        var ret = self.apply(this, arguments);
+        if (ret === 'next') {
+            return fn.apply(this.arguments);
+        }
+    }
+}
+
+var order500yuan = function(orderType, pay, stock) {
+    if (orderType === 1 && pay === true) {
+        console.log('500 元定金预购，得到 100 优惠券');
+    } else {
+        return 'next'; // 我不知道下一个节点是谁，反正把请求往后面传递
+    }
+};
+
+var order200yuan = function(orderType, pay, stock) {
+    if (orderType === 2 && pay === true) {
+        console.log('200 元定金预购，得到 50 优惠券');
+    } else {
+        return 'next'; // 我不知道下一个节点是谁，反正把请求往后面传递
+    }
+};
+
+var orderNormal = function(orderType, pay, stock) {
+    if (stock > 0) {
+        console.log('普通购买，无优惠券');
+    } else {
+        console.log('手机库存不足');
+    }
+};
+
+var order = order500yuan.after( order200yuan ).after( orderNormal );
+order( 1, true, 500 )
+order( 2, true, 500 );
+order( 1, false, 500 );
+)
+}
+
+
+if (v == "仿rxjs的观察者模式") {
+Var = 
+(
+function Observable(fn) {
+
+	let isComplete = false
+
+	return ({ next, complete, error }) => {
+		function _next(...args) {
+			if (isComplete) 
+				return
+			next(...args)
+		}
+
+		function _complete(...args) {
+			complete(...args)
+			isComplete = true
+		}
+
+		function _error(...args) {
+			error(...args)
+		}
+
+		// 依赖注入
+		fn({ next: _next, complete: _complete, error: _error })
+
+		// 返回开关
+		return () => (isComplete = true)
+	}
+}
+
+let observerable = Observable(observer => {
+	setTimeout(() => {
+		observer.next(1)
+	}, 1000)
+	observer.next(2)
+	observer.complete(3)
+})
+
+const subject = {
+	next: value => {
+		console.log(value)
+	},
+	complete: console.log,
+	error: console.log
+}
+
+let unsubscribe = observerable(subject);
+
+// 输出 2
+// 输出 3
+// 并没有输出1，因为 complete 之后 next 就不会生效了。
+)
+}
+
+if (v == "window.__EVENT__消息订阅") {
+Var = 
+(
+window.__EVENT__ = {
+     // 缓存列表
+     clientList: [],
+     listen: function(key, fn) {
+         if (!this.clientList[key]) {
+             this.clientList[key] = [];
+         }
+         // 订阅的消息添加进缓存列表
+         this.clientList[key].push(fn);
+     },
+     trigger: function() {
+         var key = Array.prototype.shift.call(arguments),
+             fns = this.clientList[key];
+         // 如果没有绑定对应的消息
+         if (!fns || fns.length === 0) {
+             return false;
+         }
+         for (var i = 0, fn; fn = fns[i++];) {
+             // arguments 是 trigger 时带上的参数
+             fn.apply(this, arguments);
+         }
+     },
+     remove: function(key, fn) {
+         var fns = this.clientList[key];
+         if (!fns) { // 如果 key 对应的消息没有被人订阅，则直接返回
+             return false;
+         }
+         if (!fn) { // 如果没有传入具体的回调函数，表示需要取消 key 对应消息的所有订阅
+             fns && (fns.length = 0);
+         } else {
+             for (var l = fns.length - 1; l >= 0; l--) { // 反向遍历订阅的回调函数列表
+                 var _fn = fns[l];
+                 if (_fn === fn) {
+                     fns.splice(l, 1); // 删除订阅者的回调函数
+                 }
+             }
+         }
+    }
+};
+)
+}
+
+if (v == "超简洁版Event事件模块") {
+Var = 
+(
+class Event {
+	constructor(props) {
+	    this.map = {}
+	}
+
+	add (name, fn) {
+		if (this.map[name])
+			this.map[name].push(fn)
+		else
+			this.map[name] = [fn]
+		return this
+	}
+
+	emit (name, ...args) {
+		// 遍历数组中的所有函数并且执行，注入args
+		this.map[name].forEach(_ => _(...args))
+		// 返回prototype可以形成链式
+		return this
+	}
+}
+
+let e = new Event()
+// 我们约定第一个参数是err信息，如果没有错误则注入null
+e.add("hello", (err, name) => {
+	if (err) return console.error(err)
+	console.log(name)
+})
+.emit('hello', '发送错误')
+.emit('hello', null, 'success')
+)
+}
+
+
+if (v == "最简单的策略模式") {
+Var = 
+(
+// JavaScript版 策略模式 解决计算薪资问题
+var strategies = {
+	'S': function ( salary ) {
+		return salary * 4
+	},
+	'A': function ( salary ) {
+		return salary * 3
+	},
+	'B': function ( salary ) {
+		return salary * 2
+	}
+};
+
+var calculateBonus = function ( level, salary ) {
+	return strategies[ level ]( salary )
+}
+
+calculateBonus('S', 10000) // 40000
+calculateBonus('B', 10000) // 20000
+)
+}
+
+if (v == "让方法调用结束后返回对象本身") {
+Var = 
+(
+var User = function () {
+	this.id = null
+	this.name = null
+}
+
+User.prototype.setId = function ( id ) {
+	this.id = id
+	return this
+}
+
+User.prototype.setName = function ( name ) {
+	this.name = name
+	return this
+}
+
+console.log(new User().setId(1234).setName('Lee'))
+)
+}
+
+
+if (v == "延迟上传：解决ajax压力") {
+Var = 
+(
+var upload = function (id) {
+    console.log('开始同步文件, id为'： id)
+}
+
+var proxySync = ;(function(){
+    var cache = [], // 一定时间内需要同步的id
+             timer; // 定时器
+
+    return function (id) {
+        // 塞入缓存，等待上传
+        cache.push(id)
+
+        // 保证不会覆盖已经启动的定时器
+        if ( timer ) {
+            return;
+        }
+
+        timer = setTimeout(() => {
+            // 上传
+            upload( cache.join(',') )
+            // 清空
+            clearTimeout(timer); timer = null; cache.length = 0;
+        }, 2000);
+    }
+}());
 )
 }
 
@@ -1261,14 +1604,64 @@ c.say() // => Lee
 if (v == "类式继承模式#4 —— 共享原型") {
 Var = 
 (
+//////////////////////////////////////////////
 
+// 本模式的经验法则是：
+// 任何可复用的成员应该转移到原型中。
+// 出于继承的目的，任何值得继承的东西，都应该防止在原型中实现。
+
+//////////////////////////////////////////////
+
+function inherit(C, P) {
+	C.prototype = P.prototype
+}
+
+//////////////////////////////////////////////
+
+// 缺点：
+// 如果子类修改了原型，那么父类也会随着改变。
+// 所以下一步精进：用一个代理构造函数F来代替父类。
+
+//////////////////////////////////////////////
+)
+}
+
+
+if (v == "类式继承模式#6 —— 最后的圣杯") {
+Var = 
+(
+function inherit = (function () {
+	// 使用IIFE可以避免总是临时创建代理构造函数F
+	var F = function () {}
+	// 圣杯模式
+	return function (C, P) {
+		// 共享模式（代理构造函数作为桥梁，避免子类修改原型进而修改父类）
+		F.prototype = P.prototype
+		// 共享原型
+		C.prototype = new F()
+		
+		// 存储父类
+		C.__super__ = P.prototype
+		
+		// 重置 constructor，否则默认是父类的
+		C.prototype.constructor = C
+	}
+}());
 )
 }
 
 if (v == "类式继承模式#5 —— 临时构造函数") {
 Var = 
 (
-
+function inherit(C, P) {
+	var F = function () {}
+	F.prototype = P.prototype
+	C.prototype = new F()
+	// 存储父类
+	C.__super__ = P.prototype
+	// 重置 constructor，否则默认是父类的
+	C.prototype.constructor = C
+}
 )
 }
 

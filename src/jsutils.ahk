@@ -169,35 +169,12 @@
     Menu, utilsSolution, Add, copyToClipboard 剪切板, utilsHandler
     Menu, utilsSolution, Add, 全屏F11最新解决方案, utilsHandler
     Menu, utilsSolution, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
-    Menu, utilsSolution, Add, 延迟上传解决ajax压力的解决方案, utilsHandler
 
-    Menu, utilsDesignPattern, Add, , utilsHandler
-    Menu, utilsDesignPattern, Add, , utilsHandler
     
-    Menu, utilsDesignPattern, Add, 延迟上传解决ajax压力的解决方案, utilsHandler
-    Menu, utilsDesignPattern, Add, 超简单的currying与理财花销实例, utilsHandler
-    Menu, utilsDesignPattern, Add, 超简单的链式调用套路：即让方法调用结束后返回对象本身, utilsHandler
-    
-    
-    
-    
-    Menu, utilsDesignPattern, Add, , utilsHandler
-    Menu, utilsDesignPattern, Add, , utilsHandler
-    
-    Menu, utilsDesignPattern, Add, JavaScript版 策略模式, utilsHandler
-    Menu, utilsDesignPattern, Add, __EVENT__消息订阅, utilsHandler
-    Menu, utilsDesignPattern, Add, es6 超简洁版Event事件模块, utilsHandler
-    Menu, utilsDesignPattern, Add, 仿rxjs的观察者模式, utilsHandler
-    
-    Menu, utilsDesignPattern, Add, , utilsHandler
-    Menu, utilsDesignPattern, Add, , utilsHandler
-    
-    Menu, utilsDesignPattern, Add, 优惠券条件分支：链式after解决方案, utilsHandler
     
     ; @认知 @renzhi
     Menu, utilspractice, Add, !function(){}()：被遗忘的另一个IIFE, utilsHandler
     Menu, utilspractice, Add, 拖拽位置公式, utilsHandler
-    Menu, utilspractice, Add, 仿rxjs的观察者模式, utilsHandler
     Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
     Menu, utilspractice, Add, 超简单的currying与理财花销实例, utilsHandler
     Menu, utilspractice, Add, curry2 二元参数的手动柯里化, utilsHandler
@@ -301,11 +278,7 @@
     Menu, utilses5, Add, 简写Array.prototype.push.apply的方法：[].push.apply, utilsHandler
     Menu, utilses5, Add, Function.prototype.call：除了参数为数组/类数组以外的都应该使用call，如map/reduce/filter（因为他们的参数都是函数）等, utilsHandler
     
-    Menu, utilses5, Add, 
-    Menu, utilses5, Add,  
-    
     Menu, utilses5, Add, 超简单的currying与理财花销实例, utilsHandler
-    Menu, utilses5, Add, 超简单的链式调用套路：即让方法调用结束后返回对象本身, utilsHandler
     
 
     Menu, utilsJstest, Add, match 捕获匹配, utilsHandler
@@ -393,7 +366,6 @@
     Menu, utilssf, Add, 欧几里得算法（分而治之）：目标使土地分配最大化，不断让宽与高求余，直到整数倍为止, utilsHandler
     
     Menu, utilsMenu , Add, (#-_-)┯━┯  解决方案, :utilsSolution
-    Menu, utilsMenu , Add, (╯°口°)╯(┴—┴  设计模式与原型面向对象, :utilsDesignPattern
     Menu, utilsMenu , Add, _(:3」∠)_算法与数据结构, :utilssf
 
     ; @jiqiao
@@ -417,7 +389,6 @@
     Menu, utilssf, DeleteAll
     Menu, utilspractice, DeleteAll
     Menu, utilses5, DeleteAll
-    Menu, utilsDesignPattern, DeleteAll
     Menu, utilsSolution, DeleteAll
     
     
@@ -796,11 +767,6 @@ return
 }
 
 
-
-if (v == "延迟上传解决ajax压力的解决方案") {
-_send("delay_upload", true, true)
-return
-}
 
 
 
@@ -2023,27 +1989,6 @@ Var =
 )
 }
 
-if (v == "超简单的链式调用套路：即让方法调用结束后返回对象本身") {
-Var = 
-(
-var User = function () {
-	this.id = null
-	this.name = null
-}
-
-User.prototype.setId = function ( id ) {
-	this.id = id
-	return this
-}
-
-User.prototype.setName = function ( name ) {
-	this.name = name
-	return this
-}
-
-console.log(new User().setId(1234).setName('Lee'))
-)
-}
 
 if (v == "欧几里得算法（分而治之）：目标使土地分配最大化，不断让宽与高求余，直到整数倍为止") {
 _send("oujilide", true, true)
@@ -2321,60 +2266,6 @@ compose([a, b])({});
 )
 }
 
-if (v == "仿rxjs的观察者模式") {
-Var = 
-(
-function Observable(fn) {
-
-	let isComplete = false
-
-	return ({ next, complete, error }) => {
-		function _next(...args) {
-			if (isComplete) 
-				return
-			next(...args)
-		}
-
-		function _complete(...args) {
-			complete(...args)
-			isComplete = true
-		}
-
-		function _error(...args) {
-			error(...args)
-		}
-
-		// 依赖注入
-		fn({ next: _next, complete: _complete, error: _error })
-
-		// 返回开关
-		return () => (isComplete = true)
-	}
-}
-
-let observerable = Observable(observer => {
-	setTimeout(() => {
-		observer.next(1)
-	}, 1000)
-	observer.next(2)
-	observer.complete(3)
-})
-
-const subject = {
-	next: value => {
-		console.log(value)
-	},
-	complete: console.log,
-	error: console.log
-}
-
-let unsubscribe = observerable(subject);
-
-// 输出 2
-// 输出 3
-// 并没有输出1，因为 complete 之后 next 就不会生效了。
-)
-}
 
 if (v == "Promise.race只返回最快的一个") {
 Var = 
@@ -2527,42 +2418,6 @@ if (canvasEl) {
 }
 )
 }
-
-if (v == "es6 超简洁版Event事件模块") {
-Var = 
-(
-class Event {
-	constructor(props) {
-	    this.map = {}
-	}
-
-	add (name, fn) {
-		if (this.map[name])
-			this.map[name].push(fn)
-		else
-			this.map[name] = [fn]
-		return this
-	}
-
-	emit (name, ...args) {
-		// 遍历数组中的所有函数并且执行，注入args
-		this.map[name].forEach(_ => _(...args))
-		// 返回prototype可以形成链式
-		return this
-	}
-}
-
-let e = new Event()
-// 我们约定第一个参数是err信息，如果没有错误则注入null
-e.add("hello", (err, name) => {
-	if (err) return console.error(err)
-	console.log(name)
-})
-.emit('hello', '发送错误')
-.emit('hello', null, 'success')
-)
-}
-
 
 if (v == "...args参数和fn(...args) 入参的技巧和认知") {
 Var = 
@@ -2892,49 +2747,6 @@ if(getSys() === 'Android') {
 }
 
 
-if (v == "优惠券条件分支：链式after解决方案") {
-Var = 
-(
-Function.prototype.after = function(fn) {
-    var self = this;
-    return function() {
-        var ret = self.apply(this, arguments);  
-        if (ret === 'next') {
-            return fn.apply(this.arguments);
-        }
-    }
-}
-
-var order500yuan = function(orderType, pay, stock) {
-    if (orderType === 1 && pay === true) {
-        console.log('500 元定金预购，得到 100 优惠券');
-    } else {
-        return 'next'; // 我不知道下一个节点是谁，反正把请求往后面传递
-    }
-};
-
-var order200yuan = function(orderType, pay, stock) {
-    if (orderType === 2 && pay === true) {
-        console.log('200 元定金预购，得到 50 优惠券');
-    } else {
-        return 'next'; // 我不知道下一个节点是谁，反正把请求往后面传递
-    }
-};
-
-var orderNormal = function(orderType, pay, stock) {
-    if (stock > 0) {
-        console.log('普通购买，无优惠券');
-    } else {
-        console.log('手机库存不足');
-    }
-};
-
-var order = order500yuan.after( order200yuan ).after( orderNormal );
-order( 1, true, 500 )
-order( 2, true, 500 );
-order( 1, false, 500 );
-)
-}
 
 
 if (v == "解构与split结合：const [language, country] = locale.split('-')") {
@@ -3082,11 +2894,6 @@ func();
 )
 }
 
-
-if (v == "JavaScript版 策略模式") {
-_send(celue)
-return
-}
 
 
 if (v == "加强版map遍历:bettermap") {
@@ -3697,50 +3504,6 @@ delete person.age
 )
 }
 
-if (v == "__EVENT__消息订阅") {
-Var = 
-(
-window.__EVENT__ = {
-     // 缓存列表
-     clientList: [],
-     listen: function(key, fn) {
-         if (!this.clientList[key]) {
-             this.clientList[key] = [];
-         }
-         // 订阅的消息添加进缓存列表
-         this.clientList[key].push(fn);
-     },
-     trigger: function() {
-         var key = Array.prototype.shift.call(arguments),
-             fns = this.clientList[key];
-         // 如果没有绑定对应的消息
-         if (!fns || fns.length === 0) {
-             return false;
-         }
-         for (var i = 0, fn; fn = fns[i++];) {
-             // arguments 是 trigger 时带上的参数
-             fn.apply(this, arguments);
-         }
-     },
-     remove: function(key, fn) {
-         var fns = this.clientList[key];
-         if (!fns) { // 如果 key 对应的消息没有被人订阅，则直接返回
-             return false;
-         }
-         if (!fn) { // 如果没有传入具体的回调函数，表示需要取消 key 对应消息的所有订阅
-             fns && (fns.length = 0);
-         } else {
-             for (var l = fns.length - 1; l >= 0; l--) { // 反向遍历订阅的回调函数列表
-                 var _fn = fns[l];
-                 if (_fn === fn) {
-                     fns.splice(l, 1); // 删除订阅者的回调函数
-                 }
-             }
-         }
-    }
-};
-)
-}
 
 if (v == "cache request axios 缓存请求") {
 _send("request.js", true, true)
@@ -6089,41 +5852,6 @@ code(Var)
 return
 
 
-::delayupload::
-::delay.upload::
-::delay-upload::
-::delay_upload::
-Var =
-(
-var upload = function (id) {
-    console.log('开始同步文件, id为'： id)
-}
-
-var proxySync = ;(function(){
-    var cache = [], // 一定时间内需要同步的id
-             timer; // 定时器
-
-    return function (id) {
-        // 塞入缓存，等待上传
-        cache.push(id)
-
-        // 保证不会覆盖已经启动的定时器
-        if ( timer ) {
-            return;
-        }
-
-        timer = setTimeout(() => {
-            // 上传
-            upload( cache.join(',') )
-            // 清空
-            clearTimeout(timer); timer = null; cache.length = 0;
-        }, 2000);
-    }
-}());
-)
-code(Var)
-return
-
 ::zhuangshiqi::
 ::dec::
 ::@dec::
@@ -6871,8 +6599,8 @@ Var =
 var obj = { a: 1 }
 const pobj = new Proxy(obj, {
     get(target, key, context) {
-        // ⚠️ target === obj
-        // 📝 context === pobj 
+        // 注意：target === obj
+        // 注意：context === pobj 
         console.log('getting', key);
 
         // 几乎可以确定 Proxy 和 Reflect 总是协同工作的。
@@ -6914,6 +6642,59 @@ fproxy.prototype === Object.prototype // true
 
 // 触发 get 
 fproxy.foo // => "hello, foo"
+---
+<!-- proxy 模拟双向数据绑定，更多精彩内容学习：https://muyiy.cn/question/program/74.html -->
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Document</title>
+</head>
+
+<body>
+    <input type='text' id='input'>
+    <p id='word'></p>
+</body>
+<script>
+const input = document.getElementById('input')
+const word = document.getElementById('word')
+const proxy = new Proxy({}, {
+    get(target, key, context) {
+        return Reflect.get(target, key, context);
+    },
+    set(target, key, value, context) {
+        if (key === 'text') {
+            word.innerHTML = value;
+        }
+        return Reflect.set(target, key, value, context);
+    }
+});
+
+input.addEventListener('keyup', function (e) {
+    proxy.text = this.value
+})
+</script>
+
+</html>
+---
+/**
+ * 可取消的代理 ...
+ */
+var obj = { a: 1 }
+var handler = {
+    get(target, key, context) {
+        return target[key]
+    }
+}
+
+const { proxy, revoke } = Proxy.revocable( obj, handler )
+
+proxy.a // => 1
+
+revoke()
+
+proxy.a // => Uncaught TypeError
 )
 txtit(Var)
 return
@@ -6937,6 +6718,222 @@ const rangeDate = (start, end) => {
 }
 
 rangeDate('2015/2/8', '2015/3/3')
+)
+code(Var)
+return
+
+::ex::
+::shengbei::
+::holy::
+::holymodel::
+Var =
+(
+function inherit = (function () {
+	// 使用IIFE可以避免总是临时创建代理构造函数F
+	var F = function () {}
+	// 圣杯模式
+	return function (C, P) {
+		// 共享模式（代理构造函数作为桥梁，避免子类修改原型进而修改父类）
+		F.prototype = P.prototype
+		// 共享原型
+		C.prototype = new F()
+		
+		// 存储父类
+		C.__super__ = P.prototype
+		
+		// 重置 constructor，否则默认是父类的
+		C.prototype.constructor = C
+	}
+}());
+)
+code(Var)
+return
+
+::bind::
+Var =
+(
+if (typeof Function.prototype.bind === 'undefined') {
+	Function.prototype.bind = function (context) {
+		var fn = this,
+			slice = Array.prototype.slice,
+			args = slice.call(arguments, 1)
+
+		// bind 总是返回一个新的函数。
+		return function () {
+			// 新参数
+			var newArgs = slice.call(arguments)
+			// 合并新旧参数
+			var params = args.concat(newArgs)
+			// 执行
+			return fn.apply(context, params)
+		};
+	}
+}
+
+---
+
+Function.prototype.bind = function () {
+    var self = this
+
+    // 获取第一个参数，也就是代替this的『上下文』
+    var context = [].shift.call( arguments )
+
+    // 参数集
+    var args = [].slice.call( arguments )
+
+    return function () {
+        // 新参数
+        var new_args = [].slice.call( arguments )
+
+        // 最终参数 = 历史参数 + 新参数
+        var finall_args = [].concat.call( args, new_args )
+
+        // 调用自己，使用新的上下文
+        return self.apply( context, finall_args )
+    }
+}
+
+)
+code(Var)
+return
+
+::mutationsob::
+::mutations::
+::mutation::
+::mutatio::
+::domob::
+::domjianting::
+Var =
+(
+/**
+ * 『回调函数』
+ * mutations：节点变化记录列表（sequence<MutationRecord>）
+ * observer：构造MutationObserver对象。
+ * 
+ * 『MutationObserver对象的三个方法』
+ * observe：设置观察目标，接受两个参数，target：观察目标，options：通过对象成员来设置观察选项
+ * disconnect：阻止观察者观察任何改变
+ * takeRecords：清空记录队列并返回里面的内容
+ *
+ * 『observe方法中options参数』
+ * childList：设置true，表示观察目标子节点的变化，比如添加或者删除目标子节点，不包括修改子节点以及子节点后代的变化
+ * attributes：设置true，表示观察目标属性的改变
+ * characterData：设置true，表示观察目标数据的改变
+ * subtree：设置为true，目标以及目标的后代改变都会观察
+ * attributeOldValue：如果属性为true或者省略，则相当于设置为true，表示需要记录改变前的目标属性值，设置了attributeOldValue可以省略attributes设置
+ * characterDataOldValue：如果characterData为true或省略，则相当于设置为true,表示需要记录改变之前的目标数据，设置了characterDataOldValue可以省略characterData设置
+ * attributeFilter：如果不是所有的属性改变都需要被观察，并且attributes设置为true或者被忽略，那么设置一个需要观察的属性本地名称（不需要命名空间）的列表
+ */
+const observe = new MutationObserver(function(mutations, observer) {
+	// ⚠️ 只有在全部DOM操作完成之后才会调用callback
+	// 📝 所以就算你进行进行 N 次操作，但实际上也只会执行一次本回调。
+    console.log('hello world')
+})
+
+// 示例 1：观察节点树变化
+observe.observe(target,{ childList: true, subtree: true })
+target.appendChild(docuemnt.createTextNode('1'))
+
+// 示例 2：观察值变化
+observe.observe(target,{ characterData: true, childList: true, subtree: true })
+target.childNodes[0].textContent = '改变文本值'
+
+// 示例 3: 观察属性变化
+observe.observe(target,{ attributeFilter: ['style'], subtree: true })
+target.style = 'color:red'      // 可以观察到
+target.removeAttribute('style') // 删除属性名也会观察到
+
+// 示例 4: 停止监听
+observe.disconnect()
+
+// 示例 5: takeRecords() 获取操作历史
+observe.observe(target, { childList: true })
+target.appendChild(document.createTextNode('新增Text节点1'))
+target.appendChild(document.createTextNode('新增Text节点2'))
+target.appendChild(document.createTextNode('新增Text节点3'))
+const record = observe.takeRecords()
+console.log(record)
+
+/**
+ * 变动记录中的属性如下：
+ *
+ * type：如果是属性变化，返回"attributes"，如果是一个CharacterData节点（Text节点、Comment节点）变化，返回"characterData"，节点树变化返回"childList"
+ * target：返回影响改变的节点
+ * addedNodes：返回添加的节点列表
+ * removedNodes：返回删除的节点列表
+ * previousSibling：返回分别添加或删除的节点的上一个兄弟节点，否则返回null
+ * nextSibling：返回分别添加或删除的节点的下一个兄弟节点，否则返回null
+ * attributeName：返回已更改属性的本地名称，否则返回null
+ * attributeNamespace：返回已更改属性的名称空间，否则返回null
+ * oldValue：返回值取决于type。对于"attributes"，它是更改之前的属性的值。对于"characterData"，它是改变之前节点的数据。对于"childList"，它是null
+ */
+
+)
+code(Var)
+return
+
+::qiongju::
+::qiongjufa::
+::meijufa::
+Var =
+(
+/**
+ * 《百钱买鸡》
+ *
+ * 公鸡（gj）每只5元，母鸡（mj）每只3元，三只小鸡（xj）1元，用100元买100只鸡，问公鸡、母鸡、小鸡各多少只？
+ * 5 * gj + 3 * mj + 1/3 * xj = 100
+ */
+var gj = 0, mj = 0, xj = 0
+
+// 公鸡最多买20只
+for (var gj = 0; gj <= 20; gj++) {
+
+	// 母鸡最多买33只
+	for (var mj = 0; mj <= 33; mj++) {
+
+		// 小鸡能购买的数量 = 极限最多100只小鸡 - 公鸡的数量 - 母鸡的数量
+		xj = 100 - gj - mj;
+
+		// 共100元的组合
+		if (5 * gj + 3 * mj + xj / 3 === 100) {
+			console.log(`公鸡为${gj}, 母鸡为${mj}，小鸡为${xj}`)
+		}
+	}
+}
+/*
+公鸡为0, 母鸡为25，小鸡为75
+公鸡为4, 母鸡为18，小鸡为78
+公鸡为8, 母鸡为11，小鸡为81
+公鸡为12, 母鸡为4，小鸡为84 
+ */
+
+
+/**
+ * 《百虫大战》
+ *
+ * 蜘蛛有8条腿；
+ * 蜻蜓有6条腿和2对翅；
+ * 蝉有6条腿和1对翅；
+ * 笼子里共有虫子共18只，共有118条腿和20对翅。
+ * 问每种虫子各几只？  
+*/
+
+// a是蜻蜓 b是蝉 c是蜘蛛
+var a = 0, b = 0, c = 0
+// 蜻蜓
+for (var a = 0; a * 6 <= 118 && a * 2 <= 20; a++) {
+	// 蝉
+	for (var b = 0; b * 6 <= 118 && b <= 20; b++) {
+		// 蜘蛛
+		for (var c = 0; c * 8 <= 118; c++) {
+			// 符合条件
+			if (a + b + c === 18 && a * 6 + b * 6 + c * 8 === 118 && a * 2 + b === 20) {
+				// 输出： 7 6 5
+				console.log(a, b, c)
+			}
+		}
+	}
+}
 )
 code(Var)
 return

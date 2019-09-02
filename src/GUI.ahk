@@ -2677,6 +2677,7 @@ FileAppend,
     html, body{
         margin: 0;
         padding: 0;
+        height: 100`%; /* 注意，应该是html和body同时设置才可以 */ 
     }
 
     #app {
