@@ -399,6 +399,7 @@ Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
 Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group列表
 Gui, Pandora:Add, Text, gfakerHtml W160,新建faker.html
 Gui, Pandora:Add, Text, gsocketHtml W160,新建socket.html
+Gui, Pandora:Add, Text, grandcolorHtml W160,新建随机渐变色.html
 
 Gui, Pandora:Tab, 3
 Gui, Pandora:Add, Text,  W130 Section, 油气管道（react）:

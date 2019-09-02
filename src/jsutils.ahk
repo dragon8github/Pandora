@@ -6937,3 +6937,13 @@ for (var a = 0; a * 6 <= 118 && a * 2 <= 20; a++) {
 )
 code(Var)
 return
+
+::format::
+::time::
+Var =
+(
+format("YYYY/MM/DD HH:mm:ss")
+)
+code(Var)
+return
+

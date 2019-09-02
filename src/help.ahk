@@ -312,6 +312,16 @@ Var =
 code(Var)
 return
 
+::nosafemac::
+::unsafemac::
+::safemac::
+Var =
+(
+open -a Google\ Chrome --args --disable-web-security --user-data-dir
+)
+Send, % Var
+return
+
 ::nosafe::
 ::notsafe::
 ::chromesafe::
@@ -623,7 +633,7 @@ return
 
 
 !l:: 
-    lifeArray := ["beforeMount", "beforeCreate", "created", "mounted", "destroyed", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate", "", "", "primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥1024px)", "lg —— 大屏幕 大桌面显示器 (≥1280px)", "iPhone6 750*1334", "普通设计稿：1160/980", "720p: 1280 x 720, HD（高清）", "1080p: 1920 x 1080, FULL HD（全高清）", "1440p: 2560 x 1440, QHD/Quad HD，即4倍的HD", "2160p: 3840 x 2160, 4K", "4320p: 7680 x 4320, 8K", "", "",  "public", "private", "protected", "","","String", "Number", "Boolean", "Object", "Function", "Array", "","", "thumbnail", "small", "bmiddle", "large", "", "", "JavaScript七大基本类型：boolean，null，undefined，number，string，object，symbol"]
+    lifeArray := ["beforeMount", "beforeCreate", "created", "mounted", "destroyed", "activated", "", "", "componentWillMount", "componentDidMount", "componentDidUnmount", "", "",  "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentDidUpdate", "", "", "primary", "success", "info", "warning", "danger", "", "", "xs —— 超小屏幕 手机 (<768px)", "sm —— 小屏幕 平板 (≥768px)", "md —— 中等屏幕 桌面显示器 (≥1024px)", "lg —— 大屏幕 大桌面显示器 (≥1280px)", "iPhone6 750*1334", "普通设计稿：1160/980", "720p: 1280 x 720, HD（高清）", "1080p: 1920 x 1080, FULL HD（全高清）", "1440p: 2560 x 1440, QHD/Quad HD，即4倍的HD", "2160p: 3840 x 2160, 4K", "4320p: 7680 x 4320, 8K", "", "",  "public", "private", "protected", "","","String", "Number", "Boolean", "Object", "Function", "Array", "","", "thumbnail", "small", "bmiddle", "large", "", "", "JavaScript七大基本类型：boolean，null，undefined，number，string，object，symbol", "YYYY/MM/DD HH:mm:ss"]
     Loop % lifeArray.MaxIndex() {
         this_life := lifeArray[a_index]
         Menu, LifeMenu, Add, %this_life%, MenuHandlerlifeArray

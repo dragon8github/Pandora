@@ -7653,3 +7653,53 @@ methods: {
 RunBy(name)
 run, % name
 return
+
+randcolorHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='https://cdn.staticfile.org/randomcolor/0.5.4/randomColor.min.js'></script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+    #app {}
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+// 从一个范围内取随机值
+const random = (min = 0, max = 1) => min + Math.floor(Math.random() * (max - min + 1))
+
+// 从 30 ~ 60 取值，并且随机正负数
+const getRange = () => Math.random() >= .5 ?  -(random(30, 60)) : random(30, 60)
+
+// 随机取两个不同的明亮颜色
+const randcolorA = randomColor({ luminosity: 'light' })
+const randcolorB = randomColor({ luminosity: 'light' })
+
+// 组合
+const color = `linear-gradient(${getRange()}deg, ${randcolorA}, ${randcolorB})`
+
+// test
+document.querySelector('body').style = 'background:' + color
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
