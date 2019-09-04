@@ -214,6 +214,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, same：对比两个数组找出相同特征的成员, utilsHandler
     Menu, utilsmy, Add, 求同存异：金强的对象特殊合并, utilsHandler
     Menu, utilsmy, Add, 判断两个数组是否互相包含, utilsHandler
     Menu, utilsmy, Add, loadExec：又是一个比较骚的工具函数 , utilsHandler
@@ -407,6 +408,22 @@ Var =
 )
 }
 
+
+if (v == "same：对比两个数组找出相同特征的成员") {
+Var = 
+(
+var same = (master, slave, property) => {
+	// 获取特征
+	var propertys = master.map(_ => _[property])
+	// 只保留满足特征的元素
+	return slave.filter(_ => propertys.includes(_[property]))
+}
+
+var ary1 = [{qid: 1, serviceitem: 1, bb: []}, {qid: 2, serviceitem: 2, bb: []}, {qid: 3, serviceitem: 3, bb: []},]
+var ary2 = [{qid: 2, serviceitem: 2}, {qid: 3, serviceitem: 3},]
+same(ary1, ary2, 'qid')
+)
+}
 
 if (v == "dialog 对话框类，支持拖拽") {
 _send("dialog", true, true)

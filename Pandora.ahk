@@ -65,3 +65,7 @@ FileDelete, .\src\*.bak
 #Include src/elasticsearch.ahk	  ; elasticsearch
 #Include src/golang.ahk	          ; golang
 #Include src/book.ahk	          ; book
+
+!F12::
+	Suspend
+return

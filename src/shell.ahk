@@ -124,6 +124,7 @@
 	Menu, ShellMenu, Add, telnet 19.104.40.37 8082, ShellHandler3
 	Menu, ShellMenu, Add, ssh root@ip地址, ShellHandler3
 	Menu, ShellMenu, Add, chmod u+x fuck.sh, ShellHandler3
+	Menu, ShellMenu, Add, \cp -rf dist/* /usr/local/nginx/html-big, ShellHandler3
 	
 
 	Menu, ShellMenu, Add, , ShellHandler
@@ -194,6 +195,15 @@ Var =
 (
 )
 }
+
+
+if (v == "\cp -rf dist/* /usr/local/nginx/html-big") {
+Var = 
+(
+\cp -rf dist/* /usr/local/nginx/html-big
+)
+}
+
 
 if (v == "删除远程文件/文件夹：git rm -r --cached node_modules/") {
 Var = 

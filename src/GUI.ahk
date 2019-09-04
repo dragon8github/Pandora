@@ -2673,11 +2673,15 @@ FileAppend,
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/theme-chalk/index.css">
     <!-- lodash -->
     <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
+    <!-- mockjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Mock.js/1.0.0/mock-min.js"></script>
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <style>
     html, body{
         margin: 0;
         padding: 0;
-        height: 100`%; /* 注意，应该是html和body同时设置才可以 */ 
+        height: 100`%; /* 注意，应该是html和body同时设置才可以 */
     }
 
     #app {
@@ -2687,9 +2691,21 @@ FileAppend,
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <ul>
+            <li class='item' v-for='(item, index) in items' :key='item.book_id'>{{ item.book_name }}</li>
+        </ul>
+
+        <button @click='handleClick'>handleClick</button>
+    </div>
 </body>
 <script>
+Mock.mock("/book/list", "get", {
+    "booklist|10": [
+        {"book_id|+1": 101, "book_name": "@ctitle", "book_price|50-100.1-2": 0, "book_time": "@date('yyyy-mm-dd')"}
+    ]
+})
+
 $(function() {
     console.log('hello world');
 });
@@ -2701,12 +2717,14 @@ var vue = new Vue({
         text: '',
     },
     methods: {
-        handleClick: function () {
+        handleClick () {
 
         }
     },
     beforeMount: function () {
-
+        axios.get("/book/list").then(res => {
+            this.items = res.data.booklist
+        })
     }
 })
 </script>
