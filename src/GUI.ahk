@@ -7721,3 +7721,87 @@ document.querySelector('body').style = 'background:' + color
 RunBy(name)
 run, % name
 return
+
+cssskeletonHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    .app:empty {
+        margin: auto;
+        width: 500px;
+        height: 600px;
+
+        background-image: 
+                /* circle */
+                radial-gradient(circle 50px at 50px 50px, lightgray 99`%, transparent 0), 
+                /* highlight */
+                linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50`%, rgba(255, 255, 255, 0) 80`%),
+                /* bar */
+                linear-gradient(lightgray 20px, transparent 0),
+                linear-gradient(lightgray 20px, transparent 0),
+                linear-gradient(lightgray 20px, transparent 0),
+                linear-gradient(lightgray 20px, transparent 0);
+
+        background-size: 
+                /* circle */
+                100px 200px,
+                /* highlight */
+                50px 200px,
+                /* bar */
+                150px 200px, 
+                350px 200px, 
+                300px 200px, 
+                250px 200px;
+
+        background-position: 
+                /* circle */
+                0 0,
+                /* highlight */
+                0 0,
+                /* bar */
+                120px 0, 
+                120px 40px, 
+                120px 80px, 
+                120px 120px;
+
+        background-repeat: repeat-y;
+        animation: shine 1s infinite;
+    }
+
+    @keyframes shine {
+        100`% {
+            background-position:
+                /* circle */
+                0 0,
+                /* highlight（animate） */
+                100`% 0,
+                /* bar */
+                120px 0, 
+                120px 40px, 
+                120px 80px, 
+                120px 120px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="app"></div>
+</body>
+<script>
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

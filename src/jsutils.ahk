@@ -87,7 +87,6 @@
     Menu, utilsDOM, Add, mvDOM：移动dom元素到指定目标位置, utilsHandler
     
     
-    
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 element 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
     Menu, utilsPosition, Add, - el.clientHeight：可视高度 , utilsHandler
     Menu, utilsPosition, Add, - el.scrollHeight：真实高度（含滚动条） , utilsHandler
@@ -214,7 +213,7 @@
     
     
     ; @my
-    Menu, utilsmy, Add, same：对比两个数组找出相同特征的成员, utilsHandler
+    Menu, utilsmy, Add, findSameByProperty：对比两个数组找出相同特征的成员, utilsHandler
     Menu, utilsmy, Add, 求同存异：金强的对象特殊合并, utilsHandler
     Menu, utilsmy, Add, 判断两个数组是否互相包含, utilsHandler
     Menu, utilsmy, Add, loadExec：又是一个比较骚的工具函数 , utilsHandler
@@ -409,19 +408,30 @@ Var =
 }
 
 
-if (v == "same：对比两个数组找出相同特征的成员") {
+if (v == "findSameByProperty：对比两个数组找出相同特征的成员") {
 Var = 
 (
-var same = (master, slave, property) => {
-	// 获取特征
-	var propertys = master.map(_ => _[property])
-	// 只保留满足特征的元素
-	return slave.filter(_ => propertys.includes(_[property]))
-}
-
 var ary1 = [{qid: 1, serviceitem: 1, bb: []}, {qid: 2, serviceitem: 2, bb: []}, {qid: 3, serviceitem: 3, bb: []},]
 var ary2 = [{qid: 2, serviceitem: 2}, {qid: 3, serviceitem: 3},]
-same(ary1, ary2, 'qid')
+
+var findSameByProperty = (master, slave, property) => {
+    // 获取特征
+    var propertys = master.map(_ => _[property])
+    // 只保留满足特征的元素
+    return slave.filter(_ => propertys.includes(_[property]))
+}
+
+// 对号入座，小蝌蚪找妈妈的环节
+findSameByProperty(ary1, ary2, 'qid').forEach((val, key) => {
+    // 找到匹配项目
+    var target = ary1.find(_ => _.qid === val.qid)
+    // 新组合
+    const v = { value: val.qid, label: val.serviceitem }
+    // 设置属性
+    target['bb'] = Array.isArray(target['bb']) ? [...target['bb'], v] : [v]
+})
+
+console.log(ary1)
 )
 }
 
@@ -6394,8 +6404,11 @@ return
 ::arybaohan::
 ::shuzubaohan::
 ::jiaoji::
+::baohan::
 Var =
 (
+ary1.some(_ => ary2.includes(_))
+---
 ary1.filter(_ => ary2.includes(_)).length
 ---
 const intersection = (O1, O2) => Object.assign(...Object.keys(O1).map(k => {
