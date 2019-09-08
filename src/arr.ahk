@@ -11,7 +11,7 @@
 	Menu, arrayMenu, Add, 删除数组成员, ForHandler
 	Menu, arrayMenu, Add, 随机从数组中取N个数据, ForHandler
 	Menu, arrayMenu, Add, 判断两个数组是否互相包含, utilsHandler
-	Menu, arrayMenu, Add, 数组的交集、并集、差集、补集, utilsHandler
+	Menu, arrayMenu, Add, 数组的交集、并集、差集、补集, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler

@@ -265,7 +265,7 @@ Var =
     }
 
     button:hover::after, button:focus::after {
-      animation: sheen 100s forwards;
+      animation: sheen 1s forwards;
     }
 
     button::after {

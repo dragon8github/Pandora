@@ -17,6 +17,8 @@ return
 CancelSelect:
 	; 清空搜索框
 	; GuiControl,, SearchContent, 
+    
+    GuiControl,, doge, 0
 	GuiControl,, bd, 0
 	GuiControl,, google, 0
     GuiControl,, npm, 0
@@ -69,6 +71,7 @@ isAllSearchA := false
 AllSearchA:
 	isAllSearchA := !isAllSearchA
 	if (isAllSearchA) {
+        GuiControl,, doge, 1
 		GuiControl,, bd, 1 
 		GuiControl,, google, 1 
         GuiControl,, npm, 1 
@@ -173,6 +176,11 @@ Fuck:
 	; 百度
 	if (bd == 1) {
 		RUN, https://www.baidu.com/s?wd=%SearchContent%
+	}
+
+	; doge
+	if (doge == 1) {
+		RUN, https://www.dogedoge.com/results?q=%SearchContent%
 	}
 
 	; Google
@@ -7804,4 +7812,9 @@ FileAppend,
 ),  %name%
 RunBy(name)
 run, % name
+return
+
+
+chromeextensions:
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/chrome-extensions.zip")
 return

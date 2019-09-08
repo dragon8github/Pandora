@@ -112,7 +112,8 @@ Gui, Pandora:Menu, MyMenuBar
 ; Gui, Pandora:+Resize
 
 Gui, Pandora:Add, Text, gAllSearchA W120 Section xs yp+10, 搜索引擎类:
-; Gui, Pandora:Add, Checkbox, gMySubroutine HwndMyEditHwnd vbd, 百度
+Gui, Pandora:Add, Checkbox, gMySubroutine HwndMyEditHwnd vbd, 百度
+Gui, Pandora:Add, Checkbox, vdoge, doge
 Gui, Pandora:Add, Checkbox, vnpm, npm
 Gui, Pandora:Add, Checkbox, vgoogle, Google
 Gui, Pandora:Add, Checkbox, vgithub Checked, Github
@@ -127,7 +128,7 @@ Gui, Pandora:Add, Checkbox, vjinshanciba, 金山词霸
 Gui, Pandora:Add, Checkbox, vhaicifanyi, 词海翻译
 
 
-Gui, Pandora:Add, Text, gAllSearchC W90 Section xs y+20, 音乐类:
+Gui, Pandora:Add, Text, gAllSearchC W90 Section xs y+60, 音乐类:
 Gui, Pandora:Add, Checkbox, vwy, 网易云音乐   
 Gui, Pandora:Add, Checkbox, vqq, QQ音乐
 Gui, Pandora:Add, Checkbox, vdog, 酷狗音乐
@@ -261,6 +262,7 @@ Gui, Pandora:Add, Link,, <a href="https://nodelover.me/courses">NodeLove大前�
 Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview/blob/master/category/history.md">以面为练</a>
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/explore/headlines">语雀『发现』</a>
 Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>
+Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
@@ -402,6 +404,7 @@ Gui, Pandora:Add, Text, gfakerHtml W160,新建faker.html
 Gui, Pandora:Add, Text, gsocketHtml W160,新建socket.html
 Gui, Pandora:Add, Text, grandcolorHtml W160,新建随机渐变色.html
 Gui, Pandora:Add, Text, ghackdiguo W140,黑客帝国
+Gui, Pandora:Add, Text, gchromeextensions W140,chrome-extensions
 
 Gui, Pandora:Tab, 3
 Gui, Pandora:Add, Text,  W130 Section, 油气管道（react）:
