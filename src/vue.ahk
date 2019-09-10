@@ -3503,14 +3503,31 @@ module.exports = {
          */
     },
     // webpack 配置
-    configureWebpack: {
-        resolve: {
-          extensions: ['.js', '.vue', '.json'],
-          alias: {
-            '@': resolve('src'),
-          },
-        },
-    }, 
+    configureWebpack: (config) => {
+        // 环境变量
+        config.resolve = {
+            extensions: ['.js', '.vue', '.json'],
+            alias: {
+                '@': resolve('src'),
+            },
+        }
+        
+        /*  
+        config.module.rules.concat[{
+            test: /\.svg$/,
+            loader: 'svg-sprite-loader',
+            options: {
+                symbolId: 'icon-[name]'
+            }
+        }, {
+            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+            loader: 'url-loader',
+            options: {
+                limit: 10000,
+            }
+        }]
+        */
+    },
     // webpack 链式扩展
     chainWebpack: config => {
         /* 测试扩展 ts-loader，需要结合 tsconfig.json 使用哦
@@ -3520,6 +3537,24 @@ module.exports = {
                .use('ts-loader')
                .loader('ts-loader')
                .end()
+        */
+        
+        /* 
+        config.module
+              .rule('svg')
+              .exclude.add(resolve('src/icons'))
+              .end();
+
+        config.module
+              .rule('icons')
+              .test(/\.svg$/)
+              .include.add(resolve('src/icons'))
+              .end()
+              .use('svg-sprite-loader')
+              .loader('svg-sprite-loader')
+              .options({
+                symbolId: 'icon-[name]'
+              });
         */
 
         /* 别名和输出名

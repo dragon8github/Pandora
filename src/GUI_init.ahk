@@ -263,6 +263,8 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview/blob/m
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/explore/headlines">语雀『发现』</a>
 Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>
 Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
+Gui, Pandora:Add, Link,, <a href="https://www.24s.net/">24s付费视频盗版</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍
 Gui, Pandora:Add, Link,, <a href="https://www.yuanjisong.com/job">猿急送</a>
