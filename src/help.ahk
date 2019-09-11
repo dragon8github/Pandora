@@ -222,6 +222,7 @@ code(Var)
 return
 
 
+
 ::ahknewhtml::
 ::ahknew::
 ::ahkhtml::
@@ -1099,7 +1100,7 @@ return
     Send, Authorization
 return
 
-+a::
+>+a::
     MouseGetPos, MouseX, MouseY
     PixelGetColor, color, %MouseX%, %MouseY%, RGB  
     Clipboard := SubStr(color, 3) ; 考虑在前面加上，但我就算了，实战的时候发现这个东西有点多余"#" . 

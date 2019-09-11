@@ -1,4 +1,4 @@
-﻿+F::
+﻿>+F::
 	; 显示
 	Gui, ISearch:Show,, ISearch
 return

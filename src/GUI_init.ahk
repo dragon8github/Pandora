@@ -406,6 +406,7 @@ Gui, Pandora:Add, Text, gfakerHtml W160,新建faker.html
 Gui, Pandora:Add, Text, gsocketHtml W160,新建socket.html
 Gui, Pandora:Add, Text, grandcolorHtml W160,新建随机渐变色.html
 Gui, Pandora:Add, Text, ghackdiguo W140,黑客帝国
+Gui, Pandora:Add, Text, ginputyanhua W140,新建input烟花特效
 Gui, Pandora:Add, Text, gchromeextensions W140,chrome-extensions
 
 Gui, Pandora:Tab, 3

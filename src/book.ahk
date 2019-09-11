@@ -1,4 +1,4 @@
-﻿+b::
+﻿>+b::
 	; 显示
 	Gui, Book:Show,, Book
 	
@@ -8,7 +8,10 @@
 
 return
 
-
+BookGuiEscape:
+BookGuiClose:
+	Gui, Book:Hide
+return
 
 SwitchBook:
 
