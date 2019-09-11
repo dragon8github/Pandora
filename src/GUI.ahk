@@ -8086,3 +8086,72 @@ document.body.addEventListener("input", POWERMODE);
 RunBy(name)
 run, % name
 return
+
+test17280:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试17280兼容性</title>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+        width: 17280px;
+    }
+
+    #app {
+        width: 100`%;
+        height: 100`%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .block {
+        width: 1728px;
+        height: 100`%;
+        font-size: 50em;
+        font-weight: bold;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+    }
+
+    .block-1 { background-color: #594129; }
+    .block-2 { background-color: #ED1250; }
+    .block-3 { background-color: #21294C; }
+    .block-4 { background-color: #F4D143; }
+    .block-5 { background-color: #A888FF; }
+    .block-6 { background-color: #EF832A; }
+    .block-7 { background-color: #438A70; }
+    .block-8 { background-color: #FFC045; }
+    .block-9 { background-color: #F6D365; }
+    .block-10 { background-color: #9182C4; }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="block block-1">1</div>
+        <div class="block block-2">2</div>
+        <div class="block block-3">3</div>
+        <div class="block block-4">4</div>
+        <div class="block block-5">5</div>
+        <div class="block block-6">6</div>
+        <div class="block block-7">7</div>
+        <div class="block block-8">8</div>
+        <div class="block block-9">9</div>
+        <div class="block block-10">10</div>
+    </div>
+</body>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

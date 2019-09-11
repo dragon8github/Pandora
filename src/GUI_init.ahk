@@ -407,6 +407,7 @@ Gui, Pandora:Add, Text, gsocketHtml W160,新建socket.html
 Gui, Pandora:Add, Text, grandcolorHtml W160,新建随机渐变色.html
 Gui, Pandora:Add, Text, ghackdiguo W140,黑客帝国
 Gui, Pandora:Add, Text, ginputyanhua W140,新建input烟花特效
+Gui, Pandora:Add, Text, gtest17280 W140,新建测试17280
 Gui, Pandora:Add, Text, gchromeextensions W140,chrome-extensions
 
 Gui, Pandora:Tab, 3
@@ -610,7 +611,11 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/kirillmurashov/vue-drag-res
 Gui, Pandora:Add, Link,, <a href="https://github.com/SortableJS/Vue.Draggable">拖拽Vue.Draggable</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/jbaysolutions/vue-grid-layout">bi拖拽神器vue-grid-layout</a>
 
-Gui, Pandora:Add, Text, W140 Section xs yp+150, vue动画钩子：
+Gui, Pandora:Add, Text,  W160 ys, vue-ant-design
+Gui, Pandora:Add, Link,, <a href="https://github.com/vueComponent/ant-design-vue">github</a>
+Gui, Pandora:Add, Link,, <a href="https://vue.ant.design/docs/vue/introduce/">docs</a>
+
+Gui, Pandora:Add, Text, W140 Section xs yp+250, vue动画钩子：
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes">vue-transition</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#JavaScript-Hooks">JavaScript-Hooks</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/api/#transition-group">transition-group</a>

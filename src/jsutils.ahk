@@ -667,7 +667,7 @@ var randColorHunt = num => getRandomArrayElements([...document.querySelectorAll(
 var randColors = randColorHunt(10)
 
 // 打印出颜色的结果
-randColors.forEach((val, key) => console.log('`%c' + val, `background: ${val}; color: #${colorReverse(val.substr(1))}; font-size: 20px`))
+randColors.forEach((val, key) => console.log('`%c' + val, ``background: ${val}; color: #${colorReverse(val.substr(1))}; font-size: 20px``))
 
 // 打印出所有颜色
 console.log(randColors)

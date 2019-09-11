@@ -50,6 +50,7 @@
   Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, vue.config.js, VueHandler
   Menu, VueMenu, Add, vue3-template脚手架, VueHandler
+  Menu, VueMenu, Add, vue3-ant-design脚手架, VueHandler
   Menu, VueMenu, Add, vue2-template脚手架, VueHandler
   
   Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
@@ -934,6 +935,12 @@ Var =
 (
 npm rebuild node-sass
 )
+}
+
+
+if (v == "vue3-ant-design脚手架") {
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue-cli3antdesign.zip", "yarn `; npm rebuild node-sass `; npm run dev")
+return
 }
 
 if (v == "vue3-template脚手架") {
@@ -4339,3 +4346,4 @@ this.$refs.CardNumber.changeDigit()
 )
 code(Var)
 return
+
