@@ -1,4 +1,9 @@
 ﻿!u::
+
+    
+    Menu, utilsTime, Add, 获取当前时间的秒数, utilsHandler
+    Menu, utilsTime, Add, 获取12345的时间选择器, utilsHandler
+
     Menu, utilsIs, Add, is, utilsHandler
     Menu, utilsIs, Add, isString, utilsHandler
     Menu, utilsIs, Add, isNumber, utilsHandler
@@ -85,6 +90,7 @@
     Menu, utilsDOM, Add, mask蒙版, utilsHandler
     Menu, utilsDOM, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     Menu, utilsDOM, Add, mvDOM：移动dom元素到指定目标位置, utilsHandler
+    Menu, utilsDOM, Add, document.activeElement.blur(), utilsHandler
     
     
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 element 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
@@ -351,6 +357,7 @@
     Menu, utilsMenu , Add, Object 操作, :utilsObject
     Menu, utilsMenu , Add, 正则表达式, :utilsJstest
     Menu, utilsMenu , Add, webpack与动态引入, :utilswebpack
+    Menu, utilsMenu , Add, 时间相关工具, :utilsTime
     
     
     Menu, utilsMenu, Add, , utilsHandler
@@ -407,6 +414,131 @@ Var =
 )
 }
 
+
+if (v == "document.activeElement.blur()") {
+_send("da", true, true)
+return
+}
+
+if (v == "获取当前时间的秒数") {
+Var = 
+(
+// 每一秒等于行走这样的百分比
+const unit = 100 / 24 / 60 / 60
+
+// 获取当前时间的秒数
+const getDistance = (t = new Date) => t.getHours() * 60 * 60 + t.getMinutes() * 60 + t.getSeconds()
+
+// 单位距离（初始化）
+unit * getDistance()
+)
+}
+
+if (v == "获取12345的时间选择器") {
+Var = 
+(
+export const shortcuts = (function(){
+    let ary = [{
+        text: '第一季度',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const start = new Date(`${year}/01/01`);
+            const end = new Date(`${year}/03/31`);
+            picker.$emit('pick', [start, end]);
+        }
+    }, {
+        text: '第二季度',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const quarter = moment(`${year}0401`).format()
+            const now = moment().format()
+            if (now > quarter) {
+                const start = new Date(`${year}/04/01`);
+                const end = new Date(`${year}/06/30`);
+                picker.$emit('pick', [start, end]);
+            } else {
+                return Message(`未找到 ${year}年第2季度的数据`)
+            }
+        }
+    }, {
+        text: '第三季度',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const quarter = moment(`${year}0701`).format()
+            const now = moment().format()
+            if (now > quarter) {
+                const start = new Date(`${year}/07/01`);
+                const end = new Date(`${year}/09/30`);
+                picker.$emit('pick', [start, end]);
+            } else {
+                return Message(`未找到 ${year}年第3季度的数据`)
+            }
+        }
+    }, {
+        text: '第四季度',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const quarter = moment(`${year}1001`).format()
+            const now = moment().format()
+            if (now > quarter) {
+                const start = new Date(`${year}/10/01`);
+                const end = new Date(`${year}/12/31`);
+                picker.$emit('pick', [start, end]);
+            } else {
+                return Message(`未找到 ${year}年第4季度的数据`)
+            }
+        }
+    }, {
+        text: '近三个月',
+        onClick(picker) {
+            // 三个月前的月初
+            const threeMonthsAgo = moment().subtract(2, 'month').format('YYYY/MM/01')
+            // 转换为date类型
+            const start = new Date(threeMonthsAgo)
+            // 当天
+            const end = moment()._d
+            picker.$emit('pick', [start, end])
+        }
+    },{
+        text: '上半年',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const start = new Date(`${year}/01/01`);
+            const end = new Date(`${year}/06/30`);
+            picker.$emit('pick', [start, end]);
+        }
+    }, {
+        text: '下半年',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const secondHalf = moment(`${secondHalf}0615`).format()
+            const now = moment().format()
+            if (now < secondHalf) {
+                const start = new Date(`${year}/7/1`);
+                const end = new Date(`${year}/12/31`);
+                picker.$emit('pick', [start, end]);
+            } else {
+                return Message(`未找到 ${year}下半年的数据`)
+            }
+        }
+    }, {
+        text: '一年',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const month = moment().month() + 1
+            const day = moment().endOf('month').format('DD')
+            const start = new Date(`${year}/01/01`)
+            // 如果选择的年小于当前年，那么就是全年，否则就是直到这个月
+            const end = year < moment().year() ? new Date(`${year}/12/31`) : new Date(`${year}/${month}/${day}`);
+            picker.$emit('pick', [start, end]);
+        }
+    }]
+
+    return ary
+}());
+
+)
+}
 
 if (v == "findSameByProperty：对比两个数组找出相同特征的成员") {
 Var = 
@@ -6977,3 +7109,10 @@ format("YYYY/MM/DD HH:mm:ss")
 code(Var)
 return
 
+::da::
+Var =
+(
+document.activeElement.blur()
+)
+code(Var)
+return

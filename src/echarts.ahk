@@ -852,3 +852,18 @@ const createPolygon = (name, coordinates) => {
 )
 code(Var)
 return
+
+::echarts.dataSet::
+::dataset::
+Var =
+(
+dataset: {
+    source: {
+        '时间': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        '数值': [220, 182, 191, 234, 290, 330, 310],
+        '数值2': [220, 182, 191, 234, 290, 330, 310],
+    }
+},
+)
+code(Var)
+return

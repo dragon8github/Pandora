@@ -79,6 +79,7 @@ __SEARCH_DATABASE__["nginx html"] := "/usr/local/nginx/html/"
 __SEARCH_DATABASE__["php.ini"] := "/usr/local/php/php.ini"
 __SEARCH_DATABASE__["hz-12345"] := "C:\Users\Lee\Desktop\hz-12345"
 __SEARCH_DATABASE__["visual可视化"] := "C:\Users\Lee\Desktop\可视化2\ioc-visual-ui"
+__SEARCH_DATABASE__["postDoge"] := "C:\Users\Lee\Desktop\postDoge"
 
 
 ; 创建含名称和大小两列的 ListView:
@@ -167,7 +168,7 @@ Gui, Pandora:Add, Button, gCancelSelect w260 h30 xs, 取消选中
 
 
 ; Tab 选项卡 w830 h570 
-Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs 与 Npm | Vue | React | 库 | 奇妙工具 | 地图 与 chart | PHP | 微信  | 爬虫 | 移动开发 | CSS | 回收站 | 剪切板 
+Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs 与 Npm | Vue | React | 库 | 奇妙工具 | 地图 与 chart | PHP | 微信  | 爬虫 | 移动开发 | CSS | 剪切板 
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -280,6 +281,7 @@ Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/526d58e01a748
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng熊猫图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
+Gui, Pandora:Add, Link,, <a href="https://compresspng.com/zh/">压缩图片</a>
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</a>
@@ -364,7 +366,8 @@ Gui, Pandora:Add, Text, gquickbianimhtml W180, 新建quickbi的过场动画.html
 Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令.html
 
 
-Gui, Pandora:Add, Text, gNewEchartsPinHtml  ys x+20, 新建.pin.html(玫瑰饼图)
+Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+20,新建.echartsDemo.html（官方demo）
+Gui, Pandora:Add, Text, gNewEchartsPinHtml, 新建.pin.html(玫瑰饼图)
 Gui, Pandora:Add, Text, gNewEchartsLineHtml ,新建.Line.html（折线图）
 Gui, Pandora:Add, Text, gNewEchartsBarHtml ,新建.Bar.html（柱状图）
 Gui, Pandora:Add, Text, gNewEchartsPurePinHtml ,新建.Pin.html（纯圆饼图）
@@ -375,14 +378,15 @@ Gui, Pandora:Add, Text, gNewEchartsareaStyleHtml ,新建.areaStyle.html（折线
 Gui, Pandora:Add, Text, gNewEchartraduisHtml ,新建.raduis.html（圆环图）
 Gui, Pandora:Add, Text, gNewEchartPinBoderHtml ,新建.pinBoder.html（圆环断层图）
 Gui, Pandora:Add, Text, gNewEchartdoulecolorHtml ,新建.doulecolor.html（双色柱状图）
-Gui, Pandora:Add, Text, gNewEchartDemoHtml ,新建.echartsDemo.html（官方示例脚手架）
-Gui, Pandora:Add, Text, gtianMaparcgisHtml ,新建arcgis和天地图.html
-Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
-Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
-Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
+Gui, Pandora:Add, Text, gsandianchart W180, 新建.Scatter.html（散点图）
+Gui, Pandora:Add, Text, gyibiaopan W180, 新建.仪表盘刻度.html
+Gui, Pandora:Add, Text, gdataSetBar W190, 新建.dataSet.html（柱状图）
+Gui, Pandora:Add, Text, gdataSetBar2 W190, 新建.dataSet2.html（双柱状图）
+Gui, Pandora:Add, Text, gfunnelhtml W190, 新建.funnel.html（漏斗图）
+Gui, Pandora:Add, Text, gdatasetfunnel W210, 新建.datasetfunnel.html（漏斗图）
 Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
-Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
-Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
+
+
 
 
 Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+80, 新建nodejs爬虫模板
@@ -393,11 +397,15 @@ Gui, Pandora:Add, Text, gNewNodejsSequelize W190, 新建nodejs-sequelize-mysql�
 Gui, Pandora:Add, Text, gNewNodejsRenamechName W190, 新建nodejs批量改名中文模板
 Gui, Pandora:Add, Text, gNewmochachai W190, 新建mocha+chai单元测试模板
 Gui, Pandora:Add, Text, gNewesmodule W190, 新建nodejs运行es Module模板
-Gui, Pandora:Add, Text, gsandianchart W180, 散点图.html
-Gui, Pandora:Add, Text, gyibiaopan W180, 仪表盘刻度.html
-Gui, Pandora:Add, Text, gdataSetBar W180, dataSet柱状图.html
+Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
+Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
+Gui, Pandora:Add, Text, gtianMaparcgisHtml ,新建arcgis和天地图.html
+Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
+Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
+Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 
-Gui, Pandora:Add, Text, gNewreactbabelHtml W150  ys x+30, 新建react.babel.html
+
+Gui, Pandora:Add, Text, gNewreactbabelHtml W150  ys x+70, 新建react.babel.html
 Gui, Pandora:Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
 Gui, Pandora:Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
@@ -912,7 +920,6 @@ Gui, Pandora:Add, Link,, <a href="https://l2dwidget.js.org/docs/index.html">文�
 
 ; @map @ditu
 
-; @echarts @ehcart @chart
 Gui, Pandora:Tab, 9
 Gui, Pandora:Add, Text, W140 Section, 高德地图：
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/summary">高德地图-JavaScript</a>
@@ -964,7 +971,7 @@ Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/lates
 Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/latest/api-reference/">api文档</a>
 Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/latest/guide/">入门指引</a>
 
-; chart echarts
+; @chart echarts
 
 Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
 Gui, Pandora:Add, Link,, <a href="https://github.com/ecomfe/awesome-echarts">awesome-echarts</a>
@@ -972,6 +979,8 @@ Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/tutorial.html#5 分钟上手 ECharts">echart 快速上手</a>
 Gui, Pandora:Add, Link,, <a href="https://www.oschina.net/translate/geojson-spec#positions">GeoJSON 格式规范</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/api.html">echart API</a>
+Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/zh/option.html#dataset">echart dataset API</a>
+Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/zh/tutorial.html#%E4%BD%BF%E7%94%A8%20dataset%20%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE">echart dataset 教程</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
 Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/explore.html">ECharts 官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts 论坛示例</a>
@@ -1141,44 +1150,10 @@ Gui, Pandora:Add, Text,  W140 ys, 主题收录:
 Gui, Pandora:Add, Link,, <a href="https://bootswatch.com">bootstrap主题收录</a>
 Gui, Pandora:Add, Link,, <a href="https://jenil.github.io/bulmaswatch/">Bluma主题收录</a>
 
-; 垃圾回收站
-Gui, Pandora:Tab, 15
-Gui, Pandora:Add, Text,  W140 Section, 垃圾1:
-Gui, Pandora:Add, Link,, <a href="http://wx1.sinaimg.cn/large/006ar8zggy1g24gdlck3sj316h0u0gqu.jpg">git命令速查表</a>
-Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/video/av39807850?zw">Hexo bilibili教程</a>
-Gui, Pandora:Add, Link,, <a href="https://www.jiumodiary.com/">鸠摩搜书</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/30-seconds/30-seconds-of-code">30 seconds of code</a>
-Gui, Pandora:Add, Link,, <a href="https://leancloud.cn/docs/leanstorage-started-js.html">数据存储入门</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/leancloud/StorageStarted">leancloud入门Demo</a>
-Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/video/av8868380/">leancloud安全课程</a>
-
-Gui, Pandora:Add, Text,  W140 ys, 垃圾2:
-Gui, Pandora:Add, Link,, <a href="http://192.168.8.124:8080/api/swagger-ui.html#/">swagger-ui</a>
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/dg12345-vue">旧版 dg12345 git</a>
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/dg12345-vue-plus">旧版 dg12345-plus git</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-old">新的 gitlab 地址旧版12345</a>
-Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com/#/overallSituation">旧版测试地址174</a>
-Gui, Pandora:Add, Link,, <a href="http://39.108.64.147:86">旧版演示地址</a>
-Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/dg/maptheme">新版 plus 测试地址174</a>
-
-
-Gui, Pandora:Add, Text,  W140 ys, 垃圾3:
-Gui, Pandora:Add, Link,, <a href="http://iconstore.co/">iconstore.co</a>
-Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">pexels.com</a>
-Gui, Pandora:Add, Link,, <a href="https://unsplash.com/">unsplash.com</a>
-Gui, Pandora:Add, Link,, <a href="https://www.foodiesfeed.com/">foodiesfeed.com</a>
-Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">pixabay.com</a>
-Gui, Pandora:Add, Link,, <a href="https://magdeleine.co/browse/">magdeleine.co</a>
-Gui, Pandora:Add, Link,, <a href="http://huziketang.mangojuice.top/books/react/lesson1">《React 小书》</a>
-Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/weuse?page=1">《大牛都在用什么？》</a>
-Gui, Pandora:Add, Link,, <a href="https://classroom.udacity.com/courses/ud905/lessons/92a39eec-0c04-4d98-b47f-c884b9cd5a3b/concepts/78143d19-8360-4f83-88ab-cfcb5b160465">「Flutter 教学视频」</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/phodal/serverless">《Serverless》</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md">《JavaScript 算法》</a>
-
 
 ; 剪切框
-Gui, Pandora:Tab, 16
-Gui, Pandora:Add, Edit, vClipHistory w870 H550 Limit199307100337
+Gui, Pandora:Tab, 15
+Gui, Pandora:Add, Edit, vClipHistory w1020 H660 Limit199307100337
 ; Gui, Pandora:Add, Button, gSaveClipHistory w870 h30, 保存到桌面
 
 

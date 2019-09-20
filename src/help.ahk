@@ -1698,3 +1698,11 @@ Sleep, 100
 cs("iocadmin")
 Send, {enter}
 return
+
+::mangzhong::
+Var =
+(
+一想到你我就…… 😭😭😭……空恨别梦久
+)
+code(Var)
+return

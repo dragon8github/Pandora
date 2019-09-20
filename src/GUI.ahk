@@ -7074,6 +7074,92 @@ RunBy(name)
 run, % name
 return
 
+dataSetBar2:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    myChart.setOption({
+        dataset: {
+            source: {
+                '时间': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                '数值': [220, 182, 191, 234, 290, 330, 310],
+                '数值2': [220, 182, 191, 234, 290, 330, 310],
+            }
+        },
+        /* 
+        { 
+              dataset: { 
+                  source: {...rows, ...values}
+              }
+        }
+         */
+        /* 
+        {
+            "dataset":
+            {
+                "source":
+                {
+                    "TB_0_TOWN": ["厚街", "大朗", "麻涌", "长安", "黄江", "虎门"],
+                    "TB_0_FISHERY": ["16", "16", "16", "16", "16", "16"]
+                    "TB_0_FISHERY2": ["16", "16", "16", "16", "16", "16"]
+                }
+            }
+        }
+         */
+        xAxis: {
+            type: 'category',
+            show: true,
+            axisLabel: {
+                fontSize: '12',
+                color: '#333',
+                fontWeight: 'normal',
+            },
+        },
+        yAxis: {
+            axisLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                fontSize: '12',
+                color: '#333',
+                fontWeight: 'normal',
+            },
+        },
+        tooltip: {},
+        series: [
+            { type: 'bar' },
+            { type: 'bar' },
+        ]
+    });
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
 dataSetBar:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
@@ -7102,6 +7188,26 @@ FileAppend,
                 '数值': [220, 182, 191, 234, 290, 330, 310],
             }
         },
+        /* 
+        { 
+              dataset: { 
+                  source: {...rows, ...values}
+              }
+        }
+         */
+        /* 
+        {
+            "dataset":
+            {
+                "source":
+                {
+                    "TB_0_TOWN": ["厚街", "大朗", "麻涌", "长安", "黄江", "虎门"],
+                    "TB_0_FISHERY": ["16", "16", "16", "16", "16", "16"]
+                    "TB_0_FISHERY2": ["16", "16", "16", "16", "16", "16"]
+                }
+            }
+        }
+         */
         xAxis: {
             type: 'category',
             show: true,
@@ -8150,6 +8256,236 @@ FileAppend,
         <div class="block block-10">10</div>
     </div>
 </body>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+funnelhtml:
+Var =
+(
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- echarts -->
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
+    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
+
+	<!-- 百度地图插件 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <!-- 百度地图 - 聚合图相关的插件 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+
+    <!-- echarts 百度地图扩展插件 -->
+    <script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+</head>
+<style>
+	#main {
+		width: 100`%;
+		height: 100vh;
+	}
+</style>
+
+<body>
+    <div id="main"></div>
+</body>
+
+<script type="text/javascript">
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+
+// 预定义配置
+var option = {}
+
+var baseURL = 'https://gallery.echartsjs.com'
+
+//////////////////////////////////////////////
+option = {
+    title: {
+        text: '漏斗图',
+        subtext: '纯属虚构'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c}`%"
+    },
+    toolbox: {
+        feature: {
+            dataView: {readOnly: false},
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    legend: {
+        data: ['展现','点击','访问','咨询','订单']
+    },
+    calculable: true,
+    series: [
+        {
+            name:'漏斗图',
+            type:'funnel',
+            left: '10`%',
+            top: 60,
+            bottom: 60,
+            width: '80`%',
+            min: 0,
+            max: 100,
+            minSize: '0`%',
+            maxSize: '100`%',
+            sort: 'descending',
+            gap: 2,
+            label: {
+                show: true,
+                position: 'inside'
+            },
+            labelLine: {
+                length: 10,
+                lineStyle: {
+                    width: 1,
+                    type: 'solid'
+                }
+            },
+            itemStyle: {
+                borderColor: '#fff',
+                borderWidth: 1
+            },
+            emphasis: {
+                label: {
+                    fontSize: 20
+                }
+            },
+            data: [
+                {value: 60, name: '访问'},
+                {value: 40, name: '咨询'},
+                {value: 20, name: '订单'},
+                {value: 80, name: '点击'},
+                {value: 100, name: '展现'}
+            ]
+        }
+    ]
+};
+//////////////////////////////////////////////
+
+myChart.setOption(option);
+</script>
+</html>
+)
+code(Var)
+return
+
+datasetfunnel:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- echarts -->
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
+    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
+
+	<!-- 百度地图插件 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <!-- 百度地图 - 聚合图相关的插件 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+
+    <!-- echarts 百度地图扩展插件 -->
+    <script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+</head>
+<style>
+	#main {
+		width: 100`%;
+		height: 100vh;
+	}
+</style>
+
+<body>
+    <div id="main"></div>
+</body>
+
+<script type="text/javascript">
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+
+// 预定义配置
+var option = {}
+
+var baseURL = 'https://gallery.echartsjs.com'
+
+//////////////////////////////////////////////
+option = {
+    dataset: {
+        source: {
+            '名称': ['访问', '咨询', '订单', '点击', '展现',],
+            '数值': [60, 40, 20, 80, 100,],
+        }
+    },
+    title: {
+        text: '漏斗图',
+        subtext: '纯属虚构'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c}`%"
+    },
+    legend: {
+        data: ['展现','点击','访问','咨询','订单']
+    },
+    calculable: true,
+    series: [
+        {
+            name:'漏斗图',
+            type:'funnel',
+            left: '10`%',
+            top: 60,
+            bottom: 60,
+            width: '80`%',
+            min: 0,
+            max: 100,
+            minSize: '0`%',
+            maxSize: '100`%',
+            sort: 'descending',
+            gap: 2,
+            label: {
+                show: true,
+                position: 'inside'
+            },
+            labelLine: {
+                length: 10,
+                lineStyle: {
+                    width: 1,
+                    type: 'solid'
+                }
+            },
+            itemStyle: {
+                borderColor: '#fff',
+                borderWidth: 1
+            },
+            emphasis: {
+                label: {
+                    fontSize: 20
+                }
+            },
+        }
+    ]
+};
+//////////////////////////////////////////////
+
+myChart.setOption(option);
+</script>
 </html>
 ),  %name%
 RunBy(name)

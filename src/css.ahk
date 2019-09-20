@@ -23,6 +23,7 @@
     Menu, cssknow, Add, calc：属性计算器，适合 position 居中解决方案, CssHandler
     Menu, cssknow, Add, 背景透明还可以这样用：background: 0 0, CssHandler
 
+    Menu, CssMenu, Add, css.init, CssHandler2
     Menu, CssMenu, Add, css.debugger, CssHandler2
     Menu, CssMenu, Add, normalize.css, CssHandler2
     Menu, CssMenu, Add, chrome-yellow, CssHandler2
@@ -149,8 +150,7 @@ return
 
 
 CssHandler2:
-SendLevel 1
-Send, %A_ThisMenuItem%{tab}
+_send(A_ThisMenuItem, true, true)
 return
 
 CssHandler3:
@@ -169,6 +169,10 @@ Var =
 )
 }
 
+if (v == "body") {
+_send("css.body", true, true)
+return
+}
 
 if (v == "让body高度自适应屏幕") {
 Var =
@@ -5232,6 +5236,23 @@ Var =
 </body>
 
 </html>
+)
+code(Var)
+return
+
+::css.body::
+::body::
+::css.init::
+Var =
+(
+html, body {
+    height: 100`%;
+    width: 100`%;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
 )
 code(Var)
 return

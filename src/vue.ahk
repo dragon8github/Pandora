@@ -28,6 +28,7 @@
   Menu, VueMenu, Add, vuex.action, VueHandler
   Menu, VueMenu, Add, this.$store.commit, VueHandler
   Menu, VueMenu, Add, this.$store.dispatch, VueHandler
+  Menu, VueMenu, Add, this.$store.dispatch('StreetIndex/activeStreet'`, streetName`, `{ root: true `}), VueHandler
   Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
   Menu, VueMenu, Add, this.$store.getters['app/master'], VueHandler
   Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations`, mapGetters } from 'vuex', VueHandler  
@@ -140,6 +141,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "this.$store.dispatch('StreetIndex/activeStreet', streetName, { root: true })") {
+Var = 
+(
+this.$store.dispatch('StreetIndex/activeStreet', streetName, { root: true })
 )
 }
 
@@ -3664,10 +3672,11 @@ return
 ::proxytable::
 Var =
 (
+// config.baseURL = '/api'
 proxyTable: {
   '/api': {
     // 请注意，这个链接就不需要带/api了
-    target: 'http://datacenter.dgdatav.com:6080',
+    target: 'http://12345v2.alltosea.com:6080/',
     changeOrigin: true,
     // 重写不能和baseURL HTTP 一起使用。所以baseURL必须不包含HTTP
     pathRewrite: {

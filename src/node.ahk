@@ -1912,3 +1912,66 @@ return
 ::cnpm::
 _sendInput("npm install cnpm -g --registry=https://registry.npm.taobao.org")
 return
+
+::egg::
+::egg.c::
+::egg.e::
+::egg.init::
+InputBox, OutputVar, title, enter a name?,,,,,,,,index
+String1 := SubStr(OutputVar, 1, 1)
+StringUpper, String1, String1 
+OutputVar := String1 . SubStr(OutputVar, 2)
+Var =
+(
+'use strict';
+
+const Controller = require('egg').Controller
+
+class %OutputVar%Controller extends Controller {
+  async index() {
+    const { ctx } = this
+    ctx.body = 'hi, %OutputVar%'
+  }
+  
+  async create%OutputVar%() {
+
+  }
+
+  async modify%OutputVar%() {
+
+  }
+
+  async remove%OutputVar%() {
+  	
+  }
+}
+module.exports = %OutputVar%Controller
+)
+code(Var)
+return
+
+
+::egg.test::
+::egg.t::
+InputBox, OutputVar, title, enter a name?,,,,,,,,index
+String1 := SubStr(OutputVar, 1, 1)
+StringUpper, String1, String1 
+OutputVar2 := String1 . SubStr(OutputVar, 2)
+Var =
+(
+'use strict';
+
+const { app } = require('egg-mock/bootstrap');
+
+describe('test/app/controller/%OutputVar%.test.js', () => {
+  it('should GET /', () => {
+    return app.httpRequest()
+      .get('/%OutputVar%')
+      .expect('hi, %OutputVar2%')
+      .expect(200);
+  });
+});
+
+)
+code(Var)
+return
