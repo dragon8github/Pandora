@@ -1373,8 +1373,7 @@ return
 
 
 ::map.js::
-Var := ajax("https://raw.githubusercontent.com/dragon8github/Pandora/master/snippets/map.js")
-code(Var)
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/map.zip")
 return
 
 ::onhash::
