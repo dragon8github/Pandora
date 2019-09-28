@@ -1193,8 +1193,11 @@ Gui, Card:Add, Tab3, gSwitchCardTab vCardTab Section Choose1 w1250, 知识卡片
 
 Gui, Card:Tab, 1
 
+; 搜索框
+Gui, Card:Add, Edit, vCardSearchInput gCardInputHandler w650 W350 Limit50 Section
+
 ; 树
-Gui, Card:Add, ListView, vCardTree gCardTreeSelect AltSubmit Section HScroll H700 W350, 标题|标签
+Gui, Card:Add, ListView, vCardTree gCardTreeSelect AltSubmit xs HScroll H650 W350, 标题|标签
 
 
 global cardGistObj := {}
