@@ -1381,7 +1381,7 @@ return
 
 
 ::map.js::
-code(gistByName("map.js"))
+code(gistByName("c561adde0d422862cd18a20a0e435b43", "map.js"))
 return
 
 ::onhash::

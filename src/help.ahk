@@ -14,9 +14,10 @@
     }
 return
 */
+
+
 ; 每次输入字符时, 热字串识别器会检查当前活动窗口, 并且如果活动窗口不同于之前, 则会重置. 如果活动窗口发生变化, 但在键入任何字符之前返回, 则不会检测到更改(但可能会由于其他原因重置热字串识别器). 
 ; 通过两个热字符串的触发角，优雅自然无障碍的重置。
-;~Enter:: ; 要养成tab的习惯，默认要关闭这个了。不过我在F11的时候会加入，没关系的。
 ~Tab::
     ; 热字串识别器也可以通过调用 Hotstring("Reset") 来重置.
     Hotstring("Reset")
@@ -1763,6 +1764,12 @@ Gui, Card:Add, Edit, ys vCardContent w890 H700 Limit199307100337
 >+g::
 	Gui, Card:Show,, Card
 return
+
+CardGuiEscape:
+CardGuiClose:
+	Gui, Book:Hide
+return
+
 
 initCard() {
 	data := gistList()

@@ -1187,18 +1187,27 @@ Gui, Card:Margin, 10, 10
 ; 字体大小
 Gui, Card:Font, s12, Verdana
 
+Gui, Card:Add, Text, Section h30, Access_token:
+
+; 获取accessToken
+accessToken := getAccessToken()
+
+; accessToken Input
+Gui, Card:Add, Edit, vCardAccessToken gCardAccessTokenHandler w860 h30 ys , %accessToken%
+
+; update
+Gui, Card:Add, Button, W250 h30 gUpdateGist h30 ys, Pull Gists
 
 ; Tab 选项卡
-Gui, Card:Add, Tab3, gSwitchCardTab vCardTab Section Choose1 w1250, 知识卡片|新增卡片
+Gui, Card:Add, Tab3, gSwitchCardTab vCardTab Section xs Choose1 w1250, 知识卡片|新增卡片
 
 Gui, Card:Tab, 1
 
 ; 搜索框
-Gui, Card:Add, Edit, vCardSearchInput gCardInputHandler w650 W350 Limit50 Section
+Gui, Card:Add, Edit, vCardSearchInput gCardInputHandler W350 Limit50 Section
 
 ; 树
-Gui, Card:Add, ListView, vCardTree gCardTreeSelect AltSubmit xs HScroll H650 W350, 标题|标签
-
+Gui, Card:Add, ListView, vCardTree gCardTreeSelect AltSubmit xs HScroll H530 W350, 标题|标签
 
 global cardGistObj := {}
 
@@ -1206,8 +1215,17 @@ global cardGistObj := {}
 initCard()
 
 
+; update
+Gui, Card:Add, Button, vCardUpdate gCardUpdateHandler w350 h30 xs , Update Snippets 📝
+
+; delete
+Gui, Card:Add, Button, vCardDelete gCardDeleteHandler w350 h30 xs , Delete Snippets ✖
+
+
+
+
 ; 代码容器
-Gui, Card:Add, Edit, ys vCardContent w890 H700 Limit199307100337  
+Gui, Card:Add, Edit, ys vCardContent w890 H650  Limit199307100337  
 
 Gui, Card:Tab, 2
 
@@ -1262,7 +1280,7 @@ ClipChanged(Type) {
 				txt := "__________________ " . title . " 【" . time . "】 " . "__________________ `r`n`r`n" . Clipboard . "`r`n`r`n`r`n`r`n"
 				DIRECTORY := A_Desktop . "\.pandora"
 				AttributeString := FileExist(DIRECTORY)
-				; 说明找到目录了
+				; 如果没有目录，则创建
 				if (AttributeString != "D") {
 					FileCreateDir, % DIRECTORY
 				}

@@ -14,6 +14,15 @@ _HideTrayTip() {  ; NOTE: For Windows 10, replace this function with the one def
     TrayTip
 }
 
+pandoraFolderInit() {
+    DIRECTORY := A_Desktop . "\.pandora"
+	AttributeString := FileExist(DIRECTORY)
+	; 如果没有目录，则创建
+	if (AttributeString != "D") {
+		FileCreateDir, % DIRECTORY
+	}
+    return DIRECTORY
+}
 
 gettvchild(id){
     ret =
@@ -157,7 +166,7 @@ ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
 {
     whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
     whr.Open("GET", url, true)
-    whr.SetRequestHeader("Content-Type", "charset=GB2312")
+    ; whr.SetRequestHeader("Content-Type", "application/json;charset=UTF-8")
     
     whr.Send()
 
@@ -179,6 +188,17 @@ ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
     
     ; return  whr.ResponseText
 }
+
+; Delete
+delete(url)
+{
+    whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+    whr.Open("DELETE", url, true)
+    whr.Send()
+        whr.WaitForResponse()
+    return  whr.ResponseText
+}
+
 
 
 ; 下载内容
@@ -420,13 +440,13 @@ script := new ActiveScript("JScript")
 return script.Eval(jscontent)
 }
 
-gistById(id) {
-data := ajax("https://gitee.com/api/v5/gists/" . id . "?access_token=c561adde0d422862cd18a20a0e435b43")
+gistById(access_token, id) {
+data := ajax("https://gitee.com/api/v5/gists/" . id . "?access_token=" . access_token)
 return data
 }
 
-gistByName(name) {
-    json_str := ajax("https://gitee.com/api/v5/gists?access_token=c561adde0d422862cd18a20a0e435b43")
+gistByName(access_token, name) {
+    json_str := ajax("https://gitee.com/api/v5/gists?access_token=" . access_token)
     data := JSON.Load(json_str)
     result :=
     For key, value in data
@@ -437,8 +457,8 @@ gistByName(name) {
     return result
 }
 
-gistList() {
-    json_str := ajax("https://gitee.com/api/v5/gists?access_token=c561adde0d422862cd18a20a0e435b43")
+gistList(access_token) {
+    json_str := ajax("https://gitee.com/api/v5/gists?access_token=" . access_token)
     data := JSON.Load(json_str)
     return data
 }

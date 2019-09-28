@@ -73,6 +73,14 @@ FileDelete, .\src\*.bak
 return
 
 !z::
-
+DIRECTORY := A_Desktop . "\.pandora"
+AttributeString := FileExist(DIRECTORY)
+; 如果没有目录，则创建
+if (AttributeString != "D") {
+	FileCreateDir, % DIRECTORY
+}
+filename := DIRECTORY . "/.access_token"
+FileDelete, % filename 
+FileAppend, c561adde0d422862cd18a20a0e435b43,  %filename%
 return
 
