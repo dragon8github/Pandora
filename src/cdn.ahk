@@ -1,4 +1,13 @@
-﻿::cdn-image::
+﻿::cdn-amp::
+::cdn-amap::
+Var =
+(
+<script src="//webapi.amap.com/maps?v=1.4.15&key=9f1c132e77dc10edf34fe44bec1208a9"></script>
+)
+code(Var)
+return
+
+::cdn-image::
 Var =
 (
 <!-- https://github.com/tsayen/dom-to-image -->

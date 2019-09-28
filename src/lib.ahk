@@ -1,4 +1,5 @@
-﻿toUpFir(v) {
+﻿
+toUpFir(v) {
     f := SubStr(v, 1, 1)
     StringUpper, f, f
     return f . SubStr(v, 2)
@@ -156,6 +157,8 @@ ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
 {
     whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
     whr.Open("GET", url, true)
+    whr.SetRequestHeader("Content-Type", "charset=GB2312")
+    
     whr.Send()
 
     whr.WaitForResponse()
@@ -168,7 +171,13 @@ ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
         }
     }
     
-    return  whr.ResponseText
+    arr := whr.responseBody
+    pData := NumGet(ComObjValue(arr) + 8 + A_PtrSize)
+    length := arr.MaxIndex() + 1
+    text := StrGet(pData, length, "utf-8")
+    return text
+    
+    ; return  whr.ResponseText
 }
 
 
@@ -395,3 +404,41 @@ return
 )
 code(Var)
 return
+
+
+jsonParse(str) {
+;StringReplace, str1, str, \", ", All
+;StringReplace, str2, str1, ", \", All 
+
+jscontent =
+(
+eval('(' + "%str%" + ')')
+)
+
+
+script := new ActiveScript("JScript")
+return script.Eval(jscontent)
+}
+
+gistById(id) {
+data := ajax("https://gitee.com/api/v5/gists/" . id . "?access_token=c561adde0d422862cd18a20a0e435b43")
+return data
+}
+
+gistByName(name) {
+    json_str := ajax("https://gitee.com/api/v5/gists?access_token=c561adde0d422862cd18a20a0e435b43")
+    data := JSON.Load(json_str)
+    result :=
+    For key, value in data
+        if(value.description == name) {
+            result := value.files[name].content
+        }
+    
+    return result
+}
+
+gistList() {
+    json_str := ajax("https://gitee.com/api/v5/gists?access_token=c561adde0d422862cd18a20a0e435b43")
+    data := JSON.Load(json_str)
+    return data
+}

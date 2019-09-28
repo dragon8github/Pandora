@@ -343,6 +343,7 @@
     Menu, utils2, Add, 求两个时间之间的有效日期, utilsHandler
     Menu, utils2, Add, 用 settimeout 模拟 setInterval, utilsHandler
     Menu, utils2, Add, dialog 对话框类，支持拖拽, utilsHandler
+    Menu, utils2, Add, 求两个数的最大公约数与比例, utilsHandler
 
 
     
@@ -411,6 +412,43 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "求两个数的最大公约数与比例") {
+Var = 
+(
+// 求最大公约数
+const greatestCommonDivisor = function(m, n) {
+var u = +m,
+    v = +n,
+    t = v;
+
+while (v != 0) {
+    t = u `% v;
+    u = v;
+    v = t;
+}
+
+return u
+}
+
+const proportion = function (m, n) {
+const v = greatestCommonDivisor(m, n)
+return `${m/v}:${n/v}`
+}
+
+/*
+proportion(1920, 1080)
+"16:9"
+
+proportion(17280, 4320)
+"4:1" 
+
+proportion(12288, 3456)
+"32:9"
+*/
 )
 }
 
@@ -6112,12 +6150,7 @@ obj.list = 123 // 触发 set hook
 code(Var)
 return
 
-::hex::
-::rgba::
-::rgb::
-::hex2rgba::
-::hex2rgb::
-::color2Rgb::
+
 ::color::
 Var =
 (
@@ -7113,6 +7146,41 @@ return
 Var =
 (
 document.activeElement.blur()
+)
+code(Var)
+return
+
+
+::rgba::
+::color2rgba::
+::color2rgb::
+Var =
+(
+String.prototype.colorRgb = function() {
+    var sColor = this.toLowerCase();
+    if (sColor && /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/.test(sColor)) {
+        if (sColor.length === 4) {
+            var sColorNew = "#";
+            for (var i = 1; i < 4; i += 1) {
+                sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1));
+            }
+            sColor = sColorNew;
+        }
+        var sColorChange = [];
+        for (var i = 1; i < 7; i += 2) {
+            sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
+        }
+
+        const [r, g, b] = sColorChange
+
+        return ``rgba(${r}, ${g}, ${b}, 0)``;
+    } else {
+        return sColor;
+    }
+}
+
+var color = '#072E51';
+color.colorRgb()
 )
 code(Var)
 return

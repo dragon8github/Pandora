@@ -7093,6 +7093,7 @@ return
 ::lock::
 ::js.lock::
 ::jslock::
+::islock::
 Var =
 (
 // （超简易拿来无封装版）使用函数加锁器
@@ -7158,6 +7159,10 @@ lockAnimate(40 * 1)
 lockAnimate(40 * 2)
 lockAnimate(40 * 3)
 
+
+// (新)
+// 单向锁
+const isFirst = ((n = 1) => () => --n === 0)()
 )
 code(Var)
 return

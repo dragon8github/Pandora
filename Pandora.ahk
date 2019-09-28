@@ -29,7 +29,8 @@ FileDelete, .\src\*.bak
 #Include src/ISearch.ahk	  ; ISearch
 /**//////////////////////////////////////////////
 */
-
+#Include src/JSON.ahk	          ; JSON Script
+#Include src/ActiveScript.ahk	  ; Microsoft Script
 #Include src/lib.ahk              ; 公共函数
 #Include src/help.ahk             ; 辅助功能
 #Include src/makedown.ahk         ; makedown
@@ -65,7 +66,24 @@ FileDelete, .\src\*.bak
 #Include src/elasticsearch.ahk	  ; elasticsearch
 #Include src/golang.ahk	          ; golang
 #Include src/book.ahk	          ; book
+#Include src/Card.ahk	          ; card
 
 !F12::
 	Suspend
+return
+
+!z::
+; MsgBox, % gistByName("map.js")
+; data := gistList()
+; MsgBox, % data[1].files["map.js"].content
+; Clipboard := data[1].files["map.js"].content
+/*  
+gist(id) {
+    
+}
+
+gistList(){
+    
+}
+*/
 return

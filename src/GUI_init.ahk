@@ -66,7 +66,7 @@ Gui, ISearch:Add, Button, w140 h30 gcmderOpen ys h30, cmder打开
 
 ; 数据源
 __SEARCH_DATABASE__ := {}
-__SEARCH_DATABASE__[""] := ""
+; __SEARCH_DATABASE__[""] := ""
 __SEARCH_DATABASE__["xshell"] := "C:\Program Files (x86)\NetSarang\Xshell 6\Xshell.exe"
 __SEARCH_DATABASE__["ftp"] := A_Desktop . "\FlashFXP_4.3.1.1969\flashfxp.exe"
 __SEARCH_DATABASE__["cylee.top"] := "https://cylee.top/"
@@ -232,6 +232,7 @@ Gui, Pandora:Add, Link,, <a href="https://console.aws.amazon.com/iam/home?#/home
 Gui, Pandora:Add, Link,, <a href="https://signin.aws.amazon.com/signin">AWS登录</a>
 Gui, Pandora:Add, Link,, <a href="https://console.aws.amazon.com/billing/home?#/paymentmethods">付费绑定</a>
 */
+
 Gui, Pandora:Add, Text,  W140 ys, 好东西：
 Gui, Pandora:Add, Link,, <a href="https://www.zhihu.com/question/23054572">100块以内的礼物</a>
 Gui, Pandora:Add, Link,, <a href="https://www.fontke.com/tool/convfont/">字体在线转换工具</a>
@@ -265,6 +266,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/explore/headlines">语�
 Gui, Pandora:Add, Link,, <a href="https://kindle.51nazhun.pub/">kindle电子书免费</a>
 Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
 Gui, Pandora:Add, Link,, <a href="https://www.24s.net/">24s付费视频盗版</a>
+Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
+Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/?s=JSON">ahk中文社区</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍
@@ -302,16 +305,18 @@ Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer<
 Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux-command 命令搜索</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大全</a>
 Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
+Gui, Pandora:Add, Link,, <a href="https://gitee.com/gists">码云 Gists</a>
+Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
 
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
-Gui, Pandora:Add, Link,, <a href="https://dc.36fy.com/">加速度</a>
+
 Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
 Gui, Pandora:Add, Link,, <a href="https://yeoman.io/generators/">yeoman generators</a>
 Gui, Pandora:Add, Link,, <a href="https://www.vultr.com/">vultr</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/Alvin9999/new-pac/wiki/自建ss服务器教程">自建ss服务器教程</a>
-Gui, Pandora:Add, Link,, <a href="https://36dcup.tk/user">36dcup加速度</a>
+
 Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
 
 
@@ -527,10 +532,10 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/juliandavidmr/awesome-nestj
 
 Gui, Pandora:Add, Text, W160 ys, nodejs cms：
 Gui, Pandora:Add, Link,, <a href="https://www.awesomes.cn/repos/NodeJS/CMS">NodeJS/CMS</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/netlify/netlify-cms">netlify-cms</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/doramart/DoraCMS">（推荐）DoraCMS</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/awesome-javascript#node-powered-cms-frameworks">（推荐）powered-cms</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/NodeBB/NodeBB">NodeBB</a>
-Gui, Pandora:Add, Link,, <a href="https://www.graphql.com/">graphql</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/apostrophecms/apostrophe">apostrophe</a>
 
 
@@ -929,6 +934,8 @@ Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/demo-center/amap-ui">高�
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/map/3d-map">高德地图-3D地图</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/guide/services/weather/?sug_index=0">高德地图-天气预报</a>
 Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/thirdlayer/wmts">高德地图-WMTS</a>
+Gui, Pandora:Add, Link,, <a href="https://lbs.amap.com/api/javascript-api/example/selflayer/heatmap">高德地图-热力图</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 百度地图：
@@ -974,17 +981,15 @@ Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/lates
 ; @chart echarts
 
 Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
+Gui, Pandora:Add, Link,, <a href="https://www.oschina.net/translate/geojson-spec#positions">GeoJSON 格式规范</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ecomfe/awesome-echarts">awesome-echarts</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
-Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/tutorial.html#5 分钟上手 ECharts">echart 快速上手</a>
-Gui, Pandora:Add, Link,, <a href="https://www.oschina.net/translate/geojson-spec#positions">GeoJSON 格式规范</a>
-Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/api.html">echart API</a>
-Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/zh/option.html#dataset">echart dataset API</a>
-Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/zh/tutorial.html#%E4%BD%BF%E7%94%A8%20dataset%20%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE">echart dataset 教程</a>
 Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
 Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/explore.html">ECharts 官方论坛</a>
-Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/explore.html?u=bd-2135947294">ECharts 论坛示例</a>
 Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/editor.html?c=xSy3KhFV4M">ECharts 3D地图</a>
+Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/zh/option.html#dataset">echart dataset API</a>
+Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/zh/tutorial.html#%E4%BD%BF%E7%94%A8%20dataset%20%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE">echart dataset 教程</a>
+Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/examples/zh/index.html#chart-type-dataset">echart dataset demo</a>
 
 
 Gui, Pandora:Add, Text, W140 ys, 优秀的echarts示例:
@@ -993,6 +998,14 @@ Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=he
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xkeSbXdmhp">三角形Echarts</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xSk6VBUGuG">冰山图</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xpO_B8IDmq">饼图花瓣图</a>
+
+Gui, Pandora:Add, Text, W140 ys, highcharts:
+Gui, Pandora:Add, Link,, <a href="https://github.com/highcharts/highcharts">highcharts github</a>
+Gui, Pandora:Add, Link,, <a href="https://www.highcharts.com/demo/">highcharts demo</a>
+Gui, Pandora:Add, Link,, <a href="https://api.highcharts.com/highcharts/">highcharts api</a>
+Gui, Pandora:Add, Link,, <a href="https://www.highcharts.com/demo/pie-basic">highcharts 完美饼图</a>
+
+
 
 Gui, Pandora:Add, Text, W140 ys, openlayers:
 Gui, Pandora:Add, Link, W140, <a href="https://github.com/openlayers/openlayers">openlayers github</a>
@@ -1155,6 +1168,47 @@ Gui, Pandora:Add, Link,, <a href="https://jenil.github.io/bulmaswatch/">Bluma主
 Gui, Pandora:Tab, 15
 Gui, Pandora:Add, Edit, vClipHistory w1020 H660 Limit199307100337
 ; Gui, Pandora:Add, Button, gSaveClipHistory w870 h30, 保存到桌面
+
+
+/**
+//////////////////////////////////////////////
+初始化 Book GUI 的代码逻辑
+//////////////////////////////////////////////
+ */
+GUI, Card:Default
+
+
+; 背景颜色
+Gui, Card:Color, E6FFE6
+
+; margin 布局
+Gui, Card:Margin, 10, 10
+
+; 字体大小
+Gui, Card:Font, s12, Verdana
+
+
+; Tab 选项卡
+Gui, Card:Add, Tab3, gSwitchCardTab vCardTab Section Choose1 w1250, 知识卡片|新增卡片
+
+Gui, Card:Tab, 1
+
+; 树
+Gui, Card:Add, ListView, vCardTree gCardTreeSelect AltSubmit Section HScroll H700 W350, 标题|标签
+
+
+global cardGistObj := {}
+
+; 初始化树
+initCard()
+
+
+; 代码容器
+Gui, Card:Add, Edit, ys vCardContent w890 H700 Limit199307100337  
+
+Gui, Card:Tab, 2
+
+; TODO: 新增表单
 
 
 

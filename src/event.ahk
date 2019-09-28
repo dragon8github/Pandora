@@ -111,6 +111,7 @@
 	Menu, echartsEventMenu, Add, echarts geo地图坐标转换为页面Offset坐标, EventHandler
 	Menu, echartsEventMenu, Add, map.js 类库持续集成, EventHandler
     Menu, echartsEventMenu, Add, toolbox：下载图片的工具, EventHandler
+	Menu, echartsEventMenu, Add, getRangeRBG：专门用于生成 echarts 的渐变色, EventHandler
 
 	;@a @1
 	Menu, EventMenu, Add, JavaScript, :JavaScriptEventMenu
@@ -188,6 +189,13 @@ Var =
 (
 )
 }
+
+
+if (v == "getRangeRBG：专门用于生成 echarts 的渐变色") {
+_send("getEchartscolor", true, true)
+return
+}
+
 
 
 if (v == "echarts.dataSet") {
@@ -1373,7 +1381,7 @@ return
 
 
 ::map.js::
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/map.zip")
+code(gistByName("map.js"))
 return
 
 ::onhash::
@@ -1464,6 +1472,37 @@ this.myChart.on('click', params => {
         this.$router.push({ name: 'mapDetails'})
     }
 })
+)
+code(Var)
+return
+
+::getEchartscolor::
+Var =
+(
+/**
+ * 专门用于生成 echarts 的渐变色：color: new echarts.graphic.LinearGradient( ... )
+ * 返回值类似这样：
+ * [
+        { offset: 0, color: 'rgba(89, 255, 219, 1)' },
+        { offset: 0.1, color: 'rgba(89, 255, 219, .9)' },
+        { offset: 0.2, color: 'rgba(89, 255, 219, .8)' },
+        { offset: 0.3, color: 'rgba(89, 255, 219, .7)' },
+        { offset: 0.4, color: 'rgba(89, 255, 219, .6)' },
+        { offset: 0.5, color: 'rgba(89, 255, 219, .5)' },
+        { offset: 0.6, color: 'rgba(89, 255, 219, .4)' },
+        { offset: 0.7, color: 'rgba(89, 255, 219, .3)' },
+        { offset: 0.8, color: 'rgba(89, 255, 219, .2)' },
+        { offset: 0.9, color: 'rgba(89, 255, 219, .1)' },
+        { offset: 1, color: 'rgba(89, 255, 219, 0)' },
+    ]
+ * 
+ * 使用说明： getRangeColor('89, 255, 219')
+ * 只能传入rgb，不能是rgba或者其他类型。
+ */
+export const getRangeRBG = rgbColorStr => [...Array(11)].map((_, index) => ({
+    offset: index / 10, 
+    color: `rgba(${rgbColorStr}, ${ 1 - index / 10 })`,
+}))
 )
 code(Var)
 return

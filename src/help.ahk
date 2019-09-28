@@ -1706,3 +1706,74 @@ Var =
 )
 code(Var)
 return
+
+~esc::
+Send, {AltUp}
+Send, {CtrlUp}
+return
+
+::pianduan::
+Var =
+(
+snippets
+)
+code(Var)
+return
+
+::ahkgui::
+::guiahk::
+Var =
+(
+
+//////////////////////////////////////////////
+初始化 Book GUI 的代码逻辑
+//////////////////////////////////////////////
+ */
+GUI, Card:Default
+
+; 背景颜色
+Gui, Card:Color, E6FFE6
+
+; margin 布局
+Gui, Card:Margin, 10, 10
+
+; 字体大小
+Gui, Card:Font, s12, Verdana
+
+; 初始化树
+initCard()
+
+; Tab 选项卡
+Gui, Card:Add, Tab3, gSwitchCardTab vCardTab Section Choose1 w1250, 知识卡片|新增卡片
+
+Gui, Card:Tab, 1
+
+; 树
+Gui, Card:Add, TreeView, vCardTree gCardTreeSelect Section HScroll H700 W350
+
+; 代码容器
+Gui, Card:Add, Edit, ys vCardContent w890 H700 Limit199307100337 ReadOnly  
+
+Gui, Card:Tab, 2
+
+; TODO: 新增表单
+
+
+>+g::
+	Gui, Card:Show,, Card
+return
+
+initCard() {
+	
+}
+
+SwitchCardTab() {
+
+}
+
+CardTreeSelect() {
+
+}
+)
+code(Var)
+return
