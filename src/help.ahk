@@ -1724,12 +1724,13 @@ return
 ::guiahk::
 Var =
 (
-
+/**
 //////////////////////////////////////////////
 初始化 Book GUI 的代码逻辑
 //////////////////////////////////////////////
  */
 GUI, Card:Default
+
 
 ; 背景颜色
 Gui, Card:Color, E6FFE6
@@ -1740,8 +1741,6 @@ Gui, Card:Margin, 10, 10
 ; 字体大小
 Gui, Card:Font, s12, Verdana
 
-; 初始化树
-initCard()
 
 ; Tab 选项卡
 Gui, Card:Add, Tab3, gSwitchCardTab vCardTab Section Choose1 w1250, 知识卡片|新增卡片
@@ -1749,22 +1748,40 @@ Gui, Card:Add, Tab3, gSwitchCardTab vCardTab Section Choose1 w1250, 知识卡片
 Gui, Card:Tab, 1
 
 ; 树
-Gui, Card:Add, TreeView, vCardTree gCardTreeSelect Section HScroll H700 W350
+Gui, Card:Add, ListView, vCardTree gCardTreeSelect AltSubmit Section HScroll H700 W350, 标题|标签
+
+
+global cardGistObj := {}
+
+; 初始化树
+initCard()
+
 
 ; 代码容器
-Gui, Card:Add, Edit, ys vCardContent w890 H700 Limit199307100337 ReadOnly  
-
-Gui, Card:Tab, 2
-
-; TODO: 新增表单
-
-
+Gui, Card:Add, Edit, ys vCardContent w890 H700 Limit199307100337  
+---
 >+g::
 	Gui, Card:Show,, Card
 return
 
 initCard() {
+	data := gistList()
 	
+	; 遍历所有片段
+	For key, value in data {
+		; 遍历 files ，但目前我只获取第一个即可
+		For key2, value2 in value.files {
+			; 加入变量
+			cardGistObj[value.description] := value2.content
+			; 添加到树中
+			LV_Add("", value.description, key2)
+			; 只拿第一个，如果有需要以后再说
+			break
+		}
+	}
+	
+	; 自动适应宽度
+	LV_ModifyCol()
 }
 
 SwitchCardTab() {
@@ -1772,8 +1789,35 @@ SwitchCardTab() {
 }
 
 CardTreeSelect() {
+	; 获取点击的索引
+	index := A_EventInfo
+	
+	; 获取标题
+	LV_GetText(RowText, A_EventInfo)
+	
+	; 获取内容
+	content := cardGistObj[RowText]
+	
+	if (A_GuiEvent == "I" && InStr(ErrorLevel, "SF", true)) {
+		GuiControl, Card:Text, CardContent, `% content
+	}
+	
+	if (A_GuiEvent = "Normal") {
+		; GuiControl, Card:Text, CardContent, `% content 
+	}
+	
+	if (A_GuiEvent = "RightClick") {
+		Clipboard := content 
+		ToolTip  已加入到剪切板： "%content%"
+		SetTimer, RemoveToolTip, -1000
+	}
 
+	if (A_GuiEvent = "DoubleClick") {
+		Clipboard := content 
+		ToolTip  已加入到剪切板： "%content%"
+		SetTimer, RemoveToolTip, -1000
+	}
 }
 )
-code(Var)
+txtit(Var)
 return

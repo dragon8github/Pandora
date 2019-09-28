@@ -27,23 +27,32 @@ SwitchCardTab() {
 }
 
 CardTreeSelect() {
+	; 获取点击的索引
 	index := A_EventInfo
+	
+	; 获取标题
 	LV_GetText(RowText, A_EventInfo)
+	
+	; 获取内容
 	content := cardGistObj[RowText]
 	
+	if (A_GuiEvent == "I" && InStr(ErrorLevel, "SF", true)) {
+		GuiControl, Card:Text, CardContent, % content
+	}
+	
 	if (A_GuiEvent = "Normal") {
-		GuiControl, Card:Text, CardContent, % content 
+		; GuiControl, Card:Text, CardContent, % content 
 	}
 	
 	if (A_GuiEvent = "RightClick") {
 		Clipboard := content 
-		ToolTip  已加入到剪切板： "%RowText2%"
+		ToolTip  已加入到剪切板： "%content%"
 		SetTimer, RemoveToolTip, -1000
 	}
 
 	if (A_GuiEvent = "DoubleClick") {
 		Clipboard := content 
-		ToolTip  已加入到剪切板： "%RowText2%"
+		ToolTip  已加入到剪切板： "%content%"
 		SetTimer, RemoveToolTip, -1000
 	}
 }

@@ -73,17 +73,6 @@ FileDelete, .\src\*.bak
 return
 
 !z::
-; MsgBox, % gistByName("map.js")
-; data := gistList()
-; MsgBox, % data[1].files["map.js"].content
-; Clipboard := data[1].files["map.js"].content
-/*  
-gist(id) {
-    
-}
 
-gistList(){
-    
-}
-*/
 return
+

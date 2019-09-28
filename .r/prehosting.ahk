@@ -18,3 +18,12 @@ __TIP__() {
 return
 
 
+
+__TIP__(a = 123) {
+	MsgBox, % a
+}
+
+!z::
+	HFN := Func("__TIP__")
+	Hotstring(":*:fuck", HFN.bind("321"))
+return
