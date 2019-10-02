@@ -1191,6 +1191,24 @@ code(Var)
 return
 
 
+::ahkvar2::
+::varahk2::
+Var = 
+(
+InputBox, OutputVar, title, enter a name?,,,,,,,,user
+String1 := SubStr(OutputVar, 1, 1)
+StringUpper, String1, String1
+OutputVar2 := String1 . SubStr(OutputVar, 2)
+Var = 
+(
+
+`)
+code(Var)
+)
+code(Var)
+return
+
+
 
 !PGUP::
     Send, {PGUP 30}

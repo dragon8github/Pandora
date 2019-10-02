@@ -8495,3 +8495,68 @@ myChart.setOption(option);
 RunBy(name)
 run, % name
 return
+
+dgmap3DhtmlWMTS:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>WMTS</title>
+    <style>
+    html,
+    body,
+    #container {
+        width: 100`%;
+        height: 100`%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    </div>
+    <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=9f1c132e77dc10edf34fe44bec1208a9"></script>
+    <script>
+
+      // 高德地图WMTS 文档：https://lbs.amap.com/api/javascript-api/reference/wms/
+      // 天地图WMTS服务文档：http://lbs.tianditu.gov.cn/server/MapService.html
+
+      // 大为提供的正确访问参数和姿势：
+      /* 
+        http://t0.tianditu.gov.cn/img_c/wmts?tk=63c5c4f101d68229494bb45d3bf60277&SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=c&TILEMATRIX=16&TILEROW=12190&TILECOL=53472&FORMAT=tiles
+       */
+
+
+      var map = new AMap.Map('container', {
+        zoom: 15,
+        center: [113.757656, 23.026731],
+        mapStyle: "amap://styles/darkblue",
+      });
+
+
+      var wms  = new AMap.TileLayer.WMTS({
+            url: 'https://services.arcgisonline.com/arcgis/rest/services/Demographics/USA_Population_Density/MapServer/WMTS/',
+            params: {
+                Layer: 'img',
+                VERSION:'1.0.0',
+                FORMAT: 'tiles',
+                STYLE: 'default',
+            }
+      })
+
+      wms.setMap(map)
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

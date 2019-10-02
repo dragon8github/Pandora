@@ -155,14 +155,25 @@ CardTreeSelect() {
 	}
 
 	if (A_GuiEvent = "DoubleClick") {
-		Clipboard := content 
-		ToolTip  已加入到剪切板： "%content%"
-		SetTimer, RemoveToolTip, -1000
+		; TODO: 弹出一个文本框，支持修改。
 	}
 }
 
 CardUpdateHandler() {
+	; 获取当前的 access_token
+	GuiControlGet, access_token, Card:, CardAccessToken, Text
+	; 获取当前的label
+	label := currentSelectSnippets.label 
+	; 获取最新的content
+	GuiControlGet, content, Card:, CardContent, Text
+	; 获取描述
+	desc := currentSelectSnippets.desc 
 	
+	
+	data := {}
+	data.access_token := access_token
+	data.files := {}
+	data.files[label] := { content: content } 
 }
 
 
@@ -178,6 +189,9 @@ saveWhereDelete(desc, label, content) {
 }
 
 CardDeleteHandler() {
+	; 通过这个原来也可以获取。 但只是获取索引，根本不靠谱，如果是搜索状态下，肯定不对。
+	; MsgBox, % LV_GetNext(0, "Focused")
+	
 	; 获取当前选择的id
 	id := currentSelectSnippets.id
 	; 获取当前选择的 desc
@@ -198,9 +212,6 @@ CardDeleteHandler() {
 	
 	saveWhereDelete(desc, label, content)
 	result := delete("https://gitee.com/api/v5/gists/" . id . "?access_token=" . access_token)
-	
-	MsgBox, % result
-	
 	; 重新请求数据
 	UpdateGist()
 }

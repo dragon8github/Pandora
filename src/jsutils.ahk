@@ -436,7 +436,7 @@ return u
 
 const proportion = function (m, n) {
 const v = greatestCommonDivisor(m, n)
-return `${m/v}:${n/v}`
+return ``${m/v}:${n/v}``
 }
 
 /*

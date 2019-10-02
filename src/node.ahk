@@ -1915,7 +1915,6 @@ return
 
 ::egg::
 ::egg.c::
-::egg.e::
 ::egg.init::
 InputBox, OutputVar, title, enter a name?,,,,,,,,index
 String1 := SubStr(OutputVar, 1, 1)
@@ -1971,7 +1970,113 @@ describe('test/app/controller/%OutputVar%.test.js', () => {
       .expect(200);
   });
 });
+)
+code(Var)
+return
 
+::eggs::
+::egg.s::
+::egg.serve::
+InputBox, OutputVar, title, enter a name?,,,,,,,,user
+String1 := SubStr(OutputVar, 1, 1)
+StringUpper, String1, String1 
+OutputVar2 := String1 . SubStr(OutputVar, 2)
+Var =
+(
+const Service = require('egg').Service;
+
+class %OutputVar2%Service extends Service {
+	// https://eggjs.org/zh-cn/tutorials/mysql.html#read
+	async query(where) {
+		let %OutputVar%s = await this.app.mysql.select('%OutputVar%', where)
+		return %OutputVar%s
+	}
+
+	// https://eggjs.org/zh-cn/tutorials/mysql.html#read
+	async find(id) {
+		let %OutputVar% = await this.app.mysql.get('%OutputVar%', { id })
+		return { %OutputVar% };
+	}
+
+	// https://eggjs.org/zh-cn/tutorials/mysql.html#create
+	async insert(%OutputVar%) {
+		return await this.app.mysql.insert('%OutputVar%', %OutputVar%)
+	}
+
+	// https://eggjs.org/zh-cn/tutorials/mysql.html#update
+	async update(row, options) {
+		await this.app.mysql.update('%OutputVar%', row, options)
+	}
+
+	// https://eggjs.org/zh-cn/tutorials/mysql.html#delete
+	async remove(where) {
+		await this.app.mysql.delete('%OutputVar%', where)
+	}
+}
+
+module.exports = %OutputVar2%Service;
+)
+code(Var)
+return
+
+::eggss::
+::eggus::
+Var =
+(
+const { ctx, service } = this
+const { id } = ctx.params
+const data = ctx.request.body
+const result = service.request.insert(data)
+ctx.body = result
+)
+code(Var)
+return
+
+::egg.router::
+::egg.r::
+Var =
+(
+'use strict';
+
+/**
+ * @param {Egg.Application} app - egg application
+ */
+module.exports = app => {
+  const { router, controller } = app;
+
+  // 用户管理
+  router.get('/register', controller.user.register);
+  router.get('/login/:id', controller.user.login);
+  router.get('/forget', controller.user.forget);
+
+  // 请求资源管理
+  router.get('/menu', controller.request.menu);
+  router.post('/createRequest', controller.request.createRequest);
+  router.post ('/modifyRequest/:id', controller.request.modifyRequest);
+  router.get('/createFolder', controller.request.createFolder);
+  router.post('/removeRequest/:id', controller.request.removeRequest);
+  router.get('/moveRequest', controller.request.moveRequest);
+  router.get('/removeFolder', controller.request.removeFolder);
+  router.get('/renameFolder', controller.request.renameFolder);
+
+  // 个人工作空间
+  router.get('/workSpace', controller.workSpace.index);
+  router.get('/createWorkSpace', controller.workSpace.createWorkSpace);
+  router.get('/modifyWorkSpace', controller.workSpace.modifyWorkSpace);
+  router.get('/removeWorkSpace', controller.workSpace.removeWorkSpace);
+
+  // 团队管理
+  router.get('/team', controller.team.index);
+  router.get('/creteTeam', controller.team.creteTeam);
+  router.get('/removeTeam', controller.team.removeTeam);
+  router.get('/modifyTeam', controller.team.modifyTeam);
+
+  // 配置管理
+  router.get('/env', controller.env.index);
+  router.get('/addEnv', controller.env.addEnv);
+  router.get('/removeEnv', controller.env.removeEnv);
+  router.get('/modifyEnv', controller.env.modifyEnv);
+};
 )
 code(Var)
 return

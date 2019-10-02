@@ -170,6 +170,7 @@ ajax(url, q:=false, text:="正在为你下载代码，请保持网络顺畅")
     
     whr.Send()
 
+    ; 重要，甚至是必备的。
     whr.WaitForResponse()
     
     if (q==false) {

@@ -403,6 +403,7 @@ Gui, Pandora:Add, Text, gNewNodejsRenamechName W190, 新建nodejs批量改名中
 Gui, Pandora:Add, Text, gNewmochachai W190, 新建mocha+chai单元测试模板
 Gui, Pandora:Add, Text, gNewesmodule W190, 新建nodejs运行es Module模板
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
+Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 Gui, Pandora:Add, Text, gtianMaparcgisHtml ,新建arcgis和天地图.html
 Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
@@ -461,6 +462,8 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/hz-1234
 Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:6083/#/dg/Index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/big-bcreen/boards">敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/blob/master/DOC/东莞市社会治理可视化分析平台/05UIUE文档/大屏UI/">UI资源</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.40.37:8084/">线上地址</a>
+
 
 Gui, Pandora:Add, Text,  W140 xs Section yp+150, 数据中心
 Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">预览地址</a>
@@ -1172,11 +1175,10 @@ Gui, Pandora:Add, Edit, vClipHistory w1020 H660 Limit199307100337
 
 /**
 //////////////////////////////////////////////
-初始化 Book GUI 的代码逻辑
+初始化 Card GUI 的代码逻辑
 //////////////////////////////////////////////
  */
 GUI, Card:Default
-
 
 ; 背景颜色
 Gui, Card:Color, E6FFE6
