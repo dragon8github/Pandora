@@ -1,4 +1,13 @@
-﻿::cdn-amp::
+﻿::cdn-tianditu::
+::cdn-tianmap::
+Var =
+(
+<script src="http://api.tianditu.gov.cn/api?v=4.0&tk=63c5c4f101d68229494bb45d3bf60277"></script>
+)
+code(Var)
+return
+
+::cdn-amp::
 ::cdn-amap::
 Var =
 (

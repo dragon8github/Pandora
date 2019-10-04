@@ -66,24 +66,22 @@
 	Menu, DataType, Add, Sequelize.BOOLEAN, NodeHandler2
 	Menu, DataType, Add, Sequelize.UUID, NodeHandler2
 
-	Menu, NodeMenu, Add, DataType, :DataType
+	Menu, SeqMenu, Add, DataType, :DataType
 
-	Menu, NodeMenu, Add, $ npx sequelize-cli init --force, NodeHandler 
-	Menu, NodeMenu, Add, $ sequelize db:create, NodeHandler
-	Menu, NodeMenu, Add, $ npx sequelize-cli model:generate --name User, NodeHandler
-	Menu, NodeMenu, Add, $ npx sequelize-cli db:migrate, NodeHandler
-	Menu, NodeMenu, Add, $ npx sequelize-cli db:migrate:undo, NodeHandler
-	Menu, NodeMenu, Add, sequelize Testing the connection, NodeHandler
-	Menu, NodeMenu, Add, sequelize.createmodel, NodeHandler
-
-	Menu, NodeMenu, Add
-	Menu, NodeMenu, Add
+	Menu, SeqMenu, Add, $ npx sequelize-cli init --force, NodeHandler 
+	Menu, SeqMenu, Add, $ sequelize db:create, NodeHandler
+	Menu, SeqMenu, Add, $ npx sequelize-cli model:generate --name User, NodeHandler
+	Menu, SeqMenu, Add, $ npx sequelize-cli db:migrate, NodeHandler
+	Menu, SeqMenu, Add, $ npx sequelize-cli db:migrate:undo, NodeHandler
+	Menu, SeqMenu, Add, sequelize Testing the connection, NodeHandler
+	Menu, SeqMenu, Add, sequelize.createmodel, NodeHandler
+	
 
 	Menu, NodeMenu, Add, 'use strict';, NodeHandler
 	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
 	Menu, NodeMenu, Add, module.exports, NodeHandler
 	Menu, NodeMenu, Add, os.EOL, NodeHandler
-	Menu, NodeMenu, Add, $ npm install -g nodemon && nodemom index.js, NodeHandler
+	Menu, NodeMenu, Add, $ npm install -g nodemon && nodemom --inspect index.js, NodeHandler
 	Menu, NodeMenu, Add, $ npm install pm2 -g && pm2 start hello.js --watch, NodeHandler
 
 	Menu, NodeMenu, Add
@@ -95,7 +93,7 @@
 	Menu, NodeMenu, Add, node.ch, NodeHandler
 	Menu, NodeMenu, Add, request, NodeHandler
 	Menu, NodeMenu, Add, request.proxy, NodeHandler
-	Menu, NodeMenu, Add, node-http, NodeHandler
+	Menu, NodeMenu, Add, node.http, NodeHandler
 	Menu, NodeMenu, Add, http.request, NodeHandler
 	
 	
@@ -117,10 +115,11 @@
 	Menu, NodeMenu, Add
 	
 	Menu, NodeMenu, Add, ejs, NodeHandler
-	Menu, NodeMenu, Add, fs 文件IO, :NodeFileHandler
 	Menu, NodeMenu, Add, nodejs实现最简单的模板引擎替换, NodeHandler
 	Menu, NodeMenu, Add, npx lite-server, NodeHandler
-
+	Menu, NodeMenu, Add, fs 文件IO, :NodeFileHandler
+	Menu, NodeMenu, Add, sequelize, :SeqMenu
+	
 	Menu, NodeMenu, Show
 	Menu, NodeMenu, DeleteAll
 	Menu, NodeFileHandler, DeleteAll
@@ -810,7 +809,7 @@ npm install pm2 -g && pm2 start hello.js --watch
 )
 }
 
-if (v == "$ npm install -g nodemon && nodemom index.js") {
+if (v == "$ npm install -g nodemon && nodemom --inspect index.js") {
 Var =
 (
 npm install -g nodemon && nodemom index.js
@@ -861,9 +860,8 @@ Send, request.proxy{tab}
 return
 }
 
-if (v == "node-http") {
-SendLevel 1
-Send, node-http{tab}
+if (v == "node.http") {
+_send("node.http", true)
 return
 }
 
@@ -1327,21 +1325,59 @@ return
     SendRaw, process.env.NODE_ENV === 'production|development'
 return
 
-::node-http::
-::node-server::
+::node.http::
+::node.server::
 Var = 
 (
-var http = require('http');
+/* 
+$ npm install -g nodemon
+$ nodemon --inspect app.js
+ */
+const http = require('http')
 
-var server = http.createServer(function (req, rep) {
-    // application/json;charset=utf-8
-    rep.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin": '*'});
-    rep.end("Hello World!!");
-})
+http.createServer((req, res) => {
 
-server.listen(3000, function (err) {
-     console.log('start');
-});
+	const { url, method, headers } = req
+
+	let body = ''
+
+	req.on('data', chunk => {
+		body += chunk
+	})
+
+	// 需要 POSTMAN 发送 POST application/json 请求才可以
+	req.on('end', () => {
+		res.statusCode = 200
+		res.statusMessage = 'success'
+		res.setHeader('Content-Type', 'application/json')
+		res.setHeader('Access-Control-Allow-Origin', '*')
+
+		/* 
+		res.writeHead(200, 'success', { 
+			'Content-Type': 'text/html',
+			'Content-Length': body.length,
+			"Access-Control-Allow-Origin": '*',
+		})
+		 */
+
+		res.write(JSON.stringify({
+			code: 200,
+			msg: 'success',
+			data: [
+				{ id: 1, title: '中国机长票房破10亿' },
+				{ id: 2, title: '我和我的祖国票房新' },
+				{ id: 3, title: '惠普计划裁员16' },
+				{ id: 4, title: '谢依霖怀二胎新' },
+				{ id: 5, title: '中国女排重回第一' },
+			]
+		}))
+
+		res.end()
+	})
+
+	// res.end('Hello World')
+	
+}).listen(8080, () => console.log('Listening on 8080'))
 )
 code(Var)
 Return
@@ -1988,14 +2024,12 @@ const Service = require('egg').Service;
 class %OutputVar2%Service extends Service {
 	// https://eggjs.org/zh-cn/tutorials/mysql.html#read
 	async query(where) {
-		let %OutputVar%s = await this.app.mysql.select('%OutputVar%', where)
-		return %OutputVar%s
+		return await this.app.mysql.select('%OutputVar%', where)
 	}
 
 	// https://eggjs.org/zh-cn/tutorials/mysql.html#read
 	async find(id) {
-		let %OutputVar% = await this.app.mysql.get('%OutputVar%', { id })
-		return { %OutputVar% };
+		return await this.app.mysql.get('%OutputVar%', { id })
 	}
 
 	// https://eggjs.org/zh-cn/tutorials/mysql.html#create
@@ -2005,12 +2039,12 @@ class %OutputVar2%Service extends Service {
 
 	// https://eggjs.org/zh-cn/tutorials/mysql.html#update
 	async update(row, options) {
-		await this.app.mysql.update('%OutputVar%', row, options)
+		return await this.app.mysql.update('%OutputVar%', row, options)
 	}
 
 	// https://eggjs.org/zh-cn/tutorials/mysql.html#delete
 	async remove(where) {
-		await this.app.mysql.delete('%OutputVar%', where)
+		return await this.app.mysql.delete('%OutputVar%', where)
 	}
 }
 

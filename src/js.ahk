@@ -7681,3 +7681,12 @@ onscriptload('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/ace.js', function
 )
 code(Var)
 return
+
+::jsons2::
+::jsonss2::
+Var =
+(
+JSON.stringify(temp1, null, 2)
+)
+code(Var)
+return

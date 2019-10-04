@@ -305,10 +305,10 @@ Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer<
 Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux-command 命令搜索</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大全</a>
 Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
-Gui, Pandora:Add, Link,, <a href="https://gitee.com/gists">码云 Gists</a>
 Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
-
-
+Gui, Pandora:Add, Link,, <a href="https://gitee.com/gists">码云 Gists</a>
+Gui, Pandora:Add, Link,, <a href="https://gitee.com/cyleeCat/codes/new">码云 Gists 新增</a>
+Gui, Pandora:Add, Link,, <a href="https://gitee.com/oauth/authorize?client_id=8ac7a94ff19ddb4b9d267d525c048e2845f589cf3b1e8d09ef2568ca63f74603&redirect_uri=https://gitee.com/api/v5/swagger&response_type=code">码云 Gists 授权</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 
@@ -393,8 +393,8 @@ Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
 
 
 
-
-Gui, Pandora:Add, Text, gNewNodePachong W140 ys x+80, 新建nodejs爬虫模板
+Gui, Pandora:Add, Text, gNodeHttp W140 ys x+80, 新建nodejs http
+Gui, Pandora:Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
 Gui, Pandora:Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
 Gui, Pandora:Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
@@ -405,7 +405,7 @@ Gui, Pandora:Add, Text, gNewesmodule W190, 新建nodejs运行es Module模板
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
 Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
-Gui, Pandora:Add, Text, gtianMaparcgisHtml ,新建arcgis和天地图.html
+Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
 Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
 Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html

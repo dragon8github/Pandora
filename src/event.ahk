@@ -112,6 +112,7 @@
 	Menu, echartsEventMenu, Add, map.js 类库持续集成, EventHandler
     Menu, echartsEventMenu, Add, toolbox：下载图片的工具, EventHandler
 	Menu, echartsEventMenu, Add, getRangeRBG：专门用于生成 echarts 的渐变色, EventHandler
+	Menu, echartsEventMenu, Add, echarts + vue Mixins 摧毁方案, EventHandler
 
 	;@a @1
 	Menu, EventMenu, Add, JavaScript, :JavaScriptEventMenu
@@ -190,6 +191,35 @@ Var =
 )
 }
 
+
+
+if (v == "echarts + vue Mixins 摧毁方案") {
+Var = 
+(
+// mixins/clearEcharts.js
+export default {
+  beforeRouteLeave(to, from, next) {
+    // 获取页面中所有echarts的示例宿主
+    const _echarts_instance_ = document.querySelectorAll(
+      "[_echarts_instance_]"
+    `)
+    // 遍历所有的宿主元素
+    _echarts_instance_.forEach(function(e, i) {
+      // 通过宿主进而获取对应的echarts，并且重置大小
+      echarts.getInstanceByDom(e).clear()
+    })
+    放行
+    next()
+  }
+}
+
+// App.vue
+import Mixin from '@/mixins/clearEcharts.js'
+export default {
+    mixins: [Mixin],
+}
+)
+}
 
 if (v == "getRangeRBG：专门用于生成 echarts 的渐变色") {
 _send("getEchartscolor", true, true)
