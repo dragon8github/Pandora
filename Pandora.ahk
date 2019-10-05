@@ -29,6 +29,7 @@ FileDelete, .\src\*.bak
 #Include src/ISearch.ahk	  ; ISearch
 /**//////////////////////////////////////////////
 */
+
 #Include src/JSON.ahk	          ; JSON Script
 #Include src/ActiveScript.ahk	  ; Microsoft Script
 #Include src/lib.ahk              ; 公共函数
@@ -73,18 +74,8 @@ FileDelete, .\src\*.bak
 return
 
 !z::
-screen_width := A_ScreenWidth * 0.7
-screen_height := A_ScreenHeight * 0.7
 
-Gui, Code:New
-
-Gui, Code:Add, Text,  W160, 12345大数据屏（vue）
-
-Gui, Code:Show, W%screen_width% H%screen_height%, 代码大全
 return
 
 
-CodeGuiEscape:
-CodeGuiClose:
-	Gui, Code:Destroy
-return
+

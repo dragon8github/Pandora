@@ -273,6 +273,9 @@ code(code) {
     Clipboard := tmp
 }
 
+
+
+
 ; 生成快捷键： alt + ctrl + 0~9
 ^!1::
 ^!2::
@@ -284,8 +287,9 @@ code(code) {
     code(__ALTCTRL__[num])
 return
 
+
  ; 暂时只支持6大txt显示。不够再添加吧。控制一下体积。
- txtit(ary, spliter="---") {
+ txtit2(ary, spliter="---") {
   ; 全局变量真的只能这样用了，定义在外面没有办法生存。
   global pidary := pidary ? pidary : []
   ; 存储
@@ -337,6 +341,68 @@ return
   }
   return
 }
+
+
+
+txtit(code, spliter = "---") {
+	; 缩放比
+	zoom := 0.7
+	; GUI 的宽高
+	GUI_width := A_ScreenWidth * zoom
+	GUI_height := A_ScreenHeight * zoom
+
+	; 创建临时 GUI
+	Gui, Code:New
+	
+	; 切割字符串为数组
+    ary := StrSplit(code, spliter)
+	
+    ; 新的数组长度
+    len := ary.Length()
+	
+	; 获取函数 code 引用
+	fn := Func("code")
+    
+    
+	; 开始遍历
+    For index, value in ary {
+		; 索引是从1开始的，我习惯从0开始
+		i := index - 1
+		
+		; 如果<= 3个，我就占 1/1。
+		; 如果>= 4个，我就沾满 1/2。
+		; 如果>= 7个, 我就沾据 1/3
+		h_rate :=  1 / Ceil(len / 3)
+		h := GUI_height * h_rate
+		
+		; 暂时写死每个占据 1/3 大小。 
+		w := GUI_width / 3
+	
+		x_rate := Mod(i, 3)
+		x := GUI_width * (x_rate == 0 ? 0 : (x_rate / 3))
+		
+		y_rate := Floor(i / 3)
+		y := GUI_height * (y_rate == 0 ? 0 : (1 / y_rate))
+		
+		; 添加文本框
+		Gui, Code:Add, Edit, X0 Y%y% X%x% W%w% H%h% ReadOnly, % value
+		
+		; 绑定数据
+		_fn := fn.Bind(value)
+		
+		; 新建热键
+		Hotkey, ^!%index%, % _fn 
+	}
+	
+	; Show
+	Gui, Code:Show, W%GUI_width% H%GUI_height%, 代码大全 - CTRL + ALT + N 可以快速输出代码
+}
+
+
+CodeGuiEscape:
+CodeGuiClose:
+	Gui, Code:Destroy
+return
 
 !x::
 For key, value in pidary {
