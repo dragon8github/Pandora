@@ -62,7 +62,7 @@ FileDelete, .\src\*.bak
 #Include src/koa.ahk		      ; koa
 #Include src/docker.ahk		      ; docker
 #Include src/flutter.ahk	      ; flutter
-#Include src/bilibili.ahk	      ; bilibili
+#Include src/bilibili.ahk	      ; bilibilic
 #Include src/elasticsearch.ahk	  ; elasticsearch
 #Include src/golang.ahk	          ; golang
 #Include src/book.ahk	          ; book
@@ -73,14 +73,18 @@ FileDelete, .\src\*.bak
 return
 
 !z::
-DIRECTORY := A_Desktop . "\.pandora"
-AttributeString := FileExist(DIRECTORY)
-; 如果没有目录，则创建
-if (AttributeString != "D") {
-	FileCreateDir, % DIRECTORY
-}
-filename := DIRECTORY . "/.access_token"
-FileDelete, % filename 
-FileAppend, c561adde0d422862cd18a20a0e435b43,  %filename%
+screen_width := A_ScreenWidth * 0.7
+screen_height := A_ScreenHeight * 0.7
+
+Gui, Code:New
+
+Gui, Code:Add, Text,  W160, 12345大数据屏（vue）
+
+Gui, Code:Show, W%screen_width% H%screen_height%, 代码大全
 return
 
+
+CodeGuiEscape:
+CodeGuiClose:
+	Gui, Code:Destroy
+return

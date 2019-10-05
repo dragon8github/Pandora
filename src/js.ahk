@@ -194,6 +194,7 @@ const getCommonParams = () => {
     let moment = ''
     let startMoment = ''
     let endMoment = ''
+
     // （新）月报
     if (reportType === 'month') {
         moment = store.state.reportMonth
@@ -207,9 +208,9 @@ const getCommonParams = () => {
     }
 
     // 获取当前的模式：ZW是智网，HL是热线
-    const subId = store.state.mode
+    const subId = store.state.title.includes('专题情况') === true ? '' : store.state.mode
 
-    return { subId, reportType, moment, startMoment: startMoment, endMoment: endMoment }
+    return { subId, reportType, moment, startMoment, endMoment }
 }
 
 // 函数节流，3秒之内只会执行一次。不会重复执行。
@@ -234,9 +235,6 @@ axios.interceptors.request.use(config => {
     // 设置公共URL http://12345v1.dgdatav.com:6080/api
     config.baseURL = '/api'
 
-    // 从vuex中获取当前日月报类型
-    const reportType = store.state.reportType
-
     // 设置公共GET参数(由于本项目的后端接口只有GET请求,所以只需要处理GET请求即可，如果需要POST则设置data参数)
     config.params = Object.assign({}, getCommonParams(), config.params)
 
@@ -251,6 +249,14 @@ axios.interceptors.request.use(config => {
         // 移除所有中止的请求，并且将新的请求推入缓存
         pending = [...pending.filter(_ => _.url != pureUrl), { url: pureUrl, cancel }]
     })
+
+    // __FUCK__
+    // 这是一种约定的标记，写在URL末尾，比如 http://www.baidu.com__A__?foo=bar
+    // 你需要先理解我是如何去重复的，才能理解这个解决方案。
+    // 在之前的去重复方案中，我是只取 ？ 之前的URL。 这样确保不管你什么参数，我都可以去重复。
+    // 但随之而来又有问题了。如果我就是有两个地方使用相同的URL，但依然需要去重复怎么办呢？
+    // 解决方案很单纯：另一个加一个标识，比如__FUCK__，这样就和另一个URL不相同了。而请求的时候，再移除 __FUCK__即可。
+    config.url = config.url.replace(/__(.+?)__/g, '')
 
     // 返回最终配置
     return config
@@ -268,8 +274,6 @@ axios.interceptors.response.use(res => {
 
 // 错误处理
 const _catchErr = err => {
-    // 失败响应之后清空队列中所有相同Url的请求
-    pending = []
     // 如果是重复请求的问题，这是我自己暴漏出来的，并不需要出现error。吓唬人。
     if (err.message.includes('repeat abort')) {
         // 提示一下即可
@@ -303,7 +307,7 @@ const cachedSave = (hashcode, content) => {
             if (err.message.includes('quota')) localforage.clear()
         })
         // 设置缓存时间
-        localforage.setItem(``${hashcode}:timestamp``, Date.now()).catch(err => {
+        localforage.setItem(`${hashcode}:timestamp`, Date.now()).catch(err => {
             console.log('cache err', err)
             // 说明内存满了，直接清空
             if (err.message.includes('quota')) localforage.clear()
@@ -330,7 +334,7 @@ export const request = async (url, options = {}) => {
         const cached = await localforage.getItem(hashcode)
         // 获取该缓存的时间
         const whenCached = await localforage.getItem(`${hashcode}:timestamp`)
-        // 如果缓存都存在（如果希望只有生产模式才开启那么就加入这个判断条件
+        // 如果缓存都存在（如果希望只有生产模式才开启那么就加入这个判断条件)
         if (cached !== null && whenCached !== null && process.env.NODE_ENV === 'production') {
             // 判断缓存是否过期
             const age = (Date.now() - whenCached) / 1000

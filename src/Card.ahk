@@ -1,5 +1,5 @@
 ﻿>+g::
-	Gui, Card:Show,, Card
+	Gui, Card:Show,, 知识卡片
 	
 	; 由于点击 button 的时候会失去焦点，所以我必须找一个变量，存储上一次点击的ListView
 	global currentSelectSnippets := {}

@@ -282,15 +282,6 @@ code(Var)
 code(Var)
 return
 
-::gitp::
-::git push::
-::git p::
-::git pu::
-::gitpu::
-SendRaw, git push -u origin master
-return
-
-
 
 
 ::ahkmsg::
@@ -1030,28 +1021,6 @@ SendRaw, 149.129.65.63
 return
 
 
-::git commit::
-::git c::
-::gitc::
-Var =
-(
-git commit -m ""
-)
-Send, {text}%Var%
-Send, {left}
-return
-
-::git-push::
-::gitpush::
-::git push::
-    Send, git push -u origin master
-return
-
-::git-pull::
-::gitpull::
-::git pull::
-    Send, git pull origin master
-return
 
 :?:.git::
 ::gitig::
@@ -1080,21 +1049,8 @@ code(Var)
 return
 
 ::git::
-_sendinput("git add . && git commit -m '{+} ' --no-verify && git push -u origin master{LEFT 42}")
+_sendinput("git add . && git commit -m '{#}' --no-verify && git push{LEFT 25}")
 Return
-
-::gitdev::
-::gitd::
-::git dev::
-    _sendinput("git add . && git commit -m '{+ } ' --no-verify && git push -u origin dev{LEFT 39}")
-return
-
-
-::gittest::
-::gitt::
-::git test::
-    _sendinput("git add . && git commit -m '{+ } ' --no-verify && git push -u origin test{LEFT 40}")
-return
 
 
 ::auth::
