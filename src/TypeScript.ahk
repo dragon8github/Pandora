@@ -1,9 +1,17 @@
 ﻿!y::
     Menu, tsMenu, Add, 新建官方create-react-app-Typescript（超级严格）, ReactMenuHandler
     Menu, tsMenu, Add, 新建codesandbox-react-ts（十分宽松）, ReactMenuHandler
-	Menu, tsMenu, Add, 生成 tsconfig.json 配置：$ yarn tsc -init, tsHandler
-    Menu, tsMenu, Add, 生成 tslint.json：$ yarn tslint --init, tsHandler
+    
+    Menu, tsMenu, Add
+    Menu, tsMenu, Add
+    
     Menu, tsMenu, Add, npm install Typescript -g, tsHandler
+	Menu, tsMenu, Add, 生成 tsconfig.json 配置：$ yarn add typescript && tsc --init, tsHandler
+    Menu, tsMenu, Add, 生成 tslint.json：$ yarn tslint --init, tsHandler
+    
+    Menu, tsMenu, Add
+    Menu, tsMenu, Add
+    
     Menu, tsMenu, Add, npm install -g ts-node, tsHandler
     Menu, tsMenu, Add, 直接运行.ts文件： ts-node hello.ts, tsHandler
 
@@ -70,10 +78,10 @@ cs(Var)
 return
 }
 
-if (v == "生成 tsconfig.json 配置：$ yarn tsc -init") {
+if (v == "生成 tsconfig.json 配置：$ yarn add typescript && tsc --init") {
 Var =
 (
-yarn tsc -init
+yarn add typescript && yarn tsc -init
 )
 cs(Var)
 return

@@ -95,6 +95,7 @@
 	Menu, NodeMenu, Add, request.proxy, NodeHandler
 	Menu, NodeMenu, Add, node.http, NodeHandler
 	Menu, NodeMenu, Add, http.request, NodeHandler
+	Menu, NodeMenu, Add, node webSocket, NodeHandler
 	
 	
 	
@@ -142,6 +143,12 @@ Var =
 (
 )
 }
+
+if (v == "node webSocket") {
+_send("websocket", true)
+return
+}
+
 
 
 if (v == "mocha + wish 极简TDD") {
@@ -2113,4 +2120,48 @@ module.exports = app => {
 };
 )
 code(Var)
+return
+
+::websocket::
+::webso::
+Var =
+(
+const WebSocket = require('ws')
+
+const WS = new WebSocket.Server({ port: 1234 })
+
+WS.on('connection', ws => {
+
+    ws.on('message', msg => {
+        ws.send('i received: ' + msg)
+    })
+
+    // 建立连接后，主动发送第一条初始化消息
+    ws.send('server OK')
+})
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Test</title>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const ws = new WebSocket('ws://localhost:1234')
+
+    ws.addEventListener('open', () => {
+        ws.send('client ok')
+    })
+
+    ws.addEventListener('message', e => {
+        console.log(e.data)
+    })
+</script>
+</html>
+)
+txtit(Var)
 return

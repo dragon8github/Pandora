@@ -1,4 +1,13 @@
 ﻿!e::
+	Menu, esEventMenu, Add, Elasticsearch#新增数据（索引/类型/文档id）, EventHandler
+	Menu, esEventMenu, Add, Elasticsearch#新增索引, EventHandler
+	Menu, esEventMenu, Add, Elasticsearch#查看所有索引, EventHandler
+	Menu, esEventMenu, Add, Elasticsearch#查看指定索引, EventHandler
+	Menu, esEventMenu, Add, Elasticsearch#查看指定索引下的指定类型, EventHandler
+	Menu, esEventMenu, Add, Elasticsearch#删除索引, EventHandler
+    Menu, esEventMenu, Add, Elasticsearch#查找数据, EventHandler
+	
+
 	Menu, VueEventMenu, Add, @click="doThat('hello'`, $event)", EventHandler
 	Menu, VueEventMenu, Add, @click.stop, EventHandler
 	Menu, VueEventMenu, Add, @click.prevent, EventHandler
@@ -120,12 +129,16 @@
 	Menu, EventMenu, Add, React, :ReactEventMenu
 	Menu, EventMenu, Add, jquery, :jqueryEventMenu
 	Menu, EventMenu, Add, echarts, :echartsEventMenu
+	Menu, EventMenu, Add, elasticsearch, :esEventMenu
 	
 	
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
 
-	
+	Menu, EventMenu, Add, 监听键盘码：onKeyBoardEvent, EventHandler
+	Menu, EventMenu, Add, 元素触碰位置：captureTouch, EventHandler
+	Menu, EventMenu, Add, 元素鼠标位置：captureMouse, EventHandler
+	Menu, EventMenu, Add, 鼠标事件大全一次到位：onMouseEvent, EventHandler
     Menu, EventMenu, Add, 监听动画结束：animationend, EventHandler  
 	Menu, EventMenu, Add, keycode大全和打印方式, EventHandler
 	Menu, EventMenu, Add, js 监听 enter, EventHandler
@@ -158,17 +171,6 @@
 	Menu, EventMenu, Add, event.preventDefault(); event.stopPropagation();, EventHandler
 	Menu, EventMenu, Add, capture模式的含义：由外而内, EventHandler
 	
-	Menu, EventMenu, Add
-	Menu, EventMenu, Add
-	
-	Menu, EventMenu, Add, Elasticsearch#新增数据（索引/类型/文档id）, EventHandler
-	Menu, EventMenu, Add, Elasticsearch#新增索引, EventHandler
-	Menu, EventMenu, Add, Elasticsearch#查看所有索引, EventHandler
-	Menu, EventMenu, Add, Elasticsearch#查看指定索引, EventHandler
-	Menu, EventMenu, Add, Elasticsearch#查看指定索引下的指定类型, EventHandler
-	Menu, EventMenu, Add, Elasticsearch#删除索引, EventHandler
-    Menu, EventMenu, Add, Elasticsearch#查找数据, EventHandler
-	
 	Menu, EventMenu, Show
 	Menu, EventMenu, DeleteAll
 	Menu, echartsEventMenu, DeleteAll
@@ -188,6 +190,210 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "监听键盘码：onKeyBoardEvent") {
+Var = 
+(
+function onKeyBoardEvent (event) {
+	switch (event.keyCode) {
+		case 38:
+			console.log('up')
+			break;
+		case 39:
+			console.log('right')
+			break;
+		case 40:
+			console.log('down')
+			break;
+		case 37:
+			console.log('left')
+			break;
+		default:
+			console.log(event.keyCode)
+	}
+}
+
+window.addEventListener('keydown', onKeyBoardEvent, false)
+)
+}
+
+if (v == "元素触碰位置：captureTouch") {
+Var = 
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        background-color: #ddd;
+    }
+
+    #canvas {
+        width: 600px;
+        height: 300px;
+        margin: 20px;
+        background: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <!--
+        当设置元素的width/height属性时，是同时修改了该元素本身大小和元素绘图表面的大小。
+        如果是通过 CSS 来设定canvas的大小，那么只会改变元素本身的大小，而不会影响到绘图表面。
+    -->
+    <canvas id='canvas' width='600' height='300'>
+        Canvas not supported
+    </canvas>
+</body>
+<script>
+    const captureTouch = element => {
+        let touch = { x: 0, y: 0, isPressed: false }
+
+        element.addEventListener('touchstart', event => {
+            touch.isPressed = true
+        }, false)
+
+        element.addEventListener('touchstart', event => {
+            touch.isPressed = false
+            touch.x = null
+            touch.y = null
+        }, false)
+
+        element.addEventListener('touchmove', event => {
+            let x, y, touch_event = event.touches[0]
+
+            if (touch_event.pageX || touch_event.pageY) {
+                x = touch_event.pageX
+                y = touch_event.pageY
+            } else {
+                x = touch_event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft
+                y = touch_event.clientY + document.body.scrollTop + document.documentElement.scrollTop
+            }
+
+            x -= element.offsetLeft
+            y -= element.offsetTop
+
+            touch.x = x
+            touch.y = y
+        }, false)
+        
+        return touch
+    }
+
+    const canvas = document.getElementById('canvas')
+           touch = captureTouch(canvas)
+
+    canvas.addEventListener('touchmove', function () {
+        console.log(touch.x, touch.y)
+    }, false)
+</script>
+</html>
+)
+}
+
+if (v == "元素鼠标位置：captureMouse") {
+Var = 
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        background-color: #ddd;
+    }
+
+    #canvas {
+        width: 600px;
+        height: 300px;
+        margin: 20px;
+        background: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <!--
+        当设置元素的width/height属性时，是同时修改了该元素本身大小和元素绘图表面的大小。
+        如果是通过 CSS 来设定canvas的大小，那么只会改变元素本身的大小，而不会影响到绘图表面。
+    -->
+    <canvas id='canvas' width='600' height='300'>
+        Canvas not supported
+    </canvas>
+</body>
+<script>
+    const captureMouse = element => {
+		let mouse = { x: 0, y: 0 }
+
+		element.addEventListener('mousemove', event => {
+			let x, y
+
+			if (event.pageX || event.pageY) {
+				x = event.pageX
+				y = event.pageY
+			} else {
+				x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft
+				y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop
+			}
+
+			x -= element.scrollLeft
+			y -= element.scrollTop
+
+			mouse.x = x     
+			mouse.y = y
+
+		}, false)
+
+		return mouse
+	}
+
+	const canvas = document.getElementById('canvas')
+		   mouse = captureMouse(canvas)
+
+	canvas.addEventListener('mousemove', function () {
+		console.log(mouse.x, mouse.y)
+	}, false)
+	</script>
+</html>
+)
+}
+
+
+
+if (v == "鼠标事件大全一次到位：onMouseEvent") {
+Var = 
+(
+const app = document.getElementById('app')
+
+const onMouseEvent = e => {
+	console.log(e.type)
+}
+
+app.addEventListener('mousedown', onMouseEvent, false)
+app.addEventListener('mouseup', onMouseEvent, false)
+app.addEventListener('click', onMouseEvent, false)
+app.addEventListener('dblclick', onMouseEvent, false)
+app.addEventListener('mousewheel', onMouseEvent, false)
+app.addEventListener('mousemove', onMouseEvent, false)
+app.addEventListener('mouseover', onMouseEvent, false)
+app.addEventListener('mouseout', onMouseEvent, false)
+
+app.addEventListener('touchstart', onMouseEvent, false)
+app.addEventListener('touchend', onMouseEvent, false)
+app.addEventListener('touchmove', onMouseEvent, false)
 )
 }
 
@@ -1536,3 +1742,27 @@ export const getRangeRBG = rgbColorStr => [...Array(11)].map((_, index) => ({
 )
 code(Var)
 return
+
+::mousee::
+::mousevent::
+::mouseevent::
+Var =
+(
+const app = document.getElementById('app')
+
+const onMouseEvent = e => {
+	console.log(e.type)
+}
+
+app.addEventListener('mousedown', onMouseEvent, false)
+app.addEventListener('mouseup', onMouseEvent, false)
+app.addEventListener('click', onMouseEvent, false)
+app.addEventListener('dblclick', onMouseEvent, false)
+app.addEventListener('mousewheel', onMouseEvent, false)
+app.addEventListener('mousemove', onMouseEvent, false)
+app.addEventListener('mouseover', onMouseEvent, false)
+app.addEventListener('mouseout', onMouseEvent, false)
+)
+code(Var)
+return
+

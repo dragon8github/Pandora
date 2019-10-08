@@ -8459,3 +8459,49 @@ return
 NodeHttp:
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/nodejs-pure-http.zip", "node app.js")
 return
+
+websocketHTML:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!-- 
+const WebSocket = require('ws')
+
+const WS = new WebSocket.Server({ port: 1234 })
+
+WS.on('connection', ws => {
+
+    ws.on('message', msg => {
+        ws.send('i received: ' + msg)
+    })
+
+    // 建立连接后，主动发送第一条初始化消息
+    ws.send('server OK')
+})
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Test</title>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const ws = new WebSocket('ws://localhost:1234')
+
+    ws.addEventListener('open', () => {
+        ws.send('client ok')
+    })
+
+    ws.addEventListener('message', e => {
+        console.log(e.data)
+    })
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

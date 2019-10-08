@@ -1024,28 +1024,122 @@ Var =
 code(Var)
 return
 
+::htmlpure::
+::html2::
+::purehtml::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+      
+    </div>
+</body>
+<script>
+    
+</script>
+</html>
+)
+code(Var)
+return
+
 ::html::
 ::html5::
 ::html`:5::
 Var = 
 (
 <!DOCTYPE html>
-	<html lang="en">
-	<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-	<title>Document</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <!-- element -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/theme-chalk/index.css">
+    <!-- lodash -->
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
+    <!-- mockjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Mock.js/1.0.0/mock-min.js"></script>
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <!-- moment -->
+    <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js"></script>
+    
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%; /* 注意，应该是html和body同时设置才可以 */
+    }
+
+    #app {
+
+    }
+    </style>
 </head>
-<style>
-	body {
-		max-width: 540px;
-        min-width: 320px;
-	}
-</style>
+
 <body>
-	
+    <div id="app">
+        <ul>
+            <li class='item' v-for='(item, index) in items' :key='item.book_id'>{{ item.book_name }}</li>
+        </ul>
+
+        <button @click='handleClick'>handleClick</button>
+    </div>
 </body>
 <script>
+Mock.mock("/book/list", "get", {
+    "booklist|10": [
+        {"book_id|+1": 101, "book_name": "@ctitle", "book_price|50-100.1-2": 0, "book_time": "@date('yyyy-mm-dd')"}
+    ]
+})
+
+$(function() {
+    console.log('hello world');
+});
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: [],
+        text: '',
+    },
+    methods: {
+        handleClick () {
+
+        }
+    },
+    beforeMount: function () {
+        axios.get("/book/list").then(res => {
+            this.items = res.data.booklist
+        })
+    }
+})
 </script>
 </html>
 )
