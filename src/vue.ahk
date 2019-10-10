@@ -117,7 +117,8 @@
   Menu, vuesolution, Add, vuedraggable 示例demo, VueHandler  
   Menu, vuesolution, Add, 我的 transition-group 列表动画示例, VueHandler  
   Menu, vuesolution, Add, elementUI dispatch 组件传播攻略, VueHandler
-Menu, vuesolution, Add, 我的 CardNumber 数字翻滚器, VueHandler  
+  Menu, vuesolution, Add, 我的 CardNumber 数字翻滚器, VueHandler  
+  Menu, vuesolution, Add, require.context 自动import 解决方案, VueHandler  
   
   
   
@@ -142,6 +143,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "require.context 自动import 解决方案") {
+_send("autoimp", true, true)
+return
 }
 
 if (v == "this.$store.dispatch('StreetIndex/activeStreet', streetName, { root: true })") {

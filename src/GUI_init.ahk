@@ -351,7 +351,6 @@ Gui, Pandora:Add, Text, gwebsocketHTML W140,新建WebSocket
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
-Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gliveHtml W160,新建调用摄像头.html
 Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
 Gui, Pandora:Add, Text, gxuanliyanhua W160,新建点击绚丽烟花效果.html
@@ -403,6 +402,7 @@ Gui, Pandora:Add, Text, gNewNodejsSequelize W190, 新建nodejs-sequelize-mysql�
 Gui, Pandora:Add, Text, gNewNodejsRenamechName W190, 新建nodejs批量改名中文模板
 Gui, Pandora:Add, Text, gNewmochachai W190, 新建mocha+chai单元测试模板
 Gui, Pandora:Add, Text, gNewesmodule W190, 新建nodejs运行es Module模板
+Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
 Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
@@ -591,6 +591,7 @@ Gui, Pandora:Add, Link,, <a href="https://cli.vuejs.org/">vue-cli</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vuepress">vuepress</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/PanJiaChen/vue-element-admin">vue-element-admin</a>
 Gui, Pandora:Add, Link,, <a href="https://ssr.vuejs.org/zh/">vue-ssr</a>
+Gui, Pandora:Add, Link,, <a href="https://cli.vuejs.org/config/#devserver-proxy">vue-config 文档</a>
 
 Gui, Pandora:Add, Text,  W140 ys, vue ssr nuxt：
 Gui, Pandora:Add, Link,, <a href="https://nuxtjs.org/">nuxt官网</a>

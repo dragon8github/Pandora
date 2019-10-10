@@ -7184,3 +7184,33 @@ color.colorRgb()
 )
 code(Var)
 return
+
+::autorequire::
+::autoimp::
+::autoreq::
+Var = 
+(
+/**
+ * 1. directory {String} -读取文件的路径 
+ * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
+ * 3. regExp {RegExp} -匹配文件的正则  
+ */
+const charts = require.context('.', true, /\.js$/)
+
+// 准备导出的模块
+let __CHARTS__ = {}
+
+// 1. 必须使用 key() 获取所有路径
+// 2. 我获取了除了 ./Chart.js 和 ./index.js 以外所有模块js内容
+// 3. 使用 charts(path).default 获取真实模块内容
+charts.keys().filter(path => path.lastIndexOf('/') != 1).forEach(path => {
+    // 获取 『文件名』 和 『后缀名』
+    const [name, ext] = path.substring(path.lastIndexOf('/') + 1).split('.')
+    // 以 『文件名』 为 key，模块内容为 value
+    __CHARTS__[name] = charts(path).default
+})
+
+export default __CHARTS__
+)
+code(Var)
+return

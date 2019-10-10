@@ -87,6 +87,17 @@
 	
 	
 	Menu, gitShellMenu, Add, git, ShellHandler4
+	Menu, gitShellMenu, Add, git log --pretty=oneline, ShellHandler4
+
+
+	Menu, gitShellMenu, Add,
+	Menu, gitShellMenu, Add,	
+
+	Menu, gitShellMenu, Add, 📝 checkout 回退版本的最佳实践：  git checkout -b fuckyou 79b826e4b, ShellHandler4
+	Menu, gitShellMenu, Add, 📝 不管你是重拾代码还是修改代码以后，备份一下，然后切回主分支进行选择性覆盖。, ShellHandler4
+	Menu, gitShellMenu, Add, 📝 当然，覆盖之前，最好也将你的主分支备份一下。, ShellHandler4
+	Menu, gitShellMenu, Add, 📝 由于分支是历史版本，如果你尝试Merge必定是冲突的。所以手动覆盖会更好, ShellHandler4
+
 	
 	Menu, gitShellMenu, Add,
 	Menu, gitShellMenu, Add,	
