@@ -23,6 +23,36 @@ return
     Hotstring("Reset")
 return
 
+^!n::
+	Send, ^c
+	ClipWait, 2
+	tmp := Clipboard
+	 if (StrLen(tmp)) {
+		; 以换行符为分隔符切割为数组
+        array := StrSplit(tmp, "`n")
+		; base 基准值
+		__BASE__ := array[1]
+		; 基准值必须是数字才可以
+		if (__BASE__ is number) {
+			; 结果
+			result := __BASE__ . "`n"
+			; 遍历数组
+			For key, value in array
+				; 第一位已经初始化了，所以从第二位开始
+				if (key > 1) {
+					; 索引
+					index := key - 1
+					; 后缀
+					ext := array.Length() == key ? "" : "`n"
+					; 叠加
+					result .= Floor(__BASE__ ) + index . ext
+			}
+			
+			code(result)
+		}
+    }
+return
+
 
 ::zhiling::
 cs("directive")

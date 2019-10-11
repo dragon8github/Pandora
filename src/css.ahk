@@ -3054,47 +3054,56 @@ return
 ::rem.scss::
 Var = 
 (
-/*
- (function flexible (window, document) {
-   var docEl = document.documentElement
+// https://github.com/amfe/lib-flexible/blob/2.0/index.js
+(function flexible (window, document) {
+ var docEl = document.documentElement
+ var dpr = window.devicePixelRatio || 1
+ var rem = docEl.clientWidth / 10
 
-   // set 1rem = viewWidth / 10
-   // 这个可以是4320、也可以是1920，要看你的效果图而定
-   function setRemUnit () {
-     var rem = docEl.clientWidth / 10
-     docEl.style.fontSize = rem + 'px'
+ // adjust body font size
+ function setBodyFontSize () {
+   if (document.body) {
+     document.body.style.fontSize = (12 * dpr) + 'px'
    }
-
-   /* 
-   window.px2px = function (v) {
-      return v / 192 * rem
+   else {
+     document.addEventListener('DOMContentLoaded', setBodyFontSize)
    }
+ }
+ setBodyFontSize();
 
-   window.px2rem = function (v) {
-    return v / 192
+ // set 1rem = viewWidth / 10
+ function setRemUnit () {
+   docEl.style.fontSize = rem + 'px'
+ }
+
+ setRemUnit()
+
+ window.px2rem = function (v) {
+    return v / rem
+ }
+
+ // reset rem unit on page resize
+ window.addEventListener('resize', setRemUnit)
+ window.addEventListener('pageshow', function (e) {
+   if (e.persisted) {
+     setRemUnit()
    }
-    */
-  
-   setRemUnit()
+ })
 
-   // reset rem unit on page resize
-   window.addEventListener('resize', setRemUnit)
-   window.addEventListener('pageshow', function (e) {
-     if (e.persisted) {
-       setRemUnit()
-     }
-   })
- }(window, document))
-*/
+ // detect 0.5px supports
+ if (dpr >= 2) {
+   var fakeBody = document.createElement('body')
+   var testElement = document.createElement('div')
+   testElement.style.border = '.5px solid transparent'
+   fakeBody.appendChild(testElement)
+   docEl.appendChild(fakeBody)
+   if (testElement.offsetHeight === 1) {
+     docEl.classList.add('hairlines')
+   }
+   docEl.removeChild(fakeBody)
+ }
+}(window, document))
 
-
-/*
-$root_fontsize: 432; // 因为效果图是4320 / 10
-
-@function rem($px) {
-    @return ($px / $root_fontsize) * 1rem;
-} 
- */
 
 // rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推
 $vw_fontsize: 75; // iPhone 6尺寸的根元素大小基准值
