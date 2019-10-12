@@ -19,6 +19,16 @@ FileEncoding, UTF-8
 FileDelete, *.bak 
 FileDelete, .\src\*.bak
 
+
+; 初始化右下角托盘的菜单。可以选择性开启脚本
+global __SCRIPT__ := "Javascript"
+Menu, Tray, Add
+Menu, Tray, Add, JavaScript, GoMenuHandler
+Menu, Tray, Add, Go, GoMenuHandler
+Menu, Tray, Add, PHP, GoMenuHandler
+Menu, Tray, ToggleCheck, JavaScript
+
+
 /**
 //////////////////////////////////////////////
 说明一下： GUI的初始化必须置顶 
@@ -69,11 +79,22 @@ FileDelete, .\src\*.bak
 #Include src/book.ahk	          ; book
 #Include src/Card.ahk	          ; card
 
+
 !F12::
 	Suspend
 return
 
+
 !z::
 
+return
+
+
+GoMenuHandler:
+	Menu, Tray, Uncheck, Go
+	Menu, Tray, Uncheck, JavaScript
+	Menu, Tray, Uncheck, PHP
+	
+	Menu, Tray, ToggleCheck, %A_ThisMenuItem%
 return
 

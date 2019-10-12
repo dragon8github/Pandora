@@ -4413,7 +4413,7 @@ return
 ::()()::
 Var = 
 (
-(async function(){
+;(async function(){
 	
 }())
 )
