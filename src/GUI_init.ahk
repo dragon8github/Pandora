@@ -169,7 +169,7 @@ Gui, Pandora:Add, Button, gCancelSelect w260 h30 xs, 取消选中
 
 
 ; Tab 选项卡 w830 h570 
-Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs 与 Npm | Vue | React | 库 | 奇妙工具 | 地图 与 chart | PHP | 微信  | 爬虫 | 移动开发 | CSS | 剪切板 
+Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs 与 Npm | Vue | React | 库 | 奇妙工具 | 地图 与 chart | Python | PHP | 微信  | 爬虫 | 移动开发 | CSS | 剪切板 
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -407,6 +407,7 @@ Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
 Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
+Gui, Pandora:Add, Text, gtianditujuhetuhtml ,新建天地图聚合图.html
 Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
 Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
@@ -1033,8 +1034,13 @@ Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/api/js4.0/exam
 Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/api/js4.0/opensource/source.html">集成D3效果</a>
 
 
-
+; @python
 Gui, Pandora:Tab, 10
+Gui, Pandora:Add, Text, W140 Section, python官方：
+Gui, Pandora:Add, Link, W140, <a href="https://docs.python.org/zh-cn/3.7/library/index.html">官方文档</a>
+
+; @php
+Gui, Pandora:Tab, 11
 Gui, Pandora:Add, Text, W140 Section, PHP官方：
 Gui, Pandora:Add, Link, W140, <a href="http://php.net/manual/zh/language.oop5.php">官方文档 - 类与对象</a>
 Gui, Pandora:Add, Link, W140, <a href="http://php.net/manual/zh/language.namespaces.php">官方文档 - 命名空间</a>
@@ -1084,7 +1090,7 @@ Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478303">where 参数注入</a>
 Gui, Pandora:Add, Link, W140, <a href="https://www.kancloud.cn/thinkphp/thinkphp5_quickstart/478304">分批/分块查询</a>
 
-Gui, Pandora:Tab, 11
+Gui, Pandora:Tab, 12
 Gui, Pandora:Add, Text,  W140 Section, 微信小程序：
 Gui, Pandora:Add, Link, W140, <a href="https://github.com/justjavac/awesome-wechat-weapp">awesome-wechat-weapp</a>
 Gui, Pandora:Add, Link, W140, <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html">微信小程序开发工具</a>
@@ -1099,7 +1105,7 @@ Gui, Pandora:Add, Link, W140, <a href="https://legacy.gitbook.com/book/dragon8gi
 Gui, Pandora:Add, Text,  W140 Section ys, 其他：
 Gui, Pandora:Add, Link, W140, <a href="https://wx.qq.com/">微信网页版</a>
 
-Gui, Pandora:Tab, 12
+Gui, Pandora:Tab, 13
 Gui, Pandora:Add, Text,  W100 Section, 代理IP:
 Gui, Pandora:Add, Link,, <a href="http://www.xicidaili.com/nn">西刺</a>
 Gui, Pandora:Add, Link,, <a href="https://proxy.l337.tech/txt">l337</a>
@@ -1111,7 +1117,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.51ym.me/User/Default.aspx">易码</
 Gui, Pandora:Add, Link,, <a href="http://www.manbiwang.com/#/">满币网</a>
 Gui, Pandora:Add, Link,, <a href="http://candy.dragonvein.io/frontend/web/site/signup">dragonvein</a>
 
-Gui, Pandora:Tab, 13
+Gui, Pandora:Tab, 14
 Gui, Pandora:Add, Text,  W140 Section, Dart:
 Gui, Pandora:Add, Link,, <a href="https://www.dartlang.org/">Dart 官网</a>
 Gui, Pandora:Add, Link,, <a href="http://www.cndartlang.com/">Dart 中文社区</a>
@@ -1138,7 +1144,7 @@ Gui, Pandora:Add, Link,, <a href="http://ask.dcloud.net.cn/docs/#//ask.dcloud.ne
 Gui, Pandora:Add, Link,, <a href="http://droid4x.haimawan.com/">海马玩模拟器下载</a>
 
 ;@css 
-Gui, Pandora:Tab, 14
+Gui, Pandora:Tab, 15
 Gui, Pandora:Add, Text,  W140 Section, 森罗万象:
 Gui, Pandora:Add, Link,, <a href="https://github.com/jobbole/awesome-css-cn">awesome-css</a>
 Gui, Pandora:Add, Link,, <a href="https://www.9178.work/qianduannav.html">前端导航</a>
@@ -1170,7 +1176,7 @@ Gui, Pandora:Add, Link,, <a href="https://jenil.github.io/bulmaswatch/">Bluma主
 
 
 ; 剪切框
-Gui, Pandora:Tab, 15
+Gui, Pandora:Tab, 16
 Gui, Pandora:Add, Edit, vClipHistory w1020 H660 Limit199307100337
 ; Gui, Pandora:Add, Button, gSaveClipHistory w870 h30, 保存到桌面
 

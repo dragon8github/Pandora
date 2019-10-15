@@ -8703,3 +8703,75 @@ var vue = new Vue({
 RunBy(name)
 run, % name
 return
+
+tianditujuhetuhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>天地图</title>
+    <style>
+    html,
+    body{
+        padding: 0;
+        margin: 0;
+        height: 100`%;
+        width: 100`%;
+    }
+
+    #container {
+        position: absolute;
+        left: 50`%;
+        top: 50`%;
+        transform: translate(-50`%, -50`%);
+
+        height: 70`%;
+        width: 70`%;
+
+        /*height: 100`%;*/
+        /*width: 100`%;*/
+        /*transform-origin: 0`% 0`%;*/
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+</body>
+<script src="http://api.tianditu.gov.cn/api?v=4.0&tk=63c5c4f101d68229494bb45d3bf60277"></script>
+<script>
+    var zoom = 3;
+     var map = new T.Map('container', {
+          attributionControl: false,
+          inertia: false
+      });
+      map.centerAndZoom(new T.LngLat(116.40969, 37.43997405227057), zoom);
+
+      var arrayObj = new Array();
+      for (var i = 0; i < 500; i++) {
+          var marker = new T.Marker(new T.LngLat(Math.random() * 40 + 85, Math.random() * 30 + 21), {title: i});
+          arrayObj.push(marker);
+      }
+      var markers = new T.MarkerClusterer(map, {markers: arrayObj});
+
+
+      setTimeout(() => {
+            // 获取容器当前宽度
+            const { clientWidth, clientHeight } = document.getElementById('container')
+            // 获取屏幕宽度
+            const { clientWidth: w, clientHeight: h } = document.documentElement
+            // 设置缩放比        
+            document.getElementById('container').style.transform = `translate(-50`%, -50`%) scale(${w/clientWidth}, ${h/clientHeight})`
+      }, 1000);
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

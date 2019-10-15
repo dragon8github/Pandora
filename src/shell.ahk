@@ -188,7 +188,13 @@
     Menu, ShellMenu, Add, PowserShell 压缩（必须有文件才成立）, ShellHandler3
     Menu, ShellMenu, Add, PowserShell 解压, ShellHandler3
 	Menu, ShellMenu, Add, PowserShell 下载：Invoke-WebRequest, ShellHandler3
+
+
+	Menu, ShellMenu, Add
+	Menu, ShellMenu, Add
 	
+    Menu, ShellMenu, Add, bat脚本HelloWorld, ShellHandler3
+
 	
 	Menu, ShellMenu, Show
 	Menu, ShellMenu, DeleteAll
@@ -207,6 +213,20 @@ Var =
 )
 }
 
+
+if (v == "bat脚本HelloWorld") {
+Var = 
+(
+echo "Hello World!!!"
+TIMEOUT /T 10
+---
+@echo off
+echo "Hello World!!!"
+pause
+)
+txtit(Var)
+return
+}
 
 if (v == "\cp -rf dist/* /usr/local/nginx/html-big") {
 Var = 
