@@ -5293,3 +5293,12 @@ html, body {
 )
 code(Var)
 return
+
+::mp::
+Var =
+(
+margin: 0;
+padding: 0;
+)
+code(Var)
+return

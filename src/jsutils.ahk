@@ -7214,3 +7214,55 @@ export default __CHARTS__
 )
 code(Var)
 return
+
+::sjx::
+::sanjiaox::
+::ggdl::
+::sanjiao::
+Var =
+(
+/**
+ * 正弦：对边/斜边 Math.sin(-30 * Math.PI / 180)
+ * 余弦：邻边/斜边 Math.cos(-30 * Math.PI / 180)
+ * 正切：对边/邻边 Math.tan(-30 * Math.PI / 180)
+ */
+
+// 角度转弧度
+// 弧度 = 角度 * pi / 180
+var radians = degrees * Math.PI / 180
+
+// 弧度转角度
+// 角度 = 弧度 * 180 / PI
+var degrees = radians * 180 / Math.PI
+
+// 勾股定理：a^2 + b^2 = c^2
+var ggdl = (a, b) => Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))
+
+// 勾股定理：c^2 - b^2 = a^2
+var ggdl2 = (c, b) => Math.sqrt(Math.pow(c, 2) - Math.pow(b, 2))
+
+// 通过a,b算出弧度，再转角度
+var rotate = Math.atan2(b, a) * 180 / Math.PI
+
+/* 
+getWidthAndRotation (left, right) {
+    const left_rect = left.getBoundingClientRect()
+    const right_rect = right.getBoundingClientRect()
+
+    const x1 = left_rect.x + left_rect.width,
+          y1 = left_rect.y + left_rect.height / 2;
+
+    const x2 = right_rect.x,
+          y2 = right_rect.y + right_rect.height / 2;
+
+    const a = x2 - x1
+    const b = y2 - y1
+    const c = pythagoreanTheorem(a, b)
+    const rotate = Math.atan2(b, a) * 180 / Math.PI
+
+    return { c, rotate }
+},
+*/
+)
+code(Var)
+return

@@ -64,6 +64,7 @@
   Menu, VueMenu, Add, vue.props, VueHandler
   Menu, VueMenu, Add, v-slot 插槽, VueHandler
   Menu, VueMenu, Add, filters 过滤器的使用, VueHandler
+  Menu, VueMenu, Add, vue.mixins, VueHandler
   Menu, VueMenu, Add, 动态组件：<component :is='xxx'></component>, VueHandler
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
   Menu, VueMenu, Add, vue 认知, :vuecognition
@@ -143,6 +144,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "vue.mixins") {
+_send("vue.mixins", true, true)
+return
 }
 
 
@@ -2640,7 +2647,7 @@ Vue.mixin({
   data () {
     return {
       fontOptions,
-    } 
+    }
   },
   methods: {
     // 方便所有组件都轻松操作 『舞台/成员/主角』
@@ -2667,7 +2674,7 @@ Vue.mixin({
       'KILL_MASTER',
       'SET_ACTIVEPANEL',
     ]),
-    maybe, 
+    maybe,
   },
   computed: {
      // 方便所有组件都轻松访问当前『主角』
@@ -2678,9 +2685,8 @@ Vue.mixin({
      ]),
   },
 })
-
-// 导出局部
-// mixins: [appMixin],
+---
+// 导出
 export default {
   beforeRouteLeave(to, from, next) {
     // 获取页面中所有echarts的示例宿主
@@ -2694,8 +2700,15 @@ export default {
     next()
   }
 }
+
+// app.vue 使用
+export default {
+    name: 'Studio',
+    mixins: [appMixin],
+    components: { sheader, panel, stage },
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::vue.nginx::

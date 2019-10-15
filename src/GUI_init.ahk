@@ -312,13 +312,12 @@ Gui, Pandora:Add, Link,, <a href="https://gitee.com/cyleeCat/codes/new">码云 G
 Gui, Pandora:Add, Link,, <a href="https://gitee.com/oauth/authorize?client_id=8ac7a94ff19ddb4b9d267d525c048e2845f589cf3b1e8d09ef2568ca63f74603&redirect_uri=https://gitee.com/api/v5/swagger&response_type=code">码云 Gists 授权</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
-
 Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
 Gui, Pandora:Add, Link,, <a href="https://yeoman.io/generators/">yeoman generators</a>
 Gui, Pandora:Add, Link,, <a href="https://www.vultr.com/">vultr</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/Alvin9999/new-pac/wiki/自建ss服务器教程">自建ss服务器教程</a>
-
 Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
+Gui, Pandora:Add, Link,, <a href="https://www.apple.com/cn/shop/refurbished/mac/13-%E8%8B%B1%E5%AF%B8-macbook-pro">mac官方翻新机</a>
 
 
 
@@ -331,7 +330,6 @@ Gui, Pandora:Add, Text, greactHtml W140, 新建react.html
 Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
 Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
-; Gui, Pandora:Add, Text, gNewRxjsIndexHtml W140,新建Rxjs.html
 Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
 Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建assert.html
 Gui, Pandora:Add, Text, gNewjointjsHtml W160,新建jointjs流程图
@@ -370,6 +368,7 @@ Gui, Pandora:Add, Text, gworkerhtml W180, 新建worker.js.html
 Gui, Pandora:Add, Text, glocalForagehtml W180, 新建localForage缓存示例.html
 Gui, Pandora:Add, Text, gquickbianimhtml W180, 新建quickbi的过场动画.html
 Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令.html
+Gui, Pandora:Add, Text, gxiexianhtml W180, 新建三剑客画斜线.html
 
 
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+20,新建.echartsDemo.html（官方demo）
@@ -464,7 +463,7 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/hz-1234
 Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:6083/#/dg/Index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/big-bcreen/boards">敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/blob/master/DOC/东莞市社会治理可视化分析平台/05UIUE文档/大屏UI/">UI资源</a>
-Gui, Pandora:Add, Link,, <a href="http://19.104.40.37:8084/">线上地址</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.40.37:8084/">内网预览地址</a>
 
 
 Gui, Pandora:Add, Text,  W140 xs Section yp+150, 数据中心

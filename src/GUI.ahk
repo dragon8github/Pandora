@@ -8505,3 +8505,201 @@ WS.on('connection', ws => {
 RunBy(name)
 run, % name
 return
+
+xiexianhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- mockjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Mock.js/1.0.0/mock-min.js"></script>
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+        
+    }   
+
+    ul {
+		margin: 0;
+		padding: 0;
+    }
+
+    #contaoler {
+        width: 800px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .item {
+        position: relative;
+        width: 200px;
+        height: 30px;
+        line-height: 30px;
+        margin: 10px;
+
+        border: 1px solid #ccc;
+        margin-top: 10px;
+        text-align: center;
+        display: inline-block;
+        transition: .3s all;
+        cursor: pointer;
+    }
+
+    	.item .line {
+    		display: none;
+    		position: absolute;
+    		top: 50`%;
+    		left: calc(100`% + 1px);
+			transform-origin: 0`% 0`%;
+    	}
+
+	    .item.active {
+			color:#fff;
+		  	animation: Pulse 2s infinite;
+	    }
+
+        .item.active .line {
+        	display: block;
+        	border-bottom: 1px dashed #999;
+        }
+
+        .item.determine .line {
+        	display: block;
+        	border-bottom: 1px solid red;
+        } 
+
+	.hover-shadow-box-animation {
+	  display: inline-block;
+	  vertical-align: middle;
+	  transform: perspective(1px) translateZ(0);
+	  box-shadow: 0 0 1px transparent;
+	  transition-duration: 0.3s;
+	  transition-property: box-shadow, transform;
+	}
+
+	.hover-shadow-box-animation:hover,
+	.hover-shadow-box-animation:focus,
+	.hover-shadow-box-animation:active {
+	  box-shadow: 1px 10px 10px -10px rgba(0, 0, 24, 0.5);
+	  transform: scale(1.2);
+	}
+
+
+    @keyframes Pulse {
+        0`%   { background-color: #036075; box-shadow: 0 0 9px #333; }
+        50`%  { background-color: #2daebf; box-shadow: 0 0 27px #2daebf; }
+        100`% { background-color: #036075; box-shadow: 0 0 9px #333; }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div id='contaoler'>
+            <ul class='ul-left'>
+                <li class='item hover-shadow-box-animation' 
+                	:ref='`item__${item.book_id}`'
+                	:class='{"active": item.book_id === active, "determine": item.determine != null}'
+                	v-for='(item, index) in items' 
+                	:key='item.book_id'
+                	@click='active = item.book_id'>
+                		{{ item.book_name }}
+                	<i class='line' :style='{width: `${item.width || 0}px`, transform: `rotate(${item.rotate || 0}deg)`}'></i>
+            	</li>
+            </ul>
+            
+            <ul class='ul-right'>
+                <li class='item hover-shadow-box-animation' 
+                	v-for='(item, index) in items' 
+                	:key='item.book_id'
+                	@mouseover='link($event)' 
+                	@click='determine(item.book_id)'>
+                		{{ item.book_name }}
+        		</li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+Mock.mock("/book/list", "get", {
+    "booklist|10": [
+        {"book_id|+1": 101, "book_name": "@ctitle", "book_price|50-100.1-2": 0, "book_time": "@date('yyyy-mm-dd')"}
+    ]
+})
+
+// 勾股定理：a^2 + b^2 = c^2
+var get_c = (a, b) => Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        active: null, 
+        items: [],
+    },
+    methods: {
+        getWidthAndRotation (left, right) {
+            const left_rect = left.getBoundingClientRect()
+            const right_rect = right.getBoundingClientRect()
+
+			const x1 = left_rect.x + left_rect.width,
+				  y1 = left_rect.y + left_rect.height / 2;
+
+			const x2 = right_rect.x,
+				  y2 = right_rect.y + right_rect.height / 2;
+
+			const a = x2 - x1
+			const b = y2 - y1
+			const c = get_c(a, b)
+			const rotate = Math.atan2(b, a) * 180 / Math.PI
+
+			return { c, rotate }
+        },
+        determine (book_id) {
+        	const index = this.items.findIndex(_ => _.book_id === this.active)
+        	this.$set(this.items[index], 'determine', true)
+        	this.active = null
+        },
+        link (event) {
+			 // 1、 hover 的时候，判断是否当前有active。
+        	 if (this.active) {
+				// 2、 如果有的话，那么找到该id所在的ref的dom
+				const left = this.$refs[`item__${this.active}`][0]
+				// 获取右侧的
+				const right = event.target
+
+				// 3、 通过计算，返回 c 和 rotate
+				const  { c, rotate } = this.getWidthAndRotation(left, right)
+
+				// 4、 设置到到该数据源中，完成
+				const index = this.items.findIndex(_ => _.book_id === this.active)
+				this.$set(this.items[index], 'width', c)
+				this.$set(this.items[index], 'rotate', rotate)
+        	 }
+        },
+    },
+    beforeMount: function () {
+        axios.get("/book/list").then(res => {
+            this.items = res.data.booklist
+        })
+    }
+})
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

@@ -23,6 +23,16 @@ return
     Hotstring("Reset")
 return
 
+::god::
+::godmodel::
+::godmode::
+Var =
+(
+GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}
+)
+code(Var)
+return
+
 ^!n::
 	Send, ^c
 	ClipWait, 2
@@ -1515,69 +1525,8 @@ return
 cs("Typescript")
 return
 
-
-::0::
-Send, 0️⃣
-return
-::1::
-Send, 1️⃣
-return
-::2::
-Send, 2️⃣
-return
-::3::
-Send, 3️⃣
-return
-::4::
-Send, 4️⃣
-return
-::5::
-Send, 5️⃣
-return
-::6::
-Send, 6️⃣
-return
-::7::
-Send, 7️⃣
-return
-::8::
-Send, 8️⃣
-return
-::9::
-Send, 9️⃣
-return
-::10::
-Send, 1️⃣0️⃣
-return
-::11::
-Send, 1️⃣1️⃣
-return
-::12::
-Send, 1️⃣2️⃣
-return
-::13::
-Send, 1️⃣3️⃣
-return
-::14::
-Send, 1️⃣4️⃣
-return
-::15::
-Send, 1️⃣5️⃣
-return
-::16::
-Send, 1️⃣6️⃣
-return
-::17::
-Send, 1️⃣7️⃣
-return
-::18::
-Send, 1️⃣8️⃣
-return
-::19::
-Send, 1️⃣9️⃣
-return
-::20::
-Send, 2️⃣0️⃣
+::0-9::
+cs("0123456789")
 return
 
 ::seq::
