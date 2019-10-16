@@ -580,14 +580,10 @@ code(Var)
 return
 
 ::noww::
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-code(t)
-return
-
-::now::
 Var := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 code(Var)
 return
+
 
 
 ::ahkmenu::
@@ -904,7 +900,7 @@ return
 
 
 !d::
-    run, %A_WorkingDir%/src
+    run, %A_WorkingDir%
 return
 
 >!t::

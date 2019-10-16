@@ -382,7 +382,8 @@ txtit(code, spliter = "---") {
 		x := GUI_width * (x_rate == 0 ? 0 : (x_rate / 3))
 		
 		y_rate := Floor(i / 3)
-		y := GUI_height * (y_rate == 0 ? 0 : (1 / y_rate))
+		y := GUI_height * (y_rate == 0 ? 0 : (1 / (y_rate + 1)))
+        
 		
 		; 添加文本框
 		Gui, Code:Add, Edit, X0 Y%y% X%x% W%w% H%h% ReadOnly, % value

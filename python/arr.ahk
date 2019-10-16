@@ -1,4 +1,11 @@
 ﻿!a::
+	Menu, arrayMenu, Add, 定义元组： t = (1`,2`,3), ForHandler
+	Menu, arrayMenu, Add, 元组累加： t1 + t2, ForHandler
+	Menu, arrayMenu, Add, 元组遍历： for i in t, ForHandler
+
+	Menu, arrayMenu, Add,, ForHandler
+	Menu, arrayMenu, Add,, ForHandler
+
 	Menu, arrayMenu, Add, 定义字典 json 版：me = {'name':'Lee'}, ForHandler
 	Menu, arrayMenu, Add, 定义字典：user = dict(age=19`, sex='nan'), ForHandler
 	Menu, arrayMenu, Add, 字典 for 循环： for key in user:, ForHandler
@@ -44,6 +51,30 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "定义元组： t = (1,2,3)") {
+Var = 
+(
+t = (1,2,3)
+)	
+}
+
+if (v == "元组累加： t1 + t2") {
+Var = 
+(
+t1 = (1,2,3)
+t2 = (4,5,6)
+print(20191016141841, t1 + t2)
+)	
+}
+
+if (v == "元组遍历： for i in t") {
+Var = 
+(
+for i in t:
+	print(20191016141827, i)
+)	
 }
 
 

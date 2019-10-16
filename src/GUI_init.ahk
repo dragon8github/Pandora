@@ -241,6 +241,8 @@ Gui, Pandora:Add, Link,, <a href="http://www.lurena.vip/">路人A</a>
 Gui, Pandora:Add, Link,, <a href="http://strapdownjs.com/">html转化为md</a>
 Gui, Pandora:Add, Link,, <a href="https://codesandbox.io/">codesandbox</a>
 Gui, Pandora:Add, Link,, <a href="https://unbug.github.io/codelf">codeif变量神器</a>
+Gui, Pandora:Add, Link,, <a href="https://www.iloveimg.com/zh-cn">图片压缩神器</a>
+
 
 Gui, Pandora:Add, Text,  W140 Section xs yp+80, 最近学习：
 Gui, Pandora:Add, Link,, <a href="https://hellogithub.com/periodical/volume/15/">有趣的github项目</a>

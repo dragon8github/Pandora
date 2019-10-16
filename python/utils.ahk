@@ -1,16 +1,19 @@
 ﻿!u::
-	Menu, PythonMenu, Add, #-*- coding: utf-8 -*- , PythonHandler
-	Menu, PythonMenu, Add, python -m pip install --upgrade pip, PythonHandler2
-	Menu, PythonMenu, Add, pip install virtualenv, PythonHandler2
-	Menu, PythonMenu, Add, pip install virtualenvwrapper-win, PythonHandler2
-	
-	Menu, PythonMenu, Add,, PythonHandler
-	Menu, PythonMenu, Add,, PythonHandler
-	
-	
+
 	Menu, PythonCognition, Add, 数组拦截、字符串拦截：me[1:3] , PythonHandler
+	Menu, PythonCognition, Add, 元组的小问题：(1`,) 由于括号问题，所以总是在最后加入一个逗号是好习惯, PythonHandler
 	
+	Menu, PythonCognition, Add, now, PythonHandler
 	
+	Menu, PythonMenu, Add, #-*- coding:utf-8 -*-, PythonHandler
+	Menu, PythonMenu, Add, (〜￣△￣)〜 认知 ～(￣▽￣～), :PythonCognition
+	
+	Menu, PythonMenu, Add,, PythonHandler
+	Menu, PythonMenu, Add,, PythonHandler
+	
+	Menu, Pythonfiles, Add, read, PythonHandler
+	Menu, Pythonfiles, Add, open, PythonHandler
+	Menu, Pythonfiles, Add, write, PythonHandler
 	
 	Menu, PythonMagic, Add, __doc__: 打印出对象的属性, PythonHandler
 	Menu, PythonMagic, Add, __doc__: 打印出类、函数注释, PythonHandler
@@ -18,9 +21,10 @@
 	
 	Menu, PythonbuiltIn, Add, 全局变量globals() 和 局部变量locals(), PythonHandler
 	
-	Menu, PythonMenu, Add, (〜￣△￣)〜认知～(￣▽￣～), :PythonCognition
 	Menu, PythonMenu, Add, 魔术变量：__FUCK__, :PythonMagic
 	Menu, PythonMenu, Add, 内置函数, :PythonbuiltIn
+	Menu, PythonMenu, Add, 文件读写, :Pythonfiles
+	Menu, PythonMenu, Add, datetime, :Pythondatetime
 
 
 	Menu, PythonMenu, Add,, PythonHandler
@@ -28,8 +32,11 @@
 	
 	Menu, PythonMenu, Add, socket 网络编程基本示例, PythonHandler
 	Menu, PythonMenu, Add, bs4 + requests , PythonHandler
+	Menu, PythonMenu, Add, 字符串中文乱码问题：decode/encode, PythonHandler
+	Menu, PythonMenu, Add, mysql, PythonHandler
+	Menu, PythonMenu, Add, exit(), PythonHandler
+	
 	Menu, PythonMenu, Show
-
 	Menu, PythonMenu, DeleteAll
 
 return
@@ -47,6 +54,51 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "now") {
+_send("now", true, true)
+return
+}
+
+if (v == "exit()") {
+Var = 
+(
+exit()
+)
+}
+
+if (v == "mysql") {
+_send("mysql", true, true)
+return
+}
+
+if (v == "open") {
+_send("open", true, true)
+return
+}
+
+if (v == "read") {
+_send("read", true, true)
+return
+}
+
+if (v == "write") {
+_send("write", true, true)
+return
+}
+
+if (v == "字符串中文乱码问题：decode/encode") {
+_send("encode", true, true)
+return
+}
+
+if (v == "#-*- coding:utf-8 -*-") {
+Var = 
+(
+#-*- coding:utf-8 -*-
 )
 }
 
@@ -161,7 +213,7 @@ print(myarr)
 )
 }
 
-
+code(Var)
 return
 
 
@@ -309,6 +361,7 @@ me = Me('Lee')
 code(Var)
 return
 
+::p::
 ::pr::
 >^c::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
@@ -520,6 +573,239 @@ soup = BeautifulSoup("""
 """, "html.parser")
 
 print(20191016112437, soup.html.head)
+)
+code(Var)
+return
+
+::write::
+Var =
+(
+from urllib.request import urlopen
+
+res = urlopen("http://fund.eastmoney.com/fund.html")
+
+# 由于网站是gb2312编码，所以需要转换为gb2312
+html = res.read().decode("gb2312")
+
+with open('./htmls/1.txt', 'wb') as f:
+	# 存储文本的时候，需要转为utf-8
+	f.write(html.encode('utf-8'))
+	f.close()
+)
+code(Var)
+return
+
+
+::read::
+::files::
+::file::
+Var =
+(
+f = open('files/abc.txt', 'r')
+print(f.read())
+f.close()
+)
+code(Var)
+return
+
+::os::
+Var =
+(
+import os
+print(20191016123729, os.path.dirname(os.path.dirname(__file__)))
+print(20191016123909, os.path.isdir('./files/abc.txt'))
+print(20191016123909, os.path.isfile('./files/abc.txt'))
+print(20191016123909, os.path.exists('./files/abc.txt'))
+)
+code(Var)
+return
+
+Var =
+(
+from urllib.request import urlopen
+
+res = urlopen("http://fund.eastmoney.com/fund.html")
+html = res.read()
+
+)
+code(Var)
+return
+
+::url::
+::request::
+::req::
+::resp::
+::res::
+::decode::
+::encode::
+Var =
+(
+from urllib.request import urlopen
+
+res = urlopen("http://fund.eastmoney.com/fund.html")
+
+# 由于网站是gb2312编码，所以需要转换为gb2312
+html = res.read().decode("gb2312")
+print(20191016133817, html.decode("gb2312"))
+
+with open('./1.html', 'wb') as f:
+	# 存储文本的时候，需要转为utf-8
+	f.write(html.encode('utf-8'))
+	f.close()
+)
+code(Var)
+return
+
+::open::
+Var =
+(
+with open('./htmls/1.txt', 'rb') as f:
+	html = f.read().decode('utf8')
+	print(20191016140606, html)
+	f.close()
+)
+code(Var)
+return
+
+::bsp::
+Var =
+(
+soup = BeautifulSoup(html, "html.parser")
+)
+code(Var)
+return
+
+::mysql.init::
+::sql.init::
+::sql::
+::mysql::
+Var =
+(
+import pymysql   
+
+connection = pymysql.connect(host='localhost',
+                             user='root',
+                             password='root',
+                             db='postdoge',
+                             charset='utf8',
+                             cursorclass=pymysql.cursors.Cursor)
+try:
+   with connection.cursor() as cursor:
+    	cursor.execute('select * from user')
+    	result = cursor.fetchall()
+    	print(20191016142659, result)
+finally:
+	connection.close()
+---
+import pymysql   
+
+connection = pymysql.connect(host='localhost',
+                             user='root',
+                             password='root',
+                             db='postdoge',
+                             charset='utf8',
+                             cursorclass=pymysql.cursors.Cursor)
+try:
+   with connection.cursor() as cursor:
+   		cursor.execute('select * from user')
+   		for row in cursor:
+   			print(20191016163524, row)
+   		
+finally:
+	connection.close()
+---
+import pymysql
+from common.config import dbconfig
+from pymysql.cursors import Cursor
+
+connection = pymysql.connect(**dbconfig)
+
+try:
+   cursor = Cursor(connection)
+   cursor.execute("select * from user")
+   result = cursor.fetchall()
+   print(20191016170245, result)
+
+finally:
+	connection.close()
+---
+import pymysql
+
+from common.config import dbconfig
+
+connection = pymysql.connect(**dbconfig)
+
+try:
+   with connection.cursor() as cursor:
+        cursor.execute('select * from user')
+        for row in cursor:
+            print(20191016163524, row)
+
+finally:
+	connection.close()
+---
+# common.config
+dbconfig = {
+	'host': 'localhost',
+	'user': 'root',
+	'password': 'root',
+	'db': 'postdoge',
+	'charset': 'utf8'
+}
+---
+
+import pymysql
+from common.config import dbconfig
+from pymysql.cursors import Cursor
+
+connection = pymysql.connect(**dbconfig)
+
+try:
+   cursor = Cursor(connection)
+   # 查询条件：使用元组
+   cursor.execute("select * from user where id=`%s", (1,))
+
+   # 查询条件：使用列表
+   # cursor.execute("select * from user where id=`%s", [1])
+
+   # 查询条件：使用字典
+   # cursor.execute("select * from user where id=`%(fuck_id)s", {"fuck_id": 1})
+
+   result = cursor.fetchall()
+   print(20191016170245, result)
+
+   ## 插入数据
+   # cursor.execute("insert into user(username, password, email) values (`%s,`%s,`%s)", ("MP", "123", "928532756@qq.com"))
+
+   ## 批量插入
+   # cursor.executemany("insert into user(username, password, email) values (`%s,`%s,`%s)", [("MP", "123", "928532756@qq.com"), ("foo", "bar", "12345678@qq.com")])
+
+   ## 批量插入：使用字典
+   # cursor.executemany("insert into user(username, password, email) values (`%(username)s,`%(password)s,`%(email)s)", ({
+   #      'username': 'MP',
+   #      'password': '123',
+   #      'email': '928532756@qq.com',
+   #  },{
+   #      'username': 'foo',
+   #      'password': 'bar',
+   #      'email': '123456789@qq.com',
+   #  }))
+
+finally:
+    connection.close()
+
+)
+txtit(Var)
+return
+
+::datetime::
+::now::
+::time::
+Var =
+(
+from datetime import datetime
+
+print(datetime.now().isoformat(' ', 'seconds'))
 )
 code(Var)
 return
