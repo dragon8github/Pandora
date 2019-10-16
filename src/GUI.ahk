@@ -8775,3 +8775,35 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+scriptzhuruhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    </style>
+</head>
+
+<body>
+    <a onclick="alert('请将此链接拖拽到书签栏'); return false;" href="javascript:;(function() { var o = document.createElement('script'); o.src = 'https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js'; document.documentElement.appendChild(o); window.alert('jquery加载完毕') }())" id="clipper-bd">Pandora</a>
+</body>
+<script>
+    /* 
+    核心逻辑：
+    1、<a href="javscript:;我的代码">
+    2、将a标签拖拽到标签栏
+    3、点击标签栏，实际上执行的是我的代码
+    4、我的代码是执行在你的页面的，而我直接创建一个script，导入另外一段代码注入到你的页面。这样我就可以为所欲为了。
+     */
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

@@ -368,7 +368,8 @@ Gui, Pandora:Add, Text, gworkerhtml W180, 新建worker.js.html
 Gui, Pandora:Add, Text, glocalForagehtml W180, 新建localForage缓存示例.html
 Gui, Pandora:Add, Text, gquickbianimhtml W180, 新建quickbi的过场动画.html
 Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令.html
-Gui, Pandora:Add, Text, gxiexianhtml W180, 新建三剑客画斜线.html
+Gui, Pandora:Add, Text, gscriptzhuruhtml W180, 新建书签栏脚本注入.html
+Gui, Pandora:Add, Text, gxiexianhtml W180, 新建勾股定理画斜线.html
 
 
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+20,新建.echartsDemo.html（官方demo）

@@ -473,8 +473,17 @@ return
 InputBox, OutputVar, title, enter a name?,,,,,,,,utils
 Var =
 (
-import sys
 from %OutputVar% import showme, name
+)
+code(Var)
+SendInput, ^+{left 2}
+return
+
+::imp*::
+InputBox, OutputVar, title, enter a name?,,,,,,,,utils
+Var =
+(
+from %OutputVar% import *
 )
 code(Var)
 SendInput, ^+{left 2}
@@ -487,6 +496,29 @@ Var =
 import sys
 
 print(20191015231813, sys.path)
+)
+code(Var)
+return
+
+::bs4::
+Var =
+(
+from bs4 import BeautifulSoup
+
+soup = BeautifulSoup("""
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Document</title>
+	</head>
+	<body>
+	    <div id="app"></div>
+	</body>
+	</html>
+""", "html.parser")
+
+print(20191016112437, soup.html.head)
 )
 code(Var)
 return
