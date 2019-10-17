@@ -100,7 +100,7 @@ arrincludes(myarr, v) {
 
 RunByCmder(name) {
     myIdea := "C:\Users\Lee\cmder\Cmder.exe"
-    Run, %myIdea% %name%
+    Run, %myIdea% %name%,, max
 }
 
 _send(v, isSendLevel = false, isTab = false) {
@@ -371,7 +371,8 @@ txtit(code, spliter = "---") {
         
         ; 除了第一次以外，由于 strSplit 的原因，会有换行符。 我把它移除
         if (i > 0) {
-            
+            ; 前两个字符，应该就是`n了
+            value := SubStr(value, 2)
         }
 		
 		; 如果<= 3个，我就占 1/1。

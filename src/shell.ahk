@@ -1,5 +1,4 @@
-﻿
-!b::
+﻿!b::
 	; 环境变量
 	Menu, A, Add, 打印环境变量, ShellHandler
 	Menu, A, Add, 打印$PATH路径, ShellHandler
@@ -140,7 +139,6 @@
 
 	Menu, ShellMenu, Add, , ShellHandler
 	Menu, ShellMenu, Add, , ShellHandler
-	
 	
 	
 	Menu, ShellMenu, Add, git, :gitShellMenu

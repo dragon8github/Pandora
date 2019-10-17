@@ -4628,6 +4628,10 @@ FileAppend,
         })
     </code></pre>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.js"></script>
+    <script>
+        // 可以手动调用，也可以不要。
+        Prism.highlightAll()
+    </script>
 </body>
 
 </html>

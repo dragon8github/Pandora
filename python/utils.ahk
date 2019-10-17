@@ -670,6 +670,7 @@ return
 ::res::
 ::decode::
 ::encode::
+::dede::
 Var =
 (
 from urllib.request import urlopen
@@ -684,8 +685,27 @@ with open('./1.html', 'wb') as f:
 	# 存储文本的时候，需要转为utf-8
 	f.write(html.encode('utf-8'))
 	f.close()
+---
+from urllib.request import urlopen
+# python -m pip install chardet
+import chardet
+
+def getHtml(url):
+	res = urlopen(url)
+	
+	raw_html = res.read()
+
+	# 使用chardet 分析文本的编码类型
+	getEncoding = chardet.detect(raw_html)
+
+	# 对文本进行转换编码
+	html = raw_html.decode(getEncoding['encoding'])
+
+	return html
+
+print(getHtml("http://fund.eastmoney.com/fund.html"))
 )
-code(Var)
+txtit(Var)
 return
 
 ::open::
