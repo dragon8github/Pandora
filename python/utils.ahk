@@ -1,12 +1,14 @@
 ﻿!u::
 
 	Menu, PythonCognition, Add, 数组拦截、字符串拦截：me[1:3] , PythonHandler
-	Menu, PythonCognition, Add, 元组的小问题：(1`,) 由于括号问题，所以总是在最后加入一个逗号是好习惯, PythonHandler
+	Menu, PythonCognition, Add, 元组的认知：(1`,) 如果只有一个成员，最后必须加入一个逗号, PythonHandler
+	Menu, PythonCognition, Add, func(**args)与字典，等同于es6的延展符..., PythonHandler
 	
-	Menu, PythonCognition, Add, now, PythonHandler
+	Menu, Pythondatetime, Add, now, PythonHandler
 	
 	Menu, PythonMenu, Add, #-*- coding:utf-8 -*-, PythonHandler
 	Menu, PythonMenu, Add, (〜￣△￣)〜 认知 ～(￣▽￣～), :PythonCognition
+	
 	
 	Menu, PythonMenu, Add,, PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
@@ -21,20 +23,27 @@
 	
 	Menu, PythonbuiltIn, Add, 全局变量globals() 和 局部变量locals(), PythonHandler
 	
+	
 	Menu, PythonMenu, Add, 魔术变量：__FUCK__, :PythonMagic
 	Menu, PythonMenu, Add, 内置函数, :PythonbuiltIn
 	Menu, PythonMenu, Add, 文件读写, :Pythonfiles
 	Menu, PythonMenu, Add, datetime, :Pythondatetime
+	
 
-
+	Menu, PythonMenu, Add,, PythonHandler
+	Menu, PythonMenu, Add,, PythonHandler
+	
+	Menu, PythonMenu, Add, exit(), PythonHandler
+	
 	Menu, PythonMenu, Add,, PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
 	
 	Menu, PythonMenu, Add, socket 网络编程基本示例, PythonHandler
 	Menu, PythonMenu, Add, bs4 + requests , PythonHandler
 	Menu, PythonMenu, Add, 字符串中文乱码问题：decode/encode, PythonHandler
+	
 	Menu, PythonMenu, Add, mysql, PythonHandler
-	Menu, PythonMenu, Add, exit(), PythonHandler
+	Menu, PythonMenu, Add, orm, PythonHandler
 	
 	Menu, PythonMenu, Show
 	Menu, PythonMenu, DeleteAll
@@ -54,6 +63,29 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "orm") {
+_send("orm", true, true)
+return
+}
+
+if (v == "func(**args)与字典，等同于es6的延展符...") {
+Var = 
+(
+def showme(host, user, password, db, charset):
+   print(20191016201444, host, user, password, db, charset)
+
+dbconfig = {
+   'host': 'localhost',
+   'user': 'root',
+   'password': 'root',
+   'db': 'postdoge',
+   'charset': 'utf8'
+}
+
+showme(**dbconfig)
 )
 }
 
@@ -808,4 +840,47 @@ from datetime import datetime
 print(datetime.now().isoformat(' ', 'seconds'))
 )
 code(Var)
+return
+
+>^e::
+Var =
+(
+exit()
+)
+code(Var)
+return
+
+::orm::
+Var =
+(
+python -m pip install SQLAlchemy 
+python -m pip install PyMySQL
+python -m pip install sqlacodegen
+
+# 生成model
+sqlacodegen --table user mysql+pymysql://root:root@localhost/postdoge?charset=utf8
+
+https://github.com/zzzeek/sqlalchemy
+https://github.com/agronholm/sqlacodegen
+https://docs.sqlalchemy.org/en/13/orm/tutorial.html#connecting
+---
+from sqlalchemy import create_engine, desc
+from mappers.User import User
+from sqlalchemy.orm import sessionmaker
+
+engine = create_engine('mysql+pymysql://root:root@localhost/postdoge?charset=utf8', echo=True)
+Session = sessionmaker(engine)
+mysession = Session()
+
+# result = mysession.query(User).all()
+# print(20191016204600, result[0].__dict__)
+# print(20191016204600, result[0].username)
+
+# result = mysession.query(User).filter(User.username == '李钊鸿').first()
+# print(20191016212145, result.username)
+
+result = mysession.query(User).filter(User.id > 1).order_by(desc(User.id)).limit(2).all()
+print(20191016212345, result[0].username)
+)
+txtit(Var)
 return

@@ -437,9 +437,46 @@ return
     Send, ^c
     ClipWait
     Clipboard := str . "`r`n" . Clipboard
+    
+    ; 迭代
+    s := StrSplit(Clipboard, "`r`n")[2]
+    if (s == "if (v == """") {") {
+        f := StrSplit(Clipboard, "`r`n")[1]
+Clipboard = 
+(
+if (v == "%f%") {
+_send("%f%", true, true)
+return
+}
+)
+    }
 return
 
 
+
+
+>+c::    
+    str := Clipboard
+    Clipboard := 
+    Send, ^c
+    ClipWait
+    Clipboard := str . "`r`n" . Clipboard
+    
+    ; 迭代
+    s := StrSplit(Clipboard, "`r`n")[2]
+    if (s == "if (v == """") {") {
+        f := StrSplit(Clipboard, "`r`n")[1]
+Clipboard = 
+(
+if (v == "%f%") {
+Var = 
+(
+%f%
+`)
+}
+)
+    }
+return
 
 ~!+l::
 Clipboard := 

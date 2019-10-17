@@ -3,6 +3,7 @@
 	Menu, DockerMenu, Add, docker images, DockerMenuHandler2
 	Menu, DockerMenu, Add, docker start <container>, DockerMenuHandler2
 	Menu, DockerMenu, Add, docker stop <container>, DockerMenuHandler2
+	Menu, DockerMenu, Add, docker restart <container>, DockerMenuHandler2
 	Menu, DockerMenu, Add, docker rmi <IMAGE>, DockerMenuHandler2
 	Menu, DockerMenu, Add, docker stop <container> && docker rm <container>, DockerMenuHandler2
 	
