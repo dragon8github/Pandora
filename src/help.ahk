@@ -445,6 +445,10 @@ return
 Clipboard = 
 (
 if (v == "%f%") {
+Var = 
+(
+%f%
+`)
 _send("%f%", true, true)
 return
 }

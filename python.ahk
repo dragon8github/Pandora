@@ -53,8 +53,6 @@ return
 
 
 !z::
-	WinGet, v, PID, , Chrome
-	Process, Close, % v
 return
 
 

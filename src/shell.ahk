@@ -124,6 +124,7 @@
 	Menu, gitShellMenu, Add, 删除远程文件/文件夹：git rm -r --cached node_modules/, ShellHandler3
 
 	Menu, ShellMenu, Add, #!/bin/bash（通过echo $SHELL确定）, ShellHandler
+	Menu, ShellMenu, Add, 开机自启动配置文件：/etc/rc.d/rc.local, ShellHandler
 	Menu, ShellMenu, Add, for循环, ShellHandler
 	Menu, ShellMenu, Add, if、then、else、elif、if, ShellHandler
 	Menu, ShellMenu, Add, export PATH添加一条路径, ShellHandler3
@@ -160,17 +161,6 @@
 	Menu, ShellMenu, Add, 批量重命名, ShellHandler
 	Menu, ShellMenu, Add, 安装脚本shadowsocks-install.sh, ShellHandler
 	
-	Menu, ShellMenu, Add
-	Menu, ShellMenu, Add
-	
-	Menu, ShellMenu, Add, ps -ef | grep nginx, ShellHandler3
-	Menu, ShellMenu, Add, 开机自启动配置文件：/etc/rc.d/rc.local, ShellHandler3
-	Menu, ShellMenu, Add, 默认的www目录：/usr/local/nginx/html, ShellHandler3
-	Menu, ShellMenu, Add, nginx默认路径：/usr/local/nginx/sbin/nginx, ShellHandler3
-	Menu, ShellMenu, Add, nginx配置路径：/usr/local/nginx/conf/nginx.conf, ShellHandler3
-	Menu, ShellMenu, Add, nginx -s reload 重启 nginx, ShellHandler
-	Menu, ShellMenu, Add, nginx -t 测试配置是否有语法错误，并且获取配置位置, ShellHandler
-	Menu, ShellMenu, Add, nginx server 端口配置, ShellHandler
 	
 	Menu, ShellMenu, Add
 	Menu, ShellMenu, Add
@@ -288,12 +278,6 @@ export PATH="$PATH:/home/user/bin"
 }
 
 
-if (v == "默认的www目录：/usr/local/nginx/html") {
-Var = 
-(
-/usr/local/nginx/html
-)
-}
 
 if (v == "PowserShell 下载：Invoke-WebRequest") {
 Var = 
@@ -303,19 +287,6 @@ Invoke-WebRequest -uri "https://raw.githubusercontent.com/dragon8github/Pandora/
 }
 
 
-if (v == "nginx默认路径：/usr/local/nginx/sbin/nginx") {
-Var = 
-(
-/usr/local/nginx/sbin/nginx
-)
-}
-
-if (v == "nginx配置路径：/usr/local/nginx/conf/nginx.conf") {
-Var = 
-(
-/usr/local/nginx/conf/nginx.conf
-)
-}
 
 if (v == "灭霸响指：Thanos.sh - 删除系统一半的文件") {
 Var = 
@@ -373,30 +344,6 @@ Var =
 )
 }
 
-
-
-
-
-if (v == "nginx server 端口配置") {
-Var = 
-(
-server {
-	listen       6080;
-	server_name  _;
-	index index.html index.htm ;
-	root /usr/local/nginx/html;
-
-
-	location ^~ /api/ {
-			proxy_pass    http://19.104.40.37:8082/api/;
-	}
-
-	location / {
-			 try_files $uri /index.html;
-	}
-}
-)
-}
 
 
 if (v == "tar 压缩") {
@@ -475,16 +422,6 @@ Var =
 curl -s -XPUT 'http://localhost:9200/get-together/group/1?pretty' -H 'Content-Type:application/json' -d '{"firstName": "JOJO", "lastName": "Joestar"}'
 )
 cs(Var)
-return
-}
-
-if (v == "nginx -s reload 重启 nginx") {
-_send("nginx -s reload",true, true)
-return
-}
-
-if (v == "nginx -t 测试配置是否有语法错误，并且获取配置位置") {
-_send("nginx -t",true, true)
 return
 }
 

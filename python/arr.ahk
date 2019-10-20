@@ -29,11 +29,13 @@
 	Menu, arrayMenu, Add, List#append, ForHandler
 	Menu, arrayMenu, Add, List#sort, ForHandler
 	Menu, arrayMenu, Add, List#pop, ForHandler
+	Menu, arrayMenu, Add, List#append、List#insert、List#extend, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
 	
 	Menu, arrayMenu, Add,[x * 2 for x in range(10`, 0`, -1) if x > 8], ForHandler
+	Menu, arrayMenu, Add,filter, ForHandler
 	
 	
 	Menu, arrayMenu, Show
@@ -51,6 +53,30 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "List#append、List#insert、List#extend") {
+Var =
+(
+ary = [1,2,3]
+ary.append(4)
+print(20191020193321, ary) # 20191020193321 [1, 2, 3, 4]
+
+ary.extend([3,4,5])
+print(20191020193321, ary) # 20191020193321 [1, 2, 3, 4, 3, 4, 5]
+
+ary.insert(0, -1)
+print(20191020193452, ary) # 20191020193452 [-1, 1, 2, 3, 4, 3, 4, 5]
+
+ary + [1,2,3]
+print(20191020193508, ary) # 20191020193508 [-1, 1, 2, 3, 4, 3, 4, 5]
+)
+code(Var)
+}
+
+if (v == "filter") {
+_send("filter", true, true)
+return
 }
 
 if (v == "定义元组： t = (1,2,3)") {
@@ -237,6 +263,16 @@ return
 Var =
 (
 lambda x: 
+)
+code(Var)
+return
+
+::filter::
+Var =
+(
+result = list(filter(str.isdigit, "1a2b3c4d"))
+print(20191020185031, result)
+print(20191020185031, str.join('-', result))
 )
 code(Var)
 return

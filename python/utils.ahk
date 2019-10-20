@@ -7,6 +7,8 @@
 	Menu, Pythondatetime, Add, now, PythonHandler
 	
 	Menu, PythonMenu, Add, #-*- coding:utf-8 -*-, PythonHandler
+	Menu, PythonMenu, Add, if (key is not none):, PythonHandler
+
 	Menu, PythonMenu, Add, (〜￣△￣)〜 认知 ～(￣▽￣～), :PythonCognition
 	
 	
@@ -34,6 +36,8 @@
 	Menu, PythonMenu, Add,, PythonHandler
 	
 	Menu, PythonMenu, Add, exit(), PythonHandler
+	Menu, PythonMenu, Add, 高阶函数与闭包：memoized, PythonHandler
+	Menu, PythonMenu, Add, 字符串模板'{0}.txt'.format('fuck'), PythonHandler
 	
 	Menu, PythonMenu, Add,, PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
@@ -45,6 +49,7 @@
 	Menu, PythonMenu, Add, mysql, PythonHandler
 	Menu, PythonMenu, Add, orm, PythonHandler
 	Menu, PythonMenu, Add, selenium, PythonHandler
+	Menu, PythonMenu, Add, 多进程Process, PythonHandler
 	
 	Menu, PythonMenu, Show
 	Menu, PythonMenu, DeleteAll
@@ -65,6 +70,30 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "if (key is not none):") {
+Var =
+(
+if (key is not none):
+)
+}
+
+if (v == "字符串模板'{0}.txt'.format('fuck')") {
+Var = 
+(
+print('{0}.txt'.format('fuck'))
+)
+}
+
+if (v == "多进程Process") {
+_send("Process", true, true)
+return
+}
+
+if (v == "高阶函数与闭包：memoized") {
+_send("cache", true, true)
+return
 }
 
 if (v == "orm") {
@@ -343,8 +372,8 @@ return
 ::for::
 Var =
 (
-for i in range(5):
-	print('Jimmy Five Times (' + str(i) + ')')
+for i in range(0, 10):
+    print(i)
 )
 code(Var)
 return
@@ -376,7 +405,6 @@ class Me:
 
     def __init__(self, name):
         self.name = name
-        self.hobby = []
 
     def show(self):
         print(self.name)
@@ -385,11 +413,18 @@ class Me:
     def version():
         print('1.0')
 
+    # 类似 vue computed 计算属性
+    @property
+    def myname(self):
+        return "我是" + self.name
+
 
 me = Me('Lee')
+
 # me.show() # Lee
 # Me.version() # 1.0
 # print(20191015225859, me._Me__sex) # F
+# print(me.myname) # 我是Lee
 )
 code(Var)
 return
@@ -926,4 +961,136 @@ searchBtn.click()
 print(driver.page_source)
 )
 code(Var)
+return
+
+::@dec::
+::dec::
+Var =
+(
+# 装饰器
+def showName(name):
+
+    # 固定套路 start
+    def _(target):
+
+        # 这里才是重点
+        # 高阶函数：总是返回一个函数
+        def fn(*args):
+            # 注入一些新举措
+            print('我的名字是' + name)
+            # 执行源函数
+            target(*args)
+        return fn
+
+    # 固定套路 end
+    return _
+
+
+@showName(name = 'Lee')
+def showAge(age):
+    print(str(age) + '岁')
+
+showAge(20)
+)
+code(Var)
+return
+
+
+::cache::
+Var =
+(
+# 高阶函数：缓存器
+def memoized (fn):
+    # 闭包缓存
+    cache = {}
+
+    def _ (*args):
+        # 我以第一个参数作为key
+        key = args[0]
+
+        # 如果缓存存在
+        if (key in cache):
+            print('🚀 use cache')
+            # 直接返回缓存数据即可
+            return cache[key]
+
+        # 否则
+        else:
+            # 执行函数，拿到结果
+            result = fn(*args)
+            # 加入缓存
+            cache[key] = result
+            # 返回结果
+            return result
+
+    return _
+
+# 阶乘
+def Factorial (n):
+    if (n == 0):
+        return 1
+
+    return n * Factorial(n - 1)
+
+# 装饰
+_memoized = memoized(Factorial)
+
+print(_memoized(10)) # 3628800
+print(_memoized(10)) # 🚀 use cache 3628800
+)
+code(Var)
+return
+
+::Process::
+::xiancheng::
+::jincheng::
+::duoxiancheng::
+::duojincheng::
+Var =
+(
+from multiprocessing import Process
+
+def Hello(name):
+    print('hello', name)
+
+if (__name__ == '__main__'):
+    # 参数1：函数， # 参数2：元组
+    p = Process(target = Hello, args = ('Lee',))
+
+    # 开始进程任务
+    p.start()
+
+    # 等待子进程全部完成
+    p.join()
+
+    # callback...
+    print('🚀 worker finish')
+---
+# 使用 Manager 创建共享内存数据示例
+from multiprocessing import Process, Manager
+
+def addUser(userList):
+    userList.append('Lee')
+    print('📝 user append success', userList)
+
+if (__name__ == '__main__'):
+    # 创建一个共享内存
+    manager = Manager()
+
+    # 从内存中创建一个共享列表结构
+    userList = manager.list(['JOJO', 'DIO'])
+
+    # 参数1：函数， # 参数2：元组
+    p = Process(target = addUser, args = (userList,))
+
+    # 开始进程任务
+    p.start()
+
+    # 等待子进程全部完成
+    p.join()
+
+    # callback...
+    print('🚀 worker finish', userList)
+)
+txtit(Var)
 return
