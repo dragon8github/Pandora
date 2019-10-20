@@ -5302,3 +5302,19 @@ padding: 0;
 )
 code(Var)
 return
+
+::bg2::
+Var =
+(
+background:
+    url('~@/assets/topbg_01.png') 0 0         / 12.5`% rem(162) no-repeat,
+    url('~@/assets/topbg_02.png') rem(540) 0 / 12.5`% rem(162) no-repeat,
+    url('~@/assets/topbg_03.png') rem(1080) 0 / 12.5`% rem(162) no-repeat,
+    url('~@/assets/topbg_04.png') rem(1620) 0 / 12.5`% rem(162) no-repeat,
+    url('~@/assets/topbg_05.png') rem(2160) 0 / 12.5`% rem(162) no-repeat,
+    url('~@/assets/topbg_06.png') rem(2700) 0 / 12.5`% rem(162) no-repeat,
+    url('~@/assets/topbg_07.png') rem(3240) 0 / 12.5`% rem(162) no-repeat,
+    url('~@/assets/topbg_08.png') rem(3780) 0 / 12.5`% rem(162) no-repeat;
+)
+code(Var)
+return

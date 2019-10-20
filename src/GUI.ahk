@@ -8811,3 +8811,130 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+word2HTML:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <!-- element -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/theme-chalk/index.css">
+
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+        width: 649px;
+        margin: auto;
+        font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    }
+
+    #app {
+
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    h1 { 
+        font-size: 20px; 
+    }
+
+    h2 { 
+        font-size: 16px; 
+    }
+
+    .el-table__body, .el-table__header {
+        width: 100`% !important;
+    }
+
+    .el-table .cell {
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <article v-for='(item, index) in items' :key='index'>
+            <h1>{{ index + 1 }}、{{ item.queryName }}</h1>
+            <h2>{{ index + 1 }}.1 接口详情</h2>
+            <ul>
+                <li>描述：{{ item.queryDesc || '（空）' }}</li>
+                <li>接口地址：{{ item.queryUrl }}</li>
+            </ul>
+            <h2>{{ index + 1 }}.2 请求参数</h2>
+            <el-table :data="item.apiRequests" border>
+                <el-table-column  prop="columnDefinition" label="参数名称"></el-table-column>
+                <el-table-column  prop="columnDesc" label="字段说明"></el-table-column>
+                <el-table-column  prop="columnType" label="字段类型"></el-table-column>
+                <el-table-column  label="是否必须">
+                    <template slot-scope="scope">
+                      {{ scope.row.requiredMark ? '必填' : '可选' }}
+                    </template>
+                </el-table-column>
+                <el-table-column  label="示例">
+                    <template slot-scope="scope">
+                      {{ scope.row.exampleValue}}
+                    </template>
+                </el-table-column>
+            </el-table>
+            <h2>{{ index + 1 }}.3 返回参数</h2>
+            <el-table :data="item.apiResponses" border>
+                <el-table-column  prop="columnDefinition" label="参数名称"></el-table-column>
+                <el-table-column  prop="columnDesc" label="字段说明"></el-table-column>
+                <el-table-column  prop="columnType" label="字段类型"></el-table-column>
+                <el-table-column  label="示例">
+                    <template slot-scope="scope">
+                      {{ scope.row.exampleValue }}
+                    </template>
+                </el-table-column>
+            </el-table>
+            <h2>{{ index + 1 }}. 返回示例</h2>
+            <pre class="language-js"><code>{ "data": {{ item.result.data }}, "page": 0, "size": 500, "total": {{ item.result.total }}, "messageList": {{ item.result.messageList }} }    
+            </code></pre>
+        </article>
+    </div>
+</body>
+
+
+<script>
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: [],
+        text: '',
+    },
+    methods: {
+        handleClick () {
+
+        }
+    },
+    async beforeMount () {
+       const items = await $.getJSON('./data.json')
+       this.items = items.slice(0)
+       // 高亮
+       this.$nextTick(() => {
+        document.querySelectorAll('td, th').forEach((val, key) => val.setAttribute('width', '130'))
+       })
+    }
+})
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

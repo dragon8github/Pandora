@@ -6050,36 +6050,66 @@ return
 
 
 ::zhuangshiqi::
-::dec::
 ::@dec::
+::dec::
 Var =
 (
-function setSeriesCenterPos (...args) {
-    console.log(...args)
+// https://es6console.com/k1yivejb/
+@testable
+class MyTestableClass {
+  // ...
 }
 
 function testable(target) {
   target.isTestable = true;
 }
 
-function ChartFormDec (key, method) {
-  return function (TargetClass) {
-    if (!TargetClass.formMethods) {
-      TargetClass.formMethods = {}
-    }
-
-    TargetClass.formMethods[key] = method
+MyTestableClass.isTestable // true
+---
+class Math {
+  @log
+  add(a, b) {
+    return a + b;
   }
 }
 
-@ChartFormDec('legendPosChange', setSeriesCenterPos)
-@testable
-class PieChart {}
+function log(target, name, descriptor) {
+  var oldValue = descriptor.value;
 
-console.log(20190624201822, PieChart.formMethods) 
-console.log(20190624201822, PieChart.isTestable ) 
+  descriptor.value = function() {
+    console.log(`Calling ${name} with`, arguments);
+    return oldValue.apply(this, arguments);
+  };
+
+  return descriptor;
+}
+
+const math = new Math();
+
+// passed parameters should get logged now
+math.add(2, 4);
+---
+// mixins.js
+export function mixins(...list) {
+  return function (target) {
+    Object.assign(target.prototype, ...list)
+  }
+}
+
+// main.js
+import { mixins } from './mixins'
+
+const Foo = {
+  foo() { console.log('foo') }
+};
+
+@mixins(Foo)
+class MyClass {}
+
+let obj = new MyClass();
+obj.foo() // 'foo'
 )
-code(Var)
+txtit(Var)
 return
 
 ::html2canvas::

@@ -44,6 +44,7 @@
 	
 	Menu, PythonMenu, Add, mysql, PythonHandler
 	Menu, PythonMenu, Add, orm, PythonHandler
+	Menu, PythonMenu, Add, selenium, PythonHandler
 	
 	Menu, PythonMenu, Show
 	Menu, PythonMenu, DeleteAll
@@ -903,4 +904,26 @@ result = mysession.query(User).filter(User.id > 1).order_by(desc(User.id)).limit
 print(20191016212345, result[0].username)
 )
 txtit(Var)
+return
+
+::selenium::
+Var =
+(
+# https://sites.google.com/a/chromium.org/chromedriver/downloads
+# python -m pip install selenium
+from selenium import webdriver
+
+driver = webdriver.Chrome('C:\\Users\\Lee\\Desktop\\chromedriver.exe')
+
+driver.get('http://www.baidu.com')
+
+searchText = driver.find_element_by_id('kw')
+searchText.send_keys('网易云音乐')
+
+searchBtn = driver.find_element_by_id('su')
+searchBtn.click()
+
+print(driver.page_source)
+)
+code(Var)
 return

@@ -114,12 +114,6 @@ Var =
 code(Var)
 return
 
-::tsc::
-::sc::
-InputBox, OutputVar, title, enter a name?,,,,,,,,test
-SendRaw, tsc %OutputVar%.ts && node %OutputVar%.js
-return
-
 ::ts.fd::
 ::ts.fdefault::
 ::ts.funcd::

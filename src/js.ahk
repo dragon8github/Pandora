@@ -299,7 +299,8 @@ const checkStatus = (response) => {
 // 缓存到localforage
 const cachedSave = (hashcode, content) => {
     // 返回code500是后端固定的报错反馈 && 不能为空对象 && 数据的小于2M
-    if (content.code != 500 && !isEmptyObject(content) && (JSON.stringify(content).length / 1024).toFixed(2) < 2048) {
+    // && (JSON.stringify(content).length / 1024).toFixed(2) < 2048
+    if (content.code != 500 && !isEmptyObject(content)) {
         // 设置缓存
         localforage.setItem(hashcode, JSON.stringify(content)).catch(err => {
             console.log('cache err', err)
@@ -326,20 +327,22 @@ export const request = async (url, options = {}) => {
     const hashcode = hash.sha256().update(fingerprint).digest('hex')
     // 预设值指纹
     const _cachedSave = cachedSave.bind(null, hashcode)
-    // 过期设置
-    const expirys = options.expirys || 60
+    // 过期设置（默认一天缓存）
+    const expirys = options.expirys || 60 * 60 * 24
     // 本请求是否禁止缓存？
-    if (expirys !== false) {
+    // fixbug: 如果是当天，需要不断的重复请求，如果你请求回来是缓存，那还玩个猫。所以，如果是当天的话，禁止使用缓存
+    if (expirys !== false && !store.getters.IS_TODAY) {
         // 获取缓存
         const cached = await localforage.getItem(hashcode)
         // 获取该缓存的时间
         const whenCached = await localforage.getItem(`${hashcode}:timestamp`)
-        // 如果缓存都存在（如果希望只有生产模式才开启那么就加入这个判断条件)
-        if (cached !== null && whenCached !== null && process.env.NODE_ENV === 'production') {
+        // 如果缓存都存在（如果希望只有生产模式才开启那么就加入这个判断条件) && process.env.NODE_ENV === 'production'
+        if (cached !== null && whenCached !== null) {
             // 判断缓存是否过期
             const age = (Date.now() - whenCached) / 1000
             // 如果不过期的话直接返回该内容
             if (age < expirys) {
+                console.log('🚀 use cache')
                 // 新建一个response
                 const response = new Response(new Blob([cached]))
                 // 返回promise式的缓存

@@ -1822,3 +1822,8 @@ Var =
 )
 code(Var)
 return
+
++F12::
+Send, +{Insert}
+return
+

@@ -11,7 +11,8 @@
 	Menu, bilibiliMenu, Add, ⭐️, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ✔, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ✖, bilibiliHandler2
-
+	Menu, bilibiliMenu, Add, ·, bilibiliHandler2
+	
 	Menu, bilibiliMenu, Add,,
 	Menu, bilibiliMenu, Add,,
 
@@ -48,6 +49,7 @@ return
 
 bilibiliHandler2:
 v := A_ThisMenuItem
+Clipboard := v
 SendEvent, {text}%v%
 return
 

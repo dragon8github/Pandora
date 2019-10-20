@@ -1,4 +1,15 @@
-﻿::cdn-gaoliang::
+﻿::cdn-wl::
+::cdn-cache::
+::cdn-local::
+Var =
+(
+<!-- localforage -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-gaoliang::
 ::cdn-high::
 ::cdn-code::
 Var =
