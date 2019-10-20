@@ -72,6 +72,7 @@ Var =
 )
 }
 
+
 if (v == "if (key is not none):") {
 Var =
 (
@@ -367,16 +368,6 @@ input()
 code(Var)
 return
 
-::pyfor::
-::py.for::
-::for::
-Var =
-(
-for i in range(0, 10):
-    print(i)
-)
-code(Var)
-return
 
 ::pyif::
 ::py.if::
@@ -1091,6 +1082,82 @@ if (__name__ == '__main__'):
 
     # callback...
     print('🚀 worker finish', userList)
+---
+# 📝 通常的多进程开发： 都是循环新建 + 循环开启
+from multiprocessing import Process
+
+# 模拟任务
+def work(v):
+    print('📝 finish work', v)
+
+
+if (__name__ == '__main__'):
+	# 进程池
+	processList = []
+
+	# 新建十个进程
+	for i in range(0, 10, 1):
+		p = Process(target = work, args = (i, ))
+		processList.append(p)
+
+	# 开始进程池任务
+	for p in processList:
+	    p.start()
+---
+# 启动远程进程服务
+# 📝使用方法：先单独运行这个文件，启动服务，如果没有报错则是成功了。
+from multiprocessing.managers import BaseManager
+
+if __name__ == '__main__':
+	# 密码必须是字节，所以是 b'12345'
+	bm = BaseManager(address = ('127.0.0.1', 8084), authkey = b'12345')
+
+	# 注册一个方法，初始化 List 数据
+	bm.register('getUser', callable = lambda : ['JOJO', 'DIO'])
+
+	# 获取当前服务
+	bm_server = bm.get_server()
+
+	# 服务永不关闭
+	bm_server.serve_forever()
+---
+from multiprocessing import Process, Manager
+from multiprocessing.managers import BaseManager
+
+# 模拟进程1的任务
+def addUser1(userList):
+    userList.append('白金之星')
+
+# 模拟进程2的任务
+def addUser2(userList):
+    userList.append('╰(‵□′)╯砸瓦鲁多')
+
+if (__name__ == '__main__'):
+    # 创建一个连接
+    bm = BaseManager(address = ('127.0.0.1', 8084), authkey = b'12345')
+
+    # 注册方法
+    bm.register('getUser')
+
+    # 连接
+    bm.connect()
+
+    # 调用远程方法 - 获取内容
+    userList = bm.getUser()
+
+    # 新建进程1
+    p1 = Process(target = addUser1, args = (userList, ))
+    p1.start()
+
+    # 新建进程2
+    p2 = Process(target = addUser2, args = (userList, ))
+    p2.start()
+
+    # 等待两个进程任务完成
+    p1.join()
+    p2.join()
+
+    print('🚀 work finish', userList) # 🚀 work finish ['JOJO', 'DIO', '╰(‵□′)╯砸瓦鲁多', '白金之星']
 )
 txtit(Var)
 return

@@ -440,8 +440,10 @@ return
     
     ; 迭代
     s := StrSplit(Clipboard, "`r`n")[2]
+    ; 必须是第二行
     if (s == "if (v == """") {") {
-        f := StrSplit(Clipboard, "`r`n")[1]
+        MsgBox, % s
+        f := StrSplit(s, "`r`n")[1]
 Clipboard = 
 (
 if (v == "%f%") {
@@ -456,31 +458,6 @@ return
     }
 return
 
-
-
-
->+c::    
-    str := Clipboard
-    Clipboard := 
-    Send, ^c
-    ClipWait
-    Clipboard := str . "`r`n" . Clipboard
-    
-    ; 迭代
-    s := StrSplit(Clipboard, "`r`n")[2]
-    if (s == "if (v == """") {") {
-        f := StrSplit(Clipboard, "`r`n")[1]
-Clipboard = 
-(
-if (v == "%f%") {
-Var = 
-(
-%f%
-`)
-}
-)
-    }
-return
 
 ~!+l::
 Clipboard := 

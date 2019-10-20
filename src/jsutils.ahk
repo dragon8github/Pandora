@@ -7296,3 +7296,27 @@ getWidthAndRotation (left, right) {
 )
 code(Var)
 return
+
+::babel::
+::babel-cli::
+Var =
+(
+cnpm install --save-dev @babel/core \ 
+@babel/cli \ 
+@babel/plugin-proposal-decorators
+---
+.babelrc
+
+{
+    "plugins": [
+        ["@babel/plugin-proposal-decorators",
+        {
+            "legacy": true
+        }]
+    ]
+}
+---
+./node_modules/.bin/babel index.js
+)
+txtit(Var)
+return

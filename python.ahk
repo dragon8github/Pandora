@@ -53,6 +53,9 @@ return
 
 
 !z::
+
+s := StrReplace(Clipboard, "`r`n`r`n", "")
+code(s)
 return
 
 

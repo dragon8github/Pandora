@@ -30,6 +30,8 @@
 	Menu, arrayMenu, Add, List#sort, ForHandler
 	Menu, arrayMenu, Add, List#pop, ForHandler
 	Menu, arrayMenu, Add, List#append、List#insert、List#extend, ForHandler
+	Menu, arrayMenu, Add, List#数组截取：r = range(1`, 30); print(r[2:6]), ForHandler
+	Menu, arrayMenu, Add, List#数组分片：list = [ data[x : x + step] for x in range(0`, len(data)`, step )], ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -52,6 +54,24 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "List#数组分片：list = [ data[x : x + step] for x in range(0`, len(data)`, step )]") {
+Var = 
+(
+data = range(1, 30)
+step = 5
+list = [ data[x : x + step] for x in range(0, len(data), step )]
+print(list)
+)
+}
+
+if (v == "List#数组截取：r = range(1, 30); print(r[2:6])") {
+Var =
+(
+r = range(1, 30); print(r[2:6])
 )
 }
 
@@ -226,6 +246,18 @@ print('Acess granted.')
 )
 }
 
+code(Var)
+return
+
+
+::pyfor::
+::py.for::
+::for::
+Var =
+(
+for i in range(0, 10, 1):
+    print(i)
+)
 code(Var)
 return
 
