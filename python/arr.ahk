@@ -9,6 +9,7 @@
 	Menu, arrayMenu, Add, 定义字典 json 版：me = {'name':'Lee'}, ForHandler
 	Menu, arrayMenu, Add, 定义字典：user = dict(age=19`, sex='nan'), ForHandler
 	Menu, arrayMenu, Add, 字典 for 循环： for key in user:, ForHandler
+	Menu, arrayMenu, Add, 数组去重复：set([...]), ForHandler
 
 
 	Menu, arrayMenu, Add,, ForHandler
@@ -57,6 +58,10 @@ Var =
 )
 }
 
+if (v == "数组去重复：set([...])") {
+_send("norepeat", true, true)
+return
+}
 
 if (v == "List#数组分片：list = [ data[x : x + step] for x in range(0`, len(data)`, step )]") {
 Var = 
@@ -253,6 +258,7 @@ return
 ::pyfor::
 ::py.for::
 ::for::
+::foren::
 Var =
 (
 for i in range(0, 10, 1):
@@ -261,13 +267,39 @@ for i in range(0, 10, 1):
 code(Var)
 return
 
-::foro::
-::forobj::
 ::forin::
 Var =
 (
+# 数组遍历
+ary = [1, 2, 3]
+for key, value in enumerate(ary):
+	print(key, value)
+
+# 字典遍历
 for key in user:
     print(key, user[key])
+)
+code(Var)
+return
+
+::foro::
+::forobj::
+Var =
+(
+# 字典
+for key in user:
+    print(key, user[key])
+)
+code(Var)
+return
+
+::fora::
+::forarr::
+Var =
+(
+# 数组
+for d in data:
+    print(d)
 )
 code(Var)
 return
@@ -305,6 +337,21 @@ Var =
 result = list(filter(str.isdigit, "1a2b3c4d"))
 print(20191020185031, result)
 print(20191020185031, str.join('-', result))
+)
+code(Var)
+return
+
+::norepeat::
+Var =
+(
+ary = set([10, 2, 3, 21, 10, 3])
+# 去重但是丢失了顺序
+print(20191021175604, ary)
+
+
+# 使用 collections.OrderedDict 模块 可以不乱序去重
+from collections import OrderedDict
+list(OrderedDict.fromkeys(ary).keys())
 )
 code(Var)
 return

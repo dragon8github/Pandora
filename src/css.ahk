@@ -61,6 +61,10 @@
     Menu, cssoptimization, Add, 背景图片所在的元素替换为::before伪元素, CssHandler
     
     
+    Menu, Csssolution, Add, ell, CssHandler2
+    Menu, Csssolution, Add, loading..., CssHandler2
+    Menu, Csssolution, Add, loading, CssHandler2
+    Menu, Csssolution, Add, loading.svg, CssHandler2
     Menu, Csssolution, Add, 网格gridloading, CssHandler
     Menu, Csssolution, Add, 走路崴脚的loading, CssHandler
     Menu, Csssolution, Add, 三个DVI的Bouncing loader, CssHandler
@@ -112,15 +116,11 @@
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
     
-    Menu, CssMenu, Add, ell, CssHandler2
-    Menu, CssMenu, Add, loading..., CssHandler2
-    Menu, CssMenu, Add, loading, CssHandler2
-    Menu, CssMenu, Add, loading.svg, CssHandler2
     Menu, CssMenu, Add, 舒服的字体样式font, CssHandler
     Menu, CssMenu, Add, 使用系统默认字体：System font stack, CssHandler
     Menu, CssMenu, Add, 挺好玩的代码字体：comic sans ms, CssHandler
     Menu, CssMenu, Add, :root 与 var(--primary-color), CssHandler
-    Menu, CssMenu, Add, outline:none, CssHandler3
+    Menu, CssMenu, Add, user-select: none;, CssHandler3
 
     
     Menu, CssMenu, Add, 
@@ -5315,6 +5315,14 @@ background:
     url('~@/assets/topbg_06.png') rem(2700) 0 / 12.5`% rem(162) no-repeat,
     url('~@/assets/topbg_07.png') rem(3240) 0 / 12.5`% rem(162) no-repeat,
     url('~@/assets/topbg_08.png') rem(3780) 0 / 12.5`% rem(162) no-repeat;
+)
+code(Var)
+return
+
+::css.attr::
+Var =
+(
+content: attr(name)  "：缺少维度或度量项";
 )
 code(Var)
 return

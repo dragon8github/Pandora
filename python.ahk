@@ -47,6 +47,8 @@ FileDelete, .\src\*.bak
 #Include python/utils.ahk		  ; utils
 #Include python/arr.ahk		      ; arr
 
+
+
 !F12::
 	Suspend
 return

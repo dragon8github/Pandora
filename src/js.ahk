@@ -1,4 +1,22 @@
-﻿::lstest::
+﻿^+/::
+Var = 
+(
+/**
+ * say something ...
+ *
+ * @param  {Number}   say something ...
+ * @param  {String}   say something ...
+ * @param  {Object}   say something ...
+ * @param  {Array}    say something ...
+ * @param  {Boolean}  say something ...
+ * @param  {Function} say something ...
+ * @return {String}   say something ...
+ */
+)
+code(Var)
+return
+
+::lstest::
 ::lgtest::
 Var =
 (
@@ -300,7 +318,8 @@ const checkStatus = (response) => {
 const cachedSave = (hashcode, content) => {
     // 返回code500是后端固定的报错反馈 && 不能为空对象 && 数据的小于2M
     // && (JSON.stringify(content).length / 1024).toFixed(2) < 2048
-    if (content.code != 500 && !isEmptyObject(content)) {
+    // fixbug: 当天的数据不保存，否则会出现问题
+    if (content.code != 500 && !isEmptyObject(content) && !store.getters.IS_TODAY) {
         // 设置缓存
         localforage.setItem(hashcode, JSON.stringify(content)).catch(err => {
             console.log('cache err', err)
@@ -329,7 +348,6 @@ export const request = async (url, options = {}) => {
     const _cachedSave = cachedSave.bind(null, hashcode)
     // 过期设置（默认一天缓存）
     const expirys = options.expirys || 60 * 60 * 24
-    // 本请求是否禁止缓存？
     // fixbug: 如果是当天，需要不断的重复请求，如果你请求回来是缓存，那还玩个猫。所以，如果是当天的话，禁止使用缓存
     if (expirys !== false && !store.getters.IS_TODAY) {
         // 获取缓存
@@ -343,6 +361,10 @@ export const request = async (url, options = {}) => {
             // 如果不过期的话直接返回该内容
             if (age < expirys) {
                 console.log('🚀 use cache')
+                // fixbug: 就算我使用的是缓存，我也要杀死正在请求的同类。
+                const pureUrl = getPureUrl(url)
+                // 如果需要去重复（默认noRepeat为 'on'，即开启去重复），则中止队列中所有相同请求地址的xhr
+                options.noRepeat !== 'off' && pending.forEach(_ => _.url === pureUrl && _.cancel('repeat abort even i just a cache：' + pureUrl))
                 // 新建一个response
                 const response = new Response(new Blob([cached]))
                 // 返回promise式的缓存
@@ -4084,12 +4106,12 @@ return
 
 AppsKey & b::
 >^b::
-	SendRaw, npm run build
+	cs("npm run build")
 return
 
 AppsKey & r::
 >^r::
-  SendRaw, npm run dev
+  cs("npm run dev")
 return
 
 

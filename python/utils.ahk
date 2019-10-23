@@ -1,13 +1,18 @@
 ﻿!u::
-
+	
+	Menu, PythonCognition, Add, 逻辑取反： not 而不是 ! , PythonHandler
+	Menu, PythonCognition, Add, 对象转字符串：json.dumps , PythonHandler
 	Menu, PythonCognition, Add, 数组拦截、字符串拦截：me[1:3] , PythonHandler
 	Menu, PythonCognition, Add, 元组的认知：(1`,) 如果只有一个成员，最后必须加入一个逗号, PythonHandler
 	Menu, PythonCognition, Add, func(**args)与字典，等同于es6的延展符..., PythonHandler
-	
+	Menu, PythonCognition, Add, 用 if (key is not none): 来判断是否存在属性数组/对象中, PythonHandler
+	Menu, PythonCognition, Add, 字符串模板：'{0}.txt'.format('fuck'), PythonHandler
+	Menu, PythonCognition, Add, 字符串模板（推荐）：f'你的名字是{name}', PythonHandler
+
 	Menu, Pythondatetime, Add, now, PythonHandler
 	
 	Menu, PythonMenu, Add, #-*- coding:utf-8 -*-, PythonHandler
-	Menu, PythonMenu, Add, if (key is not none):, PythonHandler
+	Menu, PythonMenu, Add, pip 阿里云镜像源, PythonHandler
 
 	Menu, PythonMenu, Add, (〜￣△￣)〜 认知 ～(￣▽￣～), :PythonCognition
 	
@@ -18,26 +23,36 @@
 	Menu, Pythonfiles, Add, read, PythonHandler
 	Menu, Pythonfiles, Add, open, PythonHandler
 	Menu, Pythonfiles, Add, write, PythonHandler
+	Menu, Pythonfiles, Add, 遍历文件夹, PythonHandler
 	
 	Menu, PythonMagic, Add, __doc__: 打印出对象的属性, PythonHandler
 	Menu, PythonMagic, Add, __doc__: 打印出类、函数注释, PythonHandler
 	Menu, PythonMagic, Add, __name__: 打印出类、函数名称, PythonHandler
-	
+	Menu, PythonMagic, Add, __str__: 重新定义类实例被print时的打印内容, PythonHandler
+
 	Menu, PythonbuiltIn, Add, 全局变量globals() 和 局部变量locals(), PythonHandler
 	
+
+	Menu, PythonPandas, Add, pandas.init, PythonHandler
+	Menu, PythonPandas, Add, pandas.read_csv, PythonHandler
+
+
 	
-	Menu, PythonMenu, Add, 魔术变量：__FUCK__, :PythonMagic
+	Menu, PythonMenu, Add, 魔术变量：__XXXX__系列, :PythonMagic
 	Menu, PythonMenu, Add, 内置函数, :PythonbuiltIn
-	Menu, PythonMenu, Add, 文件读写, :Pythonfiles
 	Menu, PythonMenu, Add, datetime, :Pythondatetime
-	
+	Menu, PythonMenu, Add, os文件读写, :Pythonfiles
+	Menu, PythonMenu, Add, Pandas, :PythonPandas
 
 	Menu, PythonMenu, Add,, PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
 	
 	Menu, PythonMenu, Add, exit(), PythonHandler
+	Menu, PythonMenu, Add, 时间相关：datetime, PythonHandler
+	Menu, PythonMenu, Add, Throw 异常捕获, PythonHandler
 	Menu, PythonMenu, Add, 高阶函数与闭包：memoized, PythonHandler
-	Menu, PythonMenu, Add, 字符串模板'{0}.txt'.format('fuck'), PythonHandler
+	Menu, PythonMenu, Add, 偏应用bind：functools.partial, PythonHandler
+
 	
 	Menu, PythonMenu, Add,, PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
@@ -50,6 +65,8 @@
 	Menu, PythonMenu, Add, orm, PythonHandler
 	Menu, PythonMenu, Add, selenium, PythonHandler
 	Menu, PythonMenu, Add, 多进程Process, PythonHandler
+	Menu, PythonMenu, Add, 多线程Thread, PythonHandler
+	Menu, PythonMenu, Add, csv, PythonHandler
 	
 	Menu, PythonMenu, Show
 	Menu, PythonMenu, DeleteAll
@@ -72,15 +89,120 @@ Var =
 )
 }
 
+if (v == "多线程Thread") {
+_send("Thread", true, true)
+return
+}
 
-if (v == "if (key is not none):") {
+if (v == "偏应用bind：functools.partial") {
+_send("bind", true, true)
+return
+}
+
+if (v == "逻辑取反： not 而不是 !") {
+Var =
+(
+if (not False):
+	print(20191021172948, 123)
+)
+}
+
+if (v == "时间相关：datetime") {
+_send("now", true, true)
+return
+}
+
+if (v == "对象转字符串：json.dumps") {
+_send("jsons", true, true)
+return
+}
+
+if (v == "字符串模板（推荐）：f'你的名字是{name}'") {
+Var =
+(
+name = 'Lee'
+print(f'你的名字是{name}')
+
+)
+}
+
+if (v == "pandas.init") {
+_send("pandas.init", true, true)
+return
+}
+
+if (v == "pandas.read_csv") {
+Var =
+(
+import pandas
+
+# dtype 是配置每一列的数据类型，防止强制转换。不写也行
+pd = pandas.read_csv('./test.csv', dtype = { 'a': pandas.np.str_, 'b': pandas.np.str_, 'c': pandas.np.str_ })
+
+# 获取N行
+print(pd[0:5])
+
+# 获取某一列内容
+print(pd['a'])
+
+# 获取多列的内容，需要使用二维数组
+print(pd[['a', 'b']])
+
+# 排序
+sort_result = pd.sort_values(by = 'a', ascending = False)
+print(sort_result)
+)
+}
+
+if (v == "csv") {
+_send("csv", true, true)
+return
+}
+
+if (v == "pip 阿里云镜像源") {
+_send("pip", true, true)
+return
+}
+
+if (v == "__str__: 重新定义类实例被print时的打印内容") {
+Var =
+(
+class Me:
+    # 当打印实例的时候，可以通过 __str__ 来重新定义输出内容。可以作为文档和特殊使用
+    def __str__(self):
+        return self.name + '__'
+
+me = Me('Lee')
+
+print(me) # Lee__
+)
+}
+
+if (v == "遍历文件夹") {
+Var =
+(
+import os
+
+root_dir = './htmls'
+
+paths = os.listdir(root_dir)
+
+for p in paths:
+    if (os.path.isfile(os.path.join(root_dir, p))):
+    	with open(os.path.join(root_dir, p), 'rb') as f:
+    		print(f.read().decode('utf-8'))
+    		f.close()
+)
+}
+
+if (v == "用 if (key is not none): 来判断是否存在属性数组/对象中") {
 Var =
 (
 if (key is not none):
 )
 }
 
-if (v == "字符串模板'{0}.txt'.format('fuck')") {
+if (v == "字符串模板：'{0}.txt'.format('fuck')") {
 Var = 
 (
 print('{0}.txt'.format('fuck'))
@@ -501,9 +623,7 @@ time.sleep(100)
 code(Var)
 return
 
-::ptry::
-::pytry::
-:?:py.try::
+
 ::try::
 Var =
 (
@@ -646,7 +766,7 @@ res = urlopen("http://fund.eastmoney.com/fund.html")
 # 由于网站是gb2312编码，所以需要转换为gb2312
 html = res.read().decode("gb2312")
 
-with open('./htmls/1.txt', 'wb') as f:
+with open('./htmls/1.txt', 'wb', encoding='utf-8') as f:
 	# 存储文本的时候，需要转为utf-8
 	f.write(html.encode('utf-8'))
 	f.close()
@@ -667,28 +787,7 @@ f.close()
 code(Var)
 return
 
-::os::
-Var =
-(
-import os
-print(20191016123729, os.path.dirname(os.path.dirname(__file__)))
-print(20191016123909, os.path.isdir('./files/abc.txt'))
-print(20191016123909, os.path.isfile('./files/abc.txt'))
-print(20191016123909, os.path.exists('./files/abc.txt'))
-)
-code(Var)
-return
 
-Var =
-(
-from urllib.request import urlopen
-
-res = urlopen("http://fund.eastmoney.com/fund.html")
-html = res.read()
-
-)
-code(Var)
-return
 
 ::url::
 ::request::
@@ -884,7 +983,17 @@ Var =
 (
 from datetime import datetime
 
-print(datetime.now().isoformat(' ', 'seconds'))
+today = datetime.now()
+
+print('today', today.strftime("`%Y-`%m-`%d `%H:`%M:`%S"))
+
+print('Year: ' + str(today.year))
+print('Month: ' + str(today.month))
+print('Day: ' + str(today.day))
+
+print('Hour: ' + str(today.hour))
+print('Minute: ' + str(today.minute))
+print('Second: ' + str(today.second))
 )
 code(Var)
 return
@@ -1039,6 +1148,7 @@ return
 ::duojincheng::
 Var =
 (
+# python -m pip install pandas
 from multiprocessing import Process
 
 def Hello(name):
@@ -1102,7 +1212,7 @@ if (__name__ == '__main__'):
 
 	# 开始进程池任务
 	for p in processList:
-	    p.start()
+	    p.start
 ---
 # 启动远程进程服务
 # 📝使用方法：先单独运行这个文件，启动服务，如果没有报错则是成功了。
@@ -1160,4 +1270,193 @@ if (__name__ == '__main__'):
     print('🚀 work finish', userList) # 🚀 work finish ['JOJO', 'DIO', '╰(‵□′)╯砸瓦鲁多', '白金之星']
 )
 txtit(Var)
+return
+
+::os::
+Var =
+(
+import os
+
+root_dir = './htmls'
+
+paths = os.listdir(root_dir)
+
+for p in paths:
+    if (os.path.isfile(os.path.join(root_dir, p))):
+    	with open(os.path.join(root_dir, p), 'rb') as f:
+    		print(f.read().decode('utf-8'))
+    		f.close()
+---
+import os
+print(os.path.dirname(os.path.dirname(__file__)))
+print(os.path.isdir('./files/abc.txt'))
+print(os.path.isfile('./files/abc.txt'))
+print(os.path.exists('./files/abc.txt'))
+)
+txtit(Var)
+Return
+
+::pip::
+Var =
+(
+python -m pip install pandas -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
+)
+cs(Var)
+return
+
+::csv::
+Var =
+(
+import csv
+
+data = [
+    { 'a': '语文', 'b': '物理', 'c': '商业'},
+    { 'a': '数学', 'b': '化学', 'c': '理财'},
+    { 'a': '英语', 'b': '政治', 'c': '市场'},
+]
+
+with open('./test.csv', 'w', encoding='utf-8') as f:
+    # 创建一个 csv 写入器
+    writer = csv.writer(f)
+    # 第一行写入头
+    writer.writerow(['a', 'b', 'c'])
+    # 循环写入内容
+    for d in data:
+        writer.writerow([d['a'], d['b'], d['c']])
+    f.close()
+)
+code(Var)
+return
+
+::pandas.init::
+::pandas::
+Var =
+(
+import pandas
+
+# dtype 是配置每一列的数据类型，防止强制转换。不写也行
+pd = pandas.read_csv('./test.csv', dtype = { 'a': pandas.np.str_, 'b': pandas.np.str_, 'c': pandas.np.str_ })
+
+# 获取N行
+print(pd[0:5])
+
+# 获取某一列内容
+print(pd['a'])
+
+# 获取多列的内容，需要使用二维数组
+print(pd[['a', 'b']])
+
+# 排序
+sort_result = pd.sort_values(by = 'a', ascending = False)
+print(sort_result)
+)
+code(Var)
+return
+
+^+/::
+Var =
+(
+'''
+
+'''
+)
+code(Var)
+Send, {Up}
+return
+
+::jsons::
+Var =
+(
+import json
+person_dict = {'first': 'Lee', 'last':'zhaohong'}
+person_json = json.dumps(person_dict)
+print(person_json)
+)
+code(Var)
+return
+
+
+::while::
+Var =
+(
+i = 0
+while (i < 10):
+	print(20191021172155, i)
+	i = i + 1
+)
+code(Var)
+return
+
+::bind::
+Var =
+(
+import functools
+
+def add(a, b):
+	return a + b
+
+_add = functools.partial(add, 2)
+
+print(_add(1))
+)
+code(Var)
+return
+
+::main::
+Var =
+(
+if __name__ == '__main__':
+
+)
+code(Var)
+return
+
+::Thread::
+::duoxiancheng::
+::duoxianc::
+Var =
+(
+from threading import Thread, Lock
+import time
+
+list = []
+
+def add():
+    # 每次启动，都开启一下锁
+    lock.acquire()
+
+    # 模拟任务进行
+    for i in range(0, 5, 1):
+        list.append(i)
+        # 等待 0.1 秒
+        time.sleep(0.1)
+
+    # 任务进行完毕，关闭锁
+    lock.release()
+
+    print(list)
+
+if __name__ == '__main__':
+    # 创建进程锁，解决抢占资源的问题
+    # 锁可以创建多个，否则只有一个锁，那么多线程和单线程没什么区别。所以这里只是做一个示例。
+    # 🌈 如果你不存在资源抢占问题，可以把所有 lock 相关代码移除。这样也可以尽情发挥多线程能力。
+    lock = Lock()
+
+    # 循环创建三个线程
+    for i in range(0, 3, 1):
+        # 新建线程，绑定任务
+        t = Thread(target = add)
+        # 启动线程
+        t.start()
+)
+code(Var)
+return
+
+::throw::
+::error::
+Var =
+(
+raise ValueError('Invalid input')
+)
+code(Var)
 return

@@ -506,8 +506,9 @@ Gui, Pandora:Add, Text,  W140 ys xp+160, visual可视化
 Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:30003/visualweb/ ">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual/issues">issue</a>
-Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0/新建仪表板.html">原型</a>
-Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0">原型入口</a>
+Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0/#g=1&p=数据可视化大屏">原型</a>
+Gui, Pandora:Add, Link,, <a href="https://lanhuapp.com/url/kIBor-gQrv3">可视化蓝湖</a>
+Gui, Pandora:Add, Link,, <a href="https://lanhuapp.com/url/hjf31-04pmy">bi个性化报表蓝湖</a>
 Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:31088/doc.html">Swagger</a>
 
 

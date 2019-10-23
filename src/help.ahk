@@ -442,8 +442,7 @@ return
     s := StrSplit(Clipboard, "`r`n")[2]
     ; 必须是第二行
     if (s == "if (v == """") {") {
-        MsgBox, % s
-        f := StrSplit(s, "`r`n")[1]
+        f := StrSplit(Clipboard, "`r`n")[1]
 Clipboard = 
 (
 if (v == "%f%") {
@@ -796,23 +795,7 @@ return
     Send, 928532756@qq.com
 return
 
-^+/::
-Var = 
-(
-/**
- * say something ...
- *
- * @param  {Number}   say something ...
- * @param  {String}   say something ...
- * @param  {Object}   say something ...
- * @param  {Array}    say something ...
- * @param  {Boolean}  say something ...
- * @param  {Function} say something ...
- * @return {String}   say something ...
- */
-)
-code(Var)
-return
+
 
 ::base64::
     Send, data:image/png;base64,

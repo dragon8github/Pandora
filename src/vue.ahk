@@ -121,7 +121,10 @@
   Menu, vuesolution, Add, 我的 CardNumber 数字翻滚器, VueHandler  
   Menu, vuesolution, Add, require.context 自动import 解决方案, VueHandler  
   
+  Menu, vuesolution, Add
+  Menu, vuesolution, Add
   
+  Menu, vuesolution, Add, collapse折叠面板, VueHandler  
   
   Menu, VueMenu, Add, Vue 解决方案和组件, :vuesolution
   
@@ -146,6 +149,11 @@ Var =
 )
 }
 
+
+if (v == "collapse折叠面板") {
+_send("zhedie", true, true)
+return
+}
 
 if (v == "vue.mixins") {
 _send("vue.mixins", true, true)
@@ -4376,3 +4384,83 @@ this.$refs.CardNumber.changeDigit()
 code(Var)
 return
 
+
+
+::zhedie::
+Var =
+(
+<div class='collapse'>
+    <div class="collapse__title" @click='collapse'>基本样式</div>
+    <div class='collapse__content'>
+      
+    </div>
+</div>
+---
+collapse(e) {
+  // 获取标题栏DOM
+  const $title = e.target
+  // 容器
+  const $collapse = $title.parentNode
+
+  // 获取标题的高度
+  const title_height = $title.clientHeight
+  // 获取容器当前高度
+  const current_height = $collapse.clientHeight
+  // 获取容器真实高度
+  const collapse_height = $collapse.scrollHeight
+
+  // 如果 『collapse高度』 和 『title高度』 相等，那么说明它现在是 close 
+  if (current_height === title_height) {
+    // open
+    $collapse.style.setProperty('height', collapse_height + 'px')
+    // rotate icon 
+    $title.classList.remove('close')
+  } else {
+    // hack：容器默认没有高度（auto），当高度改变也不会有动画效果，所以采用一种技巧：先设置一下高度，再进行变化才有动画了。
+    $collapse.style.setProperty('height', collapse_height + 'px')
+    // close
+    setTimeout(() => $collapse.style.setProperty('height', title_height + 'px'), 0)
+    // rotate icon
+    $title.classList.add('close')
+  }
+},
+---
+.collapse {
+  transition: all 0.35s ease;
+  overflow: hidden;
+
+  .collapse__title {
+    position: relative;
+    padding-left: 15px;
+
+    font-size: 14px;
+    font-weight: bold;
+    color: #262626;
+    user-select: none;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      @include ycenter;
+      left: 0;
+      width: 0;
+      height: 0;
+
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid #000;
+      transition: .3s transform ease;
+    }
+
+    &.close::after {
+      transform: translateY(-50`%) rotate(-90deg);
+    }
+  }
+
+  .collapse__content {
+    
+  }
+}
+)
+txtit(Var)
+return
