@@ -69,7 +69,7 @@ FileDelete, .\src\*.bak
 #Include src/taro.ahk	          ; taro
 
 ; #Include src/golang.ahk	          ; golang
-; #Include src/php.ahk                ; php
+#Include src/php.ahk                ; php
 ; #Include src/python.ahk		      ; python
 
 !F12::

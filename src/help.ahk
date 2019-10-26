@@ -1791,3 +1791,7 @@ return
 Send, +{Insert}
 return
 
+
+>+l::
+cs("localhost:")
+return

@@ -219,7 +219,7 @@
     
     
     ; @my
-    Menu, utilsmy, Add, collapse折叠面板, VueHand
+    Menu, utilsmy, Add, collapse折叠面板, utilsHandler
     Menu, utilsmy, Add, findSameByProperty：对比两个数组找出相同特征的成员, utilsHandler
     Menu, utilsmy, Add, 求同存异：金强的对象特殊合并, utilsHandler
     Menu, utilsmy, Add, 判断两个数组是否互相包含, utilsHandler
@@ -414,6 +414,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "collapse折叠面板") {
+_send("zhedie", true, true)
+return
 }
 
 if (v == "求两个数的最大公约数与比例") {
@@ -5508,17 +5513,6 @@ export const find = (ary, exp) => {
 )
 code(Var)
 return
-
-
-
-
-
-
-
-
-
-
-
 
 ::deepset::
 Var =

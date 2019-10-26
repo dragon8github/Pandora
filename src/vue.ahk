@@ -89,7 +89,7 @@
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
-    
+  Menu, vuesolution, Add, vue双向数据模拟, VueHandler  
   Menu, vuesolution, Add, ElementUI 按需引入教程, VueHandler  
   Menu, vuesolution, Add, npm rebuild node-sass, VueHandler
   Menu, vuesolution, Add, 组件复用的新套路: 合并配置，来代替mixin方案, VueHandler
@@ -147,6 +147,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "vue双向数据模拟") {
+_send("shuangxiang", true, true)
+return
 }
 
 
@@ -4463,4 +4468,52 @@ collapse(e) {
 }
 )
 txtit(Var)
+return
+
+::shuangxiang::
+::shuangxiangshuju::
+Var =
+(
+function defineReactive(obj, key, val) {
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get () {
+      console.log('get hook')
+      return val
+    },
+    set (newVal) {
+      console.log('set hook')
+      if (val === newVal) {
+        return
+      }
+      val = newVal
+    }
+  })
+}
+
+// demo
+var obj = {}
+
+// 初始化对象的 foo 属性
+defineReactive(obj, 'foo', 123)
+
+// 访问对象的foo属性，触发 get 钩子
+console.log(obj.foo)
+
+// 设置 foo 属性，触发 set 钩子
+obj.foo = '456'
+
+
+//////////////////////////////////////////////
+// 注意，js 无法监听对象属性的添加和删除
+//////////////////////////////////////////////
+
+defineReactive(obj, 'list', [1,2,3])
+
+obj.list[0] = 'fuck' // 不会触发set hook，但居然还额外触发了 get hook。
+
+obj.list = 123 // 触发 set hook
+)
+code(Var)
 return
