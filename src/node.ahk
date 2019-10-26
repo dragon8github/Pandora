@@ -81,11 +81,18 @@
 	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
 	Menu, NodeMenu, Add, module.exports, NodeHandler
 	Menu, NodeMenu, Add, os.EOL, NodeHandler
+	
+	Menu, NodeMenu, Add
+	Menu, NodeMenu, Add
+	
+	Menu, NodeMenu, Add, node.http, NodeHandler
 	Menu, NodeMenu, Add, $ npm install -g nodemon && nodemom --inspect index.js, NodeHandler
 	Menu, NodeMenu, Add, $ npm install pm2 -g && pm2 start hello.js --watch, NodeHandler
 
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
+	
+	
 	Menu, NodeMenu, Add, node.cheerio-XML, NodeHandler
 	Menu, NodeMenu, Add, node.pachong, NodeHandler
 	Menu, NodeMenu, Add, node.ssh, NodeHandler
@@ -93,11 +100,8 @@
 	Menu, NodeMenu, Add, node.ch, NodeHandler
 	Menu, NodeMenu, Add, request, NodeHandler
 	Menu, NodeMenu, Add, request.proxy, NodeHandler
-	Menu, NodeMenu, Add, node.http, NodeHandler
 	Menu, NodeMenu, Add, http.request, NodeHandler
 	Menu, NodeMenu, Add, node webSocket, NodeHandler
-	
-	
 	
 	
 	Menu, NodeMenu, Add

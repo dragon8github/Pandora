@@ -46,43 +46,49 @@
   Menu, vuewatch, Add, vue.watch.deep-$props, VueHandler
   
   
+  Menu, vuebase, Add, css-scoped深度作用选择器：>>>（css） 与 /deep/（sass）, VueHandler
+  Menu, vuebase, Add, :style='{}' 表达式, VueHandler
+  Menu, vuebase, Add, vue.style, VueHandler
+  Menu, vuebase, Add, vue.computed: get/set, VueHandler
+  Menu, vuebase, Add, $refs, VueHandler
+  Menu, vuebase, Add, vue.props, VueHandler
+  Menu, vuebase, Add, vue.mixins, VueHandler
+  
+
+  Menu, vuejiaoshouj, Add, vue.config.js, VueHandler
+  Menu, vuejiaoshouj, Add, vue3-template脚手架, VueHandler
+  Menu, vuejiaoshouj, Add, vue3-ant-design脚手架, VueHandler
+  Menu, vuejiaoshouj, Add, vue2-template脚手架, VueHandler
+  
+  
   Menu, vuecognition, Add, watch props 与 data 结合来初始化, VueHandler
 
-  Menu, VueMenu, Add, vue.init, VueHandler
-  Menu, VueMenu, Add, vue.config.js, VueHandler
-  Menu, VueMenu, Add, vue3-template脚手架, VueHandler
-  Menu, VueMenu, Add, vue3-ant-design脚手架, VueHandler
-  Menu, VueMenu, Add, vue2-template脚手架, VueHandler
-  
-  Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
-  Menu, VueMenu, Add, proxyTable 配置, VueHandler
-  Menu, VueMenu, Add, css-scoped深度作用选择器：>>>（css） 与 /deep/（sass）, VueHandler
-  Menu, VueMenu, Add, :style='{}' 表达式, VueHandler
-  Menu, VueMenu, Add, vue.style, VueHandler
-  Menu, VueMenu, Add, vue.computed: get/set, VueHandler
-  Menu, VueMenu, Add, $refs, VueHandler
-  Menu, VueMenu, Add, vue.props, VueHandler
-  Menu, VueMenu, Add, v-slot 插槽, VueHandler
-  Menu, VueMenu, Add, filters 过滤器的使用, VueHandler
-  Menu, VueMenu, Add, vue.mixins, VueHandler
-  Menu, VueMenu, Add, 动态组件：<component :is='xxx'></component>, VueHandler
-  Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
-  Menu, VueMenu, Add, vue 认知, :vuecognition
-  
-  
+
   Menu, vuetranstion, Add, <transition>, VueHandler
   Menu, vuetranstion, Add, <transition v-on...>, VueHandler
   Menu, vuetranstion, Add, <transition-group>, VueHandler
   Menu, vuetranstion, Add, <transition>与路由动画, VueHandler
+
+  Menu, VueMenu, Add, vue.init, VueHandler
+  Menu, VueMenu, Add, vue 脚手架与配置, :vuejiaoshouj
+  Menu, VueMenu, Add, proxyTable 配置, VueHandler
+  Menu, VueMenu, Add, v-slot 插槽, VueHandler
+  Menu, VueMenu, Add, filters 过滤器的使用, VueHandler
+  Menu, VueMenu, Add, vue.directive 指令, VueHandler
+  Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
+  Menu, VueMenu, Add, 动态组件：<component :is='xxx'></component>, VueHandler
   
-  Menu, VueMenu, Add, , VueHandler
-  Menu, VueMenu, Add, , VueHandler
-  
+  Menu, VueMenu, Add, vue 认知, :vuecognition
+  Menu, VueMenu, Add, vue 必知必会, :vuebase
+  Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
   Menu, VueMenu, Add, vue 动画组件<transition>, :vuetranstion
+  
+  Menu, VueMenu, Add, , VueHandler
+  Menu, VueMenu, Add, , VueHandler
+  
   Menu, VueMenu, Add, <keep-alive>, VueHandler
   Menu, VueMenu, Add, render(h), VueHandler
   Menu, VueMenu, Add, render(h) jsx用法, VueHandler
-  Menu, VueMenu, Add, vue.directive 指令, VueHandler
   Menu, VueMenu, Add, this.$set 深度赋值, VueHandler
   Menu, VueMenu, Add, this.$root.$on 事件总线, VueHandler
   
