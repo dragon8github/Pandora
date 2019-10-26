@@ -397,6 +397,7 @@ Gui, Pandora:Add, Text, gfunnelhtml W190, 新建.funnel.html（漏斗图）
 Gui, Pandora:Add, Text, gdatasetfunnel W210, 新建.datasetfunnel.html（漏斗图）
 Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
 Gui, Pandora:Add, Text, gword2HTML W160, word文档映射.html
+Gui, Pandora:Add, Text, gd3bubblechart W160, d3-bubble-chart.html
 
 
 
