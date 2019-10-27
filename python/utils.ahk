@@ -32,17 +32,11 @@
 
 	Menu, PythonbuiltIn, Add, 全局变量globals() 和 局部变量locals(), PythonHandler
 	
-
-	Menu, PythonPandas, Add, pandas.init, PythonHandler
-	Menu, PythonPandas, Add, pandas.read_csv, PythonHandler
-
-
 	
 	Menu, PythonMenu, Add, 魔术变量：__XXXX__系列, :PythonMagic
 	Menu, PythonMenu, Add, 内置函数, :PythonbuiltIn
 	Menu, PythonMenu, Add, datetime, :Pythondatetime
 	Menu, PythonMenu, Add, os文件读写, :Pythonfiles
-	Menu, PythonMenu, Add, Pandas, :PythonPandas
 
 	Menu, PythonMenu, Add,, PythonHandler
 	Menu, PythonMenu, Add,, PythonHandler
@@ -52,6 +46,7 @@
 	Menu, PythonMenu, Add, Throw 异常捕获, PythonHandler
 	Menu, PythonMenu, Add, 高阶函数与闭包：memoized, PythonHandler
 	Menu, PythonMenu, Add, 偏应用bind：functools.partial, PythonHandler
+	Menu, PythonMenu, Add, 三元表达式：print('大龄青年' if 32 > 25 else '小伙子'), PythonHandler
 
 	
 	Menu, PythonMenu, Add,, PythonHandler
@@ -86,6 +81,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "三元表达式：print('大龄青年' if 32 > 25 else '小伙子')") {
+Var =
+(
+print('大龄青年' if 32 > 25 else '小伙子')
 )
 }
 
@@ -126,33 +128,6 @@ print(f'你的名字是{name}')
 )
 }
 
-if (v == "pandas.init") {
-_send("pandas.init", true, true)
-return
-}
-
-if (v == "pandas.read_csv") {
-Var =
-(
-import pandas
-
-# dtype 是配置每一列的数据类型，防止强制转换。不写也行
-pd = pandas.read_csv('./test.csv', dtype = { 'a': pandas.np.str_, 'b': pandas.np.str_, 'c': pandas.np.str_ })
-
-# 获取N行
-print(pd[0:5])
-
-# 获取某一列内容
-print(pd['a'])
-
-# 获取多列的内容，需要使用二维数组
-print(pd[['a', 'b']])
-
-# 排序
-sort_result = pd.sort_values(by = 'a', ascending = False)
-print(sort_result)
-)
-}
 
 if (v == "csv") {
 _send("csv", true, true)
@@ -693,11 +668,14 @@ return
 !'::
 Var =
 (
-'''  '''
+'''  
+
+'''
 )
 code(Var)
-SendInput, {left 4}
+SendInput, {Up}
 return
+
 
 ::imp::
 ::from::

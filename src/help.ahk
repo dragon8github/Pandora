@@ -23,6 +23,16 @@ return
     Hotstring("Reset")
 return
 
+::ahkpsd::
+::ahkpsdit::
+Var =
+(
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/tianmap.zip")
+return
+)
+code(Var)
+return
+
 ::god::
 ::godmodel::
 ::godmode::

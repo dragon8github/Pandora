@@ -391,8 +391,8 @@ txtit(code, spliter = "---") {
 		y := GUI_height * (y_rate == 0 ? 0 : (1 / (y_rate + 1)))
         
 		
-		; 添加文本框
-		Gui, Code:Add, Edit, X0 Y%y% X%x% W%w% H%h% ReadOnly, % value
+		; 添加文本框  
+		Gui, Code:Add, Edit, X0 Y%y% X%x% W%w% H%h% -Wrap HScroll ReadOnly, % value
 		
 		; 绑定数据
 		_fn := fn.Bind(value)

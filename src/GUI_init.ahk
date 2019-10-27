@@ -31,7 +31,7 @@ var_dump(expandallchild(top))
 Gui, Book:Add, Edit, ys vBookContent w890 H700 Limit199307100337 ReadOnly  
 
 ; Tab 选项卡
-Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》
+Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Python》
 
 
 
