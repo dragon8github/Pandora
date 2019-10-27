@@ -3954,6 +3954,10 @@ d3bubblechart:
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/d3-bubble-chart.zip")
 return
 
+d3template:
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/docsify.zip")
+return
+
 
 tiandituhtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
