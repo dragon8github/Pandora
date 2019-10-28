@@ -1,6 +1,11 @@
 ﻿!p::
 
 	Menu, PythonPandas, Add, csv.zip, PandasHandler
+	Menu, PythonPandas, Add, python -m pip install pandas, PandasHandler2
+	Menu, PythonPandas, Add, python -m pip install numpy, PandasHandler2
+	Menu, PythonPandas, Add
+	Menu, PythonPandas, Add
+	
 	Menu, PythonPandas, Add, pandas.init, PandasHandler
 	Menu, PythonPandas, Add, pandas.read_csv, PandasHandler
 	Menu, PythonPandas, Add, pandas数据结构：Series, PandasHandler
@@ -10,6 +15,10 @@
     Menu, PythonPandas, DeleteAll
 return
 
+PandasHandler2:
+v := A_ThisMenuItem
+cs(v)
+return
 
 PandasHandler:
 ; MsgBox You selected  from the menu .
