@@ -681,6 +681,13 @@ Send, {tab}
 cs("ch#ks!690")
 return
 
+!2::
+cs("ljdp")
+Sleep, 100
+Send, {tab}
+cs("GzNhc#020")
+return
+
 ::hosts::
 ::host::
 ::vhost::
@@ -1805,3 +1812,4 @@ return
 >+l::
 cs("localhost:")
 return
+

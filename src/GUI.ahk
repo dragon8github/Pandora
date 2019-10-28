@@ -8948,3 +8948,101 @@ RunBy(name)
 run, % name
 return
 
+
+echartsqipaodongtai:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="app" style="width: 600px; height:400px;"></div>
+</body>
+<script>
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('app'))
+
+const colors = ["rgb(27, 94, 93)", "rgb(206, 188, 11)", "rgb(165, 190, 198)", "rgb(98, 41, 72)", "rgb(175, 20, 143)", "rgb(77, 231, 55)", "rgb(26, 83, 246)", "rgb(155, 118, 127)", "rgb(116, 207, 18)", "rgb(98, 224, 224)", "rgb(137, 37, 21)", "rgb(81, 27, 15)"]
+
+// 生成配置数据
+const getData = data => data.map((_, i) => {
+    // 索引
+    const index = [i `% colors.length]
+    // 获取当前颜色
+    const color = colors[index]
+    // 可拖动的球
+    return {
+        "name": _.name,
+        "value": _.value,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": color,
+                "shadowColor": color,
+                "color": color,
+                "borderWidth": 4,
+                "shadowBlur": 100,
+            }
+        }
+    }
+})
+
+const mockData = [{ "name": "考研", "value": 10000, }, { "name": "兼职", "value": 6181, }, { "name": "食堂", "value": 4386, }, { "name": "家教", "value": 4055, }, { "name": "大四", "value": 2467, }, { "name": "研友", "value": 2244, }, { "name": "论文", "value": 1898, }]
+
+
+// 核心配置
+var option = {
+    backgroundColor: '#fff',
+    tooltip: {},
+    animationDurationUpdate: idx => idx * 100,
+    animationEasingUpdate: 'bounceIn',
+    series: [{
+        type: 'graph',
+        layout: 'force',
+        symbolSize: val => {
+            // 获取所有values
+            const values = mockData.map(_ => _.value)
+            // 获取最大值
+            const max = Math.max(Math.max(...values))
+            // 获取最小值
+            const min = Math.min(...values)
+            // 定义最大气泡
+            const maxSize4Pin = 130
+            // 定义最小气泡
+            const minSize4Pin = 45
+            // 固定套路
+            var a = (maxSize4Pin - minSize4Pin) / (max - min);
+            var b = minSize4Pin - a * min;
+            b = maxSize4Pin - a * max;
+            return a * val + b;
+        },
+        force: {
+            repulsion: 500,
+            edgeLength: 10
+        },
+        roam: true,
+        label: {
+            normal: {
+                show: true
+            }
+        },
+        data: getData(mockData)
+    }]
+}
+
+myChart.setOption(option);
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

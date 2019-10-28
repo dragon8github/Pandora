@@ -122,6 +122,7 @@
     Menu, echartsEventMenu, Add, toolbox：下载图片的工具, EventHandler
 	Menu, echartsEventMenu, Add, getRangeRBG：专门用于生成 echarts 的渐变色, EventHandler
 	Menu, echartsEventMenu, Add, echarts + vue Mixins 摧毁方案, EventHandler
+	Menu, echartsEventMenu, Add, 气泡动态宽度大小, EventHandler
 
 	;@a @1
 	Menu, EventMenu, Add, JavaScript, :JavaScriptEventMenu
@@ -193,6 +194,28 @@ Var =
 )
 }
 
+if (v == "气泡动态宽度大小") {
+Var =
+(
+symbolSize: val => {
+    // 获取所有values
+    const values = mockData.map(_ => _.value)
+    // 获取最大值
+    const max = Math.max(Math.max(...values))
+    // 获取最小值
+    const min = Math.min(...values)
+    // 定义最大气泡
+    const maxSize4Pin = 130
+    // 定义最小气泡
+    const minSize4Pin = 45
+    // 固定套路
+    var a = (maxSize4Pin - minSize4Pin) / (max - min);
+    var b = minSize4Pin - a * min;
+    b = maxSize4Pin - a * max;
+    return a * val + b;
+},
+)
+}
 
 if (v == "监听键盘码：onKeyBoardEvent") {
 Var = 
@@ -1206,8 +1229,7 @@ color: new echarts.graphic.LinearGradient(
 }
 
 if (v == "echarts.broadcast 轮播器") {
-SendLevel 1
-Send, echarts.lunbo{tab}
+_send("echarts.lunbo", true, true)
 return
 }
 
@@ -1220,110 +1242,92 @@ aspectScale: 1
 
 
 if (v == "echarts.init") {
-SendLevel 1
-Send, echarts.init{tab}
+_send("echarts.init", true, true)
 return
 }
 
 if (v == "echarts.options") {
-SendLevel 1
-Send, echarts.options{tab}
+_send("echarts.options", true, true)
 return
 }
 
 if (v == "echarts.loading") {
-SendLevel 1
-Send, echarts.loading{tab}
+_send("echarts.loading", true, true)
 return
 }
 
 if (v == "echarts.pin（饼图）") {
-SendLevel 1
-Send, echarts.pin{tab}
+_send("echarts.pin", true, true)
 return
 }
 
 if (v == "echarts.bar（柱状图）") {
-SendLevel 1
-Send, echarts.bar{tab}
+_send("echarts.bar", true, true)
 return
 }
 
 if (v == "echarts.line（折线图）") {
-SendLevel 1
-Send, echarts.line{tab}
+_send("echarts.line", true, true)
 return
 }
 
 if (v == "echarts.rose（玫瑰图）") {
-SendLevel 1
-Send, echarts.rose{tab}
+_send("echarts.rose", true, true)
 return
 }
 
 if (v == "echarts.label") {
-SendLevel 1
-Send, echarts.label{tab}
+_send("echarts.label", true, true)
 return
 }
 
 if (v == "echarts.title") {
-SendLevel 1
-Send, echarts.title{tab}
+_send("echarts.title", true, true)
 return
 }
 
 if (v == "echarts.legend") {
-SendLevel 1
-Send, echarts.legend{tab}
+_send("echarts.legend", true, true)
 return
 }
 
 if (v == "echarts.visualMap") {
-SendLevel 1
-Send, echarts.visualMap{tab}
+_send("echarts.visualMap", true, true)
 return
 }
 
 if (v == "echarts.tooltip") {
-SendLevel 1
-Send, echarts.tooltip{tab}
+_send("echarts.tooltip", true, true)
 return
 }
 
 if (v == "echarts.3dmap") {
-SendLevel 1
-Send, echarts.3dmap{tab}
+_send("echarts.3dmap", true, true)
 return
 }
 
 if (v == "echarts.effectScatter（2d地图散点）") {
-SendLevel 1
-Send, echarts.effectScatter{tab}
+_send("echarts.sandian")
 return
 }
 
 if (v == "echarts.scatter（2d地图气泡）") {
-SendLevel 1
-Send, echarts.scatter{tab}
+_send("echarts.qipao", true, true)
 return
 }
 
 if (v == "getPointCenter") {
-SendLevel 1
-Send, getPointCenter{tab}
+_send("getPointCenter", true, true)
 return
 }
 
 if (v == "geojson") {
-SendLevel 1
-Send, geojson{tab}
+_send("geojson", true, true)
 return
 }
 
 if (v == "createPolygon") {
-SendLevel 1
-Send, createPolygon{tab}
+_send("createPolygon", true, true)
 return
 }
 
