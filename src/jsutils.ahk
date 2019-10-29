@@ -114,6 +114,7 @@
 
     Menu, utilsObject, Add, 双向数据绑定原理：Object.defineProperty, utilsHandler
     Menu, utilsObject, Add, 对象交集 , utilsHandler
+    Menu, utilsObject, Add, flattenObject 以键的路径扁平化对象, utilsHandler
     
 
     Menu, utilsObject, Add,, utilsHandler
@@ -414,6 +415,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "flattenObject 以键的路径扁平化对象") {
+_send("flatobj", true, true)
+return
 }
 
 if (v == "collapse折叠面板") {
@@ -5520,41 +5526,67 @@ Var =
 /**
  * 深度设置
  *
- * 示例1：
- * const a = {b: { c: { d: { e: {} } } } }
- * deepSet(a, ['b', 'c', 'd', 'e'], item => {
- * 	 // ...
- * 	 item.fuck = 123
- * })
- *	
- * 示例2：
- * const a = {b: { c: { d: { e: {} } } } }
- * deepSet(a, ['b', 'c', 'd', 'e', 'f', 'g', 'h'], item => {
- * 	 // ...
- * 	 item.fuck = 123
+ * 示例：
+ * var a = {}
+ * deepSet(a, 'a.b.c.d.e.f.g.h.i.j', item => {
+ *    item.k = 123
  * })
  */
-const deepSet = (ary, path, cb) => {
-	// （重要）保存引用
-	let obj = ary
-	// 不断轮询路径
-	while (path.length) {
-		// 从左往右取出路径
-		const key = path.shift()
+var deepSet = (ary, path, cb) => {
+    // （重要）保存引用
+    let obj = ary
 
-		// 补丁，如果不存在则定义该对象
-		if (!obj[key]) {
-			obj[key] = {}
-		}
+    const _path = path.split('.')
 
-		// 获取当前路径的值
-		obj = obj[key]
-	}
-	// 回调，注入指定路径的ary引用
-	cb && cb(obj)
-	// （重点）返回被串改的数组
-	return ary
+    // 不断轮询路径
+    while (_path.length) {
+        // 从左往右取出路径
+        const key = _path.shift()
+
+        // 补丁，如果不存在则定义该对象
+        if (!obj[key]) {
+            obj[key] = {}
+        }
+
+        // 获取当前路径的值
+        obj = obj[key]
+    }
+    // 回调，注入指定路径的ary引用
+    cb && cb(obj)
+    // （重点）返回被串改的数组
+    return ary
 }
+
+// this.$deepSet(this.items, 'a.b.c.d.e', '123')
+// vue 专用深度 $set
+$deepSet(ref, path, value) {
+   // （重要）保存引用
+   let obj = ref
+
+   // 路径切割
+   const _path = path.split('.')
+
+   // 不断轮询路径
+   while (_path.length) {
+       // 从左往右取出路径
+       const key = _path.shift()
+
+       // 到最后一个了？
+       if (_path.length === 0) {
+        // 直接赋值
+        this.$set(obj, key, value)
+       // 补丁，如果不存在则定义该对象
+       } else if (!obj[key]) {
+           this.$set(obj, key, {})
+       }
+
+       // 获取当前路径的值
+       obj = obj[key]
+   }
+
+   return obj
+}
+
 )
 code(Var)
 return
@@ -7313,4 +7345,20 @@ cnpm install --save-dev @babel/core \
 ./node_modules/.bin/babel index.js
 )
 txtit(Var)
+return
+
+::flatobj::
+Var =
+(
+const flattenObject = (obj, prefix = '') =>
+  Object.keys(obj).reduce((acc, k) => {
+    const pre = prefix.length ? prefix + '.' : '';
+    if (typeof obj[k] === 'object') Object.assign(acc, flattenObject(obj[k], pre + k));
+    else acc[pre + k] = obj[k];
+    return acc;
+  }, {});
+
+flattenObject({ a: { b: { c: 1 } }, d: 1 }); // { 'a.b.c': 1, d: 1 }
+)
+code(Var)
 return

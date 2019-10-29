@@ -2727,13 +2727,14 @@ var vue = new Vue({
     data: {
         items: [],
         text: '',
+        obj: {},
     },
     methods: {
         handleClick () {
 
         }
     },
-    beforeMount: function () {
+    beforeMount () {
         axios.get("/book/list").then(res => {
             this.items = res.data.booklist
         })
@@ -9039,6 +9040,75 @@ var option = {
 }
 
 myChart.setOption(option);
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+
+vueDeepSethtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>$deepSet</title>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ items }}
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: {
+            test: 123
+        },
+    },
+    methods: {
+        $deepSet(ref, path, value) {
+            // （重要）保存引用
+            let obj = ref
+
+            // 路径分割，这里没有做其他判断处理，请自行优化补全
+            const _path = path.split('.')
+
+            // 不断轮询路径
+            while (_path.length) {
+                // 从左往右取出路径
+                const key = _path.shift()
+                // 到最后一个了？
+                if (_path.length === 0) {
+                    // 直接赋值
+                    this.$set(obj, key, value)
+                    // 如果不存在则定义该对象
+                } else if (!obj[key]) {
+                    this.$set(obj, key, {})
+                }
+
+                // 获取当前路径的值
+                obj = obj[key]
+            }
+
+            return obj
+        }
+    },
+    beforeMount() {
+        setTimeout(() => {
+            console.log('🚀', this.$deepSet(this.items, 'a.b.c.d.e', 'fuckyou'))
+        }, 1000);
+    }
+})
 </script>
 
 </html>

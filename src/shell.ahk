@@ -87,6 +87,8 @@
 	
 	Menu, gitShellMenu, Add, git, ShellHandler4
 	Menu, gitShellMenu, Add, git log --pretty=oneline, ShellHandler4
+	Menu, gitShellMenu, Add, git checkout --theirs src/views/Studio/header.vue, ShellHandler4
+	Menu, gitShellMenu, Add, git checkout --ours src/views/Studio/header.vue, ShellHandler4
 
 
 	Menu, gitShellMenu, Add,
@@ -182,6 +184,7 @@
 	Menu, ShellMenu, Add
 	
     Menu, ShellMenu, Add, bat脚本HelloWorld, ShellHandler3
+	Menu, ShellMenu, Add, getWifiPwd.bat, ShellHandler3
 
 	
 	Menu, ShellMenu, Show
@@ -201,6 +204,15 @@ Var =
 )
 }
 
+if (v == "getWifiPwd.bat") {
+Var =
+(
+@echo off
+set /p i=""
+netsh wlan show profiles name=%i% key=clear
+pause > nul
+)
+}
 
 if (v == "bat脚本HelloWorld") {
 Var = 
@@ -1184,4 +1196,13 @@ systemctl stop firewalld.service
 systemctl disable firewalld.service
 )
 code(Var)
+return
+
+::wifi::
+InputBox, OutputVar, title, enter a name?,,,,,,,,Xiaomi_5F32
+Var =
+(
+netsh wlan show profiles name=%OutputVar% key=clear
+)
+cs(Var)
 return

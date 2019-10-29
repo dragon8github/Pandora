@@ -95,6 +95,7 @@
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
+  Menu, vuesolution, Add, $deepSet深度赋值解决方案, VueHandler  
   Menu, vuesolution, Add, vue双向数据模拟, VueHandler  
   Menu, vuesolution, Add, ElementUI 按需引入教程, VueHandler  
   Menu, vuesolution, Add, npm rebuild node-sass, VueHandler
@@ -153,6 +154,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "$deepSet深度赋值解决方案") {
+_send("deepset", true, true)
+return
 }
 
 if (v == "vue双向数据模拟") {
