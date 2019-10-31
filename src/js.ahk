@@ -7581,27 +7581,212 @@ function parsePath(path) {
 code(Var)
 return
 
-::od::
+::obj::
+::objd::
 ::odefine::
 ::object.define::
 ::objdefine::
 Var =
 (
-Object.defineProperty(data, key, {
+function defineReactive(obj, key, val) {
+  Object.defineProperty(obj, key, {
     enumerable: true,
     configurable: true,
-    get: function () {
-        return val
+    get () {
+      console.log('get hook')
+      return val
     },
-    set: function (newVal) {
-        if (val === newVal) {
-            return
-        }
-        val = newVal
+    set (newVal) {
+      console.log('set hook')
+      if (val === newVal) {
+        return
+      }
+      val = newVal
     }
-})
+  })
+}
+
+// demo
+var obj = {}
+
+// 初始化对象的 foo 属性
+defineReactive(obj, 'foo', 123)
+
+// 访问对象的foo属性，触发 get 钩子
+console.log(obj.foo)
+
+// 设置 foo 属性，触发 set 钩子
+obj.foo = '456'
+
+
+//////////////////////////////////////////////
+// 注意，js 无法监听对象属性的添加和删除
+//////////////////////////////////////////////
+
+defineReactive(obj, 'list', [1,2,3])
+
+obj.list[0] = 'fuck' // 不会触发set hook，但居然还额外触发了 get hook。
+
+obj.list = 123 // 触发 set hook
+---
+class Observer {
+  constructor(value) {
+    this.value = value
+
+    // 目前只支持对象，不支持数组
+    if (!Array.isArray(value)) {
+      this.walk(value)
+    }
+  }
+
+  walk(obj) {
+    const keys = Object.keys(obj)
+    for (let i = 0, len = keys.length; i < len; i++) {
+      const key = keys[i]
+      const val = obj[keys[i]]
+      defineReactive(obj, key, val)
+    }
+  }
+}
+
+function defineReactive(obj, key, val) {
+  if (typeof val === 'object') {
+    new Observer(val)
+  }
+
+  let dep = []
+
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get () {
+      // 这里用 window.__FUCK__ 来假装依赖吧
+      dep.push(window.__FUCK__)
+      return val
+    },
+    set (newVal) {
+      if (val === newVal) {
+        return
+      }
+
+      // 通知变化，并且注入新旧数据
+      dep.forEach(fn => fn(newVal, val))
+
+      val = newVal
+    }
+  })
+}
+
+window.__FUCK__ = (newV, oldV) => {
+  console.log('fuckyou', newV, oldV)
+}
+
+
+//////////////////////////////////////////////
+// usage
+//////////////////////////////////////////////
+
+var data = {}
+
+// 初始化对象的 foo 属性
+defineReactive(data, 'name', { a: { b: { c: { d: 'fuckyou' } } } })
+
+// 必须先触发 get 钩子，这一步是为了将依赖回调 __FUCK__ 加入到 Dep 中
+console.log('先读取一下，触发get钩子', data.name.a.b.c.d)
+
+// 触发 set 钩子，触发 __FUCK__
+data.name.a.b.c.d = '321'
+---
+class Observer {
+  constructor(value) {
+    this.value = value
+
+    // 目前只支持对象，不支持数组
+    if (!Array.isArray(value)) {
+      this.walk(value)
+    }
+  }
+
+  walk(obj) {
+    const keys = Object.keys(obj)
+    for (let i = 0, len = keys.length; i < len; i++) {
+      const key = keys[i]
+      const val = obj[keys[i]]
+      defineReactive(obj, key, val)
+    }
+  }
+}
+
+class Dep {
+  constructor() {
+    this.dep = []
+  }
+
+  add(fn) {
+    this.dep.push(fn)
+  }
+
+  del(fn) {
+   // 如果依赖中包含这个回调
+   if (this.dep.includes(fn))
+     // 那么删除它
+     this.dep.splice(this.dep.indexOf(fn), 1)
+  }
+
+  emit(newV, oldV) {
+    this.dep.forEach(fn => fn(newV, oldV))
+  }
+}
+
+function defineReactive(obj, key, val) {
+  if (typeof val === 'object') {
+    new Observer(val)
+  }
+
+  let dep = new Dep()
+
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get () {
+      // 这里用 window.__FUCK__ 来假装依赖吧
+      dep.add(window.__FUCK__)
+      return val
+    },
+    set (newVal) {
+      if (val === newVal) {
+        return
+      }
+
+      // 通知变化，并且注入新旧数据
+      dep.emit(newVal, val)
+
+      val = newVal
+    }
+  })
+}
+
+window.__FUCK__ = (newV, oldV) => {
+  console.log('fuckyou', newV, oldV)
+}
+
+
+//////////////////////////////////////////////
+// usage
+//////////////////////////////////////////////
+
+var data = {}
+
+// 初始化对象的 foo 属性
+defineReactive(data, 'name', { a: { b: { c: { d: 'fuckyou' } } } })
+
+// 必须先触发 get 钩子，这一步是为了将依赖回调 __FUCK__ 加入到 Dep 中
+console.log('先读取一下，触发get钩子', data.name.a.b.c.d)
+
+// 触发 set 钩子，触发 __FUCK__
+data.name.a.b.c.d = '321'
 )
-code(Var)
+txtit(Var)
 return
 
 

@@ -31,7 +31,7 @@ var_dump(expandallchild(top))
 Gui, Book:Add, Edit, ys vBookContent w890 H700 Limit199307100337 ReadOnly  
 
 ; Tab 选项卡
-Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Python》
+Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Python》|《Vue.js 深入浅出》
 
 
 
@@ -422,6 +422,7 @@ Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
 Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
+Gui, Pandora:Add, Text, gvueDeepSethtml W180, vue $deepSet示例.html
 
 
 Gui, Pandora:Add, Text, gNewreactbabelHtml W150  ys x+70, 新建react.babel.html

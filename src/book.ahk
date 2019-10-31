@@ -30,6 +30,11 @@ currentBook := Trim(currentBook)
 if (currentBook == "") {
 }
 
+if (currentBook == "《Vue.js 深入浅出》") {
+	cornell("object的变化侦测")
+}
+
+
 if (currentBook == "《Python》") {
 	
 }
@@ -65,6 +70,455 @@ Var =
 (
 )
 }
+
+if (v == "object的变化侦测") {
+Var =
+(
+@如何侦测一个对象的变化？
+到目前为止 Vue.js 还是使用 object.defineProperty 来实现的，但 object.defineProperty 有很多缺陷，所以尤雨溪说日后会使用 Proxy 来重写部分代码。
+
+function defineReactive(obj, key, val) {
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get () {
+      console.log('get hook')
+      return val
+    },
+    set (newVal) {
+      console.log('set hook')
+      if (val === newVal) {
+        return
+      }
+      val = newVal
+    }
+  })
+}
+
+// demo
+var obj = {}
+
+// 初始化对象的 foo 属性
+defineReactive(obj, 'foo', 123)
+
+// 访问对象的foo属性，触发 get 钩子
+console.log(obj.foo)
+
+// 设置 foo 属性，触发 set 钩子
+obj.foo = '456'
+
+
+//////////////////////////////////////////////
+// 注意，js 无法监听对象属性的添加和删除
+//////////////////////////////////////////////
+
+defineReactive(obj, 'list', [1,2,3])
+
+obj.list[0] = 'fuck' // 不会触发set hook，但居然还额外触发了 get hook。
+
+obj.list = 123 // 触发 set hook
+
+@依赖收集：什么是依赖？为什么要收集？
+❓ 什么是依赖?
+
+依赖就是使用『状态』的地方，比如：
+<template>
+    <h1> {{ name }} </h1>
+</template>
+
+如果还不明白，你就想想：当状态发生变化时，哪些逻辑、哪些UI、哪些代码应该发生变化。这些地方就是依赖。
+
+这些地方可能有很多处，而且场景可能不一样。 或许是模板、或许是watch。所以我们会用一个『数组』把它们统一收集起来。当状态变化时，统一通知。
+
+❓ 为什么要收集？
+
+当『状态』更新的时候，我需要通知它们。就类似 『订阅-通知模式』，所谓的依赖，可以理解为一个回调函数。
+通知的过程，其实就是调用回调函数的过程。并且注入最新的值。是不是让你想起 Vue.$watch API？
+
+记住一句话：『在 getter 中收集依赖，在 setter 中触发依赖。』
+
+@在getter收集依赖，在setter触发依赖
+// 模拟依赖回调
+window.__FUCK__ = (newV, oldV) => {
+  console.log('fuckyou', newV, oldV)
+}
+
+function defineReactive(obj, key, val) {
+  // 依赖集合，存储着所有的回调函数。当内容变化的时候，我就会去通知里面的回调函数。
+  let dep = []
+
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get () {
+      // 所谓的依赖，就是回调，这里用 window.__FUCK__ 来假装依赖吧
+      dep.push(window.__FUCK__)
+
+      return val
+    },
+    set (newVal) {
+      if (val === newVal) {
+        return
+      }
+
+      // 通知变化，并且注入新旧数据
+      dep.forEach(fn => fn(newVal, val))
+
+      val = newVal
+    }
+  })
+}
+
+//////////////////////////////////////////////
+// usage
+//////////////////////////////////////////////
+
+var data = {}
+
+// 初始化对象的 foo 属性
+defineReactive(data, 'name', 'Lee')
+
+// 先访问一下属性，触发 get 钩子，然后假装依赖被收集了
+console.log('为了触发get钩子，然后用 window.__FUCK__ 模拟依赖回调, 被收集了', data.name)
+
+// 更新状态
+data.name = 'JOJO'
+
+// 触发依赖回调 window.__FUCK__
+// => fuckyou JOJO Lee
+
+@精益求精；封装 Dep 类
+其实 dep 的相关的代码内容就和『通知者模式』一模一样。 而且关系重大、我们完全有理由单独对它进行封装。
+
+class Dep {
+  constructor() {
+    this.dep = []
+  }
+
+  add (fn) {
+    this.dep.push(fn)
+  }
+
+  del(fn) {
+   // 如果依赖中包含这个回调
+   if (this.dep.includes(fn))  
+     // 那么删除它
+     this.dep.splice(this.dep.indexOf(fn), 1)
+  }
+
+  emit(newV, oldV) {
+    this.dep.forEach(fn => fn(newV, oldV))
+  }
+}
+
+window.__FUCK__ = (newV, oldV) => {
+  console.log('fuckyou', newV, oldV)
+}
+
+function defineReactive(obj, key, val) {
+  let dep = new Dep()
+
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get () {
+      // 这里用 window.__FUCK__ 来假装依赖吧
+      dep.add(window.__FUCK__)
+      return val
+    },
+    set (newVal) {
+      if (val === newVal) {
+        return
+      }
+	  
+      // 通知变化，并且注入新旧数据
+      dep.emit(newVal, val)
+	  
+      val = newVal
+    }
+  })
+}
+
+
+//////////////////////////////////////////////
+// usage
+//////////////////////////////////////////////
+
+var data = {}
+
+// 初始化对象的 foo 属性
+defineReactive(data, 'name', 'Lee')
+
+// 先访问一下属性，触发 get 钩子，然后假装依赖被收集了
+console.log('为了触发get钩子，然后用 window.__FUCK__ 模拟依赖回调, 被收集了', data.name)
+
+// 更新状态
+data.name = 'JOJO'
+// 触发依赖回调 window.__FUCK__
+// => fuckyou JOJO Lee
+
+@用递归深度侦测所有的 key
+之前我们的 defineReactive，每次只能监听一个，但如果值是一个对象。譬如： 
+
+defineReactive(data, 'name', { a: { b: { c: { d: 'fuckyou' } } } })
+
+当 data.name.a 发生变化的时候，实际上是无法触发 set 钩子的。
+
+解决方案也很简单，值也是一个对象，就一个一个深入去加入到 defineReactive 即可，依次加入 a.b.c.d 到 defineReactive 中。
+
+为了解决这个，我们加入了 Observer 类，专门用来处理这种情况（暂时只处理对象，数组处理后续再说）
+
+
+class Observer {
+  constructor(value) {
+    this.value = value
+
+    // 目前只支持对象，不支持数组
+    if (!Array.isArray(value)) {
+      this.walk(value)
+    }
+  }
+
+  walk(obj) {
+    const keys = Object.keys(obj)
+    for (let i = 0, len = keys.length; i < len; i++) {
+      const key = keys[i]
+      const val = obj[keys[i]]
+      defineReactive(obj, key, val)
+    }
+  } 
+}
+
+class Dep {
+  constructor() {
+    this.dep = []
+  }
+
+  add(fn) {
+    this.dep.push(fn)
+  }
+
+  del(fn) {
+   // 如果依赖中包含这个回调
+   if (this.dep.includes(fn))
+     // 那么删除它
+     this.dep.splice(this.dep.indexOf(fn), 1)
+  }
+
+  emit(newV, oldV) {
+    this.dep.forEach(fn => fn(newV, oldV))
+  }
+}
+
+function defineReactive(obj, key, val) {
+  if (typeof val === 'object') {
+    new Observer(val)
+  }
+
+  let dep = new Dep()
+
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get () {
+      // 这里用 window.__FUCK__ 来假装依赖吧
+      dep.add(window.__FUCK__)
+      return val
+    },
+    set (newVal) {
+      if (val === newVal) {
+        return
+      }
+
+      // 通知变化，并且注入新旧数据
+      dep.emit(newVal, val)
+
+      val = newVal
+    }
+  })
+}
+
+window.__FUCK__ = (newV, oldV) => {
+  console.log('fuckyou', newV, oldV)
+}
+
+
+//////////////////////////////////////////////
+// usage
+//////////////////////////////////////////////
+
+var data = {}
+
+// 初始化对象的 foo 属性
+defineReactive(data, 'name', { a: { b: { c: { d: 'fuckyou' } } } })
+
+// 必须先触发 get 钩子，这一步是为了将依赖回调 __FUCK__ 加入到 Dep 中
+console.log('先读取一下，触发get钩子', data.name.a.b.c.d)
+
+// 触发 set 钩子，触发 __FUCK__
+data.name.a.b.c.d = '321'
+
+@什么是watcher？  —— 信使中介
+当状态发生变化时，哪些逻辑、哪些UI、哪些代码应该发生变化。这些地方就是依赖。
+这些地方可能有很多处，而且场景可能不一样。 或许是模板、或许是watch。所以我们会用一个『数组』把它们统一收集起来。当状态变化时，统一通知。
+
+现在我们加入一个新角色： watcher，它是一个中介，一个信使。
+我们的通知的时候，只需要通知它即可，然后再由它去通知各个地方。 这样就把责任分割分割出来了。
+Dep 类只负责收集依赖和推送消息，数据变化时先推送给 Watcher 类，然后 Watcher 类再分配给不同地方不同种类的依赖中。
+
+//////////////////////////////////////////////
+// say something...
+//////////////////////////////////////////////
+class Watcher {
+    // 这里所谓的 vm，其实就是被 Object.defineProperty 包装过的对象罢了。
+    // 其实叫做 obj 更好，但为了更加有逼格的模仿，还是叫 vm 帅气一点。
+    // 这里的 path，其实就是『属性路径』，譬如: 'a.b.c.d'，也就是 data.a.b.c
+    constructor(vm, str_path, cb) {
+        // 我们一直用 __FUCK__ 模拟依赖回调。 Dep 收集的依赖依然是 __FUCK__ ，而我此时替换成 this。
+        // 也就是说，它下一个收集的依赖，将会是『当前的 Watcher 实例』。这就是我们的根本目的。
+        window.__FUCK__ = this
+
+        // 访问 data.a.b.c.d，就会触发 get 钩子。 会将 __FUCK__ 加入到Dep中, 目的是将『自己』加入到 Dep 中。
+        this.trigger_getter(vm, str_path)
+
+        // 在触发完 get 钩子以后，__FUCK__已经被加入到 Dep 中了，这时候就重置吧。
+        window.__FUCK__ = undefined
+
+        // 数据变化时会执行的回调函数
+        this.cb = cb
+    }
+
+    // str_path，其实就是『属性路径』，譬如: 'a.b.c.d'，也就是 data.a.b.c
+    // 这里必须使用普通函数，如果使用箭头函数是没有this的。我使用普通函数是因为待会要用.bind注入this上下文
+    trigger_getter (obj, str_path) {
+        // 分割路径
+        const ary_path = str_path.split('.')
+
+        // 像洋葱一样一层一层的深入
+        for (let i = 0, len = ary_path.length; i < len; i++) {
+            // 获取当前路径
+            const cur = ary_path[i]
+            // 获取当前路径的引用
+            obj = obj[cur]
+        }
+
+        return obj
+    }
+
+    // 这个 update 就是 watcher 的价值所在。
+    // 当数据变化的时候，会调用 update 方法，然后它负责给所有依赖 data.b.c.d 的地方进行更新。
+    update(newV, oldV) {
+        this.cb(newV, oldV)
+    }
+}
+
+
+
+class Dep {
+    constructor() {
+        this.dep = []
+    }
+
+    add(watcher) {
+        this.dep.push(watcher)
+    }
+
+    del(watcher) {
+        // 如果依赖中包含这个回调
+        if (this.dep.includes(watcher)) {
+            // 那么删除它
+            this.dep.splice(this.dep.indexOf(watcher), 1)
+        }
+    }
+
+    emit(newV, oldV) {
+        // 触发 watcher.update 方法
+        this.dep.forEach(watcher => watcher.update(newV, oldV))
+    }
+}
+
+class Observer {
+  constructor(value) {
+    this.value = value
+
+    // 目前只支持对象，不支持数组
+    if (!Array.isArray(value)) {
+      this.walk(value)
+    }
+  }
+
+  walk(obj) {
+    const keys = Object.keys(obj)
+    for (let i = 0, len = keys.length; i < len; i++) {
+      const key = keys[i]
+      const val = obj[keys[i]]
+      defineReactive(obj, key, val)
+    }
+  } 
+}
+
+function defineReactive(obj, key, val) {
+  if (typeof val === 'object') {
+    new Observer(val)
+  }
+
+  let dep = new Dep()
+
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get () {
+      // 这里用 window.__FUCK__ 来假装依赖吧
+      dep.add(window.__FUCK__)
+      return val
+    },
+    set (newVal) {
+      if (val === newVal) {
+        return
+      }
+
+      // 通知变化，并且注入新旧数据
+      dep.emit(newVal, val)
+
+      val = newVal
+    }
+  })
+}
+
+let data = {}
+
+// 将 data 初始化为 vm 
+defineReactive(data, 'a', { b: { c: { d: 'fuckyou' } } })
+
+// 开始监听
+var w = new Watcher(data, 'a.b.c.d', (...args) => {
+    console.log(123, ...args)
+})
+
+// 触发 set 钩子
+data.a.b.c.d = '321'
+)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if (v == "想少干活就要多思考") {

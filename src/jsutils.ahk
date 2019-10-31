@@ -2395,28 +2395,8 @@ a({state: {nums: 1, numGroup: 2, map: 3 } })
 }
 
 if (v == "模拟真实点击click，专门对付clickoutside") {
-Var = 
-(
-var evmousedown = document.createEvent('HTMLEvents');
-// evmousedown.clientX = 88
-// evmousedown.clientY = 18
-
-evmousedown.initEvent('mousedown', false, true);
-var evmouseup = document.createEvent('HTMLEvents');
-// evmouseup.clientX = 88
-// evmouseup.clientY = 18
-
-evmouseup.initEvent('mouseup', false, true);
-document.dispatchEvent(evmousedown)
-document.dispatchEvent(evmouseup)
-var evmouseclick = document.createEvent('HTMLEvents');
-// evmouseclick.clientX = 88
-// evmouseclick.clientY = 18
-
-evmouseclick.initEvent('click', false, true);
-document.dispatchEvent(evmouseclick)
-document.dispatchEvent(evmouseclick)
-)
+_send("mockclick", true, true)
+return
 }
 
 if (v == "koajs 核心函数compose的超简单源码实现") {
@@ -5556,7 +5536,7 @@ var deepSet = (ary, path, cb) => {
     // （重点）返回被串改的数组
     return ary
 }
-
+---
 // this.$deepSet(this.items, 'a.b.c.d.e', '123')
 // vue 专用深度 $set
 $deepSet(ref, path, value) {
@@ -5573,11 +5553,41 @@ $deepSet(ref, path, value) {
 
        // 到最后一个了？
        if (_path.length === 0) {
-        // 直接赋值
-        this.$set(obj, key, value)
+          // 直接赋值
+          this.$set(obj, key, value)
        // 补丁，如果不存在则定义该对象
        } else if (!obj[key]) {
-           this.$set(obj, key, {})
+          this.$set(obj, key, {})
+       }
+
+       // 获取当前路径的值
+       obj = obj[key]
+   }
+
+   return obj
+},
+---
+import Vue from 'vue'
+// mixin专用
+export const $deepSet = function (ref, path, value) {
+   // （重要）保存引用
+   let obj = ref
+
+   // 路径切割
+   const _path = path.split('.')
+
+   // 不断轮询路径
+   while (_path.length) {
+       // 从左往右取出路径
+       const key = _path.shift()
+
+       // 到最后一个了？
+       if (_path.length === 0) {
+          // 直接赋值
+          Vue.set(obj, key, value)
+       // 补丁，如果不存在则定义该对象
+       } else if (!obj[key]) {
+          Vue.set(obj, key, {})
        }
 
        // 获取当前路径的值
@@ -5586,9 +5596,8 @@ $deepSet(ref, path, value) {
 
    return obj
 }
-
 )
-code(Var)
+txtit(Var)
 return
 
 ::chunk::
@@ -5913,6 +5922,10 @@ code(Var)
 return
 
 ::fenye::
+::shuzufenye::
+::shuzuqiepian::
+::shuzufenge::
+::shuzuqiege::
 Var =
 (
 // 就像分页一样。
@@ -5927,17 +5940,18 @@ var ary = [1,2,3,4,5,6,7,8,9,10]
 var num = 3
 var count = Math.ceil(ary.length / num)
 for (var page = 0; page < count; page++) {
-	console.log(ary.slice(page * num, (page + 1) * num))
+    console.log(ary.slice(page * num, (page + 1) * num))
 }
 */
 
 const ary = [1,2,3,4,5,6,7,8,9,10]
 const num = 3
+// 如果你的需求是：要分成N组，那么第二个参数可以换成： ary.length / N
 const division = (ary, num, container = {}) => {
-	for (let page = 0; page < Math.ceil(ary.length / num); page++) {
-	  container[page] = ary.slice(page * num, (page + 1) * num)
-	}
-	return container
+    for (let page = 0; page < Math.ceil(ary.length / num); page++) {
+      container[page] = ary.slice(page * num, (page + 1) * num)
+    }
+    return container
 }
 // demo
 division(ary, num, {}) // or division(ary, num, [])
@@ -7361,4 +7375,49 @@ const flattenObject = (obj, prefix = '') =>
 flattenObject({ a: { b: { c: 1 } }, d: 1 }); // { 'a.b.c': 1, d: 1 }
 )
 code(Var)
+return
+
+::mockclick::
+::fakerclick::
+::fakeclick::
+::monidianji::
+::moniclick::
+Var = 
+(
+var evmousedown = document.createEvent('HTMLEvents');
+// evmousedown.clientX = 88
+// evmousedown.clientY = 18
+
+evmousedown.initEvent('mousedown', false, true);
+var evmouseup = document.createEvent('HTMLEvents');
+// evmouseup.clientX = 88
+// evmouseup.clientY = 18
+
+evmouseup.initEvent('mouseup', false, true);
+document.dispatchEvent(evmousedown)
+document.dispatchEvent(evmouseup)
+var evmouseclick = document.createEvent('HTMLEvents');
+// evmouseclick.clientX = 88
+// evmouseclick.clientY = 18
+
+evmouseclick.initEvent('click', false, true);
+document.dispatchEvent(evmouseclick)
+document.dispatchEvent(evmouseclick)
+---
+export const clickOutSideByHack = () => {
+    var evmousedown = document.createEvent('HTMLEvents');
+    evmousedown.initEvent('mousedown', false, true);
+    document.dispatchEvent(evmousedown)
+
+    var evmouseup = document.createEvent('HTMLEvents');
+    evmouseup.initEvent('mouseup', false, true);
+    document.dispatchEvent(evmouseup)
+    
+    var evmouseclick = document.createEvent('HTMLEvents');
+    evmouseclick.initEvent('click', false, true);
+    document.dispatchEvent(evmouseclick)
+}
+)
+txtit(Var)
+return
 return
