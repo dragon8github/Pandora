@@ -1,15 +1,28 @@
 ﻿!a::
+	Menu, arrayMenu, Add, 把数组像分页一样分割为N段, ForHandler
 	Menu, arrayMenu, Add, 加强版map遍历:fuckmap, ForHandler
+	
+	Menu, arrayMenu, Add,, ForHandler
+	Menu, arrayMenu, Add,, ForHandler
+	
 	Menu, arrayMenu, Add, 新建长度为N的数组[...Array(100)]或者Array.from({ length: 100 }), ForHandler
-    Menu, arrayMenu, Add, unique 数组去重复, ForHandler
+	Menu, arrayMenu, Add, 使用了es6的set生产1W条不重复8位的数字, ForHandler
+    Menu, arrayMenu, Add, 从数组中随机不重复取出指定数量的人, ForHandler
+	Menu, arrayMenu, Add, unique 数组去重复, ForHandler
+	Menu, arrayMenu, Add, 随机从数组中取N个数据, ForHandler
+	
+	Menu, arrayMenu, Add,, ForHandler
+	Menu, arrayMenu, Add,, ForHandler
+	
     Menu, arrayMenu, Add, Math.max.apply 获取数组最大值, ForHandler
-    Menu, arrayMenu, Add, 使用了es6的set生产1W条不重复8位的数字, ForHandler
-	Menu, arrayMenu, Add, 从数组中随机不重复取出指定数量的人, ForHandler
-	Menu, arrayMenu, Add, Array.prototype.remove, ForHandler
 	Menu, arrayMenu, Add, 类数组转数组：Array.prototype.slice.call(arguments), ForHandler
 	Menu, arrayMenu, Add, 二维数组转一维数组：Array.prototype.flat(maxDeep), ForHandler
+	
+	Menu, arrayMenu, Add,, ForHandler
+	Menu, arrayMenu, Add,, ForHandler
+	
 	Menu, arrayMenu, Add, 删除数组成员, ForHandler
-	Menu, arrayMenu, Add, 随机从数组中取N个数据, ForHandler
+	Menu, arrayMenu, Add, Array.prototype.remove, ForHandler
 	Menu, arrayMenu, Add, 判断两个数组是否互相包含, utilsHandler
 	Menu, arrayMenu, Add, 数组的交集、并集、差集、补集, ForHandler
 	
@@ -48,7 +61,6 @@
 	
 	Menu, arrayMenu, Add,  jQuery $.each, ForHandler
 	Menu, arrayMenu, Add,  jQuery $('.img').each, ForHandler
-	Menu, arrayMenu, Add,  ((________ = '________') => [...Array(________.length)].reduce((_`, __`, ___) => ++___))('________'), ForHandler
 
 	Menu, arrayMenu, Show
 	Menu, arrayMenu, DeleteAll
@@ -67,6 +79,10 @@ Var =
 )
 }
 
+if (v == "把数组像分页一样分割为N段") {
+_send("fenye", true, true)
+return
+}
 
 if (v == "数组的交集、并集、差集、补集") {
 Var = 

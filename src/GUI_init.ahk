@@ -113,7 +113,10 @@ Gui, Pandora:Menu, MyMenuBar
 ; 支持拖拽大小
 ; Gui, Pandora:+Resize
 
-Gui, Pandora:Add, Text, gAllSearchA W120 Section xs yp+10, 搜索引擎类:
+
+; 取消按钮
+Gui, Pandora:Add, Button, gCancelSelect w260 h30, 取消选中
+Gui, Pandora:Add, Text, gAllSearchA W120 Section xs yp+40, 搜索引擎类:
 Gui, Pandora:Add, Checkbox, gMySubroutine HwndMyEditHwnd vbd, 百度
 Gui, Pandora:Add, Checkbox, vdoge, doge
 Gui, Pandora:Add, Checkbox, vnpm, npm
@@ -153,7 +156,7 @@ Gui, Pandora:Add, Checkbox, vamazon, 亚马逊
 Gui, Pandora:Add, Checkbox, vkongzi, 孔夫子二手书
 
 ; 搜索框
-Gui, Pandora:Add, Edit, vSearchContent gSearchContent w260 H270 Limit150 yp+40 Section xs, dragon8github/Pandora
+Gui, Pandora:Add, Edit, vSearchContent gSearchContent w260 H100 Limit150 yp+40 Section xs, dragon8github/Pandora
 
 ; 背景色
 Gui, Pandora:Color, E6FFE6
@@ -162,10 +165,7 @@ Gui, Pandora:Color, E6FFE6
 Gui, Pandora:Margin, 10, 10
 
 ; submit 按钮
-Gui, Pandora:Add, Button, w260 h30 gFuck Section xs h30 yp+290 Default, FUCK
-
-; 取消按钮
-Gui, Pandora:Add, Button, gCancelSelect w260 h30 xs, 取消选中
+Gui, Pandora:Add, Button, w260 h30 gFuck Section xs h30 yp+120 Default, FUCK
 
 
 ; Tab 选项卡 w830 h570 

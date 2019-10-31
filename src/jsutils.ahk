@@ -1215,10 +1215,12 @@ function cf() {
 
 if (v == "把数组像分页一样分割为N段") {
 _send("fenye", true, true)
+return
 }
 
 if (v == "once函数装饰器") {
 _send("once", true, true)
+return
 }
 
 if (v == "获取当前所在的<iframe>：window.frameElement") {
