@@ -31,7 +31,8 @@ if (currentBook == "") {
 }
 
 if (currentBook == "《Vue.js 深入浅出》") {
-	cornell("object的变化侦测")
+	cornell("Object的变化侦测")
+  cornell("Array的变化侦测")
 }
 
 
@@ -71,10 +72,103 @@ Var =
 )
 }
 
-if (v == "object的变化侦测") {
+if (v == "Array的变化侦测") {
 Var =
 (
-@如何侦测一个对象的变化？
+@数组侦测的原理：拦截器
+const arrayPrototype = Array.prototype
+
+// copy 一份数组原型出来进行改造
+// 稍后所有的 vm 的数组原型 __prop__ 都必须使用这个原型
+const ARRAY_PROTOTYPE = Object.create(arrayPrototype)
+
+;['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'].forEach(method => {
+  // 保存原始纯洁方法
+  const originalMethod = arrayPrototype[method]
+
+  // 监听数组方法
+  Object.defineProperty(ARRAY_PROTOTYPE, method, {
+    enumerable: true,
+    writable: true,
+    configurable: true,
+    value: function (...args) {
+      console.log('拦截！')
+      return originalMethod.apply(this, args)
+    }
+  })
+
+@拦截器兼容性：暴力注入
+const arrayPrototype = Array.prototype
+
+// copy 一份数组原型出来进行改造
+// 稍后所有的 vm 的数组原型 __prop__ 都必须使用这个原型
+const ARRAY_PROTOTYPE = Object.create(arrayPrototype)
+
+// 只需要定制七大方法即可
+;['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'].forEach(method => {
+  // 保存原始纯洁方法
+  const originalMethod = arrayPrototype[method]
+
+  // 监听数组方法
+  Object.defineProperty(ARRAY_PROTOTYPE, method, {
+    enumerable: true,
+    writable: true,
+    configurable: true,
+    value: function (...args) {
+      console.log('拦截！')
+      return originalMethod.apply(this, args)
+    }
+  })
+})
+
+function def (obj, key, val, enumerable) {
+  Object.defineProperty(obj, key, {
+    value: val,
+    enumerable: !!enumerable,
+    writable: true,
+    configurable: true
+  })
+}
+
+//////////////////////////////////////////////
+// usage
+//////////////////////////////////////////////
+// 绝大部分的浏览器都支持。 但并不是完美的解决方案。 所以后续要改造。但原理不变。
+if ('__proto__' in Object) {
+  data.__proto__ = ARRAY_PROTOTYPE
+} else {
+  // 获取七大方法
+  const methods = Object.getownPropertyNames(ARRAY_PROTOTYPE)
+
+  // 循环将七大方法打入体内
+  for (let i = 0, len = methods.length; i < len; i++) {
+     // 方法名
+     const method = methods[i]
+     // 注入灵魂
+     def(data, method, ARRAY_PROTOTYPE[method])
+  }
+}
+
+data.push(1) // => 拦截！
+})
+
+
+//////////////////////////////////////////////
+// usage
+//////////////////////////////////////////////
+const data = []
+
+// 绝大部分的浏览器都支持。 但并不是完美的解决方案。 所以后续要改造。但原理不变。
+data.__proto__ = ARRAY_PROTOTYPE
+
+data.push(1) // => 拦截！
+)
+}
+
+if (v == "Object的变化侦测") {
+Var =
+(
+@如何侦测一个对象的变化？ 
 到目前为止 Vue.js 还是使用 object.defineProperty 来实现的，但 object.defineProperty 有很多缺陷，所以尤雨溪说日后会使用 Proxy 来重写部分代码。
 
 function defineReactive(obj, key, val) {
@@ -95,7 +189,9 @@ function defineReactive(obj, key, val) {
   })
 }
 
-// demo
+//////////////////////////////////////////////
+// usage
+//////////////////////////////////////////////
 var obj = {}
 
 // 初始化对象的 foo 属性
@@ -257,7 +353,7 @@ data.name = 'JOJO'
 // 触发依赖回调 window.__FUCK__
 // => fuckyou JOJO Lee
 
-@用递归深度侦测所有的 key
+@Observer: 用递归深度侦测所有的 key
 之前我们的 defineReactive，每次只能监听一个，但如果值是一个对象。譬如： 
 
 defineReactive(data, 'name', { a: { b: { c: { d: 'fuckyou' } } } })
@@ -485,6 +581,9 @@ function defineReactive(obj, key, val) {
   })
 }
 
+//////////////////////////////////////////////
+// usage
+//////////////////////////////////////////////
 let data = {}
 
 // 将 data 初始化为 vm 

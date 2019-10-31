@@ -77,21 +77,21 @@
     Menu, utilsDOM, Add, getScriptPath, utilsHandler
     Menu, utilsDOM, Add, onscript/loadscript 加载脚本并等待加载完成, utilsHandler
     Menu, utilsDOM, Add, addcss/link 样式加载器, utilsHandler
-    
-    Menu, utilsDOM, Add
-    Menu, utilsDOM, Add
-    
     Menu, utilsDOM, Add, 是否隐藏：$('#div').is(':hidden'), utilsHandler
     Menu, utilsDOM, Add, 是否显示：$('#div').is(':visible'), utilsHandler
+    
+    Menu, utilsDOM, Add
+    Menu, utilsDOM, Add
+    
+    
+    Menu, utilsDOM, Add, mask蒙版, utilsHandler
     Menu, utilsDOM, Add, clickOutSide：!el.contains(event.target), utilsHandler
-    Menu, utilsDOM, Add, e.dataset 给元素设置数据, utilsHandler
+    Menu, utilsDOM, Add, HTML缓存数据：e.dataset 与 data-fuck-you, utilsHandler
     Menu, utilsDOM, Add, 获取当前所在的<script>：document.currentScript, utilsHandler
     Menu, utilsDOM, Add, 获取当前所在的<iframe>：window.frameElement, utilsHandler
-    Menu, utilsDOM, Add, mask蒙版, utilsHandler
-    Menu, utilsDOM, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     Menu, utilsDOM, Add, mvDOM：移动dom元素到指定目标位置, utilsHandler
     Menu, utilsDOM, Add, document.activeElement.blur(), utilsHandler
-    
+    Menu, utilsDOM, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 element 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
     Menu, utilsPosition, Add, - el.clientHeight：可视高度 , utilsHandler
@@ -179,6 +179,8 @@
     
     
     ; @认知 @renzhi
+    Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
+    Menu, utilspractice, Add, ...args参数和fn.apply(null`, args) 的数组套路, utilsHandler
     Menu, utilspractice, Add, !function(){}()：被遗忘的另一个IIFE, utilsHandler
     Menu, utilspractice, Add, 拖拽位置公式, utilsHandler
     Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
@@ -201,65 +203,72 @@
     Menu, utilspractice, Add, async/await与箭头函数：async (to`, from`, next) => {}, utilsHandler
     Menu, utilspractice, Add, async/await与传统函数：async function bootstrap() {}, utilsHandler
     Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
-    Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
     Menu, utilspractice, Add, 函数参数对象深度结构与重命名： var a = ({ state: { nums:list`, numGroup`, map } }) => {}, utilsHandler
     
     Menu, utilspractice, Add,
     Menu, utilspractice, Add,
     
-    Menu, utilspractice, Add, HTML缓存数据：e.dataset 与 data-fuck-you, utilsHandler
+    
     Menu, utilspractice, Add, 对象字面量的变量键：this.setState({ [fuckyou]: 'true' }), utilsHandler
     Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseInt/parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
-    Menu, utilspractice, Add, 将 if/else 转化为三元表达式示例, utilsHandler
-    Menu, utilspractice, Add, const { log， warn， info， error， assert  } = console, utilsHandler
-    Menu, utilspractice, Add, 获取当前所在的<script>：document.currentScript, utilsHandler
-    Menu, utilspractice, Add, 获取当前所在的<iframe>：window.frameElement, utilsHandler
     ; renzhi
     
     
     ; @my
-    Menu, utilsmy, Add, collapse折叠面板, utilsHandler
-    Menu, utilsmy, Add, findSameByProperty：对比两个数组找出相同特征的成员, utilsHandler
-    Menu, utilsmy, Add, 求同存异：金强的对象特殊合并, utilsHandler
-    Menu, utilsmy, Add, 判断两个数组是否互相包含, utilsHandler
-    Menu, utilsmy, Add, loadExec：又是一个比较骚的工具函数 , utilsHandler
-    Menu, utilsmy, Add, 轮询监听URL变化：onUrlChange, utilsHandler
-    Menu, utilsmy, Add, 为函数注册全局事件: regEvent, utilsHandler
-    Menu, utilsmy, Add, 前端日志上传新姿势 navigator.sendBeacon（信标）, utilsHandler
-    Menu, utilsmy, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
-    Menu, utilsmy, Add, 随机在配色网站上获取颜色, utilsHandler
-    Menu, utilsmy, Add, wait等待工具，必须配合 async/await使用, utilsHandler
-    Menu, utilsmy, Add, delay延迟工具，必须配合 async/await使用, utilsHandler
-    Menu, utilsmy, Add, 数组成员冲排列：以大带小 drive, utilsHandler
-    Menu, utilsmy, Add, StorageEvent：监听 localStorage 数据变化的解决方案, utilsHandler
-    Menu, utilsmy, Add, mvDOM：移动dom元素到指定目标位置, utilsHandler
-    Menu, utilsmy, Add, 堡垒模式：请求条件不满足则排队处理, utilsHandler
-    Menu, utilsmy, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
-    Menu, utilsmy, Add, 把数组像分页一样分割为N段, utilsHandler
-    Menu, utilsmy, Add, input动态宽度, utilsHandler
     Menu, utilsmy, Add, exclude: 从对象中排除某个属性, utilsHandler
     Menu, utilsmy, Add, pureMap：纯洁无害的map函数, utilsHandler
     Menu, utilsmy, Add, chunk 数组分块函数, utilsHandler
     Menu, utilsmy, Add, deepset：超强！深度set（deepfind的兄弟方法）, utilsHandler
-    Menu, utilsmy, Add, (=・ω・=)我的单例版ajax, utilsHandler
-    Menu, utilsmy, Add, 单例模式：生成不重复的随机数, utilsHandler
+    
+    
+    Menu, utilsmy, Add
+    Menu, utilsmy, Add
+    
+    Menu, utilsmy, Add, 判断两个数组是否互相包含, utilsHandler
+    Menu, utilsmy, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
+    Menu, utilsmy, Add, findSameByProperty：对比两个数组找出相同特征的成员, utilsHandler
+    Menu, utilsmy, Add, 求同存异：金强的对象特殊合并, utilsHandler
+    Menu, utilsmy, Add, 数组成员冲排列：以大带小 drive, utilsHandler
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
-    Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
-    Menu, utilsmy, Add, (=・ω・=)我的单例版ajax, utilsHandler
-    Menu, utilsmy, Add, 去重复版本的axios, utilsHandler
-    Menu, utilsmy, Add, 获取前6个月/前15天数据, utilsHandler
-    Menu, utilsmy, Add, 通过URL判断是否本地开发环境, utilsHandler
+    
+    
+    Menu, utilsmy, Add
+    Menu, utilsmy, Add
+    
+    Menu, utilsmy, Add, wait等待工具，必须配合 async/await使用, utilsHandler
+    Menu, utilsmy, Add, delay延迟工具，必须配合 async/await使用, utilsHandler
     Menu, utilsmy, Add, 用 IIFE 解决 setInterval 首次不执行的尴尬, utilsHandler
     Menu, utilsmy, Add, setInterval 强大的解决方案, utilsHandler
     Menu, utilsmy, Add, setInterval Switch超简单开关, utilsHandler
+    
+    
+    Menu, utilsmy, Add
+    Menu, utilsmy, Add
+    
+    Menu, utilsmy, Add, loadExec：又是一个比较骚的工具函数 , utilsHandler
+    Menu, utilsmy, Add, 堡垒模式：请求条件不满足则排队处理, utilsHandler
+    Menu, utilsmy, Add, 轮询监听URL变化：onUrlChange, utilsHandler
+    Menu, utilsmy, Add, 为函数注册全局事件: regEvent, utilsHandler
+    Menu, utilsmy, Add, 前端日志上传新姿势 navigator.sendBeacon（信标）, utilsHandler
+    Menu, utilsmy, Add, 随机在配色网站上获取颜色, utilsHandler
+    Menu, utilsmy, Add, StorageEvent：监听 localStorage 数据变化的解决方案, utilsHandler
+    Menu, utilsmy, Add, input动态宽度, utilsHandler
+    
+    
+    Menu, utilsmy, Add
+    Menu, utilsmy, Add
+    
+    
+    Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
+    Menu, utilsmy, Add, (=・ω・=)我的单例版ajax, utilsHandler
+    Menu, utilsmy, Add, 获取前6个月/前15天数据, utilsHandler
+    Menu, utilsmy, Add, 通过URL判断是否本地开发环境, utilsHandler
     Menu, utilsmy, Add, 微信群组随机取人头, utilsHandler
     Menu, utilsmy, Add, 微信获取头像和人员名册, utilsHandler
-    Menu, utilsmy, Add, Vue 进度条组件, utilsHandler
     Menu, utilsmy, Add, utils.js, utilsHandler
-    Menu, utilsmy, Add, once函数装饰器, utilsHandler
     
     Menu, utilsjuran, Add, 快速取整的新思路：1553 / 10 | 0, utilsHandler
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
@@ -285,9 +294,6 @@
     Menu, utilses5, Add, 函数调用注入args：successFn.apply(this`, arguments), utilsHandler
     Menu, utilses5, Add, 简写Array.prototype.push.apply的方法：[].push.apply, utilsHandler
     Menu, utilses5, Add, Function.prototype.call：除了参数为数组/类数组以外的都应该使用call，如map/reduce/filter（因为他们的参数都是函数）等, utilsHandler
-    
-    Menu, utilses5, Add, 超简单的currying与理财花销实例, utilsHandler
-    
 
     Menu, utilsJstest, Add, match 捕获匹配, utilsHandler
     
@@ -328,8 +334,6 @@
     Menu, utils2, Add, filterhtml: 移除html标签，只提取文本text(), utilsHandler
     Menu, utils2, Add, encodeURI URI过滤, utilsHandler
     Menu, utils2, Add, escapeHTML 防止XSS, utilsHandler
-    Menu, utils2, Add, 模拟真实点击click，专门对付clickoutside, utilsHandler
-    Menu, utils2, Add, ClickOutside 点击外部冒泡, utilsHandler
 
     Menu, utils2, Add, , utilsHandler
     Menu, utils2, Add, , utilsHandler
@@ -400,7 +404,7 @@
     Menu, utilspractice, DeleteAll
     Menu, utilses5, DeleteAll
     Menu, utilsSolution, DeleteAll
-    
+    Menu, utilsmy, DeleteAll
     
 return
 
@@ -414,6 +418,31 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "...args参数和fn.apply(null, args) 的数组套路") {
+Var =
+(
+const arrayPrototype = Array.prototype
+
+// 使用的其实是这个数组原型
+export const arrayMethods = Object.create(arrayPrototype)
+
+['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'].forEach(method => {
+    // 保存原始方法
+    const originalMethod = arrayPrototype[method]
+
+    // 监听数组方法
+    Object.defineProperty(arrayMethods, method, {
+        enumerable: true,
+        writable: true,
+        configurable: true,
+        value: function (...args) {
+            return originalMethod.apply(this, args)
+        }
+    })
+})
 )
 }
 

@@ -107,6 +107,7 @@
   Menu, vuesolution, Add
   
   Menu, vuesolution, Add, $.scrollforevery 无缝滚动（Vue版本）, VueHandler
+  Menu, vuesolution, Add, Vue 进度条组件, VueHandler
   Menu, vuesolution, Add, click-outside 指令, VueHandler
   Menu, vuesolution, Add, DataV - 顶部一闪过儿的loading封装, VueHandler
   Menu, vuesolution, Add, 我的layer组件：通过js来操作.vue组件，只有插入任何位置, VueHandler
@@ -153,6 +154,63 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "Vue 进度条组件") {
+Var = 
+(
+<template>
+    <div class="myprogress" :style='{ width: mywidth }'></div>
+</template>
+
+<script>
+export default {
+  name: 'myprogress',
+  data () {
+    return {
+      mywidth: 0
+    }
+  },
+  methods: {
+      go () {
+          console.log('go');
+      }
+  },
+  props: {
+    _width: {
+      default: 0,
+      type: String
+    }
+  },
+  components: {
+
+  },
+  computed: {
+
+  },
+  watch: {
+    _width (newV) {
+      this.mywidth = 0
+      setTimeout(_ => this.mywidth = newV, 50)
+    }
+  },
+  mounted () {
+      setTimeout(() => {
+        this.mywidth = this._width
+      }, 50);
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "~@/scss/functions.scss";
+.myprogress {
+  transition: .5s all ease;
+  width: 0;
+}
+</style>
 )
 }
 
