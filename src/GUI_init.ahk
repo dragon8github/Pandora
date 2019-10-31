@@ -224,15 +224,6 @@ Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://unpkg.com/#/">unpkg cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">75cdn</a>
 
-/*
-Gui, Pandora:Add, Text, W140 ys, ServerLess：
-Gui, Pandora:Add, Link,, <a href="https://www.amazonaws.cn/">AWS 官网</a>
-Gui, Pandora:Add, Link,, <a href="https://serverless.com/">Serverless框架</a>
-Gui, Pandora:Add, Link,, <a href="https://aws.amazon.com/cn/cloud9/">AWS Cloud9 Web IDE</a>
-Gui, Pandora:Add, Link,, <a href="https://console.aws.amazon.com/iam/home?#/home">IMA管理</a>
-Gui, Pandora:Add, Link,, <a href="https://signin.aws.amazon.com/signin">AWS登录</a>
-Gui, Pandora:Add, Link,, <a href="https://console.aws.amazon.com/billing/home?#/paymentmethods">付费绑定</a>
-*/
 
 Gui, Pandora:Add, Text,  W140 ys, 好东西：
 Gui, Pandora:Add, Link,, <a href="https://www.zhihu.com/question/23054572">100块以内的礼物</a>
@@ -244,7 +235,7 @@ Gui, Pandora:Add, Link,, <a href="https://unbug.github.io/codelf">codeif变量�
 Gui, Pandora:Add, Link,, <a href="https://www.iloveimg.com/zh-cn">图片压缩神器</a>
 
 
-Gui, Pandora:Add, Text,  W140 Section xs yp+80, 最近学习：
+Gui, Pandora:Add, Text,  W140 Section xs yp+50, 最近学习：
 Gui, Pandora:Add, Link,, <a href="https://hellogithub.com/periodical/volume/15/">有趣的github项目</a>
 Gui, Pandora:Add, Link,, <a href="https://gitbook.cn/gitchat/geekbooks">极客书单</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0.10源码</a>

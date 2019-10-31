@@ -1,6 +1,8 @@
 ﻿!a::
 	Menu, arrayMenu, Add, 把数组像分页一样分割为N段, ForHandler
+	Menu, arrayMenu, Add, chunk 数组分块函数, ForHandler
 	Menu, arrayMenu, Add, 加强版map遍历:fuckmap, ForHandler
+	Menu, arrayMenu, Add, pureMap：纯洁无害的map函数, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -29,23 +31,27 @@
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
 	
-	Menu, arrayMenu, Add,  for-- 循环中splice需要使用, ForHandler
-	Menu, arrayMenu, Add,  for in, ForHandler
-	Menu, arrayMenu, Add,  for of, ForHandler
-	Menu, arrayMenu, Add,  for entries, ForHandler
-	Menu, arrayMenu, Add,  Array#forEach, ForHandler
-	Menu, arrayMenu, Add,  Array#map, ForHandler
-	Menu, arrayMenu, Add,  Array#reduce, ForHandler
-	Menu, arrayMenu, Add,  Array#reduceRight, ForHandler
-	Menu, arrayMenu, Add,  Array#some（数组至少一个符合条件，返回true/false）, ForHandler
-    Menu, arrayMenu, Add,  Array#every（数组必须全部符合条件，返回true/false）, ForHandler
-	Menu, arrayMenu, Add,  Array#find, ForHandler
-	Menu, arrayMenu, Add,  Array#filter, ForHandler
-	Menu, arrayMenu, Add,  Array#of（创建数组的优雅函数）, ForHandler
-	Menu, arrayMenu, Add,  Array#from（类数组转化成数组的方式）, ForHandler
+		
+	Menu, ForAPI, Add,  for in, ForHandler
+	Menu, ForAPI, Add,  for of, ForHandler
+	Menu, ForAPI, Add,  for entries, ForHandler
+	Menu, ForAPI, Add,  Array#forEach, ForHandler
+	Menu, ForAPI, Add,  Array#map, ForHandler
+	Menu, ForAPI, Add,  Array#reduce, ForHandler
+	Menu, ForAPI, Add,  Array#reduceRight, ForHandler
+	Menu, ForAPI, Add,  Array#some（数组至少一个符合条件，返回true/false）, ForHandler
+	Menu, ForAPI, Add,  Array#every（数组必须全部符合条件，返回true/false）, ForHandler
+	Menu, ForAPI, Add,  Array#find, ForHandler
+	Menu, ForAPI, Add,  Array#filter, ForHandler
+	Menu, ForAPI, Add,  Array#of（创建数组的优雅函数）, ForHandler
+	Menu, ForAPI, Add,  Array#from（类数组转化成数组的方式）, ForHandler
+	
+	
+	Menu, arrayMenu, Add,  for 常用 API, :ForAPI
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
+	
 	
 	Menu, arrayMenu, Add, unshift： 插入到第一位 , ForHandler
 	Menu, arrayMenu, Add, push: 插入到最后一位 , ForHandler
@@ -54,7 +60,7 @@
 	Menu, arrayMenu, Add, slice： 无损截取数组 , ForHandler
 	Menu, arrayMenu, Add, splice： 有损截取数组，可用于替换 , ForHandler
 	Menu, arrayMenu, Add, splice： 可用于插入：ary.splice(1`, 0`, 'fuckyou') , ForHandler
-	
+	Menu, arrayMenu, Add,  for-- 循环中splice需要使用, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -77,6 +83,17 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "chunk 数组分块函数") {
+_send("chunk", true, true)
+return
+}
+
+if (v == "pureMap：纯洁无害的map函数") {
+_send("puremap", true, true)
+return
 }
 
 if (v == "把数组像分页一样分割为N段") {

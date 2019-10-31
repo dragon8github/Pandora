@@ -176,16 +176,11 @@
     Menu, utilsSolution, Add, 全屏F11最新解决方案, utilsHandler
     Menu, utilsSolution, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
 
-    
-    
     ; @认知 @renzhi
     Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
     Menu, utilspractice, Add, ...args参数和fn.apply(null`, args) 的数组套路, utilsHandler
+    Menu, utilspractice, Add, 函数参数对象深度结构与重命名： var a = ({ state: { nums:list`, numGroup`, map } }) => {}, utilsHandler
     Menu, utilspractice, Add, !function(){}()：被遗忘的另一个IIFE, utilsHandler
-    Menu, utilspractice, Add, 拖拽位置公式, utilsHandler
-    Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
-    Menu, utilspractice, Add, 超简单的currying与理财花销实例, utilsHandler
-    Menu, utilspractice, Add, curry2 二元参数的手动柯里化, utilsHandler
     
     Menu, utilspractice, Add,
     Menu, utilspractice, Add,
@@ -197,13 +192,12 @@
     Menu, utilspractice, Add,
     Menu, utilspractice, Add,
     
-    Menu, utilspractice, Add, 任意值的__proto__拦截器：数组为例, utilsHandler
     Menu, utilspractice, Add, promise.catch 全局处理与局部传播：在第一次catch的时候throw错误即可, utilsHandler
     Menu, utilspractice, Add, Promise.prototype.finally已经存在了, utilsHandler
     Menu, utilspractice, Add, async/await与箭头函数：async (to`, from`, next) => {}, utilsHandler
     Menu, utilspractice, Add, async/await与传统函数：async function bootstrap() {}, utilsHandler
     Menu, utilspractice, Add, 对象字面量如何使用async/await标记, utilsHandler
-    Menu, utilspractice, Add, 函数参数对象深度结构与重命名： var a = ({ state: { nums:list`, numGroup`, map } }) => {}, utilsHandler
+    
     
     Menu, utilspractice, Add,
     Menu, utilspractice, Add,
@@ -213,13 +207,21 @@
     Menu, utilspractice, Add, 解构与split结合：const [language`, country] = locale.split('-'), utilsHandler
     Menu, utilspractice, Add, 强制转化为Boolean类型：!!(a && b), utilsHandler
     Menu, utilspractice, Add, parseInt/parseFloat可以直接移除字符串：parseFloat(layero.css('left')) // '162px' => 162, utilsHandler
+    
+    Menu, utilspractice, Add,
+    Menu, utilspractice, Add,
+    
+    
+    Menu, utilspractice, Add, 拖拽位置公式, utilsHandler
+    Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
+    Menu, utilspractice, Add, curry2 二元参数的手动柯里化, utilsHandler
     ; renzhi
     
     
     ; @my
     Menu, utilsmy, Add, exclude: 从对象中排除某个属性, utilsHandler
-    Menu, utilsmy, Add, pureMap：纯洁无害的map函数, utilsHandler
-    Menu, utilsmy, Add, chunk 数组分块函数, utilsHandler
+    
+    
     Menu, utilsmy, Add, deepset：超强！深度set（deepfind的兄弟方法）, utilsHandler
     
     
@@ -1636,11 +1638,6 @@ export const exclude = (obj, ...attribute) =>  {
 )
 }
 
-if (v == "pureMap：纯洁无害的map函数") {
-_send("puremap", true, true)
-return
-}
-
 if (v == "快速取整的新思路：1553 / 10 | 0") {
 Var = 
 (
@@ -1648,10 +1645,6 @@ Var =
 )
 }
 
-if (v == "chunk 数组分块函数") {
-_send("chunk", true, true)
-return
-}
 
 if (v == "deepset：超强！深度set（deepfind的兄弟方法）") {
 _send("deepset", true, true)
