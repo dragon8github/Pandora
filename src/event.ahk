@@ -123,6 +123,7 @@
 	Menu, echartsEventMenu, Add, getRangeRBG：专门用于生成 echarts 的渐变色, EventHandler
 	Menu, echartsEventMenu, Add, echarts + vue Mixins 摧毁方案, EventHandler
 	Menu, echartsEventMenu, Add, 气泡动态宽度大小, EventHandler
+	Menu, echartsEventMenu, Add, 饼图解决方案：以大带小, EventHandler
 
 	;@a @1
 	Menu, EventMenu, Add, JavaScript, :JavaScriptEventMenu
@@ -192,6 +193,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "饼图解决方案：以大带小") {
+_send("yidadaixiao", true, true)
+return
 }
 
 if (v == "气泡动态宽度大小") {

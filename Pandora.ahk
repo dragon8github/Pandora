@@ -66,11 +66,9 @@ FileDelete, .\src\*.bak
 #Include src/reactNative.ahk      ; ReactNative
 #Include src/three.ahk            ; THREE
 #Include src/flutter.ahk	      ; flutter
-#Include src/taro.ahk	          ; taro
+;#Include src/taro.ahk	          ; taro
 
-; #Include src/golang.ahk	          ; golang
-#Include src/php.ahk                ; php
-; #Include src/python.ahk		      ; python
+#Include src/php.ahk                  ; php	
 
 !F12::
 	Suspend

@@ -92,10 +92,23 @@ const ARRAY_PROTOTYPE = Object.create(arrayPrototype)
     writable: true,
     configurable: true,
     value: function (...args) {
-      console.log('拦截！')
+      console.log('拦截！', ...args)
       return originalMethod.apply(this, args)
     }
-  })
+	})
+})
+
+
+//////////////////////////////////////////////
+// usage
+//////////////////////////////////////////////
+const data = []
+
+// 绝大部分的浏览器都支持。 但并不是完美的解决方案。 所以后续要改造。但原理不变。
+data.__proto__ = ARRAY_PROTOTYPE
+
+data.push(1) // => 拦截！
+
 
 @拦截器兼容性：暴力注入
 const arrayPrototype = Array.prototype
@@ -115,7 +128,7 @@ const ARRAY_PROTOTYPE = Object.create(arrayPrototype)
     writable: true,
     configurable: true,
     value: function (...args) {
-      console.log('拦截！')
+      console.log('拦截！', ...args)
       return originalMethod.apply(this, args)
     }
   })
@@ -151,17 +164,6 @@ if ('__proto__' in Object) {
 
 data.push(1) // => 拦截！
 })
-
-
-//////////////////////////////////////////////
-// usage
-//////////////////////////////////////////////
-const data = []
-
-// 绝大部分的浏览器都支持。 但并不是完美的解决方案。 所以后续要改造。但原理不变。
-data.__proto__ = ARRAY_PROTOTYPE
-
-data.push(1) // => 拦截！
 )
 }
 

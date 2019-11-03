@@ -2,7 +2,7 @@
     Menu, taronpx, Add, 安装脚手架：npx @tarojs/cli init myApp, taroHandler2
 
     Menu, taronpx, Add
-    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁  微信小程序  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
+    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁  微信小程序  🍁🍁🍁🍁🍁🍁🍁🍁, taroHandler2
     Menu, taronpx, Add
 
     Menu, taronpx, Add, npm run dev:weapp, taroHandler2
@@ -15,7 +15,7 @@
     Menu, taronpx, Add, npx taro build --type weapp, taroHandler2
 
     Menu, taronpx, Add
-    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁  H5  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
+    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁  H5  🍁🍁🍁🍁🍁🍁🍁🍁, taroHandler2
     Menu, taronpx, Add
 
     Menu, taronpx, Add, npm run dev:h5, taroHandler2
@@ -24,7 +24,7 @@
 
 
     Menu, taronpx, Add
-    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁  React Native  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
+    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁  React Native  🍁🍁🍁🍁🍁🍁🍁🍁, taroHandler2
     Menu, taronpx, Add
 
     Menu, taronpx, Add, npm run dev:rn, taroHandler2
@@ -32,7 +32,7 @@
     Menu, taronpx, Add, npx taro build --type rn --watch, taroHandler2
 
     Menu, taronpx, Add
-    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁  支付宝小程序  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
+    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁  支付宝小程序  🍁🍁🍁🍁🍁🍁🍁🍁, taroHandler2
     Menu, taronpx, Add
 
     Menu, taronpx, Add, npm run dev:alipay, taroHandler2
@@ -46,7 +46,7 @@
 
 
     Menu, taronpx, Add
-    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁  百度小程序  🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
+    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁  百度小程序  🍁🍁🍁🍁🍁🍁🍁🍁, taroHandler2
     Menu, taronpx, Add
 
     Menu, taronpx, Add, npm run dev:swan, taroHandler2
@@ -60,7 +60,7 @@
 
 
     Menu, taronpx, Add
-    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁 更新 Taro 🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
+    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁 更新 Taro 🍁🍁🍁🍁🍁🍁🍁🍁, taroHandler2
     Menu, taronpx, Add
 
     Menu, taronpx, Add, taro update self, taroHandler2
@@ -69,7 +69,7 @@
 
 
     Menu, taronpx, Add
-    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁 更新项目中 Taro 相关的依赖 🍁🍁🍁🍁🍁🍁🍁🍁, PythonHandler
+    Menu, taronpx, Add,🍁🍁🍁🍁🍁🍁🍁🍁 更新项目中 Taro 相关的依赖 🍁🍁🍁🍁🍁🍁🍁🍁, taroHandler2
     Menu, taronpx, Add
 
     Menu, taronpx, Add, taro update project, taroHandler2

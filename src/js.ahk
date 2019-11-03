@@ -4855,9 +4855,19 @@ switch(arguments.length) {
     case 0: return 0;
     case 1: return arguments[0];
     case 2: return arguments[0] + arguments[1];
-    default: 
+    default:
         let [first, ...rest] = arguments;
         return first + add.apply(null, rest);
+}
+
+// use Map to find fruits by color
+  const fruitColor = new Map()
+    .set('red', ['apple', 'strawberry'])
+    .set('yellow', ['banana', 'pineapple'])
+    .set('purple', ['grape', 'plum']);
+
+function printFruits(color) {
+  return fruitColor.get(color) || [];
 }
 )
 code(Var)

@@ -164,9 +164,12 @@
     
 
 	Menu, CssMenu, Show
+    
 	Menu, CssMenu, DeleteAll
     Menu, Csssolution, DeleteAll
     Menu, CsstransformHandler, DeleteAll
+    Menu, cssknow, DeleteAll
+    
 return
 
 

@@ -232,7 +232,7 @@
     Menu, utilsmy, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
     Menu, utilsmy, Add, findSameByProperty：对比两个数组找出相同特征的成员, utilsHandler
     Menu, utilsmy, Add, 求同存异：金强的对象特殊合并, utilsHandler
-    Menu, utilsmy, Add, 数组成员冲排列：以大带小 drive, utilsHandler
+    Menu, utilsmy, Add, 数组成员排列：以大带小 drive, utilsHandler
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
     Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
     
@@ -1069,33 +1069,38 @@ import ky from 'ky';
 )
 }
 
-if (v == "数组成员冲排列：以大带小 drive") {
+if (v == "数组成员排列：以大带小 drive") {
 Var = 
 (
-// 以大带小
+/**
+ * 以大带小
+ *
+ *  const data = drive(newV.data, (a, b) => +a.amount - +b.amount)
+ *  this.render(data)
+ */
 var drive = (ary, fn) => {
-	// 数组长度
-	const len = ary.length
-	// 偶数长度
-	const isEven = len `% 2 === 0
-	// 从大到小排序
-	const _ary = ary.sort(fn)
-	// 循环的次数
-	const time = isEven ? len / 2 : Math.floor(len / 2) + 1
-	// 返回新的数组
-	return [...Array(time)].reduce((previousValue, currentValue, index) => {
-		// 是否循环的最后一次
-		const isLastTime = index === time - 1
-		// 如果是奇数的，且最后一次的情况下
-		if (!isEven && isLastTime) {
-			// 没人可带，带我自己就够了
-			return [...previousValue, _ary[index]]
-		// 默认都带一个小弟
-		} else {
-			// 带上小弟
-			return [...previousValue, _ary[index], _ary[len - 1 - index]]
-		}
-	}, [])
+    // 数组长度
+    const len = ary.length
+    // 偶数长度
+    const isEven = len `% 2 === 0
+    // 从大到小排序
+    const _ary = ary.sort(fn)
+    // 循环的次数
+    const time = isEven ? len / 2 : Math.floor(len / 2) + 1
+    // 返回新的数组
+    return [...Array(time)].reduce((previousValue, currentValue, index) => {
+        // 是否循环的最后一次
+        const isLastTime = index === time - 1
+        // 如果是奇数的，且最后一次的情况下
+        if (!isEven && isLastTime) {
+            // 没人可带，带我自己就够了
+            return [...previousValue, _ary[index]]
+        // 默认都带一个小弟
+        } else {
+            // 带上小弟
+            return [...previousValue, _ary[index], _ary[len - 1 - index]]
+        }
+    }, [])
 }
 )
 }
@@ -7444,4 +7449,40 @@ export const clickOutSideByHack = () => {
 )
 txtit(Var)
 return
+
+::yidadaixiao::
+Var = 
+(
+/**
+ * 以大带小
+ *
+ *  const data = drive(newV.data, (a, b) => +a.amount - +b.amount)
+ *  this.render(data)
+ */
+var drive = (ary, fn) => {
+    // 数组长度
+    const len = ary.length
+    // 偶数长度
+    const isEven = len `% 2 === 0
+    // 从大到小排序
+    const _ary = ary.sort(fn)
+    // 循环的次数
+    const time = isEven ? len / 2 : Math.floor(len / 2) + 1
+    // 返回新的数组
+    return [...Array(time)].reduce((previousValue, currentValue, index) => {
+        // 是否循环的最后一次
+        const isLastTime = index === time - 1
+        // 如果是奇数的，且最后一次的情况下
+        if (!isEven && isLastTime) {
+            // 没人可带，带我自己就够了
+            return [...previousValue, _ary[index]]
+        // 默认都带一个小弟
+        } else {
+            // 带上小弟
+            return [...previousValue, _ary[index], _ary[len - 1 - index]]
+        }
+    }, [])
+}
+)
+code(Var)
 return
