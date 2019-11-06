@@ -62,6 +62,7 @@
   
   
   Menu, vuecognition, Add, watch props 与 data 结合来初始化, VueHandler
+  Menu, vuecognition, Add, 如何获取vue组件的name属性？ this.$options.name, VueHandler
 
 
   Menu, vuetranstion, Add, <transition>, VueHandler
@@ -154,6 +155,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "如何获取vue组件的name属性？ this.$options.name") {
+Var =
+(
+this.$options.name
 )
 }
 
@@ -462,9 +470,14 @@ props: {
    }
 },
 watch: {
-  text (newV, oldV) {
-    this.mytext = this.text
-  }
+   text: {
+      deep: true,
+      // 重点
+      immediate: true,
+      handler(newV, oldV) {
+         this.mytext = newV
+      }
+   }
 },
 )
 }
@@ -4584,6 +4597,22 @@ defineReactive(obj, 'list', [1,2,3])
 obj.list[0] = 'fuck' // 不会触发set hook，但居然还额外触发了 get hook。
 
 obj.list = 123 // 触发 set hook
+)
+code(Var)
+return
+
+::watchi::
+Var =
+(
+watch: {
+   text: {
+      deep: true,
+      immediate: true,
+      handler(newV, oldV) {
+         this.mytext = newV
+      }
+   }
+},
 )
 code(Var)
 return

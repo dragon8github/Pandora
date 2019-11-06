@@ -1476,11 +1476,12 @@ Var =
 code(Var)
 return
 
-::md::
-::mdui::
+::sucai::
+::cailiao::
+::m::
 Var =
 (
-Material Design
+Material
 )
 code(Var)
 return
@@ -1812,4 +1813,3 @@ return
 >+l::
 cs("localhost:")
 return
-

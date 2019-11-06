@@ -183,9 +183,11 @@ var getcenterpoint = function (val) {
 code(Var)
 return
 
+
 ::echarts.dian::
 ::echarts.sandian::
-::echarts.effectScatter::
+::echart.sandian::
+::sandian::
 Var =
 (
 const colorMap = ["#E83035", "#E88234", "#ECED08", "#01F1C4"]

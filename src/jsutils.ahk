@@ -6314,47 +6314,6 @@ console.log(20190711100013, name)
 code(Var)
 return
 
-::require.ctx::
-::webpack.ctx::
-::webpack.req::
-::webpack.require::
-::webpack.request::
-Var =
-(
-/**
- * 1. directory {String} -读取文件的路径 
- * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
- * 3. regExp {RegExp} -匹配文件的正则  
- */
-const charts = require.context('.', true, /\.js$/)
-
-// 准备导出的模块
-let __CHARTS__ = {}
-
-/**
- * 1. 必须使用 key() 获取所有路径
- * 2. 我获取了除了 ./Chart.js 和 ./index.js 以外所有模块js内容
- * 3. 使用 charts(path).default 获取真实模块内容
- */
-charts.keys().filter(path => path.lastIndexOf('/') != 1).forEach(path => {
-	// 获取 『文件名』 和 『后缀名』
-	const [name, ext] = path.substring(path.lastIndexOf('/') + 1).split('.')
-
-	// （重点）获取模块
-	const module = charts(path)
-
-	// 兼容 es6 import export 和 CMD require module.export 两种规范
-	const __MODULE__ = module.default || module
-
-	// 以 『文件名』 为 key，模块内容为 value
-	__CHARTS__[name] = __MODULE__
-})
-
-export default __CHARTS__
-)
-code(Var)
-return
-
 ::wimp::
 ::wmp::
 Var =
@@ -7485,4 +7444,70 @@ var drive = (ary, fn) => {
 }
 )
 code(Var)
+return
+
+::webpack.req::
+::webpack.require::
+::webpack.ctx::
+::webpack.context::
+Var =
+(
+import Vue from 'vue'
+/**
+ * 1. directory {String} -读取文件的路径
+ * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
+ * 3. regExp {RegExp} -匹配文件的正则
+ */
+const VueComponent = require.context('.', true, /\.vue$/)
+
+// 准备导出的模块
+let __Material__ = {}
+
+// 1. 必须使用 key() 获取所有路径
+// 3. 使用 VueComponent(path).default 获取真实模块内容
+VueComponent.keys().forEach(path => {
+    // 获取 『文件名』 和 『后缀名』
+    const [name, ext] = path.substring(path.lastIndexOf('/') + 1).split('.')
+
+    // 目标文件的输出内容
+    const output = VueComponent(path).default
+
+    // 以 『文件名』 为 key，模块内容为 value
+    __Material__[name] = Vue.extend(output)
+})
+
+export default __Material__
+---
+/**
+ * 1. directory {String} -读取文件的路径 
+ * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
+ * 3. regExp {RegExp} -匹配文件的正则  
+ */
+const charts = require.context('.', true, /\.js$/)
+
+// 准备导出的模块
+let __CHARTS__ = {}
+
+/**
+ * 1. 必须使用 key() 获取所有路径
+ * 2. 我获取了除了 ./Chart.js 和 ./index.js 以外所有模块js内容
+ * 3. 使用 charts(path).default 获取真实模块内容
+ */
+charts.keys().filter(path => path.lastIndexOf('/') != 1).forEach(path => {
+    // 获取 『文件名』 和 『后缀名』
+    const [name, ext] = path.substring(path.lastIndexOf('/') + 1).split('.')
+
+    // （重点）获取模块
+    const module = charts(path)
+
+    // 兼容 es6 import export 和 CMD require module.export 两种规范
+    const __MODULE__ = module.default || module
+
+    // 以 『文件名』 为 key，模块内容为 value
+    __CHARTS__[name] = __MODULE__
+})
+
+export default __CHARTS__
+)
+txtit(Var)
 return

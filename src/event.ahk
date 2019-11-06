@@ -203,22 +203,24 @@ return
 if (v == "气泡动态宽度大小") {
 Var =
 (
+// 散点大小
 symbolSize: val => {
     // 获取所有values
-    const values = mockData.map(_ => _.value)
+    const values = scatter_data.map(_ => _.value[2])
     // 获取最大值
     const max = Math.max(Math.max(...values))
     // 获取最小值
     const min = Math.min(...values)
     // 定义最大气泡
-    const maxSize4Pin = 130
+    const maxSize4Pin = 30
     // 定义最小气泡
-    const minSize4Pin = 45
+    const minSize4Pin = 10
     // 固定套路
     var a = (maxSize4Pin - minSize4Pin) / (max - min);
     var b = minSize4Pin - a * min;
     b = maxSize4Pin - a * max;
-    return a * val + b;
+
+    return a * val[2] + b;
 },
 )
 }
@@ -1313,7 +1315,7 @@ return
 }
 
 if (v == "echarts.effectScatter（2d地图散点）") {
-_send("echarts.sandian")
+_send("sandian")
 return
 }
 

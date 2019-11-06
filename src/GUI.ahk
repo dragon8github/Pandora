@@ -9116,3 +9116,73 @@ var vue = new Vue({
 RunBy(name)
 run, % name
 return
+
+VueComponentHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <component :is='"abc"' :option='{text: "fuck"}' ref='abc'></component>  -->
+        
+        <abc ref='abc'></abc>
+
+        <button @click='handleClick'>handleClick</button>
+    </div>
+</body>
+<script>
+var abc = Vue.extend({
+    template: `<label>abc</label> `,
+    data () {
+       return {
+           text: '',
+       }
+    },
+    props: {
+
+    },
+    beforeMount() {
+        
+    }
+});
+
+Vue.component('abc', abc)
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+       abc: null
+    },
+    methods: {
+        handleClick () {
+        }
+    },
+    mounted () {
+        // 或者
+        // const instance = new abc({
+        // })
+        // instance.$mount('#app')
+
+
+        // 再或者
+        // const instance = new abc({
+        //     el: document.createElement('div')
+        // })
+        // document.getElementById('app').appendChild(instance.$el)     
+    }
+})
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+

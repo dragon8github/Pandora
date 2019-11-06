@@ -1051,7 +1051,7 @@ return
 
 ShellHandler4:
 Sleep, 100
-_send(A_ThisMenuItem,true, true)
+cs(A_ThisMenuItem)
 return
 
 
