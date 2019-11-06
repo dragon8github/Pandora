@@ -109,7 +109,7 @@
 	Menu, echartsEventMenu, Add
 	Menu, echartsEventMenu, Add
 
-	Menu, echartsEventMenu, Add, getPointCenter, EventHandler
+	Menu, echartsEventMenu, Add, getPointCenter获取中心点, EventHandler
 	Menu, echartsEventMenu, Add, geojson, EventHandler
 	Menu, echartsEventMenu, Add, createPolygon, EventHandler
 	Menu, echartsEventMenu, Add, echarts.broadcast 轮播器, EventHandler
@@ -1324,7 +1324,7 @@ _send("echarts.qipao", true, true)
 return
 }
 
-if (v == "getPointCenter") {
+if (v == "getPointCenter获取中心点") {
 _send("getPointCenter", true, true)
 return
 }
