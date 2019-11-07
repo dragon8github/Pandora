@@ -1,4 +1,30 @@
-﻿::echart.clear::
+﻿::ehcart.size::
+::ehcarts.size::
+Var =
+(
+ symbolSize: val => {
+    // 获取所有values
+    const values = pin_data.map(_ => _.value[2])
+    // 获取最大值
+    const max = Math.max(Math.max(...values))
+    // 获取最小值
+    const min = Math.min(...values)
+    // 定义最大气泡
+    const maxSize4Pin = 100
+    // 定义最小气泡
+    const minSize4Pin = 50
+    // 固定套路
+    var a = (maxSize4Pin - minSize4Pin) / (max - min);
+    var b = minSize4Pin - a * min;
+    b = maxSize4Pin - a * max;
+
+    return a * val[2] + b;
+},
+)
+code(Var)
+return
+
+::echart.clear::
 ::echarts.clear::
 Var =
 (
