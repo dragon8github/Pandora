@@ -1,4 +1,6 @@
-﻿::echart.size::
+﻿
+
+::echart.size::
 ::echarts.size::
 Var =
 (

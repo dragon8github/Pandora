@@ -9,6 +9,9 @@
 ; 让脚本持续运行, 直到用户退出.
 #Persistent 
 
+; 允许每个变量使用 256 MB.
+#MaxMem 256
+
 ; 设置为tab键作为终止符（也可以加入回车键）`n
 Hotstring("EndChars", "`t")  
 
