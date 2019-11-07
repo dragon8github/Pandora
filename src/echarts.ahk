@@ -1,5 +1,5 @@
-﻿::ehcart.size::
-::ehcarts.size::
+﻿::echart.size::
+::echarts.size::
 Var =
 (
  symbolSize: val => {
