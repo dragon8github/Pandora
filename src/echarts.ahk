@@ -1,10 +1,35 @@
-﻿
+﻿::echarts.heat::
+::echarts.hot::
+::echart.heat::
+::echart.hot::
+Var =
+(
+{
+    type: 'heatmap',
+    coordinateSystem: 'geo',
+    // 热力点的粗细值
+    pointSize: 50,
+    // 每个点模糊的大小，在地理坐标系(coordinateSystem: 'geo')上有效。
+    blurSize: 30, // 30 50
+    // 每帧渲染的个数，默认400
+    progressive: 1000,
+    // 关闭动画
+    animation: false,
+    // 层级
+    zlevel: 1,
+    // 热力数据，格式如下:
+    // [{name: '不重要随便写点什么都可以', value: [经度, 纬度, 其他值]}, {...}, , {...}, , {...}]
+    data: heatmap_data  
+}
+)
+code(Var)
+return
 
 ::echart.size::
 ::echarts.size::
 Var =
 (
- symbolSize: val => {
+symbolSize: val => {
     // 获取所有values
     const values = pin_data.map(_ => _.value[2])
     // 获取最大值
@@ -17,13 +42,35 @@ Var =
     const minSize4Pin = 50
     // 固定套路
     var a = (maxSize4Pin - minSize4Pin) / (max - min);
-    var b = minSize4Pin - a * min;
-    b = maxSize4Pin - a * max;
+    var b = maxSize4Pin - a * max;
+    return a * val[2] + b;
+},
+---
+// 这里的 this.option 只对部分有效。 也就是 class 有效。
 
+// 气泡最大宽度
+maxSize: 30,
+// 气泡最小宽度
+minSize: 10,
+// 散点大小
+symbolSize: (val, series) => {
+    // 获取当前 serie 的索引
+    const { seriesIndex } = series
+    // 获取气泡宽度阈值
+    const { maxSize, minSize } = this.option.series[seriesIndex]
+    // 获取所有values
+    const values = dgMockScatter.map(_ => _.value[2])
+    // 获取最大值
+    const max = Math.max(...values)
+    // 获取最小值
+    const min = Math.min(...values)
+    // 固定套路
+    var a = (maxSize - minSize) / (max - min);
+    var b = maxSize - a * max;
     return a * val[2] + b;
 },
 )
-code(Var)
+txtit(Var)
 return
 
 ::echart.clear::

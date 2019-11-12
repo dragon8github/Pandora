@@ -6123,6 +6123,31 @@ return
 ::dec::
 Var =
 (
+// mixins.js
+function mixins(...list) {
+  return function (target) {
+    Object.assign(target.prototype, ...list)
+  }
+}
+
+const Foo = {
+  foo() { 
+    console.log(this.abc) // 123
+    console.log(this.constructor.fuck) // shit
+  }
+};
+
+@mixins(Foo) 
+class MyClass {
+    static fuck = 'shit'
+	constructor() {
+      this.abc = '123'
+    }
+}
+
+let obj = new MyClass();
+obj.foo()
+---
 // https://es6console.com/k1yivejb/
 @testable
 class MyTestableClass {
@@ -6157,26 +6182,6 @@ const math = new Math();
 
 // passed parameters should get logged now
 math.add(2, 4);
----
-// mixins.js
-export function mixins(...list) {
-  return function (target) {
-    Object.assign(target.prototype, ...list)
-  }
-}
-
-// main.js
-import { mixins } from './mixins'
-
-const Foo = {
-  foo() { console.log('foo') }
-};
-
-@mixins(Foo)
-class MyClass {}
-
-let obj = new MyClass();
-obj.foo() // 'foo'
 )
 txtit(Var)
 return

@@ -9131,7 +9131,7 @@ FileAppend,
 
 <body>
     <div id="app">
-        <!-- <component :is='"abc"' :option='{text: "fuck"}' ref='abc'></component>  -->
+        <!-- <component :is='"abc"' :option='`{text: "fuck"`}' ref='abc'></component>  -->
         
         <abc ref='abc'></abc>
 
@@ -9140,7 +9140,7 @@ FileAppend,
 </body>
 <script>
 var abc = Vue.extend({
-    template: `<label>abc</label> `,
+    template: ``<label>abc</label> ``,
     data () {
        return {
            text: '',

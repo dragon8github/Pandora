@@ -47,7 +47,7 @@ FileDelete, .\src\*.bak
 #Include src/shell.ahk            ; shell
 #Include src/docker.ahk		      ; docker
 #Include src/elasticsearch.ahk	  ; elasticsearch
-#Include src/sql.ahk		      ; sql
+;#Include src/sql.ahk		      ; sql
 
 #Include src/elementui.ahk	      ; elementUI
 #Include src/html.ahk             ; HTML    

@@ -1661,7 +1661,7 @@ code(Var)
 return
 
 ^5::
-cs("iocadmin")
+cs("iocadmintest")
 Send, {tab}
 Sleep, 100
 cs("iocadmin")

@@ -1350,8 +1350,12 @@ Var =
     position: relative;
     padding-right: 0;
     white-space: nowrap;
-    animation: marque-animation infinite linear;
     z-index: 0;
+}
+
+.animate {
+    animation: marque-animation linear;
+    animation-duration: 5s;
 }
 
 .datav-marquee .content:hover {
@@ -1371,7 +1375,7 @@ Var =
 
 <body>
     <div class="datav-marquee">
-        <span class="content" style="animation-duration: 50s;">
+        <span class="content animate">
            1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
             <span class="content-space"></span>1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
             <span class="content-space"></span>1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
@@ -1379,7 +1383,20 @@ Var =
         </span>
     </div>
 </body>
+
 <script>
+    // 监听动画完成
+    document.querySelector('.content').addEventListener("webkitAnimationEnd", function() {
+        // 5秒以后再开始新的一轮（删除一个animate并且重新添加则可以重新开始）
+        setTimeout(() => {
+            // 删除动画类
+            this.classList.remove('animate')
+            // 异步是为了让它反应过来
+            setTimeout(() => {
+                this.classList.add('animate')
+            }, 0);
+        }, 5000);
+    })
 </script>
 
 </html>

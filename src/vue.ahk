@@ -88,6 +88,7 @@
   Menu, VueMenu, Add, , VueHandler
   
   Menu, VueMenu, Add, <keep-alive>, VueHandler
+  Menu, VueMenu, Add, this.$msgbox 与 vnode 语法, VueHandler
   Menu, VueMenu, Add, render(h), VueHandler
   Menu, VueMenu, Add, render(h) jsx用法, VueHandler
   Menu, VueMenu, Add, this.$set 深度赋值, VueHandler
@@ -156,6 +157,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "this.$msgbox 与 vnode 语法") {
+_send("vnode", true, true)
+return
 }
 
 if (v == "如何获取vue组件的name属性？ this.$options.name") {
@@ -3421,10 +3427,12 @@ return
 Var =
 (
 props: {
-   text: {
-       type: String,
-       default: ''
-   }
+    // 标题
+    title: {type: String, default: ''},
+    // 是否具备眼睛icon
+    eye: Boolean,
+    // 眼睛默认是否可用？
+    disable: { type: Boolean, default: false },
 },
 )
 code(Var)
@@ -4305,8 +4313,11 @@ return
 ::v-slot::
 ::vue-slot::
 ::vue.slot::
+::slot::
 Var =
 (
+// 定义组件：base-layout
+
 <div class="container">
   <header>
     <slot name="header"></slot>
@@ -4322,6 +4333,8 @@ Var =
   </footer>
 </div>
 ---
+// 使用组件
+
 <base-layout>
   <template v-slot:header>
     <h1>Here might be a page title</h1>
@@ -4612,6 +4625,51 @@ watch: {
          this.mytext = newV
       }
    }
+},
+)
+code(Var)
+return
+
+::vnode::
+::vue.h::
+Var =
+(
+ methods: {
+    go() {
+        const h = this.$createElement;
+        // https://vuejs.org/v2/guide/render-function.html#The-Data-Object-In-Depth
+        const vnode = h('p', null, [
+                h('span', null, '内容可以是 '),
+                h('i', { style: 'color: teal' }, 'Fuckyou')
+        ])
+        
+        this.$msgbox({
+            title: '消息',
+            message: vnode,
+            showCancelButton: true,
+            confirmButtonText: '添加',
+            cancelButtonText: '取消',
+            beforeClose: (action, instance, done) => {
+                if (action === 'confirm') {
+                    instance.confirmButtonLoading = true;
+                    instance.confirmButtonText = '执行中...';
+                    setTimeout(() => {
+                        done();
+                        setTimeout(() => {
+                            instance.confirmButtonLoading = false;
+                        }, 300);
+                    }, 3000);
+                } else {
+                    done();
+                }
+            }
+        }).then(action => {
+            this.$message({
+                type: 'info',
+                message: 'action: ' + action
+            });
+        });
+    }
 },
 )
 code(Var)
