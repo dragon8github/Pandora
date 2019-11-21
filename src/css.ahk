@@ -1376,9 +1376,11 @@ Var =
 <body>
     <div class="datav-marquee">
         <span class="content animate">
-           1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
-            <span class="content-space"></span>1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
-            <span class="content-space"></span>1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
+            1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
+            <span class="content-space"></span>
+            1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
+            <span class="content-space"></span>
+            1. DataV 「新版4.0」已重磅发布 2. DataV 仅支持谷歌 Chrome 浏览器版本 56 以上。 3. 用户使用中如遇到问题，推荐直接提交工单。也可前往钉钉群提问，钉钉群号：23347020 。
             <span class="content-space"></span>
         </span>
     </div>
@@ -3016,8 +3018,8 @@ return
 ::wh::
 Var =
 (
-width: px;
-height: px;
+width: 100`%;
+height: 100`%;
 )
 code(Var)
 return

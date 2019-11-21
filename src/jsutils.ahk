@@ -298,11 +298,14 @@
     Menu, utilses5, Add, Function.prototype.call：除了参数为数组/类数组以外的都应该使用call，如map/reduce/filter（因为他们的参数都是函数）等, utilsHandler
 
     Menu, utilsJstest, Add, match 捕获匹配, utilsHandler
+    Menu, utilsJstest, Add, 要匹配多个果然还是要用 match, utilsHandler
+    Menu, utilsJstest, Add, //g.exec, utilsHandler
     
     Menu, utilswebpack, Add, require.context, utilsHandler
     Menu, utilswebpack, Add, 异步引入：await import(/* webpackChunkName: 'lodash' */ 'lodash'), utilsHandler
     
-        
+    
+    Menu, utils2, Add, pm: 回调地狱转promise解决方案, utilsHandler    
     Menu, utils2, Add, uuid 超简易版, utilsHandler
     Menu, utils2, Add, urlparams 获取路由参数, utilsHandler
     Menu, utils2, Add, device 获取设备信息, utilsHandler
@@ -352,6 +355,7 @@
     Menu, utils2, Add, 用 settimeout 模拟 setInterval, utilsHandler
     Menu, utils2, Add, dialog 对话框类，支持拖拽, utilsHandler
     Menu, utils2, Add, 求两个数的最大公约数与比例, utilsHandler
+    Menu, utils2, Add, 统计 String 每个单词出现的次数, utilsHandler
 
 
     
@@ -422,6 +426,86 @@ Var =
 (
 )
 }
+
+if (v == "pm: 回调地狱转promise解决方案") {
+_send("pm", true, true)
+return
+}
+
+if (v == "统计 String 每个单词出现的次数") {
+Var =
+(
+const map = {}
+const str = 'hello world'
+
+str.split('').forEach(key => {
+  map[key] = -~map[key]
+})
+
+console.log(map)
+)
+}
+
+if (v == "要匹配多个果然还是要用 match") {
+Var =
+(
+var str = "linear-gradient(to bottom left, cyan 50`%, palegoldenrod 50`%)"
+var str2 = "linear-gradient(to bottom,rgba(228, 24, 24, 1), rgba(72, 213, 12, 1))"
+
+var getColor = str => {
+	var test_index = /\((.+?),/g
+
+	// 执行结果
+	var result = test_index.exec(str)
+
+	// 匹配角度
+	var angle = result[1].split(' ').slice(1)
+
+	// 获取颜色字符串
+	var color_str = str.substring(result.index + result[0].length, str.length - 1).trim()
+
+	var colors = []
+
+	// 如果出现百分号，说明是类型1
+	if (color_str.includes('`%')) {
+		// 匹配 `% 百分号
+		colors = color_str.match(/(\w+.+?)`%/g)
+	// 如果没有，则假设是 rgba/rgb 的情况
+	} else if (color_str.includes('rgb')) {
+		// 直接按照 rgb/rgba来匹配即可。
+		colors = color_str.match(/rgb(a)?\((.+?)\)/g)
+	}
+
+	return { angle, colors }
+}
+
+console.log(20191118171701, getColor(str))
+console.log(20191118171701, getColor(str2))
+)
+return
+}
+
+if (v == "//g.exec") {
+Var =
+(
+// 是否具备规则？ fuckyou-${abc}
+const rule = /\$\{(.+?)\}/g.exec(tag)
+
+// 确实有自定义规则：
+if (rule) {
+  // 获取匹配的 key
+  const key = rule[1]
+
+  // 从插槽的实例中获取值
+  const data = this.$parent[key]
+
+  // 替换内容
+  tag = tag.replace(rule[0], data)
+}
+)
+return
+}
+
 
 if (v == "...args参数和fn.apply(null, args) 的数组套路") {
 Var =
@@ -7515,4 +7599,46 @@ charts.keys().filter(path => path.lastIndexOf('/') != 1).forEach(path => {
 export default __CHARTS__
 )
 txtit(Var)
+return
+
+::pm::
+::callhell::
+Var =
+(
+/**
+ * 将回调地狱转换为 Promise 形式
+ * https://blog.csdn.net/SEAYEHIN/article/details/88663740
+ * raw：
+    wx.downloadFile({
+        url: this.data.curImg,
+        success: res => {
+            console.log(20191121213856, res)
+        }
+    })
+
+  now：
+    async go() {
+        const downloadFile = this.app.pm(wx.downloadFile)
+        const res = await downloadFile({ url: this.data.curImg })
+        console.log(20191121212742, res)
+    }
+
+  fixbug：  『this._invokeMethod is not a function』 —— 用.bind(ctx) 的方式解决
+
+  如果是wx内置函数，直接使用即可，但部分API是实例API，譬如
+  
+  this.ctx = wx.createCameraContext()
+  this.ctx.takePhoto
+
+  如果你使用这样的方式开发的话，必定会出现上述的问题。
+  const takePhoto = this.app.pm(this.ctx.takePhoto)
+  await takePhoto() // this._invokeMethod is not a function
+
+  原因其实也简单，执行的时候上下文不是实例本身，所以我们还给它即可。
+  const takePhoto = this.app.pm(this.ctx.takePhoto.bind(this.ctx))
+  await takePhoto()
+ */
+const pm = api => (options, ...params) => new Promise((resolve, reject) => api({ ...options, success: resolve, fail: reject }, ...params))
+)
+code(Var)
 return

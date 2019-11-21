@@ -96,7 +96,7 @@
 	Menu, echartsEventMenu, Add, ehcarts.mouseover, EventHandler
 	Menu, echartsEventMenu, Add, ehcarts.mouseout, EventHandler
 	Menu, echartsEventMenu, Add, ehcarts.legendselectchanged, EventHandler
-
+    Menu, echartsEventMenu, Add, ehcarts.formatter 和 rich, EventHandler
 
 	Menu, echartsEventMenu, Add
 	Menu, echartsEventMenu, Add
@@ -193,6 +193,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "ehcarts.formatter 和 rich") {
+_send("ehcarts.rich", true, true)
+return
 }
 
 if (v == "饼图解决方案：以大带小") {
@@ -1778,3 +1783,28 @@ app.addEventListener('mouseout', onMouseEvent, false)
 code(Var)
 return
 
+
+
+::ehcarts.rich::
+Var =
+(
+formatter: (value) => {
+    return ``
+        {a|${value}} 
+        \n
+        {b|${value}}
+    ``
+},
+rich: {
+    a: {
+        color: 'red',
+        height:100,
+        fontSize: 40,
+    },  
+    b: {
+        color: 'yellow',
+    },  
+},
+)
+txtit(Var)
+return

@@ -26,11 +26,14 @@
     Menu, wxMenu, Add, 获取用户信息, wxHandler
     Menu, wxMenu, Add, 页面调用组件方法, wxHandler
     Menu, wxMenu, Add, animate, wxHandler
+    Menu, wxMenu, Add, 获取地理信息, wxHandler
 
     Menu, wxMenu, Add
     Menu, wxMenu, Add
 
     Menu, wxMenu, Add, 使用 westore 来进行状态管理, wxHandler
+    Menu, wxMenu, Add, 将回调地狱转换为 Promise 形式, wxHandler
+    Menu, wxMenu, Add, 合成图片 = 下载图片 + 拍照 + 获取图片信息 + canvas合成, wxHandler
 
     Menu, wxMenu, Show
     Menu, wxMenu, DeleteAll
@@ -48,6 +51,85 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "合成图片 = 下载图片 + 拍照 + 获取图片信息 + canvas合成") {
+Var =
+(
+
+onLoad: function (options) {
+  this.app = getApp()
+  this.canvas = wx.createCanvasContext('myCanvas')
+  this.ctx = wx.createCameraContext()
+},
+
+
+async go() {
+  wx.showLoading({ title: '图片处理中...', })
+
+  const downloadFile = this.app.pm(wx.downloadFile)
+  const getImageInfo = this.app.pm(wx.getImageInfo)
+  const takePhoto = this.app.pm(this.ctx.takePhoto.bind(this.ctx))
+
+  const { tempFilePath } = await downloadFile({ url: this.data.curImg })
+  const { tempImagePath } = await takePhoto({ quality: 'high' })
+  const { width, height } = await getImageInfo({ src: tempImagePath })
+
+  this.canvas.drawImage(tempImagePath, 0, 0, width, height)
+  this.canvas.drawImage(tempFilePath, 0, 0, width, height)
+  this.canvas.draw()
+
+  wx.hideLoading()
+},
+)
+}
+
+if (v == "将回调地狱转换为 Promise 形式") {
+_send("pm", true, true)
+return
+}
+
+if (v == "获取地理信息") {
+Var =
+(
+// app.json
+"permission":{
+  "scope.userLocation": {
+    "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+  }
+},
+---
+onLoad: function (options) {
+    this.getLocationDetail();
+  },
+
+  getLocationDetail () {
+    wx.getLocation({
+      type: 'wgs84',
+      success: res => {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        console.log("lat:" + latitude + ",lon:" + longitude)
+        this.getCity(latitude, longitude);
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  getCity (latitude, longitude) {
+    wx.request({
+        url: "http://api.map.baidu.com/reverse_geocoding/v3/",
+        data: {
+          ak: "7b3SurhIYH6m8C3l0aAM7NAFW0aHEbLT",
+          output: "json",
+          location: latitude + "," + longitude
+        },
+      success: res => {
+        console.log(res)
+      },
+    })
+  },
 )
 }
 
@@ -272,7 +354,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -294,15 +376,29 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
+    
+    // 放入全局
     app.globalData.userInfo = e.detail.userInfo
+    
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
   }
 })
+
+---
+<!-- 必须是这些属性才可以 -->
+<button class='btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+  微信用户一键登录
+</button>
+
+<block wx:if="{{hasUserInfo && canIUse}}">
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+</block>
 )
 }
 

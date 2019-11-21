@@ -78,6 +78,7 @@
   Menu, VueMenu, Add, vue.directive 指令, VueHandler
   Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
   Menu, VueMenu, Add, 动态组件：<component :is='xxx'></component>, VueHandler
+  Menu, VueMenu, Add, provide/inject：上下文, VueHandler
   
   Menu, VueMenu, Add, vue 认知, :vuecognition
   Menu, VueMenu, Add, vue 必知必会, :vuebase
@@ -135,6 +136,7 @@
   Menu, vuesolution, Add
   
   Menu, vuesolution, Add, collapse折叠面板, VueHandler  
+  Menu, vuesolution, Add, 同一组件修改 class 来修改样式的解决方案：x-scoped, VueHandler  
   
   Menu, VueMenu, Add, Vue 解决方案和组件, :vuesolution
   
@@ -158,6 +160,56 @@ Var =
 (
 )
 }
+
+if (v == "同一组件修改 class 来修改样式的解决方案：x-scoped") {
+Var =
+(
+'option.circleColor': {
+    immediate: true,
+    async handler(newV, oldV) {
+        await this.$nextTick()
+        console.log(newV);
+        
+        // 获取外层容器
+        const $el = this.$refs['swiper-btn']
+
+        // 获取容器的标记
+        let scoped = $el.getAttribute('x-scoped')
+
+        // 如果不存在，则新建
+        if (!scoped) {
+            // id
+            const scoped = +new Date
+            // scoped
+            $el.setAttribute('x-scoped', scoped)
+        }
+
+        var injectCss = function (css) {
+            var style = document.createElement('style')
+            style.type = 'text/css'
+            if (style.styleSheet) {
+                style.styleSheet.cssText = css
+            } else {
+                style.appendChild(document.createTextNode(css))
+            }
+            document.getElementsByTagName('head')[0].appendChild(style)
+        }
+
+        injectCss(``
+            .swiper-pagination[x-scoped="${scoped}"] .swiper-pagination-bullet {
+                background-color: ${newV};
+            }
+        ``)
+    }
+},
+)
+}
+
+if (v == "provide/inject：上下文") {
+_send("vue.ctx", true, true)
+return
+}
+
 
 if (v == "this.$msgbox 与 vnode 语法") {
 _send("vnode", true, true)
@@ -2702,23 +2754,7 @@ Var =
 code(Var)
 return
 
-::vue.c::
-::vuec::
-Var =
-(
-computed: {
-    townstreetSelect: {
-        get () {
-          return this.$store.state.mapDetails.townstreetSelect  
-        },
-        set (newV) {
-           this.$store.dispatch('mapDetails/townstreetSelect', newV)
-        }
-    }
-},
-)
-code(Var)
-return
+
 
 ::vue.cw::
 ::vue.wc::
@@ -3199,80 +3235,6 @@ Return
 Return
 
 
-::vue.components::
-::vuecomponents::
-::vcmp::
-::vmp::
-::vcomponent::
-::vcomponents::
-::vue-radio::
-::vue.radio::
-::vradio::
-Var = 
-(
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
-    <style>
-    </style>
-    
-    <body>
-        <div id="app">
-            <div v-for='(item, index) in items' :key='index'>
-                <myradio v-model="picked" :text="item"></myradio>
-            </div>
-            <br>
-            <span>Picked: {{ picked }}</span>
-        </div>
-    </body>
-    <script>
-    
-        // 局部注册组件
-        var myradio = Vue.extend({
-              data: function () {
-                    return {
-                        currentValue: this.value
-                    }
-              }, 
-              props: {
-                value: '',
-                text: ''
-              },     
-              template: ``
-                <label>
-                    <input type="radio" id="two" :value="text" v-model="currentValue">
-                    <label for="two">{{ text }}</label>
-                </label>
-              `,
-              watch: {
-                    value(val) {
-                      this.currentValue = val;
-                    },
-                    currentValue(val) {
-                      this.$emit('input', val);
-                    }
-              }
-        });
-
-        Vue.component('myradio', myradio)
-
-        new Vue({
-            el: '#app',
-            data: {
-                picked: 'Three',
-                items: ['One', 'Two', 'Three']
-            }
-        })
-    </script>
-
-</html>
-)
-code(Var)
-return
 
 ::new vue::
 ::newvue::
@@ -4138,19 +4100,33 @@ return
 
 ::vue.shangxiawen::
 ::vue.context::
+::vue.ctx::
 ::vue.inject::
 Var =
 (
 provide() {
     return {
         // provide/inject API 有个很坑爹的点，那就是无法响应式更新数据。
-        // 比如说，我提供一个 CACHE_CHAIN 给子组件们，但如果 CACHE_CHAIN 更新了，子组件是不会更新的。
-        // 官方说除非是传入一个『可监听的对象』，老实说我不知道啥意思，但我直接传入这个组件本身过去给子组件使用。
-        // 就可以满足数据响应的需求了。虽然感觉不太好，但这样确实方便不少，比起vuex。
-        // 表现形式有很多种：
-        // https://cn.vuejs.org/v2/api/#provide-inject
-        // https://blog.csdn.net/viewyu12345/article/details/83011618
-        // https://blog.csdn.net/Dream_xun/article/details/83024487
+        // 比如说，我提供一个 this.fuck 给子组件们，但如果父亲更新了 this.fuck ，子组件是不会更新的。
+        // 官方说除非是传入一个『可监听的对象』: 如果我提供的是一个对象，譬如这样：
+        /*
+             data() {
+                  return {
+                      text: { fuck: 'ttt' },
+                  }
+              },
+              provide() {
+                  return {
+                      text: this.text
+                  }
+              },
+              methods: {
+                  go(e) {
+                      this.text.fuck = '321'
+                  }
+              },
+        */     
+        // 或者最干脆的方法，你直接把 this 传递给组件，直接让儿子访问父亲算了
         app: this,
     }
 },
@@ -4671,6 +4647,33 @@ Var =
         });
     }
 },
+)
+code(Var)
+return
+
+::vue.cmp::
+::vue.component::
+::vue.components::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =
+(
+var %OutputVar% = Vue.extend({
+    template: ``<div class="%OutputVar%">%OutputVar%</div>``,
+    data () {
+       return {
+           %OutputVar%: '',
+       }
+    },
+    props: {
+
+    },
+    beforeMount() {
+      console.log(%t%, %OutputVar%)
+    }
+})
+
+Vue.component('%OutputVar%', %OutputVar%)
 )
 code(Var)
 return

@@ -9186,3 +9186,210 @@ RunBy(name)
 run, % name
 return
 
+vuelistenhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue测试</title>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <base-input label="基础输入组件" 
+                    placeholder="请输入您的名字" 
+                    class="username-input" 
+                    v-model="username" 
+                    :fuck='fuckgod'
+                    :shit='"fuckyou"'
+                    @click="handleBaseInputClick" 
+                    @focus="handleBaseInputFocus"
+        />
+    </div>
+    <script>
+    // 因为base-input的外层是一个label元素，所以默认情况下使用v-on:focus是无效的，所以需要配合this.$listeners使用，
+    // 该属性可以把事件的监听指向组件中某个特定的元素
+    // 注意：如果父级的事件添加了.native修饰符，在$listeners中不会体现出来的
+    Vue.component('base-input', {
+        template: `
+            <label id="base-label">
+                {{label}}
+                <input v-bind:value="value" v-bind="$attrs" v-on="inputListeners"/>
+            </label>
+        `,
+        data: function() {
+            return {
+
+            }
+        },
+        // 请注意，这里的value，其实就是v-model
+        props: ['label', 'value', 'fuck'],
+        computed: {
+            inputListeners() {
+                return Object.assign({}, this.$listeners, {
+                    input: event => {
+                        this.$emit('input', event)
+                    },
+                    focus: event => {
+                        this.$emit('focus', event)
+                    }
+                })
+            }
+        },
+        mounted() {
+            // 所有绑定的事件
+            console.log(this.$listeners)
+
+            // 在 props 注册的属性会集中在这里
+            console.log(this.$props)
+
+            // 没有注册的，会作为非响应式属性记录在这里
+            console.log(this.$attrs)
+        },
+    })
+
+
+    const fuckvue = new Vue({
+        el: '#app',
+        data: {
+            username: ''
+        },
+        methods: {
+            handleBaseInputFocus(ev) {
+                console.log(20191110233342, ev)
+            },
+            handleBaseInputClick(ev) {
+                console.log(20191110233345, ev)
+            }
+        },
+        beforeUpdate: function() {
+            console.log(this.username)
+        },
+    })
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+echartsleidatu:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <!-- echarts -->
+    <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
+    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
+    <!-- 百度地图插件 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <!-- 百度地图 - 聚合图相关的插件 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    <!-- echarts 百度地图扩展插件 -->
+    <script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+</head>
+<style>
+    #main {
+        width: 100`%;
+        height:100vh;
+    }
+</style>
+
+<body>
+    <div id="main"></div>
+</body>
+<script type="text/javascript">
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+
+// 预定义配置
+var option = {}
+
+var baseURL = 'https://gallery.echartsjs.com'
+
+//////////////////////////////////////////////
+
+// 注意雷达图是 顶级的radar配置：https://www.echartsjs.com/zh/option.html#radar.triggerEvent
+option = {
+    title: {
+        text: '基础雷达图'
+    },
+    tooltip: {},
+    legend: {
+        data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
+    },
+    radar: {
+        triggerEvent: true,
+        name: {
+            formatter: (value, ...args) => {
+                return ``{a|${value}}``
+            },
+            rich: {
+                a: {
+                    color: 'red',
+                    height: 30,
+                    fontSize: 20,
+                },
+            },
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius: 3,
+                padding: [3, 5],
+
+            }
+        },
+        indicator: [
+            { name: '销售（sales）', max: 6500 },
+            { name: '管理（Administration）', max: 16000 },
+            { name: '信息技术（Information Techology）', max: 30000 },
+            { name: '客服（Customer Support）', max: 38000 },
+            { name: '研发（Development）', max: 52000 },
+            { name: '市场（Marketing）', max: 25000 }
+        ]
+    },
+    series: [{
+        name: '预算 vs 开销（Budget vs spending）',
+        type: 'radar',
+        // areaStyle: {normal: {}},
+        data: [{
+                value: [4300, 10000, 28000, 35000, 50000, 19000],
+                name: '预算分配（Allocated Budget）'
+            },
+            {
+                value: [5000, 14000, 28000, 31000, 42000, 21000],
+                name: '实际开销（Actual Spending）'
+            }
+        ]
+    }]
+};
+
+myChart.on('click', params => {
+    console.log(20191121003913, params)
+})
+
+//////////////////////////////////////////////
+
+myChart.setOption(option);
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

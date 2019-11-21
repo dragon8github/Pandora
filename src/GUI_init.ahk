@@ -197,6 +197,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/index.php?m=vod-search">
 Gui, Pandora:Add, Link,, <a href="http://www.dilidili.name/">无名小站</a>
 Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
 Gui, Pandora:Add, Link,, <a href="http://www.fengchedm.com/">风车动漫</a>
+Gui, Pandora:Add, Link,, <a href="https://www.novipnoad.com/">不负好时光</a>
+
 
 
 Gui, Pandora:Add, Text, W160 ys, 常用工具：
@@ -206,6 +208,7 @@ Gui, Pandora:Add, Link,, <a href="https://tool.lu/html/">tool.lu压缩</a>
 Gui, Pandora:Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
 Gui, Pandora:Add, Link,, <a href="http://www.bejson.com/">bejson超强工具箱</a>
 Gui, Pandora:Add, Link,, <a href="https://loading.io/spinner/">Loading 平台</a>
+Gui, Pandora:Add, Link,, <a href="https://coggle.it/">Q版思维导图</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 奇妙工具:
 Gui, Pandora:Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
@@ -387,6 +390,7 @@ Gui, Pandora:Add, Text, gdataSetBar W190, 新建.dataSet.html（柱状图）
 Gui, Pandora:Add, Text, gdataSetBar2 W190, 新建.dataSet2.html（双柱状图）
 Gui, Pandora:Add, Text, gfunnelhtml W190, 新建.funnel.html（漏斗图）
 Gui, Pandora:Add, Text, gdatasetfunnel W210, 新建.datasetfunnel.html（漏斗图）
+Gui, Pandora:Add, Text, gechartsleidatu W160, echarts雷达图.html
 Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
 Gui, Pandora:Add, Text, gword2HTML W160, word文档映射.html
 Gui, Pandora:Add, Text, gd3bubblechart W160, d3-bubble-chart.html
@@ -415,6 +419,8 @@ Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
 Gui, Pandora:Add, Text, gvueDeepSethtml W180, vue $deepSet示例.html
+Gui, Pandora:Add, Text, gvuelistenhtml W180, vue $listen示例.html
+
 
 
 Gui, Pandora:Add, Text, gNewreactbabelHtml W150  ys x+70, 新建react.babel.html
@@ -465,7 +471,7 @@ Gui, Pandora:Add, Link,, <a href="https://hui.dgjy.net">门户网站</a>
 
 Gui, Pandora:Add, Text,  W120 ys, hz-12345：
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/hz-12345">hz-12345 源码</a>
-Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:6083/#/dg/Index">预览地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:6083/#/dg/Index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/big-bcreen/boards">敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/blob/master/DOC/东莞市社会治理可视化分析平台/05UIUE文档/大屏UI/">UI资源</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.40.37:8084/">内网预览地址</a>
@@ -1263,10 +1269,7 @@ ClipChanged(Type) {
 		; 左键是否按紧了
 		KeyIsDown := GetKeyState("LButton")
 		
-		if (InStr(b, "rpx")) {
-			b := StrReplace(b, "rpx", "px")
-			Clipboard := b
-		}
+
 		
 		; 我们约定只有当左键的时候才可以
 		if (KeyIsDown && InStr(b, "sinaimg.cn/small") && StrLen(b) <= 100 && !InStr(b, "![](")) {

@@ -23,6 +23,23 @@ return
     Hotstring("Reset")
 return
 
+::yilai::
+Var =
+(
+depend
+)
+code(Var)
+return
+
+::prop::
+::shuxing::
+Var =
+(
+properties
+)
+code(Var)
+return
+
 ::ahkpsd::
 ::ahkpsdit::
 Var =
@@ -1661,7 +1678,7 @@ code(Var)
 return
 
 ^5::
-cs("iocadmintest")
+cs("iocadmin")
 Send, {tab}
 Sleep, 100
 cs("iocadmin")
