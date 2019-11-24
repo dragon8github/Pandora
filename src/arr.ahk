@@ -27,6 +27,7 @@
 	Menu, arrayMenu, Add, Array.prototype.remove, ForHandler
 	Menu, arrayMenu, Add, 判断两个数组是否互相包含, utilsHandler
 	Menu, arrayMenu, Add, 数组的交集、并集、差集、补集, ForHandler
+	Menu, arrayMenu, Add, Array.difference: 找出两个数组中不同成员, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -82,6 +83,16 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+
+if (v == "Array.difference: 找出两个数组中不同成员") {
+Var = 
+(
+let arrays = [[1, 2, 3, 4, 5], [5, 2, 10]];
+arrays.reduce((a, b) => a.filter(c => !b.includes(c))) // output: [1, 3, 4]
 )
 }
 

@@ -24,6 +24,30 @@
     Menu, transitionHandler, Add, ease-in-out 是上面两个的合成，一开始慢，然后变快，然后又变慢。做加载的效果时用这个时间函数效果会很不错。, CssHandler   
     Menu, transitionHandler, Add, 贝塞尔曲线：啪~Duang , CssHandler   
     Menu, transitionHandler, Add, 贝塞尔曲线：温柔的啪~Duang , CssHandler   
+
+    Menu, transitionHandler, Add
+    Menu, transitionHandler, Add
+
+    Menu, transitionHandler, Add, 'easeOutCubic': 'cubic-bezier(.215`,.61`,.355`,1)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInOutCubic': 'cubic-bezier(.645`,.045`,.355`,1)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInCirc': 'cubic-bezier(.6`,.04`,.98`,.335)', CssHandler3
+    Menu, transitionHandler, Add, 'easeOutCirc': 'cubic-bezier(.075`,.82`,.165`,1)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInOutCirc': 'cubic-bezier(.785`,.135`,.15`,.86)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInQuad': 'cubic-bezier(.55`,.085`,.68`,.53)', CssHandler3
+    Menu, transitionHandler, Add, 'easeOutQuad': 'cubic-bezier(.25`,.46`,.45`,.94)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInOutQuad': 'cubic-bezier(.455`,.03`,.515`,.955)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInQuart': 'cubic-bezier(.895`,.03`,.685`,.22)', CssHandler3
+    Menu, transitionHandler, Add, 'easeOutQuart': 'cubic-bezier(.165`,.84`,.44`,1)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInOutQuart': 'cubic-bezier(.77`,0`,.175`,1)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInQuint': 'cubic-bezier(.755`,.05`,.855`,.06)', CssHandler3
+    Menu, transitionHandler, Add, 'easeOutQuint': 'cubic-bezier(.23`,1`,.32`,1)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInOutQuint': 'cubic-bezier(.86`,0`,.07`,1)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInSine': 'cubic-bezier(.47`,0`,.745`,.715)', CssHandler3
+    Menu, transitionHandler, Add, 'easeOutSine': 'cubic-bezier(.39`,.575`,.565`,1)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInOutSine': 'cubic-bezier(.445`,.05`,.55`,.95)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInBack': 'cubic-bezier(.6`,-.28`,.735`,.045)', CssHandler3
+    Menu, transitionHandler, Add, 'easeOutBack': 'cubic-bezier(.175`, .885`,.32`,1.275)', CssHandler3
+    Menu, transitionHandler, Add, 'easeInOutBack': 'cubic-bezier(.68`,-.55`,.265`,1.55)', CssHandler3
         
     Menu, cssknow, Add, position: sticky; 随着页面的滚动，当元素距离上边缘0距离的时候，黏在了上边缘, CssHandler
     Menu, cssknow, Add, currentColor 当前字体颜色, CssHandler

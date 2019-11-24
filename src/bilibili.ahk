@@ -1,6 +1,6 @@
 ﻿!m::
 
-					
+	Menu, bilibiliMenu, Add, 🔴, bilibiliHandler2					
 	Menu, bilibiliMenu, Add, ❓, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🚀, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ✅, bilibiliHandler2

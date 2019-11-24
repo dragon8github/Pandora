@@ -1,6 +1,8 @@
 ﻿^n::
 	; 使用 chrome 浏览器打开内网预览地址，并且最大化，但好像max参数无效。
-	run, chrome.exe http://19.104.40.37:8084/,,max
+	;run, chrome.exe http://19.104.40.37:8084/,,max
+	file := A_Desktop . "\my.lnk"
+	run, % file
 	; 执行华为的 kill_IE 命令文件释放IE
 	bat := A_Desktop . "\Kill_IE.bat"
 	run, % bat

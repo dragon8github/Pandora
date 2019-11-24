@@ -3,7 +3,7 @@
     Menu, wxMenu, Add, choose, wxHandler
     Menu, wxMenu, Add, sheet, wxHandler
     Menu, wxMenu, Add, swiper, wxHandler
-
+    Menu, wxMenu, Add, event.currentTarget.dataset, wxHandler
     Menu, wxMenu, Add
     Menu, wxMenu, Add
     
@@ -54,6 +54,11 @@ Var =
 )
 }
 
+if (v == "event.currentTarget.dataset") {
+_send("wx.dataset", true, true)
+return
+}
+
 if (v == "合成图片 = 下载图片 + 拍照 + 获取图片信息 + canvas合成") {
 Var =
 (
@@ -78,9 +83,20 @@ async go() {
 
   this.canvas.drawImage(tempImagePath, 0, 0, width, height)
   this.canvas.drawImage(tempFilePath, 0, 0, width, height)
-  this.canvas.draw()
+  
+  this.canvas.draw(true, async _ => {
+       wx.hideLoading()
 
-  wx.hideLoading()
+       const { tempFilePath: pic } = await canvasToTempFilePath({ x: 0, y: 0, canvasId: 'myCanvas' })
+       this.app.globalData.previewPic = pic
+       wx.navigateTo({ url: '/pages/preview/index' })
+
+       // 清空画布
+       setTimeout(() => {
+         this.canvas.clearRect(0, 0, width, height)
+         this.canvas.draw()
+       }, 1000);
+     })
 },
 )
 }
@@ -560,6 +576,22 @@ return
 Var =
 (
 wx:for="{{items}}" wx:key="*this"
+)
+code(Var)
+return
+
+
+::wxd::
+::wx.data::
+::wx.event::
+::wxe::
+::wx.dataset::
+Var =
+(
+const index = event.currentTarget.dataset.index
+this.setData({
+  active: +index
+})
 )
 code(Var)
 return

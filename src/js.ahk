@@ -3211,34 +3211,44 @@ return
 ::deepextends::
 ::shenkaobei::
 ::deepcopy::
+::$.extend::
+::extend::
+::deep::
+::deepcopy::
 Var =
 (
 var deepExtend = function(out) {
-   out = out || {};
+  out = out || {};
 
-   for (var i = 1; i < arguments.length; i++) {
-     var obj = arguments[i];
+  for (var i = 1; i < arguments.length; i++) {
+    var obj = arguments[i];
 
-     if (!obj)
-       continue;
+    if (!obj)
+      continue;
 
-     for (var key in obj) {
-       if (obj.hasOwnProperty(key)) {
-         if (typeof obj[key] === 'object')
-           out[key] = deepExtend(out[key], obj[key]);
-         else
-           out[key] = obj[key];
-       }
-     }
-   }
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === 'object')
+          out[key] = deepExtend(out[key], obj[key]);
+        else
+          out[key] = obj[key];
+      }
+    }
+  }
 
-   return out;
- };
+  return out;
+};
 
- deepExtend({}, objA, objB);
+var objA = {a: 123, b: { fuck: 123 }}
+var objB = { b: { shit: 123 } }
+// 深拷贝最大的好处是，不会覆盖属性。而是迭代
+deepExtend({}, objA, objB); // => { "a":123, "b":{ "fuck": 123, "shit": 123 } }
 )
 code(Var)
 return
+
+
+
 
 ::swalert::
 ::swa::
@@ -4945,13 +4955,19 @@ Return
 Var =
 (
 fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)',
-
+---
 // 比较浅色的rgb，适合白色字体
 randcolor () {
     const r = 100 + ~~(Math.random() * 100);
     const g = 135 + ~~(Math.random() * 100);
     const b = 100 + ~~(Math.random() * 100);
-    return `rgb(${r}, ${g}, ${b})`
+    return ``rgb(${r}, ${g}, ${b})``
+}
+---
+function getRandomColor() {
+    return '#' + (function(h) {
+        return new Array(7 - h.length).join("0") + h;
+    })((Math.random() * 0x1000000 << 0).toString(16))
 }
 )
 code(Var)
@@ -5177,39 +5193,6 @@ function getUUID () {
 code(Var)
 return
 
-::$.extend::
-::extend::
-::deep::
-::deepcopy::
-Var = 
-(
-var deepExtend = function(out) {
-  out = out || {};
-
-  for (var i = 1; i < arguments.length; i++) {
-    var obj = arguments[i];
-
-    if (!obj)
-      continue;
-
-    for (var key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        if (typeof obj[key] === 'object')
-          out[key] = deepExtend(out[key], obj[key]);
-        else
-          out[key] = obj[key];
-      }
-    }
-  }
-
-  return out;
-};
-
-deepExtend({}, objA, objB);
-)
-code(Var)
-Return
-    
 ::gettop::
 Var = 
 (

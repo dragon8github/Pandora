@@ -23,6 +23,14 @@ return
     Hotstring("Reset")
 return
 
+>+d::
+Var =
+(
+debug(console.log)
+)
+code(Var)
+return
+
 ::yilai::
 Var =
 (

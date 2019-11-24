@@ -7642,3 +7642,33 @@ const pm = api => (options, ...params) => new Promise((resolve, reject) => api({
 )
 code(Var)
 return
+
+::hook::
+::hock::
+Var =
+(
+/**
+ * https://www.netlify.com/blog/2019/03/11/deep-dive-how-do-react-hooks-really-work/
+ * raw: 
+   function useState(initialValue) {
+     var _val = initialValue 
+
+     function state() {
+       return _val 
+     }
+
+     function setState(newVal) {
+       _val = newVal 
+     }
+
+     return [state, setState] 
+   }
+ */
+const useState = (state) => [() => state, newV => state = newV]
+const [foo, setFoo] = useState(0) 
+console.log(foo()) 
+setFoo(1)
+console.log(foo()) 
+)
+txtit(Var)
+return
