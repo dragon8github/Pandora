@@ -81,6 +81,7 @@
 	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
 	Menu, NodeMenu, Add, module.exports, NodeHandler
 	Menu, NodeMenu, Add, os.EOL, NodeHandler
+	Menu, NodeMenu, Add, nodejs-mvc-pure, NodeHandler
 	
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
@@ -146,6 +147,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "nodejs-mvc-pure") {
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/node-mvc-master.zip")
+return
 }
 
 if (v == "node webSocket") {

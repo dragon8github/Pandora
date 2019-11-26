@@ -4877,6 +4877,8 @@ code(Var)
 return
 
 ::`:root::
+::css.root::
+::css.var::
 Var =
 (
 :root {

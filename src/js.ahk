@@ -3392,9 +3392,54 @@ function windowAddMouseWheel() {
 //滚动滑轮触发scrollFunc方法
     window.onmousewheel = document.onmousewheel = scrollFunc;
 }
+---
+/**
+ * 图片懒加载
+ * https://www.liaoxuefeng.com/article/00151045553343934ba3bb4ed684623b1bf00488231d88d000
+ * <img src="https://loading.io/assets/img/ajax.gif" data-src="http://www.hongte.info/assets/images/banner2.jpg">
+ * <div style="margin-top: 1000px;"></div>
+ */
+;(function(){
+    // 获取包含data-src属性的img
+    var lazyImgs = document.querySelectorAll('img[data-src]')
+    // 将Node-List转化成数组类型
+    lazyImgs = [].slice.apply(lazyImgs);
+     // 定义事件函数
+    var lazyload = function () {
+        // 获取页面滚动的高度
+        var wtop = window.scrollY;
+        // 获取可视区域高度
+        var wheight = document.documentElement.clientHeight;
+        // 判断是否还有未加载的img
+        if (lazyImgs.length > 0) {
+            // 循环处理数组的每个img元素
+            for (var i = lazyImgs.length - 1; i >= 0; i--) {
+                // 获取图片信息
+                var el = lazyImgs[i], rect = el.getBoundingClientRect(), src = el.getAttribute('data-src')
+                // 判断是否在可视范围内:
+                if (rect.top - wtop < wheight) {
+                   // 设置src属性:
+                   el.setAttribute('src', src);
+                   // 删除对象
+                   Array.prototype.splice.call(lazyImgs, i, 1);
+                }
+            }
+        }
+    };
 
+    // 懒加载优化：滚动节流策略
+    var __SCROLLTIMER__ = null
+    // 绑定事件
+    window.onscroll = function () {
+        clearTimeout(__SCROLLTIMER__);
+        __SCROLLTIMER__ = setTimeout(lazyload, 150);
+    }
+
+    // 手动触发一次, 因为页面显示时，并未触发scroll事件。
+    lazyload();
+}());
 )
-code(Var)
+txtit(Var)
 return
 
 ::outerhtml::
@@ -4468,7 +4513,6 @@ code(Var)
 Return
 
 :?:.click::
-:?:.c::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (

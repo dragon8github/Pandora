@@ -255,6 +255,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need">you-dont-nee
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
+Gui, Pandora:Add, Link,, <a href="http://obkoro1.com/web_accumulate/algorithm/">前端算法题</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly">阮一峰的周刊</a>
 Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.html">前端日报</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/GitHubDaily/GitHubDaily">GitHubDaily</a>
@@ -372,6 +373,7 @@ Gui, Pandora:Add, Text, gquickbianimhtml W180, 新建quickbi的过场动画.html
 Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令.html
 Gui, Pandora:Add, Text, gscriptzhuruhtml W180, 新建书签栏脚本注入.html
 Gui, Pandora:Add, Text, gxiexianhtml W180, 新建勾股定理画斜线.html
+Gui, Pandora:Add, Text, gcssbodongsandian W180, 新建css波动散点.html
 
 
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+20,新建.echartsDemo.html（官方demo）
