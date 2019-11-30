@@ -115,6 +115,7 @@
     Menu, utilsObject, Add, 双向数据绑定原理：Object.defineProperty, utilsHandler
     Menu, utilsObject, Add, 对象交集 , utilsHandler
     Menu, utilsObject, Add, flattenObject 以键的路径扁平化对象, utilsHandler
+    Menu, utilsObject, Add, dataSet, utilsHandler
     
 
     Menu, utilsObject, Add,, utilsHandler
@@ -177,6 +178,8 @@
     Menu, utilsSolution, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
 
     ; @认知 @renzhi
+    Menu, utilspractice, Add, 快速取整的新思路：1553 / 10 | 0, utilsHandler
+    Menu, utilspractice, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
     Menu, utilspractice, Add, ...args参数和fn(...args) 入参的技巧和认知, utilsHandler
     Menu, utilspractice, Add, ...args参数和fn.apply(null`, args) 的数组套路, utilsHandler
     Menu, utilspractice, Add, 函数参数对象深度结构与重命名： var a = ({ state: { nums:list`, numGroup`, map } }) => {}, utilsHandler
@@ -219,10 +222,12 @@
     
     
     ; @my
+    Menu, utilsmy, Add, loadingdec, utilsHandler
+    Menu, utilsmy, Add, IntersectionObserver  template 懒注入、懒加载, utilsHandler
+    Menu, utilsmy, Add, IntersectionObserver 无限滚动, utilsHandler
     Menu, utilsmy, Add, exclude: 从对象中排除某个属性, utilsHandler
-    
-    
     Menu, utilsmy, Add, deepset：超强！深度set（deepfind的兄弟方法）, utilsHandler
+    Menu, arrayMenu, Add, chunk 数组分块函数:hit / miss, ForHandler
     
     
     Menu, utilsmy, Add
@@ -272,12 +277,12 @@
     Menu, utilsmy, Add, 微信获取头像和人员名册, utilsHandler
     Menu, utilsmy, Add, utils.js, utilsHandler
     
-    Menu, utilsjuran, Add, 快速取整的新思路：1553 / 10 | 0, utilsHandler
+
+    Menu, utilsjuran, Add, document.designMode = 'on', utilsHandler
+    Menu, utilsjuran, Add, 光标移动到最后，对于div contenteditable 特别有效果, utilsHandler
     Menu, utilsjuran, Add, 社会主义点击事件, utilsHandler
     Menu, utilsjuran, Add, anime.js 点击烟花绽放效果, utilsHandler
     Menu, utilsjuran, Add, holder占位图, utilsHandler
-    Menu, utilsjuran, Add, window.onunload 刷新/关闭页面之前发送请求, utilsHandler
-    Menu, utilsjuran, Add, 光标移动到最后，对于div contenteditable 特别有效果, utilsHandler
     Menu, utilsjuran, Add, HTML打印出一只怪兽, utilsHandler
     
     Menu, utilsmaybe, Add, 数字格式化函数：numberFormatter(11923.4521`, 2) => 12.02k, utilsHandler
@@ -425,6 +430,188 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "document.designMode = 'on'") {
+Var =
+(
+document.designMode = 'on'
+)
+}
+
+if (v == "IntersectionObserver 无限滚动") {
+Var =
+(
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <!-- mockjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Mock.js/1.0.0/mock-min.js"></script>
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+
+    <style>
+        li { display: block; height: 100px; }
+        footer { height: 100px; background-color: #000; }
+    </style>
+</head>
+
+<body>
+    <ul id='app'>
+        <li>英国发生捅人事件新</li>
+        <li>周琦首次回应指责新</li>
+        <li>北京地铁临时封闭</li>
+        <li>高晓松闹笑话</li>
+        <li>郑州彩虹桥拆除新</li>
+        <li>复盘最强医保谈判</li>
+        <li>北京初雪</li>
+        <li>网曝张亮假离婚</li>
+        <li>滴滴美团严重失信</li>
+        <li>网易又一员工被逼</li>
+        <li>呼伦贝尔五彩光柱</li>
+        <li>悍匪冯学华判死刑</li>
+        <li>曹阳退役</li>
+        <li>网银回应罚2943万</li>
+        <li>苹果设计师离职</li>
+    </ul>
+    <footer></footer>
+</body>
+
+<script>
+Mock.mock("/news/list", "get", {
+    "newslist|10": [
+        { "news_id|+1": 101, "news_name": "@ctitle", "news_price|50-100.1-2": 0, "news_time": "@date('yyyy-mm-dd')" }
+    ]
+}).setup({
+    timeout: '1000-3000'
+})
+
+// loading 装饰器
+var loadingDec = (fn, loading = false) => [_ => loading, async (...args) => {
+    // 开启Loading
+    loading = true
+    // 等待函数执行结果
+    const result = await fn(...args)
+    // 关闭loading
+    loading = false
+    // 返回结果
+    return result
+}]
+
+// 模拟请求后端
+const loadData = () => axios.get("/news/list")
+
+// 装饰函数
+const [isLoading, _loadData] = loadingDec(loadData)
+
+// 渲染列表
+const render = items => items.forEach(item => {
+    let node = document.createElement('li')
+    node.innerText = item.news_name
+    document.getElementById('app').appendChild(node)
+})
+
+const io = new IntersectionObserver(async elements => {
+    // 当前演示只有一个监听对象 footer
+    const footer = elements[0]
+
+    // 如果可见，就插入新的内容
+    if (footer.isIntersecting && !isLoading()) {
+        // 加载十条数据
+        const { data } = await _loadData(10)
+        // 渲染
+        render(data.newslist)
+    }
+}, {
+    /* opts */
+})
+
+// 只监听 footer 是否显示即可
+io.observe(document.querySelector('footer'))
+</script>
+</html>
+)
+}
+
+if (v == "IntersectionObserver  template 懒注入、懒加载") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+    img {
+        width: 100`%;
+        height: 100`%;
+    }
+
+    p {
+        height: 500px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+    </div>
+</body>
+
+<script>
+const io = new IntersectionObserver(elements => {
+    // 所有的监听对象
+    console.log(elements)
+
+    // 打印对象的所处情况
+    elements.forEach(e => {
+        // 如果显示了
+        if (e.isIntersecting) {
+            // 获取显示的dom
+            const target = e.target;
+            // 获取 dom 下面 <template> 的内容
+            const content = target.querySelector('template').content;
+            // 插入到真实内容
+            target.appendChild(content);
+            // 取消监听
+            io.unobserve(target)
+        }
+    })
+}, {
+    // 属性决定了什么时候触发回调函数
+    threshold: [0, 0.25, 0.5, 0.75, 1],
+})
+
+document.querySelectorAll('.lazy-load').forEach((el, key) => {
+    io.observe(el)
+})
+
+</script>
+</html>
+)
+}
+
+
+
+if (v == "loadingdec") {
+_send("loadingdec", true, true)
+return
+}
+
+if (v == "dataSet") {
+_send("dataSet", true, true)
+return
 }
 
 if (v == "pm: 回调地狱转promise解决方案") {
@@ -5613,43 +5800,47 @@ export const find = (ary, exp) => {
 code(Var)
 return
 
+
+
 ::deepset::
 Var =
 (
 /**
- * 深度设置
+ * （推荐）深度设置 ...
  *
- * 示例：
  * var a = {}
- * deepSet(a, 'a.b.c.d.e.f.g.h.i.j', item => {
- *    item.k = 123
- * })
+ * deepSet(a, 'a.b.c.d.e.f.g.h.i.j.k', 123)
  */
-var deepSet = (ary, path, cb) => {
+var deepSet = (obj, path, v) => {
     // （重要）保存引用
-    let obj = ary
+    let o = obj
 
-    const _path = path.split('.')
+    // 分解路径
+    const p = path.split('.')
+
+    // 取出最后一位
+    const last = p.pop()
 
     // 不断轮询路径
-    while (_path.length) {
+    while (p.length) {
         // 从左往右取出路径
-        const key = _path.shift()
+        const k = p.shift()
 
-        // 补丁，如果不存在则定义该对象
-        if (!obj[key]) {
-            obj[key] = {}
-        }
+        // ⚠️ 如果不存在则定义该对象
+        if (!o[k]) o[k] = {}
 
         // 获取当前路径的值
-        obj = obj[key]
+        o = o[k]
     }
-    // 回调，注入指定路径的ary引用
-    cb && cb(obj)
+
+    o[last] = typeof v === 'function' ? v() : v
+
     // （重点）返回被串改的数组
-    return ary
+    return obj
 }
+
 ---
+（已废弃，好像 $set 自动会形成递归，不需要这样刻意）
 // this.$deepSet(this.items, 'a.b.c.d.e', '123')
 // vue 专用深度 $set
 $deepSet(ref, path, value) {
@@ -5680,6 +5871,7 @@ $deepSet(ref, path, value) {
    return obj
 },
 ---
+（已废弃，好像 $set 自动会形成递归，不需要这样刻意）
 import Vue from 'vue'
 // mixin专用
 export const $deepSet = function (ref, path, value) {
@@ -5877,34 +6069,37 @@ return
 ::diff::
 Var =
 (
-function isObject(v) {
-   return typeof v === 'object' && !!v
-}
+// 判断是否为数组/对象
+const isObject = v => typeof v === 'object' && !!v
 
-function diff(a, b) {
-  if(!isObject(a) || !isObject(b)) {
-    throw new TypeError(' a or b is invalid json' )
-  }
+// 验证两个 json 是否一致
+const diff = (a, b) => {
+    // 不是对象，拒绝服务
+    if (!isObject(a) || !isObject(b)) 
+        throw new TypeError('params must be a json/object')
 
-  let keys = Object.keys(a)
+    // 获取所有 keys
+    let keys = Object.keys(a)
 
-  if (keys.length == 0) {
-    return JSON.stringify(a) === JSON.stringify(b)
-  }
+    // 如果没有属性，那么直接判断b是否为空对象
+    if (keys.length === 0) 
+        return JSON.stringify(b) === '{}'
 
-  let aValue, bValue, key
+    // 顺着属性对比
+    for (k of keys) {
+        // 获取双方相同属性的值
+        const _a = a[k], _b = b[k]
 
-  for (key of keys) {
-    aValue = a[key]
-    bValue = b[key]
-    if (isObject(aValue) && isObject(bValue) === 'object') {
-      return diff(aValue, bValue)
-    } else if (aValue !== bValue) {
-      debugger;
-      return false
+        // 如果都是对象，则递归继续判断
+        if (isObject(_a) && isObject(_b)) 
+            return diff(_a, _b)
+
+        // 直接对比
+        if (_a !== _b) 
+            return false
     }
-  }
-  return true
+
+    return true
 }
 )
 code(Var)
@@ -6396,11 +6591,30 @@ return
 ::path::
 Var =
 (
+function parsePath(obj, path) {
+    const segments = path.split('.')
+    for (let i = 0, len = segments.length; i < len; i++) {
+        obj = obj[segments[i]]
+    }
+    return obj
+}
+
+var obj = {
+    "a": {
+        "b": {
+            "c": {
+                "d": 123
+            }
+        }
+    }
+}
+parsePath(obj, 'a.b.c.d') // 123
+---
 const path = './BarChart/HorizontalBarChart.js'
 const [name, ext] = path.substring(path.lastIndexOf('/') + 1).split('.')
 console.log(20190711100013, name)
 )
-code(Var)
+txtit(Var)
 return
 
 ::wimp::
@@ -7669,6 +7883,113 @@ const [foo, setFoo] = useState(0)
 console.log(foo()) 
 setFoo(1)
 console.log(foo()) 
+)
+txtit(Var)
+return
+
+
+
+::expl::
+::explain::
+::deepget::
+Var =
+(
+function deepGet(obj, path) {
+    // 分解路径
+    const p = path.split('.')
+
+    // 层层剖解
+    while(p.length) {
+        // 从左往右取出路径
+        const k = p.shift()
+
+        // 获取当前路径的值
+        obj = obj[k]
+    }
+    
+    // 返回最后一层
+    return obj
+}
+
+var obj = {
+    "a": {
+        "b": {
+            "c": {
+                "d": 123
+            }
+        }
+    }
+}
+deepGet(obj, 'a.b.c.d') // 123
+)
+code(Var)
+return
+
+::loadingdec::
+Var =
+(
+// loading 装饰器
+var loadingDec = (fn, loading = false) => [_ => loading, async (...args) => {
+    // 开启Loading
+    loading = true
+    // 等待函数执行结果
+    const result = await fn(...args)
+    // 关闭loading
+    loading = false
+    // 返回结果
+    return result
+}]
+
+// 测试函数
+var test = () => new Promise(resolve => setTimeout(_ => resolve('success'), 5000))
+
+// 装饰函数，返回loading查询器和装饰后的函数
+var [isloading, _test] = loadingDec(test)
+
+console.log(isloading()) // => false
+_test()
+console.log(isloading()) // => true
+---
+// loading 装饰器（推荐）
+var loadingDec = (fn, loading = false) => {
+    // 装饰函数
+    const _fn = async (...args) => {
+        // 开启Loading
+        loading = true
+        // 等待函数执行结果
+        const result = await fn(...args)
+        // 关闭loading
+        loading = false
+        // 返回结果
+        return result
+    }
+
+    // 加入对 loading 属性的监听
+    Object.defineProperty(_fn, 'loading', { enumerable: true, configurable: true,
+        get() {
+            return loading
+        },
+        set(newVal) {
+            if (loading === newVal)
+                return
+
+            loading = newVal
+        }
+    })
+
+    // 返回高阶函数
+    return _fn
+}
+
+// 模拟后端请求
+var test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 3000))
+// 装饰函数
+const _test = loadingDec(test)
+
+// 开始测试
+console.log(_test.loading) // => false
+_test()
+console.log(_test.loading) // => true
 )
 txtit(Var)
 return

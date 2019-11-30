@@ -77,6 +77,9 @@
     Menu, CssMenu, Add, chrome-yellow, CssHandler2
     Menu, CssMenu, Add, css.placeholder, CssHandler2    
     Menu, CssMenu, Add, 高度从0到auto的伸缩特效魔法, CssHandler
+    Menu, CssMenu, Add, 百度百科死亡与默哀风格样式, CssHandler
+    Menu, CssMenu, Add, 文本新布局：text-align: justify, CssHandler
+    Menu, CssMenu, Add, css3图片样式新认知：object-fit: cover;, CssHandler
     
     Menu, CssMenu, Add
     Menu, CssMenu, Add
@@ -217,6 +220,26 @@ Var =
 )
 }
 
+if (v == "css3图片样式新认知：object-fit: cover;") {
+Var =
+(
+object-fit: cover;
+)
+}
+
+if (v == "文本新布局：text-align: justify") {
+Var =
+(
+text-align: justify
+)
+}
+
+if (v == "百度百科死亡与默哀风格样式") {
+Var =
+(
+filter: grayscale(100`%);
+)
+}
 
 if (v == "transform-origin: 0 0") {
 Var =

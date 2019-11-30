@@ -1,6 +1,6 @@
 ﻿!a::
 	Menu, arrayMenu, Add, 把数组像分页一样分割为N段, ForHandler
-	Menu, arrayMenu, Add, chunk 数组分块函数, ForHandler
+	Menu, arrayMenu, Add, chunk 数组分块函数:hit / miss, ForHandler
 	Menu, arrayMenu, Add, 加强版map遍历:fuckmap, ForHandler
 	Menu, arrayMenu, Add, pureMap：纯洁无害的map函数, ForHandler
 	
@@ -59,7 +59,7 @@
 	Menu, arrayMenu, Add, shift： 弹出并删除第一个 , ForHandler
 	Menu, arrayMenu, Add, pop： 弹出并删除最后一个 , ForHandler
 	Menu, arrayMenu, Add, slice： 无损截取数组 , ForHandler
-	Menu, arrayMenu, Add, splice： 有损截取数组，可用于替换 , ForHandler
+	Menu, arrayMenu, Add, splice： 有损截取数组，可用于替换ary.splice(index`, 1`, 'fuck') , ForHandler
 	Menu, arrayMenu, Add, splice： 可用于插入：ary.splice(1`, 0`, 'fuckyou') , ForHandler
 	Menu, arrayMenu, Add,  for-- 循环中splice需要使用, ForHandler
 	
@@ -97,7 +97,7 @@ arrays.reduce((a, b) => a.filter(c => !b.includes(c))) // output: [1, 3, 4]
 }
 
 
-if (v == "chunk 数组分块函数") {
+if (v == "chunk 数组分块函数:hit / miss") {
 _send("chunk", true, true)
 return
 }
@@ -168,10 +168,10 @@ slice
 )
 }
 
-if (v == "splice： 有损截取数组，可用于替换") {
+if (v == "splice： 有损截取数组，可用于替换ary.splice(index, 1, 'fuck')") {
 Var = 
 (
-splice
+ary.splice(index, 1, 'fuck')
 )
 }
 

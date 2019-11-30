@@ -6184,9 +6184,7 @@ e.add("hello", (err, name) => {
 code(Var)
 return
 
-::return promise::
-::new promise::
-::new p::
+
 ::promise::
 Var = 
 (
@@ -6196,6 +6194,18 @@ return new Promise((resolve, reject) => {
         resolve('success') // reject('fail')
    }, 1000);
 })
+)
+code(Var)
+return
+
+::promise.test::
+::test::
+::testfn::
+::promisefn::
+::promise.fn::
+Var =
+(
+var test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 3000))
 )
 code(Var)
 return

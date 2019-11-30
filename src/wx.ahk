@@ -1,9 +1,12 @@
 ﻿!w::
+    Menu, wxMenu, Add, globalData, wxHandler
+    Menu, wxMenu, Add, dom, wxHandler
     Menu, wxMenu, Add, canvas, wxHandler
     Menu, wxMenu, Add, choose, wxHandler
     Menu, wxMenu, Add, sheet, wxHandler
     Menu, wxMenu, Add, swiper, wxHandler
     Menu, wxMenu, Add, event.currentTarget.dataset, wxHandler
+
     Menu, wxMenu, Add
     Menu, wxMenu, Add
     
@@ -27,6 +30,9 @@
     Menu, wxMenu, Add, 页面调用组件方法, wxHandler
     Menu, wxMenu, Add, animate, wxHandler
     Menu, wxMenu, Add, 获取地理信息, wxHandler
+    Menu, wxMenu, Add, previewImage预览图片, wxHandler
+    Menu, wxMenu, Add, getSystemInfoSync, wxHandler
+
 
     Menu, wxMenu, Add
     Menu, wxMenu, Add
@@ -54,8 +60,45 @@ Var =
 )
 }
 
+if (v == "globalData") {
+Var =
+(
+var app = getApp();
+app.globalData.curTemplate = path
+)
+}
+
+if (v == "dom") {
+Var =
+(
+const query = wx.createSelectorQuery();
+
+query.select('.main__bg').boundingClientRect(res => {
+	 const { width, height } = res
+	 this.canvas.drawImage(tmpImg, 0, 0, width, height)
+}).exec();
+)
+}
+
+if (v == "getSystemInfoSync") {
+Var =
+(
+const sys = wx.getSystemInfoSync()
+
+const width = sys.screenWidth
+const height = sys.screenHeight
+)
+}
+
+if (v == "previewImage预览图片") {
+Var =
+(
+wx.previewImage({ urls: [tempFilePath], })
+)
+}
+
 if (v == "event.currentTarget.dataset") {
-_send("wx.dataset", true, true)
+_send("wx.event", true, true)
 return
 }
 
@@ -585,12 +628,33 @@ return
 ::wx.data::
 ::wx.event::
 ::wxe::
-::wx.dataset::
 Var =
 (
 const index = event.currentTarget.dataset.index
 this.setData({
   active: +index
+})
+)
+code(Var)
+return
+
+::wx.go::
+::wx.push::
+Var =
+(
+wx.redirectTo({ url: '/pages/camera/index' })
+)
+code(Var)
+return
+
+::wxs::
+::wx.s::
+::wx.data::
+Var =
+(
+this.setData({
+  tmpImg: this.globalData.curTemplate,
+  mode: 0
 })
 )
 code(Var)

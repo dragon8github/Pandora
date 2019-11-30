@@ -1164,7 +1164,10 @@ Mock.mock("/book/list", "get", {
     "booklist|10": [
         {"book_id|+1": 101, "book_name": "@ctitle", "book_price|50-100.1-2": 0, "book_time": "@date('yyyy-mm-dd')"}
     ]
+}).setup({
+    timeout: '1000-3000'
 })
+
 
 $(function() {
     console.log('hello world');

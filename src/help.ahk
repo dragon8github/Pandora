@@ -23,6 +23,17 @@ return
     Hotstring("Reset")
 return
 
+^!p::
+tmp := Clipboard
+
+if (InStr(tmp, "/")) {
+    Clipboard := StrReplace(Clipboard, "/", "\")
+} else {
+    Clipboard := StrReplace(Clipboard, "\", "/")
+}
+
+return
+
 >+d::
 Var =
 (
@@ -1686,7 +1697,7 @@ code(Var)
 return
 
 ^5::
-cs("iocadmin")
+cs("iocadmin3")
 Send, {tab}
 Sleep, 100
 cs("iocadmin")
