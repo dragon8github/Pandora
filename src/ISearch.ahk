@@ -40,7 +40,13 @@ if (A_GuiEvent = "DoubleClick") {
     Clipboard := RowText2
     ToolTip  已加入到剪切板： "%RowText2%"
     SetTimer, RemoveToolTip, -1000
+    
     run, % openthepath(__AINFO__)
+
+    data := openthepath(__AINFO__)
+    if (data) {
+    	RunBy(data)
+    }
 }
 return
 
