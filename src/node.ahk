@@ -82,6 +82,7 @@
 	Menu, NodeMenu, Add, module.exports, NodeHandler
 	Menu, NodeMenu, Add, os.EOL, NodeHandler
 	Menu, NodeMenu, Add, nodejs-mvc-pure, NodeHandler
+	Menu, NodeMenu, Add, nodejs sass, NodeHandler
 	
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
@@ -147,6 +148,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "nodejs sass") {
+_send("sass", true)
+return
 }
 
 if (v == "nodejs-mvc-pure") {
@@ -2172,6 +2178,24 @@ WS.on('connection', ws => {
     })
 </script>
 </html>
+)
+txtit(Var)
+return
+
+::sass::
+Var =
+(
+$ cnpm install node-sass
+$ ./node_modules/node-sass/bin/node-sass -r index.sass -o ./dist --output-style expanded
+---
+var sass = require('node-sass')
+const fs = require('fs')
+
+sass.render({ file: './index.sass', }, function(err, result) {
+    fs.writeFile('./index.css', result.css, function(err) {
+        if (!err) throw new Error(err)
+    })
+})
 )
 txtit(Var)
 return

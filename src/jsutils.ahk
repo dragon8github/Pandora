@@ -93,6 +93,9 @@
     Menu, utilsDOM, Add, document.activeElement.blur(), utilsHandler
     Menu, utilsDOM, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     
+    Menu, utilsPosition, Add, isVisualRange：是否处于可视视图中, utilsHandler
+
+
     Menu, utilsPosition, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 element 的定位要素 🍁🍁🍁🍁🍁🍁🍁🍁, utilsHandler
     Menu, utilsPosition, Add, - el.clientHeight：可视高度 , utilsHandler
     Menu, utilsPosition, Add, - el.scrollHeight：真实高度（含滚动条） , utilsHandler
@@ -430,6 +433,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "isVisualRange：是否处于可视视图中") {
+_send("isVR", true, true)
+return
 }
 
 if (v == "document.designMode = 'on'") {
@@ -7992,4 +8000,44 @@ _test()
 console.log(_test.loading) // => true
 )
 txtit(Var)
+return
+
+::isVR::
+::isvisual::
+::iskeshi::
+Var =
+(
+var pageY = e => {
+    if (e.offsetParent) {
+        return e.offsetTop + pageY(e.offsetParent)
+    } else {
+        return e.offsetTop
+    }
+}
+
+var isVisualRange = e => {
+    // 页面滚动条 Top 值
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+
+    // 可视范围内底部高度
+    var scrollBottom = scrollTop + document.documentElement.clientHeight
+
+    // 顶部位置
+    var eTop = pageY(e)
+
+    // 底部位置
+    var eBottom = eTop + e.offsetHeight
+
+    // 判断元素是否在可视范围内：
+    // 1. 元素底部高度大于可视视图顶部高度 && 元素底部高度小于可视视图底部高度
+    // 2. 元素顶部高度大于可视视图顶部高度 && 元素顶部高度小于可视视图底部高度
+    if ((eBottom > scrollTop && eBottom < scrollBottom) || (eTop > scrollTop && eTop < scrollBottom)) {
+        return true
+    }
+
+    // 不满足条件则返回 false
+    return false
+}
+)
+code(Var)
 return

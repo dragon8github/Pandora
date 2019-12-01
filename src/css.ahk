@@ -48,6 +48,18 @@
     Menu, transitionHandler, Add, 'easeInBack': 'cubic-bezier(.6`,-.28`,.735`,.045)', CssHandler3
     Menu, transitionHandler, Add, 'easeOutBack': 'cubic-bezier(.175`, .885`,.32`,1.275)', CssHandler3
     Menu, transitionHandler, Add, 'easeInOutBack': 'cubic-bezier(.68`,-.55`,.265`,1.55)', CssHandler3
+
+
+    
+    Menu, CssAnimateHandler, Add, css.animate 语法和格式, CssHandler
+    Menu, CssAnimateHandler, Add, animation-name: RightToLeft;, CssHandler3
+    Menu, CssAnimateHandler, Add, animation-play-state: running; /* running | paused */, CssHandler3
+    Menu, CssAnimateHandler, Add, animation-iteration-count: 3;, CssHandler3
+    Menu, CssAnimateHandler, Add, animation-delay: 0s;, CssHandler3
+    Menu, CssAnimateHandler, Add, animation-direction: normal;, CssHandler3
+    Menu, CssAnimateHandler, Add, animation-duration: 20s;, CssHandler3
+    Menu, CssAnimateHandler, Add, animation-timing-function: ease-out;, CssHandler3
+    Menu, CssAnimateHandler, Add, will-change: transform;, CssHandler3
         
     Menu, cssknow, Add, position: sticky; 随着页面的滚动，当元素距离上边缘0距离的时候，黏在了上边缘, CssHandler
     Menu, cssknow, Add, currentColor 当前字体颜色, CssHandler
@@ -84,7 +96,7 @@
     Menu, CssMenu, Add
     Menu, CssMenu, Add
     
-    Menu, CssMenu, Add, css.animate 语法和格式, CssHandler
+    Menu, CssMenu, Add, css.animate 语法和格式, :CssAnimateHandler
     Menu, CssMenu, Add, animate的钩子：webkitAnimationEnd, CssHandler
     Menu, CssMenu, Add, transition的钩子：webkitTransitionEnd, CssHandler
     
@@ -196,6 +208,7 @@
     Menu, Csssolution, DeleteAll
     Menu, CsstransformHandler, DeleteAll
     Menu, cssknow, DeleteAll
+    Menu, CssAnimateHandler, DeleteAll
     
 return
 
@@ -218,6 +231,12 @@ if (v == "") {
 Var =
 (
 )
+}
+
+
+if (v == "css.animate 语法和格式") {
+_send("animate", true, true)
+return
 }
 
 if (v == "css3图片样式新认知：object-fit: cover;") {
@@ -1825,9 +1844,6 @@ body {
 }
 
 
-if (v == "css.animate 语法和格式") {
-_send("css.animate", true, true)
-}
 
 
 
@@ -5166,8 +5182,13 @@ if (hasClass(dom, 'changing')) {
 txtit(Var)
 return
 
-::css.animate::
+
+
+::anit::
+::anim::
+::ant::
 ::animate::
+::css.animate::
 Var =
 (
 .banner1__earth--img {
@@ -5191,9 +5212,38 @@ Var =
               transform: translateY(0px);
     }
 }
+---
+#box {
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    background:red;
+    
+    animation-name: RightToLeft;
+    animation-play-state: running; /* running | paused */
+    animation-iteration-count: 3;
+    animation-delay: 0s;
+    animation-direction: normal;
+    animation-duration: 20s;
+    animation-timing-function: ease-out;
+
+    will-change: transform;
+}
+
+@-webkit-keyframes RightToLeft {
+    0`% {
+        visibility: visible;
+        transform: translateX(1537px);
+    }
+    100`% {
+        visibility: visible;
+        transform: translateX(-100`%);
+    }
+}
 )
-code(Var)
+txtit(Var)
 return
+
 
 ::btn.css::
 Var =
