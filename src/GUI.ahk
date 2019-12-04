@@ -2688,7 +2688,8 @@ FileAppend,
     <!-- moment -->
     <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js"></script>
-    
+    <!-- sass -->
+    <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
     <style>
     html, body{
         margin: 0;
@@ -2700,6 +2701,18 @@ FileAppend,
 
     }
     </style>
+    
+    <script>
+        // 获取第一个 <style>
+        const style = document.getElementsByTagName('style')[0]
+        // 获取第一个
+        const scss = style.innerHTML
+        // 开始编译
+        Sass.compile(scss, result => {
+            // 替换为编译好的 css
+            style.innerHTML = result.text
+        })
+    </script>
 </head>
 
 <body>
@@ -9579,6 +9592,44 @@ FileAppend,
 <script>
 </script>
 
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+NewPureIndexHtml2:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script>
+
+</script>
 </html>
 ),  %name%
 RunBy(name)

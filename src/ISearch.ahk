@@ -43,6 +43,8 @@ if (A_GuiEvent = "DoubleClick") {
     
     run, % openthepath(__AINFO__)
 
+    sleep, 1
+
     data := openthepath(__AINFO__)
     if (data) {
     	RunBy(data)

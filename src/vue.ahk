@@ -3613,6 +3613,11 @@ module.exports = {
             },
         }
         
+        // 开启 source-map 方便调试
+        if (process.env.NODE_ENV === 'development') {
+            config.devtool = 'source-map'
+        }
+
         /*  
         config.module.rules.concat[{
             test: /\.svg$/,
