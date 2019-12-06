@@ -3669,6 +3669,16 @@ is(Number, 1); // true
 is(Number, new Number(1)); // true
 is(Boolean, true); // true
 is(Boolean, new Boolean(true)); // true
+
+export const isString = input => Object.prototype.toString.call(input) === '[object String]'
+
+export const isNumber = input => (typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]') && input === input
+
+export const isBoolean = input => Object.prototype.toString.call(input) === '[object Boolean]'
+
+export const isArray = input => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
+
+export const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
 )
 code(Var)
 return

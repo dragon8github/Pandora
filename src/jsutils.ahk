@@ -4924,28 +4924,28 @@ const isArray = input => input instanceof Array || Object.prototype.toString.cal
 if (v == "isDate") {
 Var = 
 (
-export default isDate = input => input instanceof Date || Object.prototype.toString.call(input) === '[object Date]'
+export const isDate = input => input instanceof Date || Object.prototype.toString.call(input) === '[object Date]'
 )
 }
 
 if (v == "isFunction") {
 Var = 
 (
-export default isFunction = input => input instanceof Function || Object.prototype.toString.call(input) === '[object Function]'
+export const isFunction = input => input instanceof Function || Object.prototype.toString.call(input) === '[object Function]'
 )
 }
 
 if (v == "isNumber") {
 Var = 
 (
-export default isNumber = input => (typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]') && input === input
+export const isNumber = input => (typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]') && input === input
 )
 }
 
 if (v == "isPureObject") {
 Var = 
 (
-export default function isEmptyObject(obj) {
+export const isEmptyObject = obj => {
     if (Object.getOwnPropertyNames) {
         return (Object.getOwnPropertyNames(obj).length === 0);
     } else {
@@ -4965,7 +4965,7 @@ if (v == "isObject") {
 Var = 
 (
 // 是否为对象
-const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
+export const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
 )
 }
 
@@ -5191,6 +5191,17 @@ return
 Var =
 (
 import { Message } from 'element-ui'
+
+export const isString = input => Object.prototype.toString.call(input) === '[object String]'
+
+export const isNumber = input => (typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]') && input === input
+
+export const isBoolean = input => Object.prototype.toString.call(input) === '[object Boolean]'
+
+export const isArray = input => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
+
+export const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
+
 
 // 数值补全0
 // 迭代：如果实际长度超出length，那么使用实际长度，否则使用lenght

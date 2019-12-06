@@ -4468,7 +4468,8 @@ code(Var)
 return
 
 
-
+::shensuo::
+::collect::
 ::zhedie::
 Var =
 (
