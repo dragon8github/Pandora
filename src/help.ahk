@@ -1,4 +1,11 @@
-﻿^!j::
+﻿::Po::
+Var =
+(
+Portal
+)
+code(Var)
+return
+^!j::
     WinGetTitle, title, A
     if (InStr(title, "Sublime Text") == 0) {
         tmp := Clipboard

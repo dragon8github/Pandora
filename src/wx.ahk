@@ -6,6 +6,7 @@
     Menu, wxMenu, Add, sheet, wxHandler
     Menu, wxMenu, Add, swiper, wxHandler
     Menu, wxMenu, Add, event.currentTarget.dataset, wxHandler
+    Menu, wxMenu, Add, wx:if / wx:elif / wx:else, wxHandler
 
     Menu, wxMenu, Add
     Menu, wxMenu, Add
@@ -58,6 +59,13 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "wx:if / wx:elif / wx:else") {
+Var =
+(
+wx:if / wx:elif / wx:else
 )
 }
 

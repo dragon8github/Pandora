@@ -1,4 +1,36 @@
-﻿^+/::
+﻿::iecharts::
+::iechart::
+Var =
+(
+var o = document.createElement('script');
+o.src = 'https://lib.baomitu.com/echarts/4.1.0/echarts.min.js';
+document.documentElement.appendChild(o); // console.log(echarts.version)
+)
+code(Var)
+return
+
+::wish::
+Var =
+(
+const wish = (v, t) => {
+    // 数据类型
+    if ([ String, Number, Boolean, Array, Object, Set, Map, WeakMap, WeakSet, Symbol ].includes(t)) {
+        console.assert(v.constructor === t, v)  
+
+    // 函数
+    } else if (is(Function, v)) {
+        console.assert(t(v), v)
+
+    // 常量
+    } else {
+        console.assert(v === t, v)
+    }
+}
+)
+code(Var)
+return
+
+^+/::
 Var = 
 (
 /**
@@ -4410,10 +4442,11 @@ return
 ::jsonp::
 Var =
 (
-JSON.parse()
+JSON.parse(temp1)
 )
 code(Var)
-SendInput, {left}
+SendInput, {left 1}
+Send, +{left 5}
 Return
 
 ::jsons::
