@@ -79,6 +79,7 @@
   Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
   Menu, VueMenu, Add, 动态组件：<component :is='xxx'></component>, VueHandler
   Menu, VueMenu, Add, provide/inject：上下文, VueHandler
+  Menu, VueMenu, Add, props.sync与$emit('update'), VueHandler
   
   Menu, VueMenu, Add, vue 认知, :vuecognition
   Menu, VueMenu, Add, vue 必知必会, :vuebase
@@ -159,6 +160,68 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "props.sync与$emit('update')") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        {{ abc }}
+        <abc :fuck.sync='abc'></abc>
+
+        <button @click='handleClick'>handleClick</button>
+    </div>
+</body>
+<script>
+var abc = Vue.extend({
+    template: `
+        <div>
+            <el-dialog class='filter-dialog' width='800px' height='622px' :title='"草泥马"' :visible='fuck' @close='close'></el-dialog>
+
+            <p>请注意，这里最大的坑爹在于 visible.sync 。</p>
+            <p>他的使用并不是你想象的简单。 千万要记得两点：</p>
+            <ul>
+                <li>1、 不要用 props .sync 的绑定值。 行不通的。</li>
+                <li>2、 this.$emit('update:fuck', newV)</li>
+            </ul>
+        </div>
+    `,
+    props: ['fuck'],
+    methods: {
+        close() {
+            this.$emit('update:fuck', false)
+        }
+    },
+});
+
+Vue.component('abc', abc)
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+       abc: null
+    },
+    methods: {
+        handleClick () {
+            this.abc = true
+        }
+    },
+})
+</script>
+</html>
+)
+txtit(Var)
+return
 }
 
 if (v == "同一组件修改 class 来修改样式的解决方案：x-scoped") {

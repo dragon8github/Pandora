@@ -150,11 +150,12 @@ return
 ::phppost::
 ::jsonpost::
 ::php.json::
+::php::
 Var = 
 (
-<?php 
+<?php
     // http://www.cnblogs.com/CyLee/p/7644380.html
-    header("Access-Control-Allow-Origin:*"); 
+    header("Access-Control-Allow-Origin:*");
     header('Access-Control-Allow-Headers:x-requested-with,content-type');
 
 
@@ -163,10 +164,11 @@ Var =
     // var_dump($_SERVER["CONTENT_TYPE"]);
     // var_dump($_SERVER["REQUEST_METHOD"]);
     // var_dump($_SERVER);
+    // var_dump($_FILES);
 
     $rws_post = $GLOBALS['HTTP_RAW_POST_DATA'];
     $mypost = json_decode($rws_post);
-    print_r($mypost);
+    print_r($rws_post);
 ?>
 )
 code(Var)

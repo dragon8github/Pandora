@@ -7,6 +7,7 @@
     Menu, wxMenu, Add, swiper, wxHandler
     Menu, wxMenu, Add, event.currentTarget.dataset, wxHandler
     Menu, wxMenu, Add, wx:if / wx:elif / wx:else, wxHandler
+    Menu, wxMenu, Add, setStorageSync, wxHandler
 
     Menu, wxMenu, Add
     Menu, wxMenu, Add
@@ -41,6 +42,7 @@
     Menu, wxMenu, Add, 使用 westore 来进行状态管理, wxHandler
     Menu, wxMenu, Add, 将回调地狱转换为 Promise 形式, wxHandler
     Menu, wxMenu, Add, 合成图片 = 下载图片 + 拍照 + 获取图片信息 + canvas合成, wxHandler
+    Menu, wxMenu, Add, 上传图片, wxHandler
     Menu, wxMenu, Add, request.js, wxHandler
 
     Menu, wxMenu, Show
@@ -60,6 +62,30 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "setStorageSync") {
+Var =
+(
+wx.setStorageSync('key', 'value')
+
+var value = wx.getStorageSync('key')
+
+wx.removeStorageSync('key')
+
+wx.clearStorageSync()
+
+
+const res = wx.getStorageInfoSync()
+console.log(res.keys)
+console.log(res.currentSize)
+console.log(res.limitSize)
+)
+}
+
+if (v == "上传图片") {
+_send("wx.upload", true, true)
+return
 }
 
 if (v == "wx:if / wx:elif / wx:else") {
@@ -697,8 +723,32 @@ const completeHandler = res => {
   wx.hideLoading();
 }
 
+// 上传图片
+export const UPLOAD_FILE = path => UPLOAD('wx/storage/upload', path)
+
 // 获取 token
 export const LOGIN_BY_WEIXIN = data => POST('wx/auth/login_by_weixin', data)
+
+// 解析手机号码
+export const BIND_PHONE = data => POST('wx/auth/bindPhone', data)
+
+// 获取素材类别
+export const MATERIAL_CATEGORY = () => GET('wx/material/category')
+
+// 获取素材列表
+export const MATERIAL_LIST = categoryId => GET('wx/material/list', { categoryId })
+
+// 获取模板类别
+export const TEMPLATE_CATEGORY = () => GET('wx/template/category')
+
+// 获取模板列表
+export const TEMPLATE_LIST = categoryId => GET('wx/template/list', { categoryId })
+
+// 获取价格列表（暂不可用）
+export const PRICE = () => GET('wx/user/vip/price')
+
+// 获取用户信息
+export const USER = () => GET('wx/user/index')
 
 // 获取banner
 export const BANNER = () => GET('wx/home/index')
@@ -709,7 +759,6 @@ export const GET = (url = '', data = {}) => new Promise((resolv, reject) => {
     url: API_URL + url,
     data: data,
     header: { 'Content-Type': 'application/x-www-form-urlencoded', ...headers() },
-    // 这里的第一层 data 是wx默认的格式，第二层data则刚好是后端的格式。第二层可以移除
     success: res => resolv(res.data.data),
     fail: err => reject(err),
     complete: completeHandler,
@@ -722,12 +771,45 @@ export const POST = (url = '', data = {}) => new Promise((resolv, reject) => {
     url: API_URL + url,
     data: data,
     header: { 'Content-Type': 'application/json', ...headers() },
-    // 这里的第一层 data 是wx默认的格式，第二层data则刚好是后端的格式。第二层可以移除
     success: res => resolv(res.data.data),
     fail: err => reject(err),
     complete: completeHandler,
   })
 })
+
+export const UPLOAD = (url = '', filePath = '' ,formData = {}) => new Promise((resolv, reject) => {
+  wx.uploadFile({
+    methods: 'POST',
+    name: 'file',
+    url:  API_URL + url,
+    filePath: filePath,
+    formData: formData,
+    header: { "Content-Type": "multipart/form-data", ...headers() },
+    success: res => resolv(res.data.data),
+    fail: err => reject(err),
+    complete: completeHandler,
+  })
+})
+
+
 )
 txtit(Var)
+return
+
+::wx.upload::
+Var =
+(
+wx.uploadFile({
+  methods: 'POST',
+  name: 'file',
+  url:  API_URL + url,
+  filePath: filePath,
+  formData: formData,
+  header: { "Content-Type": "multipart/form-data", ...headers() },
+  success: res => resolv(res.data.data),
+  fail: err => reject(err),
+  complete: completeHandler,
+})
+)
+code(Var)
 return
