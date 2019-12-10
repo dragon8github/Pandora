@@ -306,6 +306,8 @@
     Menu, utilses5, Add, Function.prototype.call：除了参数为数组/类数组以外的都应该使用call，如map/reduce/filter（因为他们的参数都是函数）等, utilsHandler
 
     Menu, utilsJstest, Add, match 捕获匹配, utilsHandler
+    Menu, utilsJstest, Add, 认知：用数组来保存const [`, city`, zipCode] = address.match(cityZipCodeRegex) || [];, utilsHandler
+
     Menu, utilsJstest, Add, 要匹配多个果然还是要用 match, utilsHandler
     Menu, utilsJstest, Add, //g.exec, utilsHandler
     
@@ -432,6 +434,16 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "认知：用数组来保存const [, city, zipCode] = address.match(cityZipCodeRegex) || [];") {
+Var =
+(
+const address = "One Infinite Loop, Cupertino 95014";
+const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
+const [, city, zipCode] = address.match(cityZipCodeRegex) || [];
+saveCityZipCode(city, zipCode);
 )
 }
 
@@ -5273,37 +5285,72 @@ export const delay = t => new Promise((resolve, reject) => {
    }, t)
 })
 
+
 /**
  * 获取数组最后一位
  */
-Array.prototype.last = function () {
-    return this[this.length - 1]
-} 
+Array.prototype.last = function() {
+    return this[this.length - 1];
+};
 
 /**
  * 获取数组第一位
  */
-Array.prototype.first = function () {
-    return this[0]
-} 
+Array.prototype.first = function() {
+    return this[0];
+};
+/**
+ * 获取对象的第N个属性的值 ...
+ *
+ */
+export const objIndex = (obj, = {}, n = 0) => {
+    // 如果 n 不是数字的话
+    if (!isNaN(+n) === false) {
+      return
+    }
 
+    // 获取所有的键
+    const keys = Object.keys(this)
+
+    // 获取指定的 k 
+    const k = keys[n]
+
+    return this[k]
+}
 
 /**
- * 判断对象是否是一个空的对象，既{}
+ * 获取对象的第N个属性的值 ...
+ *
  */
-export const isEmptyObject = obj => {
-    if (Object.getOwnPropertyNames) {
-        return (Object.getOwnPropertyNames(obj).length === 0);
-    } else {
-        var k;
-        for (k in obj) {
-            if (obj.hasOwnProperty(k)) {
-                return false;
-            }
-        }
-        return true;
+export const objIndex = (obj = {}, n = 0) => {
+    // 如果 n 不是数字的话
+    if (!isNaN(+n) === false) {
+      return
     }
+
+    // 获取所有的键
+    const keys = Object.keys(obj)
+
+    // 获取指定的 k 
+    const k = keys[n]
+
+    return obj[k]
 }
+
+/**
+ * 获取对象的第1个属性的值 ...
+ *
+ */
+export const objFirst = obj => {
+    // 获取所有的键
+    const keys = Object.keys(obj)
+
+    // 获取指定的 k 
+    const k = keys[0]
+
+    return obj[k]
+}
+
 
 /**
  * 将对象转化为formdata格式

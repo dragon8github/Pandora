@@ -2606,7 +2606,8 @@ setTimeout(() => $('.drapdown__ul').getNiceScroll().resize(), 0);
 code(Var)
 return
 
-
+::cmd::
+::command::
 ::umd::
 ::amd::
 Var =
@@ -2741,6 +2742,68 @@ Var =
         else
             global.domtoimage = domtoimage;
 })(this);
+---
+// 方式六（推荐）：lodash.js 的兼容方式
+;(function() {
+
+    /** Used as a safe reference for `undefined` in pre-ES5 environments. */
+    var undefined;
+
+    /** Used as the semantic version number. */
+    var VERSION = '4.17.15';
+
+    /** Detect free variable `global` from Node.js. */
+    var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+    /** Detect free variable `self`. */
+    var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+    /** Used as a reference to the global object. */
+    var root = freeGlobal || freeSelf || Function('return this')();
+
+    /** Detect free variable `exports`. */
+    var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
+
+    /** Detect free variable `module`. */
+    var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
+
+    /** Detect the popular CommonJS extension `module.exports`. */
+    var moduleExports = freeModule && freeModule.exports === freeExports;
+
+    /** Detect free variable `process` from Node.js. */
+    var freeProcess = moduleExports && freeGlobal.process;
+
+    // Export lodash.
+    var _ = { defaultsDeep: () => {} };
+
+    // Some AMD build optimizers, like r.js, check for condition patterns like:
+    if (typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
+      // Expose Lodash on the global object to prevent errors when Lodash is
+      // loaded by a script tag in the presence of an AMD loader.
+      // See http://requirejs.org/docs/errors.html#mismatch for more details.
+      // Use `_.noConflict` to remove Lodash from the global object.
+      root._ = _;
+
+      // Define as an anonymous module so, through path mapping, it can be
+      // referenced as the "underscore" module.
+      define(function() {
+        return _;
+      });
+    }
+    // Check for `exports` after `define` in case a build optimizer adds it.
+    else if (freeModule) {
+      // Export for Node.js.
+      (freeModule.exports = _)._ = _;
+      // Export for CommonJS support.
+      freeExports._ = _;
+    }
+    else {
+      // Export to the global object.
+      root._ = _;
+    }
+
+}.call(this));
+
 )
 txtit(Var)
 return

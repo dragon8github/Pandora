@@ -35,15 +35,17 @@
     Menu, wxMenu, Add, previewImage预览图片, wxHandler
     Menu, wxMenu, Add, getSystemInfoSync, wxHandler
 
-
     Menu, wxMenu, Add
     Menu, wxMenu, Add
 
+    Menu, wxMenu, Add, canvas: 实例化+清空画布+绘制图片+绘制文本+绘制圆+渲染, wxHandler
     Menu, wxMenu, Add, 使用 westore 来进行状态管理, wxHandler
     Menu, wxMenu, Add, 将回调地狱转换为 Promise 形式, wxHandler
     Menu, wxMenu, Add, 合成图片 = 下载图片 + 拍照 + 获取图片信息 + canvas合成, wxHandler
     Menu, wxMenu, Add, 上传图片, wxHandler
     Menu, wxMenu, Add, request.js, wxHandler
+    Menu, wxMenu, Add, rpx, wxHandler
+    Menu, wxMenu, Add, 保存相册 + 授权相册, wxHandler
 
     Menu, wxMenu, Show
     Menu, wxMenu, DeleteAll
@@ -62,6 +64,110 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "canvas: 实例化+清空画布+绘制图片+绘制文本+绘制圆+渲染") {
+Var =
+(
+<canvas canvas-id='myCanvas' class='gen-pyq' ></canvas>
+
+this.canvas = wx.createCanvasContext('myCanvas')
+
+// 清空画布
+this.clearCanvas()
+
+
+const downloadFile = app.pm(wx.downloadFile)
+// 二维码：http://120.24.219.180:8085/wx/storage/fetch/f13pua74a1r3u164khw8.png
+const { tempFilePath } = await downloadFile({ url: 'http://120.24.219.180:8085/wx/storage/fetch/f13pua74a1r3u164khw8.png' })
+// 重新渲染图片
+this.canvas2.drawImage(tempFilePath, 0, 0, screenWidth, rpx(1067))
+
+
+// 一旦剪切(clip)了某个区域，则所有之后的绘图都会被限制在被剪切的区域内 这也是我们要save上下文的原因
+this.canvas.save()
+// 绘制二维码
+const x = rpx(356), y = rpx(829), w = rpx(222), h = rpx(222)
+// 切割圆固定公式
+this.canvas.arc(w / 2 + x, h / 2 + y, w / 2, 0, Math.PI * 2, false)
+// 切割
+this.canvas.clip()
+// 绘图
+this.canvas.drawImage(tempFilePath, x, y, w, h)
+// save + restore = 恢复上下文
+this.canvas.restore()
+
+
+
+// 书写文本
+this.canvas.setFillStyle('#222222')
+this.canvas.setFontSize(rpx(30))
+this.canvas.fillText('来自小程序：微设计', rpx(38), rpx(986))
+
+
+// 画布准备
+this.canvas.draw(true, async _ => {
+  wx.hideLoading()
+})
+)
+}
+
+if (v == "保存相册 + 授权相册") {
+Var =
+(
+wx.saveImageToPhotosAlbum({
+  filePath: this.data.previewPic,
+  success(res) {
+    wx.showToast({ title: '保存成功', icon: 'success', duration: 2000 })
+  },
+  fail(err) {
+    authorizedAlbum(err)
+  }
+})
+---
+
+const authorizedAlbum = (err) => {
+  if (err.errMsg === "saveImageToPhotosAlbum:fail:auth denied" || err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
+    // 这边微信做过调整，必须要在按钮中触发，因此需要在弹框回调中进行调用
+    wx.showModal({
+      title: '提示',
+      content: '需要您授权保存相册',
+      showCancel: false,
+      success: modalSuccess => {
+        wx.openSetting({
+          success(settingdata) {
+            console.log("settingdata", settingdata)
+            if (settingdata.authSetting['scope.writePhotosAlbum']) {
+              wx.showModal({
+                title: '提示',
+                content: '获取权限成功,再次点击图片即可保存',
+                showCancel: false,
+              })
+            } else {
+              wx.showModal({
+                title: '提示',
+                content: '获取权限失败，将无法保存到相册哦~',
+                showCancel: false,
+              })
+            }
+          },
+          fail(failData) {
+            console.log("failData", failData)
+          },
+          complete(finishData) {
+            console.log("finishData", finishData)
+          }
+        })
+      }
+    })
+  }
+}
+)
+}
+
+if (v == "rpx") {
+_send("rpx", true, true)
+return
 }
 
 if (v == "setStorageSync") {
@@ -159,6 +265,7 @@ async go() {
   const downloadFile = this.app.pm(wx.downloadFile)
   const getImageInfo = this.app.pm(wx.getImageInfo)
   const takePhoto = this.app.pm(this.ctx.takePhoto.bind(this.ctx))
+  const canvasToTempFilePath = this.app.pm(wx.canvasToTempFilePath)
 
   const { tempFilePath } = await downloadFile({ url: this.data.curImg })
   const { tempImagePath } = await takePhoto({ quality: 'high' })
@@ -174,6 +281,15 @@ async go() {
        this.app.globalData.previewPic = pic
        wx.navigateTo({ url: '/pages/preview/index' })
 
+
+      /* 保存图片 
+       wx.saveImageToPhotosAlbum({
+           filePath: pic,
+           success(res) {
+               wx.showToast({ title: '保存成功', icon: 'success', duration: 2000 })
+           }
+       })
+        */
        // 清空画布
        setTimeout(() => {
          this.canvas.clearRect(0, 0, width, height)
@@ -810,6 +926,22 @@ wx.uploadFile({
   fail: err => reject(err),
   complete: completeHandler,
 })
+)
+code(Var)
+return
+
+::wx.rpx::
+::rpx::
+Var =
+(
+const sys = wx.getSystemInfoSync()
+
+const screenWidth = sys.screenWidth
+const screenHeight = sys.screenHeight
+
+// 1rpx = 屏幕宽度 / 750（不知道是375还是750）
+// 在样式中你的canvas宽度650rpx，那么在canvas中绘制使用的宽度就是：（屏幕宽度 / 750）* 650 ;
+const rpx = n => (screenWidth / 750) * n
 )
 code(Var)
 return
