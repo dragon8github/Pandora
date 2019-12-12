@@ -6,6 +6,7 @@
 
     Menu, utilsIs, Add, is, utilsHandler
     Menu, utilsIs, Add, isString, utilsHandler
+    Menu, utilsIs, Add, isURL, utilsHandler
     Menu, utilsIs, Add, isNumber, utilsHandler
     Menu, utilsIs, Add, isBoolean, utilsHandler
     Menu, utilsIs, Add, isArray, utilsHandler
@@ -4791,6 +4792,12 @@ _send(isbottom)
 return
 }
 
+if (v == "isURL") {
+Var = 
+(
+export const isString = input => Object.prototype.toString.call(input) === '[object String]'
+)
+}
 
 if (v == "isString") {
 Var = 
@@ -8096,6 +8103,15 @@ var isVisualRange = e => {
     // 不满足条件则返回 false
     return false
 }
+)
+code(Var)
+return
+
+::is-url::
+::isurl::
+Var =
+(
+export const isURL = str => /^(http(s?):)?\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?`%\-&_~`@[\]\’:+!]*([^<>\"\"])*$/.test(str)
 )
 code(Var)
 return

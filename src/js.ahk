@@ -2064,6 +2064,33 @@ function loop(fn, delay) {
     }
     requestAnimationFrame(_loop);
 }
+---
+/**
+ * （推荐）say something ...
+ 
+ ;(async function(){
+    const a = await waitWhen(_ => document.getElementById('1234'))
+    console.log(20191212102924, a)
+ }())
+ */
+const waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+    (function poll() {
+        // 获取回调结果
+        const result = conditionFn()
+
+        // 获取是否超时
+        const isTimeout = Date.now() - startTime > wait
+
+        // 如果条件成立，那么立刻 resolve
+        if (result) return resolve(result)
+
+        // 如果时间超时，立刻 reject
+        if (isTimeout) return reject(result)
+
+        // 否则继续轮询
+        setTimeout(poll, interval)
+    }())
+})
 )
 txtit(Var)
 return
@@ -4551,8 +4578,39 @@ code(Var)
 Return
 
 ::wait::
+::when::
+::where::
+::waitwhere::
+::waitwhen::
 Var =
 (
+/**
+ * （推荐）say something ...
+ 
+ ;(async function(){
+    const a = await waitWhen(_ => document.getElementById('1234'))
+    console.log(20191212102924, a)
+ }())
+ */
+const waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+    (function poll() {
+        // 获取回调结果
+        const result = conditionFn()
+
+        // 获取是否超时
+        const isTimeout = Date.now() - startTime > wait
+
+        // 如果条件成立，那么立刻 resolve
+        if (result) return resolve(result)
+
+        // 如果时间超时，立刻 reject
+        if (isTimeout) return reject(result)
+
+        // 否则继续轮询
+        setTimeout(poll, interval)
+    }())
+})
+---
 /**
  * delay工具函数
  *
@@ -4582,7 +4640,7 @@ export const wait = async (fn, t = 0) => {
     return new Promise((resolve, reject) => setTimeout(() => resolve(result), intervalTime))
 }
 )
-code(Var)
+txtit(Var)
 return
 
 
