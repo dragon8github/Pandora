@@ -227,14 +227,39 @@ return
 if (v == "同一组件修改 class 来修改样式的解决方案：x-scoped") {
 Var =
 (
+/**
+ * （推荐）say something ...
+
+ ;(async function(){
+    const a = await waitWhen(_ => document.getElementById('1234'))
+    console.log(20191212102924, a)
+ }())
+ */
+const waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+    (function poll() {
+        // 获取回调结果
+        const result = conditionFn()
+
+        // 获取是否超时
+        const isTimeout = Date.now() - startTime > wait
+
+        // 如果条件成立，那么立刻 resolve
+        if (result) return resolve(result)
+
+        // 如果时间超时，立刻 reject
+        if (isTimeout) return reject(result)
+
+        // 否则继续轮询
+        setTimeout(poll, interval)
+    }())
+})
+
+
 'option.circleColor': {
     immediate: true,
     async handler(newV, oldV) {
-        await this.$nextTick()
-        console.log(newV);
-        
-        // 获取外层容器
-        const $el = this.$refs['swiper-btn']
+        // 获取外层容器（等待1s）
+        const $el = waitWhen(_ => this.$refs['swiper-btn'], 1000)
 
         // 获取容器的标记
         let scoped = $el.getAttribute('x-scoped')
@@ -258,11 +283,11 @@ Var =
             document.getElementsByTagName('head')[0].appendChild(style)
         }
 
-        injectCss(``
+        injectCss(`
             .swiper-pagination[x-scoped="${scoped}"] .swiper-pagination-bullet {
                 background-color: ${newV};
             }
-        ``)
+        `)
     }
 },
 )
