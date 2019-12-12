@@ -46,6 +46,7 @@
     Menu, wxMenu, Add, request.js, wxHandler
     Menu, wxMenu, Add, rpx, wxHandler
     Menu, wxMenu, Add, 保存相册 + 授权相册, wxHandler
+    Menu, wxMenu, Add, 微信支付, wxHandler
 
     Menu, wxMenu, Show
     Menu, wxMenu, DeleteAll
@@ -63,6 +64,31 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "微信支付") {
+Var =
+(
+wx.requestPayment({
+  'timeStamp': payParam.timeStamp,
+  'nonceStr': payParam.nonceStr,
+  'package': payParam.packageValue,
+  'signType': payParam.signType,
+  'paySign': payParam.paySign,
+  'success': res => {console.log("支付成功") },
+  'fail': res => {console.log("支付失败") },
+  'complete': res => {console.log("支付结束") }
+});
+---
+// 获取支付参数
+const _BUYVIP = await BUYVIP({ "amount": "99", "type": 1 })
+// fixbug： package
+_BUYVIP.package = _BUYVIP.packageValue
+
+const requestPayment = app.pm(wx.requestPayment)
+// 调用微信支付
+const v = await requestPayment(_BUYVIP)
 )
 }
 

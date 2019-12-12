@@ -69,6 +69,113 @@ symbolSize: (val, series) => {
     var b = maxSize - a * max;
     return a * val[2] + b;
 },
+---
+import Chart from '../Chart.js'
+
+import { maybe, objFirst } from '@/utils/utils.js'
+import { getChartSeries } from '@/chartConfig/chartUtil.js'
+import { DEFAULT_BUBBLE_OPTION, CHART_COLOR } from '@/chartConfig/options.js'
+
+// ⚠️ 由于要使用上下文 this ，所以这个函数不能是箭头函数
+const SYMBOL_SIZE = function(val, params) {
+    // 找到当前数据维度
+    const { componentIndex } = params
+
+    // 获取数据源
+    // 🚀 外部必须注入 Chart 类的上下文才可以正常访问到数据源
+    const source = maybe(_ => this.option.dataset.source, {})
+    // 获取数据源中所有 『数字类』 数据
+    const values = Object.values(source).flat().filter(n => !isNaN(+n))
+
+    // 获取最大值
+    const max = Math.max(...values)
+    // 获取最小值
+    const min = Math.min(...values)
+
+    // 定义最大气泡
+    const maxSize = 60
+    // 定义最小气泡
+    const minSize = 10
+
+    // 固定套路
+    // ⚠️ fixbug： max === min 被除数为 0 时
+    const a = max === min ? 0 : (maxSize - minSize) / (max - min)
+    const b = maxSize - a * max
+
+    // val[0]为x轴，默认维度加1
+    const v = Number(val[componentIndex + 1])
+
+    return a * v + b
+}
+
+export default class BubblePlot extends Chart {
+    static name = 'BubblePlot'
+
+    constructor(...props) {
+        super(...props)
+
+        // 定义显示名称
+        this.__NAME__ = '气泡图'
+
+        // 获取动态配置（第二个入参即是配置）
+        const [, opts] = props
+
+        // 定义依赖配置
+        this.setStrForm('GlobalItem', 'xAxisItem', 'yAxisItem', 'BubbleSeries', 'LegendItem', 'TooltipItem')
+
+        // 定义数据表单项配置
+        this.setDataForm({
+            panels: [{
+                title: '维度设定',
+                form: {
+                    x: { title: '维度（X轴）', minCount: 1, maxCount: 1 },
+                    value: { title: '指标', minCount: 1, maxCount: 5 },
+                },
+            }, ],
+            relation: {},
+        })
+
+        // 绑定上下文
+        this.SYMBOL_SIZE = SYMBOL_SIZE.bind(this)
+
+        // 合成配置
+        let _opts = _.defaultsDeep({}, opts, DEFAULT_BUBBLE_OPTION)
+
+        // 为每个气泡 series 加入 动态 symbolSize 函数
+        _opts.series.filter(_ => _.type === 'scatter').forEach(serie => serie.symbolSize = this.SYMBOL_SIZE)
+
+        // 更新配置
+        this.setOption(_opts)
+    }
+
+   
+
+    setData({ rows, values, columns } = {}) {
+        // 获取全系列
+        const defaultSeries = this.option.series
+
+        // 获取第一个 serie 配hi
+        const serie = this.option.series[0]
+
+        // 获取 x 轴（对象）的第一个属性的值
+        const product = maybe(_ => objFirst(rows), [])
+
+        // 数据源
+        const source = { product, ...values }
+
+        // 数据 + series
+        const series = getChartSeries(source, { chartType: 'scatter', color: CHART_COLOR, defaultSeries, })
+
+        // 合成最新的配置
+        let opt = { dataset: { source }, series }
+
+        // 为每个气泡 series 加入 动态 symbolSize 函数
+        opt.series.filter(_ => _.type === 'scatter').forEach(serie => serie.symbolSize = this.SYMBOL_SIZE)
+
+        // 更新配置
+        this.updateData(opt)
+    }
+}
 )
 txtit(Var)
 return
