@@ -226,6 +226,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, 经典 token 解决方案：cookie-token-http, utilsHandler
     Menu, utilsmy, Add, loadingdec, utilsHandler
     Menu, utilsmy, Add, IntersectionObserver  template 懒注入、懒加载, utilsHandler
     Menu, utilsmy, Add, IntersectionObserver 无限滚动, utilsHandler
@@ -435,6 +436,160 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "经典 token 解决方案：cookie-token-http") {
+Var =
+(
+/**
+ 请求的时候：
+
+ 1、 要获取 refreshToken ，并且判断是否超时？
+
+ 2、 如果没有超时，重置过期时间（25分钟）, 如果已经超时，那么跳转到登陆页面重新登陆
+
+ 3、 获取 token 如果超时了，那么重新获取。
+
+ 5、 如果没有超时，继续请求。加入该 token
+
+ 6、 如果后端返回 token失效，则跳转登陆
+ */
+
+import axios from 'axios'
+import VueCookies from 'vue-cookies'
+
+const warn = msg => {
+    // 提示错误
+    Message.error(msg)
+
+    // 取消请求
+    throw new Error(msg)
+}
+
+
+const kill = msg => {
+    // 清空cookie
+    clearToken()
+
+    // 跳转到登录页
+    router.push('/login')
+
+    // 提示错误
+    Message.error(msg)
+
+    // 取消请求
+    throw new Error(msg)
+}
+
+/**
+ * 清空 cookie
+ */
+const clearToken = () => {
+    VueCookies.remove('HTCMP_token')
+    VueCookies.remove('HTCMP_refreshToken')
+}
+
+
+/**
+ * axios 全局配置
+ */
+const http = axios.create({
+    baseURL: Constant.BASEURL,
+    headers: { 'app': 'HTCMP', 'X-Requested-With': 'XMLHttpRequest', 'Content-Type': 'application/json; charset=utf-8' },
+    timeout: 1000 * 10,
+})
+
+/**
+ * 请求拦截
+ */
+http.interceptors.request.use(async request => {
+    // ✖️ 如果是登录是不需要 『Authorization』 或者 『token』 的
+    if ('/uaa/auth/login' === request.url) {
+        return request
+
+    // 📝 如果是 『重新获取token』，则 『Authorization』 需要设置为 『refreshToken』
+    } else if ('/uaa/auth/token' === request.url) {
+        const refreshToken = getRefreshToken()
+        request.headers['Authorization'] = 'Bearer ' + refreshToken
+        return request
+
+    // 🚀 其余 API 的 Authorization 全部都必须用 token
+    } else {
+        const refreshToken = getRefreshToken()
+        const token = await getToken()
+        request.headers['Authorization'] = 'Bearer ' + token
+        return request
+    }
+})
+
+/**
+ * 响应拦截
+ */
+http.interceptors.response.use(response => {
+    // 获取后端的状态码和数据
+    const { code, data } = response
+
+    // 根据后端约定，如果状态码 code 为 9926 的话，就是登陆 token 失效
+    if (code === '9926') {
+        return kill('登录过期，请重新登录！')
+    }
+
+    // 正常返回数据
+    return data
+})
+
+
+/**
+ * 获取 refreshToken
+ */
+const getRefreshToken = () => {
+    // 从 cookie 中获取 refreshToken
+    const refreshToken = VueCookies.get('HTCMP_refreshToken')    
+
+    // 如果 refreshToken 正常则重置一下过期时间
+    if (refreshToken) {
+        // 重置为120分钟
+        VueCookies.set('HTCMP_refreshToken', refreshToken, { expires: '120m' })
+
+        // 返回 refreshToken
+        return refreshToken
+
+    // 否则跳转登录
+    } else {
+        kill('登录超时，请重新登录。')
+    }
+}
+
+
+/**
+ * 获取 token
+ */
+const getToken = () => {
+    // 从cookie中获取token
+    const __TOKEN__ = VueCookies.get('HTCMP_token')
+
+    // 如果 token 失效，则重新获取
+    if (!__TOKEN__) {
+        // 请求最新的 token
+        return http.get('/uaa/auth/token').then(data => {
+            // 获取新token
+            const token = data.token
+
+            // 重置 token
+            VueCookies.set('HTCMP_token', token, { expires: '118m' })
+
+            // 返回token
+            return token
+
+        }).catch(err => {
+            kill('重新获取 token 失败，请重新登录！')
+        })
+    }
+
+    // 一切正常，返回 token
+    return __TOKEN__
+}
 )
 }
 
