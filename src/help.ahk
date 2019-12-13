@@ -854,7 +854,11 @@ return
 
 
 ::base64::
-    Send, data:image/png;base64,
+Var =
+(
+data:image/png;base64,
+)
+code(Var)
 return
 
 

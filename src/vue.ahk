@@ -228,8 +228,6 @@ if (v == "同一组件修改 class 来修改样式的解决方案：x-scoped") {
 Var =
 (
 /**
- * （推荐）say something ...
-
  ;(async function(){
     const a = await waitWhen(_ => document.getElementById('1234'))
     console.log(20191212102924, a)
@@ -267,7 +265,7 @@ const waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTi
         // 如果不存在，则新建
         if (!scoped) {
             // id
-            const scoped = +new Date
+            scoped = +new Date
             // scoped
             $el.setAttribute('x-scoped', scoped)
         }
@@ -283,11 +281,84 @@ const waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTi
             document.getElementsByTagName('head')[0].appendChild(style)
         }
 
-        injectCss(`
+        injectCss(``
             .swiper-pagination[x-scoped="${scoped}"] .swiper-pagination-bullet {
                 background-color: ${newV};
             }
-        `)
+        ``)
+    }
+},
+---
+/**
+ ;(async function(){
+    const a = await waitWhen(_ => document.getElementById('1234'))
+    console.log(20191212102924, a)
+ }())
+ */
+const waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+    (function poll() {
+        // 获取回调结果
+        const result = conditionFn()
+
+        // 获取是否超时
+        const isTimeout = Date.now() - startTime > wait
+
+        // 如果条件成立，那么立刻 resolve
+        if (result) return resolve(result)
+
+        // 如果时间超时，立刻 reject
+        if (isTimeout) return reject(result)
+
+        // 否则继续轮询
+        setTimeout(poll, interval)
+    }())
+})
+
+
+'option.circleColor': {
+    immediate: true,
+    async handler(newV, oldV) {
+        // 获取外层容器（等待1s）
+        const $el = waitWhen(_ => this.$refs['swiper-btn'], 1000)
+
+        // 获取容器的标记
+        let scoped = $el.getAttribute('x-scoped')
+
+        // 如果不存在，则新建
+        if (!scoped) {
+            // id
+            scoped = +new Date
+            // scoped
+            $el.setAttribute('x-scoped', scoped)
+        }
+
+        var injectCss = function (css) {
+            // 获取历史样式标签
+            const beforeScopedStyle = document.getElementById(scoped)
+
+            // 如果存在了，就直接使用
+            if (beforeScopedStyle) {
+                // 修改 HTML
+                beforeScopedStyle.innerHTML = css
+            // 如果不存在则新建
+            } else {
+                var style = document.createElement('style')
+                style.type = 'text/css'
+                style.id = scoped
+                if (style.styleSheet) {
+                    style.styleSheet.cssText = css
+                } else {
+                    style.appendChild(document.createTextNode(css))
+                }
+                document.getElementsByTagName('head')[0].appendChild(style)
+            }
+        }
+
+        injectCss(``
+            .swiper-pagination[x-scoped="${scoped}"] .swiper-pagination-bullet {
+                background-color: ${newV};
+            }
+        ``)
     }
 },
 )
