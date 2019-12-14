@@ -8060,25 +8060,31 @@ Var =
 
   now：
     async go() {
-        const downloadFile = this.app.pm(wx.downloadFile)
+        const downloadFile = app.pm(wx.downloadFile)
         const res = await downloadFile({ url: this.data.curImg })
         console.log(20191121212742, res)
     }
 
   fixbug：  『this._invokeMethod is not a function』 —— 用.bind(ctx) 的方式解决
-
-  如果是wx内置函数，直接使用即可，但部分API是实例API，譬如
-  
-  this.ctx = wx.createCameraContext()
-  this.ctx.takePhoto
-
-  如果你使用这样的方式开发的话，必定会出现上述的问题。
-  const takePhoto = this.app.pm(this.ctx.takePhoto)
+  const takePhoto = app.pm(this.ctx.takePhoto)
   await takePhoto() // this._invokeMethod is not a function
 
   原因其实也简单，执行的时候上下文不是实例本身，所以我们还给它即可。
-  const takePhoto = this.app.pm(this.ctx.takePhoto.bind(this.ctx))
+  this.ctx = wx.createCameraContext()
+  const takePhoto = app.pm(this.ctx.takePhoto.bind(this.ctx))
   await takePhoto()
+
+  const wxlogin = app.pm(wx.login)
+  const getImageInfo = app.pm(wx.getImageInfo)
+  const canvasToTempFilePath = app.pm(wx.canvasToTempFilePath)
+  const request = app.pm(wx.request)
+  const getLocation = app.pm(wx.getLocation)
+  const showModal = app.pm(wx.showModal)
+  const chooseLocation = app.pm(wx.chooseLocation)
+  const downloadFile = app.pm(wx.downloadFile)
+  const chooseImage = app.pm(wx.chooseImage)
+  const uploadFile = app.pm(wx.uploadFile)
+  const requestPayment = app.pm(wx.requestPayment)
  */
 const pm = api => (options, ...params) => new Promise((resolve, reject) => api({ ...options, success: resolve, fail: reject }, ...params))
 )

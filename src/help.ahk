@@ -1,4 +1,12 @@
-﻿::Po::
+﻿::dgjw::
+Var =
+(
+113.761868, 23.025179
+)
+code(Var)
+return
+
+::Po::
 Var =
 (
 Portal

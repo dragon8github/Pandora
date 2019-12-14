@@ -1,4 +1,5 @@
 ﻿!w::
+    Menu, wxMenu, Add, this.setData, wxHandler
     Menu, wxMenu, Add, globalData, wxHandler
     Menu, wxMenu, Add, dom, wxHandler
     Menu, wxMenu, Add, canvas, wxHandler
@@ -8,6 +9,7 @@
     Menu, wxMenu, Add, event.currentTarget.dataset, wxHandler
     Menu, wxMenu, Add, wx:if / wx:elif / wx:else, wxHandler
     Menu, wxMenu, Add, setStorageSync, wxHandler
+    Menu, wxMenu, Add, emit事件推送：this.triggerEvent, wxHandler
 
     Menu, wxMenu, Add
     Menu, wxMenu, Add
@@ -32,6 +34,7 @@
     Menu, wxMenu, Add, 页面调用组件方法, wxHandler
     Menu, wxMenu, Add, animate, wxHandler
     Menu, wxMenu, Add, 获取地理信息, wxHandler
+    Menu, wxMenu, Add, 获取地理信息2, wxHandler
     Menu, wxMenu, Add, previewImage预览图片, wxHandler
     Menu, wxMenu, Add, getSystemInfoSync, wxHandler
 
@@ -47,6 +50,7 @@
     Menu, wxMenu, Add, rpx, wxHandler
     Menu, wxMenu, Add, 保存相册 + 授权相册, wxHandler
     Menu, wxMenu, Add, 微信支付, wxHandler
+    Menu, wxMenu, Add, pm解决方案, wxHandler
 
     Menu, wxMenu, Show
     Menu, wxMenu, DeleteAll
@@ -64,6 +68,47 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "pm解决方案") {
+_send("pm", true, true)
+return
+}
+
+if (v == "this.setData") {
+_send("wx:set", true, true)
+return
+}
+
+if (v == "emit事件推送：this.triggerEvent") {
+_send("wx:emit", true, true)
+return
+}
+
+if (v == "获取地理信息2") {
+Var =
+(
+chooseAddress(latitude = '113.761868', longitude = '23.025179') {
+  wx.chooseLocation({
+    latitude: latitude,
+    longitude: longitude,
+    success: res => {
+      // {errMsg: "chooseLocation:ok", name: "东莞市人民政府", address: "广东省东莞市鸿福路99号", latitude: 23.02067, longitude: 113.75179}
+      console.log(20191120221540, res)
+    },
+    fail: err => {
+      // {errMsg: "chooseLocation:fail cancel"}
+      console.log(err);
+    }
+  });
+},
+---
+async onLoad(e) {
+  const chooseLocation = app.pm(wx.chooseLocation)
+  const address = await chooseLocation()
+  console.log(20191214092623, address)
+}
 )
 }
 
@@ -371,6 +416,25 @@ onLoad: function (options) {
       },
     })
   },
+---
+// app.pm封装版本 （推荐）
+const request = app.pm(wx.request)
+  const getLocation = app.pm(wx.getLocation)
+  
+  const { latitude, longitude } = await getLocation({ type: 'wgs84' })
+  console.log('获取经纬度：', latitude, longitude)
+
+  const { data } = await request({
+    url: "http://api.map.baidu.com/reverse_geocoding/v3/",
+    data: {
+      ak: "7b3SurhIYH6m8C3l0aAM7NAFW0aHEbLT",
+      output: "json",
+      location: latitude + "," + longitude
+    }
+  })
+  console.log('获取百度地图解析信息', data)
+  const { formatted_address, business } = data.result
+  console.log('获取详细地理位置：', formatted_address, business)
 )
 }
 
@@ -798,6 +862,7 @@ return
 
 
 ::wfor::
+::wxfor::
 Var =
 (
 wx:for="{{items}}" wx:key="*this"
@@ -846,6 +911,7 @@ return
 :?:wx.request::
 :?:wx.req::
 :?:wx.api::
+:?:wx:api::
 :?:wx.request.js::
 Var =
 (
@@ -858,12 +924,17 @@ const headers = () => ({
 })
 
 // 完成时触发的钩子
-const completeHandler = res => {
-  // 打印日志
-  console.log(res);
+const completeHandler = function (res) {
+  // 上下文注入的内容
+  const { url, data, method } = this
+  // 打印数据和请求参数
+  console.log(res.data, { [method]: url, params: data })
   // 关闭 loading
   wx.hideLoading();
 }
+
+// 上传相册
+export const POST_ALBUM = data => POST('wx/album', data)
 
 // 上传图片
 export const UPLOAD_FILE = path => UPLOAD('wx/storage/upload', path)
@@ -873,6 +944,9 @@ export const LOGIN_BY_WEIXIN = data => POST('wx/auth/login_by_weixin', data)
 
 // 解析手机号码
 export const BIND_PHONE = data => POST('wx/auth/bindPhone', data)
+
+// 获取相册列表
+export const ALBUM = params => GET('wx/album/list', params)
 
 // 获取素材类别
 export const MATERIAL_CATEGORY = () => GET('wx/material/category')
@@ -886,8 +960,11 @@ export const TEMPLATE_CATEGORY = () => GET('wx/template/category')
 // 获取模板列表
 export const TEMPLATE_LIST = categoryId => GET('wx/template/list', { categoryId })
 
-// 获取价格列表（暂不可用）
+// 获取价格列表
 export const PRICE = () => GET('wx/user/vip/price')
+
+// 购买
+export const BUYVIP = data => POST('/wx/user/vip/buy', data)
 
 // 获取用户信息
 export const USER = () => GET('wx/user/index')
@@ -895,45 +972,38 @@ export const USER = () => GET('wx/user/index')
 // 获取banner
 export const BANNER = () => GET('wx/home/index')
 
-export const GET = (url = '', data = {}) => new Promise((resolv, reject) => {
-  wx.request({
-    method: "GET",
-    url: API_URL + url,
-    data: data,
-    header: { 'Content-Type': 'application/x-www-form-urlencoded', ...headers() },
-    success: res => resolv(res.data.data),
-    fail: err => reject(err),
-    complete: completeHandler,
-  })
-})
+export const GET = (url = '', data = {}) => new Promise((resolv, reject) => wx.request({
+  method: "GET",
+  url: API_URL + url,
+  data: data,
+  header: { 'Content-Type': 'application/x-www-form-urlencoded', ...headers() },
+  success: res => resolv(res.data.data || res.data),
+  fail: err => reject(err),
+  complete: completeHandler.bind({ url, data, method: 'GET' }),
+}))
 
-export const POST = (url = '', data = {}) => new Promise((resolv, reject) => {
-  wx.request({
-    method: "POST",
-    url: API_URL + url,
-    data: data,
-    header: { 'Content-Type': 'application/json', ...headers() },
-    success: res => resolv(res.data.data),
-    fail: err => reject(err),
-    complete: completeHandler,
-  })
-})
+export const POST = (url = '', data = {}) => new Promise((resolv, reject) => wx.request({
+  method: "POST",
+  url: API_URL + url,
+  data: data,
+  header: { 'Content-Type': 'application/json', ...headers() },
+  success: res => resolv(res.data.data || res.data),
+  fail: err => reject(err),
+  complete: completeHandler.bind({ url, data, method: 'POST' }),
+}))
 
-export const UPLOAD = (url = '', filePath = '' ,formData = {}) => new Promise((resolv, reject) => {
-  wx.uploadFile({
-    methods: 'POST',
-    name: 'file',
-    url:  API_URL + url,
-    filePath: filePath,
-    formData: formData,
-    header: { "Content-Type": "multipart/form-data", ...headers() },
-    success: res => resolv(res.data.data),
-    fail: err => reject(err),
-    complete: completeHandler,
-  })
-})
-
-
+export const UPLOAD = (url = '', filePath = '', formData = {}) => new Promise((resolv, reject) => wx.uploadFile({
+  methods: 'POST',
+  name: 'file',
+  url: API_URL + url,
+  filePath: filePath,
+  formData: formData,
+  header: { "Content-Type": "multipart/form-data", ...headers() },
+  // 这里不知道为啥，第一个 data 是字符串，所以需要先序列化
+  success: res => resolv(JSON.parse(res.data).data),
+  fail: err => reject(err),
+  complete: completeHandler.bind({ url, data, method: 'UPLOAD' }),
+}))
 )
 txtit(Var)
 return
@@ -968,6 +1038,27 @@ const screenHeight = sys.screenHeight
 // 1rpx = 屏幕宽度 / 750（不知道是375还是750）
 // 在样式中你的canvas宽度650rpx，那么在canvas中绘制使用的宽度就是：（屏幕宽度 / 750）* 650 ;
 const rpx = n => (screenWidth / 750) * n
+)
+code(Var)
+return
+
+
+::wx:emit::
+Var =
+(
+; <footer bind:go='goCamera' />
+this.triggerEvent('go')
+)
+code(Var)
+return
+
+::set::
+::wx:set::
+Var =
+(
+this.setData({
+    active: +index
+})
 )
 code(Var)
 return
