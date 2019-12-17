@@ -1,4 +1,5 @@
 ﻿!a::
+    Menu, arrayMenu, Add, 新的数组工具：maps, utilsHandler
 	Menu, arrayMenu, Add, 把数组像分页一样分割为N段, ForHandler
 	Menu, arrayMenu, Add, chunk 数组分块函数:hit / miss, ForHandler
 	Menu, arrayMenu, Add, 加强版map遍历:fuckmap, ForHandler

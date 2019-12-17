@@ -1,4 +1,21 @@
-﻿::dgjw::
+﻿::wancheng::
+::fin::
+Var =
+(
+finally
+)
+code(Var)
+return
+
+::it::
+Var =
+(
+iterable
+)
+code(Var)
+return
+
+::dgjw::
 Var =
 (
 113.761868, 23.025179
@@ -13,7 +30,9 @@ Portal
 )
 code(Var)
 return
+
 ^!j::
+^j::
     WinGetTitle, title, A
     if (InStr(title, "Sublime Text") == 0) {
         tmp := Clipboard

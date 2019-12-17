@@ -1186,6 +1186,7 @@ var vue = new Vue({
     },
     beforeMount: function () {
         axios.get("/book/list").then(res => {
+            ELEMENT.Message('数据加载完成')
             this.items = res.data.booklist
         })
     }

@@ -41,7 +41,7 @@ symbolSize: val => {
     // 定义最小气泡
     const minSize4Pin = 50
     // 固定套路
-    var a = (maxSize4Pin - minSize4Pin) / (max - min);
+    var a = (maxSize4Pin - minSize4Pin) / ((max - min) || 1)
     var b = maxSize4Pin - a * max;
     return a * val[2] + b;
 },

@@ -2,6 +2,7 @@
     Menu, CsstransformHandler, Add, 上下翻滚：transform: rotateX(180deg), CssHandler
     Menu, CsstransformHandler, Add, 左右翻滚：transform: rotateY(180deg), CssHandler
     Menu, CsstransformHandler, Add, 原地旋转倒立：transform: rotate(180deg), CssHandler
+    Menu, CsstransformHandler, Add, 换一换：transform: rotate(-1turn), CssHandler
     
     Menu, CsstransformHandler, Add, 
     Menu, CsstransformHandler, Add, 
@@ -99,6 +100,7 @@
     Menu, CssMenu, Add, css.animate 语法和格式, :CssAnimateHandler
     Menu, CssMenu, Add, animate的钩子：webkitAnimationEnd, CssHandler
     Menu, CssMenu, Add, transition的钩子：webkitTransitionEnd, CssHandler
+    Menu, CssMenu, Add, 动画结束事件, CssHandler
     
     
     
@@ -233,6 +235,22 @@ Var =
 )
 }
 
+if (v == "动画结束事件") {
+Var =
+(
+$('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+    $(this).removeClass();
+});
+)
+}
+
+if (v == "换一换：transform: rotate(-1turn)") {
+Var =
+(
+transition: all .5s;
+transform: rotate(-1turn);
+)
+}
 
 if (v == "css.animate 语法和格式") {
 _send("animate", true, true)

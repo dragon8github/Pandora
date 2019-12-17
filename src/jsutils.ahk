@@ -193,7 +193,8 @@
     Menu, utilspractice, Add,
     
     Menu, utilspractice, Add, FormData（multipart/form-data）与URLSearchParams（application/x-www-form-urlencoded）的区别, utilsHandler
-    Menu, utilspractice, Add, 多个异步操作时，请毫不犹豫用Pormise.all, utilsHandler
+    Menu, utilspractice, Add, 多个异步操作时，请毫不犹豫用Promise.all, utilsHandler
+    Menu, utilspractice, Add, Promise.allSettled：Promise.all的升级版，忽视reject报错也执行, utilsHandler
     Menu, utilspractice, Add, Promise.race只返回最快的一个, utilsHandler
     
     Menu, utilspractice, Add,
@@ -226,7 +227,9 @@
     
     
     ; @my
+    Menu, utilsmy, Add, 新的数组工具：maps, utilsHandler
     Menu, utilsmy, Add, 经典 token 解决方案：cookie-token-http, utilsHandler
+    Menu, utilsmy, Add, Promise.allSettled：Promise.all的升级版，忽视reject报错也执行, utilsHandler
     Menu, utilsmy, Add, loadingdec, utilsHandler
     Menu, utilsmy, Add, IntersectionObserver  template 懒注入、懒加载, utilsHandler
     Menu, utilsmy, Add, IntersectionObserver 无限滚动, utilsHandler
@@ -437,6 +440,16 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "新的数组工具：maps") {
+_send("maps", true, true)
+return
+}
+
+if (v == "Promise.allSettled：Promise.all的升级版，忽视reject报错也执行") {
+_send("Promise.all2", true, true)
+return
 }
 
 if (v == "经典 token 解决方案：cookie-token-http") {
@@ -8273,6 +8286,80 @@ return
 Var =
 (
 export const isURL = str => /^(http(s?):)?\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?`%\-&_~`@[\]\’:+!]*([^<>\"\"])*$/.test(str)
+)
+code(Var)
+return
+
+::Promise.all2::
+Var =
+(
+Promise.allSettled = iterables => new Promise(resolve => {
+    let result = []
+
+    const callback = function (i, v) {
+        // 模仿 Promise.all 对号入座原则
+        result[i] = v
+
+        // 是否全部执行完毕？
+        if (result.length === iterables.length) 
+            // 收工咯~
+            resolve(result)
+    }
+
+    iterables.forEach((p, i) => {
+        // 注入索引
+        const _callback = callback.bind(null, i)
+        // 注入灵魂
+        p.then(_callback).catch(_callback)
+    })
+})
+
+const testA = new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 3000))
+const testB = new Promise((resolve, reject) => setTimeout(_ => reject('fail'), 3500))
+
+;(async function(){
+    // ✖️
+    // const result = await Promise.all([testA, testB])
+
+    // ✔
+    const result = await Promise.allSettled([testA, testB])
+    console.log(20191215005254, result)
+}())
+)
+code(Var)
+return
+
+::maps::
+Var =
+(
+// 判断是否为函数
+const isFunction = v => Object.prototype.toString.call(v) === '[object Function]'
+
+// map 方法只能返回一个参数，这个方法是用来返回多个的。
+Array.prototype.maps = function(...args) {
+    // 初始化空数组，这是一个二维数组，长度与参数一致
+    let ary = args.map(_ => [])
+
+    // 开始遍历自身
+    this.forEach((val, index, array) => {
+        // 依次执行 fn
+        for (let i = 0, len = args.length; i < len; i++) {
+            // 获取当前函数
+            const fn = args[i]
+            // 调用函数，如果不是函数的话，就直接返回本身
+            const result = isFunction(fn) ? fn(val, index, array) : fn
+            // 插入第n个里边
+            ary[i].push(result)
+        }
+    })
+
+    // 返回最终结果
+    return ary
+}
+
+const list = [{ a: 'a1', b: 'b1' }, { a: 'a2', b: 'b2' }, ]
+const [a, b] = list.maps(_ => _.a, _ => _.b)
+console.log(a, b)
 )
 code(Var)
 return

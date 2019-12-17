@@ -10,6 +10,7 @@
     Menu, wxMenu, Add, wx:if / wx:elif / wx:else, wxHandler
     Menu, wxMenu, Add, setStorageSync, wxHandler
     Menu, wxMenu, Add, emit事件推送：this.triggerEvent, wxHandler
+    Menu, wxMenu, Add, catchtap:click 防止冒泡, wxHandler
 
     Menu, wxMenu, Add
     Menu, wxMenu, Add
@@ -28,13 +29,15 @@
     Menu, wxMenu, Add
     Menu, wxMenu, Add
 
-    Menu, wxMenu, Add, getImageInfo, wxHandler
+    Menu, wxMenu, Add, 获取图片信息：getImageInfo/getFileInfo, wxHandler
     Menu, wxMenu, Add, 摄像头ccamera, wxHandler
     Menu, wxMenu, Add, 获取用户信息, wxHandler
     Menu, wxMenu, Add, 页面调用组件方法, wxHandler
     Menu, wxMenu, Add, animate, wxHandler
     Menu, wxMenu, Add, 获取地理信息, wxHandler
     Menu, wxMenu, Add, 获取地理信息2, wxHandler
+    Menu, wxMenu, Add, 腾讯地图解析地理位置, wxHandler
+    Menu, wxMenu, Add, 百度地图解析地理位置, wxHandler
     Menu, wxMenu, Add, previewImage预览图片, wxHandler
     Menu, wxMenu, Add, getSystemInfoSync, wxHandler
 
@@ -68,6 +71,55 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "百度地图解析地理位置") {
+Var =
+(
+const getLocation = app.pm(wx.getLocation)
+const { latitude, longitude } = await getLocation({ type: 'wgs84' })
+console.log('获取经纬度：', latitude, longitude)
+wx.showLoading({ title: '解析地理信息...' })
+
+const { data } = await request({
+    url: "https://api.map.baidu.com/reverse_geocoding/v3/",
+    data: { ak: "7b3SurhIYH6m8C3l0aAM7NAFW0aHEbLT", output: "json", location: latitude + "," + longitude }
+})
+)
+}
+
+if (v == "腾讯地图解析地理位置") {
+Var =
+(
+/*
+1、 前往 https://lbs.qq.com/dev/console/key/manage 申请key，用QQ或微信登陆即可。
+2、 只需要勾选 WebSericeAPI 和 微信小程序 AppId 
+*/
+
+const request = app.pm(wx.request)
+const getLocation = app.pm(wx.getLocation)
+
+const QQMapWX = require('../../libs/qqmap-wx-jssdk.min.js')
+const qqmapsdk = new QQMapWX({ key: 'EXQBZ-LM4CP-MJ2DM-L7OPT-WN3LE-X5FUR' })
+const reverseGeocoder = app.pm(qqmapsdk.reverseGeocoder.bind(qqmapsdk))
+
+
+async onLoad() {
+    const { latitude, longitude } = await getLocation({ type: 'wgs84' })
+    console.log('获取经纬度：', latitude, longitude)
+
+    const res = await reverseGeocoder({ location: { latitude: latitude, longitude: longitude } })
+    console.log(20191216121435, res)
+},
+)
+}
+
+if (v == "catchtap:click 防止冒泡") {
+Var =
+(
+// 原生是这样 catchtap=
+catchtap:click
 )
 }
 
@@ -569,15 +621,15 @@ data: {
 )
 }
 
-if (v == "getImageInfo") {
+if (v == "获取图片信息：getImageInfo/getFileInfo") {
 Var =
 (
-wx.getImageInfo({
-    src: this.data.path1,
-    success: info => { 
-      const { width, height } = info
-    }
-})
+const getImageInfo = app.pm(wx.getImageInfo)
+const info = await getImageInfo({ src: this.data.previewPic })
+
+const getFileInfo = app.pm(wx.getFileInfo)
+const info = await getFileInfo({ filePath: this.data.previewPic })
+console.log(20191215182657, info.size / 1024 + 'kb')
 )
 }
 
@@ -878,6 +930,8 @@ return
 Var =
 (
 const index = event.currentTarget.dataset.index
+const id = event.currentTarget.dataset.id
+const item = this.data.items.find(_ => _.id === id)
 this.setData({
   active: +index
 })
@@ -1046,7 +1100,7 @@ return
 ::wx:emit::
 Var =
 (
-; <footer bind:go='goCamera' />
+// <footer bind:go='goCamera' />
 this.triggerEvent('go')
 )
 code(Var)
