@@ -79,6 +79,7 @@
     Menu, CssMenu, Add, css.debugger, CssHandler2    
     Menu, CssMenu, Add, utils.scss, CssHandler2
     Menu, CssMenu, Add, px2rem, CssHandler2
+    Menu, CssMenu, Add, 移动端 max-width 限制合理化, CssHandler2
     
     Menu, CssMenu, Add
     Menu, CssMenu, Add
@@ -93,6 +94,8 @@
     Menu, CssMenu, Add, 百度百科死亡与默哀风格样式, CssHandler
     Menu, CssMenu, Add, 文本新布局：text-align: justify, CssHandler
     Menu, CssMenu, Add, css3图片样式新认知：object-fit: cover;, CssHandler
+    Menu, CssMenu, Add, 天行九歌：高亮文本 highlight（文字）, CssHandler
+    Menu, CssMenu, Add, 非著名程序员：高亮文本 highlight（背景）, CssHandler
     
     Menu, CssMenu, Add
     Menu, CssMenu, Add
@@ -169,9 +172,9 @@
     Menu, Csssolution, Add
     Menu, Csssolution, Add
     
+    Menu, Csssolution, Add, 非著名程序员：高亮文本 highlight（背景）, CssHandler
+    Menu, Csssolution, Add, 天行九歌：高亮文本 highlight（文字）, CssHandler
     Menu, Csssolution, Add, 太空漫游404解决方案, CssHandler
-    Menu, Csssolution, Add, 高亮文本 highlight（背景）, CssHandler
-    Menu, Csssolution, Add, 高亮文本 highlight（文字）, CssHandler
     Menu, Csssolution, Add, 纯css下划线或上划线解决方案, CssHandler
     Menu, Csssolution, Add, quickbi控制台入口动画, CssHandler
     
@@ -232,6 +235,17 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "移动端 max-width 限制合理化") {
+Var =
+(
+body {
+    margin: auto;
+    max-width: 540px;
+    min-width: 320px;
+}
 )
 }
 
@@ -449,7 +463,7 @@ if (v == "quickbi控制台入口动画") {
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/quickbi-template.zip")
 }
 
-if (v == "高亮文本 highlight（文字）") {
+if (v == "天行九歌：高亮文本 highlight（文字）") {
 Var =
 (
 .highlight {
@@ -461,7 +475,7 @@ Var =
 }
 )
 }
-if (v == "高亮文本 highlight（背景）") {
+if (v == "非著名程序员：高亮文本 highlight（背景）") {
 Var =
 (
 .highlight {
@@ -3162,6 +3176,7 @@ lg —— 大屏幕 大桌面显示器 (≥1200px)
 code(Var)
 return
 
+::rem::
 ::fuckrem::
 ::fuck-rem::
 ::myrem::
@@ -3240,6 +3255,7 @@ html {
 }
 // body 也增加最大最小宽度限制，避免默认100`%宽度的 block 元素跟随 body 而过大过小
 body {
+    margin: auto;
     max-width: 540px;
     min-width: 320px;
 }

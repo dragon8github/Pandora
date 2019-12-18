@@ -75,11 +75,11 @@
   Menu, VueMenu, Add, proxyTable 配置, VueHandler
   Menu, VueMenu, Add, v-slot 插槽, VueHandler
   Menu, VueMenu, Add, filters 过滤器的使用, VueHandler
-  Menu, VueMenu, Add, vue.directive 指令, VueHandler
   Menu, VueMenu, Add, v-cloak 用来解决渲染之前的尴尬期, VueHandler
   Menu, VueMenu, Add, 动态组件：<component :is='xxx'></component>, VueHandler
   Menu, VueMenu, Add, provide/inject：上下文, VueHandler
   Menu, VueMenu, Add, props.sync与$emit('update'), VueHandler
+  Menu, VueMenu, Add, 🚀 vue.directive 指令, VueHandler
   
   Menu, VueMenu, Add, vue 认知, :vuecognition
   Menu, VueMenu, Add, vue 必知必会, :vuebase
@@ -1748,90 +1748,9 @@ router.afterEach((to, from) => {
 )
 }
 
-if (v == "vue.directive 指令") {
-Var = 
-(
-/* .waves-ripple {
-    position: absolute;
-    border-radius: 100`%;
-    background-image: radial-gradient(circle, rgba(255, 255, 255, .35) 100`%, rgba(0, 0, 0, .15) 100`%);
-    background-clip: padding-box;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-transform: scale(0);
-    -ms-transform: scale(0);
-    transform: scale(0);
-    opacity: 1;
-}
-
-.waves-ripple.z-active {
-    opacity: 0;
-    -webkit-transform: scale(2);
-    -ms-transform: scale(2);
-    transform: scale(2);
-    -webkit-transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;
-    transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;
-    transition: opacity 1.2s ease-out, transform 0.6s ease-out;
-    transition: opacity 1.2s ease-out, transform 0.6s ease-out, -webkit-transform 0.6s ease-out;
-} */
-import './waves.css';
-
-const vueWaves = {};
-vueWaves.install = (Vue, options = {}) => {
-  Vue.directive('waves', {
-    bind(el, binding) {
-      el.addEventListener('click', e => {
-        const customOpts = Object.assign(options, binding.value);
-        const opts = Object.assign({
-            ele: el, // 波纹作用元素
-            type: 'hit', // hit点击位置扩散center中心点扩展
-            color: 'rgba(0, 0, 0, 0.15)' // 波纹颜色
-          }, customOpts),
-          target = opts.ele;
-        if (target) {
-          target.style.position = 'relative';
-          target.style.overflow = 'hidden';
-          const rect = target.getBoundingClientRect();
-          let ripple = target.querySelector('.waves-ripple');
-          if (!ripple) {
-            ripple = document.createElement('span');
-            ripple.className = 'waves-ripple';
-            ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
-            target.appendChild(ripple);
-          } else {
-            ripple.className = 'waves-ripple';
-          }
-          switch (opts.type) {
-            case 'center':
-              ripple.style.top = (rect.height / 2 - ripple.offsetHeight / 2) + 'px';
-              ripple.style.left = (rect.width / 2 - ripple.offsetWidth / 2) + 'px';
-              break;
-            default:
-              ripple.style.top = (e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop) + 'px';
-              ripple.style.left = (e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft) + 'px';
-          }
-          ripple.style.backgroundColor = opts.color;
-          ripple.className = 'waves-ripple z-active';
-          return false;
-        }
-      }, false);
-    }
-  })
-};
-
-export default vueWaves;
-
-/* 
-main.js 中这样注册使用
-import vueWaves from './directive/waves'
-Vue.use(vueWaves)
-
-<a class='header__crumbs--btn' @click.stop='goback' v-waves>返回</a>
- */
-)
+if (v == "🚀 vue.directive 指令") {
+_send("vue.dir", true, true)
+return
 }
 
 if (v == "波浪效果指令：v-waves") {
@@ -4776,4 +4695,148 @@ var %OutputVar% = Vue.extend({
 Vue.component('%OutputVar%', %OutputVar%)
 )
 code(Var)
+return
+
+::vue.dir::
+::vue.zhiling::
+Var = 
+(
+  // <div id='box' v-drag='{ warp: "#app", tap: tapHandler, longTap: longTapHandler }'></div>
+  Vue.directive('drag', {
+    inserted (el, { value = {} }) {
+      // 获取组件的容器 
+        const container = value.warp ? document.querySelector(value.warp) : document.body
+
+        const maxW = container.offsetWidth - el.offsetWidth
+
+        const maxH = container.offsetHeight - el.offsetHeight
+
+        let distanceLeft, distanceTop
+
+        let longClick, timer
+
+        el.addEventListener('touchstart', e => {
+            longClick = 0, timer = setTimeout(() => longClick = 1, 500)
+
+            distanceLeft = e.targetTouches[0].clientX - el.offsetLeft
+            distanceTop = e.targetTouches[0].clientY - el.offsetTop
+
+            document.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
+        })
+
+        el.addEventListener('touchmove', e => {
+          // 清空 timer
+            clearTimeout(timer), timer = 0
+
+            let left = e.targetTouches[0].clientX - distanceLeft
+            let top = e.targetTouches[0].clientY - distanceTop
+
+            // 防止左右越界
+            if (left <= 0)    left = 0
+            if (left >= maxW) left = maxW
+
+            // 防止上下越界
+            if (top <= 0)    top = 0 
+            if (top >= maxH) top = maxH
+
+            el.style.left = left + 'px'
+            el.style.top  = top + 'px'
+        })
+
+        el.addEventListener('touchend', e => {
+          // 如果是点击事件
+            if (timer != 0 && longClick == 0) 
+              value.tap && value.tap()
+
+            // 如果是长按事件（只有松开的一瞬间才会触发）
+            if (timer && longClick == 1)
+                value.longTap && value.longTap()
+
+            document.removeEventListener('touchmove', e => e.preventDefault())
+        })
+    }
+  })
+  ---
+  /* .waves-ripple {
+      position: absolute;
+      border-radius: 100`%;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, .35) 100`%, rgba(0, 0, 0, .15) 100`%);
+      background-clip: padding-box;
+      pointer-events: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+      transform: scale(0);
+      opacity: 1;
+  }
+
+  .waves-ripple.z-active {
+      opacity: 0;
+      -webkit-transform: scale(2);
+      -ms-transform: scale(2);
+      transform: scale(2);
+      -webkit-transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;
+      transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;
+      transition: opacity 1.2s ease-out, transform 0.6s ease-out;
+      transition: opacity 1.2s ease-out, transform 0.6s ease-out, -webkit-transform 0.6s ease-out;
+  } */
+  import './waves.css';
+
+  const vueWaves = {};
+  vueWaves.install = (Vue, options = {}) => {
+    Vue.directive('waves', {
+      bind(el, binding) {
+        el.addEventListener('click', e => {
+          const customOpts = Object.assign(options, binding.value);
+          const opts = Object.assign({
+              ele: el, // 波纹作用元素
+              type: 'hit', // hit点击位置扩散center中心点扩展
+              color: 'rgba(0, 0, 0, 0.15)' // 波纹颜色
+            }, customOpts),
+            target = opts.ele;
+          if (target) {
+            target.style.position = 'relative';
+            target.style.overflow = 'hidden';
+            const rect = target.getBoundingClientRect();
+            let ripple = target.querySelector('.waves-ripple');
+            if (!ripple) {
+              ripple = document.createElement('span');
+              ripple.className = 'waves-ripple';
+              ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
+              target.appendChild(ripple);
+            } else {
+              ripple.className = 'waves-ripple';
+            }
+            switch (opts.type) {
+              case 'center':
+                ripple.style.top = (rect.height / 2 - ripple.offsetHeight / 2) + 'px';
+                ripple.style.left = (rect.width / 2 - ripple.offsetWidth / 2) + 'px';
+                break;
+              default:
+                ripple.style.top = (e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop) + 'px';
+                ripple.style.left = (e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft) + 'px';
+            }
+            ripple.style.backgroundColor = opts.color;
+            ripple.className = 'waves-ripple z-active';
+            return false;
+          }
+        }, false);
+      }
+    })
+  };
+
+  export default vueWaves;
+
+  /* 
+  main.js 中这样注册使用
+  import vueWaves from './directive/waves'
+  Vue.use(vueWaves)
+
+  <a class='header__crumbs--btn' @click.stop='goback' v-waves>返回</a>
+   */
+)
+txtit(Var)
 return

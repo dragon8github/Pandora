@@ -1,4 +1,20 @@
-﻿::wancheng::
+﻿::ios::
+Var =
+(
+裴(péi)祥(xiáng)艮(gěn)
+)
+code(Var)
+return
+
+::sk::
+Var =
+(
+Sketch
+)
+code(Var)
+return
+
+::wancheng::
 ::fin::
 Var =
 (
@@ -32,7 +48,6 @@ code(Var)
 return
 
 ^!j::
-^j::
     WinGetTitle, title, A
     if (InStr(title, "Sublime Text") == 0) {
         tmp := Clipboard
@@ -1707,7 +1722,7 @@ return
 ::wx::
 Var =
 (
-wx926e9eb2e54b3e1b
+微信小程序
 )
 code(Var)
 return

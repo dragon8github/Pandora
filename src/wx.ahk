@@ -2,6 +2,7 @@
     Menu, wxMenu, Add, this.setData, wxHandler
     Menu, wxMenu, Add, globalData, wxHandler
     Menu, wxMenu, Add, dom, wxHandler
+    Menu, wxMenu, Add, animate, wxHandler
     Menu, wxMenu, Add, canvas, wxHandler
     Menu, wxMenu, Add, choose, wxHandler
     Menu, wxMenu, Add, sheet, wxHandler
@@ -18,6 +19,7 @@
     Menu, wxMenu, Add, back, wxHandler
     Menu, wxMenu, Add, redirect, wxHandler
     Menu, wxMenu, Add, push, wxHandler
+    Menu, wxMenu, Add, 获取来路from, wxHandler
     
     Menu, wxMenu, Add
     Menu, wxMenu, Add
@@ -31,9 +33,7 @@
 
     Menu, wxMenu, Add, 获取图片信息：getImageInfo/getFileInfo, wxHandler
     Menu, wxMenu, Add, 摄像头ccamera, wxHandler
-    Menu, wxMenu, Add, 获取用户信息, wxHandler
     Menu, wxMenu, Add, 页面调用组件方法, wxHandler
-    Menu, wxMenu, Add, animate, wxHandler
     Menu, wxMenu, Add, 获取地理信息, wxHandler
     Menu, wxMenu, Add, 获取地理信息2, wxHandler
     Menu, wxMenu, Add, 腾讯地图解析地理位置, wxHandler
@@ -44,6 +44,7 @@
     Menu, wxMenu, Add
     Menu, wxMenu, Add
 
+    Menu, wxMenu, Add, 获取用户信息, wxHandler
     Menu, wxMenu, Add, canvas: 实例化+清空画布+绘制图片+绘制文本+绘制圆+渲染, wxHandler
     Menu, wxMenu, Add, 使用 westore 来进行状态管理, wxHandler
     Menu, wxMenu, Add, 将回调地狱转换为 Promise 形式, wxHandler
@@ -54,6 +55,7 @@
     Menu, wxMenu, Add, 保存相册 + 授权相册, wxHandler
     Menu, wxMenu, Add, 微信支付, wxHandler
     Menu, wxMenu, Add, pm解决方案, wxHandler
+    Menu, wxMenu, Add, 自定义一个组件, wxHandler
 
     Menu, wxMenu, Show
     Menu, wxMenu, DeleteAll
@@ -71,6 +73,24 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "自定义一个组件") {
+_send("wx::cmp", true, true)
+return
+}
+
+if (v == "获取来路from") {
+Var =
+(
+// 获取当前路由
+this.router = getCurrentPages();
+
+// 获取来路
+const from = this.router.length >= 2 ? this.router[this.router.length - 2].route : ''
+
+wx.redirectTo({ url: '/' + from, })
 )
 }
 
@@ -1115,4 +1135,29 @@ this.setData({
 })
 )
 code(Var)
+return
+
+::wx`:`:cmp::
+Var =
+(
+// components/layer/index.json
+{
+  "component": true,
+  "usingComponents": {}
+}
+
+// 其他照旧
+---
+// index.json
+{
+  "usingComponents": {
+    "layerMaterial": "/components/layerMaterial/index"
+  }
+}
+
+// index.wxml
+<!-- 素材弹出层 -->
+<layerMaterial id='layerMaterial' types='{{[1,2,3]}}' items='{{[1,2,3]}}' bind:choose='chooseMaterial'></layerMaterial>
+)
+txtit(Var)
 return
