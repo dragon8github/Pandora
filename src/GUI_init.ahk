@@ -376,6 +376,7 @@ Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令.html
 Gui, Pandora:Add, Text, gscriptzhuruhtml W180, 新建书签栏脚本注入.html
 Gui, Pandora:Add, Text, gxiexianhtml W180, 新建勾股定理画斜线.html
 Gui, Pandora:Add, Text, gcssbodongsandian W180, 新建css波动散点.html
+Gui, Pandora:Add, Text, gzhilinghtml W180, 新建Vue指令directive.html
 
 
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+20,新建.echartsDemo.html（官方demo）

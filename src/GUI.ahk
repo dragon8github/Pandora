@@ -9637,3 +9637,115 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+zhilinghtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+        <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100`%;
+        }
+
+        #app {
+            width: 100`%;
+            height: 100`%;
+        }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            请打开 F12 浏览器模式来预览这个功能
+            <div id='box' v-drag='{ warp: "#app", tap: tapHandler, longTap: longTapHandler }' style='position: absolute;top: 30px;left: 30px;background:red; width: 50px; height: 50px; border-radius:50`%'></div>
+        </div>
+    </body>
+    <script>
+    // <div id='box' v-drag='{ warp: "#app", tap: tapHandler, longTap: longTapHandler }'></div>
+    Vue.directive('drag', {
+        inserted(el, { value = {} }) {
+            // 获取组件的容器 
+            const container = value.warp ? document.querySelector(value.warp) : document.body
+
+            const maxW = container.offsetWidth - el.offsetWidth
+
+            const maxH = container.offsetHeight - el.offsetHeight
+
+            let distanceLeft, distanceTop
+
+            let longClick, timer
+
+            el.addEventListener('touchstart', e => {
+                longClick = 0, timer = setTimeout(() => longClick = 1, 500)
+
+                distanceLeft = e.targetTouches[0].clientX - el.offsetLeft
+                distanceTop = e.targetTouches[0].clientY - el.offsetTop
+
+                document.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
+            })
+
+            el.addEventListener('touchmove', e => {
+                // 清空 timer
+                clearTimeout(timer), timer = 0
+
+                let left = e.targetTouches[0].clientX - distanceLeft
+                let top = e.targetTouches[0].clientY - distanceTop
+
+                // 防止左右越界
+                if (left <= 0) left = 0
+                if (left >= maxW) left = maxW
+
+                // 防止上下越界
+                if (top <= 0) top = 0
+                if (top >= maxH) top = maxH
+
+                el.style.left = left + 'px'
+                el.style.top = top + 'px'
+            })
+
+            el.addEventListener('touchend', e => {
+                // 如果是点击事件
+                if (timer != 0 && longClick == 0)
+                    value.tap && value.tap()
+
+                // 如果是长按事件（只有松开的一瞬间才会触发）
+                if (timer && longClick == 1)
+                    value.longTap && value.longTap()
+
+                document.removeEventListener('touchmove', e => e.preventDefault())
+            })
+        }
+    })
+
+    new Vue({
+        el: '#app',
+        data: {
+            items: [],
+            text: '',
+            obj: {},
+        },
+        methods: {
+            tapHandler() {
+                console.log(20191218113749, 123)
+            },
+            longTapHandler() {
+                console.log(20191218113749, 123)
+            },
+        },
+    })
+    </script>
+
+    </html>
+),  %name%
+RunBy(name)
+run, % name
+return
