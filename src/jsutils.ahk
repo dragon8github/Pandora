@@ -228,6 +228,8 @@
     
     
     ; @my
+
+    Menu, utilsmy, Add, 图片转base64:img2base64, utilsHandler
     Menu, utilsmy, Add, 新的数组工具：maps, utilsHandler
     Menu, utilsmy, Add, 反转函数参数：我的函数我做主, utilsHandler
     Menu, utilsmy, Add, 经典 token 解决方案：cookie-token-http, utilsHandler
@@ -442,6 +444,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "图片转base64:img2base64") {
+_send("img2base64", true, true)
+return
 }
 
 if (v == "反转函数参数：我的函数我做主") {
@@ -1507,12 +1514,46 @@ return
 if (v == "微信获取头像和人员名册") {
 Var = 
 (
-var users = [...document.querySelectorAll('.member.ng-scope')]
-users.map(_ => {
-    const name = _.querySelector('.nickname').innerText
-    const icon = _.querySelector('.avatar').getAttribute('src')
-    return { name, icon: ``https://wx.qq.com/${icon}`` }
+// data:image/png;base64,
+const getBase64Image = img => {
+    const { width, height } = img
+    const canvas = document.createElement('canvas')
+    canvas.width = width
+    canvas.height = height
+    const ctx = canvas.getContext('2d')
+    ctx.drawImage(img, 0, 0, width, height)
+    const ext = img.src.substring(img.src.lastIndexOf('.') + 1).toLowerCase()
+    const dataURL = canvas.toDataURL('image/' + ext)
+    return dataURL
+}
+
+const img2Base64 = url => new Promise((resolve, reject) => {
+   const img = new Image()
+   img.setAttribute('crossOrigin', 'anonymous')
+   img.src = url
+   img.onload = () => resolve(getBase64Image(img))
+   img.onerror = () => reject('err')
 })
+
+;(async function(){
+    const users = [...document.querySelectorAll('.member.ng-scope')]
+    const info = users.map(_ => {
+        const name = _.querySelector('.nickname').innerText
+        const icon = _.querySelector('.avatar').getAttribute('src')
+        return { name, icon: `https://wx.qq.com${icon}`}
+    })
+
+    var promise_data = info.map(async (_, index) => {
+        var avatar = await img2Base64(_.icon)
+        console.log(`已收录${_.name}的头像：${index}`)
+        return Object.assign({}, _, { avatar })
+    })
+
+    var _data = await Promise.all(promise_data)
+    
+    // cosole.save
+    console.log('所有数据', _data)
+}())
 )
 }
 
@@ -5191,5 +5232,50 @@ export default {
 )
 }
 
+code(Var)
+return
+
+
+::base64::
+::img2base64::
+Var =
+(
+var getBase64Image = img => {
+    var { width, height } = img
+    var canvas = document.createElement('canvas')
+    canvas.width = width
+    canvas.height = height
+    var ctx = canvas.getContext('2d')
+    ctx.drawImage(img, 0, 0, width, height)
+    var ext = img.src.substring(img.src.lastIndexOf('.') + 1).toLowerCase()
+    var dataURL = canvas.toDataURL('image/' + ext)
+    return dataURL
+}
+
+
+var img2Base64 = url => new Promise((resolve, reject) => {
+   var img = new Image()
+   img.setAttribute('crossOrigin', 'anonymous')
+   img.src = url
+   img.onload = function() {
+       var base64 = getBase64Image(img)
+       resolve(base64)
+   }
+})
+
+
+;(async function(){
+    var promise_data = data.map(async (_, index) => {
+        var avatar = await img2Base64(_.icon)
+        console.log(`已收录${_.name}的头像：${index}`)
+        return Object.assign({}, _, { avatar })
+    })
+
+    var _data = await Promise.all(promise_data)
+  
+    // cosole.save
+    console.log('所有数据', _data)
+}())
+)
 code(Var)
 return

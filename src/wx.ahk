@@ -56,6 +56,7 @@
     Menu, wxMenu, Add, 微信支付, wxHandler
     Menu, wxMenu, Add, pm解决方案, wxHandler
     Menu, wxMenu, Add, 自定义一个组件, wxHandler
+    Menu, wxMenu, Add, 二次授权地理位置, wxHandler
 
     Menu, wxMenu, Show
     Menu, wxMenu, DeleteAll
@@ -73,6 +74,46 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "二次授权地理位置") {
+Var =
+(
+async _getLocation() {
+  const getLocation = app.pm(wx.getLocation)
+  const getSetting = app.pm(wx.getSetting)
+  const openSetting = app.pm(wx.openSetting)
+  const showModal = app.pm(wx.showModal)
+
+  const { authSetting } = await getSetting()
+
+  // 如果为false，说明“拒绝”授权
+  if (authSetting['scope.userLocation'] === false) {
+
+    const { cancel, confirm } = await showModal({ title: '请求授权当前位置', content: '需要获取您的地理位置,确认授权?' })
+
+    if (confirm) {
+      // 打开设置面板，等待用户设置
+      const { authSetting } = await openSetting()
+      // 用户选择完毕，查看选择是否已选？
+      if (authSetting['scope.userLocation']) {
+        // 已选，发起API
+        return getLocation()
+      } else {
+        wx.showToast({ title: '请授权地理信息才能使用此功能', icon: 'none' })
+        throw new Error('getLocation:fail auth deny')
+      }
+    } else {
+      wx.showToast({ title: '请授权地理信息才能使用此功能', icon: 'none' })
+      throw new Error('getLocation:fail auth deny')
+    }
+  } else {
+    return getLocation()
+  }
+},
+
+const { latitude, longitude } = await this._getLocation()
 )
 }
 

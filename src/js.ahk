@@ -9165,10 +9165,50 @@ return
 
 
 
-::js.cache::
 ::cache::
-Var =
+::cachemethod::
+::cachefunc::
+::cachefunction::
+::paramscache::
+::paramcache::
+::hanshuhuancun::
+::hanshucache::
+::funcache::
+::fncache::
+::mem::
+::canshuhuancun::
+::paramhuancun::
+::paramshuancun::
+Var = 
 (
+// 参数标记缓存器
+var memoized = function (fn) {
+      var cache = {};
+      return function () {
+        // 我们约定以第一个参数作为key
+        var __KEY__ = arguments[0]
+        // 记录缓存
+        return cache[__KEY__] || (cache[__KEY__] = fn.apply(this, arguments));
+      };
+};
+
+const memoized = fn => {
+	const lookupTable = {};
+	// setInterval( () => console.log(lookupTable) , 1000); // 可以通过解释这个来观察缓存的变化
+	return arg => lookupTable[arg] || (lookupTable[arg] = fn(arg));
+}
+
+// 阶乘的demo
+let fastFactorial = memoized(n => {
+	if (n === 0) {
+		return 1;
+	}
+	// 这是一个递归，并且每一次递归都具有缓存过程
+	return n * fastFactorial(n -1);
+});
+
+fastFactorial(5)
+---
 /**
  * @func
  * @desc - 灵活使用闭包的概念。
@@ -9203,53 +9243,7 @@ b.showAllCache();
 
 /* 从输出的结果得知两者的闭包互不相干 */
 )
-code(Var)
-return
-
-::cachemethod::
-::cachefunc::
-::cachefunction::
-::paramscache::
-::paramcache::
-::hanshuhuancun::
-::hanshucache::
-::funcache::
-::fncache::
-::memoized::
-::canshuhuancun::
-::paramhuancun::
-::paramshuancun::
-Var = 
-(
-// 参数标记缓存器
-var memoized = function (fn) {
-      var cache = {};
-      return function () {
-        // 我们约定以第一个参数作为key
-        var __KEY__ = arguments[0]
-        // 记录缓存
-        return cache[__KEY__] || (cache[__KEY__] = fn.apply(this, arguments));
-      };
-};
-
-const memoized = fn => {
-	const lookupTable = {};
-	// setInterval( () => console.log(lookupTable) , 1000); // 可以通过解释这个来观察缓存的变化
-	return arg => lookupTable[arg] || (lookupTable[arg] = fn(arg));
-}
-
-// 阶乘的demo
-let fastFactorial = memoized(n => {
-	if (n === 0) {
-		return 1;
-	}
-	// 这是一个递归，并且每一次递归都具有缓存过程
-	return n * fastFactorial(n -1);
-});
-
-fastFactorial(5)
-)
-code(Var)
+txtit(Var)
 return
 
 ::$map::
@@ -9928,41 +9922,32 @@ code(Var)
 return
 
 ::gen::
-::gen5::
-::gensync::
-::gen.sync::
 Var =
 (
 let gen;
 
 let getDataOne = () => {
-	setTimeout(function () {
-		gen.next('one')
-	}, 1000);
+    setTimeout(function () {
+        gen.next('one')
+    }, 1000);
 }
 
 let getDataTwo = () => {
-	setTimeout(function () {
-		gen.next('two')
-	}, 1000);
+    setTimeout(function () {
+        gen.next('two')
+    }, 1000);
 }
 
 function *main() {
-	let dataone = yield getDataOne();
-	let datatwo = yield getDataTwo();
-	console.log(dataone, datatwo);
+    let dataone = yield getDataOne();
+    let datatwo = yield getDataTwo();
+    console.log(dataone, datatwo);
 }
 
 gen = main();
 gen.next();  // {value: undefined, done: false}
 // 1秒后输出： one two
-)
-code(Var)
-return
-
-::gen1::
-Var =
-(
+---
 function *gen() {
     return 'first generator';
 }
@@ -9975,13 +9960,7 @@ generatorResult.next() // {value: "first generator", done: true}
 
 // Generator 如同一个序列：一旦序列中的值被消费，你就不能再次消费它。
 generatorResult.next() // undefined
-)
-code(Var)
-return
-
-::gen2::
-Var =
-(
+---
 function *gen() {
     yield 'fitst';
     yield 'second';
@@ -9992,13 +9971,7 @@ let genResult = gen();
 genResult.next().value // first
 genResult.next().value // second
 genResult.next().value // third
-)
-code(Var)
-return
-
-::gen3::
-Var =
-(
+---
 function *gen() {
     yield 'fitst';
     yield 'second';
@@ -10012,13 +9985,7 @@ for (const value of gen()) {
 // fitst
 // second
 // third
-)
-code(Var)
-return
-
-::gen4::
-Var =
-(
+---
 function *gen() {
     var firstname = yield;
     var secondname = yield;
@@ -10039,7 +10006,7 @@ genResult.next('Right') // Mr. Right
 // 同前面一样，传入的 'Right' 将替换 yield，并在赋值完后继续执行。
 // 由于没有yield了。所以正常执行了: genResult.next('Right') // Mr. Right
 )
-code(Var)
+txtit(Var)
 return
 
 ::curry::
@@ -10978,9 +10945,9 @@ Var =
 (
 export const hasClass = (el, className) => {
   if (el.classList)
-    el.classList.contains(className);
+    return el.classList.contains(className);
   else
-    new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+    return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
 }
 )
 code(Var)

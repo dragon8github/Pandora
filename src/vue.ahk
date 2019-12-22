@@ -3613,6 +3613,18 @@ module.exports = {
          *     }
          * },
          */
+         // 关闭eslint配置
+         overlay: {warnings: false, errors: false },
+         lintOnSave: false,
+    },
+    css: {
+      loaderOptions: {
+        sass: {
+          data: `
+            @import "@/scss/functions.scss";
+          `
+        }
+      }
     },
     // webpack 配置
     configureWebpack: (config) => {
@@ -3629,6 +3641,8 @@ module.exports = {
             config.devtool = 'source-map'
         }
 
+        config.output.filename('[name].[hash].js').end();
+        
         /*  
         config.module.rules.concat[{
             test: /\.svg$/,
