@@ -2,61 +2,56 @@
     Menu, wxMenu, Add, this.setData, wxHandler
     Menu, wxMenu, Add, globalData, wxHandler
     Menu, wxMenu, Add, dom, wxHandler
-    Menu, wxMenu, Add, animate, wxHandler
-    Menu, wxMenu, Add, canvas, wxHandler
-    Menu, wxMenu, Add, choose, wxHandler
-    Menu, wxMenu, Add, sheet, wxHandler
-    Menu, wxMenu, Add, swiper, wxHandler
     Menu, wxMenu, Add, event.currentTarget.dataset, wxHandler
     Menu, wxMenu, Add, wx:if / wx:elif / wx:else, wxHandler
     Menu, wxMenu, Add, setStorageSync, wxHandler
     Menu, wxMenu, Add, emit事件推送：this.triggerEvent, wxHandler
     Menu, wxMenu, Add, catchtap:click 防止冒泡, wxHandler
-
-    Menu, wxMenu, Add
-    Menu, wxMenu, Add
-    
-    Menu, wxMenu, Add, back, wxHandler
-    Menu, wxMenu, Add, redirect, wxHandler
-    Menu, wxMenu, Add, push, wxHandler
-    Menu, wxMenu, Add, 获取来路from, wxHandler
-    
-    Menu, wxMenu, Add
-    Menu, wxMenu, Add
-    
-    Menu, wxMenu, Add, load, wxHandler
-    Menu, wxMenu, Add, model, wxHandler
-    Menu, wxMenu, Add, toast, wxHandler
-    
-    Menu, wxMenu, Add
-    Menu, wxMenu, Add
-
-    Menu, wxMenu, Add, 获取图片信息：getImageInfo/getFileInfo, wxHandler
-    Menu, wxMenu, Add, 摄像头ccamera, wxHandler
-    Menu, wxMenu, Add, 页面调用组件方法, wxHandler
-    Menu, wxMenu, Add, 获取地理信息, wxHandler
-    Menu, wxMenu, Add, 获取地理信息2, wxHandler
-    Menu, wxMenu, Add, 腾讯地图解析地理位置, wxHandler
-    Menu, wxMenu, Add, 百度地图解析地理位置, wxHandler
-    Menu, wxMenu, Add, previewImage预览图片, wxHandler
     Menu, wxMenu, Add, getSystemInfoSync, wxHandler
 
     Menu, wxMenu, Add
     Menu, wxMenu, Add
 
-    Menu, wxMenu, Add, 获取用户信息, wxHandler
-    Menu, wxMenu, Add, canvas: 实例化+清空画布+绘制图片+绘制文本+绘制圆+渲染, wxHandler
-    Menu, wxMenu, Add, 使用 westore 来进行状态管理, wxHandler
-    Menu, wxMenu, Add, 将回调地狱转换为 Promise 形式, wxHandler
-    Menu, wxMenu, Add, 合成图片 = 下载图片 + 拍照 + 获取图片信息 + canvas合成, wxHandler
+    Menu, wxMenu, Add, canvas, wxHandler
+    Menu, wxMenu, Add, choose, wxHandler
+    Menu, wxMenu, Add, sheet, wxHandler
+    Menu, wxMenu, Add, swiper, wxHandler
+    Menu, wxMenu, Add, 获取来路from, wxHandler
+    Menu, wxMenu, Add, animate, wxHandler
+
+    Menu, wxMenu, Add
+    Menu, wxMenu, Add
+
+    Menu, wxMenu, Add, 摄像头ccamera, wxHandler
+    Menu, wxMenu, Add, previewImage预览图片, wxHandler
+    Menu, wxMenu, Add, 获取图片信息：getImageInfo/getFileInfo, wxHandler
     Menu, wxMenu, Add, 上传图片, wxHandler
-    Menu, wxMenu, Add, request.js, wxHandler
-    Menu, wxMenu, Add, rpx, wxHandler
+    Menu, wxMenu, Add, 压缩图片策略, wxHandler
     Menu, wxMenu, Add, 保存相册 + 授权相册, wxHandler
-    Menu, wxMenu, Add, 微信支付, wxHandler
-    Menu, wxMenu, Add, pm解决方案, wxHandler
-    Menu, wxMenu, Add, 自定义一个组件, wxHandler
+    Menu, wxMenu, Add, canvas: 实例化 + 清空画布 + 绘制图片 + 绘制文本 + 绘制圆 + 渲染, wxHandler
+    Menu, wxMenu, Add, 合成图片 = 下载图片 + 拍照 + 获取图片信息 + canvas合成, wxHandler
+
+    Menu, wxMenu, Add
+    Menu, wxMenu, Add
+
+
+    Menu, wxMenu, Add, 获取地理信息, wxHandler
+    Menu, wxMenu, Add, 获取地理信息2, wxHandler
+    Menu, wxMenu, Add, 腾讯地图解析地理位置, wxHandler
+    Menu, wxMenu, Add, 百度地图解析地理位置, wxHandler
     Menu, wxMenu, Add, 二次授权地理位置, wxHandler
+
+    Menu, wxMenu, Add
+    Menu, wxMenu, Add
+
+    Menu, wxMenu, Add, pm解决方案, wxHandler
+    Menu, wxMenu, Add, 获取用户信息, wxHandler
+    Menu, wxMenu, Add, request.js, wxHandler
+    
+    Menu, wxMenu, Add, rpx, wxHandler
+    Menu, wxMenu, Add, 微信支付, wxHandler
+    Menu, wxMenu, Add, 自定义一个组件, wxHandler
+    Menu, wxMenu, Add, 页面调用组件方法, wxHandler
 
     Menu, wxMenu, Show
     Menu, wxMenu, DeleteAll
@@ -74,6 +69,32 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "压缩图片策略") {
+Var =
+(
+async go() {
+  wx.showLoading({ title: '正在上传...', })
+
+  let file = this.data.previewPic
+  const compressImage = app.pm(wx.compressImage)
+  const getFileInfo = app.pm(wx.getFileInfo)
+
+  const info = await getFileInfo({ filePath: file })
+  const kb = info.size / 1024
+  const distance = kb - 1024
+
+  if (distance > 0) {
+    const res = await compressImage({ src: this.data.previewPic, quality: (1 - distance / kb) * 100 })
+    file = res.tempFilePath
+  }
+
+  const _UPLOAD_FILE = await UPLOAD_FILE(file)
+  const _POST_ALBUM = await POST_ALBUM({ imageUrl: _UPLOAD_FILE.url })
+  wx.showToast({ title: '图片已上传' })
+},
 )
 }
 
@@ -250,7 +271,7 @@ const v = await requestPayment(_BUYVIP)
 )
 }
 
-if (v == "canvas: 实例化+清空画布+绘制图片+绘制文本+绘制圆+渲染") {
+if (v == "canvas: 实例化 + 清空画布 + 绘制图片 + 绘制文本 + 绘制圆 + 渲染") {
 Var =
 (
 <canvas canvas-id='myCanvas' class='gen-pyq' ></canvas>
@@ -435,52 +456,91 @@ return
 if (v == "合成图片 = 下载图片 + 拍照 + 获取图片信息 + canvas合成") {
 Var =
 (
-
 onLoad: function (options) {
   this.app = getApp()
   this.canvas = wx.createCanvasContext('myCanvas')
   this.ctx = wx.createCameraContext()
 },
+canvas2img() {
+    const canvasToTempFilePath = this.app.pm(wx.canvasToTempFilePath)
 
+    this.canvas.draw(true, async _ => {
+        wx.hideLoading()
+        // 画布准备
+        const { tempFilePath: pic } = await canvasToTempFilePath({ x: 0, y: 0, canvasId: 'myCanvas' })
 
-async go() {
-  wx.showLoading({ title: '图片处理中...', })
+        this.app.globalData.previewPic = pic
+        this.setData({ pic: pic })
+        wx.navigateTo({ url: '/pages/preview/index' })
 
-  const downloadFile = this.app.pm(wx.downloadFile)
-  const getImageInfo = this.app.pm(wx.getImageInfo)
-  const takePhoto = this.app.pm(this.ctx.takePhoto.bind(this.ctx))
-  const canvasToTempFilePath = this.app.pm(wx.canvasToTempFilePath)
-
-  const { tempFilePath } = await downloadFile({ url: this.data.curImg })
-  const { tempImagePath } = await takePhoto({ quality: 'high' })
-  const { width, height } = await getImageInfo({ src: tempImagePath })
-
-  this.canvas.drawImage(tempImagePath, 0, 0, width, height)
-  this.canvas.drawImage(tempFilePath, 0, 0, width, height)
-  
-  this.canvas.draw(true, async _ => {
-       wx.hideLoading()
-
-       const { tempFilePath: pic } = await canvasToTempFilePath({ x: 0, y: 0, canvasId: 'myCanvas' })
-       this.app.globalData.previewPic = pic
-       wx.navigateTo({ url: '/pages/preview/index' })
-
-
-      /* 保存图片 
-       wx.saveImageToPhotosAlbum({
-           filePath: pic,
-           success(res) {
-               wx.showToast({ title: '保存成功', icon: 'success', duration: 2000 })
-           }
-       })
-        */
-       // 清空画布
-       setTimeout(() => {
-         this.canvas.clearRect(0, 0, width, height)
-         this.canvas.draw()
-       }, 1000);
-     })
+        // 清空画布
+        setTimeout(() => {
+            this.canvas.clearRect(0, 0, sys.screenWidth, sys.screenHeight)
+            this.canvas.draw()
+            this.ctx = wx.createCameraContext()
+        }, 1000);
+    })
 },
+async go() {
+    wx.showLoading({ title: '图片处理中...', })
+
+    try {
+        const query = wx.createSelectorQuery();
+        const downloadFile = this.app.pm(wx.downloadFile)
+        const getImageInfo = this.app.pm(wx.getImageInfo)
+        const takePhoto = this.app.pm(this.ctx.takePhoto.bind(this.ctx))
+
+        // 如果是照片模式：就是照相 + 模板的合成
+        if (this.data.mode === 0) {
+            // 开始拍照
+            const { tempImagePath } = await takePhoto({ quality: 'high' })
+          
+            // 将拍照的加入到全局
+            this.app.globalData.curPic = tempImagePath
+            
+            // 获取照片宽高
+            // const { width, height } = await getImageInfo({ src: tempImagePath })
+
+            // 将照片绘制到canvas
+            this.canvas.drawImage(tempImagePath, 0, 0, sys.screenWidth, sys.screenHeight)
+
+        // 如果是合成模式：就是模板 + 素材的合成
+        } else {
+            // 下载当前素材
+            const { tempFilePath } = await downloadFile({ url: this.data.curImg })
+            // 获取素材的宽高信息
+            query.select('.main__bg').boundingClientRect(res => {
+                const { width, height } = res
+                this.canvas.drawImage(tempFilePath, 0, 0, width, height)
+            }).exec();
+        }
+
+        // 下载当前模板
+        const { tempFilePath: tmpImg } = await downloadFile({ url: this.data.tmpImg })
+
+        // 获取画布的宽高信息
+        query.select('.main__canvas').boundingClientRect(res => {
+            const { width, height } = res
+
+          console.log(20191221115017, width, height)
+            
+            // 绘制画布（直接全屏即可）
+            this.canvas.drawImage(tmpImg, 0, 0, width, height)
+
+            // 正式绘制
+            this.canvas2img()
+        }).exec();
+    } catch (e) {
+        wx.hideLoading()
+        console.error(e)
+        wx.showToast({ title: '合成异常：' + e.errMsg, icon: 'none', duration: 2000 })
+    }
+},
+---
+/* 
+认知：
+1、 我不管你的画布和场景是多大，但 『拍照组件 <camera></camera>』 必须保持屏幕比率，譬如宽度是750rpx，那么高度就是 1334rpx 超出的想办法 overflow:hidden即可，否则会出现bug。
+ */
 )
 }
 
