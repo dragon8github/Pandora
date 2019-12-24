@@ -9241,7 +9241,7 @@ var b = new Cache();
 b.setCache('foo', 'bar2');
 b.showAllCache();
 
-/* 从输出的结果得知两者的闭包互不相干 */
+ 从输出的结果得知两者的闭包互不相干 */
 )
 txtit(Var)
 return
@@ -9515,29 +9515,207 @@ function omit(obj, fields) {
 code(Var)
 return
 
-::rem.js::
-::js.rem::
+::rem::
+::fuckrem::
 Var =
 (
-(function (doc, win) {
-	var docEl = doc.documentElement,
-		resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-		recalc = function () {
-			var clientWidth = docEl.clientWidth;
-			if (!clientWidth) return;
-			if (clientWidth >= 750) {
-				docEl.style.fontSize = '100px';
-			} else {
-				docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
-			}
-		};
+<!-- REM 解决方案 -->
+<script>
+ (function flexible (window, document) {
+   var docEl = document.documentElement
+   function setRemUnit () {
+     // 屏幕宽度
+     var w = docEl.clientWidth
+     // 4320这个数值，是将17280缩小4倍抵达的4k分辨率，对于UI和开发都比较好。
+     var designDraftWidth = 4320
+     // 如果宽度比4320大，那说明是真实屏幕，既17280的大屏幕
+     var _w = w > designDraftWidth ? w : designDraftWidth
 
-	if (!doc.addEventListener) return;
-	win.addEventListener(resizeEvt, recalc, false);
-	doc.addEventListener('DOMContentLoaded', recalc, false);
+
+     window._px2px = function (v) {
+        return v / 432
+     }
+
+     window.px2rem = function (v) {
+        return v / 432
+     }
+
+     var rem = _w / 10
+     docEl.style.fontSize = rem + 'px'
+
+   }
+   setRemUnit()
+   window.addEventListener('resize', setRemUnit)
+   window.addEventListener('pageshow', function (e) {
+     if (e.persisted) {
+       setRemUnit()
+     }
+   })
+ }(window, document))
+</script>
+
+<!-- scss -->
+$root_fontsize: 432; // 因为效果图是4320 / 10
+
+@function rem($px) {
+    @return ($px / $root_fontsize) * 1rem;
+}
+---
+
+// https://github.com/amfe/lib-flexible/blob/2.0/index.js
+(function flexible (window, document) {
+ var docEl = document.documentElement
+ var dpr = window.devicePixelRatio || 1
+ var rem = docEl.clientWidth / 10
+
+ // adjust body font size
+ function setBodyFontSize () {
+   if (document.body) {
+     document.body.style.fontSize = (12 * dpr) + 'px'
+   }
+   else {
+     document.addEventListener('DOMContentLoaded', setBodyFontSize)
+   }
+ }
+ setBodyFontSize();
+
+ // set 1rem = viewWidth / 10
+ function setRemUnit () {
+   docEl.style.fontSize = rem + 'px'
+ }
+
+ setRemUnit()
+
+ window.px2rem = function (v) {
+    return v / rem
+ }
+
+ // reset rem unit on page resize
+ window.addEventListener('resize', setRemUnit)
+ window.addEventListener('pageshow', function (e) {
+   if (e.persisted) {
+     setRemUnit()
+   }
+ })
+
+ // detect 0.5px supports
+ if (dpr >= 2) {
+   var fakeBody = document.createElement('body')
+   var testElement = document.createElement('div')
+   testElement.style.border = '.5px solid transparent'
+   fakeBody.appendChild(testElement)
+   docEl.appendChild(fakeBody)
+   if (testElement.offsetHeight === 1) {
+     docEl.classList.add('hairlines')
+   }
+   docEl.removeChild(fakeBody)
+ }
+}(window, document))
+
+
+// rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推
+$vw_fontsize: 75; // iPhone 6尺寸的根元素大小基准值
+@function rem($px) {
+    @return ($px / $vw_fontsize ) * 1rem;
+}
+// 根元素大小使用 vw 单位
+$vw_design: 750;
+html {
+    font-size: ($vw_fontsize / ($vw_design / 2)) * 100vw;
+    // 同时，通过Media Queries 限制根元素最大最小值
+    @media screen and (max-width: 320px) {
+        font-size: 64px;
+    }
+    @media screen and (min-width: 540px) {
+        font-size: 108px;
+    }
+}
+// body 也增加最大最小宽度限制，避免默认100`%宽度的 block 元素跟随 body 而过大过小
+body {
+    margin: auto;
+    max-width: 540px;
+    min-width: 320px;
+}
+---
+<script>
+  (function flexible (window, document) {
+   var docEl = document.documentElement
+   var dpr = window.devicePixelRatio || 1
+   var rem = docEl.clientWidth / 10
+
+   // adjust body font size
+   function setBodyFontSize () {
+     if (document.body) {
+       document.body.style.fontSize = (12 * dpr) + 'px'
+     }
+     else {
+       document.addEventListener('DOMContentLoaded', setBodyFontSize)
+     }
+   }
+   setBodyFontSize();
+
+   // set 1rem = viewWidth / 10
+   function setRemUnit () {
+     docEl.style.fontSize = rem + 'px'
+   }
+
+   setRemUnit()
+
+   window.px2rem = function (v) {
+      return v / rem
+   }
+
+   // reset rem unit on page resize
+   window.addEventListener('resize', setRemUnit)
+   window.addEventListener('pageshow', function (e) {
+     if (e.persisted) {
+       setRemUnit()
+     }
+   })
+
+   // detect 0.5px supports
+   if (dpr >= 2) {
+     var fakeBody = document.createElement('body')
+     var testElement = document.createElement('div')
+     testElement.style.border = '.5px solid transparent'
+     fakeBody.appendChild(testElement)
+     docEl.appendChild(fakeBody)
+     if (testElement.offsetHeight === 1) {
+       docEl.classList.add('hairlines')
+     }
+     docEl.removeChild(fakeBody)
+   }
+  }(window, document))
+</script>
+
+<!-- scss -->
+
+// iPhone 6尺寸的根元素大小基准值
+$vw_fontsize: 75;
+
+@function rem($px) {
+    @return ($px / $vw_fontsize ) * 1rem;
+}
+---
+(function (doc, win) {
+  var docEl = doc.documentElement,
+    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+    recalc = function () {
+      var clientWidth = docEl.clientWidth;
+      if (!clientWidth) return;
+      if (clientWidth >= 750) {
+        docEl.style.fontSize = '100px';
+      } else {
+        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+      }
+    };
+
+  if (!doc.addEventListener) return;
+  win.addEventListener(resizeEvt, recalc, false);
+  doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document, window);
 )
-code(Var)
+txtit(Var)
 return
 
 ::cookie::
@@ -9553,7 +9731,7 @@ Var =
  * @param {String} name
  * @param {String} value
  * @param {Number} expires
- */
+ 
 function setCookie(name, value, expires) {
     var cookieString = name + "=" + escape(value);
     //判斷是否設置過期時間,0代表關閉瀏覽器時失效

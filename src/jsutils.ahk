@@ -287,6 +287,7 @@
     Menu, utilsmy, Add, 通过URL判断是否本地开发环境, utilsHandler
     Menu, utilsmy, Add, 微信群组随机取人头, utilsHandler
     Menu, utilsmy, Add, 微信获取头像和人员名册, utilsHandler
+    Menu, utilsmy, Add, 钉钉获取组织架构（不成熟）, utilsHandler
     Menu, utilsmy, Add, utils.js, utilsHandler
     
 
@@ -443,6 +444,155 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "钉钉获取组织架构（不成熟）") {
+Var =
+(
+const preview = async () => {
+    // 面包屑导航栏
+    const breadcrumb = [...document.querySelectorAll('.breadcrumb')]
+
+    // 找到上一级
+    const prevIndex = breadcrumb.findIndex(e => e.querySelector('[ng-if="$last"]')) - 1
+
+    if (prevIndex >= 0) {
+        // 返回上一级
+        breadcrumb[prevIndex].querySelector('a').click()
+
+        // 延迟 click 这个动作的时间
+        await wait(_ => {}, 1000)
+
+        // 等待渲染完成
+        await waitWhen(_ => document.querySelectorAll('.info').length)
+    }
+}
+
+class ChainWork {
+    constructor(list = [], work = () => {}, master_next = null) {
+        this.list = list
+        this.work = work
+        this.master_next = master_next
+        this.current = 0
+    }
+
+    async next(next) {
+        this.current = this.current + 1
+        // 超出长度了
+        if (this.current > this.list.length - 1) {
+            await preview()
+            // 继续上游分支的任务
+            this.master_next && this.master_next()
+        } else {
+            this.exec()
+        }
+    }
+
+    exec() {
+        const cursor = this.list[this.current]
+        this.work(cursor, this.next.bind(this))
+    }
+}
+
+var hasClass = (el, className) => {
+  if (el.classList)
+    return el.classList.contains(className);
+  else
+    return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+}
+
+var wait = async (fn = () => {}, t = 0) => {
+    // 计时器（开始）
+    const startTime = +new Date
+    // 执行并等待该函数
+    const result = await fn()
+    // 计时器停止
+    const endTime = +new Date
+    // 获取请求消耗的时间
+    const intervalTime = t - (endTime - startTime)
+    // 返回
+    return new Promise((resolve, reject) => setTimeout(() => resolve(result), intervalTime))
+}
+
+/**
+ ;(async function(){
+    var a = await waitWhen(_ => document.getElementById('1234'))
+    console.log(20191212102924, a)
+ }())
+ */
+var waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+    (function poll() {
+        // 获取回调结果
+        var result = conditionFn()
+
+        // 获取是否超时
+        var isTimeout = Date.now() - startTime > wait
+
+        // 如果条件成立，那么立刻 resolve
+        if (result) return resolve(result)
+
+        // 如果时间超时，立刻 reject
+        if (isTimeout) return reject(result)
+
+        // 否则继续轮询
+        setTimeout(poll, interval)
+    }())
+})
+
+
+
+var poll = async (target, next) => {
+    let { index } = target
+
+    // 点击进入子级
+    // fixbug：每次都不一样。
+    document.querySelectorAll('.team-item .name')[index].click()
+
+    // 延迟 click 这个动作的时间
+    await wait(_ => {}, 1000)
+
+    // 等待渲染完成
+    await waitWhen(_ => document.querySelectorAll('.info').length, 60 * 1000)
+
+    // 当前列表
+    var cur_list = [...document.querySelectorAll('.member-item')]
+
+    // 遍历第一轮
+    target.children = cur_list.map((_el, _index) => Object.assign({}, { 
+        // 记录当前的索引
+        index: _index,
+        // 记录名字（可能是用户名或者部门名）
+        name: _el.querySelector('.info').innerText.trim(), 
+        // 是否具备 children 
+        children:  hasClass(_el, 'team-item') ? [] : null,
+    }))
+
+    // 找到所有具备子列表的元素
+    const childrenList = target.children.filter(_ => _.children)
+
+    // 如果存在则继续深入
+    if (childrenList.length) {
+        // 开启子分支
+        const chain = new ChainWork(childrenList, poll, next)
+
+        // 子分支开始执行
+        chain.exec()
+    
+    // 否则，回到首页
+    } else {
+        // 返回上一页
+        await preview()
+
+        // 开始下一波
+        next()
+    }
+}
+
+
+var list = [...document.querySelectorAll('.team-item .name')].map((el, index) => ({ index, name: el.innerText,  children: [] }))
+const chain = new ChainWork(list, poll)
+chain.exec()
 )
 }
 
@@ -948,22 +1098,22 @@ Var =
 (
 // 求最大公约数
 const greatestCommonDivisor = function(m, n) {
-var u = +m,
-    v = +n,
-    t = v;
+	var u = +m,
+	    v = +n,
+	    t = v;
 
-while (v != 0) {
-    t = u `% v;
-    u = v;
-    v = t;
-}
+	while (v != 0) {
+	    t = u `% v;
+	    u = v;
+	    v = t;
+	}
 
-return u
+	return u
 }
 
 const proportion = function (m, n) {
-const v = greatestCommonDivisor(m, n)
-return ``${m/v}:${n/v}``
+	const v = greatestCommonDivisor(m, n)
+	return ``${m/v}:${n/v}``
 }
 
 /*
@@ -5276,6 +5426,43 @@ var img2Base64 = url => new Promise((resolve, reject) => {
     // cosole.save
     console.log('所有数据', _data)
 }())
+)
+code(Var)
+return
+
+::gongyueshu::
+Var =
+(
+// 求最大公约数
+const greatestCommonDivisor = function(m, n) {
+	var u = +m,
+	    v = +n,
+	    t = v;
+
+	while (v != 0) {
+	    t = u `% v;
+	    u = v;
+	    v = t;
+	}
+
+	return u
+}
+
+const proportion = function (m, n) {
+	const v = greatestCommonDivisor(m, n)
+	return ``${m/v}:${n/v}``
+}
+
+/*
+proportion(1920, 1080)
+"16:9"
+
+proportion(17280, 4320)
+"4:1" 
+
+proportion(12288, 3456)
+"32:9"
+*/
 )
 code(Var)
 return
