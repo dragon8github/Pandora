@@ -89,6 +89,7 @@
 	Menu, NodeMenu, Add, os.EOL, NodeHandler
 	Menu, NodeMenu, Add, nodejs-mvc-pure, NodeHandler
 	Menu, NodeMenu, Add, nodejs sass, NodeHandler
+	Menu, NodeMenu, Add, npx lite-server, NodeHandler
 	
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
@@ -122,17 +123,16 @@
 	Menu, NodeMenu, Add, TJ commander 命令行神器（入门极简版）, NodeHandler
 	Menu, NodeMenu, Add, TJ commander 命令行神器（简单版）, NodeHandler
 	Menu, NodeMenu, Add, TJ commander 命令行神器（加强版）, NodeHandler
-	
+	Menu, NodeMenu, Add, sequelize, :SeqMenu
 
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
 	
+	Menu, NodeMenu, Add, promisify解决方案, NodeHandler
 	Menu, NodeMenu, Add, TinyPNG 压缩方案, NodeHandler
 	Menu, NodeMenu, Add, ejs, NodeHandler
 	Menu, NodeMenu, Add, nodejs实现最简单的模板引擎替换, NodeHandler
-	Menu, NodeMenu, Add, npx lite-server, NodeHandler
 	Menu, NodeMenu, Add, fs 文件IO, :NodeFileHandler
-	Menu, NodeMenu, Add, sequelize, :SeqMenu
 	
 	Menu, NodeMenu, Show
 	Menu, NodeMenu, DeleteAll
@@ -154,6 +154,20 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "promisify解决方案") {
+Var =
+(
+const fs = require('fs')
+const promisify = require('util').promisify
+const readFile = promisify(fs.readFile)
+
+;(async function(){
+	const content = await readFile('./index.js',  { encoding:'utf-8' })
+	console.log(content)
+}())
 )
 }
 
@@ -937,40 +951,6 @@ Send, http.request{tab}
 return
 }
 
-if (v == "fs.write") {
-SendLevel 1
-Send, fs.write{tab}
-return
-}
-
-if (v == "fs.read") {
-SendLevel 1
-Send, fs.read{tab}
-return
-}
-
-if (v == "fs.rename") {
-SendLevel 1
-Send, fs.rename{tab}
-return
-}
-
-if (v == "fs.rm") {
-SendLevel 1
-Send, fs.rm{tab}
-return
-}
-
-if (v == "fs.mkdir") {
-_send("node-mkdir")
-return
-}
-
-if (v == "fs.readdir获取目录文件列表") {
-SendLevel 1
-Send, fs.ls{tab}
-return
-}
 
 if (v == "node.pachong") {
 SendLevel 1
@@ -1019,6 +999,37 @@ console.log('Now watching fuck.txt for changes...');
 )
 code(Var)
 return
+
+
+if (v == "fs.write") {
+_send("fs.write")
+return
+}
+
+if (v == "fs.read") {
+_send("fs.read")
+return
+}
+
+if (v == "fs.rename") {
+_send("fs.rename")
+return
+}
+
+if (v == "fs.rm") {
+_send("fs.rm")
+return
+}
+
+if (v == "fs.mkdir") {
+_send("node-mkdir")
+return
+}
+
+if (v == "fs.readdir获取目录文件列表") {
+_send("fs.ls")
+return
+}
 
 ::node.ch::
 Var =
