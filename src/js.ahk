@@ -10649,6 +10649,8 @@ code(Var)
 return
 
 ::hanshuqudou::
+::fangdou::
+::qudou::
 ::hanshufangdou::
 Var =
 (

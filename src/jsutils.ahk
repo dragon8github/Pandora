@@ -1690,17 +1690,17 @@ const img2Base64 = url => new Promise((resolve, reject) => {
     const info = users.map(_ => {
         const name = _.querySelector('.nickname').innerText
         const icon = _.querySelector('.avatar').getAttribute('src')
-        return { name, icon: `https://wx.qq.com${icon}`}
+        return { name, icon: ``https://wx.qq.com${icon}``}
     })
 
     var promise_data = info.map(async (_, index) => {
         var avatar = await img2Base64(_.icon)
-        console.log(`已收录${_.name}的头像：${index}`)
+        console.log(``已收录${_.name}的头像：${index}``)
         return Object.assign({}, _, { avatar })
     })
 
     var _data = await Promise.all(promise_data)
-    
+
     // cosole.save
     console.log('所有数据', _data)
 }())
@@ -5426,6 +5426,14 @@ var img2Base64 = url => new Promise((resolve, reject) => {
     // cosole.save
     console.log('所有数据', _data)
 }())
+---
+// 将base64转化为图片
+const fs = require('fs')
+const base64Data = avatar.replace(/^data:image\/\w+;base64,/, "")
+const dataBuffer = new Buffer(base64Data, 'base64')
+fs.writeFile('images.png', dataBuffer, function(err) {
+  console.log('success：' + name)
+})
 )
 code(Var)
 return

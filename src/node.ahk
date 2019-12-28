@@ -1,15 +1,21 @@
 ﻿!j::
+	
+	Menu, NodeFileHandler, Add, fs.promises解决方案, NodeHandler
+
+	Menu, NodeFileHandler, Add, 
+	Menu, NodeFileHandler, Add,
+
 	Menu, NodeFileHandler, Add, fs.write, NodeHandler
 	Menu, NodeFileHandler, Add, fs.read, NodeHandler
 	Menu, NodeFileHandler, Add, fs.readFileSync, NodeHandler
 	Menu, NodeFileHandler, Add, fs.rename, NodeHandler
 	Menu, NodeFileHandler, Add, fs.rm, NodeHandler
 	Menu, NodeFileHandler, Add, fs.mkdir, NodeHandler
-	Menu, NodeFileHandler, Add, fs.ls, NodeHandler
+	Menu, NodeFileHandler, Add, fs.readdir获取目录文件列表, NodeHandler
 	Menu, NodeFileHandler, Add, fs.watch, NodeHandler
 	Menu, NodeFileHandler, Add, fs.stat, NodeHandler
 	Menu, NodeFileHandler, Add, fs.exists, NodeHandler
-	Menu, NodeFileHandler, Add, node-dir 遍历目录, NodeHandler
+	Menu, NodeFileHandler, Add, node-dir 遍历目录（直接获取文件内容）, NodeHandler
 	
 	Menu, NodeFileHandler, Add, 
 	Menu, NodeFileHandler, Add, 
@@ -121,6 +127,7 @@
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
 	
+	Menu, NodeMenu, Add, TinyPNG 压缩方案, NodeHandler
 	Menu, NodeMenu, Add, ejs, NodeHandler
 	Menu, NodeMenu, Add, nodejs实现最简单的模板引擎替换, NodeHandler
 	Menu, NodeMenu, Add, npx lite-server, NodeHandler
@@ -147,6 +154,42 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "TinyPNG 压缩方案") {
+Var =
+(
+// npm install tinify
+// 请先新建 src 和 target 两个目录，将你要压缩的图片放到 src 中。
+const tinify = require('tinify')
+const fs = require('fs').promises
+
+tinify.key = 'BdxQYs5YMsSWx3gvhtLCvRwXXljRzwT0'
+
+;(async function(){
+	// 获取 src 目录下所有的文件
+    const files = await fs.readdir('./src')
+
+    // 文件夹遍历
+    files.forEach((path, index) => {
+    	// 目标压缩图片
+    	const source = tinify.fromFile(`./src/${path}`)
+    	// 导出压缩图片
+    	source.toFile(`./target/${path}`)
+    })
+}())
+)
+}
+
+if (v == "fs.promises解决方案") {
+Var =
+(
+const fs = require('fs').promises
+
+;(async function(){
+    const templateFile = await fs.readFile(templatePath)
+}())
 )
 }
 
@@ -512,7 +555,7 @@ Var =
 }
 
 
-if (v == "node-dir 遍历目录") {
+if (v == "node-dir 遍历目录（直接获取文件内容）") {
 Var = 
 (
 #!/usr/bin/env node
@@ -566,7 +609,7 @@ if (v == "fs.readFileSync") {
 Var = 
 (
 const fs = require('fs');
-const rdf = fs.readFileSync(`${__dirname}/pg132.rdf`);
+const wx = fs.readFileSync(``${__dirname}/微信头像169.json``, {encoding:'utf-8'});
 )
 }
 
@@ -923,7 +966,7 @@ _send("node-mkdir")
 return
 }
 
-if (v == "fs.ls") {
+if (v == "fs.readdir获取目录文件列表") {
 SendLevel 1
 Send, fs.ls{tab}
 return

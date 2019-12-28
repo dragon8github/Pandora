@@ -82,6 +82,8 @@ __SEARCH_DATABASE__["hz-12345"] := "C:\Users\Lee\Desktop\hz-12345"
 __SEARCH_DATABASE__["visual可视化"] := "C:\Users\Lee\Desktop\可视化2\ioc-visual-ui"
 __SEARCH_DATABASE__["postDoge"] := "C:\Users\Lee\Desktop\postDoge"
 __SEARCH_DATABASE__["fuck-app"] := "C:\Users\Lee\Desktop\微设计\fuck-app"
+__SEARCH_DATABASE__["弹幕danmu"] := "C:\Users\Lee\Desktop\年会弹幕网"
+__SEARCH_DATABASE__["城管citychengguan"] := "C:\Users\Lee\Desktop\cityManagement"
 
 
 ; 创建含名称和大小两列的 ListView:

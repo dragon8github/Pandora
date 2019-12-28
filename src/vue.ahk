@@ -8,6 +8,7 @@
   Menu, Vuerouter, Add, router.init, VueHandler
   Menu, Vuerouter, Add, 获取参数this.$route.params.id, VueHandler
   Menu, Vuerouter, Add, this.$router.push('index'), VueHandler
+  Menu, Vuerouter, Add, this.$router.replace('index'), VueHandler
   Menu, Vuerouter, Add, this.$router.back(), VueHandler
   Menu, Vuerouter, Add, this.$router.currentRoute.meta.step, VueHandler
   Menu, Vuerouter, Add, router.js 404 定义, VueHandler
