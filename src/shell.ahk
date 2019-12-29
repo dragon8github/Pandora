@@ -112,8 +112,11 @@
 	Menu, gitShellMenu, Add,	
 	
 	Menu, gitShellMenu, Add, git tag # 查看所有tag , ShellHandler2
-	Menu, gitShellMenu, Add, git tag -a v1.0 -m '里程碑' # 新建 tag , ShellHandler2
-	
+	Menu, gitShellMenu, Add, git tag -a v0.0.1 -m 'section 1', ShellHandler3
+	Menu, gitShellMenu, Add, git tag -d v0.0.2 # 删除本地tag , ShellHandler2
+	Menu, gitShellMenu, Add, 删除远程tag：git push origin :refs/tags/v0.0.2, ShellHandler3
+	 
+
 	Menu, gitShellMenu, Add,
 	Menu, gitShellMenu, Add,	
 	
@@ -201,6 +204,29 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "git tag -d v0.0.2 # 删除本地tag") {
+Var =
+(
+git tag -d v0.0.2
+)
+}
+
+if (v == "删除远程tag：git push origin :refs/tags/v0.0.2") {
+Var =
+(
+git push origin :refs/tags/标签名
+)
+}
+
+if (v == "git tag -a v0.0.1 -m 'section 1'") {
+Var =
+(
+# 请记得先 commit push 你的代码，然后再执行 tag 才可以。
+git tag -a v0.0.1 -m 'section 1'
+git push origin v0.0.1
 )
 }
 

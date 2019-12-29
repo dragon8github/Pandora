@@ -60,6 +60,7 @@
 	Menu, arrayMenu, Add, shift： 弹出并删除第一个 , ForHandler
 	Menu, arrayMenu, Add, pop： 弹出并删除最后一个 , ForHandler
 	Menu, arrayMenu, Add, slice： 无损截取数组 , ForHandler
+	Menu, arrayMenu, Add, splice： 删除成员 ary.splice(1, 1), ForHandler
 	Menu, arrayMenu, Add, splice： 有损截取数组，可用于替换ary.splice(index`, 1`, 'fuck') , ForHandler
 	Menu, arrayMenu, Add, splice： 可用于插入：ary.splice(1`, 0`, 'fuckyou') , ForHandler
 	Menu, arrayMenu, Add,  for-- 循环中splice需要使用, ForHandler
@@ -87,7 +88,14 @@ Var =
 )
 }
 
-
+if (v == "splice： 删除成员 ary.splice(1, 1)") {
+Var =
+(
+var arr = [1,2,3]
+arr.splice(1, 1)
+console.log(20191229133351, arr) // => [1, 3]
+)
+}
 
 if (v == "Array.difference: 找出两个数组中不同成员") {
 Var = 

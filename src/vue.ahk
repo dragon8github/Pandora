@@ -72,7 +72,7 @@
   Menu, vuetranstion, Add, <transition>与路由动画, VueHandler
 
   Menu, VueMenu, Add, vue.init, VueHandler
-  Menu, VueMenu, Add, vue 脚手架与配置, :vuejiaoshouj
+  Menu, VueMenu, Add, webpack4.0-demo :vuejiaoshouj
   Menu, VueMenu, Add, proxyTable 配置, VueHandler
   Menu, VueMenu, Add, v-slot 插槽, VueHandler
   Menu, VueMenu, Add, filters 过滤器的使用, VueHandler
@@ -1209,6 +1209,11 @@ npm rebuild node-sass
 
 if (v == "vue3-ant-design脚手架") {
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue-cli3antdesign.zip", "yarn `; npm rebuild node-sass `; npm run dev")
+return
+}
+
+if (v == "webpack4.0-demo") {
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/webpkac-dome.zip")
 return
 }
 

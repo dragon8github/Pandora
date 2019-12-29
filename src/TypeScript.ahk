@@ -98,7 +98,7 @@ Var =
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es6",
+    "target": "es5",
     "sourceMap": true,
 
     "moduleResolution": "node",
