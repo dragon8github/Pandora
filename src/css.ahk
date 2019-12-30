@@ -66,6 +66,9 @@
     Menu, cssknow, Add, currentColor 当前字体颜色, CssHandler
     Menu, cssknow, Add, calc：属性计算器，适合 position 居中解决方案, CssHandler
     Menu, cssknow, Add, 背景透明还可以这样用：background: 0 0, CssHandler
+    Menu, cssknow, Add, css 新认知(大写): text-transform: uppercase;, CssHandler
+    Menu, cssknow, Add, flex 认知：flex-shrink 宽度不够，项目不会被压缩, CssHandler
+    
 
     Menu, cssknow, Add,
     Menu, cssknow, Add,
@@ -235,6 +238,20 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "flex 认知：flex-shrink 宽度不够，项目不会被压缩") {
+Var =
+(
+flex-shrink: 0
+)
+}
+
+if (v == "css 新认知(大写): text-transform: uppercase;") {
+Var =
+(
+text-transform: uppercase;
 )
 }
 
@@ -3826,6 +3843,19 @@ Var =
 @media (min-width: 1216px) {
 
 }
+
+/* https://tailwindcss.com/docs/responsive-design */
+/* Small (sm) */
+@media (min-width: 640px) { /* ... */ }
+
+/* Medium (md) */
+@media (min-width: 768px) { /* ... */ }
+
+/* Large (lg) */
+@media (min-width: 1024px) { /* ... */ }
+
+/* Extra Large (xl) */
+@media (min-width: 1280px) { /* ... */ }
 )
 code(Var)
 Return

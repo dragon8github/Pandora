@@ -5436,6 +5436,18 @@ SendInput, {right 7}
 SendInput, +{right 2}
 return
 
+::imp2::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+Var =
+(
+import * as utils from '%OutputVar%'
+)
+code(Var)
+SendInput, {Home}
+SendInput, {right 7}
+SendInput, +{right 2}
+return
+
 ::cimp::
 Var =
 (

@@ -6,8 +6,8 @@
     Menu, wxMenu, Add, wx:if / wx:elif / wx:else, wxHandler
     Menu, wxMenu, Add, setStorageSync, wxHandler
     Menu, wxMenu, Add, emit事件推送：this.triggerEvent, wxHandler
-    Menu, wxMenu, Add, catchtap:click 防止冒泡, wxHandler
     Menu, wxMenu, Add, getSystemInfoSync, wxHandler
+    Menu, wxMenu, Add, catchtap 防止冒泡, wxHandler
 
     Menu, wxMenu, Add
     Menu, wxMenu, Add
@@ -197,11 +197,10 @@ async onLoad() {
 )
 }
 
-if (v == "catchtap:click 防止冒泡") {
+if (v == "catchtap 防止冒泡") {
 Var =
 (
-// 原生是这样 catchtap=
-catchtap:click
+catchtap
 )
 }
 

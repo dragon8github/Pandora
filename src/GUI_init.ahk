@@ -324,6 +324,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.apple.com/cn/shop/refurbished/mac/
 Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</a>
 
 
+Gui, Pandora:Add, Text,  W140 ys, 程序许仙：
+Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/docs/utility-first">tailwindcss</a>
 
 
 ;@1
@@ -1166,6 +1168,7 @@ Gui, Pandora:Add, Link,, <a href="http://droid4x.haimawan.com/">海马玩模拟�
 ;@css 
 Gui, Pandora:Tab, 15
 Gui, Pandora:Add, Text,  W140 Section, 森罗万象:
+Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/">tailwindcss</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/jobbole/awesome-css-cn">awesome-css</a>
 Gui, Pandora:Add, Link,, <a href="https://www.9178.work/qianduannav.html">前端导航</a>
 Gui, Pandora:Add, Link,, <a href="https://www.9178.work/qianduan.html">前端导航2</a>

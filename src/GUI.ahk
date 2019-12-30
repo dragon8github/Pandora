@@ -1,4 +1,5 @@
-﻿!space::
+﻿
+!space::
 	Gui, Pandora:Show, W1350, Pandora
 return 
 
