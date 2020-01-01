@@ -13,6 +13,90 @@ BookGuiClose:
 	Gui, Book:Hide
 return
 
+; 第一页的内容
+initbook() {
+	; 暴漏出 A1 到外部，主要是因为：默认会选择第一个，也就是A作为select，这时候我重定向到A1去。
+	global A1
+	A := TV_Add("_代码复用模式")
+	A1 := TV_Add("类式继承模式#1 —— 克隆模式", A)
+	TV_Add("类式继承模式#2 —— 借用模式", A)
+	TV_Add("类式继承模式#3 —— 借用模式 + 克隆模式", A)
+	TV_Add("类式继承模式#4 —— 共享原型", A)
+	TV_Add("类式继承模式#5 —— 临时构造函数", A)
+	TV_Add("类式继承模式#6 —— 最后的圣杯", A)
+	TV_Add("通过复制属性实现继承", A)
+	TV_Add("原型继承", A)
+
+		
+	B := TV_Add("_this")
+	TV_Add("1、作为对象的方法调用", B)
+	TV_Add("2、作为普通函数调用时", B)
+	TV_Add("3、作为构造器调用", B)
+	TV_Add("4、call 或 apply 调用", B)
+	TV_Add("5、es6箭头函数调用时", B)
+	TV_Add("6、es6 class 中的", B)
+
+	C := TV_Add("_原型知识")
+	TV_Add("prototype 和 __proto__的关系", C)
+	TV_Add("实现 Object.create 方法", C)
+	TV_Add("实现 new 运算符的过程", C)
+	TV_Add("闭包封装实现private", C)
+	TV_Add("多态", C)
+	TV_Add("Function.prototype.bind", C)
+	TV_Add("Function.prototype.before", C)
+	TV_Add("Function.prototype.after", C)
+	TV_Add("AOP - 面向切面编程", C)
+	
+	
+	D := TV_Add("_继承")
+	TV_Add("extend 浅拷贝（继承模式中最后的圣杯）", D)
+	TV_Add("deepExtend 深拷贝", D)
+	TV_Add("multi 多重拷贝", D)
+	TV_Add("寄生式继承", D)
+	TV_Add("构造器借用", D)
+	
+	E := TV_Add("_call 和 apply")
+	TV_Add("1. 改变 this 指向", E)
+	TV_Add("2. Function.prototype.bind", E)
+	TV_Add("3. 借用其他对象的方法", E)
+	
+	F := TV_Add("_闭包与缓存")
+	TV_Add("简易Cache", F)
+	TV_Add("参数标记缓存器 memoized", F)
+	TV_Add("模块模式：现代模块实现的基石", F)
+	TV_Add("延迟上传：解决ajax压力", F)
+	
+	I := TV_Add("_链式操作")
+	TV_Add("让方法调用结束后返回对象本身", I)
+	
+	G := TV_Add("_单例模式")
+	TV_Add("惰性单例", G)
+	TV_Add("透明单例", G)
+	TV_Add("代理单例", G)
+	TV_Add("通用的惰性单例", G)
+	TV_Add("单例模式：生成不重复的随机数", G)
+	TV_Add("（回调版）单例模式，通常用于ajax类", G)
+	
+	H := TV_Add("_模板模式")
+	TV_Add("咖啡与茶", H)
+	TV_Add("通用模板 StateFactory", H)
+	
+	J := TV_Add("_策略模式")
+	TV_Add("最简单的策略模式", J)
+	
+	K := TV_Add("_观察者模式")
+	TV_Add("window.__EVENT__消息订阅", K)
+	TV_Add("超简洁版Event事件模块", K)
+	TV_Add("仿rxjs的观察者模式", K)
+	
+	L := TV_Add("_责任链模式")
+	TV_Add("优惠券条件分支：链式after解决方案", L)
+	
+	M := TV_Add("_curry科里化模式")
+	TV_Add("超简单的currying与理财花销实例", M)
+}
+
+
 SwitchBook:
 
 ; 删除所有树
@@ -66,6 +150,7 @@ return
 cornell(v) {
 Var := 
 
+; @a @1 @@
 if (v == "") {
 Var = 
 (
@@ -604,24 +689,6 @@ data.a.b.c.d = '321'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if (v == "想少干活就要多思考") {
 Var = 
 (
@@ -778,89 +845,6 @@ Var =
 
 
 getDec(Var, v)
-}
-
-; 第一页的内容
-initbook() {
-	; 暴漏出 A1 到外部，主要是因为：默认会选择第一个，也就是A作为select，这时候我重定向到A1去。
-	global A1
-	A := TV_Add("_代码复用模式")
-	A1 := TV_Add("类式继承模式#1 —— 克隆模式", A)
-	TV_Add("类式继承模式#2 —— 借用模式", A)
-	TV_Add("类式继承模式#3 —— 借用模式 + 克隆模式", A)
-	TV_Add("类式继承模式#4 —— 共享原型", A)
-	TV_Add("类式继承模式#5 —— 临时构造函数", A)
-	TV_Add("类式继承模式#6 —— 最后的圣杯", A)
-	TV_Add("通过复制属性实现继承", A)
-	TV_Add("原型继承", A)
-
-		
-	B := TV_Add("_this")
-	TV_Add("1、作为对象的方法调用", B)
-	TV_Add("2、作为普通函数调用时", B)
-	TV_Add("3、作为构造器调用", B)
-	TV_Add("4、call 或 apply 调用", B)
-	TV_Add("5、es6箭头函数调用时", B)
-	TV_Add("6、es6 class 中的", B)
-
-	C := TV_Add("_原型知识")
-	TV_Add("prototype 和 __proto__的关系", C)
-	TV_Add("实现 Object.create 方法", C)
-	TV_Add("实现 new 运算符的过程", C)
-	TV_Add("闭包封装实现private", C)
-	TV_Add("多态", C)
-	TV_Add("Function.prototype.bind", C)
-	TV_Add("Function.prototype.before", C)
-	TV_Add("Function.prototype.after", C)
-	TV_Add("AOP - 面向切面编程", C)
-	
-	
-	D := TV_Add("_继承")
-	TV_Add("extend 浅拷贝（继承模式中最后的圣杯）", D)
-	TV_Add("deepExtend 深拷贝", D)
-	TV_Add("multi 多重拷贝", D)
-	TV_Add("寄生式继承", D)
-	TV_Add("构造器借用", D)
-	
-	E := TV_Add("_call 和 apply")
-	TV_Add("1. 改变 this 指向", E)
-	TV_Add("2. Function.prototype.bind", E)
-	TV_Add("3. 借用其他对象的方法", E)
-	
-	F := TV_Add("_闭包与缓存")
-	TV_Add("简易Cache", F)
-	TV_Add("参数标记缓存器 memoized", F)
-	TV_Add("模块模式：现代模块实现的基石", F)
-	TV_Add("延迟上传：解决ajax压力", F)
-	
-	I := TV_Add("_链式操作")
-	TV_Add("让方法调用结束后返回对象本身", I)
-	
-	G := TV_Add("_单例模式")
-	TV_Add("惰性单例", G)
-	TV_Add("透明单例", G)
-	TV_Add("代理单例", G)
-	TV_Add("通用的惰性单例", G)
-	TV_Add("单例模式：生成不重复的随机数", G)
-	TV_Add("（回调版）单例模式，通常用于ajax类", G)
-	
-	H := TV_Add("_模板模式")
-	TV_Add("咖啡与茶", H)
-	TV_Add("通用模板 StateFactory", H)
-	
-	J := TV_Add("_策略模式")
-	TV_Add("最简单的策略模式", J)
-	
-	K := TV_Add("_观察者模式")
-	TV_Add("window.__EVENT__消息订阅", K)
-	TV_Add("超简洁版Event事件模块", K)
-	TV_Add("仿rxjs的观察者模式", K)
-	
-	L := TV_Add("_责任链模式")
-	TV_Add("优惠券条件分支：链式after解决方案", L)
-	
-	M := TV_Add("_curry科里化模式")
-	TV_Add("超简单的currying与理财花销实例", M)
 }
 
 

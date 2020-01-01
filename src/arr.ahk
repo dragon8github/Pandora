@@ -13,6 +13,7 @@
     Menu, arrayMenu, Add, 从数组中随机不重复取出指定数量的人, ForHandler
 	Menu, arrayMenu, Add, unique 数组去重复, ForHandler
 	Menu, arrayMenu, Add, 随机从数组中取N个数据, ForHandler
+	Menu, arrayMenu, Add, 找出数组重复次数最多的元素，以Ip列表为例, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -60,7 +61,7 @@
 	Menu, arrayMenu, Add, shift： 弹出并删除第一个 , ForHandler
 	Menu, arrayMenu, Add, pop： 弹出并删除最后一个 , ForHandler
 	Menu, arrayMenu, Add, slice： 无损截取数组 , ForHandler
-	Menu, arrayMenu, Add, splice： 删除成员 ary.splice(1, 1), ForHandler
+	Menu, arrayMenu, Add, splice： 删除成员 ary.splice(1`, 1), ForHandler
 	Menu, arrayMenu, Add, splice： 有损截取数组，可用于替换ary.splice(index`, 1`, 'fuck') , ForHandler
 	Menu, arrayMenu, Add, splice： 可用于插入：ary.splice(1`, 0`, 'fuckyou') , ForHandler
 	Menu, arrayMenu, Add,  for-- 循环中splice需要使用, ForHandler
@@ -85,6 +86,35 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "找出数组重复次数最多的元素，以Ip列表为例") {
+Var =
+(
+const ips = ['192.168.1.1', '192.118.2.1', '192.168.1.1']
+
+const highestFrequency = function(ipLines) {
+  // 这是一种初始化技巧
+  var [obj, max, name] = [{}, 1, ''];
+  ipLines.forEach(value => {
+    if (obj[value]) {
+      // 已经有值了 就把值+1
+      obj[value]++
+      // 超出天花板
+      if (obj[value] > max) { 
+        // 当前天花板
+        max = obj[value]; 
+        // 当前冠军
+        name = value; 
+      }
+    } else {
+      // 没有值 就初始化一个值
+      obj[value] = 1;
+    }
+  });
+  return name;
+};
 )
 }
 

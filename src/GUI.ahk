@@ -1529,7 +1529,7 @@ FileAppend,
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/dragscroll/0.0.8/dragscroll.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 <script>
 </script>
 
@@ -1650,7 +1650,7 @@ FileAppend,
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/dragscroll/0.0.8/dragscroll.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script>
     </script>
     <style>
@@ -2468,7 +2468,7 @@ FileAppend,
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0/redux.min.js"></script>
+    <script src="https://cdn.staticfile.org/redux/4.0.0/redux.min.js"></script>
     <style>
     html, body{
         margin: 0;
@@ -2678,21 +2678,21 @@ FileAppend,
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!-- element -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/theme-chalk/index.css">
+    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
     <!-- lodash -->
     <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
     <!-- mockjs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Mock.js/1.0.0/mock-min.js"></script>
+    <script src="https://cdn.staticfile.org/Mock.js/1.0.0/mock-min.js"></script>
     <!-- axios -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.19.0/axios.min.js"></script>
     <!-- moment -->
     <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js"></script>
+    <script src="https://cdn.staticfile.org/moment.js/2.22.1/locale/zh-cn.js"></script>
     <!-- sass -->
     <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
     <!-- tailwind：https://tailwindcss.com/docs/width -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.4/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
     <style>
     html, body{
         margin: 0;
@@ -2777,7 +2777,7 @@ FileAppend,
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- normalize -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/normalize/8.0.0/normalize.min.css" rel="stylesheet">
 
     <!-- Vue -->
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
@@ -3009,17 +3009,17 @@ FileAppend,
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/jointjs/2.1.0/joint.css" />
 </head>
 <body>
     <!-- content -->
     <div id="myholder"></div>
 
     <!-- dependencies -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.1.1/jquery.js"></script>
+    <script src="https://cdn.staticfile.org/lodash.js/3.10.1/lodash.js"></script>
+    <script src="https://cdn.staticfile.org/backbone.js/1.3.3/backbone.js"></script>
+    <script src="https://cdn.staticfile.org/jointjs/2.1.0/joint.js"></script>
 
     <!-- code -->
     <script type="text/javascript">
@@ -4395,7 +4395,7 @@ FileAppend,
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js"></script>
+    <script src="https://cdn.staticfile.org/localforage/1.7.3/localforage.min.js"></script>
     <script src="./data.js"></script>
 </head>
 
@@ -4498,9 +4498,9 @@ var onscriptload = function (url, cb) {
 }
 
 // https://cdnjs.com/libraries/ace
-onscriptload('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/ace.js', function () {
-	onscriptload('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/mode-javascript.js', function () {
-		onscriptload('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/theme-monokai.js', function () {
+onscriptload('https://cdn.staticfile.org/ace/1.4.4/ace.js', function () {
+	onscriptload('https://cdn.staticfile.org/ace/1.4.4/mode-javascript.js', function () {
+		onscriptload('https://cdn.staticfile.org/ace/1.4.4/theme-monokai.js', function () {
 			var div = document.createElement('div')
 			div.style = 'position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337;'
 			div.id = 'editor'
@@ -4630,7 +4630,7 @@ FileAppend,
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism-okaidia.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.16.0/themes/prism-okaidia.min.css">
 </head>
 
 <body>
@@ -4654,7 +4654,7 @@ FileAppend,
             }
         })
     </code></pre>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.js"></script>
+    <script src="https://cdn.staticfile.org/prism/1.16.0/prism.js"></script>
     <script>
         // 可以手动调用，也可以不要。
         Prism.highlightAll()
@@ -4715,7 +4715,7 @@ FileAppend,
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="https://cdn.staticfile.org/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <style>
     html, body{
         margin: 0;
@@ -5877,7 +5877,7 @@ FileAppend,
 <head>
     <meta charset="UTF-8" />
     <title>reactjs-slot-layout example</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
 </head>
 
 <body>
@@ -6364,7 +6364,7 @@ FileAppend,
         </footer>
         <button id="close" class="close" type="button">&times;</button>
     </dialog>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.9/dialog-polyfill.min.js'></script>
+    <script src='https://cdn.staticfile.org/dialog-polyfill/0.4.9/dialog-polyfill.min.js'></script>
     <script id="rendered-js">
     const modal = document.getElementById('demo-modal');
     const open = document.getElementById('open-modal');
@@ -7457,7 +7457,7 @@ FileAppend,
     <!-- Vue -->
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
     <!-- faker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
+    <script src="https://cdn.staticfile.org/Faker/3.1.0/faker.min.js"></script>
 </head>
 
 <body>
@@ -8550,9 +8550,9 @@ FileAppend,
     <!-- Vue -->
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
     <!-- mockjs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Mock.js/1.0.0/mock-min.js"></script>
+    <script src="https://cdn.staticfile.org/Mock.js/1.0.0/mock-min.js"></script>
     <!-- axios -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.19.0/axios.min.js"></script>
     <style>
     html, body{
         margin: 0;
@@ -8855,8 +8855,8 @@ FileAppend,
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!-- element -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/theme-chalk/index.css">
+    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
 
     <style>
     html, body{
@@ -9863,6 +9863,156 @@ var vue = new Vue({
 })
 </script>
 
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+::animate.html::
+::anim.html::
+animjquery:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.staticfile.org/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #box {
+        position: absolute;
+        left: 50`%;
+        top: 50`%;
+
+        background: red;
+        width: 100px;
+        height: 100px;
+
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div id='box'></div>
+        <button>animate</button>
+    </div>
+</body>
+<script>
+$(function() {
+    $('button').click(() => {
+        const $box = $('#box')
+
+        // 判断元素是否正处于动画状态
+        if ($box.hasClass("animated"))
+            return
+
+        const isHide = $box.css('display') === 'none'
+
+        if (isHide) {
+            $box.css('display', 'block').addClass('animated fadeInUp')
+            $box.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+                $(this).removeClass();
+            });
+        } else {
+            $box.addClass('animated fadeOut')
+            $box.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+                $(this).removeClass().css('display', 'none');
+            });
+        }
+    })
+})
+/* 
+bounce
+flash
+pulse
+rubberBand
+shake
+swing
+tada
+wobble
+jello
+bounceIn
+bounceInDown
+bounceInLeft
+bounceInRight
+bounceInUp
+bounceOut
+bounceOutDown
+bounceOutLeft
+bounceOutRight
+bounceOutUp
+fadeIn
+fadeInDown
+fadeInDownBig
+fadeInLeft
+fadeInLeftBig
+fadeInRight
+fadeInRightBig
+fadeInUp
+fadeInUpBig
+fadeOut
+fadeOutDown
+fadeOutDownBig
+fadeOutLeft
+fadeOutLeftBig
+fadeOutRight
+fadeOutRightBig
+fadeOutUp
+fadeOutUpBig
+flip
+flipInX
+flipInY
+flipOutX
+flipOutY
+lightSpeedIn
+lightSpeedOut
+rotateIn
+rotateInDownLeft
+rotateInDownRight
+rotateInUpLeft
+rotateInUpRight
+rotateOut
+rotateOutDownLeft
+rotateOutDownRight
+rotateOutUpLeft
+rotateOutUpRight
+slideInUp
+slideInDown
+slideInLeft
+slideInRight
+slideOutUp
+slideOutDown
+slideOutLeft
+slideOutRight
+zoomIn
+zoomInDown
+zoomInLeft
+zoomInRight
+zoomInUp
+zoomOut
+zoomOutDown
+zoomOutLeft
+zoomOutRight
+zoomOutUp
+hinge
+jackInTheBox
+rollIn
+rollOut
+*/
+</script>
 </html>
 ),  %name%
 RunBy(name)

@@ -84,7 +84,7 @@ Var =
 
 <head>
     <title>three.js</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
+    <script src="https://cdn.staticfile.org/three.js/92/three.min.js"></script>
     <style>
         body {
             margin: 0;

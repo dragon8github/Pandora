@@ -354,6 +354,7 @@ Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 Gui, Pandora:Add, Text, gcssskeletonHtml W140,新建css骨骼图.skeleton
 Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog
 Gui, Pandora:Add, Text, gwebsocketHTML W140,新建WebSocket
+Gui, Pandora:Add, Text, ganimjquery W140,新建animate.css与jquery
 
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html

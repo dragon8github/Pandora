@@ -66,6 +66,19 @@
 	Menu, JavaScriptEventMenu, Add, ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件, EventHandler
 	Menu, JavaScriptEventMenu, Add, ondrop - 在一个拖动过程中，释放鼠标键时触发此事件, EventHandler
 
+
+	Menu, echartsAction, Add, legendUnSelect, EventHandler
+	Menu, echartsAction, Add, legendSelect, EventHandler
+	Menu, echartsAction, Add, legendToggleSelect, EventHandler
+
+	Menu, echartsAction, Add
+	Menu, echartsAction, Add
+
+	Menu, echartsAction, Add, 取消高亮节点：downplay, EventHandler
+	Menu, echartsAction, Add, 高亮节点：highlight, EventHandler
+
+
+	Menu, echartsEventMenu, Add, myChart.dispatchAction, :echartsAction
 	Menu, echartsEventMenu, Add, echarts.init, EventHandler
 	Menu, echartsEventMenu, Add, echarts 通过dom获取echarts实例，批量监听resize, EventHandler
 	Menu, echartsEventMenu, Add, echarts 通过dom获取echarts实例，批量监听clear, EventHandler
@@ -192,6 +205,42 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "取消高亮节点：downplay") {
+Var = 
+(
+// 取消高亮
+myChart.dispatchAction({ type: 'downplay', seriesIndex: 0, dataIndex: current `% len })
+)
+}
+if (v == "高亮节点：highlight") {
+Var = 
+(
+// 高亮当前节点
+myChart.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: ++current `% len })
+)
+}
+
+if (v == "legendUnSelect") {
+Var = 
+(
+myChart.dispatchAction({ type: 'legendUnSelect', name: '其他类' })	
+)
+}
+
+if (v == "legendSelect") {
+Var = 
+(
+myChart.dispatchAction({ type: 'legendSelect', name: '其他类' })	
+)
+}
+
+if (v == "legendToggleSelect") {
+Var = 
+(
+myChart.dispatchAction({ type: 'legendToggleSelect', name: '其他类' })	
 )
 }
 

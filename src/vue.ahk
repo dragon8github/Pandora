@@ -185,8 +185,8 @@ Var =
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/theme-chalk/index.css">
+    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
 </head>
 
 <body>

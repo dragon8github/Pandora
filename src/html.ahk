@@ -9,7 +9,7 @@ Var =
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism-okaidia.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.16.0/themes/prism-okaidia.min.css">
 </head>
 
 <body>
@@ -33,7 +33,7 @@ Var =
             }
         })
     </code></pre>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.js"></script>
+    <script src="https://cdn.staticfile.org/prism/1.16.0/prism.js"></script>
     <script>
         // 可以手动调用，也可以不要。
         Prism.highlightAll()
@@ -313,7 +313,7 @@ Var =
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/dragscroll/0.0.8/dragscroll.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script>
     </script>
     <style>
@@ -402,7 +402,7 @@ Var =
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/dragscroll/0.0.8/dragscroll.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 <script>
 </script>
 
@@ -802,11 +802,11 @@ Var =
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!-- bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <!-- validator：http://1000hz.github.io/bootstrap-validator/#validator-usage -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
+    <script src="https://cdn.staticfile.org/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
     <style>
 
     </style>
@@ -901,13 +901,13 @@ Var =
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <!-- bootstrap-datepicker -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+    <script src="https://cdn.staticfile.org/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.staticfile.org/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.zh-CN.min.js"></script>
     <style>
     </style>
 <body>
@@ -986,7 +986,7 @@ Var =
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- normalize -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/normalize/8.0.0/normalize.min.css" rel="stylesheet">
 
     <!-- Vue -->
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
@@ -995,8 +995,8 @@ Var =
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <style>
     </style>
 
@@ -1125,17 +1125,17 @@ Var =
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!-- element -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/theme-chalk/index.css">
+    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
     <!-- lodash -->
     <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
     <!-- mockjs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Mock.js/1.0.0/mock-min.js"></script>
+    <script src="https://cdn.staticfile.org/Mock.js/1.0.0/mock-min.js"></script>
     <!-- axios -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.19.0/axios.min.js"></script>
     <!-- moment -->
     <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js"></script>
+    <script src="https://cdn.staticfile.org/moment.js/2.22.1/locale/zh-cn.js"></script>
     
     <style>
     html, body{

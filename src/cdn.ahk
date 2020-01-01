@@ -8,7 +8,7 @@
 Var =
 (
 <!-- tailwind：https://tailwindcss.com/docs/width -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.4/tailwind.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
 )
 code(Var)
 return
@@ -19,7 +19,7 @@ return
 Var =
 (
 <!-- localforage -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js"></script>
+<script src="https://cdn.staticfile.org/localforage/1.7.3/localforage.min.js"></script>
 )
 code(Var)
 return
@@ -37,8 +37,8 @@ Var =
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 代码高亮 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism-okaidia.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.16.0/themes/prism-okaidia.min.css">
+    <script src="https://cdn.staticfile.org/prism/1.16.0/prism.js"></script>
 
 </head>
 
@@ -96,7 +96,7 @@ return
 Var =
 (
 <!-- https://github.com/tsayen/dom-to-image -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+<script src="https://cdn.staticfile.org/dom-to-image/2.6.0/dom-to-image.min.js"></script>
 )
 code(Var)
 return
@@ -106,7 +106,7 @@ return
 Var =
 (
 <!-- faker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
+<script src="https://cdn.staticfile.org/Faker/3.1.0/faker.min.js"></script>
 )
 code(Var)
 return
@@ -117,8 +117,8 @@ return
 Var =
 (
 <!-- element -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/index.js'></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.10.1/theme-chalk/index.css">
+<script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
 )
 code(Var)
 return
@@ -139,7 +139,7 @@ return
 ::cdn-vuechart::
 Var =
 (
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-chartjs/3.4.2/vue-chartjs.min.js"></script>
+<script src="https://cdn.staticfile.org/vue-chartjs/3.4.2/vue-chartjs.min.js"></script>
 )
 code(Var)
 return
@@ -157,8 +157,8 @@ return
 Var =
 (
 <!-- https://materializecss.com/getting-started.html -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdn.staticfile.org/materialize/1.0.0/js/materialize.min.js"></script>
 )
 code(Var)
 return
@@ -175,15 +175,15 @@ Var =
 code(Var)
 return
 
-::cdn-animate::
-::cdn-animte::
-::cdn-anime::
-Var =
-(
-<script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-)
-code(Var)
-return
+; ::cdn-animate::
+; ::cdn-animte::
+; ::cdn-anime::
+; Var =
+; (
+; <script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+; )
+; code(Var)
+; return
 
 ::cdn-mapbox::
 Var =
@@ -304,7 +304,7 @@ return
 Var =
 (
 <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js"></script>
+<script src="https://cdn.staticfile.org/moment.js/2.22.1/locale/zh-cn.js"></script>
 )
 code(Var)
 return
@@ -314,7 +314,7 @@ return
 ::cdn-threejs::
 Var =
 (
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
+<script src="https://cdn.staticfile.org/three.js/92/three.min.js"></script>
 )
 code(Var)
 return
@@ -326,7 +326,7 @@ return
 ::cdn-require.js::
 Var =
 (
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+<script src="https://cdn.staticfile.org/require.js/2.3.5/require.min.js"></script>
 )
 code(Var)
 return
@@ -376,7 +376,7 @@ return
 Var =
 (
 <!-- https://github.com/facebook/prop-types -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.1/prop-types.min.js"></script>
+<script src="https://cdn.staticfile.org/prop-types/15.6.1/prop-types.min.js"></script>
 )
 code(Var)
 return
@@ -386,8 +386,8 @@ return
 Var =
 (
 <!-- https://www.bootcdn.cn/webuploader/ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/webuploader/0.1.1/webuploader.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/webuploader/0.1.1/webuploader.css" rel="stylesheet">
+<script src="https://cdn.staticfile.org/webuploader/0.1.1/webuploader.min.js"></script>
+<link href="https://cdn.staticfile.org/webuploader/0.1.1/webuploader.css" rel="stylesheet">
 )
 code(Var)
 return
@@ -396,7 +396,7 @@ return
 ::cdn-redux::
 Var =
 (
-<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0/redux.min.js"></script>
+<script src="https://cdn.staticfile.org/redux/4.0.0/redux.min.js"></script>
 )
 code(Var)
 return
@@ -418,7 +418,7 @@ return
 Var = 
 (
 <!-- https://github.com/marcuswestin/store.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/store.js/1.3.20/store.min.js"></script>
+<script src="https://cdn.staticfile.org/store.js/1.3.20/store.min.js"></script>
 )
 return
 
@@ -438,10 +438,11 @@ code(Var)
 return
 
 ::cdn-animate::
+::cdn-anim::
 Var = 
 (
 <!-- https://github.com/daneden/animate.css | https://daneden.github.io/animate.css/ | <h1 class="bounce animated">Example</h1> -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/animate.css/3.5.2/animate.min.css" rel="stylesheet">
 )
 code(Var)
 return
@@ -459,7 +460,7 @@ return
 ::cdn-font::
 Var =
 (
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 )
 code(Var)
 return
@@ -475,8 +476,8 @@ Return
 ::cdn-swiper::
 Var = 
 (
-<link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.2/css/swiper.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.2/js/swiper.min.js"></script>
+<link href="https://cdn.staticfile.org/Swiper/4.2.2/css/swiper.css" rel="stylesheet">
+<script src="https://cdn.staticfile.org/Swiper/4.2.2/js/swiper.min.js"></script>
 )
 code(Var)
 Return
@@ -524,7 +525,7 @@ Return
 ::cdn-reset::
 Var = 
 (
-<link href="https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
 )
 code(Var)
 return
@@ -532,7 +533,7 @@ return
 ::cdn-normalize::
 Var = 
 (
-<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/normalize/8.0.0/normalize.min.css" rel="stylesheet">
 )
 code(Var)
 return

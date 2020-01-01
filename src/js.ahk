@@ -2027,6 +2027,45 @@ return
 ::es6.proxy::
 Var = 
 (
+// 🚀 认知：proxy可以模拟 PHP的 __get 魔术函数
+// Proxy 比 Object.defineProperty 优势
+// 模拟 Vue 配置
+var VueComponent = {
+  data () {
+    return {
+        items: [],
+        title: 'HelloWorld'
+    }
+  },
+}
+
+// 获取状态
+var data = VueComponent.data()
+
+// 🚀 使用 Proxy 代理 data
+const p = new Proxy(data, {
+  get (target, name) {
+    console.log('get', target, name)
+    if (name in target) {
+      return target[name]
+    }
+  },
+  set(target, name, value) {
+    console.log('set', target, name, value)
+    target[name] = value
+  }
+})
+
+
+p.title     // => 触发 get
+p.title = 123 // => 触发 set
+
+// 🚀 这就是 Proxy 比 Object.defineProperty 优势的地方1：哪怕不存在的变量，也可以触发 set 
+p.fuck = 'fuck'
+
+// 🚀 这就是 Proxy 比 Object.defineProperty 优势的地方2：数组成员的修改，也可以被监听
+p.items[0] = 123
+---
 /**
  * say something ...
  *
@@ -11222,6 +11261,16 @@ return
 ::objdefine::
 Var =
 (
+// 模拟 Vue 配置
+var VueComponent = {
+  data () {
+    return {
+        items: [],
+        title: 'HelloWorld'
+    }
+  },
+}
+
 function defineReactive(obj, key, val) {
   Object.defineProperty(obj, key, {
     enumerable: true,
@@ -11240,28 +11289,38 @@ function defineReactive(obj, key, val) {
   })
 }
 
-// demo
-var obj = {}
+// 获取状态
+var data = VueComponent.data()
 
-// 初始化对象的 foo 属性
-defineReactive(obj, 'foo', 123)
+// 对象遍历
+for (let [key, val] of Object.entries(data)) {
+    // 初始化对象的 foo 属性
+    defineReactive(data, key, val)
+}
 
 // 访问对象的foo属性，触发 get 钩子
-console.log(obj.foo)
+console.log(data.title)
 
 // 设置 foo 属性，触发 set 钩子
-obj.foo = '456'
+data.title = '456'
+
+//////////////////////////////////////////////
+// ⚠️ 注意，js 无法监听对象属性的添加和删除
+//////////////////////////////////////////////
+console.log(data.fuck) // => 不会触发 'get hook' 钩子
 
 
 //////////////////////////////////////////////
-// 注意，js 无法监听对象属性的添加和删除
+// ⚠️ 注意，数组成员的修改也不会触发 set hook，除非整个数组修改
 //////////////////////////////////////////////
 
-defineReactive(obj, 'list', [1,2,3])
+// ⚠️ 注意，不会触发 set hook
+// ❓ 不会触发set hook，但居然还额外触发了 get hook。 暂时不知道为啥
+data.items[0] = '123' 
 
-obj.list[0] = 'fuck' // 不会触发set hook，但居然还额外触发了 get hook。
+// 除非整个替换，才会触发 set hook 钩子
+data.items = 123 // 触发 set hook
 
-obj.list = 123 // 触发 set hook
 ---
 class Observer {
   constructor(value) {
@@ -11505,9 +11564,9 @@ var onscriptload = function (url, cb) {
 }
 
 // https://cdnjs.com/libraries/ace
-onscriptload('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/ace.js', function () {
-	onscriptload('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/mode-javascript.js', function () {
-		onscriptload('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/theme-monokai.js', function () {
+onscriptload('https://cdn.staticfile.org/ace/1.4.4/ace.js', function () {
+	onscriptload('https://cdn.staticfile.org/ace/1.4.4/mode-javascript.js', function () {
+		onscriptload('https://cdn.staticfile.org/ace/1.4.4/theme-monokai.js', function () {
 			var div = document.createElement('div')
 			div.style = 'position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 199307100337;'
 			div.id = 'editor'

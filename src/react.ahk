@@ -560,7 +560,7 @@ Var =
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0/redux.min.js"></script>
+    <script src="https://cdn.staticfile.org/redux/4.0.0/redux.min.js"></script>
     <style>
     html, body{
         margin: 0;
@@ -888,10 +888,10 @@ Var =
 	<html lang="en">
 	<head>
 	<meta charset="UTF-8">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.0/umd/react.production.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.0/umd/react-dom.production.min.js"></script>
+	<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.production.min.js"></script>
+	<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.production.min.js"></script>
 	<!-- babel6.0以上已经不支持了浏览器了 -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+	<script src="https://cdn.staticfile.org/babel-core/5.8.38/browser.min.js"></script>
 	<title>Document</title>
 </head>
 <style>
