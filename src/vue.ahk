@@ -60,6 +60,7 @@
   Menu, vuejiaoshouj, Add, vue3-template脚手架, VueHandler
   Menu, vuejiaoshouj, Add, vue3-ant-design脚手架, VueHandler
   Menu, vuejiaoshouj, Add, vue2-template脚手架, VueHandler
+  Menu, vuejiaoshouj, Add, webpack4.0-demo, VueHandler
   
   
   Menu, vuecognition, Add, watch props 与 data 结合来初始化, VueHandler
@@ -72,7 +73,7 @@
   Menu, vuetranstion, Add, <transition>与路由动画, VueHandler
 
   Menu, VueMenu, Add, vue.init, VueHandler
-  Menu, VueMenu, Add, webpack4.0-demo :vuejiaoshouj
+  Menu, VueMenu, Add, 脚手架大全, :vuejiaoshouj
   Menu, VueMenu, Add, proxyTable 配置, VueHandler
   Menu, VueMenu, Add, v-slot 插槽, VueHandler
   Menu, VueMenu, Add, filters 过滤器的使用, VueHandler
@@ -86,6 +87,7 @@
   Menu, VueMenu, Add, vue 必知必会, :vuebase
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
   Menu, VueMenu, Add, vue 动画组件<transition>, :vuetranstion
+  Menu, VueMenu, Add, vue 动画组件<transition> + animate.css, :vuetranstion
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -160,6 +162,18 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "vue 动画组件<transition> + animate.css") {
+Var =
+(
+<transition
+    name="fade"
+    enter-active-class="animated zoomInDown"
+    leave-active-class="animated bounceOutDown">
+    <div id='box' v-show='text'>box</div>
+</transition>
 )
 }
 

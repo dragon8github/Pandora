@@ -17,7 +17,7 @@
     Menu, wxMenu, Add, sheet, wxHandler
     Menu, wxMenu, Add, swiper, wxHandler
     Menu, wxMenu, Add, 获取来路from, wxHandler
-    Menu, wxMenu, Add, animate, wxHandler
+    Menu, wxMenu, Add, 小程序动画: animate, wxHandler
 
     Menu, wxMenu, Add
     Menu, wxMenu, Add
@@ -52,6 +52,7 @@
     Menu, wxMenu, Add, 微信支付, wxHandler
     Menu, wxMenu, Add, 自定义一个组件, wxHandler
     Menu, wxMenu, Add, 页面调用组件方法, wxHandler
+    Menu, wxMenu, Add, wxutils.js, wxHandler
 
     Menu, wxMenu, Show
     Menu, wxMenu, DeleteAll
@@ -70,6 +71,11 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "wxutils.js") {
+_send("wxutils.js", true, true)
+return
 }
 
 if (v == "压缩图片策略") {
@@ -905,56 +911,62 @@ hide() {
 )
 }
 
-if (v == "animate") {
+if (v == "小程序动画: animate") {
 Var =
 (
-// app.js
-
 //渐入，渐出实现 
-show: function (that, param, duration, opacity) {
+show (that, param, duration, opacity) {
   var animation = wx.createAnimation({
-    //持续时间800ms
     duration: duration,
     timingFunction: 'ease',
   });
-  //var animation = this.animation
+
   animation.opacity(opacity).step()
+
   //将param转换为key
-  var json = '{"' + param + '":""}'
-  json = JSON.parse(json);
+  var json = JSON.parse('{"' + param + '":""}');
+
   json[param] = animation.export()
+
   // 原理是在 data 中设置一个 you_name: { actions: [{...}] }
-  // console.log(20191103084351, json[param], json, param)
+  console.log(json[param], json, param)
+
   //设置动画
   that.setData(json)
 },
 
 //滑动渐入渐出
-slideupshow: function (that, param, px, opacity) {
+slideupshow(that, param, px, opacity) {
   var animation = wx.createAnimation({
     duration: 800,
     timingFunction: 'ease',
   });
+
   animation.translateY(px).opacity(opacity).step()
+
   //将param转换为key
-  var json = '{"' + param + '":""}'
-  json = JSON.parse(json);
+  var json = JSON.parse('{"' + param + '":""}');
+
   json[param] = animation.export()
+
   //设置动画
   that.setData(json)
 },
 
 //向右滑动渐入渐出
-sliderightshow: function (that, param, px, opacity) {
+sliderightshow (that, param, px, opacity) {
   var animation = wx.createAnimation({
     duration: 800,
     timingFunction: 'ease',
   });
+
   animation.translateX(px).opacity(opacity).step()
+
   //将param转换为key
-  var json = '{"' + param + '":""}'
-  json = JSON.parse(json);
+  var json = JSON.parse('{"' + param + '":""}');
+
   json[param] = animation.export()
+
   //设置动画
   that.setData(json)
 },
@@ -962,10 +974,9 @@ sliderightshow: function (that, param, px, opacity) {
 // index.wxml
 <view class='init' animation="{{slide_up1}}"></view>
 
-
 // index.xmss
 .init {
-opacity: 0;
+  opacity: 0;
 }
 
 // index.js
@@ -1260,4 +1271,59 @@ Var =
 <layerMaterial id='layerMaterial' types='{{[1,2,3]}}' items='{{[1,2,3]}}' bind:choose='chooseMaterial'></layerMaterial>
 )
 txtit(Var)
+return
+
+::wxutils.js::
+::wxutils::
+::wxutil.js::
+::wxutil::
+Var =
+(
+let systemInfo = null;
+export function getSystemInfoSync() {
+    if (systemInfo == null) {
+        systemInfo = wx.getSystemInfoSync();
+    }
+    return systemInfo;
+}
+
+function memoize(fn) {
+  var cache = {};
+
+  return function() {
+    var key = serializer(arguments);
+    if (cache[key] === undefined) {
+      cache[key] = call(fn, arguments);
+    }
+
+    return cache[key];
+  };
+}
+
+
+
+export function isDef(value) {
+    return value !== undefined && value !== null;
+}
+export function isObj(x) {
+    const type = typeof x;
+    return x !== null && (type === 'object' || type === 'function');
+}
+export function isNumber(value) {
+    return /^\d+$/.test(value);
+}
+
+
+
+export function range(num, min, max) {
+    return Math.min(Math.max(num, min), max);
+}
+
+export function nextTick(fn) {
+    setTimeout(() => {
+        fn();
+    }, 1000 / 30);
+}
+)
+code(Var)
 return

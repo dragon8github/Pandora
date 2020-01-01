@@ -983,6 +983,37 @@ return
 }
 
 
+if (v == "fs.write") {
+_send("fs.write", true, true)
+return
+}
+
+if (v == "fs.read") {
+_send("fs.read", true, true)
+return
+}
+
+if (v == "fs.rename") {
+_send("fs.rename", true, true)
+return
+}
+
+if (v == "fs.rm") {
+_send("fs.rm", true, true)
+return
+}
+
+if (v == "fs.mkdir") {
+_send("node-mkdir", true, true)
+return
+}
+
+if (v == "fs.readdir获取目录文件列表") {
+_send("fs.ls", true, true)
+return
+}
+
+
 code(Var)
 return
 
@@ -1000,36 +1031,6 @@ console.log('Now watching fuck.txt for changes...');
 code(Var)
 return
 
-
-if (v == "fs.write") {
-_send("fs.write")
-return
-}
-
-if (v == "fs.read") {
-_send("fs.read")
-return
-}
-
-if (v == "fs.rename") {
-_send("fs.rename")
-return
-}
-
-if (v == "fs.rm") {
-_send("fs.rm")
-return
-}
-
-if (v == "fs.mkdir") {
-_send("node-mkdir")
-return
-}
-
-if (v == "fs.readdir获取目录文件列表") {
-_send("fs.ls")
-return
-}
 
 ::node.ch::
 Var =

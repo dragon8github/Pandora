@@ -287,6 +287,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.taokouling.com/index/taobao_tkljm">
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng熊猫图片压缩</a>
+Gui, Pandora:Add, Link,, <a href="https://docsmall.com/image-compress">图片压缩工具2</a>
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
 Gui, Pandora:Add, Link,, <a href="https://compresspng.com/zh/">压缩图片</a>
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>

@@ -1,4 +1,19 @@
-﻿::cdn-wl::
+﻿::cdn-shunfeng::
+::cdn-tail::
+::cdn-wind::
+::cdn-tailwind::
+::cdn-utils::
+::cdn-utils::
+::cdn-css::
+Var =
+(
+<!-- tailwind：https://tailwindcss.com/docs/width -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.4/tailwind.min.css">
+)
+code(Var)
+return
+
+::cdn-wl::
 ::cdn-cache::
 ::cdn-local::
 Var =

@@ -84,7 +84,7 @@
 	Menu, H, Add, `%（从右到做）操作符, ShellHandler
 	
 	
-	
+	; git
 	Menu, gitShellMenu, Add, git, ShellHandler4
 	Menu, gitShellMenu, Add, git log --pretty=oneline, ShellHandler4
 	Menu, gitShellMenu, Add, git checkout --theirs src/views/Studio/header.vue, ShellHandler4
@@ -1231,4 +1231,13 @@ Var =
 netsh wlan show profiles name=%OutputVar% key=clear
 )
 cs(Var)
+return
+
+::gits::
+::git s::
+Var =
+(
+git status -u
+)
+_Send(Var)
 return

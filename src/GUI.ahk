@@ -2691,6 +2691,8 @@ FileAppend,
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js"></script>
     <!-- sass -->
     <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
+    <!-- tailwind：https://tailwindcss.com/docs/width -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.4/tailwind.min.css">
     <style>
     html, body{
         margin: 0;
