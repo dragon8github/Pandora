@@ -335,11 +335,9 @@ Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
 Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140 , 新建纯index.html
 Gui, Pandora:Add, Text, gVueComponentHtml W140, 新建vueComponent.html
+Gui, Pandora:Add, Text, gVueAnimateHtml W140, 新建vueAnimate.html
 Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建vue-form.html
 Gui, Pandora:Add, Text, greactHtml W140, 新建react.html
-Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
-Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
-Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
 Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
 Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建assert.html
 Gui, Pandora:Add, Text, gNewjointjsHtml W160,新建jointjs流程图
@@ -447,6 +445,9 @@ Gui, Pandora:Add, Text, ghackdiguo W140,黑客帝国
 Gui, Pandora:Add, Text, ginputyanhua W140,新建input烟花特效
 Gui, Pandora:Add, Text, gtest17280 W140,新建测试17280
 Gui, Pandora:Add, Text, gchromeextensions W140,chrome-extensions
+Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
+Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
+Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
 
 Gui, Pandora:Tab, 3
 Gui, Pandora:Add, Text,  W130 Section, 油气管道（react）:

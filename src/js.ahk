@@ -7286,6 +7286,7 @@ return
 ::js.class::
 ::es6.class::
 ::class::
+::person::
 Var = 
 (
 class Person {
@@ -7297,7 +7298,7 @@ class Person {
 	}
 
 	get name() {
-		return this.name
+		return this._name
 	}
 
 	set name(value) {
@@ -7320,6 +7321,8 @@ class Person {
         return ``name： ${this._name}，age：${this._age}``
     }
 }
+
+var p = new Person('Lee', 18)
 )
 code(Var)
 return

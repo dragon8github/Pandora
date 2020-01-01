@@ -3513,7 +3513,7 @@ Return
     SendInput, border-right: 1px solid {#}ccc`;
 Return
 
-::bb::
+::bbb::
     SendInput, border-bottom: 1px solid {#}ccc`;
 Return
 
@@ -5436,6 +5436,15 @@ return
 Var =
 (
 content: attr(name)  "：缺少维度或度量项";
+)
+code(Var)
+return
+
+::border::
+::bb::
+Var =
+(
+box-sizing: border-box;
 )
 code(Var)
 return

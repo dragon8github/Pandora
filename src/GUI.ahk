@@ -9752,3 +9752,119 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+VueAnimateHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/animate.css/3.7.2/animate.css">
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    #box2 {
+        position: absolute;
+        left: 50`%;
+        top: 30`%;
+        transform: translate(-50`%, -50`%);
+        background-color: red;
+        width: 100px;
+        height: 100px;
+    }
+
+    #box {
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        background-color: blue;
+        width: 100px;
+        height: 100px;
+    }
+
+    .wrapper {
+        position: fixed;
+        bottom: 0;
+        width: 100`%;
+        height: 300px;
+        overflow-y: scroll;
+        padding-bottom: 50px;
+        box-sizing: border-box;
+
+    }
+
+    p {
+        width: 100`%;
+        font-size: 13px;
+        padding: 10rpx;
+        background-color: green;
+        color: white;
+    }
+
+    [v-cloak] {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <transition enter-active-class="animated zoomInDown" leave-active-class="animated bounceOutDown">
+            <div id='box' v-show='show'></div>
+        </transition>
+        <button @click='handleClick'>handleClick</button>
+
+        <div id='box2' class="infinite animated" :class='name'></div>
+        <div class='wrapper'>
+            <div class="AttentionSeekers"> <p>Attention Seekers</p> <button @click="name = 'bounce'">bounce</button> <button @click="name = 'flash'">flash</button> <button @click="name = 'pulse'">pulse</button> <button @click="name = 'rubberBand'">rubberBand</button> <button @click="name = 'shake'">shake</button> <button @click="name = 'swing'">swing</button> <button @click="name = 'tada'">tada</button> <button @click="name = 'wobble'">wobble</button> <button @click="name = 'jello'">jello</button> </div>
+            <div class="AttentionSeekers"> <p>Bouncing Entrances</p> <button @click="name = 'bounceIn'">bounceIn</button> <button @click="name = 'bounceInDown'">bounceInDown</button> <button @click="name = 'bounceInLeft'">bounceInLeft</button> <button @click="name = 'bounceInRight'">bounceInRight</button> <button @click="name = 'bounceInUp'">bounceInUp</button> </div>
+            <div class="AttentionSeekers"> <p>Bouncing Exits</p> <button @click="name = 'bounceOut'">bounceOut</button> <button @click="name = 'bounceOutDown'">bounceOutDown</button> <button @click="name = 'bounceOutLeft'">bounceOutLeft</button> <button @click="name = 'bounceOutRight'">bounceOutRight</button> <button @click="name = 'bounceOutUp'">bounceOutUp</button> </div>
+            <div class="AttentionSeekers"> <p>Fading Entrances</p> <button @click="name = 'fadeIn'">fadeIn</button> <button @click="name = 'fadeInDown'">fadeInDown</button> <button @click="name = 'fadeInDownBig'">fadeInDownBig</button> <button @click="name = 'fadeInLeft'">fadeInLeft</button> <button @click="name = 'fadeInLeftBig'">fadeInLeftBig</button> <button @click="name = 'fadeInRight'">fadeInRight</button> <button @click="name = 'fadeInRightBig'">fadeInRightBig</button> <button @click="name = 'fadeInUp'">fadeInUp</button> <button @click="name = 'fadeInUpBig'">fadeInUpBig</button> </div>
+            <div class="AttentionSeekers"> <p>Fading Exits</p> <button @click="name = 'fadeOut'">fadeOut</button> <button @click="name = 'fadeOutDown'">fadeOutDown</button> <button @click="name = 'fadeOutDownBig'">fadeOutDownBig</button> <button @click="name = 'fadeOutLeft'">fadeOutLeft</button> <button @click="name = 'fadeOutLeftBig'">fadeOutLeftBig</button> <button @click="name = 'fadeOutRight'">fadeOutRight</button> <button @click="name = 'fadeOutRightBig'">fadeOutRightBig</button> <button @click="name = 'fadeOutUp'">fadeOutUp</button> <button @click="name = 'fadeOutUpBig'">fadeOutUpBig</button> </div>
+            <div class="AttentionSeekers"> <p>Flippers</p> <button @click="name = 'flip'">flip</button> <button @click="name = 'flipInX'">flipInX</button> <button @click="name = 'flipInY'">flipInY</button> <button @click="name = 'flipOutX'">flipOutX</button> <button @click="name = 'flipOutY'">flipOutY</button> </div>
+            <div class="AttentionSeekers"> <p>Lightspeed</p> <button @click="name = 'lightSpeedIn'">lightSpeedIn</button> <button @click="name = 'lightSpeedOut'">lightSpeedOut</button> </div>
+            <div class="AttentionSeekers"> <p>Rotating Entrances</p> <button @click="name = 'rotateIn'">rotateIn</button> <button @click="name = 'rotateInDownLeft'">rotateInDownLeft</button> <button @click="name = 'rotateInDownRight'">rotateInDownRight</button> <button @click="name = 'rotateInUpLeft'">rotateInUpLeft</button> <button @click="name = 'rotateInUpRight'">rotateInUpRight</button> </div>
+            <div class="AttentionSeekers"> <p>Rotating Exits</p> <button @click="name = 'rotateOut'">rotateOut</button> <button @click="name = 'rotateOutDownLeft'">rotateOutDownLeft</button> <button @click="name = 'rotateOutDownRight'">rotateOutDownRight</button> <button @click="name = 'rotateOutUpLeft'">rotateOutUpLeft</button> <button @click="name = 'rotateOutUpRight'">rotateOutUpRight</button> </div>
+            <div class="AttentionSeekers"> <p>Sliding Entrances</p> <button @click="name = 'slideInUp'">slideInUp</button> <button @click="name = 'slideInDown'">slideInDown</button> <button @click="name = 'slideInLeft'">slideInLeft</button> <button @click="name = 'slideInRight'">slideInRight</button> </div>
+            <div class="AttentionSeekers"> <p>Sliding Exits</p> <button @click="name = 'slideOutUp'">slideOutUp</button> <button @click="name = 'slideOutDown'">slideOutDown</button> <button @click="name = 'slideOutLeft'">slideOutLeft</button> <button @click="name = 'slideOutRight'">slideOutRight</button> </div>
+            <div class="AttentionSeekers"> <p>Zoom Entrances</p> <button @click="name = 'zoomIn'">zoomIn</button> <button @click="name = 'zoomInDown'">zoomInDown</button> <button @click="name = 'zoomInLeft'">zoomInLeft</button> <button @click="name = 'zoomInRight'">zoomInRight</button> <button @click="name = 'zoomInUp'">zoomInUp</button> </div>
+            <div class="AttentionSeekers"> <p>Zoom Exits</p> <button @click="name = 'zoomOut'">zoomOut</button> <button @click="name = 'zoomOutDown'">zoomOutDown</button> <button @click="name = 'zoomOutLeft'">zoomOutLeft</button> <button @click="name = 'zoomOutRight'">zoomOutRight</button> <button @click="name = 'zoomOutUp'">zoomOutUp</button> </div>
+            <div class="AttentionSeekers"> <p>Specials</p> <button @click="name = 'hinge'">hinge</button> <button @click="name = 'jackInTheBox'">jackInTheBox</button> <button @click="name = 'rollIn'">rollIn</button> <button @click="name = 'rollOut'">rollOut</button> </div>
+        </div>
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        name: 'zoomInDown',
+        show: false,
+    },
+    methods: {
+        handleClick() {
+            this.show = !!!this.show
+        },
+    },
+    beforeMount() {
+
+    }
+})
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
