@@ -410,7 +410,7 @@ return
 
 
 if (v == "require.context 自动import 解决方案") {
-_send("autoimp", true, true)
+_send("webpack.ctx", true, true)
 return
 }
 
@@ -808,31 +808,8 @@ this.$store.getters['app/master']
 }
 
 if (v == "动态组件：<component :is='xxx'></component>") {
-Var = 
-(
-<component v-show="isShow" :is="activeForm" :fuckOption="123"></component>
-
-import PieChartForm from './ChartForm/PieChartForm'
-import BarChartForm from './ChartForm/BarChartForm'
-import LineChartForm from './ChartForm/LineChartForm'
-
-data () {
-  return {
-    isShow: true,
-    chartActiveItem: null,
-  }
-},
-components: {
-    BarChartForm,
-    PieChartForm,
-    LineChartForm,
-},
-computed: {
-    activeForm() {
-        return this.chartActiveItem ? this.chartActiveItem.constructor.formName : undefined
-    },
-},
-)
+_send("compoents", true, true)
+return
 }
 
 if (v == "Vue 404 页面") {
@@ -4871,6 +4848,63 @@ Var =
 
   <a class='header__crumbs--btn' @click.stop='goback' v-waves>返回</a>
    */
+)
+txtit(Var)
+return
+
+::components::
+::compoent::
+::dongtaizujian::
+::dongtaicomponent::
+Var =
+(
+<component v-show="isShow" :is="activeForm" :fuckOption="123"></component>
+
+import PieChartForm from './ChartForm/PieChartForm'
+import BarChartForm from './ChartForm/BarChartForm'
+import LineChartForm from './ChartForm/LineChartForm'
+
+data () {
+  return {
+    isShow: true,
+    chartActiveItem: null,
+  }
+},
+components: {
+    BarChartForm,
+    PieChartForm,
+    LineChartForm,
+},
+computed: {
+    activeForm() {
+        return this.chartActiveItem ? this.chartActiveItem.constructor.formName : undefined
+    },
+},
+---
+<template>
+    <div class='layout'>
+        <component :is='tool' v-if='tool'></component>
+    </div>
+</template>
+
+<script>
+
+export default {
+    name: 'Layout',
+    watch: {
+      '$route': {
+          deep: true,
+          immediate: true,
+          handler (newV, oldV) {
+            // 获取当前路由名称
+            const name = newV.name || 'Index'
+            // 设置当前工具栏
+            this.tool = () => import(`@/components/tools/${name}`)
+          }
+      }
+    },
+}
+</script>
 )
 txtit(Var)
 return

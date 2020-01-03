@@ -238,7 +238,7 @@ Var =
     <title>ECharts</title>
     <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
 </head>
 <body>
@@ -995,7 +995,7 @@ Var =
  * 新建Polygon
  * @param {string} name 覆盖物的名字
  * @param {array} coordinates 这是一个三维数组
- * 参考格式：http://echarts.baidu.com/examples/data/asset/geo/HK.json
+ * 参考格式：http://echartsjs.com/examples/data/asset/geo/HK.json
  * 注意，Polygon 和 MultiPolygon是不一样的，前者是三维数组，后者是四维数组。
  */
 const createPolygon = (name, coordinates) => {

@@ -92,6 +92,8 @@ Var =
 code(Var)
 return
 
+::cdn-dom2img::
+::cdn-dom2image::
 ::cdn-image::
 Var =
 (
@@ -353,7 +355,7 @@ return
 Var =
 (
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
-<script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+<script src="http://echartsjs.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
 <!-- 聚合图相关的插件 -->
 <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>

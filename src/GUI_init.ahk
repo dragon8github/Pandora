@@ -260,6 +260,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need">you-dont-nee
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="http://obkoro1.com/web_accumulate/algorithm/">前端算法题</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly">阮一峰的周刊</a>
+Gui, Pandora:Add, Link,, <a href="http://caibaojian.com/c/news">新前端日报</a>
 Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.html">前端日报</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/GitHubDaily/GitHubDaily">GitHubDaily</a>
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/">羽雀团队知识库</a>
@@ -1014,8 +1015,8 @@ Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/lates
 Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
 Gui, Pandora:Add, Link,, <a href="https://www.oschina.net/translate/geojson-spec#positions">GeoJSON 格式规范</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ecomfe/awesome-echarts">awesome-echarts</a>
-Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/examples/">echart 官方示例</a>
-Gui, Pandora:Add, Link,, <a href="http://echarts.baidu.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
+Gui, Pandora:Add, Link,, <a href="http://echartsjs.com/examples/">echart 官方示例</a>
+Gui, Pandora:Add, Link,, <a href="http://echartsjs.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
 Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/explore.html">ECharts 官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/editor.html?c=xSy3KhFV4M">ECharts 3D地图</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/zh/option.html#dataset">echart dataset API</a>

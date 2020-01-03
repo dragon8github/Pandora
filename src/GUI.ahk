@@ -1856,7 +1856,7 @@ FileAppend,
     <title>ECharts</title>
     <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
 </head>
 <body>
@@ -3858,7 +3858,7 @@ FileAppend,
 
     <!-- echarts -->
     <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
-    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
 
 	<!-- 百度地图插件 -->
@@ -3868,7 +3868,7 @@ FileAppend,
     <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
     
     <!-- echarts 百度地图扩展插件 -->
-    <script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+    <script src="http://echartsjs.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
 </head>
 <style>
 	#main {
@@ -8204,7 +8204,7 @@ Var =
 
     <!-- echarts -->
     <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
-    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
 
 	<!-- 百度地图插件 -->
@@ -8214,7 +8214,7 @@ Var =
     <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
 
     <!-- echarts 百度地图扩展插件 -->
-    <script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+    <script src="http://echartsjs.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
 </head>
 <style>
 	#main {
@@ -8323,7 +8323,7 @@ FileAppend,
 
     <!-- echarts -->
     <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
-    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
 
 	<!-- 百度地图插件 -->
@@ -8333,7 +8333,7 @@ FileAppend,
     <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
 
     <!-- echarts 百度地图扩展插件 -->
-    <script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+    <script src="http://echartsjs.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
 </head>
 <style>
 	#main {
@@ -9311,7 +9311,7 @@ FileAppend,
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!-- echarts -->
     <script src="https://lib.baomitu.com/echarts/4.1.0/echarts.min.js"></script>
-    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
     <!-- 百度地图插件 -->
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
@@ -9319,7 +9319,7 @@ FileAppend,
     <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
     <!-- echarts 百度地图扩展插件 -->
-    <script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+    <script src="http://echartsjs.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
 </head>
 <style>
     #main {
