@@ -85,6 +85,7 @@
 	
 	
 	; git
+	Menu, gitShellMenu, Add, git 大小写问题和解决方案, ShellHandler3
 	Menu, gitShellMenu, Add, git, ShellHandler4
 	Menu, gitShellMenu, Add, git log --pretty=oneline, ShellHandler4
 	Menu, gitShellMenu, Add, git checkout --theirs src/views/Studio/header.vue, ShellHandler4
@@ -204,6 +205,15 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "git 大小写问题和解决方案") {
+Var =
+(
+git config --global core.ignorecase false
+
+git mv -f src/pages/Index/index.vue src/pages/Index/Index.vue
 )
 }
 

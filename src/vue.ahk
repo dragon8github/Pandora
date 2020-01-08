@@ -808,7 +808,7 @@ this.$store.getters['app/master']
 }
 
 if (v == "动态组件：<component :is='xxx'></component>") {
-_send("compoents", true, true)
+_send("component", true, true)
 return
 }
 
@@ -2571,20 +2571,18 @@ var router = new Router({
 	]},
   ]
 })
-
-router.beforeEach((to, from, next) => {
-	// page-loading  启动
-	NProgress.start()
-	// 更新 vuex 状态 - 标题
-	store.dispatch('SET_TITLE', to.meta.title + ' - 欢迎来到东莞市教育数据中心！')
-    // 放行页面
-    next()
-})
-
 // 全局路由钩子
 router.afterEach((to, from) => {
-	// page-loading 关闭
-	NProgress.done()
+  // 设置标题
+  document.title = '城管智慧可视化－' + to.meta.title
+
+  // 更新 vuex 状态 - 标题
+  store.dispatch('SET_TITLE', to.meta.title)
+})
+
+router.beforeEach((to, from, next) => {
+    // 放行页面
+    next()
 })
 
 export default router
@@ -2869,21 +2867,6 @@ location / {
 location ^~ /api/ {
   proxy_pass  http://192.168.8.184:8080/api/;
 }
-)
-code(Var)
-return
-
-::webpack.router::
-::webpack.route::
-::webpack.require::
-::webpack.ensure::
-::ensure::
-::luyouqiege::
-::webpack.luyouqiege::
-::require.ensure::
-Var =
-(
-const Login = r => require.ensure([], () => r(require('@/views/User/Login')), 'Login')
 )
 code(Var)
 return
@@ -4852,8 +4835,10 @@ Var =
 txtit(Var)
 return
 
+
+
 ::components::
-::compoent::
+::component::
 ::dongtaizujian::
 ::dongtaicomponent::
 Var =

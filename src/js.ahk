@@ -2646,10 +2646,16 @@ var drive = (ary, fn) => {
 code(Var)
 return
 
-::webpack.req::
-::webpack.require::
-::webpack.ctx::
-::webpack.context::
+::webpack4::
+:?:webpack.req::
+:?:webpack.require::
+:?:webpack.ctx::
+:?:webpack.context::
+::auto::
+::zidong::
+::dongtai::
+::dongtaidaoru::
+::dongtaiyinru::
 Var =
 (
 import Vue from 'vue'
@@ -2708,6 +2714,32 @@ charts.keys().filter(path => path.lastIndexOf('/') != 1).forEach(path => {
 })
 
 export default __CHARTS__
+---
+/**
+ * 1. directory {String} -读取文件的路径
+ * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
+ * 3. regExp {RegExp} -匹配文件的正则
+ */
+const _store = require.context('@/pages', true, /store\.js$/)
+
+/**
+ * 1. 必须使用 key() 内置方法获取所有路径。
+ */
+const __STORE__ = _store.keys().reduce((obj, path) => {
+    // 获取模块名: "./City/store.js" => City
+    const name = path.substring(2, path.lastIndexOf('/'))
+
+    // （重点）获取模块内容
+    const module = _store(path)
+
+    // 兼容 es6 import export 和 CMD require module.export 两种规范
+    const __MODULE__ = module.default || module
+
+    // 以 『文件名』 为 key，模块内容为 value
+    obj[name] = __MODULE__
+
+    return obj
+}, {})
 )
 txtit(Var)
 return
@@ -3398,7 +3430,7 @@ const cachedSave = (hashcode, content) => {
             if (err.message.includes('quota')) localforage.clear()
         })
         // 设置缓存时间
-        localforage.setItem(`${hashcode}:timestamp`, Date.now()).catch(err => {
+        localforage.setItem(``${hashcode}:timestamp``, Date.now()).catch(err => {
             console.log('cache err', err)
             // 说明内存满了，直接清空
             if (err.message.includes('quota')) localforage.clear()
@@ -3582,13 +3614,6 @@ Send, {UP 3}
 return
 
 ::autof::
-::atf::
-::autofix::
-::autofixer::
-::autoperfixer::
-::autoprefixer::
-::autoper::
-::autopre::
 Var =
 (
 autoprefixer
@@ -5457,6 +5482,37 @@ SendInput, {right 7}
 SendInput, +{right 2}
 return
 
+::imp3::
+Var =
+(
+<template>
+    <div class='layout'>
+        <component :is='tool' v-if='tool'></component>
+    </div>
+</template>
+
+<script>
+
+export default {
+    name: 'Layout',
+    watch: {
+      '$route': {
+          deep: true,
+          immediate: true,
+          handler (newV, oldV) {
+            // 获取当前路由名称
+            const name = newV.name || 'Index'
+            // 设置当前工具栏
+            this.tool = () => import(`@/components/tools/${name}`)
+          }
+      }
+    },
+}
+</script>
+)
+code(Var)
+return
+
 ::cimp::
 Var =
 (
@@ -5513,13 +5569,17 @@ axios({
 code(Var)
 return
 
+::axiosget::
 ::axios.get::
 Var =
 (
 /**
  * get 请求
  */
-axios.get('http://192.168.31.97/index.php?a=123').then(response => {
+axios.get({
+  url: 'http://192.168.31.97/index.php', 
+  params: {a: 123}
+}).then(response => {
     console.log(20181021221522, response)
 })
 )

@@ -180,6 +180,7 @@
     Menu, utilsSolution, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
 
     ; @认知 @renzhi
+    Menu, utilspractice, Add, 最大数:ary.indexOf(0) >>> 0  // => 4294967295, utilsHandler
     Menu, utilspractice, Add, 新的多个变量初始化方式: var [obj`, max`, name] = [{}`, 1`, ''], utilsHandler
     Menu, utilspractice, Add, Array.prototype.maps：优化解决一个数组返回多个对象的, utilsHandler
     Menu, utilspractice, Add, 快速取整的新思路：1553 / 10 | 0, utilsHandler
@@ -227,7 +228,7 @@
     
     
     ; @my
-
+    Menu, utilsmy, Add, partial 偏应用（_bind）：自由占位符, utilsHandler
     Menu, utilsmy, Add, 图片转base64:img2base64, utilsHandler
     Menu, utilsmy, Add, 新的数组工具：maps, utilsHandler
     Menu, utilsmy, Add, 反转函数参数：我的函数我做主, utilsHandler
@@ -307,7 +308,8 @@
     
     
     
-    Menu, utilses5, Add, partial：偏应用ES5实现（局部函数工厂）, utilsHandler
+    Menu, utilses5, Add, 类数组还需要 length 属性哦, utilsHandler
+    Menu, utilses5, Add, 类数组转化为数组的N种方式, utilsHandler
     Menu, utilses5, Add, 将参数arguments转化为一个数组Array.prototype.slice.call(arguments), utilsHandler
     Menu, utilses5, Add, (...arr)数组解构的前辈：Array.prototype.push.apply(arr`, newArr), utilsHandler
     Menu, utilses5, Add, 函数调用注入args：successFn.apply(this`, arguments), utilsHandler
@@ -443,6 +445,46 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "类数组还需要 length 属性哦") {
+Var =
+(
+let likeArray = { 1: "foo", 2: "bar" }
+
+// 如果不包含length 属性的话，手动注入
+if (!likeArray.hasOwnProperty('length')) {
+    // 获取所有的key并且转化为数字类型
+    const keys = Object.keys(likeArray).map(_ => +_)
+    // 获取最大值作为length + 1
+    likeArray.length = Math.max(...keys) + 1
+}
+)
+}
+
+if (v == "类数组转化为数组的N种方式") {
+Var =
+(
+let likeArray = {0: "foo", 1: "bar", length: 2}
+
+// 1
+Array.prototype.slice.call(likeArray, 0)
+
+// 2
+Array.from(likeArray)
+)
+}
+
+if (v == "partial 偏应用（_bind）：自由占位符") {
+_send("pianyingyong", true, true)
+return
+}
+
+if (v == "最大数:ary.indexOf(0) >>> 0  // => 4294967295") {
+Var =
+(
+ary.indexOf(0) >>> 0  // => 4294967295
 )
 }
 
@@ -1870,28 +1912,6 @@ document.querySelector('.layer').cloneNode(true)
 if (v == "mvDOM：移动dom元素到指定目标位置") {
 _send("mvDOM", true, true)
 return
-}
-
-if (v == "partial：偏应用ES5实现（局部函数工厂）") {
-Var = 
-(
-function partial(fn, /* args... */) {
-	var args = [].slice.call( arguments, 1 );
-
-	return function () {
-		return fn.apply( this, args.concat( [].slice.call( arguments ) ) );
-	}
-}
-
-/* demo：实际上作用很类似 fn.prototype.bind */
-
-function add(a, b) {
-	return a + b;
-}
-
-var add100 = partial(add, 100);
-console.log(add100(14)) // 114
-)
 }
 
 
@@ -5939,4 +5959,88 @@ Var =
 
 )
 txtit(Var)
+return
+
+::pianyingyong::
+::_bind::
+::partial::
+Var =
+(
+/**
+ * partial 偏应用（_bind）
+ * ctx： 上下文
+ * argv: 占位符参数，如果不想展位则写为 undefined
+ *
+ * demo 示例
+ * 
+   // 期待有两个参数注入
+   var a = function (a, b) { console.log(a, b, this) }
+
+   // 我先注入第二个参数
+   var aa = a.partial({ 'fuck': 123 }, undefined, 'god')
+
+   // 被第三方执行，注入了第一个参数
+   aa('shit') // => shit god
+ */
+Function.prototype.partial = function (ctx, ...argv) {
+    // 保存当前函数的指针
+    const fn = this
+
+    // fixbug：震惊！argv也是一个引用类型，所以先复制一份出来。
+    const _argv = argv.slice(0)
+
+    // 返回一个新函数
+    return function (...args) {
+        // 遍历占位符参数
+        for (let [index, value] of _argv.entries()) {
+            // 如果占位符为 undefined，说明需要补位的
+            if (value === undefined) {
+               argv[index] =  args[index]
+            }
+        }
+        
+        // 调用函数
+        return fn.apply(ctx, argv)
+    }
+}
+---
+/**
+ * 自定义 partial 偏应用（_bind）
+ * demo 示例
+ * 
+   // 期待有两个参数注入
+   var a = function (a, b) { console.log(a, b, this) }
+   // 我先注入第二个参数
+   var aa = a.partial(undefined, 'god')
+   // 被第三方执行，注入了第一个参数
+   aa('shit') // => shit god
+ */
+export const partial = (fn, ...argv) => {
+  // fixbug：震惊！argv也是一个引用类型，所以先复制一份出来。
+  const _argv = argv.slice(0)
+
+  // 返回已占位的函数（为了更方便的结合bind使用，本函数使用 function而不适用箭头函数）
+  return function (...args) {
+       // 遍历占位符参数
+       for (let [index, value] of _argv.entries()) {
+           // 如果占位符为 undefined，说明需要补位的
+           if (value === undefined) {
+              argv[index] =  args[index]
+           }
+       }
+       // 调用函数
+       return fn.apply(this, argv)
+   }
+}
+)
+txtit(Var)
+return
+
+::objs::
+::objk::
+Var =
+(
+Object.keys()
+)
+code(Var)
 return
