@@ -4450,8 +4450,100 @@ countWords(``a
 			b
 			c
 			d``); // => 4
+---
+// https://github.com/koajs/compose/blob/master/index.js
+function compose (middleware) {
+  // 必须是数组
+  if (!Array.isArray(middleware))
+    throw new TypeError('Middleware stack must be an array!')
+
+  // 必须全是函数
+  if (middleware.some(fn => typeof fn !== 'function'))
+    throw new TypeError('Middleware must be composed of functions!')
+
+  return function (ctx, last_next) {
+    // 用来标记当前执行的位置，同时也可以用来防止重复执行。
+    let index = -1
+
+    function dispatch (cursor) {
+      // 这一步是为了验证并禁止多次执行 await next()
+      if (cursor <= index)
+        // 认知：原来 reject 可以和 new Error 联合使用报错
+        return Promise.reject(new Error('next() called multiple times'))
+
+      // 验证通过，更新下标
+      index = cursor
+
+      // 获取当前下标的函数
+      let fn = middleware[cursor]
+
+      // 如果已经是最后一次了，那么执行注入的 last_next（如果没有则是undefined）
+      if (cursor === middleware.length)
+        fn = last_next
+
+      // 最后一次，如果 last_next 没有传递任何内容，那就是 undefined
+      // 另外，这也是一种防御机制吧、虽然前面判断了 middleware，但谁知道异步过程中引用发生了啥。
+      if (!fn)
+        return Promise.resolve(undefined)
+
+      try {
+        // 下一个函数的引用（有点轮询的味道）
+        const next = dispatch.bind(null, cursor + 1)
+
+        // 🚀 执行当前函数，并且注入 『上下文』 和 『下一次函数』
+        const result = fn(ctx, next)
+
+        // 返回结果
+        // ⚠️ 注意，由于这里的fn大概率是适用 async/await 之类的异步操作，所以返回 99`% 是 Promise。 
+        // 📝 所以 Promise.resolve(result) 返回的依然是一个 Promise 哦
+        return Promise.resolve(result)
+
+      } catch (err) {
+        // 报错了
+        return Promise.reject(err)
+      }
+    }
+
+    // 开始第一个函数
+    return dispatch(0)
+  }
+}
+
+const a = async (ctx, next) => {
+  console.log(1)
+
+  const hello = await Promise.resolve('hello')
+  console.log(hello)
+
+  await next()
+  console.log(2)
+
+  return 'ok'
+}
+
+const b = async (ctx, next) => {
+  console.log(3)
+
+  const world = await Promise.resolve('world')
+  console.log(world)
+
+  await next()
+  console.log(4)
+}
+
+compose([a, b])({ /* ctx, last_next */ })
+
+// 输出著名的 "1342" 现象：
+// 1
+// hello
+// 3
+// world
+// 4
+// 2
+
+// 返回：Promise {<resolved>: "ok"}
 )
-code(Var)
+txtit(Var)
 return
 
 ::cache.request::
@@ -9495,14 +9587,18 @@ return new Promise((resolve, reject) => {
 code(Var)
 return
 
-::promise.test::
 ::test::
-::testfn::
-::promisefn::
-::promise.fn::
 Var =
 (
 var test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 3000))
+)
+code(Var)
+return
+
+::test2::
+Var =
+(
+var test = () => new Promise((resolve, reject) => setTimeout(_ => reject('fail'), 4000))
 )
 code(Var)
 return

@@ -84,8 +84,8 @@
 	Menu, H, Add, `%（从右到做）操作符, ShellHandler
 	
 	
-	; git
-	Menu, gitShellMenu, Add, git 大小写问题和解决方案, ShellHandler3
+	; @git
+	Menu, gitShellMenu, Add, git 大小写问题和解决方案, ShellHandler
 	Menu, gitShellMenu, Add, git, ShellHandler4
 	Menu, gitShellMenu, Add, git log --pretty=oneline, ShellHandler4
 	Menu, gitShellMenu, Add, git checkout --theirs src/views/Studio/header.vue, ShellHandler4
@@ -208,14 +208,6 @@ Var =
 )
 }
 
-if (v == "git 大小写问题和解决方案") {
-Var =
-(
-git config --global core.ignorecase false
-
-git mv -f src/pages/Index/index.vue src/pages/Index/Index.vue
-)
-}
 
 if (v == "git tag -d v0.0.2 # 删除本地tag") {
 Var =
@@ -392,6 +384,15 @@ Var =
 )
 }
 
+
+if (v == "git 大小写问题和解决方案") {
+Var =
+(
+git config --global core.ignorecase false
+
+git mv -f src/pages/Index/index.vue src/pages/Index/Index.vue
+)
+}
 
 
 if (v == "tar 压缩") {
@@ -1089,8 +1090,6 @@ ShellHandler4:
 Sleep, 100
 cs(A_ThisMenuItem)
 return
-
-
 
 ::sh.curl::
 ::shell.curl::

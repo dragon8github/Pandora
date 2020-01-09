@@ -193,10 +193,11 @@
     Menu, utilspractice, Add,
     Menu, utilspractice, Add,
     
-    Menu, utilspractice, Add, FormData（multipart/form-data）与URLSearchParams（application/x-www-form-urlencoded）的区别, utilsHandler
+    Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
     Menu, utilspractice, Add, 多个异步操作时，请毫不犹豫用Promise.all, utilsHandler
     Menu, utilspractice, Add, Promise.allSettled：Promise.all的升级版，忽视reject报错也执行, utilsHandler
     Menu, utilspractice, Add, Promise.race只返回最快的一个, utilsHandler
+    Menu, utilspractice, Add, FormData（multipart/form-data）与URLSearchParams（application/x-www-form-urlencoded）的区别, utilsHandler
     
     Menu, utilspractice, Add,
     Menu, utilspractice, Add,
@@ -222,7 +223,6 @@
     
     
     Menu, utilspractice, Add, 拖拽位置公式, utilsHandler
-    Menu, utilspractice, Add, koajs 核心函数compose的超简单源码实现, utilsHandler
     Menu, utilspractice, Add, curry2 二元参数的手动柯里化, utilsHandler
     ; renzhi
     
@@ -3163,58 +3163,8 @@ return
 }
 
 if (v == "koajs 核心函数compose的超简单源码实现") {
-Var = 
-(
-// https://github.com/koajs/compose/blob/master/index.js
-function compose (middleware) {
-  if (!Array.isArray(middleware)) throw new TypeError('Middleware stack must be an array!')
-  for (const fn of middleware) {
-    if (typeof fn !== 'function') throw new TypeError('Middleware must be composed of functions!')
-  }
-  return function (context, next) {
-    let index = -1
-    return dispatch(0)
-    function dispatch (i) {
-      if (i <= index) return Promise.reject(new Error('next() called multiple times'))
-      index = i
-      let fn = middleware[i]
-      if (i === middleware.length) fn = next
-      if (!fn) return Promise.resolve()
-      try {
-        return Promise.resolve(fn(context, dispatch.bind(null, i + 1)));
-      } catch (err) {
-        return Promise.reject(err)
-      }
-    }
-  }
-}
-
-const a = async (ctx, next) => {
-  console.log(1)
-  const hello = await Promise.resolve('hello')
-  console.log(hello)
-
-  await next()
-  console.log('a end')
-}
-
-const b = async (ctx, next) => {
-  console.log(2)
-  const hello = await Promise.resolve('hello')
-  console.log(hello)
-
-  await next()
-  console.log('b end')
-}
-
-compose([a, b])({});
-// 1
-// hello
-// 2
-// hello
-// b end
-// a end
-)
+_send("compose", true, true)
+return
 }
 
 
