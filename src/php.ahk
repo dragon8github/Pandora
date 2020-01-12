@@ -192,7 +192,8 @@ code(Var)
 Return
 
 
-::curl::
+::php.curl::
+::phpcurl::
 Var = 
 (
 function http_post($url,$param){

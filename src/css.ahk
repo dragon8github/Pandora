@@ -62,6 +62,8 @@
     Menu, CssAnimateHandler, Add, animation-timing-function: ease-out;, CssHandler3
     Menu, CssAnimateHandler, Add, will-change: transform;, CssHandler3
         
+    ; @renzi
+    Menu, cssknow, Add, scss 与 BEM 结合写法最佳实践的认知, CssHandler
     Menu, cssknow, Add, position: sticky; 随着页面的滚动，当元素距离上边缘0距离的时候，黏在了上边缘, CssHandler
     Menu, cssknow, Add, currentColor 当前字体颜色, CssHandler
     Menu, cssknow, Add, calc：属性计算器，适合 position 居中解决方案, CssHandler
@@ -100,7 +102,15 @@
     Menu, CssMenu, Add, 天行九歌：高亮文本 highlight（文字）, CssHandler
     Menu, CssMenu, Add, 非著名程序员：高亮文本 highlight（背景）, CssHandler
     Menu, CssMenu, Add, 内阴影box-shadow, CssHandler
-    
+    Menu, CssMenu, Add, 宽度自适应内容 width min-content, CssHandler
+    Menu, CssMenu, Add, css： 滚动提示, CssHandler
+    Menu, CssMenu, Add, filter blur 背景虚化, CssHandler
+    Menu, CssMenu, Add, checkbox 自定义样式简单, CssHandler
+    Menu, CssMenu, Add, 扩大可点击区域的几种方案, CssHandler
+    Menu, CssMenu, Add, unset 一次性重置所有默认属性, CssHandler
+    Menu, CssMenu, Add, pointer-events: none;禁用按钮上的默认指针事件, CssHandler
+    Menu, CssMenu, Add, nth-child 负选择器可以选择 1 至 n 个元素, CssHandler
+
     Menu, CssMenu, Add
     Menu, CssMenu, Add
     
@@ -241,6 +251,133 @@ Var =
 (
 )
 }
+
+if (v == "nth-child 负选择器可以选择 1 至 n 个元素") {
+Var =
+(
+/* 选择第 1 至第 3 个元素并显示出来 */
+li:nth-child(-n+3) {
+  display: block;
+}
+
+/* 选择除前3个之外的所有项目，并显示它们 */
+li:not(:nth-child(-n + 3)) {
+  display: none;
+}
+
+)
+}
+
+if (v == "pointer-events: none;禁用按钮上的默认指针事件") {
+Var =
+(
+pointer-events: none;
+)
+}
+
+if (v == "unset 一次性重置所有默认属性") {
+Var =
+(
+button {
+  all: unset;
+}
+)
+}
+
+if (v == "scss 与 BEM 结合写法最佳实践的认知") {
+Var =
+(
+.card {
+    
+    &__header {
+        
+    }
+
+    &__title {
+        
+    }
+
+    &__content {
+        
+    }
+
+    &__footer {
+
+    }
+}
+)
+}
+
+if (v == "宽度自适应内容 width min-content") {
+Var =
+(
+width: min-content;
+)
+}
+
+if (v == "css： 滚动提示") {
+Var =
+(
+background: linear-gradient(white 30`%, transparent), radial-gradient(at 50`% 0, rgba(0, 0, 0, .2), transparent 70`%);
+background-repeat: no-repeat;
+background-size: 100`% 50px, 100`% 15px;
+background-attachment: local, scroll;
+)
+}
+
+if (v == "filter blur 背景虚化") {
+Var =
+(
+filter: blur(5px) contrast(.8) brightness(.8);
+)
+}
+
+if (v == "checkbox 自定义样式简单") {
+Var =
+(
+input[type='checkbox'] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+input[type='checkbox'] + label::before {
+    content: '';
+    display: inline-block;
+    width: .8em;
+    height: .8em;
+    margin-right: .2em;
+    border-radius: .2em;
+
+    background: yellowgreen;
+    text-indent: .15em;
+    line-height: .65;
+}
+
+input[type='checkbox']:checked + label::before  { 
+    content: '\2713'; 
+}
+
+input[type='checkbox']:disabled + label { color: #ccc; }
+input[type='checkbox']:disabled + label::before { background-color: #ccc;  }
+
+)
+}
+
+if (v == "扩大可点击区域的几种方案") {
+Var =
+(
+ button {
+    position: relative;
+ }
+ 
+button::before {
+    content: '';
+    position: absolute;
+    top: -10px; right: -10px; bottom: -10px; left: -10px;
+}
+)
+}
+
 
 if (v == "内阴影box-shadow") {
 Var =
@@ -2426,7 +2563,7 @@ Var =
 transform: translateX(-50`%)
 )
 }
-code(Var)
+txtit(Var)
 return
 
 
@@ -5179,11 +5316,31 @@ content: attr(name)  "：缺少维度或度量项";
 code(Var)
 return
 
+
 ::border::
 ::bb::
 Var =
 (
 box-sizing: border-box;
+)
+code(Var)
+return
+
+::blur::
+Var =
+(
+filter: blur(5px) contrast(.8) brightness(.8);
+)
+code(Var)
+return
+
+::bs::
+::bz::
+Var =
+(
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 )
 code(Var)
 return

@@ -1250,3 +1250,12 @@ git status -u
 )
 _Send(Var)
 return
+
+::curl::
+::tianqi::
+Var =
+(
+curl wttr.in
+)
+_send(Var)
+return

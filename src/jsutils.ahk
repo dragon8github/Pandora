@@ -9,6 +9,7 @@
     Menu, utilsIs, Add, isBoolean, utilsHandler
     Menu, utilsIs, Add, isArray, utilsHandler
     Menu, utilsIs, Add, isObject, utilsHandler
+    Menu, utilsIs, Add, isPlainObject, utilsHandler
     Menu, utilsIs, Add, isPureObject, utilsHandler
     Menu, utilsIs, Add, isFunction, utilsHandler
     Menu, utilsIs, Add, isDate, utilsHandler
@@ -35,9 +36,15 @@
     
     
     Menu, utilsDOM, Add, dom.js, utilsHandler
+
+    Menu, utilsDOM, Add, document.createComment 往DOM插入一个注释, utilsHandler
+    Menu, utilsDOM, Add, 虚拟节点 document.createDocumentFragment, utilsHandler
+
     
     Menu, utilsDOM, Add
     Menu, utilsDOM, Add
+
+
     Menu, utilsDOM, Add, parents, utilsHandler
     Menu, utilsDOM, Add, addClass, utilsHandler
     Menu, utilsDOM, Add, hasClass, utilsHandler
@@ -180,6 +187,7 @@
     Menu, utilsSolution, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
 
     ; @认知 @renzhi
+    Menu, utilspractice, Add, 三元表达式正确换行套路 —— 问号换行，与冒号齐飞, utilsHandler
     Menu, utilspractice, Add, 最大数:ary.indexOf(0) >>> 0  // => 4294967295, utilsHandler
     Menu, utilspractice, Add, 新的多个变量初始化方式: var [obj`, max`, name] = [{}`, 1`, ''], utilsHandler
     Menu, utilspractice, Add, Array.prototype.maps：优化解决一个数组返回多个对象的, utilsHandler
@@ -377,6 +385,7 @@
     Menu, utils2, Add, dialog 对话框类，支持拖拽, utilsHandler
     Menu, utils2, Add, 求两个数的最大公约数与比例, utilsHandler
     Menu, utils2, Add, 统计 String 每个单词出现的次数, utilsHandler
+    Menu, utils2, Add, allColor：获取页面所有颜色, utilsHandler
 
 
     
@@ -446,6 +455,32 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "三元表达式正确换行套路 —— 问号换行，与冒号齐飞") {
+Var =
+(
+formatComponentName = vm => {
+    var name = vm.isValue ? vm.$options.name : vm.name
+    return name
+        ? ' (found in component: <)' + hyphente(name) + '>)'
+        : ''
+}
+)
+}
+
+
+if (v == "document.createComment 往DOM插入一个注释") {
+_send("dc", true, true)
+}
+
+if (v == "虚拟节点 document.createDocumentFragment") {
+_send("df", true, true)
+}
+
+if (v == "allColor：获取页面所有颜色") {
+_send("allcolor", true, true)
+return
 }
 
 if (v == "类数组还需要 length 属性哦") {
@@ -5180,6 +5215,32 @@ export const isNumber = input => (typeof input === 'number' || Object.prototype.
 )
 }
 
+
+if (v == "isPlainObject") {
+Var = 
+(
+var isPlainObject = function isPlainObject(obj) {
+  if (!obj || toStr.call(obj) !== '[object Object]') {
+    return false;
+  }
+
+  var hasOwnConstructor = hasOwn.call(obj, 'constructor');
+  var hasIsPrototypeOf = obj.constructor && obj.constructor.prototype && hasOwn.call(obj.constructor.prototype, 'isPrototypeOf');
+  // Not own constructor property must be Object
+  if (obj.constructor && !hasOwnConstructor && !hasIsPrototypeOf) {
+    return false;
+  }
+
+  // Own properties are enumerated firstly, so to speed up,
+  // if last one is own, then all properties are own.
+  var key;
+  for (key in obj) { /**/ }
+
+  return typeof key === 'undefined' || hasOwn.call(obj, key);
+};
+)
+}
+
 if (v == "isPureObject") {
 Var = 
 (
@@ -5991,6 +6052,33 @@ return
 Var =
 (
 Object.keys()
+)
+code(Var)
+return
+
+::dc::
+Var =
+(
+var c = document.createComment("@fuck");
+document.body.appendChild(c);
+)
+code(Var)
+return
+
+::df::
+Var =
+(
+var ul = document.getElementById("ul");
+
+var fragment = document.createDocumentFragment();
+
+for (var i = 0; i < 20; i++) {
+    var li = document.createElement("li");
+    li.innerHTML = "index: " + i;
+    fragment.appendChild(li);
+}
+
+ul.appendChild(fragment);
 )
 code(Var)
 return

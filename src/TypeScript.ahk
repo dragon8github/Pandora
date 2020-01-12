@@ -92,6 +92,7 @@ code(Var)
 return
 
 ::ts.config::
+::ts.config.js::
 ::tsconfig::
 Var =
 (
@@ -110,8 +111,32 @@ Var =
     "skipLibCheck": true
   }
 }
+---
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "allowJs": true,
+    "noEmit": true,
+    "noImplicitThis": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  },
+  "include": [
+    "types/**/*",
+    "src/**/*",
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.spec.js",
+    "node_modules"
+  ]
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::ts.fd::

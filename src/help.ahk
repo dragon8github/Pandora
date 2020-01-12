@@ -81,6 +81,7 @@ return
         Send, ^j
     }
 return
+
 ; 每次输入字符时, 热字串识别器会检查当前活动窗口, 并且如果活动窗口不同于之前, 则会重置. 如果活动窗口发生变化, 但在键入任何字符之前返回, 则不会检测到更改(但可能会由于其他原因重置热字串识别器). 
 ; 通过两个热字符串的触发角，优雅自然无障碍的重置。
 ~Tab::
@@ -1202,6 +1203,8 @@ _sendinput("git add . && git commit -m '{#}' --no-verify && git push{LEFT 25}")
 Return
 
 
+
+
 ::auth::
     Send, Authorization
 return
@@ -1211,6 +1214,13 @@ return
     PixelGetColor, color, %MouseX%, %MouseY%, RGB  
     Clipboard := SubStr(color, 3) ; 考虑在前面加上，但我就算了，实战的时候发现这个东西有点多余"#" . 
     TrayTip, my title, current color is `n %Clipboard%, 20, 17
+return
+
+>^>+a::
+MouseGetPos, posX, posY
+PixelGetColor, color, %posX%, %posY%, Slow RGB
+Clipboard := HexToRGB(color)
+TrayTip, my title, current color is `n %Clipboard%, 20, 17
 return
 
 /*

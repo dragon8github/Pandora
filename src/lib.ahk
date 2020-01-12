@@ -1,4 +1,21 @@
 ﻿
+HexToRGB(color) {
+    colorR := SubStr(color, 3, 2)
+    colorG := SubStr(color, 5, 2)
+    colorB := SubStr(color, 7, 2)
+    colorR = 0x%colorR%
+    colorG = 0x%colorG%
+    colorB = 0x%colorB%
+    SetFormat, IntegerFast, D
+    colorR += 0
+    SetFormat, IntegerFast, D
+    colorG += 0
+    SetFormat, IntegerFast, D
+    colorB += 0
+    colorRGB = rgba(%colorR%`, %colorG%`, %colorB%, 1)
+    return colorRGB
+}
+
 toUpFir(v) {
     f := SubStr(v, 1, 1)
     StringUpper, f, f

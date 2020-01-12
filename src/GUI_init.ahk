@@ -244,7 +244,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.iloveimg.com/zh-cn">图片压缩�
 Gui, Pandora:Add, Text,  W140 Section xs yp+50, 最近学习：
 Gui, Pandora:Add, Link,, <a href="https://hellogithub.com/periodical/volume/15/">有趣的github项目</a>
 Gui, Pandora:Add, Link,, <a href="https://gitbook.cn/gitchat/geekbooks">极客书单</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/tree/0.10">Vue v0.10源码</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/blob/1.0/src/cache.js">Vue v1源码</a>
 Gui, Pandora:Add, Link,, <a href="https://www.codecasts.com/">CODECASTS 免费课程</a>
 Gui, Pandora:Add, Link,, <a href="http://aotu.jd.com/share/">凹凸实验室公开课</a>
 Gui, Pandora:Add, Link,, <a href="https://camp.qianduan.group/koa2/2/1/2">ikcamp</a>
@@ -260,6 +260,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need">you-dont-nee
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="http://obkoro1.com/web_accumulate/algorithm/">前端算法题</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly">阮一峰的周刊</a>
+Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/">阮一峰的博客</a>
 Gui, Pandora:Add, Link,, <a href="http://caibaojian.com/c/news">新前端日报</a>
 Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.html">前端日报</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/GitHubDaily/GitHubDaily">GitHubDaily</a>
@@ -285,6 +286,7 @@ Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/ec4f5a86d6f29
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/3aa99766c2834cdcf0f9efe553f79177/dev">apizza-Live</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/526d58e01a7480bf15c97fd4e5038d9d/dev">apizza-数据中心</a>
 Gui, Pandora:Add, Link,, <a href="http://www.taokouling.com/index/taobao_tkljm">淘宝口令解密</a>
+Gui, Pandora:Add, Link,, <a href="https://akveo.github.io/eva-icons/#/">480个免费的svg</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng熊猫图片压缩</a>
@@ -530,8 +532,13 @@ Gui, Pandora:Add, Link,, <a href="https://lanhuapp.com/url/hjf31-04pmy">bi个性
 Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:31088/doc.html">Swagger</a>
 
 
-Gui, Pandora:Add, Text,  W140 ys xp+160, 数据胡
-Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/BYUGGC0qYCqw1ExcFQ3R1HUs2l2ehA2H3E2L3">腾讯文档</a>
+Gui, Pandora:Add, Text,  W140 ys xp+160, 城管
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32201/#/Index">预览地址</a>
+Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/nhc-visual/overview">部署地址</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/lizhaohong/citymanagement">代码地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/group/20">yAPI</a>
+Gui, Pandora:Add, Link,, <a href="https://shimo.im/sheets/TCjR8jdTwwwYKjtY/MODOC/">需求文档</a>
+
 
 ; @gs
 Gui, Pandora:Tab, 4
@@ -679,6 +686,9 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/stasson/vue-mdc-adapter">�
 
 Gui, Pandora:Add, Text, W140 ys, 强大的周边：
 Gui, Pandora:Add, Link,, <a href="https://cssfx.dev/">（神器）效果大全：cssfx</a>
+
+Gui, Pandora:Add, Text, W140 ys, 移动端UI框架：
+Gui, Pandora:Add, Link,, <a href="https://youzan.github.io/vant/#/zh-CN/button">有赞的Vant</a>
 
 
 ;@vue
