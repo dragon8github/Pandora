@@ -10018,3 +10018,84 @@ rollOut
 RunBy(name)
 run, % name
 return
+
+mapVbaiduhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- 百度地图 -->
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+        <!-- mapv -->
+        <script src="http://mapv.baidu.com/build/mapv.min.js"></script>
+        <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100`%;
+        }
+
+        #app {
+            width: 100`%;
+            height: 100`%;
+        }
+        </style>
+    </head>
+
+    <body>
+        <div id="app"></div>
+    </body>
+    <script>
+    const map = window.map = new BMap.Map("app")
+
+    // 创建地图实例
+    const point = new BMap.Point(105.403119, 38.028658)
+
+    // 开启鼠标滚轮缩放
+    map.enableScrollWheelZoom(true); 
+
+    // 创建点坐标（东莞全貌）  
+    // map.centerAndZoom(new BMap.Point(113.843319, 22.921901), 15)
+
+    // 切回中国全貌
+    map.centerAndZoom(new BMap.Point(105.403119, 38.028658), 5)
+
+    // 地图自定义样式
+    map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "stylers": { "color": "#044161" } }, { "featureType": "land", "elementType": "all", "stylers": { "color": "#091934" } }, { "featureType": "boundary", "elementType": "geometry", "stylers": { "color": "#064f85" } }, { "featureType": "railway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "highway", "elementType": "geometry", "stylers": { "color": "#004981" } }, { "featureType": "highway", "elementType": "geometry.fill", "stylers": { "color": "#005b96", "lightness": 1 } }, { "featureType": "highway", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "arterial", "elementType": "geometry", "stylers": { "color": "#004981", "lightness": -39 } }, { "featureType": "arterial", "elementType": "geometry.fill", "stylers": { "color": "#00508b" } }, { "featureType": "poi", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "green", "elementType": "all", "stylers": { "color": "#056197", "visibility": "off" } }, { "featureType": "subway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "manmade", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "local", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "arterial", "elementType": "labels", "stylers": { "visibility": "off" } }, { "featureType": "boundary", "elementType": "geometry.fill", "stylers": { "color": "#029fd4" } }, { "featureType": "building", "elementType": "all", "stylers": { "color": "#1a5787" } }, { "featureType": "label", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": { "color": "#ffffff" } }, { "featureType": "poi", "elementType": "labels.text.stroke", "stylers": { "color": "#1e1c1c" } }, { "featureType": "administrative", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "road", "elementType": "labels", "stylers": { "visibility": "off" } }] })
+
+    // 异步获取数据
+    ;(async function() {
+        const result = await fetch('https://mapv.baidu.com/examples/data/weibo.json').then(response => response.json())
+
+        const data1 = result[0].map(_ => ({ geometry: { type: 'Point', coordinates: _.geoCoord } }))
+        const data2 = result[1].map(_ => ({ geometry: { type: 'Point', coordinates: _.geoCoord }, time: Math.random() * 10 }))
+        const data3 = result[2].map(_ => ({ geometry: { type: 'Point', coordinates: _.geoCoord } }))
+
+        const dataSet1 = new mapv.DataSet(data1)
+        const mapvLayer1 = new mapv.baiduMapLayer(map, dataSet1, { fillStyle: 'rgba(200, 200, 0, 0.8)', bigData: 'Point', size: 0.7, draw: 'simple', })
+
+        const dataSet2 = new mapv.DataSet(data2)
+        const mapvLayer2 = new mapv.baiduMapLayer(map, dataSet2, { fillStyle: 'rgba(255, 250, 0, 0.8)', size: 0.7, bigData: 'Point', draw: 'simple', })
+
+        const dataSet3 = new mapv.DataSet(data3)
+        const mapvLayer3 = new mapv.baiduMapLayer(map, dataSet3, { fillStyle: 'rgba(255, 250, 250, 0.6)', size: 0.7, bigData: 'Point', draw: 'simple', })
+
+        const dataSet4 = new mapv.DataSet(data2)
+        const mapvLayer4 = new mapv.baiduMapLayer(map, dataSet4, { fillStyle: 'rgba(255, 250, 250, 0.9)', size: 1.1, draw: 'simple', bigData: 'Point', animation: {stepsRange: {start: 0, end: 10 }, trails: 1, duration: 6, } })
+
+    }())
+    </script>
+
+    </html>
+),  %name%
+RunBy(name)
+run, % name
+return

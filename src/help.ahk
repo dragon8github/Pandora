@@ -1,4 +1,43 @@
-﻿::lundun::
+﻿::app::
+Var =
+(
+Applications
+)
+code(Var)
+return
+
+::gcode::
+::githubcode::
+::gitcode::
+Var =
+(
+document.querySelectorAll('pre').forEach((val, key) => {
+    val.innerHTML = ``<code>${val.innerHTML}</code>``
+})
+)
+code(Var)
+return
+
+>^>+c::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+Var =
+(
+console.groupCollapsed('%t%')
+console.log(%t%, )
+console.groupEnd()
+)
+code(Var)
+Send, {up}
+Send, {end}
+Send, {left}
+return
+
+::now::
+t := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
+code(t)
+return
+
+::lundun::
 ::fake::
 ::lorem::
 Var =

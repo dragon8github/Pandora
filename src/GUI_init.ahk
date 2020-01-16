@@ -224,6 +224,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.processon.com/;jsessionid=E5042CFD
 
 Gui, Pandora:Add, Text, W120 ys, cdn：
 Gui, Pandora:Add, Link,, <a href="https://cdnjs.com/">cdnjs.com</a>
+Gui, Pandora:Add, Link,, <a href="https://cdnjs.net/">阿里云cdn</a>
 Gui, Pandora:Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Pandora:Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
@@ -255,6 +256,9 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/azl397985856/leetcode">leet
 Gui, Pandora:Add, Link,, <a href="https://miyogurt.github.io/nodelover-books">NodeLover 黄金屋</a>
 Gui, Pandora:Add, Link,, <a href="https://gitee.com/explore">码云逛逛源码</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need">you-dont-need</a>
+Gui, Pandora:Add, Link,, <a href="https://fex.baidu.com/articles/">fex周刊</a>
+Gui, Pandora:Add, Link,, <a href="https://2019.js13kgames.com/#winners">JS13K</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -296,6 +300,8 @@ Gui, Pandora:Add, Link,, <a href="https://compresspng.com/zh/">压缩图片</a>
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</a>
+Gui, Pandora:Add, Link,, <a href="http://likeyunba.com/imgupload/">阿里云图床</a>
+
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/ruanyf/share/free-photos">阮一峰的资源</a>
 Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
@@ -428,7 +434,8 @@ Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
 Gui, Pandora:Add, Text, gtianditujuhetuhtml ,新建天地图聚合图.html
-Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts地图.html
+Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts + 百度地图.html
+Gui, Pandora:Add, Text, gmapVbaiduhtml W160, 新建百度地图 + mapV.html
 Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
@@ -536,8 +543,9 @@ Gui, Pandora:Add, Text,  W140 ys xp+160, 城管
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32201/#/Index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/nhc-visual/overview">部署地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/lizhaohong/citymanagement">代码地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/group/20">yAPI</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/16/interface/api">yAPI</a>
 Gui, Pandora:Add, Link,, <a href="https://shimo.im/sheets/TCjR8jdTwwwYKjtY/MODOC/">需求文档</a>
+Gui, Pandora:Add, Link,, <a href="https://shimo.im/docs/bab1e94724614258/read">接口文档</a>
 
 
 ; @gs
@@ -563,9 +571,10 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/electron">electron github</
 Gui, Pandora:Add, Link,, <a href="https://github.com/electron/electron-quick-start">electron-quick-start</a>
 Gui, Pandora:Add, Link,, <a href="https://electronjs.org/docs/api/client-request">electron-api文档</a>
 
-Gui, Pandora:Add, Text,  W160 ys, nest框架中的django:
+Gui, Pandora:Add, Text,  W160 ys, nest:
 Gui, Pandora:Add, Link,, <a href="https://github.com/nestjs/nest">nestjs github</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/juliandavidmr/awesome-nestjs">awesome-nestjs</a>
+Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/video/av68935258">nestjs大地教程</a>
 
 
 Gui, Pandora:Add, Text, W160 ys, nodejs cms：

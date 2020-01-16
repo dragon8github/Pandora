@@ -6082,3 +6082,17 @@ ul.appendChild(fragment);
 )
 code(Var)
 return
+
+::logs::
+Var =
+(
+// 折叠日志
+const logs = (info = '', ...args) => {
+    console.groupCollapsed(info)
+    args.forEach(_ => console.log(_))
+    console.groupEnd()
+}
+)
+code(Var)
+return
+

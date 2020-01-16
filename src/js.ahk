@@ -6924,9 +6924,9 @@ return
 Var = 
 (
 try {
-    
+  
 } catch (err) {
-    
+  //  return new Error(e)
 }
 )
 code(Var)
@@ -8206,8 +8206,22 @@ code(Var)
 return
 
 ::throw::
-    SendInput, throw new Error(e.message){left}^+{left}^+{left}
+    SendInput, throw new Error(e.message){left}^+{left 2}
 Return
+
+::rete::
+::newe::
+::newre::
+::newerr::
+::new err::
+::new error::
+Var =
+(
+return new Error()
+)
+code(Var)
+Send, {left}
+return
 
 ::for-::
 ::for--::
