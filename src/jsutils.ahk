@@ -6096,3 +6096,18 @@ const logs = (info = '', ...args) => {
 code(Var)
 return
 
+
+
+::fetchdg::
+Var =
+(
+;(async function(){
+  const json = await fetch('https://geo.datav.aliyun.com/areas/bound/441900.json').then(response => response.json())   
+  console.log(20200116224515, json)
+
+  const json = await fetch('https://raw.githubusercontent.com/dragon8github/Pandora/master/assets/DongGuanGrid.geo.json').then(response => response.json())
+  console.log(20200116224515, json)
+}())
+)
+code(Var)
+return
