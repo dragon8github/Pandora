@@ -363,7 +363,7 @@ Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 Gui, Pandora:Add, Text, gcssskeletonHtml W140,新建css骨骼图.skeleton
 Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog
 Gui, Pandora:Add, Text, gwebsocketHTML W140,新建WebSocket
-Gui, Pandora:Add, Text, ganimjquery W140,新建animate.css与jquery
+Gui, Pandora:Add, Text, ganimjquery W160,新建animate.css与jquery
 
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
@@ -434,8 +434,9 @@ Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
 Gui, Pandora:Add, Text, gtianditujuhetuhtml ,新建天地图聚合图.html
-Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞echarts + 百度地图.html
+Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞地图echarts
 Gui, Pandora:Add, Text, gmapVbaiduhtml W160, 新建百度地图 + mapV.html
+Gui, Pandora:Add, Text, gbaiduGeoHTML W160, 新建百度地图+geo.html
 Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
@@ -444,7 +445,7 @@ Gui, Pandora:Add, Text, gvuelistenhtml W180, vue $listen示例.html
 
 
 
-Gui, Pandora:Add, Text, gNewreactbabelHtml W150  ys x+70, 新建react.babel.html
+Gui, Pandora:Add, Text, gNewreactbabelHtml W150  ys x+50, 新建react.babel.html
 Gui, Pandora:Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
 Gui, Pandora:Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html

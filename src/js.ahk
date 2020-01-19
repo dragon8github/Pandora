@@ -8798,11 +8798,35 @@ return
 Var = 
 (
 // 正序（从小到大）是a - b ，(倒序)从大到小 -(a-b)
-// 如果是对象的话（从小到大）：data.sort((a, b) => +a.fuck - +b.fuck)
-// 如果是对象的话（从大到小）：data.sort((a, b) => +b.fuck - +a.fuck)
+// 如果是对象的话（从小到大/升序/asc）：data.sort((a, b) => +a.fuck - +b.fuck)
+// 如果是对象的话（从大到小/倒序/desc）：data.sort((a, b) => +b.fuck - +a.fuck)
 arr.sort((a, b) => { return a - b })
+
+---
+
+@mixin updown {
+    position: relative;
+    cursor: pointer;
+
+    &::before, &::after {
+         content: '';
+         display: inline-block;
+         position: absolute;
+         right: rem(8);
+         border-left: rem(6) solid transparent;
+         border-right: rem(6) solid transparent;
+         width: 0;
+         height: 0;
+     }
+     
+     &::after {top: rem(8); border-bottom: rem(8) solid #f6f6f6; }
+     &::before {bottom: rem(8); border-top: rem(8) solid #f6f6f6; }
+     &.is-up::after {border-bottom: rem(8) solid #C4B484; }
+     &.is-down::before {border-top: rem(8) solid #C4B484; }
+}
+
 )
-code(Var)
+txtit(Var)
 return
 
 

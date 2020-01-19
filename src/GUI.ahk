@@ -10099,3 +10099,7 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+baiduGeoHTML:
+psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/百度地图专用文件夹.zip")
+return
