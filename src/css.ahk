@@ -153,6 +153,10 @@
     Menu, CssLoading, Add, 页面阅读进度条, CssHandler
     
     
+    Menu, Csssolution, Add, css 实现 echarts 简易饼图, CssHandler
+    
+    Menu, Csssolution, Add
+    Menu, Csssolution, Add
     
     
     Menu, Csssolution, Add, 不断闪闪发光的动画, CssHandler
@@ -250,6 +254,11 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "css 实现 echarts 简易饼图") {
+_send("css.pie", true, true)
+return
 }
 
 if (v == "nth-child 负选择器可以选择 1 至 n 个元素") {
@@ -5343,4 +5352,60 @@ Var =
 }
 )
 code(Var)
+return
+
+::css.pie::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+    .pie {
+        position: absolute;
+        top: 50`%;
+        left: 50`%;
+        transform: translate(-50`%, -50`%);
+
+        width: 200px;
+        line-height: 200px;
+        border-radius: 50`%;
+        text-align: center;
+        color: white;
+        font-size: 40px;
+        background-color: yellowgreen;
+        overflow: hidden;
+        background-image:
+            linear-gradient(to right, transparent 50`%, #655 0);
+        cursor: pointer;
+    }
+
+    .pie:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50`%;
+        width: 50`%;
+        height: 100`%;
+        background-color: inherit;
+        transform-origin: left;
+        z-index: -1;
+        transform: rotate(0.3turn);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="pie">
+            .pie
+        </div>
+    </div>
+</body>
+
+</html>
+)
+txtit(Var)
 return

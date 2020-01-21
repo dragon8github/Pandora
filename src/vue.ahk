@@ -798,6 +798,7 @@ export default {
     height: auto;
 }
 </style>
+)
 }
 
 if (v == "this.$store.getters['app/master']") {

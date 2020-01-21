@@ -468,7 +468,7 @@ EOF
 if (v == "curl -s -H -d -XPUT/XDELETE/XPOST 完整示例") {
 Var = 
 (
-curl -s -XPUT 'http://localhost:9200/get-together/group/1?pretty' -H 'Content-Type:application/json' -d '{"firstName": "JOJO", "lastName": "Joestar"}'
+curl -s -XPOST 'http://localhost:3000/acticle/update' -H 'Content-Type:application/json' -d '{"firstName": "JOJO", "lastName": "Joestar"}'
 )
 cs(Var)
 return
@@ -1258,4 +1258,13 @@ Var =
 curl wttr.in
 )
 _send(Var)
+return
+
+::curlpost::
+::curl-post::
+Var =
+(
+curl -s -XPOST 'http://localhost:3000/acticle/update' -H 'Content-Type:application/json' -d '{"firstName": "JOJO", "lastName": "Joestar"}'
+)
+cs(Var)
 return
