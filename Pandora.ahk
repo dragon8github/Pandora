@@ -38,7 +38,6 @@ FileDelete, .\src\*.bak
 #Include src/JSON.ahk	          ; JSON Script
 #Include src/ActiveScript.ahk	  ; Microsoft Script
 #Include src/lib.ahk              ; 公共函数
-#Include src/help.ahk             ; 辅助功能
 #Include src/Lua.ahk              ; secondkey_board  
 
 #Include src/bilibili.ahk	      ; bilibili
@@ -72,6 +71,7 @@ FileDelete, .\src\*.bak
 ;#Include src/taro.ahk	          ; taro
 
 #Include src/php.ahk                  ; php	
+#Include src/help.ahk             ; 辅助功能
 
 !F12::
 	Suspend

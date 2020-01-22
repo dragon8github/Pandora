@@ -2872,11 +2872,8 @@ location ^~ /api/ {
 code(Var)
 return
 
-::vuex.new::
-::vuex.tmp::
-::vuex.modules::
-::vuex.module::
-::vuex.m::
+:?:vuex.module::
+:?:vuex.m::
 Var =
 (
 import { request } from '@/utils/request.js'
