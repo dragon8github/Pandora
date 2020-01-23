@@ -46,7 +46,6 @@ FileDelete, .\src\*.bak
 #Include src/shell.ahk            ; shell
 #Include src/docker.ahk		      ; docker
 #Include src/elasticsearch.ahk	  ; elasticsearch
-;#Include src/sql.ahk		      ; sql
 
 #Include src/elementui.ahk	      ; elementUI
 #Include src/html.ahk             ; HTML    
@@ -65,13 +64,17 @@ FileDelete, .\src\*.bak
 #Include src/canvas.ahk		      ; canvas
 #Include src/TypeScript.ahk       ; TypeScript
 #Include src/wx.ahk               ; wx
-#Include src/reactNative.ahk      ; ReactNative
-#Include src/three.ahk            ; THREE
+#Include src/nest.ahk             ; nest
 #Include src/flutter.ahk	      ; flutter
-;#Include src/taro.ahk	          ; taro
 
-#Include src/php.ahk                  ; php	
+#Include src/php.ahk              ; php	
 #Include src/help.ahk             ; 辅助功能
+
+
+; #Include src/three.ahk          ; THREE
+; #Include src/reactNative.ahk    ; ReactNative
+; #Include src/taro.ahk	          ; taro
+; #Include src/sql.ahk		      ; sql
 
 !F12::
 	Suspend

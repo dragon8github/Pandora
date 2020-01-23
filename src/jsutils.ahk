@@ -1,6 +1,17 @@
 ﻿!u::
+
     Menu, utilsTime, Add, 获取当前时间的秒数, utilsHandler
     Menu, utilsTime, Add, 获取12345的时间选择器, utilsHandler
+    Menu, utilsTime, Add, 获取指定时间戳, utilsHandler
+    Menu, utilsTime, Add, 格式化当前时间, utilsHandler
+    Menu, utilsTime, Add, 返回指定时间戳之间的时间间隔, utilsHandler
+    Menu, utilsTime, Add, 按类型格式化日期, utilsHandler
+    Menu, utilsTime, Add, 验证一个日期是不是今天, utilsHandler
+    Menu, utilsTime, Add, 本月最后一天, utilsHandler
+    Menu, utilsTime, Add, 今日最晚时间 23:59:59 的时间戳, utilsHandler
+    Menu, utilsTime, Add, 获取当前时间的前一天/后一天的时间戳, utilsHandler
+    Menu, utilsTime, Add, 验证日期大小, utilsHandler
+    Menu, utilsTime, Add, 设置几天后的日期, utilsHandler
 
     Menu, utilsIs, Add, is, utilsHandler
     Menu, utilsIs, Add, isString, utilsHandler
@@ -338,7 +349,6 @@
     Menu, utils2, Add, uuid 超简易版, utilsHandler
     Menu, utils2, Add, urlparams 获取路由参数, utilsHandler
     Menu, utils2, Add, device 获取设备信息, utilsHandler
-    Menu, utils2, Add, merge（既$.extend，这个概念更好，不会与面向对象的继承混淆）, utilsHandler
     Menu, utils2, Add, 获取localStorage剩余容量和最大容量, utilsHandler
 
     Menu, utils2, Add, , utilsHandler
@@ -456,6 +466,253 @@ Var =
 (
 )
 }
+
+if (v == "获取指定时间戳") {
+Var = 
+(
+var timestamp = (new Date(" 2019/10/24 08:00:00")).getTime();
+)
+}
+
+if (v == "格式化当前时间") {
+Var = 
+(
+/***
+ *  @return {string} timeText 返回系统时间字符串
+ */
+function getdataTimeSec() {
+    let time = new Date();
+    let weekDay;
+    let year = time.getFullYear();
+    let month = time.getMonth() + 1;
+    let day = time.getDate();
+    //获取时分秒
+    let h = time.getHours();
+    let m = time.getMinutes();
+    let s = time.getSeconds();
+    //检查是否小于10
+    h = check(h);
+    m = check(m);
+    s = check(s);
+    let now_day = time.getDay();
+    switch (now_day) {
+        case 0: {
+            weekDay = "星期日"
+        }
+            break;
+        case 1: {
+            weekDay = "星期一"
+        }
+            break;
+        case 2: {
+            weekDay = "星期二"
+        }
+            break;
+        case 3: {
+            weekDay = "星期三"
+        }
+            break;
+        case 4: {
+            weekDay = "星期四"
+        }
+            break;
+        case 5: {
+            weekDay = "星期五"
+        }
+            break;
+        case 6: {
+            weekDay = "星期六"
+        }
+            break;
+        case 7: {
+            weekDay = "星期日"
+        }
+            break;
+    }
+    let timeText = year + "年" + month + "月" + day + "日  " + " " + weekDay + " " + h + ":" + m +":" + s;
+
+    return timeText
+}
+)
+}
+
+if (v == "返回指定时间戳之间的时间间隔") {
+Var = 
+(
+/**
+ *  @param {*} startTime 开始时间的时间戳
+ *  @param {*} endTime 结束时间的时间戳
+ *  @return {string} str 返回时间字符串
+ */
+function getTimeInterval(startTime, endTime) {
+    let runTime = parseInt((endTime - startTime) / 1000);
+    let year = Math.floor(runTime / 86400 / 365);
+    runTime = runTime `% (86400 * 365);
+    let month = Math.floor(runTime / 86400 / 30);
+    runTime = runTime `% (86400 * 30);
+    let day = Math.floor(runTime / 86400);
+    runTime = runTime `% 86400;
+    let hour = Math.floor(runTime / 3600);
+    runTime = runTime `% 3600;
+    let minute = Math.floor(runTime / 60);
+    runTime = runTime `% 60;
+    let second = runTime;
+    let str = '';
+    if (year > 0) {
+        str = year + '年';
+    }
+    if (year <= 0 && month > 0) {
+        str = month + '月';
+    }
+    if (year <= 0 && month <= 0 && day > 0) {
+        str = day + '天';
+    }
+    if (year <= 0 && month <= 0 && day <= 0 && hour > 0) {
+        str = hour + '小时';
+    }
+    if (year <= 0 && month <= 0 && day <= 0 && hour <= 0 && minute > 0) {
+        str = minute + '分钟';
+    }
+    if (year <= 0 && month <= 0 && day <= 0 && hour <= 0 && minute <= 0 && second > 0) {
+        str += second + '秒';
+    }
+    str += '前';
+    return str;
+}
+)
+}
+
+if (v == "按类型格式化日期") {
+Var = 
+(
+/**
+ * @param {*} date 具体日期变量
+ * @param {string} dateType 需要返回类型
+ * @return {string} dateText 返回为指定格式的日期字符串
+ */
+function getFormatDate(date, dateType) {
+    let dateObj = new Date(date);
+    let month = dateObj.getMonth() + 1;
+    let strDate = dateObj.getDate();
+    let hours = dateObj.getHours();
+    let minutes = dateObj.getMinutes();
+    let seconds = dateObj.getSeconds();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+
+    }
+    if (hours >= 0 && hours <= 9) {
+        hours = "0" + hours
+    }
+    if (minutes >= 0 && minutes <= 9) {
+        minutes = "0" + minutes
+    }
+    if (seconds >= 0 && seconds <= 9) {
+        seconds = "0" + seconds
+    }
+
+    let dateText = dateObj.getFullYear() + '年' + (dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日';
+    if (dateType == "yyyy-mm-dd") {
+        dateText = dateObj.getFullYear() + '-' + (dateObj.getMonth() + 1) + '-' + dateObj.getDate();
+    }
+    if (dateType == "yyyy.mm.dd") {
+        dateText = dateObj.getFullYear() + '.' + (dateObj.getMonth() + 1) + '.' + dateObj.getDate();
+    }
+    if (dateType == "yyyy-mm-dd MM:mm:ss") {
+        dateText = dateObj.getFullYear() + '-' + month + '-' + strDate + ' ' + hours + ":" + minutes + ":" + seconds;
+    }
+    if (dateType == "mm-dd MM:mm:ss") {
+        dateText = month + '-' + strDate + ' ' + hours + ":" + minutes + ":" + seconds;
+    }
+    if (dateType == "yyyy年mm月dd日 MM:mm:ss") {
+        dateText = dateObj.getFullYear() + '年' + month + '月' + strDate + '日' + ' ' + hours + ":" + minutes + ":" + seconds;
+    }
+    return dateText;
+ }
+)
+}
+
+if (v == "验证一个日期是不是今天") {
+Var = 
+(
+/**
+* @param  {string} val 需要验证的日期
+* @return {boolean} 返回布尔值
+*/
+function isToday(val){
+    return new Date().toLocaleDateString() == new Date(val).toLocaleDateString();
+}
+)
+}
+
+if (v == "本月最后一天") {
+Var = 
+(
+/***
+ *  @return {*} MonthLastDay 返回本月最后一天的时间
+ */
+function showMonthLastDay(){
+    let Nowdate=new Date();
+    let MonthNextFirstDay=new Date(Nowdate.getFullYear(),Nowdate.getMonth()+1);
+    let MonthLastDay=new Date(MonthNextFirstDay-86400000);
+    return MonthLastDay;
+}
+)
+}
+
+if (v == "今日最晚时间 23:59:59 的时间戳") {
+Var = 
+(
+let timestamp = new Date(new Date().toLocaleDateString()).getTime()+24*60*60*1000-1;
+)
+}
+
+if (v == "获取当前时间的前一天/后一天的时间戳") {
+Var = 
+(
+var timestamp = +new Date() - 24*60*60*1000;
+var timestamp = +new Date() + 24*60*60*1000;
+)
+}
+
+if (v == "验证日期大小") {
+Var = 
+(
+/**
+* 例："2019-10-24" 和 "2019-10-25"
+* @param  {string} d1需要验证的日期1
+* @param  {string} d2需要验证的日期2
+* @return {boolean} 返回布尔值
+*/
+function compareDate(d1, d2) {
+    return ((new Date(d1.replace(/-/g, "\/"))) < (new Date(d2.replace(/-/g, "\/"))));
+}
+)
+}
+
+if (v == "设置几天后的日期") {
+Var = 
+(
+/**
+* @param  {string} date 起始日期
+* @param  {number} day 向后的天数
+* @return {string} 返回想要得到的日期
+*/
+function convertDate (date, day) {
+    let tempDate = new Date(date);
+    tempDate.setDate(tempDate.getDate()+day);
+    let Y = tempDate.getFullYear();
+    let M = tempDate.getMonth()+1 < 10 ? '0'+(tempDate.getMonth()+1) : tempDate.getMonth()+1;
+    let D = tempDate.getDate() < 10 ? '0'+(tempDate.getDate()) : tempDate.getDate();
+    let result = Y + "-" + M + "-" + D
+    return result;
+}
+)
+}
+
 
 if (v == "三元表达式正确换行套路 —— 问号换行，与冒号齐飞") {
 Var =
@@ -1835,7 +2092,7 @@ Var =
 (
 import ky from 'ky';
 (async () => {
-	// `multipart/form-data`
+	// multipart/form-data
 	const formData = new FormData();
 	formData.append('food', 'fries');
 	formData.append('drink', 'icetea');
@@ -1848,7 +2105,7 @@ import ky from 'ky';
 
 import ky from 'ky';
 (async () => {
-	// `application/x-www-form-urlencoded`
+	// application/x-www-form-urlencoded
 	const searchParams = new URLSearchParams();
 	searchParams.set('food', 'fries');
 	searchParams.set('drink', 'icetea');
@@ -2445,10 +2702,6 @@ _send("scrollIntoView", true, true)
 return
 }
 
-if (v == "merge（既$.extend，这个概念更好，不会与面向对象的继承混淆）") {
-_send("merge", true, true)
-return
-}
 
 if (v == "判断是否为数字：!isNaN(+params.id)") {
 Var = 
