@@ -8257,15 +8257,6 @@ Send, {left 4}
 Send, !{F3}
 Return
 
->!m::
->^m::
-Var =
-(
-.map(_ => ({ _. }));
-)
-code(Var)
-Send, {left 5}
-return
 
 :?:.map::
 Var =

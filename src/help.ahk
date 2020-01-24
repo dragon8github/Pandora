@@ -767,41 +767,48 @@ return
 ::ahkmenu::
 Var =
 (
-!n::
+>!m::
 
-    ; try 异常处理
-    Menu, A, Add, try / except, ShellHandler
+    Menu, A, Add, try / except, moogoseHandler
+    Menu, moogoseMenu, Add, 环境变量, :A
 
-    Menu, ShellMenu, Add, 环境变量, :A
-    Menu, ShellMenu, Add, 时间, :B
-    Menu, ShellMenu, Add, find , :C
-    Menu, ShellMenu, Add, xargs, :D
-    Menu, ShellMenu, Add, tr（文本转换）, :E
-    Menu, ShellMenu, Add, grep（搜索文本）, :F
-    Menu, ShellMenu, Add, sed（替换文本）, :G
     
-    
-    Menu, ShellMenu, Show
-    Menu, ShellMenu, DeleteAll
+    Menu, moogoseMenu, Add, 时间, moogosetxt
+
+
+    Menu, moogoseMenu, Show
+    Menu, moogoseMenu, DeleteAll
 return
 
-ShellHandler2:
+moogoseHandler2:
 v := A_ThisMenuItem
+_send(v, true, true)
 return
 
-ShellHandler:
-; MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.
+moogoseHandler:
 v := A_ThisMenuItem
-Var := 
+Var :=
 
 if (v == "") {
-Var = 
+Var =
 (
-
 `)
 }
 
 code(Var)
+return
+
+moogosetxt:
+v := A_ThisMenuItem
+Var :=
+
+if (v == "") {
+Var =
+(
+`)
+}
+
+txtit(Var)
 return
 )
 code(Var)

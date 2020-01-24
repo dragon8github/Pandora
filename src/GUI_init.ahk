@@ -343,33 +343,27 @@ Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/docs/utility-first">ta
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
 Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140 , 新建纯index.html
-Gui, Pandora:Add, Text, gVueComponentHtml W140, 新建vueComponent.html
-Gui, Pandora:Add, Text, gVueAnimateHtml W140, 新建vueAnimate.html
-Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建vue-form.html
-Gui, Pandora:Add, Text, greactHtml W140, 新建react.html
-Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
-Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建assert.html
-Gui, Pandora:Add, Text, gNewjointjsHtml W160,新建jointjs流程图
-Gui, Pandora:Add, Text, gNewuploadHtml W160,新建读取本地目录/文件内容
-Gui, Pandora:Add, Text, gNewlshtml W160,新建读取本地目录列表
-Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条
-Gui, Pandora:Add, Text, ghtml2mdhtml W160,新建HTML2Markdown
-Gui, Pandora:Add, Text, gwebidehtml W160,新建在线编辑器webide
-Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
-Gui, Pandora:Add, Text, gprismhtml W160,prism代码高亮.html
-Gui, Pandora:Add, Text, gdeepmergehtml W160,deepmerge.html
-Gui, Pandora:Add, Text, gdom2imghtml W160,网页截图dom-to-image.html
-Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
-Gui, Pandora:Add, Text, gcssskeletonHtml W140,新建css骨骼图.skeleton
-Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog
-Gui, Pandora:Add, Text, gwebsocketHTML W140,新建WebSocket
+
 Gui, Pandora:Add, Text, ganimjquery W160,新建animate.css与jquery
+Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
+Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
+Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
+Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
+Gui, Pandora:Add, Text, gvueDeepSethtml W180, vue $deepSet示例.html
+Gui, Pandora:Add, Text, gvuelistenhtml W180, vue $listen示例.html
+Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令.html
+Gui, Pandora:Add, Text, gzhilinghtml W180, 新建Vue指令实现拖拽.html
+Gui, Pandora:Add, Text, gVueComponentHtml W140, 新建vueComponent.html
+Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建vue-form.html
+Gui, Pandora:Add, Text, gVueAnimateHtml W140, 新建vueAnimate.html
+Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
+Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group列表
 
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
-Gui, Pandora:Add, Text, gliveHtml W160,新建调用摄像头.html
 Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
+Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条
 Gui, Pandora:Add, Text, gxuanliyanhua W160,新建点击绚丽烟花效果.html
 Gui, Pandora:Add, Text, gmaoboli W160,新建毛玻璃.html
 Gui, Pandora:Add, Text, gwangyejindutiao W160,新建网页进度条.html
@@ -377,22 +371,15 @@ Gui, Pandora:Add, Text, gemphhtml W160,新建更新提示波动图.html
 Gui, Pandora:Add, Text, gautowidth W160,新建input动态宽度.html
 Gui, Pandora:Add, Text, ghuxihtml W160, 新建呼吸变色棱角空间.html
 Gui, Pandora:Add, Text, ghuehtml W160, 新建hue-rotate.html
-Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索.html
-Gui, Pandora:Add, Text, gvideohtml W160, 新建video视频.html
-Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
-Gui, Pandora:Add, Text, grightmenuhtml W160, 新建右键菜单拦截.html
 Gui, Pandora:Add, Text, gAEhtml W180, 新建AE-bodymovin-lottie.html
-Gui, Pandora:Add, Text, gworkerhtml W180, 新建worker.js.html
 Gui, Pandora:Add, Text, glocalForagehtml W180, 新建localForage缓存示例.html
 Gui, Pandora:Add, Text, gquickbianimhtml W180, 新建quickbi的过场动画.html
-Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令.html
-Gui, Pandora:Add, Text, gscriptzhuruhtml W180, 新建书签栏脚本注入.html
-Gui, Pandora:Add, Text, gxiexianhtml W180, 新建勾股定理画斜线.html
 Gui, Pandora:Add, Text, gcssbodongsandian W180, 新建css波动散点.html
-Gui, Pandora:Add, Text, gzhilinghtml W180, 新建Vue指令directive.html
+Gui, Pandora:Add, Text, ginputyanhua W140,新建input烟花特效
+Gui, Pandora:Add, Text, grandcolorHtml W160,新建随机渐变色.html
+Gui, Pandora:Add, Text, ghackdiguo  W140,黑客帝国
 
-
-Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+20,新建.echartsDemo.html（官方demo）
+Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+50,新建.echartsDemo.html（官方demo）
 Gui, Pandora:Add, Text, gNewEchartsPinHtml, 新建.pin.html(玫瑰饼图)
 Gui, Pandora:Add, Text, gNewEchartsLineHtml ,新建.Line.html（折线图）
 Gui, Pandora:Add, Text, gNewEchartsBarHtml ,新建.Bar.html（柱状图）
@@ -412,11 +399,6 @@ Gui, Pandora:Add, Text, gfunnelhtml W190, 新建.funnel.html（漏斗图）
 Gui, Pandora:Add, Text, gdatasetfunnel W210, 新建.datasetfunnel.html（漏斗图）
 Gui, Pandora:Add, Text, gechartsleidatu W160, echarts雷达图.html
 Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
-Gui, Pandora:Add, Text, gword2HTML W160, word文档映射.html
-Gui, Pandora:Add, Text, gd3bubblechart W160, d3-bubble-chart.html
-Gui, Pandora:Add, Text, gd3template W160, docsify 模板.html
-
-
 
 
 Gui, Pandora:Add, Text, gNodeHttp W140 ys x+80, 新建nodejs http
@@ -426,8 +408,6 @@ Gui, Pandora:Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)�
 Gui, Pandora:Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
 Gui, Pandora:Add, Text, gNewNodejsSequelize W190, 新建nodejs-sequelize-mysql模板
 Gui, Pandora:Add, Text, gNewNodejsRenamechName W190, 新建nodejs批量改名中文模板
-Gui, Pandora:Add, Text, gNewmochachai W190, 新建mocha+chai单元测试模板
-Gui, Pandora:Add, Text, gNewesmodule W190, 新建nodejs运行es Module模板
 Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
 Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
@@ -440,26 +420,32 @@ Gui, Pandora:Add, Text, gbaiduGeoHTML W160, 新建百度地图+geo.html
 Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
-Gui, Pandora:Add, Text, gvueDeepSethtml W180, vue $deepSet示例.html
-Gui, Pandora:Add, Text, gvuelistenhtml W180, vue $listen示例.html
 
 
-
-Gui, Pandora:Add, Text, gNewreactbabelHtml W150  ys x+50, 新建react.babel.html
-Gui, Pandora:Add, Text, gNewcreateareactapp, 新建create-react-app脚手架
-Gui, Pandora:Add, Text, gNewreduxIndexHtml W140,新建react-redux.html
-Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
-Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group列表
-Gui, Pandora:Add, Text, gfakerHtml W160,新建faker.html
+Gui, Pandora:Add, Text, gchromeextensions W140 ys x+40,chrome-extensions
+Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索.html
+Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
+Gui, Pandora:Add, Text, gcssskeletonHtml W140,新建css骨骼图.skeleton
+Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
+Gui, Pandora:Add, Text, gscriptzhuruhtml W180, 新建书签栏脚本注入.html
+Gui, Pandora:Add, Text, gxiexianhtml W180, 新建勾股定理画斜线.html
+Gui, Pandora:Add, Text, gNewuploadHtml W160,新建读取本地目录/文件内容
+Gui, Pandora:Add, Text, gNewlshtml W160,新建读取本地目录列表
+Gui, Pandora:Add, Text, ghtml2mdhtml W160,新建HTML2Markdown
+Gui, Pandora:Add, Text, gwebidehtml W160,新建在线编辑器webide
+Gui, Pandora:Add, Text, gprismhtml W160,prism代码高亮.html
+Gui, Pandora:Add, Text, gdom2imghtml W160,网页截图dom-to-image.html
+Gui, Pandora:Add, Text, gliveHtml W160,新建调用摄像头.html
+Gui, Pandora:Add, Text, gd3template W160, docsify 模板.html
+Gui, Pandora:Add, Text, grightmenuhtml W160, 新建右键菜单拦截.html
+Gui, Pandora:Add, Text, gworkerhtml W180, 新建worker.js.html
+Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
+Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建assert.html
+Gui, Pandora:Add, Text, gvideohtml W160, 新建video视频.html
+Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog
+Gui, Pandora:Add, Text, gwebsocketHTML W140,新建WebSocket
 Gui, Pandora:Add, Text, gsocketHtml W160,新建socket.html
-Gui, Pandora:Add, Text, grandcolorHtml W160,新建随机渐变色.html
-Gui, Pandora:Add, Text, ghackdiguo W140,黑客帝国
-Gui, Pandora:Add, Text, ginputyanhua W140,新建input烟花特效
-Gui, Pandora:Add, Text, gtest17280 W140,新建测试17280
-Gui, Pandora:Add, Text, gchromeextensions W140,chrome-extensions
-Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
-Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
-Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
+
 
 Gui, Pandora:Tab, 3
 Gui, Pandora:Add, Text,  W130 Section, 油气管道（react）:

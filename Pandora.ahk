@@ -66,6 +66,7 @@ FileDelete, .\src\*.bak
 #Include src/wx.ahk               ; wx
 #Include src/nest.ahk             ; nest
 #Include src/flutter.ahk	      ; flutter
+#Include src/mongoose.ahk	      ; mongoose
 
 #Include src/php.ahk              ; php	
 #Include src/help.ahk             ; 辅助功能
