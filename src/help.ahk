@@ -1,4 +1,25 @@
-﻿::li::
+﻿F2::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+
+path := A_Desktop . "\.pandora\" . t . ".png"
+
+; 在桌面创建一个图片
+createPic(path)
+
+; 注意，这里的路径必须是数组格式。哪怕只有一个。
+data := uploadfile({ Filedata: [path], file: "multipart" })
+
+_data := JSON.Load(data)
+
+Clipboard := _data.imgurl
+
+ToolTip, % _data.imgurl
+
+SetTimer, RemoveToolTip, -1000
+
+return
+
+::li::
 Var =
 (
 li{$}*20

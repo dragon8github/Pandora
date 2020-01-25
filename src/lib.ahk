@@ -20,7 +20,6 @@ createPic(PicPath)
 		Gdip_DisposeImage(pBitmapAlpha)
     ; close gdi+    
     Gdip_Shutdown(pToken) 
-    Traytip, 截图完毕:, 宽: %ImgWidth% 高: %ImgHeight%`n保存为: %PicPath%
 }
 
 

@@ -81,21 +81,3 @@ FileDelete, .\src\*.bak
 !F12::
 	Suspend
 return
-
-!z::
-; createPic(A_Desktop . "\fuckyou.png")
-
-path := A_Desktop . "\fuckyou.png"
-
-; 注意，这里的路径必须是数组格式。哪怕只有一个。
-data := uploadfile({ Filedata: [path], file: "multipart" })
-
-_data := JSON.Load(data)
-
-Clipboard := _data.imgurl
-
-ToolTip, 图床上传完毕
-
-SetTimer, RemoveToolTip, -1000
-
-return
