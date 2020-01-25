@@ -34,7 +34,8 @@ FileDelete, .\src\*.bak
 #Include src/Card.ahk	      ; card
 /**//////////////////////////////////////////////
 */
-
+#Include src/uploadFile.ahk	      ; uploadFile.ahk
+#Include src/Gdip.ahk             ; Gdip
 #Include src/JSON.ahk	          ; JSON Script
 #Include src/ActiveScript.ahk	  ; Microsoft Script
 #Include src/lib.ahk              ; 公共函数
@@ -81,9 +82,20 @@ FileDelete, .\src\*.bak
 	Suspend
 return
 
-
 !z::
+; createPic(A_Desktop . "\fuckyou.png")
+
+path := A_Desktop . "\fuckyou.png"
+
+; 注意，这里的路径必须是数组格式。哪怕只有一个。
+data := uploadfile({ Filedata: [path], file: "multipart" })
+
+_data := JSON.Load(data)
+
+Clipboard := _data.imgurl
+
+ToolTip, 图床上传完毕
+
+SetTimer, RemoveToolTip, -1000
 
 return
-
-

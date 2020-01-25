@@ -1,4 +1,30 @@
 ﻿
+createPic(PicPath)
+{
+	; Start gdi+
+    pToken := Gdip_Startup() 
+	
+		;pBitmapAlpha := Gdip_CreateBitmapFromFile(PicPath)
+		;pBitmapAlpha := Gdip_BitmapFromScreen(0, "")
+		;pBitmapAlpha := Gdip_BitmapFromScreen(x "|" y "|" width "|" height)
+		
+		;从剪切板直接获取位图
+		pBitmapAlpha := Gdip_CreateBitmapFromClipboard()
+		;图片的宽度
+		ImgWidth := Gdip_GetImageWidth(pBitmapAlpha)  
+		;图片的高度
+		ImgHeight := Gdip_GetImageHeight(pBitmapAlpha)
+		
+		;保存图片到指定的位置;第三个参数控制图片质量
+		Gdip_SaveBitmapToFile(pBitmapAlpha, PicPath, "255")
+		Gdip_DisposeImage(pBitmapAlpha)
+    ; close gdi+    
+    Gdip_Shutdown(pToken) 
+    Traytip, 截图完毕:, 宽: %ImgWidth% 高: %ImgHeight%`n保存为: %PicPath%
+}
+
+
+
 HexToRGB(color) {
     colorR := SubStr(color, 3, 2)
     colorG := SubStr(color, 5, 2)
