@@ -1285,7 +1285,19 @@ Gui, Card:Tab, 2
 OnClipboardChange("ClipChanged")
 
 ClipChanged(Type) {
-   if (type == 1) {
+	
+   ; 图片类
+   if (Type == 2) {
+	; 名字
+	t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+	; .pandora\名字.png
+	path := A_Desktop . "\.pandora\" . t . ".png"
+	; 在桌面创建一个图片
+	createPic(path)
+   }
+	
+   ; 文本类
+   if (Type == 1) {
 		b := Trim(StrReplace(Clipboard, "`r`n"))
 		
 		; 左键是否按紧了
