@@ -2,6 +2,8 @@
 
     Menu, moogoseMenu, Add, mongodb 启动步骤与设置管理员, moogosetxt
     Menu, moogoseMenu, Add, 常用命令大全, moogosetxt
+    Menu, moogoseMenu, Add, mongod --config C:\Users\Lee\Desktop\mongodb\test\mongodb.conf, moogoseHandler2
+    Menu, moogoseMenu, Add, mongodb://admin:123456@106.12.222.209:27017/test, moogoseHandler2
 
     Menu, moogoseMenu, Add
     Menu, moogoseMenu, Add
