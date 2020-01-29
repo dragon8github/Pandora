@@ -1,5 +1,4 @@
-﻿
-/**
+﻿/**
 //////////////////////////////////////////////
 初始化 Book GUI 的代码逻辑
 //////////////////////////////////////////////
@@ -1284,28 +1283,29 @@ Gui, Card:Tab, 2
 //////////////////////////////////////////////
  */
 
+
 OnClipboardChange("ClipChanged")
 
 ClipChanged(Type) {
 	
    ; 图片类
    if (Type == 2) {
-	; 名字
-	t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-	; .pandora\名字.png
-	path := A_Desktop . "\.pandora\" . t . ".png"
-	; 在桌面创建一个图片
-	createPic(path)
+		; 名字
+		t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+		; .pandora\名字.png
+		path := A_Desktop . "\.pandora\" . t . ".png"
+		; 在桌面创建一个图片
+		createPic(path)
    }
 	
    ; 文本类
    if (Type == 1) {
+	
 		b := Trim(StrReplace(Clipboard, "`r`n"))
 		
 		; 左键是否按紧了
 		KeyIsDown := GetKeyState("LButton")
-		
-
+	
 		
 		; 我们约定只有当左键的时候才可以
 		if (KeyIsDown && InStr(b, "sinaimg.cn/small") && StrLen(b) <= 100 && !InStr(b, "![](")) {

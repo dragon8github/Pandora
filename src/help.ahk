@@ -1,10 +1,39 @@
-﻿F2::
+﻿
+~esc::
+; Send, {AltUp}
+; Send, {CtrlUp}
+return
+
+
+::baiduip::
+Var =
+(
+106.12.222.209
+)
+code(Var)
+return
+
+!F2::
+
+; 名字
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 
+; .pandora\名字.png
 path := A_Desktop . "\.pandora\" . t . ".png"
 
-; 在桌面创建一个图片
-createPic(path)
+tmpcli := Clipboard
+
+isFile := FileExist(tmpcli)
+
+; 如果是图片，直接使用图片的路径上传试试
+if (isFile != "" && (InStr(tmpcli, "png") || InStr(tmpcli, "gif") || InStr(tmpcli, "jpg"))) {
+    path := tmpcli
+} else {
+    ; 否则，新建图片
+    createPic(path)
+}
+
+ToolTip, 正在上传
 
 ; 注意，这里的路径必须是数组格式。哪怕只有一个。
 data := uploadfile({ Filedata: [path], file: "multipart" })
@@ -15,7 +44,7 @@ Clipboard := _data.imgurl
 
 ToolTip, % _data.imgurl
 
-SetTimer, RemoveToolTip, -1000
+SetTimer, RemoveToolTip, -3000
 
 return
 
@@ -1857,11 +1886,6 @@ Var =
 一想到你我就…… 😭😭😭……空恨别梦久
 )
 code(Var)
-return
-
-~esc::
-Send, {AltUp}
-Send, {CtrlUp}
 return
 
 ::pianduan::

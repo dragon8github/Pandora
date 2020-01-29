@@ -153,7 +153,8 @@ _send(v, isSendLevel = false, isTab = false) {
     
     Send, % v
     
-    if (WinExist("ahk_class SoPY_Comp") || WinExist("ahk_class Microsoft.IME.UIManager.CandidateWindow.Host")) {
+    ; todo 百度输入法再呼出菜单栏的时候会隐藏才是最骚的
+    if (WinExist("ahk_class SoPY_Comp") || WinExist("ahk_class Microsoft.IME.UIManager.CandidateWindow.Host") || WinExist("ahk_class ahk_class BAIDU_CLASS_IME_87C946A9-47CC-4068-A02B-9381C1F11B24")) {
         send, {shift}
     }
 
