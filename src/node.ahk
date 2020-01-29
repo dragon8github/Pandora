@@ -357,13 +357,14 @@ Var =
 (
 const colors = require('colors');
 const commander = require('commander');
-const pkg = require('../package.json');
+const pkg = require('./package.json');
 
+// <required>(必须的) or [optional](可选的)
 commander
   .version(pkg.version)
   .description(pkg.description)
   .usage('[options] <command> [...]')
-  .option('-c, --city [name]', 'Add city name')
+  .option('-c, --city [name]', 'Add city name', 'guangdong')
   .parse(process.argv);
 
 if (process.argv.slice(2).length === 0) {
@@ -371,7 +372,7 @@ if (process.argv.slice(2).length === 0) {
     process.exit()
 }
 
-// $ yarn ts-node src/index.ts
+// node index.js -c dongguan
 console.log(commander.city) // => dongguan
 )
 }
@@ -1104,11 +1105,11 @@ return
 ::fs.ls::
 Var =
 (
-var fs = require('fs');
-fs.readdir('./',function(err,files){
-    if(err) console.log('失败');
-    else console.log(files);
-})
+const fs = require('fs').promises
+const { join } = require('path')
+;(async function(){
+	const templates = await fs.readdir(join(__dirname, '/templates'))
+}())
 )
 code(Var)
 return
