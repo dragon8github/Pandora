@@ -1,7 +1,52 @@
-﻿
+﻿::dg33::
+::dgcity::
+Var =
+(
+南城
+东城
+莞城
+虎门
+长安
+厚街
+寮步
+塘厦
+常平
+凤岗
+清溪
+大朗
+万江
+大岭山
+沙田
+石碣
+横沥
+黄江
+松山湖
+樟木头
+企石
+麻涌
+茶山
+中堂
+高埗
+桥头
+东坑
+道滘
+石排
+谢岗
+石龙
+望牛墩
+洪梅
+)
+code(Var)
+return
+
+
+::mnt::
+_send("/mnt/c/Users/Lee/Desktop")
+return
+
 ~esc::
-; Send, {AltUp}
-; Send, {CtrlUp}
+Send, {AltUp}
+Send, {CtrlUp}
 return
 
 
@@ -13,7 +58,7 @@ Var =
 code(Var)
 return
 
-!F2::
+>!F2::
 
 ; 名字
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
@@ -1552,7 +1597,7 @@ Var =
 </script>
 ---
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 
 </style>
 `)

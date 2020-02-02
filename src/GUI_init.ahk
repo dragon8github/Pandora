@@ -508,9 +508,12 @@ Gui, Pandora:Add, Link,, <a href="https://nexus.alltosea.com/">公司的Nexus</a
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/xueyoucd/p/9538126.html">搭建 npm 私服教程</a>
 Gui, Pandora:Add, Link,, <a href="https://www.sonatype.com/nexus-repository-oss">官方网站</a>
 
-Gui, Pandora:Add, Text,  W140 ys xp+160, dataZ
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dataz">gitlab地址</a>
-Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:6082/#/Studio">在线预览地址</a>
+Gui, Pandora:Add, Text,  W140 ys xp+160, 东莞疫情
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/lizhaohong/epidemich5">gitlab地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:30020/doc.html#/default/举报信息表/add_5">Swagger</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/24/interface/api/106">yapi</a>
+Gui, Pandora:Add, Link,, <a href="https://lanhuhu.com/web/#/item/project/board/detail?pid=be48ee3e-ad31-43a0-be0c-5fe1a760cf8f&project_id=be48ee3e-ad31-43a0-be0c-5fe1a760cf8f&image_id=71b685be-867b-497a-b7e3-7aa72640f950">蓝湖</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 统一门户网站
 Gui, Pandora:Add, Link,, <a href="http://dotnet.alltosea.com:6012/portalui/">入口</a>

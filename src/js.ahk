@@ -4948,7 +4948,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 .test {
 
 }
@@ -7629,7 +7629,6 @@ code(Var)
 SendInput, {left 1}
 Return
 
-::r::
 ::ret::
 ::re::
     SendRaw, return

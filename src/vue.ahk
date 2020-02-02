@@ -378,7 +378,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 .myprogress {
   transition: .5s all ease;
   width: 0;
@@ -876,7 +876,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 .loading-indicator {
     position: absolute;
     top: 0;
@@ -999,7 +999,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 
 .layer {
     position: absolute;
@@ -1269,7 +1269,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 .fuck {
 
 }
@@ -2001,7 +2001,7 @@ Var =
 </transition-group>
 
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 .fadeIn-enter-active, .fadeIn-leave-active {
   transition: all .5s ease;
 }
@@ -2150,7 +2150,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 .myprogress {
   transition: .5s all ease;
   width: 0;
@@ -2350,7 +2350,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 .%OutputVar% {
 
 }
@@ -2460,7 +2460,7 @@ if (v == "vue.style") {
 Var = 
 (
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 .test {
 
 }
@@ -2735,7 +2735,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 .%OutputVar% {
 
 }
@@ -3109,7 +3109,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 .%OutputVar% {
 
 }
@@ -4435,7 +4435,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "~@/scss/functions.scss";
+
 
 .roll-warp {
     width: rem(320);

@@ -5,7 +5,7 @@
     Menu, moogoseMenu, Add, mongod --config C:\Users\Lee\Desktop\mongodb\test\mongodb.conf, moogoseHandler2
     Menu, moogoseMenu, Add, mongodb://admin:123456@106.12.222.209:27017/test, moogoseHandler2
     Menu, moogoseMenu, Add, db.test.insert({ "name": "Lee" }), moogosetxt
-    Menu, moogoseMenu, Add, db.createUser({ user: "yapi", pwd: "123456", roles: [{role: 'dbOwner', db: 'yapi'}] }), moogosetxt
+    Menu, moogoseMenu, Add, db.createUser({ user: "yapi"`, pwd: "123456"`, roles: [{role: 'dbOwner'`, db: 'yapi'}] }), moogosetxt
 
     Menu, moogoseMenu, Add
     Menu, moogoseMenu, Add

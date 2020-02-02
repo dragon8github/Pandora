@@ -5702,7 +5702,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/scss/functions.scss";
+
 .myprogress {
   transition: .5s all ease;
   width: 0;
@@ -6361,6 +6361,76 @@ Var =
   const json = await fetch('https://raw.githubusercontent.com/dragon8github/Pandora/master/assets/DongGuanGrid.geo.json').then(response => response.json())
   console.log(20200116224515, json)
 }())
+)
+code(Var)
+return
+
+::event::
+Var =
+(
+Promise.allSettled = iterables => new Promise(resolve => {
+    let result = []
+
+    const callback = function(i, v) {
+        // 模仿 Promise.all 对号入座原则
+        result[i] = v
+
+        // 是否全部执行完毕？
+        if (result.length === iterables.length)
+            // 收工咯~
+            resolve(result)
+    }
+
+    iterables.forEach((p, i) => {
+        // 注入索引
+        const _callback = callback.bind(null, i)
+        // 注入灵魂
+        p.then(_callback).catch(_callback)
+    })
+})
+
+/**
+ * say something ...
+ *
+ let e = new Event()
+
+ e.add("hello", name => new Promise((resolve, reject) => setTimeout(_ => resolve('1' + name), 1000)))
+ e.add("hello", name => new Promise((resolve, reject) => setTimeout(_ => resolve('2' + name), 2000)))
+
+ ;(async function() {
+     await e.emit('hello', { name: 'Lee' })
+     console.log('work finish')
+ }())
+ */
+class Event {
+    constructor(props) {
+        this.map = []
+    }
+
+    add(name, fn, id = Date.now()) {
+        this.map.push({ name, fn, id })
+        return id
+    }
+
+    emit(name, ...args) {
+        const target = this.map.filter(_ => _.name === name)
+        const pendding = target.map(_ => _.fn(...args))
+        return Promise.allSettled(pendding)
+    }
+
+    remove (id) {
+        const index = this.map.findIndex(_ => _.id === id)
+        this.map.splice(index, 1)
+    }
+
+    clear() {
+        this.map = []
+    }
+
+    removeByName (name) {
+        this.map = this.map.filter(_ => _.name != name)
+    }
+}
 )
 code(Var)
 return

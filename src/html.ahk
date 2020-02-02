@@ -239,6 +239,174 @@ Var =
         border-radius: 0 0 6px 0;
     }
 }
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- sass -->
+    <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
+    <style>
+
+    #app {}
+
+    .u-table-bordered {
+        width: 100`%;
+        border-spacing: 0;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        font-size: 26px;
+
+        td,
+        th {
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #FBF8FB;
+        }
+
+        a {
+            color: rgb(0, 0, 238);
+        }
+    }
+    </style>
+    <script>
+    // 获取第一个 <style>
+    const style = document.getElementsByTagName('style')[0]
+    // 获取第一个
+    const scss = style.innerHTML
+    // 开始编译
+    Sass.compile(scss, result => {
+        // 替换为编译好的 css
+        style.innerHTML = result.text
+    })
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <table class='u-table-bordered'>
+            <tr>
+                <th colspan='3'>东莞市发热门诊重点医院名单</th>
+            </tr>
+            <tr>
+                <th>区</th>
+                <th>医院</th>
+                <th>电话</th>
+            </tr>
+            <tr v-for='(item, index) in items' :key='index'>
+                <td v-if='v(item, index, items)' :rowspan='t(item, items)'> {{ item.city }} </td>
+                <td>{{ item.name }}</td>
+                <td>查看地址</a> / <a :href="'tel:' + item.mobile">电话</a></td>
+            </tr>
+            <!--
+            <tr>
+                <td rowspan="2">万江</td>
+                <td>东莞市人民医院</td>
+                <td><a @click='go("23.03086,113.707293","东莞市人民医院", "东莞市万江区新谷涌万道路南3号")'>查看地址</a> / <a href="tel:10086">电话</a></td>
+            </tr>
+            <tr>
+                <td>东莞市万江医院</td>
+                <td><a @click='go("23.060724,113.725853", "东莞市万江医院", "东莞市石美社区卢慈涡村107国道(石美牌楼斜对面)")'>查看地址</a> / <a href="tel:10086">电话</a></td>
+            </tr>
+            <tr>
+                <td rowspan="2">虎门</td>
+                <td>东莞市滨海湾中心医院</td>
+                <td><a @click='go("22.826544,113.688089", "东莞市滨海湾中心医院", "东莞市虎门镇虎门大道154号")'>查看地址</a> / <a href="tel:10086">电话</a></td>
+            </tr>
+            <tr>
+                <td>东莞市虎门医院</td>
+                <td><a @click='go("22.824852,113.675303", "东莞市虎门医院", "东莞市虎门镇则徐路145号")'>查看地址</a> / <a href="tel:10086">电话</a></td>
+            </tr>
+            <tr>
+                <td rowspan="3">东城</td>
+                <td>东莞市中医院</td>
+                <td><a @click='go("22.998178,113.831617","东莞市中医院", "东莞市松山湖大道22号")'>查看地址</a> / <a href="tel:10086">电话</a></td>
+            </tr>
+            <tr>
+                <td>东莞市东华医院</td>
+                <td><a @click='go("23.036908,113.792533" ,"东莞市东华医院", "东莞市东城区东城东路1号")'>查看地址</a> / <a href="tel:10086">电话</a></td>
+            </tr>
+            <tr>
+                <td>东莞市东城医院</td>
+                <td><a @click='go("23.043518,113.763556","东莞市东城医院", "东莞市南城街道南城路56号")'>查看地址</a> / <a href="tel:10086">电话</a></td>
+            </tr>
+            <tr>
+                <td rowspan="1">石龙</td>
+                <td>东莞市松山湖中心医院</td>
+                <td><a @click='go("23.121759,113.890552","东莞市松山湖中心医院", "东莞市石龙镇祥龙路1号")'>查看地址</a> / <a href="tel:10086">电话</a></td>
+            </tr> -->
+        </table>
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data() {
+        return {
+            items: [
+                { city: '莞城街道', name: '东莞市第九人民医院', address: '广东省东莞市莞城区沙地塘88号', mobile: 10086 },
+                { city: '莞城街道', name: '东莞市莞城医院', address: '东莞市莞城街道莞太路78号', mobile: 10086 },
+                { city: '虎门镇', name: '东莞市滨海湾中心医院', address: '东莞市虎门镇虎门大道154号', mobile: 10086 },
+                { city: '虎门镇', name: '东莞市虎门医院', address: '东莞市虎门镇则徐路145号', mobile: 10086 },
+                { city: '东城街道', name: '东莞市中医院', address: '东莞市松山湖大道22号', mobile: 10086 },
+                { city: '东城街道', name: '东莞东华医院', address: '广东省东莞市东城区东城东路1号', mobile: 10086 },
+                { city: '东城街道', name: '东莞市东城医院', address: '东莞市南城街道南城路56号', mobile: 10086 },
+                { city: '万江街道', name: '东莞市人民医院', address: '东莞市万江区新谷涌万道路南3号', mobile: 10086 },
+                { city: '万江街道', name: '东莞市万江医院', address: '广东省东莞市石美社区卢慈涡村107国道（石美牌楼斜对面）', mobile: 10086 },
+                { city: '南城街道', name: '东莞市南城医院', address: '东莞市南城区莞太路55号', mobile: 10086 },
+                { city: '南城街道', name: '东莞康华医院', address: '东莞市东莞大道1000号', mobile: 10086 },
+                { city: '中堂镇', name: '东莞市中堂医院', address: '东莞市中堂镇中麻路53号', mobile: 10086 },
+                { city: '石龙镇', name: '东莞市松山湖中心医院', address: '广东省东莞市石龙镇祥龙路1号', mobile: 10086 },
+                { city: '望牛墩镇', name: '东莞市望牛墩医院', address: '东莞市望牛墩镇望联村芙蓉路芙蓉沙桥旁', mobile: 10086 },
+                { city: '麻涌镇', name: '东莞市水乡中心医院', address: '东莞市麻涌镇南峰路2号', mobile: 10086 },
+                { city: '石碣镇', name: '东莞市石碣医院', address: '广东省东莞市石碣镇崇焕中路39号', mobile: 10086 },
+                { city: '高埗镇', name: '东莞市高埗医院', address: '东莞市高埗镇创兴中路2号', mobile: 10086 },
+                { city: '洪梅镇', name: '东莞市洪梅医院', address: '东莞市洪梅镇迎宾南路延伸段（洪梅车站旁）', mobile: 10086 },
+                { city: '道滘镇', name: '东莞市道滘医院', address: '东莞市道滘镇金牛新村南路69号', mobile: 10086 },
+                { city: '厚街镇', name: '东莞市厚街医院', address: '东莞市厚街镇河田大道21号', mobile: 10086 },
+                { city: '沙田镇', name: '东莞市沙田医院', address: '东莞市沙田镇中心区站前路', mobile: 10086 },
+                { city: '长安镇', name: '东莞市长安医院', address: '东莞市长安镇长青南路171号', mobile: 10086 },
+                { city: '寮步镇', name: '东莞市寮步医院', address: '广东省东莞市寮步镇寮城西路107号', mobile: 10086 },
+                { city: '大岭山镇', name: '东莞市中西医结合医院', address: '广东省东莞市大岭山镇上场路2号', mobile: 10086 },
+                { city: '大朗镇', name: '东莞市大朗医院', address: '东莞市大朗镇金朗中路85号', mobile: 10086 },
+                { city: '黄江镇', name: '东莞市黄江医院', address: '东莞市黄江镇西环路南段1号', mobile: 10086 },
+                { city: '樟木头镇', name: '东莞市樟木头医院', address: '东莞市樟木头镇银河北路15号', mobile: 10086 },
+                { city: '凤岗镇', name: '东莞市凤岗医院', address: '广东省东莞市凤岗镇凤平路13号', mobile: 10086 },
+                { city: '塘厦镇', name: '东莞市东南部中心医院', address: '东莞市塘厦镇蛟坪大道113号', mobile: 10086 },
+                { city: '谢岗镇', name: '东莞市谢岗医院', address: '东莞市谢岗镇花园大道', mobile: 10086 },
+                { city: '清溪镇', name: '东莞市清溪医院', address: '东莞市清溪镇香芒中路6号', mobile: 10086 },
+                { city: '常平镇', name: '东莞市东部中心医院', address: '广东省东莞市常平镇常东璐88号', mobile: 10086 },
+                { city: '桥头镇', name: '东莞市桥头医院', address: '东莞市桥头镇工业路43号', mobile: 10086 },
+                { city: '横沥镇', name: '东莞市横沥医院', address: '东莞市横沥镇天桥路205号', mobile: 10086 },
+                { city: '东坑镇', name: '东莞市东坑医院', address: '东莞市东坑镇沿河西路41号', mobile: 10086 },
+                { city: '企石镇', name: '东莞市企石医院', address: '东莞市企石镇宝华路115号', mobile: 10086 },
+                { city: '石排镇', name: '东莞市石排医院', address: '东莞市石排镇石排大道中198号', mobile: 10086 },
+                { city: '茶山镇', name: '东莞市茶山医院', address: '广东省东莞市茶山镇彩虹路92号', mobile: 10086 },
+                { city: '松山湖', name: '东莞东华医院松山湖园区', address: '广东省东莞市松山湖科发七路1号', mobile: 10086 },
+            ]
+        }
+    },
+    methods: {
+        t(item, items) {
+            return items.filter(_ => _.city === item.city).length
+        },
+        v(item, index, items) {
+            return this.t(item, items) === 1 || index === 0 || (items[index - 1] && items[index - 1].city != item.city)
+        },
+    },
+})
+</script>
+
+</html>
 )
 txtit(Var)
 return
