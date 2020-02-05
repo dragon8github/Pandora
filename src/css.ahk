@@ -5134,3 +5134,40 @@ Var =
 )
 txtit(Var)
 return
+
+::apply::
+::@apply::
+Var =
+(
+.foo {
+    font-size: 16px;
+}
+
+.bar {
+    background-color: #000;
+}
+
+.baz {
+    color: yellow;
+}
+
+// 扩展符，十分有用的一个内置变量。
+@mixin apply($args...) {
+    // 打印出所有参数
+    @debug $args;
+
+    @each $v in $args {
+        // 
+        @debug "." + $v;
+
+        // 说实话，什么时候需要用 #{$name}，什么时候直接用 $name ，我完全不知道。 总之随缘吧
+        @extend #{"." + $v};
+    }
+}
+
+#app {
+    @include apply(foo, bar, baz);
+}
+)
+code(Var)
+return

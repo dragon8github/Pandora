@@ -98,6 +98,7 @@
   Menu, VueMenu, Add, render(h) jsx用法, VueHandler
   Menu, VueMenu, Add, this.$set 深度赋值, VueHandler
   Menu, VueMenu, Add, this.$root.$on 事件总线, VueHandler
+  Menu, VueMenu, Add, beforeRouteLeave 滚动条位置记录, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -162,6 +163,31 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "beforeRouteLeave 滚动条位置记录") {
+Var = 
+(
+data() {
+    return {
+        homeScroll: 0,
+    }
+},
+//进入路由即触发 created()只触发一次
+activated() {
+    //this.$nextTick()异步执行dom刷新
+    this.$nextTick(() => {
+        console.log(20200201105909, this.homeScroll)
+        document.querySelector('.view').scrollTo(0, this.homeScroll)
+    })
+},
+//离开路由时
+beforeRouteLeave(to, from, next) {
+    this.homeScroll = document.querySelector('.view').scrollTop
+    console.log(20200201105901, this.homeScroll)
+    next();
+},
 )
 }
 
@@ -655,21 +681,7 @@ return
 
 
 if (v == "this.$root.$on 事件总线") {
-Var =
-(
-created: function () {
-  this.$root.$on('undo', this.undo)
-  this.$root.$on('redo', this.redo)
-},
-beforeDestroy: function () {
-  this.$root.$off('undo', this.undo)
-  this.$root.$off('redo', this.redo)
-},
----
-<button v-tooltip="'Undo'" class="action-btn" :disabled="!canUndo" @click="$root.$emit('undo')">
-<button v-tooltip="'Redo'" class="action-btn" :disabled="!canRedo" @click="$root.$emit('redo')">
-)
-txtit(Var)
+_send("$on", true ,true)
 return
 }
 
@@ -4890,4 +4902,27 @@ export default {
 </script>
 )
 txtit(Var)
+return  
+
+::vue.$on::
+::vue.on::
+::vue.emit::
+::vue.$emit::
+::$on::
+Var =
+(
+created: function () {
+  this.$root.$on('undo', this.undo)
+  this.$root.$on('redo', this.redo)
+},
+beforeDestroy: function () {
+  this.$root.$off('undo', this.undo)
+  this.$root.$off('redo', this.redo)
+},
+---
+<button @click="$root.$emit('undo')">
+<button @click="$root.$emit('redo')">
+)
+txtit(Var)
+return
 return

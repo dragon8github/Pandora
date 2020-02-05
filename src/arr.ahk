@@ -687,3 +687,16 @@ ary.splice(1, 0, 'fuckyou')
 )
 code(Var)
 return
+
+::while::
+Var =
+(
+// while(true) {  }
+while(args.length) {
+	const _args = args.shift()
+
+	console.log(20200205212156, _args)
+}
+)
+code(Var)
+return

@@ -1,4 +1,9 @@
 ﻿!e::
+
+	Menu, mapMenu, Add, 百度地图 bdmap bdmap 一些实用、常用的解决方案, EventHandler
+	Menu, mapMenu, Add, echarts 随机地图生成散点, EventHandler
+	
+	
 	Menu, esEventMenu, Add, Elasticsearch#新增数据（索引/类型/文档id）, EventHandler
 	Menu, esEventMenu, Add, Elasticsearch#新增索引, EventHandler
 	Menu, esEventMenu, Add, Elasticsearch#查看所有索引, EventHandler
@@ -36,12 +41,19 @@
 	Menu, jqueryEventMenu, Add, $('#app').scroll(e => {}), EventHandler
 	
 	
+	Menu, JavaScriptEventMenu, Add, , EventHandler
+	Menu, JavaScriptEventMenu, Add, (〜￣△￣)〜认知：addEventListener的 capture 和 passive～(￣▽￣～), EventHandler
+	Menu, JavaScriptEventMenu, Add, , EventHandler
+	
+	Menu, JavaScriptEventMenu, Add, capture 和 passive 的作用, EventHandler
 	Menu, JavaScriptEventMenu, Add, .addEventListener('click'`, e => {}), EventHandler
 	Menu, JavaScriptEventMenu, Add, .addEventListener('mouseover'`, e => {}) , EventHandler
 	Menu, JavaScriptEventMenu, Add, .addEventListener('mouseleave'`, e => {}), EventHandler
+	
 	Menu, JavaScriptEventMenu, Add, , EventHandler
 	Menu, JavaScriptEventMenu, Add, (〜￣△￣)〜认知：onclick只能为元素绑定一个方法，而addEventListener可以绑定无限个～(￣▽￣～), EventHandler
 	Menu, JavaScriptEventMenu, Add, , EventHandler
+	
 	Menu, JavaScriptEventMenu, Add, .onclick = (e) => {}, EventHandler
 	Menu, JavaScriptEventMenu, Add, .onsubmit = (e) => {}, EventHandler
 	
@@ -65,6 +77,14 @@
 	Menu, JavaScriptEventMenu, Add, ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件, EventHandler
 	Menu, JavaScriptEventMenu, Add, ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件, EventHandler
 	Menu, JavaScriptEventMenu, Add, ondrop - 在一个拖动过程中，释放鼠标键时触发此事件, EventHandler
+
+	Menu, JavaScriptEventMenu, Add
+	Menu, JavaScriptEventMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 touch: 移动端常用事件 🍁🍁🍁🍁🍁🍁🍁🍁, EventHandler
+	Menu, JavaScriptEventMenu, Add
+	Menu, JavaScriptEventMenu, Add, ontouchstart, EventHandler
+	Menu, JavaScriptEventMenu, Add, ontouchmove, EventHandler
+	Menu, JavaScriptEventMenu, Add, ontouchend, EventHandler
+	Menu, JavaScriptEventMenu, Add, ontouchcancel, EventHandler
 
 
 	Menu, echartsAction, Add, legendUnSelect, EventHandler
@@ -144,6 +164,7 @@
 	Menu, EventMenu, Add, React, :ReactEventMenu
 	Menu, EventMenu, Add, jquery, :jqueryEventMenu
 	Menu, EventMenu, Add, echarts, :echartsEventMenu
+	Menu, EventMenu, Add, 地图相关, :mapMenu
 	Menu, EventMenu, Add, elasticsearch, :esEventMenu
 	
 	
@@ -205,6 +226,310 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "capture 和 passive 的作用") {
+Var =
+(
+capture 几乎不用管，默认为 false，而且大部分场景也不会管它。
+它是冒泡的意思。默认冒泡是从里到外，符合自觉，如果设置为true，就是从外到里。极少场景需要设置为 true。
+---
+passive 才是优化重点，默认为 true，如果设置为 false 则能提高流畅度，代价是无法使用event.preventDefault()
+passive 意思是顺从的意思，即顺从浏览器安排，不反抗，不中断。让浏览器顺滑的执行。
+)
+}
+
+if (v == "百度地图 bdmap bdmap 一些实用、常用的解决方案") {
+Var =
+(
+https://www.jianshu.com/p/e44a68bf0cdc
+https://www.cnblogs.com/weiweictgu/p/6196235.html
+---
+map.getOverlays().filter(_ => _.city)
+
+setTimeout(() => {
+    map.setViewport(map.getOverlays().filter(_ => _.city)[0].getPath())
+}, 5000);
+
+BMapLib.GeoUtils.isPointInPolygon(new BMap.Point(113.843319, 22.921901), map.getOverlays().filter(_ => _.city)[0])
+---
+按照 polygon 生成，如果有需要东莞市访问内生成，
+你就需要先渲染一个 东莞市的轮廓了。并且找到它。
+const py = map.getOverlays().filter(_ => _.city)[0]
+
+const bounds = py.getBounds()
+
+function addMarker(p) {
+    var marker = new BMap.Marker(p);
+    map.addOverlay(marker);
+}
+
+var sw = bounds.getSouthWest();
+var ne = bounds.getNorthEast();
+var lngSpan = Math.abs(sw.lng - ne.lng);
+var latSpan = Math.abs(ne.lat - sw.lat);
+var ary = []
+
+for (var i = 0; i < 10; i++) {
+    var p = new BMap.Point(sw.lng + lngSpan * Math.random(), ne.lat - latSpan * Math.random());
+    if (BMapLib.GeoUtils.isPointInPolygon(p, py)) {
+        addMarker(p)
+        ary.push(p)
+    } else {
+       i--
+    }
+}
+
+console.log(20200117131136, ary)
+)
+}
+
+if (v == "echarts 随机地图生成散点") {
+Var =
+(
+重点是如何判断是否包含东莞市？
+var geo = myChart.getModel().getComponent('geo').coordinateSystem
+
+geo.containCoord([113.843319, 28.921901])
+---
+东莞市获取
+const randomCount = 100
+
+const geo = myChart.getModel().getComponent('geo').coordinateSystem;
+
+// 获取区域信息
+const rect = geo.getBoundingRect()
+
+const coords = [...Array(randomCount)].map((v, index, array) => {
+	// 初始化坐标
+	let coord = [0, 0]
+
+	// 轮询直到添加不重复的点城管
+    while (!geo.containCoord(coord)) {
+    	coord[0] = rect.x + Math.random() * rect.width
+    	coord[1] = rect.y + Math.random() * rect.height
+    }
+
+    return coord
+});
+
+console.log(20200115144141, coords)
+---
+某个镇区获取
+var getRandomPoint = (chart, name, randomCount = 100) => {
+	const geo = chart.getModel().getComponent('geo').coordinateSystem;
+
+	// 尝试获取区域，如果不存在则为 null
+	const region = geo.getRegion(name)
+
+	// 获取区域信息
+	const rect = region.getBoundingRect()
+
+	return [...Array(randomCount)].map((v, index, array) => {
+		// 初始化坐标
+		let value = [0, 0]
+
+		// 随便取一个名字
+		const name = 's' + index
+
+		// 轮询直到添加不重复的点城管
+	    while (!region.contain(value)) {
+	    	value[0] = rect.x + Math.random() * rect.width
+	    	value[1] = rect.y + Math.random() * rect.height
+	    }
+
+        return { name, value }
+	});
+};
+---
+封装 与 测试
+var getRandomPoint = (myChart, randomCount = 100) => {
+	const geo = myChart.getModel().getComponent('geo').coordinateSystem;
+
+	// 获取区域信息
+	const rect = geo.getBoundingRect()
+
+	return [...Array(randomCount)].map((v, index, array) => {
+		// 初始化坐标
+		let value = [0, 0]
+
+		// 随便取一个名字
+		const name = 's' + index
+
+		// 轮询直到添加不重复的点城管
+	    while (!geo.containCoord(value)) {
+	    	value[0] = rect.x + Math.random() * rect.width
+	    	value[1] = rect.y + Math.random() * rect.height
+	    }
+
+	    return { name: name, value: value }
+	});
+};
+
+// 生成100个散点
+var RandomPoint = getRandomPoint(myChart, 100);
+
+// 插入散点测试
+var opts = myChart.getOption();
+opts.series[1].data = RandomPoint;
+myChart.setOption(opts);
+---
+测试2
+(function(console) {
+    console.save = function(data, filename) {
+        if (!data) {
+            console.error('Console.save: No data')
+            return;
+        }
+        if (!filename) filename = 'mock1.js'
+        if (typeof data === "object") {
+            data = JSON.stringify(data, undefined, 4)
+        }
+        var blob = new Blob([data], { type: 'text/json' }),
+            e = document.createEvent('MouseEvents'),
+            a = document.createElement('a')
+
+        a.download = filename
+        a.href = window.URL.createObjectURL(blob)
+        a.dataset.downloadurl = ['text/json', a.download, a.href].join(':')
+        e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+        a.dispatchEvent(e)
+    }
+})(console)
+
+// 范围选择如 -100 ~ 100 强烈推荐这个函数
+var random = (min, max) => min + Math.floor(Math.random() * (max - min + 1))
+
+var getRandomPoint = (chart, name, randomCount = 100) => {
+	const geo = chart.getModel().getComponent('geo').coordinateSystem;
+
+	// 尝试获取区域，如果不存在则为 null
+	const region = geo.getRegion(name)
+
+	// 获取区域信息
+	const rect = region.getBoundingRect()
+
+	return [...Array(randomCount)].map((v, index, array) => {
+		// 初始化坐标
+		let value = [0, 0]
+
+		// 随便取一个名字
+		const name = 's' + index
+
+		// 轮询直到添加不重复的点城管
+	    while (!region.contain(value)) {
+	    	value[0] = rect.x + Math.random() * rect.width
+	    	value[1] = rect.y + Math.random() * rect.height
+	    }
+
+	    // 生成符合mapV的格式
+	    const point = { geometry: { type: 'Point', coordinates: value, color: random(1, 3) } }
+
+	    // 三十分之一的几率会产生一个闪点
+	    if (random(1, 30) === 30) {
+	    	point.time = Math.random() * 10
+	    }
+
+	    return point
+	});
+};
+
+
+var RandomPoint = [
+	getRandomPoint(myChart, '东城', 5000,),
+	getRandomPoint(myChart, '厚街', 5000,),
+
+	getRandomPoint(myChart, '南城', 4000,),
+	getRandomPoint(myChart, '万江', 4000,),
+	getRandomPoint(myChart, '寮步', 4000,),
+
+	getRandomPoint(myChart, '大岭山', 3000,),
+	getRandomPoint(myChart, '松山湖', 3000,),
+
+	getRandomPoint(myChart, '虎门', 3000,),
+	getRandomPoint(myChart, '长安', 3000,),
+
+
+	getRandomPoint(myChart, '茶山', 500,),
+	getRandomPoint(myChart, '莞城', 500,),
+	getRandomPoint(myChart, '大朗', 500,),
+	getRandomPoint(myChart, '道滘', 500),
+	getRandomPoint(myChart, '洪梅', 500),
+	getRandomPoint(myChart, '望牛墩', 500),
+
+	getRandomPoint(myChart, '石碣', random(150, 300),),
+	getRandomPoint(myChart, '石龙', random(150, 300),),
+	getRandomPoint(myChart, '石排', random(150, 300),),
+	getRandomPoint(myChart, '企石', random(150, 300),),
+	getRandomPoint(myChart, '横沥', random(150, 300),),
+	getRandomPoint(myChart, '桥头', random(150, 300),),
+	getRandomPoint(myChart, '谢岗', random(150, 300),),
+	getRandomPoint(myChart, '东坑', random(150, 300),),
+	getRandomPoint(myChart, '常平', random(150, 300),),
+	getRandomPoint(myChart, '黄江', random(150, 300),),
+	getRandomPoint(myChart, '清溪', random(150, 300),),
+	getRandomPoint(myChart, '塘厦', random(150, 300),),
+	getRandomPoint(myChart, '凤岗', random(150, 300),),
+	getRandomPoint(myChart, '沙田', random(150, 300),),
+	getRandomPoint(myChart, '麻涌', random(150, 300),),
+	getRandomPoint(myChart, '中堂', random(150, 300),),
+	getRandomPoint(myChart, '高埗', random(150, 300),),
+	getRandomPoint(myChart, '樟木头', random(150, 300),),
+].flat()
+
+const data1 = RandomPoint.filter(_ => _.geometry.color === 1)
+const data2 = RandomPoint.filter(_ => _.geometry.color === 2)
+const data3 = RandomPoint.filter(_ => _.geometry.color === 3)
+const data4 = RandomPoint.filter(_ => _.time)
+
+console.save(``
+window.__data1__ = ${JSON.stringify(data1)};
+window.__data2__ = ${JSON.stringify(data2)};
+window.__data3__ = ${JSON.stringify(data3)};
+window.__data4__ = ${JSON.stringify(data4)};
+``)
+
+// 插入散点测试
+// var opts = myChart.getOption();
+// opts.series[1].data = RandomPoint;
+// myChart.setOption(opts);
+)
+}
+
+if (v == "ontouchstart") {
+Var = 
+(
+addEventListener('touchstart', (event) => {
+	console.log('touchstart')
+}, { capture: false, passive: false })
+)
+}
+
+if (v == "ontouchmove") {
+Var = 
+(
+addEventListener('touchmove', (event) => {
+	console.log('touchmove')
+}, { capture: false, passive: false })
+)
+}
+
+if (v == "ontouchend") {
+Var = 
+(
+addEventListener('touchend', (event) => {
+	console.log('touchend')
+}, { capture: false, passive: false })
+)
+}
+
+if (v == "ontouchcancel") {
+Var = 
+(
+addEventListener('touchcancel', (event) => {
+	console.log('touchcancel')
+}, { capture: false, passive: false })
 )
 }
 
@@ -1609,7 +1934,7 @@ this.myChart.on('legendselectchanged', params => {
 )
 }
 
-code(Var)
+txtit(Var)
 return
 
 ::setdebugger::

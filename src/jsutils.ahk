@@ -247,6 +247,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, like 函数多重筛选条件, utilsHandler
     Menu, utilsmy, Add, partial 偏应用（_bind）：自由占位符, utilsHandler
     Menu, utilsmy, Add, 图片转base64:img2base64, utilsHandler
     Menu, utilsmy, Add, 新的数组工具：maps, utilsHandler
@@ -396,6 +397,8 @@
     Menu, utils2, Add, 求两个数的最大公约数与比例, utilsHandler
     Menu, utils2, Add, 统计 String 每个单词出现的次数, utilsHandler
     Menu, utils2, Add, allColor：获取页面所有颜色, utilsHandler
+    
+    Menu, utils2, Add, html 新闻、文本多个换行符\r\n换成一个, utilsHandler
 
 
     
@@ -464,6 +467,22 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "like 函数多重筛选条件") {
+_send("like", true, true)
+return
+}
+
+if (v == "html 新闻、文本多个换行符\r\n换成一个") {
+Var =
+(
+content.replace(/(\r\n(\s)*\r\n)+/g, '\r\n\r\n')
+
+
+记得结合css
+.u-pre-line { white-space: pre-line; }
 )
 }
 
@@ -6431,6 +6450,83 @@ class Event {
         this.map = this.map.filter(_ => _.name != name)
     }
 }
+)
+code(Var)
+return
+
+::on::
+Var =
+(
+/**
+ * - capture 几乎不用管，默认为 false，而且大部分场景也不会管它。
+     capture 是冒泡的意思。默认冒泡是从里到外，符合自觉，如果设置为true，就是从外到里。 所以极少场景需要设置为 true。
+
+ * - passive 才是优化重点，默认为 true，如果设置为 false 则能提高流畅度，代价是无法使用event.preventDefault()
+     passive 意思是顺从的意思，即顺从浏览器安排，不反抗，不中断。让浏览器顺滑的执行。 通常移动端 touch 类事件需要设置为 false。
+
+
+     on(el, 'touchstart', this.onTouchStart)
+     on(el, 'touchmove', this.onTouchMove)
+     on(el, 'touchend', this.onTouchEnd)
+     on(el, 'touchcancel', this.onTouchEnd)
+ */
+const on = (target, event, handler, passive = false) => target.addEventListener(event, handler, { capture: false, passive })
+)
+code(Var)
+return
+
+::sing::
+::singele::
+::single::
+Var =
+(
+class Singleton {
+    static instance
+    constructor() {
+         if (Singleton.instance) {
+             return Singleton.instance
+         }
+         Singleton.instance = this
+    }
+}
+)
+code(Var)
+return
+
+::like::
+Var =
+(
+// 搜索符合全部条件
+Array.prototype.like = function (...args) { 
+    return this.filter(_ => args.every(fn => fn(_))) 
+}
+
+// 搜索符合部分条件
+Array.prototype.likeSome = function (...args) { 
+    return this.filter(_ => args.Some(fn => fn(_))) 
+}
+
+// 模糊查找字符串，无视大小写
+Array.prototype.likeStr = function (...args) { 
+    return this.filter(_ => args.every(str => _.toUpperCase().includes(str.toUpperCase()))) 
+}
+
+// 模糊查找字符串，含大小写
+Array.prototype.likeStrCaseWrite = function (...args) { 
+    return this.filter(_ => args.every(str => _.includes(str))) 
+}
+
+
+const T = () => true
+['a', 'b', 'c'].like(T, T, T)
+
+const ary = [
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit', 
+    'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    'Excepteur sint occaecat cupidatat non proident'
+]
+
+ary.like(_ => _.includes('or'), _ => _.includes('et'))
 )
 code(Var)
 return
