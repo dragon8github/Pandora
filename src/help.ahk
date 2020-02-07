@@ -1093,6 +1093,9 @@ return
         str := "http:" . str
     }
     If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") ) {
+        if (!InStr(str, "http://") || !InStr(str, "https://")) {
+            str := "http://" . str
+        }
         RUN, % str
     } else {
         RUN, https://www.baidu.com/s?wd=%str%

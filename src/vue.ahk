@@ -21,7 +21,8 @@
   Menu, Vuerouter, Add, 动态路由：router.addRoutes, VueHandler
   Menu, Vuerouter, Add, next() 的三种参数形态, VueHandler
   Menu, Vuerouter, Add, 路由验证token并跳转登录与重定向的套路, VueHandler
-
+  Menu, Vuerouter, Add, 如果带参数 :id ，那么 children 不需要 /, VueHandler
+  
 
   Menu, VueMenu, Add, vuex.router, :Vuerouter
   Menu, VueMenu, Add, vuex.init, VueHandler
@@ -163,6 +164,34 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+
+if (v == "如果带参数 :id ，那么 children 不需要 /") {
+Var = 
+(
+const router = new VueRouter({
+  routes: [
+    { path: '/user/:id', component: User,
+      children: [
+        {
+          // UserProfile will be rendered inside User's <router-view>
+          // when /user/:id/profile is matched
+          path: 'profile',
+          component: UserProfile
+        },
+        {
+          // UserPosts will be rendered inside User's <router-view>
+          // when /user/:id/posts is matched
+          path: 'posts',
+          component: UserPosts
+        }
+      ]
+    }
+  ]
+})
 )
 }
 

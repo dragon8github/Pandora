@@ -247,6 +247,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, 仿 Echarts.visualMap 逻辑分组 + split分组, utilsHandler
     Menu, utilsmy, Add, like 函数多重筛选条件, utilsHandler
     Menu, utilsmy, Add, partial 偏应用（_bind）：自由占位符, utilsHandler
     Menu, utilsmy, Add, 图片转base64:img2base64, utilsHandler
@@ -468,6 +469,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "仿 Echarts.visualMap 逻辑分组 + split分组") {
+_send("visualMap", true, true)
+return
 }
 
 if (v == "like 函数多重筛选条件") {
@@ -3387,12 +3393,12 @@ successFn.apply(this, arguments)
 
 
 if (v == "去重复版本的axios") {
-_send(singaxios)
+_send(singaxios, true, true)
 return
 }
 
 if (v == "(=・ω・=)我的单例版ajax") {
-_send(singeajax)
+_send(singeajax, true, true)
 return
 }
 if (v == "强制转化为Boolean类型：!!(a && b)") {
@@ -3404,19 +3410,19 @@ console.log(!!(a && b))
 }
 
 if (v == "img判断加载完成") {
-_send(imgonload)
+_send(imgonload, true, true)
 return
 }
 
 
 if (v == "create 创建img") {
-_send(createimg)
+_send(createimg, true, true)
 return
 }
 
 
 if (v == "mask蒙版") {
-_send(mask)
+_send(mask, true, true)
 return
 }
 
@@ -3726,7 +3732,7 @@ Var =
 }
 
 if (v == "memoized 函数缓存") {
-_send(funcache)
+_send(funcache, true, true)
 return
 }
 
@@ -3779,14 +3785,13 @@ dict.offset = [
 )
 }
 
-
 if (v == "filterhtml: 移除html标签，只提取文本text()") {
-_send(filterhtml)
+_send(filterhtml, true, true)
 return
 }
 
 if (v == "window.onunload 刷新/关闭页面之前发送请求") {
-_send(window.onunload)
+_send(window.onunload, true, true)
 return
 }
 
@@ -4022,7 +4027,7 @@ Var =
 }
 
 if (v == "urlparams 获取路由参数") {
-_send(urlparams)
+_send(urlparams, true, true)
 return
 }
 
@@ -4105,12 +4110,12 @@ func();
 
 
 if (v == "加强版map遍历:bettermap") {
-_send(fuckmap)
+_send(fuckmap, true, true)
 return
 }
 
 if (v == "injectCss 往页面插入style") {
-_send(addstyle)
+_send(addstyle, true, true)
 return
 }
 
@@ -6527,6 +6532,80 @@ const ary = [
 ]
 
 ary.like(_ => _.includes('or'), _ => _.includes('et'))
+)
+code(Var)
+return
+
+::visualMap::
+::visual::
+Var =
+(
+/**
+ * 获取数组最后一位
+ */
+Array.prototype.last = function() {
+    return this[this.length - 1];
+};
+
+/**
+ * 获取数组第一位
+ */
+Array.prototype.first = function() {
+    return this[0];
+};
+
+const division = (ary, num, container = {}) => {
+    for (let page = 0; page < Math.ceil(ary.length / num); page++) {
+      container[page] = ary.slice(page * num, (page + 1) * num)
+    }
+    return container
+}
+
+const split = (ary, number = ary.length) => {
+    // 如果数组只有一个或者没有，那么直接返回
+    if (ary.length <= 1) {
+        return ary
+    }
+
+    // 先进行 从小到大 排序
+    const sort_ary = ary.sort((a, b) => { return a - b })
+
+    // 将一个数组分成4段
+    return division(sort_ary, number, [])
+}
+
+// 33个镇街的 demo 数据
+const ary = [91.3, 59.2, 86.2, 75.9, 91.4, 83.2, 78.9, 91.0, 59.4, 94.7, 62.0, 91.8, 106.1, 49.8, 96.1, 82.2, 82.7, 25.9, 91.9, 103.1, 72.5, 82.9, 86.7, 93.1, 80.5, 63.9, 82.1, 90.3, 72.4, 80.2, 87.6, 101.3, 78] 
+
+// 将分割为四组
+const split_ary = split(ary, ary.length / 4)
+
+// 取到每组的最小和最大（由于排序过，所以就是第一位和最后一位）
+const limit = split_ary.map(_ => [_.first(), _.last()])
+
+// 这个就是 visualMap 组件所需要的展示数据
+const limit_str = limit.map(_ => _.join(' ~ '))
+
+// 颜色映射表
+const colors = ['rgba(64, 41, 113, 0.25)', 'rgba(199, 52, 97, 0.5)', 'rgba(199, 52, 97, 0.7)', 'rgba(199, 52, 97, 1)']
+
+// 颜色映射表函数 - 接受一个数据，返回映射的颜色
+const limitColor = number => {
+    // 找到索引
+    const index = limit.findIndex(([a, b]) => number > a && number < b)
+
+    // 如果索引正常
+    if (index > -1) {
+        return colors[index]
+    }
+
+    // 默认返回第一个吧
+    return colors[0]
+}
+
+console.log('逻辑区间', limit)
+console.log('UI区间', limit_str)
+console.log('获取当前数据的颜色', limitColor(88))
 )
 code(Var)
 return

@@ -1,4 +1,14 @@
-﻿::cdn-shunfeng::
+﻿::cdn-gaode::
+::cdn-map::
+Var =
+(
+<!-- 高德地图 -->
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=02b84c6bb891ece41093dc5f4d9c5868"></script>
+)
+code(Var)
+return
+
+::cdn-shunfeng::
 ::cdn-tail::
 ::cdn-wind::
 ::cdn-tailwind::

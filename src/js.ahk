@@ -939,20 +939,6 @@ if (!this.isFullScreen) {
 code(Var)
 return
 
-::def::
-Var =
-(
-export function def (obj, key, val, enumerable) {
-  Object.defineProperty(obj, key, {
-    value: val,
-    enumerable: !!enumerable,
-    writable: true,
-    configurable: true
-  })
-}
-)
-code(Var)
-return
 
 ::diff::
 Var =
@@ -1117,6 +1103,10 @@ a.filter(_ => !b.includes(_))
 code(Var)
 return
 
+
+
+
+::split::
 ::fenye::
 ::shuzufenye::
 ::shuzuqiepian::
@@ -11388,6 +11378,8 @@ function parsePath(path) {
 code(Var)
 return
 
+::def::
+::define::
 ::obj::
 ::objd::
 ::odefine::
@@ -11612,6 +11604,44 @@ console.log('先读取一下，触发get钩子', data.name.a.b.c.d)
 
 // 触发 set 钩子，触发 __FUCK__
 data.name.a.b.c.d = '321'
+---
+function defineReactive(obj, key, val) {
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get () {
+      return val + ' you'
+    },
+    set (newVal) {
+      if (val === newVal) {
+        return
+      }
+      val = newVal
+    }
+  })
+}
+
+// 获取状态
+var data = {}
+
+defineReactive(data, 'title', 'fuck')
+
+// 访问对象的title属性，触发 get 钩子
+console.log(data.title) // => fuck you
+
+// 修改对象的title属性，触发 set 钩子
+data.title = 'how dirty'
+
+console.log(data.title) // => how dirty you
+---
+export function def (obj, key, val, enumerable) {
+  Object.defineProperty(obj, key, {
+    value: val,
+    enumerable: !!enumerable,
+    writable: true,
+    configurable: true
+  })
+}
 )
 txtit(Var)
 return
