@@ -1759,9 +1759,7 @@ code(Var)
 return
 */
 
-^[::
 ![::
-^]::
 !]::
 tmp := Clipboard
 Clipboard :=
