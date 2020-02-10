@@ -10103,3 +10103,110 @@ return
 baiduGeoHTML:
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/百度地图专用文件夹.zip")
 return
+
+NewPureIndexHtmltable:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+    table {
+        color: #333;
+        font-size: 12px;
+        text-align: center;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .table2 td,
+    .table3 td {
+        word-break: break-all;
+        word-wrap: break-word;
+        padding: 5px;
+    }
+
+    .u-full-w {
+        width: 100`%;
+    }
+
+    .u-bg-F9F9F9 {
+        background: #F9F9F9;
+    }
+
+    .u-text-666 {
+        color: #666;
+    }
+
+    .border-D3D3D3 {
+        border: 1px solid #D3D3D3;
+    }
+
+    .border-right-D3D3D3 {
+        border-right: 1px solid #D3D3D3;
+    }
+
+    .border-bottom-D3D3D3 {
+        border-bottom: 1px solid #D3D3D3;
+    }
+
+    .u-w-1\/4 {
+        width: 25`%;
+    }
+
+    .u-w-3\/4 {
+        width: 75`%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <table class='table u-full-w border-D3D3D3' border='0' cellspacing='0' cellpadding='0'>
+            <tr>
+                <td class='u-bg-F9F9F9 border-right-D3D3D3'>东莞市<br>人民医院</td>
+                <td>
+                    <table class='table2 u-full-w' border='0' cellspacing='0' cellpadding='0'>
+                        <tr>
+                            <td class='u-w-1/4 u-bg-F9F9F9 border-bottom-D3D3D3 border-right-D3D3D3'>医护人员</td>
+                            <td class='u-w-1/4 u-bg-F9F9F9 border-bottom-D3D3D3 border-right-D3D3D3'>医护车辆</td>
+                            <td class='u-w-1/4 u-bg-F9F9F9 border-bottom-D3D3D3 border-right-D3D3D3'>床位</td>
+                            <td class='u-w-1/4 u-bg-F9F9F9 border-bottom-D3D3D3'>抗疫药品</td>
+                        </tr>
+                        <tr>
+                            <td class='u-w-1/4 border-bottom-D3D3D3 border-right-D3D3D3'>199</td>
+                            <td class='u-w-1/4 border-bottom-D3D3D3 border-right-D3D3D3'>199</td>
+                            <td class='u-w-1/4 border-bottom-D3D3D3 border-right-D3D3D3'>3000</td>
+                            <td class='u-w-1/4 border-bottom-D3D3D3'>7687</td>
+                        </tr>
+                        <table class='table3 u-full-w' border='0' cellspacing='0' cellpadding='0'>
+                            <tr>
+                                <td class='u-w-1/4 u-bg-F9F9F9 border-bottom-D3D3D3 border-right-D3D3D3'>试剂</td>
+                                <td class='u-w-3/4 u-bg-F9F9F9 border-bottom-D3D3D3'>防护用品</td>
+                            </tr>
+                            <tr>
+                                <td class='u-w-1/4 u-text-666 border-right-D3D3D3'>4563</td>
+                                <td class='u-text-666'>
+                                    连体防护服（5872件）<br>
+                                    隔离衣（12321件）<br>
+                                    N95口罩（38987个）<br>
+                                    外科口罩（9898765个）<br>
+                                    防护眼镜（8763个）<br>
+                                </td>
+                            </tr>
+                        </table>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

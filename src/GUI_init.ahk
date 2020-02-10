@@ -344,6 +344,7 @@ Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/docs/utility-first">ta
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
 Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140 , 新建纯index.html
+Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建table.html
 
 Gui, Pandora:Add, Text, ganimjquery W160,新建animate.css与jquery
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
@@ -515,7 +516,7 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/lizhaohong/epide
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:30020/doc.html#/default/举报信息表/add_5">Swagger</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/24/interface/api/106">yapi</a>
 Gui, Pandora:Add, Link,, <a href="https://lanhuhu.com/web/#/item/project/board/detail?pid=be48ee3e-ad31-43a0-be0c-5fe1a760cf8f&project_id=be48ee3e-ad31-43a0-be0c-5fe1a760cf8f&image_id=71b685be-867b-497a-b7e3-7aa72640f950">蓝湖</a>
-Gui, Pandora:Add, Link,, <a href="https://lanhuapp.com/web/#/item/project/board?pid=cb5dae81-83e7-4acb-8f7e-cfef14dddf7e&see=all">蓝狐领导版</a>
+Gui, Pandora:Add, Link,, <a href="https://lanhuapp.com/web/#/item/project/board/detail?pid=cb5dae81-83e7-4acb-8f7e-cfef14dddf7e&see=all&project_id=cb5dae81-83e7-4acb-8f7e-cfef14dddf7e&image_id=f7c27c58-44db-4d18-9494-cd76b5c96ba9">蓝狐领导版</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 统一门户网站
