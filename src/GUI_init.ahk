@@ -509,6 +509,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/xueyoucd/p/9538126.htm
 Gui, Pandora:Add, Link,, <a href="https://www.sonatype.com/nexus-repository-oss">官方网站</a>
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 东莞疫情
+Gui, Pandora:Add, Link,, <a href="http://fangyqgk.dg.cn/h5/#/Index">正式地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:30021/h5/#/index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/lizhaohong/epidemich5">gitlab地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:30020/doc.html#/default/举报信息表/add_5">Swagger</a>

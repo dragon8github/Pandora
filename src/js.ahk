@@ -3474,8 +3474,58 @@ export const request = async (url, options = {}) => {
     // 正式开始请求
     return axios(url, options).then(checkStatus).then(_cachedSave).catch(_catchErr)
 }
+---
+import axios from 'axios'
+import { dateYYYYMMDDHHmmss, logs } from './utils.js'
+import Qs from 'qs'
+
+const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/h5/'
+
+// 是否需要打印请求日志
+const LOG = true
+
+// 响应拦截器
+axios.interceptors.response.use(res => {
+    // 如果需要打印日志的话
+    if (LOG) {
+        // 获取请求配置
+        const { method, url, params, data, status } = res.config
+        // 获取请求时间
+        const date = dateYYYYMMDDHHmmss(Date.now())
+        // 打印请求结果和详情
+        logs(`${method.toUpperCase()}：${url}`, JSON.stringify({ params: method === 'get' ? params : data, result: res.data, status }, null, '\t'))
+    }
+    // 只返回 data 即可
+    return res.data
+}, error => {
+    return Promise.reject(error.response)
+})
+
+export const POST = (url = '', data = {}) => axios({ method: 'POST', url: __API__ + url, data})
+
+export const FORM_POST = (url = '', data = {}) => axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'} })
+
+export const GET = (url = '', params = {}) => axios({ method: 'GET', url: __API__ + url, params})
+---
+export const dateYYYYMMDDHHmmss =  t => {
+    const date = new Date(t)
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const hours = date.getHours()
+    const minu = date.getMinutes()
+    const second = date.getSeconds()
+    const arr = [month, day, hours, minu, second].map((item, index) => item < 10 ? '0' + item : item)
+    return year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4]
+}
+// 折叠日志
+export const logs = (info = '', ...args) => {
+    console.groupCollapsed(info)
+    args.forEach(_ => console.log(_))
+    console.groupEnd()
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::showerr::

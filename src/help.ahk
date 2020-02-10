@@ -916,12 +916,6 @@ return
     Run, %A_Startup%
 return
 
-^!c::
-    Clipboard := 
-    Send, ^c
-    ClipWait, 1
-    Clipboard := StrReplace(Clipboard, "`r`n")  
-return
 
 :*:d]::  ; 此热字串通过后面的命令把 "]d" 替换成当前日期和时间.
 FormatTime, CurrentDateTime,, yyyy/MM/dd hh:mm:ss
@@ -1093,7 +1087,7 @@ return
         str := "http:" . str
     }
     If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") ) {
-        if (!InStr(str, "http://") || !InStr(str, "https://")) {
+        if (!InStr(str, "http://") && !InStr(str, "https://")) {
             str := "http://" . str
         }
         RUN, % str
@@ -1377,6 +1371,17 @@ PixelGetColor, color, %posX%, %posY%, Slow RGB
 Clipboard := HexToRGB(color)
 TrayTip, my title, current color is `n %Clipboard%, 20, 17
 return
+
+>^>!c::
+Clipboard := 
+Send, ^c
+ClipWait, 2
+Clipboard := HexToRGB(Clipboard)
+TrayTip, 颜色转换完成
+_send(Clipboard)
+return
+
+
 
 /*
 ^+d::

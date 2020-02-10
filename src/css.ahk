@@ -17,6 +17,17 @@
     Menu, CsstransformHandler, Add, transform: scale(1.5), CssHandler 
     Menu, CsstransformHandler, Add, transform-origin: 0 0, CssHandler 
     
+    Menu, NthMenu, Add, :first-child, nthHandle
+    Menu, NthMenu, Add, :last-child, nthHandle
+    Menu, NthMenu, Add, :nth-child(n), nthHandle
+    Menu, NthMenu, Add, :nth-child(even), nthHandle
+    Menu, NthMenu, Add, :nth-child(odd), nthHandle
+    Menu, NthMenu, Add, :nth-child(2n), nthHandle
+    Menu, NthMenu, Add, :nth-child(2n + 1), nthHandle
+    Menu, NthMenu, Add, :nth-child 选择前 1 至 n 个元素, CssHandler
+    Menu, NthMenu, Add, :nth-child 选择除前3个之外的所有项目, CssHandler
+    Menu, NthMenu, Add, :nth-child(5+n) 第5个元素后边所有, CssHandler
+    Menu, NthMenu, Add, :not(:last-child), nthHandle
 
     
     Menu, transitionHandler, Add, Linear：平淡无奇的人生 , CssHandler   
@@ -109,7 +120,6 @@
     Menu, CssMenu, Add, 扩大可点击区域的几种方案, CssHandler
     Menu, CssMenu, Add, unset 一次性重置所有默认属性, CssHandler
     Menu, CssMenu, Add, pointer-events: none;禁用按钮上的默认指针事件, CssHandler
-    Menu, CssMenu, Add, nth-child 负选择器可以选择 1 至 n 个元素, CssHandler
 
     Menu, CssMenu, Add
     Menu, CssMenu, Add
@@ -219,11 +229,10 @@
     Menu, CssMenu, Add, 
     
     
-    
     Menu, CssMenu, Add, css优化, :cssoptimization
     Menu, CssMenu, Add, Loading与进度条, :CssLoading
     Menu, CssMenu, Add, css Awesome, :Csssolution
-    
+    Menu, CssMenu, Add, :nth-child 选择器 和 :not 选择器, :NthMenu
 
 	Menu, CssMenu, Show
     
@@ -261,19 +270,30 @@ _send("css.pie", true, true)
 return
 }
 
-if (v == "nth-child 负选择器可以选择 1 至 n 个元素") {
+if (v == ":nth-child 选择前 1 至 n 个元素") {
 Var =
 (
 /* 选择第 1 至第 3 个元素并显示出来 */
 li:nth-child(-n+3) {
   display: block;
 }
+)
+}
 
-/* 选择除前3个之外的所有项目，并显示它们 */
+if (v == ":nth-child 选择除前3个之外的所有项目") {
+Var =
+(
 li:not(:nth-child(-n + 3)) {
   display: none;
 }
+)
+}
 
+
+if (v == ":nth-child(5+n) 第5个元素后边所有") {
+Var =
+(
+:nth-child(5+n)
 )
 }
 
@@ -2658,21 +2678,6 @@ Var =
 code(Var)
 return
 
-::nth::
-    Menu, NthMenu, Add, :first-child, nthHandle
-    Menu, NthMenu, Add, :last-child, nthHandle
-	Menu, NthMenu, Add, :nth-child(n), nthHandle
-	Menu, NthMenu, Add, :nth-child(even), nthHandle
-	Menu, NthMenu, Add, :nth-child(odd), nthHandle
-	Menu, NthMenu, Add, :last-child, nthHandle
-	Menu, NthMenu, Add, :first-child, nthHandle
-	Menu, NthMenu, Add, :nth-child(2n), nthHandle
-	Menu, NthMenu, Add, :nth-child(2n + 1), nthHandle
-
-	Menu, NthMenu, Show
-	Menu, NthMenu, DeleteAll
-return
-
 nthHandle:
 	code(A_ThisMenuItem)
 return
@@ -3186,10 +3191,11 @@ return
 ::placeholder::
 Var =
 (
-::-webkit-input-placeholder {color: #c1c1c1; }
-:-moz-placeholder {color: #c1c1c1; }
-::-moz-placeholder {color: #c1c1c1; }
-:-ms-input-placeholder {color: #c1c1c1; }
+// 据我所知，必须带选择器前缀才会起作用，如果单独使用或者 input 好像都不可以。
+.ph .el-input__inner::-webkit-input-placeholder {color: #000; }
+.ph .el-input__inner:-moz-placeholder {color: #000; }
+.ph .el-input__inner::-moz-placeholder {color: #000; }
+.ph .el-input__inner:-ms-input-placeholder {color: #000;
 )
 code(Var)
 return
