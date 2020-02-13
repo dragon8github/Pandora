@@ -1,4 +1,10 @@
-﻿::dg33::
+﻿!,::
+^,::
+Clipboard := StrReplace(Clipboard, "`r`n", ",")  
+Send, ^v
+return
+
+::dg33::
 ::dgcity::
 Var =
 (

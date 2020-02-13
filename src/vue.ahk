@@ -3631,6 +3631,29 @@ module.exports = {
          *         }
          *     }
          * },
+         * 
+         * devServer: {
+         *     proxy: {
+         *         /* const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/h5/' */
+         *         '/admin': {
+         *             target: 'http://219.135.182.3:30022/',
+         *             changeOrigin: true,
+         *             ws: true,
+         *             pathRewrite: {
+         *                 '^/admin': '/',
+         *             }
+         *         },
+         *         /* const __ADMIN__ = process.env.NODE_ENV === 'development' ? '/admin/' : '/h5/' */
+         *         '/api': {
+         *             target: 'http://219.135.182.3:30020/',
+         *             changeOrigin: true,
+         *             ws: true,
+         *             pathRewrite: {
+         *                 '^/api': '/',
+         *             }
+         *         },
+         *     },
+         * },
          */
          // 关闭eslint配置
          overlay: {warnings: false, errors: false },
@@ -3819,8 +3842,31 @@ proxyTable: {
     }
   },
 },
+---
+devServer: {
+    proxy: {
+        /* const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/h5/' */
+        '/admin': {
+            target: 'http://219.135.182.3:30022/',
+            changeOrigin: true,
+            ws: true,
+            pathRewrite: {
+                '^/admin': '/',
+            }
+        },
+        /* const __ADMIN__ = process.env.NODE_ENV === 'development' ? '/admin/' : '/h5/' */
+        '/api': {
+            target: 'http://219.135.182.3:30020/',
+            changeOrigin: true,
+            ws: true,
+            pathRewrite: {
+                '^/api': '/',
+            }
+        },
+    },
+},
 )
-code(Var)
+txtit(Var)
 return
 
 ::vcount::

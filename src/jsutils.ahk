@@ -42,7 +42,7 @@
     Menu, utilsIs, Add, isEmail, utilsHandler
     Menu, utilsIs, Add, is-wx, utilsHandler
     Menu, utilsIs, Add, is-ie, utilsHandler
-    Menu, utilsIs, Add, is-mobile, utilsHandler
+    Menu, utilsIs, Add, is-mobile:判断是否为移动端, utilsHandler
     Menu, utilsIs, Add, isBottom 是否滚动到底部, utilsHandler
     
     
@@ -1705,7 +1705,7 @@ return
 
 
 
-if (v == "is-mobile") {
+if (v == "is-mobile:判断是否为移动端") {
 _send("is-mobile", true, true)
 return
 }
@@ -4976,7 +4976,7 @@ function editCookie(name, value, expires){
  */
 function removeCookie(name) {
     // 设置已过期，系统会立刻删除cookie
-    setCookie(name, '1', -1);
+    setCookie(name, '', -1);
 }
 )
 }
@@ -5361,8 +5361,9 @@ body.match(/\d\.\d\.\d\.\d:\d/g);
 if (v == "isPhone") {
 Var = 
 (
-/^([0-9]{3,4}-)?[0-9]{7,8}$/.test(s)
+// 推荐第一个即可，其他的不靠谱
 /^[1][3,4,5,7,8][0-9]{9}$/.test(s)
+/^([0-9]{3,4}-)?[0-9]{7,8}$/.test(s)
 /^1\d{10}$/.test(s)
 /^((1)3(\d){9}$)|(^(1)4[5-9](\d){8}$)|(^(1)5[^4]{9}$)|(^(1)66(\d){8}$)|(^(1)7[0-8](\d){8}$)|(^(1)8(\d){9}$)|(^(1)9[8-9](\d){8}$)/.test(16961121989)
 )

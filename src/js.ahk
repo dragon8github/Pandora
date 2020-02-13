@@ -223,7 +223,7 @@ export const obj2formdatastr = (body) => {
 /**
  * 函数节流（throttle）
  */
-export const throttle = (func, wait, options) => {
+export var throttle = function(func, wait, options) {
   var timeout, context, args, result;
   // 标记时间戳
   var previous = 0;
@@ -246,7 +246,7 @@ export const throttle = (func, wait, options) => {
     // 将记录的上次执行的时间戳置为当前
     previous = now;
     // 距离下次触发回调还需等待的时间
-    var remaining = wait - (now = previous);
+    var remaining = wait - (now - previous);
     context = this;
     args = arguments;
 
@@ -10029,7 +10029,7 @@ function editCookie(name, value, expires){
  */
 function removeCookie(name) {
     // 设置已过期，系统会立刻删除cookie
-    setCookie(name, '1', -1);
+    setCookie(name, '', -1);
 }
 ---
 /**
@@ -10181,7 +10181,7 @@ const getToken = () => {
     return __TOKEN__
 }
 )
-code(Var)
+txtit(Var)
 return
 
 ::daojishi::
