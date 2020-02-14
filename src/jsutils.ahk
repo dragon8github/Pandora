@@ -5549,9 +5549,7 @@ export const isObject = input => input != null && Object.prototype.toString.call
 if (v == "isPromise") {
 Var = 
 (
-export function isPromise (val) {
-  return val && typeof val.then === 'function'
-}
+const isPromise = val => val && typeof val.then === 'function'
 )
 }
 
@@ -6390,9 +6388,16 @@ Var =
 code(Var)
 return
 
+:?:vue.event::
+:?:vue.bus::
+:?:vue.$bus::
+::bus::
+::$bus::
 ::event::
 Var =
 (
+const isPromise = val => val && typeof val.then === 'function'
+
 Promise.allSettled = iterables => new Promise(resolve => {
     let result = []
 
@@ -6409,8 +6414,15 @@ Promise.allSettled = iterables => new Promise(resolve => {
     iterables.forEach((p, i) => {
         // 注入索引
         const _callback = callback.bind(null, i)
-        // 注入灵魂
-        p.then(_callback).catch(_callback)
+        
+        // 如果是 promise，才执行操作
+        if (isPromise(p)) {
+            // 注入灵魂
+            p.then(_callback).catch(_callback)
+        // 如果是其他，直接调用即可
+        } else {
+            _callback(p)
+        }
     })
 })
 
@@ -6419,28 +6431,40 @@ Promise.allSettled = iterables => new Promise(resolve => {
  *
  let e = new Event()
 
- e.add("hello", name => new Promise((resolve, reject) => setTimeout(_ => resolve('1' + name), 1000)))
- e.add("hello", name => new Promise((resolve, reject) => setTimeout(_ => resolve('2' + name), 2000)))
+ e.on("hello", name => new Promise((resolve, reject) => setTimeout(_ => resolve('1' + name), 1000)))
+ e.on("hello", name => new Promise((resolve, reject) => setTimeout(_ => resolve('2' + name), 2000)))
 
  ;(async function() {
      await e.emit('hello', { name: 'Lee' })
      console.log('work finish')
  }())
+ ----------------------------------------------------------------
+ import Event from './utils/Event'
+ Vue.prototype.$bus = new Event()
+ this.$bus.on('onRefresh', this.getData)
+ this.$bus.emit('onRefresh')
  */
-class Event {
+export default class Event {
     constructor(props) {
         this.map = []
     }
 
-    add(name, fn, id = Date.now()) {
+    on(name, fn, id = Date.now()) {
         this.map.push({ name, fn, id })
         return id
     }
 
     emit(name, ...args) {
+        // 获取任务
         const target = this.map.filter(_ => _.name === name)
-        const pendding = target.map(_ => _.fn(...args))
-        return Promise.allSettled(pendding)
+
+        // 是否存在任务
+        if (target) {
+            // 对每个任务进行执行
+            const pendding = target.map(_ => _.fn(...args))
+            // 如果任务返回的是promise，也可以方便外部 await
+            return Promise.allSettled(pendding)
+        }
     }
 
     remove (id) {

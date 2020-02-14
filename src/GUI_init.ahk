@@ -623,7 +623,7 @@ Gui, Pandora:Add, Link, ys, <a href="https://github.com/remy/nodemon">自动重�
 
 Gui, Pandora:Tab, 5
 Gui, Pandora:Add, Text,  W140 Section, Vue：
-Gui, Pandora:Add, Link,, <a href="http://vuejs.org/">vue</a>
+Gui, Pandora:Add, Link,, <a href="https://cn.vuejs.org/">vue</a>
 Gui, Pandora:Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
 Gui, Pandora:Add, Link,, <a href="http://router.vuejs.org ">vue-router</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>

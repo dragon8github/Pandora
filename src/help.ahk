@@ -1,4 +1,9 @@
-﻿!,::
+﻿>!c::
+WinGetTitle, title, A
+code(title)
+return
+
+!,::
 ^,::
 Clipboard := StrReplace(Clipboard, "`r`n", ",")  
 Send, ^v

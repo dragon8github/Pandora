@@ -2971,15 +2971,17 @@ return
 ::Promise.all2::
 Var =
 (
+const isPromise = val => val && typeof val.then === 'function'
+
 Promise.allSettled = iterables => new Promise(resolve => {
     let result = []
 
-    const callback = function (i, v) {
+    const callback = function(i, v) {
         // 模仿 Promise.all 对号入座原则
         result[i] = v
 
         // 是否全部执行完毕？
-        if (result.length === iterables.length) 
+        if (result.length === iterables.length)
             // 收工咯~
             resolve(result)
     }
@@ -2987,8 +2989,15 @@ Promise.allSettled = iterables => new Promise(resolve => {
     iterables.forEach((p, i) => {
         // 注入索引
         const _callback = callback.bind(null, i)
-        // 注入灵魂
-        p.then(_callback).catch(_callback)
+        
+        // 如果是 promise，才执行操作
+        if (isPromise(p)) {
+            // 注入灵魂
+            p.then(_callback).catch(_callback)
+        // 如果是其他，直接调用即可
+        } else {
+            _callback(p)
+        }
     })
 })
 
@@ -7653,10 +7662,7 @@ debugger;
 code(Var)
 return
 
->!c::
-WinGetTitle, title, A
-code(title)
-return
+
 
 AppsKey & c::
 >^c:: 
