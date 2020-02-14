@@ -538,7 +538,7 @@ Gui, Pandora:Add, Link,, <a href="http://183.6.55.26:31088/doc.html">Swagger</a>
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 城管
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32201/#/Index">预览地址</a>
-Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/nhc-visual/overview">部署地址</a>
+Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/nhc-visual/browse/builds/citymanagement-ui?tab=history">部署地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/lizhaohong/citymanagement">代码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/16/interface/api">yAPI</a>
 Gui, Pandora:Add, Link,, <a href="https://shimo.im/sheets/TCjR8jdTwwwYKjtY/MODOC/">需求文档</a>
