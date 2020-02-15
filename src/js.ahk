@@ -3269,8 +3269,8 @@ code(Var)
 return
 
 ::request.js::
-::cache.request::
-::cache.axios::
+::req.js::
+::requestjs::
 Var =
 (
 import axios from 'axios'
@@ -3484,14 +3484,17 @@ export const request = async (url, options = {}) => {
     return axios(url, options).then(checkStatus).then(_cachedSave).catch(_catchErr)
 }
 ---
+import Qs from 'qs'
 import axios from 'axios'
 import { dateYYYYMMDDHHmmss, logs } from './utils.js'
-import Qs from 'qs'
 
-const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/h5/'
+const __API__ = process.env.NODE_ENV === 'development' ? '/api' : '/'
 
 // 是否需要打印请求日志
 const LOG = true
+
+// 链接与注释
+const URL_NOTES = {}
 
 // 响应拦截器
 axios.interceptors.response.use(res => {
@@ -3499,15 +3502,32 @@ axios.interceptors.response.use(res => {
     if (LOG) {
         // 获取请求配置
         const { method, url, params, data, status } = res.config
+        // 是否具备文本注释？
+        const note = URL_NOTES[url] || ''
         // 获取请求时间
         const date = dateYYYYMMDDHHmmss(Date.now())
         // 打印请求结果和详情
-        logs(`${method.toUpperCase()}：${url}`, JSON.stringify({ params: method === 'get' ? params : data, result: res.data, status }, null, '\t'))
+        logs(`${note}${method.toUpperCase()}：${url}`, JSON.stringify({ params: method === 'get' ? params : data, result: res.data, status }, null, '\t'))
     }
     // 只返回 data 即可
     return res.data
 }, error => {
     return Promise.reject(error.response)
+})
+
+// 添加请求拦截器，动态设置参数
+axios.interceptors.request.use(config => {
+    // 获取索引
+    const [url, note] = config.url.split('|')
+
+    // 保存文本
+    URL_NOTES[url] = note
+
+    // 过滤url的文本注释
+    config.url = url
+       
+    // 返回最终配置
+    return config
 })
 
 export const POST = (url = '', data = {}) => axios({ method: 'POST', url: __API__ + url, data})
@@ -3533,6 +3553,89 @@ export const logs = (info = '', ...args) => {
     args.forEach(_ => console.log(_))
     console.groupEnd()
 }
+---
+import Qs from 'qs'
+import axios from 'axios'
+import router from '@/router'
+import store from '@/store'
+import { Notify } from 'vant'
+import { dateYYYYMMDDHHmmss, logs, throttle } from './utils.js'
+
+// 是否需要打印请求日志
+const LOG = true
+
+const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/h5/'
+
+const __ADMIN__ = process.env.NODE_ENV === 'development' ? '/admin/' : '/h5/'
+
+const isAdmin = () =>  window.location.href.includes('admin')
+
+const isLogin = () =>  window.location.href.includes('login')
+
+// 登陆状态失效，弹出错误提示并且跳转到登陆页面
+const tokenError = () => {
+    // 只有非登录页才需要这样提示
+    if (isLogin() === false) {
+        router.push('/login')
+        Notify('请先登录')
+        store.dispatch('REMOVE_TOKEN')
+        throw new Error('请先登录')
+    }
+}
+
+const _tokenError = throttle(tokenError, 500, { leading: true, trailing: false })
+
+// 响应拦截器
+axios.interceptors.response.use(res => {
+    // 如果需要打印日志的话
+    if (LOG) {
+        // 获取请求配置
+        const { method, url, params, data, status } = res.config
+        // 获取请求时间
+        const date = dateYYYYMMDDHHmmss(Date.now())
+        // 打印请求结果和详情
+        logs(`${method.toUpperCase()}：${url}`, JSON.stringify({ params: method === 'get' ? params : data, result: res.data, status }, null, '\t'))
+    }
+    // 只返回 data 即可
+    return res.data
+}, error => {
+    const { status, data } = error.response
+
+    // 登陆失效
+    if (status === 500 && data.code === 20019) {
+        _tokenError()
+    }
+
+    return Promise.reject(error.response)
+})
+
+// 添加请求拦截器，动态设置参数
+axios.interceptors.request.use(config => {
+    // 判断是否登录（登录接口本身除外）
+    // fixbug: 只有 admin 页面才需要进行这个判断
+    if (isAdmin() && !config.url.includes('login') && !store.state.tokenId) {
+        // 登陆状态失效，弹出错误提示并且跳转到登陆页面
+        _tokenError()
+    }
+
+    // 合并请求头 authority-token
+    config.headers = Object.assign({}, config.headers, { 'authority-token': store.state.tokenId || '' })
+
+    // 返回最终配置
+    return config
+})
+
+export const POST = (url = '', data = {}) => axios({ method: 'POST', url: __API__ + url, data})
+
+export const FORM_POST = (url = '', data = {}) => axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'} })
+
+export const GET = (url = '', params = {}) => axios({ method: 'GET', url: __API__ + url, params})
+
+export const POST_ADMIN = (url = '', data = {}) => axios({ method: 'POST', url: __ADMIN__ + url, data})
+
+export const FORM_POST_ADMIN = (url = '', data = {}) => axios({ method: 'POST', url: __ADMIN__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'} })
+
+export const GET_ADMIN = (url = '', params = {}) => axios({ method: 'GET', url: __ADMIN__ + url, params})
 )
 txtit(Var)
 return

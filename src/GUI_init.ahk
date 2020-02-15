@@ -346,6 +346,7 @@ Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
 Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140 , 新建纯index.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建table.html
+Gui, Pandora:Add, Text, gNewVueRules W140 , 新建vue.rules.html
 
 Gui, Pandora:Add, Text, ganimjquery W160,新建animate.css与jquery
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html

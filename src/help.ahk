@@ -1636,6 +1636,19 @@ code(Var)
 Send, {up}
 return
 
+; ^r::
+; Send, {F6}
+; sleep, 100
+; Send, ^l
+; sleep, 100
+; Send, ^r
+; return
+
+^SC029::
+Send, {F6}
+sleep, 100
+Send, ^l
+return
 
 !SC029::
 ::``````j::

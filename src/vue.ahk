@@ -83,6 +83,7 @@
   Menu, VueMenu, Add, provide/inject：上下文, VueHandler
   Menu, VueMenu, Add, props.sync与$emit('update'), VueHandler
   Menu, VueMenu, Add, 🚀 vue.directive 指令, VueHandler
+  Menu, VueMenu, Add, 🐤 vue.rules 尝试建立一套验证规则体系, VueHandler
   
   Menu, VueMenu, Add, vue 认知, :vuecognition
   Menu, VueMenu, Add, vue 必知必会, :vuebase
@@ -167,7 +168,10 @@ Var =
 )
 }
 
-
+if (v == "🐤 vue.rules 尝试建立一套验证规则体系") {
+_send("vue.rules", true, true)
+return
+}
 
 if (v == "如果带参数 :id ，那么 children 不需要 /") {
 Var = 
@@ -5000,4 +5004,87 @@ beforeDestroy: function () {
 )
 txtit(Var)
 return
+return
+
+:?:vue.test::
+:?:vue.tests::
+:?:vue.rule::
+:?:vue.rules::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click='handleClick'>test</button>
+        <button @click='handleClick2'>test2</button>
+    </div>
+</body>
+<script>
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        foo: 1,
+        bar: 'abc'
+    },
+    rules: {
+        foo: { validate: value => value > 1, message: 'foo must be greater than one' },
+        bar: { validate: value => value.length > 5, message: 'bar length must be lonnger than five' },
+    },
+    methods: {
+        // 只匹配第一条
+        test() {
+            // 获取验证规制配置
+            const rules = this.$options.rules
+            // 找到第一条不符合规则的数据
+            const target = Object.keys(rules).find(k => !rules[k].validate(this[k]))
+            // 返回错误信息
+            return target ? rules[target].message : ''
+        },
+        // 匹配所有
+        tests() {
+            // 获取验证规制配置
+            const rules = this.$options.rules
+            // 找到所有不符合规则的数据
+            const target_ary = Object.keys(rules).filter(k => !rules[k].validate(this[k]))
+            // 用数组形式，返回两个工具 // 1. 是否通过？ // 2. 一个遍历工具
+            return [ target_ary.length > 0, fn => target_ary.forEach(k => fn(k, rules[k].message)) ]
+        },
+        handleClick () {
+            // 开始验证数据
+            const failMsg = this.test()
+            // 如果有错误信息，尽早提示并且返回
+            if (failMsg) {
+                // 输出错误信息
+                return console.error(failMsg)
+            }
+
+            // some success logic...
+            console.log('ok')
+        },
+        handleClick2 () {
+            // 开始验证数据
+            const [err, callback] = this.tests()
+
+            // 如果有错误信息，尽早提示并且返回
+            if (err) {
+                // 处理错误信息
+                return callback((key, msg) => console.error(`${key}: ${msg}`))
+            }
+
+            // some success logic...
+            console.log('ok')
+        }
+    }
+})
+</script>
+</html>
+)
+code(Var)
 return
