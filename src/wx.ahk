@@ -1327,3 +1327,15 @@ export function nextTick(fn) {
 )
 code(Var)
 return
+
+/*  
++v::
+Var =
+(
+<view class=''></view>
+)
+code(Var)
+Send, {left 9}
+return
+
+*/

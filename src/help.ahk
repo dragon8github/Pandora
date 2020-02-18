@@ -3,9 +3,10 @@ WinGetTitle, title, A
 code(title)
 return
 
++v::
 !,::
 ^,::
-Clipboard := StrReplace(Clipboard, "`r`n", ",")  
+Clipboard := StrReplace(Clipboard, "`r`n", ", ")  
 Send, ^v
 return
 
@@ -1591,9 +1592,6 @@ Send, {Right 7}
 Send, +{right 4}
 return
 
-XButton1::
-    Send, {Home}
-return
 
 ::ahktxt::
 ::ahktxtit::

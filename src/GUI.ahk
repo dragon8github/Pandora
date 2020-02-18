@@ -8565,8 +8565,8 @@ FileAppend,
     }   
 
     ul {
-		margin: 0;
-		padding: 0;
+        margin: 0;
+        padding: 0;
     }
 
     #contaoler {
@@ -8590,44 +8590,44 @@ FileAppend,
         cursor: pointer;
     }
 
-    	.item .line {
-    		display: none;
-    		position: absolute;
-    		top: 50`%;
-    		left: calc(100`% + 1px);
-			transform-origin: 0`% 0`%;
-    	}
+        .item .line {
+            display: none;
+            position: absolute;
+            top: 50`%;
+            left: calc(100`% + 1px);
+            transform-origin: 0`% 0`%;
+        }
 
-	    .item.active {
-			color:#fff;
-		  	animation: Pulse 2s infinite;
-	    }
+        .item.active {
+            color:#fff;
+            animation: Pulse 2s infinite;
+        }
 
         .item.active .line {
-        	display: block;
-        	border-bottom: 1px dashed #999;
+            display: block;
+            border-bottom: 1px dashed #999;
         }
 
         .item.determine .line {
-        	display: block;
-        	border-bottom: 1px solid red;
+            display: block;
+            border-bottom: 1px solid red;
         } 
 
-	.hover-shadow-box-animation {
-	  display: inline-block;
-	  vertical-align: middle;
-	  transform: perspective(1px) translateZ(0);
-	  box-shadow: 0 0 1px transparent;
-	  transition-duration: 0.3s;
-	  transition-property: box-shadow, transform;
-	}
+    .hover-shadow-box-animation {
+      display: inline-block;
+      vertical-align: middle;
+      transform: perspective(1px) translateZ(0);
+      box-shadow: 0 0 1px transparent;
+      transition-duration: 0.3s;
+      transition-property: box-shadow, transform;
+    }
 
-	.hover-shadow-box-animation:hover,
-	.hover-shadow-box-animation:focus,
-	.hover-shadow-box-animation:active {
-	  box-shadow: 1px 10px 10px -10px rgba(0, 0, 24, 0.5);
-	  transform: scale(1.2);
-	}
+    .hover-shadow-box-animation:hover,
+    .hover-shadow-box-animation:focus,
+    .hover-shadow-box-animation:active {
+      box-shadow: 1px 10px 10px -10px rgba(0, 0, 24, 0.5);
+      transform: scale(1.2);
+    }
 
 
     @keyframes Pulse {
@@ -8639,31 +8639,31 @@ FileAppend,
 </head>
 
 <body>
-    <div id="app">
-        <div id='contaoler'>
-            <ul class='ul-left'>
-                <li class='item hover-shadow-box-animation' 
-                	:ref='`item__${item.book_id}`'
-                	:class='{"active": item.book_id === active, "determine": item.determine != null}'
-                	v-for='(item, index) in items' 
-                	:key='item.book_id'
-                	@click='active = item.book_id'>
-                		{{ item.book_name }}
-                	<i class='line' :style='{width: `${item.width || 0}px`, transform: `rotate(${item.rotate || 0}deg)`}'></i>
-            	</li>
-            </ul>
-            
-            <ul class='ul-right'>
-                <li class='item hover-shadow-box-animation' 
-                	v-for='(item, index) in items' 
-                	:key='item.book_id'
-                	@mouseover='link($event)' 
-                	@click='determine(item.book_id)'>
-                		{{ item.book_name }}
-        		</li>
-            </ul>
-        </div>
+   <div id="app">
+    <div id='contaoler'>
+        <ul class='ul-left'>
+            <li class='item hover-shadow-box-animation' 
+                :ref='``item__${item.book_id}``'
+                :class='{"active": item.book_id === active, "determine": item.determine != null}'
+                v-for='(item, index) in items' 
+                :key='item.book_id'
+                @click='active = item.book_id'>
+                    {{ item.book_name }}
+                <i class='line' :style='{width: ``${item.width || 0}px``, transform: ``rotate(${item.rotate || 0}deg)``}'></i>
+            </li>
+        </ul>
+        
+        <ul class='ul-right'>
+            <li class='item hover-shadow-box-animation' 
+                v-for='(item, index) in items' 
+                :key='item.book_id'
+                @mouseover='link($event)' 
+                @click='determine(item.book_id)'>
+                    {{ item.book_name }}
+            </li>
+        </ul>
     </div>
+</div>
 </body>
 <script>
 Mock.mock("/book/list", "get", {
@@ -8686,45 +8686,44 @@ var vue = new Vue({
             const left_rect = left.getBoundingClientRect()
             const right_rect = right.getBoundingClientRect()
 
-			const x1 = left_rect.x + left_rect.width,
-				  y1 = left_rect.y + left_rect.height / 2;
+            const x1 = left_rect.x + left_rect.width,
+                  y1 = left_rect.y + left_rect.height / 2;
 
-			const x2 = right_rect.x,
-				  y2 = right_rect.y + right_rect.height / 2;
+            const x2 = right_rect.x,
+                  y2 = right_rect.y + right_rect.height / 2;
 
-			const a = x2 - x1
-			const b = y2 - y1
-			const c = get_c(a, b)
-			const rotate = Math.atan2(b, a) * 180 / Math.PI
+            const a = x2 - x1
+            const b = y2 - y1
+            const c = get_c(a, b)
+            const rotate = Math.atan2(b, a) * 180 / Math.PI
 
-			return { c, rotate }
+            return { c, rotate }
         },
         determine (book_id) {
-        	const index = this.items.findIndex(_ => _.book_id === this.active)
-        	this.$set(this.items[index], 'determine', true)
-        	this.active = null
+            const index = this.items.findIndex(_ => _.book_id === this.active)
+            this.$set(this.items[index], 'determine', true)
+            this.active = null
         },
         link (event) {
-			 // 1、 hover 的时候，判断是否当前有active。
-        	 if (this.active) {
-				// 2、 如果有的话，那么找到该id所在的ref的dom
-				const left = this.$refs[`item__${this.active}`][0]
-				// 获取右侧的
-				const right = event.target
+             // 1、 hover 的时候，判断是否当前有active。
+             if (this.active) {
+                // 2、 如果有的话，那么找到该id所在的ref的dom
+                const left = this.$refs[``item__${this.active}``][0]
+                // 获取右侧的
+                const right = event.target
 
-				// 3、 通过计算，返回 c 和 rotate
-				const  { c, rotate } = this.getWidthAndRotation(left, right)
+                // 3、 通过计算，返回 c 和 rotate
+                const  { c, rotate } = this.getWidthAndRotation(left, right)
 
-				// 4、 设置到到该数据源中，完成
-				const index = this.items.findIndex(_ => _.book_id === this.active)
-				this.$set(this.items[index], 'width', c)
-				this.$set(this.items[index], 'rotate', rotate)
-        	 }
+                // 4、 设置到到该数据源中，完成
+                const index = this.items.findIndex(_ => _.book_id === this.active)
+                this.$set(this.items[index], 'width', c)
+                this.$set(this.items[index], 'rotate', rotate)
+             }
         },
     },
     beforeMount: function () {
         axios.get("/book/list").then(res => {
-            ELEMENT.Message('数据加载完成')
             this.items = res.data.booklist
         })
     }
