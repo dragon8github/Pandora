@@ -1,4 +1,8 @@
-﻿>!c::
+﻿; 屏蔽半角符
++Space::
+return
+
+>!c::
 WinGetTitle, title, A
 code(title)
 return

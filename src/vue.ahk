@@ -90,6 +90,7 @@
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
   Menu, VueMenu, Add, vue 动画组件<transition>, :vuetranstion
   Menu, VueMenu, Add, vue 动画组件<transition> + animate.css, :vuetranstion
+  Menu, VueMenu, Add, vue 异步组件加载import, :vuetranstion
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -166,6 +167,12 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+
+if (v == "vue 异步组件加载import") {
+_send("import.async", true, true)
+return
 }
 
 if (v == "🐤 vue.rules 尝试建立一套验证规则体系") {
@@ -5087,4 +5094,85 @@ var vue = new Vue({
 </html>
 )
 code(Var)
+return
+
+::async.import::
+::import.async::
+::async.imp::
+::imp.async::
+::asyncimport::
+::importasync::
+::asyncimp::
+::impasync::
+::async::
+Var =
+(
+setTimeout(async () => {
+    // 动态引入组件
+    const data = () => import(`../grids/万江.json`)
+    // 解析 promise
+    const json = await data()
+    // 获取三要素
+    const { beLongTo, name, latLot } = json.default
+    // 打开 network 可以发现确实是异步加载的。
+    console.log(beLongTo, name, latLot)
+}, 3000);
+---
+<template>
+    <component :is="component" :data="data" v-if="component" />
+</template>
+
+<script>
+export default {
+    name: 'index',
+    data() {
+        return {
+            component: null
+        }
+    },
+    props: ['data'],
+    watch: {
+        'master.id': {
+            handler(val) {
+                // 获取当前主角的数据类型
+                const type = this.maybe(_ => this.master.dataForm.dataType, 'default')
+                // 动态引入组件
+                this.component = () => import(``./modules/${type}``)
+            },
+            // 立即执行，解决首次初始化的问题
+            immediate: true,
+        }
+    },
+}
+</script>
+---
+<template>
+    <component :is='fuck' :data='data'></component>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                fuck: null
+            }
+        },
+        props: ['type', 'data'],
+        mounted() {
+            this.fuck = import(``/templates/${this.type || 'default'}``)
+        },
+    }
+</script>
+---
+const _ = await import(/* webpackChunkName: "lodash" */ 'lodash')
+---
+button.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
+  var print = module.default
+  print()
+})
+---
+// router.js
+const Layout = r => require.ensure([], () => r(require('@/layout/layout.vue')), 'Layout')
+)
+txtit(Var)
 return

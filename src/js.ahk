@@ -10568,7 +10568,6 @@ currymultiply(1)(2)(3); // 6
 code(Var)
 return
 
-::async::
 ::await::
 Var =
 (

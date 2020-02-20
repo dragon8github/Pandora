@@ -5,6 +5,7 @@
 	Menu, NodeFileHandler, Add, 
 	Menu, NodeFileHandler, Add,
 
+	Menu, NodeFileHandler, Add, linebyline逐行读取文本并且另存为文件, NodeHandler
 	Menu, NodeFileHandler, Add, fs.write, NodeHandler
 	Menu, NodeFileHandler, Add, fs.read, NodeHandler
 	Menu, NodeFileHandler, Add, fs.readFileSync, NodeHandler
@@ -157,6 +158,32 @@ Var =
 )
 }
 
+if (v == "linebyline逐行读取文本并且另存为文件") {
+Var =
+(
+const fs = require('fs').promises
+const readline = require('linebyline')
+
+// 设置最大长度，默认只有4k，我设置1G
+const rl = readline('./grid.json', { maxLineLength: 1024 * 1024 * 1024 })
+
+rl.on('line', async function(line, lineCount, byteCount) {
+
+	// 如果最后一位有小数点的话，那么移除，这样才可以 JSON.parse
+	const content = line.replace(/,$/, '')
+
+	// 获取镇街名作为文件名
+	const name = JSON.parse(content).name
+
+	// 新建文件
+	await fs.writeFile(`./grids/${name}.json`, content)
+
+	// log
+	console.log(name)
+})
+)
+}
+
 if (v == "promisify解决方案") {
 Var =
 (
@@ -269,6 +296,8 @@ const getPath = dir => path.join(__dirname, '..' ,dir)
 if (v == "fs-extra.writeFile") {
 Var = 
 (
+const fs = require('fs').promises
+
 // 新建文件
 await fs.writeFile(getPath(``cache/${id}.html``), HTML)
 )
@@ -277,6 +306,8 @@ await fs.writeFile(getPath(``cache/${id}.html``), HTML)
 if (v == "fs-extra.readFile") {
 Var = 
 (
+const fs = require('fs').promises
+
 // 获取HTML
 const HTML = await fs.readFile(getPath(``cache/${id}.html``), 'utf8')
 )

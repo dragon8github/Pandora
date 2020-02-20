@@ -8724,7 +8724,7 @@ var vue = new Vue({
     },
     beforeMount: function () {
         axios.get("/book/list").then(res => {
-            this.items = res.data.booklist
+            C:\Users\Lee\AppData\Local\Temp            this.items = res.data.booklist
         })
     }
 })

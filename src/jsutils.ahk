@@ -345,6 +345,7 @@
     
     Menu, utilswebpack, Add, require.context, utilsHandler
     Menu, utilswebpack, Add, 异步引入：await import(/* webpackChunkName: 'lodash' */ 'lodash'), utilsHandler
+    Menu, utilswebpack, Add, vue动态加载组件和资源, utilsHandler
     
     
     Menu, utils2, Add, pm: 回调地狱转promise解决方案, utilsHandler    
@@ -469,6 +470,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "vue动态加载组件和资源") {
+_send("async.import", true, true)
+return
 }
 
 if (v == "仿 Echarts.visualMap 逻辑分组 + split分组") {
