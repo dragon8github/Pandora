@@ -85,8 +85,23 @@ request.onerror = function() {
 };
 
 request.send();
+---
+const http = ({
+  url,
+  callback,
+  data=null,
+  method='GET',
+  err = console.error,
+}) => {
+    const request = new XMLHttpRequest();
+    request.open(method, url, true);
+    request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    request.onerror = () => err(request);
+    request.onload = () => callback(request.responseText);
+    request.send(data ? JSON.stringify(data) : null);
+};
 )
-code(Var)
+txtit(Var)
 return
 
 ::ajax.get::

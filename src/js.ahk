@@ -3831,6 +3831,14 @@ const scrollToTop = () => {
 
 // 有一些需要直接用scrollTop = 0来设置
 document.querySelector(".page-loadmore-wrapper").scrollTop = 0
+
+---
+// 内置API
+document.querySelector('body')
+    .scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+    })
 )
 code(Var)
 return

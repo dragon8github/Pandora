@@ -382,6 +382,7 @@ Gui, Pandora:Add, Text, gcssbodongsandian W180, 新建css波动散点.html
 Gui, Pandora:Add, Text, ginputyanhua W140,新建input烟花特效
 Gui, Pandora:Add, Text, grandcolorHtml W160,新建随机渐变色.html
 Gui, Pandora:Add, Text, ghackdiguo  W140,黑客帝国
+Gui, Pandora:Add, Text, gxiexiangougudingli  W140,斜线与勾股定理
 
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+50,新建.echartsDemo.html（官方demo）
 Gui, Pandora:Add, Text, gNewEchartsPinHtml, 新建.pin.html(玫瑰饼图)

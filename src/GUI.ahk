@@ -10291,3 +10291,56 @@ var vue = new Vue({
 RunBy(name)
 run, % name
 return
+
+xiexiangougudingli:
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .box {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+
+        /* 重要 */
+        transform-origin: 0 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class='box'></div>
+    </div>
+</body>
+<script>
+// 勾股定理：a^2 + b^2 = c^2
+var get_c = (a, b) => Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))
+
+window.addEventListener('mousemove', e => {
+    const { pageX, pageY } = e
+
+    // 使用勾股定理，获取斜边的长度
+    const c = get_c(pageX, pageY)
+
+    document.querySelector('.box').style.width = c + 'px'
+
+    // 最常用的最重要的API，通过（tan）对边和临边获取角度（由于返回的是弧度，需要用公式转换为角度）
+    const rotate = Math.atan2(pageY, pageX) * 180 / Math.PI
+
+    // 需要结合这个：transform-origin: 0 0
+    document.querySelector('.box').style.transform = `rotate(${rotate}deg)`
+})
+</script>
+
+</html>
+)
+code(Var)
+return
