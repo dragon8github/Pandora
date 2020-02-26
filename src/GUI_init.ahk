@@ -228,7 +228,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Pandora:Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://unpkg.com/#/">unpkg cdn</a>
-Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">75cdn</a>
+Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">jsdelivr</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 好东西：
@@ -630,10 +630,9 @@ Gui, Pandora:Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
 Gui, Pandora:Add, Link,, <a href="http://router.vuejs.org ">vue-router</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 Gui, Pandora:Add, Link,, <a href="https://cli.vuejs.org/">vue-cli</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vuepress">vuepress</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/PanJiaChen/vue-element-admin">vue-element-admin</a>
-Gui, Pandora:Add, Link,, <a href="https://ssr.vuejs.org/zh/">vue-ssr</a>
 Gui, Pandora:Add, Link,, <a href="https://cli.vuejs.org/config/#devserver-proxy">vue-config 文档</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vuepress">vuepress</a>
+Gui, Pandora:Add, Link,, <a href="https://vue-test-utils.vuejs.org/zh/">vue-test-utils</a>
 
 Gui, Pandora:Add, Text,  W140 ys, vue ssr nuxt：
 Gui, Pandora:Add, Link,, <a href="https://nuxtjs.org/">nuxt官网</a>

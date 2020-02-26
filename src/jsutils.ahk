@@ -348,6 +348,7 @@
     Menu, utilswebpack, Add, vue动态加载组件和资源, utilsHandler
     
     
+    Menu, utils2, Add, debug 黑魔法神器, utilsHandler    
     Menu, utils2, Add, pm: 回调地狱转promise解决方案, utilsHandler    
     Menu, utils2, Add, uuid 超简易版, utilsHandler
     Menu, utils2, Add, urlparams 获取路由参数, utilsHandler
@@ -470,6 +471,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "debug 黑魔法神器") {
+_send("debug", true, true)
+return
 }
 
 if (v == "vue动态加载组件和资源") {
@@ -5353,9 +5359,11 @@ export const isBoolean = input => Object.prototype.toString.call(input) === '[ob
 if (v == "isZH-Cn") {
 Var = 
 (
-if (!/^[\u4e00-\u9fa5]+$/.test('李钊鸿')) {
-      throw new Error('请输入中文汉字')
-}
+// 是否包含中文
+const iszh = str => /[\u4e00-\u9fa5]+/.test(str)
+
+// 必须全部是中文
+const isZH = str => /^[\u4e00-\u9fa5]+$/.test(str)
 )
 }
 if (v == "isIp") {
@@ -6338,14 +6346,6 @@ Object.keys()
 code(Var)
 return
 
-::dc::
-Var =
-(
-var c = document.createComment("@fuck");
-document.body.appendChild(c);
-)
-code(Var)
-return
 
 ::df::
 Var =
@@ -6637,6 +6637,16 @@ const limitColor = number => {
 console.log('逻辑区间', limit)
 console.log('UI区间', limit_str)
 console.log('获取当前数据的颜色', limitColor(88))
+)
+code(Var)
+return
+
+::debug::
+Var =
+(
+const debug = (...args) => (console.log(...args), args[args.length - 1])
+
+const debugfn = (x, fn = y => y) => fn(x)
 )
 code(Var)
 return

@@ -5496,6 +5496,27 @@ destroyed () {
     }
     document.addEventListener('mouseup', _clickOutSide)
 }
+---
+/**
+ * 示例:
+ * 
+ * clickOutSide('.u-pointCard', cancel => {
+ *     // 关闭弹窗
+ *     this.points_html = ''
+ *     // 取消事件本身
+ *     cancel()
+ * })
+ */
+export const clickOutSide = (className, fn) => {
+  const _clickOutSide = e => {
+    // 如果点击的不是指定的元素，那么执行回调，并且取消这个事件本身
+    if (document.querySelector(className).contains(e.target) === false) {
+       // 执行函数，并且注入取消的回调
+       fn(() => document.removeEventListener('mouseup', _clickOutSide))
+    }
+  }
+  document.addEventListener('mouseup', _clickOutSide)
+}
 )
 txtit(Var)
 return
@@ -7086,7 +7107,7 @@ Var =
 try {
   
 } catch (err) {
-  //  return new Error(e)
+  throw new Error(err.message)
 }
 )
 code(Var)
@@ -8243,6 +8264,15 @@ document.querySelectorAll('')
 code(Var)
 SendInput, {left 2}
 Return
+
+
+::dc::
+Var =
+(
+document.createElement('div')
+)
+code(Var)
+return
 
 ::dsa::
 ::dss::

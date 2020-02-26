@@ -3993,8 +3993,24 @@ Var =
         }
     }
 }
+---
+.border-1px {
+    position: relative;
+}
+.border-1px:after {
+    position: absolute;
+    content: '';
+    top: -50`%;
+    bottom: -50`%;
+    left: -50`%;
+    right: -50`%;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+}
 )
-code(Var)
+txtit(Var)
 Return
 
 ::box-shadow::

@@ -1,4 +1,6 @@
-﻿; 屏蔽半角符
+﻿
+
+; 屏蔽半角符
 +Space::
 return
 
@@ -951,6 +953,14 @@ Sleep, 100
 Send, {tab}
 cs("GzNhc#020")
 return
+
+!3::
+cs("psdemo")
+Sleep, 100
+Send, {tab}
+cs("iocadmin")
+return
+
 
 ::hosts::
 ::host::

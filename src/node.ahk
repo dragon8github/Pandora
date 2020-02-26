@@ -5,6 +5,7 @@
 	Menu, NodeFileHandler, Add, 
 	Menu, NodeFileHandler, Add,
 
+	Menu, NodeFileHandler, Add, fs-extra + globby深度遍历图片并且将它放置在置顶文件夹中, NodeHandler
 	Menu, NodeFileHandler, Add, linebyline逐行读取文本并且另存为文件, NodeHandler
 	Menu, NodeFileHandler, Add, fs.write, NodeHandler
 	Menu, NodeFileHandler, Add, fs.read, NodeHandler
@@ -155,6 +156,50 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "fs-extra + globby深度遍历图片并且将它放置在置顶文件夹中") {
+Var =
+(
+// cnpm i node-fs-extra  globby -S
+const path    = require('path')
+const fs      = require('node-fs-extra')
+const globby  = require('globby')
+
+// 遍历当前文件夹下所有的文件
+;(async () => {
+	// 筛选当前文件夹下的文件类型
+	const names = await globby(['./**/*.jpg'])
+
+	// IIFE + Poll 逐个处理文件
+	;(async function next (i) {
+		// 弹出一个
+		const filename = names.shift()
+
+		try {
+			// 获取镇街名
+		    const city = filename.match(/暗检报告（(.+?)）/)[1]
+
+		    // 获取文件名
+		    const [name, ...rest] = filename.split('/').reverse()
+
+		    // 复制到指定的目录
+		    await fs.copy(filename, path.join('src', city, name))
+
+		    // log...
+		    console.log('ok：', city, name)
+
+		    // poll...
+		    // fixbug: 每1000个就休息一下，否则会出现 “too many open files" 的错误
+		    i < 1000 ? next(++i) : setTimeout(() => next(0), 1000)
+		} catch (err) {
+		   return new Error(filename)
+		}
+	})(0)
+})()
+
+// mkdir 茶山镇 常平镇 大朗镇 大岭山镇 道滘镇 东城街道 东坑镇 凤岗镇 高埗镇 莞城街道 横沥镇 洪梅镇 厚街镇 虎门镇 黄江镇 寮步镇 麻涌镇 南城街道 企石镇 桥头镇 清溪镇 沙田镇 石碣镇 石龙镇 石排镇 松山湖园区 塘厦镇 万江街道 望牛墩镇 谢岗镇 樟木头镇 长安镇 中堂镇
 )
 }
 

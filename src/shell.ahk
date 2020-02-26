@@ -8,6 +8,7 @@
 	Menu, B, Add, 当前时间, ShellHandler
 	
 	; find
+	Menu, C, Add, 示例：深度查找所有文件夹并且放置在fuck文件夹, ShellHandler3
 	Menu, C, Add, 根据文件名：name/iname, ShellHandler
 	Menu, C, Add, 限制匹配的路径及名称：-path, ShellHandler
 	Menu, C, Add, 支持逻辑操作符：-a/-and 和 -o/-or, ShellHandler
@@ -161,6 +162,8 @@
 	Menu, ShellMenu, Add
 	Menu, ShellMenu, Add
 	
+	
+	Menu, ShellMenu, Add, grep -nri [搜索词] docs | cat --number, ShellHandler2
 	Menu, ShellMenu, Add, ps -ef | grep <关键词>, ShellHandler2
 	Menu, ShellMenu, Add, wc 查看多少行代码, ShellHandler
 	Menu, ShellMenu, Add, find + xargs + cat合并多个文件内容到一个文件, ShellHandler
@@ -208,6 +211,13 @@ Var =
 )
 }
 
+if (v == "示例：深度查找所有文件夹并且放置在fuck文件夹") {
+Var =
+(
+find . -iname '*.jpg'
+find . -iname '*.jpg' -exec cp {} fuck \;
+)
+}
 
 if (v == "git tag -d v0.0.2 # 删除本地tag") {
 Var =

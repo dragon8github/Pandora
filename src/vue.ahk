@@ -4380,7 +4380,6 @@ return
 
 ::computed::
 ::vue.computed::
-::vue.c::
 Var =
 (
 computed: {
@@ -4762,31 +4761,131 @@ Var =
 code(Var)
 return
 
+::vue.c::
+::vue.extend::
+::vue.extends::
 ::vue.cmp::
 ::vue.component::
 ::vue.components::
-InputBox, OutputVar, title, enter a name?,,,,,,,,test
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
-var %OutputVar% = Vue.extend({
-    template: ``<div class="%OutputVar%">%OutputVar%</div>``,
+const testConstructor = Vue.extend({
+    template: `<div class="test">{{ foo }}</div>`,
     data () {
        return {
-           %OutputVar%: '',
+           foo: 'test',
        }
     },
     props: {
 
     },
     beforeMount() {
-      console.log(%t%, %OutputVar%)
+      console.log('test')
     }
 })
 
-Vue.component('%OutputVar%', %OutputVar%)
+const initInstance = new testConstructor({
+    el: document.createElement('div')
+})
+
+document.body.appendChild(initInstance.$el);
+
+setTimeout(() => {
+    initInstance.foo = 'bar'
+}, 1000);
+---
+const testConstructor = Vue.extend({
+    template: `<div class="test">{{ foo }}</div>`,
+    data () {
+       return {
+           foo: 'test',
+       }
+    },
+    props: {
+
+    },
+    beforeMount() {
+      console.log('test')
+    }
+})
+
+Vue.component('test', testConstructor)
+---
+import Vue from 'vue';
+import mapbox from './mapbox.vue'
+
+const mapboxConstructor = Vue.extend(mapbox);
+
+let _initInstance;
+
+const initInstance = () => {
+  _initInstance = new mapboxConstructor({
+    el: document.createElement('div')
+  });
+  document.body.appendChild(_initInstance.$el);
+};
+
+const show = ({ name, list, center }) => {
+  if (!_initInstance) {
+    initInstance();
+  }
+
+  _initInstance.value = true;
+  _initInstance.name = name;
+  _initInstance.list = list;
+  _initInstance.center = center;
+}
+
+const close = () => {
+  Vue.nextTick(() => {
+    _initInstance && (_initInstance.value = false)
+  });
+}
+
+export default {
+  show,
+  close,
+}
+---
+// package/button/index.js
+import Button from './src/Button.vue'
+
+Button.install = Vue => {
+      Vue.component(Button.name, Button)
+}
+
+export default Button
+---
+// package/index.js
+import Button from './button'
+const components = [Button]
+
+const install = Vue => {
+  if (install.installed) return;
+  install.installed = true
+
+  components.map(c => Vue.use(c))
+}
+
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
+}
+
+export default {
+  /**
+   * import hongUI from 'hongui'
+   * Vue.use(hongUI)
+   */
+  install,
+  /**
+   * import { Button } from 'hongui'
+   * Vue.use(Button)
+   */
+  ...components,
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::vue.dir::
