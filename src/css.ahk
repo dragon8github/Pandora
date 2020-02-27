@@ -204,7 +204,6 @@
     Menu, Csssolution, Add, 天行九歌：高亮文本 highlight（文字）, CssHandler
     Menu, Csssolution, Add, 太空漫游404解决方案, CssHandler
     Menu, Csssolution, Add, 纯css下划线或上划线解决方案, CssHandler
-    Menu, Csssolution, Add, quickbi控制台入口动画, CssHandler
     
     
     Menu, Csssolution, Add
@@ -648,10 +647,6 @@ html,body{
   font-size: 62.5`%;  
 }
 )
-}
-
-if (v == "quickbi控制台入口动画") {
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/quickbi-template.zip")
 }
 
 if (v == "天行九歌：高亮文本 highlight（文字）") {

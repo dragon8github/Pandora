@@ -89,7 +89,6 @@
 	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
 	Menu, NodeMenu, Add, module.exports, NodeHandler
 	Menu, NodeMenu, Add, os.EOL, NodeHandler
-	Menu, NodeMenu, Add, nodejs-mvc-pure, NodeHandler
 	Menu, NodeMenu, Add, nodejs sass, NodeHandler
 	Menu, NodeMenu, Add, npx lite-server, NodeHandler
 	
@@ -281,11 +280,6 @@ const fs = require('fs').promises
 
 if (v == "nodejs sass") {
 _send("sass", true)
-return
-}
-
-if (v == "nodejs-mvc-pure") {
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/node-mvc-master.zip")
 return
 }
 

@@ -127,7 +127,6 @@
     Menu, taroMenu, Add, npm run dev:weapp, taroHandler
     Menu, taroMenu, Add, npm run dev:h5, taroHandler2
 	
-    Menu, taroMenu, Add, taro template脚手架 , taroHandler
     
     Menu, taroMenu, Add, taro cli , :taronpx
     Menu, taroMenu, Add, taro component , :taroc
@@ -205,11 +204,6 @@ Var =
 (
 import { View， Text } from '@tarojs/components'
 )
-}
-
-
-if (v == "taro template脚手架") {
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/taroTemplate.zip", "cnpm install `; npm rebuild node-sass `; npm run dev:weapp")
 }
 
 if (v == "npm run dev:weapp") {

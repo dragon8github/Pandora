@@ -610,14 +610,6 @@ RunBy(name)
 run, % name
 return
 
-Newesmodule:
-url := "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/node-babel.zip"
-name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-FileCreateDir, %name%
-RunWaitOne("cd " . name . " && curl -O " . url)
-run,%name%
-return
-
 Newmochachai:
 url := "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/mocha%20%2B%20chai.zip"
 name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
@@ -2454,9 +2446,6 @@ RunBy(name)
 run, % name
 return
 
-NewreactbabelHtml:
-	run, https://github.com/dragon8github/Pandora/blob/master/template/babeltest.zip?raw=true
-return
 
 NewreduxIndexHtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
@@ -3968,13 +3957,7 @@ tianMapHtml:
 psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/tianmap.zip")
 return
 
-d3bubblechart:
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/d3-bubble-chart.zip")
-return
 
-d3template:
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/docsify.zip")
-return
 
 
 tiandituhtml:
@@ -4076,9 +4059,6 @@ RunBy(name)
 run, % name
 return
 
-dgechartmaphtml:
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/map_demo.zip")
-return
 
 rightmenuhtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
@@ -4352,10 +4332,6 @@ function setPosition() {
 ),  %name%
 RunBy(name)
 run, % name
-return
-
-AEhtml:
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/bodymovin-lottie.zip")
 return
 
 workerhtml:
@@ -7851,9 +7827,6 @@ run, % name
 return
 
 
-chromeextensions:
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/chrome-extensions.zip")
-return
 
 inputyanhua:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
@@ -10099,9 +10072,6 @@ RunBy(name)
 run, % name
 return
 
-baiduGeoHTML:
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/百度地图专用文件夹.zip")
-return
 
 NewPureIndexHtmltable:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"

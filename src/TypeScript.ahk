@@ -1,10 +1,4 @@
 ﻿!y::
-    Menu, tsMenu, Add, 新建官方create-react-app-Typescript（超级严格）, ReactMenuHandler
-    Menu, tsMenu, Add, 新建codesandbox-react-ts（十分宽松）, ReactMenuHandler
-    
-    Menu, tsMenu, Add
-    Menu, tsMenu, Add
-    
     Menu, tsMenu, Add, npm install Typescript -g, tsHandler
 	Menu, tsMenu, Add, 生成 tsconfig.json 配置：$ yarn add typescript && tsc --init, tsHandler
     Menu, tsMenu, Add, 生成 tslint.json：$ yarn tslint --init, tsHandler

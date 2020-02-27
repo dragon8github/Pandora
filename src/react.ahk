@@ -1,8 +1,6 @@
 ﻿!t::
 	Menu, reactMenu, Add, 新建create-react-app, ReactMenuHandler
 	Menu, reactMenu, Add, 新建官方create-react-app-Typescript（超级严格）, ReactMenuHandler
-	Menu, reactMenu, Add, 新建codesandbox-react-ts（十分宽松）, ReactMenuHandler
-	Menu, reactMenu, Add, 新建 react-template, ReactMenuHandler
 	Menu, reactMenu, Add, 在线编辑器：React runtime for codesandbox, ReactMenuHandler
 	
 	Menu, reactMenu, Add
@@ -69,15 +67,6 @@ Var =
 }
 
 
-if (v == "新建codesandbox-react-ts（十分宽松）") {
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/codesandbox-react-ts.zip", "yarn `; npm start")
-return
-}
-
-if (v == "新建 react-template") {
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/react-template.zip", "yarn `; npm start")
-return
-}
 
 if (v == "CSS module cssname") {
 Var = 

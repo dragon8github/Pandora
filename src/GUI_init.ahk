@@ -375,7 +375,6 @@ Gui, Pandora:Add, Text, gemphhtml W160,新建更新提示波动图.html
 Gui, Pandora:Add, Text, gautowidth W160,新建input动态宽度.html
 Gui, Pandora:Add, Text, ghuxihtml W160, 新建呼吸变色棱角空间.html
 Gui, Pandora:Add, Text, ghuehtml W160, 新建hue-rotate.html
-Gui, Pandora:Add, Text, gAEhtml W180, 新建AE-bodymovin-lottie.html
 Gui, Pandora:Add, Text, glocalForagehtml W180, 新建localForage缓存示例.html
 Gui, Pandora:Add, Text, gquickbianimhtml W180, 新建quickbi的过场动画.html
 Gui, Pandora:Add, Text, gcssbodongsandian W180, 新建css波动散点.html
@@ -419,15 +418,12 @@ Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
 Gui, Pandora:Add, Text, gtianditujuhetuhtml ,新建天地图聚合图.html
-Gui, Pandora:Add, Text, gdgechartmaphtml W160, 新建东莞地图echarts
 Gui, Pandora:Add, Text, gmapVbaiduhtml W160, 新建百度地图 + mapV.html
-Gui, Pandora:Add, Text, gbaiduGeoHTML W160, 新建百度地图+geo.html
 Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
 
 
-Gui, Pandora:Add, Text, gchromeextensions W140 ys x+40,chrome-extensions
 Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索.html
 Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 Gui, Pandora:Add, Text, gcssskeletonHtml W140,新建css骨骼图.skeleton
@@ -441,7 +437,6 @@ Gui, Pandora:Add, Text, gwebidehtml W160,新建在线编辑器webide
 Gui, Pandora:Add, Text, gprismhtml W160,prism代码高亮.html
 Gui, Pandora:Add, Text, gdom2imghtml W160,网页截图dom-to-image.html
 Gui, Pandora:Add, Text, gliveHtml W160,新建调用摄像头.html
-Gui, Pandora:Add, Text, gd3template W160, docsify 模板.html
 Gui, Pandora:Add, Text, grightmenuhtml W160, 新建右键菜单拦截.html
 Gui, Pandora:Add, Text, gworkerhtml W180, 新建worker.js.html
 Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html

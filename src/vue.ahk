@@ -58,10 +58,6 @@
   
 
   Menu, vuejiaoshouj, Add, vue.config.js, VueHandler
-  Menu, vuejiaoshouj, Add, vue3-template脚手架, VueHandler
-  Menu, vuejiaoshouj, Add, vue3-ant-design脚手架, VueHandler
-  Menu, vuejiaoshouj, Add, vue2-template脚手架, VueHandler
-  Menu, vuejiaoshouj, Add, webpack4.0-demo, VueHandler
   
   
   Menu, vuecognition, Add, watch props 与 data 结合来初始化, VueHandler
@@ -125,8 +121,6 @@
   Menu, vuesolution, Add, svg-spinner-loader.vue, VueHandler
   Menu, vuesolution, Add, myprogress组件, VueHandler
   Menu, vuesolution, Add, msgbox组件, VueHandler
-  Menu, vuesolution, Add, 波浪效果组件, VueHandler
-  Menu, vuesolution, Add, 波浪效果指令：v-waves, VueHandler
   Menu, vuesolution, Add, NProgress页面加载组件, VueHandler
   Menu, vuesolution, Add, vue-drag-drop, VueHandler
   Menu, vuesolution, Add, vue-drag-resize, VueHandler
@@ -1251,25 +1245,7 @@ npm rebuild node-sass
 }
 
 
-if (v == "vue3-ant-design脚手架") {
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue-cli3antdesign.zip", "yarn `; npm rebuild node-sass `; npm run dev")
-return
-}
 
-if (v == "webpack4.0-demo") {
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/webpkac-dome.zip")
-return
-}
-
-if (v == "vue3-template脚手架") {
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue3-template.zip", "yarn `; npm rebuild node-sass `; npm run dev")
-return
-}
-
-if (v == "vue2-template脚手架") {
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/vue2-template.zip", "cnpm install `; npm run dev")
-return
-}
 
 if (v == "el-menu简易封装") {
 Var = 
@@ -1803,14 +1779,6 @@ _send("vue.dir", true, true)
 return
 }
 
-if (v == "波浪效果指令：v-waves") {
-url := "https://raw.githubusercontent.com/dragon8github/Pandora/master/template/waves.zip"
-name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-FileCreateDir, %name%
-RunWaitOne("cd " . name . " && curl -O " . url)
-run, %name%
-return
-}
 
 if (v == "动态路由：router.addRoutes") {
 Var = 
@@ -1857,10 +1825,6 @@ Send, vuex.a{tab}
 return
 }
 
-if (v == "波浪效果组件") {
-run, https://github.com/dragon8github/Pandora/blob/master/template/MdRipple.zip?raw=true
-return
-}
     
 
 if (v == "组件复用的新套路: 合并配置，来代替mixin方案") {
