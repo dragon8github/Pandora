@@ -327,6 +327,7 @@ Gui, Pandora:Add, Link,, <a href="https://gitee.com/oauth/authorize?client_id=8a
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
+Gui, Pandora:Add, Link,, <a href="http://www.cnplugins.com/">Chomre国内镜像商店</a>
 Gui, Pandora:Add, Link,, <a href="https://yeoman.io/generators/">yeoman generators</a>
 Gui, Pandora:Add, Link,, <a href="https://www.vultr.com/">vultr</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/Alvin9999/new-pac/wiki/自建ss服务器教程">自建ss服务器教程</a>

@@ -6720,7 +6720,6 @@ return
 ::$.extend::
 ::extend::
 ::deep::
-::deepcopy::
 Var =
 (
 var deepExtend = function(out) {
@@ -6749,8 +6748,34 @@ var objA = {a: 123, b: { fuck: 123 }}
 var objB = { b: { shit: 123 } }
 // 深拷贝最大的好处是，不会覆盖属性。而是迭代
 deepExtend({}, objA, objB); // => { "a":123, "b":{ "fuck": 123, "shit": 123 } }
+
+---
+function deepCopy(obj, cache = []) {
+    if (obj === null || typeof obj !== 'object') {
+        return obj
+    }
+
+    const hit = cache.find(c => c.original === obj)
+
+    if (hit) {
+        return hit.copy
+    }
+
+    const copy = Array.isArray(obj) ? [] : {}
+
+    cache.push({
+        original: obj,
+        copy
+    })
+
+    Object.keys(obj).forEach(key => {
+        copy[key] = deepCopy(obj[key], cache)
+    })
+
+    return copy
+}
 )
-code(Var)
+txtit(Var)
 return
 
 
@@ -8977,6 +9002,7 @@ Var =
 // 正序（从小到大）是a - b ，(倒序)从大到小 -(a-b)
 // 如果是对象的话（从小到大/升序/asc）：data.sort((a, b) => +a.fuck - +b.fuck)
 // 如果是对象的话（从大到小/倒序/desc）：data.sort((a, b) => +b.fuck - +a.fuck)
+// 中文按照拼音排序：['常平', '莞城','茶山', '清溪', '麻涌', '东坑', '万江', '石排', '中堂','黄江', '凤岗', '石龙', '企石', '谢岗', '沙田', '樟木头', '大岭山', '松山湖', '洪梅', '大朗', '横沥', '塘厦', '塘厦', '虎门', '道滘', '石碣', '高埗', '南城', '寮步', '长安', '望牛墩', '桥头', '东城'].sort((a, b) => a.localeCompare(b))
 arr.sort((a, b) => { return a - b })
 
 ---

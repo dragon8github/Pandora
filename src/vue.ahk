@@ -4759,22 +4759,54 @@ setTimeout(() => {
     initInstance.foo = 'bar'
 }, 1000);
 ---
-const testConstructor = Vue.extend({
-    template: `<div class="test">{{ foo }}</div>`,
+const fooConstructor = Vue.extend({
+    name: 'foo',
+    template: `<div class="test" @click='fooClickHandler'>点我调用bar的barHandler方法</div>`,
     data () {
        return {
-           foo: 'test',
+           foo: 'foo',
        }
     },
-    props: {
+    methods: {
+        fooClickHandler() {
 
+            const bar = this.$parent.$children.find(_ => _.$options.name === 'bar')
+
+            console.log(20200229101557, bar)
+
+            bar.barHandler()
+
+            console.log(20200229101217, this.$parent.$refs.bar)
+
+            this.$parent.$refs.bar.barHandler()
+        },  
     },
     beforeMount() {
-      console.log('test')
+      console.log('foo')
     }
 })
 
-Vue.component('test', testConstructor)
+Vue.component('foo', fooConstructor)
+
+const barConstructor = Vue.extend({
+    name: 'bar',
+    template: `<div class="test">{{ bar }}</div>`,
+    data () {
+       return {
+           bar: 'bar',
+       }
+    },
+    methods: {
+        barHandler() {
+            console.log(20200229101241, 'barHandler')
+        }
+    },
+    beforeMount() {
+      console.log('bar')
+    }
+})
+
+Vue.component('bar', barConstructor)
 ---
 import Vue from 'vue';
 import mapbox from './mapbox.vue'

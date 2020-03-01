@@ -87,15 +87,18 @@
 
 	Menu, NodeMenu, Add, 'use strict';, NodeHandler
 	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
-	Menu, NodeMenu, Add, module.exports, NodeHandler
+	Menu, NodeMenu, Add, npx http-server, NodeHandler
 	Menu, NodeMenu, Add, os.EOL, NodeHandler
-	Menu, NodeMenu, Add, nodejs sass, NodeHandler
-	Menu, NodeMenu, Add, npx lite-server, NodeHandler
+	Menu, NodeMenu, Add, module.exports, NodeHandler
+	
+	
 	
 	Menu, NodeMenu, Add
 	Menu, NodeMenu, Add
+	
 	
 	Menu, NodeMenu, Add, node.http, NodeHandler
+	Menu, NodeMenu, Add, nodejs sass, NodeHandler
 	Menu, NodeMenu, Add, $ npm install -g nodemon && nodemom --inspect index.js, NodeHandler
 	Menu, NodeMenu, Add, $ npm install pm2 -g && pm2 start hello.js --watch, NodeHandler
 
@@ -296,8 +299,8 @@ return
 }
 
 
-if (v == "npx lite-server") {
-cs("npx lite-server")
+if (v == "npx http-server") {
+cs("npx http-server")
 return
 }
 
@@ -1534,13 +1537,11 @@ Return
 ::cnpmm::
 ::npm cnpm::
 ::cnpm2::
+::cnpm::
 SendInput, npm install cnpm -g --registry=https://registry.npm.taobao.org 
 return
 
-::cnpm::
-::npm::
-_sendinput("cnpm i  -S{LEFT 3}")
-return
+
 
 ::nest.c::
 Var =

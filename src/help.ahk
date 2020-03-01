@@ -1,4 +1,11 @@
-﻿
+﻿::el::
+::ele::
+Var =
+(
+electron
+)
+cs(Var)
+return
 
 ; 屏蔽半角符
 +Space::
@@ -2101,8 +2108,8 @@ return
 
 +F12::
 Send, +{Insert}
+Send, ^v
 return
-
 
 >+l::
 cs("localhost:")

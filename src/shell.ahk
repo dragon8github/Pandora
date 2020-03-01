@@ -131,7 +131,7 @@
 	Menu, gitShellMenu, Add, 删除远程文件/文件夹：git rm -r --cached node_modules/, ShellHandler3
 
 	Menu, ShellMenu, Add, #!/bin/bash（通过echo $SHELL确定）, ShellHandler
-	Menu, ShellMenu, Add, 开机自启动配置文件：/etc/rc.d/rc.local, ShellHandler
+	Menu, ShellMenu, Add, 永久添加环境变量, ShellHandler
 	Menu, ShellMenu, Add, for循环, ShellHandler
 	Menu, ShellMenu, Add, if、then、else、elif、if, ShellHandler
 	Menu, ShellMenu, Add, export PATH添加一条路径, ShellHandler3
@@ -208,6 +208,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "永久添加环境变量") {
+Var =
+(
+echo 'export PATH="$PATH:/usr/local/nodejs/bin"' >> /etc/profile && source /etc/profile
 )
 }
 
@@ -1275,6 +1282,14 @@ return
 Var =
 (
 curl -s -XPOST 'http://localhost:3000/acticle/update' -H 'Content-Type:application/json' -d '{"firstName": "JOJO", "lastName": "Joestar"}'
+)
+cs(Var)
+return
+
+::$path::
+Var =
+(
+echo 'export PATH="$PATH:/usr/local/nodejs/bin"' >> /etc/profile && source /etc/profile
 )
 cs(Var)
 return

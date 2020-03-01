@@ -58,6 +58,7 @@
 
     Menu, utilsDOM, Add, parents, utilsHandler
     Menu, utilsDOM, Add, addClass, utilsHandler
+    Menu, utilsDOM, Add, toggleClass, utilsHandler
     Menu, utilsDOM, Add, hasClass, utilsHandler
     Menu, utilsDOM, Add, removeclass , utilsHandler
     Menu, utilsDOM, Add, getclassname, utilsHandler
@@ -470,6 +471,29 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "toggleClass") {
+Var =
+(
+const toggleClass = (target, classList, condition) => {
+  if (!target || !classList) {
+    return
+  }
+  if (typeof classList === 'string') {
+    classList = classList.split(/\s+/).filter(Boolean)
+  }
+  classList.forEach((className) => {
+    if (target.forEach) {
+      target.forEach((elem) => {
+        condition ? elem.classList.add(className) : elem.classList.remove(className)
+      })
+    } else {
+      condition ? target.classList.add(className) : target.classList.remove(className)
+    }
+  })
+}
 )
 }
 
