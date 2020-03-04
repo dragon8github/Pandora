@@ -9,12 +9,12 @@
 	}
 	
 	; 执行华为的 kill_IE 命令文件释放IE
-	bat := A_Desktop . "\Kill_IE.bat"
-	run, % bat
+	; bat := A_Desktop . "\Kill_IE.bat"
+	; run, % bat
 	
 	
 	file := A_Desktop . "\event.lnk"
-	run, % file
+	run, % file 
 return
 
 ^n::

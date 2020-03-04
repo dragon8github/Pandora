@@ -514,7 +514,7 @@ Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:30021/h5/#/index">预览�
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/lizhaohong/epidemich5">gitlab地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:30020/doc.html#/default/举报信息表/add_5">Swagger</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:30022/doc.html#/default/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/login">登陆接口文档</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/24/interface/api/106">yapi</a>
+
 Gui, Pandora:Add, Link,, <a href="https://lanhuhu.com/web/#/item/project/board/detail?pid=be48ee3e-ad31-43a0-be0c-5fe1a760cf8f&project_id=be48ee3e-ad31-43a0-be0c-5fe1a760cf8f&image_id=71b685be-867b-497a-b7e3-7aa72640f950">蓝湖</a>
 Gui, Pandora:Add, Link,, <a href="https://lanhuapp.com/web/#/item/project/board/detail?pid=cb5dae81-83e7-4acb-8f7e-cfef14dddf7e&see=all&project_id=cb5dae81-83e7-4acb-8f7e-cfef14dddf7e&image_id=f7c27c58-44db-4d18-9494-cd76b5c96ba9">蓝狐领导版</a>
 
@@ -538,7 +538,7 @@ Gui, Pandora:Add, Text,  W140 ys xp+160, 城管
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32201/#/Index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/nhc-visual/browse/builds/citymanagement-ui?tab=history">部署地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/lizhaohong/citymanagement">代码地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/16/interface/api">yAPI</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/20/interface/api/67">yAPI</a>
 Gui, Pandora:Add, Link,, <a href="https://shimo.im/sheets/TCjR8jdTwwwYKjtY/MODOC/">需求文档</a>
 Gui, Pandora:Add, Link,, <a href="https://shimo.im/docs/bab1e94724614258/read">接口文档</a>
 

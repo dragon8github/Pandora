@@ -1,4 +1,12 @@
-﻿::el::
+﻿::jet::
+Var =
+(
+jetbrains
+)
+code(Var)
+return
+
+::el::
 ::ele::
 Var =
 (

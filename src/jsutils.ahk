@@ -3884,6 +3884,17 @@ el.style.setProperty('--max-height', height + 'px')
 if (v == "获取前6个月/前15天数据") {
 Var = 
 (
+// 数值补全0
+// 迭代：如果实际长度超出length，那么使用实际长度，否则使用lenght
+// 比如： PrefixInteger(123456, 5); 实际长度是6，那么还是会返回123456.
+const PrefixInteger = (num, length) => {
+    const n = (Array(length).join('0') + num)
+    const len = num.toString().length
+    const l = len > length ? len : length
+    return n.slice(-l)
+}
+
+
 /**
  * 生成日报模式下的 xAxisDate 数据，
  * 业务需求:  如果是日报（day）则是取前半个月的数据，即15条数据
@@ -3924,7 +3935,30 @@ getMonthxAxisDate(str, len) {
         // 翻转一下顺序，让数组符合desc顺序的直觉
     }).reverse()
 },
+---
+
+/**
+ * 获取近半年6个月
+ */
+const getMonthxAxisDate = (len = 6) => {
+    // 转化为date对象
+    const _date = new Date()
+    // 往前取半年6个月
+    return [...Array(len)].map((v, index, array) => {
+        // MM
+        const month = _date.getMonth() + 1 + '月'
+
+        // 不断地回退month
+        _date.setMonth(_date.getMonth() - 1)
+
+        return month
+        // 翻转一下顺序，让数组符合desc顺序的直觉
+    }).reverse()
+}
+
 )
+txtit(Var)
+return
 }
 
 

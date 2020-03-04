@@ -2350,6 +2350,9 @@ export default {
           console.log('go');
       }
   },
+  props: {
+      
+  },
   components: {
 
   },

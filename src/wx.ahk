@@ -8,7 +8,7 @@
     Menu, wxMenu, Add, emit事件推送：this.triggerEvent, wxHandler
     Menu, wxMenu, Add, getSystemInfoSync, wxHandler
     Menu, wxMenu, Add, catchtap 防止冒泡, wxHandler
-
+    Menu, wxMenu, Add, jquery: 获取dom内容, wxHandler
     Menu, wxMenu, Add
     Menu, wxMenu, Add
 
@@ -70,6 +70,17 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "jquery: 获取dom内容") {
+Var =
+(
+const jquery = dom => new Promise((resolve, reject) => {
+  wx.createSelectorQuery().select(dom).boundingClientRect(res => {
+      resolve(res)
+  }).exec();
+})
 )
 }
 
