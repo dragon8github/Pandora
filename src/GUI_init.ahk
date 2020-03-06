@@ -1043,6 +1043,7 @@ Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=he
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xkeSbXdmhp">三角形Echarts</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xSk6VBUGuG">冰山图</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xpO_B8IDmq">饼图花瓣图</a>
+Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/examples/zh/editor.html?c=scatter-life-expectancy-timeline&theme=light">轮播时间轴</a>
 
 Gui, Pandora:Add, Text, W140 ys, highcharts:
 Gui, Pandora:Add, Link,, <a href="https://github.com/highcharts/highcharts">highcharts github</a>

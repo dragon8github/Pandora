@@ -1108,10 +1108,13 @@ return
 
 ^!o::
     str := Trim(Clipboard)
+    
     if (SubStr(str, 0, 2) == "//") {
         str := "http:" . str
     }
+    
     If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:")|| InStr(str, ".net") || Instr(str, "data:") ) {
+        
         RUN, % str
     } else {
         RUN, https://www.baidu.com/s?wd=%str%
@@ -1124,13 +1127,26 @@ return
     Send, ^c
     ClipWait, 2
     str := Trim(Clipboard)
+    
     if (SubStr(str, 0, 2) == "//") {
         str := "http:" . str
     }
-    If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") ) {
+    
+    if (InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") || InStr(str, "C/") || InStr(str, "D/") || InStr(str, "E/")  || InStr(str, "F/")  || InStr(str, "F/")  || InStr(str, "G/")  || InStr(str, "H/")) {
+        
+        ; 解决类似 c/users/lee/desktop/citymanagement 的路径
+        if (SubStr(str, 2, 1) == "/") {
+            pan := SubStr(str, 1, 1)
+            last := SubStr(str, 2)
+            str := pan . ":" . last
+        }
+        
+        RUN, % str
+    } else if(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com")) {
         if (!InStr(str, "http://") && !InStr(str, "https://")) {
             str := "http://" . str
         }
+        
         RUN, % str
     } else {
         RUN, https://www.baidu.com/s?wd=%str%
