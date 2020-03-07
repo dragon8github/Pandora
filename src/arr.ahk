@@ -4,6 +4,7 @@
 	Menu, arrayMenu, Add, chunk 数组分块函数:hit / miss, ForHandler
 	Menu, arrayMenu, Add, 加强版map遍历:fuckmap, ForHandler
 	Menu, arrayMenu, Add, pureMap：纯洁无害的map函数, ForHandler
+	Menu, arrayMenu, Add, sliceByRules：（月榕）将数组根据3:2:3:2的规矩切割, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -86,6 +87,42 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "sliceByRules：（月榕）将数组根据3:2:3:2的规矩切割") {
+Var =
+(
+// 一维数组 [a,b,c,d,e,f,g,h,i,j] 修改成 [[a,b,c],[d,e],[f,g,h],[i,j]] 这种二维数组，怎么写？
+// 二维数组当中的子数组个数的规律构成 3:2:3:2
+
+const input = ['a','b','c','d','e','f','g','h','i','j']
+
+const sliceByRules = (array, rule = [3, 2]) => {
+	// 即将返回的数据
+	let result = []
+	// 防止修改引用
+	let ary = array.slice()
+	// 记录索引
+	let index = 0
+	// 规则数量
+	const len = rule.length
+
+	while(ary.length) {
+		// 本次需要拦截的数量
+		const cut = rule[index `% len]
+		// 开始拦截
+		const cut_ary = ary.splice(0, cut)
+		// 插入新拦截的数据
+		result.push(cut_ary)
+		// 索引++
+		index++
+	}
+
+	return result
+}
+
+console.log(sliceByRules(input, [3, 2]))
 )
 }
 

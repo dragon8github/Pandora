@@ -425,7 +425,7 @@ Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
 
 
-Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索.html
+Gui, Pandora:Add, Text, gcsssearchtml W160 ys x+60, 新建简单CSS也能做搜索.html
 Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 Gui, Pandora:Add, Text, gcssskeletonHtml W140,新建css骨骼图.skeleton
 Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
@@ -1011,6 +1011,8 @@ Gui, Pandora:Add, Link,, <a href="http://mapv.baidu.com/">mapv官网</a>
 Gui, Pandora:Add, Link,, <a href="http://mapv.baidu.com/examples/#csv-car.html">mapv-example</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/huiyan-fe/mapv/blob/master/API.md">百度线面教程</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/huiyan-fe/mapv/#readme">ampv-github</a>
+Gui, Pandora:Add, Link,, <a href="http://lbsyun.baidu.com/solutions/solutions/mapvdata">mapV官方示例大全</a>
+
 
 Gui, Pandora:Add, Text, W140 ys, charts.js：
 Gui, Pandora:Add, Link,, <a href="https://www.chartjs.org/">charts.js 官网</a>
