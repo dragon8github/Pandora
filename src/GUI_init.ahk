@@ -1146,6 +1146,7 @@ Gui, Pandora:Add, Link, W140, <a href="https://legacy.gitbook.com/book/dragon8gi
 
 Gui, Pandora:Add, Text,  W140 Section ys, 其他：
 Gui, Pandora:Add, Link, W140, <a href="https://wx.qq.com/">微信网页版</a>
+Gui, Pandora:Add, Link, W140, <a href="https://youzan.github.io/vant-weapp/#/datetime-picker">Vant ui</a>
 
 
 Gui, Pandora:Add, Text,  W140 Section ys, 一个简单工作流：
