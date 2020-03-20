@@ -79,6 +79,8 @@ AllSearchA:
 		GuiControl,, so, 1 
 		GuiControl,, github, 1 
 		GuiControl,, segmentfault, 1 
+        GuiControl,, toutiao, 1
+        GuiControl,, toutiao2, 1
 	} else {
 		GuiControl,, bd, 0
 		GuiControl,, google, 0
@@ -86,6 +88,8 @@ AllSearchA:
 		GuiControl,, so, 0
 		GuiControl,, github, 0
 		GuiControl,, segmentfault, 0
+        GuiControl,, toutiao, 0
+        GuiControl,, toutiao2, 0
 	}
 return
 
@@ -208,7 +212,17 @@ Fuck:
 	if (segmentfault == 1) {
 		RUN, https://segmentfault.com/search?q=%SearchContent%
 	}
+    
+    ; 今日头条
+	if (toutiao2 == 1) {
+		RUN, http://toutiao.eastday.com/search.html?kw=%SearchContent%
+	}
 
+    ; 今日头条
+	if (toutiao == 1) {
+		RUN, https://www.toutiao.com/search/?keyword=%SearchContent%
+	}
+    
 	; 百度翻译   
 	if (bdfy == 1) {
 		RUN, http://fanyi.baidu.com/translate?aldtype=16047&query=%SearchContent%&keyfrom=baidu&smartresult=dict&lang=auto2zh#zh/en/%SearchContent%

@@ -2132,7 +2132,6 @@ return
 
 +F12::
 Send, +{Insert}
-Send, ^v
 return
 
 >+l::

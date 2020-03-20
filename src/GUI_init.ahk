@@ -84,6 +84,7 @@ __SEARCH_DATABASE__["fuck-app"] := "C:\Users\Lee\Desktop\微设计\fuck-app"
 __SEARCH_DATABASE__["弹幕danmu"] := "C:\Users\Lee\Desktop\年会弹幕网"
 __SEARCH_DATABASE__["城管citychengguan"] := "C:\Users\Lee\Desktop\cityManagement"
 __SEARCH_DATABASE__["肺炎feiyanH5"] := "C:\Users\Lee\Desktop\iocappmain\ioc-feiyanwebsite-ui"
+__SEARCH_DATABASE__["purecard"] := "C:\Users\Lee\Desktop\pureCard"
 
 ; 创建含名称和大小两列的 ListView:
 Gui, ISearch:Add, ListView, r7 w600 h400 gMyListView AltSubmit Section xs yp+40, Name|Path
@@ -126,6 +127,9 @@ Gui, Pandora:Add, Checkbox, vgoogle, Google
 Gui, Pandora:Add, Checkbox, vgithub Checked, Github
 Gui, Pandora:Add, Checkbox, vso, Stack Overflow
 Gui, Pandora:Add, Checkbox, vsegmentfault, SegmentFault
+Gui, Pandora:Add, Checkbox, vtoutiao, 今日头条
+Gui, Pandora:Add, Checkbox, vtoutiao2, 头条搜索
+
 
 Gui, Pandora:Add, Text, gAllSearchB W120 ys, 翻译类:
 Gui, Pandora:Add, Checkbox, vbdfy, 百度翻译   
@@ -135,7 +139,7 @@ Gui, Pandora:Add, Checkbox, vjinshanciba, 金山词霸
 Gui, Pandora:Add, Checkbox, vhaicifanyi, 词海翻译
 
 
-Gui, Pandora:Add, Text, gAllSearchC W90 Section xs y+60, 音乐类:
+Gui, Pandora:Add, Text, gAllSearchC W90 Section xs y+100, 音乐类:
 Gui, Pandora:Add, Checkbox, vwy, 网易云音乐   
 Gui, Pandora:Add, Checkbox, vqq, QQ音乐
 Gui, Pandora:Add, Checkbox, vdog, 酷狗音乐
@@ -228,7 +232,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.bootcdn.cn/">bootcdn</a>
 Gui, Pandora:Add, Link,, <a href="http://www.staticfile.org/">七云牛cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">360 cdn</a>
 Gui, Pandora:Add, Link,, <a href="https://unpkg.com/#/">unpkg cdn</a>
-Gui, Pandora:Add, Link,, <a href="https://cdn.baomitu.com/">jsdelivr</a>
+Gui, Pandora:Add, Link,, <a href="https://www.jsdelivr.com/">jsdelivr</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 好东西：
@@ -339,6 +343,7 @@ Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：
 Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/docs/utility-first">tailwindcss</a>
 Gui, Pandora:Add, Link,, <a href="https://so.baideye.com/">白的夜</a>
+Gui, Pandora:Add, Link,, <a href="https://liulisusu.org/user">琉璃VPN</a>
 
 
 ;@1
@@ -525,7 +530,7 @@ Gui, Pandora:Add, Link,, <a href="http://dotnet.alltosea.com:6012/portalapi/doc.
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/unifiedfabric/dgjy/portalui/tree/newdev/vue-education/src">代码地址</a>
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, visual可视化
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:30003/">预览地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:6181/datatransferweb/login">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual/issues">issue</a>
 Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0/#g=1&p=数据可视化大屏">原型</a>

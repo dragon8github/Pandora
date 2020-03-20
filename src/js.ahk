@@ -8537,8 +8537,17 @@ const dateYYYYMMDDHHmmss =  t => {
 }
 
 dateYYYYMMDDHHmmss(1562737742012)
+---
+const getDate = (function () {
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+
+  return () => ({ date, year, month, day })
+}())
 )
-code(Var)
+txtit(Var)
 return
 
 ::cdate::
