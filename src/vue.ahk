@@ -5027,6 +5027,27 @@ Var =
 
   <a class='header__crumbs--btn' @click.stop='goback' v-waves>返回</a>
    */
+---
+
+// <div v-loader='fuck'></div>
+Vue.directive('loader', {
+    bind(el, { value }) {
+        console.log('bind', el, value)
+    },
+    inserted(el, { value }) {
+        console.log('inserted', el, value)
+    },
+    unbind(el, { value }) {
+        console.log('unbind', el, value)
+    },
+    update(el, { value }) {
+        console.log('update', el, value)
+    },
+    componentUpdated(el, { value }) {
+        console.log('componentUpdated', el, value)
+    },     
+})
+
 )
 txtit(Var)
 return
@@ -5275,4 +5296,18 @@ button.onclick = e => import(/* webpackChunkName: "print" */ './print').then(mod
 const Layout = r => require.ensure([], () => r(require('@/layout/layout.vue')), 'Layout')
 )
 txtit(Var)
+return
+
+::vue.install::
+Var =
+(
+const main = {}
+
+main.install = (Vue, options = {}) => {
+
+}
+
+export default main
+)
+code(Var)
 return
