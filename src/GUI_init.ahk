@@ -179,7 +179,7 @@ Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
-Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/Pandora/blob/master/pandora.exe?raw=true">Lastest Pandora</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/Pandora">Lastest Pandora</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com">github</a>
 Gui, Pandora:Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
@@ -341,6 +341,7 @@ Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建vue-form.html
 Gui, Pandora:Add, Text, gVueAnimateHtml W140, 新建vueAnimate.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
 Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group列表
+Gui, Pandora:Add, Text, gcsspinyinHtml W180,css正则匹配选择器实现拼音搜索
 
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html

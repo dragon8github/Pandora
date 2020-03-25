@@ -102,6 +102,7 @@
     Menu, CssMenu, Add
     
 
+    Menu, CssMenu, Add, css 正则匹配选择器 实现拼音搜索, CssHandler
     Menu, CssMenu, Add, ::scrollbar 滚动条样式, CssHandler
     Menu, CssMenu, Add, 让body高度自适应屏幕, CssHandler
     Menu, CssMenu, Add, flex + column + flex: 1 全屏高度解决方案, CssHandler
@@ -261,6 +262,38 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "css 正则匹配选择器 实现拼音搜索") {
+Var =
+(
+<div id="app">
+    <!-- 会多一个 ✖️ 清空图标 -->
+    <input type="search" id="input" placeholder="输入城市名称或拼音" />
+    
+    <ul>
+        <li data-search="重庆市 chongqing">重庆市</li>
+        <li data-search="哈尔滨市 haerbin">哈尔滨市</li>
+        <li data-search="长春市 changchun">长春市</li>
+        <li data-search="长沙市 changsha">长沙市</li>
+        <li data-search="上海市 shanghai">上海市</li>
+        <li data-search="杭州市 hangzhou">杭州市</li>
+    </ul>
+</div>
+<script>
+    const eleStyle = document.createElement('style')
+
+    document.head.appendChild(eleStyle)
+
+    input.addEventListener('input', function() {
+        const value = this.value.trim()
+        eleStyle.innerHTML = value ? '[data-search]:not([data-search*="' + value +'"]) { display: none } ' : ''
+    })
+</script>
+</html>
+)
+txtit(Var)
+return
 }
 
 if (v == "@media移动端断点") {

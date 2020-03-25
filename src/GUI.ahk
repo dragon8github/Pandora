@@ -10328,3 +10328,36 @@ window.addEventListener('mousemove', e => {
 )
 code(Var)
 return
+
+csspinyinHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<div id="app">
+    <!-- 会多一个 ✖️ 清空图标 -->
+    <input type="search" id="input" placeholder="输入城市名称或拼音" />
+    
+    <ul>
+        <li data-search="重庆市 chongqing">重庆市</li>
+        <li data-search="哈尔滨市 haerbin">哈尔滨市</li>
+        <li data-search="长春市 changchun">长春市</li>
+        <li data-search="长沙市 changsha">长沙市</li>
+        <li data-search="上海市 shanghai">上海市</li>
+        <li data-search="杭州市 hangzhou">杭州市</li>
+    </ul>
+</div>
+<script>
+    const eleStyle = document.createElement('style')
+
+    document.head.appendChild(eleStyle)
+
+    input.addEventListener('input', function() {
+        const value = this.value.trim()
+        eleStyle.innerHTML = value ? '[data-search]:not([data-search*="' + value +'"]) { display: none } ' : ''
+    })
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

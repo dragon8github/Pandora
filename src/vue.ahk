@@ -2522,7 +2522,7 @@ this.$forceUpdate();
 code(Var)
 return
 
-::watchdeep::
+::watchd::
 ::deep.watch::
 ::deepwatch::
 ::deepw::
@@ -2663,6 +2663,22 @@ Var =
   state.%OutputVar% = %OutputVar%
   dispatch('list')
 },
+)
+code(Var)
+return
+
+::this.$watch::
+::$watch::
+Var =
+(
+this.$watch('caseMetricsAllTown', newV => {
+  console.log(20200324123043, newV)
+}, { immediate: true, deep: true })
+
+// 形式二...
+this.$watch(_ => this.obj['2020-03'], newV => {
+  console.log(20200324152933, newV)
+}, { immediate: true, deep: true })
 )
 code(Var)
 return

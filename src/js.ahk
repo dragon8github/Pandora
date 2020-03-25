@@ -3504,7 +3504,7 @@ axios.interceptors.response.use(res => {
         // 获取请求时间
         const date = dateYYYYMMDDHHmmss(Date.now())
         // 打印请求结果和详情
-        logs(`${note}${method.toUpperCase()}：${url}`, JSON.stringify({params: method === 'get' ? params : data , result: res.data, status }, null, '\t'))
+        logs(``${note}${method.toUpperCase()}：${url}``, JSON.stringify({params: method === 'get' ? params : data , result: res.data, status }, null, '\t'))
     }
     // 只返回 data 即可
     return res.data
@@ -5841,8 +5841,48 @@ axios({
 }).then(response => {
 	console.log(20181021225057, response)
 })
+---
+const axios = require('axios')
+
+// 根路径
+const __API__ = 'http://203.195.147.216:8199'
+
+// 公共参数
+const param = { timeStr: '2002-03' }
+
+// 请求拦截器
+axios.interceptors.request.use(config => {
+    // 叠加根路径
+    config.url = __API__ + config.url
+
+    // 超时为10秒
+    config.timeout = 5 * 1000
+
+    // 返回最终配置
+    return config
+})
+
+// 响应拦截器
+axios.interceptors.response.use(res => {
+    // 只返回 data 即可
+    return res.data
+}, err => {
+    // 如果响应成功但400之类的，那你需要 err.response，如果请求失败，那是没有 response 的
+    return Promise.reject(err)
+})
+
+const $GET = (url, params) => axios({ method: 'get', url, params })
+
+;(async function() {
+    try {
+        const data = await $GET('/dgmap/app/interface/townStreetCase', param)
+    } catch (err) {
+        // 从 axios 反馈的错误中，获取核心配置
+        const { url, method, params, data } = err.config
+    }
+}())
 )
-code(Var)
+txtit(Var)
 return
 
 ::axiosget::

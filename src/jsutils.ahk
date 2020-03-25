@@ -248,6 +248,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, killerQueen: 简单的超时关闭函数, utilsHandler
     Menu, utilsmy, Add, 仿 Echarts.visualMap 逻辑分组 + split分组, utilsHandler
     Menu, utilsmy, Add, like 函数多重筛选条件, utilsHandler
     Menu, utilsmy, Add, partial 偏应用（_bind）：自由占位符, utilsHandler
@@ -471,6 +472,44 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "killerQueen: 简单的超时关闭函数") {
+Var =
+(
+/**
+ * 简单的超时关闭函数 ...
+ *
+ * @param  {Function} 
+ * @param  {Function} 
+ * @param  {Number}   
+ *
+ * const close = killerQueen(
+ *   () => console.log('开启打火机'),
+ *   () => console.log('熄灭打火机'),
+ *   10000,
+ * )
+ */
+const killerQueen = (fn = () => {}, cancel = () => {}, time = 10000) => {
+    // 先执行操作
+    fn()
+
+    // 定时炸弹
+    const timer = setTimeout(() => {
+        // 败者食尘！
+        cancel()
+        // 消除痕迹
+        cancel = () => console.warn(`Bite The Dust`)
+    }, time)
+
+    return () => {
+        // 取消炸弹
+        clearTimeout(timer)
+        // 正常调用
+        cancel()
+    }
+}
 )
 }
 
