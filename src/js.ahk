@@ -728,7 +728,6 @@ var deepSet = (obj, path, v) => {
 }
 
 ---
-（已废弃，好像 $set 自动会形成递归，不需要这样刻意）
 // this.$deepSet(this.items, 'a.b.c.d.e', '123')
 // vue 专用深度 $set
 $deepSet(ref, path, value) {
@@ -759,7 +758,6 @@ $deepSet(ref, path, value) {
    return obj
 },
 ---
-（已废弃，好像 $set 自动会形成递归，不需要这样刻意）
 import Vue from 'vue'
 // mixin专用
 export const $deepSet = function (ref, path, value) {

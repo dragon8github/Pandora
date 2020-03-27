@@ -337,6 +337,7 @@ Gui, Pandora:Add, Text, gvuelistenhtml W180, vue $listen示例.html
 Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令.html
 Gui, Pandora:Add, Text, gzhilinghtml W180, 新建Vue指令实现拖拽.html
 Gui, Pandora:Add, Text, gVueComponentHtml W140, 新建vueComponent.html
+Gui, Pandora:Add, Text, gVueComponentHtml2 W140, 新建vueComponent2.html
 Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建vue-form.html
 Gui, Pandora:Add, Text, gVueAnimateHtml W140, 新建vueAnimate.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html

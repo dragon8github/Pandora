@@ -10361,3 +10361,76 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+VueComponentHtml2:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <component :is='cname' v-bind='params' balabala='~~~~~'></component> 
+        <button @click='handleClick'>动态组件</button>
+    </div>
+</body>
+<script>
+var abc = Vue.extend({
+    template: ``
+        <div>
+            <label>fuckyou</label> 
+
+            <p>{{ title }}</p>
+            <p>{{ count }}</p>
+            <p>{{ list }}</p>
+
+        </div>
+    ``,
+    data () {
+       return {
+           
+       }
+    },
+    props: {
+        title: { type: String },
+        count: { type: Number },
+        list: { type: Array },
+    },
+    mounted() {
+        console.log(20200327095111, JSON.stringify(this.$props))
+        console.log(20200327095111, JSON.stringify(this.$attrs))
+    }
+});
+
+Vue.component('abc', abc)
+
+// ------------------------------------------------------------------------------------
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+       cname: null,
+       params: null,
+    },
+    methods: {
+        handleClick () {
+            this.cname = 'abc'
+            this.params = { title: 'Lorem ipsum dolor sit amet', count: 110, list: [1,2,3,4] }
+        }
+    },
+    mounted () {
+        
+    }
+})
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
