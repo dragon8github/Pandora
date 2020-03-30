@@ -673,6 +673,10 @@ Gui, Pandora:Add, Link,, <a href="https://cssfx.dev/">（神器）效果大全�
 Gui, Pandora:Add, Text, W140 ys, 移动端UI框架：
 Gui, Pandora:Add, Link,, <a href="https://youzan.github.io/vant/#/zh-CN/button">有赞的Vant</a>
 
+Gui, Pandora:Add, Text, W140 ys, CMS内容管理系统：
+Gui, Pandora:Add, Link,, <a href="http://doc.cms.7yue.pro/lin/start/koa/frontend-demo.html#%E5%BB%BA%E7%AB%8B%E9%A1%B5%E9%9D%A2">基于Vue和koa</a>
+
+
 
 ;@vue
 

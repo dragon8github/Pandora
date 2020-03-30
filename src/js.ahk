@@ -3479,30 +3479,25 @@ export const request = async (url, options = {}) => {
 ---
 import Qs from 'qs'
 import axios from 'axios'
-import { dateYYYYMMDDHHmmss, logs, throttle } from './utils.js'
+import { logs, throttle } from './utils.js'
 
 const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/'
 
 // 是否需要打印请求日志
 const LOG = true
 
-// 链接与注释
-const URL_NOTES = {}
-
 // 响应拦截器
 axios.interceptors.response.use(res => {
     // 如果需要打印日志的话
     if (LOG) {
         // 获取请求配置
-        const { method, url, params, data, status } = res.config
+        const { method, url, params, data, status, __NOTE__ } = res.config
         // 获取参数
         const p = JSON.stringify(method === 'get' ? params : data)
         // 是否具备文本注释？
         const note = URL_NOTES[url + p] || ''
-        // 获取请求时间
-        const date = dateYYYYMMDDHHmmss(Date.now())
         // 打印请求结果和详情
-        logs(``${note}${method.toUpperCase()}：${url}``, JSON.stringify({params: method === 'get' ? params : data , result: res.data, status }, null, '\t'))
+        logs(``${__NOTE__}${method.toUpperCase()}：${url}``, JSON.stringify({params: method === 'get' ? params : data , result: res.data, status }, null, '\t'))
     }
     // 只返回 data 即可
     return res.data
@@ -3521,12 +3516,12 @@ axios.interceptors.request.use(config => {
     // 获取参数
     const p = JSON.stringify(method === 'get' ? params : data)
 
-    // 保存文本
-    URL_NOTES[url + p] = note
-
     // 过滤url的文本注释
     config.url = url
-       
+
+    // 保存文本
+    config.__NOTE__ = note
+
     // 返回最终配置
     return config
 })
@@ -5879,6 +5874,49 @@ const $GET = (url, params) => axios({ method: 'get', url, params })
         const { url, method, params, data } = err.config
     }
 }())
+---
+// https://juejin.im/post/5abe0f94518825558a06bcd9
+axios.interceptors.response.use(res => {
+    // ....
+}, error => {
+    const originalRequest = error.config
+
+    if (error.code == 'ECONNABORTED' && error.message.includes('timeout') && !originalRequest._retry) {
+        originalRequest._retry = true
+        return axios.request(originalRequest)
+    }
+})
+
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+
+// https://github.com/axios/axios/issues/164#issuecomment-327837467
+const reTry = (retryCount = 1, delay = 0) => async err => {
+    const config = err.config
+
+    // If config does not exist or the retry option is not set, reject
+    if(retryCount) return Promise.reject(err)
+    
+    // Set the variable for keeping track of the retry count
+    config.__retryCount = config.__retryCount || 0
+    
+    // Check if we've maxed out the total number of retries
+    if (config.__retryCount >= retryCount) return Promise.reject(err)
+
+    // Increase the retry count
+    config.__retryCount += 1
+    
+    // Delay
+    await new Promise(resolve => setTimeout(_ => resolve(), delay || 1))
+
+    // Return the promise in which recalls axios to retry the request
+    return axios(config)
+}
+
+// demo ...
+axios.interceptors.response.use(res => {
+    // ....
+}, reTry(4, 1000))
 )
 txtit(Var)
 return
@@ -7126,6 +7164,7 @@ return
     SendInput, text/plain
 return
 
+::.up::
 ::toup::
 ::todaxie::
 ::toda::
@@ -8192,6 +8231,7 @@ timer = null
 code(Var)
 Return
 
+::ctimei::
 ::ctimeri::
 ::cti::
 ::cleartimeri::
@@ -9635,6 +9675,7 @@ return
 
 
 
+::LRU::
 ::cache::
 ::cachemethod::
 ::cachefunc::
@@ -9678,7 +9719,7 @@ let fastFactorial = memoized(n => {
 });
 
 fastFactorial(5)
----
+################################################################
 /**
  * @func
  * @desc - 灵活使用闭包的概念。
@@ -9712,8 +9753,143 @@ b.setCache('foo', 'bar2');
 b.showAllCache();
 
  从输出的结果得知两者的闭包互不相干 */
+################################################################
+/**
+ * JavaScript 实现 LRU 缓存淘汰算法
+ * 
+ * https://github.com/vuejs/vue/blob/1.0/src/cache.js
+ * https://github.com/rsms/js-lru
+ * 缓存的大小有限，当缓存被用满时，哪些数据应该被清理出去，哪些数据应该被保留？
+ * 这就需要缓存淘汰策略来决定。常见的策略有三种：
+ * - 先进先出策略 FIFO （ First In ， First Out ）
+ * - 最少使用策略 LFU （ Least Frequently Used ）
+ * - 最近最少使用策略 LRU （ Least Recently Used ）
+ */
+class LRUCache {
+  constructor (limit) {
+    this.size = 0
+    this.limit = limit
+    this.head = this.tail = undefined
+    this._keymap = Object.create(null)
+  }
+
+  put (key, value) {
+    var removed
+
+    var entry = this.get(key, true)
+
+    if (!entry) {
+      if (this.size === this.limit) {
+        removed = this.shift()
+      }
+
+      entry = { key: key }
+
+      this._keymap[key] = entry
+
+      if (this.tail) {
+        this.tail.newer = entry
+        entry.older = this.tail
+      } else {
+        this.head = entry
+      }
+
+      this.tail = entry
+      this.size++
+    }
+
+    entry.value = value
+
+    return removed
+  }
+
+  shift() {
+    var entry = this.head
+
+    if (entry) {
+      this.head = this.head.newer
+      this.head.older = undefined
+      entry.newer = entry.older = undefined
+      this._keymap[entry.key] = undefined
+      this.size--
+    }
+
+    return entry
+  }
+
+  get (key, returnEntry) {
+    var entry = this._keymap[key]
+
+    if (entry === undefined) return
+
+    if (entry === this.tail) {
+      return returnEntry ? entry : entry.value 
+    }
+
+    // HEAD--------------TAIL
+    //   <.older   .newer>
+    //  <--- add direction --
+    //   A  B  C  <D>  E
+    if (entry.newer) {
+      if (entry === this.head) {
+        this.head = entry.newer
+      }
+      entry.newer.older = entry.older // C <-- E.
+    }
+
+    if (entry.older) {
+      entry.older.newer = entry.newer // C. --> E
+    }
+
+    entry.newer = undefined // D --x
+    entry.older = this.tail // D. --> E
+
+    if (this.tail) {
+      this.tail.newer = entry // E. <-- D
+    }
+
+    this.tail = entry
+
+    return returnEntry ? entry : entry.value
+  }
+}
+
+/**
+ * demo1：正常使用缓存示例
+ */
+var p = new LRUCache(10)
+
+for (var i = 1; i <= 10; i++) { p.put(i.toString(), i) }
+
+// 推入一个新数据
+p.put('11', 11)
+
+// 由于容量只有10个、且遵循先进先出的原则，所以 1 被淘汰了
+// => undefined
+console.log('demo1：', p.get('1'))  
+
+/**
+ * demo2：『最近最少使用策略』示例
+ */
+var p2 = new LRUCache(10)
+
+for (var i = 1; i <= 10; i++) { p2.put(i.toString(), i) }
+
+// 使用 '1' 来增加权重
+p2.get('1')
+
+// 推入一个新数据
+p2.put('11', 11)
+
+// 由于权重增加了，所以不会被删掉
+// => 1
+console.log('demo2：', p2.get('1'))
+
+// 紧随其后的 2 则被删除了
+// => undefined
+console.log('demo2：', p2.get('2'))
 )
-txtit(Var)
+txtit(Var, "################################################################")
 return
 
 ::$map::

@@ -802,7 +802,7 @@ Var =
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script src="https://cdn.staticfile.org/axios/0.19.0-beta.1/axios.min.js"></script>
+    <script src="https://libs.cdnjs.net/axios/0.19.2/axios.min.js"></script>
 </head>
 
 <body>

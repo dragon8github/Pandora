@@ -475,6 +475,7 @@ Var =
 )
 }
 
+
 if (v == "killerQueen: 简单的超时关闭函数") {
 Var =
 (
@@ -6741,6 +6742,91 @@ Var =
 const debug = (...args) => (console.log(...args), args[args.length - 1])
 
 const debugfn = (x, fn = y => y) => fn(x)
+)
+code(Var)
+return
+
+::loop2::
+Var =
+(
+/**
+ * 增强版定时器 ...
+ *
+ * const fn =  loop(() => console.log(123), 3000)
+ * setTimeout(fn.reStart, 5000)
+ */
+const loop = (fn = () => {}, time = 30 * 1000, loop = true) => {
+    // 定时器
+    let timer = setInterval(fn, time)
+    // reStart
+    return {
+        stop () {
+            // 杀死上一个定时器
+            clearInterval(timer)
+        },
+        start () {
+            // 重新开始
+            timer = setInterval(fn, time)
+        },
+        reStart () {
+            // 杀死上一个定时器
+            clearInterval(timer)
+            // 重新开始
+            timer = setInterval(fn, time)
+        },
+    }
+}
+)
+code(Var)
+return
+
+::retry::
+::axiostry::
+::axios.try::
+Var =
+(
+// https://juejin.im/post/5abe0f94518825558a06bcd9
+axios.interceptors.response.use(res => {
+    // ....
+}, error => {
+    const originalRequest = error.config
+
+    if (error.code == 'ECONNABORTED' && error.message.includes('timeout') && !originalRequest._retry) {
+        originalRequest._retry = true
+        return axios.request(originalRequest)
+    }
+})
+
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+
+// https://github.com/axios/axios/issues/164#issuecomment-327837467
+const reTry = (retryCount = 1, delay = 0) => async err => {
+    const config = err.config
+
+    // If config does not exist or the retry option is not set, reject
+    if(retryCount) return Promise.reject(err)
+    
+    // Set the variable for keeping track of the retry count
+    config.__retryCount = config.__retryCount || 0
+    
+    // Check if we've maxed out the total number of retries
+    if (config.__retryCount >= retryCount) return Promise.reject(err)
+
+    // Increase the retry count
+    config.__retryCount += 1
+    
+    // Delay
+    await new Promise(resolve => setTimeout(_ => resolve(), delay || 1))
+
+    // Return the promise in which recalls axios to retry the request
+    return axios(config)
+}
+
+// demo ...
+axios.interceptors.response.use(res => {
+    // ....
+}, reTry(4, 1000))
 )
 code(Var)
 return
