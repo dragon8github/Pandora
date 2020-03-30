@@ -5875,30 +5875,17 @@ const $GET = (url, params) => axios({ method: 'get', url, params })
     }
 }())
 ---
-// https://juejin.im/post/5abe0f94518825558a06bcd9
-axios.interceptors.response.use(res => {
-    // ....
-    return res
-}, error => {
-    const originalRequest = error.config
+// https://github.com/axios/axios/issues/164#issuecomment-327837467
+const match = (target, str_ary) => str_ary.some(str => target.includes(str))
 
-    if (error.code == 'ECONNABORTED' && error.message.includes('timeout') && !originalRequest._retry) {
-        originalRequest._retry = true
-        return axios.request(originalRequest)
-    }
-})
-
-//////////////////////////////////////////////
-/// 必须是 axios 1.9.2 以上的版本才支持自定义 config，否则会有 bug
-/// <script src="https://libs.cdnjs.net/axios/0.19.2/axios.min.js"></script>
-//////////////////////////////////////////////
+axios.defaults.timeout = 3000
 
 // https://github.com/axios/axios/issues/164#issuecomment-327837467
-const reTry = (retryCount = 1, delay = 0) => err => {
-    const config = err.config
+const reTry = (retryCount = 1, delay = 0) => async err => {
+    const { message, config } = err
 
-    // the retry option is not set, reject
-    if(!retryCount) return Promise.reject(err)
+    // match error 
+    if (!match(message, ["Network Error", "timeout"])) return Promise.reject(err)
     
     // Set the variable for keeping track of the retry count
     config.__retryCount = config.__retryCount || 0
@@ -5910,13 +5897,13 @@ const reTry = (retryCount = 1, delay = 0) => err => {
     config.__retryCount += 1
     
     // Delay
-    const wait = new Promise(resolve => setTimeout(_ => resolve(), delay || 1))
+    await new Promise(resolve => setTimeout(_ => resolve(), delay || 1))
 
     // Log
     console.warn('retry axios', config)
 
     // Return the promise in which recalls axios to retry the request
-    return wait.then(_ => axios(config))
+    return axios(config)
 }
 
 // demo ...
