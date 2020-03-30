@@ -6780,12 +6780,16 @@ const loop = (fn = () => {}, time = 30 * 1000, loop = true) => {
 code(Var)
 return
 
+::timeout::
 ::retry::
 ::axiostry::
 ::axios.try::
 Var =
 (
-// https://github.com/axios/axios/issues/164#issuecomment-327837467
+//////////////////////////////////////////////
+/// 必须是 axios 1.9.2 以上的版本才支持自定义 config，否则会有 bug
+/// <script src="https://libs.cdnjs.net/axios/0.19.2/axios.min.js"></script>
+//////////////////////////////////////////////
 const match = (target, str_ary) => str_ary.some(str => target.includes(str))
 
 axios.defaults.timeout = 3000
