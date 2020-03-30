@@ -5878,6 +5878,7 @@ const $GET = (url, params) => axios({ method: 'get', url, params })
 // https://juejin.im/post/5abe0f94518825558a06bcd9
 axios.interceptors.response.use(res => {
     // ....
+    return res
 }, error => {
     const originalRequest = error.config
 
@@ -5888,14 +5889,16 @@ axios.interceptors.response.use(res => {
 })
 
 //////////////////////////////////////////////
+/// 必须是 axios 1.9.2 以上的版本才支持自定义 config，否则会有 bug
+/// <script src="https://libs.cdnjs.net/axios/0.19.2/axios.min.js"></script>
 //////////////////////////////////////////////
 
 // https://github.com/axios/axios/issues/164#issuecomment-327837467
-const reTry = (retryCount = 1, delay = 0) => async err => {
+const reTry = (retryCount = 1, delay = 0) => err => {
     const config = err.config
 
-    // If config does not exist or the retry option is not set, reject
-    if(retryCount) return Promise.reject(err)
+    // the retry option is not set, reject
+    if(!retryCount) return Promise.reject(err)
     
     // Set the variable for keeping track of the retry count
     config.__retryCount = config.__retryCount || 0
@@ -5907,15 +5910,19 @@ const reTry = (retryCount = 1, delay = 0) => async err => {
     config.__retryCount += 1
     
     // Delay
-    await new Promise(resolve => setTimeout(_ => resolve(), delay || 1))
+    const wait = new Promise(resolve => setTimeout(_ => resolve(), delay || 1))
+
+    // Log
+    console.warn('retry axios', config)
 
     // Return the promise in which recalls axios to retry the request
-    return axios(config)
+    return wait.then(_ => axios(config))
 }
 
 // demo ...
 axios.interceptors.response.use(res => {
-    // ....
+    // ...
+    return res
 }, reTry(4, 1000))
 )
 txtit(Var)
