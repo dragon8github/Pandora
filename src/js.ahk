@@ -3111,6 +3111,17 @@ Var =
 code(Var)
 return
 
+>^/::
+Var = 
+(
+/**
+ * say something ...
+ *
+ */
+)
+code(Var)
+return
+
 ::lstest::
 ::lgtest::
 Var =

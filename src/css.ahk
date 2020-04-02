@@ -196,6 +196,8 @@
     Menu, Csssolution, Add, 文字Hover underline animation美化（从中间开始）, CssHandler
     Menu, Csssolution, Add, 文字Hover underline animation美化, CssHandler
     Menu, Csssolution, Add, 向overflow溢出元素添加渐变, CssHandler
+    Menu, Csssolution, Add, 简单的好看发光: box-shadow, CssHandler
+
     
     Menu, Csssolution, Add
     Menu, Csssolution, Add
@@ -261,6 +263,16 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "简单的好看发光: box-shadow") {
+Var =
+(
+transition: .3s all ease;
+cursor: pointer;
+box-shadow: 0 0 27px #2daebf;
+text-shadow: #0ff 0 0 10px, #0ff 0 0 20px, #ff00de 0 0 30px, #ff00de 0 0 40px, #ff00de 0 0 70px, #ff00de 0 0 80px, #ff00de 0 0 100px;
 )
 }
 

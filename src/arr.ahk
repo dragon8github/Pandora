@@ -22,6 +22,7 @@
     Menu, arrayMenu, Add, Math.max.apply 获取数组最大值, ForHandler
 	Menu, arrayMenu, Add, 类数组转数组：Array.prototype.slice.call(arguments), ForHandler
 	Menu, arrayMenu, Add, 二维数组转一维数组：Array.prototype.flat(maxDeep), ForHandler
+	Menu, arrayMenu, Add, ArrayAssgin: 数组模板替换合并, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -88,6 +89,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "ArrayAssgin: 数组模板替换合并") {
+_send("arrassgin", true, true)
+return
 }
 
 if (v == "sliceByRules：（月榕）将数组根据3:2:3:2的规矩切割") {
@@ -734,6 +740,49 @@ while(args.length) {
 
 	console.log(20200205212156, _args)
 }
+)
+code(Var)
+return
+
+::arrassgin::
+::assginarr::
+Var =
+(
+/**
+ * 原理：参照物（模板） + 替换 + 补漏 ...
+ *
+ * 1. 先创建一个标准参照物（模板）
+ * 2. 将改造者与参照物进行比对，替换 + 填空缺失的。
+ * 3. 可以自定义缺失的内容、不一定要以参照物的为准。
+ */
+const arrayAssign = (a, b) => a.map(a_target => b.find(b_target => b_target.time === a_target.time) || { data: 0, time: a_target.time})
+
+const ary_1 = [
+	{ data: 1, time: '2020/03/30 19:51:17' }, 
+	{ data: 2, time: '2020/03/30 19:51:29' }, 
+	{ data: 3, time: '2020/03/30 19:51:44' }, 
+	{ data: 4, time: '2020/03/30 19:51:56' }, 
+	{ data: 5, time: '2020/03/30 19:51:59' },  
+	{ data: 6, time: '2020/03/30 19:52:07' },
+]
+
+const ary_2 = [
+	{ data: 110, time: '2020/03/30 19:51:44' }, 
+	{ data: 120, time: '2020/03/30 19:52:07' },
+]
+
+const ary = arrayAssign(ary_1, ary_2, )
+
+console.log(ary)
+/**
+ * 期待输出：
+{ data: 0, time: '2020/03/30 19:51:17' }, 
+{ data: 0, time: '2020/03/30 19:51:29' }, 
+{ data: 110, time: '2020/03/30 19:51:44' }, 
+{ data: 0, time: '2020/03/30 19:51:56' }, 
+{ data: 0, time: '2020/03/30 19:51:59' },  
+{ data: 120, time: '2020/03/30 19:52:07' },
+ */
 )
 code(Var)
 return

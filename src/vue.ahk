@@ -80,6 +80,8 @@
   Menu, VueMenu, Add, props.sync与$emit('update'), VueHandler
   Menu, VueMenu, Add, 🚀 vue.directive 指令, VueHandler
   Menu, VueMenu, Add, 🐤 vue.rules 尝试建立一套验证规则体系, VueHandler
+  Menu, VueMenu, Add, 🎁 findComponentByName：寻找上下游组件, VueHandler
+  Menu, VueMenu, Add, 🔔 dispatch 和 broadcast: 跨组件通讯解决方案, VueHandler
   
   Menu, VueMenu, Add, vue 认知, :vuecognition
   Menu, VueMenu, Add, vue 必知必会, :vuebase
@@ -163,6 +165,16 @@ Var =
 )
 }
 
+if (v == "🔔 dispatch 和 broadcast: 跨组件通讯解决方案") {
+_send("dispatch", true, true)
+return
+}
+
+
+if (v == "findComponentByName：寻找上下游组件") {
+_send("findc", true, true)
+return
+}
 
 if (v == "vue 异步组件加载import") {
 _send("import.async", true, true)
@@ -3204,50 +3216,93 @@ methods: {
 code(Var)
 return
 
+::tongxin::
+::tongxun::
+::vue.chuanbo::
 ::dispatch:: 
 Var =
 (
 /**
- * https://github.com/ElemeFE/element/blob/dev/src/mixins/emitter.js#L12
- * this.dispatch('ElFormItem', 'el.form.change', [val]);
+ * 父组件示例：
+ *
+ * import Emitter from '@/mixins/emitter'
+ * 
+ * export default {
+ *   name: 'FatherName',
+ *   mixins: [ Emitter ],
+ *   methods: {
+ *      udpate() {
+ *          // 向子组件传播事件
+ *          // 参数1：子组件名  参数2：方法名  参数3：数据
+ *          this.broadcast('ChildName', 'fuckHandler', { value: 'shit god' })
+ *      }
+ *   },
+ *   mounted() {
+ *      this.$on('JOJOHandler', params => {
+ *          console.log(params) // => { value: 'DIO' }
+ *      })
+ *   },
+ * }
+------------------------------------------------------------------------------------
+ * 子组件示例：
+ *
+ * import Emitter from '@/mixins/emitter'
+ * 
+ * export default {
+ *   name: 'ChildName',
+ *   mixins: [ Emitter ],
+ *   methods() {
+ *        trigger() {
+ *            // 向父组件传播事件
+ *            // 参数1：父组件名  参数2：方法名  参数3：数据
+ *            this.dispatch('FatherName', 'JOJOHandler', { value: 'DIO' })
+ *        }
+ *   },
+ *   mounted () {
+ *       // 接受来自父组件的事件推送和参数
+ *       this.$on('fuckHandler', params => {
+ *           console.log(params) // => { value: 'shit god' }
+ *       }) 
+ *   },
+ * }
  */
- 
+################################################################
 function broadcast(componentName, eventName, params) {
-  this.$children.forEach(child => {
-    var name = child.$options.componentName;
+    this.$children.forEach(child => {
+        const name = child.$options.name
 
-    if (name === componentName) {
-      child.$emit.apply(child, [eventName].concat(params));
-    } else {
-      broadcast.apply(child, [componentName, eventName].concat([params]));
-    }
-  });
+        if (name === componentName) {
+            child.$emit.apply(child, [eventName].concat(params))
+        } else {
+            broadcast.apply(child, [componentName, eventName].concat([params]))
+        }
+    })
 }
 
 export default {
-  methods: {
-    dispatch(componentName, eventName, params) {
-      var parent = this.$parent || this.$root;
-      var name = parent.$options.componentName;
+    methods: {
+        dispatch(componentName, eventName, params) {
+            let parent = this.$parent || this.$root
+            let name = parent.$options.name
 
-      while (parent && (!name || name !== componentName)) {
-        parent = parent.$parent;
+            while (parent && (!name || name !== componentName)) {
+                parent = parent.$parent
 
-        if (parent) {
-          name = parent.$options.componentName;
+                if (parent) {
+                    name = parent.$options.name
+                }
+            }
+            if (parent) {
+                parent.$emit.apply(parent, [eventName].concat(params))
+            }
+        },
+        broadcast(componentName, eventName, params) {
+            broadcast.call(this, componentName, eventName, params)
         }
-      }
-      if (parent) {
-        parent.$emit.apply(parent, [eventName].concat(params));
-      }
-    },
-    broadcast(componentName, eventName, params) {
-      broadcast.call(this, componentName, eventName, params);
     }
-  }
-};
+}
 )
-code(Var)
+txtit(Var, "################################################################")
 Return
 
 ::v-for::
@@ -5326,4 +5381,150 @@ main.install = (Vue, options = {}) => {
 export default main
 )
 code(Var)
+return
+
+::finc::
+::findc::
+::findcmp::
+::findcomponent::
+::findcomponents::
+Var =
+(
+// 向上寻找组件
+const findComponentUpward = (ctx, name) => {
+    // ...
+    const names = typeof name === 'string' ? [name] : name
+
+    // ...
+    let p = ctx.$parent
+
+    // ...
+    let pname = p.$options.name
+
+    // ...
+    while (p && (!pname || names.indexOf(pname) < 0)) {
+        // ...
+        p = p.$parent
+
+        // ...
+        if (p) pname = p.$options.name
+    }
+    
+    // ...
+    return p
+}
+
+// Find components upward
+const findComponentsUpward = (context, componentName) => {
+  // ...
+    let parents = []
+
+    // ...
+    const parent = context.$parent
+
+    // ...
+    if (parent) {
+      // ...
+        if (parent.$options.name === componentName) parents.push(parent)
+
+        // ...
+        return parents.concat(findComponentsUpward(parent, componentName))
+    }
+
+    // ...
+    return []
+}
+
+---
+// 向下寻找一个组件
+const findComponentDownward = (ctx, componentName) => {
+    // ...
+    const childrens = ctx.$children
+
+    // ...
+    let children = null
+
+    // ...
+    if (childrens.length) {
+        // ...
+        childrens.forEach(child => {
+            // ...
+            const name = child.$options.name
+
+            // ...
+            if (name === componentName) children = child
+        })
+
+        // ...
+        for (let i = 0, len = childrens.length; i < len; i++) {
+            // ...
+            const child = childrens[i]
+
+            // ...
+            const name = child.$options.name
+
+            // ...
+            if (name === componentName) {
+                // ...
+                children = child
+
+                break
+            } else {
+                // poll...
+                children = findComponentDownward(child, componentName)
+
+                // ...
+                if (children) break
+
+            }
+        }
+    }
+
+    return children
+}
+
+// 向下寻找多个组件
+const findComponentsDownward = (ctx, componentName, components = []) => {
+    // ...
+    let childrens = ctx.$children
+
+    // ...
+    if (childrens.length) {
+        // ...
+        childrens.forEach(child => {
+            // ...
+            const name = child.$options.name
+
+            // ...
+            const childs = child.$children
+
+            // ...
+            if (componentName === name) components.push(child)
+
+            // ...
+            if (childs.length) {
+                // poll...
+                const findChilds = findComponentsDownward(child, componentName, components)
+
+                // ...
+                if (findChilds) components.concat(findChilds)
+            }
+        })
+    }
+
+    return components
+}
+---
+// Find brothers components
+const findBrothersComponents = (context, componentName, exceptMe = true) => {
+    let res = context.$parent.$children.filter(item => item.$options.name === componentName)
+
+    let index = res.findIndex(item => item._uid === context._uid)
+
+    if (exceptMe) res.splice(index, 1)
+
+    return res
+}
+)
+txtit(Var)
 return

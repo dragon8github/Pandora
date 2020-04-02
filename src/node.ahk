@@ -87,7 +87,7 @@
 
 	Menu, NodeMenu, Add, 'use strict';, NodeHandler
 	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
-	Menu, NodeMenu, Add, cnpm init -y && cnpm i http-server && node_modules/http-server/bin/http-server, NodeHandler
+	Menu, NodeMenu, Add, cnpm init -y && cnpm i http-server && node_modules/http-server/bin/http-server, NodeHandler2
 	Menu, NodeMenu, Add, os.EOL, NodeHandler
 	Menu, NodeMenu, Add, module.exports, NodeHandler
 	

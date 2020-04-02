@@ -1,5 +1,6 @@
 ﻿!u::
 
+	Menu, utilsTime, Add, 获取半小时前, utilsHandler
     Menu, utilsTime, Add, 获取当前时间的秒数, utilsHandler
     Menu, utilsTime, Add, 获取12345的时间选择器, utilsHandler
     Menu, utilsTime, Add, 获取指定时间戳, utilsHandler
@@ -475,6 +476,29 @@ Var =
 )
 }
 
+if (v == "获取半小时前") {
+Var =
+(
+// 获取当前和半小时前的数据
+const dateHHmmss = () => {
+    const date = new Date()
+    // 时
+    const hours = date.getHours()
+    // 分
+    const minu = date.getMinutes()
+    // 秒
+    const second = date.getSeconds()
+
+    // 设置半小时前
+    date.setMinutes(date.getMinutes() - 30)
+
+    // 获取半小时前
+    const _minu = date.getMinutes()
+    
+    return [[hours, minu, second].join(':'), [hours, _minu, second].join(':')]
+}
+)
+}
 
 if (v == "killerQueen: 简单的超时关闭函数") {
 Var =
@@ -3310,15 +3334,17 @@ return
 
 
 if (v == "用 IIFE 解决 setInterval 首次不执行的尴尬") {
-
 Var = 
 (
 (function(fn, t) {
-	// 立即执行一次，这也是这个IIFE的目的：为了解决 setInterval 首次不执行的尴尬
-	fn && fn()
-	// 返回计时器timer
-	return setInterval(fn, t)
-})(f, 6000)
+    // 立即执行一次，这也是这个IIFE的目的：为了解决 setInterval 首次不执行的尴尬
+    fn && fn()
+    // 返回计时器timer
+    return setInterval(fn, t)
+})(() => {
+    // your logic...
+
+}, 5 * 1000)
 )
 }
 
@@ -6581,8 +6607,35 @@ export default class Event {
         this.map = this.map.filter(_ => _.name != name)
     }
 }
+#################################
+/**
+ * import VueBus from './vue-bus'
+ * Vue.use(VueBus)
+ * 
+ * this.$bus.emit('add', num)
+ * this.$bus.on('add', num => console.log(num))
+ */
+const install = Vue => {
+    const Bus = new Vue({
+        methods: {
+            emit(event, ...args) {
+                this.$emit(event, ...args)
+            },
+            on(event, cllback) {
+                this.$on(event, cllback)
+            },
+            off(event, callback) {
+                this.$off(event, callback)
+            }
+        }
+    });
+
+    Vue.prototype.$bus = Bus
+}
+
+export default install;
 )
-code(Var)
+txtit(Var, "#################################")
 return
 
 ::on::

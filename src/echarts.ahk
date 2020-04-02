@@ -824,6 +824,11 @@ legend: {
 code(Var)
 return
 
+
+::echart.vi::
+::echart.visu::
+::echart.visual::
+::echart.visualMap::
 ::echarts.vi::
 ::echarts.visu::
 ::echarts.visual::

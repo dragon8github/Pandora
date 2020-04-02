@@ -314,6 +314,7 @@ Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：
+Gui, Pandora:Add, Link,, <a href="https://www.ghpym.com/">果核剥壳 - 破解软件</a>
 Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/docs/utility-first">tailwindcss</a>
 Gui, Pandora:Add, Link,, <a href="https://so.baideye.com/">白的夜</a>
 Gui, Pandora:Add, Link,, <a href="https://liulisusu.org/user">琉璃VPN</a>
