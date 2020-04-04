@@ -9090,6 +9090,19 @@ console.log(intersection(a, b))
 code(Var)
 return
 
+::desc::
+::asc::
+Var =
+(
+// 从大到小排序
+const desc = (a, b) => +b.count - +a.count
+
+// 从小到大排序
+const asc = (a, b) => +a.count - +b.count
+)
+code(Var)
+return
+
 ::sort::
 ::sortArr::
 ::Arrsort::
