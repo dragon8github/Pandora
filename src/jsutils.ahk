@@ -345,6 +345,11 @@
 
     Menu, utilsJstest, Add, 要匹配多个果然还是要用 match, utilsHandler
     Menu, utilsJstest, Add, //g.exec, utilsHandler
+
+    Menu, utilsJstest, Add
+    Menu, utilsJstest, Add
+
+    Menu, utilsJstest, Add, replace 与 回调函数, utilsHandler
     
     Menu, utilswebpack, Add, require.context, utilsHandler
     Menu, utilswebpack, Add, 异步引入：await import(/* webpackChunkName: 'lodash' */ 'lodash'), utilsHandler
@@ -417,7 +422,7 @@
     Menu, utilsMenu , Add, DOM 操作, :utilsDOM
     Menu, utilsMenu , Add, Position 操作, :utilsPosition
     Menu, utilsMenu , Add, Object 操作, :utilsObject
-    Menu, utilsMenu , Add, 正则表达式, :utilsJstest
+    Menu, utilsMenu , Add, 正则表达式 与 replace, :utilsJstest
     Menu, utilsMenu , Add, webpack与动态引入, :utilswebpack
     Menu, utilsMenu , Add, 时间相关工具, :utilsTime
     
@@ -473,6 +478,19 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "replace 与 回调函数") {
+Var =
+(
+// 回调函数只有匹配表达式才会触发，所以可以放心使用 args[1]
+ext.replace(/<(.+)>/, (...args) => {
+    // 获取 <title> 作为标题
+    this.levelTitle = args[1]
+    // 返回的内容等于替换的内容，我当然是替换为空了
+    return ''
+})
 )
 }
 
@@ -7150,6 +7168,20 @@ axios.interceptors.response.use(res => {
     // ...
     return res
 }, reTry(4, 1000))
+)
+code(Var)
+return
+
+::replace::
+Var =
+(
+// 回调函数只有匹配表达式才会触发，所以可以放心使用 args[1]
+ext.replace(/<(.+)>/, (...args) => {
+    // 获取 <title> 作为标题
+    this.levelTitle = args[1]
+    // 返回的内容等于替换的内容，我当然是替换为空了
+    return ''
+})
 )
 code(Var)
 return

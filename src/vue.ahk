@@ -22,6 +22,12 @@
   Menu, Vuerouter, Add, next() 的三种参数形态, VueHandler
   Menu, Vuerouter, Add, 路由验证token并跳转登录与重定向的套路, VueHandler
   Menu, Vuerouter, Add, 如果带参数 :id ，那么 children 不需要 /, VueHandler
+
+  Menu, Vuerouter, Add
+  Menu, Vuerouter, Add
+
+  Menu, Vuerouter, Add, 滚动行为：scrollBehavior, VueHandler
+
   
 
   Menu, VueMenu, Add, vuex.router, :Vuerouter
@@ -165,13 +171,34 @@ Var =
 )
 }
 
+
+
+if (v == "滚动行为：scrollBehavior") {
+Var = 
+(
+const router = new VueRouter({
+    routes: [...],
+    scrollBehavior(to, from, savedPosition) {
+      // 滚动到锚点
+      // return { selector: to.hash }
+
+      // 滚动到之前的位置
+      if (savedPosition) return savedPosition
+
+      // 滚动到顶部
+      return { x: 0, y: 0 }
+    }
+`)}
+)
+}
+
 if (v == "🔔 dispatch 和 broadcast: 跨组件通讯解决方案") {
 _send("dispatch", true, true)
 return
 }
 
 
-if (v == "findComponentByName：寻找上下游组件") {
+if (v == "🎁 findComponentByName：寻找上下游组件") {
 _send("findc", true, true)
 return
 }
@@ -1994,24 +2021,130 @@ methods: {
 if (v == "<transition>") {
 Var = 
 (
-<transition name="msgbox-bounce">
-  <div class="msgbox" v-show="value">
-     
-  </div>
-</transition>
+<!DOCTYPE html>
+<html lang="en">
 
-.msgbox-bounce-leave-active, .msgbox-bounce-enter-active {
-    transition: .3s all ease;
-}
-.msgbox-bounce-enter {
-  opacity: 0;
-  transform: translate3d(-50`%, -50`%, 0) scale(0.7);
-}
-.msgbox-bounce-leave-active {
-  opacity: 0;
-  transform: translate3d(-50`%, -50`%, 0) scale(0.9);
-}
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <style>
+
+    button {
+        position: absolute;
+        left: 50`%;
+        top: 50`%;
+        transform: translate(-50`%, -50`%);
+
+        width: 200px;
+        height: 200px;
+    }
+
+    .msgbox {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+
+    .slide-fade-enter-active {
+        transition: .3s all ease;
+    }
+
+    .slide-fade-leave-active {
+        transition: .8s all cubic-bezier(1.0, 0.5, 0.8, 1.0)
+    }
+
+    .slide-fade-enter,
+    .slide-fade-leave-to {
+        transform: translateX(100`%);
+        opacity: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <transition name="slide-fade">
+            <div class="msgbox" v-show="value"></div>
+        </transition>
+        <button @click='go'>button</button>
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        value: false
+    },
+    methods: {
+        go() {
+            this.value = !this.value
+        }
+    }
+})
+</script>
+
+</html>
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <style>
+    .msgbox {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        
+        position: absolute;
+        left: 50`%;
+        top: 50`%;
+        transform: translate(-50`%, -50`%);
+    }
+
+    .msgbox-bounce-leave-active, .msgbox-bounce-enter-active {
+        transition: .3s all ease;
+    }
+
+    .msgbox-bounce-enter {
+      opacity: 0;
+      transform: translate3d(-50`%, -50`%, 0) scale(0.7);
+    }
+
+    .msgbox-bounce-leave-active {
+      opacity: 0;
+      transform: translate3d(-50`%, -50`%, 0) scale(0.9);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <transition name="msgbox-bounce">
+            <div class="msgbox" v-show="value"></div>
+        </transition>
+        <button @click='go'>button</button>
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        value: false
+    },
+    methods: {
+        go() {
+            this.value = !this.value
+        }
+    }
+})
+</script>
+
+</html>
 )
+txtit(Var)
+return
 }
 
 if (v == "<transition-group>") {
@@ -3325,11 +3458,11 @@ var vue = new Vue({
         items: []
     },
     methods: {
-        handleClick: function () {
+        go () {
             
         }
     },
-    beforeMount: function () {
+    beforeMount () {
         
     }
 })

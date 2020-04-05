@@ -98,6 +98,7 @@
 	Menu, echartsAction, Add, 高亮节点：highlight, EventHandler
 
 
+	Menu, echartsEventMenu, Add, 柱状图轮播最佳实践, :echartsAction
 	Menu, echartsEventMenu, Add, myChart.dispatchAction, :echartsAction
 	Menu, echartsEventMenu, Add, echarts.init, EventHandler
 	Menu, echartsEventMenu, Add, echarts 通过dom获取echarts实例，批量监听resize, EventHandler
@@ -226,6 +227,48 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "柱状图轮播最佳实践") {
+Var =
+(
+watch: {
+    factoryRubbishWeight: {
+        deep: true,
+        immediate: true,
+        handler (newV, oldV) {
+            if (newV) {
+              this.poll(newV)
+            }
+        }
+    }
+},
+methods: {
+    poll (newV) {
+       const pages = division(newV, 6, [])
+
+       const len = pages.length
+
+       clearInterval(this.timer)
+
+       // 当前分页指针
+       let current = 0
+
+       this.timer = (function(fn, t) {
+           // 立即执行一次，这也是这个IIFE的目的：为了解决 setInterval 首次不执行的尴尬
+           fn && fn()
+           // 返回计时器timer
+           return setInterval(fn, t)
+       })(() => {
+           // your logic...
+           const data = pages[current++ `% len]
+
+           // 渲染 chart
+           this.renderChart(data)
+       }, 5 * 1000)
+    },
+}
 )
 }
 
