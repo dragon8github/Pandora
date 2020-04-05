@@ -249,13 +249,13 @@
     
     
     ; @my
+    Menu, utilsmy, Add, lazyExec: 影武者懒执行模式, utilsHandler
     Menu, utilsmy, Add, colorRange: 获取颜色范围，类似 echarts visualMap, utilsHandler
     Menu, utilsmy, Add, killerQueen: 简单的超时关闭函数, utilsHandler
     Menu, utilsmy, Add, 仿 Echarts.visualMap 逻辑分组 + split分组, utilsHandler
     Menu, utilsmy, Add, like 函数多重筛选条件, utilsHandler
     Menu, utilsmy, Add, partial 偏应用（_bind）：自由占位符, utilsHandler
     Menu, utilsmy, Add, 图片转base64:img2base64, utilsHandler
-    Menu, utilsmy, Add, 新的数组工具：maps, utilsHandler
     Menu, utilsmy, Add, 反转函数参数：我的函数我做主, utilsHandler
     Menu, utilsmy, Add, 经典 token 解决方案：cookie-token-http, utilsHandler
     Menu, utilsmy, Add, Promise.allSettled：Promise.all的升级版，忽视reject报错也执行, utilsHandler
@@ -479,6 +479,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "lazyExec: 影武者懒执行模式") {
+_send("lazyExec", true, true)
+return
 }
 
 if (v == "replace 与 回调函数") {
@@ -7182,6 +7187,80 @@ ext.replace(/<(.+)>/, (...args) => {
     // 返回的内容等于替换的内容，我当然是替换为空了
     return ''
 })
+)
+code(Var)
+return
+
+::lazyExec::
+Var =
+(
+// 影武者懒执行模式
+const lazyExec = obj => {
+    // 参数缓存器
+    const cache = {}
+
+    // 代理池
+    const proxy = {}
+
+    // 是否使用代理模式？
+    let isProxy = true
+
+    // 初始化 『缓存器』 和 『代理池』
+    for (const [key, val] of Object.entries(obj)) {
+        // 初始化 『缓存』
+        cache[key] = []
+
+        // 初始化 『代理』
+        /* fixbug：用 『状态isProxy』 来区分使用，而不是替换方法的引用，否则解构时会出现问题 */
+        proxy[key] = (...args) => isProxy ? cache[key].push(args) : obj[key](...args)
+    }
+
+    return {
+        // 影武者
+        proxy,
+        // 执行并且消灭代理
+        exec() {
+            // 关闭缓存模式
+            isProxy = false
+
+            // 看看有哪些缓存任务需要处理
+            for (const [key, val] of Object.entries(cache)) {
+                // 执行真身方法
+                val.length && val.map(v => obj[key](v))
+                // 清空缓存
+                cache[key] = []
+            }
+        }
+    }
+}
+
+
+const { exec, proxy } = lazyExec({
+    fuck (...args) {
+        console.log('fuck', ...args)
+    },
+    shit(...args) {
+        console.log('shit', ...args)
+    }
+})
+
+/* fixbug：用 『状态isProxy』 来区分使用，而不是替换方法的引用，否则解构时会出现问题 */
+const { fuck, shit } = proxy
+fuck('Mp')
+shit('God')
+
+console.log('--- 等待执行 ---')
+
+setTimeout(() => {
+    exec()
+
+    console.log('\r\n--- 执行后，未来的方法会立刻执行 ---\r\n')
+
+    fuck('甲')
+    fuck('乙')
+    fuck('丙')
+    fuck('丁')
+}, 1500)
 )
 code(Var)
 return
