@@ -1413,6 +1413,103 @@ return
 ::color::
 Var =
 (
+const colorRange = (colorList, min, max) => {
+    // 初始化透明度 rgba
+    // 虽然强制将 『透明度的单位』 和 『rgb颜色的255单位』 对齐很离谱
+    // 但其实是可以的，因为原理都是通过两个数值『相减』 得出 『距离』，然后再根据距离进行演变。
+    colorList = colorList.map(([r, g, b, a = 1]) => [r, g, b, a * 255])
+
+    // 提前准备好还原 Opacity 的工具
+    const restoreOpacity = ([r, g, b, a]) => [r, g, b, (a / 255).toFixed(2)]
+
+    // 获取距离
+    const distance = max - min
+
+    // 获取 『每个颜色之间的距离』
+    // 为什么要长度 -1 ？ 想想 『为什么说八岐大蛇是9个头？』 ,因为 『岐』 的意思是头与头之间的 『区间』
+    // Orochi，即八岐大蛇（Yamata no Orochi）是日本神话中的著名怪物
+    const Orochi = distance / (colorList.length - 1)
+
+    // 初始化所有的 『数值区间』 和 『颜色区间』
+    const { vSection, cSection } = colorList.reduce((p, c, i, a, next = a[i + 1]) => {
+        // 没有下一个了，说明是最后一个了
+        if (!next) return p
+
+        // 颜色区间
+        p.cSection.push([ c, next ])
+
+        // 数值区间
+        p.vSection.push([ min + Orochi * i, min + Orochi * (i + 1) ])
+
+        return p
+    }, { vSection: [], cSection: [] })
+
+
+    // 获取颜色的单位距离
+    const getUnitColor = ([r1, g1, b1, a1], [r2, g2, b2, a2], distance) => [
+        Math.abs(r1 - r2) / distance,
+        Math.abs(g1 - g2) / distance,
+        Math.abs(b1 - b2) / distance,
+        Math.abs(a1 - a2) / distance,
+    ]
+
+    return v => {
+        // ...
+        if (v <= min) return restoreOpacity(colorList[0])
+
+        // ...
+        if (v >= max) return restoreOpacity(colorList[colorList.length - 1])
+
+        // 获取 v 命中哪个 『数值区间』
+        const index = vSection.findIndex(([a, b]) => (v === a || v === b) || (v > a && v < b))
+
+        // 获取当前数值区间
+        const [leftV, rightV] = vSection[index]
+
+        // 获取当前颜色区间
+        const [leftC, rightC] = cSection[index]
+
+        // 获取该区间距离
+        const _distance = rightV - leftV
+
+        // 返回单位颜色
+        const unit_rgba = getUnitColor(leftC, rightC, _distance)
+
+        // 获得当前值与左界的距离（有点 margin/padding 的味道，命名参考 css grid 的 grid-gap）
+        const gap = v - leftV
+
+        // 步进的颜色 = 单位颜色 * 左界距离
+        const stepColor = unit_rgba.map(c => parseInt(c * gap))
+
+        // 最终颜色 = 左界颜色 + 步进颜色
+        const color = leftC.map((c, i) => c + stepColor[i])
+
+        // 还原 Opacity
+        return restoreOpacity(color)
+    }
+}
+
+// 颜色列表
+const colorList = [[0, 4, 156, 0.25], [23, 0, 241, 0.3], [0, 90, 255, 0.65], [0, 114, 255, 1]]
+
+// 数据
+const data = [{ name:'万江', count: 400 }, { name:'东坑', count: 300 }, { name:'东城', count: 890 }, { name:'中堂', count: 270 }, { name:'企石', count: 170 }, { name:'凤岗', count: 700 }, { name:'南城', count: 650 }, { name:'厚街', count: 950 }, { name:'塘厦', count: 810 }, { name:'大岭山', count: 425 }, { name:'大朗', count: 1200 }, { name:'寮步', count: 560 }, { name:'常平', count: 640 }, { name:'望牛墩', count: 200 }, { name:'松山湖', count: 220 }, { name:'桥头', count: 350 }, { name:'横沥', count: 380 }, { name:'沙田', count: 700 }, { name:'洪梅', count: 70 }, { name:'清溪', count: 450 }, { name:'石排', count: 400 }, { name:'石碣', count: 400 }, { name:'石龙', count: 170 }, { name:'茶山', count: 365 }, { name:'莞城', count: 330 }, { name:'虎门', count: 1300 }, { name:'谢岗', count: 170 }, { name:'道滘', count: 220 }, { name:'长安', count: 1345 }, { name:'高埗', count: 300 }, { name:'麻涌', count: 230 }, { name:'黄江', count: 330 }]
+
+// ...
+const _data =  data.map(_ => _.count)
+
+// 最大值 / 最小值
+const min = Math.min(..._data), max = Math.max(..._data)
+
+// ...
+const make = colorRange(colorList, min, max)
+
+// ...
+const finalData = data.map(item => Object.assign({}, item, { color: make(item.count) }))
+
+// ...
+console.log(finalData)
+---
 String.prototype.colorRgb = function() {
     var sColor = this.toLowerCase();
     if (sColor && /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/.test(sColor)) {
