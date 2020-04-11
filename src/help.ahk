@@ -1,4 +1,40 @@
-﻿::---::
+﻿
+!1::
+cs("dgdp")
+Sleep, 100
+Send, {tab}
+cs("ch#ks!690")
+return
+
+!2::
+cs("ljdp")
+Sleep, 100
+Send, {tab}
+cs("GzNhc#020")
+return
+
+!3::
+cs("visualuser")
+Sleep, 100
+Send, {tab}
+cs("Viuser@2020")
+return
+
+!4::
+cs("lizhaohong")
+Sleep, 100
+Send, {tab}
+cs("Lzh#2019@2020")
+return
+
+!5::
+cs("928532756@qq.com")
+Sleep, 100
+Send, {tab}
+cs("123456sb")
+return
+
+::---::
 Var =
 (
 ------------------------------------------------------------------------------------
@@ -972,27 +1008,6 @@ return
 :*:d]::  ; 此热字串通过后面的命令把 "]d" 替换成当前日期和时间.
 FormatTime, CurrentDateTime,, yyyy/MM/dd hh:mm:ss
 Send %CurrentDateTime%
-return
-
-!1::
-cs("dgdp")
-Sleep, 100
-Send, {tab}
-cs("ch#ks!690")
-return
-
-!2::
-cs("ljdp")
-Sleep, 100
-Send, {tab}
-cs("GzNhc#020")
-return
-
-!3::
-cs("psdemo")
-Sleep, 100
-Send, {tab}
-cs("iocadmin")
 return
 
 
