@@ -163,6 +163,7 @@
     Menu, CssLoading, Add, 页面阅读进度条, CssHandler
     
     
+    Menu, Csssolution, Add, css 经典flash不断闪过的光柱动画、可以配合骨架图使用, CssHandler
     Menu, Csssolution, Add, css 实现 echarts 简易饼图, CssHandler
     
     Menu, Csssolution, Add
@@ -264,6 +265,45 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "css 经典flash不断闪过的光柱动画、可以配合骨架图使用") {
+Var =
+(
+body {
+    animation: flush 2s linear infinite;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100`%;
+    z-index: 9999;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .85) 50`%, rgba(255, 255, 255, 0) 100`%);
+}
+
+@keyframes flush {
+    0`% { left: -100`% }
+    50`% { left: 0 }
+    100`% { left: 100`% }
+}
+---
+额外知识，骨架屏示例
+
+div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9998;
+    background-repeat: no-repeat !important;
+    background-size: 100`% auto !important;
+    /* 这是一个骨架图图片 */
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABGUAAAmEBAMAAABeC86KAAAAG1BMV…yLZjinGTTDohnOaQbNsGiGc5pBMyya4Zxm0AyLZjj3u2Y+a4V74MREbVoAAAAASUVORK5CYII=) !important;
+    background-color: #fff !important;
+}
+)
+txtit(Var)
+return
 }
 
 if (v == "简单的好看发光: box-shadow") {
@@ -4208,15 +4248,11 @@ Var =
 code(Var)
 return
 
-::`:`:a::
-::`:a::
+
 ::`:`:after::
-::`:after::
-::css.after::
-::&`:`:after::
 Var =
 (
-&::after {
+::after {
     @include ycenter;
     content: '';
     left: 0;

@@ -19,6 +19,7 @@
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
 	
+    Menu, arrayMenu, Add, 数组移位：arrayMove, ForHandler
     Menu, arrayMenu, Add, Math.max.apply 获取数组最大值, ForHandler
 	Menu, arrayMenu, Add, 类数组转数组：Array.prototype.slice.call(arguments), ForHandler
 	Menu, arrayMenu, Add, 二维数组转一维数组：Array.prototype.flat(maxDeep), ForHandler
@@ -88,6 +89,23 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "数组移位：arrayMove") {
+Var =
+(
+function arrayMove(arr, previousIndex, newIndex) {
+  const array = arr.slice(0);
+  if (newIndex >= array.length) {
+    let k = newIndex - array.length;
+    while (k-- + 1) {
+      array.push(undefined);
+    }
+  }
+  array.splice(newIndex, 0, array.splice(previousIndex, 1)[0]);
+  return array;
+}
 )
 }
 

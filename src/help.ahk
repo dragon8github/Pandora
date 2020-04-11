@@ -29,7 +29,18 @@ return
 
 >!c::
 WinGetTitle, title, A
-code(title)
+if (InStr(title, "Chrome")) {
+    Clipboard := 
+    Send, ^l
+    Sleep, 50
+    Send, ^c
+    ClipWait
+    Clipboard := title . "`r`n" . Clipboard
+    ToolTip, 复制成功
+} else {
+    code(title)
+}
+
 return
 
 +v::

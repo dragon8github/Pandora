@@ -123,23 +123,25 @@ Gui, Pandora:Add, Text, gAllSearchA W120 Section xs yp+40, 搜索引擎类:
 Gui, Pandora:Add, Checkbox, gMySubroutine HwndMyEditHwnd vbd, 百度
 Gui, Pandora:Add, Checkbox, vdoge, doge
 Gui, Pandora:Add, Checkbox, vnpm, npm
+Gui, Pandora:Add, Checkbox, vcnpm, cnpm
 Gui, Pandora:Add, Checkbox, vgoogle, Google
 Gui, Pandora:Add, Checkbox, vgithub Checked, Github
 Gui, Pandora:Add, Checkbox, vso, Stack Overflow
 Gui, Pandora:Add, Checkbox, vsegmentfault, SegmentFault
 Gui, Pandora:Add, Checkbox, vtoutiao, 今日头条
 Gui, Pandora:Add, Checkbox, vtoutiao2, 头条搜索
+Gui, Pandora:Add, Checkbox, vdasheng, 大圣网盘搜索
 
 
 Gui, Pandora:Add, Text, gAllSearchB W120 ys, 翻译类:
+Gui, Pandora:Add, Checkbox, vdeepL, DeepL  
 Gui, Pandora:Add, Checkbox, vbdfy, 百度翻译   
 Gui, Pandora:Add, Checkbox, vyoudaofy, 有道翻译
 Gui, Pandora:Add, Checkbox, vgooglefanyi, Google翻译
 Gui, Pandora:Add, Checkbox, vjinshanciba, 金山词霸
-Gui, Pandora:Add, Checkbox, vhaicifanyi, 词海翻译
 
 
-Gui, Pandora:Add, Text, gAllSearchC W90 Section xs y+100, 音乐类:
+Gui, Pandora:Add, Text, gAllSearchC W90 Section xs y+140, 音乐类:
 Gui, Pandora:Add, Checkbox, vwy, 网易云音乐   
 Gui, Pandora:Add, Checkbox, vqq, QQ音乐
 Gui, Pandora:Add, Checkbox, vdog, 酷狗音乐
@@ -318,6 +320,9 @@ Gui, Pandora:Add, Link,, <a href="https://www.ghpym.com/">果核剥壳 - 破解�
 Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/docs/utility-first">tailwindcss</a>
 Gui, Pandora:Add, Link,, <a href="https://so.baideye.com/">白的夜</a>
 Gui, Pandora:Add, Link,, <a href="https://liulisusu.org/user">琉璃VPN</a>
+Gui, Pandora:Add, Link,, <a href="https://medium.com/@tarkus">medium</a>
+Gui, Pandora:Add, Link,, <a href="https://36dcup.net/">36dcup</a>
+
 
 
 ;@1
@@ -344,6 +349,8 @@ Gui, Pandora:Add, Text, gVueAnimateHtml W140, 新建vueAnimate.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
 Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group列表
 Gui, Pandora:Add, Text, gcsspinyinHtml W180,css正则匹配选择器实现拼音搜索
+Gui, Pandora:Add, Text, gdomshengyin W180,只要 dom 改变就会发出声音
+
 
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html

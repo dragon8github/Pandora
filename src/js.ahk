@@ -1,4 +1,66 @@
-﻿
+﻿::gulp::
+Var =
+(
+import run from './run'
+
+async function clean() {
+  // ...
+}
+
+async function copy() {
+  // ...
+}
+
+async function bundle() {
+  // ...
+}
+
+;(async function(){
+  await run(clean)
+  await run(copy)
+  await run(bundle)
+}())
+---
+// https://medium.com/swlh/you-might-not-need-gulp-js-89a0220487dd
+function format(time) {
+  return time.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1')
+}
+
+async function run(fn, options) {
+  const start = new Date()
+  console.log(`[${format(start)}] Starting '${fn.name}'...`)
+  await fn(options)
+  const end = new Date()
+  const time = end.getTime() - start.getTime()
+  console.log(`[${format(end)}] Finished '${fn.name}' after ${time} ms`)
+}
+
+if (process.mainModule.children.length === 0 && process.argv.length > 2) {
+  delete require.cache[__filename]
+  const module = process.argv[2]
+  run(require('./' + module + '.js')).catch(err => console.error(err.stack))
+}
+
+export default run
+---
+{
+  "name": "not-need-gulp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node -r esm ./build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}
+)
+txtit(Var)
+return
+
 ::delay::
 Var =
 (
@@ -8875,6 +8937,13 @@ var random = function(min, max) {
     }
     return min + Math.floor(Math.random() * (max - min + 1));
 };
+
+// 费雪耶兹（Fisher–Yates） 也被称作高纳德（ Knuth）随机置乱算法
+function shuffle(target) {
+    var j, x, i = target.length;
+    for (; i > 0; j = parseInt(Math.random() * i), x = target[--i], target[i] = target[j], target[j] = x) {}
+    return target
+}
 */
 // ~~(0 + Math.random() * 51)      // 0-50
 // parseInt(Math.random() * 5)     // 0-4
@@ -9108,6 +9177,7 @@ Return
 ::randary::
 ::randarr::
 ::shuffle::
+::suiji::
 Var = 
 (
 // 费雪耶兹（Fisher–Yates） 也被称作高纳德（ Knuth）随机置乱算法

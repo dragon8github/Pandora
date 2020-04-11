@@ -98,6 +98,7 @@
 	Menu, echartsAction, Add, 高亮节点：highlight, EventHandler
 
 
+	Menu, echartsEventMenu, Add, 阈值线最佳实践, :echartsAction
 	Menu, echartsEventMenu, Add, 柱状图轮播最佳实践, :echartsAction
 	Menu, echartsEventMenu, Add, myChart.dispatchAction, :echartsAction
 	Menu, echartsEventMenu, Add, echarts.init, EventHandler
@@ -227,6 +228,26 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "阈值线最佳实践") {
+Var =
+(
+// https://gallery.echartsjs.com/editor.html?c=x7AFiJ06e
+const getWarnLineConfig = value => ({
+    type: 'line',
+    symbol: 'circle',
+    symbolSize: 10,
+    smooth: true,
+    animationDuration: 2000,
+    markLine: { silent: true, data: [{ yAxis: value }] },
+    markPoint: {
+        data: [{ name: '触发', value: value, coord: [0, 120] }],
+        label: { show: true, align: 'center', color: 'WHITE', fontWeight: 100, formatter: '{b}'},
+        itemStyle: { color: {type: 'radial', x: 0.4, y: 0.4, r: 0.9, colorStops: [{offset: 0, color: '#51e0a2'}, {offset: 1, color: 'rgb(33,150,243)'}], globalCoord: false }, shadowColor: 'rgba(0, 0, 0, 0.5)', shadowBlur: 10, },
+    }
+})
 )
 }
 

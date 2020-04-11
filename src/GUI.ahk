@@ -23,11 +23,17 @@ CancelSelect:
 	GuiControl,, bd, 0
 	GuiControl,, google, 0
     GuiControl,, npm, 0
+    GuiControl,, cnpm, 0
 	GuiControl,, so, 0
 	GuiControl,, github, 0
 	GuiControl,, segmentfault, 0
 	GuiControl,, cylee, 0
+    GuiControl,, toutiao, 0
+    GuiControl,, toutiao2, 0
+    GuiControl,, dasheng, 0
 	
+
+    GuiControl,, deepL, 0
 	GuiControl,, bdfy, 0
 	GuiControl,, youdaofy, 0
 	GuiControl,, googlefanyi, 0
@@ -76,20 +82,24 @@ AllSearchA:
 		GuiControl,, bd, 1 
 		GuiControl,, google, 1 
         GuiControl,, npm, 1 
+        GuiControl,, cnpm, 1 
 		GuiControl,, so, 1 
 		GuiControl,, github, 1 
 		GuiControl,, segmentfault, 1 
         GuiControl,, toutiao, 1
         GuiControl,, toutiao2, 1
+        GuiControl,, dasheng, 1
 	} else {
 		GuiControl,, bd, 0
 		GuiControl,, google, 0
         GuiControl,, npm, 0
+        GuiControl,, cnpm, 0
 		GuiControl,, so, 0
 		GuiControl,, github, 0
 		GuiControl,, segmentfault, 0
         GuiControl,, toutiao, 0
         GuiControl,, toutiao2, 0
+        GuiControl,, dasheng, 0
 	}
 return
 
@@ -97,12 +107,14 @@ isAllSearchB := false
 AllSearchB:
 	isAllSearchB := !isAllSearchB
 	if (isAllSearchB) {
-		GuiControl,, bdfy, 1 
+		GuiControl,, deepL, 1
+        GuiControl,, bdfy, 1 
 		GuiControl,, youdaofy, 1 
 		GuiControl,, googlefanyi, 1 
 		GuiControl,, jinshanciba, 1 
 	} else {
-		GuiControl,, bdfy, 0
+		GuiControl,, deepL, 0
+        GuiControl,, bdfy, 0
 		GuiControl,, youdaofy, 0
 		GuiControl,, googlefanyi, 0
 	}
@@ -198,6 +210,11 @@ Fuck:
 		RUN, https://www.npmjs.com/search?q=%SearchContent%
 	}
 
+    ; cnpm
+    if (cnpm == 1) {
+        RUN, http://npm.taobao.org/package/%SearchContent%
+    }
+
 	; Github
 	if (github == 1) {
 		RUN, https://github.com/search?q=%SearchContent%
@@ -222,7 +239,17 @@ Fuck:
 	if (toutiao == 1) {
 		RUN, https://www.toutiao.com/search/?keyword=%SearchContent%
 	}
-    
+
+    ; 大圣网盘
+    if (toudashengtiao == 1) {
+        RUN, https://www.dashengpan.com/search?keyword=%SearchContent%
+    }
+
+    ; deepL
+    if (deepL == 1) {
+        RUN, https://www.deepl.com/translator#en/zh/%SearchContent%
+    }
+
 	; 百度翻译   
 	if (bdfy == 1) {
 		RUN, http://fanyi.baidu.com/translate?aldtype=16047&query=%SearchContent%&keyfrom=baidu&smartresult=dict&lang=auto2zh#zh/en/%SearchContent%
@@ -1298,7 +1325,7 @@ FileAppend,
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
     var option = {
-        grid: { left: '12`%', right: '3`%', bottom: '35px', top: '35px', },
+        grid: { left: '12`%', right: '3`%', bottom: '35px', top: '55px', },
         xAxis: [{
             type: 'category',
             axisTick: { show: false },
@@ -1313,6 +1340,12 @@ FileAppend,
         }],
         yAxis: [{
             type: 'value',
+            name: '当日垃圾进场图',
+            nameTextStyle: {
+                color: '#f29f02',
+                fontSize: 16,
+                padding: [0, 30, 10, 0]
+            },
             splitLine: {
                 lineStyle: {
                     color: 'rgba(52,73,94, .23)',
@@ -10427,6 +10460,65 @@ var vue = new Vue({
     mounted () {
         
     }
+})
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+domshengyin:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model='text' :source='text'>
+        <button @click='handleClick'>开启声音</button>
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        text: '',
+    },
+    methods: {
+        handleClick() {
+            const audioCtx = new(window.AudioContext || window.webkitAudioContext)()
+            const observer = new MutationObserver(function(mutationsList) {
+                const oscillator = audioCtx.createOscillator()
+
+                oscillator.connect(audioCtx.destination)
+                oscillator.type = "sine"
+                oscillator.frequency.setValueAtTime(
+                    Math.log(mutationsList.length + 5) * 880,
+                    audioCtx.currentTime,
+                `)
+
+                oscillator.start()
+                oscillator.stop(audioCtx.currentTime + 0.01)
+            })
+
+            observer.observe(document, {
+                attributes: true,
+                childList: true,
+                subtree: true,
+                characterData: true,
+            })
+        }
+    },
 })
 </script>
 </html>
