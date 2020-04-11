@@ -34,6 +34,9 @@ FileDelete, .\src\*.bak
 #Include src/Card.ahk	      ; card
 /**//////////////////////////////////////////////
 */
+#Include src/WinClip/WinClipAPI.ahk
+#Include src/WinClip/WinClip.ahk
+
 #Include src/uploadFile.ahk	      ; uploadFile.ahk
 #Include src/Gdip.ahk             ; Gdip
 #Include src/JSON.ahk	          ; JSON Script
@@ -81,4 +84,3 @@ FileDelete, .\src\*.bak
 !F12::
 	Suspend
 return
-

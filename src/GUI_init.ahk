@@ -268,6 +268,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热�
 Gui, Pandora:Add, Link,, <a href="https://www.24s.net/">24s付费视频盗版</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/?s=JSON">ahk中文社区</a>
+Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍

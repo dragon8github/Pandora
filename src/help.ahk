@@ -71,8 +71,10 @@ if (InStr(title, "Chrome")) {
     Sleep, 50
     Send, ^c
     ClipWait
-    Clipboard := title . "`r`n" . Clipboard
+    html := "<a href='" . Clipboard . "'>" . title . "</a>"
+    WinClip.SetHTML(html)
     ToolTip, 复制成功
+    SetTimer, RemoveToolTip, -500
 } else {
     code(title)
 }
