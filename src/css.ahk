@@ -29,6 +29,29 @@
     Menu, NthMenu, Add, :nth-child(5+n) 第5个元素后边所有, CssHandler
     Menu, NthMenu, Add, :not(:last-child), nthHandle
 
+
+
+    Menu, coolcss, Add, css : foucs-whitin 父辈元素聚焦选择器（很有用）, nthHandle
+    Menu, coolcss, Add, css : 更优雅的纯下划线（不会太挤）, nthHandle
+    Menu, coolcss, Add, css ：蚀刻文字（十分有感觉）, nthHandle
+    Menu, coolcss, Add, css ：波动动画，可以作为loading和提示, nthHandle
+    Menu, coolcss, Add, css： 简单的 switch 组件, nthHandle
+
+
+    Menu, coolcss, Add
+    Menu, coolcss, Add
+
+
+    Menu, coolcss, Add, css: checkbox 交互以及列表分批延迟动画解决方案（很实用的）, nthHandle
+    Menu, coolcss, Add, css: 实用动画 border, nthHandle
+    Menu, coolcss, Add, css: 隐藏元素但不占据物理空间，但需要能检索到元素？, nthHandle
+    Menu, coolcss, Add, css: 很好玩的 hover 光球随鼠标移动交互效果, nthHandle
+    Menu, coolcss, Add, css: ≡ 变成 × 的汉堡按钮变形动画, nthHandle
+    Menu, coolcss, Add, css: display: table 垂直水平居中方案, nthHandle
+    Menu, coolcss, Add, css： 又一个极简 loading（但是原理很搞笑）, nthHandle
+    Menu, coolcss, Add, css：更优雅的 underline 下划线动画, nthHandle
+    Menu, coolcss, Add, css: 优雅的 not 选择器实现分割线（实用）, nthHandle
+
     
     Menu, transitionHandler, Add, Linear：平淡无奇的人生 , CssHandler   
     Menu, transitionHandler, Add, ease-in 表示属性值先以较慢速度变化，然后速度越来越快，就好比一个球从高处落下，一开始下降的速度很慢，然后越来越快。 , CssHandler   
@@ -235,6 +258,7 @@
     Menu, CssMenu, Add, Loading与进度条, :CssLoading
     Menu, CssMenu, Add, css Awesome, :Csssolution
     Menu, CssMenu, Add, :nth-child 选择器 和 :not 选择器, :NthMenu
+    Menu, CssMenu, Add, cool css, :coolcss
 
 	Menu, CssMenu, Show
     
@@ -243,6 +267,7 @@
     Menu, CsstransformHandler, DeleteAll
     Menu, cssknow, DeleteAll
     Menu, CssAnimateHandler, DeleteAll
+    Menu, coolcss, DeleteAll
     
 return
 
@@ -264,6 +289,467 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "css : foucs-whitin 父辈元素聚焦选择器（很有用）") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/focus-within/
+<div class="focus-within">
+  <form>
+    <label for="given_name">Given Name:</label> <input id="given_name" type="text" /> <br />
+    <label for="family_name">Family Name:</label> <input id="family_name" type="text" />
+  </form>
+</div>
+
+form {
+  border: 3px solid #2d98da;
+  color: #000000;
+  padding: 4px;
+}
+
+form:focus-within {
+  background: #f7b731;
+  color: #000000;
+}
+)
+}
+
+if (v == "css : 更优雅的纯下划线（不会太挤）") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/pretty-text-underline
+<p class="pretty-text-underline">Pretty text underline without clipping descending letters.</p>
+
+.pretty-text-underline {
+  display: inline;
+  text-shadow: 1px 1px #f5f6f9, -1px 1px #f5f6f9, -1px -1px #f5f6f9, 1px -1px #f5f6f9;
+  background-image: linear-gradient(90deg, currentColor 100`%, transparent 100`%);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100`% 1px;
+}
+
+.pretty-text-underline::-moz-selection {
+  background-color: rgba(0, 150, 255, 0.3);
+  text-shadow: none;
+}
+
+.pretty-text-underline::selection {
+  background-color: rgba(0, 150, 255, 0.3);
+  text-shadow: none;
+}
+)
+}
+
+if (v == "css ：蚀刻文字（十分有感觉）") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/etched-text/
+<p class="etched-text">I appear etched into the background.</p>
+.etched-text {
+  text-shadow: 0 2px white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #b8bec5;
+}
+)
+}
+
+if (v == "css ：波动动画，可以作为loading和提示") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/pulse-loader
+<div class="ripple-loader">
+  <div></div>
+  <div></div>
+</div>
+.ripple-loader {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.ripple-loader div {
+  position: absolute;
+  border: 4px solid #76ff03;
+  border-radius: 50`%;
+  animation: ripple-loader 1s ease-out infinite;
+}
+
+.ripple-loader div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+@keyframes ripple-loader {
+  0`% {top: 32px; left: 32px; width: 0; height: 0; opacity: 1; }
+  100`% {top: 0; left: 0; width: 64px; height: 64px; opacity: 0; }
+}
+)
+}
+
+if (v == "css： 简单的 switch 组件") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/toggle-switch
+<input type="checkbox" id="toggle" class="offscreen" /> <label for="toggle" class="switch"></label>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+
+.switch::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  background-color: white;
+  top: 1px;
+  left: 1px;
+  transition: all 0.3s;
+}
+
+input[type='checkbox']:checked + .switch::after {
+  transform: translateX(20px);
+}
+
+input[type='checkbox']:checked + .switch {
+  background-color: #7983ff;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+)
+}
+
+if (v == "css: checkbox 交互以及列表分批延迟动画解决方案（很实用的）") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/staggered-animation
+<div class="container">
+  <input type="checkbox" name="menu" id="menu" class="menu-toggler">
+  <label for="menu" class="menu-toggler-label">Menu</label>
+  <ul class="stagger-menu">
+    <li style="--i: 0">Home</li>
+    <li style="--i: 1">Pricing</li>
+    <li style="--i: 2">Account</li>
+    <li style="--i: 3">Support</li>
+    <li style="--i: 4">About</li>
+  </ul>
+</div>
+.container {
+  overflow-x: hidden;
+  width: 100`%;
+}
+
+.menu-toggler {
+  display: none;
+}
+
+.menu-toggler-label {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.stagger-menu {
+  list-style-type: none;
+  margin: 16px 0;
+  padding: 0;
+}
+
+.stagger-menu li {
+  margin-bottom: 8px;
+  font-size: 18px;
+  opacity: 0;
+  transform: translateX(100`%);
+  transition-property: opacity, transform;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.750, -0.015, 0.565, 1.055);
+}
+
+.menu-toggler:checked ~ .stagger-menu li {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: calc(0.055s * var(--i));
+}
+)
+}
+
+if (v == "css: 实用动画 border") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/button-border-animation
+<div class="button-border"><button class="button">Submit</button></div>
+.button {
+  background-color: #c47135;
+  border: none;
+  color: #ffffff;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+}
+
+.button:before,
+.button:after {
+  border: 0 solid transparent;
+  transition: all 0.25s;
+  content: '';
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+
+.button:before {
+  border-top: 2px solid #c47135;
+  left: 0px;
+  top: -5px;
+}
+
+.button:after {
+  border-bottom: 2px solid #c47135;
+  bottom: -5px;
+  right: 0px;
+}
+
+.button:hover {
+  background-color: #c47135;
+}
+
+.button:hover:before,
+.button:hover:after {
+  height: 100`%;
+  width: 100`%;
+}
+)
+}
+
+if (v == "css: 隐藏元素但不占据物理空间，但需要能检索到元素？") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/offscreen/
+.offscreen {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+)
+}
+
+if (v == "css: 很好玩的 hover 光球随鼠标移动交互效果") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/mouse-cursor-gradient-tracking
+<button class="mouse-cursor-gradient-tracking">
+  <span>Hover me</span>
+</button>
+.mouse-cursor-gradient-tracking {
+  position: relative;
+  background: #7983ff;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+}
+
+.mouse-cursor-gradient-tracking span {
+  position: relative;
+}
+
+.mouse-cursor-gradient-tracking::before {
+  --size: 0;
+  content: '';
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle closest-side, pink, transparent);
+  transform: translate(-50`%, -50`%);
+  transition: width 0.2s ease, height 0.2s ease;
+}
+
+.mouse-cursor-gradient-tracking:hover::before {
+  --size: 200px;
+}
+
+var btn = document.querySelector('.mouse-cursor-gradient-tracking')
+btn.onmousemove = function(e) {
+  var rect = e.target.getBoundingClientRect()
+  var x = e.clientX - rect.left
+  var y = e.clientY - rect.top
+  btn.style.setProperty('--x', x + 'px')
+  btn.style.setProperty('--y', y + 'px')
+}
+)
+}
+
+if (v == "css: ≡ 变成 × 的汉堡按钮变形动画") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/hamburger-button
+<div class="hamburger-menu">
+  <div class="bar top"></div>
+  <div class="bar middle"></div>
+  <div class="bar bottom"></div>
+</div>
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 2.5rem;
+  width: 2.5rem;
+  cursor: pointer;
+}
+
+.hamburger-menu .bar {
+  height: 5px;
+  background: black;
+  border-radius: 5px;
+  margin: 3px 0px;
+  transform-origin: left;
+  transition: all 0.5s;
+}
+
+.hamburger-menu:hover .top {
+  transform: rotate(45deg);
+}
+
+.hamburger-menu:hover .middle {
+  opacity: 0;
+}
+
+.hamburger-menu:hover .bottom {
+  transform: rotate(-45deg);
+}
+)
+}
+
+if (v == "css: display: table 垂直水平居中方案") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/display-table-centering
+<div class="container">
+  <div class="center"><span>Centered content</span></div>
+</div>
+.container {
+  border: 1px solid #333;
+  height: 250px;
+  width: 250px;
+}
+
+.center {
+  display: table;
+  height: 100`%;
+  width: 100`%;
+}
+
+.center > span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+)
+}
+
+if (v == "css： 又一个极简 loading（但是原理很搞笑）") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/donut-spinner
+<div class="donut"></div>
+.donut {
+  display: inline-block;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #7983ff;
+  border-radius: 50`%;
+  width: 30px;
+  height: 30px;
+  animation: donut-spin 1.2s linear infinite;
+}
+
+@keyframes donut-spin {
+  0`% { transform: rotate(0deg); }
+  100`% { transform: rotate(360deg); }
+}
+)
+}
+
+if (v == "css：更优雅的 underline 下划线动画") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/hover-underline-animation/
+<p class="hover-underline-animation">Hover this text to see the effect!</p>
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100`%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+)
+}
+
+if (v == "css: 优雅的 not 选择器实现分割线（实用）") {
+Var =
+(
+// https://www.30secondsofcode.org/css/s/not-selector
+<ul class="css-not-selector-shortcut">
+  <li>One</li>
+  <li>Two</li>
+  <li>Three</li>
+  <li>Four</li>
+</ul>
+.css-not-selector-shortcut {
+  display: flex;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0.75rem;
+}
+
+li:not(:last-child) {
+  border-right: 2px solid #d2d5e4;
+}
 )
 }
 
