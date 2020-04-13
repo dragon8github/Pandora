@@ -129,14 +129,11 @@ Var =
 code(Var)
 return
 
-
-::mnt::
-_send("/mnt/c/Users/Lee/Desktop")
-return
-
 ~esc::
-Send, {AltUp}
-Send, {CtrlUp}
+Tooltip, % GetKeyState("LAlt") . GetKeyState("RAlt") . GetKeyState("LCtrl") . GetKeyState("RCtrl")
+SetTimer, RemoveToolTip, -500
+Send, {Alt Up}
+Send, {Ctrl Up}
 return
 
 

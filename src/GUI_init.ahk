@@ -202,7 +202,6 @@ Gui, Pandora:Add, Text,  W140 ys, 娱乐:
 Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
 Gui, Pandora:Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/index.php?m=vod-search">草民电影</a>
-Gui, Pandora:Add, Link,, <a href="http://www.dilidili.name/">无名小站</a>
 Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
 Gui, Pandora:Add, Link,, <a href="http://www.fengchedm.com/">风车动漫</a>
 Gui, Pandora:Add, Link,, <a href="https://www.novipnoad.com/">不负好时光</a>
@@ -279,7 +278,9 @@ Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/3aa99766c2834
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/526d58e01a7480bf15c97fd4e5038d9d/dev">apizza-数据中心</a>
 Gui, Pandora:Add, Link,, <a href="http://www.taokouling.com/index/taobao_tkljm">淘宝口令解密</a>
 Gui, Pandora:Add, Link,, <a href="www.materialtools.com/">临时接收手机验证码</a>
-
+Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
+Gui, Pandora:Add, Link,, <a href="https://itpdf.online/?tdsourcetag=s_pctim_aiomsg">电子书列表</a>
+Gui, Pandora:Add, Link,, <a href="https://www.sxpdf.com/1738.html">书行天下</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng熊猫图片压缩</a>
@@ -291,11 +292,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</a>
 Gui, Pandora:Add, Link,, <a href="http://likeyunba.com/imgupload/">阿里云图床</a>
 Gui, Pandora:Add, Link,, <a href="https://akveo.github.io/eva-icons/#/">480个免费的svg</a>
-
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/ruanyf/share/free-photos">阮一峰的资源</a>
 Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
-Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
-Gui, Pandora:Add, Link,, <a href="https://itpdf.online/?tdsourcetag=s_pctim_aiomsg">电子书列表</a>
 
 
 

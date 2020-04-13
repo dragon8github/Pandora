@@ -8048,10 +8048,10 @@ return
 ::req::
 Var =
 (
-require('');
+require('')
 )
 code(Var)
-SendInput, {left 3}
+SendInput, {left 2}
 return
 
 >^d::
@@ -10232,9 +10232,9 @@ return
 ::promise::
 Var = 
 (
-// 注意，你必须resolve或reject才可以执行.then()
-return new Promise((resolve, reject) => {
+new Promise((resolve, reject) => { 
    setTimeout(function () {
+        // 注意，你必须resolve或reject才可以执行.then()
         resolve('success') // reject('fail')
    }, 1000);
 })

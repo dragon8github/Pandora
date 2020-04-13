@@ -241,7 +241,7 @@ Fuck:
 	}
 
     ; 大圣网盘
-    if (toudashengtiao == 1) {
+    if (dasheng == 1) {
         RUN, https://www.dashengpan.com/search?keyword=%SearchContent%
     }
 

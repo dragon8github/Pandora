@@ -87,10 +87,11 @@
 	
 
 	Menu, NodeMenu, Add, 'use strict';, NodeHandler
+	Menu, NodeMenu, Add, module.exports, NodeHandler
+	Menu, NodeMenu, Add, exports.foo = () => {}, NodeHandler
 	Menu, NodeMenu, Add, #!/usr/bin/env node, NodeHandler
 	Menu, NodeMenu, Add, cnpm init -y && cnpm i http-server && node_modules/http-server/bin/http-server, NodeHandler2
 	Menu, NodeMenu, Add, os.EOL, NodeHandler
-	Menu, NodeMenu, Add, module.exports, NodeHandler
 	
 	
 	
@@ -159,6 +160,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "exports.foo = () => {}") {
+Var =
+(
+exports.foo = () => {}
 )
 }
 
@@ -749,7 +757,7 @@ book.title = $('dcterms\\:title').text()
 if (v == "module.exports") {
 Var = 
 (
-module.exports
+module.exports = 
 )
 }
 
