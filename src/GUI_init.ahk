@@ -140,8 +140,14 @@ Gui, Pandora:Add, Checkbox, vyoudaofy, 有道翻译
 Gui, Pandora:Add, Checkbox, vgooglefanyi, Google翻译
 Gui, Pandora:Add, Checkbox, vjinshanciba, 金山词霸
 
+Gui, Pandora:Add, Text, gAllSearchF W120 yp+25, 电子书类:
+Gui, Pandora:Add, Checkbox, vshuxingtianxia, 书行天下
+Gui, Pandora:Add, Checkbox, vjiumo, 鸠摩搜索
+Gui, Pandora:Add, Checkbox, vdianzishuwang, 电子书网
+Gui, Pandora:Add, Checkbox, voushu, 偶书小驻
+Gui, Pandora:Add, Checkbox, vzhiqi, 智奇搜书
 
-Gui, Pandora:Add, Text, gAllSearchC W90 Section xs y+140, 音乐类:
+Gui, Pandora:Add, Text, gAllSearchC W90 Section xs y+20, 音乐类:
 Gui, Pandora:Add, Checkbox, vwy, 网易云音乐   
 Gui, Pandora:Add, Checkbox, vqq, QQ音乐
 Gui, Pandora:Add, Checkbox, vdog, 酷狗音乐
@@ -990,6 +996,7 @@ Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_11"
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_4">点聚合（聚合图）</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_5">沿线运动教程（马里奥）</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_16">自定义点图标（狐美人）</a>
+Gui, Pandora:Add, Link, W140, <a href="http://huiyan-fe.github.io/BMap-JavaScript-library/demo/MarkerClusterer/MarkerClusterer.html">聚合图API</a>
 
 Gui, Pandora:Add, Text, W140 ys, 地图工具：
 Gui, Pandora:Add, Link, W140, <a href="http://geojson.io/">GeoJSON.io</a>

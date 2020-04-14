@@ -74,6 +74,24 @@ Inspect:
 	Clipboard := Var
 return
 
+isAllSearchF := false
+AllSearchF:
+    isAllSearchF := !isAllSearchF
+    if (isAllSearchF) {
+        GuiControl,, shuxingtianxia, 1
+        GuiControl,, jiumo, 1
+        GuiControl,, dianzishuwang, 1
+        GuiControl,, oushu, 1
+        GuiControl,, zhiqi, 1
+    } else {
+        GuiControl,, shuxingtianxia, 0
+        GuiControl,, jiumo, 0
+        GuiControl,, dianzishuwang, 0
+        GuiControl,, oushu, 0
+        GuiControl,, zhiqi, 0
+    }
+return
+
 isAllSearchA := false
 AllSearchA:
 	isAllSearchA := !isAllSearchA
@@ -275,6 +293,22 @@ Fuck:
 		RUN, http://dict.cn/%SearchContent%
 	}
 	
+
+    if (shuxingtianxia == 1) {
+        RUN, https://www.sxpdf.com/?s=%SearchContent%
+    }
+    if (jiumo == 1) {
+        RUN, https://www.jiumodiary.com/
+    }
+    if (dianzishuwang == 1) {
+        RUN, https://www.bookresource.net/search/JavaScript/
+    }
+    if (oushu == 1) {
+        RUN, https://obook.cc/
+    }
+    if (zhiqi == 1) {
+        RUN, https://www.zqbook.top/search
+    }
 
 	; 网易云音乐   
 	if (wy == 1) {

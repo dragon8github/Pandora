@@ -24,7 +24,7 @@ return
 cs("lizhaohong")
 Sleep, 100
 Send, {tab}
-cs("Lzh#2019@2020")
+cs("Lzh#2019")
 return
 
 !5::

@@ -200,6 +200,9 @@
     Menu, utilsSolution, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
 
     ; @认知 @renzhi
+    
+    Menu, utilspractice, Add, pipeAsyncFunctions：管道异步处理工具, utilsHandler
+    Menu, utilspractice, Add, DeepMapKey：深度遍历所有的key, utilsHandler
     Menu, utilspractice, Add, 三元表达式正确换行套路 —— 问号换行，与冒号齐飞, utilsHandler
     Menu, utilspractice, Add, 最大数:ary.indexOf(0) >>> 0  // => 4294967295, utilsHandler
     Menu, utilspractice, Add, 新的多个变量初始化方式: var [obj`, max`, name] = [{}`, 1`, ''], utilsHandler
@@ -478,6 +481,49 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "pipeAsyncFunctions：管道异步处理工具") {
+Var = 
+(
+const pipeAsyncFunctions = (...fns) => arg => fns.reduce((p, f) => p.then(f), Promise.resolve(arg))
+
+// EXAMPLES
+const sum = pipeAsyncFunctions(
+  x => x + 1,
+  x => new Promise(resolve => setTimeout(() => resolve(x + 2), 1000)),
+  x => x + 3,
+  async x => (await x) + 4
+`);
+
+(async() => {
+  console.log(await sum(5)); // 15 (after one second)
+})()
+)
+}
+
+if (v == "DeepMapKey：深度遍历所有的key") {
+Var = 
+(
+const deepMapKeys = (obj, f) =>
+  Array.isArray(obj)
+    ? obj.map(val => deepMapKeys(val, f))
+    : typeof obj === 'object'
+      ? Object.keys(obj).reduce((acc, current) => {
+        const val = obj[current];
+        acc[f(current)] =
+          val !== null && typeof val === 'object' ? deepMapKeys(val, f) : (acc[f(current)] = val);
+        return acc;
+      }, {})
+      : obj;
+      
+// EXAMPLES
+const obj = {foo: '1', nested: {child: {withArray: [{grandChild: ['hello'] } ] } } }; 
+
+// { "FOO":"1", "NESTED":{"CHILD":{"WITHARRAY":[{"GRANDCHILD":[ 'hello' ] } ] } } }
+const upperKeysObj = deepMapKeys(obj, key => key.toUpperCase());
 )
 }
 
