@@ -129,28 +129,29 @@ Var =
 code(Var)
 return
 
-~<+esc::
-~<!esc::
-~<^esc::
-~>+esc::
-~>!esc::
-~>^esc::
-~esc::
-Tooltip, % GetKeyState("LAlt") . GetKeyState("RAlt") . GetKeyState("LCtrl") . GetKeyState("RCtrl")
-SetTimer, RemoveToolTip, -500
-if (GetKeyState("LAlt") == 1) {
-    Send, {LAlt Up}
-}
-if (GetKeyState("RAlt") == 1) {
-    Send, {RAlt Up}
-}
-if (GetKeyState("LCtrl") == 1) {
-    Send, {LCtrl Up}
-}
-if (GetKeyState("RCtrl") == 1) {
-    Send, {RCtrl Up}
-}
-return
+; 没什么卵用
+; ~<+esc::
+; ~<!esc::
+; ~<^esc::
+; ~>+esc::
+; ~>!esc::
+; ~>^esc::
+; ~esc::
+; Tooltip, % GetKeyState("LAlt") . GetKeyState("RAlt") . GetKeyState("LCtrl") . GetKeyState("RCtrl")
+; SetTimer, RemoveToolTip, -500
+; if (GetKeyState("LAlt") == 1) {
+;     Send, {LAlt Up}
+; }
+; if (GetKeyState("RAlt") == 1) {
+;     Send, {RAlt Up}
+; }
+; if (GetKeyState("LCtrl") == 1) {
+;     Send, {LCtrl Up}
+; }
+; if (GetKeyState("RCtrl") == 1) {
+;     Send, {RCtrl Up}
+; }
+; return
 
 
 ::baiduip::

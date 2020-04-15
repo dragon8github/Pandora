@@ -172,7 +172,7 @@ _sendinput(v, isSendLevel = false) {
         send, {Shift}
     }
     
-    SendInput, % v
+    SendInput, {Text}%v%
 }
 
 
@@ -294,7 +294,7 @@ return
 cs(code) {
     ; 这个函数的主要意义是保存到剪切板，也是为了统一收集send请求。如果以后有需要再移除也行。
     Clipboard := code
-    Send, % code
+    SendInput, {Text}%code%
 }
 
 
