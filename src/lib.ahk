@@ -172,7 +172,7 @@ _sendinput(v, isSendLevel = false) {
         send, {Shift}
     }
     
-    SendInput, {Text}%v%
+    SendInput, % v 
 }
 
 
