@@ -294,7 +294,7 @@ return
 cs(code) {
     ; 这个函数的主要意义是保存到剪切板，也是为了统一收集send请求。如果以后有需要再移除也行。
     Clipboard := code
-    SendInput, {Text}%code%
+    Send, % code
 }
 
 
@@ -306,7 +306,7 @@ code(code) {
     Sleep, 200
     WinGetTitle, title, A
     if (InStr(title, "Android Studio") or InStr(title, "PyCharm") or InStr(title, "WebStorm") or InStr(title, "PhpStorm") or InStr(title, "IDEA") or InStr(title, "Notepad2")) {
-        SendInput, {CtrlDown}v{CtrlUp}
+        Send, {CtrlDown}v{CtrlUp}
     } else {
         Send, {CtrlDown}{ShiftDown}v{CtrlUp}{ShiftUp}
     }
