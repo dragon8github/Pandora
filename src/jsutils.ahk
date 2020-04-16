@@ -252,6 +252,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, 自定义事件 on/off 可以实现自由删除事件, utilsHandler
     Menu, utilsmy, Add, lazyExec: 影武者懒执行模式, utilsHandler
     Menu, utilsmy, Add, colorRange: 获取颜色范围，类似 echarts visualMap, utilsHandler
     Menu, utilsmy, Add, killerQueen: 简单的超时关闭函数, utilsHandler
@@ -309,7 +310,6 @@
     
     
     Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
-    Menu, utilsmy, Add, (=・ω・=)我的单例版ajax, utilsHandler
     Menu, utilsmy, Add, 获取前6个月/前15天数据, utilsHandler
     Menu, utilsmy, Add, 通过URL判断是否本地开发环境, utilsHandler
     Menu, utilsmy, Add, 微信群组随机取人头, utilsHandler
@@ -484,6 +484,26 @@ Var =
 )
 }
 
+
+if (v == "自定义事件 on/off 可以实现自由删除事件") {
+Var =
+(
+/* 自定义事件 on/off 可以实现自由删除事件 */
+const on = (target, event, handler, passive = false) => {
+    target.addEventListener(event, handler, { capture: false, passive })
+    target[`__EVENT_${event.toUpperCase()}__`] = handler
+}
+
+const off = (target, event) => {
+    const handler = target[`__EVENT_${event.toUpperCase()}__`]
+
+    if (handler) {
+        target.removeEventListener(event, handler)
+        delete target[`__EVENT_${event.toUpperCase()}__`]
+    }
+}
+)
+}
 
 if (v == "pipeAsyncFunctions：管道异步处理工具") {
 Var = 
