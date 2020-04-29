@@ -1,4 +1,5 @@
 ﻿!a::
+    Menu, arrayMenu, Add, 求平均数：average, utilsHandler
     Menu, arrayMenu, Add, 新的数组工具：maps, utilsHandler
 	Menu, arrayMenu, Add, 把数组像分页一样分割为N段, ForHandler
 	Menu, arrayMenu, Add, chunk 数组分块函数:hit / miss, ForHandler
@@ -90,6 +91,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "求平均数：average") {
+_send("ave", true, true)
+return
 }
 
 if (v == "数组移位：arrayMove") {
@@ -801,6 +807,16 @@ console.log(ary)
 { data: 0, time: '2020/03/30 19:51:59' },  
 { data: 120, time: '2020/03/30 19:52:07' },
  */
+)
+code(Var)
+return
+
+::ave::
+Var =
+(
+function average(nums) {
+    return nums.reduce((a, b) => a + b) / nums.length;
+}
 )
 code(Var)
 return

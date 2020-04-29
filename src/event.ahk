@@ -2,6 +2,8 @@
 
 	Menu, mapMenu, Add, 百度地图 bdmap bdmap 一些实用、常用的解决方案, EventHandler
 	Menu, mapMenu, Add, echarts 随机地图生成散点, EventHandler
+	Menu, mapMenu, Add, bmap 百度地图 农村包围城市、围城、打暗周围, EventHandler
+
 	
 	
 	Menu, esEventMenu, Add, Elasticsearch#新增数据（索引/类型/文档id）, EventHandler
@@ -98,9 +100,9 @@
 	Menu, echartsAction, Add, 高亮节点：highlight, EventHandler
 
 
-	Menu, echartsEventMenu, Add, 阈值线最佳实践, :echartsAction
-	Menu, echartsEventMenu, Add, 柱状图轮播最佳实践, :echartsAction
 	Menu, echartsEventMenu, Add, myChart.dispatchAction, :echartsAction
+	Menu, echartsEventMenu, Add, 阈值线最佳实践, EventHandler
+	Menu, echartsEventMenu, Add, 柱状图轮播最佳实践, EventHandler
 	Menu, echartsEventMenu, Add, echarts.init, EventHandler
 	Menu, echartsEventMenu, Add, echarts 通过dom获取echarts实例，批量监听resize, EventHandler
 	Menu, echartsEventMenu, Add, echarts 通过dom获取echarts实例，批量监听clear, EventHandler
@@ -117,7 +119,12 @@
 	Menu, echartsEventMenu, Add, echarts.visualMap, EventHandler
 	Menu, echartsEventMenu, Add, echarts.tooltip, EventHandler
 	Menu, echartsEventMenu, Add, echarts.dataSet, EventHandler
+	Menu, echartsEventMenu, Add, echarts.zoom滚动条, EventHandler
 
+
+	Menu, echartsEventMenu, Add
+	Menu, echartsEventMenu, Add
+	
 
 	Menu, echartsEventMenu, Add, echarts.pin（饼图）, EventHandler
 	Menu, echartsEventMenu, Add, echarts.bar（柱状图）, EventHandler
@@ -144,21 +151,20 @@
 	Menu, echartsEventMenu, Add
 	Menu, echartsEventMenu, Add
 
-	Menu, echartsEventMenu, Add, getPointCenter获取中心点, EventHandler
-	Menu, echartsEventMenu, Add, geojson, EventHandler
-	Menu, echartsEventMenu, Add, createPolygon, EventHandler
+	Menu, echartsEventMenu, Add, echarts.datazoom 轮播解决方案, EventHandler
 	Menu, echartsEventMenu, Add, echarts.broadcast 轮播器, EventHandler
+	Menu, echartsEventMenu, Add, echarts 简单轮播器, EventHandler
+	Menu, echartsEventMenu, Add, getPointCenter获取镇区中心点, EventHandler
 	Menu, echartsEventMenu, Add, new echarts.graphic.LinearGradient, EventHandler
 	Menu, echartsEventMenu, Add, 隐藏xy轴, EventHandler
 	Menu, echartsEventMenu, Add, 坐标区域虚线（其实是Y轴不是x轴）, EventHandler
-	Menu, echartsEventMenu, Add, echarts 简单轮播器, EventHandler
 	Menu, echartsEventMenu, Add, echarts geo地图坐标转换为页面Offset坐标, EventHandler
-	Menu, echartsEventMenu, Add, map.js 类库持续集成, EventHandler
-    Menu, echartsEventMenu, Add, toolbox：下载图片的工具, EventHandler
 	Menu, echartsEventMenu, Add, getRangeRBG：专门用于生成 echarts 的渐变色, EventHandler
 	Menu, echartsEventMenu, Add, echarts + vue Mixins 摧毁方案, EventHandler
 	Menu, echartsEventMenu, Add, 气泡动态宽度大小, EventHandler
 	Menu, echartsEventMenu, Add, 饼图解决方案：以大带小, EventHandler
+	Menu, echartsEventMenu, Add, map.js 类库持续集成, EventHandler
+    Menu, echartsEventMenu, Add, toolbox：下载图片的工具, EventHandler
 
 	;@a @1
 	Menu, EventMenu, Add, JavaScript, :JavaScriptEventMenu
@@ -228,6 +234,394 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "echarts.datazoom 轮播解决方案") {
+Var =
+(
+<template>
+    <div @mouseover='mouseover' @mouseout='mouseout' >
+        <v-chart :options="option" class='chart' ref="FireChart"></v-chart>
+    </div>
+</template>
+<script>
+import { poll, isNaN } from '@/utils/utils'
+import { mapState, mapActions } from 'vuex'
+
+export default {
+    data() {
+        return {
+            option: {},
+            timer: null,
+            startValue: 0,
+            endValue: 6,
+        }
+    },
+    props: {
+        title: { type: String, default: '' },
+    },
+    computed: {
+        factoryRubbishWeight() {
+            return this.maybe(_ => this.$store.state.Index.factoryRubbishWeight.filter(_ => !_.streetname.includes('厂内物质')), [])
+        },
+    },
+    watch: {
+        factoryRubbishWeight: {
+            deep: true,
+            immediate: true,
+            handler(newV, oldV) {
+                if (newV) {
+                    // 渲染 chart
+                    this.renderChart(newV.sort((a, b) => +a.contractnum - +b.contractnum))
+                    // 开始轮询
+                    this.poll2(newV, 0, 6)
+                }
+            }
+        },
+        title() {
+            this.$store.dispatch('Index/factoryRubbishWeight2', this.title)
+        }
+    },
+    methods: {
+        mouseover () {
+            clearInterval(this.timer)
+        },
+        mouseout() {
+            const { startValue, endValue } = this.$refs.FireChart.computedOptions.dataZoom[0]
+            this.poll2(this.factoryRubbishWeight, startValue, endValue)
+        },
+        poll2(newV, startValue = 0, endValue = 6) {
+            const len = newV.length
+
+            // 先清楚上一次的轮询
+            clearInterval(this.timer)
+
+            // fixbug： 找不到 FireChart 导致问题
+            poll(() => this.$refs.FireChart, () => {
+                this.timer = setInterval(() => {
+                    // 如果是最后一个？
+                    if (endValue >= len - 1) {
+                        // 还原
+                        this.$refs.FireChart.dispatchAction({ type: 'dataZoom', startValue: startValue = 0, endValue: endValue = 6 })
+                    } else {
+                        // 轮播
+                        this.$refs.FireChart.dispatchAction({ type: 'dataZoom', startValue: startValue++, endValue: endValue++ })
+                    }
+                }, 5 * 1000)
+            })
+        },
+        renderChart(dataArr) {
+            // xAxis 、 bar-data
+            const [xdataName, dataNum, contractnum] = dataArr.maps(_ => _.streetname, _ => (_.num || 0) / 1000, _ => _.contractnum || 0)
+
+            // tooltip
+            const tooltip = {
+                trigger: 'axis',
+                textStyle: { fontSize: 18 },
+                axisPointer: { 
+                  type: 'cross', 
+                  label: { 
+                    backgroundColor: '#283b56' 
+                  }
+                },
+                formatter: v => {
+                    const [a, b] = v
+                    return `
+                      <div class='u-p-2'>
+                        <div>垃圾合同量：${a.value}（吨）</div>
+                        <div class='u-mt-2'>垃圾产生量：${b.value}（吨）</div>
+                      </div>
+                    `
+                }
+            }
+
+            // grid
+            const grid = { top: '10`%', left: '7`%', right: '2`%', bottom: '24`%' }
+
+            // xAxis
+            const xAxis = {
+                type: 'category',
+                boundaryGap: true,
+                data: xdataName,
+                axisLine: { lineStyle: { color: 'rgba(255,255,255,1)' } },
+                axisLabel: {
+                    textStyle: { fontSize: 20 },
+                    formatter: v => v.length > 4 ? v.slice(0, 4) + '\n' + v.slice(4) : v,
+                    rotate: 0
+                }
+            }
+
+            // yAxis
+            const yAxis = {
+                type: 'value',
+                // name: '当日垃圾进场图',
+                nameTextStyle: {
+                    color: '#f29f02',
+                    fontSize: 20,
+                    padding: [0, 0, 5, 30]
+                },
+                scale: true,
+                min: 0,
+                boundaryGap: [0.2, 0.2],
+                splitLine: { show: false },
+                axisLine: { lineStyle: { color: 'rgba(255,255,255,1)' } },
+                axisLabel: {
+                    textStyle: { fontSize: 16 },
+                    formatter: v => v + '吨'
+                }
+            }
+
+            // dataZoom
+            const dataZoom = [{
+                top: 20,
+                show: true,
+                type: 'inside',
+                xAxisIndex: [0],
+                moveOnMouseWheel: true,
+                moveOnMouseMove: true,
+                zoomOnMouseWheel: false,
+                startValue: 0,
+                endValue: 6
+            }]
+
+            // series
+            const series = [{
+                name: '垃圾合同量',
+                type: 'bar',
+                barWidth: 15,
+                data: contractnum,
+                itemStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: '#f6ec66'
+                    }, {
+                        offset: 1,
+                        color: '#fadc6d'
+                    }]),
+                }
+            }, {
+                name: '垃圾产生量',
+                type: 'bar',
+                barWidth: 15,
+                data: dataNum,
+                itemStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: '#007cf3'
+                    }, {
+                        offset: 1,
+                        color: '#38d9e5'
+                    }]),
+                }
+            }]
+
+            this.option = { tooltip, grid, xAxis, yAxis, dataZoom, series }
+        }
+    },
+    beforeMount() {
+        this.$store.dispatch('Index/factoryRubbishWeight', this.title)
+    },
+    destroyed() {
+        clearInterval(this.timer)
+    },
+}
+</script>
+<style lang='scss' scoped>
+.chart {
+    width: 100`%;
+    height: rem(250);
+}
+</style>
+)
+}
+
+if (v == "bmap 百度地图 农村包围城市、围城、打暗周围") {
+Var =
+(
+// 高亮的镇街
+lightCity(city) {
+    // 南城
+    let path = "";
+    let path2;
+    
+    // 获取当前选中的镇街的轮廓坐标集合
+    const grid = DongGuanGrid[city]
+    // 拼接path成 "180, 90;" 格式
+    path = grid.join(';') + ';'
+    // 东南西北四个角
+    const EN_JW = "180, 90;";
+    const NW_JW = "-180,  90;";
+    const WS_JW = "-180, -90;";
+    const SE_JW = "180, -90;";
+
+    // 东南西北四个角添加一个覆盖物
+    const ply = new BMap.Polygon(
+        path + SE_JW + WS_JW + NW_JW + EN_JW + SE_JW, {
+            strokeColor: "none",
+            fillColor: "#020729",
+            fillOpacity: 0.8,
+        }
+    `);
+    // 遮罩
+    map.addOverlay(ply);
+
+    // 当前镇街边界
+    path2 = grid.map(g => new BMap.Point(...g));
+    // 画线
+    const ply2 = new BMap.Polyline(path2, {
+        strokeColor: "aqua",
+        strokeOpacity: 1,
+        strokeWeight: 2
+    });
+    // 边界线 数据问题，所以要另加一根线
+    map.addOverlay(ply2);
+},
+)
+}
+
+if (v == "echarts.zoom滚动条") {
+Var =
+(
+methods: {
+	clear() {
+	    this.option = {}
+	},
+	mouseover () {
+	    clearInterval(this.timer)
+	},
+	mouseout() {
+	    const { startValue, endValue } = this.$refs.FireChart.computedOptions.dataZoom[0]
+	    this.poll2(this.factoryRubbishWeight, startValue, endValue)
+	},
+	poll2(newV, startValue = 0, endValue = 6) {
+	    const len = newV.length
+
+	    // 先清楚上一次的轮询
+	    clearInterval(this.timer)
+
+	    // fixbug： 找不到 FireChart 导致问题
+	    poll(() => this.$refs.FireChart, () => {
+	        this.timer = setInterval(() => {
+	            // 如果是最后一个？
+	            if (endValue >= len - 1) {
+	                // 还原
+	                this.$refs.FireChart.dispatchAction({ type: 'dataZoom', startValue: startValue = 0, endValue: endValue = 6 })
+	            } else {
+	                // 轮播
+	                this.$refs.FireChart.dispatchAction({ type: 'dataZoom', startValue: startValue++, endValue: endValue++ })
+	            }
+	        }, 5 * 1000)
+	    })
+	},
+	renderChart(dataArr) {
+	    // xAxis 、 bar-data
+	    const [xdataName, dataNum, contractnum] = dataArr.maps(_ => _.streetname, _ => (_.num || 0) / 1000, _ => _.contractnum || 0)
+
+	    // tooltip
+	    const tooltip = {
+	        trigger: 'axis',
+	        textStyle: { fontSize: 18 },
+	        axisPointer: { 
+	          type: 'cross', 
+	          label: { 
+	            backgroundColor: '#283b56' 
+	          }
+	        },
+	        formatter: v => {
+	            const [a, b] = v
+	            return ``
+	              <div class='u-p-2'>
+	                <div>垃圾合同量：${a.value}（吨）</div>
+	                <div class='u-mt-2'>垃圾产生量：${b.value}（吨）</div>
+	              </div>
+	            ``
+	        }
+	    }
+
+	    // grid
+	    const grid = { top: '10`%', left: '7`%', right: '2`%', bottom: '24`%' }
+
+	    // xAxis
+	    const xAxis = {
+	        type: 'category',
+	        boundaryGap: true,
+	        data: xdataName,
+	        axisLine: { lineStyle: { color: 'rgba(255,255,255,1)' } },
+	        axisLabel: {
+	            textStyle: { fontSize: 20 },
+	            formatter: v => v.length > 4 ? v.slice(0, 4) + '\n' + v.slice(4) : v,
+	            rotate: 0
+	        }
+	    }
+
+	    // yAxis
+	    const yAxis = {
+	        type: 'value',
+	        // name: '当日垃圾进场图',
+	        nameTextStyle: {
+	            color: '#f29f02',
+	            fontSize: 20,
+	            padding: [0, 0, 5, 30]
+	        },
+	        scale: true,
+	        min: 0,
+	        boundaryGap: [0.2, 0.2],
+	        splitLine: { show: false },
+	        axisLine: { lineStyle: { color: 'rgba(255,255,255,1)' } },
+	        axisLabel: {
+	            textStyle: { fontSize: 16 },
+	            formatter: v => v + '吨'
+	        }
+	    }
+
+	    // dataZoom
+	    const dataZoom = [{
+	        top: 20,
+	        show: true,
+	        type: 'inside',
+	        xAxisIndex: [0],
+	        moveOnMouseWheel: true,
+	        moveOnMouseMove: true,
+	        zoomOnMouseWheel: false,
+	        startValue: 0,
+	        endValue: 6
+	    }]
+
+	    // series
+	    const series = [{
+	        name: '垃圾合同量',
+	        type: 'bar',
+	        barWidth: 15,
+	        data: contractnum,
+	        itemStyle: {
+	            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+	                offset: 0,
+	                color: '#f6ec66'
+	            }, {
+	                offset: 1,
+	                color: '#fadc6d'
+	            }]),
+	        }
+	    }, {
+	        name: '垃圾产生量',
+	        type: 'bar',
+	        barWidth: 15,
+	        data: dataNum,
+	        itemStyle: {
+	            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+	                offset: 0,
+	                color: '#007cf3'
+	            }, {
+	                offset: 1,
+	                color: '#38d9e5'
+	            }]),
+	        }
+	    }]
+
+	    this.option = { tooltip, grid, xAxis, yAxis, dataZoom, series }
+	}
+},
 )
 }
 
@@ -1767,18 +2161,8 @@ _send("echarts.qipao", true, true)
 return
 }
 
-if (v == "getPointCenter获取中心点") {
+if (v == "getPointCenter获取镇区中心点") {
 _send("getPointCenter", true, true)
-return
-}
-
-if (v == "geojson") {
-_send("geojson", true, true)
-return
-}
-
-if (v == "createPolygon") {
-_send("createPolygon", true, true)
 return
 }
 

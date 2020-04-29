@@ -3667,7 +3667,7 @@ axios.interceptors.response.use(res => {
         // 是否具备文本注释？
         const note = URL_NOTES[url + p] || ''
         // 打印请求结果和详情
-        logs(``${__NOTE__}${method.toUpperCase()}：${url}``, JSON.stringify({params: method === 'get' ? params : data , result: res.data, status }, null, '\t'))
+        logs(``${__NOTE__}${method.toUpperCase()}：${url}``, res.data, JSON.stringify({params: method === 'get' ? params : data , result: res.data, status }, null, '\t'))
     }
     // 只返回 data 即可
     return res.data
@@ -3760,7 +3760,7 @@ axios.interceptors.response.use(res => {
         // 获取请求时间
         const date = dateYYYYMMDDHHmmss(Date.now())
         // 打印请求结果和详情
-        logs(`${method.toUpperCase()}：${url}`, JSON.stringify({ params: method === 'get' ? params : data, result: res.data, status }, null, '\t'))
+        logs(`${method.toUpperCase()}：${url}`, res.data, JSON.stringify({ params: method === 'get' ? params : data, result: res.data, status }, null, '\t'))
     }
     // 只返回 data 即可
     return res.data

@@ -83,6 +83,7 @@ __SEARCH_DATABASE__["postDoge"] := "C:\Users\Lee\Desktop\postDoge"
 __SEARCH_DATABASE__["fuck-app"] := "C:\Users\Lee\Desktop\微设计\fuck-app"
 __SEARCH_DATABASE__["弹幕danmu"] := "C:\Users\Lee\Desktop\年会弹幕网"
 __SEARCH_DATABASE__["城管citychengguan"] := "C:\Users\Lee\Desktop\cityManagement"
+__SEARCH_DATABASE__["new城管citychengguan"] := "C:\Users\Lee\Desktop\new_cityMangement"
 __SEARCH_DATABASE__["肺炎feiyanH5"] := "C:\Users\Lee\Desktop\iocappmain\ioc-feiyanwebsite-ui"
 __SEARCH_DATABASE__["purecard"] := "C:\Users\Lee\Desktop\pureCard"
 
@@ -298,8 +299,9 @@ Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</a>
 Gui, Pandora:Add, Link,, <a href="http://likeyunba.com/imgupload/">阿里云图床</a>
 Gui, Pandora:Add, Link,, <a href="https://akveo.github.io/eva-icons/#/">480个免费的svg</a>
-Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/ruanyf/share/free-photos">阮一峰的资源</a>
 Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
+Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/ruanyf/share/free-photos">阮一峰的资源</a>
+Gui, Pandora:Add, Link,, <a href="https://www.behance.net/galleries/illustration">优美插画资源</a>
 
 
 
@@ -328,6 +330,8 @@ Gui, Pandora:Add, Link,, <a href="https://so.baideye.com/">白的夜</a>
 Gui, Pandora:Add, Link,, <a href="https://liulisusu.org/user">琉璃VPN</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/@tarkus">medium</a>
 Gui, Pandora:Add, Link,, <a href="https://36dcup.net/">36dcup</a>
+Gui, Pandora:Add, Link,, <a href="https://www.ox.ac.uk/soundsofthebodleian/#radcam">图书馆白噪音</a>
+Gui, Pandora:Add, Link,, <a href="https://mynoise.net/NoiseMachines/openOfficeNoiseGenerator.php">办公室白噪音</a>
 
 
 
@@ -535,6 +539,7 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/lizhaohong/citym
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/11/interface/api">yAPI</a>
 Gui, Pandora:Add, Link,, <a href="https://shimo.im/sheets/TCjR8jdTwwwYKjtY/MODOC/">需求文档</a>
 Gui, Pandora:Add, Link,, <a href="https://shimo.im/docs/bab1e94724614258/read">接口文档</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/visual/citymanagement.git">新城管源码</a>
 
 
 ; @gs

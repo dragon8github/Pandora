@@ -5282,6 +5282,16 @@ return
 ::css.animate::
 Var =
 (
+.box {
+   animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0`% { width: 0; height: 0;  }
+    50`% { opacity: 1;  }
+    100`% { width: 500px; height: 500px; opacity: 0; }
+} 
+---
 .banner1__earth--img {
 	width: 655px;
 	height: 660px;
