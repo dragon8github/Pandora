@@ -1,4 +1,5 @@
 ﻿!a::
+    Menu, arrayMenu, Add, 新的数组工具：filters, utilsHandler
     Menu, arrayMenu, Add, 求平均数：average, utilsHandler
     Menu, arrayMenu, Add, 新的数组工具：maps, utilsHandler
 	Menu, arrayMenu, Add, 把数组像分页一样分割为N段, ForHandler
@@ -91,6 +92,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "新的数组工具：filters") {
+_send("filters", true, true)
+return
 }
 
 if (v == "求平均数：average") {
@@ -816,6 +822,33 @@ Var =
 (
 function average(nums) {
     return nums.reduce((a, b) => a + b) / nums.length;
+}
+)
+code(Var)
+return
+
+::filters::
+Var =
+(
+Array.prototype.filters = function(...args) {
+    // 初始化空数组，这是一个二维数组，长度与参数一致
+    let ary = args.map(_ => [])
+
+    // 开始遍历自身
+    this.forEach((val, index, array) => {
+        // 依次执行 fn
+        for (let i = 0, len = args.length; i < len; i++) {
+            // 获取当前函数
+            const fn = args[i]
+
+            if (fn(val, index, array)) {
+               ary[i].push(val)
+            }
+        }
+    })
+
+    // 返回最终结果
+    return ary
 }
 )
 code(Var)

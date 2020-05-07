@@ -1,4 +1,21 @@
-﻿
+﻿::zh::
+::cn::
+Var =
+(
+zh-cn
+)
+code(Var)
+return
+
+::en::
+::us::
+Var =
+(
+en-us
+)
+code(Var)
+return
+
 !1::
 cs("dgdp")
 Sleep, 100
@@ -1834,6 +1851,18 @@ Var =
 code(Var)
 return
 
+
+![::
+!]::
+tmp := Clipboard
+Clipboard :=
+Send, ^x
+ClipWait, 2
+a := "『" . Clipboard . "』"
+code(a)
+Clipboard := tmp
+return
+
 ::zyx::
 Var =
 (
@@ -1870,27 +1899,6 @@ Material
 code(Var)
 return
 
-
-/*
-:*:[]::
-Var =
-(
-『』
-)
-code(Var)
-return
-*/
-
-![::
-!]::
-tmp := Clipboard
-Clipboard :=
-Send, ^x
-ClipWait, 2
-a := "『" . Clipboard . "』"
-code(a)
-Clipboard := tmp
-return
 
 
 #p::

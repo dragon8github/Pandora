@@ -6468,6 +6468,8 @@ return
 ::reduces::
 Var =
 (
+.reduce((p, c) => p + Number(c.value), 0)
+---
 .reduce((previousValue, currentValue, index, array) => {
     return previousValue + currentValue
 }, 0)

@@ -94,7 +94,7 @@
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
   Menu, VueMenu, Add, vue 动画组件<transition>, :vuetranstion
   Menu, VueMenu, Add, vue 动画组件<transition> + animate.css, :vuetranstion
-  Menu, VueMenu, Add, vue 异步组件加载import, :vuetranstion
+  Menu, VueMenu, Add, vue 异步组件加载import, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
