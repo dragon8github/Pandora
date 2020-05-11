@@ -84,6 +84,7 @@
   Menu, VueMenu, Add, 动态组件：<component :is='xxx'></component>, VueHandler
   Menu, VueMenu, Add, provide/inject：上下文, VueHandler
   Menu, VueMenu, Add, props.sync与$emit('update'), VueHandler
+  Menu, VueMenu, Add, 🚀 践行组件化开发的新方案： test.vue, VueHandler
   Menu, VueMenu, Add, 🚀 vue.directive 指令, VueHandler
   Menu, VueMenu, Add, 🐤 vue.rules 尝试建立一套验证规则体系, VueHandler
   Menu, VueMenu, Add, 🎁 findComponentByName：寻找上下游组件, VueHandler
@@ -171,7 +172,10 @@ Var =
 )
 }
 
-
+if (v == "🚀 践行组件化开发的新方案： test.vue") {
+_send("test.vue", true, true)
+return
+}
 
 if (v == "滚动行为：scrollBehavior") {
 Var = 
@@ -1852,6 +1856,7 @@ if (v == "<keep-alive>") {
 Var = 
 (
 <!-- 路由入口 -->
+<!-- beCareful： include如果是一个"" 的话，默认是匹配所有组件，所以你宁可写随便写一个东西进去，譬如： include='none'  -->
 <keep-alive include="overallSituation,townStreet">
     <router-view class='view' :class='{"is-mask": isMask}' />
 </keep-alive>
@@ -5658,6 +5663,248 @@ const findBrothersComponents = (context, componentName, exceptMe = true) => {
 
     return res
 }
+)
+txtit(Var)
+return
+
+::v-chart::
+::vchart::
+::vue.chart::
+::v-charts::
+::vcharts::
+::vue.charts::
+Var =
+(
+<v-chart class='u-full chart' :options="option"></v-chart>
+---
+export default {
+    data () {
+        return {
+            option: {}
+        }
+    },
+    methods: {
+        renderChart() {
+            // color
+            const color = ['#6793FF','#20D2F8','#00D648', '#8FE300','#F6CF00','#F28100']
+
+            // tooltip
+            const tooltip = {
+                trigger: 'axis',
+                axisPointer: { type: 'cross', label: { backgroundColor: '#6a7985' } }
+            }
+
+            // legend
+            const legend = {
+                data: [{ name: '市容环境' }, { name: '宣传广告' }, { name: '施工管理' }, { name: '突发事件' }, { name: '街面秩序' }, { name: '其他事件' }],
+                right: '2`%',
+                top: '10`%',
+                orient: 'vertical',
+                textStyle: { color: '#ffffff', fontSize: 16 },
+            }
+
+            // grid
+            const grid = { bottom: '3`%', left: '2`%', right: '15`%', top: '15`%', containLabel: true }
+
+            // xAxis
+            const xAxis = [{
+                type: 'category',
+                boundaryGap: false,
+                data: ['5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                axisLine: { lineStyle: { color: 'rgba(255,255,255)',  } },
+                axisLabel: {textStyle: {color: '#fff', fontSize: 14 }, },
+            }]
+
+            // yAxis
+            const yAxis = [{
+                type: 'value',
+                splitLine: { lineStyle: {type: 'dashed', color: 'rgba(255,255,255,0.15)'} },
+                axisLine: { lineStyle: { color: 'rgba(255,255,255)',  } },
+                axisLabel: {textStyle: {color: '#fff', fontSize: 14 }, },
+            }]
+
+            const series = [
+                { name: '市容环境', type: 'line', data: getRange(13), symbol: '', },
+                { name: '宣传广告', type: 'line', data: getRange(13), symbol: '', },
+                { name: '施工管理', type: 'line', data: getRange(13), symbol: '', },
+                { name: '突发事件', type: 'line', data: getRange(13), symbol: '', },
+                { name: '街面秩序', type: 'line', data: getRange(13), symbol: '', },
+                { name: '其他事件', type: 'line', data: getRange(13), symbol: '', },
+            ]
+
+            // 配置
+            this.option = { color, tooltip, legend, grid, xAxis, yAxis, series }
+        }
+    },
+    mounted() {
+        this.renderChart();
+    }
+}
+)
+txtit(Var)
+return
+
+::test.vue::
+::vue.test::
+Var =
+(
+  <template>
+      <div class="test">
+          <!-- 组件列表 -->
+          <ul class='center' v-if='!name'>
+              <li v-for='(item, index) in items' :key='index' @click='go(item)'> {{ item }}  </li>
+          </ul>
+
+          <!-- 来点动画转场 -->
+          <transition name="msgbox-bounce">
+              <!-- 组件 -->
+              <component class='msgbox' :is="name" v-if="name" />
+          </transition>
+      </div>
+  </template>
+
+  <script>
+  import Vue from 'vue'
+  /**
+   * 1. directory {String} -读取文件的路径
+   * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
+   * 3. regExp {RegExp} -匹配文件的正则
+   */
+  const VueComponent = require.context('@/components', true, /\.vue$/)
+
+  // 准备导出的模块
+  let __Material__ = []
+
+  // 不包含，排除的模块列表
+  const exclude = _ => !['./Index.vue'].includes(_)
+
+  // 1. 必须使用 key() 获取所有路径
+  // 2. 使用 VueComponent(path).default 获取真实模块内容
+  VueComponent.keys().filter(exclude).forEach(path => {
+      // 获取 『文件名』 和 『后缀名』
+      const [name, ext] = path.substring(path.lastIndexOf('/') + 1).split('.')
+
+      // 目标文件的输出内容
+      const output = VueComponent(path).default
+
+      // 以 『文件名』 为 key，模块内容为 value
+      // __Material__[name] = Vue.extend(output)
+
+      // 直接全局注册
+      Vue.component(name, output)
+
+      // 加入到数组
+      __Material__.push(name)
+  })
+
+  export default {
+      name: 'test',
+      data() {
+          return {
+              name: '',
+              items: __Material__
+          }
+      },
+      watch: {
+        '$route' (to, from) {
+            // fixbug: 手动修改浏览器地址时（/test/fuck => /test/），不会重新加载页面，所以不会还原的问题。
+            if (to.fullPath === '/test' || to.fullPath === '/test/') {
+              // 还原到 『组件列表』
+              this.name = ''
+            }
+        }
+      },
+      methods: {
+          go(name) {
+              // 只是为了修改路由，方便刷新后依然是显示组件
+              this.$router.push(`/test/${name}`)
+              // 显示组件
+              this.name = name
+          }
+      },
+      beforeMount() {
+          this.name = this.$router.currentRoute.params.name || ''
+      },
+  }
+  </script>
+
+  <style lang="scss" scoped>
+  .center {
+      position: absolute;
+      left: 50`%;
+      top: 50`%;
+      transform: translate(-50`%, -50`%);
+  }
+
+  li {
+      list-style: outside;
+      padding-bottom: 5px;
+      cursor: pointer;
+  }
+
+  .msgbox {
+      position: absolute;
+      left: 50`%;
+      top: 50`%;
+      transform: translate(-50`%, -50`%);
+  }
+
+  .msgbox-bounce-leave-active,
+  .msgbox-bounce-enter-active {
+      transition: .3s all ease;
+  }
+
+  .msgbox-bounce-enter {
+      opacity: 0;
+      transform: translate3d(-50`%, -50`%, 0) scale(0.7);
+  }
+
+  .msgbox-bounce-leave-active {
+      opacity: 0;
+      transform: translate3d(-50`%, -50`%, 0) scale(0.9);
+  }
+  </style>
+---
+import Vue from 'vue'
+import Router from 'vue-router'
+import store from '../store'
+Vue.use(Router)
+
+// index
+const Index = r => require.ensure([], () => r(require('@/pages/Index.vue')), 'Index')
+
+// test
+const test = r => require.ensure([], () => r(require('@/pages/test.vue')), 'test')
+
+// 路由配置
+var router = new Router({
+  // 哈希模式
+  mode: 'hash',
+  
+  // 路由导航
+  routes: [
+    // 重定向 - 首页
+    { path: '/', redirect: '/Index' },
+
+    // 首页
+    { path: '/Index', name: 'Index', meta: { title: '首页' }, component: Index },
+
+    // test
+    { path: '/test/:name?', name: 'test', meta: { title: '测试' }, component: test },
+  ]
+})
+
+// 全局路由钩子
+router.afterEach((to, from) => {
+
+})
+
+router.beforeEach((to, from, next) => {
+    // 放行页面
+    next()
+})
+
+export default router
 )
 txtit(Var)
 return

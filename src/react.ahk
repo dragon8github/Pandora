@@ -1271,3 +1271,130 @@ ref = { (ref) => this.myTextInput = ref }
 )
 code(Var)
 return
+
+
+::redux::
+Var =
+(
+// src\features\Counter.js
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {decrement, increment, incrementByAmount, incrementAsync, selectCount, } from './counterSlice'
+import styles from './Counter.module.css'
+
+export function Counter() {
+  const count = useSelector(selectCount)
+  const dispatch = useDispatch()
+  const [incrementAmount, setIncrementAmount] = useState('2')
+
+  return (
+    <div>
+      <div className={styles.row}>
+        <button className={styles.button}  onClick={() => dispatch(increment())}> + </button>
+        <span className={styles.value}>{count}</span>
+        <button className={styles.button}  onClick={() => dispatch(decrement())} > - </button>
+      </div>
+
+      <div className={styles.row}>
+        <input className={styles.textbox} value={incrementAmount} onChange={e => setIncrementAmount(e.target.value)} />
+        <button className={styles.button} onClick={() => dispatch(incrementByAmount(Number(incrementAmount) || 0)) }> Add Amount </button>
+        <button className={styles.asyncButton} onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))} > Add Async </button>
+      </div>
+    </div>
+  `)
+}
+---
+// src\features\counterSlice.js
+import { createSlice } from '@reduxjs/toolkit'
+
+export const counterSlice = createSlice({
+  name: 'counter',
+
+  initialState: {
+    value: 0,
+  },
+
+  /**
+   * 🔔 千万别在 reducer 中处理异步变异，这和 vuex 不一样，非常严格。
+   *
+   * error: [Immer] An immer producer returned a new value *and* modified its draft. Either return a new value *or* modify the draft
+   * fixbug: https://stackoverflow.com/questions/60806105/error-an-immer-producer-returned-a-new-value-and-modified-its-draft-either-r
+   *
+   * 你可能会手贱:将箭头函数的花括号去掉简化代码，但会出现上述的报错!
+   * 原理是箭头函数隐式调用了 return 语句, redux 会认为你既变异了 state，又要返回新的分配结果。 这是不对的。
+   * 你只能选择其中一个变异方式：
+   * 1、 处理变异，但函数返回 undefined（函数不使用 return 默认返回 undefined，但你要强行写 return undefined 也行）
+   *	increment: state => {
+   *	  state.value += 1
+   *	}
+   *
+   * 2、 返回新的 state ，原理类似 Array.prototype.reduce 
+   *	increment: state => {
+   *	  state.value += 1
+   *	  return state
+   *	}
+   *		
+   * 综上所述，如果你真的要简化代码，只要不省略花括号即可： increment: state => { state.value += 1 }
+   */
+  reducers: {
+    increment: state => {
+      
+    },
+    decrement: state => {
+      state.value -= 1
+    },
+    incrementByAmount: (state, action) => {
+      state.value += action.payload
+    },
+  },
+})
+
+export const { increment, decrement, incrementByAmount } = counterSlice.actions
+
+export const incrementAsync = amount => dispatch => {
+  setTimeout(() => {
+    dispatch(incrementByAmount(amount))
+  }, 1000)
+}
+
+
+export const selectCount = state => state.counter.value
+
+export default counterSlice.reducer
+---
+// store.js
+import { configureStore } from '@reduxjs/toolkit'
+import counterReducer from '../features/counter/counterSlice'
+
+export default configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+})
+---
+// index.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import store from './app/store'
+import { Provider } from 'react-redux'
+import * as serviceWorker from './serviceWorker'
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+`)
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister()
+
+)
+txtit(Var)
+return

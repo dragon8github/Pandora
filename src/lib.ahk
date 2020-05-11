@@ -511,6 +511,7 @@ psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/v
 code(Var)
 return
 
+::txtit::
 ::ahktxt::
 ::vartxt::
 Var =

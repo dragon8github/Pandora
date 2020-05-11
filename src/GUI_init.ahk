@@ -191,7 +191,7 @@ Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/Pandora">Lastest Pandora</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com">github</a>
-Gui, Pandora:Add, Link,, <a href="https://legacy.gitbook.com">gitbook</a>
+Gui, Pandora:Add, Link,, <a href="https://app.gitbook.com/">gitbook</a>
 Gui, Pandora:Add, Link,, <a href="https://cylee.top/">cylee.top</a>
 Gui, Pandora:Add, Link,, <a href="https://ecs.console.aliyun.com/#/home">阿里云控制台</a>
 
@@ -316,6 +316,7 @@ Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux
 Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大全</a>
 Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
 Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
+Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
@@ -445,6 +446,7 @@ Gui, Pandora:Add, Text, gvideohtml W160, 新建video视频.html
 Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog
 Gui, Pandora:Add, Text, gwebsocketHTML W140,新建WebSocket
 Gui, Pandora:Add, Text, gsocketHtml W160,新建socket.html
+Gui, Pandora:Add, Text, gEventSource W160,EventSource（类socket）.html
 
 
 Gui, Pandora:Tab, 3

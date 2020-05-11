@@ -1,4 +1,5 @@
 ﻿!a::
+    Menu, arrayMenu, Add, 统计数组中每个元素出现的次数, utilsHandler
     Menu, arrayMenu, Add, 新的数组工具：filters, utilsHandler
     Menu, arrayMenu, Add, 求平均数：average, utilsHandler
     Menu, arrayMenu, Add, 新的数组工具：maps, utilsHandler
@@ -91,6 +92,18 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "统计数组中每个元素出现的次数") {
+Var =
+(
+// 统计数组中每一个元素出现的次数
+const statisticsArray = ary => ary.reduce((p, c) => {
+    if (!p[c]) p[c] = 1
+    else p[c]++
+    return p
+}, {})
 )
 }
 

@@ -1,4 +1,33 @@
-﻿::zh::
+﻿
++r::
+Send, ^c
+ClipWait, 2
+tmp := Clipboard
+if (StrLen(tmp)) {
+	; 以换行符为分隔符切割为数组
+	array := StrSplit(tmp, "`n")
+	
+	 ; 结果
+	result := 
+	
+	len := array.Length()
+		
+	; 遍历数组
+	For key, value in array {
+		; 叠加
+		result .= array[len - (key - 1)]
+		
+		; 除了最后一个都加换行
+		if (key != len) {
+			 result .= "`n"
+		}
+	}
+	
+	code(SubStr(result, 1, -1))
+}
+return
+
+::zh::
 ::cn::
 Var =
 (
@@ -99,8 +128,6 @@ if (InStr(title, "Chrome")) {
 return
 
 +v::
-!,::
-^,::
 Clipboard := StrReplace(Clipboard, "`r`n", ", ")  
 Send, ^v
 return
@@ -245,7 +272,7 @@ return
                     ext := array.Length() == key ? "" : "`n"
                     ; 叠加
                     result .= Floor(__BASE__ ) + index . ext
-            }
+                }
             
             code(result)
         }

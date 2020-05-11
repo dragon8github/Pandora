@@ -84,3 +84,4 @@ FileDelete, .\src\*.bak
 !F12::
 	Suspend
 return
+

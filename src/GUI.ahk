@@ -10560,3 +10560,59 @@ var vue = new Vue({
 RunBy(name)
 run, % name
 return
+
+EventSource:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!-- 
+<?php
+header('Content-Type: text/event-stream'); 
+header('Cache-Control: no-cache'); 
+
+$time = date('r'); 
+
+/**
+ * ⚠️ 需要注意的点
+ * 1. php推送的信息一个使用了”\n\n”作为结束标志。
+ * 经过测试，如果不以”\n\n”作为结束标志。
+ * 那么客户端将不能接收到推送的值。
+ * 
+ * 2. 推送的信息格式必须为"data:内容\n\n"
+ */
+echo "data: The server time is: {$time}\n\n"; 
+flush(); 
+ -->
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+</head>
+
+<body>
+    <div id='app'></div>
+</body>
+<script>
+const app = document.getElementById('app')
+const source = new EventSource('http://localhost/SSE.php')
+
+/**
+ * EventSource 支持的事件有三种 ...
+ * 
+    『名称』    『说明』                      『事件处理方法』
+    open     当成功与服务器建立连接时产生  onopen
+    message  当收到服务器发送的事件时产生  onmessage
+    error    当出现错误时产生             onerror
+ */
+source.onmessage = e => {
+    app.innerHTML += e.data + '<br>'
+}
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
