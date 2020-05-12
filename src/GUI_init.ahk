@@ -261,6 +261,8 @@ Gui, Pandora:Add, Link,, <a href="https://miyogurt.github.io/nodelover-books">No
 Gui, Pandora:Add, Link,, <a href="https://gitee.com/explore">码云逛逛源码</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need">you-dont-need</a>
 Gui, Pandora:Add, Link,, <a href="https://fex.baidu.com/articles/">fex周刊</a>
+Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/czp3ug">公司语雀</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -306,7 +308,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.behance.net/galleries/illustration
 
 
 
-Gui, Pandora:Add, Text,  W140 ys, 宁可错过：
+Gui, Pandora:Add, Text,  W160 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
 Gui, Pandora:Add, Link,, <a href="https://app.didiyun.com/#/dc2/detail?uuid=a289c3f607fd5bbd8261df9b266ae211">滴滴云</a>
 Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub 镜像仓库</a>
@@ -318,11 +320,18 @@ Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
 Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
 
-Gui, Pandora:Add, Text,  W140 ys, 不可放过：
-Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
-Gui, Pandora:Add, Link,, <a href="http://www.cnplugins.com/">Chomre国内镜像商店</a>
-Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
-Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</a>
+Gui, Pandora:Add, Text,  W120 ys, 不可放过：
+Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">Pexels</a>
+Gui, Pandora:Add, Link,, <a href="https://gratisography.com/">Gratisography</a>
+Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/">picjumbo</a>
+Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">Pixabay</a>
+Gui, Pandora:Add, Link,, <a href="https://www.canva.com/photos/free/">Canva</a>
+Gui, Pandora:Add, Link,, <a href="https://www.reshot.com/">reshot</a>
+Gui, Pandora:Add, Link,, <a href="https://www.rawpixel.com/">rawpixel</a>
+Gui, Pandora:Add, Link,, <a href="https://morguefile.com/">Morguefile</a>
+Gui, Pandora:Add, Link,, <a href="https://pxhere.com/">pxhere</a>
+Gui, Pandora:Add, Link,, <a href="Republic    https://isorepublic.com/">ISO</a>
+Gui, Pandora:Add, Link,, <a href="http://www.polayoutu.com">泼辣有图</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：
@@ -334,7 +343,10 @@ Gui, Pandora:Add, Link,, <a href="https://medium.com/@tarkus">medium</a>
 Gui, Pandora:Add, Link,, <a href="https://36dcup.net/">36dcup</a>
 Gui, Pandora:Add, Link,, <a href="https://www.ox.ac.uk/soundsofthebodleian/#radcam">图书馆白噪音</a>
 Gui, Pandora:Add, Link,, <a href="https://mynoise.net/NoiseMachines/openOfficeNoiseGenerator.php">办公室白噪音</a>
-
+Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
+Gui, Pandora:Add, Link,, <a href="http://www.cnplugins.com/">Chomre国内镜像商店</a>
+Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
+Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</a>
 
 
 ;@1
@@ -631,6 +643,8 @@ Gui, Pandora:Add, Link,, <a href="https://cli.vuejs.org/">vue-cli</a>
 Gui, Pandora:Add, Link,, <a href="https://cli.vuejs.org/config/#devserver-proxy">vue-config 文档</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vuepress">vuepress</a>
 Gui, Pandora:Add, Link,, <a href="https://vue-test-utils.vuejs.org/zh/">vue-test-utils</a>
+Gui, Pandora:Add, Link,, <a href="https://vue-composition-api-rfc.netlify.app/api.html#setup">vue composition API</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/kefranabg/awesome-vue-composition-api">vue-awesome composition</a>
 
 Gui, Pandora:Add, Text,  W140 ys, vue ssr nuxt：
 Gui, Pandora:Add, Link,, <a href="https://nuxtjs.org/">nuxt官网</a>
@@ -672,7 +686,7 @@ Gui, Pandora:Add, Text,  W160 ys, vue-ant-design
 Gui, Pandora:Add, Link,, <a href="https://github.com/vueComponent/ant-design-vue">github</a>
 Gui, Pandora:Add, Link,, <a href="https://vue.ant.design/docs/vue/introduce/">docs</a>
 
-Gui, Pandora:Add, Text, W140 Section xs yp+250, vue动画钩子：
+Gui, Pandora:Add, Text, W140 Section xs yp+300, vue动画钩子：
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes">vue-transition</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#JavaScript-Hooks">JavaScript-Hooks</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/api/#transition-group">transition-group</a>
@@ -961,6 +975,10 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/docsifyjs/awesome-docsify">
 Gui, Pandora:Add, Text, W140 yp+50, 文档神器 docz：
 Gui, Pandora:Add, Link,, <a href="https://github.com/pedronauck/docz">docz</a>
 
+Gui, Pandora:Add, Text, W140 yp+50, FaceBook 文档工具：
+Gui, Pandora:Add, Link,, <a href="https://github.com/facebook/docusaurus">docusaurus</a>
+Gui, Pandora:Add, Link,, <a href="https://romejs.dev/docs/introduction/installation/">示例 roma document</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/facebookexperimental/rome/blob/master/website/docusaurus.config.js">roma document souce</a>
 
 Gui, Pandora:Add, Text, W140 ys xp+150, 简易HTTP：
 Gui, Pandora:Add, Link,, <a href="https://github.com/tapio/live-server">live-server</a>

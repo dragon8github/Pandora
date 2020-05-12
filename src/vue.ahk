@@ -96,6 +96,7 @@
   Menu, VueMenu, Add, vue 动画组件<transition>, :vuetranstion
   Menu, VueMenu, Add, vue 动画组件<transition> + animate.css, :vuetranstion
   Menu, VueMenu, Add, vue 异步组件加载import, VueHandler
+  Menu, VueMenu, Add, vue Composition API setup, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -170,6 +171,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "vue Composition API setup") {
+_send("vue.setup", true, true)
+return
 }
 
 if (v == "🚀 践行组件化开发的新方案： test.vue") {
@@ -2878,6 +2884,9 @@ export default {
 code(Var)
 return
 
+::sfc::
+::vue.sfc::
+::vue.scf::
 ::vue.init::
 ::vueinit::
 InputBox, OutputVar, title, enter a name?,,,,,,,,test
@@ -5905,6 +5914,91 @@ router.beforeEach((to, from, next) => {
 })
 
 export default router
+)
+txtit(Var)
+return
+
+::vue.setup::
+::setup::
+Var =
+(
+<template>
+  <div>
+    <div v-if="loading">loading...</div>
+    <div v-else-if="error">Error: {{ error }}</div>
+    <div v-else>{{ result }}</div>
+  </div>
+</template>
+<script>
+import { ref } from "@vue/composition-api"
+
+const useFetch = () => {
+  const loading = ref(false)
+  const error = ref(null)
+  const result = ref(null)
+
+  const exec = async (url) => {
+    loading.value = true
+    error.value = null
+    result.value = null
+    try {
+      result.value = await fetch(url)
+    } catch (error) {
+      result.value = null
+      error.value = error
+    } finally {
+      loading.value = false
+    }
+  }
+
+  return { loading, error, exec, result }
+}
+
+export default {
+  setup (props, context) {
+    const { loading, error, exec, result } = useFetch()
+    return { loading, error, exec, result }
+  },
+}
+</script>
+---
+<template>
+    <div class="test">
+        {{ x }}, {{ y }}
+    </div>
+</template>
+
+<script>
+// api: https://vue-composition-api-rfc.netlify.app/api.html
+import { ref, onMounted, onUnmounted } from "@vue/composition-api"
+
+export default {
+  name: 'test',
+  // 只会执行一次，After 『beforeCreate』, Before 『created』
+  // 参数一: 就是props； 参数二：Vue instance（因为 setup 无法访问 this）
+  setup (props, context) {
+    const x = ref(0)
+    const y = ref(0)
+
+    const handler = e => {
+        x.value = e.clientX 
+        y.value = e.clientY
+    }
+
+    onMounted(() => window.addEventListener('mousemove', handler))
+    onUnmounted(() => window.removeEventListener('mousemove', handler))
+
+    //  in the template so there's no need for .value in templates.
+    return { x, y }
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+.test {
+
+}
+</style>
 )
 txtit(Var)
 return

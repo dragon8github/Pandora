@@ -1,4 +1,94 @@
-﻿
+﻿::bcode::
+::bscode::
+Var =
+(
+// https://github.com/pikax/talks/blob/master/2019-11-21/introduction_composition-api/src/1_fetch_classic.vue
+// https://s1.ax1x.com/2020/05/11/YYKBZQ.png
+Boilerplate code
+)
+code(Var)
+Var =
+(
+<template>
+  <div>
+    Fetch example: Classic
+    <div v-if="loading">loading...</div>
+    <div v-else-if="error">Error: {{ error }}</div>
+    <div v-else>{{ result }}</div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    url: String,
+  },
+  data: {
+    loading: false,
+    result: null,
+    error: null,
+  },
+  methods: {
+    async fetch() {
+      this.loading = true;
+      this.error = null;
+      try {
+        this.result = await fetch(this.url);
+      } catch (e) {
+        this.result = null;
+        this.error = e;
+      } finally {
+        this.loading = false;
+      }
+    },
+  },
+};
+</script>
+---
+<template>
+  <div>
+    <div v-if="loading">loading...</div>
+    <div v-else-if="error">Error: {{ error }}</div>
+    <div v-else>{{ result }}</div>
+  </div>
+</template>
+<script>
+import { ref } from "@vue/composition-api"
+
+const useFetch = () => {
+  const loading = ref(false)
+  const error = ref(null)
+  const result = ref(null)
+
+  const exec = async (url) => {
+    loading.value = true
+    error.value = null
+    result.value = null
+    try {
+      result.value = await fetch(url)
+    } catch (error) {
+      result.value = null
+      error.value = error
+    } finally {
+      loading.value = false
+    }
+  }
+
+  return { loading, error, exec, result }
+}
+
+export default {
+  setup (props, context) {
+    const { loading, error, exec, result } = useFetch()
+    return { loading, error, exec, result }
+  },
+}
+</script>
+)
+txtit(Var)
+return
+
+
 +r::
 Send, ^c
 ClipWait, 2
