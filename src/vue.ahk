@@ -97,6 +97,7 @@
   Menu, VueMenu, Add, vue 动画组件<transition> + animate.css, :vuetranstion
   Menu, VueMenu, Add, vue 异步组件加载import, VueHandler
   Menu, VueMenu, Add, vue Composition API setup, VueHandler
+  Menu, VueMenu, Add, import '@vue/composition-api', VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -170,6 +171,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "import '@vue/composition-api'") {
+Var =
+(
+import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from '@vue/composition-api'
 )
 }
 
@@ -5930,7 +5938,7 @@ Var =
   </div>
 </template>
 <script>
-import { ref } from "@vue/composition-api"
+import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from '@vue/composition-api'
 
 const useFetch = () => {
   const loading = ref(false)
@@ -5970,7 +5978,7 @@ export default {
 
 <script>
 // api: https://vue-composition-api-rfc.netlify.app/api.html
-import { ref, onMounted, onUnmounted } from "@vue/composition-api"
+import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from '@vue/composition-api'
 
 export default {
   name: 'test',
@@ -5999,6 +6007,20 @@ export default {
 
 }
 </style>
+---
+import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from '@vue/composition-api'
+
+export default {
+    setup() {
+        const event = reactive({
+            capacity: 4,
+            attending: ["Tim", "Bob", "Joe"],
+            spacesLeft: computed(() => event.capacity - event.attending.length)
+        })
+        const increaseCapacity = () => event .capacity++
+        return { ...toRefs(event), increaseCapacity }
+    }
+}
 )
 txtit(Var)
 return

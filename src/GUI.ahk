@@ -10616,3 +10616,90 @@ source.onmessage = e => {
 RunBy(name)
 run, % name
 return
+
+Newcomposition:
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- https://github.com/vuejs/composition-api/blob/master/README.zh-CN.md -->
+    <!-- https://vue-composition-api-rfc.netlify.app/zh/ -->
+    <script src="https://unpkg.com/@vue/composition-api/dist/vue-composition-api.umd.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ capacity }}
+        <button @click='increaseCapacity'>+</button>
+
+        <br>
+
+        {{ page }} , {{ size }}
+        <button @click='addpage'>addpage</button>
+        <button @click='addsize'>addsize</button>
+    </div>
+</body>
+<script>
+
+// 必须先注册才能使用
+Vue.use(window.vueCompositionApi.default)
+
+const { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } = window.vueCompositionApi
+
+var vue = new Vue({
+    el: '#app',
+    setup() {
+        const state = reactive({
+            capacity: 4,
+            attending: ["Tim", "Bob", "Joe"],
+            page: 0, size: 10,
+            // 看这里，居然可以用 computed！但不能用 ref 哦
+            spacesLeft: computed(() => state.capacity - state.attending.length),
+        })
+
+
+        const foo = ref(0)
+        const bar = ref(0)
+
+
+        const increaseCapacity = () => state.capacity++
+        const addpage = () => state.page++
+        const addsize = () => state.size++ 
+
+        // （立即执行）监听 reactive，必须是一个函数
+        watch(() => state.page, (newV, oldV) => {
+            console.log('page', newV)
+        })
+
+        // （立即执行）监听多个 reactive，必须是一个数组 + 函数
+        watch([() => state.page, () => state.size], ([newPage, newSize], [oldPage, oldSize] = []) => {
+            console.log('[page, size]', newPage, newSize)
+        })
+
+        // （立即执行）监听 ref 可以直接用
+        watch(foo, (newV, oldV) => {
+            console.log('foo', newV)
+        })
+
+        // （立即执行）监听 ref 也可以多个数组
+        watch([foo, bar], (newV, oldV) => {
+            console.log('[foo, bar]', newV)
+        })
+
+        return { ...toRefs(state), increaseCapacity, addpage, addsize }
+    },
+    beforeMount() {
+        console.log(20200512195944, 123)
+    }
+})
+</script>
+
+</html>
+)
+code(Var)
+return

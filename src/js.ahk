@@ -5921,6 +5921,16 @@ SendInput, {right 7}
 SendInput, +{right 2}
 return
 
+::impapi::
+::impvue::
+::imp-vue::
+Var =
+(
+import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from '@vue/composition-api'
+)
+code(Var)
+return
+
 ::imp3::
 Var =
 (

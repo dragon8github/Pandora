@@ -1,9 +1,15 @@
-﻿::bcode::
+﻿::1993::
+Var =
+(
+1993100337
+)
+code(Var)
+return
+
+::bcode::
 ::bscode::
 Var =
 (
-// https://github.com/pikax/talks/blob/master/2019-11-21/introduction_composition-api/src/1_fetch_classic.vue
-// https://s1.ax1x.com/2020/05/11/YYKBZQ.png
 Boilerplate code
 )
 code(Var)
@@ -19,6 +25,8 @@ Var =
 </template>
 
 <script>
+// https://github.com/pikax/talks/blob/master/2019-11-21/introduction_composition-api/src/1_fetch_classic.vue
+// https://s1.ax1x.com/2020/05/11/YYKBZQ.png
 export default {
   props: {
     url: String,
@@ -168,6 +176,13 @@ cs("928532756@qq.com")
 Sleep, 100
 Send, {tab}
 cs("123456sb")
+return
+
+!6::
+cs("dmp-dgsglj1")
+Sleep, 100
+Send, {tab}
+cs("dmpdemo")
 return
 
 ::---::

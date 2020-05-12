@@ -354,6 +354,7 @@ Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
 Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140 , 新建纯index.html
+Gui, Pandora:Add, Text, gNewcomposition W140 , 新建Vue composition.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建table.html
 Gui, Pandora:Add, Text, gNewVueRules W140 , 新建vue.rules.html
 
