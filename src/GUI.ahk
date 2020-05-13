@@ -10658,7 +10658,7 @@ var vue = new Vue({
             capacity: 4,
             attending: ["Tim", "Bob", "Joe"],
             page: 0, size: 10,
-            // 看这里，居然可以用 computed！但不能用 ref 哦
+            // 看这里，居然可以用 computed
             spacesLeft: computed(() => state.capacity - state.attending.length),
         })
 

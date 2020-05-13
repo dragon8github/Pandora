@@ -143,6 +143,8 @@ en-us
 code(Var)
 return
 
+
+
 !1::
 cs("dgdp")
 Sleep, 100
@@ -183,6 +185,14 @@ cs("dmp-dgsglj1")
 Sleep, 100
 Send, {tab}
 cs("dmpdemo")
+return
+
+
+!7::
+cs("iocadmin")
+Sleep, 100
+Send, {tab}
+cs("iocadmin")
 return
 
 ::---::
