@@ -256,6 +256,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.iloveimg.com/zh-cn">图片压缩�
 Gui, Pandora:Add, Text,  W140 Section xs yp+50, 最近学习：
 Gui, Pandora:Add, Link,, <a href="https://hellogithub.com/periodical/volume/15/">有趣的github项目</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/blob/1.0/src/cache.js">Vue v1源码</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/blob/2.6/src/shared/util.js">Vue v2.6源码</a>
+
 Gui, Pandora:Add, Link,, <a href="https://github.com/azl397985856/leetcode">leetcode JS版本</a>
 Gui, Pandora:Add, Link,, <a href="https://miyogurt.github.io/nodelover-books">NodeLover 黄金屋</a>
 Gui, Pandora:Add, Link,, <a href="https://gitee.com/explore">码云逛逛源码</a>
@@ -332,6 +334,7 @@ Gui, Pandora:Add, Link,, <a href="https://morguefile.com/">Morguefile</a>
 Gui, Pandora:Add, Link,, <a href="https://pxhere.com/">pxhere</a>
 Gui, Pandora:Add, Link,, <a href="Republic    https://isorepublic.com/">ISO</a>
 Gui, Pandora:Add, Link,, <a href="http://www.polayoutu.com">泼辣有图</a>
+Gui, Pandora:Add, Link,, <a href="http://fuli.su">fuli.su</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：

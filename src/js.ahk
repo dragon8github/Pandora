@@ -1124,7 +1124,7 @@ var once = f => {
       return cache
     }
 }
-
+---
 /**
  * es5 版本
  *
@@ -1144,14 +1144,28 @@ var once = f => {
       return cache
     }
 }
-
+---
 /**
  * es6 极限版本
  *
  */
 var once = (f, cache, count = 0) => (...args) => ++count === 1 ? cache = f(...args) : cache
+---
+/**
+ * Ensure a function is called only once.
+ * https://github.com/vuejs/vue/blob/2.6/src/shared/util.js#L333
+ */
+export const once = fn => {
+  let called = false
+  return function () {
+    if (!called) {
+      called = true
+      fn.apply(this, arguments)
+    }
+  }
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::!include::

@@ -13,6 +13,8 @@
     Menu, utilsTime, Add, 获取当前时间的前一天/后一天的时间戳, utilsHandler
     Menu, utilsTime, Add, 验证日期大小, utilsHandler
     Menu, utilsTime, Add, 设置几天后的日期, utilsHandler
+    Menu, utilsTime, Add, 获取前6个月/前15天数据, utilsHandler
+
 
     Menu, utilsIs, Add, is, utilsHandler
     Menu, utilsIs, Add, isString, utilsHandler
@@ -200,7 +202,8 @@
     Menu, utilsSolution, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
 
     ; @认知 @renzhi
-    
+    Menu, utilspractice, Add, looseEqual： 判断两个对象是否一致, utilsHandler
+    Menu, utilspractice, Add, noop 优雅的使用空函数, utilsHandler
     Menu, utilspractice, Add, pipeAsyncFunctions：管道异步处理工具, utilsHandler
     Menu, utilspractice, Add, DeepMapKey：深度遍历所有的key, utilsHandler
     Menu, utilspractice, Add, 三元表达式正确换行套路 —— 问号换行，与冒号齐飞, utilsHandler
@@ -252,6 +255,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, toNumber: 转换 + 小数点（很常用）, utilsHandler
     Menu, utilsmy, Add, 自定义事件 on/off 可以实现自由删除事件, utilsHandler
     Menu, utilsmy, Add, lazyExec: 影武者懒执行模式, utilsHandler
     Menu, utilsmy, Add, colorRange: 获取颜色范围，类似 echarts visualMap, utilsHandler
@@ -310,7 +314,6 @@
     
     
     Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
-    Menu, utilsmy, Add, 获取前6个月/前15天数据, utilsHandler
     Menu, utilsmy, Add, 通过URL判断是否本地开发环境, utilsHandler
     Menu, utilsmy, Add, 微信群组随机取人头, utilsHandler
     Menu, utilsmy, Add, 微信获取头像和人员名册, utilsHandler
@@ -488,6 +491,21 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "noop 优雅的使用空函数") {
+_send("noop", true, true)
+return
+}
+
+if (v == "toNumber: 转换 + 小数点（很常用）") {
+_send("toNumber", true, true)
+return
+}
+
+if (v == "looseEqual： 判断两个对象是否一致") {
+_send("iseq", true, true)
+return
 }
 
 if (v == "require.context vue") {
@@ -7422,6 +7440,72 @@ setTimeout(() => {
     fuck('丙')
     fuck('丁')
 }, 1500)
+)
+code(Var)
+return
+
+::eq::
+::iseq::
+Var =
+(
+const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]' 
+
+function looseEqual (a, b) {
+  if (a === b) return true
+  const isObjectA = isObject(a)
+  const isObjectB = isObject(b)
+  if (isObjectA && isObjectB) {
+    try {
+      const isArrayA = Array.isArray(a)
+      const isArrayB = Array.isArray(b)
+      if (isArrayA && isArrayB) {
+        return a.length === b.length && a.every((e, i) => {
+          return looseEqual(e, b[i])
+        })
+      } else if (a instanceof Date && b instanceof Date) {
+        return a.getTime() === b.getTime()
+      } else if (!isArrayA && !isArrayB) {
+        const keysA = Object.keys(a)
+        const keysB = Object.keys(b)
+        return keysA.length === keysB.length && keysA.every(key => {
+          return looseEqual(a[key], b[key])
+        })
+      } else {
+        /* istanbul ignore next */
+        return false
+      }
+    } catch (e) {
+      /* istanbul ignore next */
+      return false
+    }
+  } else if (!isObjectA && !isObjectB) {
+    return String(a) === String(b)
+  } else {
+    return false
+  }
+}
+)
+code(Var)
+return
+
+::toNumber::
+::tofixed::
+::fixed::
+Var =
+(
+const toNumber = (val, decimal = 0) => {
+  const n = parseFloat(val)
+  if (isNaN(n)) return val
+  return decimal ? parseFloat(n.toFixed(decimal)) : n
+}
+)
+code(Var)
+return
+
+::noop::
+Var =
+(
+export const noop = () => {}
 )
 code(Var)
 return

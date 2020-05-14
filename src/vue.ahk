@@ -27,6 +27,7 @@
   Menu, Vuerouter, Add
 
   Menu, Vuerouter, Add, 滚动行为：scrollBehavior, VueHandler
+  Menu, Vuerouter, Add, 用 beforeRouteUpdate 代替 watch.$route, VueHandler
 
   
 
@@ -98,11 +99,12 @@
   Menu, VueMenu, Add, vue 异步组件加载import, VueHandler
   Menu, VueMenu, Add, vue Composition API setup, VueHandler
   Menu, VueMenu, Add, import '@vue/composition-api', VueHandler
+  Menu, VueMenu, Add, 用 beforeRouteUpdate 代替 watch.$route, VueHandler
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
-  Menu, VueMenu, Add, <keep-alive>, VueHandler
+  Menu, VueMenu, Add, <keep-alive>: 这里的 name 是组件的不是 router 的, VueHandler
   Menu, VueMenu, Add, this.$msgbox 与 vnode 语法, VueHandler
   Menu, VueMenu, Add, render(h), VueHandler
   Menu, VueMenu, Add, render(h) jsx用法, VueHandler
@@ -171,6 +173,37 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "用 beforeRouteUpdate 代替 watch.$route") {
+Var =
+(
+beforeRouteUpdate(to, from, next) {
+  console.log(20200513153623, to, from)
+
+  if (from.meta.keepAlive) {
+    cache[from.name] = to.name;
+    // 打印记录
+    console.log("cache", cache);
+    // 重构缓存规则
+    this.shouldCache = Object.keys(cache).join(",") || "none";
+  }
+
+  // 如果跳转的目标有缓存
+  if (Object.keys(cache).includes(to.name)) {
+    // 如果缓存的目标和我不一致
+    if (cache[to.name] != from.name) {
+      console.log("clear");
+      // 宁死不屈
+      delete cache[to.name];
+      // 重构缓存规则
+      this.shouldCache = Object.keys(cache).join(",") || "none";
+    }
+  }
+
+  next();
+},
 )
 }
 
@@ -1866,7 +1899,7 @@ Var =
 )
 }
 
-if (v == "<keep-alive>") {
+if (v == "<keep-alive>: 这里的 name 是组件的不是 router 的") {
 Var = 
 (
 <!-- 路由入口 -->
@@ -2686,7 +2719,10 @@ this.$forceUpdate();
 code(Var)
 return
 
+::watch.d::
 ::watchd::
+::watch.deep::
+::watchdeep::
 ::deep.watch::
 ::deepwatch::
 ::deepw::
@@ -4889,6 +4925,33 @@ defineReactive(obj, 'list', [1,2,3])
 obj.list[0] = 'fuck' // 不会触发set hook，但居然还额外触发了 get hook。
 
 obj.list = 123 // 触发 set hook
+)
+code(Var)
+return
+
+
+
+::watchr::
+::watch.$::
+::watch.$route::
+::watch.route::
+::watchroute::
+Var =
+(
+watch: {
+   '$route': {
+      immediate: true,
+      handler(to, from) {
+         console.log(20200513164256, to, from)
+      }
+   }
+},
+// 官方建议用这个代替
+// https://router.vuejs.org/guide/advanced/navigation-guards.html#global-before-guards
+beforeRouteUpdate(to, from, next) {
+  console.log(20200513153623, to, from)
+  next();
+},
 )
 code(Var)
 return

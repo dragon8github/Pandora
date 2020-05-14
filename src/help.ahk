@@ -1332,36 +1332,45 @@ return
 
 !o::
     tmp := Clipboard
+    
     Clipboard := 
+    
     Send, ^c
+    
     ClipWait, 2
-    str := Trim(Clipboard)
     
-    if (SubStr(str, 0, 2) == "//") {
-        str := "http:" . str
-    }
+    tmp := Trim(Clipboard)
     
-    if (InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") || InStr(str, "C/") || InStr(str, "D/") || InStr(str, "E/")  || InStr(str, "F/")  || InStr(str, "F/")  || InStr(str, "G/")  || InStr(str, "H/")) {
-        
-        ; 解决类似 c/users/lee/desktop/citymanagement 的路径
-        if (SubStr(str, 2, 1) == "/") {
-            pan := SubStr(str, 1, 1)
-            last := SubStr(str, 2)
-            str := pan . ":" . last
+    ; 以换行符为分隔符切割为数组
+	array := StrSplit(tmp, "`n")
+	    
+    	; 遍历数组
+	For key, str in array {
+    
+        if (SubStr(str, 0, 2) == "//") {
+            str := "http:" . str
         }
         
-        RUN, % str
-    } else if(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com")) {
-        if (!InStr(str, "http://") && !InStr(str, "https://")) {
-            str := "http://" . str
+        if (InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:") || InStr(str, "C/") || InStr(str, "D/") || InStr(str, "E/")  || InStr(str, "F/")  || InStr(str, "F/")  || InStr(str, "G/")  || InStr(str, "H/")) {
+            
+            ; 解决类似 c/users/lee/desktop/citymanagement 的路径
+            if (SubStr(str, 2, 1) == "/") {
+                pan := SubStr(str, 1, 1)
+                last := SubStr(str, 2)
+                str := pan . ":" . last
+            }
+            
+            RUN, % str
+        } else if(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com")) {
+            if (!InStr(str, "http://") && !InStr(str, "https://")) {
+                str := "http://" . str
+            }
+            
+            RUN, % str
+        } else {
+            RUN, https://www.baidu.com/s?wd=%str%
         }
-        
-        RUN, % str
-    } else {
-        RUN, https://www.baidu.com/s?wd=%str%
     }
-    Sleep, 200
-    Clipboard := tmp
 return
 
 +BackSpace::
