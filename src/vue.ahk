@@ -6087,3 +6087,48 @@ export default {
 )
 txtit(Var)
 return
+
+::mapbox::
+::msgbox::
+::vuebox::
+::vue.box::
+Var =
+(
+import Vue from 'vue';
+import mapbox from './mapbox.vue'
+
+const mapboxConstructor = Vue.extend(mapbox);
+
+let _initInstance;
+
+const initInstance = () => {
+  _initInstance = new mapboxConstructor({
+    el: document.createElement('div')
+  });
+  document.body.appendChild(_initInstance.$el);
+};
+
+const show = ({ name, list, center }) => {
+  if (!_initInstance) {
+    initInstance();
+  }
+
+  _initInstance.value = true;
+  _initInstance.name = name;
+  _initInstance.list = list;
+  _initInstance.center = center;
+}
+
+const close = () => {
+  Vue.nextTick(() => {
+    _initInstance && (_initInstance.value = false)
+  });
+}
+
+export default {
+  show,
+  close,
+}
+)
+code(Var)
+return

@@ -31,6 +31,7 @@ CancelSelect:
     GuiControl,, toutiao, 0
     GuiControl,, toutiao2, 0
     GuiControl,, dasheng, 0
+    GuiControl,, bind, 0
 	
 
     GuiControl,, deepL, 0
@@ -44,7 +45,9 @@ CancelSelect:
 	GuiControl,, qq, 0
 	GuiControl,, dog, 0
 	GuiControl,, xiami, 0
-	GuiControl,, kuwo, 0 
+    GuiControl,, kuwo, 0 
+	GuiControl,, bilibili, 0 
+
 
 	GuiControl,, juejin, 0
 	GuiControl,, jianshu, 0
@@ -57,7 +60,10 @@ CancelSelect:
 	GuiControl,, dangdang, 0
 	GuiControl,, amazon, 0 
 	GuiControl,, suning, 0
-	GuiControl,, kongzi, 0
+    GuiControl,, kongzi, 0
+    GuiControl,, tmao, 0
+
+
 	
 return
 
@@ -107,6 +113,8 @@ AllSearchA:
         GuiControl,, toutiao, 1
         GuiControl,, toutiao2, 1
         GuiControl,, dasheng, 1
+        GuiControl,, bind, 1
+
 	} else {
 		GuiControl,, bd, 0
 		GuiControl,, google, 0
@@ -118,6 +126,7 @@ AllSearchA:
         GuiControl,, toutiao, 0
         GuiControl,, toutiao2, 0
         GuiControl,, dasheng, 0
+        GuiControl,, bind, 0
 	}
 return
 
@@ -146,14 +155,15 @@ AllSearchC:
 		GuiControl,, qq, 1 
 		GuiControl,, dog, 1 
 		GuiControl,, xiami, 1 
-		GuiControl,, kuwo, 1 
+        GuiControl,, kuwo, 1 
+		GuiControl,, bilibili, 1 
 	} else {
 		GuiControl,, wy, 0
 		GuiControl,, qq, 0
 		GuiControl,, dog, 0
 		GuiControl,, xiami, 0
 		GuiControl,, kuwo, 0 
-		
+        GuiControl,, bilibili, 0
 	}
 return
 
@@ -185,7 +195,8 @@ AllSearchE:
 		GuiControl,, dangdang, 1 
 		GuiControl,, amazon, 1 
 		GuiControl,, suning, 1 
-		GuiControl,, kongzi, 1
+        GuiControl,, kongzi, 1
+		GuiControl,, tmao, 1
 	} else {
 		GuiControl,, taobao, 0
 		GuiControl,, tianmao, 0
@@ -194,6 +205,7 @@ AllSearchE:
 		GuiControl,, amazon, 0 
 		GuiControl,, suning, 0
 		GuiControl,, kongzi, 0
+        GuiControl,, tmao, 0
 	}
 return
 
@@ -202,6 +214,21 @@ Fuck:
 	; 保存用户的输入到每个控件的关联变量中.
 	Gui, Submit, NoHide 
     
+    
+    ; 必应
+    if (bind == 1) {
+        RUN, https://cn.bing.com/search?q=%SearchContent%
+    }
+
+    ; 天猫
+    if (tmao == 1) {
+        RUN, https://list.tmall.com/search_product.htm?q=%SearchContent%
+    }
+
+    ; bilibili
+    if (cylee == 1) {
+        RUN, https://search.bilibili.com/all?keyword=%SearchContent%
+    }
 
 	; 贝尔塔猫'博客园
 	if (cylee == 1) {

@@ -128,10 +128,10 @@ Gui, Pandora:Add, Checkbox, vcnpm, cnpm
 Gui, Pandora:Add, Checkbox, vgoogle, Google
 Gui, Pandora:Add, Checkbox, vgithub Checked, Github
 Gui, Pandora:Add, Checkbox, vso, Stack Overflow
-Gui, Pandora:Add, Checkbox, vsegmentfault, SegmentFault
 Gui, Pandora:Add, Checkbox, vtoutiao, 今日头条
 Gui, Pandora:Add, Checkbox, vtoutiao2, 头条搜索
 Gui, Pandora:Add, Checkbox, vdasheng, 大圣网盘搜索
+Gui, Pandora:Add, Checkbox, vbind, 必应搜索
 
 
 Gui, Pandora:Add, Text, gAllSearchB W120 ys, 翻译类:
@@ -154,6 +154,7 @@ Gui, Pandora:Add, Checkbox, vqq, QQ音乐
 Gui, Pandora:Add, Checkbox, vdog, 酷狗音乐
 Gui, Pandora:Add, Checkbox, vxiami, 虾米音乐
 Gui, Pandora:Add, Checkbox, vkuwo, 酷我音乐
+Gui, Pandora:Add, Checkbox, vbilibili, bilibili
 
 Gui, Pandora:Add, Text, gAllSearchD W60 ys, 社区类:
 Gui, Pandora:Add, Checkbox, vjuejin, 掘金
@@ -161,6 +162,7 @@ Gui, Pandora:Add, Checkbox, vjianshu, 简书
 Gui, Pandora:Add, Checkbox, vcsdn, CSDN
 Gui, Pandora:Add, Checkbox, vzhihu, 知乎
 Gui, Pandora:Add, Checkbox, vcylee, 博客园
+Gui, Pandora:Add, Checkbox, vsegmentfault, 思否
 
 Gui, Pandora:Add, Text, gAllSearchE W120 ys, 购物类:
 Gui, Pandora:Add, Checkbox, vtaobao, 淘宝
@@ -169,6 +171,7 @@ Gui, Pandora:Add, Checkbox, vdangdang, 当当
 Gui, Pandora:Add, Checkbox, vamazon, 亚马逊
 ; Gui, Pandora:Add, Checkbox, vsuning, 苏宁易购
 Gui, Pandora:Add, Checkbox, vkongzi, 孔夫子二手书
+Gui, Pandora:Add, Checkbox, vtmao, 天猫
 
 ; 搜索框
 Gui, Pandora:Add, Edit, vSearchContent gSearchContent w260 H100 Limit150 yp+40 Section xs, dragon8github/Pandora
@@ -284,10 +287,10 @@ Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中�
 
 
 Gui, Pandora:Add, Text,  W140 ys, 与钱为伍
-Gui, Pandora:Add, Link,, <a href="https://apizza.net/console/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza-old</a>
 Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/ec4f5a86d6f29a67336e85f820350718/dev">apizza</a>
-Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/3aa99766c2834cdcf0f9efe553f79177/dev">apizza-Live</a>
-Gui, Pandora:Add, Link,, <a href="https://apizza.net/pro/#/project/526d58e01a7480bf15c97fd4e5038d9d/dev">apizza-数据中心</a>
+Gui, Pandora:Add, Link,, <a href="https://cloud.minapp.com/">知晓云</a>
+Gui, Pandora:Add, Link,, <a href="https://www.leancloud.cn/">Leancloud</a>
+Gui, Pandora:Add, Link,, <a href="https://www.leancloud.cn/">wilddog</a>
 Gui, Pandora:Add, Link,, <a href="http://www.taokouling.com/index/taobao_tkljm">淘宝口令解密</a>
 Gui, Pandora:Add, Link,, <a href="www.materialtools.com/">临时接收手机验证码</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
