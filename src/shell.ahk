@@ -1133,7 +1133,6 @@ return
 ::sh.wc::
 ::shell.wc::
 ::bash.wc::
-::wc::
 Var =
 (
 find . -name "*.json" -prune -o -path "./assets/*" -o -iname "*.MD"  -prune -o -type f -print | xargs wc -l

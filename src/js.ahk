@@ -2812,8 +2812,42 @@ return
 ::dongtai::
 ::dongtaidaoru::
 ::dongtaiyinru::
+::import::
 Var =
 (
+import Vue from 'vue'
+
+/**
+ * 1. directory {String} -读取文件的路径
+ * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
+ * 3. regExp {RegExp} -匹配文件的正则
+ */
+const VueComponent = require.context('.', true, /\.vue$/)
+
+// 准备导出的模块
+let __Material__ = {}
+
+// 不包含，排除的模块列表
+const exclude = _ => !['./Index.vue'].includes(_)
+
+// 1. 必须使用 key() 获取所有路径
+// 2. 使用 VueComponent(path).default 获取真实模块内容
+VueComponent.keys().filter(exclude).forEach(path => {
+    // 获取 『文件名』 和 『后缀名』
+    const [name, ext] = path.substring(path.lastIndexOf('/') + 1).split('.')
+
+    // 目标文件的输出内容
+    const output = VueComponent(path).default
+
+    // 以 『文件名』 为 key，模块内容为 value
+    __Material__[name] = Vue.extend(output)
+
+    // fixbug: Chart.name === "VueComponent" 是会出问题的，所以加入一个自定义变量来判断吧
+    __Material__[name].isMaterial = true
+})
+
+export default __Material__
+---
 import Vue from 'vue'
 /**
  * 1. directory {String} -读取文件的路径
@@ -9393,6 +9427,21 @@ return
 ::for.en::
 Var = 
 (
+// 对象遍历 - 新写法
+Object.entries(a).forEach([key, value] => {
+    console.log(key, value)
+})
+
+// 对象遍历 - 新写法 reduce 
+const newObj = Object.entries(a).reduce((obj, [key, value]) => {
+    // ...
+    console.log(obj, key, value)
+    // ...
+    obj[key] = value + 'new'
+    // ...
+    return obj
+}, {})
+  
 // 对象遍历
 for (let [key, val] of Object.entries(aa)) {
     console.log(key, val)

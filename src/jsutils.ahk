@@ -509,41 +509,8 @@ return
 }
 
 if (v == "require.context vue") {
-Var =
-(
-import Vue from 'vue'
-
-/**
- * 1. directory {String} -读取文件的路径
- * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
- * 3. regExp {RegExp} -匹配文件的正则
- */
-const VueComponent = require.context('.', true, /\.vue$/)
-
-// 准备导出的模块
-let __Material__ = {}
-
-// 不包含，排除的模块列表
-const exclude = _ => !['./Index.vue'].includes(_)
-
-// 1. 必须使用 key() 获取所有路径
-// 2. 使用 VueComponent(path).default 获取真实模块内容
-VueComponent.keys().filter(exclude).forEach(path => {
-    // 获取 『文件名』 和 『后缀名』
-    const [name, ext] = path.substring(path.lastIndexOf('/') + 1).split('.')
-
-    // 目标文件的输出内容
-    const output = VueComponent(path).default
-
-    // 以 『文件名』 为 key，模块内容为 value
-    __Material__[name] = Vue.extend(output)
-
-    // fixbug: Chart.name === "VueComponent" 是会出问题的，所以加入一个自定义变量来判断吧
-    __Material__[name].isMaterial = true
-})
-
-export default __Material__
-)
+_send("import", true, true)
+return
 }
 
 if (v == "H5 手机键盘弹出收起的处理") {
@@ -7508,4 +7475,169 @@ Var =
 export const noop = () => {}
 )
 code(Var)
+return
+
+::wc::
+::web component::
+::web.component::
+::web components::
+::web.components:
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body>
+    <div id="app">
+        <hello-world>
+            Lee
+        </hello-world>
+    </div>
+</body>
+
+<script type='module'>
+    
+const loadComponent = (function() {
+
+    const parse = html => {
+        // DOM 解析器
+        const parser = new DOMParser()
+        // 将字符串解析为 DOM 元素（cool）
+        const doc = parser.parseFromString(html, 'text/html' )
+        // 获取头部信息（所有的内容都被解析到 head 中）
+        const head = doc.head
+        // 获取 style
+        const style = head.querySelector( 'style' )
+        // 获取 template
+        const template = head.querySelector( 'template' )
+        // 获取 script
+        const script = head.querySelector( 'script' )
+        // 返回三要素
+        return { template, style, script }
+    }
+
+    // ...
+    const getSetting = ({ template, style, script }) => {
+        // ...
+        const jsFile = new Blob([script.textContent], { type: 'application/javascript' })
+        // ...
+        const jsURL = URL.createObjectURL( jsFile )
+
+        // ...
+        const getListeners = settings => {
+            const listeners = {}
+
+            // 遍历所有的选项
+            Object.entries(settings).forEach(([setting, value]) => {
+                // 事件约定必须 on 开头...
+                if (setting.startsWith('on')) {
+                    listeners[setting[2].toLowerCase() + setting.substr(3)] = value
+                }
+            })
+
+            return listeners
+        }
+
+        // ...
+        return import(jsURL).then(module => {
+            // ...
+            console.log(module)
+
+            // 获取所有监听事件
+            const listeners = getListeners(module.default)
+
+            return { 
+                name: module.default.name, 
+                template, 
+                style,
+                listeners,
+            }
+        })
+    }
+
+    const registerComponent = ({ template, style, name, listeners }) => {
+        // 通常组件
+        class UnityCompnents extends HTMLElement {
+            // abstract Interface
+            connectedCallback() {
+                this._upcast()
+                this._attachListeners()
+            }
+
+            // ...
+            _upcast() {
+                // ...
+                const shadow = this.attachShadow({ mode: 'open' })
+                // ...
+                shadow.appendChild(style.cloneNode(true))
+                // ...
+                shadow.appendChild(document.importNode(template.content, true))
+            }
+
+            // ... 
+            _attachListeners() {
+                Object.entries(listeners).forEach(([eventName, callback]) => {
+                    this.addEventListener(eventName, callback, false)
+                })
+            }
+        }
+
+        // customElements API 自定义组件
+        return customElements.define(name, UnityCompnents)
+    }
+
+    const _loadComponent = async url => await fetch(url)
+        // 获取组件代码
+        .then(response => response.text())
+        // 进一步解析字符串
+        .then( parse )
+        // 解析 es6 modules
+        .then( getSetting )
+        // 注册组件
+        .then( registerComponent )
+
+    return _loadComponent
+}())
+
+loadComponent('HelloWorld.wc').then(component => {
+  console.log(component)
+})
+</script>
+</html>
+---
+<template>
+    <div class="hello">
+        <p>Hello, world! My name is </p>
+        <slot></slot>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'hello-world',
+        onClick() {
+            alert(`莫挨老子!`)
+        },
+    }
+</script>
+
+<style>
+    div {
+        background: red;
+        border-radius: 30px;
+        padding: 20px;
+        font-size: 20px;
+        text-align: center;
+        width: 300px;
+        margin: 0 auto;
+    }
+</style>
+)
+txtit(Var)
 return
