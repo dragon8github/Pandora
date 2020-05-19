@@ -63,6 +63,12 @@ CancelSelect:
     GuiControl,, kongzi, 0
     GuiControl,, tmao, 0
 
+    GuiControl,, shuxingtianxia, 0
+    GuiControl,, jiumo, 0
+    GuiControl,, dianzishuwang, 0
+    GuiControl,, oushu, 0
+    GuiControl,, zhiqi, 0
+
 
 	
 return
@@ -1052,7 +1058,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1166,7 +1172,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1234,7 +1240,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1321,7 +1327,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1375,7 +1381,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1471,7 +1477,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -1954,7 +1960,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
@@ -2258,7 +2264,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -2319,7 +2325,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -2411,7 +2417,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -2498,7 +2504,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
@@ -3954,7 +3960,7 @@ FileAppend,
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- echarts -->
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
 
@@ -4931,7 +4937,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <!-- https://github.com/ecomfe/echarts-wordcloud -->
     <script src='https://unpkg.com/echarts-wordcloud@1.1.3/dist/echarts-wordcloud.min.js'></script>
 </head>
@@ -5002,7 +5008,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <style>
@@ -5593,7 +5599,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -5733,7 +5739,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -7109,7 +7115,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -7195,7 +7201,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -8295,7 +8301,7 @@ Var =
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- echarts -->
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
 
@@ -8414,7 +8420,7 @@ FileAppend,
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- echarts -->
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
 
@@ -9069,7 +9075,7 @@ FileAppend,
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -9401,7 +9407,7 @@ FileAppend,
     <title>ECharts</title>
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!-- echarts -->
-    <script src="https://libs.cdnjs.net/echarts/4.7.0/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
     <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
     <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
     <!-- 百度地图插件 -->

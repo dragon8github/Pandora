@@ -7641,3 +7641,12 @@ loadComponent('HelloWorld.wc').then(component => {
 )
 txtit(Var)
 return
+
+::$.json::
+::$json::
+Var =
+(
+const dongguan = await $.getJSON('./data-dongguan.json')
+)
+code(Var)
+return

@@ -1,4 +1,13 @@
-﻿::saigao::
+﻿::guanxitu::
+::guanxi::
+Var =
+(
+Graph
+)
+code(Var)
+return
+
+::saigao::
 ::yazi::
 Var =
 (
@@ -104,6 +113,41 @@ export default {
 )
 txtit(Var)
 return
+
+
+
+>+r::
+Send, ^c
+ClipWait, 2
+tmp := Clipboard
+if (StrLen(tmp)) {
+	; 以换行符为分隔符切割为数组
+	array := StrSplit(tmp, "`n")
+	
+	 ; 数组结果
+	resultarr := []
+    
+    ; 字符串结果
+    result := 
+	
+	len := array.Length()
+		
+	; 遍历数组
+	For key, value in array {
+        v := Trim(StrReplace(value, "`r`n"))
+        if (!arrincludes(resultarr, v)) {
+            resultarr.push(v)
+            result .= v . "`n"
+        }
+	}
+
+	Clipboard := SubStr(result, 1, -1)
+    
+    ToolTip, 去重成功，bug: 最后一条似乎是多余的，请手动删除
+    SetTimer, RemoveToolTip, -2500
+}
+return
+
 
 
 +r::
@@ -437,7 +481,7 @@ Send, {end}
 Send, {left}
 return
 
-+d::
+>+d::
 ::now-::
 ::noww::
 t := A_YYYY . "-" . A_MM . "-" . A_DD
@@ -551,13 +595,7 @@ if (InStr(tmp, "/")) {
 
 return
 
->+d::
-Var =
-(
-debug(console.log)
-)
-code(Var)
-return
+
 
 ::yilai::
 Var =
