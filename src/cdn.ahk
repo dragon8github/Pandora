@@ -1,4 +1,13 @@
-﻿::cdn-gaode::
+﻿::cdn-new::
+::new.css::
+Var =
+(
+<link rel="stylesheet" href="https://newcss.net/new.min.css">
+)
+code(Var)
+return
+
+::cdn-gaode::
 ::cdn-map::
 Var =
 (

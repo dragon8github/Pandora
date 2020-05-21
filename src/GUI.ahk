@@ -30,6 +30,7 @@ CancelSelect:
 	GuiControl,, cylee, 0
     GuiControl,, toutiao, 0
     GuiControl,, toutiao2, 0
+    GuiControl,, codepen, 0
     GuiControl,, dasheng, 0
     GuiControl,, bind, 0
 	
@@ -118,6 +119,7 @@ AllSearchA:
 		GuiControl,, segmentfault, 1 
         GuiControl,, toutiao, 1
         GuiControl,, toutiao2, 1
+        GuiControl,, codepen, 1
         GuiControl,, dasheng, 1
         GuiControl,, bind, 1
 
@@ -131,6 +133,7 @@ AllSearchA:
 		GuiControl,, segmentfault, 0
         GuiControl,, toutiao, 0
         GuiControl,, toutiao2, 0
+        GuiControl,, codepen, 0
         GuiControl,, dasheng, 0
         GuiControl,, bind, 0
 	}
@@ -220,6 +223,10 @@ Fuck:
 	; 保存用户的输入到每个控件的关联变量中.
 	Gui, Submit, NoHide 
     
+    ; codepen
+    if (codepen == 1) {
+        RUN, https://codepen.io/search/pens?q=%SearchContent%
+    }    
     
     ; 必应
     if (bind == 1) {
@@ -10746,4 +10753,85 @@ var vue = new Vue({
 </html>
 )
 code(Var)
+return
+
+youjiancaidanxinjian:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    #menu {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+
+        background-color: rgba(32, 32, 64, 1);
+        color: #fff;
+
+        list-style: none;
+        opacity: 0;
+        transition: .35s opacity ease;
+    }
+
+    #menu.active {
+        opacity: 1;
+    }
+
+    li {
+        height: 40px;
+        line-height: 40px;
+        padding: 0 20px;
+        width: 200px;
+
+        cursor: pointer;
+        transition: .3s all ease;
+    }
+
+    li:not(:last-child) {
+      border-bottom: 1px solid rgba(255, 255, 255, .2);
+    }
+
+
+    li:hover {
+        background-color: #543864;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul id="menu">
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <li>Four</li>
+        </ul>
+    </div>
+</body>
+<script>
+var menu = document.getElementById('menu');
+
+document.oncontextmenu = function(e){
+    menu.style.left = e.clientX + "px";
+    menu.style.top = e.clientY + "px";
+    menu.className = 'menu active'
+    return false;
+}
+
+document.onclick = function() {
+    menu.className = 'menu'
+}
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
 return

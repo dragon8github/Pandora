@@ -202,6 +202,8 @@
     Menu, utilsSolution, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
 
     ; @认知 @renzhi
+
+    Menu, utilspractice, Add, isOverlap： 判断两个矩形 DIV 元素是否交集？, utilsHandler
     Menu, utilspractice, Add, looseEqual： 判断两个对象是否一致, utilsHandler
     Menu, utilspractice, Add, noop 优雅的使用空函数, utilsHandler
     Menu, utilspractice, Add, pipeAsyncFunctions：管道异步处理工具, utilsHandler
@@ -490,6 +492,22 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "isOverlap： 判断两个矩形 DIV 元素是否交集？") {
+Var =
+(
+// isOverlap： 判断两个矩形 DIV 元素是否交集？
+// 原理：http://www.geeksforgeeks.org/find-two-rectangles-overlap/
+const isOverlap = (rect1, rect2) => {
+    const l1 = { x: rect1.x, y: rect1.y }
+    const r1 = { x: rect1.x + rect1.width, y: rect1.y + rect1.height }
+    const l2 = { x: rect2.x, y: rect2.y }
+    const r2 = { x: rect2.x + rect2.width, y: rect2.y + rect2.height }
+    if ( l1.x > r2.x || l2.x > r1.x || l1.y > r2.y || l2.y > r1.y ) return false
+    return true
+}
 )
 }
 
@@ -7649,4 +7667,159 @@ Var =
 const dongguan = await $.getJSON('./data-dongguan.json')
 )
 code(Var)
+return
+
+::minimap::
+Var =
+(
+// your code...
+/**
+ * 参考资料
+ * https://codepen.io/shshaw/pen/wGPpqL
+ * https://www.jianshu.com/p/8016cde22aaf
+ * http://www.jq22.com/yanshi815
+ * https://www.baidu.com/s?ie=utf-8&wd=在网页中实现
+ */
+;(function(doc, body, win) {
+    /* 加载样式 */
+    const injectCss = function(css) {
+        const style = document.createElement('style')
+        style.type = 'text/css'
+        style.id = 'injectCss'
+        style.styleSheet ? (style.styleSheet.cssText = css) : (style.appendChild(document.createTextNode(css)))
+        document.getElementsByTagName('head')[0].appendChild(style)
+    }
+    injectCss(``.slider { position: fixed; top: 10px; left: 10px; min-width: 20px; max-width: 150px; box-shadow: 0 2px 13px rgba(0, 0, 0, 0.3); cursor: grab; opacity: 0.5; transition: opacity 800ms ease-in-out 200ms; z-index: 999; } .slider:hover { opacity: 1; transition-delay: 0ms; } .slider__size { position: relative; z-index: 3; } .slider__controller { width: 100`%; padding-top: 100`%; position: absolute; top: 0; left: 0; transform-origin: 0 0; margin: -3px; border-radius: 10`%;  border: 2px solid silver; } .slider__controller:hover { box-shadow: 0 0 0.4em darkgrey; } .slider__content { position: absolute; top: 0; left: 0; width: 100`%; height: 100`%; z-index: -1; transform-origin: 0 0; }``)
+
+
+    /* 创建组件 */
+    var slider = doc.createElement('div'),
+        sliderSize = doc.createElement('div'),
+        controller = doc.createElement('div'),
+        // iframe
+        sliderContent = doc.createElement('iframe'),
+        // 从这个代码可以看出原理是把内容原封不动复制，并且缩小。
+        scale = 0.1,
+        // 从这个代码可以看出最终的缩放比，是动态的。 猜测应该是 小地图的真实大小 / 页面的大小
+        realScale = scale
+
+    slider.className = 'slider'
+    sliderSize.className = 'slider__size'
+    controller.className = 'slider__controller'
+    sliderContent.className += ' slider__content'
+    sliderContent.style.transformOrigin = '0 0'
+
+    slider.appendChild(sliderSize)
+    slider.appendChild(controller)
+    slider.appendChild(sliderContent)
+    body.appendChild(slider)
+
+    // 获取当前的页面 Html
+    const content = doc.documentElement.outerHTML
+    // 删除所有的 Script 标签
+    var html = content.replace(/<script([\s\S]*?)>([\s\S]*?)<\/script>/gim, '')
+    // 注入的 script 内容（删除本身，防止重复渲染）
+    var body_script = ``<script> var slider = document.querySelector(".slider"); slider.parentNode.removeChild(slider); </script>``
+    // 从 <body> 尾部中注入脚本
+    html = html.replace('</body>', body_script + '</body>')
+
+    // export 渲染 iframe 内容
+    const render = (content = doc.documentElement.outerHTML) => {
+        // 🔔 请注意，必须是 iframe 已经在 body 中才可以使用
+        var iframeDoc = sliderContent.contentWindow.document
+        // 经典的 iframe 修改三部曲，更新 iframe 的内容为当前页面内容
+        iframeDoc.open(); iframeDoc.write(html);iframeDoc.close()    
+    }
+
+    // 首次填充内容
+    render(html)
+    
+
+    ////////////////////////////////////////
+
+    // 获取比例尺寸
+    function getDimensions() {
+        var bodyWidth = body.clientWidth, 
+            bodyRatio = body.clientHeight / bodyWidth, 
+            winRatio = win.innerHeight / win.innerWidth
+
+        // default width is 10`%
+        slider.style.width = (scale * 100) + '`%'
+
+        // 我不理解这两个 padding-top 是什么意思？
+        sliderSize.style.paddingTop = (bodyRatio * 100) + '`%'
+        controller.style.paddingTop = (winRatio * 100) + '`%'
+
+        // Calculate the actual scale in case a max-width/min-width is set.
+        realScale = slider.clientWidth / bodyWidth
+
+        sliderContent.style.transform = 'scale(' + realScale + ')'
+        sliderContent.style.width = (100 / realScale) + '`%'
+        sliderContent.style.height = (100 / realScale) + '`%'
+    }
+
+    getDimensions()
+    win.addEventListener('resize', getDimensions)
+    win.addEventListener('load', getDimensions)
+
+    ////////////////////////////////////////
+    // Track Scroll
+
+    function trackScroll() {
+        controller.style.transform = 'translate(' + win.pageXOffset * realScale + 'px, ' + win.pageYOffset * realScale + 'px)'
+    }
+
+    win.addEventListener('scroll', trackScroll)
+
+    ////////////////////////////////////////
+    // Click & Drag Events
+
+    var mouseY = 0, mouseX = 0, mouseDown = false
+
+    function pointerDown(e) {
+        e.preventDefault()
+        mouseDown = true
+        mouseX = e.touches ? e.touches[0].clientX : e.clientX
+        mouseY = e.touches ? e.touches[0].clientY : e.clientY
+
+        var offsetX = ((mouseX - slider.offsetLeft) - (controller.clientWidth / 2)) / realScale
+        var offsetY = ((mouseY - slider.offsetTop) - (controller.clientHeight / 2)) / realScale
+
+        win.scrollTo(offsetX, offsetY)
+    }
+    slider.addEventListener('mousedown', pointerDown)
+    slider.addEventListener('touchdown', pointerDown)
+
+    function pointerMove(e) {
+        if (mouseDown) {
+            e.preventDefault()
+
+            var x = e.touches ? e.touches[0].clientX : e.clientX,
+                y = e.touches ? e.touches[0].clientY : e.clientY
+
+            win.scrollBy((x - mouseX) / realScale, ((y - mouseY) / realScale))
+            mouseX = x
+            mouseY = y
+        }
+    }
+    win.addEventListener('mousemove', pointerMove)
+    win.addEventListener('touchmove', pointerMove)
+
+    function pointerReset(e) { mouseDown = false }
+    win.addEventListener('mouseup', pointerReset)
+    win.addEventListener('touchend', pointerReset)
+
+    function pointerLeave(e) {
+        if (e.target === body) { mouseDown = false }
+    }
+    body.addEventListener('mouseleave', pointerLeave)
+    body.addEventListener('touchleave', pointerLeave)
+
+    return {
+        render
+    }
+
+}(document, document.body, window))
+)
+txtit(Var)
 return
