@@ -198,6 +198,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com">github</a>
 Gui, Pandora:Add, Link,, <a href="https://app.gitbook.com/">gitbook</a>
 Gui, Pandora:Add, Link,, <a href="https://cylee.top/">cylee.top</a>
 Gui, Pandora:Add, Link,, <a href="https://ecs.console.aliyun.com/#/home">阿里云控制台</a>
+Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/lizhaohong/bpigt2/uk0pkf">一动也不动</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 其他:
 Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need/You-Dont-Need-Momentjs">notMomentjs</a>
@@ -207,6 +208,7 @@ Gui, Pandora:Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手�
 Gui, Pandora:Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AutoHotkey官网</a>
 BabelUrl := "https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=FAMwrgdgxgLglgewgAgM4FMYGV0Cc7qoDC6EMeACgqsgBQB0jAhrgOaoCUyA3sAJBQkqBABt09EQlYNmbTsAC-wUJFiIURABYsYAMQS4AtgBF0UOgGt0ATwA0yQ5k0IAJl17JkuTGFwpw0PBIdAAqLKyYRCJMqJw8wJ6ecCB0AIRhbJHRsfQgBoYAsk6ucR6JnhkRMFExqLn5RTDOLjQAvDxK5UoJiZVZtfVGjc2oANpW1gC6yO2OTa49St0AAlo6-kamULQA5GIREC5UxNoQETv2GNh4BMSk5LjHHMBQ2TQUBGu4MB3KghDCMQSKS0ABMAAYAIwATnBADZQQAWCGQgAcoNB9g-6C-MEGhWKLS4wCAA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&timeTravel=false&sourceType=module&lineWrap=false&presets=es2017%2Creact%2Cstage-2%2Ctypescript&prettier=false&targets=&version=7.4.5&externalPlugins="
 Gui, Pandora:Add, Link,, <a href="%BabelUrl%">Babel在线转换</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/search?q=followers:`%3E=1000&type=Users">Github大神排行榜</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 娱乐:
@@ -216,6 +218,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/index.php?m=vod-search">
 Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
 Gui, Pandora:Add, Link,, <a href="http://www.fengchedm.com/">风车动漫</a>
 Gui, Pandora:Add, Link,, <a href="https://www.novipnoad.com/">不负好时光</a>
+Gui, Pandora:Add, Link,, <a href="https://www.youtube.com/channel/UCKiWll5qSb4oaEtZhYDtjyw">channel ASMR</a>
 
 
 
@@ -225,8 +228,9 @@ Gui, Pandora:Add, Link,, <a href="https://www.sojson.com/jsjiemi.html">sojson工
 Gui, Pandora:Add, Link,, <a href="https://tool.lu/html/">tool.lu压缩</a>
 Gui, Pandora:Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
 Gui, Pandora:Add, Link,, <a href="http://www.bejson.com/">bejson超强工具箱</a>
+Gui, Pandora:Add, Link,, <a href="https://tool.oschina.net/encrypt?type=3">base64解析</a>
 Gui, Pandora:Add, Link,, <a href="https://loading.io/spinner/">Loading 平台</a>
-Gui, Pandora:Add, Link,, <a href="https://coggle.it/">Q版思维导图</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 奇妙工具:
 Gui, Pandora:Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
@@ -268,22 +272,26 @@ Gui, Pandora:Add, Link,, <a href="https://gitee.com/explore">码云逛逛源码<
 Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need">you-dont-need</a>
 Gui, Pandora:Add, Link,, <a href="https://fex.baidu.com/articles/">fex周刊</a>
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/czp3ug">公司语雀</a>
+Gui, Pandora:Add, Link,, <a href="https://www.tapd.cn/55583740/board/index?board_id=1155583740001000002&board_type=standard&view_type=standard-board">公司tapd</a>
+Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客收录网站</a>
+Gui, Pandora:Add, Link,, <a href="https://youquhome.com/8790/">有趣网址之家</a>
+
 
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="http://obkoro1.com/web_accumulate/algorithm/">前端算法题</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly">阮一峰的周刊</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/">阮一峰的博客</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly/issues">阮一峰issue</a>
 Gui, Pandora:Add, Link,, <a href="https://wangdoc.com/bash/expansion.html#start-end-%E6%89%A9%E5%B1%95">阮一峰的bash</a>
 Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.html">前端日报</a>
-Gui, Pandora:Add, Link,, <a href="http://www.fly63.com/article">fly63前端网</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview/blob/master/category/history.md">以面为练</a>
 Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
 Gui, Pandora:Add, Link,, <a href="https://www.24s.net/">24s付费视频盗版</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/?s=JSON">ahk中文社区</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
+Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a>
 
 
 
@@ -717,6 +725,7 @@ Gui, Pandora:Add, Link,, <a href="https://cssfx.dev/">（神器）效果大全�
 
 Gui, Pandora:Add, Text, W140 ys, 移动端UI框架：
 Gui, Pandora:Add, Link,, <a href="https://youzan.github.io/vant/#/zh-CN/button">有赞的Vant</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/jdf2e/nutui">nutui</a>
 
 Gui, Pandora:Add, Text, W140 ys, CMS内容管理系统：
 Gui, Pandora:Add, Link,, <a href="http://doc.cms.7yue.pro/lin/start/koa/frontend-demo.html#%E5%BB%BA%E7%AB%8B%E9%A1%B5%E9%9D%A2">基于Vue和koa</a>

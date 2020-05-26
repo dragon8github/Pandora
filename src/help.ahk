@@ -1,4 +1,22 @@
-﻿::guanxitu::
+﻿::tj::
+Var =
+(
+
+TJ Holowaychuk
+)
+code(Var)
+return
+
+::yyx::
+::youyuxi::
+Var =
+(
+尤雨溪 Evan You 
+)
+code(Var)
+return
+
+::guanxitu::
 ::guanxi::
 Var =
 (
@@ -401,7 +419,7 @@ data := uploadfile({ Filedata: [path], file: "multipart" })
 
 _data := JSON.Load(data)
 
-Clipboard := _data.imgurl
+Clipboard := "![](" . _data.imgurl . ")"
 
 ToolTip, % _data.imgurl
 
@@ -2394,8 +2412,4 @@ return
 
 +F12::
 Send, +{Insert}
-return
-
->+l::
-cs("localhost:")
 return

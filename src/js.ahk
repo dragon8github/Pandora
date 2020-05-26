@@ -8553,9 +8553,10 @@ Return
 !-::
 Var = 
 (
-_ => _.
+_ => ({  })
 )
 code(Var)
+SendInput, {left 3}
 return
 
 !=::

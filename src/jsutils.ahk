@@ -7679,18 +7679,27 @@ Var =
  * https://www.jianshu.com/p/8016cde22aaf
  * http://www.jq22.com/yanshi815
  * https://www.baidu.com/s?ie=utf-8&wd=在网页中实现
+ *
+ * 使用方式：
+ * minimap.render()
  */
 ;(function(doc, body, win) {
     /* 加载样式 */
     const injectCss = function(css) {
         const style = document.createElement('style')
         style.type = 'text/css'
-        style.id = 'injectCss'
+        style.id = 'slider'
         style.styleSheet ? (style.styleSheet.cssText = css) : (style.appendChild(document.createTextNode(css)))
         document.getElementsByTagName('head')[0].appendChild(style)
     }
-    injectCss(``.slider { position: fixed; top: 10px; left: 10px; min-width: 20px; max-width: 150px; box-shadow: 0 2px 13px rgba(0, 0, 0, 0.3); cursor: grab; opacity: 0.5; transition: opacity 800ms ease-in-out 200ms; z-index: 999; } .slider:hover { opacity: 1; transition-delay: 0ms; } .slider__size { position: relative; z-index: 3; } .slider__controller { width: 100`%; padding-top: 100`%; position: absolute; top: 0; left: 0; transform-origin: 0 0; margin: -3px; border-radius: 10`%;  border: 2px solid silver; } .slider__controller:hover { box-shadow: 0 0 0.4em darkgrey; } .slider__content { position: absolute; top: 0; left: 0; width: 100`%; height: 100`%; z-index: -1; transform-origin: 0 0; }``)
-
+    injectCss(``
+        .slider { position: fixed; top: 10px; left: 10px; min-width: 20px; max-width: 150px; box-shadow: 0 2px 13px rgba(0, 0, 0, 0.3); cursor: grab; opacity: 0.5; transition: opacity 800ms ease-in-out 200ms; z-index: 999; } 
+        .slider:hover { opacity: 1; transition-delay: 0ms; } 
+        .slider__size { position: relative; z-index: 3; } 
+        .slider__controller { width: 100`%; padding-top: 100`%; position: absolute; top: 0; left: 0; transform-origin: 0 0; margin: -3px; border-radius: 10`%;  border: 2px solid silver; } 
+        .slider__controller:hover { box-shadow: 0 0 0.4em darkgrey; } 
+        .slider__content { position: absolute; top: 0; left: 0; width: 100`%; height: 100`%; z-index: -1; transform-origin: 0 0; }
+    ``)
 
     /* 创建组件 */
     var slider = doc.createElement('div'),
@@ -7703,6 +7712,7 @@ Var =
         // 从这个代码可以看出最终的缩放比，是动态的。 猜测应该是 小地图的真实大小 / 页面的大小
         realScale = scale
 
+
     slider.className = 'slider'
     sliderSize.className = 'slider__size'
     controller.className = 'slider__controller'
@@ -7714,25 +7724,32 @@ Var =
     slider.appendChild(sliderContent)
     body.appendChild(slider)
 
-    // 获取当前的页面 Html
-    const content = doc.documentElement.outerHTML
-    // 删除所有的 Script 标签
-    var html = content.replace(/<script([\s\S]*?)>([\s\S]*?)<\/script>/gim, '')
-    // 注入的 script 内容（删除本身，防止重复渲染）
-    var body_script = ``<script> var slider = document.querySelector(".slider"); slider.parentNode.removeChild(slider); </script>``
-    // 从 <body> 尾部中注入脚本
-    html = html.replace('</body>', body_script + '</body>')
+    // export：渲染 iframe 内容
+    const render = content => {
+        // 删除所有的 Script 标签
+        const html = content.replace(/<script([\s\S]*?)>([\s\S]*?)<\/script>/gim, '')
 
-    // export 渲染 iframe 内容
-    const render = (content = doc.documentElement.outerHTML) => {
         // 🔔 请注意，必须是 iframe 已经在 body 中才可以使用
-        var iframeDoc = sliderContent.contentWindow.document
+        const iframeDoc = sliderContent.contentWindow.document
+      
         // 经典的 iframe 修改三部曲，更新 iframe 的内容为当前页面内容
-        iframeDoc.open(); iframeDoc.write(html);iframeDoc.close()    
+        iframeDoc.open(); iframeDoc.write(html);iframeDoc.close()
+
+        // lee news: 改成更优雅的方法，找到 iframe 里的 slider 删除即可。
+        try {
+            // 删除 iframe 中的 slider，因为 slider 本质是给 top 用的，所以 iframe 不需要存在
+            iframeDoc.querySelector('.slider').parentNode.removeChild(slider)
+        } catch (err) {
+            // ...
+            console.warn('.slider notFound')
+        }
     }
 
-    // 首次填充内容
-    render(html)
+    // 获取当前的页面 Html
+    const content = doc.documentElement.outerHTML
+
+    // init render
+    render(content)
     
 
     ////////////////////////////////////////

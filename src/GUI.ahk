@@ -341,7 +341,7 @@ Fuck:
         RUN, https://www.jiumodiary.com/
     }
     if (dianzishuwang == 1) {
-        RUN, https://www.bookresource.net/search/JavaScript/
+        RUN, https://www.bookresource.net/search/%SearchContent%/
     }
     if (oushu == 1) {
         RUN, https://obook.cc/

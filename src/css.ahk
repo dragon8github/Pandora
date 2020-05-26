@@ -191,6 +191,7 @@
     Menu, Csssolution, Add, 不断闪闪发光的动画, CssHandler
     Menu, Csssolution, Add, 更新提示波动图:point, CssHandler
     Menu, Csssolution, Add, 俊峰UI喜欢的涟漪客服波动图, CssHandler
+    Menu, Csssolution, Add, UI俊峰关注的文字渐变, CssHandler
     Menu, Csssolution, Add, 经典一闪而过的光柱图, CssHandler
     Menu, Csssolution, Add, 常用的弹窗slide-up特效, CssHandler
     Menu, Csssolution, Add, 原生实现switch, CssHandler
@@ -287,6 +288,20 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "UI俊峰关注的文字渐变") {
+Var =
+(
+.content-header.is-gradient .title {
+    background: transparent;
+    background: -webkit-gradient(linear,left top,right top,from(#0f69ff),to(#32beff));
+    background: linear-gradient(90deg,#0f69ff,#32beff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 )
 }
 
@@ -3028,15 +3043,19 @@ Var =
 }
 
 if (v == "lit.css极简系列：btn") {
-SendLevel 1
-Send, btn{tab}
+_send("btn", true, true)
 return
 }
 
 
 if (v == "舒服的字体样式font") {
-SendLevel 1
-Send, font{tab}
+_send("font", true, true)
+return
+}
+
+
+if (v == "css.box-shadown") {
+_send("box-shadow", true, true)
 return
 }
 
@@ -3056,11 +3075,6 @@ cursor: url('https://webapi.amap.com/theme/v1.3/openhand.cur'),default;
 )
 }
 
-if (v == "css.box-shadown") {
-SendLevel 1
-Send, box-shadow{tab}
-return
-}
 
 if (v == "css.text-shadown") {
 Var =
@@ -3113,14 +3127,12 @@ will-change: opacity, transform;
 }
 
 if (v == "七喜冒泡进度条") {
-SendLevel 1
-Send, maopaojindutiao{tab}
+_send("maopaojindutiao", true, true)
 return
 }
 
 if (v == "发廊进度条") {
-SendLevel 1
-Send, falangjindutiao{tab}
+_send("falangjindutiao", true, true)
 return
 }
 
