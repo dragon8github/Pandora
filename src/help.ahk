@@ -2075,7 +2075,6 @@ return
 
 
 ![::
-!]::
 tmp := Clipboard
 Clipboard :=
 Send, ^x
@@ -2084,6 +2083,17 @@ a := "『" . Clipboard . "』"
 code(a)
 Clipboard := tmp
 return
+
+!]::
+tmp := Clipboard
+Clipboard :=
+Send, ^x
+ClipWait, 2
+a := "「" . Clipboard . "」"
+code(a)
+Clipboard := tmp
+return
+
 
 ::zyx::
 Var =

@@ -63,6 +63,7 @@ CancelSelect:
 	GuiControl,, suning, 0
     GuiControl,, kongzi, 0
     GuiControl,, tmao, 0
+    GuiControl,, pdd, 0
 
     GuiControl,, shuxingtianxia, 0
     GuiControl,, jiumo, 0
@@ -206,6 +207,7 @@ AllSearchE:
 		GuiControl,, suning, 1 
         GuiControl,, kongzi, 1
 		GuiControl,, tmao, 1
+        GuiControl,, pdd, 1
 	} else {
 		GuiControl,, taobao, 0
 		GuiControl,, tianmao, 0
@@ -215,6 +217,7 @@ AllSearchE:
 		GuiControl,, suning, 0
 		GuiControl,, kongzi, 0
         GuiControl,, tmao, 0
+        GuiControl,, pdd, 0
 	}
 return
 
@@ -222,6 +225,11 @@ return
 Fuck:
 	; 保存用户的输入到每个控件的关联变量中.
 	Gui, Submit, NoHide 
+
+    ; pdd
+    if (pdd == 1) {
+        RUN, http://mobile.pinduoduo.com/search_result.html?search_key=%SearchContent%
+    }
     
     ; codepen
     if (codepen == 1) {

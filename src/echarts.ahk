@@ -804,6 +804,7 @@ Var =
 // 放置在根配置
 // 通过data属性来匹配所有的series的name属性，然后自动识别series中的color进行映射，所以你必须要多个series才可以配合legend使用。其中legend的data属性最好是动态的。
 legend: {
+    // vertical
     orient: 'horizontal',
     selectedMode: 'multiple',
     bottom: '0',
@@ -818,7 +819,7 @@ legend: {
         fontSize: 16
     },
     // 这个值最好是动态配置的
-    data: ['治安消防', '交通管理', '市场管理'], 
+    data: ['治安消防', '交通管理', '市场管理'],
 },
 )
 code(Var)

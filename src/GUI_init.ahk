@@ -169,10 +169,10 @@ Gui, Pandora:Add, Text, gAllSearchE W120 ys, 购物类:
 Gui, Pandora:Add, Checkbox, vtaobao, 淘宝
 Gui, Pandora:Add, Checkbox, vjingdong, 京东
 Gui, Pandora:Add, Checkbox, vdangdang, 当当
-Gui, Pandora:Add, Checkbox, vamazon, 亚马逊
 ; Gui, Pandora:Add, Checkbox, vsuning, 苏宁易购
 Gui, Pandora:Add, Checkbox, vkongzi, 孔夫子二手书
 Gui, Pandora:Add, Checkbox, vtmao, 天猫
+Gui, Pandora:Add, Checkbox, vpdd, 拼多多
 
 ; 搜索框
 Gui, Pandora:Add, Edit, vSearchContent gSearchContent w260 H100 Limit150 yp+40 Section xs, dragon8github/Pandora
@@ -1071,12 +1071,11 @@ Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/lates
 ; @chart echarts
 
 Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
+Gui, Pandora:Add, Link,, <a href="http://echartsjs.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
+Gui, Pandora:Add, Link,, <a href="http://echartsjs.com/examples/">echart 官方示例</a>
+Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/explore.html">ECharts 官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="https://www.oschina.net/translate/geojson-spec#positions">GeoJSON 格式规范</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ecomfe/awesome-echarts">awesome-echarts</a>
-Gui, Pandora:Add, Link,, <a href="http://echartsjs.com/examples/">echart 官方示例</a>
-Gui, Pandora:Add, Link,, <a href="http://echartsjs.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
-Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/explore.html">ECharts 官方论坛</a>
-Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/editor.html?c=xSy3KhFV4M">ECharts 3D地图</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/zh/option.html#dataset">echart dataset API</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/zh/tutorial.html#%E4%BD%BF%E7%94%A8%20dataset%20%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE">echart dataset 教程</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/examples/zh/index.html#chart-type-dataset">echart dataset demo</a>
@@ -1089,6 +1088,7 @@ Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xk
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xSk6VBUGuG">冰山图</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/editor.html?c=xpO_B8IDmq">饼图花瓣图</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echartsjs.com/examples/zh/editor.html?c=scatter-life-expectancy-timeline&theme=light">轮播时间轴</a>
+Gui, Pandora:Add, Link,, <a href="http://gallery.echartsjs.com/editor.html?c=xSy3KhFV4M">ECharts 3D地图</a>
 
 Gui, Pandora:Add, Text, W140 ys, highcharts:
 Gui, Pandora:Add, Link,, <a href="https://github.com/highcharts/highcharts">highcharts github</a>

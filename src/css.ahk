@@ -3684,13 +3684,14 @@ return
 ::css.pl::
 ::css.placeholder::
 ::placeholder::
+::css.ph::
 Var =
 (
 // 据我所知，必须带选择器前缀才会起作用，如果单独使用或者 input 好像都不可以。
-.ph .el-input__inner::-webkit-input-placeholder {color: #000; }
-.ph .el-input__inner:-moz-placeholder {color: #000; }
-.ph .el-input__inner::-moz-placeholder {color: #000; }
-.ph .el-input__inner:-ms-input-placeholder {color: #000;
+.IZ-select__input input::-webkit-input-placeholder {color: #fff; }
+.IZ-select__input input:-moz-placeholder {color: #fff; }
+.IZ-select__input input::-moz-placeholder {color: #fff; }
+.IZ-select__input input:-ms-input-placeholder {color: #fff; }
 )
 code(Var)
 return
@@ -4753,6 +4754,7 @@ code(Var)
 return
 
 
+::`:after::
 ::`:`:after::
 Var =
 (
