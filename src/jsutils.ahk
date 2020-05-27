@@ -203,6 +203,7 @@
 
     ; @认知 @renzhi
 
+    Menu, utilspractice, Add, iframe 沙盒化组件：自定义内容, utilsHandler
     Menu, utilspractice, Add, isOverlap： 判断两个矩形 DIV 元素是否交集？, utilsHandler
     Menu, utilspractice, Add, looseEqual： 判断两个对象是否一致, utilsHandler
     Menu, utilspractice, Add, noop 优雅的使用空函数, utilsHandler
@@ -493,6 +494,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "iframe 沙盒化组件：自定义内容") {
+_send("iframe", true, true)
+return
 }
 
 if (v == "isOverlap： 判断两个矩形 DIV 元素是否交集？") {
@@ -7851,4 +7857,21 @@ Var =
 }(document, document.body, window))
 )
 txtit(Var)
+return
+
+::iframe::
+Var =
+(
+const iframe = document.querySelector('iframe')
+
+// 获取 iframe 沙盒中的 document 
+const iframeDoc = iframe.contentWindow.document
+
+// content
+const HTML = `<div class="frame-root">123</div>`
+
+// 经典的 iframe 修改三部曲，更新 iframe 的内容为当前页面内容
+iframeDoc.open(); iframeDoc.write(html); iframeDoc.close();
+)
+code(Var)
 return

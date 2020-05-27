@@ -14,7 +14,7 @@
 
 	
 	ToolTip, % content
-    SetTimer, RemoveToolTip, -2500
+    SetTimer, RemoveToolTip, -1500
 
 	; 加入到剪切板
 	Clipboard := content
