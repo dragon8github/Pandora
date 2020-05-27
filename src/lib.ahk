@@ -8,6 +8,8 @@ createPic(PicPath)
 		;pBitmapAlpha := Gdip_BitmapFromScreen(0, "")
 		;pBitmapAlpha := Gdip_BitmapFromScreen(x "|" y "|" width "|" height)
 		
+
+
 		;从剪切板直接获取位图
 		pBitmapAlpha := Gdip_CreateBitmapFromClipboard()
 		;图片的宽度

@@ -4853,7 +4853,17 @@ return
 if (v == "encodeURI URI过滤") {
 Var = 
 (
-encodeURI
+function urlencode (str) {  
+    str = (str + '').toString();   
+
+    return encodeURIComponent(str)
+            .replace(/!/g, '`%21')
+            .replace(/'/g, '`%27')
+            .replace(/\(/g, '`%28').  
+            replace(/\)/g, '`%29')
+            .replace(/\*/g, '`%2A')
+            .replace(/`%20/g, '+');  
+}
 )
 }
 
@@ -6253,6 +6263,8 @@ const { name, avatar } = val
 const base64Data = avatar.replace(/^data:image\/\w+;base64,/, '')
 const dataBuffer = new Buffer.alloc(base64Data.length, base64Data, 'base64')
 fs.writeFile(`${name}.jpg`, dataBuffer) 
+---
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAABCCAYAAADzNE40AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAQHSURBVGhD7ZnLahRBFIZ1oyK4EFduFMUHcOHCB1Bw6QPoIwgufAOXbtzqJpJ4QTQLFRcqKCQbLwsRRAheMCIGEQUvCUqiv/MxfZhiqOmpqq6epJv+4UBSXafO/09Xnao6vUktRieuqejENRWduKaiE9dU1CZuZU269UE6/VQ69kA6MCvtuiZtme4bf9PGM/rQF5+cyCru2x9p6rV0/KG0faY3+FSc4YMvYzBWVWQRt9z7xc++kHZcHhDdfEk6fLfffuWd9GhJWvgu/VjtG3/TxjP60Bcf82cs2hk7FZXErf2TLixIu68PSB25129bWik6RQAffBnDxmNs2ogVi2RxH5elQ3cGJPjl5z4XDzOAsRjTxicWMWOQJO7xl8Hb2n9Tml0sHtQAxt7Xi0EsYhI7FNHiZt5K24pkwfTJsfDHgRg2VYkNhxBEiWNQAmCnnqStg1QQi5gWP0RgsDimg72x86+KxnUAseEAl3FTNEgcC9nWGL/eesPeIJzKksxYcUwHy4rM+0lOxVGAg61BuI3iNFYcewyDkBUnkTxCARc4wQ2OPpSK43Rg0zEm3R/t/arPvxb/1Ag4wQ2OvpNMqTiOPzizmcYAH45SJ+elxV9FY02wjR6uwxgpjtduZ8X5yJMHPmZbezeAM8/qm9JwIw5ch2OMFMfJHCcWbixccWY7r0rnXkq//xadMsKSC5xdjBTH1QOHiyMWaxlcUcO290Z/A86ZdC3pwdmFVxyXRu5WrJuU0/2wIJ8dvC3d/1Q4VAQc4Qpn98LrFcetGAKxicQwLKTMcmVWSyxwN3jFce2noy8DhcAlH2KWWd9XyKyW2eFu8IqjrkFHbskpcInHWJXMClfGgLvBK47CDR0pA6TAJZxiKZkVrvjC3eAVR2WKjtQ5UuASrWJk1uk3YZkVrvjA3eAVR+mNjj9Xi4ZIuARzWEhmhSt94W4oFUeVKgUusRwWIg6u9B0rbqNMyz11TMtWJ5RWbwXrsYmfmJvQJt7q41erD87Arjyj6hNlGBbiWszGHIqoKw9o9WXVLTPEfuBwRdVdZoAbcaLKDMAyUGxiwSfHNSYElkh8mb1UXKtLe2AjF2Xt01ZSURa0upwOWvshxNDaT1iG1n58NDCovUHm/SSSDDFsjRE7RBiIFgeYDrYGW/XB38BCtiyKsZnGfjApA2PZBo0Rqyx5+JAsDrAO2GPsLWJMH74vpNwm8MHXpiDG2MRIWd+VxBk4HXD8sbMoxvGLX552bsmUAahzUKXC+Js2ntGHvviYP2PR7jt5hCKLOAMLn5M5Vw/uVkY01PDBlzFyJKqs4lxwaeRWzLWfugaFGypTlN4w/qaNZ/Shr3vRzIHaxG0EdOKaik5cU9GJayo6cc2E9B9NjowYLE1gswAAAABJRU5ErkJggg==
 )
 txtit(Var)
 return

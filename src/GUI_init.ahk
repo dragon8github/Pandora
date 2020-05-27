@@ -1352,8 +1352,15 @@ ClipChanged(Type) {
 		t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 		; .pandora\名字.png
 		path := A_Desktop . "\.pandora\" . t . ".png"
+		
 		; 在桌面创建一个图片
-		createPic(path)
+		; createPic(path)
+
+		; 修改为使用 WinClip 来处理
+		WinClip.SaveBitmap(path, "png")
+		
+		; 将最新的名字加入到全局替换
+		latestImageName := path
    }
 	
    ; 文本类

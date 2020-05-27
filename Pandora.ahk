@@ -22,6 +22,8 @@ FileEncoding, UTF-8
 FileDelete, *.bak 
 FileDelete, .\src\*.bak
 
+global latestImageName := ""
+
 
 /**
 //////////////////////////////////////////////
@@ -42,7 +44,8 @@ FileDelete, .\src\*.bak
 #Include src/JSON.ahk	          ; JSON Script
 #Include src/ActiveScript.ahk	  ; Microsoft Script
 #Include src/lib.ahk              ; 公共函数
-#Include src/Lua.ahk              ; secondkey_board  
+#Include src/Lua.ahk              ; secondkey_board 
+#Include src/OCR.ahk              ; OCR
 
 #Include src/bilibili.ahk	      ; bilibili
 #Include src/makedown.ahk         ; makedown
@@ -84,4 +87,6 @@ FileDelete, .\src\*.bak
 !F12::
 	Suspend
 return
+
+
 

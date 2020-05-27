@@ -487,7 +487,7 @@ Var =
 (
 curl -s -XPOST 'http://localhost:3000/acticle/update' -H 'Content-Type:application/json' -d '{"firstName": "JOJO", "lastName": "Joestar"}'
 )
-cs(Var)
+txtit(Var)
 return
 }
 

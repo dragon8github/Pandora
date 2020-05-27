@@ -1,4 +1,33 @@
-﻿::tj::
+﻿>!z::
+	; 获取最新截图的base64
+	base64 := getBase64(latestImageName)	
+		
+	; 我的 access_token（据说一个月才更新一次，我觉得没必要每次都请求，反正写好了）
+	; getBaiDuAccessToken()
+	access_token := "24.ebe2d71b3cf42122a3e5b7c0fe7e369b.2592000.1593154276.282335-20085264"
+	
+	ToolTip, 正在请求百度 OCR 接口
+    SetTimer, RemoveToolTip, -2500
+	
+	; 开始调用解析
+	content := getBaiDuOcr(base64, access_token)
+
+	
+	ToolTip, % content
+    SetTimer, RemoveToolTip, -2500
+
+	; 加入到剪切板
+	Clipboard := content
+return
+
+
+!^v::
+Clipboard := WinClip.GetText()
+WinClip.Paste(Clipboard)
+return
+
+
+::tj::
 Var =
 (
 
@@ -1393,8 +1422,7 @@ return
         str := "http:" . str
     }
     
-    If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:")|| InStr(str, ".net") || Instr(str, "data:") ) {
-        
+    If(InStr(str, "http://") || InStr(str, "https://") || InStr(str, "//") || InStr(str, "www.") || InStr(str, ".com") || InStr(str, "C:") || InStr(str, "D:") || InStr(str, "E:")  || InStr(str, "F:")  || InStr(str, "F:")  || InStr(str, "G:")  || InStr(str, "H:")|| InStr(str, ".net") || Instr(str, "data:") || Instr(str, "data:image/")) {
         RUN, % str
     } else {
         RUN, https://www.baidu.com/s?wd=%str%
