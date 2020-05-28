@@ -333,6 +333,8 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大
 Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
 Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
+Gui, Pandora:Add, Link,, <a href="https://cn.bing.com/search?q=%E5%A3%81%E7%BA%B8">壁纸 - 国内版 Bing</a>
+
 
 Gui, Pandora:Add, Text,  W120 ys, 不可放过：
 Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">Pexels</a>
