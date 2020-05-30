@@ -68,16 +68,44 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>五、GUI用户交互界面，AHK还支持开发UI界面，这里我模仿Wow和alfred开发了属于自己的高效工具。持续迭代</p>
+<p>五、自动上传图床</p>
 <p>
-  <a href="http://wx3.sinaimg.cn/large/006ar8zggy1g24gdodbouj30rw0rf75h.jpg">
+  <a href="https://s1.ax1x.com/2020/05/30/tQqaQK.md.gif">
     <img
-      src="http://wx3.sinaimg.cn/large/006ar8zggy1g24gdodbouj30rw0rf75h.jpg"
+      src="https://s1.ax1x.com/2020/05/30/tQqaQK.md.gif"
     />
   </a>
 </p>
 
-<p>六、快捷菜单，可以更舒适的记录并使用代码块</p>
+<p>六、截图自动ORC</p>
+<p>
+  <a href="https://s1.ax1x.com/2020/05/30/tQq8o9.gif">
+    <img
+      src="https://s1.ax1x.com/2020/05/30/tQq8o9.gif"
+    />
+  </a>
+</p>
+
+
+<p>七、多重联想代码块</p>
+<p>
+  <a href="https://s1.ax1x.com/2020/05/30/tQbXad.gif">
+    <img
+      src="https://s1.ax1x.com/2020/05/30/tQbXad.gif"
+    />
+  </a>
+</p>
+
+<p>八、GUI用户交互界面，AHK还支持开发UI界面，这里我模仿Wow和alfred开发了属于自己的高效工具。持续迭代</p>
+<p>
+  <a href="https://s1.ax1x.com/2020/05/30/tQHFl8.png">
+    <img
+      src="https://s1.ax1x.com/2020/05/30/tQHFl8.png"
+    />
+  </a>
+</p>
+
+<p>九、快捷菜单，可以更舒适的记录并使用代码块</p>
 <p>
   <a href="http://wx3.sinaimg.cn/large/006ar8zggy1g24gj5svy0j30jp0m2q4h.jpg">
     <img
@@ -86,7 +114,7 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>七、免费制作宏键盘</p>
+<p>十、免费制作宏键盘</p>
 <p>
   演示略，请观看该视频介绍（6分钟开始是重点演示），原理在于 Ahk + Lua（luamacros） + second_keyboard.lua + 你的第二键盘（硬件）：
   https://www.youtube.com/watch?v=Arn8ExQ2Gjg&feature=youtu.be&t=362
