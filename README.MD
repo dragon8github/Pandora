@@ -119,3 +119,10 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   演示略，请观看该视频介绍（6分钟开始是重点演示），原理在于 Ahk + Lua（luamacros） + second_keyboard.lua + 你的第二键盘（硬件）：
   https://www.youtube.com/watch?v=Arn8ExQ2Gjg&feature=youtu.be&t=362
 </p>
+<p>
+  <a href="https://s1.ax1x.com/2020/05/30/tQLDXT.png">
+    <img
+      src="https://s1.ax1x.com/2020/05/30/tQLDXT.png"
+    />
+  </a>
+</p>
