@@ -70,9 +70,9 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 
 <p>五、自动上传图床</p>
 <p>
-  <a href="https://s1.ax1x.com/2020/05/30/tQqaQK.md.gif">
+  <a href="https://s1.ax1x.com/2020/05/30/tQqaQK.gif">
     <img
-      src="https://s1.ax1x.com/2020/05/30/tQqaQK.md.gif"
+      src="https://s1.ax1x.com/2020/05/30/tQqaQK.gif"
     />
   </a>
 </p>
