@@ -956,44 +956,41 @@ return
 ::maxchrome::
 Var =
 (
-var b = document.getElementById('view_container')
+let isFullScreen = false
 
-var e = b.requestFullScreen || 
-        b.webkitRequestFullScreen || 
-        b.mozRequestFullScreen || 
-        b.msRequestFullScreen;
+const btn = document.getElementById('button')
 
-e.call(b) // b.webkitRequestFullScreen()
-
-//////////////////////////////////////////////
-// say something...
-//////////////////////////////////////////////
-
-// 如果不是全屏的话，那么进入全屏
-if (!this.isFullScreen) {
-    var el = document.documentElement;
-    var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
-    if (typeof rfs != "undefined" && rfs) {
-        rfs.call(el);
-    } else if (typeof window.ActiveXObject != "undefined") {
-        var wscript = new ActiveXObject("WScript.Shell");
-        if (wscript != null) {
-            wscript.SendKeys("{F11}");
+btn.addEventListener('click', e => {
+    // 如果不是全屏的话，那么进入全屏
+    if (!isFullScreen) {
+        var el = document.documentElement;
+        var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
+        if (typeof rfs != "undefined" && rfs) {
+            rfs.call(el);
+        } else if (typeof window.ActiveXObject != "undefined") {
+            var wscript = new ActiveXObject("WScript.Shell");
+            if (wscript != null) {
+                wscript.SendKeys("{F11}");
+            }
         }
-    }
-// 否则退出全屏
-} else {
-    // 判断各种浏览器，找到正确的方法
-    var exitMethod = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.webkitExitFullscreen;
-    if (exitMethod) {
-        exitMethod.call(document);
-    } else if (typeof window.ActiveXObject !== "undefined") { //for Internet Explorer
-        var wscript = new ActiveXObject("WScript.Shell");
-        if (wscript !== null) {
-            wscript.SendKeys("{F11}");
+
+        isFullScreen = true
+    // 否则退出全屏
+    } else {
+        // 判断各种浏览器，找到正确的方法
+        var exitMethod = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.webkitExitFullscreen;
+        if (exitMethod) {
+            exitMethod.call(document);
+        } else if (typeof window.ActiveXObject !== "undefined") { //for Internet Explorer
+            var wscript = new ActiveXObject("WScript.Shell");
+            if (wscript !== null) {
+                wscript.SendKeys("{F11}");
+            }
         }
+
+        isFullScreen = false
     }
-} 
+})
 
 )
 code(Var)
@@ -6898,6 +6895,9 @@ function unique(arr) {
     }
     return retArray;
 }
+
+// 终极版
+const unique = a => [...new Set(a)]
 )
 code(Var)
 return
@@ -8429,6 +8429,23 @@ setTimeout(() => {
 code(Var)
 SendInput, {up}{tab}
 Return
+
+::setti2::
+::seti2::
+Var =
+(
+(function(fn, t) {
+    // 立即执行一次，这也是这个IIFE的目的：为了解决 setInterval 首次不执行的尴尬
+    fn && fn()
+    // 返回计时器timer
+    return setInterval(fn, t)
+})(() => {
+    // your logic...
+
+}, 5 * 1000)
+)
+code(Var)
+return
 
 ::setti::
 ::seti::

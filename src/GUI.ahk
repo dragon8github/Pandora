@@ -10843,3 +10843,105 @@ document.onclick = function() {
 RunBy(name)
 run, % name
 return
+
+vueecharts:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-echarts@4.0.2"></script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {}
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <v-chart class='u-full chart' :options="option"></v-chart>
+    </div>
+</body>
+<script>
+Vue.component('v-chart', VueECharts)
+
+var vue = new Vue({
+    el: '#app',
+    data() {
+        return {
+            option: {}
+        }
+    },
+    methods: {
+        renderChart() {
+            const grid = { left: '5`%', right: '5`%', bottom: '15`%', top: '30`%', }
+
+            const xAxis = [{
+                type: "category",
+                axisTick: { show: true, },
+                axisLine: { show: false, },
+                axisLine: { lineStyle: { color: "rgba(255, 255, 255, .2)" } },
+                axisLabel: { textStyle: { padding: 8, color: '#fff', fontSize: '16' } },
+                data: ['2018', '2019', '2020'],
+            }]
+
+            const yAxis = {
+                type: 'value',
+                splitLine: { lineStyle: { color: 'rgba(255, 255, 255, .05)', type: 'solid' }, },
+                axisTick: { show: false },
+                axisLine: { show: false, },
+                axisLabel: { show: false },
+                max: 8,
+            }
+
+            const series = [{
+                type: 'line',
+                symbol: 'circle',
+                symbolSize: 15,
+                itemStyle: { color: '#abe959', shadowBlur: 0, lineStyle: { color: '#abe959', width: 5, } },
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(
+                        // 右/下/左/上
+                        0, 0, 0, 1,
+                        [
+                            { offset: 0, color: '#abe959' },
+                            { offset: 1, color: 'rgba(38, 214, 147, .1)' }
+                        ]
+                    `),
+                },
+                label: {
+                    show: true,
+                    position: 'top',
+                    distance: 8,
+                    formatter: params => params.value + '天',
+                    textStyle: { color: '#b2ff4e', fontSize: 22 }
+                },
+                data: [7, 5, 3],
+            }]
+
+            this.option = { grid, xAxis, yAxis, series }
+        }
+    },
+    mounted() {
+        this.renderChart();
+    }
+})
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

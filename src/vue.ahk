@@ -5747,10 +5747,14 @@ const findBrothersComponents = (context, componentName, exceptMe = true) => {
 txtit(Var)
 return
 
+::vue-echart::
+::vue-echarts::
+::vue-chart::
+::vue-charts::
 ::v-chart::
+::v-charts::
 ::vchart::
 ::vue.chart::
-::v-charts::
 ::vcharts::
 ::vue.charts::
 Var =
@@ -5765,59 +5769,56 @@ export default {
     },
     methods: {
         renderChart() {
-            // color
-            const color = ['#6793FF','#20D2F8','#00D648', '#8FE300','#F6CF00','#F28100']
+             const grid = { left: '5`%', right: '5`%', bottom: '15`%', top: '30`%', }
 
-            // tooltip
-            const tooltip = {
-                trigger: 'axis',
-                axisPointer: { type: 'cross', label: { backgroundColor: '#6a7985' } }
-            }
-
-            // legend
-            const legend = {
-                data: [{ name: '市容环境' }, { name: '宣传广告' }, { name: '施工管理' }, { name: '突发事件' }, { name: '街面秩序' }, { name: '其他事件' }],
-                right: '2`%',
-                top: '10`%',
-                orient: 'vertical',
-                textStyle: { color: '#ffffff', fontSize: 16 },
-            }
-
-            // grid
-            const grid = { bottom: '3`%', left: '2`%', right: '15`%', top: '15`%', containLabel: true }
-
-            // xAxis
             const xAxis = [{
-                type: 'category',
-                boundaryGap: false,
-                data: ['5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-                axisLine: { lineStyle: { color: 'rgba(255,255,255)',  } },
-                axisLabel: {textStyle: {color: '#fff', fontSize: 14 }, },
+                type: "category",
+                axisTick: { show: true, },
+                axisLine: { show: false, },
+                axisLine: { lineStyle: { color: "rgba(255, 255, 255, .2)" } },
+                axisLabel: { textStyle: { padding: 8, color: '#fff', fontSize: '16' } },
+                data: ['2018', '2019', '2020'],
             }]
 
-            // yAxis
-            const yAxis = [{
+            const yAxis = {
                 type: 'value',
-                splitLine: { lineStyle: {type: 'dashed', color: 'rgba(255,255,255,0.15)'} },
-                axisLine: { lineStyle: { color: 'rgba(255,255,255)',  } },
-                axisLabel: {textStyle: {color: '#fff', fontSize: 14 }, },
+                splitLine: { lineStyle: { color: 'rgba(255, 255, 255, .05)', type: 'solid' }, },
+                axisTick: { show: false },
+                axisLine: { show: false, },
+                axisLabel: { show: false },
+                max: 8,
+            }
+
+            const series = [{
+                type: 'line',
+                symbol: 'circle',
+                symbolSize: 15,
+                itemStyle: { color: '#abe959', shadowBlur: 0, lineStyle: { color: '#abe959', width: 5, } },
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(
+                        // 右/下/左/上
+                        0, 0, 0, 1,
+                        [
+                            { offset: 0, color: '#abe959' },
+                            { offset: 1, color: 'rgba(38, 214, 147, .1)' }
+                        ]
+                    `),
+                },
+                label: {
+                    show: true,
+                    position: 'top',
+                    distance: 8,
+                    formatter: params => params.value + '天',
+                    textStyle: { color: '#b2ff4e', fontSize: 22 }
+                },
+                data: [7, 5, 3],
             }]
 
-            const series = [
-                { name: '市容环境', type: 'line', data: getRange(13), symbol: '', },
-                { name: '宣传广告', type: 'line', data: getRange(13), symbol: '', },
-                { name: '施工管理', type: 'line', data: getRange(13), symbol: '', },
-                { name: '突发事件', type: 'line', data: getRange(13), symbol: '', },
-                { name: '街面秩序', type: 'line', data: getRange(13), symbol: '', },
-                { name: '其他事件', type: 'line', data: getRange(13), symbol: '', },
-            ]
-
-            // 配置
-            this.option = { color, tooltip, legend, grid, xAxis, yAxis, series }
+            this.option = { grid, xAxis, yAxis, series }
         }
     },
     mounted() {
-        this.renderChart();
+        this.renderChart()
     }
 }
 )

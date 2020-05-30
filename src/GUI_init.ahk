@@ -357,7 +357,7 @@ Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/docs/utility-first">ta
 Gui, Pandora:Add, Link,, <a href="https://so.baideye.com/">白的夜</a>
 Gui, Pandora:Add, Link,, <a href="https://liulisusu.org/user">琉璃VPN</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/@tarkus">medium</a>
-Gui, Pandora:Add, Link,, <a href="https://36dcup.net/">36dcup</a>
+Gui, Pandora:Add, Link,, <a href="https://36dcup.net/user">36dcup</a>
 Gui, Pandora:Add, Link,, <a href="https://www.ox.ac.uk/soundsofthebodleian/#radcam">图书馆白噪音</a>
 Gui, Pandora:Add, Link,, <a href="https://mynoise.net/NoiseMachines/openOfficeNoiseGenerator.php">办公室白噪音</a>
 Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
@@ -371,6 +371,7 @@ Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
 Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140 , 新建纯index.html
+Gui, Pandora:Add, Text, gvueecharts W140 , 新建纯v-chart.html
 Gui, Pandora:Add, Text, gNewcomposition W160 , 新建vue-composition.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建table.html
 Gui, Pandora:Add, Text, gNewVueRules W140 , 新建vue.rules.html
@@ -391,7 +392,6 @@ Gui, Pandora:Add, Text, gVueAnimateHtml W140, 新建vueAnimate.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
 Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group列表
 Gui, Pandora:Add, Text, gcsspinyinHtml W180,css正则匹配选择器实现拼音搜索
-Gui, Pandora:Add, Text, gdomshengyin W180,只要 dom 改变就会发出声音
 
 
 
@@ -414,6 +414,8 @@ Gui, Pandora:Add, Text, grandcolorHtml W160,新建随机渐变色.html
 Gui, Pandora:Add, Text, ghackdiguo  W140,黑客帝国
 Gui, Pandora:Add, Text, gxiexiangougudingli  W140,斜线与勾股定理
 Gui, Pandora:Add, Text, gyoujiancaidanxinjian  W140,新建拦截右键菜单
+Gui, Pandora:Add, Text, gdomshengyin W180,只要 dom 改变就会发出声音
+
 
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+50,新建.echartsDemo.html（官方demo）
 Gui, Pandora:Add, Text, gNewEchartsPinHtml, 新建.pin.html(玫瑰饼图)
