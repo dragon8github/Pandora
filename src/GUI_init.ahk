@@ -333,7 +333,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大
 Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
 Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
-Gui, Pandora:Add, Link,, <a href="https://cn.bing.com/search?q=%E5%A3%81%E7%BA%B8">壁纸 - 国内版 Bing</a>
+Gui, Pandora:Add, Link,, <a href="https://cn.bing.com/search?q=壁纸">壁纸 - 国内版 Bing</a>
 
 
 Gui, Pandora:Add, Text,  W120 ys, 不可放过：
@@ -345,10 +345,9 @@ Gui, Pandora:Add, Link,, <a href="https://www.canva.com/photos/free/">Canva</a>
 Gui, Pandora:Add, Link,, <a href="https://www.reshot.com/">reshot</a>
 Gui, Pandora:Add, Link,, <a href="https://www.rawpixel.com/">rawpixel</a>
 Gui, Pandora:Add, Link,, <a href="https://morguefile.com/">Morguefile</a>
-Gui, Pandora:Add, Link,, <a href="https://pxhere.com/">pxhere</a>
-Gui, Pandora:Add, Link,, <a href="Republic    https://isorepublic.com/">ISO</a>
+Gui, Pandora:Add, Link,, <a href="https://isorepublic.com/">ISO</a>
 Gui, Pandora:Add, Link,, <a href="http://www.polayoutu.com">泼辣有图</a>
-Gui, Pandora:Add, Link,, <a href="http://fuli.su">fuli.su</a>
+Gui, Pandora:Add, Link,, <a href="https://www.macapp.so/wallpaper/index_2.html">mac 壁纸</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：

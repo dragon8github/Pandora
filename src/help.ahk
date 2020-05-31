@@ -1,6 +1,7 @@
 ﻿>+F1::
 WinGet, OutVar, Transparent, A
-if (OutVar != 255) {
+
+if (!OutVar|| OutVar != 255) {
 	WinSet, Transparent, 255, A
 } else {
 	WinSet, Transparent, 150, A
