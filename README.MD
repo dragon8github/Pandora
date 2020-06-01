@@ -43,9 +43,9 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 
 <p>二、联想代码补全，根据自己的联想，预设置的关键字，然后按下 Tab 显示全文</p>
 <p>
-  <a href="https://s2.ax1x.com/2019/10/16/KiJUAA.md.gif">
+  <a href="https://s1.ax1x.com/2020/06/01/tGm4AO.gif">
     <img
-      src="https://s2.ax1x.com/2019/10/16/KiJUAA.md.gif"
+      src="https://s1.ax1x.com/2020/06/01/tGm4AO.gif"
     />
   </a>
 </p>

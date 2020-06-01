@@ -192,6 +192,7 @@ if (StrLen(tmp)) {
 	; 遍历数组
 	For key, value in array {
         v := Trim(StrReplace(value, "`r`n"))
+        
         if (!arrincludes(resultarr, v)) {
             resultarr.push(v)
             result .= v . "`n"

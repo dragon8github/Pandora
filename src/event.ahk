@@ -1694,22 +1694,24 @@ export default {
 if (v == "echarts 通过dom获取echarts实例，批量监听resize") {
 Var = 
 (
-// 懒加载优化：滚动节流策略
-var __SCROLLTIMER__ = null
+beforeMount() {
+    // 懒加载优化：滚动节流策略
+    var __SCROLLTIMER__ = null
 
-// 重新设置 echarts 的宽高
-var resizeEcharts = () => {
- $('[_echarts_instance_]').each((i, e) => { 
-	 echarts.getInstanceByDom(e).resize()
- })  
-}
+    // 重新设置 echarts 的宽高
+    // 其实 v-cahrt 加入 autoresize 也可以。但算了吧，为了方便还是这里统一处理
+    var resizeEcharts = () => {
+        document.querySelectorAll('[_echarts_instance_]').forEach(e => {
+          echarts.getInstanceByDom(e).resize()
+        })
+    }
 
-// 绑定事件
-window.onresize = function () {
- clearTimeout(__SCROLLTIMER__);
- __SCROLLTIMER__ = setTimeout(resizeEcharts, 150);
-}
-
+    // 绑定事件
+    window.onresize = function() {
+        clearTimeout(__SCROLLTIMER__)
+        __SCROLLTIMER__ = setTimeout(resizeEcharts, 150)
+    }
+},
 )
 }
 

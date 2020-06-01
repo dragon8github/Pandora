@@ -275,6 +275,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/czp3ug">公司语雀</a>
 Gui, Pandora:Add, Link,, <a href="https://www.tapd.cn/55583740/board/index?board_id=1155583740001000002&board_type=standard&view_type=standard-board">公司tapd</a>
 Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客收录网站</a>
 Gui, Pandora:Add, Link,, <a href="https://youquhome.com/8790/">有趣网址之家</a>
+Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 
 
 
