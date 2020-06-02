@@ -255,57 +255,6 @@ code(Var)
 return
 
 
-
-!1::
-cs("dgdp")
-Sleep, 100
-Send, {tab}
-cs("ch#ks!690")
-return
-
-!2::
-cs("ljdp")
-Sleep, 100
-Send, {tab}
-cs("GzNhc#020")
-return
-
-!3::
-cs("visualuser")
-Sleep, 100
-Send, {tab}
-cs("Viuser@2020")
-return
-
-!4::
-cs("lizhaohong")
-Sleep, 100
-Send, {tab}
-cs("Lzh#2019")
-return
-
-!5::
-cs("928532756@qq.com")
-Sleep, 100
-Send, {tab}
-cs("123456sb")
-return
-
-!6::
-cs("dmp-dgsglj1")
-Sleep, 100
-Send, {tab}
-cs("dmpdemo")
-return
-
-
-!7::
-cs("iocadmin")
-Sleep, 100
-Send, {tab}
-cs("iocadmin")
-return
-
 ::---::
 Var =
 (

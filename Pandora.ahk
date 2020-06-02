@@ -46,6 +46,7 @@ global latestImageName := ""
 #Include src/lib.ahk              ; 公共函数
 #Include src/Lua.ahk              ; secondkey_board 
 #Include src/OCR.ahk              ; OCR
+#Include src/local.ahk            ; LOCAL
 
 #Include src/bilibili.ahk	      ; bilibili
 #Include src/makedown.ahk         ; makedown

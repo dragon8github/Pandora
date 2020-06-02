@@ -2513,8 +2513,9 @@ Var =
 (
 beforeRouteEnter (to, from, next) {
     next(vm => {
-      if (from.path === '/myBusiness') vm.$router.push('/')
-      next()
+      if (from.path === '/myBusiness') {
+        vm.$router.push('/')
+      }
     })
 }
 )

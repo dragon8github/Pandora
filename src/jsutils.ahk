@@ -2538,7 +2538,7 @@ json.forEach(val => {
     const { name, avatar } = val
     const base64Data = avatar.replace(/^data:image\/\w+;base64,/, '')
     const dataBuffer = new Buffer.alloc(base64Data.length, base64Data, 'base64')
-    fs.writeFile(`${name}.jpg`, dataBuffer) 
+    fs.writeFile(``${name}.jpg``, dataBuffer) 
 })
 )
 }
