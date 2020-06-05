@@ -6523,6 +6523,12 @@ return
 ::reduces::
 Var =
 (
+// 将数组转化为对象
+var obj = arr.reduce((p, c) => {
+    p[currentValue] = c
+    return p
+}, {})
+---
 .reduce((p, c) => p + Number(c.value), 0)
 ---
 .reduce((previousValue, currentValue, index, array) => {
@@ -8430,6 +8436,8 @@ code(Var)
 SendInput, {up}{tab}
 Return
 
+::iifei::
+::setii::
 ::setti2::
 ::seti2::
 Var =

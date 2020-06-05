@@ -1,4 +1,8 @@
-﻿
+﻿p(v) 
+{
+WinClip.paste(v)
+}
+
 createPic(PicPath)
 {
 	; Start gdi+
@@ -308,9 +312,11 @@ code(code) {
     Sleep, 200
     WinGetTitle, title, A
     if (InStr(title, "Android Studio") or InStr(title, "PyCharm") or InStr(title, "WebStorm") or InStr(title, "PhpStorm") or InStr(title, "IDEA") or InStr(title, "Notepad2")) {
-        Send, {CtrlDown}v{CtrlUp}
+        ; Send, {CtrlDown}v{CtrlUp}
+        WinClip.paste()
     } else {
-        Send, {CtrlDown}{ShiftDown}v{CtrlUp}{ShiftUp}
+        ; Send, {CtrlDown}{ShiftDown}v{CtrlUp}{ShiftUp}
+        WinClip.paste()
     }
     ; 这里至少需要等待100m，原因不详
     sleep, 100

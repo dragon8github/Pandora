@@ -485,9 +485,8 @@ Gui, Pandora:Add, Text, gEventSource W160,EventSource（类socket）.html
 
 
 Gui, Pandora:Tab, 3
-Gui, Pandora:Add, Text,  W130 Section, 油气管道（react）:
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:8080/api/swagger-ui.html#/">油气管道swagger-ui</a>
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/heziyou/demo-all-antdesign">油气管道 git</a>
+Gui, Pandora:Add, Text,  W130 Section, 疫情可视化:
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/epidemicsituation">源码地址</a>
 
 Gui, Pandora:Add, Text,  W160 ys, 大数据屏幕（vue+jquery）
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen">大数据屏幕 git</a>

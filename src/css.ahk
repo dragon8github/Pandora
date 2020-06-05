@@ -114,6 +114,7 @@
     Menu, cssknow, Add, :root 与 var(--primary-color), CssHandler
     Menu, cssknow, Add, Calc()与background-position数学表达式, CssHandler
 
+    Menu, CssMenu, Add, @mixins 渐变色字体, CssHandler
     Menu, CssMenu, Add, normalize.css, CssHandler2
     Menu, CssMenu, Add, css.debugger, CssHandler2    
     Menu, CssMenu, Add, px2rem, CssHandler2
@@ -289,6 +290,21 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "@mixins 渐变色字体") {
+Var =
+(
+@mixin gradient-text ($c1, $c2) {
+    background: -webkit-gradient(linear, bottom, top, from($c1), to($c2));
+    background: linear-gradient(180deg, $c1, $c2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+)
+txtit(Var)
+return
 }
 
 if (v == "UI俊峰关注的文字渐变") {
@@ -5718,6 +5734,22 @@ grid-template-columns: repeat(4, 1fr);
 grid-template-rows: repeat(4, 300px);
 grid-column-gap: 40px;
 justify-content: space-between;
+)
+code(Var)
+return
+
+::cssi::
+Var =
+(
+padding-left: 1em;
+position: relative;
+
+&::before {
+    @include ycenter;
+    content: '';
+    left: 0;
+    @include bg(1em, 2em, '~@/assets/news_arrow2.png');
+}
 )
 code(Var)
 return
