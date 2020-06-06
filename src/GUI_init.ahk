@@ -487,6 +487,8 @@ Gui, Pandora:Add, Text, gEventSource W160,EventSource（类socket）.html
 Gui, Pandora:Tab, 3
 Gui, Pandora:Add, Text,  W130 Section, 疫情可视化:
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/epidemicsituation">源码地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/19/interface/api">yapi</a>
+
 
 Gui, Pandora:Add, Text,  W160 ys, 大数据屏幕（vue+jquery）
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen">大数据屏幕 git</a>

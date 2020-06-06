@@ -1302,6 +1302,7 @@ Var =
 (
 background-color: #159957;
 background-image: linear-gradient(120deg, #155799, #159957);
+background-image: linear-gradient(to right,#32be8f,#38d39f,#32be8f);
 color: #fff;
 text-align: center;
 )

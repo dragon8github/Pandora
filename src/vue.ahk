@@ -2200,30 +2200,99 @@ return
 }
 
 if (v == "<transition-group>") {
-Var = 
+Var =
 (
-<transition-group name='fadeIn' @enter="fadeIn" @leave='fadeOut' class='news__items' tag='ul'>
-  <li class='news__item' v-for='(item, index) in analysisOfPublicOpinion' :key='index' 
-      v-if='index >= page * 5 && index < page * 5 + 5'
-      :data-index='index'
-      @click='go(item.link)'
-  >
-    <div class='news__item--index'>{{ index + 1 }}</div>
-    <article class='news__item--article'>{{ item.title }}</article>
-  </li>
-</transition-group>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- element -->
+    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <!-- mockjs -->
+    <script src="https://cdn.staticfile.org/Mock.js/1.0.0/mock-min.js"></script>
+    <!-- axios -->
+    <script src="https://libs.cdnjs.net/axios/0.19.2/axios.min.js"></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%; /* 注意，应该是html和body同时设置才可以 */
+    }
 
-<style lang="scss" scoped>
+    #app {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.fadeIn-enter-active, .fadeIn-leave-active {
-  transition: all .5s ease;
-}
 
-.fadeIn-enter, .fadeIn-leave-to{
-  opacity: 0;
-}
-</style>
+    .fadeIn-enter-active, .fadeIn-leave-active {
+      transition: all 1300ms ease-out;
+    }
+
+    .fadeIn-enter, .fadeIn-leave-to{
+      opacity: 0;
+      transform: translate(-50`%, 0);
+    }
+
+    li {
+        list-style: none;
+        background-color: yellow;
+        margin-top: 10px;
+        padding: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <transition-group name='fadeIn' class='news__items' tag='ul'>
+          <li class='news__item' v-for='(item, index) in items' :key='item.book_id'>
+            <article class='news__item--article'>{{ item.book_name }}</article>
+          </li>
+        </transition-group>
+
+        <button @click='handleClick'>handleClick</button>
+    </div>
+</body>
+<script>
+Mock.mock("/book/list", "get", {
+    "booklist|10": [
+        {"book_id|+1": 101, "book_name": "@ctitle", "book_price|50-100.1-2": 0, "book_time": "@date('yyyy-mm-dd')"}
+    ]
+})
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: [],
+        text: '',
+        obj: {},
+    },
+    methods: {
+        handleClick () {
+            this.items.unshift({
+                book_name: '110',
+                book_id: Math.random()
+            })
+        }
+    },
+    beforeMount () {
+        axios.get("/book/list").then(res => {
+            this.items = res.data.booklist
+        })
+    }
+})
+</script>
+</html>
 )
+txtit(Var)
 }
 
 if (v == "vue.components") {

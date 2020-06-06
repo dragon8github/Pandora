@@ -7678,6 +7678,14 @@ loadComponent('HelloWorld.wc').then(component => {
 txtit(Var)
 return
 
+::lastpath::
+Var =
+(
+const lastpath = path => path.substr(path.lastIndexOf('/') + 1)
+)
+code(Var)
+return
+
 ::$.json::
 ::$json::
 Var =
@@ -7875,4 +7883,3 @@ iframeDoc.open(); iframeDoc.write(html); iframeDoc.close();
 )
 code(Var)
 return
-
