@@ -1,4 +1,5 @@
 ﻿!a::
+    Menu, arrayMenu, Add, merge: 合并对象数组的好东西, utilsHandler
     Menu, arrayMenu, Add, 统计数组中每个元素出现的次数, utilsHandler
     Menu, arrayMenu, Add, 新的数组工具：filters, utilsHandler
     Menu, arrayMenu, Add, 求平均数：average, utilsHandler
@@ -92,6 +93,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "merge: 合并对象数组的好东西") {
+Var =
+(
+const merge = (a, b, p) => a.filter( aa => ! b.find ( bb => aa[p] === bb[p]) ).concat(b)
 )
 }
 
@@ -863,6 +871,14 @@ Array.prototype.filters = function(...args) {
     // 返回最终结果
     return ary
 }
+)
+code(Var)
+return
+
+::merge::
+Var =
+(
+const merge = (a, b, p) => a.filter( aa => ! b.find ( bb => aa[p] === bb[p]) ).concat(b)
 )
 code(Var)
 return

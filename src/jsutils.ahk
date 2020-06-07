@@ -7920,3 +7920,195 @@ Var =
 )
 code(Var)
 return
+
+::myfetch::
+::myxhr::
+::mockfetch::
+::lanjie::
+::mockxhr::
+::mock::
+Var =
+(
+// 折叠日志
+const logs = (info = '', ...args) => {
+    console.groupCollapsed(info)
+    args.forEach(_ => console.log(_))
+    console.groupEnd()
+}
+
+// 是否正则表达式
+const isRegExp = exp => exp instanceof RegExp
+
+const proxyResponse = (response, txt) => {
+    if (txt === undefined) 
+        return response
+
+    // Stream
+    const stream = new ReadableStream({
+        start(controller) {
+            const bufView = new Uint8Array(new ArrayBuffer(txt.length))
+            for (var i = 0; i < txt.length; i++) {
+                bufView[i] = txt.charCodeAt(i)
+            }
+
+            controller.enqueue(bufView)
+            controller.close()
+        }
+    })
+
+    // Response
+    const newResponse = new Response(stream, {
+        headers: response.headers,
+        status: response.status,
+        statusText: response.statusText,
+    })
+
+    // Proxy
+    const proxy = new Proxy(newResponse, {
+        get: function(target, name) {
+            switch (name) {
+                case 'ok':
+                case 'redirected':
+                case 'type':
+                case 'url':
+                case 'useFinalURL':
+                case 'body':
+                case 'bodyUsed':
+                    return response[name]
+            }
+            return target[name]
+        }
+    })
+
+    for (let key in proxy) {
+        if (typeof proxy[key] === 'function') {
+            proxy[key] = proxy[key].bind(newResponse)
+        }
+    }
+
+    return proxy
+}
+
+// 获取源 fetch
+const originalFetch = window.fetch.bind(window)
+
+// （示例demo）定义自己的 fetch
+const myFetch = async (...args) => {
+    return originalFetch(...args).then((response) => {
+        // ... your logic
+        console.log('🔴fetch intercept🔴')
+
+        // mock...
+        const mock = { foo: 'bar' }
+
+        // new response
+        const pr = proxyResponse(response, JSON.stringify(mock))
+
+        return pr
+    })
+}
+
+// mock fetch
+const mockFetch = customs => async (...args) => originalFetch(...args).then((response) => {
+    logs('🔴fetch intercept🔴', customs, response)
+
+    // 暂时只需要用 url 即可，不考虑其他
+    const { url } = response
+
+    // 从自定义 mock 中查找匹配项
+    const target = customs.find(_ => isRegExp(_.match) ? _.match.test(url) : url.includes(_.match))
+
+    // 如果命中了，那就替换内容
+    if (target) {
+        // new response
+        return proxyResponse(response, JSON.stringify(target.mock))
+    }
+
+    return response
+})
+
+// window.fetch = myFetch
+
+// window.fetch = mockFetch([
+//     { match: 'https://api.github.com/users/gaearon/gists', mock: { foo: 'bar' } }
+// ])
+
+
+//////////////////////////////////////////////
+// say something...
+//////////////////////////////////////////////
+const originalXHR = window.XMLHttpRequest
+
+// 返回的必须是普通函数 function 不能是箭头函数
+const myXHR = customs => function() {
+    const xhr = new originalXHR()
+
+    const modifyResponse = url => {
+        // 从自定义 mock 中查找匹配项
+        const target = customs.find(_ => isRegExp(_.match) ? _.match.test(url) : url.includes(_.match))
+
+        // 如果命中了，那就替换内容
+        if (target) {
+            this.responseText = JSON.stringify(target.mock)
+            this.response = JSON.stringify(target.mock)
+        }
+    }
+
+    for (let attr in xhr) {
+        if (attr === 'onreadystatechange') {
+            xhr.onreadystatechange = (...args) => {
+                if (this.readyState == 4) {
+                    // ... your logic
+                    console.log('🔴xhr change intercept🔴', this.responseURL)
+                    // mock
+                    modifyResponse(this.responseURL)
+                }
+
+                this.onreadystatechange && this.onreadystatechange.apply(this, args)
+            }
+            continue
+        } else if (attr === 'onload') {
+            xhr.onload = (...args) => {
+                // ... your logic
+                console.log('🔴xhr onload intercept🔴', this.responseURL)
+
+                // mock
+                modifyResponse(this.responseURL)
+
+                this.onload && this.onload.apply(this, args)
+            }
+            continue
+        }
+
+        if (typeof xhr[attr] === 'function') {
+            this[attr] = xhr[attr].bind(xhr)
+        } else {
+            // responseText和response不是writeable的，但拦截时需要修改它，所以修改就存储在this[`_${attr}`]上
+            if (attr === 'responseText' || attr === 'response') {
+                Object.defineProperty(this, attr, {
+                    get: () => (this[`_${attr}`] == undefined ? xhr[attr] : this[`_${attr}`]),
+                    set: (val) => (this[`_${attr}`] = val),
+                    enumerable: true,
+                })
+            } else {
+                Object.defineProperty(this, attr, {
+                    get: () => xhr[attr],
+                    set: (val) => (xhr[attr] = val),
+                    enumerable: true,
+                })
+            }
+        }
+    }
+}
+
+// window.XMLHttpRequest = myXHR([
+//     { match: 'https://api.github.com/users/gaearon/gists', mock: { foo: 'bar' } }
+// ])
+
+const mockData = (customs = []) => {
+    window.XMLHttpRequest = myXHR(customs)
+    window.fetch = mockFetch(customs)
+}
+)
+txtit(Var)
+return
