@@ -17,6 +17,7 @@
 
 
     Menu, utilsIs, Add, is, utilsHandler
+    Menu, utilsIs, Add, isRegExp 是否为正则表达式, utilsHandler
     Menu, utilsIs, Add, isString, utilsHandler
     Menu, utilsIs, Add, isURL, utilsHandler
     Menu, utilsIs, Add, isNumber, utilsHandler
@@ -203,6 +204,8 @@
 
     ; @认知 @renzhi
 
+
+    Menu, utilspractice, Add, 数字格式化:.toLocaleString('en-US'), utilsHandler
     Menu, utilspractice, Add, iframe 沙盒化组件：自定义内容, utilsHandler
     Menu, utilspractice, Add, isOverlap： 判断两个矩形 DIV 元素是否交集？, utilsHandler
     Menu, utilspractice, Add, looseEqual： 判断两个对象是否一致, utilsHandler
@@ -493,6 +496,21 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "isRegExp 是否为正则表达式") {
+Var =
+(
+// 是否正则表达式
+const isRegExp = exp => exp instanceof RegExp
+)
+}
+
+if (v == "数字格式化:.toLocaleString('en-US')") {
+Var =
+(
+(123456789).toLocaleString('en-US')  // 1,234,567,890
 )
 }
 
@@ -7880,6 +7898,25 @@ const HTML = `<div class="frame-root">123</div>`
 
 // 经典的 iframe 修改三部曲，更新 iframe 的内容为当前页面内容
 iframeDoc.open(); iframeDoc.write(html); iframeDoc.close();
+)
+code(Var)
+return
+
+
+::en::
+::us::
+::toen::
+Var =
+(
+toLocaleString('en-US')
+)
+code(Var)
+return
+
+:?:.toen::
+Var =
+(
+.toLocaleString('en-US')
 )
 code(Var)
 return

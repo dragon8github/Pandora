@@ -135,10 +135,17 @@ var_dump(obj,level:=0){
     return str
 }
 
+fuck(value) {
+    return Trim(StrReplace(StrReplace(StrReplace(value, "`r"), "`n"), "`r`n"))
+}
+
 arrincludes(myarr, v) {
 	b := false
 	For key, value in myarr {
-		if (value == v) {
+    
+        vv := fuck(value)
+    
+		if (vv == v) {
 			b := true
 			break
 		}

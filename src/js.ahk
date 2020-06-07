@@ -1084,6 +1084,13 @@ Var =
 (
 const { log, warn, info, error, assert } = console
 log(%t%, )
+
+// 折叠日志
+const logs = (info = '', ...args) => {
+    console.groupCollapsed(info)
+    args.forEach(_ => console.log(_))
+    console.groupEnd()
+}
 )
 code(Var)
 SendInput, {left}
@@ -6281,11 +6288,13 @@ function toThousands(num) {
     }
     return result.join('');
 }
-
+---
+(123456789).toLocaleString('en-US')  // 1,234,567,890
+---
 // 保留小數點后2位
 Number((这里是你的值).toString().match(/^\d+(?:\.\d{0,2})?/))
 )
-code(Var)
+txtit(Var)
 return
 
 :?:.a::

@@ -174,12 +174,13 @@ return
 
 
 >+r::
-Send, ^c
+WinClip.copy()
 ClipWait, 2
 tmp := Clipboard
 if (StrLen(tmp)) {
 	; 以换行符为分隔符切割为数组
 	array := StrSplit(tmp, "`n")
+    
 	
 	 ; 数组结果
 	resultarr := []
@@ -191,7 +192,7 @@ if (StrLen(tmp)) {
 		
 	; 遍历数组
 	For key, value in array {
-        v := Trim(StrReplace(value, "`r`n"))
+        v := fuck(value)    
         
         if (!arrincludes(resultarr, v)) {
             resultarr.push(v)
@@ -209,7 +210,7 @@ return
 
 
 +r::
-Send, ^c
+WinClip.copy()
 ClipWait, 2
 tmp := Clipboard
 if (StrLen(tmp)) {
@@ -290,7 +291,7 @@ if (InStr(title, "Chrome")) {
     Clipboard := 
     Send, ^l
     Sleep, 50
-    Send, ^c
+    WinClip.copy()
     ClipWait
     html := "<a href='" . Clipboard . "'>" . title . "</a>"
     WinClip.SetHTML(html)
@@ -425,7 +426,7 @@ code(Var)
 return
 
 ^!n::
-    Send, ^c
+    WinClip.copy()
     ClipWait, 2
     tmp := Clipboard
      if (StrLen(tmp)) {
@@ -574,7 +575,7 @@ return
     if (InStr(title, "Sublime Text") == 0) {
         tmp := Clipboard
         Clipboard :=
-        Send, ^c
+        WinClip.copy()
         ClipWait 1
         Clipboard := StrReplace(Clipboard, "`r`n")  
         Send, ^v
@@ -1014,7 +1015,7 @@ return
 +c::    
     str := Clipboard
     Clipboard := 
-    Send, ^c
+    WinClip.copy()
     ClipWait
     Clipboard := str . "`r`n" . Clipboard
     
@@ -1040,7 +1041,7 @@ return
 
 ~!+l::
 Clipboard := 
-Send, ^c
+WinClip.copy()
 ClipWait
 MyVar := Clipboard
 V := ""
@@ -1098,7 +1099,7 @@ return
 
 ^!r::
     Clipboard :=
-    Send, ^c
+    WinClip.copy()
     ClipWait
     tmp := Trim(Clipboard)
     _array := StrSplit(tmp, "`r`n")
@@ -1137,7 +1138,7 @@ return
 ^!l::
     tmp := Clipboard
     Clipboard = 
-    Send, ^c
+    WinClip.copy()
     ClipWait 2
     if (StrLen(Clipboard) > 0) {
         StringLower, String1, Clipboard
@@ -1149,7 +1150,7 @@ return
 ^!u::
     tmp := Clipboard
     Clipboard = 
-    Send, ^c
+    WinClip.copy()
     ClipWait 2
     if (StrLen(Clipboard) > 0) {
         StringUpper, String1, Clipboard
@@ -1394,7 +1395,7 @@ return
     
     Clipboard := 
     
-    Send, ^c
+    WinClip.copy()
     
     ClipWait, 2
     
@@ -1540,7 +1541,7 @@ Return
     tmp := Clipboard
     Clipboard =
     ; 第二步，复制当前选中内容
-    Send, ^c
+    WinClip.copy()
     ClipWait, 2
     if (StrLen(Clipboard) >= 50) {
         MsgBox, 请不要把此功能当做翻译机
@@ -1559,7 +1560,7 @@ Return
     tmp := Clipboard
     Clipboard =
     ; 第二步，复制当前选中内容
-    Send, ^c
+    WinClip.copy()
     ClipWait, 2
     if (StrLen(Clipboard) >= 50) {
         MsgBox, 请不要把此功能当做翻译机
@@ -1578,7 +1579,7 @@ Return
     ; 必须add一下才可以使用DeletaAll
     Menu, MyMenu, add
     Menu, MyMenu, DeleteAll
-    Send, ^c
+    WinClip.copy()
     Sleep, 150 
     MyVar := clipboard
     clipboard := ""
@@ -1709,7 +1710,7 @@ return
 
 >^>!c::
 Clipboard := 
-Send, ^c
+WinClip.copy()
 ClipWait, 2
 Clipboard := HexToRGB(Clipboard)
 TrayTip, 颜色转换完成

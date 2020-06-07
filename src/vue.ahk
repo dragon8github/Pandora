@@ -96,6 +96,10 @@
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
   Menu, VueMenu, Add, vue 动画组件<transition>, :vuetranstion
   Menu, VueMenu, Add, vue 动画组件<transition> + animate.css, :vuetranstion
+  Menu, VueMenu, Add, vue animate4.0.css, :vuetranstion
+
+
+
   Menu, VueMenu, Add, vue 异步组件加载import, VueHandler
   Menu, VueMenu, Add, vue Composition API setup, VueHandler
   Menu, VueMenu, Add, import '@vue/composition-api', VueHandler
@@ -174,6 +178,24 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "vue animate4.0.css") {
+Var =
+(
+// animate.css 4.x 版本开始支持 BEM 了
+// https://animate.style/
+// import 'animate.css'
+
+<div class="item animate__animated animate__fadeInDown" v-for='(item, index) in items' :key='item.id' :class='{ new: index === 0 }' style='--animate-duration: 1.5s'>
+    <div class='flex flex-between flex-column-center'>
+        <div class="type">{{ item.type }}</div>
+        <div class="time">{{ index === 0 ? '最新' : item.time }}</div>
+    </div>
+    <div class="title">{{ item.title }}</div>
+</div>
+)
+txtit(Var)
 }
 
 if (v == "用 beforeRouteUpdate 代替 watch.$route") {

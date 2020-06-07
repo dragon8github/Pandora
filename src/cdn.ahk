@@ -1,4 +1,13 @@
-﻿::cdn-new::
+﻿::cdn-mock::
+Var =
+(
+<!-- mockjs -->
+<script src="https://cdn.staticfile.org/Mock.js/1.0.0/mock-min.js"></script>
+)
+code(Var)
+return
+
+::cdn-new::
 ::new.css::
 Var =
 (
