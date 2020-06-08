@@ -293,6 +293,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.ph
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/?s=JSON">ahk中文社区</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
 Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a>
+Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
+
 
 
 
@@ -306,6 +308,7 @@ Gui, Pandora:Add, Link,, <a href="www.materialtools.com/">临时接收手机验�
 Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
 Gui, Pandora:Add, Link,, <a href="https://itpdf.online/?tdsourcetag=s_pctim_aiomsg">电子书列表</a>
 Gui, Pandora:Add, Link,, <a href="https://www.sxpdf.com/1738.html">书行天下</a>
+Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/">Hacker News</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng熊猫图片压缩</a>
@@ -487,6 +490,7 @@ Gui, Pandora:Add, Text, gEventSource W160,EventSource（类socket）.html
 Gui, Pandora:Tab, 3
 Gui, Pandora:Add, Text,  W130 Section, 疫情可视化:
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/epidemicsituation">源码地址</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/application/tree/master/ioc-visual-ui">源码地址（新）</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/19/interface/api">yapi</a>
 
 

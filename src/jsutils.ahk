@@ -204,7 +204,7 @@
 
     ; @认知 @renzhi
 
-
+    Menu, utilspractice, Add, isPointInPolygon: 如何验证坐标点是否在多边形内, utilsHandler
     Menu, utilspractice, Add, 数字格式化:.toLocaleString('en-US'), utilsHandler
     Menu, utilspractice, Add, iframe 沙盒化组件：自定义内容, utilsHandler
     Menu, utilspractice, Add, isOverlap： 判断两个矩形 DIV 元素是否交集？, utilsHandler
@@ -497,6 +497,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "isPointInPolygon: 如何验证坐标点是否在多边形内") {
+_send("ispip", true, true)
+return
 }
 
 if (v == "isRegExp 是否为正则表达式") {
@@ -7518,6 +7523,49 @@ const toNumber = (val, decimal = 0) => {
   const n = parseFloat(val)
   if (isNaN(n)) return val
   return decimal ? parseFloat(n.toFixed(decimal)) : n
+}
+)
+code(Var)
+return
+
+::ispip::
+Var =
+(
+/**
+ * Verify if point of coordinates (longitude, latitude) is polygon of coordinates
+ * https://github.com/substack/point-in-polygon/blob/master/index.js
+ * @param {number} latitude Latitude
+ * @param {number} longitude Longitude
+ * @param {array<[number,number]>} polygon Polygon contains arrays of points. One array have the following format: [latitude,longitude]
+
+ [JS]如何验证坐标点是否在多边形内
+ （温馨提示：计算消耗的时间有点久，最好是放在 web worker 里边计算）
+ How to verify if point of coordinates is inside polygon [Javascript] - DEV - Google Chrome
+ point-in-polygon/index.js at master · substack/point-in-polygon - Google Chrome
+ 
+ */
+function isPointInPolygon (latitude, longitude, polygon) {
+  if (typeof latitude !== 'number' || typeof longitude !== 'number') {
+    throw new TypeError('Invalid latitude or longitude. Numbers are expected')
+  } else if (!polygon || !Array.isArray(polygon)) {
+    throw new TypeError('Invalid polygon. Array with locations expected')
+  } else if (polygon.length === 0) {
+    throw new TypeError('Invalid polygon. Non-empty Array expected')
+  }
+
+  const x = latitude; const y = longitude
+
+  let inside = false
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i][0]; const yi = polygon[i][1]
+    const xj = polygon[j][0]; const yj = polygon[j][1]
+
+    const intersect = ((yi > y) !== (yj > y)) &&
+            (x < (xj - xi) * (y - yi) / (yj - yi) + xi)
+    if (intersect) inside = !inside
+  }
+
+  return inside
 }
 )
 code(Var)
