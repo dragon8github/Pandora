@@ -1660,8 +1660,11 @@ return
 ::gitig::
 :?:.git::
 ::gitignore::
+::giti::
 Var = 
 (
+#.gitignore
+
 .DS_Store
 node_modules/
 dist/

@@ -1979,6 +1979,64 @@ export const loadingExec = (function(){
 code(Var)
 return
 
+::buji::
+Var =
+(
+var arr1 = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }]
+var arr2 = [{ id: 1 }, { id: 2 }, { id: 3 }]
+// 补集（在一个大集合 a 中，除了子集合b以外所有的集合）
+const complement = (a, b, p) => a.reduce((result, c) => {
+  // 先找出共同拥有的集合（交集）
+  const _jiaoji = jiaoji(a, b, p)
+
+  // 从大集合中，单方面找出差集
+  return a.reduce((result, c) => {
+    // 是否找到相同元素？
+    const target = b.find(_ => _[p] === c[p])
+    // 如果找到的话，插入数组
+    return !target ? [...result, c] : result
+  }, [])
+}, [])
+// [ { id: 4 }, { id: 5 } ]
+console.log(complement(arr1, arr2, 'id'))
+---
+const xor = (a, b) => exclude(a, b).concat(exclude(b, a)) // 补
+)
+txtit(Var)
+return
+
+::chaji::
+Var =
+(
+var arr1 = [{ id: 1 }, { id: 2 }, { id: 3 }]
+var arr2 = [{ id: 2 }, { id: 3 }, { id: 4 }]
+// 差集（两个元素互相没有的东西）
+const chaji = (a, b, p) => {
+  const ary1 = a.reduce((result, c) => {
+    // 是否找到相同元素？
+    const target = b.find(_ => _[p] === c[p])
+    // 如果找到的话，插入数组
+    return !target ? [...result, c] : result
+  }, [])
+
+  const ary2 = b.reduce((result, c) => {
+    // 是否找到相同元素？
+    const target = a.find(_ => _[p] === c[p])
+    // 如果找到的话，插入数组
+    return !target ? [...result, c] : result
+  }, [])
+
+  return [...ary1, ...ary2]
+}
+
+// [ { id: 1 }, { id: 4 } ]
+console.log(chaji(arr1, arr2, 'id'))
+---
+const exclude = (a, b) => a.filter(i => !b.includes(i)) // 差
+)
+txtit(Var)
+return
+
 ::arrbaohan::
 ::arybaohan::
 ::shuzubaohan::
@@ -1986,10 +2044,23 @@ return
 ::baohan::
 Var =
 (
-ary1.some(_ => ary2.includes(_))
+var arr1 = [{ id: 1 }, { id: 2 }, { id: 3 }]
+var arr2 = [{ id: 2 }, { id: 3 }, { id: 4 }]
+// 交集（返回两个数组都拥有的元素）
+const jiaoji = (a, b, p) => a.reduce((result, c) => {
+  // 是否找到相同元素？
+  const target = b.find(_ => _[p] === c[p])
+  // 如果找到的话，插入数组
+  return target ? [...result, target] : result
+}, [])
+
+// [ { id: 2 }, { id: 3 } ]
+console.log(jiaoji(arr1, arr2, 'id'))
 ---
-ary1.filter(_ => ary2.includes(_)).length
+// 数组交集
+ary1.filter(_ => ary2.includes(_))
 ---
+// 对象交集
 const intersection = (O1, O2) => Object.assign(...Object.keys(O1).map(k => {
     let temp
 
