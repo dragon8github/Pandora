@@ -36,6 +36,7 @@
 	Menu, arrayMenu, Add, Array.prototype.remove, ForHandler
 	Menu, arrayMenu, Add, 判断两个数组是否互相包含, utilsHandler
 	Menu, arrayMenu, Add, 数组的交集、并集、差集、补集, ForHandler
+	Menu, arrayMenu, Add, 对象数组的交集、并集、差集、补集, ForHandler
 	Menu, arrayMenu, Add, Array.difference: 找出两个数组中不同成员, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
@@ -94,6 +95,65 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "对象数组的交集、并集、差集、补集") {
+Var =
+(
+var arr1 = [{ id: 1 }, { id: 2 }, { id: 3 }]
+var arr2 = [{ id: 2 }, { id: 3 }, { id: 4 }]
+// 交集（返回两个数组都拥有的元素）
+const jiaoji = (a, b, p) => a.reduce((result, c) => {
+	// 是否找到相同元素？
+	const target = b.find(_ => _[p] === c[p])
+	// 如果找到的话，插入数组
+	return target ? [...result, target] : result
+}, [])
+// [ { id: 2 }, { id: 3 } ]
+console.log(jiaoji(arr1, arr2, 'id'))
+---
+var arr1 = [{ id: 1 }, { id: 2 }, { id: 3 }]
+var arr2 = [{ id: 2 }, { id: 3 }, { id: 4 }]
+// 差集（两个元素互相没有的东西）
+const chaji = (a, b, p) => {
+	const ary1 = a.reduce((result, c) => {
+		// 是否找到相同元素？
+		const target = b.find(_ => _[p] === c[p])
+		// 如果找到的话，插入数组
+		return !target ? [...result, c] : result
+	}, [])
+
+	const ary2 = b.reduce((result, c) => {
+		// 是否找到相同元素？
+		const target = a.find(_ => _[p] === c[p])
+		// 如果找到的话，插入数组
+		return !target ? [...result, c] : result
+	}, [])
+
+	return [...ary1, ...ary2]
+}
+// [ { id: 1 }, { id: 4 } ]
+console.log(chaji(arr1, arr2, 'id'))
+---
+var arr1 = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }]
+var arr2 = [{ id: 1 }, { id: 2 }, { id: 3 }]
+// 补集（在一个大集合 a 中，除了子集合b以外所有的集合）
+const complement = (a, b, p) => a.reduce((result, c) => {
+	// 先找出共同拥有的集合（交集）
+	const _jiaoji = jiaoji(a, b, p)
+
+	// 从大集合中，单方面找出差集
+	return a.reduce((result, c) => {
+		// 是否找到相同元素？
+		const target = b.find(_ => _[p] === c[p])
+		// 如果找到的话，插入数组
+		return !target ? [...result, c] : result
+	}, [])
+}, [])
+// [ { id: 4 }, { id: 5 } ]
+console.log(complement(arr1, arr2, 'id'))
+)
+txtit(Var)
 }
 
 if (v == "merge: 合并对象数组的好东西") {

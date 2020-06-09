@@ -86,6 +86,7 @@ __SEARCH_DATABASE__["城管citychengguan"] := "C:\Users\Lee\Desktop\cityManageme
 __SEARCH_DATABASE__["new城管citychengguan"] := "C:\Users\Lee\Desktop\new_cityMangement"
 __SEARCH_DATABASE__["肺炎feiyanH5"] := "C:\Users\Lee\Desktop\iocappmain\ioc-feiyanwebsite-ui"
 __SEARCH_DATABASE__["purecard"] := "C:\Users\Lee\Desktop\pureCard"
+__SEARCH_DATABASE__["yiqing疫情可视化"] := "C:\Users\Lee\Desktop\ioc-visual-ui\ioc-visual-ui"
 
 ; 创建含名称和大小两列的 ListView:
 Gui, ISearch:Add, ListView, r7 w600 h400 gMyListView AltSubmit Section xs yp+40, Name|Path
@@ -492,6 +493,10 @@ Gui, Pandora:Add, Text,  W130 Section, 疫情可视化:
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/epidemicsituation">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/application/tree/master/ioc-visual-ui">源码地址（新）</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/19/interface/api">yapi</a>
+Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui-dev?tab=history">测试部署</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/#/">测试预览</a>
+
+
 
 
 Gui, Pandora:Add, Text,  W160 ys, 大数据屏幕（vue+jquery）
