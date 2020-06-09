@@ -1191,23 +1191,6 @@ SendInput, % Var A_Space
 return
 
 
-::gitdd::
-_sendinput("git add . && git commit -m '{#}' --no-verify && git push -u origin develop{LEFT 43}")
-return
-
-::gitr::
-_sendinput("git add . && git commit -m '{#} ' --no-verify && git push -u origin release{LEFT 43}")
-return
-
-::sfind::
-::bfind::
-Var =
-(
-find / -iname "nginx"
-)
-code(Var)
-return
-
 ::git fuck::
 ::fuck git::
 Var =

@@ -1684,7 +1684,7 @@ return
 
 ::git::
 p("git add . && git commit -m '#' --no-verify && git push")
-;_sendInput("{LEFT 25}")
+_sendInput("{LEFT 25}")
 Return
 
 
