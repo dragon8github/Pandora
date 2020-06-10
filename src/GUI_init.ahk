@@ -490,11 +490,12 @@ Gui, Pandora:Add, Text, gEventSource W160,EventSource（类socket）.html
 
 Gui, Pandora:Tab, 3
 Gui, Pandora:Add, Text,  W130 Section, 疫情可视化:
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/epidemicsituation">源码地址</a>
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/application/tree/master/ioc-visual-ui">源码地址（新）</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/application/tree/master/ioc-visual-ui">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/19/interface/api">yapi</a>
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui-dev?tab=history">测试部署</a>
+Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui-dev?tab=history">正式部署</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/#/">测试预览</a>
+Gui, Pandora:Add, Link,, <a href="https://19.104.50.204/fyvis/#/">正式预览</a>
 
 
 

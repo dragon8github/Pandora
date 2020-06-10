@@ -1,4 +1,4 @@
-﻿^d::
+﻿>^d::
 	; 获取当前 chrome 浏览器的进程id
 	WinGet, v, PID, , Chrome
 	
@@ -17,7 +17,7 @@
 	run, % file 
 return
 
-^n::
+>^n::
 	; 获取当前 chrome 浏览器的进程id
 	WinGet, v, PID, , Chrome
 	
@@ -37,7 +37,7 @@ return
 	run, % bat
 return
 
-^h::
+>^h::
 	; 获取当前 chrome 浏览器的进程id
 	WinGet, v, PID, , Chrome
 	
@@ -56,6 +56,28 @@ return
 	
 	; 执行华为程序
 	DGIOC := A_Desktop . "\DGIOC.url"
+	run, % DGIOC
+return
+
+>^y::
+	; 获取当前 chrome 浏览器的进程id
+	WinGet, v, PID, , Chrome
+	
+	; 如果id存在的话
+	if (v) {
+		; kill
+		Process, Close, % v
+	}
+	
+	; 执行华为的 kill_IE 命令文件释放IE
+	bat := A_Desktop . "\Kill_IE.bat"
+	run, % bat
+	
+	; 延迟一下，避免出现乱序而将刚打开的程序杀死。
+	Sleep, 300
+	
+	; 执行华为程序
+	DGIOC := A_Desktop . "\YIQING.lnk"
 	run, % DGIOC
 return
 
