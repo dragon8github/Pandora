@@ -24,7 +24,6 @@ FileDelete, .\src\*.bak
 
 global latestImageName := ""
 
-
 /**
 //////////////////////////////////////////////
 说明一下： GUI的初始化必须置顶 
@@ -39,6 +38,7 @@ global latestImageName := ""
 #Include src/WinClip/WinClipAPI.ahk
 #Include src/WinClip/WinClip.ahk
 
+
 #Include src/uploadFile.ahk	      ; uploadFile.ahk
 #Include src/Gdip.ahk             ; Gdip
 #Include src/JSON.ahk	          ; JSON Script
@@ -47,6 +47,8 @@ global latestImageName := ""
 #Include src/Lua.ahk              ; secondkey_board 
 #Include src/OCR.ahk              ; OCR
 #Include src/local.ahk            ; LOCAL
+#Include src/jietu.ahk			  ; 截图：https://www.autoahk.com/archives/28754 （依赖 Gdip.ahk，源码中被我删除了大量的重复代码）
+
 
 #Include src/bilibili.ahk	      ; bilibili
 #Include src/makedown.ahk         ; makedown
@@ -84,6 +86,8 @@ global latestImageName := ""
 ; #Include src/reactNative.ahk    ; ReactNative
 ; #Include src/taro.ahk	          ; taro
 ; #Include src/sql.ahk		      ; sql
+
+
 
 !F12::
 	Suspend
