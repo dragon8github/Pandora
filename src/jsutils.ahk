@@ -115,6 +115,7 @@
     Menu, utilsDOM, Add, document.activeElement.blur(), utilsHandler
     Menu, utilsDOM, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     
+    Menu, utilsPosition, Add, 获取网页被卷去的位置, utilsHandler
     Menu, utilsPosition, Add, isVisualRange：是否处于可视视图中, utilsHandler
 
 
@@ -496,6 +497,23 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "获取网页被卷去的位置") {
+Var =
+(
+function getScrollXY() {
+  return document.body.scrollTop
+    ? {
+        x: document.body.scrollLeft,
+        y: document.body.scrollTop
+      }
+    : {
+        x: document.documentElement.scrollLeft,
+        y: document.documentElement.scrollTop
+      };
+}
 )
 }
 
@@ -8156,6 +8174,59 @@ const myXHR = customs => function() {
 const mockData = (customs = []) => {
     window.XMLHttpRequest = myXHR(customs)
     window.fetch = mockFetch(customs)
+}
+)
+txtit(Var)
+return
+
+::shell::
+::shelljs::
+::shell.js::
+::js.shell::
+Var =
+(
+const shell = require('shelljs')
+
+// 是否具有 package.json
+const isPgk = shell.find(join(deskPath, 'package.json')).code === 0
+
+// 如果存在，进行 install + dev
+if (isPgk) {
+    // 进入目录，然后执行 npm install 测试
+    shell.exec(`cd ${deskPath} && cnpm i && npm run dev`)
+}
+---
+/**
+ * 判断是否安装了某个包
+ * @param {string} pkg 包名
+ */
+const hasPkg = pkg => {
+  const pkgPath = path.join(process.cwd(), `package.json`);
+  const pkgJson = fs.existsSync(pkgPath) ? fse.readJsonSync(pkgPath) : {};
+  const { dependencies = {}, devDependencies = {} } = pkgJson;
+  return dependencies[pkg] || devDependencies[pkg];
+}
+
+/**
+ * 通过 npm 安装包
+ * @param {string} pkg 包名
+ */
+const installPkg = pkg => {
+  console.log(`开始安装 ${pkg}`);
+  const npm = shell.which('npm');
+  if (!npm) {
+    console.log('请先安装 npm');
+    return;
+  }
+  const { code } = shell.exec(`${npm.stdout} install ${pkg} -S`);
+  if (code) {
+    console.log(`安装 ${pkg} 失败，请手动安装`);
+  }
+};
+
+// biu~
+if (!hasPkg(TARGET_PKG_NAME)) {
+  installPkg(TARGET_PKG_NAME);
 }
 )
 txtit(Var)

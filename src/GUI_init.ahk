@@ -309,11 +309,14 @@ Gui, Pandora:Add, Link,, <a href="www.materialtools.com/">临时接收手机验�
 Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
 Gui, Pandora:Add, Link,, <a href="https://itpdf.online/?tdsourcetag=s_pctim_aiomsg">电子书列表</a>
 Gui, Pandora:Add, Link,, <a href="https://www.sxpdf.com/1738.html">书行天下</a>
+Gui, Pandora:Add, Link,, <a href="http://www.broadview.com.cn/book">博文视点（找新书）</a>
 Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/">Hacker News</a>
+Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/github-rank/toutiao-7.html">开发者头条(github-rank)</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng熊猫图片压缩</a>
-Gui, Pandora:Add, Link,, <a href="https://docsmall.com/image-compress">图片压缩工具2</a>
+Gui, Pandora:Add, Link,, <a href="https://docsmall.com/image-compress">图片压缩工具25M</a>
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
 Gui, Pandora:Add, Link,, <a href="https://compresspng.com/zh/">压缩图片</a>
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
@@ -495,7 +498,7 @@ Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/19/interfac
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui-dev?tab=history">测试部署</a>
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui-dev?tab=history">正式部署</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/#/">测试预览</a>
-Gui, Pandora:Add, Link,, <a href="https://19.104.50.204/fyvis/#/">正式预览</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/fyvis/#/">正式预览</a>
 
 
 

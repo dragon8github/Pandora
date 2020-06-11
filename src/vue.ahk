@@ -31,8 +31,8 @@
 
   
 
-  Menu, VueMenu, Add, vuex.router, :Vuerouter
-  Menu, VueMenu, Add, vuex.init, VueHandler
+  Menu, VueMenu, Add, vue + vite, :Vuerouter
+  Menu, VueMenu, Add, vue.router, :Vuerouter
   Menu, VueMenu, Add, vuex.modules, VueHandler
   Menu, VueMenu, Add, vuex.action, VueHandler
   Menu, VueMenu, Add, this.$store.commit, VueHandler
@@ -76,7 +76,6 @@
   Menu, vuetranstion, Add, <transition-group>, VueHandler
   Menu, vuetranstion, Add, <transition>与路由动画, VueHandler
 
-  Menu, VueMenu, Add, vue.init, VueHandler
   Menu, VueMenu, Add, 脚手架大全, :vuejiaoshouj
   Menu, VueMenu, Add, proxyTable 配置, VueHandler
   Menu, VueMenu, Add, v-slot 插槽, VueHandler
@@ -178,6 +177,14 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "vue + vite") {
+Var =
+(
+npx create-vite-app fuck-vite
+)
+p(Var)
 }
 
 if (v == "vue animate4.0.css") {
@@ -3058,6 +3065,7 @@ export default {
   watch: {
   
   },
+  props: [],
   beforeMount () {
       console.log(%t%, '%OutputVar%');
   }
