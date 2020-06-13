@@ -7532,6 +7532,12 @@ function looseEqual (a, b) {
 code(Var)
 return
 
+::.tof::
+::.tofix::
+::.tonum::
+::tof::
+::tofix::
+::tonum::
 ::toNumber::
 ::tofixed::
 ::fixed::

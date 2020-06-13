@@ -5754,3 +5754,19 @@ position: relative;
 )
 code(Var)
 return
+
+::css.txt::
+::css.text::
+::jianbianse::
+Var =
+(
+@mixin gradient-text ($c1, $c2) {
+    background: -webkit-gradient(linear, bottom, top, from($c1), to($c2));
+    background: linear-gradient(180deg, $c1, $c2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+)
+code(Var)
+return

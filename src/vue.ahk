@@ -42,6 +42,7 @@
   Menu, VueMenu, Add, this.$store.getters['app/master'], VueHandler
   Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations`, mapGetters } from 'vuex', VueHandler  
   Menu, VueMenu, Add, this.$store.subscribe, VueHandler
+  Menu, VueMenu, Add, store.js, VueHandler
   
 
   Menu, VueMenu, Add, , VueHandler
@@ -177,6 +178,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "store.js") {
+_send("store.js", true, true)
+return
 }
 
 if (v == "vue + vite") {
@@ -6230,6 +6236,165 @@ export default {
   show,
   close,
 }
+)
+code(Var)
+return
+
+::store.js::
+Var =
+(
+import { pad } from '@/utils/utils'
+import Vue from 'vue'
+import Vuex from 'vuex'
+import router from '../router'
+
+const getPollsTime = (( timer = [5, 8, 16, 32, 60], len = timer.length, current = 0) => () => timer[current++ `% len] * 1000)()
+// const getPollsTime = (( timer = [3, 3, 3, 3, 3, 3], len = timer.length, current = 0) => () => timer[current++ `% len] * 1000)()
+
+const date = new Date()
+const year = date.getFullYear()
+const month = pad(date.getMonth() + 1, 2)
+const preMonth = pad(date.getMonth(), 2)
+const day = pad(date.getDate(), 2)
+
+/**
+ * 1. directory {String} -读取文件的路径
+ * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
+ * 3. regExp {RegExp} -匹配文件的正则
+ */
+const _store = require.context('@/pages', true, /store\.js$/)
+
+/**
+ * 1. 必须使用 key() 内置方法获取所有路径。
+ */
+const __STORE__ = _store.keys().reduce((obj, path) => {
+    // 获取模块名: "./City/store.js" => City
+    const name = path.substring(2, path.lastIndexOf('/'))
+
+    // （重点）获取模块内容
+    const module = _store(path)
+
+    // 兼容 es6 import export 和 CMD require module.export 两种规范
+    const __MODULE__ = module.default || module
+
+    // 以 『文件名』 为 key，模块内容为 value
+    obj[name] = __MODULE__
+
+    return obj
+}, {})
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+    strict: false,
+    state: {
+        // 当前标题
+        title: '首页',
+        // 记录来路，现在还没有任何作用和使用场景，但没准以后有呢？先留着吧。
+        back: { title: '首页', path: '/' },
+        // 获取当前月份
+        month: [year, month].join('-'),
+        // 获取当前天
+        day: [year, month, day].join('-'),
+        // 获取上个月
+        preMonth: [year, preMonth].join('-'),
+        // 获取年
+        year: year,
+        // 额外轮询机制
+        polls: [],
+        // news: 专门用来存储 t_action 类的停止钩子
+        tpolls: [],
+    },
+    actions: {
+        // 更新页面标题，这个标题内容十分重要不可儿戏。因为关系到 'FETCH_DATA' 的判断
+        SET_TITLE ({ state, comit, dispatch }, title) {
+            // 设置当前标题
+            state.title = title
+            // 清空额外轮询列表
+            dispatch('CLEAR_POLL')
+            // 请求数据
+            dispatch('FETCH_DATA')
+            //请求数据--自定义时间事件
+            dispatch('FETCH_TDATA')
+        },
+        // ...
+        SET_POLL ({ state, comit, dispatch }, { name = '', action = () => {} } = {}) {
+            // 🔔 think: 我觉得自动去重会方便一点
+            dispatch('DEL_POLL', name)
+            // 加入请求队列
+            state.polls.push({ name, action })
+        },
+        // ...
+        DEL_POLL ({ state, comit, dispatch }, name) {
+            state.polls = state.polls.filter(_ => _.name != name)
+        },
+        // ..
+        CLEAR_POLL ({ state, comit, dispatch }) {
+            state.polls = []
+        },
+        async FETCH_DATA ({ commit, state, dispatch, rootState, getters, rootGetters }, isFirst = true) {
+            // 获取当前路由
+            const name = router.currentRoute.name
+
+            // 查找模块下需要执行的 actions
+            let _actions = Object.keys(store._actions).filter(_ => isFirst 
+                // 如果是首次的话，那么包含 o_ 规则
+                ? (_.includes(``${name}/_``) || _.includes(``${name}/o_``))
+                // 如果不是首次的话，只需要包含 _ 规则
+                : (_.includes(``${name}/_``))
+            `)
+
+            // 请求队列
+            const queue = _actions.map(action_name => dispatch(action_name))
+
+            // 额外的请求队列
+            const polls = state.polls.map(_ => _.action())
+
+            // Promise.all 的升级版本， 等待队列完成
+            const _queue = await Promise.allSettled([...queue, ...polls])
+
+            // poll...
+            console.log('poll...')
+
+            // 开始轮询请求
+            setTimeout(() => requestAnimationFrame(_ => dispatch('FETCH_DATA', false)), getPollsTime())
+        },
+        // 执行类似 t10_actionName 的任务，并且 10 s 间隔
+        FETCH_TDATA ({ commit, state, dispatch, rootState, getters, rootGetters }) {
+            // 获取当前路由
+            const name = router.currentRoute.name
+
+            // 清空上一次的轮询
+            state.tpolls.forEach(kill => kill())
+
+            // 筛选出所有
+            // t_number 类型的请求 => 't10_fuckyou' => ✔
+            // /* _.includes(`${name}/`) &&  */
+            const t_actions = Object.keys(store._actions).filter(_ => /t(\d+)_/.test(_))
+
+            // 请求队列
+            state.tpolls = t_actions.map(action_name => {
+                // 获取数字
+                const n = action_name.match(/t(\d+)_/)[1]
+
+                // 立即执行一次， 为了解决 setInterval 首次不执行的尴尬
+                const timer =  (function(fn, t) {
+                    fn && fn()
+                    // 返回计时器timer
+                    return setInterval(fn, t)
+                })(() => dispatch(action_name), n * 1000)
+
+                // 返回消灭定时器的函数
+                return () => clearInterval(timer)
+            })
+        }
+    },
+    modules: {
+        ...__STORE__
+    },
+})
+
+export default store
 )
 code(Var)
 return

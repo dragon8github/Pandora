@@ -8095,12 +8095,12 @@ return
 
 AppsKey & b::
 >^b::
-	cs("npm run build")
+	p("npm run build")
 return
 
 AppsKey & r::
 >^r::
-  cs("npm run dev")
+  p("npm run dev")
 return
 
 
