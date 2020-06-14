@@ -31,7 +31,7 @@
 
   
 
-  Menu, VueMenu, Add, vue + vite, :Vuerouter
+  Menu, VueMenu, Add, vue + vite, VueHandler
   Menu, VueMenu, Add, vue.router, :Vuerouter
   Menu, VueMenu, Add, vuex.modules, VueHandler
   Menu, VueMenu, Add, vuex.action, VueHandler
@@ -191,6 +191,7 @@ Var =
 npx create-vite-app fuck-vite
 )
 p(Var)
+return
 }
 
 if (v == "vue animate4.0.css") {

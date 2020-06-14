@@ -1682,17 +1682,6 @@ import(/* webpackChunkName: "fuckyou" */ './fuckyou.json').then(module => {
 code(Var)
 return
 
-::iife::
-:?:!f::
-Var =
-(
-!function(){
-
-}()
-)
-code(Var)
-Send, {up}{tab}
-return
 
 ::objfind::
 ::deepfind::
@@ -4108,7 +4097,7 @@ var goTop = function() {
         }
     });
 }
-
+---
 // es6
 const scrollToTop = () => {
   const c = document.documentElement.scrollTop || document.body.scrollTop;
@@ -4129,7 +4118,7 @@ document.querySelector('body')
         block: 'start',
     })
 )
-code(Var)
+txtit(Var)
 return
 
 ::timechunk::
@@ -8452,11 +8441,25 @@ $(function () {})
 code(Var)
 return
 
+::ff::
+::!f::
+::iife::
 ::()()::
 Var = 
 (
-;(async function(){
+(function(){
 	
+}())
+)
+code(Var)
+SendInput, {up}{tab}
+Return
+
+::()()2::
+Var = 
+(
+;(async function(){
+  
 }())
 )
 code(Var)

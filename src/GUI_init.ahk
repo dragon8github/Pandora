@@ -275,7 +275,7 @@ Gui, Pandora:Add, Link,, <a href="https://fex.baidu.com/articles/">fex周刊</a>
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/czp3ug">公司语雀</a>
 Gui, Pandora:Add, Link,, <a href="https://www.tapd.cn/55583740/board/index?board_id=1155583740001000002&board_type=standard&view_type=standard-board">公司tapd</a>
 Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客收录网站</a>
-Gui, Pandora:Add, Link,, <a href="https://youquhome.com/8790/">有趣网址之家</a>
+Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
 Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 
 
@@ -294,7 +294,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.ph
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/?s=JSON">ahk中文社区</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
 Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a>
-Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
+Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
 
 
 
@@ -310,8 +310,9 @@ Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书�
 Gui, Pandora:Add, Link,, <a href="https://itpdf.online/?tdsourcetag=s_pctim_aiomsg">电子书列表</a>
 Gui, Pandora:Add, Link,, <a href="https://www.sxpdf.com/1738.html">书行天下</a>
 Gui, Pandora:Add, Link,, <a href="http://www.broadview.com.cn/book">博文视点（找新书）</a>
-Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/">Hacker News</a>
 Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/github-rank/toutiao-7.html">开发者头条(github-rank)</a>
+Gui, Pandora:Add, Link,, <a href="https://youquhome.com/8790/">有趣网址之家</a>
+Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/">Hacker News</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
@@ -347,7 +348,6 @@ Gui, Pandora:Add, Link,, <a href="https://cn.bing.com/search?q=壁纸">壁纸 - 
 Gui, Pandora:Add, Text,  W120 ys, 不可放过：
 Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">Pexels</a>
 Gui, Pandora:Add, Link,, <a href="https://gratisography.com/">Gratisography</a>
-Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/">picjumbo</a>
 Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">Pixabay</a>
 Gui, Pandora:Add, Link,, <a href="https://www.canva.com/photos/free/">Canva</a>
 Gui, Pandora:Add, Link,, <a href="https://www.reshot.com/">reshot</a>
@@ -357,6 +357,7 @@ Gui, Pandora:Add, Link,, <a href="https://isorepublic.com/">ISO</a>
 Gui, Pandora:Add, Link,, <a href="http://www.polayoutu.com">泼辣有图</a>
 Gui, Pandora:Add, Link,, <a href="https://www.macapp.so/wallpaper/index_2.html">mac 壁纸</a>
 Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a>
+Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/krivan-peak-slovakia/">picjumbo山景</a>
 
 
 
