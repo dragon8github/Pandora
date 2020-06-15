@@ -317,6 +317,7 @@ code(code) {
     ; 这里也需要等待，否则有几率出现黏贴不出的情况，如果出现黏贴不出的情况，就尝试调大这里的数值把
     Sleep, 200
     WinGetTitle, title, A
+    
     if (InStr(title, "Android Studio") or InStr(title, "PyCharm") or InStr(title, "WebStorm") or InStr(title, "PhpStorm") or InStr(title, "IDEA") or InStr(title, "Notepad2")) {
         ; Send, {CtrlDown}v{CtrlUp}
         WinClip.paste()

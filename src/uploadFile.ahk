@@ -19,8 +19,9 @@ uploadfile(src,dst){
 
 uploadfile(objParam){
 	CreateFormData(PostData, hdr_ContentType, objParam)
+
 	whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
-	whr.Open("POST", "https://api.uomg.com/api/image.ali", true) ;地址
+	whr.Open("POST", "http://upload.likeyunba.com/upload/upload.php", true)
 	whr.SetRequestHeader("Content-Type", hdr_ContentType)
 	whr.Send(PostData)
 	whr.WaitForResponse()

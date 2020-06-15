@@ -138,6 +138,7 @@
     Menu, utilsPosition, Add, 滚动条到底了：el.scrollHeight - el.clientHeight === el.scrollTop, utilsHandler
     
 
+    Menu, utilsObject, Add, cleanProps: 清空值为 undefined 的数据, utilsHandler
     Menu, utilsObject, Add, 双向数据绑定原理：Object.defineProperty, utilsHandler
     Menu, utilsObject, Add, 对象交集 , utilsHandler
     Menu, utilsObject, Add, flattenObject 以键的路径扁平化对象, utilsHandler
@@ -262,6 +263,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, cleanProps: 清空值为 undefined 的数据, utilsHandler
     Menu, utilsmy, Add, toNumber: 转换 + 小数点（很常用）, utilsHandler
     Menu, utilsmy, Add, 自定义事件 on/off 可以实现自由删除事件, utilsHandler
     Menu, utilsmy, Add, lazyExec: 影武者懒执行模式, utilsHandler
@@ -290,7 +292,6 @@
     Menu, utilsmy, Add, 求同存异：金强的对象特殊合并, utilsHandler
     Menu, utilsmy, Add, 数组成员排列：以大带小 drive, utilsHandler
     Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
-    Menu, utilsmy, Add, 加强版map遍历:bettermap, utilsHandler
     
     
     Menu, utilsmy, Add
@@ -319,13 +320,10 @@
     Menu, utilsmy, Add
     Menu, utilsmy, Add
     
-    
-    Menu, utilsmy, Add, maybe 神奇的预设函数, utilsHandler
     Menu, utilsmy, Add, 通过URL判断是否本地开发环境, utilsHandler
     Menu, utilsmy, Add, 微信群组随机取人头, utilsHandler
     Menu, utilsmy, Add, 微信获取头像和人员名册, utilsHandler
     Menu, utilsmy, Add, 钉钉获取组织架构（不成熟）, utilsHandler
-    Menu, utilsmy, Add, utils.js, utilsHandler
     
 
     Menu, utilsjuran, Add, document.designMode = 'on', utilsHandler
@@ -498,6 +496,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "cleanProps: 清空值为 undefined 的数据") {
+_send("cleanProps", true, true)
+return
 }
 
 if (v == "获取网页被卷去的位置") {
@@ -8236,4 +8239,24 @@ if (!hasPkg(TARGET_PKG_NAME)) {
 }
 )
 txtit(Var)
+return
+
+::cleanProps::
+::cleanobj::
+::cleanProp::
+::cleanObject::
+::filterobj::
+::forobj::
+::mapobj::
+::objfor::
+::objmap::
+::obj.map::
+::obj.filter::
+::
+Var =
+(
+// 净化对象：清空值为 undefined 的属性
+const purifyObject = o => Object.entries(o).reduce((obj, [key, value]) => value === undefined ? obj : { ...obj, [key]: value }, {})
+)
+code(Var)
 return

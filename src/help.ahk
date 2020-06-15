@@ -1,4 +1,61 @@
-﻿::qizhongzui::
+﻿!+0::
+x := A_CaretX
+y := A_CaretY
+MouseMove, x, y, 5
+return
+
+!+1::
+h := A_ScreenHeight
+MouseMove, 0, h, 5
+return
+
+!+2::
+w := A_ScreenWidth / 2
+h := A_ScreenHeight
+MouseMove, w, h, 5
+return
+
+!+3::
+w := A_ScreenWidth
+h := A_ScreenHeight
+MouseMove, w, h, 5
+return
+
+!+4::
+h := A_ScreenHeight / 2
+MouseMove, 0, h, 5
+return
+
+!+5::
+w := A_ScreenWidth / 2
+h := A_ScreenHeight / 2
+MouseMove, w, h, 5
+return
+
+!+6::
+w := A_ScreenWidth
+h := A_ScreenHeight / 2
+MouseMove, w, h, 5
+return
+
+!+7::
+MouseMove, 0, 0, 5
+return
+
+!+8::
+w := A_ScreenWidth / 2
+h := A_ScreenHeight / 2
+MouseMove, w, 0, 5
+return
+
+!+9::
+w := A_ScreenWidth
+MouseMove, w, 0, 5
+return
+
+
+
+::qizhongzui::
 ::qizongzui::
 Var =
 (
@@ -429,16 +486,17 @@ if (isFile != "" && (InStr(tmpcli, "png") || InStr(tmpcli, "gif") || InStr(tmpcl
 ToolTip, 正在上传
 
 ; 注意，这里的路径必须是数组格式。哪怕只有一个。
-data := uploadfile({ Filedata: [path], file: "multipart" })
-
+; data := uploadfile({ Filedata: [path], file: "multipart"})
+data := uploadfile({ file: [path] , api: "http://upload.likeyunba.com/upload/baidu.php" })
 _data := JSON.Load(data)
+path := _data.path
 
-Clipboard := "![](" . _data.imgurl . ")"
-
-ToolTip, % _data.imgurl
-
-SetTimer, RemoveToolTip, -3000
-
+; 再发送一次吧
+ResponseText := post("http://upload.likeyunba.com/upload/baidu.php?path=" . path, { path: path }, true)
+__data := JSON.Load(ResponseText)
+Clipboard := "![](" . __data.imgurl . ")"
+ToolTip, % __data.imgurl
+SetTimer, RemoveToolTip, -2000
 return
 
 ::li::
@@ -2440,3 +2498,10 @@ return
 +F12::
 Send, +{Insert}
 return
+
+
+>^v::
+Clipboard := StrReplace(Clipboard, "`r`n")  
+WinClip.paste()
+return
+
