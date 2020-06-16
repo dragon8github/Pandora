@@ -350,10 +350,8 @@ Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">Pixabay</a>
 Gui, Pandora:Add, Link,, <a href="https://www.canva.com/photos/free/">Canva</a>
 Gui, Pandora:Add, Link,, <a href="https://www.reshot.com/">reshot</a>
 Gui, Pandora:Add, Link,, <a href="https://www.rawpixel.com/">rawpixel</a>
-Gui, Pandora:Add, Link,, <a href="https://morguefile.com/">Morguefile</a>
 Gui, Pandora:Add, Link,, <a href="https://isorepublic.com/">ISO</a>
 Gui, Pandora:Add, Link,, <a href="http://www.polayoutu.com">泼辣有图</a>
-Gui, Pandora:Add, Link,, <a href="https://www.macapp.so/wallpaper/index_2.html">mac 壁纸</a>
 Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a>
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/krivan-peak-slovakia/">picjumbo山景</a>
 

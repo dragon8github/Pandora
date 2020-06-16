@@ -93,9 +93,4 @@ global latestImageName := ""
 	Suspend
 return
 
-!z::
-MsgBox %A_CaretX% %A_CaretY%
-return
-
-
 
