@@ -384,13 +384,22 @@ if (InStr(title, "Chrome")) {
 
 return
 
-+v::
+<+v::
 Clipboard := StrReplace(Clipboard, "`r`n", ", ")  
 Send, ^v
 return
 
+
+>+v::
+Clipboard := StrReplace(Clipboard, "`r`n")  
+WinClip.paste()
+return
+
+
+::city::
 ::dg33::
 ::dgcity::
+::city33::
 Var =
 (
 南城
@@ -2500,8 +2509,4 @@ Send, +{Insert}
 return
 
 
->^v::
-Clipboard := StrReplace(Clipboard, "`r`n")  
-WinClip.paste()
-return
 
