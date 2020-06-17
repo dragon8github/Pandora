@@ -94,3 +94,38 @@ global latestImageName := ""
 return
 
 
+; 一个记录秒数的示例类...
+class SecondCounter {
+    __New() {
+        this.interval := 1000
+        this.count := 0
+        this.cb := ObjBindMethod(this, "Fuck")
+    }
+    Start() {
+        ; SetTimer 需要一个纯变量引用
+        cb := this.cb
+        SetTimer % cb, % this.interval
+        ToolTip % "Counter started"
+    }
+    Stop() {
+		; SetTimer 需要一个纯变量引用
+        cb := this.cb
+        SetTimer % cb, Off
+			
+        ToolTip % "Counter stopped at " this.count
+		SetTimer, RemoveToolTip, -1000
+    }
+    ; 本例中,定时器调用了以下方法:
+    Fuck() {
+        ToolTip % ++this.count
+    }
+}
+
+!z::
+counter := new SecondCounter
+counter.Start()
+Sleep 5000
+counter.Stop()
+return
+
+
