@@ -23,6 +23,7 @@ FileDelete, *.bak
 FileDelete, .\src\*.bak
 
 global latestImageName := ""
+global todoList := ""
 
 /**
 //////////////////////////////////////////////
