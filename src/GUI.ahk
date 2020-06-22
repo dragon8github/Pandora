@@ -10909,3 +10909,110 @@ var vue = new Vue({
 RunBy(name)
 run, % name
 return
+
+NewPureVUEIndexHtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- element -->
+    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <!-- axios -->
+    <script src="https://cdn.staticfile.org/axios/0.19.0/axios.min.js"></script>
+    <!-- mockjs -->
+    <script src="https://cdn.staticfile.org/Mock.js/1.0.0/mock-min.js"></script>
+    <!-- lodash -->
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
+    <!-- moment -->
+    <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+    <script src="https://cdn.staticfile.org/moment.js/2.22.1/locale/zh-cn.js"></script>
+    <!-- sass -->
+    <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
+
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%; /* 注意，应该是html和body同时设置才可以 */
+    }
+
+    #app {
+        width: 100`%;
+        height: 100`%;
+    }
+    </style>
+
+    <script>
+        // 获取第一个 <style>
+        const style = document.getElementsByTagName('style')[0]
+        // 获取第一个
+        const scss = style.innerHTML
+        // 开始编译
+        Sass.compile(scss, result => {
+            // 替换为编译好的 css
+            style.innerHTML = result.text
+        })
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <test :coupon='items'></test>
+    </div>
+</body>
+<script>
+Mock.mock("/book/list", "get", {
+    "booklist|10": [
+        {"book_id|+1": 101, "book_name": "@ctitle", "book_price|50-100.1-2": 0, "book_time": "@date('yyyy-mm-dd')"}
+    ]
+})
+
+const testConstructor = Vue.extend({
+    template: ``<div class="test">
+        <div v-for='(item, index) in coupon' :key='index'> {{ item.book_name }} </div>
+    </div>``,
+    data () {
+       return {
+           
+       }
+    },
+    props: {
+      coupon: {
+        type: [Array, Object],
+        default: () => []
+      }
+    },
+    beforeMount() {
+      console.log('test')
+    }
+})
+
+Vue.component('test', testConstructor)
+
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+      items: []
+    },
+    beforeMount () {
+        axios.get("/book/list").then(res => {
+            ELEMENT.Message('数据加载完成')
+            this.items = res.data.booklist
+        })
+    }
+})
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

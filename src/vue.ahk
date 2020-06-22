@@ -31,7 +31,7 @@
 
   
 
-  Menu, VueMenu, Add, vue + vite, VueHandler
+  ; Menu, VueMenu, Add, vue + vite, VueHandler
   Menu, VueMenu, Add, vue.router, :Vuerouter
   Menu, VueMenu, Add, vuex.modules, VueHandler
   Menu, VueMenu, Add, vuex.action, VueHandler
@@ -43,6 +43,7 @@
   Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations`, mapGetters } from 'vuex', VueHandler  
   Menu, VueMenu, Add, this.$store.subscribe, VueHandler
   Menu, VueMenu, Add, store.js, VueHandler
+  Menu, VueMenu, Add, createStore 方案, VueHandler
   
 
   Menu, VueMenu, Add, , VueHandler
@@ -180,6 +181,10 @@ Var =
 )
 }
 
+if (v == "createStore 方案") {
+_send("createStore", true, true)
+return
+}
 
 if (v == "render(h)") {
 _send("render", true, true)
@@ -5117,7 +5122,7 @@ t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
 const testConstructor = Vue.extend({
-    template: `<div class="test">{{ foo }}</div>`,
+    template: ``<div class="test">{{ foo }}</div>``,
     data () {
        return {
            foo: 'test',

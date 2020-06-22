@@ -122,11 +122,19 @@ class SecondCounter {
     }
 }
 
-!z::
-counter := new SecondCounter
-counter.Start()
-Sleep 5000
-counter.Stop()
+; #z::
+; counter := new SecondCounter
+; counter.Start()
+; Sleep 5000
+; counter.Stop()
+; return
+
+
+LAlt & RAlt::
+Var =
+(
+()
+)
+code(Var)
+SendInput, {left}
 return
-
-

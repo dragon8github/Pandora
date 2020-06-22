@@ -1,57 +1,88 @@
-﻿!+0::
-x := A_CaretX
-y := A_CaretY
-MouseMove, x, y, 5
+﻿::liuxi::
+::lx::
+::xi::
+Var =
+(
+刘羲
+)
+code(Var)
 return
 
-!+1::
-h := A_ScreenHeight
-MouseMove, 0, h, 5
+::Po::
+::chuansongmen::
+::csm::
+::por::
+Var =
+(
+portal
+)
+code(Var)
 return
 
-!+2::
-w := A_ScreenWidth / 2
-h := A_ScreenHeight
-MouseMove, w, h, 5
+::bool::
+Var =
+(
+Boolean
+)
+code(Var)
 return
 
-!+3::
-w := A_ScreenWidth
-h := A_ScreenHeight
-MouseMove, w, h, 5
-return
 
-!+4::
-h := A_ScreenHeight / 2
-MouseMove, 0, h, 5
-return
 
-!+5::
-w := A_ScreenWidth / 2
-h := A_ScreenHeight / 2
-MouseMove, w, h, 5
-return
+; !+0::
+; x := A_CaretX
+; y := A_CaretY
+; MouseMove, x, y, 5
+; return
 
-!+6::
-w := A_ScreenWidth
-h := A_ScreenHeight / 2
-MouseMove, w, h, 5
-return
+; !+1::
+; h := A_ScreenHeight
+; MouseMove, 0, h, 5
+; return
 
-!+7::
-MouseMove, 0, 0, 5
-return
+; !+2::
+; w := A_ScreenWidth / 2
+; h := A_ScreenHeight
+; MouseMove, w, h, 5
+; return
 
-!+8::
-w := A_ScreenWidth / 2
-h := A_ScreenHeight / 2
-MouseMove, w, 0, 5
-return
+; !+3::
+; w := A_ScreenWidth
+; h := A_ScreenHeight
+; MouseMove, w, h, 5
+; return
 
-!+9::
-w := A_ScreenWidth
-MouseMove, w, 0, 5
-return
+; !+4::
+; h := A_ScreenHeight / 2
+; MouseMove, 0, h, 5
+; return
+
+; !+5::
+; w := A_ScreenWidth / 2
+; h := A_ScreenHeight / 2
+; MouseMove, w, h, 5
+; return
+
+; !+6::
+; w := A_ScreenWidth
+; h := A_ScreenHeight / 2
+; MouseMove, w, h, 5
+; return
+
+; !+7::
+; MouseMove, 0, 0, 5
+; return
+
+; !+8::
+; w := A_ScreenWidth / 2
+; h := A_ScreenHeight / 2
+; MouseMove, w, 0, 5
+; return
+
+; !+9::
+; w := A_ScreenWidth
+; MouseMove, w, 0, 5
+; return
 
 
 
@@ -653,13 +684,6 @@ Var =
 code(Var)
 return
 
-::Po::
-Var =
-(
-Portal
-)
-code(Var)
-return
 
 ^!j::
     WinGetTitle, title, A

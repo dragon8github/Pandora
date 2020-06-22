@@ -1,4 +1,26 @@
-﻿::gulp::
+﻿::jest.init::
+::jestinit::
+::initjest::
+::init.jest::
+Var =
+(
+import { shallowMount } from '@vue/test-utils'
+import ProgressBar from '../ProgressBar.vue'
+
+describe('ProgressBar.vue', () => {
+    test('init with 0`% width', () => {
+        const wrapper = shallowMount(ProgressBar)
+        // 知识点：验证样式（极少用）
+        expect(wrapper.element.style.width).toBe('0`%')
+        // 知识点：验证类
+        expect(wrapper.classes()).toContain('hidden')
+    })
+})
+)
+code(Var)
+return
+
+::gulp::
 Var =
 (
 import run from './run'
@@ -2406,6 +2428,35 @@ proxy.a // => 1
 revoke()
 
 proxy.a // => Uncaught TypeError
+---
+// Using the GET trap
+const defaultValueHandler = {
+  get: (obj, property) => property in obj ? obj[property] : 'general kenobi'
+}
+
+const objectWithDefaultValue = new Proxy({}, defaultValueHandler);
+
+objectWithDefaultValue.a = 'b';
+
+console.log(objectWithDefaultValue.a); // b
+console.log(objectWithDefaultValue['hello there']); // general kenobi
+
+
+// Using the SET trap
+const stringValidatorHandler = {
+  set: (obj, key, value) => {
+        if (typeof value !== 'string') {
+          throw new Error('Expected string!')
+        }
+        obj[key] = value.toUpperCase();
+      }
+}
+
+const weirdObject = new Proxy({}, stringValidatorHandler);
+
+weirdObject.a = 5 // Error: Expected string!
+weirdObject.a = 'abacaba';
+console.log(weirdObject.a); // ABACABA
 )
 txtit(Var)
 return

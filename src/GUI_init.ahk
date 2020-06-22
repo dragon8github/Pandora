@@ -278,9 +278,6 @@ Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
 Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
 
-
-
-
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="http://obkoro1.com/web_accumulate/algorithm/">前端算法题</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/">阮一峰的博客</a>
@@ -289,11 +286,11 @@ Gui, Pandora:Add, Link,, <a href="https://wangdoc.com/bash/expansion.html#start-
 Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.html">前端日报</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview/blob/master/category/history.md">以面为练</a>
 Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
-Gui, Pandora:Add, Link,, <a href="https://www.24s.net/">24s付费视频盗版</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
-Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/?s=JSON">ahk中文社区</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
-Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a>
+Gui, Pandora:Add, Link,, <a href="https://www.24s.net/">24s付费视频盗版</a>
+Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/">reddit</a>
+Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/">Hacker News</a>
 
 
 
@@ -306,11 +303,11 @@ Gui, Pandora:Add, Link,, <a href="http://www.taokouling.com/index/taobao_tkljm">
 Gui, Pandora:Add, Link,, <a href="www.materialtools.com/">临时接收手机验证码</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
 Gui, Pandora:Add, Link,, <a href="https://itpdf.online/?tdsourcetag=s_pctim_aiomsg">电子书列表</a>
-Gui, Pandora:Add, Link,, <a href="https://www.sxpdf.com/1738.html">书行天下</a>
 Gui, Pandora:Add, Link,, <a href="http://www.broadview.com.cn/book">博文视点（找新书）</a>
 Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/github-rank/toutiao-7.html">开发者头条(github-rank)</a>
 Gui, Pandora:Add, Link,, <a href="https://youquhome.com/8790/">有趣网址之家</a>
-Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/">Hacker News</a>
+Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a>
+Gui, Pandora:Add, Link,, <a href="https://tympanus.net/codrops/category/tutorials/">Codrops</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
@@ -372,31 +369,27 @@ Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</
 Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
 Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140 , 新建纯index.html
+Gui, Pandora:Add, Text, gNewPureVUEIndexHtml W140 , 新建纯vue.html
 Gui, Pandora:Add, Text, gvueecharts W140 , 新建纯v-chart.html
-Gui, Pandora:Add, Text, gNewcomposition W160 , 新建vue-composition.html
-Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建table.html
-Gui, Pandora:Add, Text, gNewVueRules W140 , 新建vue.rules.html
-
-Gui, Pandora:Add, Text, ganimjquery W160,新建animate.css与jquery
-Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
-Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
-Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
-Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
-Gui, Pandora:Add, Text, gvueDeepSethtml W180, vue $deepSet示例.html
-Gui, Pandora:Add, Text, gvuelistenhtml W180, vue $listen示例.html
-Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令.html
-Gui, Pandora:Add, Text, gzhilinghtml W180, 新建Vue指令实现拖拽.html
+Gui, Pandora:Add, Text, gNewcomposition W160 , 新建vue3-composition.html
 Gui, Pandora:Add, Text, gVueComponentHtml W140, 新建vueComponent.html
 Gui, Pandora:Add, Text, gVueComponentHtml2 W140, 新建vueComponent2.html
+Gui, Pandora:Add, Text, gNewVueRules W140 , 新建vue.rules.html
 Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建vue-form.html
-Gui, Pandora:Add, Text, gVueAnimateHtml W140, 新建vueAnimate.html
+Gui, Pandora:Add, Text, gVueAnimateHtml W140, 新建vue-Animate.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
-Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group列表
-Gui, Pandora:Add, Text, gcsspinyinHtml W180,css正则匹配选择器实现拼音搜索
+Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group
+Gui, Pandora:Add, Text, gzhilinghtml W180, 新建vue-directive实现拖拽
+Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令
+Gui, Pandora:Add, Text, gvuelistenhtml W180, 新建vue $listen示例.html
+Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
+Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
+Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
+Gui, Pandora:Add, Text, ganimjquery W160,新建animate.css与jquery
+Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建复杂table.html
+Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
 
-
-
-Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+20 ,新建autoscroll.html
+Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+40 ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
 Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
 Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条
@@ -416,9 +409,10 @@ Gui, Pandora:Add, Text, ghackdiguo  W140,黑客帝国
 Gui, Pandora:Add, Text, gxiexiangougudingli  W140,斜线与勾股定理
 Gui, Pandora:Add, Text, gyoujiancaidanxinjian  W140,新建拦截右键菜单
 Gui, Pandora:Add, Text, gdomshengyin W180,只要 dom 改变就会发出声音
+Gui, Pandora:Add, Text, gcsspinyinHtml W180,css正则匹配选择器实现拼音搜索
 
 
-Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+50,新建.echartsDemo.html（官方demo）
+Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+20,新建.echartsDemo.html（官方demo）
 Gui, Pandora:Add, Text, gNewEchartsPinHtml, 新建.pin.html(玫瑰饼图)
 Gui, Pandora:Add, Text, gNewEchartsLineHtml ,新建.Line.html（折线图）
 Gui, Pandora:Add, Text, gNewEchartsBarHtml ,新建.Bar.html（柱状图）
@@ -487,8 +481,7 @@ Gui, Pandora:Tab, 3
 Gui, Pandora:Add, Text,  W130 Section, 疫情可视化:
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/application/tree/master/ioc-visual-ui">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/19/interface/api">yapi</a>
-Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui-dev?tab=history">测试部署</a>
-Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui-dev?tab=history">正式部署</a>
+Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui?tab=history">测试部署</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/#/">测试预览</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/fyvis/#/">正式预览</a>
 

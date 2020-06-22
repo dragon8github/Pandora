@@ -264,6 +264,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, createStore 自动 AUTO_SET 方案, utilsHandler
     Menu, utilsmy, Add, cleanProps: 清空值为 undefined 的数据, utilsHandler
     Menu, utilsmy, Add, toNumber: 转换 + 小数点（很常用）, utilsHandler
     Menu, utilsmy, Add, 自定义事件 on/off 可以实现自由删除事件, utilsHandler
@@ -497,6 +498,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "createStore 自动 AUTO_SET 方案") {
+_send("createStore", true, true)
+return
 }
 
 if (v == "使用 combinate 生成所有可能的组合") {
@@ -8352,6 +8358,67 @@ Var =
         }
     }
 }());
+)
+code(Var)
+return
+
+::createstore::
+Var =
+(
+const POST = () => {}
+const GET = () => {}
+const SET = function(ctx, name, data) {
+	// ...
+	console.log('SET LOGS: ', ctx, name, data)
+	// 正式环境应该替换成 $deepset 
+	ctx[name] = data
+}
+
+const createStore = (store = {}) => {
+	// 默认配置
+	const defaultStore = { state: {}, actions: {}, POST, GET }
+
+	// 初始化 store
+	const __store__ = Object.assign({}, defaultStore, store)
+
+	// 初始化 store.state
+	__store__.state = Object.entries(__store__.actions).reduce((obj, [key, action]) => {
+		// 是否已经注册同名的 state 了？
+		if (key in obj) {
+			// 如果已经注册了，那直接跳过
+			return obj
+		}
+
+		// 如果还没有注册的话，那就初始化一个
+		obj[key] = null
+
+		// 迭代
+		return obj
+	}, __store__.state)
+
+	// 初始化 store.actions
+	__store__.actions = Object.entries(__store__.actions).reduce((obj, [key, action]) => {
+		// action context
+		const ctx = Object.assign({}, __store__.actions, { 
+			SET: SET.bind(null, __store__.state),
+			AUTO_SET: SET.bind(null, __store__.state, key),
+		})
+
+		// hack：action inject AUTO_SET on context
+		obj[key] = __store__.actions[key].bind(ctx)
+
+		// 迭代
+		return obj
+	}, {})
+
+	// 返回最终 store
+	return __store__
+}
+
+// test...
+// store.actions._increase()
+// store.actions._reduce()
+store.actions._multip()
 )
 code(Var)
 return
