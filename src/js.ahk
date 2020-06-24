@@ -7557,10 +7557,11 @@ return
 
 ::.up::
 ::toup::
+::toup::
 ::todaxie::
 ::toda::
 ::tou::
-    SendInput, toUpperCase()
+  p("toUpperCase()")
 return
 
 ::tol::
@@ -7568,21 +7569,21 @@ return
 ::tolow::
 ::toxiaoxie::
 ::toxiao::
-    SendInput, toLocaleLowerCase()
+  p("toLocaleLowerCase()")
 return
 
 ::err::
 ::iferr::
-    SendInput, if (err) throw new Error(err.message);
+  p("if (err) throw new Error(err.message);")
 return
 
 ::ph::
 ::place::
-    SendInput, placeholder
+  p("placeholder")
 return
 
 ::pup::
-    SendInput, puppeteer
+  p("puppeteer")
 return
 
 ::gzhs::

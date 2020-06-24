@@ -142,6 +142,7 @@
     Menu, CssMenu, Add, unset 一次性重置所有默认属性, CssHandler
     Menu, CssMenu, Add, pointer-events: none;禁用按钮上的默认指针事件, CssHandler
     Menu, CssMenu, Add, user-select: none;, CssHandler3
+    Menu, CssMenu, Add, rotate animate 不断旋转, CssHandler3
 
     Menu, CssMenu, Add
     Menu, CssMenu, Add
@@ -290,6 +291,11 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "rotate animate 不断旋转") {
+_send("rotate", true, true)
+return
 }
 
 if (v == "@mixins 渐变色字体") {
@@ -5102,7 +5108,33 @@ return
 ::rote::
 Var =
 (
-transform: rotate(180deg)
+
+@keyframes move_ni {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate_shun{
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.rotate_shun{
+    animation: rotate_shun 10s infinite linear;
+    transform: rotate(360deg);
+}
+
+.rotate_ni {
+    animation: move_ni 40s infinite linear;
+}
 )
 code(Var)
 return

@@ -8362,63 +8362,87 @@ Var =
 code(Var)
 return
 
+::cs::
+::creates::
+::store.help::
+::help.store::
+::storec::
+::storecreate::
+::create.store::
 ::createstore::
 Var =
 (
-const POST = () => {}
-const GET = () => {}
-const SET = function(ctx, name, data) {
-	// ...
-	console.log('SET LOGS: ', ctx, name, data)
-	// 正式环境应该替换成 $deepset 
-	ctx[name] = data
+// @/store/help.js
+import { POST, GET } from '@/utils/request.js'
+
+// fixbug: 如果直接修改 state 不行的话，能否顺便生成 mutations 。 用 mutations 的 commit 来解决赋值的问题。
+// 而且这样更加规范。那么问题来了，我好像没有办法「自动」拿到 commit
+// 那不如这样，约定使用 return，只要你 return ， 我就可以自动赋值，当然也确实会return。两全其美。
+export const createStore = (store = {}) => {
+    // 默认配置
+    // fixbug: 忘记加入了 { namespaced: true }，必须加入这个才能形成体系
+    const defaultStore = { namespaced: true, state: {}, actions: {} }
+
+    // 初始化 store
+    const __store__ = Object.assign({}, defaultStore, store)
+
+    // 初始化 store.state
+    __store__.state = Object.entries(__store__.actions).reduce((obj, [key, action]) => {
+        // 是否已经注册同名的 state 了？
+        if (key in obj) {
+            // 如果已经注册了，那直接跳过
+            return obj
+        }
+
+        // 如果还没有注册的话，那就初始化一个
+        obj[key] = null
+
+        // 迭代
+        return obj
+    }, __store__.state)
+    
+    // 初始化 store.mutations
+    __store__.mutations =  Object.entries(__store__.actions).reduce((obj, [key, action]) => {
+        // 制作（大写）同名 mutatios
+        obj[key.toUpperCase()] = function (state, payload) {
+            state[key] = payload
+        }
+        
+        return obj
+    }, {})
+
+    // 初始化 store.actions
+    __store__.actions = Object.entries(__store__.actions).reduce((obj, [key, action]) => {
+        // 重载
+        obj[key] = async function (context, payload) {
+            // inject the POST/GET
+            Object.assign(context, { POST, GET })
+            // 获取返回值
+            const result = await action(context, payload)
+            // 调用 commit
+            context.commit(key.toUpperCase(), result)
+            // 照常返回数据
+            return result
+        }
+
+        // 迭代
+        return obj
+    }, {})
+
+    // 返回最终 store
+    return __store__
 }
+---
+// @/views/TestPage/store.js
+import { createStore } from '@/store/help'
 
-const createStore = (store = {}) => {
-	// 默认配置
-	const defaultStore = { state: {}, actions: {}, POST, GET }
-
-	// 初始化 store
-	const __store__ = Object.assign({}, defaultStore, store)
-
-	// 初始化 store.state
-	__store__.state = Object.entries(__store__.actions).reduce((obj, [key, action]) => {
-		// 是否已经注册同名的 state 了？
-		if (key in obj) {
-			// 如果已经注册了，那直接跳过
-			return obj
-		}
-
-		// 如果还没有注册的话，那就初始化一个
-		obj[key] = null
-
-		// 迭代
-		return obj
-	}, __store__.state)
-
-	// 初始化 store.actions
-	__store__.actions = Object.entries(__store__.actions).reduce((obj, [key, action]) => {
-		// action context
-		const ctx = Object.assign({}, __store__.actions, { 
-			SET: SET.bind(null, __store__.state),
-			AUTO_SET: SET.bind(null, __store__.state, key),
-		})
-
-		// hack：action inject AUTO_SET on context
-		obj[key] = __store__.actions[key].bind(ctx)
-
-		// 迭代
-		return obj
-	}, {})
-
-	// 返回最终 store
-	return __store__
-}
-
-// test...
-// store.actions._increase()
-// store.actions._reduce()
-store.actions._multip()
+export default createStore({
+    actions: {
+        _fuckgod ({ commit, state, dispatch, rootState, getters, rootGetters, POST, GET }, payload) {
+          return POST('actuator/direct/readModuleRedisData|ffffffffffffffffffffffffffffffffffff', { id: 10 })
+        },
+    }
+})
 )
-code(Var)
+txtit(Var)
 return

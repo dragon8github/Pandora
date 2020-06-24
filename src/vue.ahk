@@ -1,4 +1,13 @@
 ﻿!v::
+
+  Menu, vuexmenubasic, Add, vuex.modules, VueHandler
+  Menu, vuexmenubasic, Add, vuex.action, VueHandler
+  Menu, vuexmenubasic, Add, this.$store.commit, VueHandler
+  Menu, vuexmenubasic, Add, this.$store.dispatch, VueHandler
+  Menu, vuexmenubasic, Add, this.$store.dispatch('StreetIndex/activeStreet'`, streetName`, `{ root: true `}), VueHandler
+  Menu, vuexmenubasic, Add, this.$store.state.list.loading, VueHandler
+  Menu, vuexmenubasic, Add, this.$store.getters['app/master'], VueHandler
+
     
   Menu, vuerouterhock, Add, 组件钩子beforeRouteLeave, VueHandler
   Menu, vuerouterhock, Add, 组件钩子beforeRouteEnter, VueHandler
@@ -33,17 +42,12 @@
 
   ; Menu, VueMenu, Add, vue + vite, VueHandler
   Menu, VueMenu, Add, vue.router, :Vuerouter
-  Menu, VueMenu, Add, vuex.modules, VueHandler
-  Menu, VueMenu, Add, vuex.action, VueHandler
-  Menu, VueMenu, Add, this.$store.commit, VueHandler
-  Menu, VueMenu, Add, this.$store.dispatch, VueHandler
-  Menu, VueMenu, Add, this.$store.dispatch('StreetIndex/activeStreet'`, streetName`, `{ root: true `}), VueHandler
-  Menu, VueMenu, Add, this.$store.state.list.loading, VueHandler
-  Menu, VueMenu, Add, this.$store.getters['app/master'], VueHandler
   Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations`, mapGetters } from 'vuex', VueHandler  
   Menu, VueMenu, Add, this.$store.subscribe, VueHandler
   Menu, VueMenu, Add, store.js, VueHandler
   Menu, VueMenu, Add, createStore 方案, VueHandler
+  Menu, VueMenu, Add, 使用 Vue.observable 轻量级管理状态, VueHandler
+  Menu, VueMenu, Add, vuex 必知必会基本功, :vuexmenubasic
   
 
   Menu, VueMenu, Add, , VueHandler
@@ -179,6 +183,43 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "使用 Vue.observable 轻量级管理状态") {
+Var =
+(
+// store.js
+import Vue from "vue"
+
+const state = Vue.observable({ counter: 0 })
+export const increment = () => state.counter++
+export const decrement = () => state.counter--
+export default state;
+---
+// count.vue
+<template>
+    <div>
+        <p>The counter value is {{counter}}</p>
+        <button @click="inc">+</button>
+        <button @click="dec">-</button>
+    </div>
+</template>
+<script>
+  import store, { increment, decrement } from "./store"
+  
+  export default {
+    computed: {
+      counter() { return store.counter }
+    }, 
+    methods: {
+      inc() { increment() },
+      dec() { decrement() },
+    }
+  };
+</script>
+)
+txtit(Var)
+return
 }
 
 if (v == "createStore 方案") {
