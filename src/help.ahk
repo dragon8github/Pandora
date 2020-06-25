@@ -1,4 +1,20 @@
-﻿::liuxi::
+﻿::yuque::
+p("羽雀")
+return
+
+::admin::
+Var =
+(
+Administrator
+)
+p(Var)
+return
+
+^v::
+p(ClipboardAll)
+return
+
+::liuxi::
 ::lx::
 ::xi::
 Var =
@@ -118,6 +134,17 @@ if (!OutVar|| OutVar != 255) {
 } else {
 	WinSet, Transparent, 180, A
 }
+return
+
+>^z::
+; 获取最新截图的base64
+base64 := getBase64(latestImageName)  
+
+Clipboard := "data:image/png;base64," . base64
+
+ToolTip, 转换 bae64 成功
+SetTimer, RemoveToolTip, -2500
+
 return
 
 >!z::
@@ -1483,7 +1510,7 @@ return
 
 ::@qq::
 ::@qq.com::
-    Send, 928532756@qq.com
+p("928532756@qq.com")
 return
 
 

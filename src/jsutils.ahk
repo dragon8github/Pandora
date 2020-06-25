@@ -8253,14 +8253,25 @@ if (!hasPkg(TARGET_PKG_NAME)) {
 txtit(Var)
 return
 
+::foro::
+::forobj::
+::objfor::
+::mapobj::
+Var =
+(
+const newObj = Object.entries(target).reduce((obj, [key, val]) => {
+    console.log(obj, key, val)
+    return obj
+}, {})
+)
+code(Var)
+return
+
 ::cleanProps::
 ::cleanobj::
 ::cleanProp::
 ::cleanObject::
 ::filterobj::
-::forobj::
-::mapobj::
-::objfor::
 ::objmap::
 ::obj.map::
 ::obj.filter::

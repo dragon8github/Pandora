@@ -9035,6 +9035,81 @@ function printFruits(color) {
 code(Var)
 return
 
+::gentime::
+Var =
+(
+const time2time =  t => {
+  const date = new Date(t)
+  const hours = date.getHours()
+  const minu = date.getMinutes()
+  const second = date.getSeconds()
+  const arr = [hours, minu, second].map((item, index) => item < 10 ? '0' + item : item)
+  return arr[0] + ':' + arr[1]
+}
+
+const genTime = (date = new Date, middle = 5) => {
+  // transformat to date type
+  __DATE__ = new Date(date)
+
+  let times = [time2time(__DATE__)]
+
+  // fixbug
+  if (__DATE__.toString() === "Invalid Date") {
+    return console.warn('非法格式！格式必须是 yyyy-MM-dd HH:mm:ss')
+  }
+
+  // 将一天分成若干份
+  const len = Math.floor(24 * 60 / middle)
+
+  while (times.length < len) {
+    const M = __DATE__.getMinutes() + middle
+    const newTime = time2time(__DATE__.setMinutes(M))
+    times.push(newTime)
+  }
+
+  return times.join('： \r\n') + '： '
+}
+
+const tiems = genTime('2020/06/25 06:00:00', 30)
+
+console.log(tiems)
+
+
+/*
+08:30： 
+09:00： 
+09:30： 
+10:00： 
+10:30： 
+11:00： 
+11:30： 
+12:00： 吃饭 / 休息 / 睡觉 / 运动
+12:30： 吃饭 / 休息 / 睡觉 / 运动
+13:00： 吃饭 / 休息 / 睡觉 / 运动
+13:30： 吃饭 / 休息 / 睡觉 / 运动
+14:00： 吃饭 / 休息 / 睡觉 / 运动
+14:30： 吃饭 / 休息 / 睡觉 / 运动
+------------------------------------------------------------------------------------
+15:00： 
+15:30： 
+16:00： 
+16:30： 
+17:00： 
+17:30： 
+18:00： 吃饭 / 休息 / 睡觉 / 运动
+18:30： 吃饭 / 休息 / 睡觉 / 运动
+19:00： 吃饭 / 休息 / 睡觉 / 运动
+19:30： 
+20:00： 
+20:30： 
+21:00： 
+21:30： 
+22:00： 
+22:30： 睡觉
+*/
+)
+txtit(Var)
+return
 
 ::time::
 ::getDate::
@@ -9042,6 +9117,76 @@ return
 ::today::
 Var = 
 (
+const time2time =  t => {
+  const date = new Date(t)
+  const hours = date.getHours()
+  const minu = date.getMinutes()
+  const second = date.getSeconds()
+  const arr = [hours, minu, second].map((item, index) => item < 10 ? '0' + item : item)
+  return arr[0] + ':' + arr[1]
+}
+
+const genTime = (date = new Date, middle = 5) => {
+  // transformat to date type
+  __DATE__ = new Date(date)
+
+  let times = [time2time(__DATE__)]
+
+  // fixbug
+  if (__DATE__.toString() === "Invalid Date") {
+    return console.warn('非法格式！格式必须是 yyyy-MM-dd HH:mm:ss')
+  }
+
+  // 将一天分成若干份
+  const len = Math.floor(24 * 60 / middle)
+
+  while (times.length < len) {
+    const M = __DATE__.getMinutes() + middle
+    const newTime = time2time(__DATE__.setMinutes(M))
+    times.push(newTime)
+  }
+
+  return times.join('： \r\n') + '： '
+}
+
+const tiems = genTime('2020/06/25 06:00:00', 30)
+
+console.log(tiems)
+
+
+/*
+08:30： 
+09:00： 
+09:30： 
+10:00： 
+10:30： 
+11:00： 
+11:30： 
+12:00： 吃饭 / 休息 / 睡觉 / 运动
+12:30： 吃饭 / 休息 / 睡觉 / 运动
+13:00： 吃饭 / 休息 / 睡觉 / 运动
+13:30： 吃饭 / 休息 / 睡觉 / 运动
+14:00： 吃饭 / 休息 / 睡觉 / 运动
+14:30： 吃饭 / 休息 / 睡觉 / 运动
+------------------------------------------------------------------------------------
+15:00： 
+15:30： 
+16:00： 
+16:30： 
+17:00： 
+17:30： 
+18:00： 吃饭 / 休息 / 睡觉 / 运动
+18:30： 吃饭 / 休息 / 睡觉 / 运动
+19:00： 吃饭 / 休息 / 睡觉 / 运动
+19:30： 
+20:00： 
+20:30： 
+21:00： 
+21:30： 
+22:00： 
+22:30： 睡觉
+*/
+|||
 function timeFormat(time) {
   var date = new Date(time),
     curDate = new Date(),
@@ -9075,7 +9220,7 @@ function timeFormat(time) {
   }
   return timeStr;
 }
----
+|||
 function getDateDiff(dateTimeStamp) {
     var minute = 1000 * 60
     var hour = minute * 60
@@ -9106,7 +9251,7 @@ function getDateDiff(dateTimeStamp) {
     } else result = '刚刚'
     return result
 }  
----
+|||
 // dateYYYYMMDDHHmmss('2019/1/22 12:11:11')
 const dateYYYYMMDDHHmmss =  t => {
 	const date = new Date(t)
@@ -9131,7 +9276,7 @@ const getDate = (function () {
   return () => ({ date, year, month, day })
 }())
 )
-txtit(Var)
+txtit(Var, "|||")
 return
 
 ::cdate::
