@@ -129,6 +129,10 @@ class SecondCounter {
 ; counter.Stop()
 ; return
 
+!z::
+a := WinClip.GetHTML(Clipboard)
+p(a)
+return
 
 LAlt & RAlt::
 Var =

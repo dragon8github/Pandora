@@ -132,6 +132,7 @@
 
 	Menu, ShellMenu, Add, #!/bin/bash（通过echo $SHELL确定）, ShellHandler
 	Menu, ShellMenu, Add, 永久添加环境变量, ShellHandler
+	Menu, ShellMenu, Add, echo 多行到文本中, ShellHandler
 	Menu, ShellMenu, Add, for循环, ShellHandler
 	Menu, ShellMenu, Add, if、then、else、elif、if, ShellHandler
 	Menu, ShellMenu, Add, export PATH添加一条路径, ShellHandler3
@@ -401,6 +402,10 @@ Var =
 )
 }
 
+if (v == "echo 多行到文本中") {
+_send("echo", true, true)
+return
+}
 
 if (v == "git 大小写问题和解决方案") {
 Var =

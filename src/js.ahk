@@ -1,4 +1,18 @@
-﻿::jest.init::
+﻿::geo::
+Var =
+(
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+        console.log(position)
+    })
+} else {
+    console.warn('不支持地理信息')
+}
+)
+code(Var)
+return
+
+::jest.init::
 ::jestinit::
 ::initjest::
 ::init.jest::
@@ -7818,9 +7832,26 @@ code(Var)
 return
 
 ::echo::
-    SendInput, document.body.innerHTML = "Hello World";
-    SendInput, {left}{Shift Down}{left 13}{Shift Up}
+Var =
+(
+cat>./fuckyou.json<<EOF
+{
+    "server": "0.0.0.0",
+    "server_port": 443,
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+    "password": "daweiyixiangshihao",
+    "timeout": 300,
+    "method": "aes-256-cfb",
+    "fast_open": false,
+    "workers": 1
+}
+EOF
+)
+p(Var)
 return
+
+
 
 ::args2arr::
 ::2arr::

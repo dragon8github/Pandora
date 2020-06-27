@@ -1509,9 +1509,21 @@ code(Var)
 return
 
 
-::env::
-    SendRaw, process.env.NODE_ENV === 'production|development'
+:?:.env::
+Var =
+(
+cat>.env<<EOF
+TENCENT_SECRET_ID=AKIDqat1zprR5bz2wnk6TjombO6dyRsEmahh
+TENCENT_SECRET_KEY=oX9j9rQtGRXUQBlDZp272pQsUZZO9h5L
+EOF
+)
+p(Var)
 return
+
+::env::
+p("process.env.NODE_ENV === 'production|development'")
+return
+
 
 ::node.http::
 ::node.server::

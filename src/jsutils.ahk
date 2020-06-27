@@ -206,6 +206,7 @@
 
     ; @认知 @renzhi
 
+    Menu, utilspractice, Add, navigator.geolocation获取地理位置信息, utilsHandler
     Menu, utilspractice, Add, 使用 combinate 生成所有可能的组合, utilsHandler
     Menu, utilspractice, Add, isPointInPolygon: 如何验证坐标点是否在多边形内, utilsHandler
     Menu, utilspractice, Add, 数字格式化:.toLocaleString('en-US'), utilsHandler
@@ -264,6 +265,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, 使用「适配器模式」链式解决多参数配置问题，类似建模, utilsHandler
     Menu, utilsmy, Add, createStore 自动 AUTO_SET 方案, utilsHandler
     Menu, utilsmy, Add, cleanProps: 清空值为 undefined 的数据, utilsHandler
     Menu, utilsmy, Add, toNumber: 转换 + 小数点（很常用）, utilsHandler
@@ -498,6 +500,98 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "navigator.geolocation获取地理位置信息") {
+_send("geo", true, true)
+return
+}
+
+if (v == "使用「适配器模式」链式解决多参数配置问题，类似建模") {
+Var =
+(
+class Frog {
+  constructor(name, gender, eyes, legs, scent, tongue, heart, weight, height) {
+    this.name = name
+    this.gender = gender
+    this.eyes = eyes
+    this.legs = legs
+    this.scent = scent
+    this.tongue = tongue
+    this.heart = heart
+    if (weight) {
+      this.weight = weight
+    }
+    if (height) {
+      this.height = height
+    }
+  }
+}
+---
+class FrogBuilder {
+  constructor(name, gender) {
+    this.name = name
+    this.gender = gender
+  }
+  setEyes(eyes) {
+    this.eyes = eyes
+    return this
+  }
+  setLegs(legs) {
+    this.legs = legs
+    return this
+  }
+  setScent(scent) {
+    this.scent = scent
+    return this
+  }
+  setTongue(tongue) {
+    this.tongue = tongue
+    return this
+  }
+  setHeart(heart) {
+    this.heart = heart
+    return this
+  }
+  setWeight(weight) {
+    this.weight = weight
+    return this
+  }
+  setHeight(height) {
+    this.height = height
+    return this
+  }
+  build() {
+      return new Frog(
+        this.name,
+        this.gender,
+        this.eyes,
+        this.legs,
+        this.scent,
+        this.tongue,
+        this.heart,
+        this.weight,
+        this.height,
+      `)
+    }
+}
+
+const larry = new FrogBuilder('larry', 'male')
+  .setEyes([{ volume: 1.1 }, { volume: 1.12 }])
+  .setScent('sweaty socks')
+  .setHeart({ rate: 22 })
+  .setWeight(6)
+  .setHeight(3.5)
+  .setLegs([
+    { size: 'small' },
+    { size: 'small' },
+    { size: 'small' },
+    { size: 'small' },
+  ])
+  .setTongue({ tongueWidth: 18, color: 'dark red', type: 'round' })
+  .build()
+)
+txtit(Var)
 }
 
 if (v == "createStore 自动 AUTO_SET 方案") {
@@ -7034,6 +7128,23 @@ const install = Vue => {
 }
 
 export default install;
+#################################
+const headerTag = document.getElementById('number');
+
+headerTag.addEventListener('numberChanged', function(e) {
+   headerTag.textContent = e.detail.number;
+   headerTag.style.color = e.detail.textColor;
+});
+
+function changeNumber(n, c) {
+   const event = new CustomEvent('numberChanged', {
+      detail: {
+         number: n,
+         textColor: c
+      }
+   });
+   headerTag.dispatchEvent(event);
+}
 )
 txtit(Var, "#################################")
 return
@@ -8454,6 +8565,106 @@ export default createStore({
         },
     }
 })
+)
+txtit(Var)
+return
+
+::dotry::
+Var =
+(
+const doTry = (_try = () => {}, _catch = () => {}) => {
+    let _err = null
+    let _result = null
+
+    try {
+        _result = _try()
+    } catch (err) {
+        _err = err
+        _catch(err)
+    }
+    
+    return [_err, _result]
+}
+
+const doTryAsync = async (_try = () => {}, _catch = () => {}) => {
+    let _err = null
+    let _result = null
+
+    try {
+        _result = await _try()
+    } catch (err) {
+        _err = err
+        _catch(err)
+    }
+    
+    return [_err, _result]
+}
+---
+// 1. baisc usage
+;(function(){
+    const [err, result] = doTry(() => 'fuck')
+
+    if (err) {
+        return
+    }
+
+    console.log(result)
+}())
+
+// 2. usage catch
+const [err, result] = doTry(() => fuckyou(), error => console.warn('捕捉到错误'))
+
+console.log(result)
+
+// 3. useage async/await
+;(async function(){
+    const test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 3000))
+
+    const [err, result] = await doTryAsync(test)
+
+    if (err) {
+        return
+    }
+
+    console.log(result)
+}())
+
+// 4. useage async/await reject
+;(async function(){
+    const test = () => new Promise((resolve, reject) => setTimeout(_ => reject('fail'), 4000))
+
+    const [err, result] = await doTryAsync(test)
+
+    if (err) {
+        console.log('catch reject')
+        return
+    }
+
+    console.log(result)
+}())
+
+
+// 5. useage async/await error
+;(async function(){
+    const test = () => new Promise((resolve, reject) => { throw new Error('error') })
+
+    const [err, result] = await doTryAsync(test)
+
+    if (err) {
+        console.log('catch error')
+        return
+    }
+
+    console.log(result)
+}())
+
+// 6. no work !!!! promise => setTimeout => error
+;(async function(){
+    var test = () => new Promise((resolve, reject) => setTimeout(_ => { throw new Error('error') }, 4000))
+
+    // no work
+    const [err, result] = await doTryAsync(test)
+}())
 )
 txtit(Var)
 return

@@ -179,6 +179,8 @@
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
 
+
+	Menu, EventMenu, Add, CustomEvent 自定义事件 和 推送, EventHandler
 	Menu, EventMenu, Add, 监听键盘码：onKeyBoardEvent, EventHandler
 	Menu, EventMenu, Add, 元素触碰位置：captureTouch, EventHandler
 	Menu, EventMenu, Add, 元素鼠标位置：captureMouse, EventHandler
@@ -235,6 +237,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "CustomEvent 自定义事件 和 推送") {
+_send("customevent", true, true)
+return
 }
 
 if (v == "echarts.datazoom 轮播解决方案") {
@@ -2629,6 +2636,29 @@ rich: {
         color: 'yellow',
     },  
 },
+)
+txtit(Var)
+return
+
+::customevent::
+Var =
+(
+const headerTag = document.getElementById('number');
+
+headerTag.addEventListener('numberChanged', function(e) {
+   headerTag.textContent = e.detail.number;
+   headerTag.style.color = e.detail.textColor;
+});
+
+function changeNumber(n, c) {
+   const event = new CustomEvent('numberChanged', {
+      detail: {
+         number: n,
+         textColor: c
+      }
+   });
+   headerTag.dispatchEvent(event);
+}
 )
 txtit(Var)
 return

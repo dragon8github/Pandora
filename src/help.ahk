@@ -11,7 +11,7 @@ p(Var)
 return
 
 ^v::
-p(ClipboardAll)
+    WinClip.paste()
 return
 
 ::liuxi::
@@ -432,7 +432,18 @@ if (InStr(title, "Chrome")) {
     Sleep, 50
     WinClip.copy()
     ClipWait
-    html := "<a href='" . Clipboard . "'>" . title . "</a>"
+    
+    a := Clipboard
+; fixbug： 羽雀的语法
+html = 
+(
+<html>
+<body>
+<!--StartFragment--><meta name="source" content="lake"/><a href="%a%" target="_blank"><u><span style="font-size: 15px; color: rgb(64, 64, 64); line-height: 1.74; letter-spacing: 0.008em; outline-style: none; overflow-wrap: break-word;">%title%</span></u></a><!--EndFragment-->
+</body>
+</html>
+)
+    
     WinClip.SetHTML(html)
     ToolTip, 复制成功
     SetTimer, RemoveToolTip, -500
@@ -561,7 +572,7 @@ path := _data.path
 ; 再发送一次吧
 ResponseText := post("http://upload.likeyunba.com/upload/baidu.php?path=" . path, { path: path }, true)
 __data := JSON.Load(ResponseText)
-Clipboard := "![](" . __data.imgurl . ")"
+Clipboard := "![" . t . "](" . __data.imgurl . ")"
 ToolTip, % __data.imgurl
 SetTimer, RemoveToolTip, -2000
 return

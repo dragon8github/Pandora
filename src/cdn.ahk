@@ -1,4 +1,13 @@
-﻿::cdn-mock::
+﻿::cdn-gsap::
+::cdn-gs::
+Var =
+(
+<script src='https://cdn.bootcdn.net/ajax/libs/gsap/3.3.1/gsap.min.js'></script>
+)
+code(Var)
+return
+
+::cdn-mock::
 Var =
 (
 <!-- mockjs -->

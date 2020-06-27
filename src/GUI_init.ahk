@@ -305,7 +305,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书�
 Gui, Pandora:Add, Link,, <a href="https://itpdf.online/?tdsourcetag=s_pctim_aiomsg">电子书列表</a>
 Gui, Pandora:Add, Link,, <a href="http://www.broadview.com.cn/book">博文视点（找新书）</a>
 Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/github-rank/toutiao-7.html">开发者头条(github-rank)</a>
-Gui, Pandora:Add, Link,, <a href="https://youquhome.com/8790/">有趣网址之家</a>
+Gui, Pandora:Add, Link,, <a href="https://youquhome.com/">有趣网址之家</a>
 Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a>
 Gui, Pandora:Add, Link,, <a href="https://tympanus.net/codrops/category/tutorials/">Codrops</a>
 
