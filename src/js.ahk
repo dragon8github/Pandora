@@ -4928,9 +4928,8 @@ console.log(20181115092957, myarr.map(_ => _.value)) // [32, 58, 63]
 code(Var)
 return
 
-::compose::
-::jszuhe::
 ::zuhe::
+::combi::
 Var =
 (
 const combinate = obj => {
@@ -4973,6 +4972,51 @@ console.log(combinations)
   {'admin': false, 'color': 'green', 'mode': 'dark'}
 ]
 */
+)
+code(Var)
+return
+
+::pipe::
+::guandao::
+::compose::
+Var =
+(
+const pipeAsyncFunctions = (...fns) => arg => fns.reduce((p, f) => p.then(f), Promise.resolve(arg))
+
+// EXAMPLES
+const sum = pipeAsyncFunctions(
+  x => x + 1,
+  x => new Promise(resolve => setTimeout(() => resolve(x + 2), 1000)),
+  x => x + 3,
+  async x => (await x) + 4
+`);
+
+(async() => {
+  console.log(await sum(5)); // 15 (after one second)
+})()  
+
+//////////////////////////////////////////////
+// 正常版本
+//////////////////////////////////////////////
+const pipe = (...funcs) => v => {
+  return funcs.reduce((res, func) => {
+    return func(res);
+  }, v);
+};
+
+const minusFive = v => v - 5;
+const addFour = v => v + 4;
+const multiplyByTen = v => v * 10;
+const identity = v => v;
+const res = pipe(
+  minusFive,
+  addFour,
+  multiplyByTen,
+  Math.abs,
+  identity
+`)(0);
+console.log(res); // 10. it works !
+
 ---
 function compose () {
 	let args = arguments
@@ -9148,6 +9192,37 @@ return
 ::today::
 Var = 
 (
+08:30：
+09:00：
+09:30：
+10:00：
+10:30：
+11:00：
+11:30：
+12:00： 
+12:30： 
+13:00： 
+13:30： 
+14:00： 
+14:30： 
+------------------------------------------------------------------------------------
+15:00：
+15:30：
+16:00：
+16:30：
+17:00：
+17:30：
+18:00： 
+18:30： 
+19:00： 
+19:30：
+20:00：
+20:30：
+21:00：
+21:30：
+22:00：
+22:30： 
+|||
 const time2time =  t => {
   const date = new Date(t)
   const hours = date.getHours()
@@ -9183,40 +9258,6 @@ const genTime = (date = new Date, middle = 5) => {
 const tiems = genTime('2020/06/25 06:00:00', 30)
 
 console.log(tiems)
-
-
-/*
-08:30： 
-09:00： 
-09:30： 
-10:00： 
-10:30： 
-11:00： 
-11:30： 
-12:00： 吃饭 / 休息 / 睡觉 / 运动
-12:30： 吃饭 / 休息 / 睡觉 / 运动
-13:00： 吃饭 / 休息 / 睡觉 / 运动
-13:30： 吃饭 / 休息 / 睡觉 / 运动
-14:00： 吃饭 / 休息 / 睡觉 / 运动
-14:30： 吃饭 / 休息 / 睡觉 / 运动
-------------------------------------------------------------------------------------
-15:00： 
-15:30： 
-16:00： 
-16:30： 
-17:00： 
-17:30： 
-18:00： 吃饭 / 休息 / 睡觉 / 运动
-18:30： 吃饭 / 休息 / 睡觉 / 运动
-19:00： 吃饭 / 休息 / 睡觉 / 运动
-19:30： 
-20:00： 
-20:30： 
-21:00： 
-21:30： 
-22:00： 
-22:30： 睡觉
-*/
 |||
 function timeFormat(time) {
   var date = new Date(time),

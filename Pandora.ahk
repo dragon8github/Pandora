@@ -39,7 +39,6 @@ global todoList := ""
 #Include src/WinClip/WinClipAPI.ahk
 #Include src/WinClip/WinClip.ahk
 
-
 #Include src/uploadFile.ahk	      ; uploadFile.ahk
 #Include src/Gdip.ahk             ; Gdip
 #Include src/JSON.ahk	          ; JSON Script
@@ -129,16 +128,24 @@ class SecondCounter {
 ; counter.Stop()
 ; return
 
-!z::
-a := WinClip.GetHTML(Clipboard)
-p(a)
+>!p::
+Clipboard :=
+Send, ^c
+ClipWait, 2
+PicPath := WinClip.GetFiles()
+img := getPicWH(PicPath)
+
+w := img.Width
+h := img.Height
+
+Var = 
+(
+width: rem(%w%);
+height: rem(%h%);
+background: url('~@/assets/PicPath') no-repeat center center / 100`% 100`% no-repeat content-box;
+---
+background: url('~@/assets/PicPath') no-repeat center center / rem(%w%) rem(%h%) no-repeat content-box;
+)
+txtit(Var)
 return
 
-LAlt & RAlt::
-Var =
-(
-()
-)
-code(Var)
-SendInput, {left}
-return

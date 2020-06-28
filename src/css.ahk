@@ -4629,11 +4629,12 @@ Return
 ::shadow::
 Var =
 (
-// box-shadow: 0 4px 4px 0 hsla(0, 0`%, 0`%, 0.1)
-// box-shadow: 0 0 0 1px hsla(0, 0`%, 100`%, .3) inset,0 .5em 1em rgba(0, 0, 0, 0.6);
+// box-shadow: 0 4px 4px 0 hsla(0, 0, 0, 0.1)
+// box-shadow: 0 0 0 1px hsla(0, 0`%, 100`%, .3) inset, 0 .5em 1em rgba(0, 0, 0, 0.6);
 // box-shadow: rgba(255, 255, 255, 1) 0px 0px 54px;
 // box-shadow: 0 20px 25px -5px rgba(0,0,0,.1),0 10px 10px -5px rgba(0,0,0,.04)
 // box-shadow: 0px 0px 300px 300px rgba(13, 36, 105, .7) inset;
+// box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
 )
 code(Var)

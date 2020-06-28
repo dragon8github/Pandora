@@ -1,4 +1,21 @@
-﻿::yuque::
+﻿LAlt & RAlt::
+Var =
+(
+()
+)
+code(Var)
+SendInput, {left}
+return
+
+::xujun::
+Var =
+(
+旭均
+)
+code(Var)
+return
+
+::yuque::
 p("羽雀")
 return
 

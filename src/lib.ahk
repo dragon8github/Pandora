@@ -7,11 +7,6 @@ createPic(PicPath)
 {
 	; Start gdi+
     pToken := Gdip_Startup() 
-	
-		;pBitmapAlpha := Gdip_CreateBitmapFromFile(PicPath)
-		;pBitmapAlpha := Gdip_BitmapFromScreen(0, "")
-		;pBitmapAlpha := Gdip_BitmapFromScreen(x "|" y "|" width "|" height)	
-
 
 		;从剪切板直接获取位图
 		pBitmapAlpha := Gdip_CreateBitmapFromClipboard()
@@ -23,8 +18,18 @@ createPic(PicPath)
 		;保存图片到指定的位置;第三个参数控制图片质量
 		Gdip_SaveBitmapToFile(pBitmapAlpha, PicPath, "255")
 		Gdip_DisposeImage(pBitmapAlpha)
+
     ; close gdi+    
     Gdip_Shutdown(pToken) 
+}
+
+getPicWH(PicPath) 
+{
+if (PicPath) {
+    objImage := ComObjCreate("WIA.ImageFile")
+    objImage.LoadFile(PicPath)
+    return objImage
+}
 }
 
 
