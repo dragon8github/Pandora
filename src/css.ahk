@@ -3422,6 +3422,31 @@ return
 ::css.scrollbar::
 Var =
 (
+overflow-y: auto;
+overflow-x: hidden;
+
+&::-webkit-scrollbar {
+  width: 0.4em;
+  background-color: rgba(0,0,0,0);
+  display: block;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+&::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 0.5em;
+  height: 2em;
+  background-color: rgba(0,0,0,0);
+}
+
+/*定义滑块 内阴影+圆角*/
+&::-webkit-scrollbar-thumb {
+  border-radius: 0.2em;
+  height: 2em;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #25afd5;
+}
+---
 .dropUl::-webkit-scrollbar {
     width: 5px;     
     height: 0;
@@ -5105,6 +5130,7 @@ Var =
 code(Var)
 return
 
+::xuanzhuan::
 ::rotate::
 ::rote::
 Var =

@@ -135,17 +135,13 @@ ClipWait, 2
 PicPath := WinClip.GetFiles()
 img := getPicWH(PicPath)
 
-w := img.Width
-h := img.Height
+fuck_w2 := img.Width
+fuck_h2 := img.Height
 
 Var = 
 (
-width: rem(%w%);
-height: rem(%h%);
-background: url('~@/assets/PicPath') no-repeat center center / 100`% 100`% no-repeat content-box;
----
-background: url('~@/assets/PicPath') no-repeat center center / rem(%w%) rem(%h%) no-repeat content-box;
+width: %fuck_w2%px;height: %fuck_h2%px;
 )
-txtit(Var)
+MsgBox, Var
 return
 

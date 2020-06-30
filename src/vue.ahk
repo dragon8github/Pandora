@@ -102,6 +102,8 @@
   Menu, VueMenu, Add, vue 动画组件<transition>, :vuetranstion
   Menu, VueMenu, Add, vue 动画组件<transition> + animate.css, :vuetranstion
   Menu, VueMenu, Add, vue animate4.0.css, :vuetranstion
+  Menu, VueMenu, Add, [金志]很喜欢的列表 animate.css 动画, VueHandler
+
 
 
 
@@ -182,6 +184,22 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "[金志]很喜欢的列表 animate.css 动画") {
+Var =
+(
+<ul class="w-100 h-100">
+  <li class="w-100 flex flex-center fz-14 animate__animated animate__backInLeft" 
+    :style="{'animation-delay':`${index * 0.05}s`}"
+    v-for="(item, index) in datalist.slice(0,8)" :key="index" style="height:2.6em;line-height:2.6em">
+    <span class="w-15 h-100 text-center order fontStyle"> <span class="fz-12">{{ index + 1 }}</span></span>
+    <span class="w-40 h-100  text-left tx-indent">{{item.NAME}}</span>
+    <span class="w-20 h-100  text-left tx-indent ml-5">{{item.NUM1}}</span>
+    <span class="w-25 h-100  text-left number font-bold tx-indent">{{item.NUM2}}</span>
+  </li>
+</ul>
 )
 }
 
