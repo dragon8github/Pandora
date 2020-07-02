@@ -265,6 +265,8 @@
     
     
     ; @my
+
+    Menu, utilsmy, Add, copyfn: 函数拷贝方案, utilsHandler
     Menu, utilsmy, Add, 使用「适配器模式」链式解决多参数配置问题，类似建模, utilsHandler
     Menu, utilsmy, Add, createStore 自动 AUTO_SET 方案, utilsHandler
     Menu, utilsmy, Add, cleanProps: 清空值为 undefined 的数据, utilsHandler
@@ -285,18 +287,8 @@
     Menu, utilsmy, Add, IntersectionObserver 无限滚动, utilsHandler
     Menu, utilsmy, Add, exclude: 从对象中排除某个属性, utilsHandler
     Menu, utilsmy, Add, deepset：超强！深度set（deepfind的兄弟方法）, utilsHandler
-    Menu, arrayMenu, Add, chunk 数组分块函数:hit / miss, ForHandler
-    
-    
-    Menu, utilsmy, Add
-    Menu, utilsmy, Add
-    
-    Menu, utilsmy, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
-    Menu, utilsmy, Add, findSameByProperty：对比两个数组找出相同特征的成员, utilsHandler
     Menu, utilsmy, Add, 求同存异：金强的对象特殊合并, utilsHandler
-    Menu, utilsmy, Add, 数组成员排列：以大带小 drive, utilsHandler
-    Menu, utilsmy, Add, deepfind 深度递归搜索, utilsHandler
-    
+        
     
     Menu, utilsmy, Add
     Menu, utilsmy, Add
@@ -500,6 +492,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "copyfn: 函数拷贝方案") {
+_send("copyfn", true, true)
+return
 }
 
 if (v == "navigator.geolocation获取地理位置信息") {
@@ -8665,6 +8662,34 @@ console.log(result)
     // no work
     const [err, result] = await doTryAsync(test)
 }())
+)
+txtit(Var)
+return
+
+::copyfunciton::
+::copymethod::
+::copymethods::
+::copyfn::
+Var =
+(
+const test = () => console.log('foo')
+const origin = Object.assign({}, { fn: test })
+
+var { fn } = origin 
+
+// 通过修改来判断是否拷贝成功
+fn = () => console.log('bar')
+fn() // => bar
+test() // => foo
+---
+const copyFn = fn => Object.assign({}, fn).fn
+
+const test = () => console.log('foo')
+const test2= copy(test)
+
+test2 = () => console.log('bar')
+test2() // => bar
+test() // => foo
 )
 txtit(Var)
 return

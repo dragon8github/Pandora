@@ -27,7 +27,7 @@ Administrator
 p(Var)
 return
 
-^v::
+>^>!v::
     WinClip.paste()
 return
 
@@ -170,7 +170,7 @@ return
 		
 	; 我的 access_token（据说一个月才更新一次，我觉得没必要每次都请求，反正写好了）
 	; getBaiDuAccessToken()
-	access_token := "24.ebe2d71b3cf42122a3e5b7c0fe7e369b.2592000.1593154276.282335-20085264"
+	access_token := getBaiDuAccessToken()
 	
 	ToolTip, 正在请求百度 OCR 接口
     SetTimer, RemoveToolTip, -2500

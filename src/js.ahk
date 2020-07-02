@@ -2931,6 +2931,9 @@ var drive = (ary, fn) => {
 code(Var)
 return
 
+::ctx::
+::require::
+::context::
 ::webpack4::
 :?:webpack.req::
 :?:webpack.require::
@@ -7355,7 +7358,7 @@ function extend(Child, Parent){
     Child.prototype.constructor = Child;
     Child.parent = Parent.prototype
 }
-
+---
 // 用IIFE优化桥梁F，不需要每次都创建
 var inherit = (function(){
   var F = function () {}
@@ -7366,7 +7369,7 @@ var inherit = (function(){
     Child.parent = Parent.prototype
   }
 }());
-
+---
 // elementUI utils.js 
 // https://github.com/ElemeFE/element/blob/dev/src/utils/util.js
 function extend(to, _from) {
@@ -7375,8 +7378,25 @@ function extend(to, _from) {
   }
   return to;
 };
+---
+export const copyToClipboard = text => {
+  const el = document.createElement('textarea')
+  el.value = text
+  el.setAttribute('readonly', '')
+  el.style.position = 'absolute'
+  el.style.left = '-9999px'
+  document.body.appendChild(el)
+  const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false
+  el.select()
+  document.execCommand('copy')
+  document.body.removeChild(el)
+  if (selected) {
+    document.getSelection().removeAllRanges()
+    document.getSelection().addRange(selected)
+  }
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::$.fn::
@@ -10195,34 +10215,21 @@ return
 ::clip::
 Var = 
 (
-// 剪切板
-export const copyToClipboard = (text, cb) => {
-    if(text.indexOf('-') !== -1) {
-        let arr = text.split('-');
-        text = arr[0] + arr[1];
-    }
-    var textArea = document.createElement("textarea");
-      textArea.style.position = 'fixed';
-      textArea.style.top = '0';
-      textArea.style.left = '0';
-      textArea.style.width = '2em';
-      textArea.style.height = '2em';
-      textArea.style.padding = '0';
-      textArea.style.border = 'none';
-      textArea.style.outline = 'none';
-      textArea.style.boxShadow = 'none';
-      textArea.style.background = 'transparent';
-      textArea.value = text;
-      document.body.appendChild(textArea);
-      textArea.select();
-
-      try {
-        var successful = document.execCommand('copy');
-        cb && cb()
-      } catch (err) {
-        console.log('该浏览器不支持点击复制到剪贴板');
-      }
-      document.body.removeChild(textArea);
+export const copyToClipboard = text => {
+  const el = document.createElement('textarea')
+  el.value = text
+  el.setAttribute('readonly', '')
+  el.style.position = 'absolute'
+  el.style.left = '-9999px'
+  document.body.appendChild(el)
+  const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false
+  el.select()
+  document.execCommand('copy')
+  document.body.removeChild(el)
+  if (selected) {
+    document.getSelection().removeAllRanges()
+    document.getSelection().addRange(selected)
+  }
 }
 )
 code(Var)

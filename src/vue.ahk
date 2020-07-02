@@ -40,7 +40,7 @@
 
   
 
-  ; Menu, VueMenu, Add, vue + vite, VueHandler
+  Menu, VueMenu, Add, pop超强！Vue 快速定位文件解决方案, VueHandler
   Menu, VueMenu, Add, vue.router, :Vuerouter
   Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations`, mapGetters } from 'vuex', VueHandler  
   Menu, VueMenu, Add, this.$store.subscribe, VueHandler
@@ -185,6 +185,10 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "pop超强！Vue 快速定位文件解决方案") {
+_send("pop", true, true)
 }
 
 if (v == "[金志]很喜欢的列表 animate.css 动画") {
@@ -6288,6 +6292,7 @@ export default {
 code(Var)
 return
 
+::store::
 ::store.js::
 Var =
 (
@@ -6443,8 +6448,156 @@ const store = new Vuex.Store({
 })
 
 export default store
+---
+import Vue from 'vue'
+import Vuex from 'vuex'
+import router from '../router'
+
+const getPollsTime = (( timer = [5, 8, 16, 32, 60], len = timer.length, current = 0) => () => timer[current++ `% len] * 1000)()
+
+const lastpath = path => path.substr(path.lastIndexOf('/') + 1)
+const firstPath = path => path.substr(0, path.indexOf('/')) || path
+
+// 记录路由和 vuex modules 的关系
+const routersModules = {}
+
+// 匹配工具
+/**
+    const items = ['leftSide/_depaInformation', 'leftSide/_taskCompletionData', 'leftSide/_chooseTitleData', 'leftSide/_mainCardPoints', 'rightSide/_generalSituationData', 'rightSide/_basicLib', 'rightSide/_themeLib', 'rightSide/_themeLibList', 'rightSide/_mainFileNumber', 'rightSide/_departmentData', 'rightSide/_cityData', 'dataAssets/tableDataA', 'dataAssets/tableDataB', 'dataAssets/tableDataC', 'dataAssets/tableDataD',]
+    const rules = ['leftSide', 'dataAssets']
+    const _items = matchBy(items, rules)
+    // [ 'leftSide/_depaInformation', 'leftSide/_taskCompletionData', 'leftSide/_chooseTitleData', 'leftSide/_mainCardPoints', 'dataAssets/tableDataA', 'dataAssets/tableDataB', 'dataAssets/tableDataC', 'dataAssets/tableDataD' ]
+*/
+const matchBy = (items, rules) => items.reduce((p, c, i, a) => {
+    // 是否找到
+    const isFind = rules.find(rule => c.includes(rule))
+    // 找到则迭代
+    return isFind ? [...p, c] : p
+}, [])
+   
+/**
+ * 1. directory {String} -读取文件的路径
+ * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
+ * 3. regExp {RegExp} -匹配文件的正则
+ */
+const _store = require.context('@/views/', true, /store\.js$/)
+
+/**
+ * 1. 必须使用 key() 内置方法获取所有路径。
+ * fixbug: 排除 ./index 目录中的 store 
+ */
+const __STORE__ = _store.keys().filter(_ => _.includes('./index/') === false).reduce((obj, path) => {
+    // 获取模块名: "./City/store.js" => City
+    const name = path.substring(2, path.lastIndexOf('/'))
+
+    // 获取 views
+    const views = firstPath(name)
+
+    // （重点）获取模块内容
+    const module = _store(path)
+
+    // 兼容 es6 import export 和 CMD require module.export 两种规范
+    const __MODULE__ = module.default || module
+
+    // fixbug: 以路径最后一个单位作为 vuex的 模块名
+    // new: 支持自定义name
+    const module_name = __MODULE__.name || lastpath(name)
+
+    // 以 『文件名』 为 key，模块内容为 value
+    obj[module_name] = __MODULE__
+
+    routersModules[views] = routersModules[views] ? [...routersModules[views], module_name] : [module_name]
+
+    return obj
+}, {})
+
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+    strict: false,
+    state: {
+        // 当前标题
+        title: '首页',
+        // 记录来路，现在还没有任何作用和使用场景，但没准以后有呢？先留着吧。
+        back: { title: '首页', path: '/' },
+        // news: 专门用来存储 t_action 类的停止钩子
+        tpolls: [],
+    },
+    actions: {
+        SET_TITLE ({ state, comit, dispatch }, title) {
+            // 设置当前标题
+            state.title = title
+            // 请求数据
+            dispatch('FETCH_DATA')
+            //请求数据 - 自定义时间事件
+            dispatch('FETCH_TDATA')
+        },
+        async FETCH_DATA ({ commit, state, dispatch, rootState, getters, rootGetters }, isFirst = true) {
+            // 获取当前路由
+            const routePath = router.currentRoute.path.substr(1)
+
+            // fixbug: 只针对页面所有的 store, 不去加载其他的 store
+            const target_actions = matchBy(Object.keys(store._actions), routersModules[routePath])
+
+            // 查找模块下需要执行的 actions
+            let _actions = target_actions.filter(_ => isFirst 
+                // 如果是首次的话，那么包含 o_ 规则
+                ? (_.includes(``/_``) || _.includes(``/o_``))
+                // 如果不是首次的话，只需要包含 _ 规则
+                : (_.includes(``/_``))
+            `)
+
+           // 请求队列
+           const queue = _actions.map(action_name => dispatch(action_name))
+
+           // Promise.all 的升级版本， 等待队列完成
+           const _queue = await Promise.allSettled(queue)
+
+           // poll...
+           console.log('poll...')
+
+           // 开始轮询请求
+           setTimeout(() => requestAnimationFrame(_ => dispatch('FETCH_DATA', false)), getPollsTime())
+        },
+        // 执行类似 t10_actionName 的任务，并且 10 s 间隔
+        FETCH_TDATA ({ commit, state, dispatch, rootState, getters, rootGetters }) {
+            // 获取当前路由
+            const name = router.currentRoute.name
+
+            // 清空上一次的轮询
+            state.tpolls.forEach(kill => kill())
+
+            // 筛选出所有
+            // t_number 类型的请求 => 't10_fuckyou' => ✔
+            // /* _.includes(``${name}/``) &&  */
+            const t_actions = Object.keys(store._actions).filter(_ => /t(\d+)_/.test(_))
+
+            // 请求队列
+            state.tpolls = t_actions.map(action_name => {
+                // 获取数字
+                const n = action_name.match(/t(\d+)_/)[1]
+
+                // 立即执行一次， 为了解决 setInterval 首次不执行的尴尬
+                const timer =  (function(fn, t) {
+                    fn && fn()
+                    // 返回计时器timer
+                    return setInterval(fn, t)
+                })(() => dispatch(action_name), n * 1000)
+
+                // 返回消灭定时器的函数
+                return () => clearInterval(timer)
+            })
+        }
+    },
+    modules: {
+        ...__STORE__
+    },
+})
+
+export default store
 )
-code(Var)
+txtit(Var)
 return
 
 ::render::
@@ -6527,6 +6680,75 @@ return h('div', {
     // 如果你在渲染函数中给多个元素都应用了相同的 ref 名，
     // 那么 ``$refs.myRef`` 会变成一个数组。
     refInFor: true
+}
+)
+txtit(Var)
+return
+
+::pop::
+Var =
+(
+// shortcut.js
+import { copyToClipboard, waitWhen } from '@/utils/utils'
+
+// 重要认知：这里等于直接获取了组件对象本身，当我修改它时，其实等于修改了组件。
+// TODO:干脆一点，直接覆盖整个项目所有的组件，甚至小组件。
+const AllComponents = require.context('@', true, /\.vue$/)
+
+// 如果没有传入指定的 Vue 引用集，那就是用项目所有 Vue 引用
+export const portal = (VueComponent = AllComponents) => {
+    VueComponent.keys().forEach(path => {
+        // 直接获取文件内容的引用
+        const output = VueComponent(path).default
+    
+        // 还真有可能存在 undefined 的
+        if (output) {
+            // init methods 
+            if (!output.methods) output.methods = {}
+    
+            // init created
+            if (!output.created) output.created = function() {}
+    
+            // inject __file methods
+            output.methods['__file'] = () => output.__file
+    
+            // origin created methods
+            // fixbug: copy methods 
+            const origin = Object.assign({}, { created: output.created })
+    
+            // inject created addclick callbacks
+            output.created = function () {
+                // origin created apply
+                origin.created.apply(this)
+    
+                // inject
+                ;(async () => {
+                    // 等待组件渲染
+                    const $el = await waitWhen(_ => this.$el)
+                    // 添加点击事件，打印出本文件的目录
+                    $el.addEventListener('click', ({ ctrlKey, shiftKey } = event) => {
+                        if (ctrlKey || shiftKey) {
+                            // 路径
+                            const file = this.__file()
+                            // 打印
+                            window.alert(`已加入剪切板：${file}`)
+                            // copy
+                            copyToClipboard(file)
+                        }
+                        // 禁止冒泡
+                        event.preventDefault(); event.stopPropagation();
+                    })
+                })();
+            }
+        }
+    })
+}
+---
+// main.js
+// 开发环境下，开启传送门辅助开发
+if (process.env.NODE_ENV === 'development') {
+  // 注册传送门
+  portal()
 }
 )
 txtit(Var)

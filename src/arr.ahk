@@ -1,4 +1,13 @@
 ﻿!a::
+	Menu, arrayMenu, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
+	Menu, arrayMenu, Add, findSameByProperty：对比两个数组找出相同特征的成员, utilsHandler
+	Menu, arrayMenu, Add, 数组成员排列：以大带小 drive, utilsHandler
+	Menu, arrayMenu, Add, deepfind 深度递归搜索, utilsHandler
+
+	
+	Menu, arrayMenu, Add,, ForHandler
+	Menu, arrayMenu, Add,, ForHandler
+
     Menu, arrayMenu, Add, merge: 合并对象数组的好东西, utilsHandler
     Menu, arrayMenu, Add, 统计数组中每个元素出现的次数, utilsHandler
     Menu, arrayMenu, Add, 新的数组工具：filters, utilsHandler
@@ -33,14 +42,11 @@
 	Menu, arrayMenu, Add,, ForHandler
 	
 	Menu, arrayMenu, Add, 删除数组成员, ForHandler
-	Menu, arrayMenu, Add, Array.prototype.remove, ForHandler
 	Menu, arrayMenu, Add, 判断两个数组是否互相包含, utilsHandler
 	Menu, arrayMenu, Add, 数组的交集、并集、差集、补集, ForHandler
 	Menu, arrayMenu, Add, 对象数组的交集、并集、差集、补集, ForHandler
 	Menu, arrayMenu, Add, Array.difference: 找出两个数组中不同成员, ForHandler
 	
-	Menu, arrayMenu, Add,, ForHandler
-	Menu, arrayMenu, Add,, ForHandler
 	
 		
 	Menu, ForAPI, Add,  for in, ForHandler
@@ -57,22 +63,26 @@
 	Menu, ForAPI, Add,  Array#of（创建数组的优雅函数）, ForHandler
 	Menu, ForAPI, Add,  Array#from（类数组转化成数组的方式）, ForHandler
 	
+
+
+	Menu, Arrayprototype, Add, unshift： 插入到第一位 , ForHandler
+	Menu, Arrayprototype, Add, push: 插入到最后一位 , ForHandler
+	Menu, Arrayprototype, Add, shift： 弹出并删除第一个 , ForHandler
+	Menu, Arrayprototype, Add, pop： 弹出并删除最后一个 , ForHandler
+	Menu, Arrayprototype, Add, slice： 无损截取数组 , ForHandler
+	Menu, Arrayprototype, Add, splice： 删除成员 ary.splice(1`, 1), ForHandler
+	Menu, Arrayprototype, Add, splice： 有损截取数组，可用于替换ary.splice(index`, 1`, 'fuck') , ForHandler
+	Menu, Arrayprototype, Add, splice： 可用于插入：ary.splice(1`, 0`, 'fuckyou') , ForHandler
+	Menu, Arrayprototype, Add,  for-- 循环中splice需要使用, ForHandler
 	
-	Menu, arrayMenu, Add,  for 常用 API, :ForAPI
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
 	
+	Menu, arrayMenu, Add, Array.prototype.remove, ForHandler
+	Menu, arrayMenu, Add, Array.prototype, :Arrayprototype
+	Menu, arrayMenu, Add, for 常用 API, :ForAPI
 	
-	Menu, arrayMenu, Add, unshift： 插入到第一位 , ForHandler
-	Menu, arrayMenu, Add, push: 插入到最后一位 , ForHandler
-	Menu, arrayMenu, Add, shift： 弹出并删除第一个 , ForHandler
-	Menu, arrayMenu, Add, pop： 弹出并删除最后一个 , ForHandler
-	Menu, arrayMenu, Add, slice： 无损截取数组 , ForHandler
-	Menu, arrayMenu, Add, splice： 删除成员 ary.splice(1`, 1), ForHandler
-	Menu, arrayMenu, Add, splice： 有损截取数组，可用于替换ary.splice(index`, 1`, 'fuck') , ForHandler
-	Menu, arrayMenu, Add, splice： 可用于插入：ary.splice(1`, 0`, 'fuckyou') , ForHandler
-	Menu, arrayMenu, Add,  for-- 循环中splice需要使用, ForHandler
 	
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
@@ -82,6 +92,10 @@
 
 	Menu, arrayMenu, Show
 	Menu, arrayMenu, DeleteAll
+	Menu, Arrayprototype, DeleteAll
+	Menu, ForAPI, DeleteAll
+
+	
 return
 
 

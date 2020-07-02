@@ -35,6 +35,34 @@ Var =
 code(Var)
 return
 
+::cdn-scss::
+::cdn-sass::
+Var =
+(
+<script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
+
+<style>
+    $someVar: 123px; 
+    .some-selector { 
+        width: $someVar; 
+    }
+</style>
+
+<script>
+    // 获取第一个 <style> 
+    const style = document.getElementsByTagName('style')[0]
+    // 获取第一个
+    const scss = style.innerHTML
+    // 开始编译
+    Sass.compile(scss, result => {
+        // 替换为编译好的 css
+        style.innerHTML = result.text
+    })
+</script>
+)
+code(Var)
+return
+
 ::cdn-shunfeng::
 ::cdn-tail::
 ::cdn-wind::
