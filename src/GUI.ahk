@@ -19,7 +19,7 @@ CancelSelect:
 	; 清空搜索框
 	; GuiControl,, SearchContent, 
     
-    GuiControl,, doge, 0
+    GuiControl,, duckduckgo, 0
 	GuiControl,, bd, 0
 	GuiControl,, google, 0
     GuiControl,, npm, 0
@@ -110,7 +110,7 @@ isAllSearchA := false
 AllSearchA:
 	isAllSearchA := !isAllSearchA
 	if (isAllSearchA) {
-        GuiControl,, doge, 1
+        GuiControl,, duckduckgo, 1
 		GuiControl,, bd, 1 
 		GuiControl,, google, 1 
         GuiControl,, npm, 1 
@@ -261,9 +261,9 @@ Fuck:
 		RUN, https://www.baidu.com/s?wd=%SearchContent%
 	}
 
-	; doge
-	if (doge == 1) {
-		RUN, https://www.dogedoge.com/results?q=%SearchContent%
+	; duckduckgo
+	if (duckduckgo == 1) {
+		RUN, https://duckduckgo.com/?q=%SearchContent%&t=ht&ia=web
 	}
 
 	; Google

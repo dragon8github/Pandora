@@ -2383,7 +2383,11 @@ Var =
 </script>
 ---
 $ cnpm install node-sass
-$ ./node_modules/node-sass/bin/node-sass -r index.sass -o ./dist --output-style expanded
+$ ./node_modules/node-sass/bin/node-sass -r index.scss -o ./dist --output-style expanded
+
+
+$ ./node_modules/node-sass/bin/node-sass -r ./src/scss/index.scss -o ./src/scss/ --output-style compressed
+(expanded是非压缩的，compressed是压缩的)
 ---
 var sass = require('node-sass')
 const fs = require('fs')

@@ -70,6 +70,7 @@ return
 ::cdn-utils::
 ::cdn-utils::
 ::cdn-css::
+::cdn-tw::
 Var =
 (
 <!-- tailwind：https://tailwindcss.com/docs/width -->

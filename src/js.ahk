@@ -1316,6 +1316,7 @@ return
 
 ::mvNode::
 ::mvDOM::
+::dommove::
 ::movedom::
 ::copydom::
 Var =

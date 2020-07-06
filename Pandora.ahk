@@ -145,3 +145,30 @@ width: %fuck_w2%px;height: %fuck_h2%px;
 MsgBox, Var
 return
 
+
+
+!^y::
+Clipboard :=
+WinClip.copy()
+ClipWait, 2
+tmp := Clipboard
+script := new ActiveScript("JScript")
+; Result := script.Eval(tmp)
+if (StrLen(tmp)) {
+    ; 以换行符为分隔符切割为数组
+    array := StrSplit(tmp, "`n")
+     ; 结果
+    result := 
+    ; 遍历数组
+    For key, value in array {
+        v := script.Eval(value)
+        ; 索引
+        index := key - 1
+        ; 后缀
+        ext := array.Length() == key ? "" : "`n"
+        ; 叠加
+        result .= v . ext
+    }
+    code(result)
+}
+return

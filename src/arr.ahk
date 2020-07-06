@@ -848,10 +848,27 @@ txtit(Var)
 return
 
 ::arr.insert::
-::insert::
 Var =
 (
 ary.splice(1, 0, 'fuckyou')
+)
+code(Var)
+return
+
+::insert::
+Var =
+(
+/* 
+    <!-- beforebegin --> 
+    <element> 
+        <!-- afterbegin -->
+        html content
+        <!-- beforeend -->
+    </element>
+    <!-- afterend -->
+ */
+el.insertAdjacentElement('beforebegin', Node)
+el.insertAdjacentHTML('beforebegin', Node.outerHTML)
 )
 code(Var)
 return

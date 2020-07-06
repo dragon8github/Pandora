@@ -50,8 +50,8 @@
     Menu, utilsIs, Add, isBottom 是否滚动到底部, utilsHandler
     
     
+    Menu, utilsDOM, Add, 超灵活的insert：insertAdjacentElement/insertAdjacentHTML, utilsHandler
     Menu, utilsDOM, Add, dom.js, utilsHandler
-
     Menu, utilsDOM, Add, document.createComment 往DOM插入一个注释, utilsHandler
     Menu, utilsDOM, Add, 虚拟节点 document.createDocumentFragment, utilsHandler
 
@@ -265,8 +265,10 @@
     
     
     ; @my
-
+    Menu, utilsmy, Add, github 代码块翻译问题处理, utilsHandler
     Menu, utilsmy, Add, copyfn: 函数拷贝方案, utilsHandler
+
+    Menu, utilsmy, Add, matchBy 批量匹配字符串规则, utilsHandler
     Menu, utilsmy, Add, 使用「适配器模式」链式解决多参数配置问题，类似建模, utilsHandler
     Menu, utilsmy, Add, createStore 自动 AUTO_SET 方案, utilsHandler
     Menu, utilsmy, Add, cleanProps: 清空值为 undefined 的数据, utilsHandler
@@ -492,6 +494,34 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "matchBy 批量匹配字符串规则") {
+_send("matchBy", true, true)
+return
+}
+
+if (v == "超灵活的insert：insertAdjacentElement/insertAdjacentHTML") {
+Var =
+(
+/* 
+    <!-- beforebegin --> 
+    <element> 
+        <!-- afterbegin -->
+        html content
+        <!-- beforeend -->
+    </element>
+    <!-- afterend -->
+ */
+el.insertAdjacentElement('beforebegin', el)
+el.insertAdjacentHTML('beforebegin', el.outerHTML)
+)
+code(Var)
+}
+
+if (v == "github 代码块翻译问题处理") {
+_send("github", true, true)
+return
 }
 
 if (v == "copyfn: 函数拷贝方案") {
@@ -8481,6 +8511,8 @@ Var =
 code(Var)
 return
 
+::store.help::
+::help::
 ::cs::
 ::creates::
 ::store.help::
@@ -8491,15 +8523,16 @@ return
 ::createstore::
 Var =
 (
-// @/store/help.js
 import { POST, GET } from '@/utils/request.js'
+
+export { inject } from './inject.js'
 
 // fixbug: 如果直接修改 state 不行的话，能否顺便生成 mutations 。 用 mutations 的 commit 来解决赋值的问题。
 // 而且这样更加规范。那么问题来了，我好像没有办法「自动」拿到 commit
 // 那不如这样，约定使用 return，只要你 return ， 我就可以自动赋值，当然也确实会return。两全其美。
 export const createStore = (store = {}) => {
     // 默认配置
-    // fixbug: 忘记加入了 { namespaced: true }，必须加入这个才能形成体系
+    // fixbug: 忘记加入了 { namespaced: true }，必须加入这个才能形成「模块 modules」
     const defaultStore = { namespaced: true, state: {}, actions: {} }
 
     // 初始化 store
@@ -8522,11 +8555,11 @@ export const createStore = (store = {}) => {
     
     // 初始化 store.mutations
     __store__.mutations =  Object.entries(__store__.actions).reduce((obj, [key, action]) => {
-        // 制作（大写）同名 mutatios
-        obj[key.toUpperCase()] = function (state, payload) {
+        // 同名 mutatios
+        obj[key] = function (state, payload) {
+            // 同名 state
             state[key] = payload
         }
-        
         return obj
     }, {})
 
@@ -8550,6 +8583,74 @@ export const createStore = (store = {}) => {
 
     // 返回最终 store
     return __store__
+}
+---
+import { maybe, doTry, debug } from '@/utils/utils.js'
+
+// 所有页面组件
+const AllComponents = require.context('@/views', true, /\.vue$/)
+
+// 获取路径
+const getPath = p => p.substr(0, p.lastIndexOf('/')).replace(/src\//, '')
+
+// 获取最后一个路径
+const getLastPath = p => p.substr(p.lastIndexOf('/') + 1)
+
+// 是否具备 store.js 
+const getStore = (function() {
+    // memoized
+    let cache = {}
+    
+    return p => {
+        // 是否存在缓存？
+        if (cache[p]) return cache[p]
+
+        // 用 try 来尝试引入 store.js，如果报错了则表示不存在
+        let [err, result] = doTry(_ => require(`@/${p}/store.js`))
+    
+        // 如果报错返回 False，没报错则返回 store，并且加入缓存
+        return err ? false : cache[p] = result
+    }
+}())
+
+export const inject = (VueComponent = AllComponents) => {
+    VueComponent.keys().forEach(path => {
+        // 直接获取文件内容的引用
+        const output = VueComponent(path).default
+
+        // 获取组件路径
+        const p = getPath(output.__file)
+
+        // 是否包含 store.js 
+        const store = getStore(p)
+
+        // 如果具备 store.js 才进行处理
+        if (store) {
+            // init methods 
+            if (!output.methods) output.methods = {}
+
+            // init computed 
+            if (!output.computed) output.computed = {}
+            
+            // 找到模块名（如果具备 store.js，那么最后一个路径就是 Module 了）
+            const __module = getLastPath(p)
+    
+            // inject __module methods
+            output.methods['__module'] = () => __module
+
+            // state
+            const state = maybe(_ => store.default.state, [])
+
+            // inject store
+            Object.keys(state).forEach(key => {
+                // 这里由于要使用 this 上下文，所以千万别用箭头函数
+                output.computed[key] = function () {
+                    // such as: this.$store.state.Apart.dataAggreData
+                    return this.$store.state[__module][key]
+                }
+            })
+        }
+    })
 }
 ---
 // @/views/TestPage/store.js
@@ -8692,4 +8793,55 @@ test2() // => bar
 test() // => foo
 )
 txtit(Var)
+return
+
+::github::
+::code::
+Var =
+(
+/**
+ * 移动dom元素到指定目标位置
+ *
+ * @source {DOM} 你要移动的DOM
+ * @target {DOM} 你要移动的位置
+ */
+const mvDOM = function (source, target) {
+    // 深度拷贝（含子元素）
+    let _source = source.cloneNode(true)
+    // 删除本身
+    source.remove()
+    // 默认插入到容器最前面，如果想在后面可以这样处理：target.append(source)
+    target.insertBefore(_source, target.firstChild)
+}
+
+document.querySelectorAll('pre, .gist').forEach((el, key) => {
+    // 新建代码容器
+    const code = document.createElement('code')
+
+    // 插入父元素
+    el.insertAdjacentElement('beforebegin', code)
+
+    // 移动到容器内
+    mvDOM(el, code)
+})
+)
+code(Var)
+return
+
+::matchBy::
+Var =
+(
+const matchBy = (items, rules) => items.reduce((p, c, i, a) => {
+    // 是否找到
+    const isFind = rules.find(rule => c.includes(rule))
+    // 找到则迭代
+    return isFind ? [...p, c] : p
+}, [])
+
+const items = ['leftSide/_depaInformation', 'leftSide/_taskCompletionData', 'leftSide/_chooseTitleData', 'leftSide/_mainCardPoints', 'rightSide/_generalSituationData', 'rightSide/_basicLib', 'rightSide/_themeLib', 'rightSide/_themeLibList', 'rightSide/_mainFileNumber', 'rightSide/_departmentData', 'rightSide/_cityData', 'dataAssets/tableDataA', 'dataAssets/tableDataB', 'dataAssets/tableDataC', 'dataAssets/tableDataD',]
+const rules = ['leftSide', 'dataAssets']
+const _items = matchBy(items, rules)
+console.log(20200629202141, _items)
+)
+code(Var)
 return

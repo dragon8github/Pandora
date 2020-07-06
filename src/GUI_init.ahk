@@ -123,7 +123,7 @@ Gui, Pandora:Menu, MyMenuBar
 Gui, Pandora:Add, Button, gCancelSelect w260 h30, 取消选中
 Gui, Pandora:Add, Text, gAllSearchA W120 Section xs yp+40, 搜索引擎类:
 Gui, Pandora:Add, Checkbox, gMySubroutine HwndMyEditHwnd vbd, 百度
-Gui, Pandora:Add, Checkbox, vdoge, doge
+Gui, Pandora:Add, Checkbox, vduckduckgo, duckduckgo
 Gui, Pandora:Add, Checkbox, vnpm, npm
 Gui, Pandora:Add, Checkbox, vcnpm, cnpm
 Gui, Pandora:Add, Checkbox, vgoogle, Google
