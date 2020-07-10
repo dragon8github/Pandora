@@ -3311,20 +3311,198 @@ code(Var)
 return  
 
 ::loading::
+::loader::
+::loading.vue::
+::vue.loading::
+::vue.loadi::
+::vue.loader::
+::loader.vue::
+::loading.vue::
 Var =
 (
+# 使用示例
+
+```javascript
+import loader from './directive/loader/loader.js'
+Vue.use(loader)
+```
+---
+import { MdUuid } from '@/utils/utils'
+import loader from './loader.vue'
+
+const __loader__ = {}
+
+__loader__.install = (Vue, options = {}) => {
+
+  // 新建组件构造器
+  const loaderConstructor = Vue.extend(loader)
+
+  // 简单实例工厂
+  const getLoaderInstance = () => new loaderConstructor({
+      el: document.createElement('div')
+  })
+
+  // 注册指令
+  Vue.directive('loader', {
+      bind(el, { value }) {
+          // 生产一个新实例
+          const instance = getLoaderInstance()
+
+          // dataset id
+          el.dataset.id = MdUuid()
+
+          // 装入
+          __loader__[el.dataset.id] = instance
+
+          // 插入dom
+          el.appendChild(instance.$el)
+      },
+      update(el, { value }) {
+          // 获取实例
+          const instance = __loader__[el.dataset.id]
+
+          // 开关
+          instance.show = value
+      },
+  })
+}
+
+export default __loader__
+---
+<template>
+    <div class="loader" v-if='show'>
+        <div class="loader-inner">
+            <div class="loader-line-wrap"> <div class="loader-line"></div> </div>
+            <div class="loader-line-wrap"> <div class="loader-line"></div> </div>
+            <div class="loader-line-wrap"> <div class="loader-line"></div> </div>
+            <div class="loader-line-wrap"> <div class="loader-line"></div> </div>
+            <div class="loader-line-wrap"> <div class="loader-line"></div> </div>
+        </div>
+    </div>
+</template>
+<script>
+export default {
+    name: 'loader',
+    data() {
+        return {
+
+        }
+    },
+    props: {
+        show: { default: false }
+    },
+}
+</script>
+<style lang="scss" scoped>
+.loader {
+    background: rgba(2, 14, 54, .7);
+}
+
+.loader-inner {
+    bottom: 0;
+    height: 60px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100px;
+}
+
+.loader-line-wrap {
+    animation: spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite;
+    box-sizing: border-box;
+    height: 50px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transform-origin: 50`% 100`%;
+    width: 100px;
+}
+
+.loader-line {
+    border: 4px solid transparent;
+    border-radius: 100`%;
+    box-sizing: border-box;
+    height: 100px;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100px;
+}
+
+.loader-line-wrap:nth-child(1) {animation-delay: -50ms; }
+
+.loader-line-wrap:nth-child(2) {animation-delay: -100ms; }
+
+.loader-line-wrap:nth-child(3) {animation-delay: -150ms; }
+
+.loader-line-wrap:nth-child(4) {animation-delay: -200ms; }
+
+.loader-line-wrap:nth-child(5) {animation-delay: -250ms; }
+
+.loader-line-wrap:nth-child(1) .loader-line {
+    border-color: hsl(0, 80`%, 60`%);
+    height: 90px;
+    width: 90px;
+    top: 7px;
+}
+
+.loader-line-wrap:nth-child(2) .loader-line {
+    border-color: hsl(60, 80`%, 60`%);
+    height: 76px;
+    width: 76px;
+    top: 14px;
+}
+
+.loader-line-wrap:nth-child(3) .loader-line {
+    border-color: hsl(120, 80`%, 60`%);
+    height: 62px;
+    width: 62px;
+    top: 21px;
+}
+
+.loader-line-wrap:nth-child(4) .loader-line {
+    border-color: hsl(180, 80`%, 60`%);
+    height: 48px;
+    width: 48px;
+    top: 28px;
+}
+
+.loader-line-wrap:nth-child(5) .loader-line {
+    border-color: hsl(240, 80`%, 60`%);
+    height: 34px;
+    width: 34px;
+    top: 35px;
+}
+
+@keyframes spin {
+
+    0`%, 15`% {
+      transform: rotate(0);
+    }
+
+    100`% {
+        transform: rotate(360deg);
+    }
+}
+</style>
+---
 .loading {
-	position: relative;
+    position: relative;
 }
 
 .loading::after {
-	content: '';
-	display: block;
-	position: absolute; top: 0; right: 0; bottom: 0; left: 0;
-	background: transparent url('http://wx3.sinaimg.cn/small/006ar8zggy1g0isbtuj2kg300w00wq2p.gif') center center / 32px 32px  no-repeat;
+    content: '';
+    display: block;
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    background: transparent url('http://wx3.sinaimg.cn/small/006ar8zggy1g0isbtuj2kg300w00wq2p.gif') center center / 32px 32px  no-repeat;
 }
 )
-code(Var)
+txtit(Var)
 return
 
 nthHandle:

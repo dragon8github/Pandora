@@ -5600,13 +5600,6 @@ return
 Var =
 (
 event.preventDefault(); event.stopPropagation();
-
-var stope = function(thisEvent){
-  thisEvent = thisEvent || window.event;
-  try { thisEvent.stopPropagation() } catch(e){
-    thisEvent.cancelBubble = true;
-  }
-};
 )
 code(Var)
 
@@ -6365,15 +6358,20 @@ return
 ::axios.get::
 Var =
 (
-/**
- * get 请求
- */
-axios.get({
-  url: 'http://192.168.31.97/index.php', 
-  params: {a: 123}
-}).then(response => {
-    console.log(20181021221522, response)
-})
+;(async function() {
+    const latitude = 22.921901
+    const longitude = 113.843319
+    const { data } = await axios.get('http://api.map.baidu.com/reverse_geocoding/v3/', {
+        params: {
+            ak: "7b3SurhIYH6m8C3l0aAM7NAFW0aHEbLT",
+            output: "json",
+            location: latitude + "," + longitude
+        }
+    })
+    console.log('获取百度地图解析信息', data)
+    const { formatted_address, business } = data.result
+    console.log('获取详细地理位置：', formatted_address, business)
+}())
 )
 code(Var)
 return

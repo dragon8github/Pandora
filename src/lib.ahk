@@ -1,4 +1,5 @@
-﻿p(v) 
+﻿
+p(v) 
 {
 WinClip.paste(v)
 }
@@ -355,8 +356,6 @@ return
  txtit2(ary, spliter="---") {
   ; 全局变量真的只能这样用了，定义在外面没有办法生存。
   global pidary := pidary ? pidary : []
-  ; 存储
-  global __ALTCTRL__ := []
   
   ; 数组长度，一共有几个需要显示的？
   len := ary.Length()
@@ -385,6 +384,7 @@ return
      _w := A_ScreenWidth / xsize
      ; 当前高度
      _h := A_ScreenHeight / ycount
+
     ; 存储到 __ALTCTRL__
     __ALTCTRL__.push(value)
      try {
@@ -408,6 +408,7 @@ return
 
 
 txtit(code, spliter = "---") {
+
 	; 缩放比
 	zoom := 0.7
 	; GUI 的宽高
@@ -452,8 +453,10 @@ txtit(code, spliter = "---") {
 		
 		y_rate := Floor(i / 3)
 		y := GUI_height * (y_rate == 0 ? 0 : (1 / (y_rate + 1)))
-        
-		
+
+        ; 存储到 __ALTCTRL__
+        __ALTCTRL__.push(value)
+
 		; 添加文本框  ReadOnly
 		Gui, Code:Add, Edit, X0 Y%y% X%x% W%w% H%h% -Wrap HScroll , % value
 		

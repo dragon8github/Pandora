@@ -8845,3 +8845,67 @@ console.log(20200629202141, _items)
 )
 code(Var)
 return
+
+::trim::
+:?:.trim::
+Var =
+(
+.replace(/(^[\s\n\t]+|[\s\n\t]+$)/g, '')
+)
+code(Var)
+return
+
+::usediv::
+Var =
+(
+const useDiv = () => {
+    let div = document.createElement('div')
+    div.style.display = 'none'
+    document.body.append(div)
+    return [div, () => div.remove()]
+}
+
+// 创建一个容器
+const [div, remove] = useDiv()
+)
+code(Var)
+return
+
+::rightclick::
+::clickright::
+::clickr::
+::rclick::
+Var =
+(
+// 这就是核心的拦截事件
+document.oncontextmenu = (e) => {
+    console.log('打开右键菜单')
+
+    // 拦截浏览器默认右键行为
+    e.preventDefault()
+}
+)
+code(Var)
+return
+
+::getip::
+Var =
+(
+教程地址：https://blog.csdn.net/zqian1994/article/details/79222812
+新浪的IP地址查询接口：http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js
+（默认为纯文本格式，根据format的参数定义，还可以返回JS、Json格式）。
+
+新浪多地域测试方法：
+http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=219.242.98.111
+
+搜狐IP地址查询接口（默认GBK）：http://pv.sohu.com/cityjson
+
+搜狐IP地址查询接口（可设置编码）：http://pv.sohu.com/cityjson?ie=utf-8
+
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">  
+    console.log(returnCitySN["cip"]+','+returnCitySN["cname"])  
+</script>
+)
+code(Var)
+return

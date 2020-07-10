@@ -126,6 +126,7 @@
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
+  Menu, vuesolution, Add, loader 指令, VueHandler  
   Menu, vuesolution, Add, v-waves 波浪指令, VueHandler  
   Menu, vuesolution, Add, $deepSet深度赋值解决方案, VueHandler  
   Menu, vuesolution, Add, vue双向数据模拟, VueHandler  
@@ -186,6 +187,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "loader 指令") {
+_send("loader.vue", true, true)
+return
 }
 
 if (v == "v-waves 波浪指令") {
@@ -4090,6 +4096,7 @@ Var =
 code(Var)
 return
 
+:?:vue.conf::
 :?:vue.config.js::
 :?:vue.config::
 Var =
@@ -4097,7 +4104,7 @@ Var =
 // vue.config.js
 const path = require('path')
 
-const resolve = dir => path.join(__dirname, dir)
+const resolve = (dir) => path.join(__dirname, dir)
 
 module.exports = {
     // 关闭语法检测
@@ -4106,96 +4113,42 @@ module.exports = {
     productionSourceMap: false,
     //  可以模仿线上资源地址，如：process.env.NODE_ENV === 'development' ? '/biweb/' : '/biweb/',
     publicPath: './',
-    // 服务器配置
-    devServer: {
-        open: true,
-        host: '0.0.0.0',
-        port: 8080,
-        https: false,
-        hotOnly: false,
-        /**
-         * proxy: {
-         *     '/api': {
-         *         target: 'http://192.168.14.29:31006/xindai/',
-         *         changeOrigin: true,
-         *         ws: true,
-         *         pathRewrite: {
-         *             '^/api': '/',
-         *         }
-         *     }
-         * },
-         * 
-         * devServer: {
-         *     proxy: {
-         *         /* const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/h5/' */
-         *         '/admin': {
-         *             target: 'http://219.135.182.3:30022/',
-         *             changeOrigin: true,
-         *             ws: true,
-         *             pathRewrite: {
-         *                 '^/admin': '/',
-         *             }
-         *         },
-         *         /* const __ADMIN__ = process.env.NODE_ENV === 'development' ? '/admin/' : '/h5/' */
-         *         '/api': {
-         *             target: 'http://219.135.182.3:30020/',
-         *             changeOrigin: true,
-         *             ws: true,
-         *             pathRewrite: {
-         *                 '^/api': '/',
-         *             }
-         *         },
-         *     },
-         * },
-         */
-         // 关闭eslint配置
-         overlay: {warnings: false, errors: false },
-         lintOnSave: false,
-    },
     css: {
       loaderOptions: {
         sass: {
-          data: `
+          data: ``
             @import "@/scss/functions.scss";
-          `
+          ``
         }
       }
     },
-    // webpack 配置
-    configureWebpack: (config) => {
-        // 环境变量
-        config.resolve = {
+    configureWebpack: {
+        // 路径配置
+        resolve: {
             extensions: ['.js', '.vue', '.json'],
+            // 别名配置
             alias: {
+                // @ is an alias to /src
                 '@': resolve('src'),
             },
-        }
-        
+        },
+        // 插件配置
+        plugins: [],
+        // webpack-load配置
+        module: {
+            rules: [],
+        },
+    },
+    // transpileDependencies:[
+    //     /element-ui/
+    // ],
+    // webpack 链式扩展
+    chainWebpack: (config) => {
         // 开启 source-map 方便调试
         if (process.env.NODE_ENV === 'development') {
             config.devtool = 'source-map'
         }
 
-        config.output.filename('[name].[hash].js').end();
-        
-        /*  
-        config.module.rules.concat[{
-            test: /\.svg$/,
-            loader: 'svg-sprite-loader',
-            options: {
-                symbolId: 'icon-[name]'
-            }
-        }, {
-            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-            loader: 'url-loader',
-            options: {
-                limit: 10000,
-            }
-        }]
-        */
-    },
-    // webpack 链式扩展
-    chainWebpack: config => {
         /* 测试扩展 ts-loader，需要结合 tsconfig.json 使用哦
         config.module
                .rule('ts')
@@ -4204,8 +4157,8 @@ module.exports = {
                .loader('ts-loader')
                .end()
         */
-        
-        /* 
+
+        /*
         config.module
               .rule('svg')
               .exclude.add(resolve('src/icons'))
@@ -4229,7 +4182,7 @@ module.exports = {
              .set('@c', resolve('src/components'))
         config.output.filename('[name].[hash].js').end();
          */
-    }
+    },
 }
 )
 code(Var)

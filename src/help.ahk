@@ -1860,8 +1860,14 @@ p("git add . && git commit -m '#' --no-verify && git push")
 _sendInput("{LEFT 25}")
 Return
 
+::git2::
+p("git add . && git commit -m '#' --no-verify && git push -u origin")
+_sendInput("{LEFT 35}")
+Return
 
-
+::gitp::
+p("git push")
+Return
 
 ::auth::
     Send, Authorization

@@ -11016,3 +11016,414 @@ var vue = new Vue({
 RunBy(name)
 run, % name
 return
+
+baidunidili:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://libs.cdnjs.net/axios/0.19.2/axios.min.js"></script>
+<script>
+;(async function() {
+    const latitude = 22.921901
+    const longitude = 113.843319
+    const { data } = await axios.get('http://api.map.baidu.com/reverse_geocoding/v3/', {
+        params: {
+            ak: "7b3SurhIYH6m8C3l0aAM7NAFW0aHEbLT",
+            output: "json",
+            location: latitude + "," + longitude
+        }
+    })
+    console.log('获取百度地图解析信息', data)
+    const { formatted_address, business } = data.result
+    console.log('获取详细地理位置：', formatted_address, business)
+}())
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+
+yanzhengzuobiaodian1:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<script>    
+/**
+ * Verify if point of coordinates (longitude, latitude) is polygon of coordinates
+ * https://github.com/substack/point-in-polygon/blob/master/index.js
+ * @param {number} latitude Latitude
+ * @param {number} longitude Longitude
+ * @param {array<[number,number]>} polygon Polygon contains arrays of points. One array have the following format: [latitude,longitude]
+
+ [JS]如何验证坐标点是否在多边形内
+ （温馨提示：计算消耗的时间有点久，最好是放在 web worker 里边计算）
+ How to verify if point of coordinates is inside polygon [Javascript] - DEV - Google Chrome
+ point-in-polygon/index.js at master · substack/point-in-polygon - Google Chrome
+
+ */
+function isPointInPolygon (latitude, longitude, polygon) {
+  if (typeof latitude !== 'number' || typeof longitude !== 'number') {
+    throw new TypeError('Invalid latitude or longitude. Numbers are expected')
+  } else if (!polygon || !Array.isArray(polygon)) {
+    throw new TypeError('Invalid polygon. Array with locations expected')
+  } else if (polygon.length === 0) {
+    throw new TypeError('Invalid polygon. Non-empty Array expected')
+  }
+
+  const x = latitude; const y = longitude
+
+  let inside = false
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i][0]; const yi = polygon[i][1]
+    const xj = polygon[j][0]; const yj = polygon[j][1]
+
+    const intersect = ((yi > y) !== (yj > y)) &&
+            (x < (xj - xi) * (y - yi) / (yj - yi) + xi)
+    if (intersect) inside = !inside
+  }
+
+  return inside
+}
+</script>
+),  %name%
+RunBy(name)
+run, % name
+return
+yanzhengzuobiaodian2:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<script>
+// 验证两个面是否相交的算法
+function intersectsPolygonAndPolygon(polygon1LinearRings, polygon2LinearRings) {
+
+    function intersectsByPolygon(polygon1LinearRings, polygon2LinearRings) {
+        var intersect = false;
+
+        intersect = intersectsByLinearRings(polygon1LinearRings, polygon2LinearRings);
+
+        if (!intersect) {
+            for (i = 0, len = polygon2LinearRings.length; i < len; ++i) {
+                var point = polygon2LinearRings[i];
+                intersect = containsPointByLinearRing(point, polygon1LinearRings);
+                if (intersect) {
+                    break;
+                }
+            }
+        }
+
+        return intersect;
+    }
+
+    // LinearRings
+    function containsPointByPolygon(point, LinearRings) {
+        var numRings = LinearRings.length;
+        var contained = false;
+        if (numRings > 0) {
+            contained = containsPointByLinearRing(point, LinearRings[0]);
+            if (numRings > 1) {
+                var hole;
+                for (var i = 1; i < numRings; ++i) {
+                    hole = containsPointByLinearRing(point, LinearRings[i]);
+                    if (hole) {
+                        if (hole === 1) {
+                            contained = 1;
+                        } else {
+                            contained = false;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        return contained;
+    }
+
+    function containsPointByLinearRing(point, LinearRing) {
+
+        function approx(num, sig) {
+            var fig = 0;
+            if (sig > 0) {
+                fig = parseFloat(num.toPrecision(sig));
+            }
+            return fig;
+        }
+
+        var digs = 14;
+        var px = approx(point.x, digs);
+        var py = approx(point.y, digs);
+
+        function getX(y, x1, y1, x2, y2) {
+            return (y - y2) * ((x2 - x1) / (y2 - y1)) + x2;
+        }
+
+        var numSeg = LinearRing.length - 1;
+        var start, end, x1, y1, x2, y2, cx, cy;
+        var crosses = 0;
+
+        for (var i = 0; i < numSeg; ++i) {
+            start = LinearRing[i];
+            x1 = approx(start.x, digs);
+            y1 = approx(start.y, digs);
+            end = LinearRing[i + 1];
+            x2 = approx(end.x, digs);
+            y2 = approx(end.y, digs);
+
+            if (y1 == y2) {
+                if (py == y1) {
+                    if (x1 <= x2 && (px >= x1 && px <= x2) || 
+                        x1 >= x2 && (px <= x1 && px >= x2)) { 
+                        crosses = -1;
+                        break;
+                    }
+                }
+                continue;
+            }
+            cx = approx(getX(py, x1, y1, x2, y2), digs);
+            if (cx == px) {
+                if (y1 < y2 && (py >= y1 && py <= y2) || 
+                    y1 > y2 && (py <= y1 && py >= y2)) { 
+                    crosses = -1;
+                    break;
+                }
+            }
+            if (cx <= px) {
+                continue;
+            }
+            if (x1 != x2 && (cx < Math.min(x1, x2) || cx > Math.max(x1, x2))) {
+                continue;
+            }
+            if (y1 < y2 && (py >= y1 && py < y2) || 
+                y1 > y2 && (py < y1 && py >= y2)) { 
+                ++crosses;
+            }
+        }
+
+        var contained = (crosses == -1) ? 1 : !!(crosses & 1);
+
+        return contained;
+    }
+
+
+    function intersectsByLinearRings(LinearRing1, LinearRings2) {
+        var intersect = false;
+        var segs1 = getSortedSegments(LinearRing1);
+        var segs2 = getSortedSegments(LinearRings2);
+
+        var seg1, seg1x1, seg1x2, seg1y1, seg1y2,
+            seg2, seg2y1, seg2y2;
+        outer: for (var i = 0, len = segs1.length; i < len; ++i) {
+            seg1 = segs1[i];
+            seg1x1 = seg1.x1;
+            seg1x2 = seg1.x2;
+            seg1y1 = seg1.y1;
+            seg1y2 = seg1.y2;
+            inner: for (var j = 0, jlen = segs2.length; j < jlen; ++j) {
+                seg2 = segs2[j];
+                if (seg2.x1 > seg1x2) {
+                    break;
+                }
+                if (seg2.x2 < seg1x1) {
+                    continue;
+                }
+                seg2y1 = seg2.y1;
+                seg2y2 = seg2.y2;
+                if (Math.min(seg2y1, seg2y2) > Math.max(seg1y1, seg1y2)) {
+                    continue;
+                }
+                if (Math.max(seg2y1, seg2y2) < Math.min(seg1y1, seg1y2)) {
+                    continue;
+                }
+                if (segmentsIntersect(seg1, seg2)) {
+                    intersect = true;
+                    break outer;
+                }
+            }
+        }
+        return intersect;
+    }
+
+    function getSortedSegments(points) {
+        var numSeg = points.length - 1;
+        var segments = new Array(numSeg),
+            point1, point2;
+        for (var i = 0; i < numSeg; ++i) {
+            point1 = points[i];
+            point2 = points[i + 1];
+            if (point1.x < point2.x) {
+                segments[i] = {x1: point1.x, y1: point1.y, x2: point2.x, y2: point2.y };
+            } else {
+                segments[i] = {x1: point2.x, y1: point2.y, x2: point1.x, y2: point1.y };
+            }
+        }
+        function byX1(seg1, seg2) {
+            return seg1.x1 - seg2.x1;
+        }
+        return segments.sort(byX1);
+    }
+
+    function segmentsIntersect(seg1, seg2, options) {
+        var point = options && options.point;
+        var tolerance = options && options.tolerance;
+        var intersection = false;
+        var x11_21 = seg1.x1 - seg2.x1;
+        var y11_21 = seg1.y1 - seg2.y1;
+        var x12_11 = seg1.x2 - seg1.x1;
+        var y12_11 = seg1.y2 - seg1.y1;
+        var y22_21 = seg2.y2 - seg2.y1;
+        var x22_21 = seg2.x2 - seg2.x1;
+        var d = (y22_21 * x12_11) - (x22_21 * y12_11);
+        var n1 = (x22_21 * y11_21) - (y22_21 * x11_21);
+        var n2 = (x12_11 * y11_21) - (y12_11 * x11_21);
+        if (d == 0) {
+            if (n1 == 0 && n2 == 0) {
+                intersection = true;
+            }
+        } else {
+            var along1 = n1 / d;
+            var along2 = n2 / d;
+            if (along1 >= 0 && along1 <= 1 && along2 >= 0 && along2 <= 1) {
+                if (!point) {
+                    intersection = true;
+                } else {
+                    var x = seg1.x1 + (along1 * x12_11);
+                    var y = seg1.y1 + (along1 * y12_11);
+                    intersection = { 'x': x, 'y': y };
+                }
+            }
+        }
+        if (tolerance) {
+            var dist;
+            if (intersection) {
+                if (point) {
+                    var segs = [seg1, seg2];
+                    var seg, x, y;
+                    outer: for (var i = 0; i < 2; ++i) {
+                        seg = segs[i];
+                        for (var j = 1; j < 3; ++j) {
+                            x = seg["x" + j];
+                            y = seg["y" + j];
+                            dist = Math.sqrt(
+                                Math.pow(x - intersection.x, 2) +
+                                Math.pow(y - intersection.y, 2)
+                            `);
+                            if (dist < tolerance) {
+                                intersection.x = x;
+                                intersection.y = y;
+                                break outer;
+                            }
+                        }
+                    }
+
+                }
+            } else {
+                var segs = [seg1, seg2];
+                var source, target, x, y, p, result;
+                outer: for (var i = 0; i < 2; ++i) {
+                    source = segs[i];
+                    target = segs[(i + 1) `% 2];
+                    for (var j = 1; j < 3; ++j) {
+                        p = { x: source["x" + j], y: source["y" + j] };
+                        result = distanceToSegment(p, target);
+                        if (result.distance < tolerance) {
+                            if (point) {
+                                intersection = { 'x': p.x, 'y': p.y };
+                            } else {
+                                intersection = true;
+                            }
+                            break outer;
+                        }
+                    }
+                }
+            }
+        }
+        return intersection;
+    };
+
+    function distanceToSegment(point, segment) {
+        var result = distanceSquaredToSegment(point, segment);
+        result.distance = Math.sqrt(result.distance);
+        return result;
+    };
+
+    function distanceSquaredToSegment(point, segment) {
+        var x0 = point.x;
+        var y0 = point.y;
+        var x1 = segment.x1;
+        var y1 = segment.y1;
+        var x2 = segment.x2;
+        var y2 = segment.y2;
+        var dx = x2 - x1;
+        var dy = y2 - y1;
+        var along = ((dx * (x0 - x1)) + (dy * (y0 - y1))) /
+            (Math.pow(dx, 2) + Math.pow(dy, 2));
+        var x, y;
+        if (along <= 0.0) {
+            x = x1;
+            y = y1;
+        } else if (along >= 1.0) {
+            x = x2;
+            y = y2;
+        } else {
+            x = x1 + along * dx;
+            y = y1 + along * dy;
+        }
+        return {
+            distance: Math.pow(x - x0, 2) + Math.pow(y - y0, 2),
+            x: x,
+            y: y,
+            along: along
+        };
+    }
+
+    return intersectsByPolygon(polygon1LinearRings, polygon2LinearRings);
+}
+</script>
+<script>
+// 启动计时器
+console.time('20190219153729')
+
+// http://geojson.io/
+a = [{ x: 113.73201370239256, y: 23.058568597937857 }, { x: 113.70935440063475, y: 23.03313681242608 }, { x: 113.74935150146484, y: 23.01402032323799 }, { x: 113.76823425292967, y: 23.057305020129917 }, { x: 113.73201370239256, y: 23.058568597937857 }]
+b = [{ x: 113.77321243286133, y: 23.07562573713481 }, { x: 113.76977920532227, y: 23.06362279054334 }, { x: 113.7799072265625, y: 23.039455716766597 }, { x: 113.79467010498047, y: 23.07309889001266 }, { x: 113.77355575561523, y: 23.076415367124454 }]
+result = intersectsPolygonAndPolygon(a, b)
+console.log(20200709152745, result)
+
+// 停止计时，输出时间
+console.timeEnd('20190219153729')
+</script>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+sinaip:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+教程地址：https://blog.csdn.net/zqian1994/article/details/79222812
+新浪的IP地址查询接口：http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js
+（默认为纯文本格式，根据format的参数定义，还可以返回JS、Json格式）。
+
+新浪多地域测试方法：
+http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=219.242.98.111
+
+搜狐IP地址查询接口（默认GBK）：http://pv.sohu.com/cityjson
+
+搜狐IP地址查询接口（可设置编码）：http://pv.sohu.com/cityjson?ie=utf-8
+
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">  
+    console.log(returnCitySN["cip"]+','+returnCitySN["cname"])  
+</script>
+),  %name%
+RunBy(name)
+run, % name
+return

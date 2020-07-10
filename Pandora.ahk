@@ -24,6 +24,7 @@ FileDelete, .\src\*.bak
 
 global latestImageName := ""
 global todoList := ""
+global __ALTCTRL__ := []
 
 /**
 //////////////////////////////////////////////
