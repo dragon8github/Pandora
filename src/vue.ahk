@@ -4183,6 +4183,18 @@ module.exports = {
         config.output.filename('[name].[hash].js').end();
          */
     },
+    devServer: {
+       proxy: {
+           '/api': {
+               target: 'http://219.135.182.2:8199',
+               changeOrigin: true,
+               ws: true,
+               pathRewrite: {
+                   '^/api': '/',
+               }
+           },
+       },
+    },
 }
 )
 code(Var)
@@ -4277,16 +4289,19 @@ return
 Var =
 (
 // config.baseURL = '/api'
-proxyTable: {
-  '/api': {
-    // 请注意，这个链接就不需要带/api了
-    target: 'http://12345v2.alltosea.com:6080/',
-    changeOrigin: true,
-    // 重写不能和baseURL HTTP 一起使用。所以baseURL必须不包含HTTP
-    pathRewrite: {
-      '^/api': '/api'
-    }
-  },
+// 本地环境代理地址
+devServer: {
+    proxy: {
+        '/api': {
+            target: 'http://19.104.50.204/fyvis/visual',
+            // target: process.env.VUE_APP_TYPE == "development" ? 'http://219.135.182.3:32367' : 'http://19.104.50.204/fyvis/visual',
+            changeOrigin: true,
+            ws: true,
+            pathRewrite: {
+                '^/api': '/',
+            },
+        },
+    },
 },
 ---
 devServer: {

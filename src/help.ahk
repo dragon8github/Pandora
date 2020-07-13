@@ -1,4 +1,12 @@
-﻿LAlt & RAlt::
+﻿::sd::
+Var =
+(
+microSD
+)
+code(Var)
+return
+
+LAlt & RAlt::
 Var =
 (
 ()

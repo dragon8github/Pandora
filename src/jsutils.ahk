@@ -1,5 +1,8 @@
 ﻿!u::
 
+    Menu, utilsworker, Add, 项目名：功能说明, utilsHandler
+
+
 	Menu, utilsTime, Add, 获取半小时前, utilsHandler
     Menu, utilsTime, Add, 获取当前时间的秒数, utilsHandler
     Menu, utilsTime, Add, 获取12345的时间选择器, utilsHandler
@@ -468,6 +471,7 @@
     Menu, utilsMenu, Add, !!Σ(゜Д゜) 居然还有这种操作？ Σ(ﾟдﾟ;), :utilsjuran
     Menu, utilsMenu, Add, ╮(￣▽￣)╭ 先收起来再说，没准将来会有用呢？ ╮(￣▽￣)╭, :utilsmaybe
     Menu, utilsMenu, Add, ←_←前端小技巧→_→, :utilsjiqiao
+    Menu, utilsMenu, Add, 不要让你的业务代码白费, :utilsworker
     
     Menu, utilsMenu, Show
 	Menu, utilsMenu, DeleteAll
@@ -8855,6 +8859,7 @@ Var =
 code(Var)
 return
 
+::div::
 ::usediv::
 Var =
 (

@@ -8493,10 +8493,25 @@ function jsonp(urlObj, callback) {
 	script.src = url;
 	document.body.appendChild(script);
 }
+---
+window.fuckHandler = function (...args) {
+  console.log(20200711201152, args)
+}
 
-jsonpp
+$.ajax({
+    type: 'get',
+    url: 'http://api.map.baidu.com/place/v2/search?output=json&scope=2&q=旗峰公园&region=东莞&ak=7yGRMkwGFn2GGEdb2YimB6jk',
+    dataType: 'jsonp',
+    jsonp: 'callback', jsonpCallback: 'fuckHandler', // => 其实没什么用，反正一般用 success
+    success(data) {
+        console.log(20200711200950, data)
+    },
+    error(err) {
+        console.log(20200711201112, err)
+    }
+})    
 )
-code(Var)
+txtit(Var)
 return
 
 ::json.p::

@@ -192,7 +192,6 @@
 	Menu, EventMenu, Add, js 组合键监听 ctrl + click, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + shift + p, EventHandler
 	Menu, EventMenu, Add, js esc键监听, EventHandler
-	Menu, EventMenu, Add, 监听paste复制黏贴事件, EventHandler
 	Menu, EventMenu, Add, window.addEventListener('load'), EventHandler
 	
 	Menu, EventMenu, Add
@@ -208,6 +207,7 @@
 	Menu, EventMenu, Add, ClickOutside 点击外部冒泡, utilsHandler
 	Menu, EventMenu, Add, 长按longpress手势, EventHandler
 	Menu, EventMenu, Add, String.fromCharCode(e.keycode), EventHandler
+	Menu, EventMenu, Add, 监听paste复制黏贴事件, EventHandler
 
 	Menu, EventMenu, Add
 	Menu, EventMenu, Add
