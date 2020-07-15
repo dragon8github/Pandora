@@ -317,7 +317,7 @@ Gui, Pandora:Add, Link,, <a href="https://renzhezhilu.gitee.io/webp2jpg-online/"
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
 Gui, Pandora:Add, Link,, <a href="https://compresspng.com/zh/">压缩图片</a>
 Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
-Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
+Gui, Pandora:Add, Link,, <a href="https://highcompress.com/online-compress">新图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</a>
 Gui, Pandora:Add, Link,, <a href="http://upload.likeyunba.com/">阿里云图床</a>
 Gui, Pandora:Add, Link,, <a href="https://akveo.github.io/eva-icons/#/">480个免费的svg</a>
@@ -339,6 +339,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
 Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
 Gui, Pandora:Add, Link,, <a href="https://cn.bing.com/search?q=壁纸">壁纸 - 国内版 Bing</a>
+Gui, Pandora:Add, Link,, <a href="https://window-swap.com/">window-swap</a>
+
 
 
 Gui, Pandora:Add, Text,  W120 ys, 不可放过：
@@ -357,13 +359,13 @@ Gui, Pandora:Add, Link,, <a href="https://www.behance.net/galleries/illustration
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：
+Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="https://36dcup.net/user">36dcup</a>
 Gui, Pandora:Add, Link,, <a href="https://mynoise.net/NoiseMachines/openOfficeNoiseGenerator.php">办公室白噪音</a>
 Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
 Gui, Pandora:Add, Link,, <a href="http://www.cnplugins.com/">Chomre国内镜像商店</a>
 Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</a>
 Gui, Pandora:Add, Link,, <a href="https://www.checklist.design/">checklist.design</a>
-
 
 
 ;@1
@@ -488,7 +490,7 @@ Gui, Pandora:Add, Text,  W130 Section, 疫情可视化:
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/application/tree/master/ioc-visual-ui">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/19/interface/api">yapi</a>
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui?tab=history">测试部署</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/#/">测试预览</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/fyvis/#/planB">测试预览</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/fyvis/#/">正式预览</a>
 
 

@@ -268,6 +268,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, validateimg: 验证图片可访问性, utilsHandler
     Menu, utilsmy, Add, github 代码块翻译问题处理, utilsHandler
     Menu, utilsmy, Add, copyfn: 函数拷贝方案, utilsHandler
 
@@ -498,6 +499,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "validateimg: 验证图片可访问性") {
+_send("validateimg", true, true)
+return
 }
 
 if (v == "matchBy 批量匹配字符串规则") {

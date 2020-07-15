@@ -114,6 +114,8 @@
     Menu, cssknow, Add, :root 与 var(--primary-color), CssHandler
     Menu, cssknow, Add, Calc()与background-position数学表达式, CssHandler
 
+    Menu, CssMenu, Add, 新毛玻璃backdrop-filter, CssHandler
+    Menu, CssMenu, Add, filter blur 背景虚化, CssHandler
     Menu, CssMenu, Add, box-reflect 一行 css 代码实现倒影效果 , CssHandler
     Menu, CssMenu, Add, @mixins 渐变色字体, CssHandler
     Menu, CssMenu, Add, normalize.css, CssHandler2
@@ -137,7 +139,6 @@
     Menu, CssMenu, Add, css3图片样式新认知：object-fit: cover;, CssHandler
     Menu, CssMenu, Add, 宽度自适应内容 width min-content, CssHandler
     Menu, CssMenu, Add, css： 滚动提示, CssHandler
-    Menu, CssMenu, Add, filter blur 背景虚化, CssHandler
     Menu, CssMenu, Add, checkbox 自定义样式简单, CssHandler
     Menu, CssMenu, Add, 扩大可点击区域的几种方案, CssHandler
     Menu, CssMenu, Add, unset 一次性重置所有默认属性, CssHandler
@@ -244,7 +245,6 @@
     
     Menu, CssMenu, Add, background-image: linear-gradient, CssHandler
     Menu, CssMenu, Add, css.text-shadown, CssHandler
-    Menu, CssMenu, Add, css.box-shadown, CssHandler
     Menu, CssMenu, Add, 内阴影box-shadow, CssHandler
     Menu, CssMenu, Add, 文本新布局：text-align: justify, CssHandler
 
@@ -292,6 +292,11 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "新毛玻璃backdrop-filter") {
+_send("maoboli", true, true)
+return
 }
 
 if (v == "box-reflect 一行 css 代码实现倒影效果") {
@@ -6209,4 +6214,14 @@ Var =
 .u-hidden {border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
 )
 txtit(Var)
+return
+
+::maoboli::
+Var =
+(
+.container {
+    backdrop-filter: blur(10px);
+}
+)
+code(Var)
 return

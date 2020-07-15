@@ -6908,3 +6908,62 @@ App.vue
 )
 txtit(Var)
 return
+
+::swiper::
+Var =
+(
+<!-- swiper -->
+<link href="https://cdn.jsdelivr.net/npm/swiper@5.3.6/css/swiper.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@5.3.6/js/swiper.min.js"></script>
+<!-- vue-awesome-swiper -->
+<script src="https://cdn.jsdelivr.net/npm/vue-awesome-swiper"></script>
+
+<swiper class="swiper" ref="swiperComponent" :options="swiperOptions" @click-slide="onSwiperClickSlide" @set-translate="onSetTranslate">
+    <swiper-slide><img width="100`%" class="w-full h-64" src="https://iph.href.lu/400x400" alt="..."/></swiper-slide>
+    <swiper-slide><img width="100`%" class="w-full h-64" src="https://iph.href.lu/400x400" alt="..."/></swiper-slide>
+    <swiper-slide><img width="100`%" class="w-full h-64" src="https://iph.href.lu/400x400" alt="..."/></swiper-slide>
+    <swiper-slide><img width="100`%" class="w-full h-64" src="https://iph.href.lu/400x400" alt="..."/></swiper-slide>
+    <swiper-slide><img width="100`%" class="w-full h-64" src="https://iph.href.lu/400x400" alt="..."/></swiper-slide>
+    <swiper-slide><img width="100`%" class="w-full h-64" src="https://iph.href.lu/400x400" alt="..."/></swiper-slide>
+    <div class="swiper-button-prev" slot="button-prev"></div>
+    <div class="swiper-button-next" slot="button-next"></div>
+    <div class="swiper-pagination" slot="pagination"></div>
+</swiper>
+
+<script>
+Vue.use(VueAwesomeSwiper)
+
+new Vue({
+    el: '#app',
+    data: {
+        swiperOptions: {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        },
+    },
+    methods: {
+        onSetTranslate() {
+            console.log('onSetTranslate')
+        },
+        onSwiperSlideChangeTransitionStart() {
+            console.log('onSwiperSlideChangeTransitionStart')
+        },
+        onSwiperClickSlide(index, reallyIndex) {
+            console.log('Swiper click slide!', reallyIndex)
+            this.openPhotoSwipe()
+        },
+    },
+    mounted() {
+        console.log('Swiper instances:', this.$refs.swiperComponent.$swiper, this.swiper)
+    },
+})
+</script>
+)
+txtit(Var)
+return

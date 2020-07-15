@@ -1509,12 +1509,37 @@ return
     SendRaw, vertical-align: middle;
 return
 
-; https://tool.lu/imageholder/ 其实完全可以自己实现。算了，网上有的是这种服务
+::validateimg::
+::fetchimg::
+Var =
+(
+// 极限封装版本：
+// const validateImage = src => new Promise((onload, onerror) => Object.assign(new Image(), { src, onload, onerror }))
+
+// 正常版本
+const validateImage = imgurl => new Promise((resolve, reject) => {
+  const ImgObj = new Image()
+  ImgObj.src = imgurl
+  ImgObj.onload = resolve
+  ImgObj.onerror = reject
+})
+
+// 多图片验证版本
+const validateImages = imgs => imgs.map(img => validateImage(img))
+
+// 使用方式：
+;(async function(){
+    const pendings = validateImages(fullImages)
+    const result = await Promise.all(pendings)
+}())
+)
+code(Var)
+return
+
 ::img::
 Var =
 (
-<!-- <img src="https://iph.href.lu/400x400" alt="..." /> -->
-<img src="https://picsum.photos/id/643/200/200" alt="..." />
+<img src="https://iph.href.lu/400x400" alt="..." />
 )
 code(Var)
 Return
