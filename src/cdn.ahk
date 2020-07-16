@@ -511,6 +511,7 @@ Var =
 (
 <!-- https://github.com/daneden/animate.css | https://daneden.github.io/animate.css/ | <h1 class="bounce animated">Example</h1> -->
 <link href="https://cdn.staticfile.org/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="https://libs.cdnjs.net/animate.css/4.1.0/animate.min.css" rel="stylesheet">
 )
 code(Var)
 return

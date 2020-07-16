@@ -6225,3 +6225,27 @@ Var =
 )
 code(Var)
 return
+
+::tail.config::
+::tailwind.config::
+::css.config::
+Var =
+(
+module.exports = {
+  purge: {
+    enabled: true,
+    content: [
+      './src/**/*.html',
+      './src/**/*.vue',
+      './src/**/*.jsx',
+    ]
+  },
+  theme: {
+    extend: {},
+  },
+  variants: {},
+  plugins: [],
+}
+)
+code(Var)
+return

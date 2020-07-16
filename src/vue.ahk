@@ -101,7 +101,7 @@
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
   Menu, VueMenu, Add, vue 动画组件<transition>, :vuetranstion
   Menu, VueMenu, Add, vue 动画组件<transition> + animate.css, :vuetranstion
-  Menu, VueMenu, Add, vue animate4.0.css, :vuetranstion
+  Menu, VueMenu, Add, vue animate4.0.css, VueHandler
   Menu, VueMenu, Add, [金志]很喜欢的列表 animate.css 动画, VueHandler
 
 
@@ -384,6 +384,7 @@ Var =
 </div>
 )
 txtit(Var)
+return
 }
 
 if (v == "用 beforeRouteUpdate 代替 watch.$route") {
@@ -4144,9 +4145,8 @@ module.exports = {
     // ],
     // webpack 链式扩展
     chainWebpack: (config) => {
-        // 开启 source-map 方便调试
         if (process.env.NODE_ENV === 'development') {
-            config.devtool = 'source-map'
+            config.devtool('source-map')
         }
 
         /* 测试扩展 ts-loader，需要结合 tsconfig.json 使用哦

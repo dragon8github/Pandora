@@ -1521,7 +1521,7 @@ p(Var)
 return
 
 ::env::
-p("process.env.NODE_ENV === 'production|development'")
+p("process.env.NODE_ENV === 'production|development' // cross-env NODE_ENV=production")
 return
 
 
