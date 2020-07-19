@@ -1253,7 +1253,6 @@ Gui, Pandora:Add, Link,, <a href="http://droid4x.haimawan.com/">海马玩模拟�
 ;@css 
 Gui, Pandora:Tab, 15
 Gui, Pandora:Add, Text,  W140 Section, 森罗万象:
-Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/">tailwindcss</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/jobbole/awesome-css-cn">awesome-css</a>
 Gui, Pandora:Add, Link,, <a href="https://www.9178.work/qianduannav.html">前端导航</a>
 Gui, Pandora:Add, Link,, <a href="https://www.9178.work/qianduan.html">前端导航2</a>
@@ -1281,6 +1280,16 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/zdhxiong/mdui">中文版md<
 Gui, Pandora:Add, Text,  W140 ys, 主题收录:
 Gui, Pandora:Add, Link,, <a href="https://bootswatch.com">bootstrap主题收录</a>
 Gui, Pandora:Add, Link,, <a href="https://jenil.github.io/bulmaswatch/">Bluma主题收录</a>
+
+Gui, Pandora:Add, Text,  W140 ys, tailwindcss:
+Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/">tailwindcss</a>
+Gui, Pandora:Add, Link,, <a href="https://www.tailwindtoolbox.com/templates/landing-page">tailwindtoolbox</a>
+Gui, Pandora:Add, Link,, <a href="https://tailwindcomponents.com/">tailwindcomponents</a>
+Gui, Pandora:Add, Link,, <a href="https://mertjf.github.io/tailblocks/">tailblocks</a>
+Gui, Pandora:Add, Link,, <a href="https://tailwindtemplates.io/cards/">template</a>
+Gui, Pandora:Add, Link,, <a href="https://merakiui.com/headers/">merakiui</a>
+
+
 
 
 ; 剪切框

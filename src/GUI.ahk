@@ -9690,6 +9690,8 @@ FileAppend,
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- tailwind：https://tailwindcss.com/docs/width -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
     <style>
     html, body{
         margin: 0;

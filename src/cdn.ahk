@@ -63,17 +63,26 @@ Var =
 code(Var)
 return
 
-::cdn-shunfeng::
-::cdn-tail::
-::cdn-wind::
+
+::cdncss::
 ::cdn-tailwind::
-::cdn-utils::
-::cdn-utils::
+::cdn-wind::
 ::cdn-css::
+::cdn-tail::
+::cdn-shunfeng::
+::cdn-utils::
+::cdn-utils::
 ::cdn-tw::
+::cdn-tawind::
+::cdn-tawin::
 Var =
 (
 <!-- tailwind：https://tailwindcss.com/docs/width -->
+<!-- https://www.tailwindtoolbox.com/templates/landing-page -->
+<!-- https://tailwindcomponents.com/ -->
+<!-- https://mertjf.github.io/tailblocks/ -->
+<!-- https://tailwindtemplates.io/cards/ -->
+<!-- https://merakiui.com/headers/ -->
 <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
 )
 code(Var)
