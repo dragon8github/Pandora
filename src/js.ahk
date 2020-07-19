@@ -1,4 +1,148 @@
-﻿::geo::
+﻿::lc::
+::lc.init::
+Var =
+(
+import LC from 'leancloud-storage';
+
+LC.init({
+    appId: '0KvWlkltBIPzm4R8GY3k04ew-gzGzoHsz',
+    appKey: 'Fim9QldawgwPNEbPnwpc719K',
+});
+
+export default LC;
+
+/**
+ *
+ * @登陆注册： lc.login/signup
+ * @创建条目： lc.item/demo/new
+ * @当前用户： lc.user
+ * @查询数据： lc.find/query
+ * @安全机制： lc.ACL
+ */
+)
+code(Var)
+return
+
+::lc.anquan::
+::lc.ACL::
+Var =
+(
+/**
+ * 恶意用户可以伪造读取或覆盖其他用户数据的请求。保护数据的机制是访问控制列表（ACL）
+ * 创建数据时，我们需要考虑谁应该访问它，并将许可权与数据一起保存。
+ * 例如： 除了条目的作者之外，任何人都不能访问该条目。
+ * 因此我们要在调用 `entry.save()` 之前，添加以下行：
+ */
+const acl = new LC.ACL()
+const me = LC.User.current()
+acl.setPublicReadAccess(false)
+acl.setPublicWriteAccess(false)
+acl.setReadAccess(me, true)
+acl.setWriteAccess(me, true)
+entry.setACL(acl)
+)
+code(Var)
+return
+
+::lc.find::
+::lc.fetch::
+::lc.query::
+Var =
+(
+// 获取条目
+const fetchEntries = async () => {
+    // 创建 Entry 实例
+    const query = new LC.Query('Entry')
+
+    // 查询条件：「user」字段 === 当前用户
+    query.equalTo('user', LC.User.current())
+
+    // 搜索排序：创建时间从大到小倒序返回。
+    query.descending('createdAt')
+
+    try {
+        const fetchedEntries = await query.find()
+
+        fetchedEntries.map(entry => ({
+              id: entry.id!,
+              content: entry.get('content'),
+              date: entry.createdAt!
+        }))
+    } catch (e) {
+        console.warn('fetchEntries', e.message)
+    }
+}
+)
+code(Var)
+return
+
+::lc.user::
+Var =
+(
+LC.User.current()
+)
+code(Var)
+return
+
+::lc.new::
+::lc.item::
+::lc.demo::
+Var =
+(
+// 创建
+const Entry = LC.Object.extend('Entry')
+
+const entry = new Entry()
+try {
+  const savedEntry = await entry.save({
+    user: LC.User.current(),
+    content: newEntry
+  })
+
+  setEntries([
+    {
+      id: savedEntry.id!,
+      content: savedEntry.get('content'),
+      date: savedEntry.createdAt!
+    },
+    ...entries
+  ])
+} catch (e) {
+  consoe.warn('save', e.message)
+}
+)
+code(Var)
+return
+
+::lc.login::
+::lc.signup::
+::lc.zhuce::
+::lc.denglu::
+Var =
+(
+// 注册
+const user = new LC.User();
+user.setUsername(username);
+user.setPassword(password);
+try {
+  await user.signUp();
+  setShowSuccessMsg(true);
+} catch (e) {
+  console.warn('注册', e.message);
+}
+---
+// 登陆
+try {
+  await LC.User.logIn(username, password);
+  history.push('/diary');
+} catch (e) {
+  console.warn('登陆', e.message);
+}
+)
+txtit(Var)
+return
+
+::geo::
 Var =
 (
 if (navigator.geolocation) {
@@ -10177,6 +10321,7 @@ return
 ::lazyimage::
 Var = 
 (
+
 /**
  * 图片懒加载
  * https://www.liaoxuefeng.com/article/00151045553343934ba3bb4ed684623b1bf00488231d88d000
@@ -10216,7 +10361,7 @@ Var =
     // 绑定事件
     window.onscroll = function () {
         clearTimeout(__SCROLLTIMER__);
-        __SCROLLTIMER__ = setTimeout(lazyload, 150);    
+        __SCROLLTIMER__ = setTimeout(lazyload, 150);
     }
 
     // 手动触发一次, 因为页面显示时，并未触发scroll事件。

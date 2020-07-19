@@ -11427,3 +11427,122 @@ http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=219.242.98.111
 RunBy(name)
 run, % name
 return
+
+fullpagepurecss:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- https://medium.com/frontend-digest/creating-a-slide-show-with-css-scroll-snapping-92efa93691b4 -->
+    <!-- https://codepen.io/montezume/pen/eYYOzzO -->
+    <style>
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+    }
+
+    .slide-container {
+        scroll-snap-type: x mandatory;
+        overflow-x: hidden;
+        display: flex;
+        height: 100vh;
+    }
+
+    .slide {
+        scroll-snap-align: start;
+        min-width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    img {
+        max-width: 100`%;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .text-ctn {
+        width: 50`%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 1em;
+    }
+
+    .image-ctn {
+        width: 50`%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <html>
+
+        <body>
+            <div class="slide-container">
+                <div class="slide">
+                    <div class="image-ctn">
+                        <img src='http://source.unsplash.com/random' alt='...' />
+                    </div>
+                    <div class="text-ctn">
+                        <h1>Giant Panda</h1>
+                        <p>
+                            The giant panda, also known as panda bear or simply panda, is a bear native to south central China. It is easily recognized by the large, distinctive black patches around its eyes, over the ears, and across its round body.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="image-ctn">
+                        <img src='http://source.unsplash.com/random' alt='...' />
+                    </div>
+                    <div class="text-ctn">
+                        <h1>Giant Panda</h1>
+                        <p>
+                            The giant panda, also known as panda bear or simply panda, is a bear native to south central China. It is easily recognized by the large, distinctive black patches around its eyes, over the ears, and across its round body.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="image-ctn">
+                        <img src='http://source.unsplash.com/random' alt='...' />
+                    </div>
+                    <div class="text-ctn">
+                        <h1>Giant Panda</h1>
+                        <p>
+                            The giant panda, also known as panda bear or simply panda, is a bear native to south central China. It is easily recognized by the large, distinctive black patches around its eyes, over the ears, and across its round body.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </body>
+
+        </html>
+    </div>
+</body>
+<script>
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

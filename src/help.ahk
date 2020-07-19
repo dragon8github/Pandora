@@ -498,6 +498,7 @@ return
 +Space::
 return
 
+
 >!c::
 WinGetTitle, title, A
 if (InStr(title, "Chrome")) {
@@ -522,9 +523,8 @@ html =
     ToolTip, 复制成功
     SetTimer, RemoveToolTip, -500
 } else {
-    code(title)
+    p(title)
 }
-
 return
 
 <+v::
@@ -651,6 +651,15 @@ ToolTip, % __data.imgurl
 SetTimer, RemoveToolTip, -2000
 return
 
+::ahktip::
+Var =
+(
+ToolTip, 123
+SetTimer, RemoveToolTip, -2000
+)
+code(Var)
+return
+
 ::li::
 Var =
 (
@@ -745,6 +754,14 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 code(Var)
 return
 
+::lundun2::
+Var =
+(
+The giant panda, also known as panda bear or simply panda, is a bear native to south central China. It is easily recognized by the large, distinctive black patches around its eyes, over the ears, and across its round body.
+)
+code(Var)
+return
+
 ::head::
 ::toux::
 ::touxiang::
@@ -827,6 +844,9 @@ if (InStr(tmp, "/")) {
 } else {
     Clipboard := StrReplace(Clipboard, "\", "/")
 }
+
+ToolTip, 转换完成
+SetTimer, RemoveToolTip, -2000
 
 return
 

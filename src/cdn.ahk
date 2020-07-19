@@ -329,11 +329,14 @@ Var =
 code(Var)
 return
 
+
+
 ::cdn-vconsole::
 ::cdn-console::
 Var =
 (
-<script src="https://cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js"></script>
+<script src="//cdn.bootcss.com/eruda/1.4.2/eruda.min.js"></script>
+<script>eruda.init();</script>
 )
 code(Var)
 return

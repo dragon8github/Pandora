@@ -1,4 +1,58 @@
-﻿::randomimg::
+﻿::container::
+::pageload::
+::page.animage::
+::css.page::
+::page.css::
+::animate.page::
+Var =
+(
+.container {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0.25; transform: translateY(-10px); }
+    to {opacity: 1; transform: translateY(0px); }
+}
+)
+code(Var)
+return
+
+
+::form::
+::css.form::
+Var =
+(
+<div class="flex items-center h-screen w-full bg-teal-lighter">
+    <div class="w-full bg-white rounded shadow-lg p-8 m-4">
+        <h1 class="block w-full text-center text-grey-darkest mb-6">Sign Up</h1>
+        <form class="mb-4" action="/" method="post">
+            <div class="flex flex-col mb-4">
+                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="first_name">First Name</label>
+                <input class="border py-2 px-3 text-grey-darkest" type="text" name="first_name" id="first_name" />
+            </div>
+            <div class="flex flex-col mb-4">
+                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="last_name">Last Name</label>
+                <input class="border py-2 px-3 text-grey-darkest" type="text" name="last_name" id="last_name" />
+            </div>
+            <div class="flex flex-col mb-4">
+                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="email">Email</label>
+                <input class="border py-2 px-3 text-grey-darkest" type="email" name="email" id="email" />
+            </div>
+            <div class="flex flex-col mb-6">
+                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="password">Password</label>
+                <input class="border py-2 px-3 text-grey-darkest" type="password" name="password" id="password" />
+            </div>
+            <button class="block bg-blue-700 hover:bg-teal-dark text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Create Account</button>
+        </form>
+        <a class="block w-full text-center no-underline text-sm text-grey-dark hover:text-grey-darker" href="/login">Already have an account?</a>
+    </div>
+</div>
+)
+code(Var)
+return
+
+::randomimg::
 ::rimg::
 ::img2::
 ::randimg::
@@ -1367,6 +1421,8 @@ Var =
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- tailwind：https://tailwindcss.com/docs/width -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
     <style>
     html, body{
         margin: 0;
