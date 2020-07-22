@@ -1696,43 +1696,43 @@ cs("npm run start")
 return
 
 !Up::
-    Send, {PGUP}
-    Send, {Alt Up}
+    SendInput, {PGUP}
+    SendInput, {Alt Up}
 return
 
 +!Up::
-    Send, +{PGUP}
-    Send, {Alt Up}
+    SendInput, +{PGUP}
+    SendInput, {Alt Up}
 return
 
 !Down::
-    Send, {PGDN}
-    Send, {Alt Up}
+    SendInput, {PGDN}
+    SendInput, {Alt Up}
 return
 
 +!Down::
-    Send, +{PGDN}
-    Send, {Alt Up}
+    SendInput, +{PGDN}
+    SendInput, {Alt Up}
 return
 
 !Right::
-    Send, {end}
-    Send, {Alt Up}
+    SendInput, {end}
+    SendInput, {Alt Up}
 return
 
 +!Right::
-    Send, +{end} 
-    Send, {Alt Up}
+    SendInput, +{end} 
+    SendInput, {Alt Up}
 return
 
 !Left::
-    Send, {Home}
-    Send, {Alt Up}
+    SendInput, {Home}
+    SendInput, {Alt Up}
 return
 
 +!Left::
-    Send, +{Home}
-    Send, {Alt Up}
+    SendInput, +{Home}
+    SendInput, {Alt Up}
 return
 
 /*

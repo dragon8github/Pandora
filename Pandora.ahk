@@ -26,6 +26,9 @@ global latestImageName := ""
 global todoList := ""
 global __ALTCTRL__ := []
 
+
+
+
 /**
 //////////////////////////////////////////////
 说明一下： GUI的初始化必须置顶 
@@ -92,6 +95,9 @@ global __ALTCTRL__ := []
 !F12::
 	Suspend
 return
+
+
+
 
 
 ; 一个记录秒数的示例类...

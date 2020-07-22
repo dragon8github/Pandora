@@ -1057,6 +1057,8 @@ Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_4">
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_5">沿线运动教程（马里奥）</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_16">自定义点图标（狐美人）</a>
 Gui, Pandora:Add, Link, W140, <a href="http://huiyan-fe.github.io/BMap-JavaScript-library/demo/MarkerClusterer/MarkerClusterer.html">聚合图API</a>
+Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#f0_7">鼠标绘制点线面</a>
+
 
 Gui, Pandora:Add, Text, W140 ys, 地图工具：
 Gui, Pandora:Add, Link, W140, <a href="http://geojson.io/">GeoJSON.io</a>
@@ -1288,9 +1290,12 @@ Gui, Pandora:Add, Link,, <a href="https://tailwindcomponents.com/">tailwindcompo
 Gui, Pandora:Add, Link,, <a href="https://mertjf.github.io/tailblocks/">tailblocks</a>
 Gui, Pandora:Add, Link,, <a href="https://tailwindtemplates.io/cards/">template</a>
 Gui, Pandora:Add, Link,, <a href="https://merakiui.com/headers/">merakiui</a>
+Gui, Pandora:Add, Link,, <a href="https://javisperez.github.io/tailwindcolorshades/#/?Valencia=E24E42&tv=1">tailwind 颜色生成器</a>
 
 
 
+Gui, Pandora:Add, Text,  W140 ys, bootstrap:
+Gui, Pandora:Add, Link,, <a href="https://froala.com/design-blocks">代码片段</a>
 
 ; 剪切框
 Gui, Pandora:Tab, 16

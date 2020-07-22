@@ -1,4 +1,15 @@
-﻿::cdn-gsap::
+﻿::cdn-mmd::
+::cdn-mengmengda::
+Var =
+(
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js"></script>
+)
+code(Var)
+return
+
+::cdn-gsap::
 ::cdn-gs::
 Var =
 (
@@ -63,26 +74,17 @@ Var =
 code(Var)
 return
 
-
-::cdncss::
-::cdn-tailwind::
-::cdn-wind::
-::cdn-css::
-::cdn-tail::
 ::cdn-shunfeng::
+::cdn-tail::
+::cdn-wind::
+::cdn-tailwind::
 ::cdn-utils::
 ::cdn-utils::
+::cdn-css::
 ::cdn-tw::
-::cdn-tawind::
-::cdn-tawin::
 Var =
 (
 <!-- tailwind：https://tailwindcss.com/docs/width -->
-<!-- https://www.tailwindtoolbox.com/templates/landing-page -->
-<!-- https://tailwindcomponents.com/ -->
-<!-- https://mertjf.github.io/tailblocks/ -->
-<!-- https://tailwindtemplates.io/cards/ -->
-<!-- https://merakiui.com/headers/ -->
 <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
 )
 code(Var)

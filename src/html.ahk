@@ -1,4 +1,62 @@
-﻿::container::
+﻿::radio::
+Var =
+(
+<style>
+    label {
+  font-size: 20px;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+input[type=radio] {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+input[type=radio]:before {
+  content: '';
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: transparent;
+  border: 2px solid #004ecb;
+  border-radius: 50`%;
+}
+
+input[type=radio]:checked:after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #004ecb;
+  border: 2px solid #004ecb;
+  border-radius: 50`%;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+}
+</style>
+
+<form>
+    <label>
+        <input type="radio" name="radio" />
+        First element
+    </label>
+    <br />
+    <label>
+        <input type="radio" name="radio" />
+        Second element
+    </label>
+</form>
+)
+code(Var)
+return
+
+::container::
 ::pageload::
 ::page.animage::
 ::css.page::
@@ -577,6 +635,101 @@ var vue = new Vue({
           border-left: 1px solid #d0d0d0;
         }
      }
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+
+    .styled-table tbody tr.active-row {
+        font-weight: bold;
+        color: #009879;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dom</td>
+                    <td>6000</td>
+                </tr>
+                <tr>
+                    <td>Dom</td>
+                    <td>6000</td>
+                </tr>
+                <tr>
+                    <td>Dom</td>
+                    <td>6000</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Melissa</td>
+                    <td>5150</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+</script>
+
+</html>
 )
 txtit(Var)
 return
