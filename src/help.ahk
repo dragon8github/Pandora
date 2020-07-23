@@ -1745,7 +1745,9 @@ return
 
 
 !d::
-    run, %A_WorkingDir%
+    ; run, %A_WorkingDir%
+    ; sublimeOpen(A_WorkingDir)
+    RunBy(A_WorkingDir)
 return
 
 >!t::

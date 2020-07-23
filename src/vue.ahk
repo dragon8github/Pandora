@@ -40,6 +40,7 @@
 
   
 
+  Menu, VueMenu, Add, vue-cli 安装与预览单文件, VueHandler
   Menu, VueMenu, Add, pop超强！Vue 快速定位文件解决方案, VueHandler
   Menu, VueMenu, Add, vue.router, :Vuerouter
   Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations`, mapGetters } from 'vuex', VueHandler  
@@ -187,6 +188,17 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "vue-cli 安装与预览单文件") {
+Var =
+(
+cnpm install -g @vue/cli @vue/cli-service-global
+---
+vue serve test.vue
+)
+txtit(Var)
+return
 }
 
 if (v == "loader 指令") {

@@ -4275,7 +4275,7 @@ Var =
 (
 background: transparent url('https://iph.href.lu/100x100') center center / 100`% 100`%  no-repeat content-box; /* 100`% 100`% 可以换成 background-size: cover */
 )
-SendInput, % Var
+p(Var)
 Return
 
 ::bgc::
@@ -4283,7 +4283,7 @@ p("background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);")
 Return
 
 ::bgi::
-    SendInput, background: url('') no-repeat`;{left 13}
+p("background: url('') no-repeat;")
 Return
 
 ::margin::
@@ -6247,6 +6247,76 @@ module.exports = {
   },
   variants: {},
   plugins: [],
+}
+)
+code(Var)
+return
+
+::bgq::
+::bgqiepian::
+::bgmany::
+Var =
+(
+
+
+.bgview {
+  $width: rem(4096 / 6);
+  $height: rem(1152 / 6);
+  $w_1: rem(4096 * 0 / 6);
+  $w_2: rem(4096 * 1 / 6);
+  $w_3: rem(4096 * 2 / 6);
+  $w_4: rem(4096 * 3 / 6);
+  $w_5: rem(4096 * 4 / 6);
+  $w_6: rem(4096 * 5 / 6);
+
+  $h_1: rem(1152 * 0 / 6);
+  $h_2: rem(1152 * 1 / 6);
+  $h_3: rem(1152 * 2 / 6);
+  $h_4: rem(1152 * 3 / 6);
+  $h_5: rem(1152 * 4 / 6);
+  $h_6: rem(1152 * 5 / 6);
+
+  background: url("~@/assets/bg/bg_01.jpg") #{$w_1} 0 / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_02.jpg") #{$w_2} 0 / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_03.jpg") #{$w_3} 0 / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_04.jpg") #{$w_4} 0 / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_05.jpg") #{$w_5} 0 / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_06.jpg") #{$w_6} 0 / #{$width} #{$height} no-repeat,
+
+    url("~@/assets/bg/bg_07.jpg") #{$w_1} #{$h_2} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_08.jpg") #{$w_2} #{$h_2} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_09.jpg") #{$w_3} #{$h_2} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_10.jpg") #{$w_4} #{$h_2} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_11.jpg") #{$w_5} #{$h_2} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_12.jpg") #{$w_6} #{$h_2} / #{$width} #{$height} no-repeat,
+
+    url("~@/assets/bg/bg_13.jpg") #{$w_1} #{$h_3} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_14.jpg") #{$w_2} #{$h_3} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_15.jpg") #{$w_3} #{$h_3} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_16.jpg") #{$w_4} #{$h_3} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_17.jpg") #{$w_5} #{$h_3} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_18.jpg") #{$w_6} #{$h_3} / #{$width} #{$height} no-repeat,
+
+    url("~@/assets/bg/bg_19.jpg") #{$w_1} #{$h_4} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_20.jpg") #{$w_2} #{$h_4} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_21.jpg") #{$w_3} #{$h_4} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_22.jpg") #{$w_4} #{$h_4} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_23.jpg") #{$w_5} #{$h_4} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_24.jpg") #{$w_6} #{$h_4} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_25.jpg") #{$w_1} #{$h_5} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_26.jpg") #{$w_2} #{$h_5} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_27.jpg") #{$w_3} #{$h_5} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_28.jpg") #{$w_4} #{$h_5} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_29.jpg") #{$w_5} #{$h_5} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_30.jpg") #{$w_6} #{$h_5} / #{$width} #{$height} no-repeat,
+
+    url("~@/assets/bg/bg_31.jpg") #{$w_1} #{$h_6} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_32.jpg") #{$w_2} #{$h_6} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_33.jpg") #{$w_3} #{$h_6} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_34.jpg") #{$w_4} #{$h_6} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_35.jpg") #{$w_5} #{$h_6} / #{$width} #{$height} no-repeat,
+    url("~@/assets/bg/bg_36.jpg") #{$w_6} #{$h_6} / #{$width} #{$height} no-repeat;
+}
 }
 )
 code(Var)
