@@ -298,7 +298,7 @@ Gui, Pandora:Add, Link,, <a href="https://cloud.minapp.com/">知晓云</a>
 Gui, Pandora:Add, Link,, <a href="https://www.leancloud.cn/">Leancloud</a>
 Gui, Pandora:Add, Link,, <a href="http://www.taokouling.com/index/taobao_tkljm">淘宝口令解密</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
-Gui, Pandora:Add, Link,, <a href="https://itpdf.online/?tdsourcetag=s_pctim_aiomsg">电子书列表</a>
+Gui, Pandora:Add, Link,, <a href="https://itpdf.de">电子书列表</a>
 Gui, Pandora:Add, Link,, <a href="http://www.broadview.com.cn/book">博文视点（找新书）</a>
 Gui, Pandora:Add, Link,, <a href="https://youquhome.com/">有趣网址之家</a>
 Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a>

@@ -1,4 +1,54 @@
-﻿::lc::
+﻿::tectcolor::
+::textc::
+::txtcolor::
+Var =
+(
+/*
+    If color has the following format:
+    const rgbColor = { r: 100, g: 100, b: 100 }
+*/
+
+// Extracted from Polished
+// Code is licensed with an MIT license
+function getLuminance(rgbColor) {
+ const [r, g, b] = Object.keys(rgbColor).map(key => {
+    // Our color numbers represent a 8bit channel.
+        // The formula requires a sRGB channel which is defined by
+        // ColorChannelIn8bit / 255
+    const channel = rgbColor[key] / 255
+    return channel <= 0.03928
+      ? channel / 12.92
+      : ((channel + 0.055) / 1.055) ** 2.4
+  })
+  return parseFloat((0.2126 * r + 0.7152 * g + 0.0722 * b).toFixed(3))
+}
+
+)
+code(Var)
+return
+
+::@fun::
+::@f::
+Var =
+(
+const foo = fn => {
+  const ctx = {
+    log() {
+      console.log('🚀 loging...')
+    }
+  }
+
+  fn(ctx)
+}
+
+foo(ctx => {
+  ctx.log()
+})
+)
+code(Var)
+return
+
+::lc::
 ::lc.init::
 Var =
 (
@@ -1674,6 +1724,26 @@ return
 ::color::
 Var =
 (
+/*
+    If color has the following format:
+    const rgbColor = { r: 100, g: 100, b: 100 }
+*/
+
+// Extracted from Polished
+// Code is licensed with an MIT license
+function getLuminance(rgbColor) {
+ const [r, g, b] = Object.keys(rgbColor).map(key => {
+    // Our color numbers represent a 8bit channel.
+        // The formula requires a sRGB channel which is defined by
+        // ColorChannelIn8bit / 255
+    const channel = rgbColor[key] / 255
+    return channel <= 0.03928
+      ? channel / 12.92
+      : ((channel + 0.055) / 1.055) ** 2.4
+  })
+  return parseFloat((0.2126 * r + 0.7152 * g + 0.0722 * b).toFixed(3))
+}
+---
 const colorRange = (colorList, min, max) => {
     // 初始化透明度 rgba
     // 虽然强制将 『透明度的单位』 和 『rgb颜色的255单位』 对齐很离谱
@@ -7903,6 +7973,20 @@ export const isBoolean = input => Object.prototype.toString.call(input) === '[ob
 export const isArray = input => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
 
 export const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
+
+
+const inBrowser = typeof window !== 'undefined'
+const inWeex = typeof WXEnvironment !== 'undefined' && !!WXEnvironment.platform
+const weexPlatform = inWeex && WXEnvironment.platform.toLowerCase()
+const UA = inBrowser && window.navigator.userAgent.toLowerCase()
+const isIE = UA && /msie|trident/.test(UA)
+const isIE9 = UA && UA.indexOf('msie 9.0') > 0
+const isEdge = UA && UA.indexOf('edge/') > 0
+const isAndroid = (UA && UA.indexOf('android') > 0) || (weexPlatform === 'android')
+const isIOS = (UA && /iphone|ipad|ipod|ios/.test(UA)) || (weexPlatform === 'ios')
+const isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge
+const isPhantomJS = UA && /phantomjs/.test(UA)
+const isFF = UA && UA.match(/firefox\/(\d+)/)
 )
 code(Var)
 return
@@ -8520,6 +8604,8 @@ code(Var)
 SendInput, {left 2}
 return
 
+
+Appskey & d::
 >^d::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
@@ -8530,7 +8616,7 @@ code(Var)
 return
 
 
-
+AppsKey & c::
 >^c::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
@@ -10619,6 +10705,25 @@ return
 ::paramshuancun::
 Var = 
 (
+function cached(fn){
+  // Create an object to store the results returned after each function execution.
+  const cache = Object.create(null);
+
+  // Returns the wrapped function
+  return function cachedFn (str) {
+
+    // If the cache is not hit, the function will be executed
+    if ( !cache[str] ) {
+        let result = fn(str);
+
+        // Store the result of the function execution in the cache
+        cache[str] = result;
+    }
+
+    return cache[str]
+  }
+}
+################################################################
 // 参数标记缓存器
 var memoized = function (fn) {
       var cache = {};

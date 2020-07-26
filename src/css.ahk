@@ -3653,6 +3653,29 @@ return
 ::css.scrollbar::
 Var =
 (
+/**
+ * 滚动条修饰
+ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background-color: #e2e2e2;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background-color: #e2e2e2;
+}
+---
 overflow-y: auto;
 overflow-x: hidden;
 
@@ -3723,6 +3746,20 @@ overflow-x: hidden;
   &::-webkit-scrollbar-corner {
     background: transparent;
   }
+}
+---
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+}
+.sidebar:hover::-webkit-scrollbar-thumb {
+  background: rgba(136,136,136,0.4);
+}
+.sidebar:hover::-webkit-scrollbar-track {
+  background: rgba(136,136,136,0.1);
 }
 )
 txtit(Var)
@@ -4213,34 +4250,6 @@ return
     Send, white-space: nowrap;
 return
 
-::scrollbar::
-Var = 
-(
-/**
- * 滚动条修饰
- */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-corner {
-  background-color: #e2e2e2;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-corner {
-  background-color: #e2e2e2;
-}
-)
-code(Var)
-return
 
 
 ::bg-cover::
@@ -6318,6 +6327,115 @@ Var =
     url("~@/assets/bg/bg_36.jpg") #{$w_6} #{$h_6} / #{$width} #{$height} no-repeat;
 }
 }
+)
+code(Var)
+return
+
+::hanbao::
+::hanbaobao::
+::nav::
+::menu::
+Var =
+(
+<!-- 
+
+利用锚点#navbar 和 锚点选择器 .navbar:target 实现。
+
+但显然不适合 hash 路由应用。
+
+即便如此，你只需要简单改一下，也可以直接使用。
+
+ -->
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    width: 100`%;
+}
+
+.hamburger,
+.close {
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+}
+
+.hamburger {
+    background: white;
+}
+
+.close {
+    background: black;
+}
+
+.hamburger img,
+.close img {
+    width: 100`%;
+    height: 100`%;
+}
+
+.navbar {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100`%;
+    height: 100vh;
+    overflow: hidden;
+    list-style: none;
+    background: black;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    transform: translateY(-100`%);
+    transition: transform 0.2s ease;
+}
+
+
+.navbar:target {
+    transform: translateY(0);
+}
+
+li a {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5rem;
+}
+
+li a:hover,
+li a:focus {
+    border-bottom: 1px solid white;
+}
+</style>
+
+<ul class="navbar" id="navbar">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contacts</a></li>
+    <a class="close" href="#">
+        <img src="https://ljc-dev.github.io/testing0/ham-close.svg" alt="close">
+    </a>
+</ul>
+<a class="hamburger" href="#navbar">
+    <img src="https://ljc-dev.github.io/testing0/ham.svg" alt="menu">
+</a>
 )
 code(Var)
 return

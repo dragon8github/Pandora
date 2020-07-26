@@ -6979,3 +6979,231 @@ new Vue({
 )
 txtit(Var)
 return
+
+::vue.switch::
+::switch.vue::
+Var =
+(
+<template>
+  <div>
+    <span
+      class="toggle-wrapper"
+      role="checkbox"
+      :aria-checked="value.toString()"
+      tabindex="0"
+      @click="toggle"
+      @keydown.space.prevent="toggle"
+    >
+      <span
+        class="toggle-background"
+        :class="backgroundStyles"
+      />
+      <span
+        class="toggle-indicator"
+        :style="indicatorStyles" 
+      />
+    </span>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    value:{
+      type: Boolean,
+      required: true
+    }
+  },
+  computed: {
+    backgroundStyles() {
+      return {
+        'gold-mid': this.value,
+        'gray-lighter': !this.value
+      };
+    },
+    indicatorStyles() {
+      return { transform: this.value ? 'translateX(14px)' : 'translateX(0)' };
+    }
+  },
+  methods: {
+    toggle() {
+      this.$emit('input', !this.value);
+    }
+  }
+};
+</script>
+
+</style scoped>
+<style >
+.gold-mid{
+  background-color: #666666;
+}
+
+.gray-lighter{
+  background-color: #c2c2c2;
+}
+
+.toggle-wrapper {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  width: 32px;
+  height: 18px;
+  border-radius: 9999px;
+}
+
+.toggle-wrapper:focus {
+  outline: 0;
+}
+
+.toggle-background {
+  display: inline-block;
+  border-radius: 9999px;
+  height: 100`%;
+  width: 100`%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color .4s ease;
+}
+
+.toggle-indicator {
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #ffffff;
+  border-radius: 9999px;
+  box-shadow:  0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform .4s ease;
+}
+</style>
+)
+code(Var)
+return
+
+::vue.select::
+::select.vue::
+Var =
+(
+<template>
+  <div
+    class="custom-select"
+    :tabindex="tabindex"
+    @blur="open = false"
+  >
+    <div
+      class="selected"
+      :class="{open: open}"
+      @click="open = !open"
+    >
+      {{ selected }}
+    </div>
+    <div
+      class="items"
+      :class="{selectHide: !open}"
+    >
+      <div
+        class="item"
+        v-for="(option, i) of options"
+        :key="i"
+        @click="selected=option; open=false; $emit('input', option)"
+      >
+        {{ option }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props:{
+    options:{
+      type: Array,
+      required: true
+    },
+    tabindex:{
+      type: Number,
+      required: false,
+      default: 0
+    }
+  },
+  data() {
+    return {
+      selected: this.options.length > 0 ? this.options[0] : null,
+      open: false
+    };
+  },
+  mounted(){
+    this.$emit('input', this.selected);
+  }
+};
+</script>
+
+<style scoped>
+
+.custom-select {
+  position: relative;
+  width: 100`%;
+  text-align: left;
+  outline: none;
+  height: 47px;
+  line-height: 47px;
+}
+
+.selected {
+  background-color: #080D0E;
+  border-radius: 6px;
+  border: 1px solid #858586;
+  color: #ffffff;
+  padding-left: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.selected.open{
+  border: 1px solid #CE9B2C;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.selected:after {
+  position: absolute;
+  content: "";
+  top: 22px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 4px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+.items {
+  color: #ffffff;
+  border-radius: 0px 0px 6px 6px;
+  overflow: hidden;
+  border-right: 1px solid #CE9B2C;
+  border-left: 1px solid #CE9B2C;
+  border-bottom: 1px solid #CE9B2C;
+  position: absolute;
+  background-color: #080D0E;
+  left: 0;
+  right: 0;
+}
+
+.item{
+  color: #ffffff;
+  padding-left: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.item:hover{
+  background-color: #B68A28;
+}
+
+.selectHide {
+  display: none;
+}
+</style>
+)
+code(Var)
+return

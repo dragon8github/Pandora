@@ -1,4 +1,30 @@
-﻿
+﻿::ssh::
+Var =
+(
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+)
+code(Var)
+return
+
+::ioc::
+Var =
+(
+ioc(智慧城市智能运行中心(IOC)) Intelligent Operations Center 可监视并管理城市服务
+)
+code(Var)
+return
+
+::nodeer::
+::noder::
+::nodegod::
+::sin::
+Var =
+(
+sindresorhus
+)
+code(Var)
+return
+
 !^y::
 Clipboard :=
 WinClip.copy()
@@ -1997,14 +2023,14 @@ return
 */
 
 ::jss::
-cs("JavaScript")
+p("JavaScript")
 return
 
 ; 不知道从什么时候开始，大写的C盘写不出来了。这里我用小写吧无所谓，反正window不区分大小写
 ::desk::
 ::~::
 ::desktop::
-    Send, %A_Desktop%
+p(A_Desktop)
 return
 
 ::desk/::
