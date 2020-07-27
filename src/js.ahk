@@ -2,6 +2,8 @@
 ::dongtaiwidth::
 ::dongtaiw::
 ::echartsw::
+::autow::
+::autowidth::
 ::echartswidth::
 ::echartw::
 ::echartwidth::
@@ -1854,6 +1856,7 @@ const min = Math.min(..._data), max = Math.max(..._data)
 const make = colorRange(colorList, min, max)
 
 // ...
+// const finalData = data.map(item => Object.assign({}, item, { fillStyle: ``rgba(${make(item.count).join(',')})`` }))
 const finalData = data.map(item => Object.assign({}, item, { color: make(item.count) }))
 
 // ...
@@ -9700,7 +9703,7 @@ function getRandomColor() {
     })((Math.random() * 0x1000000 << 0).toString(16))
 }
 )
-code(Var)
+txtit(Var)
 return
 
 ::singerand::

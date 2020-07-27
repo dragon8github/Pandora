@@ -414,7 +414,8 @@ Gui, Pandora:Add, Text, ghackdiguo  W140,黑客帝国
 Gui, Pandora:Add, Text, gxiexiangougudingli  W140,斜线与勾股定理
 Gui, Pandora:Add, Text, gyoujiancaidanxinjian  W140,新建拦截右键菜单
 Gui, Pandora:Add, Text, gdomshengyin W180,只要 dom 改变就会发出声音
-Gui, Pandora:Add, Text, gcsspinyinHtml W180,css正则匹配选择器实现拼音搜索
+Gui, Pandora:Add, Text, gcsspinyinHtml W180, css正则匹配选择器实现拼音搜索
+Gui, Pandora:Add, Text, gsinaip W180,新浪接口获取ip地址
 
 
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+20,新建.echartsDemo.html（官方demo）
@@ -450,16 +451,20 @@ Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
 Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
-Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
-Gui, Pandora:Add, Text, gtianditujuhetuhtml ,新建天地图聚合图.html
+; Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
+; Gui, Pandora:Add, Text, gtianditujuhetuhtml ,新建天地图聚合图.html
 Gui, Pandora:Add, Text, gmapVbaiduhtml W160, 新建百度地图 + mapV.html
+Gui, Pandora:Add, Text, gbaidudituSearchInfoWindow W180, 百度地图SearchInfoWindow.html
+Gui, Pandora:Add, Text, gmapv2fuckhtml W160, 新建 mapV文本+图形.html
+Gui, Pandora:Add, Text, gmapv2fuckhtml2 W160, 新建 mapV文本+图形2.html
+
+
 Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
 Gui, Pandora:Add, Text, gyanzhengzuobiaodian1 W180, 验证坐标点是否在多边形内
 Gui, Pandora:Add, Text, gyanzhengzuobiaodian2 W180, 验证两个多边形是否相交
 Gui, Pandora:Add, Text, gbaidunidili W160,百度坐标转地理位置.html
-Gui, Pandora:Add, Text, gsinaip W180,新浪接口获取ip地址
 
 
 Gui, Pandora:Add, Text, gcsssearchtml W160 ys x+30, 新建简单CSS也能做搜索

@@ -11546,3 +11546,496 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+mapv2fuckhtml2:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 百度地图 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <!-- mapv -->
+    <script src="http://mapv.baidu.com/build/mapv.min.js"></script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+        width: 100`%;
+        height: 100`%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+<script>
+const debug = (...args) => (console.log(...args), args[args.length - 1])
+
+const debugfn = (x, fn = y => y) => fn(x)
+</script>
+
+
+<script>
+/**
+ * 获取数组最后一位
+ */
+Array.prototype.last = function() {
+    return this[this.length - 1];
+};
+
+/**
+ * 获取数组第一位
+ */
+Array.prototype.first = function() {
+    return this[0];
+};
+
+const division = (ary, num, container = {}) => {
+    for (let page = 0; page < Math.ceil(ary.length / num); page++) {
+      container[page] = ary.slice(page * num, (page + 1) * num)
+    }
+    return container
+}
+
+const split = (ary, number = ary.length) => {
+    // 如果数组只有一个或者没有，那么直接返回
+    if (ary.length <= 1) {
+        return ary
+    }
+
+    // 先进行 从小到大 排序
+    const sort_ary = ary.sort((a, b) => { return a - b })
+
+    // 将一个数组分成4段
+    return division(sort_ary, number, [])
+}
+
+</script>
+
+
+<script>
+const map = window.map = new BMap.Map("app")
+
+// 创建地图实例
+const point = new BMap.Point(105.403119, 38.028658)
+
+// 开启鼠标滚轮缩放
+map.enableScrollWheelZoom(true);
+
+// 创建点坐标（东莞全貌）
+map.centerAndZoom(new BMap.Point(113.843319, 22.921901), 11)
+
+// 切回中国全貌
+// map.centerAndZoom(new BMap.Point(105.403119, 38.028658), 5)
+
+// 地图自定义样式
+// map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "stylers": { "color": "#044161" } }, { "featureType": "land", "elementType": "all", "stylers": { "color": "#091934" } }, { "featureType": "boundary", "elementType": "geometry", "stylers": { "color": "#064f85" } }, { "featureType": "railway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "highway", "elementType": "geometry", "stylers": { "color": "#004981" } }, { "featureType": "highway", "elementType": "geometry.fill", "stylers": { "color": "#005b96", "lightness": 1 } }, { "featureType": "highway", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "arterial", "elementType": "geometry", "stylers": { "color": "#004981", "lightness": -39 } }, { "featureType": "arterial", "elementType": "geometry.fill", "stylers": { "color": "#00508b" } }, { "featureType": "poi", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "green", "elementType": "all", "stylers": { "color": "#056197", "visibility": "off" } }, { "featureType": "subway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "manmade", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "local", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "arterial", "elementType": "labels", "stylers": { "visibility": "off" } }, { "featureType": "boundary", "elementType": "geometry.fill", "stylers": { "color": "#029fd4" } }, { "featureType": "building", "elementType": "all", "stylers": { "color": "#1a5787" } }, { "featureType": "label", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": { "color": "#ffffff" } }, { "featureType": "poi", "elementType": "labels.text.stroke", "stylers": { "color": "#1e1c1c" } }, { "featureType": "administrative", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "road", "elementType": "labels", "stylers": { "visibility": "off" } }] })
+map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "stylers": { "color": "#031628" } }, { "featureType": "land", "elementType": "geometry", "stylers": { "color": "#000102" } }, { "featureType": "highway", "elementType": "geometry.fill", "stylers": { "color": "#000000" } }, { "featureType": "highway", "elementType": "geometry.stroke", "stylers": { "color": "#147a92" } }, { "featureType": "arterial", "elementType": "geometry.fill", "stylers": { "color": "#000000" } }, { "featureType": "arterial", "elementType": "geometry.stroke", "stylers": { "color": "#0b3d51" } }, { "featureType": "local", "elementType": "geometry", "stylers": { "color": "#000000" } }, { "featureType": "railway", "elementType": "geometry.fill", "stylers": { "color": "#000000" } }, { "featureType": "railway", "elementType": "geometry.stroke", "stylers": { "color": "#08304b" } }, { "featureType": "subway", "elementType": "geometry", "stylers": { "lightness": -70 } }, { "featureType": "building", "elementType": "geometry.fill", "stylers": { "color": "#000000" } }, { "featureType": "all", "elementType": "labels.text.fill", "stylers": { "color": "#857f7f" } }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": { "color": "#000000" } }, { "featureType": "building", "elementType": "geometry", "stylers": { "color": "#022338" } }, { "featureType": "green", "elementType": "geometry", "stylers": { "color": "#062032" } }, { "featureType": "boundary", "elementType": "all", "stylers": { "color": "#465b6c" } }, { "featureType": "manmade", "elementType": "all", "stylers": { "color": "#022338" } }, { "featureType": "label", "elementType": "all", "stylers": { "color": "#022338", "visibility": "off" } }] });
+
+// 异步获取数据
+;
+(async function() {
+    var textData = [
+        { text: '东城', geometry: { type: 'Point', coordinates: [113.781803, 23.018795] } },
+        { text: '莞城', geometry: { type: 'Point', coordinates: [113.751333, 23.055512] } },
+        { text: '虎门', geometry: { type: 'Point', coordinates: [113.671419, 22.829733] } },
+        { text: '长安', geometry: { type: 'Point', coordinates: [113.751333, 22.80255] } },
+        { text: '厚街', geometry: { type: 'Point', coordinates: [113.695137, 22.928664] } },
+        { text: '南城', geometry: { type: 'Point', coordinates: [113.722012, 22.991651] } },
+        { text: '寮步', geometry: { type: 'Point', coordinates: [113.863613, 23.012407] } },
+        { text: '塘厦', geometry: { type: 'Point', coordinates: [114.083799, 22.815639] } },
+        { text: '常平', geometry: { type: 'Point', coordinates: [114.019622, 22.976357] } },
+        { text: '凤岗', geometry: { type: 'Point', coordinates: [114.156073, 22.743368] } },
+        { text: '清溪', geometry: { type: 'Point', coordinates: [114.172171, 22.858509] } },
+        { text: '大朗', geometry: { type: 'Point', coordinates: [113.953929, 22.927227] } },
+        { text: '万江', geometry: { type: 'Point', coordinates: [113.697865, 23.057108] } },
+        { text: '沙田', geometry: { type: 'Point', coordinates: [113.590931, 22.902194] } },
+        { text: '石碣', geometry: { type: 'Point', coordinates: [113.794451, 23.114556] } },
+        { text: '横沥', geometry: { type: 'Point', coordinates: [113.982863, 23.038418] } },
+        { text: '黄江', geometry: { type: 'Point', coordinates: [114.006169, 22.873877] } },
+        { text: '企石', geometry: { type: 'Point', coordinates: [114.053139, 23.077823] } },
+        { text: '麻涌', geometry: { type: 'Point', coordinates: [113.561772, 23.044478] } },
+        { text: '茶山', geometry: { type: 'Point', coordinates: [113.888136, 23.073522] } },
+        { text: '中堂', geometry: { type: 'Point', coordinates: [113.655897, 23.110833] } },
+        { text: '高埗', geometry: { type: 'Point', coordinates: [113.728911, 23.106046] } },
+        { text: '桥头', geometry: { type: 'Point', coordinates: [114.078459, 23.027842] } },
+        { text: '东坑', geometry: { type: 'Point', coordinates: [113.930131, 23.009216] } },
+        { text: '道滘', geometry: { type: 'Point', coordinates: [113.646123, 23.002296] } },
+        { text: '石排', geometry: { type: 'Point', coordinates: [113.949558, 23.096017] } },
+        { text: '谢岗', geometry: { type: 'Point', coordinates: [114.177422, 22.978865] } },
+        { text: '石龙', geometry: { type: 'Point', coordinates: [113.857692, 23.119342] } },
+        { text: '洪梅', geometry: { type: 'Point', coordinates: [113.593806, 22.98952] } },
+        { text: '松山湖', geometry: { type: 'Point', coordinates: [113.869765, 22.922434] } },
+        { text: '大岭山', geometry: { type: 'Point', coordinates: [113.820775, 22.911782] } },
+        { text: '樟木头', geometry: { type: 'Point', coordinates: [114.092257, 22.930422] } },
+        { text: '望牛墩', geometry: { type: 'Point', coordinates: [113.624851, 23.056576] } },
+    ]
+
+    var textDataSet = new mapv.DataSet(textData);
+
+    var textOptions = {
+        draw: 'text',
+        font: '14px Arial',
+        fillStyle: 'white',
+        shadowColor: 'yellow',
+        shadowBlue: 10,
+        zIndex: 11,
+        shadowBlur: 10
+    }
+
+    var textMapvLayer = new mapv.baiduMapLayer(map, textDataSet, textOptions)
+
+
+    var data = [
+        { _: '东城', geometry: { type: 'Point', coordinates: [113.781803, 23.018795],}, count: 400 },
+        { _: '莞城', geometry: { type: 'Point', coordinates: [113.751333, 23.055512],}, count: 300 },
+        { _: '虎门', geometry: { type: 'Point', coordinates: [113.671419, 22.829733],}, count: 890 },
+        { _: '长安', geometry: { type: 'Point', coordinates: [113.751333, 22.80255],}, count: 270 },
+        { _: '厚街', geometry: { type: 'Point', coordinates: [113.695137, 22.928664],}, count: 170 },
+        { _: '南城', geometry: { type: 'Point', coordinates: [113.722012, 22.991651],}, count: 700 },
+        { _: '寮步', geometry: { type: 'Point', coordinates: [113.863613, 23.012407],}, count: 650 },
+        { _: '塘厦', geometry: { type: 'Point', coordinates: [114.083799, 22.815639],}, count: 950 },
+        { _: '常平', geometry: { type: 'Point', coordinates: [114.019622, 22.976357],}, count: 810 },
+        { _: '凤岗', geometry: { type: 'Point', coordinates: [114.156073, 22.743368],}, count: 425 },
+        { _: '清溪', geometry: { type: 'Point', coordinates: [114.172171, 22.858509],}, count: 1200 },
+        { _: '大朗', geometry: { type: 'Point', coordinates: [113.953929, 22.927227],}, count: 560 },
+        { _: '万江', geometry: { type: 'Point', coordinates: [113.697865, 23.057108],}, count: 640 },
+        { _: '沙田', geometry: { type: 'Point', coordinates: [113.590931, 22.902194],}, count: 200 },
+        { _: '石碣', geometry: { type: 'Point', coordinates: [113.794451, 23.114556],}, count: 220 },
+        { _: '横沥', geometry: { type: 'Point', coordinates: [113.982863, 23.038418],}, count: 350 },
+        { _: '黄江', geometry: { type: 'Point', coordinates: [114.006169, 22.873877],}, count: 380 },
+        { _: '企石', geometry: { type: 'Point', coordinates: [114.053139, 23.077823],}, count: 700 },
+        { _: '麻涌', geometry: { type: 'Point', coordinates: [113.561772, 23.044478],}, count: 70 },
+        { _: '茶山', geometry: { type: 'Point', coordinates: [113.888136, 23.073522],}, count: 450 },
+        { _: '中堂', geometry: { type: 'Point', coordinates: [113.655897, 23.110833],}, count: 400 },
+        { _: '高埗', geometry: { type: 'Point', coordinates: [113.728911, 23.106046],}, count: 400 },
+        { _: '桥头', geometry: { type: 'Point', coordinates: [114.078459, 23.027842],}, count: 170 },
+        { _: '东坑', geometry: { type: 'Point', coordinates: [113.930131, 23.009216],}, count: 365 },
+        { _: '道滘', geometry: { type: 'Point', coordinates: [113.646123, 23.002296],}, count: 330 },
+        { _: '石排', geometry: { type: 'Point', coordinates: [113.949558, 23.096017],}, count: 1300 },
+        { _: '谢岗', geometry: { type: 'Point', coordinates: [114.177422, 22.978865],}, count: 170 },
+        { _: '石龙', geometry: { type: 'Point', coordinates: [113.857692, 23.119342],}, count: 220 },
+        { _: '洪梅', geometry: { type: 'Point', coordinates: [113.593806, 22.98952],}, count: 1345 },
+        { _: '松山湖', geometry: { type: 'Point', coordinates: [113.869765, 22.922434],}, count: 300 },
+        { _: '大岭山', geometry: { type: 'Point', coordinates: [113.820775, 22.911782],}, count: 230 },
+        { _: '樟木头', geometry: { type: 'Point', coordinates: [114.092257, 22.930422],}, count: 330 },
+        { _: '望牛墩', geometry: { type: 'Point', coordinates: [113.624851, 23.056576],}, count: 110 },
+    ]
+
+    
+    // 33个镇街的 demo 数据
+    const ary = data.map(_ => _.count)
+
+    // 将分割为四组
+    const split_ary = split(ary, ary.length / 4)
+
+    // 取到每组的最小和最大（由于排序过，所以就是第一位和最后一位）
+    const limit = split_ary.map(_ => [_.first(), _.last()])
+
+    // 这个就是 visualMap 组件所需要的展示数据
+    const limit_str = limit.map(_ => _.join(' ~ '))
+
+    // 颜色映射表
+    const colors = [
+        'rgba(0, 255, 255, 0.1)',
+        'rgba(0, 255, 255, 0.4)',
+        'rgba(0, 255, 255, 0.6)',
+        'rgba(0, 255, 255, 0.8)',
+    ]
+
+    // 颜色映射表函数 - 接受一个数据，返回映射的颜色
+    const limitColor = number => {
+        // 找到索引
+        const index = limit.findIndex(([a, b]) => (number === a) || (number === b) || (number > a && number < b))
+
+        // 如果索引正常
+        if (index > -1) {
+            return colors[index]
+        }
+
+        // 默认返回第一个吧
+        return colors[0]
+    }
+
+    // 叠加 fillStyle
+    const finalData = data.map(item => Object.assign({}, item, { fillStyle: limitColor(item.count) }))
+
+    var dataSet = new mapv.DataSet(finalData);
+
+    var options = {
+        max: Math.max(...ary),
+        maxSize: 50,
+        min: Math.min(...ary),
+        minSize: 15,
+        draw: 'bubble'
+    }
+
+    var mapvLayer = new mapv.baiduMapLayer(map, dataSet, options);
+
+}())
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+mapv2fuckhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 百度地图 -->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+<!-- mapv -->
+<script src="http://mapv.baidu.com/build/mapv.min.js"></script>
+<style>
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100`%;
+}
+
+#app {
+    width: 100`%;
+    height: 100`%;
+}
+</style>
+</head>
+
+<body>
+<div id="app"></div>
+</body>
+<script>
+const map = window.map = new BMap.Map("app")
+
+// 创建地图实例
+const point = new BMap.Point(105.403119, 38.028658)
+
+// 开启鼠标滚轮缩放
+map.enableScrollWheelZoom(true);
+
+// 创建点坐标（东莞全貌）
+map.centerAndZoom(new BMap.Point(113.843319, 22.921901), 11)
+
+// 切回中国全貌
+// map.centerAndZoom(new BMap.Point(105.403119, 38.028658), 5)
+
+// 地图自定义样式
+// map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "stylers": { "color": "#044161" } }, { "featureType": "land", "elementType": "all", "stylers": { "color": "#091934" } }, { "featureType": "boundary", "elementType": "geometry", "stylers": { "color": "#064f85" } }, { "featureType": "railway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "highway", "elementType": "geometry", "stylers": { "color": "#004981" } }, { "featureType": "highway", "elementType": "geometry.fill", "stylers": { "color": "#005b96", "lightness": 1 } }, { "featureType": "highway", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "arterial", "elementType": "geometry", "stylers": { "color": "#004981", "lightness": -39 } }, { "featureType": "arterial", "elementType": "geometry.fill", "stylers": { "color": "#00508b" } }, { "featureType": "poi", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "green", "elementType": "all", "stylers": { "color": "#056197", "visibility": "off" } }, { "featureType": "subway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "manmade", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "local", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "arterial", "elementType": "labels", "stylers": { "visibility": "off" } }, { "featureType": "boundary", "elementType": "geometry.fill", "stylers": { "color": "#029fd4" } }, { "featureType": "building", "elementType": "all", "stylers": { "color": "#1a5787" } }, { "featureType": "label", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": { "color": "#ffffff" } }, { "featureType": "poi", "elementType": "labels.text.stroke", "stylers": { "color": "#1e1c1c" } }, { "featureType": "administrative", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "road", "elementType": "labels", "stylers": { "visibility": "off" } }] })
+map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "stylers": { "color": "#031628" } }, { "featureType": "land", "elementType": "geometry", "stylers": { "color": "#000102" } }, { "featureType": "highway", "elementType": "geometry.fill", "stylers": { "color": "#000000" } }, { "featureType": "highway", "elementType": "geometry.stroke", "stylers": { "color": "#147a92" } }, { "featureType": "arterial", "elementType": "geometry.fill", "stylers": { "color": "#000000" } }, { "featureType": "arterial", "elementType": "geometry.stroke", "stylers": { "color": "#0b3d51" } }, { "featureType": "local", "elementType": "geometry", "stylers": { "color": "#000000" } }, { "featureType": "railway", "elementType": "geometry.fill", "stylers": { "color": "#000000" } }, { "featureType": "railway", "elementType": "geometry.stroke", "stylers": { "color": "#08304b" } }, { "featureType": "subway", "elementType": "geometry", "stylers": { "lightness": -70 } }, { "featureType": "building", "elementType": "geometry.fill", "stylers": { "color": "#000000" } }, { "featureType": "all", "elementType": "labels.text.fill", "stylers": { "color": "#857f7f" } }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": { "color": "#000000" } }, { "featureType": "building", "elementType": "geometry", "stylers": { "color": "#022338" } }, { "featureType": "green", "elementType": "geometry", "stylers": { "color": "#062032" } }, { "featureType": "boundary", "elementType": "all", "stylers": { "color": "#465b6c" } }, { "featureType": "manmade", "elementType": "all", "stylers": { "color": "#022338" } }, { "featureType": "label", "elementType": "all", "stylers": { "color": "#022338", "visibility": "off" } }] });
+
+// 异步获取数据
+;
+(async function() {
+var textData = [
+    { text: '东城', geometry: { type: 'Point', coordinates: [113.781803, 23.018795] } },
+    { text: '莞城', geometry: { type: 'Point', coordinates: [113.751333, 23.055512] } },
+    { text: '虎门', geometry: { type: 'Point', coordinates: [113.671419, 22.829733] } },
+    { text: '长安', geometry: { type: 'Point', coordinates: [113.751333, 22.80255] } },
+    { text: '厚街', geometry: { type: 'Point', coordinates: [113.695137, 22.928664] } },
+    { text: '南城', geometry: { type: 'Point', coordinates: [113.722012, 22.991651] } },
+    { text: '寮步', geometry: { type: 'Point', coordinates: [113.863613, 23.012407] } },
+    { text: '塘厦', geometry: { type: 'Point', coordinates: [114.083799, 22.815639] } },
+    { text: '常平', geometry: { type: 'Point', coordinates: [114.019622, 22.976357] } },
+    { text: '凤岗', geometry: { type: 'Point', coordinates: [114.156073, 22.743368] } },
+    { text: '清溪', geometry: { type: 'Point', coordinates: [114.172171, 22.858509] } },
+    { text: '大朗', geometry: { type: 'Point', coordinates: [113.953929, 22.927227] } },
+    { text: '万江', geometry: { type: 'Point', coordinates: [113.697865, 23.057108] } },
+    { text: '沙田', geometry: { type: 'Point', coordinates: [113.590931, 22.902194] } },
+    { text: '石碣', geometry: { type: 'Point', coordinates: [113.794451, 23.114556] } },
+    { text: '横沥', geometry: { type: 'Point', coordinates: [113.982863, 23.038418] } },
+    { text: '黄江', geometry: { type: 'Point', coordinates: [114.006169, 22.873877] } },
+    { text: '企石', geometry: { type: 'Point', coordinates: [114.053139, 23.077823] } },
+    { text: '麻涌', geometry: { type: 'Point', coordinates: [113.561772, 23.044478] } },
+    { text: '茶山', geometry: { type: 'Point', coordinates: [113.888136, 23.073522] } },
+    { text: '中堂', geometry: { type: 'Point', coordinates: [113.655897, 23.110833] } },
+    { text: '高埗', geometry: { type: 'Point', coordinates: [113.728911, 23.106046] } },
+    { text: '桥头', geometry: { type: 'Point', coordinates: [114.078459, 23.027842] } },
+    { text: '东坑', geometry: { type: 'Point', coordinates: [113.930131, 23.009216] } },
+    { text: '道滘', geometry: { type: 'Point', coordinates: [113.646123, 23.002296] } },
+    { text: '石排', geometry: { type: 'Point', coordinates: [113.949558, 23.096017] } },
+    { text: '谢岗', geometry: { type: 'Point', coordinates: [114.177422, 22.978865] } },
+    { text: '石龙', geometry: { type: 'Point', coordinates: [113.857692, 23.119342] } },
+    { text: '洪梅', geometry: { type: 'Point', coordinates: [113.593806, 22.98952] } },
+    { text: '松山湖', geometry: { type: 'Point', coordinates: [113.869765, 22.922434] } },
+    { text: '大岭山', geometry: { type: 'Point', coordinates: [113.820775, 22.911782] } },
+    { text: '樟木头', geometry: { type: 'Point', coordinates: [114.092257, 22.930422] } },
+    { text: '望牛墩', geometry: { type: 'Point', coordinates: [113.624851, 23.056576] } },
+]
+
+var textDataSet = new mapv.DataSet(textData);
+
+var textOptions = {
+    draw: 'text',
+    font: '14px Arial',
+    fillStyle: 'white',
+    shadowColor: 'yellow',
+    shadowBlue: 10,
+    zIndex: 11,
+    shadowBlur: 10
+}
+
+var textMapvLayer = new mapv.baiduMapLayer(map, textDataSet, textOptions)
+
+
+var data = [
+    { geometry: { type: 'Point', coordinates: [113.781803, 23.018795],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.751333, 23.055512],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.671419, 22.829733],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.751333, 22.80255],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.695137, 22.928664],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.722012, 22.991651],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.863613, 23.012407],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [114.083799, 22.815639],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [114.019622, 22.976357],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [114.156073, 22.743368],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [114.172171, 22.858509],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.953929, 22.927227],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.697865, 23.057108],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.590931, 22.902194],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.794451, 23.114556],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.982863, 23.038418],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [114.006169, 22.873877],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [114.053139, 23.077823],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.561772, 23.044478],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.888136, 23.073522],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.655897, 23.110833],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.728911, 23.106046],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [114.078459, 23.027842],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.930131, 23.009216],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.646123, 23.002296],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.949558, 23.096017],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [114.177422, 22.978865],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.857692, 23.119342],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.593806, 22.98952],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.869765, 22.922434],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.820775, 22.911782],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [114.092257, 22.930422],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+    { geometry: { type: 'Point', coordinates: [113.624851, 23.056576],}, fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)', count: Math.random() * 30 + 5 },
+]
+
+var dataSet = new mapv.DataSet(data);
+
+var options = {
+    maxSize: 30,
+    max: 30,
+    minSize: 10,
+    draw: 'bubble'
+}
+
+var mapvLayer = new mapv.baiduMapLayer(map, dataSet, options);
+
+}())
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+baidudituSearchInfoWindow:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='initial-scale=1.0, user-scalable=no' />
+
+    <script src='http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ'></script>
+    <script src='http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js'></script>
+    <link rel='stylesheet' href='http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css' />
+
+    <style type='text/css'>
+        body,
+        html {
+            width: 100`%;
+            height: 100`%;
+            margin: 0;
+        }
+
+        #app {
+            height: 500px;
+            width: 100`%;
+            overflow: hidden;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div id='app'></div>
+
+    <script>
+    var map = new BMap.Map('app');
+    var poi = new BMap.Point(116.307852, 40.057031)
+    map.centerAndZoom(poi, 16)
+    map.enableScrollWheelZoom()
+
+    const content = item => ``
+      <div class='m-2 flex'>
+          <div class='flex flex-col'>
+              <div class='mt-2'>地址：${item.address}</div>
+              <div class='mt-2'>电话：${item.mobile}</div>
+              <div class='mt-2'>简介：${item.desc}</div>
+          </div>
+          <img src='http://lbsyun.baidu.com/img/baidu.jpg' alt='...' />
+      </div>
+    ``
+
+    var marker = new BMap.Marker(poi)
+    marker.__DATA__ = { address: 'Lorem ipsum dolor sit amet', mobile: '13713332652', desc: 'The giant panda' }
+
+    marker.addEventListener('click', function(e) {
+        const data = e.target.__DATA__ || {}
+
+        const html = content(data)
+
+        const searchInfoWindow = new BMapLib.SearchInfoWindow(map, html, {
+            title: '百度大厦',
+            width: 290,
+            height: 105,
+            panel: 'panel',
+            enableAutoPan: true,
+            searchTypes: [BMAPLIB_TAB_SEARCH, BMAPLIB_TAB_TO_HERE, BMAPLIB_TAB_FROM_HERE]
+        })
+
+        searchInfoWindow.open(marker)
+    })
+
+    map.addOverlay(marker)
+    </script>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

@@ -1,4 +1,14 @@
-﻿::radio::
+﻿::head-utf8::
+::headutf::
+::headutf8::
+Var =
+(
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+)
+code(Var)
+return
+
+::radio::
 Var =
 (
 <style>
