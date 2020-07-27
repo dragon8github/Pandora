@@ -1,4 +1,13 @@
-﻿::ssh::
+﻿::vercel::
+::zeit::
+Var =
+(
+vercel(zeit) https://github.com/vercel
+)
+code(Var)
+return
+
+::ssh::
 Var =
 (
 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
@@ -500,7 +509,7 @@ Var =
 (
 ------------------------------------------------------------------------------------
 )
-code(Var)
+p(Var)
 return
 
 ::jet::
@@ -571,41 +580,79 @@ return
 ::city33::
 Var =
 (
-南城
-东城
-莞城
-虎门
-长安
-厚街
-寮步
-塘厦
-常平
-凤岗
-清溪
-大朗
-万江
-大岭山
-沙田
-石碣
-横沥
-黄江
-松山湖
-樟木头
-企石
-麻涌
-茶山
-中堂
-高埗
-桥头
-东坑
-道滘
-石排
-谢岗
-石龙
-望牛墩
-洪梅
+{
+  "东城":[113.781803,23.018795],
+  "莞城":[113.751333,23.055512],
+  "虎门":[113.671419,22.829733],
+  "长安":[113.751333,22.80255],
+  "厚街":[113.695137,22.928664],
+  "南城":[113.722012,22.991651],
+  "寮步":[113.863613,23.012407],
+  "塘厦":[114.083799,22.815639],
+  "常平":[114.019622,22.976357],
+  "凤岗":[114.156073,22.743368],
+  "清溪":[114.172171,22.858509],
+  "大朗":[113.953929,22.927227],
+  "万江":[113.697865,23.057108],
+  "大岭山":[113.820775,22.911782],
+  "沙田":[113.590931,22.902194],
+  "石碣":[113.794451,23.114556],
+  "横沥":[113.982863,23.038418],
+  "黄江":[114.006169,22.873877],
+  "松山湖":[113.869765,22.922434],
+  "樟木头":[114.092257,22.930422],
+  "企石":[114.053139,23.077823],
+  "麻涌":[113.561772,23.044478],
+  "茶山":[113.888136,23.073522],
+  "中堂":[113.655897,23.110833],
+  "高埗":[113.728911,23.106046],
+  "桥头":[114.078459,23.027842],
+  "东坑":[113.930131,23.009216],
+  "道滘":[113.646123,23.002296],
+  "石排":[113.949558,23.096017],
+  "谢岗":[114.177422,22.978865],
+  "石龙":[113.857692,23.119342],
+  "望牛墩":[113.624851,23.056576],
+  "洪梅":[113.593806,22.989521]
+---
+const fuckdata = [
+     { text: '东城', geometry: { type: 'Point', coordinates: [113.781803, 23.018795] }},
+     { text: '莞城', geometry: { type: 'Point', coordinates: [113.751333, 23.055512] }},
+     { text: '虎门', geometry: { type: 'Point', coordinates: [113.671419, 22.829733] }},
+     { text: '长安', geometry: { type: 'Point', coordinates: [113.751333, 22.80255] }},
+     { text: '厚街', geometry: { type: 'Point', coordinates: [113.695137, 22.928664] }},
+     { text: '南城', geometry: { type: 'Point', coordinates: [113.722012, 22.991651] }},
+     { text: '寮步', geometry: { type: 'Point', coordinates: [113.863613, 23.012407] }},
+     { text: '塘厦', geometry: { type: 'Point', coordinates: [114.083799, 22.815639] }},
+     { text: '常平', geometry: { type: 'Point', coordinates: [114.019622, 22.976357] }},
+     { text: '凤岗', geometry: { type: 'Point', coordinates: [114.156073, 22.743368] }},
+     { text: '清溪', geometry: { type: 'Point', coordinates: [114.172171, 22.858509] }},
+     { text: '大朗', geometry: { type: 'Point', coordinates: [113.953929, 22.927227] }},
+     { text: '万江', geometry: { type: 'Point', coordinates: [113.697865, 23.057108] }},
+     { text: '沙田', geometry: { type: 'Point', coordinates: [113.590931, 22.902194] }},
+     { text: '石碣', geometry: { type: 'Point', coordinates: [113.794451, 23.114556] }},
+     { text: '横沥', geometry: { type: 'Point', coordinates: [113.982863, 23.038418] }},
+     { text: '黄江', geometry: { type: 'Point', coordinates: [114.006169, 22.873877] }},
+     { text: '企石', geometry: { type: 'Point', coordinates: [114.053139, 23.077823] }},
+     { text: '麻涌', geometry: { type: 'Point', coordinates: [113.561772, 23.044478] }},
+     { text: '茶山', geometry: { type: 'Point', coordinates: [113.888136, 23.073522] }},
+     { text: '中堂', geometry: { type: 'Point', coordinates: [113.655897, 23.110833] }},
+     { text: '高埗', geometry: { type: 'Point', coordinates: [113.728911, 23.106046] }},
+     { text: '桥头', geometry: { type: 'Point', coordinates: [114.078459, 23.027842] }},
+     { text: '东坑', geometry: { type: 'Point', coordinates: [113.930131, 23.009216] }},
+     { text: '道滘', geometry: { type: 'Point', coordinates: [113.646123, 23.002296] }},
+     { text: '石排', geometry: { type: 'Point', coordinates: [113.949558, 23.096017] }},
+     { text: '谢岗', geometry: { type: 'Point', coordinates: [114.177422, 22.978865] }},
+     { text: '石龙', geometry: { type: 'Point', coordinates: [113.857692, 23.119342] }},
+     { text: '洪梅', geometry: { type: 'Point', coordinates: [113.593806, 22.98952] }},
+     { text: '松山湖', geometry: { type: 'Point', coordinates: [113.869765, 22.922434] }},
+     { text: '大岭山', geometry: { type: 'Point', coordinates: [113.820775, 22.911782] }},
+     { text: '樟木头', geometry: { type: 'Point', coordinates: [114.092257, 22.930422] }},
+     { text: '望牛墩', geometry: { type: 'Point', coordinates: [113.624851, 23.056576] }},
+]
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ; 没什么卵用
@@ -925,7 +972,7 @@ return
 ::dgxy::
 Var =
 (
-113.843319, 22.921901
+lngLat: [113.843319, 22.921901],
 )
 code(Var)
 Return

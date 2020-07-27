@@ -1,4 +1,22 @@
-﻿::tectcolor::
+﻿::dongtaikuandu::
+::dongtaiwidth::
+::dongtaiw::
+::echartsw::
+::echartswidth::
+::echartw::
+::echartwidth::
+Var =
+(
+var dynamicWidth = (min = 0, max = 1, minSize = 1, maxSize = 10) => (v = 0) => {
+    const a = (maxSize - minSize) / (max - min)
+    const b = maxSize - a * max
+    return a * v + b
+}
+)
+code(Var)
+return
+
+::tectcolor::
 ::textc::
 ::txtcolor::
 Var =

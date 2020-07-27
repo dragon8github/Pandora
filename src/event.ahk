@@ -1051,21 +1051,29 @@ Var =
 symbolSize: val => {
     // 获取所有values
     const values = scatter_data.map(_ => _.value[2])
+
     // 获取最大值
     const max = Math.max(Math.max(...values))
     // 获取最小值
     const min = Math.min(...values)
+
     // 定义最大气泡
     const maxSize4Pin = 30
     // 定义最小气泡
     const minSize4Pin = 10
+
     // 固定套路
     var a = (maxSize4Pin - minSize4Pin) / (max - min);
-    var b = minSize4Pin - a * min;
-    b = maxSize4Pin - a * max;
-
+    /* var b = minSize4Pin - a * min; */
+    var b = maxSize4Pin - a * max;
     return a * val[2] + b;
 },
+
+var dynamicWidth = (min = 0, max = 1, minSize = 1, maxSize = 10) => (v = 0) => {
+    const a = (maxSize - minSize) / (max - min)
+    const b = maxSize - a * max
+    return a * v + b
+}
 )
 }
 

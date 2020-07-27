@@ -353,6 +353,8 @@ Gui, Pandora:Add, Link,, <a href="http://www.polayoutu.com">泼辣有图</a>
 Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a>
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">picjumbo山景</a>
 Gui, Pandora:Add, Link,, <a href="https://www.behance.net/galleries/illustration">优美插画资源</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/nordicgiant2/awesome-landing-page">很棒的登陆页面</a>
+
 
 
 
