@@ -9690,6 +9690,8 @@ FileAppend,
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
     <style>
     html, body{
         margin: 0;
@@ -9709,7 +9711,20 @@ FileAppend,
     </div>
 </body>
 <script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: []
+    },
+    methods: {
+        go () {
 
+        }
+    },
+    beforeMount () {
+
+    }
+})
 </script>
 </html>
 ),  %name%
@@ -11968,38 +11983,61 @@ FileAppend,
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
     <meta name='viewport' content='initial-scale=1.0, user-scalable=no' />
-
     <script src='http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ'></script>
     <script src='http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js'></script>
     <link rel='stylesheet' href='http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css' />
-
     <style type='text/css'>
-        body,
-        html {
-            width: 100`%;
-            height: 100`%;
-            margin: 0;
-        }
+    body,
+    html {
+        width: 100`%;
+        height: 100`%;
+        margin: 0;
+    }
 
-        #app {
-            height: 500px;
-            width: 100`%;
-            overflow: hidden;
-        }
+    #app {
+        height: 500px;
+        width: 100`%;
+        overflow: hidden;
+    }
+
+    .map-tip {
+        min-width: 200px;
+        padding: 1em .5em;
+
+        color: #fff;
+        font-size: 16px;
+        letter-spacing: 1px;
+        background: #0160E2;
+        text-align: center;
+
+        position: absolute;
+        left: 50`%;
+        transform: translate(-50`%, -120`%);
+    }
+
+    .map-tip::after {
+        content: '';
+        
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 7px solid #0160E2;
+
+        width: 0; height: 0;
+        position: absolute; bottom: -7px; left: 50`%;
+        transform: translateX(-50`%);
+    }
     </style>
-    
 </head>
 
 <body>
     <div id='app'></div>
-
     <script>
     var map = new BMap.Map('app');
     var poi = new BMap.Point(116.307852, 40.057031)
     map.centerAndZoom(poi, 16)
     map.enableScrollWheelZoom()
 
-    const content = item => ``
+    const content = item => `
       <div class='m-2 flex'>
           <div class='flex flex-col'>
               <div class='mt-2'>地址：${item.address}</div>
@@ -12008,10 +12046,10 @@ FileAppend,
           </div>
           <img src='http://lbsyun.baidu.com/img/baidu.jpg' alt='...' />
       </div>
-    ``
+    `
 
     var marker = new BMap.Marker(poi)
-    marker.__DATA__ = { address: 'Lorem ipsum dolor sit amet', mobile: '13713332652', desc: 'The giant panda' }
+    marker.__DATA__ = { title: '东莞新奧燃气有限公司', address: 'Lorem ipsum dolor sit amet', mobile: '13713332652', desc: 'The giant panda' }
 
     marker.addEventListener('click', function(e) {
         const data = e.target.__DATA__ || {}
@@ -12019,7 +12057,7 @@ FileAppend,
         const html = content(data)
 
         const searchInfoWindow = new BMapLib.SearchInfoWindow(map, html, {
-            title: '百度大厦',
+            title: data.title,
             width: 290,
             height: 105,
             panel: 'panel',
@@ -12030,9 +12068,232 @@ FileAppend,
         searchInfoWindow.open(marker)
     })
 
+    //////////////////////////////////////////////
+    // 这里开始是新内容
+    //////////////////////////////////////////////
+
+    const useDiv = (setStyle = () => {}, target = document.body) => {
+        // 创建 div
+        let div = document.createElement('div')
+        // 修改样式
+        setStyle(div)
+        // 插入body
+        target.append(div)
+        // 返回 hook
+        return [div, () => div.style.display = 'none']
+    }
+
+    const getTextContentBy = match => {
+        const el = document.querySelector(match)
+        return el ? el.textContent : ''
+    }
+
+    marker.addEventListener('mouseover', function (event) {
+        const target = event.domEvent.target
+
+        // 获取标题
+        const { title } = this.__DATA__
+
+        // 如果目前该 marker 正在显示 InfoWindow，则不显示
+        if (getTextContentBy('.BMapLib_bubble_title') === title)
+            return
+
+        // （暂无使用）获取 marker 页面信息
+        const { top, left, width, height } = target.style
+
+        // （暂无使用）将 225px => 225
+        const _top = parseFloat(top), _left = parseFloat(left), _width = parseFloat(width), _height = parseFloat(height)
+
+        // div hoook（老实说频繁操作dom我也不喜欢，但影响几乎没有）
+        const [div, remove] = useDiv(div => {
+            div.className = 'map-tip'
+            div.textContent = title
+        }, target)
+
+        // 删除 div
+        this.addEventListener('mouseout', remove)
+        this.addEventListener('mouseup', remove)
+    })
+
+
     map.addOverlay(marker)
     </script>
 </body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+
+baidujuhe110:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>MarkerClusterer for Baidu Map Example</title>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <script src="http://huiyan-fe.github.io/BMap-JavaScript-library/src/TextIconOverlay/TextIconOverlay.min.js"></script>
+    <script src="http://huiyan-fe.github.io/BMap-JavaScript-library/src/MarkerClusterer/MarkerClusterer.min.js"></script>
+    <style type="text/css">
+    #mapDiv1 {
+        height: 400px;
+        width: 600px;
+        margin: 20px
+    }
+
+    #mapDiv2 {
+        height: 400px;
+        width: 600px;
+        margin: 20px;
+        left: 620px;
+        top: -420px;
+    }
+    </style>
+    
+</head>
+
+<body>
+    <input id="btnText" type="button" value="改变GridSize" />
+    <input id="btnPoint" type="button" value="改变MaxZoom" />
+    <input id="btnStyles" type="button" value="改变Styles" />
+    <input id="btnAddMarkers" type="button" value="添加Markers" />
+    <input id="btnRemoveMarkers" type="button" value="删除Markers" />
+    <input id="btnshowMarkers" type="button" value="自定义隐藏markers" />
+    <input id="btnhideMarkers" type="button" value="自定义显示markers" />
+    <div id="mapDiv1"></div>
+    <div id="mapDiv2"></div>
+</body>
+<script>
+var EXAMPLE_URL = "http://api.map.baidu.com/library/MarkerClusterer/1.2/examples/";
+var map = new BMap.Map("mapDiv1");
+map.enableScrollWheelZoom();
+var point = new BMap.Point(116.404, 39.915);
+map.centerAndZoom(point, 4);
+
+var map2 = new BMap.Map("mapDiv2");
+map2.enableScrollWheelZoom();
+map2.centerAndZoom(point, 4);
+
+map.addEventListener("zoomend", function() {
+    map2.zoomTo(map.getZoom());
+    map2.panTo(map.getCenter());
+});
+
+map.addEventListener("moveend", function() {
+    map2.zoomTo(map.getZoom());
+    map2.panTo(map.getCenter());
+});
+
+var MAX = 10;
+var markers = [];
+var pt = null;
+var i = 0;
+for (; i < MAX; i++) {
+    pt = new BMap.Point(Math.random() * 40 + 85, Math.random() * 30 + 21);
+    markers.push(new BMap.Marker(pt));
+
+    map2.addOverlay(new BMap.Marker(pt));
+}
+//最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
+var markerClusterer = new BMapLib.MarkerClusterer(map, { markers: markers });
+
+//更改一些参数设置，比如GridSize， maxZoom
+var btnOpen = document.getElementById('btnText');
+btnOpen.onclick = function(event) {
+    markerClusterer.setGridSize(100);
+};
+
+var newPt = new BMap.Point(116.404, 39.895);
+var btnClose = document.getElementById('btnPoint');
+btnClose.onclick = function() {
+    markerClusterer.setMaxZoom(7);
+};
+
+var myStyles = [{
+    url: EXAMPLE_URL + 'images/heart30.png',
+    size: new BMap.Size(30, 26),
+    opt_anchor: [16, 0],
+    textColor: '#ff00ff',
+    opt_textSize: 10
+}, {
+    url: EXAMPLE_URL + 'images/heart40.png',
+    size: new BMap.Size(40, 35),
+    opt_anchor: [40, 35],
+    textColor: '#ff0000',
+    opt_textSize: 12
+}, {
+    url: EXAMPLE_URL + 'images/heart50.png',
+    size: new BMap.Size(50, 44),
+    opt_anchor: [32, 0],
+    textColor: 'white',
+    opt_textSize: 14
+}];
+
+var btnStyles = document.getElementById('btnStyles');
+btnStyles.onclick = function(event) {
+    markerClusterer.setStyles(myStyles);
+};
+
+//添加和删除Markers
+var newMarkers = getNewMarkers(MAX);
+var newMarkers2 = newMarkers;
+
+var btnAddMarkers = document.getElementById('btnAddMarkers');
+btnAddMarkers.onclick = function(event) {
+    if (!newMarkers.length) {
+        //如果之前的markers被清空了，则重新生成
+        newMarkers = getNewMarkers(MAX);
+        newMarkers2 = newMarkers;
+    };
+    markerClusterer.addMarkers(newMarkers);
+    for (i = 0; i < MAX; i++) {
+        map2.addOverlay(newMarkers2[i]);
+    }
+};
+
+var btnRemoveMarkers = document.getElementById('btnRemoveMarkers');
+btnRemoveMarkers.onclick = function(event) {
+    markerClusterer.removeMarkers(newMarkers);
+    for (i = 0; i < MAX; i++) {
+        map2.removeOverlay(newMarkers2[i]);
+    }
+};
+/**
+ * 得到一个随机的marker数组。
+ * @param  {Number} 数组的长度
+ * @return {Array} 随机marker数组
+ */
+function getNewMarkers(MAX) {
+    var newMarkers = [];
+    for (i = 0; i < MAX; i++) {
+        pt = new BMap.Point(Math.random() * 40 + 85, Math.random() * 30 + 21);
+        newMarkers.push(new BMap.Marker(pt));
+    }
+    return newMarkers;
+}
+
+
+/**
+ * 我的 ...
+ *
+ */
+const _styles = markerClusterer.getStyles()
+const c_styles = _styles.map(_ => Object.assign({}, _, { size: new BMap.Size(0, 0), textColor: 'transparent' }))
+btnshowMarkers.addEventListener('click', e => {
+    markerClusterer.setStyles(c_styles)
+})
+
+btnhideMarkers.addEventListener('click', e => {
+    markerClusterer.setStyles(_styles)
+    
+})
+</script>
 
 </html>
 ),  %name%

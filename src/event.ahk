@@ -88,6 +88,22 @@
 	Menu, JavaScriptEventMenu, Add, ontouchend, EventHandler
 	Menu, JavaScriptEventMenu, Add, ontouchcancel, EventHandler
 
+	Menu, JavaScriptEventMenu, Add
+	Menu, JavaScriptEventMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 mouse家族 🍁🍁🍁🍁🍁🍁🍁🍁, EventHandler
+	Menu, JavaScriptEventMenu, Add
+	Menu, JavaScriptEventMenu, Add, mousedown, EventHandler
+	Menu, JavaScriptEventMenu, Add, mouseup, EventHandler
+	Menu, JavaScriptEventMenu, Add, mousemove, EventHandler
+	Menu, JavaScriptEventMenu, Add, mouseout, EventHandler
+	Menu, JavaScriptEventMenu, Add, mouseenter, EventHandler
+	Menu, JavaScriptEventMenu, Add, mouseleave, EventHandler
+
+	Menu, JavaScriptEventMenu, Add
+	Menu, JavaScriptEventMenu, Add, 🍁🍁🍁🍁🍁🍁🍁🍁 右键菜单 🍁🍁🍁🍁🍁🍁🍁🍁, EventHandler
+	Menu, JavaScriptEventMenu, Add
+	Menu, JavaScriptEventMenu, Add, contextmenu, EventHandler
+	
+
 
 	Menu, echartsAction, Add, legendUnSelect, EventHandler
 	Menu, echartsAction, Add, legendSelect, EventHandler
@@ -238,6 +254,71 @@ Var =
 (
 )
 }
+
+if (v == "mousedown") {
+Var = 
+(
+document.addEventListener('mousedown', function (e) {
+	console.log(20200801091642, e)
+})
+)
+}
+
+if (v == "mouseup") {
+Var = 
+(
+document.addEventListener('mouseup', function (e) {
+	console.log(20200801091642, e)
+})
+)
+}
+
+if (v == "mousemove") {
+Var = 
+(
+document.addEventListener('mousemove', function (e) {
+	console.log(20200801091642, e)
+})
+)
+}
+
+if (v == "mouseout") {
+Var = 
+(
+document.addEventListener('mouseout', function (e) {
+	console.log(20200801091642, e)
+})
+)
+}
+
+if (v == "mouseenter") {
+Var = 
+(
+document.addEventListener('mouseenter', function (e) {
+	console.log(20200801091642, e)
+})
+)
+}
+
+if (v == "mouseleave") {
+Var = 
+(
+document.addEventListener('mouseleave', function (e) {
+	console.log(20200801091642, e)
+})
+)
+}
+
+if (v == "contextmenu") {
+Var = 
+(
+document.addEventListener('contextmenu', function (e) {
+	// 拦截浏览器默认右键行为
+    e.preventDefault()
+})
+)
+}
+
 
 if (v == "CustomEvent 自定义事件 和 推送") {
 _send("customevent", true, true)

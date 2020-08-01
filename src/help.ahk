@@ -1,4 +1,46 @@
-﻿::vercel::
+﻿::ahkask::
+Var =
+(
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+)
+code(Var)
+return
+
+::naifeitian::
+Var =
+(
+奈非天 - 涅法雷姆 - Nephalem
+)
+code(Var)
+return
+
+::ql::
+Var =
+(
+GraphQL
+)
+code(Var)
+return
+
+::so::
+Var =
+(
+stackOverflow
+)
+code(Var)
+return
+
+^t::
+name :=  A_Desktop . "\test" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".js"
+FileAppend,
+(
+
+),  %name%
+RunBy(name)
+run, % name
+return
+
+::vercel::
 ::zeit::
 Var =
 (
@@ -108,7 +150,7 @@ code(Var)
 return
 
 ::yuque::
-p("羽雀")
+code("羽雀")
 return
 
 ::admin::
@@ -134,7 +176,6 @@ code(Var)
 return
 
 ::Po::
-::chuansongmen::
 ::csm::
 ::por::
 Var =
@@ -1256,6 +1297,7 @@ open -a Google\ Chrome --args --disable-web-security --user-data-dir
 Send, % Var
 return
 
+::no-safe::
 ::nosafe::
 ::notsafe::
 ::chromesafe::
@@ -1769,43 +1811,37 @@ cs("npm run start")
 return
 
 !Up::
-    SendInput, {PGUP}
-    SendInput, {Alt Up}
+    Send, {PGUP}
 return
 
 +!Up::
-    SendInput, +{PGUP}
-    SendInput, {Alt Up}
+    Send, +{PGUP}
 return
 
 !Down::
-    SendInput, {PGDN}
-    SendInput, {Alt Up}
+    Send, {PGDN}
 return
 
 +!Down::
-    SendInput, +{PGDN}
-    SendInput, {Alt Up}
+    Send, +{PGDN}
 return
 
 !Right::
-    SendInput, {end}
-    SendInput, {Alt Up}
+    Send, {end}
 return
 
+
+
 +!Right::
-    SendInput, +{end} 
-    SendInput, {Alt Up}
+    Send, +{end} 
 return
 
 !Left::
-    SendInput, {Home}
-    SendInput, {Alt Up}
+    Send, {Home}
 return
 
 +!Left::
-    SendInput, +{Home}
-    SendInput, {Alt Up}
+    Send, +{Home}
 return
 
 /*
@@ -1863,18 +1899,21 @@ Return
     tmp := Clipboard
     Clipboard =
     ; 第二步，复制当前选中内容
-    WinClip.copy()
+    Send, ^c ; WinClip.copy()
     ClipWait, 2
-    if (StrLen(Clipboard) >= 50) {
-        MsgBox, 请不要把此功能当做翻译机
-        return 
+    if (Clipboard) {
+          if (StrLen(Clipboard) >= 50) {
+              MsgBox, 请不要把此功能当做翻译机
+              return 
+          }
+          ; 百度翻译API
+          Var := ajax("http://106.12.222.209:8083/baidu_transapi.php?text=" . Clipboard . "&type=tuofeng")
+          ; 黏贴结果
+          code(Var)
+          ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
+          Clipboard := Var
     }
-    ; 百度翻译API
-    Var := ajax("http://106.12.222.209:8083/baidu_transapi.php?text=" . Clipboard . "&type=tuofeng")
-    ; 黏贴结果
-    code(Var)
-    ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
-    Clipboard := Var
+
 Return
 
 !q::
@@ -1882,17 +1921,19 @@ Return
     tmp := Clipboard
     Clipboard =
     ; 第二步，复制当前选中内容
-    WinClip.copy()
+    Send, ^c ; ; WinClip.copy()
     ClipWait, 2
-    if (StrLen(Clipboard) >= 50) {
-        MsgBox, 请不要把此功能当做翻译机
-        return 
+    if (Clipboard) {
+      if (StrLen(Clipboard) >= 50) {
+          MsgBox, 请不要把此功能当做翻译机
+          return 
+      }
+      ; 百度翻译API
+      Var := ajax("http://106.12.222.209:8083/baidu_transapi.php?text=" . Clipboard . "&type=_", true)
+      tip("翻译成功", "【" . Clipboard . "】 的翻译结果为： " . Var)
+      ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
+      Clipboard := Var
     }
-    ; 百度翻译API
-    Var := ajax("http://106.12.222.209:8083/baidu_transapi.php?text=" . Clipboard . "&type=_", true)
-    tip("翻译成功", "【" . Clipboard . "】 的翻译结果为： " . Var)
-    ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
-    Clipboard := Var
 Return
 
 /**
@@ -2400,8 +2441,10 @@ tmp := Clipboard
 Clipboard :=
 Send, ^x
 ClipWait, 2
-a := "『" . Clipboard . "』"
-code(a)
+if (Clipboard) {
+  a := "『" . Clipboard . "』"
+  code(a)
+}
 Clipboard := tmp
 return
 
@@ -2410,8 +2453,10 @@ tmp := Clipboard
 Clipboard :=
 Send, ^x
 ClipWait, 2
-a := "「" . Clipboard . "」"
-code(a)
+if (Clipboard) {
+  a := "「" . Clipboard . "」"
+  code(a)
+}
 Clipboard := tmp
 return
 

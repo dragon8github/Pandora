@@ -114,6 +114,7 @@
     Menu, cssknow, Add, :root 与 var(--primary-color), CssHandler
     Menu, cssknow, Add, Calc()与background-position数学表达式, CssHandler
 
+    Menu, CssMenu, Add, 极简的页面加载动画：pageload, CssHandler
     Menu, CssMenu, Add, 新毛玻璃backdrop-filter, CssHandler
     Menu, CssMenu, Add, filter blur 背景虚化, CssHandler
     Menu, CssMenu, Add, box-reflect 一行 css 代码实现倒影效果 , CssHandler
@@ -292,6 +293,11 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "极简的页面加载动画：pageload") {
+_send("pageload", true, true)
+return
 }
 
 if (v == "新毛玻璃backdrop-filter") {
@@ -5003,8 +5009,19 @@ background: #fafafa;
 text-rendering: optimizelegibility;
 -webkit-text-size-adjust: 100`%;
 -webkit-font-smoothing: antialiased;
+---
+<!-- https://fonts.google.com/specimen/Ubuntu#standard-styles -->
+<link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@300&display=swap" rel="stylesheet"></link>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300&display=swap');
+</style>
+
+html {
+    font-family: 'Red Rose', cursive;
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::ell2::

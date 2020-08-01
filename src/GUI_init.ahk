@@ -375,7 +375,7 @@ Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
 Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140 , 新建纯index.html
 Gui, Pandora:Add, Text, gNewPureVUEIndexHtml W140 , 新建纯vue.html
 Gui, Pandora:Add, Text, gvueecharts W140 , 新建纯v-chart.html
-Gui, Pandora:Add, Text, gNewcomposition W160 , 新建vue3-composition.html
+Gui, Pandora:Add, Text, gNewcomposition W160 , 新建vue-composition-API
 Gui, Pandora:Add, Text, gVueComponentHtml W140, 新建vueComponent.html
 Gui, Pandora:Add, Text, gVueComponentHtml2 W140, 新建vueComponent2.html
 Gui, Pandora:Add, Text, gNewVueRules W140 , 新建vue.rules.html
@@ -454,7 +454,8 @@ Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 ; Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
 ; Gui, Pandora:Add, Text, gtianditujuhetuhtml ,新建天地图聚合图.html
 Gui, Pandora:Add, Text, gmapVbaiduhtml W160, 新建百度地图 + mapV.html
-Gui, Pandora:Add, Text, gbaidudituSearchInfoWindow W180, 百度地图SearchInfoWindow.html
+Gui, Pandora:Add, Text, gbaidudituSearchInfoWindow W180, 百度地图InfoWindow和Tip.html
+Gui, Pandora:Add, Text, gbaidujuhe110 W180, 百度地图聚合图.html
 Gui, Pandora:Add, Text, gmapv2fuckhtml W160, 新建 mapV文本+图形.html
 Gui, Pandora:Add, Text, gmapv2fuckhtml2 W160, 新建 mapV文本+图形2.html
 
@@ -467,7 +468,7 @@ Gui, Pandora:Add, Text, gyanzhengzuobiaodian2 W180, 验证两个多边形是否�
 Gui, Pandora:Add, Text, gbaidunidili W160,百度坐标转地理位置.html
 
 
-Gui, Pandora:Add, Text, gcsssearchtml W160 ys x+30, 新建简单CSS也能做搜索
+Gui, Pandora:Add, Text, gcsssearchtml W160 ys x+50, 新建简单CSS也能做搜索
 Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 Gui, Pandora:Add, Text, gcssskeletonHtml W140,新建css骨骼图.skeleton
 Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
@@ -500,17 +501,15 @@ Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/fyvis/#/planB">测�
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/fyvis/#/">正式预览</a>
 
 
+Gui, Pandora:Add, Text,  W150 ys, ioc-basic
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/visual/basic">源码地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/35/interface/api">yapi</a>
 
 
 Gui, Pandora:Add, Text,  W160 ys, 大数据屏幕（vue+jquery）
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/lizhaohong/largeDataScreen">大数据屏幕 git</a>
 Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:82/">大数据屏幕174演示</a>
 Gui, Pandora:Add, Link,, <a href="http://120.196.128.45:801/">大数据屏幕45演示</a>
-
-Gui, Pandora:Add, Text,  W150 ys, 教育咨询（react）
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/antd-dgedu-consult-g">g端 git（教育局后台）</a>
-Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/frontendjs/antd-dgedu-consult-b">b端 git（商家后台）</a>
-Gui, Pandora:Add, Link,, <a href="http://120.77.146.174:8081/dashboard/user/login.jspx">前端菜单配置</a>
 
 Gui, Pandora:Add, Text,  W160 ys, 12345大数据屏（vue）
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/dg12345-plus">新的 gitlab 地址</a>

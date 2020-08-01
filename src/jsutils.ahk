@@ -209,6 +209,7 @@
 
     ; @认知 @renzhi
 
+    Menu, utilspractice, Add, obj 也有 get/set 的 API 了, utilsHandler
     Menu, utilspractice, Add, navigator.geolocation获取地理位置信息, utilsHandler
     Menu, utilspractice, Add, 使用 combinate 生成所有可能的组合, utilsHandler
     Menu, utilspractice, Add, isPointInPolygon: 如何验证坐标点是否在多边形内, utilsHandler
@@ -498,6 +499,25 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "obj 也有 get/set 的 API 了") {
+Var =
+(
+const obj = {
+  get foo() {
+    return this.val
+  },
+
+  set bar(value) {
+    this.val = value
+  }
+}
+
+obj.bar = 'hello world'
+
+console.log(obj.foo) // =>hello world
 )
 }
 
@@ -7052,6 +7072,8 @@ return
 ::bus::
 ::$bus::
 ::event::
+::event.bus::
+::eventbus::
 Var =
 (
 const isPromise = val => val && typeof val.then === 'function'
@@ -8878,8 +8900,25 @@ const useDiv = () => {
 
 // 创建一个容器
 const [div, remove] = useDiv()
+---
+const useDiv = (setStyle = () => {}, target = document.body) => {
+    // 创建 div
+    let div = document.createElement('div')
+    // 修改样式
+    setStyle(div)
+    // 插入body
+    target.append(div)
+    // 返回 hook
+    return [div, () => div.remove()]
+}
+
+// div hoook（老实说频繁操作dom我也不喜欢，但影响几乎没有）
+const [div, remove] = useDiv(div => {
+    div.className = 'map-tip'
+    div.textContent = title
+}, target)
 )
-code(Var)
+txtit(Var)
 return
 
 ::rightclick::

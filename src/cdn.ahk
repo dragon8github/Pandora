@@ -76,6 +76,8 @@ return
 
 ::cdn-shunfeng::
 ::cdn-tail::
+::cdn-tailw::
+::cdn-tailwin::
 ::cdn-wind::
 ::cdn-tailwind::
 ::cdn-utils::

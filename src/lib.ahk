@@ -1,7 +1,8 @@
 ﻿
 p(v) 
 {
-WinClip.paste(v)
+; WinClip.paste(v)
+code(v)
 }
 
 createPic(PicPath)
@@ -319,18 +320,23 @@ cs(code) {
 ; 复制黏贴大段文本
 code(code) {
     tmp := Clipboard
+
     Clipboard := code
+
     ; 这里也需要等待，否则有几率出现黏贴不出的情况，如果出现黏贴不出的情况，就尝试调大这里的数值把
     Sleep, 200
     WinGetTitle, title, A
-    
-    if (InStr(title, "Android Studio") or InStr(title, "PyCharm") or InStr(title, "WebStorm") or InStr(title, "PhpStorm") or InStr(title, "IDEA") or InStr(title, "Notepad2")) {
+
+    if (InStr(title, "有道云笔记")) {
+        Send, {CtrlDown}v{CtrlUp}
+    } else if (InStr(title, "Android Studio") or InStr(title, "PyCharm") or InStr(title, "WebStorm") or InStr(title, "PhpStorm") or InStr(title, "IDEA") or InStr(title, "Notepad2")) {
         ; Send, {CtrlDown}v{CtrlUp}
         WinClip.paste()
     } else {
         ; Send, {CtrlDown}{ShiftDown}v{CtrlUp}{ShiftUp}
         WinClip.paste()
     }
+
     ; 这里至少需要等待100m，原因不详
     sleep, 100
     ; 还原剪切板

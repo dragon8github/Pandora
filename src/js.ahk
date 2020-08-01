@@ -1,4 +1,263 @@
-﻿::dongtaikuandu::
+﻿::youjian::
+Var =
+(
+// 这就是核心的拦截事件
+document.oncontextmenu = (e) => {
+    // 拦截浏览器默认右键行为
+    e.preventDefault()
+}
+)
+code(Var)
+return
+
+::console.red::
+::console.r::
+::console.warn::
+::console.error::
+::console.waring::
+::console.fbi::
+InputBox, OutputVar, title, enter a name?,,,,,,,,WARNING: you will be obsessed with folklore
+Var =
+(
+console.log("`%cWARNING: you will be obsessed with folklore", "font: 2em sans-serif; color: yellow; background-color: red;");
+)
+code(Var)
+return
+
+::jiami::
+Var =
+(
+import hash from 'hash.js'
+
+// 加密工具
+export const encryption = v => {
+  // 指纹
+  const fingerprint = JSON.stringify(v)
+  // 加密指纹
+  const hashcode = hash.sha256().update(fingerprint).digest('hex')
+  // 返回加密指纹
+  return hashcode
+}
+)
+code(Var)
+return
+
+::group::
+::groupby::
+Var =
+(
+const groupby = (ary = [], key = '', obj = {}) => ary.reduce((p, c) => {
+  const g = c[key]
+
+  if (!p[g]) { 
+    p[g] = [c]
+  } else {
+    p[g].push(c)
+  }
+
+  return p
+}, {})
+
+const data = [{"ID":1651,"JGMC":"东莞市春田新绿农业科技有限公司","LNG":113.57144898821936,"LAT":23.076226647134813,"TOWN_NAME":"麻涌镇"},{"ID":2440,"JGMC":"东莞广垦绿色蔬菜有限公司","LNG":113.75290412208857,"LAT":23.094390710699333,"TOWN_NAME":"高埗镇"},{"ID":2647,"JGMC":"东莞市立成害虫防治有限公司","LNG":113.76941109697425,"LAT":22.956781026918655,"TOWN_NAME":"东城街道"},{"ID":2770,"JGMC":"广东我家生态农业发展有限公司","LNG":113.88534589747307,"LAT":22.967790561532695,"TOWN_NAME":"松山湖高新技术产业开发区"},{"ID":2771,"JGMC":"广东我家生态农业发展有限公司","LNG":113.88534589747307,"LAT":22.967790561532695,"TOWN_NAME":"松山湖高新技术产业开发区"},{"ID":2931,"JGMC":"东莞市延尚景观工程有限公司","LNG":113.81550675965211,"LAT":22.809715348645184,"TOWN_NAME":"长安镇"},{"ID":3071,"JGMC":"东莞市中泰润龟养殖有限公司","LNG":113.9068035981228,"LAT":23.052651244903565,"TOWN_NAME":"茶山镇"},{"ID":3147,"JGMC":"东莞市绿网航达农业科技有限公司","LNG":113.65306490119538,"LAT":23.05520926111267,"TOWN_NAME":"望牛墩镇"},{"ID":3314,"JGMC":"东莞市科霸害虫防治有限公司","LNG":114.0176419549202,"LAT":22.969013629072617,"TOWN_NAME":"常平镇"},{"ID":5759,"JGMC":"东莞市恒基电子塑料厂","LNG":113.85699939238123,"LAT":23.084670145563344,"TOWN_NAME":"茶山镇"},{"ID":5825,"JGMC":"东莞市东城嘉文制衣厂","LNG":113.822519006289,"LAT":23.04626065622825,"TOWN_NAME":"东城街道"},{"ID":6240,"JGMC":"东莞市寮步华兴制衣厂","LNG":113.82456080196913,"LAT":23.03434405701129,"TOWN_NAME":"寮步镇"},{"ID":6302,"JGMC":"东莞市寮步顺兴纸品印刷厂（普通合伙）","LNG":113.85036871432335,"LAT":23.030239014300157,"TOWN_NAME":"寮步镇"},{"ID":6571,"JGMC":"东莞市绿资原野园林景观有限公司","LNG":113.66722202542871,"LAT":22.79624268287231,"TOWN_NAME":"虎门镇"},{"ID":7192,"JGMC":"东莞市康地源食品有限公司","LNG":113.8218851003555,"LAT":23.108377552659572,"TOWN_NAME":"石碣镇"},{"ID":7937,"JGMC":"东莞市丰桦源农业科技有限公司","LNG":113.5979573296063,"LAT":22.895214933174664,"TOWN_NAME":"沙田镇"},{"ID":8026,"JGMC":"东莞市国盈农业科技有限公司","LNG":113.65155613347173,"LAT":23.02626708417263,"TOWN_NAME":"道滘镇"},{"ID":8315,"JGMC":"东莞市大众蔬菜科技种植有限公司","LNG":113.59815619464482,"LAT":22.974335126329965,"TOWN_NAME":"洪梅镇"},{"ID":9365,"JGMC":"东莞市葡萄当家农业发展有限公司","LNG":113.67200843209906,"LAT":23.04198487748504,"TOWN_NAME":"万江街道"},{"ID":9874,"JGMC":"东莞市广正丰养殖有限公司","LNG":113.84512373563027,"LAT":23.032064066987363,"TOWN_NAME":"寮步镇"},{"ID":10271,"JGMC":"东莞市逸颐生态农业发展有限公司","LNG":113.95703125002679,"LAT":23.004149782852426,"TOWN_NAME":"东坑镇"},{"ID":10699,"JGMC":"广东盘厢硒生态农业发展有限公司","LNG":113.58401883212123,"LAT":23.065275950155076,"TOWN_NAME":"麻涌镇"},{"ID":12136,"JGMC":"东莞市瑞容成生态农业有限公司","LNG":113.73875954225373,"LAT":23.008999472496594,"TOWN_NAME":"南城街道"},{"ID":12680,"JGMC":"东莞市永诚农业种植有限公司","LNG":114.00190412693831,"LAT":22.83444475149011,"TOWN_NAME":"黄江镇"},{"ID":18023,"JGMC":"东莞市大朗澳龙水产专业合作社","LNG":113.96325699027706,"LAT":22.924824887385597,"TOWN_NAME":"大朗镇"},{"ID":18026,"JGMC":"东莞市晋晖兰花专业合作社","LNG":113.80101686778268,"LAT":22.993773342238935,"TOWN_NAME":"东城街道"},{"ID":18028,"JGMC":"东莞市桂珠蔬菜专业合作社望牛墩八坊分社","LNG":113.65306490119538,"LAT":23.05520926111267,"TOWN_NAME":"望牛墩镇"},{"ID":18148,"JGMC":"东莞市利源农业科技有限公司","LNG":114.00423583413175,"LAT":22.947034749549097,"TOWN_NAME":"常平镇"},{"ID":19021,"JGMC":"东莞市胜田生态农业科技有限公司","LNG":113.801706467053,"LAT":23.048049290681245,"TOWN_NAME":"东城街道"},{"ID":20050,"JGMC":"东莞市天丰农林科技发展有限公司","LNG":113.75602433160786,"LAT":23.02886235419624,"TOWN_NAME":"莞城街道"},{"ID":20110,"JGMC":"东莞市盈景园林有限公司","LNG":113.71964675879299,"LAT":22.850643159352728,"TOWN_NAME":"虎门镇"},{"ID":20955,"JGMC":"东莞市益海生物科技有限公司","LNG":113.56211270198096,"LAT":23.03637806211709,"TOWN_NAME":"麻涌镇"},{"ID":21276,"JGMC":"东莞市金源龟业养殖有限公司","LNG":113.73895411683162,"LAT":23.109294287861747,"TOWN_NAME":"高埗镇"},{"ID":21347,"JGMC":"东莞市丰裕农业有限公司","LNG":114.0890951088287,"LAT":22.841378620000743,"TOWN_NAME":"塘厦镇"},{"ID":22172,"JGMC":"东莞市新骏园林绿化工程有限公司","LNG":113.84695660827016,"LAT":22.981227100426104,"TOWN_NAME":"寮步镇"},{"ID":22407,"JGMC":"东莞市常平沙湖口锦鲤养殖有限公司","LNG":114.01339282517333,"LAT":23.01762810573023,"TOWN_NAME":"常平镇"},{"ID":23175,"JGMC":"东莞市春雅园艺有限公司","LNG":113.79864562917713,"LAT":23.030730696143433,"TOWN_NAME":"寮步镇"},{"ID":23649,"JGMC":"东莞市中汇园林环卫有限公司","LNG":113.73184620918599,"LAT":23.009071978367864,"TOWN_NAME":"南城街道"},{"ID":23930,"JGMC":"东莞市塘厦超亿胶袋厂","LNG":114.10146554271861,"LAT":22.758140068183234,"TOWN_NAME":"塘厦镇"},{"ID":24179,"JGMC":"东莞市新源机械厂（普通合伙）","LNG":113.6682453580918,"LAT":23.042126299750354,"TOWN_NAME":"万江街道"},{"ID":24199,"JGMC":"东莞市虎门伟华纸品厂","LNG":113.74281501902871,"LAT":22.83842986440404,"TOWN_NAME":"虎门镇"},{"ID":24409,"JGMC":"东莞市石排联丰织造厂","LNG":113.98055434907745,"LAT":23.093132552066095,"TOWN_NAME":"石排镇"},{"ID":24562,"JGMC":"东莞市长安源丰包装制品厂","LNG":113.74533963552634,"LAT":22.79799643604394,"TOWN_NAME":"长安镇"},{"ID":24992,"JGMC":"东莞市松盛农业科技有限公司","LNG":113.74810131784015,"LAT":22.93916021412555,"TOWN_NAME":"南城街道"},{"ID":25037,"JGMC":"东莞市桥头精溢高周波机械厂","LNG":114.07668723125418,"LAT":23.022021300847083,"TOWN_NAME":"桥头镇"},{"ID":25466,"JGMC":"东莞市求和园艺工程有限公司","LNG":114.10153741994532,"LAT":22.76873920476143,"TOWN_NAME":"南城街道"},{"ID":25937,"JGMC":"东莞市宏亚园林绿化有限公司","LNG":114.02840551350108,"LAT":23.055169858488487,"TOWN_NAME":"企石镇"},{"ID":26461,"JGMC":"东莞市克拉农场有限公司","LNG":113.56251949127419,"LAT":23.04990410447112,"TOWN_NAME":"麻涌镇"},{"ID":26473,"JGMC":"广东乡地农业发展有限公司","LNG":113.85162462206847,"LAT":23.11007198920084,"TOWN_NAME":"石龙镇"},{"ID":27376,"JGMC":"东莞绿满地蔬果有限责任公司","LNG":113.8708127021816,"LAT":22.9975382729483,"TOWN_NAME":"寮步镇"},{"ID":27832,"JGMC":"广东果源地农业贸易有限公司","LNG":113.65455242950401,"LAT":22.89471847573724,"TOWN_NAME":"厚街镇"},{"ID":28621,"JGMC":"深圳市中大合顺有害生物防治有限公司东莞分公司","LNG":113.77694085471812,"LAT":22.81873405502789,"TOWN_NAME":"长安镇"},{"ID":28648,"JGMC":"东莞市樟芝农业有限公司","LNG":114.07217993992306,"LAT":22.807052020901732,"TOWN_NAME":"塘厦镇"},{"ID":28649,"JGMC":"东莞市盛丰园林绿化有限公司","LNG":113.81544524184609,"LAT":23.03271401206344,"TOWN_NAME":"寮步镇"},{"ID":29625,"JGMC":"东莞市蓝风有害生物防治有限公司","LNG":114.0553187120461,"LAT":22.906499078776353,"TOWN_NAME":"樟木头镇"},{"ID":30537,"JGMC":"东莞市田田圈农业服务有限公司","LNG":113.69019273049393,"LAT":22.792308993561022,"TOWN_NAME":"虎门镇"},{"ID":30771,"JGMC":"东莞市中堂永盛硫酸铝厂","LNG":113.6653431022188,"LAT":23.100544815857752,"TOWN_NAME":"中堂镇"},{"ID":31273,"JGMC":"东莞市寮步旭明养殖场","LNG":113.86013864200822,"LAT":22.97821503105739,"TOWN_NAME":"寮步镇"},{"ID":31956,"JGMC":"东莞市洪梅洪福草皮种植场","LNG":113.59815619464482,"LAT":22.974335126329965,"TOWN_NAME":"洪梅镇"},{"ID":33535,"JGMC":"东莞市中堂宝树园花木场","LNG":113.6935058902018,"LAT":23.111463470173938,"TOWN_NAME":"中堂镇"},{"ID":34171,"JGMC":"东莞市茶山深记芽菜店","LNG":113.85879031952695,"LAT":23.054611964837292,"TOWN_NAME":"茶山镇"},{"ID":34462,"JGMC":"东莞市虎门小鲵图书出租店","LNG":113.68941854969944,"LAT":22.82769257131943,"TOWN_NAME":"虎门镇"},{"ID":34618,"JGMC":"东莞市凤岗文龙斋家庭农场","LNG":114.19182302716352,"LAT":22.762700471165633,"TOWN_NAME":"凤岗镇"},{"ID":35462,"JGMC":"东莞市常平培记花木种植场","LNG":114.02259036755878,"LAT":22.9746266310054,"TOWN_NAME":"常平镇"},{"ID":36061,"JGMC":"东莞市望牛墩望东蔬菜专业合作社","LNG":113.63145742404457,"LAT":23.045762624662146,"TOWN_NAME":"望牛墩镇"},{"ID":36062,"JGMC":"东莞市绿鑫水果专业合作社","LNG":113.6575293367701,"LAT":23.067748911494174,"TOWN_NAME":"望牛墩镇"},{"ID":36064,"JGMC":"东莞市中堂丰收园蔬菜专业合作社","LNG":113.70515704065848,"LAT":23.11311720379997,"TOWN_NAME":"中堂镇"},{"ID":36214,"JGMC":"东莞市千百匠园林景观工程有限公司","LNG":113.67474970008693,"LAT":22.83400560682177,"TOWN_NAME":"虎门镇"},{"ID":36855,"JGMC":"珠海经济特区园海绿化工程有限公司东莞分公司","LNG":113.86944021480615,"LAT":22.996843536695682,"TOWN_NAME":"寮步镇"},{"ID":37182,"JGMC":"东莞市东歌实业有限公司","LNG":114.15583691771151,"LAT":22.838409605552158,"TOWN_NAME":"清溪镇"},{"ID":37245,"JGMC":"东莞市翔雁害虫防治有限公司","LNG":113.78516370237142,"LAT":23.030739160110354,"TOWN_NAME":"大岭山镇"},{"ID":37723,"JGMC":"东莞市天鑫农业科技有限公司","LNG":113.88534589747307,"LAT":22.967790561532695,"TOWN_NAME":"松山湖高新技术产业开发区"},{"ID":37826,"JGMC":"广州中茂园林建设工程有限公司东莞分公司","LNG":null,"LAT":null,"TOWN_NAME":null},{"ID":39109,"JGMC":"东莞市一采灵芝有限公司","LNG":113.77694085471812,"LAT":22.81873405502789,"TOWN_NAME":"长安镇"},{"ID":39535,"JGMC":"东莞市三禾园林科技有限公司","LNG":113.86265178411773,"LAT":22.998791502094168,"TOWN_NAME":"寮步镇"},{"ID":40375,"JGMC":"东莞市圣茵农业有限公司","LNG":114.00949429762113,"LAT":23.036232520494288,"TOWN_NAME":"横沥镇"},{"ID":41075,"JGMC":"广东绿卡实业有限公司","LNG":113.66516877665029,"LAT":22.86446735972833,"TOWN_NAME":"虎门镇"},{"ID":41346,"JGMC":"东莞市嘉丰园林工程有限公司","LNG":113.6301793433342,"LAT":22.81584537357743,"TOWN_NAME":"虎门镇"},{"ID":41538,"JGMC":"东莞市早稻田农业科技有限公司","LNG":114.00947892107982,"LAT":23.034299742371132,"TOWN_NAME":"横沥镇"},{"ID":42030,"JGMC":"东莞市虎门镇武山沙农业发展有限公司","LNG":113.65364358504358,"LAT":22.818268056632405,"TOWN_NAME":"虎门镇"},{"ID":42132,"JGMC":"东莞市高埗礼成织造厂（普通合伙）","LNG":113.98836442529787,"LAT":22.97696228793775,"TOWN_NAME":"高埗镇"},{"ID":42315,"JGMC":"东莞市麻涌新稻碾米加工厂","LNG":113.56604070710706,"LAT":23.04871991884366,"TOWN_NAME":"麻涌镇"},{"ID":42415,"JGMC":"东莞市石排凯悦塑料制品厂","LNG":113.96403492623047,"LAT":23.07885665135097,"TOWN_NAME":"石排镇"},{"ID":42654,"JGMC":"东莞市鸿茂园林绿化工程有限公司","LNG":113.71635437191938,"LAT":22.82897075738765,"TOWN_NAME":"虎门镇"},{"ID":42901,"JGMC":"东莞市麻涌顺兴纸箱厂","LNG":113.59609867643589,"LAT":23.084281088629535,"TOWN_NAME":"麻涌镇"},{"ID":43654,"JGMC":"东莞市七号粮仓有机农业科技开发有限公司东城中惠丽阳分公司","LNG":113.78840211377133,"LAT":23.031327712540733,"TOWN_NAME":"东城街道"},{"ID":44184,"JGMC":"东莞市华商休闲农业开发有限公司","LNG":113.62857619837985,"LAT":23.058399504837684,"TOWN_NAME":"望牛墩镇"},{"ID":46377,"JGMC":"东莞市立地农业科技有限公司","LNG":113.65135680636067,"LAT":22.94264746219695,"TOWN_NAME":"厚街镇"},{"ID":47976,"JGMC":"东莞市湘农农副产品有限公司","LNG":113.6946169591449,"LAT":23.001526446499692,"TOWN_NAME":"万江街道"},{"ID":48016,"JGMC":"东莞市大来新材料有限公司","LNG":113.95073219907624,"LAT":23.025600570439032,"TOWN_NAME":"横沥镇"},{"ID":49290,"JGMC":"东莞市天宝利涂料厂","LNG":113.84145719542815,"LAT":22.988285348013047,"TOWN_NAME":"寮步镇"},{"ID":49376,"JGMC":"东莞市洪梅兴达花卉种植场","LNG":113.60871253926358,"LAT":23.014758975125616,"TOWN_NAME":"洪梅镇"},{"ID":49897,"JGMC":"东莞市望牛墩敦兴种植场","LNG":113.65306490119538,"LAT":23.05520926111267,"TOWN_NAME":"望牛墩镇"},{"ID":51588,"JGMC":"东莞市大岭山仲莲女儿香种植场","LNG":113.8437973601703,"LAT":22.940809508781943,"TOWN_NAME":"大岭山镇"},{"ID":51754,"JGMC":"东莞市黄江彬濠家庭农场","LNG":113.9909578724752,"LAT":22.814308771953797,"TOWN_NAME":"黄江镇"},{"ID":53224,"JGMC":"东莞市中堂明和堂农场","LNG":113.6653431022188,"LAT":23.100544815857752,"TOWN_NAME":"中堂镇"},{"ID":54051,"JGMC":"东莞市企石惠泽白蚁防治服务部","LNG":114.05282966762327,"LAT":23.09208089148013,"TOWN_NAME":"企石镇"},{"ID":54217,"JGMC":"东莞市大岭山鑫发蔬菜专业合作社","LNG":113.83796222479242,"LAT":22.862910071941798,"TOWN_NAME":"大岭山镇"},{"ID":54218,"JGMC":"东莞市塘厦星河食用菌专业合作社","LNG":114.08670557603546,"LAT":22.80742358026117,"TOWN_NAME":"塘厦镇"},{"ID":54220,"JGMC":"东莞市国林沉香种植专业合作社","LNG":113.85448047051375,"LAT":22.970125082338672,"TOWN_NAME":"寮步镇"}]
+
+console.log(20200730192750, groupby(data, 'TOWN_NAME'))
+)
+code(Var)
+return
+
+::allow::
+::allow.js::
+::validate::
+::validate.js::
+Var =
+(
+const is = { not: { empty: 1, negative: 0 }, positive: 1 }
+
+const isAnObject = (value) => typeof value === 'object' && !Array.isArray(value) && value !== null;
+
+class Allow {
+    throwOnFailure = true;
+
+    aBoolean = (value = false) => {
+        if (typeof value !== 'boolean')
+            this.fail(value, 'is not a Boolean');
+        return this;
+    };
+
+    aFunction = (value = () => { }) => {
+        if (typeof value !== 'function')
+            this.fail(value, 'is not a function');
+        return this;
+    };
+
+    anArray = (value = [], minLength = 0, maxLength = Number.MAX_SAFE_INTEGER) => {
+        this.anInteger(minLength, is.not.negative).anInteger(maxLength, is.not.negative);
+        if (!Array.isArray(value))
+            this.fail(value, 'is not an array');
+        this.checkLength(value, minLength, maxLength);
+        return this;
+    };
+
+    anArrayOfArrays = (value = [], minLength = 0, maxLength = Number.MAX_SAFE_INTEGER) => {
+        this.anArray(value).anInteger(minLength, is.not.negative).anInteger(maxLength, is.not.negative);
+        value.forEach(item => this.anArray(item));
+        this.checkLength(value, minLength, maxLength);
+        return this;
+    }
+
+    anArrayOfInstances = (value = [], modelObject = {}, minLength = 0, maxLength = Number.MAX_SAFE_INTEGER) => {
+        this.anArray(value).anObject(modelObject).anInteger(minLength, is.not.negative).anInteger(maxLength, is.not.negative);
+        value.forEach(item => this.anInstanceOf(item, modelObject));
+        this.checkLength(value, minLength, maxLength);
+        return this;
+    }
+
+    anArrayOfIntegers = (value = [], minLength = 0, maxLength = Number.MAX_SAFE_INTEGER) => {
+        this.anArray(value).anInteger(minLength, is.not.negative).anInteger(maxLength, is.not.negative);
+        value.forEach(item => this.anInteger(item));
+        this.checkLength(value, minLength, maxLength);
+        return this;
+    }
+
+    anArrayOfNumbers = (value = [], minLength = 0, maxLength = Number.MAX_SAFE_INTEGER) => {
+        this.anArray(value).anInteger(minLength, is.not.negative).anInteger(maxLength, is.not.negative);
+        value.forEach(item => this.aNumber(item));
+        this.checkLength(value, minLength, maxLength);
+        return this;
+    }
+
+    anArrayOfObjects = (value = [], minLength = 0, maxLength = Number.MAX_SAFE_INTEGER) => {
+        this.anArray(value).anInteger(minLength, is.not.negative).anInteger(maxLength, is.not.negative);
+        value.forEach(item => this.anObject(item));
+        this.checkLength(value, minLength, maxLength);
+        return this;
+    }
+
+    anArrayOfStrings = (value = [], minLength = 0, maxLength = Number.MAX_SAFE_INTEGER) => {
+        this.anArray(value).anInteger(minLength, is.not.negative).anInteger(maxLength, is.not.negative);
+        value.forEach(item => this.aString(item));
+        this.checkLength(value, minLength, maxLength);
+        return this;
+    }
+
+    anInstanceOf = (suppliedObject = {}, modelObject = {}) => {
+        this.anObject(suppliedObject).anObject(modelObject);
+        const modelKeys = Object.keys(modelObject);
+        let aKeyIsMissing = false;
+        modelKeys.forEach(modelKey => {
+            if (!suppliedObject.hasOwnProperty(modelKey))
+                aKeyIsMissing = true;
+            else {
+                const suppliedValue = suppliedObject[modelKey];
+                const modelValue = modelObject[modelKey];
+                const isSuppliedValueAnObject = isAnObject(suppliedValue);
+                const isSuppliedValueAnArray = Array.isArray(suppliedValue);
+                const isModelValueAnObject = isAnObject(modelValue);
+                const isModelValueAnArray = Array.isArray(modelValue);
+                if (isSuppliedValueAnObject !== isModelValueAnObject || isSuppliedValueAnArray !== isModelValueAnArray)
+                    this.fail(suppliedObject, 'does not match the model object');
+                else if (isModelValueAnObject)
+                    this.anInstanceOf(suppliedValue, modelValue);
+            }
+        });
+        if (aKeyIsMissing)
+            this.fail(suppliedObject, 'is missing a required key');
+        return this;
+    }
+
+    anInteger = (value = 0, minValue = Number.MIN_SAFE_INTEGER, maxValue = Number.MAX_SAFE_INTEGER) => {
+        if (!Number.isInteger(value))
+            this.fail(value, 'is not an integer');
+        this.checkRange(value, minValue, maxValue);
+        return this;
+    };
+
+    anObject = (value = {}, minNumberOfKeys = 0, maxNumberOfKeys = Number.MAX_SAFE_INTEGER) => {
+        this.anInteger(minNumberOfKeys, is.not.negative).anInteger(maxNumberOfKeys, is.not.negative);
+        if ((typeof value !== 'object' || Array.isArray(value) || value === null))
+            this.fail(value, 'is not an object');
+        this.checkLength(Object.keys(value), minNumberOfKeys, maxNumberOfKeys);
+        return this;
+    };
+
+    aNumber = (value = 0, minValue = Number.MIN_SAFE_INTEGER, maxValue = Number.MAX_SAFE_INTEGER) => {
+        if (typeof value !== 'number')
+            this.fail(value, 'is not a number');
+        this.checkRange(value, minValue, maxValue);
+        return this;
+    };
+
+
+    aString = (value = '', minLength = 0, maxLength = Number.MAX_SAFE_INTEGER) => {
+        this.anInteger(minLength, is.not.negative).anInteger(maxLength, is.not.negative);
+        if (typeof value !== 'string')
+            this.fail(value, 'is not a string');
+        this.checkLength(value, minLength, maxLength);
+        return this;
+    };
+
+    checkLength = (value, minLength = 0, maxLength = Number.MAX_SAFE_INTEGER) => {
+        if (value.length < minLength)
+            this.fail(value, 'is too short');
+        if (value.length > maxLength)
+            this.fail(value, 'is too long');
+    }
+
+    checkRange = (value = 0, minValue = Number.MIN_SAFE_INTEGER, maxValue = Number.MAX_SAFE_INTEGER) => {
+        if (value < minValue)
+            this.fail(value, 'is too small');
+        if (value > maxValue)
+            this.fail(value, 'is too large');
+    }
+
+    fail = (value, message = '') => {
+        if (!this.throwOnFailure)
+            return;
+        console.error(value);
+        throw new Error(message);
+    }
+
+    oneOf = (value, allowedValues) => {
+        if (typeof allowedValues !== 'object' || allowedValues === null) {
+            this.fail(allowedValues, 'oneOf alloweValues must be an object or an array');
+            return this;
+        }
+        if (Array.isArray(allowedValues)) {
+            if (!allowedValues.some(allowedValue => value === allowedValue))
+                this.fail(value, 'is not an allowed value');
+            return this;
+        }
+        const entries = Object.entries(allowedValues);
+        if (!entries.some(entry => entry[1] === value))
+            this.fail(value, 'is not an allowed value');
+        return this;
+    }
+}
+
+const allow = new Allow()
+
+export default allow 
+)
+code(Var)
+return
+
+::bdm::
+::bdmark::
+::marker::
+::bdpoint::
+::bdi::
+::ibd::
+Var =
+(
+var poi = new BMap.Point(116.307852, 40.057031)
+var marker = new BMap.Marker(poi)
+map.addOverlay(marker)
+)
+code(Var)
+return
+
+
+::dongtaikuandu::
 ::dongtaiwidth::
 ::dongtaiw::
 ::echartsw::
@@ -4218,6 +4477,78 @@ export const POST_ADMIN = (url = '', data = {}) => axios({ method: 'POST', url: 
 export const FORM_POST_ADMIN = (url = '', data = {}) => axios({ method: 'POST', url: __ADMIN__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'} })
 
 export const GET_ADMIN = (url = '', params = {}) => axios({ method: 'GET', url: __ADMIN__ + url, params})
+---
+import Qs from 'qs'
+import axios from 'axios'
+import { dateYYYYMMDDHHmmss, logs, diffSet } from './utils.js'
+
+const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/fyvis/visual/'
+
+// 请求队列
+let pending = []
+
+// 添加请求拦截器，动态设置参数
+axios.interceptors.request.use(config => {
+    // 获取参数详情
+    const { method, params, data, noRepeat = true } = config
+    
+    // 获取索引
+    const [url, note] = config.url.split('|')
+
+    // 以防万一，记录一下带有注释的 url
+    config.noteURL = config.url
+
+    // 过滤url的文本注释
+    config.url = url
+
+    // 加入备注
+    config.__NOTE__ = note
+
+    // （默认开启「去重」）如果需要去重复, 则中止队列中所有相同请求地址的 xhr
+    // 🔔 请注意，我这里故意使用「config.noteURL」，因为我要利用 「"|" 注释」来区分相同的 api
+    noRepeat && pending.forEach(_ => _.url === config.noteURL && _.cancel('⚔️ kill repeat xhr：' + config.noteURL))
+
+    // 配置 CancelToken
+    config.cancelToken = new axios.CancelToken(cancel => {
+        // 移除所有中止的请求，并且将新的请求推入缓存
+        pending = [...pending.filter(_ => _.url != config.noteURL), { url: config.noteURL, cancel }]
+    })
+
+    // 返回最终配置
+    return config
+})
+
+// 响应拦截器
+axios.interceptors.response.use(res => {
+    // 如果需要打印日志的话
+    if (true) {
+        // 获取请求配置
+        const { method, url, params, data, status, __NOTE__ } = res.config
+        // 获取参数
+        const p = JSON.stringify(method === 'get' ? params : data)
+        // 获取请求时间
+        const date = dateYYYYMMDDHHmmss(Date.now())
+        // 打印请求结果和详情
+        logs(`${__NOTE__}${method.toUpperCase()}：${url}`, res.data, JSON.stringify({params: method === 'get' ? params : data , result: res.data, status }, null, '\t'))
+    }
+
+    // 成功响应之后清空队列中所有相同Url的请求
+    pending = pending.filter(_ => _.url != res.config.noteURL)
+
+    // 只返回 data 即可
+    return res.data
+}, error => {
+    // 可以输出：error.response
+    return Promise.reject(error)
+})
+
+export const GET = (url = '', params = {}, config = {}) => axios({ method: 'GET', url: __API__ + url, params, ...config })
+
+export const POST = (url = '', data = {}, config = {}) => axios({ method: 'POST', url: __API__ + url, data, ...config })
+
+export const FORM_POST = (url = '', data = {}, config = {}) => axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}, ...config })
+
+export const SET = diffSet
 )
 txtit(Var)
 return
@@ -4872,8 +5203,80 @@ var calculateBonus = function ( level, salary ) {
 
 calculateBonus('S', 10000) // 40000
 calculateBonus('B', 10000) // 20000
+---
+import localforage from 'localforage'
+import allow from '@/utils/allow.js'
+import { encryption } from '@/utils/utils.js'
+
+// 验证参数合法性
+const validate = (key, fetchData) => allow.aFunction(fetchData).aString(key, 1)
+
+// 设置缓存数据
+const setItem = (key, value) => localforage.setItem(key, value)
+
+// 获取缓存数据
+const getItem = key => localforage.getItem(key)
+
+// 「策略一：缓存优先」
+// - 特点是优先使用缓存，如果缓存不存在才请求。而且，哪怕有缓存，也会发起请求更新缓存。
+// - 缺点是页面使用的并不是最新数据，哪怕缓存更新了，也不会使用更新界面。必须下次刷新才会使用最新的缓存。
+// - 如果你希望更新缓存后立即更新UI，那需要设计另一个复杂的策略了。至少对于地图来说，渲染两次太危险了。
+export const CacheFirst = async (key, fetchData) => {
+    validate(key, fetchData)
+
+    // 先等待获取缓存数据，反正不久
+    const cacheData = await getItem(key)
+
+    // 如果不存在缓存的话，需要先请求，再返回数据
+    if (!cacheData) {
+        return fetchData().then(data => {
+            // 加入缓存
+            setItem(key, data)
+            // 返回数据
+            return data
+        })
+    // 如果存在缓存的话
+    } else {
+        // 进行无等待请求
+        // （不等就不等，为何还要等待100ms才请求？ 因为我不想让它浪费页面其他同时期的请求）
+        setTimeout(() => fetchData().then(data => setItem(key, data)), 100);
+        // 并且立即返回缓存
+        return cacheData
+    }
+}
+
+// 「策略二：网络优先」 - 特点是先请求接口，如果请求失败才使用缓存。
+export const NetworkFirst = async (key, fetchData) => {
+    validate(key, fetchData)
+
+    // 先等待获取缓存数据，虽然是异步，但肯定不会耗费多久的。
+    const cacheData = await getItem(key)
+
+    // 请求数据，再缓存
+    return await fetchData().then(value => {
+        // 设置缓存
+        setItem(key, value)
+
+        // 返回数据
+        return value
+
+    // 如果请求失败，返回缓存
+    }).catch(_ => cacheData)
+}
+
+// 策略装饰器
+export const Decorator = (strategie, fetchData) => (...args) => {
+    // 以函数的入参作为 key
+    const key = encryption(args)
+
+    // 提前注入参数
+    const _fetchData = fetchData.bind(null, ...args)
+
+    // 返回指定策略
+    return strategie(key, _fetchData)
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::fuckfor::
@@ -11731,6 +12134,71 @@ return
 ::gen::
 Var =
 (
+const render = data => console.log(data)
+
+function *gen(fn) {
+    const cacheData = yield
+    fn(cacheData)
+
+    const networkData = yield
+    fn(networkData)
+}
+
+
+const g = gen(render)
+g.next()
+g.next('fuck')
+setTimeout(() => g.next('god'), 2000)
+---
+function *gen() {
+    yield 'fitst';
+    yield 'second';
+    yield 'third';
+}
+
+let genResult = gen();
+genResult.next().value // first
+genResult.next().value // second
+genResult.next().value // third
+
+//////////////////////////////////////////////
+
+function *gen() {
+    yield 'fitst';
+    yield 'second';
+    yield 'third';
+}
+
+for (const value of gen()) {
+   console.log(value);
+}
+// fitst
+// second
+// third
+---
+function *gen() {
+    const firstname = yield
+    console.log(firstname)
+
+    const secondname = yield
+    console.log(secondname)
+}
+
+const genResult = gen()
+genResult.next()
+genResult.next('fuck')
+genResult.next('god')
+
+// 解释一下，由于yield可以理解为暂停器。
+// 当第一次调用 g.next() 时，代码将返回并且暂停于此： const firstname = yield
+
+// 有趣的事情发生在第二次调用 g.next('fuck') 时传入了 「值」，将从上一次暂停处恢复，并且 「yield关键词」 将被 「值」 替换并且继续执行。
+// (所以 yield 有点像一个忠诚的影舞者，等待主人并且替换后，继续往下作战)
+
+// 然后继续执行，而又遇到yield处再次暂停： const secondname = yield
+// 第三次调用 next： g.next('god')
+// 同前面一样，传入的 「值」 将替换 yield，并在赋值完后继续执行。
+---
 let gen;
 
 let getDataOne = () => {
@@ -11755,63 +12223,33 @@ gen = main();
 gen.next();  // {value: undefined, done: false}
 // 1秒后输出： one two
 ---
-function *gen() {
-    return 'first generator';
+const test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 1000))
+
+// 生成器 + async/await 
+async function *gen(...args) {
+    console.log('记得创建生成器的时候是可以给参数的', args)
+
+    const cache = yield
+    console.log(data + cache)
+
+    const network = yield
+    console.log(network)
 }
 
-// 有点类似类的实例化过程
-let generatorResult = gen()
-
-// 核心方法next
-generatorResult.next() // {value: "first generator", done: true}
-
-// Generator 如同一个序列：一旦序列中的值被消费，你就不能再次消费它。
-generatorResult.next() // undefined
----
-function *gen() {
-    yield 'fitst';
-    yield 'second';
-    yield 'third';
-}
-
-let genResult = gen();
-genResult.next().value // first
-genResult.next().value // second
-genResult.next().value // third
----
-function *gen() {
-    yield 'fitst';
-    yield 'second';
-    yield 'third';
-}
-
-for (const value of gen()) {
-   console.log(value);
-}
-
-// fitst
-// second
-// third
----
-function *gen() {
-    var firstname = yield;
-    var secondname = yield;
-    console.log(firstname + secondname);
-}
-
-var genResult = gen()
-genResult.next()
-genResult.next('Mr. ')
-genResult.next('Right') // Mr. Right
+const g = gen('abc')
+g.next()
+g.next('fuck')
+setTimeout(() => g.next('god'), 2000)
 
 // 解释一下，由于yield可以理解为暂停器。
-// 当第一次调用 next 时，代码将返回并且暂停于此：    var firstname = yield;
-// 有趣的事情发生在第二次调用 next 时： genResult.next('Mr. ')。
-// 此时我们向 next 调用传入了值！Generator将从上一次暂停中恢复，并且 yield将被 "Mr. " 替换。因此firstname的值变成'Mr. '
-// 然后继续执行，而又遇到yield处再次暂停： genResult.next('Right')
-// 第三次调用 next： genResult.next('Right') 
-// 同前面一样，传入的 'Right' 将替换 yield，并在赋值完后继续执行。
-// 由于没有yield了。所以正常执行了: genResult.next('Right') // Mr. Right
+// 当第一次调用 g.next() 时，代码将返回并且暂停于此： const cache = yield
+
+// 有趣的事情发生在第二次调用 g.next('fuck') 时传入了 「值」，将从上一次暂停处恢复，并且 「yield关键词」 将被 「值」 替换并且继续执行。
+// (所以 yield 有点像一个忠诚的影舞者，等待主人并且替换后，继续往下作战)
+
+// 然后继续执行，而又遇到yield处再次暂停： const network = yield
+// 第三次调用 next： g.next('god')
+// 同前面一样，传入的 「值」 将替换 yield，并在赋值完后继续执行。
 )
 txtit(Var)
 return
@@ -13151,6 +13589,20 @@ export function def (obj, key, val, enumerable) {
     configurable: true
   })
 }
+---
+const obj = {
+  get foo() {
+    return this.val
+  },
+
+  set bar(value) {
+    this.val = value
+  }
+}
+
+obj.bar = 'hello world'
+
+console.log(obj.foo) // =>hello world
 )
 txtit(Var)
 return

@@ -3015,8 +3015,18 @@ return
 ::vue.router::
 ::vue.route::
 ::router.js::
+::router.vue::
 Var =
 (
+/**
+   // router.js 
+  const routes = [
+    { path: '/', component: () => import('./Home.vue') }
+    { path: '/about', component: () => import('./About.vue') }
+
+  ]
+ */
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store'
@@ -3042,22 +3052,22 @@ var router = new Router({
   // 当配置 vue.config.js publicPath 时就需要配置。实际上总是配置就行了。
   base: process.env.BASE_URL,
   routes: [
-	// 重定向首页
-	{ path: '/', redirect: '/dg/Home' },
-	// layoutA
-	{ path: '/dg', component: layoutA, children: [
-		// 重定向数据中心
-		{ path: '/', redirect: 'Home' },
-		// 数据中心
-		{ path: 'Home', name: 'Home', meta: { title: '数据中心' }, component: Home },
-	]},
-	// layoutB
-	{ path: '/am', component: layoutB, children: [
-		// 重定向数据采集
-		{ path: '/', redirect: 'Collection' },
-		// 数据采集
-		{ path: 'Collection', name: 'Collection', meta: { title: '数据采集' }, component: Collection },
-	]},
+  // 重定向首页
+  { path: '/', redirect: '/dg/Home' },
+  // layoutA
+  { path: '/dg', component: layoutA, children: [
+    // 重定向数据中心
+    { path: '/', redirect: 'Home' },
+    // 数据中心
+    { path: 'Home', name: 'Home', meta: { title: '数据中心' }, component: Home },
+  ]},
+  // layoutB
+  { path: '/am', component: layoutB, children: [
+    // 重定向数据采集
+    { path: '/', redirect: 'Collection' },
+    // 数据采集
+    { path: 'Collection', name: 'Collection', meta: { title: '数据采集' }, component: Collection },
+  ]},
   ]
 })
 // 全局路由钩子
@@ -5821,13 +5831,29 @@ return
 ::vue.install::
 Var =
 (
-const main = {}
+const commander = {
+    data() {
+        return {
+            
+        }
+    },
+    methods: {
+        
+    },
+    watch: {
 
-main.install = (Vue, options = {}) => {
-
+    },
+    beforeCreate() {
+       console.log(20200731221610, 'commander') 
+    }
 }
 
-export default main
+export default {
+    install(Vue) {
+        const $cmd = new Vue(commander)
+        window.$cmd = Vue.prototype.$cmd = $cmd
+    }
+}
 )
 code(Var)
 return
@@ -6758,6 +6784,8 @@ return h('div', {
 txtit(Var)
 return
 
+::chuansongmen::
+::kuaijielianjie::
 ::pop::
 Var =
 (
@@ -6804,7 +6832,7 @@ export const portal = (VueComponent = AllComponents) => {
                             // 路径
                             const file = this.__file()
                             // 打印
-                            window.alert(`已加入剪切板：${file}`)
+                            window.alert(``已加入剪切板：${file}``)
                             // copy
                             copyToClipboard(file)
                         }
