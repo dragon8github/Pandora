@@ -43,12 +43,12 @@
   Menu, VueMenu, Add, vue-cli 安装与预览单文件, VueHandler
   Menu, VueMenu, Add, pop超强！Vue 快速定位文件解决方案, VueHandler
   Menu, VueMenu, Add, vue.router, :Vuerouter
+  Menu, VueMenu, Add, vuex 必知必会基本功, :vuexmenubasic
   Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations`, mapGetters } from 'vuex', VueHandler  
   Menu, VueMenu, Add, this.$store.subscribe, VueHandler
   Menu, VueMenu, Add, store.js, VueHandler
   Menu, VueMenu, Add, createStore 方案, VueHandler
   Menu, VueMenu, Add, 使用 Vue.observable 轻量级管理状态, VueHandler
-  Menu, VueMenu, Add, vuex 必知必会基本功, :vuexmenubasic
   
 
   Menu, VueMenu, Add, , VueHandler
@@ -4592,19 +4592,14 @@ return
 ::store.sub::
 Var =
 (
-// 注意，这个不能放在 Mixin.create 之中，否则会创建N次
-// 注意，这个不能放在 Mixin.create 之中，否则会创建N次
-// 注意，这个不能放在 Mixin.create 之中，否则会创建N次
-this.$store.subscribe(({ type, payload }, rootState) => {
-    // 每次设置 『主角』 之后
-    if (type.includes('SET_MASTER')) {
-        // 都切换到 『组件配置栏』
-        this.SET_ACTIVEPANEL('setting')
-        // 每次移除主角之后，都切换到 『页面配置栏』
-    } else if (type.includes('KILL_MASTER')) {
-        this.SET_ACTIVEPANEL('page')
-    }
+// 注意，这个不能放在 Mixin.created 之中，否则会创建N次，建议离开销毁组件前取消监听
+// 注意，这个不能放在 Mixin.created 之中，否则会创建N次，建议离开销毁组件前取消监听
+// 注意，这个不能放在 Mixin.created 之中，否则会创建N次，建议离开销毁组件前取消监听
+store.subscribe((mutation, state) => {
+  console.log(mutation.type)
+  console.log(mutation.payload)
 })
+
 
 // 监听 action 的调用
 this.$store.subscribeAction({
@@ -4619,8 +4614,16 @@ this.$store.subscribeAction({
         }
     }
 })
+
+// 取消监听
+// 取消监听
+// 取消监听
+destroyed () {
+    // 取消 store 方面的订阅
+    this.unsubscribeAction && this.unsubscribeAction()
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::vuex::

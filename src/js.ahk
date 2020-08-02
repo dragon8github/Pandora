@@ -7384,7 +7384,7 @@ Var =
 (
 // 将数组转化为对象
 var obj = arr.reduce((p, c) => {
-    p[currentValue] = c
+    p[c] = c
     return p
 }, {})
 ---
