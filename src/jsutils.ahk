@@ -8702,6 +8702,9 @@ txtit(Var)
 return
 
 ::dotry::
+::try2::
+::tryc::
+::trycatch::
 Var =
 (
 const doTry = (_try = () => {}, _catch = () => {}) => {
@@ -8797,6 +8800,24 @@ console.log(result)
     // no work
     const [err, result] = await doTryAsync(test)
 }())
+---
+// 老样子，不要在 async 中使用 setTimeout
+const tryCatch = (fn = () => {}, errHandler) => async (...args) => {
+    try {
+      return await fn(...args)
+    } catch (err) {
+      errHandler(err)
+    }
+}
+
+tryCatch(
+    // 老样子，不要在 async 中使用 setTimeout
+    async id => {
+        // console.log(20200802185712, id)
+        throw new Error('110')
+    },
+    err => console.log(err.message),
+`)('1')
 )
 txtit(Var)
 return

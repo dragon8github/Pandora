@@ -114,6 +114,8 @@
     Menu, cssknow, Add, :root 与 var(--primary-color), CssHandler
     Menu, cssknow, Add, Calc()与background-position数学表达式, CssHandler
 
+    ; @1
+    Menu, CssMenu, Add, @apply 组合工具, CssHandler
     Menu, CssMenu, Add, 极简的页面加载动画：pageload, CssHandler
     Menu, CssMenu, Add, 新毛玻璃backdrop-filter, CssHandler
     Menu, CssMenu, Add, filter blur 背景虚化, CssHandler
@@ -293,6 +295,11 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "@apply 组合工具") {
+_send("scss.apply", true, true)
+return
 }
 
 if (v == "极简的页面加载动画：pageload") {
@@ -6455,4 +6462,27 @@ li a:focus {
 </a>
 )
 code(Var)
+return
+
+::scss.apply::
+Var =
+(
+.red { background: red;  }
+.f16 { font-size: 16px;  }
+.text-white { color: white; }
+.pl-4 { padding-left: 20px; }
+
+@mixin apply($args...) {
+    @for $i from 1 through length($args) {
+      $item: nth($args, $i);
+      @debug "scss debug info: #{$item}, #{$i}, #{$args}";
+      @extend .#{$item};
+    }
+}
+
+#app {
+    @include apply(red, f16, text-white, pl-4);
+}
+)
+txtit(Var)
 return

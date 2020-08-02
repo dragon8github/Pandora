@@ -2361,24 +2361,41 @@ return
 ::sass::
 Var =
 (
+<!-- sass -->
 <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
 
 <style>
-	$someVar: 123px; 
-	.some-selector { 
-	    width: $someVar; 
+	.red { background: red;  }
+	.f16 { font-size: 16px;  }
+	.text-white { color: white; }
+	.pl-4 { padding-left: 20px; }
+
+	@mixin apply($args...) {
+	    @for $i from 1 through length($args) {
+	      $item: nth($args, $i);
+	      @debug "scss debug info: #{$item}, #{$i}, #{$args}";
+	      @extend .#{$item};
+	    }
+	}
+
+	#app {
+	    @include apply(red, f16, text-white, pl-4);
 	}
 </style>
 
 <script>
-    // 获取第一个 <style> 
+    // 获取第一个 <style>
     const style = document.getElementsByTagName('style')[0]
     // 获取第一个
     const scss = style.innerHTML
     // 开始编译
-    Sass.compile(scss, result => {
-        // 替换为编译好的 css
-        style.innerHTML = result.text
+    Sass.compile(scss, (result, ...args) => {
+        if (result.status === 0) {
+            // 替换为编译好的 css
+            style.innerHTML = result.text
+        } else {
+            console.log('scss 编译异常：', result)
+        }
     })
 </script>
 ---
@@ -2397,6 +2414,25 @@ sass.render({ file: './index.sass', }, function(err, result) {
         if (!err) throw new Error(err)
     })
 })
+---
+<style>
+.red { background: red;  }
+.f16 { font-size: 16px;  }
+.text-white { color: white; }
+.pl-4 { padding-left: 20px; }
+
+@mixin apply($args...) {
+    @for $i from 1 through length($args) {
+      $item: nth($args, $i);
+      @debug "scss debug info: #{$item}, #{$i}, #{$args}";
+      @extend .#{$item};
+    }
+}
+
+#app {
+    @include apply(red, f16, text-white, pl-4);
+}
+</style>
 )
 txtit(Var)
 return

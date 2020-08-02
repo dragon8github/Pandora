@@ -2793,9 +2793,13 @@ FileAppend,
         // 获取第一个
         const scss = style.innerHTML
         // 开始编译
-        Sass.compile(scss, result => {
-            // 替换为编译好的 css
-            style.innerHTML = result.text
+        Sass.compile(scss, (result, ...args) => {
+            if (result.status === 0) {
+                // 替换为编译好的 css
+                style.innerHTML = result.text
+            } else {
+                console.log('scss 编译异常：', result)
+            }
         })
     </script>
 </head>
@@ -10971,9 +10975,13 @@ FileAppend,
         // 获取第一个
         const scss = style.innerHTML
         // 开始编译
-        Sass.compile(scss, result => {
-            // 替换为编译好的 css
-            style.innerHTML = result.text
+        Sass.compile(scss, (result, ...args) => {
+            if (result.status === 0) {
+                // 替换为编译好的 css
+                style.innerHTML = result.text
+            } else {
+                console.log('scss 编译异常：', result)
+            }
         })
     </script>
 </head>
