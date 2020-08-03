@@ -5623,10 +5623,10 @@ return
 ::compose::
 Var =
 (
-const pipeAsyncFunctions = (...fns) => arg => fns.reduce((p, f) => p.then(f), Promise.resolve(arg))
+const pipe = (...fns) => arg => fns.reduce((p, f) => p.then(f), Promise.resolve(arg))
 
 // EXAMPLES
-const sum = pipeAsyncFunctions(
+const sum = pipe(
   x => x + 1,
   x => new Promise(resolve => setTimeout(() => resolve(x + 2), 1000)),
   x => x + 3,
@@ -8398,6 +8398,7 @@ export const isArray = input => input instanceof Array || Object.prototype.toStr
 
 export const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
 
+export const isFunction = input => input instanceof Function || Object.prototype.toString.call(input) === '[object Function]'
 
 const inBrowser = typeof window !== 'undefined'
 const inWeex = typeof WXEnvironment !== 'undefined' && !!WXEnvironment.platform

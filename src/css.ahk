@@ -6464,7 +6464,14 @@ li a:focus {
 code(Var)
 return
 
+
+::@apply::
 ::scss.apply::
+::css.apply::
+::sass.apply::
+::scss.@apply::
+::css.@apply::
+::sass.@apply::
 Var =
 (
 .red { background: red;  }

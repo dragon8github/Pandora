@@ -3402,10 +3402,10 @@ let state = {
 }
 
 const actions = {
-  setAppData ({ commit, state, dispatch, rootState }, data) {
+  setAppData ({ commit, state, dispatch, rootState, getters, rootGetters }, data) {
 	   commit('SET_APP_DATA', data.userInfo)
   },
-  getDepartSecondOverdue ({ commit, state, dispatch, rootState }, departId) {
+  getDepartSecondOverdue ({ commit, state, dispatch, rootState, getters, rootGetters }, departId) {
     return request('/sg/department/sgDepartmentCount/getDepartSecondOverdue?departId=' + departId).then(result => {
         state.getDepartSecondOverdue = result
     })
