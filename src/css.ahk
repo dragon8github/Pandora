@@ -116,6 +116,7 @@
 
     ; @1
     Menu, CssMenu, Add, @apply 组合工具, CssHandler
+    Menu, CssMenu, Add, 提升阅读体验的最佳 css 实践, CssHandler
     Menu, CssMenu, Add, 极简的页面加载动画：pageload, CssHandler
     Menu, CssMenu, Add, 新毛玻璃backdrop-filter, CssHandler
     Menu, CssMenu, Add, filter blur 背景虚化, CssHandler
@@ -263,15 +264,16 @@
     Menu, CssMenu, Add, cool css, :coolcss
     Menu, CssMenu, Add, (=・ω・=)css认知系列, :cssknow
 
-	  Menu, CssMenu, Show
+    Menu, CssMenu, Show
     
-	  Menu, CssMenu, DeleteAll
+    Menu, CssMenu, DeleteAll
     Menu, Csssolution, DeleteAll
     Menu, CsstransformHandler, DeleteAll
     Menu, cssknow, DeleteAll
     Menu, CssAnimateHandler, DeleteAll
     Menu, coolcss, DeleteAll
     Menu, transitionHandler, DeleteAll
+    Menu, CssLoading, DeleteAll
     
 
 return
@@ -295,6 +297,11 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "提升阅读体验的最佳 css 实践") {
+_send("cssbook", true, true)
+return
 }
 
 if (v == "@apply 组合工具") {
@@ -6492,4 +6499,24 @@ Var =
 }
 )
 txtit(Var)
+return
+
+::css.read::
+::cssread::
+::cssbook::
+::css.book::
+::readcss::
+::artcss::
+::cssart::
+::art.css::
+::css.art::
+Var =
+(
+article h1 { font-size: 2.5em;  line-height: calc(1ex / 0.42); margin: calc(1ex / 0.42) 0; }
+article h2 { font-size: 2em;    line-height: calc(1ex / 0.42); margin: calc(1ex / 0.42) 0; }
+article h3 { font-size: 1.75em; line-height: calc(1ex / 0.38); margin: calc(1ex / 0.38) 0; }
+article h4 { font-size: 1.5em;  line-height: calc(1ex / 0.37); margin: calc(1ex / 0.37) 0; }
+article p  { font-size: 1em;    line-height: calc(1ex / 0.32); margin: calc(1ex / 0.32) 0; }
+)
+code(Var)
 return

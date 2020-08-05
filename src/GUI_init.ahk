@@ -275,6 +275,8 @@ Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ChanceYu/front-end-rss">front-end-rss</a>
 Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
+Gui, Pandora:Add, Link,, <a href="https://www.smashingmagazine.com/articles/">粉碎杂志</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="http://obkoro1.com/web_accumulate/algorithm/">前端算法题</a>
