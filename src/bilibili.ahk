@@ -24,6 +24,7 @@
 	Menu, KALUOPAI, Add, 【21】世界（The World，XXI), bilibiliHandler
 
 	Menu, DITUMAP, Add, 验证坐标点是否在多边形内, bilibiliHandler
+	Menu, DITUMAP, Add, 百度地图：地图坐标转换页面坐标, bilibiliHandler
 
 
 	Menu, bilibiliMenu, Add, map 地图, :DITUMAP
@@ -97,6 +98,14 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "百度地图：地图坐标转换页面坐标") {
+Var =
+(
+const data = map.pointToPixel(e.point)
+console.log(20200805154515, data)
 )
 }
 

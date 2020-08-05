@@ -4150,8 +4150,109 @@ return
 ::request.js::
 ::req.js::
 ::requestjs::
+::reqjs::
 Var =
 (
+import Qs from 'qs'
+import axios from 'axios'
+import { dateYYYYMMDDHHmmss, logs, waitWhen } from './utils.js'
+import isEqual from 'lodash/isEqual'
+
+const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/fyvis/visual/'
+
+// 请求队列
+let pending = []
+
+// 根据 res.config 清空 pedding 
+const cleanPedding = config => pending.filter(_ => {
+    // 获取对比数据
+    const { noteURL, data, params } = config
+    // fixbug: 万万没想到，为何这个是字符串？(当然也可能是 undefined) 如果是字符串的时候就 JSON.parse
+    const _data = data && JSON.parse(data)
+    // 完全符合条件
+    const isSame = _.url === noteURL && isEqual(_.data, _data) && isEqual(_.params, params)
+    // 要知道 filter 是满足条件留下来，而我要满足条件删除，所以要取反即可
+    return !isSame
+})
+
+// 添加请求拦截器，动态设置参数
+axios.interceptors.request.use(async config => {
+    // 获取参数详情
+    const { method, params, data, lazy, noRepeat = true } = config
+
+    // 获取索引
+    const [url, note] = config.url.split('|')
+
+    // 以防万一，记录一下带有注释的 url
+    config.noteURL = config.url
+
+    // 过滤url的文本注释
+    config.url = url
+
+    // 加入备注
+    config.note = note
+
+    // 🔴 懒模式 - 60s 内等待队列为空才进行，查询的间隔是 100ms 一次，每次只能进行一条。
+    if (lazy) await waitWhen(_ => pending.length === 0, 60 * 1000, 100)
+
+    // （默认开启「去重」）如果需要去重复, 则中止队列中所有相同请求地址的 xhr
+    // 🔔 请注意，我这里故意使用「config.noteURL」，因为我要利用 「"|" 注释」来区分相同的 api
+    noRepeat && pending.forEach(_ => {
+        // 判断是否相同？（noteUrl + 请求类型 + GET參數 + POST參數）
+        const isSame = _.url === config.noteURL && isEqual(_.data, data) && isEqual(_.params, params)
+
+        // 如果确实一致的话，那么取消
+        isSame && _.cancel('⚔️ kill repeat xhr：' + config.noteURL)
+    })
+
+    // 配置 CancelToken
+    config.cancelToken = new axios.CancelToken(cancel => {
+        // 移除所有中止的请求，并且将新的请求推入缓存
+        pending = [...pending.filter(_ => _.url != config.noteURL), { url: config.noteURL, cancel, params, data }]
+    })
+
+    // 返回最终配置
+    return config
+})
+
+// 响应拦截器
+axios.interceptors.response.use(res => {
+    // 获取请求配置
+    const { method, url, params, data, status, note, noteURL } = res.config
+
+    // 如果需要打印日志的话
+    if (true) {
+        // 获取参数
+        const p = JSON.stringify(method === 'get' ? params : data)
+        // 获取请求时间
+        const date = dateYYYYMMDDHHmmss(Date.now())
+        // 打印请求结果和详情
+        logs(``${note}${method.toUpperCase()}：${url}``, res.data, JSON.stringify({params: method === 'get' ? params : data , result: data, status }, null, '\t'))
+    }
+
+    // 成功响应之后清空队列中所有相同 Url 的请求
+    pending = cleanPedding(res.config)
+
+    // 只返回 data 即可
+    return res.data
+}, error => {
+    // 获取报文
+    const res = error.response
+    // 如果存在报文，才进行清空。
+    if (res) {
+        // 直接清空列表
+        pending = cleanPedding(res.config)
+    }
+    // 可以输出：error.response
+    return Promise.reject(error)
+})
+
+export const GET = (url = '', params = {}, config = {}) => axios({ method: 'GET', url: __API__ + url, params, ...config })
+
+export const POST = (url = '', data = {}, config = {}) => axios({ method: 'POST', url: __API__ + url, data, ...config })
+
+export const FORM_POST = (url = '', data = {}, config = {}) => axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}, ...config })
+---
 import axios from 'axios'
 import store from '../store'
 import hash from 'hash.js'
@@ -4365,79 +4466,6 @@ export const request = async (url, options = {}) => {
 ---
 import Qs from 'qs'
 import axios from 'axios'
-import { logs, throttle } from './utils.js'
-
-const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/'
-
-// 是否需要打印请求日志
-const LOG = true
-
-// 响应拦截器
-axios.interceptors.response.use(res => {
-    // 如果需要打印日志的话
-    if (LOG) {
-        // 获取请求配置
-        const { method, url, params, data, status, __NOTE__ } = res.config
-        // 获取参数
-        const p = JSON.stringify(method === 'get' ? params : data)
-        // 是否具备文本注释？
-        const note = URL_NOTES[url + p] || ''
-        // 打印请求结果和详情
-        logs(``${__NOTE__}${method.toUpperCase()}：${url}``, res.data, JSON.stringify({params: method === 'get' ? params : data , result: res.data, status }, null, '\t'))
-    }
-    // 只返回 data 即可
-    return res.data
-}, error => {
-    return Promise.reject(error.response)
-})
-
-// 添加请求拦截器，动态设置参数
-axios.interceptors.request.use(config => {
-    // 获取索引
-    const [url, note] = config.url.split('|')
-
-    // 获取参数详情
-    const { method, params, data } = config
-
-    // 获取参数
-    const p = JSON.stringify(method === 'get' ? params : data)
-
-    // 过滤url的文本注释
-    config.url = url
-
-    // 保存文本
-    config.__NOTE__ = note
-
-    // 返回最终配置
-    return config
-})
-
-export const POST = (url = '', data = {}) => axios({ method: 'POST', url: __API__ + url, data})
-
-export const FORM_POST = (url = '', data = {}) => axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'} })
-
-export const GET = (url = '', params = {}) => axios({ method: 'GET', url: __API__ + url, params})
----
-export const dateYYYYMMDDHHmmss =  t => {
-    const date = new Date(t)
-    const year = date.getFullYear()
-    const month = date.getMonth() + 1
-    const day = date.getDate()
-    const hours = date.getHours()
-    const minu = date.getMinutes()
-    const second = date.getSeconds()
-    const arr = [month, day, hours, minu, second].map((item, index) => item < 10 ? '0' + item : item)
-    return year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4]
-}
-// 折叠日志
-export const logs = (info = '', ...args) => {
-    console.groupCollapsed(info)
-    args.forEach(_ => console.log(_))
-    console.groupEnd()
-}
----
-import Qs from 'qs'
-import axios from 'axios'
 import router from '@/router'
 import store from '@/store'
 import { Notify } from 'vant'
@@ -4590,6 +4618,24 @@ export const POST = (url = '', data = {}, config = {}) => axios({ method: 'POST'
 export const FORM_POST = (url = '', data = {}, config = {}) => axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}, ...config })
 
 export const SET = diffSet
+---
+export const dateYYYYMMDDHHmmss =  t => {
+    const date = new Date(t)
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const hours = date.getHours()
+    const minu = date.getMinutes()
+    const second = date.getSeconds()
+    const arr = [month, day, hours, minu, second].map((item, index) => item < 10 ? '0' + item : item)
+    return year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4]
+}
+// 折叠日志
+export const logs = (info = '', ...args) => {
+    console.groupCollapsed(info)
+    args.forEach(_ => console.log(_))
+    console.groupEnd()
+}
 )
 txtit(Var)
 return
@@ -5245,18 +5291,12 @@ var calculateBonus = function ( level, salary ) {
 calculateBonus('S', 10000) // 40000
 calculateBonus('B', 10000) // 20000
 ---
-import localforage from 'localforage'
 import allow from '@/utils/allow.js'
+import { setCache, getCache } from './cache.js'
 import { encryption } from '@/utils/utils.js'
 
 // 验证参数合法性
 const validate = (key, fetchData) => allow.aFunction(fetchData).aString(key, 1)
-
-// 设置缓存数据
-const setItem = (key, value) => localforage.setItem(key, value)
-
-// 获取缓存数据
-const getItem = key => localforage.getItem(key)
 
 // 「策略一：缓存优先」
 // - 特点是优先使用缓存，如果缓存不存在才请求。而且，哪怕有缓存，也会发起请求更新缓存。
@@ -5265,22 +5305,22 @@ const getItem = key => localforage.getItem(key)
 export const CacheFirst = async (key, fetchData) => {
     validate(key, fetchData)
 
-    // 先等待获取缓存数据，反正不久
-    const cacheData = await getItem(key)
+    // 获取缓存数据
+    const cacheData = await getCache(key)
 
     // 如果不存在缓存的话，需要先请求，再返回数据
     if (!cacheData) {
         return fetchData().then(data => {
             // 加入缓存
-            setItem(key, data)
+            setCache(key, data)
             // 返回数据
             return data
         })
     // 如果存在缓存的话
     } else {
-        // 进行无等待请求
+        // 进行懒加载无等待请求
         // （不等就不等，为何还要等待100ms才请求？ 因为我不想让它浪费页面其他同时期的请求）
-        setTimeout(() => fetchData().then(data => setItem(key, data)), 100);
+        setTimeout(() => fetchData({ lazy: true }).then(data => setCache(key, data)), 100)
         // 并且立即返回缓存
         return cacheData
     }
@@ -5291,29 +5331,33 @@ export const NetworkFirst = async (key, fetchData) => {
     validate(key, fetchData)
 
     // 先等待获取缓存数据，虽然是异步，但肯定不会耗费多久的。
-    const cacheData = await getItem(key)
+    // 因为在 cache 里不好使用 await ，否则返回的就是一个 Pormise 了
+    const cacheData = await getCache(key)
 
     // 请求数据，再缓存
     return await fetchData().then(value => {
-        // 设置缓存
-        setItem(key, value)
-
+        // 设置缓存 setCache(key, value)
         // 返回数据
         return value
 
     // 如果请求失败，返回缓存
-    }).catch(_ => cacheData)
+    }).catch(err => {
+        // ☀️ 当 __CANCEL__: true 时，说明API是因为「去重机制」被 「kill」，这并不是失败。所以不需要返回缓存。
+        if (err.__CANCEL__) throw new Error(err.message)
+        
+        return cacheData
+    })
 }
 
 // 策略装饰器
 export const Decorator = (strategie, fetchData) => (...args) => {
     // 以函数的入参作为 key
-    const key = encryption(args)
-
+    const key = encryption(JSON.stringify(args))
+    
     // 提前注入参数
     const _fetchData = fetchData.bind(null, ...args)
 
-    // 返回指定策略
+    // 返回数据
     return strategie(key, _fetchData)
 }
 )
@@ -6404,7 +6448,11 @@ var maxTimeout = 10,
     };
     <这里写上你的判断> ? callback() : setTimeout(poll, wait);
 }());
----
+
+//////////////////////////////////////////////
+// say something...
+//////////////////////////////////////////////
+
 const poll = (conditionFn, callback, wait = 4, maxTimeout = 10, timeout = 0) => {
   // 请求是否超出阈值
   if (++timeout > maxTimeout * 1000 / wait) throw new Error('overtime')
@@ -6416,6 +6464,46 @@ const poll = (conditionFn, callback, wait = 4, maxTimeout = 10, timeout = 0) => 
 
 poll(() => document.querySelector('path[fill]'), e => {
   e.setAttribute('fill', "rgb(0,0,0)");
+})
+---
+// async/await 版本的 poll
+// 串行请求纯散点数据
+const serialPureScatter = async function poll(params, data = []) {
+    // 第一页是从 1 开始的
+    params.page++
+    // 执行接口，获取返回结果
+    let result = await pureScatter(params)
+    // 将数据并入
+    data = data.concat(result)
+    // 判断是否等于 10W ，如果是继续轮询，否则返回数据
+    return result.length === 100000 ? poll(params, data) : data
+}
+---
+/**
+ * （推荐）say something ...
+ 
+ ;(async function(){
+    const a = await waitWhen(_ => document.getElementById('1234'))
+    console.log(20191212102924, a)
+ }())
+ */
+const waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+    (function poll() {
+        // 获取回调结果
+        const result = conditionFn()
+
+        // 获取是否超时
+        const isTimeout = Date.now() - startTime > wait
+
+        // 如果条件成立，那么立刻 resolve
+        if (result) return resolve(result)
+
+        // 如果时间超时，立刻 reject
+        if (isTimeout) return reject(result)
+
+        // 否则继续轮询
+        setTimeout(poll, interval)
+    }())
 })
 ---
 const getsms = (mobile) => {
@@ -6484,33 +6572,6 @@ function loop(fn, delay) {
     }
     requestAnimationFrame(_loop);
 }
----
-/**
- * （推荐）say something ...
- 
- ;(async function(){
-    const a = await waitWhen(_ => document.getElementById('1234'))
-    console.log(20191212102924, a)
- }())
- */
-const waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
-    (function poll() {
-        // 获取回调结果
-        const result = conditionFn()
-
-        // 获取是否超时
-        const isTimeout = Date.now() - startTime > wait
-
-        // 如果条件成立，那么立刻 resolve
-        if (result) return resolve(result)
-
-        // 如果时间超时，立刻 reject
-        if (isTimeout) return reject(result)
-
-        // 否则继续轮询
-        setTimeout(poll, interval)
-    }())
-})
 )
 txtit(Var)
 return
