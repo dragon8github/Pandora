@@ -12308,3 +12308,99 @@ btnhideMarkers.addEventListener('click', e => {
 RunBy(name)
 run, % name
 return
+
+
+quuyguihua:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 百度地图 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=c7WF4ji8XvvAadFEyX7zTVRWijpoOwUp"></script>
+    <!--加载鼠标绘制工具-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+    <!--加载检索信息窗口-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.css" />
+
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+        width: 100`%;
+        height: 100`%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+<script>
+const map = window.map = new BMap.Map("app")
+
+// 创建地图实例
+var poi = new BMap.Point(113.843319, 22.921901)
+
+// 开启鼠标滚轮缩放
+map.enableScrollWheelZoom(true)
+
+// 创建点坐标（东莞全貌）
+map.centerAndZoom(poi, 12)
+
+var overlays = []
+
+var overlaycomplete = function(e) {
+    const polygon = e.overlay.ia.map(_ => [_.lat, _.lng])
+    console.log(20200805125328, polygon)
+}
+
+var styleOptions = {
+    strokeColor: "red", //边线颜色。
+    fillColor: "red", //填充颜色。当参数为空时，圆形将没有填充效果。
+    strokeWeight: 3, //边线的宽度，以像素为单位。
+    strokeOpacity: 0.8, //边线透明度，取值范围0 - 1。
+    fillOpacity: 0.6, //填充的透明度，取值范围0 - 1。
+    strokeStyle: 'solid' //边线的样式，solid或dashed。
+}
+
+//实例化鼠标绘制工具
+var drawingManager = new BMapLib.DrawingManager(map, {
+    isOpen: false, //是否开启绘制模式
+    enableDrawingTool: true, //是否显示工具栏
+    drawingToolOptions: {
+        anchor: BMAP_ANCHOR_TOP_RIGHT, //位置
+        offset: new BMap.Size(5, 5), //偏离值
+    },
+    circleOptions: styleOptions, //圆的样式
+    polylineOptions: styleOptions, //线的样式
+    polygonOptions: styleOptions, //多边形的样式
+    rectangleOptions: styleOptions //矩形的样式
+})
+
+//添加鼠标绘制工具监听事件，用于获取绘制结果
+drawingManager.addEventListener('overlaycomplete', overlaycomplete);
+
+// 地图自定义样式
+map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "stylers": { "color": "#044161" } }, { "featureType": "land", "elementType": "all", "stylers": { "color": "#091934" } }, { "featureType": "boundary", "elementType": "geometry", "stylers": { "color": "#064f85" } }, { "featureType": "railway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "highway", "elementType": "geometry", "stylers": { "color": "#004981" } }, { "featureType": "highway", "elementType": "geometry.fill", "stylers": { "color": "#005b96", "lightness": 1 } }, { "featureType": "highway", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "arterial", "elementType": "geometry", "stylers": { "color": "#004981", "lightness": -39 } }, { "featureType": "arterial", "elementType": "geometry.fill", "stylers": { "color": "#00508b" } }, { "featureType": "poi", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "green", "elementType": "all", "stylers": { "color": "#056197", "visibility": "off" } }, { "featureType": "subway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "manmade", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "local", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "arterial", "elementType": "labels", "stylers": { "visibility": "off" } }, { "featureType": "boundary", "elementType": "geometry.fill", "stylers": { "color": "#029fd4" } }, { "featureType": "building", "elementType": "all", "stylers": { "color": "#1a5787" } }, { "featureType": "label", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": { "color": "#ffffff" } }, { "featureType": "poi", "elementType": "labels.text.stroke", "stylers": { "color": "#1e1c1c" } }, { "featureType": "administrative", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "road", "elementType": "labels", "stylers": { "visibility": "off" } }] })
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

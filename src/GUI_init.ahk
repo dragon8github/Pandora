@@ -440,6 +440,7 @@ Gui, Pandora:Add, Text, gfunnelhtml W190, 新建.funnel.html（漏斗图）
 Gui, Pandora:Add, Text, gdatasetfunnel W210, 新建.datasetfunnel.html（漏斗图）
 Gui, Pandora:Add, Text, gechartsleidatu W160, echarts雷达图.html
 Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
+Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
 
 
 Gui, Pandora:Add, Text, gNodeHttp W140 ys x+80, 新建nodejs http
@@ -458,13 +459,13 @@ Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 Gui, Pandora:Add, Text, gmapVbaiduhtml W160, 新建百度地图 + mapV.html
 Gui, Pandora:Add, Text, gbaidudituSearchInfoWindow W180, 百度地图InfoWindow和Tip.html
 Gui, Pandora:Add, Text, gbaidujuhe110 W180, 百度地图聚合图.html
+Gui, Pandora:Add, Text, gquuyguihua W180, 百度地图区域规划.html
 Gui, Pandora:Add, Text, gmapv2fuckhtml W160, 新建 mapV文本+图形.html
 Gui, Pandora:Add, Text, gmapv2fuckhtml2 W160, 新建 mapV文本+图形2.html
 
 
 Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
-Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
 Gui, Pandora:Add, Text, gyanzhengzuobiaodian1 W180, 验证坐标点是否在多边形内
 Gui, Pandora:Add, Text, gyanzhengzuobiaodian2 W180, 验证两个多边形是否相交
 Gui, Pandora:Add, Text, gbaidunidili W160,百度坐标转地理位置.html
