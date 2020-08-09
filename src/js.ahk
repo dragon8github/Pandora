@@ -1,4 +1,43 @@
-﻿:?:window.a::
+﻿:?:window.a2::
+:?:window.ani2::
+:?:winquest2::
+:?:wina2::
+:?:winq2::
+:?:window.req2::
+:?:window.animate2::
+:?:win.ani2::
+::window.request2::
+::window.r2::
+::window.req2::
+Var =
+(
+window.requestAnimFrame = (function(){
+    return  window.requestAnimationFrame       ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            window.oRequestAnimationFrame      ||
+            window.msRequestAnimationFrame     ||
+            function(/* function */ callback, /* DOMElement */ element){
+                window.setTimeout(callback, 1000 / 60);
+            };
+})();
+
+window.cancelAnimationFrame=window.cancelAnimationFrame ||
+    Window.webkitCancelAnimationFrame ||
+    window.mozCancelAnimationFrame ||
+    window.msCancelAnimationFrame ||
+    window.oCancelAnimationFrame ||
+    function( id ){
+        //为了使setTimteout的尽可能的接近每秒60帧的效果
+        window.clearTimeout( id );
+    }
+)
+code(Var)
+return
+
+
+
+:?:window.a::
 :?:window.ani::
 :?:winquest::
 :?:wina::
@@ -6,6 +45,9 @@
 :?:window.req::
 :?:window.animate::
 :?:win.ani::
+::window.request::
+::window.r::
+::window.req::
 Var =
 (
 window.requestAnimationFrame
@@ -5542,36 +5584,6 @@ $('.trajectoryTable').autoScroll()
 code(Var)
 return
 
-::window.animate::
-::window.requestanimate::
-::requestanimate::
-::requestanimateframe::
-::window.requestanimateframe::
-Var =
-(
-window.requestAnimFrame = (function(){
-    return  window.requestAnimationFrame       ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
-            window.oRequestAnimationFrame      ||
-            window.msRequestAnimationFrame     ||
-            function(/* function */ callback, /* DOMElement */ element){
-                window.setTimeout(callback, 1000 / 60);
-            };
-})();
-
-window.cancelAnimationFrame=window.cancelAnimationFrame ||
-	Window.webkitCancelAnimationFrame ||
-	window.mozCancelAnimationFrame ||
-	window.msCancelAnimationFrame ||
-	window.oCancelAnimationFrame ||
-	function( id ){
-		//为了使setTimteout的尽可能的接近每秒60帧的效果
-		window.clearTimeout( id );
-	}
-)
-code(Var)
-return
 
 
 ::jsuniqid::
@@ -6466,6 +6478,82 @@ Var =
 code(Var)
 return
 
+::pool::
+::shujuchi::
+::shijianlunxun::
+::nodejs.event::
+::node.event::
+::v8::
+::v8.event::
+::v8.lunxun::
+::v8.poll::
+Var =
+(
+// 数据池
+const pool = []
+// 当前轮询状态
+let status = 'close'
+// 任务列表
+const taskList = [
+    new Promise((resolve, reject) => setTimeout(_ => resolve([...Array(1000)].map((v, index, array) => 'success1 - ' + index)), 1000)),
+    new Promise((resolve, reject) => setTimeout(_ => resolve([...Array(1000)].map((v, index, array) => 'success2 - ' + index)), 2000)),
+    new Promise((resolve, reject) => setTimeout(_ => resolve([...Array(1000)].map((v, index, array) => 'success3 - ' + index)), 3000)),
+    new Promise((resolve, reject) => setTimeout(_ => resolve([...Array(1000)].map((v, index, array) => 'success4 - ' + index)), 4000)),
+    new Promise((resolve, reject) => setTimeout(_ => resolve([...Array(1000)].map((v, index, array) => 'success5 - ' + index)), 5000)),
+]
+
+/**
+ * 一次性运行多个任务 ...
+ *
+ */
+const run = (tasks, fn, i = 0) => tasks.forEach(task => task.then(data => fn(data, i++)))
+
+/**
+ * nodejs requestAnimationFrame 补丁 ...
+ *
+ */
+const requestAnimFrame = typeof module !== 'undefined' ? fn => setTimeout(fn, 1000 / 60) : window.requestAnimationFrame
+
+/**
+ * 轮询数据池
+ *
+ */
+function poll(page = 0, size = 1) {
+    // 只有当状态为停止，并且长度为空才停止。
+    // 也就是说，哪怕状态停止了，只要数组不为空，任务就还必须进行下去。
+    // 如果你真的想停，那不仅要把 status 设置为 'close'，而且还要清空数据池 pool
+    if (pool.length === 0 && status === 'close')
+        return
+
+    // 取出数据，注意会改变引用，这是故意的
+    const data_cursor = pool.splice(0, 10)
+
+    // your code...
+    console.log(20200809093909, data_cursor)
+
+    // 尝试按帧数渲染无卡顿：https://www.cnblogs.com/kenkofox/p/3849067.html
+    const fps = 30
+
+    // 尝试渐进式渲染
+    setTimeout(() => requestAnimFrame(() => poll(page + 1, size)), 1000 / fps)
+}
+
+
+// 运行任务，开始轮询
+run(taskList, (data, index) => {
+    console.log(`🚀 task-${index} 已完成`)
+    // 如果是第一个，则直接开始
+    if (index === 0) { status = 'open'; poll() }
+    // 如果是最后一个则关闭
+    if (index === taskList.length - 1) { status = 'close' }
+    // 往数据池中插入数据
+    pool.push(...data)
+})
+
+)
+code(Var)
+return
+
 ::lunxun::
 ::loop::
 ::poll::
@@ -6569,32 +6657,66 @@ const getsms = (mobile) => {
     _getsms();
 };
 ---
- // 适合轮询条件查找执行
-;(function fuck(i){
-    const name = router.history.current.name
-    // 先把需要轮询的条件写出来：如果找不到元素，并且次数小于
-    if (document.querySelectorAll(`.${name} [data-title]`).length <= 0) {
-        // 再把最多循环的次数写出来：最多5次，间隔也可以动态，我这里是100/200/300/400/500，也就是一共才1500秒。
-        i < 5 && window.setTimeout(_ => fuck(++i), i * 100 + 100);
-    } else {
-        // 条件成立的放在这里执行
-        document.querySelectorAll(`.${name} [data-title]`).forEach(function (e, i) {
-            const rootname = e.getAttribute('class')
-            const classname = e.querySelector('div').getAttribute('class')
-            const vuename = `${classname}.vue`
-            const title = `【${rootname.substring(0, rootname.indexOf('__'))}】 ${e.getAttribute('data-title')} 【${vuename}】`
-            e.setAttribute('title', title)
-            const _copyToClipboard = () => {copyToClipboard(vuename); Message('复制成功：' + vuename); }
-            e.removeEventListener('click', _copyToClipboard)
-            e.addEventListener('click', _copyToClipboard) 
-        }); 
-        document.querySelector('.header__title').addEventListener('click', (e) => {
-            const indexvuename = `${name}/index.vue`
-            copyToClipboard(indexvuename); 
-            Message('复制成功：' + indexvuename);
-        })
-    }
-}(0));
+// 数据池
+const pool = []
+// 当前轮询状态
+let status = 'close'
+// 任务列表
+const taskList = [
+    new Promise((resolve, reject) => setTimeout(_ => resolve([...Array(1000)].map((v, index, array) => 'success1 - ' + index)), 1000)),
+    new Promise((resolve, reject) => setTimeout(_ => resolve([...Array(1000)].map((v, index, array) => 'success2 - ' + index)), 2000)),
+    new Promise((resolve, reject) => setTimeout(_ => resolve([...Array(1000)].map((v, index, array) => 'success3 - ' + index)), 3000)),
+    new Promise((resolve, reject) => setTimeout(_ => resolve([...Array(1000)].map((v, index, array) => 'success4 - ' + index)), 4000)),
+    new Promise((resolve, reject) => setTimeout(_ => resolve([...Array(1000)].map((v, index, array) => 'success5 - ' + index)), 5000)),
+]
+
+/**
+ * 一次性运行多个任务 ...
+ *
+ */
+const run = (tasks, fn, i = 0) => tasks.forEach(task => task.then(data => fn(data, i++)))
+
+/**
+ * nodejs requestAnimationFrame 补丁 ...
+ *
+ */
+const requestAnimFrame = typeof module !== 'undefined' ? fn => setTimeout(fn, 1000 / 60) : window.requestAnimationFrame
+
+/**
+ * 轮询数据池
+ *
+ */
+function poll(page = 0, size = 1) {
+    // 只有当状态为停止，并且长度为空才停止。
+    // 也就是说，哪怕状态停止了，只要数组不为空，任务就还必须进行下去。
+    // 如果你真的想停，那不仅要把 status 设置为 'close'，而且还要清空数据池 pool
+    if (pool.length === 0 && status === 'close')
+        return
+
+    // 取出数据，注意会改变引用，这是故意的
+    const data_cursor = pool.splice(0, 10)
+
+    // your code...
+    console.log(20200809093909, data_cursor)
+
+    // 尝试按帧数渲染无卡顿：https://www.cnblogs.com/kenkofox/p/3849067.html
+    const fps = 30
+
+    // 尝试渐进式渲染
+    setTimeout(() => requestAnimFrame(() => poll(page + 1, size)), 1000 / fps)
+}
+
+
+// 运行任务，开始轮询
+run(taskList, (data, index) => {
+    console.log(`🚀 task-${index} 已完成`)
+    // 如果是第一个，则直接开始
+    if (index === 0) { status = 'open'; poll() }
+    // 如果是最后一个则关闭
+    if (index === taskList.length - 1) { status = 'close' }
+    // 往数据池中插入数据
+    pool.push(...data)
+})
 ---
 function loop(fn, delay) {
     let stamp = Date.now();
