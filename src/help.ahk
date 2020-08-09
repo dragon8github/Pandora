@@ -614,13 +614,16 @@ Clipboard := StrReplace(Clipboard, "`r`n")
 WinClip.paste()
 return
 
-
+::dgzhenjie::
+::zhenjie::
 ::city::
 ::dg33::
 ::dgcity::
 ::city33::
 Var =
 (
+export const filterCity = (v = '') => v.replace(/街道|镇/g, '')
+---
 {
   "东城":[113.781803,23.018795],
   "莞城":[113.751333,23.055512],

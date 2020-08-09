@@ -201,26 +201,36 @@ export default {
 code(Var)
 return
 
+::lunbo::
+::echart.lunbo::
 ::echarts.lunbo::
 Var =
 (
-broadcast() {
-  // 只允许轮播一次
-  this.timer && clearInterval(this.timer)
-  // 初始化
-  let currentIndex = -1
-  // 定时器
-  this.timer = setInterval(() => {
-      // 数量
-      const dataLen = this.getDepartSecondTypePercentage.length;
-      // 取消之前高亮的图形
-      this.myChart.dispatchAction({ type: 'downplay', seriesIndex: 0, dataIndex: currentIndex })
-      // 翻页
-      currentIndex = (currentIndex + 1) `% dataLen;
-      // 高亮当前图形
-      this.myChart.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: currentIndex })
-  }, 1500)
-}
+broadcast(data) {
+    // 只允许轮播一次
+    this.timer && clearInterval(this.timer)
+    // 定时器
+    this.timer = setInterval(() => {
+        const dataLen = data.length;
+        // 取消之前高亮的图形
+        this.myChart.dispatchAction({ type: 'downplay', seriesIndex: 0, dataIndex: this.currentIndex })
+        // 翻页
+        this.currentIndex = (this.currentIndex + 1) `% dataLen;
+        // 高亮当前图形
+        this.myChart.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: this.currentIndex })
+    }, 1500)
+},
+mouseover(event) {
+    const { dataIndex } = event
+    this.myChart.dispatchAction({type: 'downplay',seriesIndex: 0, dataIndex: this.currentIndex })
+    this.currentIndex = dataIndex
+    clearInterval(this.timer)
+},
+mouseout() {
+    this.myChart.dispatchAction({type: 'highlight',seriesIndex: 0, dataIndex: this.currentIndex })
+    // 重新开始轮播
+    this.broadcast(this.descPin[0].data.slice(0, 7));
+},
 )
 code(Var)
 return
@@ -396,10 +406,154 @@ const createPoints = (name, data) => {
 code(Var)
 return
 
+::echart.pin::
+::echart.yuan::
 ::echarts.pin::
 ::echarts.yuan::
 Var =
 (
+<template>
+    <!-- 行业分类 -->
+    <div class='category w-100 h-100' v-myLoading="descPinLoading">
+        <v-chart :options='option' class='w-100 h-100' ref='pinchart' @mouseover='mouseover' @mouseout='mouseout'></v-chart>
+    </div>
+</template>
+
+<script>
+import { mapState } from "@/store/help.js"
+import { lineFeedStr, drive } from '@/utils/utils'
+
+export default {
+    data () {
+        return {
+            option: {},
+            myChart: null,
+            currentIndex: -1
+        }
+    },
+    computed: {
+        ...mapState('pcMap', ['descPin', 'descPinLoading'])
+    },
+    methods: {
+        renderEchart (ary) {
+            const color = ['#e8ae75','#efea9a', '#57fbe9', '#30bcff', '#0f80ff', '#b48fff', '#ff8f92' ]
+
+            // 以小带大
+            const dataArr = drive(ary, (a, b) => +a.NUM - +b.NUM)
+
+            const [legendData, seriesData] = dataArr.maps(
+                // legend 业务类型
+                v => v.BUSINESS,
+                // series 核心数据源 
+                (v, i) => ({ value: v.NUM, name: v.BUSINESS, itemStyle: { color: color[i] } })
+            `)
+
+            // 半圆策略
+            for (let i = 0; i < 7; i++) {
+                seriesData.push({ value: 0, name: '', label: { show: false }, labelLine: { show: false }, itemStyle: { color: 'rgba(0,0,0,0)'} })
+            }
+
+            // legend
+            const legend = {
+                icon: 'circle',
+                data: legendData,
+                textStyle: { color: '#fff', fontSize: 12 },
+                right: '5`%',
+                top: 0,
+                orient: 'vertical',
+                itemWidth: 10,
+                itemHeight: 30,
+                itemGap: window.innerWidth > 1600 ? 15 : 12,
+                selectedMode: false,
+                formatter: params => {
+                    if(window.innerWidth > 1600 ){
+                        return params
+                    } else {
+                        // return lineFeedStr(params, 7)
+                        return params.length > 7 ? params.substr(0, 8) + '...' : params
+                    }
+                }
+            }
+            // series
+            const series = [{
+                name: "",
+                type: "pie",
+                radius: [ '50`%', '70`%'],
+                avoidLabelOverlap: false,
+                startAngle: 90,
+                center: [ "25`%", "50`%" ],
+                label: { show:false, position: 'center' },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: "100`%",
+                        formatter: params => {
+                            return `{a|${lineFeedStr(params.name, 7)}}\n\n{b|${params.value}}`
+                        },
+                        rich: {
+                            a: { textAlign: 'right', fontSize: '80`%', padding: [3,0], color:'#fff' },
+                            b: { fontWeight: 'bold', fontSize: '110`%' }
+                        }
+                    }
+                },
+                data: seriesData,
+            },]
+
+            this.option = { legend, series } 
+
+            // 启动轮播
+            this.broadcast(dataArr)
+        },
+        broadcast(data) {
+            // 只允许轮播一次
+            this.timer && clearInterval(this.timer)
+            // 定时器
+            this.timer = setInterval(() => {
+                const dataLen = data.length;
+                // 取消之前高亮的图形
+                this.myChart.dispatchAction({ type: 'downplay', seriesIndex: 0, dataIndex: this.currentIndex })
+                // 翻页
+                this.currentIndex = (this.currentIndex + 1) `% dataLen;
+                // 高亮当前图形
+                this.myChart.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: this.currentIndex })
+            }, 1500)
+        },
+        mouseover(event) {
+            const { dataIndex } = event
+            this.myChart.dispatchAction({type: 'downplay',seriesIndex: 0, dataIndex: this.currentIndex })
+            this.currentIndex = dataIndex
+            clearInterval(this.timer)
+        },
+        mouseout() {
+            this.myChart.dispatchAction({type: 'highlight',seriesIndex: 0, dataIndex: this.currentIndex })
+            // 重新开始轮播
+            this.broadcast(this.descPin[0].data.slice(0, 7));
+        },
+    },
+    watch: {
+        descPin: {
+            deep: true,
+            immediate: true,
+            handler(newV, oldV) {
+                // const data = [{ BUSINESS: '农、林、牧、鱼业', NUM: 1200.58 }, { BUSINESS: '制造业', NUM: 1100.58 }, { BUSINESS: '电力、热力、燃气及水生产和供应业', NUM: 1200.58 }, { BUSINESS: '建筑业', NUM: 1100.58 }, { BUSINESS: '批发和零售业', NUM: 1200.58 }, { BUSINESS: '住宿和餐饮业', NUM: 1100.58 }, { BUSINESS: '金融业', NUM: 1200.58 }]
+                // 我只取前 7 个即可
+                const data = this.maybe(_ => newV[0].data.slice(0, 7), [])
+                // 有数据才进行渲染
+                data.length && this.renderEchart(data)
+            }
+        }
+    },
+    mounted () {
+        this.myChart = this.$refs.pinchart
+    }
+}
+</script>
+<style lang='scss' scoped>
+.category {
+
+}
+</style>
+---
 // 基于准备好的dom，初始化echarts实例
 var myChart = echarts.init(document.getElementById('main'));
 myChart.setOption({
@@ -441,7 +595,7 @@ myChart.setOption({
 	color: ['#e76660', '#df4547']
 });
 )
-code(Var)
+txtit(Var)
 return
 
 ::echarts.bar::

@@ -145,7 +145,9 @@
     Menu, CssMenu, Add, css： 滚动提示, CssHandler
     Menu, CssMenu, Add, checkbox 自定义样式简单, CssHandler
     Menu, CssMenu, Add, 扩大可点击区域的几种方案, CssHandler
-    Menu, CssMenu, Add, unset 一次性重置所有默认属性, CssHandler
+    ; Menu, CssMenu, Add, unset 一次性重置所有默认属性, CssHandler
+    Menu, CssMenu, Add, Drop-Shadow：被低估的阴影神器, CssHandler
+
     Menu, CssMenu, Add, pointer-events: none;禁用按钮上的默认指针事件, CssHandler
     Menu, CssMenu, Add, user-select: none;, CssHandler3
     Menu, CssMenu, Add, rotate animate 不断旋转, CssHandler3
@@ -297,6 +299,17 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "Drop-Shadow：被低估的阴影神器") {
+Var =
+(
+// https://css-irl.info/drop-shadow-the-underrated-css-filter/
+.my-element {
+  filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+}
+)
+return
 }
 
 if (v == "提升阅读体验的最佳 css 实践") {

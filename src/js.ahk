@@ -1,4 +1,19 @@
-﻿::youjian::
+﻿:?:window.a::
+:?:window.ani::
+:?:winquest::
+:?:wina::
+:?:winq::
+:?:window.req::
+:?:window.animate::
+:?:win.ani::
+Var =
+(
+window.requestAnimationFrame
+)
+code(Var)
+return
+
+::youjian::
 Var =
 (
 // 这就是核心的拦截事件
@@ -241,17 +256,36 @@ export default allow
 code(Var)
 return
 
+
+::mbd::
+::mdb::
 ::bdm::
 ::bdmark::
 ::marker::
 ::bdpoint::
 ::bdi::
 ::ibd::
+::map.click::
+::map.c::
+::map.event::
+::map.addev::
+::map.adde::
+::map.addevent::
+::map.event::
+::mapc::
 Var =
 (
-var poi = new BMap.Point(116.307852, 40.057031)
-var marker = new BMap.Marker(poi)
-map.addOverlay(marker)
+const test (x, y) => {
+    var poi = new BMap.Point(x, y)
+    var marker = new BMap.Marker(poi)
+    window.$map.addOverlay(marker)
+}
+
+map.addEventListener('click', function(e) {
+    console.log(20200806173926, e.point)
+    var marker = new BMap.Marker(e.point)
+    this.addOverlay(marker)
+})
 )
 code(Var)
 return
@@ -2565,44 +2599,40 @@ return
 Var =
 (
 /**
+ [JS]如何验证坐标点是否在多边形内
  * Verify if point of coordinates (longitude, latitude) is polygon of coordinates
  * https://github.com/substack/point-in-polygon/blob/master/index.js
- * @param {number} latitude Latitude   维度：22.921901
- * @param {number} longitude Longitude 经度：113.843319
- * @param {array<[number,number]>} polygon Polygon contains arrays of points. One array have the following format: [latitude,longitude]
-
- [JS]如何验证坐标点是否在多边形内
+ * @param Latitude   维度：22.921901
+ * @param Longitude 经度：113.843319
+ * @param array<[latitude,Latitude]>
  （温馨提示：计算消耗的时间有点久，最好是放在 web worker 里边计算）
- How to verify if point of coordinates is inside polygon [Javascript] - DEV - Google Chrome
- point-in-polygon/index.js at master · substack/point-in-polygon - Google Chrome
-
  */
-function isPointInPolygon(latitude, longitude, polygon) {
-    if (typeof latitude !== 'number' || typeof longitude !== 'number') {
-        return false
-        // throw new TypeError('Invalid latitude or longitude. Numbers are expected')
-    } else if (!polygon || !Array.isArray(polygon)) {
-        throw new TypeError('Invalid polygon. Array with locations expected')
-    } else if (polygon.length === 0) {
-        throw new TypeError('Invalid polygon. Non-empty Array expected')
-    }
+export function isPointInPolygon(latitude, longitude, polygon) {
+  if (typeof latitude !== 'number' || typeof longitude !== 'number') {
+    return false
+    // throw new TypeError('Invalid latitude or longitude. Numbers are expected')
+  } else if (!polygon || !Array.isArray(polygon)) {
+    throw new TypeError('Invalid polygon. Array with locations expected')
+  } else if (polygon.length === 0) {
+    throw new TypeError('Invalid polygon. Non-empty Array expected')
+  }
 
-    const x = latitude
-    const y = longitude
+  const x = latitude
+  const y = longitude
 
-    let inside = false
-    for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-        const xi = polygon[i][0]
-        const yi = polygon[i][1]
-        const xj = polygon[j][0]
-        const yj = polygon[j][1]
+  let inside = false
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i][0]
+    const yi = polygon[i][1]
+    const xj = polygon[j][0]
+    const yj = polygon[j][1]
 
-        const intersect = ((yi > y) !== (yj > y)) &&
-            (x < (xj - xi) * (y - yi) / (yj - yi) + xi)
-        if (intersect) inside = !inside
-    }
+    const intersect = ((yi > y) !== (yj > y)) &&
+      (x < (xj - xi) * (y - yi) / (yj - yi) + xi)
+    if (intersect) inside = !inside
+  }
 
-    return inside
+  return inside
 }
 ---
 var arr1 = [{ id: 1 }, { id: 2 }, { id: 3 }]
@@ -4155,7 +4185,7 @@ Var =
 (
 import Qs from 'qs'
 import axios from 'axios'
-import { dateYYYYMMDDHHmmss, logs, waitWhen } from './utils.js'
+import { dateYYYYMMDDHHmmss, logs, waitWhen, encryption } from './utils.js'
 import isEqual from 'lodash/isEqual'
 
 const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/fyvis/visual/'
@@ -4163,22 +4193,13 @@ const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/fyvis/visua
 // 请求队列
 let pending = []
 
-// 根据 res.config 清空 pedding 
-const cleanPedding = config => pending.filter(_ => {
-    // 获取对比数据
-    const { noteURL, data, params } = config
-    // fixbug: 万万没想到，为何这个是字符串？(当然也可能是 undefined) 如果是字符串的时候就 JSON.parse
-    const _data = data && JSON.parse(data)
-    // 完全符合条件
-    const isSame = _.url === noteURL && isEqual(_.data, _data) && isEqual(_.params, params)
-    // 要知道 filter 是满足条件留下来，而我要满足条件删除，所以要取反即可
-    return !isSame
-})
-
 // 添加请求拦截器，动态设置参数
 axios.interceptors.request.use(async config => {
     // 获取参数详情
     const { method, params, data, lazy, noRepeat = true } = config
+
+    // 加密（url + params + data）（用来标识请求的唯一性，用来判断是否重复请求）
+    const id = encryption({ url, params, data })
 
     // 获取索引
     const [url, note] = config.url.split('|')
@@ -4192,23 +4213,20 @@ axios.interceptors.request.use(async config => {
     // 加入备注
     config.note = note
 
+    // 加入 id（用来标识请求的唯一性，用来判断是否重复请求）
+    config.id = id
+
     // 🔴 懒模式 - 60s 内等待队列为空才进行，查询的间隔是 100ms 一次，每次只能进行一条。
     if (lazy) await waitWhen(_ => pending.length === 0, 60 * 1000, 100)
 
     // （默认开启「去重」）如果需要去重复, 则中止队列中所有相同请求地址的 xhr
-    // 🔔 请注意，我这里故意使用「config.noteURL」，因为我要利用 「"|" 注释」来区分相同的 api
-    noRepeat && pending.forEach(_ => {
-        // 判断是否相同？（noteUrl + 请求类型 + GET參數 + POST參數）
-        const isSame = _.url === config.noteURL && isEqual(_.data, data) && isEqual(_.params, params)
-
-        // 如果确实一致的话，那么取消
-        isSame && _.cancel('⚔️ kill repeat xhr：' + config.noteURL)
-    })
+    noRepeat && pending.forEach(_ => _.id === id && _.cancel('⚔️ kill repeat xhr：' + config.noteURL))
 
     // 配置 CancelToken
     config.cancelToken = new axios.CancelToken(cancel => {
+        const newPeding = { id, cancel }
         // 移除所有中止的请求，并且将新的请求推入缓存
-        pending = [...pending.filter(_ => _.url != config.noteURL), { url: config.noteURL, cancel, params, data }]
+        pending = [...pending.filter(_ => _.id != id), newPeding]
     })
 
     // 返回最终配置
@@ -4218,7 +4236,7 @@ axios.interceptors.request.use(async config => {
 // 响应拦截器
 axios.interceptors.response.use(res => {
     // 获取请求配置
-    const { method, url, params, data, status, note, noteURL } = res.config
+    const { method, url, params, data, status, note, noteURL, id } = res.config
 
     // 如果需要打印日志的话
     if (true) {
@@ -4231,7 +4249,7 @@ axios.interceptors.response.use(res => {
     }
 
     // 成功响应之后清空队列中所有相同 Url 的请求
-    pending = cleanPedding(res.config)
+    pending = pending.filter(_ => _.id != id)
 
     // 只返回 data 即可
     return res.data
@@ -4241,7 +4259,7 @@ axios.interceptors.response.use(res => {
     // 如果存在报文，才进行清空。
     if (res) {
         // 直接清空列表
-        pending = cleanPedding(res.config)
+        pending = pending.filter(_ => _.id != res.config.id)
     }
     // 可以输出：error.response
     return Promise.reject(error)
@@ -6430,6 +6448,24 @@ $(window).resize(function(e){
 code(Var)
 return
 
+::poll2::
+Var =
+(
+;(function poll(data = [], page = 0, size = 10) {
+    // 分页
+    const data_cursor = data.slice(page * size, size)
+    // 还有数据才继续轮询
+    if (data_cursor.length) {
+        // 尝试按帧数渲染无卡顿：https://www.cnblogs.com/kenkofox/p/3849067.html
+        const fps = 30
+        // 尝试渐进式渲染
+        setTimeout(() => window.requestAnimationFrame(() => poll(data, page + 1, size)), 1000 / fps)
+    }
+}())
+)
+code(Var)
+return
+
 ::lunxun::
 ::loop::
 ::poll::
@@ -8183,6 +8219,35 @@ return
 ::scroll::
 Var =
 (
+// main.js
+import scroll from 'vue-seamless-scroll'
+Vue.use(scroll)
+
+
+<vue-seamless-scroll :class-option="optionSingleHeightTime" :data="myItems" class='seamless-warp'>
+  <div v-for='(item, index) in myItems' :key='index' class='item py-1 pl-4 pr-2'>
+    祝贺 <div class="highlight">{{ item._serverData.cmd }}</div> 团购成功
+  </div>
+</vue-seamless-scroll>
+
+computed: {
+  optionSingleHeightTime () {
+      return { 
+        // singleHeight: 95, waitTime: 2500,
+        step: 0.5,
+      }
+  }
+},
+
+<style lang="scss" scoped>
+.seamless-warp {
+  width: 400px;
+  height: 21em;
+  overflow-y: hidden;
+  background: rgba(255, 255, 255, .2);
+}
+</style>
+---
 windowAddMouseWheel();
 function windowAddMouseWheel() {
     var scrollFunc = function (e) {

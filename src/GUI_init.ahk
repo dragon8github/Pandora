@@ -361,6 +361,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/nordicgiant2/awesome-landin
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：
+Gui, Pandora:Add, Link,, <a href="https://animate.style/">animate.css</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="https://36dcup.net/user">36dcup</a>
 Gui, Pandora:Add, Link,, <a href="https://mynoise.net/NoiseMachines/openOfficeNoiseGenerator.php">办公室白噪音</a>
@@ -387,6 +388,7 @@ Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
 Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group
 Gui, Pandora:Add, Text, gzhilinghtml W180, 新建vue-directive实现拖拽
 Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令
+Gui, Pandora:Add, Text, gvtipzhiling W180, 新建v-tip指令
 Gui, Pandora:Add, Text, gvuelistenhtml W180, 新建vue $listen示例.html
 Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
@@ -1058,13 +1060,13 @@ Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#webgl0
 
 Gui, Pandora:Add, Text, W140 ys, 百度地图教程：
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#f0_3">地图点击事件</a>
-Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_9">地图线面教程</a>
-Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_11">自定义覆盖物</a>
-Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_4">点聚合（聚合图）</a>
-Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_5">沿线运动教程（马里奥）</a>
-Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_16">自定义点图标（狐美人）</a>
 Gui, Pandora:Add, Link, W140, <a href="http://huiyan-fe.github.io/BMap-JavaScript-library/demo/MarkerClusterer/MarkerClusterer.html">聚合图API</a>
+Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_4">点聚合（聚合图）</a>
+Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_9">地图线面教程</a>
+Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c2_5">沿线运动教程（马里奥）</a>
+Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#d0_4">infowindow</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#f0_7">鼠标绘制点线面</a>
+Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#c1_2">跳动动画</a>
 
 
 Gui, Pandora:Add, Text, W140 ys, 地图工具：
@@ -1075,11 +1077,12 @@ Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/custom/">百度�
 
 
 Gui, Pandora:Add, Text, W140 ys, 百度mapv：
-Gui, Pandora:Add, Link,, <a href="http://mapv.baidu.com/">mapv官网</a>
 Gui, Pandora:Add, Link,, <a href="http://mapv.baidu.com/examples/#csv-car.html">mapv-example</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/huiyan-fe/mapv/blob/master/API.md">百度线面教程</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/huiyan-fe/mapv/#readme">ampv-github</a>
-Gui, Pandora:Add, Link,, <a href="http://lbsyun.baidu.com/solutions/solutions/mapvdata">mapV官方示例大全</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/huiyan-fe/mapv/blob/master/API.md">mapv-github</a>
+Gui, Pandora:Add, Link,, <a href="https://mapv.baidu.com/gl/docs/ThreeLayer.html">mapvGL-官网</a>
+Gui, Pandora:Add, Link,, <a href="https://mapv.baidu.com/gl/examples/">mapvGL-example</a>
+
+
 
 
 Gui, Pandora:Add, Text, W140 ys, charts.js：

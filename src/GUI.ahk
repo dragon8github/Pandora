@@ -12404,3 +12404,99 @@ map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "s
 RunBy(name)
 run, % name
 return
+
+
+vtipzhiling:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {}
+    </style>
+</head>
+
+<body>
+    <div id="app" class='flex justify-between items-center'>
+        <div class='w-48 h-48 bg-red-300' v-tip='"Lorem ipsum dolor sit amet"'></div>
+        <div class='w-48 h-48 bg-red-300' v-tip='"Lorem ipsum dolor sit amet"'></div>
+        <div class='w-48 h-48 bg-red-300' v-tip='"Lorem ipsum dolor sit amet"'></div>
+        <div class='w-48 h-48 bg-red-300' v-tip='"Lorem ipsum dolor sit amet"'></div>
+        <div class='w-48 h-48 bg-red-300' v-tip='"Lorem ipsum dolor sit amet"'></div>
+    </div>
+</body>
+<script>
+const useDiv = (setDiv) => {
+    let div = document.createElement('div')
+    setDiv(div)
+    document.body.append(div)
+    return [div, () => div.remove()]
+}
+
+// 创建一个容器
+const [div, remove] = useDiv(e => {
+    e.style.position = 'absolute'
+    e.style.background = 'rgba(0, 0, 0, .5)'
+    e.style.color = 'white'
+    e.style.fontSize = '1em'
+    e.style.left = 0
+    e.style.top = 0
+    e.style.padding = '1em'
+    e.style.display = 'none'
+})
+
+
+Vue.directive('tip', {
+    bind(el, { value = '' }) {
+        div.textContent = value
+        el.addEventListener('mousemove', (event) => {
+            const { clientX, clientY } = event
+            div.style.display = 'block'
+            div.style.top = clientY + 10 + 'px'
+            div.style.left = clientX + 10 + 'px'
+        })
+
+        el.addEventListener('mouseleave', (event) => {
+            div.style.display = 'none'
+        })
+    }
+})
+
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: []
+    },
+    methods: {
+        go() {
+
+        }
+    },
+    beforeMount() {
+
+    }
+})
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

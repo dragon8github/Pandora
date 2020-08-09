@@ -100,6 +100,7 @@
   Menu, VueMenu, Add, vue 认知, :vuecognition
   Menu, VueMenu, Add, vue 必知必会, :vuebase
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
+  Menu, VueMenu, Add, vue 官方列表动画 transition-group , :VueHandler
   Menu, VueMenu, Add, vue 动画组件<transition>, :vuetranstion
   Menu, VueMenu, Add, vue 动画组件<transition> + animate.css, :vuetranstion
   Menu, VueMenu, Add, vue animate4.0.css, VueHandler
@@ -140,7 +141,7 @@
   Menu, vuesolution, Add
   Menu, vuesolution, Add
   
-  Menu, vuesolution, Add, $.scrollforevery 无缝滚动（Vue版本）, VueHandler
+  Menu, vuesolution, Add, 无限滚动 + 无缝滚动插件, VueHandler
   Menu, vuesolution, Add, Vue 进度条组件, VueHandler
   Menu, vuesolution, Add, click-outside 指令, VueHandler
   Menu, vuesolution, Add, DataV - 顶部一闪过儿的loading封装, VueHandler
@@ -187,6 +188,31 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "vue 官方列表动画 transition-group ") {
+Var =
+(
+<transition-group name="list" tag='div'>
+  <div v-for='(item, index) in myItems' :key='item.id' class='item py-1 pl-4 pr-2' @mouseenter="Stop" @mouseleave="Up">
+    祝贺 <div class="highlight">{{ item._serverData.cmd }}</div> 团购成功
+  </div>
+</transition-group>
+
+
+.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to
+/* .list-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(-30px);
+}
 )
 }
 
@@ -1756,133 +1782,37 @@ watch: {
 }
 
 
-if (v == "$.scrollforevery 无缝滚动（Vue版本）") {
+if (v == "无限滚动 + 无缝滚动插件") {
 Var = 
 (
-<template>
-    <div class="growthRanking" :class="{ 'emptying': town.empty }">
-        <div class='growthRanking__header'>
-            <span class='growthRanking__header--id'>排名</span>
-            <span class='growthRanking__header--name'>事件名称</span>
-            <span class='growthRanking__header--count'>事件增长量（件）</span>
-        </div>
+// main.js
+import scroll from 'vue-seamless-scroll'
+Vue.use(scroll)
 
-       <div class='growthRanking__rows' ref='dragscroll'>
-           <template v-if='maybe(_=> town.data.length, 0)'>
-               <div class='growthRanking__row' v-for='(item, index) in town.data.concat(town.data)' :key='index' @click.stop = "go(item.itemId)">
-                   <div class='growthRanking__row--id' </div>
-                   <div class='growthRanking__row--name' :title='item.itemName'>{{ item.itemName }}</div>
-                   <div class='growthRanking__row--count'>{{ item.countt }}</div>
-               </div>
-           </template>
-       </div>
-    </div>
-</template>
 
-<script>
-import { dragScroll, getCityIdList } from '@/utils/utils'
-export default {
-    name: 'growthRanking',
-    data() {
-        return {
-            timer: null,
-            dragScrollClick: null,
-            cityIdList: getCityIdList(),
-        }
-    },
-    methods: {
-        go(itemId) {
-            this.dragScrollClick(_ => {
-                // 设置单位id
-                this.$store.dispatch('list/departmentSelect', this.eq_departId)
-                // 设置事项id
-                this.$store.dispatch('list/matterSelect', itemId)
-                // // 跳转到部门二级
-                this.$router.push('./details')
-            })
-        },
-    },
-    computed: {
-        town() {
-            return this.maybe(_ => this.$store.state.departmentDetails.getDepartSecondGrowth)
-        },
-        eq_departId () {
-            return this.$store.state.departmentDetails.eq_departId
-        }
-    },
-    watch: {
-        town: {
-            deep: true,
-            handler (newV, oldV) {
-                if (newV) {
-                    setTimeout(() => {
-                        // 没有滚动条也可以滚动
-                        $('.growthRanking__rows').niceScroll({ scrollbarid: 'growthRanking--scrollbarid' })
-                        // 鼠标拖拽滚动
-                        this.dragScrollClick = dragScroll(this.$refs.dragscroll)
-                    }, 350);
+<vue-seamless-scroll :class-option="optionSingleHeightTime" :data="myItems" class='seamless-warp'>
+  <div v-for='(item, index) in myItems' :key='index' class='item py-1 pl-4 pr-2'>
+    祝贺 <div class="highlight">{{ item._serverData.cmd }}</div> 团购成功
+  </div>
+</vue-seamless-scroll>
 
-                    // 开始自动滚动
-                    const $app = $('.growthRanking__rows')
-                    // 每一条的高度
-                    const innerHeight = window.px2px(65)
-                    // 固定的33个东莞镇区
-                    const len = newV.length
-                    // 边界点
-                    const distance = innerHeight * len
-                    // 是否停止？
-                    let stop = false
+computed: {
+  optionSingleHeightTime () {
+      return { 
+        // singleHeight: 95, waitTime: 2500,
+        step: 0.5,
+      }
+  }
+},
 
-                    // 无限滚动的函数
-                    const _start = () => {
-                        // 检测是否停止
-                        if (stop) return
-
-                        // 清空计时器
-                        window.cancelAnimationFrame(this.timer)
-
-                        // 获取当前滚动
-                        const scrollDistance = $app.scrollTop();
-
-                        // 如果触发临界点
-                        if (scrollDistance >= distance) {
-                             // 0 返回到第一层的指定距离
-                            $app.scrollTop(scrollDistance `% distance)
-                        } else {
-                            // 滚动
-                            $app.scrollTop(scrollDistance + 1)
-                        }
-
-                        // 尽量保证性能
-                        this.timer = window.requestAnimFrame(_start)
-                    }
-
-                    // 开始滚动
-                    _start()
-
-                    // 鼠标开关
-                    $app.mouseover(e => {
-                        stop = true
-                    }).mouseleave(e => {
-                        stop = false
-                        _start()
-                    })
-                }
-            }
-        }
-    },
-    mounted() {
-        
-    },
-    // 页面离开的时候，初始化一些参数配置
-    beforeRouteLeave  (to, from, next) {
-        // 清空计时器
-        window.cancelAnimationFrame(this.timer)
-        // 放行
-        next();
-    },
+<style lang="scss" scoped>
+.seamless-warp {
+  width: 400px;
+  height: 21em;
+  overflow-y: hidden;
+  background: rgba(255, 255, 255, .2);
 }
-</script>
+</style>
 )
 }
 
@@ -4139,9 +4069,13 @@ module.exports = {
     css: {
       loaderOptions: {
         sass: {
-          data: ``
-            @import "@/scss/functions.scss";
-          ``
+          // 建议手动删除 package.json 中的 sass-loader，然后删除所有依赖重装 sass-loader@7.1.0
+          // $ npm uninstall --save-dev sass-loader
+          // $ cnpm install --save-dev sass-loader@7.1.0
+          // https://blog.csdn.net/liwan09/article/details/106981239
+          data: `
+              @import "~@/scss/functions.scss";
+          `
         }
       }
     },
@@ -5422,6 +5356,9 @@ return
 
 ::vue.dir::
 ::vue.zhiling::
+::vuezhiling::
+::vuez::
+::v-tip::
 Var = 
 (
   // <div id='box' v-drag='{ warp: "#app", tap: tapHandler, longTap: longTapHandler }'></div>
@@ -5580,7 +5517,42 @@ Vue.directive('loader', {
         console.log('componentUpdated', el, value)
     },     
 })
+---
+const useDiv = (setDiv) => {
+    let div = document.createElement('div')
+    setDiv(div)
+    document.body.append(div)
+    return [div, () => div.remove()]
+}
 
+// 创建一个容器
+const [div, remove] = useDiv(e => {
+    e.style.position = 'absolute'
+    e.style.background = 'rgba(0, 0, 0, .5)'
+    e.style.color = 'white'
+    e.style.fontSize = '1em'
+    e.style.left = 0
+    e.style.top = 0
+    e.style.padding = '1em'
+    e.style.display = 'none'
+})
+
+
+Vue.directive('tip', {
+    bind(el, { value = '' }) {
+        div.textContent = value
+        el.addEventListener('mousemove', (event) => {
+            const { clientX, clientY } = event
+            div.style.display = 'block'
+            div.style.top = clientY + 10 + 'px'
+            div.style.left = clientX + 10 + 'px'
+        })
+
+        el.addEventListener('mouseleave', (event) => {
+            div.style.display = 'none'
+        })
+    }
+})
 )
 txtit(Var)
 return
