@@ -1,4 +1,23 @@
-﻿:?:window.a2::
+﻿::domjianting::
+::domjt::
+::domlisten::
+::domon::
+::obs::
+Var =
+(
+const observer = new IntersectionObserver((entries) => {
+    console.log(entries)
+}, {
+    root: document.querySelector("#app"),
+    threshold: 1.0,
+})
+
+document.querySelectorAll(".item").forEach((el) => observer.observe(el))
+)
+code(Var)
+return
+
+:?:window.a2::
 :?:window.ani2::
 :?:winquest2::
 :?:wina2::
@@ -11169,8 +11188,51 @@ Var =
     // 手动触发一次, 因为页面显示时，并未触发scroll事件。
     lazyload();
 }());
+---
+/* directive/imgLazy.js */
+import baseImg from '@/assets/logo.png'
+
+// 创建一个监听器
+let observer = new IntersectionObserver((entries)=>{
+  // entries是所有被监听对象的集合
+  entries.forEach(entry =>{
+    if(entry.isIntersecting){
+      // 当被监听元素到临界值且未加载图片时触发。
+      !entry.target.isLoaded  && showImage(entry.target,entry.target.data_src)
+    }
+  })
+})
+
+function showImage(el,imgSrc){
+  const img = new Image();
+  img.src = imgSrc;
+  img.onload = ()=>{
+    el.src = imgSrc;
+    el.isLoaded = true;
+  }
+}
+
+export default {
+  // 这里用inserted和bind都行，因为IntersectionObserver时异步的，以防意外还是用inserted好一点
+  // inserted和bind的区别在于inserted时元素已经插入页面，能够直接获取到dom元素的位置信息。
+  inserted(el,binding) {
+    // 初始化时展示默认图片
+    el.src = baseImg;
+    // 将需要加载的图片地址绑定在dom上
+    el.data_src = binding.value;
+    observer.observe(el)
+  },
+  unbind(){
+    // 停止监听
+    observer.disconnect();
+  }
+}
+
+/* main.js */
+import imgLazy from '@/directive/imgLazy.js'
+Vue.directive('imgLazy', imgLazy)
 )
-code(Var)
+txtit(Var)
 return
 
 ::clip::
@@ -13267,6 +13329,36 @@ return
 
 
 ::script::
+Var =
+(
+
+<script>
+export default {
+  name: "test",
+  data() {
+    return {
+      items: [],
+      title: "HelloWorld",
+    };
+  },
+  methods: {
+    go() {
+      console.log("go")
+    },
+  },
+  components: {},
+  computed: {},
+  watch: {},
+  props: [],
+  beforeMount() {
+    console.log(20200811085251, "test")
+  }
+}
+</script>
+)
+code(Var)
+return
+
 ::script`:src::
 Var =
 (

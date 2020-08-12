@@ -12045,7 +12045,7 @@ FileAppend,
     map.centerAndZoom(poi, 16)
     map.enableScrollWheelZoom()
 
-    const content = item => `
+    const content = item => ``
       <div class='m-2 flex'>
           <div class='flex flex-col'>
               <div class='mt-2'>地址：${item.address}</div>
@@ -12054,7 +12054,7 @@ FileAppend,
           </div>
           <img src='http://lbsyun.baidu.com/img/baidu.jpg' alt='...' />
       </div>
-    `
+    ``
 
     var marker = new BMap.Marker(poi)
     marker.__DATA__ = { title: '东莞新奧燃气有限公司', address: 'Lorem ipsum dolor sit amet', mobile: '13713332652', desc: 'The giant panda' }

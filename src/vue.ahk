@@ -40,10 +40,10 @@
 
   
 
-  Menu, VueMenu, Add, vue-cli 安装与预览单文件, VueHandler
-  Menu, VueMenu, Add, pop超强！Vue 快速定位文件解决方案, VueHandler
   Menu, VueMenu, Add, vue.router, :Vuerouter
   Menu, VueMenu, Add, vuex 必知必会基本功, :vuexmenubasic
+  Menu, VueMenu, Add, vue-cli 安装与预览单文件, VueHandler
+  Menu, VueMenu, Add, pop超强！Vue 快速定位文件解决方案, VueHandler
   Menu, VueMenu, Add, import { mapState`, mapActions`, mapMutations`, mapGetters } from 'vuex', VueHandler  
   Menu, VueMenu, Add, this.$store.subscribe, VueHandler
   Menu, VueMenu, Add, store.js, VueHandler
@@ -71,7 +71,6 @@
   Menu, vuebase, Add, vue.mixins, VueHandler
   
 
-  Menu, vuejiaoshouj, Add, vue.config.js, VueHandler
   
   
   Menu, vuecognition, Add, watch props 与 data 结合来初始化, VueHandler
@@ -83,7 +82,18 @@
   Menu, vuetranstion, Add, <transition-group>, VueHandler
   Menu, vuetranstion, Add, <transition>与路由动画, VueHandler
 
-  Menu, VueMenu, Add, 脚手架大全, :vuejiaoshouj
+  Menu, vuetranstion, Add,
+  Menu, vuetranstion, Add,
+
+
+  Menu, vuetranstion, Add, vue 官方列表动画 <transition-group> , VueHandler
+  Menu, vuetranstion, Add, vue 动画组件<transition> + animate.css, VueHandler
+  Menu, vuetranstion, Add, vue animate4.0.css, VueHandler
+  Menu, vuetranstion, Add, [金志]很喜欢的列表 animate.css 动画, VueHandler
+
+  Menu, VueMenu, Add, vue 认知, :vuecognition
+  Menu, VueMenu, Add, vue 必知必会, :vuebase
+  Menu, VueMenu, Add, vue.config.js, VueHandler
   Menu, VueMenu, Add, proxyTable 配置, VueHandler
   Menu, VueMenu, Add, v-slot 插槽, VueHandler
   Menu, VueMenu, Add, filters 过滤器的使用, VueHandler
@@ -97,14 +107,10 @@
   Menu, VueMenu, Add, 🎁 findComponentByName：寻找上下游组件, VueHandler
   Menu, VueMenu, Add, 🔔 dispatch 和 broadcast: 跨组件通讯解决方案, VueHandler
   
-  Menu, VueMenu, Add, vue 认知, :vuecognition
-  Menu, VueMenu, Add, vue 必知必会, :vuebase
+
   Menu, VueMenu, Add, vue.watch的N种套路, :vuewatch
-  Menu, VueMenu, Add, vue 官方列表动画 transition-group , :VueHandler
   Menu, VueMenu, Add, vue 动画组件<transition>, :vuetranstion
-  Menu, VueMenu, Add, vue 动画组件<transition> + animate.css, :vuetranstion
-  Menu, VueMenu, Add, vue animate4.0.css, VueHandler
-  Menu, VueMenu, Add, [金志]很喜欢的列表 animate.css 动画, VueHandler
+  
 
 
 
@@ -117,6 +123,7 @@
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
   
+  Menu, VueMenu, Add, v-tooltip, VueHandler
   Menu, VueMenu, Add, <keep-alive>: 这里的 name 是组件的不是 router 的, VueHandler
   Menu, VueMenu, Add, this.$msgbox 与 vnode 语法, VueHandler
   Menu, VueMenu, Add, render(h), VueHandler
@@ -191,7 +198,12 @@ Var =
 )
 }
 
-if (v == "vue 官方列表动画 transition-group ") {
+if (v == "v-tooltip") {
+_send("v-tooltip", true, true)
+return
+}
+
+if (v == "vue 官方列表动画 <transition-group>") {
 Var =
 (
 <transition-group name="list" tag='div'>
@@ -2422,6 +2434,7 @@ var vue = new Vue({
 </html>
 )
 txtit(Var)
+return
 }
 
 if (v == "vue.components") {
@@ -7207,6 +7220,152 @@ export default {
   display: none;
 }
 </style>
+)
+code(Var)
+return
+
+::pwa::
+Var =
+(
+cnpm i @vue/cli-plugin-pwa register-service-worker -S
+---
+/* vue.config.js */
+module.exports = {
+    pwa: {
+        name: 'my-pwa-app',
+        workboxPluginMode: 'InjectManifest',
+        workboxOptions: {
+            swSrc: 'src/service-worker.js'
+        }
+    }
+}
+---
+/* src/service-worker.js */
+/**
+ * 哪怕一切顺利正常，用户的首次访问也不会生成缓存？ 这是正常的。官方解释原因如下：
+ * 简而言之： 首次 service worker 注册需要一定的时间，如果你为了缓存而在首次加载就等待注册完成，再进行页面再进行缓存的话，那用户体验会非常差。得不偿失。
+ * 所以首次访问你不应该等待 service worker 注册，而是让它异步自动注册，注册成功后，第二次访问再让它进行缓存即可。
+ * https://developers.google.com/web/fundamentals/primers/service-workers/registration?hl=zh-cn#用户的首次访问
+ */
+
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
+
+// 强制等待中的 Service Worker 被激活
+workbox.core.skipWaiting()
+
+// Service Worker 被激活后使其立即获得页面控制权
+workbox.core.clientsClaim()
+
+// 设置预加载
+workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
+
+/**
+ * 以上都是固定套路，我也不是很了解 ...
+ *
+ * https://zhuanlan.zhihu.com/p/67931226
+ * https://blog.csdn.net/cream66/article/details/107367026/
+ * https://blog.csdn.net/lecepin/article/details/86251301
+ * https://www.imooc.com/article/40432
+ */
+
+workbox.routing.registerRoute(
+    // 回调函数匹配，适合调试
+    ({ url, event }) => url.href.includes('newsapi.org'),
+    // 策略：网络优先
+    new workbox.strategies.NetworkFirst({
+        cacheName: 'newsapi', method: 'GET',
+        // 缓存限制
+        plugins: [ new workbox.expiration.Plugin({ maxEntries: 100 }) ],
+        // 只缓存 200 
+        cacheableResponse: { status: [0, 200] }
+    })
+`)
+
+workbox.routing.registerRoute(
+    // 回调函数匹配，适合调试
+    ({ url, event }) => url.href.includes('bdimg.com/tile'),
+    // 策略：同时从缓存和网络请求资源。如果缓存可用，策略将响应缓存版本，否则等待网络响应。每一次网络请求成功后，会更新缓存。
+    new workbox.strategies.StaleWhileRevalidate({
+        cacheName: 'tile', method: 'GET',
+        // 缓存限制
+        plugins: [new workbox.expiration.Plugin({ maxEntries: 1993100337 })],
+        // 只缓存 200 
+        cacheableResponse: { status: [0, 200] },
+        // 支持跨域（不使用这个似乎也无所谓）
+        fetchOptions: { credentials: "include" },
+    })
+`)
+
+workbox.routing.registerRoute(
+    // 回调函数匹配，适合调试
+    ({ url, event }) => url.href.includes('api.map.baidu.com/api'),
+    // 策略：同时从缓存和网络请求资源。如果缓存可用，策略将响应缓存版本，否则等待网络响应。每一次网络请求成功后，会更新缓存。
+    new workbox.strategies.StaleWhileRevalidate({
+        cacheName: 'baiduAPI', method: 'GET',
+        // 缓存限制
+        plugins: [new workbox.expiration.Plugin({ maxEntries: 1 })],
+        // 只缓存 200 
+        cacheableResponse: { status: [0, 200] },
+        // 支持跨域（不使用这个似乎也无所谓）
+        fetchOptions: { credentials: "include" },
+    })
+`)
+---
+/* src/registerServiceWorker.js */
+import { register } from 'register-service-worker'
+
+if (process.env.NODE_ENV === 'production') {
+  register(`${process.env.BASE_URL}service-worker.js`, {
+    ready () {
+      console.log(
+        'App is being served from cache by a service worker.\n' +
+        'For more details, visit https://goo.gl/AFskqB'
+      `)
+    },
+    registered () {
+      console.log('Service worker has been registered.')
+    },
+    cached () {
+      console.log('Content has been cached for offline use.')
+    },
+    updatefound () {
+      console.log('New content is downloading.')
+    },
+    updated () {
+      console.log('New content is available; please refresh.')
+    },
+    offline () {
+      console.log('No internet connection found. App is running in offline mode.')
+    },
+    error (error) {
+      console.error('Error during service worker registration:', error)
+    }
+  })
+}
+---
+/* main.js */
+import './registerServiceWorker'
+)
+txtit(Var)
+return
+
+
+::v-tip::
+::vtip::
+::v-tooltip::
+::vtooltip::
+Var =
+(
+/* npm install --save v-tooltip */
+import Vue from 'vue'
+import VTooltip from 'v-tooltip'
+
+Vue.use(VTooltip)
+
+
+/* app.vue */
+/* https://akryum.github.io/v-tooltip/ */
+<button v-tooltip="'You have a new messages.'">
 )
 code(Var)
 return

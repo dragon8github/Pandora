@@ -1,4 +1,14 @@
-﻿::ahkask::
+﻿::pq::
+::psql::
+Var =
+(
+PostgreSQL
+)
+code(Var)
+return
+
+
+::ahkask::
 Var =
 (
 InputBox, OutputVar, title, enter a name?,,,,,,,,test
@@ -14,10 +24,16 @@ Var =
 code(Var)
 return
 
+::gaicibi::
+::盖茨比::
+::gs::
 ::ql::
+::ga::
+::gast::
+::gats::
 Var =
 (
-GraphQL
+Gatsby（GraphQL）
 )
 code(Var)
 return
@@ -142,6 +158,7 @@ SendInput, {left}
 return
 
 ::xujun::
+::junxu::
 Var =
 (
 旭均
@@ -165,9 +182,16 @@ return
     WinClip.paste()
 return
 
+::xi::
+Var =
+(
+囍
+)
+code(Var)
+return
+
 ::liuxi::
 ::lx::
-::xi::
 Var =
 (
 刘羲
@@ -2444,7 +2468,7 @@ tmp := Clipboard
 Clipboard :=
 Send, ^x
 ClipWait, 2
-if (Clipboard) {
+if (Clipboard != "") {
   a := "『" . Clipboard . "』"
   code(a)
 }
@@ -2456,7 +2480,7 @@ tmp := Clipboard
 Clipboard :=
 Send, ^x
 ClipWait, 2
-if (Clipboard) {
+if (Clipboard != "") {
   a := "「" . Clipboard . "」"
   code(a)
 }
@@ -2554,7 +2578,7 @@ code(Var)
 Return
 
 ::lzh::
-cs("李钊鸿")
+cs("李钊鸿（928532756@qq.com）")
 return
 
 ::137::

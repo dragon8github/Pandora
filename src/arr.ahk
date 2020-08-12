@@ -8,6 +8,8 @@
 	Menu, arrayMenu, Add,, ForHandler
 	Menu, arrayMenu, Add,, ForHandler
 
+
+    Menu, arrayMenu, Add, 合并多个数组：const data = [].concat(data1`, data2`, data3), utilsHandler
     Menu, arrayMenu, Add, merge: 合并对象数组的好东西, utilsHandler
     Menu, arrayMenu, Add, 统计数组中每个元素出现的次数, utilsHandler
     Menu, arrayMenu, Add, 新的数组工具：filters, utilsHandler
@@ -108,6 +110,13 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "合并多个数组：const data = [].concat(data1, data2, data3)") {
+Var =
+(
+合并多个数组：const data = [].concat(data1, data2, data3)
 )
 }
 

@@ -7229,6 +7229,8 @@ const on = (target, event, handler, passive = false) => target.addEventListener(
 code(Var)
 return
 
+::danlimoshi::
+::danli::
 ::sing::
 ::singele::
 ::single::

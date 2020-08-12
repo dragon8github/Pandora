@@ -189,7 +189,7 @@ Gui, Pandora:Add, Button, w260 h30 gFuck Section xs h30 yp+120 Default, FUCK
 
 
 ; Tab 选项卡 w830 h570 
-Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs 与 Npm | Vue | React | 库 | 奇妙工具 | 地图 与 chart | Python | PHP | 微信  | 爬虫 | 移动开发 | CSS | 剪切板 
+Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs 与 Npm | Vue | React | 库 | 奇妙工具 | 地图 与 chart | Python | PHP | 微信  | 爬虫 | 移动开发 | CSS | Serverless | 剪切板 
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -370,6 +370,8 @@ Gui, Pandora:Add, Link,, <a href="http://www.cnplugins.com/">Chomre国内镜像�
 Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</a>
 Gui, Pandora:Add, Link,, <a href="https://www.checklist.design/">checklist.design</a>
 Gui, Pandora:Add, Link,, <a href="https://www.24s.net/">24s付费视频盗版</a>
+Gui, Pandora:Add, Link,, <a href="https://mapshaper.org/">旭均 - mapshaper</a>
+
 
 ;@1
 
@@ -1307,8 +1309,17 @@ Gui, Pandora:Add, Link,, <a href="https://javisperez.github.io/tailwindcolorshad
 Gui, Pandora:Add, Text,  W140 ys, bootstrap:
 Gui, Pandora:Add, Link,, <a href="https://froala.com/design-blocks">代码片段</a>
 
-; 剪切框
+; Serverless
 Gui, Pandora:Tab, 16
+Gui, Pandora:Add, Text,  W140 Section, Serverless:
+Gui, Pandora:Add, Link,, <a href="https://cloud.tencent.com/document/product/1154/39270">Components</a>
+Gui, Pandora:Add, Link,, <a href="https://serverless.cloud.tencent.com/">serverless控制台</a>
+Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/scf/index?rid=1">云函数控制台</a>
+Gui, Pandora:Add, Link,, <a href="https://serverlesscloud.cn/best-practice">SLS最佳实践</a>
+
+
+; 剪切框
+Gui, Pandora:Tab, 17
 Gui, Pandora:Add, Edit, vClipHistory w1020 H660 Limit199307100337
 ; Gui, Pandora:Add, Button, gSaveClipHistory w870 h30, 保存到桌面
 

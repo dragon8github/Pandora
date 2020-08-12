@@ -6533,3 +6533,67 @@ article p  { font-size: 1em;    line-height: calc(1ex / 0.32); margin: calc(1ex 
 )
 code(Var)
 return
+
+::css.tip::
+::tip::
+::tooltip::
+::css.tooltip::
+Var =
+(
+<style>
+.skills-item[data-tooltip] {
+    position: relative;
+}
+
+.skills-item[data-tooltip]:after {
+    position: absolute;
+    padding: 8px;
+    width: auto;
+    right: 50`%;
+    padding: 5px 0;
+    content: attr(data-tooltip);
+    bottom: 100`%;
+    background-color: #555;
+    border-radius: 6px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+    transform: translateX(50`%);
+}
+
+.skills-item[data-tooltip]:before {
+    content: '';
+    position: absolute;
+    margin-top: -10px;
+    right: 50`%;
+    opacity: 0;
+    border-width: 5px;
+    border-style: solid;
+    transition: opacity 0.3s;
+    transform: translateX(50`%);
+    border-color: #555 transparent transparent transparent;
+}
+
+.skills-item[data-tooltip]:hover:after {
+    opacity: 1;
+}
+
+.skills-item[data-tooltip]:hover:before {
+    opacity: 1;
+}
+</style>
+
+<div class="skills">
+    <div class="skills-item" data-tooltip="HTML5">
+        Content
+    </div>
+    <div class="skills-item" data-tooltip="CSS3">
+        Content
+    </div>
+    <div class="skills-item" data-tooltip="JavaScript">
+        Content
+    </div>
+</div>
+)
+code(Var)
+return
