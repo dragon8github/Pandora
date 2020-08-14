@@ -1,4 +1,13 @@
-﻿::pq::
+﻿::os::
+::open::
+Var =
+(
+openshift（master.alltosea.com:8443/console/）
+)
+code(Var)
+return
+
+::pq::
 ::psql::
 Var =
 (
@@ -2561,8 +2570,10 @@ return
 cs("sequelize")
 return
 
+::je::
+::jk::
 ::jek::
-cs(" Jenkins")
+cs("Jenkins")
 return
 
 ::ahksend::
@@ -2638,6 +2649,14 @@ export default class %OutputVar% extends Chart {
 )
 code(Var)
 Return
+
+::sw2::
+Var =
+(
+service worker
+)
+code(Var)
+return
 
 ::sw::
 Var =

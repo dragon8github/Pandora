@@ -72,7 +72,7 @@
 	Menu, Arrayprototype, Add, shift： 弹出并删除第一个 , ForHandler
 	Menu, Arrayprototype, Add, pop： 弹出并删除最后一个 , ForHandler
 	Menu, Arrayprototype, Add, slice： 无损截取数组 , ForHandler
-	Menu, Arrayprototype, Add, splice： 删除成员 ary.splice(1`, 1), ForHandler
+	Menu, Arrayprototype, Add, splice： 删除成员 ary.splice(index`, 1), ForHandler
 	Menu, Arrayprototype, Add, splice： 有损截取数组，可用于替换ary.splice(index`, 1`, 'fuck') , ForHandler
 	Menu, Arrayprototype, Add, splice： 可用于插入：ary.splice(1`, 0`, 'fuckyou') , ForHandler
 	Menu, Arrayprototype, Add,  for-- 循环中splice需要使用, ForHandler

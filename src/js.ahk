@@ -9119,9 +9119,14 @@ return
 ::iqj::
 Var = 
 (
-var o = document.createElement('script');
-o.src = 'https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js';
-document.documentElement.appendChild(o); // console.log(jQuery.fn.jquery);
+var o = document.createElement('script')
+o.src = 'https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js'
+document.documentElement.appendChild(o) // console.log(jQuery.fn.jquery)
+
+
+var o = document.createElement('script')
+o.src = 'https://libs.cdnjs.net/axios/0.19.2/axios.min.js'
+document.documentElement.appendChild(o) // console.log(jQuery.fn.jquery)
 )
 code(Var)
 return
@@ -9594,6 +9599,16 @@ export const wait = async (fn, t = 0) => {
 txtit(Var)
 return
 
+
+::()()3::
+Var =
+(
+(() => {
+    console.log(20200814101909, )
+})()
+)
+code(Var)
+return
 
 ::$()::
 ::$()()::

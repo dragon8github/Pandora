@@ -508,9 +508,13 @@ Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/fyvis/#/planB">测�
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/fyvis/#/">正式预览</a>
 
 
-Gui, Pandora:Add, Text,  W150 ys, ioc-basic
+Gui, Pandora:Add, Text,  W150 ys, ioc-basic:
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:31321/mapvis">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/visual/basic">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/35/interface/api">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins编译</a>
+Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/tool-basic-visual-ui?tab=history">openshift 部署</a>
+
 
 
 Gui, Pandora:Add, Text,  W160 ys, 大数据屏幕（vue+jquery）
@@ -546,7 +550,7 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12
 Gui, Pandora:Add, Link,, <a href="http://19.104.40.37:8084/">内网预览地址</a>
 
 
-Gui, Pandora:Add, Text,  W140 xs Section yp+150, 数据中心
+Gui, Pandora:Add, Text,  W140 xs Section yp+100, 数据中心
 Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">源码gitlab</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter">原型gitlab</a>

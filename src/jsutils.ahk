@@ -7076,6 +7076,11 @@ return
 ::eventbus::
 Var =
 (
+// 如何删除元素绑定的事件？
+<script src='https://cdn.jsdelivr.net/gh/colxi/getEventListeners/src/getEventListeners.min.js'></script>
+ el.getEventListeners()
+
+---
 const isPromise = val => val && typeof val.then === 'function'
 
 Promise.allSettled = iterables => new Promise(resolve => {

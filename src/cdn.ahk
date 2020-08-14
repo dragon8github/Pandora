@@ -1,4 +1,19 @@
-﻿::cdn-mmd::
+﻿::cdn-listen::
+::cdn-event::
+::cdn-remove::
+::cdn-addevent::
+::cdn-adde::
+::cdn-add::
+::cdn-removeon::
+Var =
+(
+<script src='https://cdn.jsdelivr.net/gh/colxi/getEventListeners/src/getEventListeners.min.js'></script>
+el.getEventListeners()
+)
+code(Var)
+return
+
+::cdn-mmd::
 ::cdn-mengmengda::
 Var =
 (
