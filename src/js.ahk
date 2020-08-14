@@ -336,10 +336,11 @@ return
 ::mapc::
 Var =
 (
-const test (x, y) => {
+// setTimeout(() => Object.values(fuck).map(_ => test(..._)), 1000)
+const test = (x, y) => {
     var poi = new BMap.Point(x, y)
     var marker = new BMap.Marker(poi)
-    window.$map.addOverlay(marker)
+    map.addOverlay(marker)
 }
 
 map.addEventListener('click', function(e) {
@@ -347,6 +348,8 @@ map.addEventListener('click', function(e) {
     var marker = new BMap.Marker(e.point)
     this.addOverlay(marker)
 })
+
+
 )
 code(Var)
 return

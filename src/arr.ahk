@@ -9,6 +9,8 @@
 	Menu, arrayMenu, Add,, ForHandler
 
 
+
+    Menu, arrayMenu, Add, 获取数组的维度, utilsHandler
     Menu, arrayMenu, Add, 合并多个数组：const data = [].concat(data1`, data2`, data3), utilsHandler
     Menu, arrayMenu, Add, merge: 合并对象数组的好东西, utilsHandler
     Menu, arrayMenu, Add, 统计数组中每个元素出现的次数, utilsHandler
@@ -110,6 +112,24 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "获取数组的维度") {
+Var =
+(
+function getDeepth(array) {
+    function sum(arr, flag) {
+        return arr.reduce(function (total, item) {
+            var totalDeepth
+            if (Array.isArray(item)) {
+                totalDeepth = sum(item, flag + 1)
+            }
+            return totalDeepth > total ? totalDeepth : total
+        }, flag)
+    }
+    return sum(array, 1)
+}
 )
 }
 
@@ -979,6 +999,26 @@ return
 Var =
 (
 const merge = (a, b, p) => a.filter( aa => ! b.find ( bb => aa[p] === bb[p]) ).concat(b)
+)
+code(Var)
+return
+
+::weidu::
+::jiwei::
+Var =
+(
+function getDeepth(array) {
+    function sum(arr, flag) {
+        return arr.reduce(function (total, item) {
+            var totalDeepth
+            if (Array.isArray(item)) {
+                totalDeepth = sum(item, flag + 1)
+            }
+            return totalDeepth > total ? totalDeepth : total
+        }, flag)
+    }
+    return sum(array, 1)
+}
 )
 code(Var)
 return

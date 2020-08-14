@@ -509,7 +509,7 @@ Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/fyvis/#/">正式预览</a
 
 
 Gui, Pandora:Add, Text,  W150 ys, ioc-basic:
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:31321/mapvis">预览地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:31321/mapvis/#/index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/visual/basic">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/35/interface/api">yapi</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins编译</a>
