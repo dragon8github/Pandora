@@ -3577,6 +3577,31 @@ return
 ::import::
 Var =
 (
+<template>
+    <div class='layout'>
+        <component :is='tool' v-if='tool'></component>
+    </div>
+</template>
+
+<script>
+
+export default {
+    name: 'Layout',
+    watch: {
+      '$route': {
+          deep: true,
+          immediate: true,
+          handler (newV, oldV) {
+            // 获取当前路由名称
+            const name = newV.name || 'Index'
+            // 设置当前工具栏
+            this.tool = () => import(`@/components/tools/${name}`)
+          }
+      }
+    },
+}
+</script>
+---
 import Vue from 'vue'
 
 /**
@@ -7100,46 +7125,20 @@ SendInput, {right 7}
 SendInput, +{right 2}
 return
 
+::imp3::
 ::impapi::
 ::impvue::
+::impv::
 ::imp-vue::
 Var =
 (
-import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from '@vue/composition-api'
+/* @vue/composition-api */
+import { useStore } from "vuex"
+import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from 'vue' 
 )
 code(Var)
 return
 
-::imp3::
-Var =
-(
-<template>
-    <div class='layout'>
-        <component :is='tool' v-if='tool'></component>
-    </div>
-</template>
-
-<script>
-
-export default {
-    name: 'Layout',
-    watch: {
-      '$route': {
-          deep: true,
-          immediate: true,
-          handler (newV, oldV) {
-            // 获取当前路由名称
-            const name = newV.name || 'Index'
-            // 设置当前工具栏
-            this.tool = () => import(`@/components/tools/${name}`)
-          }
-      }
-    },
-}
-</script>
-)
-code(Var)
-return
 
 ::cimp::
 Var =

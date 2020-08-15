@@ -4067,9 +4067,7 @@ return
 :?:vue.config::
 Var =
 (
-// vue.config.js
 const path = require('path')
-
 const resolve = (dir) => path.join(__dirname, dir)
 
 module.exports = {
@@ -4082,13 +4080,12 @@ module.exports = {
     css: {
       loaderOptions: {
         sass: {
-          // 建议手动删除 package.json 中的 sass-loader，然后删除所有依赖重装 sass-loader@7.1.0
-          // $ npm uninstall --save-dev sass-loader
-          // $ cnpm install --save-dev sass-loader@7.1.0
+          // 1、在 package.json 中修改 sass-loader 的版本： "sass-loader": "^7.1.0"
+          // 2、安装依赖：$ cnpm i
           // https://blog.csdn.net/liwan09/article/details/106981239
-          data: `
+          data: ``
               @import "~@/scss/functions.scss";
-          `
+          ``
         }
       }
     },
@@ -4098,7 +4095,6 @@ module.exports = {
             extensions: ['.js', '.vue', '.json'],
             // 别名配置
             alias: {
-                // @ is an alias to /src
                 '@': resolve('src'),
             },
         },
@@ -7366,6 +7362,79 @@ Vue.use(VTooltip)
 /* app.vue */
 /* https://akryum.github.io/v-tooltip/ */
 <button v-tooltip="'You have a new messages.'">
+)
+code(Var)
+return
+
+
+::vue3.init::
+::vue.init2::
+::vue.init3::
+Var =
+(
+<template>
+  <div class="hello">
+    <h1 ref='el'>{{ msg }}</h1>
+    {{ state.count }} doulbe is {{ double }}
+    <input type="button" value='+' @click='inc' />
+  </div>
+</template>
+
+<script>
+import { ref, reactive, computed, watch, onMounted } from 'vue'
+
+export default {
+  name: 'HelloWorld',
+  props: { msg: String },
+  setup(props) {
+    // props
+    console.log(20200814205739, props.msg)
+
+    // data
+    let state = reactive({ count: 0 })
+
+    // computed
+    let double = computed(() => state.count * 2)
+
+    // method
+    let inc = () => ++state.count
+
+    // watch
+    watch(() => state.count, (newV, oldV) => console.log(newV, oldV), { immediate: true, deep: true })
+
+    // $refs
+    let el = ref(null)
+
+    // mounted
+    onMounted(() => {
+      // $refs 只有在 onMounted 才能使用。
+      let dom = el.value
+      // 修改标题顔色
+      dom.style.color = 'blue'
+    })
+
+    return { state, double, inc, el }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
+
 )
 code(Var)
 return
