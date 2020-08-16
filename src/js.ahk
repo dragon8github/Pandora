@@ -1,4 +1,13 @@
-﻿::domjianting::
+﻿::e.pro::
+::e.pre::
+Var =
+(
+e.preventDefault()
+)
+code(Var)
+return
+
+::domjianting::
 ::domjt::
 ::domlisten::
 ::domon::

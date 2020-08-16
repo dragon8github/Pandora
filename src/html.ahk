@@ -1,4 +1,9 @@
-﻿::head-utf8::
+﻿
+
+
+
+
+::head-utf8::
 ::headutf::
 ::headutf8::
 Var =
@@ -87,39 +92,6 @@ code(Var)
 return
 
 
-::form::
-::css.form::
-Var =
-(
-<div class="flex items-center h-screen w-full bg-teal-lighter">
-    <div class="w-full bg-white rounded shadow-lg p-8 m-4">
-        <h1 class="block w-full text-center text-grey-darkest mb-6">Sign Up</h1>
-        <form class="mb-4" action="/" method="post">
-            <div class="flex flex-col mb-4">
-                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="first_name">First Name</label>
-                <input class="border py-2 px-3 text-grey-darkest" type="text" name="first_name" id="first_name" />
-            </div>
-            <div class="flex flex-col mb-4">
-                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="last_name">Last Name</label>
-                <input class="border py-2 px-3 text-grey-darkest" type="text" name="last_name" id="last_name" />
-            </div>
-            <div class="flex flex-col mb-4">
-                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="email">Email</label>
-                <input class="border py-2 px-3 text-grey-darkest" type="email" name="email" id="email" />
-            </div>
-            <div class="flex flex-col mb-6">
-                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="password">Password</label>
-                <input class="border py-2 px-3 text-grey-darkest" type="password" name="password" id="password" />
-            </div>
-            <button class="block bg-blue-700 hover:bg-teal-dark text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Create Account</button>
-        </form>
-        <a class="block w-full text-center no-underline text-sm text-grey-dark hover:text-grey-darker" href="/login">Already have an account?</a>
-    </div>
-</div>
-)
-code(Var)
-return
-
 ::randomimg::
 ::rimg::
 ::img2::
@@ -130,30 +102,7 @@ return
 
 
 
-::html.card::
-::card::
-Var =
-(
-<div class="container mx-auto py-10">
-            <div class="border m-6 rounded-lg  bg-white mx-auto max-w-sm shadow-lg rounded-lg overflow-hidden">
-                <div class="sm:flex sm:items-center px-6 py-4">
-                    <img class="block h-16 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="https://api.adorable.io/avatars/196/abott@adorable.png" alt="" />
-                    <div class="text-center sm:text-left sm:flex-grow">
-                        <div class="mb-4">
-                            <p class="text-xl leading-tight">Jane Doe</p>
-                            <p class="text-sm leading-tight text-grey-dark">Software Developer at SpongeBob LLC.</p>
-                        </div>
-                        <div class="flex flex-wrap">
-                            <button class=" text-xs font-semibold rounded-full px-4 py-1 mx-3  leading-normal bg-white border border-blue text-blue hover:bg-blue hover:text-white">Call</button>
-                            <button class="  text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-white border border-purple text-purple hover:bg-purple hover:text-white">Message</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-)
-code(Var)
-return
+
 
 ::daomagaoliang::
 ::gaoliang::

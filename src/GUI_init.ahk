@@ -189,7 +189,7 @@ Gui, Pandora:Add, Button, w260 h30 gFuck Section xs h30 yp+120 Default, FUCK
 
 
 ; Tab 选项卡 w830 h570 
-Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs 与 Npm | Vue | React | 库 | 奇妙工具 | 地图 与 chart | Python | PHP | 微信  | 爬虫 | 移动开发 | CSS | Serverless | 剪切板 
+Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs 与 Npm | Vue | React | 库 | 奇妙工具 | 地图 与 chart | CSS | Serverless | 微信  | 爬虫 | 移动开发 | Python | PHP | 剪切板 
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
@@ -270,12 +270,12 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/azl397985856/leetcode">leet
 Gui, Pandora:Add, Link,, <a href="https://gitee.com/explore">码云逛逛源码</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need">you-dont-need</a>
 Gui, Pandora:Add, Link,, <a href="https://fex.baidu.com/articles/">fex周刊</a>
-Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客收录</a>
-Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview/blob/master/category/history.md">以面为练</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ChanceYu/front-end-rss">front-end-rss</a>
 Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.smashingmagazine.com/articles/">粉碎杂志</a>
+Gui, Pandora:Add, Link,, <a href="https://reposhub.com/">reposhub.com</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -284,13 +284,13 @@ Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/">阮一峰的�
 Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly/issues">阮一峰issue</a>
 Gui, Pandora:Add, Link,, <a href="https://wangdoc.com/bash/expansion.html#start-end-%E6%89%A9%E5%B1%95">阮一峰的bash</a>
 Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.html">前端日报</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview/blob/master/category/history.md">以面为练</a>
 Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
 Gui, Pandora:Add, Link,, <a href="https://vueschool.io/articles/series/vue-js-performance/">VueSchool</a>
 Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/r/javascript/">reddit</a>
 Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/">Hacker News</a>
+Gui, Pandora:Add, Link,, <a href="https://tympanus.net/codrops/category/tutorials/">Codrops</a>
 
 
 
@@ -304,9 +304,9 @@ Gui, Pandora:Add, Link,, <a href="https://itpdf.de">电子书列表</a>
 Gui, Pandora:Add, Link,, <a href="http://www.broadview.com.cn/book">博文视点（找新书）</a>
 Gui, Pandora:Add, Link,, <a href="https://youquhome.com/">有趣网址之家</a>
 Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a>
-Gui, Pandora:Add, Link,, <a href="https://tympanus.net/codrops/category/tutorials/">Codrops</a>
+Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
+Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客收录</a>
 Gui, Pandora:Add, Link,, <a href="https://regex101.com/">regex101</a>
-Gui, Pandora:Add, Link,, <a href="https://reposhub.com/">reposhub.com</a>
 
 
 
@@ -323,6 +323,7 @@ Gui, Pandora:Add, Link,, <a href="http://upload.likeyunba.com/">阿里云图床<
 Gui, Pandora:Add, Link,, <a href="https://akveo.github.io/eva-icons/#/">480个免费的svg</a>
 Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
 Gui, Pandora:Add, Link,, <a href="https://feathericons.com/?query=close">feathericons</a>
+Gui, Pandora:Add, Link,, <a href="https://designkiki.com/colordoo/?ref=producthunt">颜色搭配神器</a>
 
 
 
@@ -396,11 +397,11 @@ Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
 Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
 Gui, Pandora:Add, Text, ganimjquery W160,新建animate.css与jquery
-Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建复杂table.html
 Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
 Gui, Pandora:Add, Text, gfullpagepurecss W180,纯css实现swiper全屏fullpage
+Gui, Pandora:Add, Text, gvuedroptest W180,vue-drop-拖拽示例
 
-Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys x+40 ,新建autoscroll.html
+Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
 Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
 Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条
@@ -422,9 +423,10 @@ Gui, Pandora:Add, Text, gyoujiancaidanxinjian  W140,新建拦截右键菜单
 Gui, Pandora:Add, Text, gdomshengyin W180,只要 dom 改变就会发出声音
 Gui, Pandora:Add, Text, gcsspinyinHtml W180, css正则匹配选择器实现拼音搜索
 Gui, Pandora:Add, Text, gsinaip W180,新浪接口获取ip地址
+Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建复杂table.html
 
 
-Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+20,新建.echartsDemo.html（官方demo）
+Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+50,新建.echartsDemo.html（官方demo）
 Gui, Pandora:Add, Text, gNewEchartsPinHtml, 新建.pin.html(玫瑰饼图)
 Gui, Pandora:Add, Text, gNewEchartsLineHtml ,新建.Line.html（折线图）
 Gui, Pandora:Add, Text, gNewEchartsBarHtml ,新建.Bar.html（柱状图）
@@ -447,7 +449,7 @@ Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
 Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
 
 
-Gui, Pandora:Add, Text, gNodeHttp W140 ys x+80, 新建nodejs http
+Gui, Pandora:Add, Text, gNodeHttp W140 ys x+50, 新建nodejs http
 Gui, Pandora:Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
 Gui, Pandora:Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
@@ -1153,13 +1155,68 @@ Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/api/js4.0/exam
 Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/api/js4.0/opensource/source.html">集成D3效果</a>
 
 
-; @python
+;@css 
 Gui, Pandora:Tab, 10
-Gui, Pandora:Add, Text, W140 Section, python官方：
-Gui, Pandora:Add, Link, W140, <a href="https://docs.python.org/zh-cn/3.7/library/index.html">官方文档</a>
+
+
+Gui, Pandora:Add, Text,  W140 Section, tailwindcss:
+Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/components">官方组件示例</a>
+Gui, Pandora:Add, Link,, <a href="https://tailwindui.com/components">官方tailwindui市场</a>
+Gui, Pandora:Add, Link,, <a href="https://www.tailwindtoolbox.com/templates/landing-page">tailwind-toolbox</a>
+Gui, Pandora:Add, Link,, <a href="https://tailwindcomponents.com/">tailwindc-omponents</a>
+Gui, Pandora:Add, Link,, <a href="https://mertjf.github.io/tailblocks/">tailblocks</a>
+Gui, Pandora:Add, Link,, <a href="https://tailwindtemplates.io/cards/">template</a>
+Gui, Pandora:Add, Link,, <a href="https://merakiui.com/headers/">merakiui</a>
+Gui, Pandora:Add, Link,, <a href="https://javisperez.github.io/tailwindcolorshades/#/?Valencia=E24E42&tv=1">tailwind 颜色生成器</a>
+
+
+Gui, Pandora:Add, Text,  W140 ys, bootstrap:
+Gui, Pandora:Add, Link,, <a href="https://froala.com/design-blocks">代码片段</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/therebelrobot/awesome-bootstrap#templates">awesome template</a>
+Gui, Pandora:Add, Link,, <a href="https://startbootstrap.com/themes/">模板网站1</a>
+Gui, Pandora:Add, Link,, <a href="https://bootstrapmade.com/">模板网站2</a>
+Gui, Pandora:Add, Link,, <a href="https://bootstraptaste.com/">模板网站3</a>
+Gui, Pandora:Add, Link,, <a href="https://colorlib.com/wp/template/ogani/">模板网站4</a>
+
+Gui, Pandora:Add, Text,  W180 ys, 极简库:
+Gui, Pandora:Add, Link,, <a href="https://ajusa.github.io/lit/">极简风格：lit.css</a>
+Gui, Pandora:Add, Link,, <a href="https://nostalgic-css.github.io/NES.css/">马里奥风格：NES.css</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/pure-css/pure/">雅虎：pure.css</a>
+Gui, Pandora:Add, Link,, <a href="https://bulma.io/">青铜王者：bulma.css</a>
+Gui, Pandora:Add, Link,, <a href="https://foundation.zurb.com/">响应翘楚：foundation 6</a>
+Gui, Pandora:Add, Link,, <a href="https://milligram.io">只有2k的CSS框架：milligram.css</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/kognise/water.css">简单得一逼：water.css</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/andybrewer/mvp/">MVP.css无类</a>
+
+
+Gui, Pandora:Add, Text,  W140 ys, css工具:
+Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/shadow_visualization.html">css阴影生成器</a>
+
+Gui, Pandora:Add, Text,  W140 ys, Material Design:
+Gui, Pandora:Add, Link,, <a href="https://github.com/Dogfalo/">（推荐）materialize</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/zdhxiong/mdui">中文版md</a>
+
+
+Gui, Pandora:Add, Text,  W140 ys, 森罗万象:
+Gui, Pandora:Add, Link,, <a href="https://github.com/jobbole/awesome-css-cn">awesome-css</a>
+Gui, Pandora:Add, Link,, <a href="https://www.9178.work/qianduannav.html">前端导航</a>
+Gui, Pandora:Add, Link,, <a href="https://www.9178.work/qianduan.html">前端导航2</a>
+Gui, Pandora:Add, Link,, <a href="http://css3lib.alloyteam.com/#animation/AnimatedButtons">alloyteam css</a>
+Gui, Pandora:Add, Link,, <a href="http://microjs.com/#">极简js大全：microjs</a>
+
+
+
+; Serverless
+Gui, Pandora:Tab, 11
+Gui, Pandora:Add, Text,  W140 Section, Serverless:
+Gui, Pandora:Add, Link,, <a href="https://cloud.tencent.com/document/product/1154/39270">Components</a>
+Gui, Pandora:Add, Link,, <a href="https://serverless.cloud.tencent.com/">serverless控制台</a>
+Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/scf/index?rid=1">云函数控制台</a>
+Gui, Pandora:Add, Link,, <a href="https://serverlesscloud.cn/best-practice">SLS最佳实践</a>
+
 
 ; @php
-Gui, Pandora:Tab, 11
+Gui, Pandora:Tab, 16
 Gui, Pandora:Add, Text, W140 Section, PHP官方：
 Gui, Pandora:Add, Link, W140, <a href="http://php.net/manual/zh/language.oop5.php">官方文档 - 类与对象</a>
 Gui, Pandora:Add, Link, W140, <a href="http://php.net/manual/zh/language.namespaces.php">官方文档 - 命名空间</a>
@@ -1268,59 +1325,12 @@ Gui, Pandora:Add, Link,, <a href="http://dcloud.io/doc.html">Dcloud文档</a>
 Gui, Pandora:Add, Link,, <a href="http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/111">Dcloud 云打包</a>
 Gui, Pandora:Add, Link,, <a href="http://droid4x.haimawan.com/">海马玩模拟器下载</a>
 
-;@css 
+
+
+; @python
 Gui, Pandora:Tab, 15
-Gui, Pandora:Add, Text,  W140 Section, 森罗万象:
-Gui, Pandora:Add, Link,, <a href="https://github.com/jobbole/awesome-css-cn">awesome-css</a>
-Gui, Pandora:Add, Link,, <a href="https://www.9178.work/qianduannav.html">前端导航</a>
-Gui, Pandora:Add, Link,, <a href="https://www.9178.work/qianduan.html">前端导航2</a>
-Gui, Pandora:Add, Link,, <a href="http://css3lib.alloyteam.com/#animation/AnimatedButtons">alloyteam css</a>
-Gui, Pandora:Add, Link,, <a href="http://microjs.com/#">极简js大全：microjs</a>
-
-
-Gui, Pandora:Add, Text,  W180 ys, 极简库:
-Gui, Pandora:Add, Link,, <a href="https://ajusa.github.io/lit/">极简风格：lit.css</a>
-Gui, Pandora:Add, Link,, <a href="https://nostalgic-css.github.io/NES.css/">马里奥风格：NES.css</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/pure-css/pure/">雅虎：pure.css</a>
-Gui, Pandora:Add, Link,, <a href="https://bulma.io/">青铜王者：bulma.css</a>
-Gui, Pandora:Add, Link,, <a href="https://foundation.zurb.com/">响应翘楚：foundation 6</a>
-Gui, Pandora:Add, Link,, <a href="https://milligram.io">只有2k的CSS框架：milligram.css</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/kognise/water.css">简单得一逼：water.css</a>
-
-
-Gui, Pandora:Add, Text,  W140 ys, css工具:
-Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/shadow_visualization.html">css阴影生成器</a>
-
-Gui, Pandora:Add, Text,  W140 ys, Material Design:
-Gui, Pandora:Add, Link,, <a href="https://github.com/Dogfalo/">（推荐）materialize</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/zdhxiong/mdui">中文版md</a>
-
-Gui, Pandora:Add, Text,  W140 ys, 主题收录:
-Gui, Pandora:Add, Link,, <a href="https://bootswatch.com">bootstrap主题收录</a>
-Gui, Pandora:Add, Link,, <a href="https://jenil.github.io/bulmaswatch/">Bluma主题收录</a>
-
-Gui, Pandora:Add, Text,  W140 ys, tailwindcss:
-Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/">tailwindcss</a>
-Gui, Pandora:Add, Link,, <a href="https://www.tailwindtoolbox.com/templates/landing-page">tailwindtoolbox</a>
-Gui, Pandora:Add, Link,, <a href="https://tailwindcomponents.com/">tailwindcomponents</a>
-Gui, Pandora:Add, Link,, <a href="https://mertjf.github.io/tailblocks/">tailblocks</a>
-Gui, Pandora:Add, Link,, <a href="https://tailwindtemplates.io/cards/">template</a>
-Gui, Pandora:Add, Link,, <a href="https://merakiui.com/headers/">merakiui</a>
-Gui, Pandora:Add, Link,, <a href="https://javisperez.github.io/tailwindcolorshades/#/?Valencia=E24E42&tv=1">tailwind 颜色生成器</a>
-
-
-
-Gui, Pandora:Add, Text,  W140 ys, bootstrap:
-Gui, Pandora:Add, Link,, <a href="https://froala.com/design-blocks">代码片段</a>
-
-; Serverless
-Gui, Pandora:Tab, 16
-Gui, Pandora:Add, Text,  W140 Section, Serverless:
-Gui, Pandora:Add, Link,, <a href="https://cloud.tencent.com/document/product/1154/39270">Components</a>
-Gui, Pandora:Add, Link,, <a href="https://serverless.cloud.tencent.com/">serverless控制台</a>
-Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/scf/index?rid=1">云函数控制台</a>
-Gui, Pandora:Add, Link,, <a href="https://serverlesscloud.cn/best-practice">SLS最佳实践</a>
-
+Gui, Pandora:Add, Text, W140 Section, python官方：
+Gui, Pandora:Add, Link, W140, <a href="https://docs.python.org/zh-cn/3.7/library/index.html">官方文档</a>
 
 ; 剪切框
 Gui, Pandora:Tab, 17

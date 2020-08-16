@@ -1,4 +1,16 @@
 ﻿!s::
+    ; @tail @tailwind @tailwindcss
+    Menu, tailwindcss, Add, tw.form, CssHandler2
+    Menu, tailwindcss, Add, tw.tab, CssHandler2
+    Menu, tailwindcss, Add, tw.nav, CssHandler2
+    Menu, tailwindcss, Add, tw.card, CssHandler2
+    Menu, tailwindcss, Add, tw.butto, CssHandler2
+    Menu, tailwindcss, Add, tw.alert, CssHandler2
+    Menu, tailwindcss, Add, tw.modal, CssHandler2
+    Menu, tailwindcss, Add, 
+    Menu, tailwindcss, Add, 
+
+
     Menu, CsstransformHandler, Add, 上下翻滚：transform: rotateX(180deg), CssHandler
     Menu, CsstransformHandler, Add, 左右翻滚：transform: rotateY(180deg), CssHandler
     Menu, CsstransformHandler, Add, 原地旋转倒立：transform: rotate(180deg), CssHandler
@@ -116,13 +128,13 @@
 
     ; @1
     Menu, CssMenu, Add, @apply 组合工具, CssHandler
-    Menu, CssMenu, Add, 提升阅读体验的最佳 css 实践, CssHandler
+    Menu, CssMenu, Add, @mixins 渐变色字体, CssHandler
     Menu, CssMenu, Add, 极简的页面加载动画：pageload, CssHandler
+    Menu, CssMenu, Add, 提升阅读体验的最佳 css 实践, CssHandler
     Menu, CssMenu, Add, 新毛玻璃backdrop-filter, CssHandler
     Menu, CssMenu, Add, filter blur 背景虚化, CssHandler
     Menu, CssMenu, Add, box-reflect 一行 css 代码实现倒影效果 , CssHandler
-    Menu, CssMenu, Add, @mixins 渐变色字体, CssHandler
-    Menu, CssMenu, Add, normalize.css, CssHandler2
+    ; Menu, CssMenu, Add, normalize.css, CssHandler2
     Menu, CssMenu, Add, css.debugger, CssHandler2    
     Menu, CssMenu, Add, px2rem, CssHandler2
     Menu, CssMenu, Add, 移动端 max-width 限制合理化, CssHandler
@@ -257,6 +269,8 @@
     
     Menu, CssMenu, Add, 
     Menu, CssMenu, Add, 
+
+
     
     
     Menu, CssMenu, Add, css优化, :cssoptimization
@@ -265,6 +279,7 @@
     Menu, CssMenu, Add, :nth-child 选择器 和 :not 选择器, :NthMenu
     Menu, CssMenu, Add, cool css, :coolcss
     Menu, CssMenu, Add, (=・ω・=)css认知系列, :cssknow
+    Menu, CssMenu, Add, tailwindcss, :tailwindcss
 
     Menu, CssMenu, Show
     
@@ -276,6 +291,7 @@
     Menu, coolcss, DeleteAll
     Menu, transitionHandler, DeleteAll
     Menu, CssLoading, DeleteAll
+    Menu, tailwindcss, DeleteAll
     
 
 return
@@ -6377,7 +6393,6 @@ return
 
 ::hanbao::
 ::hanbaobao::
-::nav::
 ::menu::
 Var =
 (
@@ -6592,6 +6607,572 @@ Var =
     </div>
     <div class="skills-item" data-tooltip="JavaScript">
         Content
+    </div>
+</div>
+)
+code(Var)
+return
+
+::tw.alert::
+::css.alert::
+Var =
+(
+<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+  <strong class="font-bold">Holy smokes!</strong>
+  <span class="block sm:inline">Something seriously bad happened.</span>
+  <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+  </span>
+</div>
+---
+<div class="bg-indigo-900 text-center py-4 lg:px-4">
+  <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+    <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">New</span>
+    <span class="font-semibold mr-2 text-left flex-auto">Get the coolest t-shirts from our brand new store</span>
+    <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+  </div>
+</div>
+---
+<div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+  <p class="font-bold">Be Warned</p>
+  <p>Something not ideal might be happening.</p>
+</div>
+---
+<div role="alert">
+  <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+    Danger
+  </div>
+  <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+    <p>Something not ideal might be happening.</p>
+  </div>
+</div>
+---
+<div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
+  <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
+  <p>Something happened that you should know about.</p>
+</div>
+---
+<div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+  <div class="flex">
+    <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+    <div>
+      <p class="font-bold">Our privacy policy has changed</p>
+      <p class="text-sm">Make sure you know how these changes affect you.</p>
+    </div>
+  </div>
+</div>
+)
+txtit(Var)
+return
+
+::tw.btn::
+::tw.button::
+::button::
+Var =
+(
+<button class="block bg-blue-700 hover:bg-teal-dark text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Create Account</button>
+---
+<button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+  <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+  <span>Download</span>
+</button>
+)
+txtit(Var)
+return
+
+::tw.card::
+::card::
+Var =
+(
+<div class="container mx-auto py-10">
+    <div class="border m-6 rounded-lg  bg-white mx-auto max-w-sm shadow-lg rounded-lg overflow-hidden">
+        <div class="sm:flex sm:items-center px-6 py-4">
+            <img class="block h-16 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="https://api.adorable.io/avatars/196/abott@adorable.png" alt="" />
+            <div class="text-center sm:text-left sm:flex-grow">
+                <div class="mb-4">
+                    <p class="text-xl leading-tight">Jane Doe</p>
+                    <p class="text-sm leading-tight text-grey-dark">Software Developer at SpongeBob LLC.</p>
+                </div>
+                <div class="flex flex-wrap">
+                    <button class=" text-xs font-semibold rounded-full px-4 py-1 mx-3  leading-normal bg-white border border-blue text-blue hover:bg-blue hover:text-white">Call</button>
+                    <button class="  text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-white border border-purple text-purple hover:bg-purple hover:text-white">Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+---
+<div class="max-w-sm rounded overflow-hidden shadow-lg">
+  <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains">
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+    <p class="text-gray-700 text-base">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+    </p>
+  </div>
+  <div class="px-6 py-4">
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
+  </div>
+</div>
+---
+<div class="max-w-sm w-full lg:max-w-full lg:flex">
+  <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
+  </div>
+  <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+    <div class="mb-8">
+      <p class="text-sm text-gray-600 flex items-center">
+        <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+        </svg>
+        Members only
+      </p>
+      <div class="text-gray-900 font-bold text-xl mb-2">Can coffee make you a better developer?</div>
+      <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+    </div>
+    <div class="flex items-center">
+      <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg" alt="Avatar of Jonathan Reinink">
+      <div class="text-sm">
+        <p class="text-gray-900 leading-none">Jonathan Reinink</p>
+        <p class="text-gray-600">Aug 18</p>
+      </div>
+    </div>
+  </div>
+</div>
+---
+<div class="p-8">
+  <div class="bg-white rounded-lg shadow-xl">
+    <div class="p-16">
+      <div>
+       <svg id="ed9a5289-909a-4a20-a574-95ddcacbe55c" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="" height="300" viewBox="0 0 797.49606 741.61701">,         <title>online_messaging</title>,         <ellipse cx="398.74803" cy="723.61701" rx="398.74803" ry="18" fill="#e6e6e6"></ellipse>,         <path d="M885.252,252.13875h-3.99878V142.59342A63.40186,63.40186,0,0,0,817.85114,79.1915H585.7647a63.40185,63.40185,0,0,0-63.402,63.40192V743.5676a63.40185,63.40185,0,0,0,63.402,63.40193H817.85114a63.40186,63.40186,0,0,0,63.40205-63.40193V330.115H885.252Z" transform="translate(-201.25197 -79.1915)" fill="#3f3d56"></path>,         <path d="M820.40946,95.68648h-30.295A22.49484,22.49484,0,0,1,769.28733,126.677H636.32787a22.49486,22.49486,0,0,1-20.82715-30.99056H587.20516a47.3478,47.3478,0,0,0-47.34787,47.34774V743.12674a47.34781,47.34781,0,0,0,47.34787,47.34781h233.2043a47.34781,47.34781,0,0,0,47.34786-47.34781V143.03422A47.3478,47.3478,0,0,0,820.40946,95.68648Z" transform="translate(-201.25197 -79.1915)" fill="#fff"></path>,         <path d="M716.04659,747.97032a89.85864,89.85864,0,1,1,66.44778-29.41325l18.76539,21.03579-9.36429,3.97212c-14.48636,6.1447-28.66235.16556-36.619-4.60628A89.972,89.972,0,0,1,716.04659,747.97032Zm0-164.94755a75.18443,75.18443,0,1,0,36.1439,141.12375l4.00873-2.20267,3.72725,2.65215a39.42238,39.42238,0,0,0,14.2244,6.50794l-11.80838-13.23676,5.17617-4.86417A74.47659,74.47659,0,0,0,791.231,658.2072,75.26969,75.26969,0,0,0,716.04659,583.02277Z" transform="translate(-201.25197 -79.1915)" fill="#e6e6e6"></path>,         <path d="M798.52031,658.20711a82.44135,82.44135,0,1,0-42.81969,72.32836c5.70108,4.05632,19.609,12.14706,33.34836,6.31907l-16.5386-18.53939A82.23993,82.23993,0,0,0,798.52031,658.20711Z" transform="translate(-201.25197 -79.1915)" fill="#fff"></path>,         <rect x="472.31772" y="562.1527" width="58.93215" height="5.4727" fill="#4299e1"></rect>,         <rect x="472.31772" y="581.08451" width="102.71378" height="5.4727" fill="#e6e6e6"></rect>,         <rect x="472.31772" y="600.01632" width="102.6132" height="5.4727" fill="#e6e6e6"></rect>,         <path d="M716.04659,348.97032a89.85864,89.85864,0,1,1,66.44778-29.41325l18.76539,21.03579-9.36429,3.97212c-14.48636,6.1447-28.66235.16556-36.619-4.60628A89.972,89.972,0,0,1,716.04659,348.97032Zm0-164.94755a75.18443,75.18443,0,1,0,36.1439,141.12375l4.00873-2.20267,3.72725,2.65215a39.42238,39.42238,0,0,0,14.2244,6.50794l-11.80838-13.23676,5.17617-4.86417A74.47659,74.47659,0,0,0,791.231,259.2072,75.26969,75.26969,0,0,0,716.04659,184.02277Z" transform="translate(-201.25197 -79.1915)" fill="#e6e6e6"></path>,         <path d="M798.52031,259.20711a82.44135,82.44135,0,1,0-42.81969,72.32836c5.70108,4.05632,19.609,12.14706,33.34836,6.31907l-16.5386-18.53939A82.23993,82.23993,0,0,0,798.52031,259.20711Z" transform="translate(-201.25197 -79.1915)" fill="#fff"></path>,         <rect x="472.31772" y="163.1527" width="58.93215" height="5.4727" fill="#4299e1"></rect>,         <rect x="472.31772" y="182.08451" width="102.71378" height="5.4727" fill="#e6e6e6"></rect>,         <rect x="472.31772" y="201.01632" width="102.6132" height="5.4727" fill="#e6e6e6"></rect>,         <circle cx="629.0315" cy="264.4463" r="13" fill="#e6e6e6"></circle>,         <circle cx="629.0315" cy="663.4463" r="13" fill="#e6e6e6"></circle>,         <polygon points="168.77 237.79 162.538 268.954 191.624 290.768 205.128 250.256 168.77 237.79" fill="#9f616a"></polygon>,         <circle cx="192.14308" cy="238.30953" r="28.04729" fill="#9f616a"></circle>,         <path d="M332.62592,532.01087s21.81456,104.91765,24.93092,115.30553,0,11.42668,0,11.42668-4.15515,3.11636-1.03878,4.15515-6.23274,6.23273-6.23274,6.23273-4.15515,19.737-6.23273,23.89214S332.62592,723.148,331.58713,723.148s-6.23273,15.58183-6.23273,15.58183,12.46546,19.737,25.96971,11.42667l5.19395-9.34909,41.55154-61.28853s17.65941-19.737,13.50425-43.62912l2.07758,24.93092,4.15515,81.02551s-11.42667,7.27153-3.11636,18.6982c0,0,21.81456,7.27152,31.16366-4.15515,0,0,2.07757-6.23274-1.03879-9.3491s-3.11637-3.11637-1.03879-5.19395,5.19394-6.23273,5.19394-8.3103v-8.31031l5.19394-94.52977s-14.543-95.56855-25.96971-100.76249S332.62592,532.01087,332.62592,532.01087Z" transform="translate(-201.25197 -79.1915)" fill="#2f2e41"></path>,         <path d="M415.729,756.38921s-13.50426,25.96971-2.07758,29.08608a92.93149,92.93149,0,0,0,21.81456,3.11636s29.08608,22.85335,40.51275,11.42668-5.19394-20.77578-5.19394-20.77578-20.77577-14.543-21.81456-18.69819S415.729,756.38921,415.729,756.38921Z" transform="translate(-201.25197 -79.1915)" fill="#2f2e41"></path>,         <path d="M325.87379,737.17162s-23.33694,26.54057-13.30369,32.83458a92.93117,92.93117,0,0,0,19.97539,9.30434s21.21524,30.30164,35.463,22.67666,1.0496-21.38944,1.0496-21.38944-15.66981-19.93966-15.45988-24.21755S325.87379,737.17162,325.87379,737.17162Z" transform="translate(-201.25197 -79.1915)" fill="#2f2e41"></path>,         <path d="M433.38841,533.04966s-4.15515,8.31031-20.77577,5.19394-82.0643,0-82.0643,0,3.63576-74.27339-4.67455-118.94129,24.41153-70.11824,24.41153-70.11824l10.38789-10.38788C371.0611,337.7574,393,370,393,370c7.63513,1.27769,19.997,35.61108,25.95962,66.006,2.83594,14.50151,5.37059,29.98989,7.50009,44.23164C430.781,509.20945,433.38841,533.04966,433.38841,533.04966Z" transform="translate(-201.25197 -79.1915)" fill="#4299e1"></path>,         <path d="M360.58337,300.03708s-5.24388-11.53654,8.39021-16.78042c0,0,11.53654-18.878,34.60962-6.29266,0,0,15.73165,6.29266,15.73165,23.07308s5.24388,19.92675,5.24388,19.92675-7.80905-8.01137-9.9066-14.304-18.41036-7.72028-24.703-1.42762-22.02431,5.24388-22.02431,5.24388l1.04878,23.07308s-5.24388-13.63409-7.34143-13.63409S357.437,300.03708,360.58337,300.03708Z" transform="translate(-201.25197 -79.1915)" fill="#2f2e41"></path>,         <path d="M562.27432,537.49511c-8.26529,4.95693-22.99115,11.168-38.03942,4.785l-9.72752-4.1262,19.49328-21.85174a93.0975,93.0975,0,1,1,28.27366,21.193Zm-37.34918-83.88374a77.36541,77.36541,0,0,0,24.63212,56.92126l5.37694,5.05285-12.26641,13.7502a40.95158,40.95158,0,0,0,14.77615-6.76038l3.87182-2.755,4.16423,2.28811a78.109,78.109,0,1,0-40.55485-68.497Z" transform="translate(-201.25197 -79.1915)" fill="#4299e1"></path>,         <path d="M517.3531,453.61128a85.63915,85.63915,0,1,1,44.48061,75.13387c-5.92222,4.21367-20.36957,12.61824-34.6419,6.56418l17.1801-19.2585A85.42993,85.42993,0,0,1,517.3531,453.61128Z" transform="translate(-201.25197 -79.1915)" fill="#fff"></path>,         <path d="M673.55455,453.17858a85.67682,85.67682,0,0,0-78.10073-85.33594c2.49553-.21859,5.01984-.33688,7.5721-.33688a85.67282,85.67282,0,0,1,0,171.34563c-2.5484,0-5.06833-.11982-7.56011-.33793A85.67688,85.67688,0,0,0,673.55455,453.17858Z" transform="translate(-201.25197 -79.1915)" opacity="0.1" style="isolation:isolate"></path>,         <rect x="352.58015" y="356.90278" width="61.21804" height="5.68498" fill="#4299e1"></rect>,         <rect x="352.58015" y="376.56893" width="106.6979" height="5.68498" fill="#4299e1"></rect>,         <rect x="352.58015" y="396.23508" width="106.59343" height="5.68498" fill="#4299e1"></rect>,         <path d="M426.45971,480.23762c-24.15183-12.14344-68.37307-44.28357-82.0851-61.20541-17.06728-21.04587,1.54779-37.05357,1.54779-37.05357,21.10819-13.31728,46.35081,32.379,46.35081,32.379L418.95962,436.006C421.79556,450.50749,424.33021,465.99587,426.45971,480.23762Z" transform="translate(-201.25197 -79.1915)" opacity="0.2"></path>,         <path d="M496.21645,462.49917s36.84,14.95551,42.90343-1.85649-29.08579-16.52347-29.08579-16.52347l-13.799,1.95528Z" transform="translate(-201.25197 -79.1915)" fill="#9f616a"></path>,         <path d="M341.2009,375.14061s-18.611,16.00934-1.5532,37.05236,81.32616,65.65987,95.451,66.00442S486.16238,464.393,486.16238,464.393l14.45073,2.64438,2.7245-27.13051L482.04883,441.985l-60.04131-6.50675-34.46008-27.96117S362.30535,361.82775,341.2009,375.14061Z" transform="translate(-201.25197 -79.1915)" fill="#4299e1"></path>,         <polygon points="207.748 488.809 211.004 564.889 202.748 488.809 207.748 488.809" opacity="0.2"></polygon>,       </svg>
+      </div>
+      <div class="mt-8 text-center">
+        <h1 class="font-bold text-lg text-gray-700 mb-1">Customer support 24/7</h1>
+        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button class="mt-6 bg-blue-500 hover:bg-blue-400 text-white rounded-full px-12 py-3 shadow-xl focus:outline-none">
+          Get started
+        </button>
+      </div>
+    </div>
+</div>
+---
+<div class="p-8">
+  <div class="shadow-xl rounded-lg">
+    <div style="background-image: url('https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260')" class="h-64 bg-gray-200 bg-cover bg-center rounded-t-lg flex items-center justify-center"> 
+      <p class="text-white font-bold text-4xl">Profile</p>
+    </div>
+    <div class="bg-white rounded-b-lg px-8">
+      <div class="relative">
+            <img class="right-0 w-16 h-16 rounded-full mr-4 shadow-lg absolute -mt-8" src="http://tailwindtemplates.io/wp-content/uploads/2019/03/link.jpg" alt="Avatar of Jonathan Reinink">
+      </div>
+      <div class="pt-8 pb-8">
+        <h1 class="text-2xl font-bold text-gray-700">Link</h1>
+        <p class="text-sm text-gray-600">From hyrule</p>
+        
+        <p class="mt-6 text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a sem varius, fringilla sapien at, sollicitudin risus.</p>
+        
+        <div class="flex justify-around mt-8">
+          <i class="material-icons">chat</i>
+          <i class="material-icons">duo</i>
+          <i class="material-icons">location</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+---
+<div class="bg-white shadow p-4 rounded lg:w-64">
+  <div class="text-center mt-4">
+    <p class="text-gray-600 font-bold">Name
+    </p>
+    <p class="text-sm font-hairline text-gray-600 mt-1">Subtitle
+    </p>
+  </div>
+  <div class="flex justify-center mt-4">
+    <img class="shadow sm:w-12 sm:h-12 w-10 h-10 rounded-full" src="" alt="Avatar" />
+  </div>
+  <div class="mt-6 flex justify-between text-center">
+    <div>
+      <p class="text-gray-700 font-bold">20
+      </p>
+      <p class="text-xs mt-2 text-gray-600 font-hairline">Posts
+      </p>
+    </div>
+    <div>
+      <p class="text-gray-700 font-bold">99k
+      </p>
+      <p class="text-xs mt-2 text-gray-600 font-hairline">Likes
+      </p>
+    </div>
+    <div>
+      <p class="text-gray-700 font-bold">530
+      </p>
+      <p class="text-xs mt-2 text-gray-700 font-hairline">Shares
+      </p>
+    </div>
+  </div>
+  <div class="mt-6">
+    <button class="rounded shadow-md w-full items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-400">
+      Follow
+    </button>
+  </div>
+</div>
+)
+txtit(Var)
+return
+
+
+::tw.form::
+::form::
+::css.form::
+Var =
+(
+<div class="flex items-center h-screen w-full bg-teal-lighter">
+    <div class="w-full bg-white rounded shadow-lg p-8 m-4">
+        <h1 class="block w-full text-center text-grey-darkest mb-6">Sign Up</h1>
+        <form class="mb-4" action="/" method="post">
+            <div class="flex flex-col mb-4">
+                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="first_name">First Name</label>
+                <input class="border py-2 px-3 text-grey-darkest" type="text" name="first_name" id="first_name" />
+            </div>
+            <div class="flex flex-col mb-4">
+                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="last_name">Last Name</label>
+                <input class="border py-2 px-3 text-grey-darkest" type="text" name="last_name" id="last_name" />
+            </div>
+            <div class="flex flex-col mb-4">
+                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="email">Email</label>
+                <input class="border py-2 px-3 text-grey-darkest" type="email" name="email" id="email" />
+            </div>
+            <div class="flex flex-col mb-6">
+                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="password">Password</label>
+                <input class="border py-2 px-3 text-grey-darkest" type="password" name="password" id="password" />
+            </div>
+            <button class="block bg-blue-700 hover:bg-teal-dark text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Create Account</button>
+        </form>
+        <a class="block w-full text-center no-underline text-sm text-grey-dark hover:text-grey-darker" href="/login">Already have an account?</a>
+    </div>
+</div>
+---
+<div class="w-full max-w-xs">
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+        Username
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+        Password
+      </label>
+      <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+      <p class="text-red-500 text-xs italic">Please choose a password.</p>
+    </div>
+    <div class="flex items-center justify-between">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+        Sign In
+      </button>
+      <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+        Forgot Password?
+      </a>
+    </div>
+  </form>
+  <p class="text-center text-gray-500 text-xs">
+    &copy;2020 Acme Corp. All rights reserved.
+  </p>
+</div>
+---
+<form class="w-full max-w-sm">
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+        Full Name
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="Jane Doe">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+        Password
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="password" placeholder="******************">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3"></div>
+    <label class="md:w-2/3 block text-gray-500 font-bold">
+      <input class="mr-2 leading-tight" type="checkbox">
+      <span class="text-sm">
+        Send me your newsletter!
+      </span>
+    </label>
+  </div>
+  <div class="md:flex md:items-center">
+    <div class="md:w-1/3"></div>
+    <div class="md:w-2/3">
+      <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+        Sign Up
+      </button>
+    </div>
+  </div>
+</form>
+---
+<form class="w-full max-w-lg">
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+        First Name
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
+      <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+    </div>
+    <div class="w-full md:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+        Last Name
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe">
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+        Password
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************">
+      <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-2">
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+        City
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Albuquerque">
+    </div>
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+        State
+      </label>
+      <div class="relative">
+        <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+          <option>New Mexico</option>
+          <option>Missouri</option>
+          <option>Texas</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+        Zip
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210">
+    </div>
+  </div>
+</form>
+---
+<!-- 这里的 w-3/5 m-auto mt-20 是我加的 -->
+<div class="shadow-lg sm:flex w-3/5 m-auto mt-20">
+  <div class="sm:w-2/5 w-full bg-gray-400 bg-cover bg-center text-white"
+     style="background-image: url('http://tailwindtemplates.io/wp-content/uploads/2019/01/bloom-blossom-delicate-699919-e1547757403457.jpeg')">
+    <div class="p-8">
+    <h1>SIGN<span class="text-indigo-400">UP</span></h1>
+    <p class="leading-tight mt-2 text-sm text-white">Create an account to join our awesome community</p>
+    </div>
+  </div>
+  <div class="sm:w-3/5 w-full bg-white">
+    <div class="p-8">
+    <form>
+      <label for="username" class="text-xs text-gray-500">Username</label>
+      <input id="username" class="bg-transparent border-b m-auto block border-gray-500 w-full mb-6 text-gray-700 pb-1" type="text"
+         placeholder=""/>
+      <label id="passowrd" class="text-xs text-gray-500">Password</label>
+      <input id="password" class="bg-transparent border-b m-auto block border-gray-500 w-full mb-6 text-grey-700 pb-1"
+         type="password"
+         placeholder=""/>
+      <input class="shadow-lg pt-3 pb-3 w-full text-white bg-indigo-500 hover:bg-indigo-400 rounded-full cursor-pointer "
+         type="submit" value="Create account">
+    </form>
+    <div class="text-center mt-4">
+      <p class="text-sm text-gray-600">Already have an account? <a href="#" class="no-underline text-indigo-500 font-bold hover:text-indigo-400">Sign in</a></p>
+    </div>
+    </div>
+  </div>
+</div>
+---
+<div class="w-1/3 m-auto mt-10 flex shadow-lg flex-col bg-cover bg-center justify-content bg-white p-6 rounded pt-8 pb-8">
+  <div class="text-center text-gray-500 mb-6"> <h2>SIGN UP </h2> </div>
+  <div>
+    <form>
+      <input class="bg-transparent border-b m-auto block border-gray-500 w-full mb-6 text-gray-500 pb-1" type="text"placeholder="Username"/>
+      <input class="bg-transparent border-b m-auto block border-gray-500 w-full mb-6 text-gray-500 pb-1" type="password"placeholder="password"/>
+      <div class="flex mt-4 items-center">
+        <input type="checkbox" class="mr-2" name="agreement" value="agree">
+        <p class="text-grey">Accept the <a href="#" class=" no-underline text-teal-500 hover:text-teal-400">Terms and Conditions </a> </p>
+      </div>
+      <input class="shadow-lg pt-3 pb-3 mt-6 w-full text-white bg-teal-500 hover:bg-teal-400 rounded-full "type="submit" value="SIGN IN">
+    </form>
+  </div>
+  <div>
+    <p class="mt-4 text-center text-gray-500 text-sm">Have an account? <a href="#"class="no-underline text-teal-500 hover:text-teal-400">Log in </a> </p>
+  </div>
+</div>
+)
+txtit(Var)
+return
+
+::tw.nav::
+::nav::
+Var =
+(
+<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+  <div class="flex items-center flex-shrink-0 text-white mr-6">
+    <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+    <span class="font-semibold text-xl tracking-tight">Tailwind CSS</span>
+  </div>
+  <div class="block lg:hidden">
+    <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+      <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+    </button>
+  </div>
+  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+    <div class="text-sm lg:flex-grow">
+      <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        Docs
+      </a>
+      <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        Examples
+      </a>
+      <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+        Blog
+      </a>
+    </div>
+    <div>
+      <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Download</a>
+    </div>
+  </div>
+</nav>
+)
+txtit(Var)
+return
+
+::tw.tab::
+Var =
+(
+<ul class="flex border-b">
+  <li class="-mb-px mr-1">
+    <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold" href="#">Active</a>
+  </li>
+  <li class="mr-1">
+    <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">Tab</a>
+  </li>
+  <li class="mr-1">
+    <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">Tab</a>
+  </li>
+  <li class="mr-1">
+    <a class="bg-white inline-block py-2 px-4 text-gray-400 font-semibold" href="#">Tab</a>
+  </li>
+</ul>
+)
+code(Var)
+return
+
+::tw.art::
+::tw.section::
+::tw.sec::
+Var =
+(
+<section class="text-gray-700 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="-my-8">
+      <div class="py-8 flex flex-wrap md:flex-no-wrap">
+        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+          <span class="tracking-widest font-medium title-font text-gray-900">CATEGORY</span>
+          <span class="mt-1 text-gray-500 text-sm">12 Jun 2019</span>
+        </div>
+        <div class="md:flex-grow">
+          <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Bitters hashtag waistcoat fashion axe chia unicorn</h2>
+          <p class="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
+          <a class="text-indigo-500 inline-flex items-center mt-4">Learn More
+            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="py-8 flex border-t-2 border-gray-200 flex-wrap md:flex-no-wrap">
+        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+          <span class="tracking-widest font-medium title-font text-gray-900">CATEGORY</span>
+          <span class="mt-1 text-gray-500 text-sm">12 Jun 2019</span>
+        </div>
+        <div class="md:flex-grow">
+          <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Meditation bushwick direct trade taxidermy shaman</h2>
+          <p class="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
+          <a class="text-indigo-500 inline-flex items-center mt-4">Learn More
+            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="py-8 flex border-t-2 border-gray-200 flex-wrap md:flex-no-wrap">
+        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+          <span class="tracking-widest font-medium title-font text-gray-900">CATEGORY</span>
+          <span class="mt-1 text-gray-500 text-sm">12 Jun 2019</span>
+        </div>
+        <div class="md:flex-grow">
+          <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Woke master cleanse drinking vinegar salvia</h2>
+          <p class="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
+          <a class="text-indigo-500 inline-flex items-center mt-4">Learn More
+            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+)
+txtit(Var)
+return
+
+::tw.modal::
+::tw.model::
+Var =
+(
+<div class="p-8">
+    <div class="bg-white rounded-lg shadow-xl max-w-sm m-auto">
+        <div class="h-64 bg-blue-500 flex justify-center items-center rounded-t-lg">
+            <div class="h-24 w-24 bg-white rounded-full flex justify-center items-center">
+                <i class="material-icons text-blue-500">
+                    done
+                </i>
+            </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="fill-current"> <path fill="#4299E1" fill-opacity="1" d="M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,112C1120,96,1280, 96,1360,96L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0, 640,0,480,0C320,0,160,0,80,0L0,0Z"></path> </svg>
+        <div class="p-8 -mt-12">
+            <p class="font-bold text-center text-4xl text-gray-700">Thank you</p>
+            <p class="text-gray-600 text-center mt-5">
+                Your order has been placed. We'll send you an email.
+            </p>
+            <div class="flex justify-center mt-6">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Close
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 )

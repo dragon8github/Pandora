@@ -119,6 +119,8 @@
   Menu, VueMenu, Add, vue Composition API setup, VueHandler
   Menu, VueMenu, Add, import '@vue/composition-api', VueHandler
   Menu, VueMenu, Add, 用 beforeRouteUpdate 代替 watch.$route, VueHandler
+  Menu, VueMenu, Add, render 无渲染组件（状态组件）, VueHandler
+  
   
   Menu, VueMenu, Add, , VueHandler
   Menu, VueMenu, Add, , VueHandler
@@ -192,11 +194,67 @@ VueHandler:
 v := A_ThisMenuItem
 Var :=
 
+;@1
 if (v == "") {
 Var = 
 (
 )
 }
+
+if ("render 无渲染组件（状态组件）") {
+Var =
+(
+Vue.component('counter', {
+  name: 'counter',
+  data() {
+    return { count: 0 };
+  },
+  methods: {
+    inc() {
+      this.count += 1;
+    },
+    dec() {
+      this.count -= 1;
+    },
+  },
+  render() {
+    return this.$scopedSlots.default({
+      count: this.count,
+      inc: this.inc,
+      dec: this.dec,
+    });
+  },
+});
+
+new Vue({
+  el: '#app',
+})
+---
+<div id="app">
+  <counter>
+     <div class="layout-1" slot-scope="{ count, inc, dec }">
+        <div>You have {{ count }} bannas</div>
+        <div class="buttons-1">
+          <div class="btn" @click="inc">+</div>
+          <div class="btn"@click="dec">-</div>
+       </div>
+    </div>
+  </counter>
+  <counter>
+     <div class="layout-2" slot-scope="{ count, inc, dec }">
+        <div>You have {{ count }} apples</div>
+        <div class="buttons-2">
+          <div class="btn" @click="inc">+</div>
+          <div class="btn"@click="dec">-</div>
+       </div>
+    </div>
+  </counter>
+</div>
+)
+txtit(Var)
+return
+}
+
 
 if (v == "v-tooltip") {
 _send("v-tooltip", true, true)
@@ -7367,6 +7425,7 @@ code(Var)
 return
 
 
+::vue3::
 ::vue3.init::
 ::vue.init2::
 ::vue.init3::
@@ -7381,7 +7440,9 @@ Var =
 </template>
 
 <script>
-import { ref, reactive, computed, watch, onMounted } from 'vue'
+/* @vue/composition-api */
+import { useStore } from "vuex"
+import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from 'vue'
 
 export default {
   name: 'HelloWorld',
@@ -7435,6 +7496,23 @@ a {
 }
 </style>
 
+)
+code(Var)
+return
+
+::vue2api::
+::vue2composition::
+Var =
+(
+/**
+ * 安裝依赖：$ npm i -S @vue/composition-api
+ *
+ * main.js
+ * 
+ * import VueCompositionApi from '@vue/composition-api'
+ * Vue.use(VueCompositionApi) 
+ */
+import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from '@vue/composition-api'
 )
 code(Var)
 return

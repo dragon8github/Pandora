@@ -12500,3 +12500,130 @@ var vue = new Vue({
 RunBy(name)
 run, % name
 return
+
+vuedroptest:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- tailwind -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
+    <!-- element -->
+    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+
+    }
+
+    .items {
+        width: 50`%;
+    }
+
+        .item {
+            height: 30px;
+            line-height: 30px;
+            margin: 10px;
+
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            text-align: center;
+            display: block;
+            transition: .3s all;
+            cursor: pointer;
+        }
+
+    .item.active {
+        transition: .3s all ease;
+        cursor: pointer;
+        box-shadow: 0 0 27px #2daebf;
+        text-shadow: #0ff 0 0 10px, #0ff 0 0 20px, #ff00de 0 0 30px, #ff00de 0 0 40px, #ff00de 0 0 70px, #ff00de 0 0 80px, #ff00de 0 0 100px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div  class='flex justify-between'>
+            <ul class='items'> <li class='item' draggable='true' @dragstart='dragstart' v-for='(item, index) in items1' :key='item'>{{ item }}</li> </ul>
+            <ul class='items'> <li class='item' @drop='drop' @dragover='dragover' v-for='(item, index) in items2' :key='item'>{{ item }}</li> </ul>
+        </div>
+        <button @click='random' class="block bg-blue-700 hover:bg-teal-dark text-white uppercase text-lg mx-auto p-4 rounded mt-4" type="submit">shuffle</button>
+    </div>
+</body>
+
+<script>
+// 费雪耶兹（Fisher–Yates） 也被称作高纳德（ Knuth）随机置乱算法
+function shuffle(target) {
+    var j, x, i = target.length;
+    for (; i > 0; j = parseInt(Math.random() * i), x = target[--i], target[i] = target[j], target[j] = x) {}
+    return target
+}
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        items2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    },
+    methods: {
+        random() {
+            this.items1 = shuffle(this.items1.slice())
+            this.items2 = shuffle(this.items2.slice())
+
+            console.log(20200815122506, this.items1, this.items2)
+        },
+        dragstart(e) {
+            const leftValue = e.target.innerText
+            e.dataTransfer.dropEffect = 'copy'
+            e.dataTransfer.effectAllowed = 'all'
+            e.dataTransfer.setData('text/plain', JSON.stringify({ value: leftValue, time: +new Date, user: '李钊鸿' }))
+        },
+        drop(e) {
+            const { target, dataTransfer } = e
+            // 获取正确答案
+            const rightValue = target.innerText 
+            // 解析
+            const data = JSON.parse(dataTransfer.getData('text/plain'))
+
+            if (data.value == rightValue) {
+                ELEMENT.Message({ message: '恭喜你，回答正确ε=ε=(ノ≧∇≦)ノ', type: 'success' })
+            } else {
+                ELEMENT.Message({ message: '答错了哦(｀・ω・´)，再试试吧。', type: 'warning' })
+            }
+
+            document.querySelector('.item.active').classList.remove('active')
+        },
+        dragover(e) {
+            const target = e.target
+            const cur = target.parentElement.querySelector('.active')
+            cur && cur.classList.remove('active')
+            target.classList.add('active')
+            e.preventDefault()
+        }
+    },
+    beforeMount () {
+        this.random()
+    }
+})
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
