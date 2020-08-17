@@ -10,7 +10,8 @@
     Menu, tailwindcss, Add, 
     Menu, tailwindcss, Add, 
 
-
+    
+    Menu, CsstransformHandler, Add, 打歪对象（平行四边形）：transform: skewX(-15deg), CssHandler
     Menu, CsstransformHandler, Add, 上下翻滚：transform: rotateX(180deg), CssHandler
     Menu, CsstransformHandler, Add, 左右翻滚：transform: rotateY(180deg), CssHandler
     Menu, CsstransformHandler, Add, 原地旋转倒立：transform: rotate(180deg), CssHandler
@@ -314,6 +315,13 @@ Var :=
 if (v == "") {
 Var =
 (
+)
+}
+
+if (v == "打歪对象（平行四边形）：transform: skewX(-15deg)") {
+Var =
+(
+transform: skewX(-15deg)
 )
 }
 
@@ -6824,7 +6832,6 @@ return
 
 
 ::tw.form::
-::form::
 ::css.form::
 Var =
 (
@@ -7175,6 +7182,19 @@ Var =
         </div>
     </div>
 </div>
+)
+code(Var)
+return
+
+::tw.css::
+::css.tw::
+::tw.init::
+Var =
+(
+// npx tailwindcss init --full
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 )
 code(Var)
 return

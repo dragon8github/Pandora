@@ -9535,8 +9535,8 @@ application/json;charset=utf-8
 code(Var)
 Return
 
-::/form::
-::form/::
+:?:/form::
+:?:form/::
 Var =
 (
 application/x-www-form-urlencoded;charset=utf-8

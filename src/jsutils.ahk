@@ -3,6 +3,7 @@
     Menu, utilsworker, Add, 项目名：功能说明, utilsHandler
 
 
+    Menu, utilsTime, Add, toLocaleString：获取中文后缀的时间（1月/一月）, utilsHandler
 	Menu, utilsTime, Add, 获取半小时前, utilsHandler
     Menu, utilsTime, Add, 获取当前时间的秒数, utilsHandler
     Menu, utilsTime, Add, 获取12345的时间选择器, utilsHandler
@@ -382,6 +383,7 @@
     Menu, utils2, Add, urlparams 获取路由参数, utilsHandler
     Menu, utils2, Add, device 获取设备信息, utilsHandler
     Menu, utils2, Add, 获取localStorage剩余容量和最大容量, utilsHandler
+    Menu, utils2, Add, 获得电脑内存和浏览器使用的存储, utilsHandler
 
     Menu, utils2, Add, , utilsHandler
     Menu, utils2, Add, , utilsHandler
@@ -499,6 +501,32 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "toLocaleString：获取中文后缀的时间（1月/一月）") {
+Var =
+(
+const date = new Date(2020, 0, 1);
+const short_month = date.toLocaleString('default', { month: 'short' })
+const long_month = date.toLocaleString('default', { month: 'long' })
+
+// 20200817100822 "1月" "一月"
+console.log(20200817100822, short_month, long_month)
+)
+}
+
+if (v == "获得电脑内存和浏览器使用的存储") {
+Var =
+(
+function dislayStorageSpace(){
+  navigator.storage.estimate().then(function (estimate) {
+    console.info("Estimated quota: ", estimate.quota)
+    console.info("Estimated usage: ", estimate.usage)
+    const percent = (estimate.usage / estimate.quota * 100).toFixed(2)
+    console.info("Your currently used storage: ", percent,"`%");
+  })
+}
 )
 }
 

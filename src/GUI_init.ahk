@@ -275,7 +275,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/ChanceYu/front-end-rss">fro
 Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.smashingmagazine.com/articles/">粉碎杂志</a>
-Gui, Pandora:Add, Link,, <a href="https://reposhub.com/">reposhub.com</a>
+Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/r/javascript/">reddit</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -288,9 +288,11 @@ Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热�
 Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
 Gui, Pandora:Add, Link,, <a href="https://vueschool.io/articles/series/vue-js-performance/">VueSchool</a>
-Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/r/javascript/">reddit</a>
 Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/">Hacker News</a>
 Gui, Pandora:Add, Link,, <a href="https://tympanus.net/codrops/category/tutorials/">Codrops</a>
+Gui, Pandora:Add, Link,, <a href="https://reposhub.com/">reposhub.com</a>
+Gui, Pandora:Add, Link,, <a href="https://web.dev/fast/">web.dev 优化教程</a>
+
 
 
 
@@ -477,7 +479,8 @@ Gui, Pandora:Add, Text, gyanzhengzuobiaodian2 W180, 验证两个多边形是否�
 Gui, Pandora:Add, Text, gbaidunidili W160,百度坐标转地理位置.html
 
 
-Gui, Pandora:Add, Text, gcsssearchtml W160 ys x+50, 新建简单CSS也能做搜索
+Gui, Pandora:Add, Text, gimgSearchhtml W160 ys x+50, 图片搜索imageSearch
+Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索
 Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 Gui, Pandora:Add, Text, gcssskeletonHtml W140,新建css骨骼图.skeleton
 Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
@@ -514,7 +517,7 @@ Gui, Pandora:Add, Text,  W150 ys, ioc-basic:
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:31321/mapvis/#/index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/visual/basic">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/35/interface/api">yapi</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins编译</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">右哥Jenkins编译</a>
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/tool-basic-visual-ui?tab=history">openshift 部署</a>
 
 

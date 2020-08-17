@@ -12627,3 +12627,69 @@ var vue = new Vue({
 RunBy(name)
 run, % name
 return
+
+imgSearchhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>imageSearch</title>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <style>
+    #app {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        What do you want to search for? <input type="text" v-model='query' @keyup.enter = "go">
+        <ul>
+            <li v-for='(item, index) in items' :key='item.id'>
+                <img :height='item.height_m' :width='item.width_m' :src="item.url_m" :alt="item.title">
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script>
+const imgageSearch = query => fetch('https://api.flickr.com/services/rest/?' + [
+    "method=flickr.photos.search",
+    "api_key=de661c4ec062c83f07a0bb61c2357938",
+    "nojsoncallback=1",
+    "format=json",
+    "extras=url_m",
+    "per_page=10",
+    ``tags=${query}``
+].join("&")).then(res => res.json())
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: [],
+        query: 'cat',
+    },
+    methods: {
+        async go () {
+            this.items = []
+            const { stat, photos } = await imgageSearch(this.query)
+            this.items = photos.photo
+        }
+    },
+    beforeMount () {
+        this.go()
+    },
+})
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

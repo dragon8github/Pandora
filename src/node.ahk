@@ -16,7 +16,7 @@
 	Menu, NodeFileHandler, Add, fs.mkdir, NodeHandler
 	Menu, NodeFileHandler, Add, fs.readdir获取目录文件列表, NodeHandler
 	Menu, NodeFileHandler, Add, fs.watch, NodeHandler
-	Menu, NodeFileHandler, Add, fs.stat, NodeHandler
+	Menu, NodeFileHandler, Add, fs.stat：判断文件夹还是文件, NodeHandler
 	Menu, NodeFileHandler, Add, fs.exists, NodeHandler
 	Menu, NodeFileHandler, Add, node-dir 遍历目录（直接获取文件内容）, NodeHandler
 	
@@ -700,7 +700,7 @@ dir.readFiles(dirname, options, (err, content, next) => {
 )
 }
 
-if (v == "fs.stat") {
+if (v == "fs.stat：判断文件夹还是文件") {
 Var = 
 (
 const fs = require('fs');

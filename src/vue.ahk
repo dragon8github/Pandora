@@ -201,7 +201,7 @@ Var =
 )
 }
 
-if ("render 无渲染组件（状态组件）") {
+if (v == "render 无渲染组件（状态组件）") {
 Var =
 (
 Vue.component('counter', {

@@ -1,4 +1,5 @@
-﻿::quyu::
+﻿::py::
+::quyu::
 Var =
 (
 polygon
@@ -665,6 +666,12 @@ return
 ::cityrect::
 ::rect::
 ::sidaquyu::
+::dongxinanb::
+::dongxinanbei::
+::sifangwudi::
+::simianbafang::
+::simianbaf::
+::simianchuge::
 Var =
 (
 export const filterCity = (v = '') => v.replace(/街道|镇/g, '')
