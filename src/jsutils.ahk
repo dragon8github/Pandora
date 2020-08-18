@@ -270,6 +270,7 @@
     
     
     ; @my
+    Menu, utilsmy, Add, 12345地图-聚合图解散-打散-散点图-闪开, utilsHandler
     Menu, utilsmy, Add, validateimg: 验证图片可访问性, utilsHandler
     Menu, utilsmy, Add, github 代码块翻译问题处理, utilsHandler
     Menu, utilsmy, Add, copyfn: 函数拷贝方案, utilsHandler
@@ -501,6 +502,80 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "12345地图-聚合图解散-打散-散点图-闪开") {
+Var =
+(
+// 缓存函数
+var singeFn = function (fn, maxPollTime = 20) {
+  // 缓存
+  var cache = []
+  // 轮询次数
+  var pollTime = 0
+  // 返回随机数生成器
+  return function _() {
+    // 获取随机数
+    var data = fn.apply(this, arguments)
+    // 如果存在则递归
+    if (~cache.indexOf(data)) {
+      // 递归调用（如果递归次数大于阈值，那么直接返回False）
+      return ++pollTime > maxPollTime ? false : _.apply(this, arguments)
+    } else {
+      // 重置轮询次数
+      pollTime = 0
+      // 添加缓存并且返回data
+      return cache.push(data), data
+    }
+  }
+}
+
+var random = function (min, max) {
+  if (max == null) {
+    max = min;
+    min = 0;
+  }
+  return min + Math.floor(Math.random() * (max - min + 1));
+}
+
+
+// 聚合图点击事件
+state.streetDot.on("click", e => {
+  // 符合 「强制解散聚合图为散点」 的条件
+  if (...) {
+    // 获取数组长度
+    const len = e.markers.length
+
+    // 假如长度为7，那么就是从-7 到 7 的区间取随机数
+    const rangeRadom = random.bind(-len, len)
+
+    // 构建一个新的函数：生成不重复的随机数
+    var singeRangeRadom = singeFn(rangeRadom)
+
+    // 重新生成散点
+    const new_markers = e.markers.map((v, index, array) => {
+      // 返回一个新坐标的散点
+      return new T.Marker({
+        position: new T.LngLat(
+          // 除了第一位，在当前点的基础上添加纬度
+          e.lnglat.lng + (index === 0 ? 0 : 0.0001 * singeRangeRadom()),
+          // 除了第一位，在当前点的基础上添加经度
+          e.lnglat.lat + (index === 0 ? 0 : 0.0001 * singeRangeRadom()),
+        `),
+        icon: startIcon
+      }).on('click', e => {
+        dispatch('setMsgbox', v.orderId)
+      })
+    })
+
+    // 删除原本的聚合图
+    state.streetDot.removeMarkers(e.markers)
+
+    // 渲染散点图
+    state.newClusterer = new T.MarkerClusterer(state.streetmap, { markers: new_markers })
+  }
+})
 )
 }
 

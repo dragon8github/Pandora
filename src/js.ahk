@@ -10648,7 +10648,54 @@ return
 ::rang::
 Var =
 (
-/*
+/* 
+// 缓存函数
+var singeFn = function (fn, maxPollTime = 20) {
+  // 缓存
+  var cache = []
+  // 轮询次数
+  var pollTime = 0
+  // 返回随机数生成器
+  return function _() {
+    // 获取随机数
+    var data = fn.apply(this, arguments)
+    // 如果存在则递归
+    if (~cache.indexOf(data)) {
+      // 递归调用（如果递归次数大于阈值，那么直接返回False）
+      return ++pollTime > maxPollTime ? false : _.apply(this, arguments)
+    } else {
+      // 重置轮询次数
+      pollTime = 0
+      // 添加缓存并且返回data
+      return cache.push(data), data
+    }
+  }
+}
+
+var random = function (min, max) {
+  if (max == null) {
+    max = min;
+    min = 0;
+  }
+  return min + Math.floor(Math.random() * (max - min + 1));
+}
+
+// 获取数组长度
+const len = 7
+
+// 假如长度为7，那么就是从-7 到 7 的区间取随机数
+const rangeRadom = random.bind(-len, len)
+
+// 构建一个新的函数：生成不重复的随机数
+var singeRangeRadom = singeFn(rangeRadom)
+
+console.log(20200818165019, singeRangeRadom())
+console.log(20200818165019, singeRangeRadom())
+console.log(20200818165019, singeRangeRadom())
+console.log(20200818165019, singeRangeRadom())
+*/
+
+ /*
 // 范围选择如 -100 ~ 100 强烈推荐这个函数
 var random = function(min, max) {
     if (max == null) {
