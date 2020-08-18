@@ -1,4 +1,140 @@
-﻿::e.pro::
+﻿::request2::
+::request2.js::
+::req2.js::
+::req2::
+Var =
+(
+// store.state.AppData.token
+import store from '@/store'
+import router from '@/router'
+import Qs from 'qs'
+import axios from 'axios'
+import { dateYYYYMMDDHHmmss, logs, waitWhen, encryption, throttle } from './utils.js'
+import { Message } from 'element-ui'
+import { removeCookie } from "@/utils/cookie";
+
+// 请求地址
+const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/mapvis/visual/'
+
+// 请求队列
+let pending = []
+
+// 登陆状态失效，弹出错误提示并且跳转到登陆页面
+const tokenError = () => {
+    removeCookie('token')
+    router.push('/login')
+    Message('请先登录')
+    throw new Error('请先登录')
+}
+
+// 函数节流，3秒之内只会执行一次。不会重复执行。
+// leading 为 true时，第一次执行立即触发，这比setTimeout好多了
+// trailing 为 fasle时，不会触发最后一次。这样比较符合直觉。
+const _tokenError = throttle(tokenError, 3000, { leading: true, trailing: false })
+
+// 添加请求拦截器，动态设置参数
+axios.interceptors.request.use(async config => {
+    // 判断是否登录（登录接口本身除外）
+    if (!config.url.includes('login') && !store.state.AppData.token) {
+        // 登陆状态失效，弹出错误提示并且跳转到登陆页面
+        _tokenError()
+    }
+
+    // 合并请求头 authority-token
+    config.headers = Object.assign({}, config.headers, { 'User-Agent': navigator.userAgent, 'authority-token': store.state.AppData.token || '' })
+
+    // 获取参数详情
+    const { method, params, data, lazy, noRepeat = true } = config
+
+    // 加密（url + params + data）（用来标识请求的唯一性，用来判断是否重复请求）
+    const id = encryption({ url, params, data })
+
+    // 获取索引
+    const [url, note] = config.url.split('|')
+
+    // 以防万一，记录一下带有注释的 url
+    config.noteURL = config.url
+
+    // 过滤url的文本注释
+    config.url = url
+
+    // 加入备注
+    config.note = note
+
+    // 加入 id（用来标识请求的唯一性，用来判断是否重复请求）
+    config.id = id
+
+    // 🔴 懒模式 - 10 分钟内等待队列为空才进行，查询的间隔是 100ms 一次，每次只能进行一条。
+    if (lazy) await waitWhen(_ => pending.length === 0, 60 * 10 * 1000, 100)
+
+    // （默认开启「去重」）如果需要去重复, 则中止队列中所有相同请求地址的 xhr
+    noRepeat && pending.forEach(_ => _.id === id && _.cancel('⚔️ kill repeat xhr：' + config.noteURL))
+
+    // 配置 CancelToken
+    config.cancelToken = new axios.CancelToken(cancel => {
+        const newPeding = { id, cancel }
+        // 移除所有中止的请求，并且将新的请求推入缓存
+        pending = [...pending.filter(_ => _.id != id), newPeding]
+    })
+
+    // 返回最终配置
+    return config
+})
+
+// 响应拦截器
+axios.interceptors.response.use(res => {
+    // 获取请求配置
+    const { method, url, params, data, status, note, noteURL, id } = res.config
+
+    // 如果需要打印日志的话
+    if (true) {
+        // 获取参数
+        const p = JSON.stringify(method === 'get' ? params : data)
+        // 获取请求时间
+        const date = dateYYYYMMDDHHmmss(Date.now())
+        // 打印请求结果和详情
+        logs(`${note}${method.toUpperCase()}：${url}`, res.data, JSON.stringify({params: method === 'get' ? params : data , result: data, status }, null, '\t'))
+    }
+
+    // 成功响应之后清空队列中所有相同 Url 的请求
+    pending = pending.filter(_ => _.id != id)
+
+    // 只返回 data 即可
+    return res.data
+}, error => {
+    // 获取报文
+    const res = error.response
+
+    // token 失效，请求失败 20019
+    if (res && res.status === 500 && res.data && res.data.code === 20019) {
+        // 取消所有接口的请求
+        pending.forEach(_ => _.cancel('⚠️登录状态失效'))
+        // 清空接口
+        pending = []
+        // 主动报错，回到登录页
+        return _tokenError()
+    }
+
+    // 如果存在报文，才进行清空。
+    if (res) {
+        // 直接清空列表
+        pending = pending.filter(_ => _.id != res.config.id)
+    }
+
+    // 可以输出：error.response
+    return Promise.reject(error)
+})
+
+export const GET = (url = '', params = {}, config = {}) => axios({ method: 'GET', url: __API__ + url, params, ...config })
+
+export const POST = (url = '', data = {}, config = {}) => axios({ method: 'POST', url: __API__ + url, data, ...config })
+
+export const FORM_POST = (url = '', data = {}, config = {}) => axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}, ...config })
+)
+txtit(Var)
+return
+
+::e.pro::
 ::e.pre::
 Var =
 (

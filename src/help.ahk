@@ -2060,7 +2060,7 @@ Return
               return 
           }
           ; 百度翻译API
-          Var := ajax("http://106.12.222.209:8083/baidu_transapi.php?text=" . Clipboard . "&type=tuofeng")
+          Var := ajax("https://service-115y2sb2-1255983702.gz.apigw.tencentcs.com/release/baidu_transapi?text=" . Clipboard . "&type=tuofeng")
           ; 黏贴结果
           code(Var)
           ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
@@ -2082,7 +2082,7 @@ Return
           return 
       }
       ; 百度翻译API
-      Var := ajax("http://106.12.222.209:8083/baidu_transapi.php?text=" . Clipboard . "&type=_", true)
+      Var := ajax("https://service-115y2sb2-1255983702.gz.apigw.tencentcs.com/release/baidu_transapi?text=" . Clipboard . "&type=_", true)
       tip("翻译成功", "【" . Clipboard . "】 的翻译结果为： " . Var)
       ; 这里考虑剪切板要tmp的数据，还是翻译的数据。暂时保存翻译结果吧
       Clipboard := Var
