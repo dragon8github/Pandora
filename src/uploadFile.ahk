@@ -21,7 +21,7 @@ uploadfile(objParam){
 	CreateFormData(PostData, hdr_ContentType, objParam)
 
 	whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
-	whr.Open("POST", "http://upload.likeyunba.com/upload/upload.php", true)
+	whr.Open("POST", "http://upload.likeyunba.com/upload/xiaomi.php", true)
 	whr.SetRequestHeader("Content-Type", hdr_ContentType)
 	whr.Send(PostData)
 	whr.WaitForResponse()
