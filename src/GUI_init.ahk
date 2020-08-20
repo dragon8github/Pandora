@@ -235,12 +235,12 @@ Gui, Pandora:Add, Link,, <a href="https://loading.io/spinner/">Loading 平台</a
 
 Gui, Pandora:Add, Text,  W140 ys, 奇妙工具:
 Gui, Pandora:Add, Link,, <a href="http://naotu.baidu.com/home">百度脑图</a>
-Gui, Pandora:Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 Gui, Pandora:Add, Link,, <a href="http://fontawesome.dashgame.com/">font-awesome</a>
 Gui, Pandora:Add, Link,, <a href="https://nginxconfig.io/">生成器nginxconfig.io</a>
 Gui, Pandora:Add, Link,, <a href="http://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=955910">iconfont</a>
-Gui, Pandora:Add, Link,, <a href="https://carbon.now.sh/">carbon代码图片</a>
 Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
+Gui, Pandora:Add, Link,, <a href="https://www.sassmeister.com/">sass在线转css</a>
+Gui, Pandora:Add, Link,, <a href="http://css2sass.herokuapp.com/">css在线转scss</a>
 
 Gui, Pandora:Add, Text, W120 ys, cdn：
 Gui, Pandora:Add, Link,, <a href="https://cdnjs.com/">cdnjs.com</a>
@@ -254,12 +254,12 @@ Gui, Pandora:Add, Link,, <a href="https://www.jsdelivr.com/">jsdelivr</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 好东西：
 Gui, Pandora:Add, Link,, <a href="https://www.ghpym.com/">果核剥壳 - 破解软件</a>
+Gui, Pandora:Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 Gui, Pandora:Add, Link,, <a href="https://www.fontke.com/tool/convfont/">字体在线转换工具</a>
-Gui, Pandora:Add, Link,, <a href="http://www.lurena.vip/">路人A</a>
 Gui, Pandora:Add, Link,, <a href="https://codesandbox.io/">codesandbox</a>
 Gui, Pandora:Add, Link,, <a href="https://unbug.github.io/codelf">codeif变量神器</a>
-Gui, Pandora:Add, Link,, <a href="https://www.iloveimg.com/zh-cn">图片压缩神器</a>
 Gui, Pandora:Add, Link,, <a href="www.materialtools.com/">临时接收手机验证码</a>
+Gui, Pandora:Add, Link,, <a href="https://carbon.now.sh/">carbon代码图片</a>
 
 
 Gui, Pandora:Add, Text,  W140 Section xs yp+50, 最近学习：
@@ -313,6 +313,7 @@ Gui, Pandora:Add, Link,, <a href="https://regex101.com/">regex101</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
+Gui, Pandora:Add, Link,, <a href="https://www.iloveimg.com/zh-cn">图片压缩神器</a>
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng熊猫图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="https://docsmall.com/image-compress">图片压缩工具25M</a>
 Gui, Pandora:Add, Link,, <a href="https://renzhezhilu.gitee.io/webp2jpg-online/">本地图片转换器</a>
@@ -325,12 +326,13 @@ Gui, Pandora:Add, Link,, <a href="http://upload.likeyunba.com/">阿里云图床<
 Gui, Pandora:Add, Link,, <a href="https://akveo.github.io/eva-icons/#/">480个免费的svg</a>
 Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
 Gui, Pandora:Add, Link,, <a href="https://feathericons.com/?query=close">feathericons</a>
-Gui, Pandora:Add, Link,, <a href="https://designkiki.com/colordoo/?ref=producthunt">颜色搭配神器</a>
 
 
 
 
 Gui, Pandora:Add, Text,  W160 ys, 宁可错过：
+Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
+Gui, Pandora:Add, Link,, <a href="https://designkiki.com/colordoo/?ref=producthunt">颜色搭配神器</a>
 Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
 Gui, Pandora:Add, Link,, <a href="https://app.didiyun.com/#/dc2/detail?uuid=a289c3f607fd5bbd8261df9b266ae211">滴滴云</a>
 Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub 镜像仓库</a>
@@ -339,11 +341,8 @@ Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer<
 Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux-command 命令搜索</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大全</a>
 Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
-Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
-Gui, Pandora:Add, Link,, <a href="https://cn.bing.com/search?q=壁纸">壁纸 - 国内版 Bing</a>
-Gui, Pandora:Add, Link,, <a href="https://window-swap.com/">window-swap</a>
-
+Gui, Pandora:Add, Link,, <a href="https://css2js.dotenv.dev/">css2js</a>
 
 
 Gui, Pandora:Add, Text,  W120 ys, 不可放过：
@@ -358,12 +357,13 @@ Gui, Pandora:Add, Link,, <a href="http://www.polayoutu.com">泼辣有图</a>
 Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a>
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">picjumbo山景</a>
 Gui, Pandora:Add, Link,, <a href="https://www.behance.net/galleries/illustration">优美插画资源</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/nordicgiant2/awesome-landing-page">很棒的登陆页面</a>
-
+Gui, Pandora:Add, Link,, <a href="https://cn.bing.com/search?q=壁纸">壁纸 - 国内版 Bing</a>
+Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：
+Gui, Pandora:Add, Link,, <a href="http://www.lurena.vip/">路人A</a>
 Gui, Pandora:Add, Link,, <a href="https://animate.style/">animate.css</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
 Gui, Pandora:Add, Link,, <a href="https://36dcup.net/user">36dcup</a>
@@ -374,6 +374,7 @@ Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</
 Gui, Pandora:Add, Link,, <a href="https://www.checklist.design/">checklist.design</a>
 Gui, Pandora:Add, Link,, <a href="https://www.24s.net/">24s付费视频盗版</a>
 Gui, Pandora:Add, Link,, <a href="https://mapshaper.org/">旭均 - mapshaper</a>
+Gui, Pandora:Add, Link,, <a href="https://window-swap.com/">打开一个新窗口</a>
 
 
 ;@1
@@ -382,7 +383,6 @@ Gui, Pandora:Tab, 2
 Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
 Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140 , 新建纯index.html
 Gui, Pandora:Add, Text, gNewPureVUEIndexHtml W140 , 新建纯vue.html
-Gui, Pandora:Add, Text, gvueecharts W140 , 新建纯v-chart.html
 Gui, Pandora:Add, Text, gNewcomposition W160 , 新建vue-composition-API
 Gui, Pandora:Add, Text, gVueComponentHtml W140, 新建vueComponent.html
 Gui, Pandora:Add, Text, gVueComponentHtml2 W140, 新建vueComponent2.html
@@ -402,6 +402,8 @@ Gui, Pandora:Add, Text, ganimjquery W160,新建animate.css与jquery
 Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
 Gui, Pandora:Add, Text, gfullpagepurecss W180,纯css实现swiper全屏fullpage
 Gui, Pandora:Add, Text, gvuedroptest W180,vue-drop-拖拽示例
+Gui, Pandora:Add, Text, gpubuliugrid W180,magic-grid瀑布流
+Gui, Pandora:Add, Text, gAccordionhtml W180,手风琴Accordion.html
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
@@ -428,6 +430,7 @@ Gui, Pandora:Add, Text, gsinaip W180,新浪接口获取ip地址
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建复杂table.html
 
 
+Gui, Pandora:Add, Text, gvueecharts W140 , 新建纯v-chart.html
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+50,新建.echartsDemo.html（官方demo）
 Gui, Pandora:Add, Text, gNewEchartsPinHtml, 新建.pin.html(玫瑰饼图)
 Gui, Pandora:Add, Text, gNewEchartsLineHtml ,新建.Line.html（折线图）
@@ -945,6 +948,10 @@ Gui, Pandora:Add, Text, W140 ys, 团队工具：
 Gui, Pandora:Add, Link,, <a href="https://www.atlassian.com/software/confluence">confluence知识库</a>
 
 
+Gui, Pandora:Add, Text, W140 yp+50, 地理坐标系转换工具：
+Gui, Pandora:Add, Link,, <a href="https://github.com/hujiulong/gcoord">gcoord</a>
+
+
 Gui, Pandora:Add, Text, W140 ys, jointjs流程图
 Gui, Pandora:Add, Link,, <a href="https://github.com/clientIO/joint">jointjs github</a>
 Gui, Pandora:Add, Link,, <a href="http://resources.jointjs.com/docs/jointjs/v2.2/joint.html">jointjs api</a>
@@ -1180,6 +1187,10 @@ Gui, Pandora:Add, Link,, <a href="https://startbootstrap.com/themes/">模板网�
 Gui, Pandora:Add, Link,, <a href="https://bootstrapmade.com/">模板网站2</a>
 Gui, Pandora:Add, Link,, <a href="https://bootstraptaste.com/">模板网站3</a>
 Gui, Pandora:Add, Link,, <a href="https://colorlib.com/wp/template/ogani/">模板网站4</a>
+Gui, Pandora:Add, Link,, <a href="https://dev.to/sm0ke/free-ui-kit-a-curated-list-4dg">免费的UI套件-精选清单</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/nordicgiant2/awesome-landing-page">很棒的登陆页面</a>
+
+
 
 Gui, Pandora:Add, Text,  W180 ys, 极简库:
 Gui, Pandora:Add, Link,, <a href="https://ajusa.github.io/lit/">极简风格：lit.css</a>
@@ -1193,6 +1204,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/andybrewer/mvp/">MVP.css无
 
 
 Gui, Pandora:Add, Text,  W140 ys, css工具:
+Gui, Pandora:Add, Link,, <a href="https://animate.style/">animate.css</a>
 Gui, Pandora:Add, Link,, <a href="http://www.nicetool.net/app/shadow_visualization.html">css阴影生成器</a>
 
 Gui, Pandora:Add, Text,  W140 ys, Material Design:

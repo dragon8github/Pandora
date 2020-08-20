@@ -24,8 +24,8 @@
 	Menu, NodeFileHandler, Add, 
 	
 	Menu, NodeFileHandler, Add, path/fs-extra基础依赖, NodeHandler
-	Menu, NodeFileHandler, Add, fs-extra.writeFile, NodeHandler
-	Menu, NodeFileHandler, Add, fs-extra.readFile, NodeHandler
+	Menu, NodeFileHandler, Add, （promises）fs.writeFile, NodeHandler
+	Menu, NodeFileHandler, Add, （promises）fs.readFile, NodeHandler
 
 	
 	
@@ -371,7 +371,7 @@ const getPath = dir => path.join(__dirname, '..' ,dir)
 )
 }
 
-if (v == "fs-extra.writeFile") {
+if (v == "（promises）fs.writeFile") {
 Var = 
 (
 const fs = require('fs').promises
@@ -381,7 +381,7 @@ await fs.writeFile(getPath(``cache/${id}.html``), HTML)
 )
 }
 
-if (v == "fs-extra.readFile") {
+if (v == "（promises）fs.readFile") {
 Var = 
 (
 const fs = require('fs').promises

@@ -43,7 +43,6 @@
     Menu, NthMenu, Add, :not(:last-child), nthHandle
 
 
-
     Menu, coolcss, Add, css : foucs-whitin 父辈元素聚焦选择器（很有用）, CssHandler
     Menu, coolcss, Add, css : 更优雅的纯下划线（不会太挤）, CssHandler
     Menu, coolcss, Add, css ：蚀刻文字（十分有感觉）, CssHandler
@@ -140,6 +139,7 @@
     Menu, CssMenu, Add, px2rem, CssHandler2
     Menu, CssMenu, Add, 移动端 max-width 限制合理化, CssHandler
     Menu, CssMenu, Add, @media移动端断点, CssHandler
+    Menu, CssMenu, Add, 动感交互按钮, CssHandler
     
     Menu, CssMenu, Add
     Menu, CssMenu, Add
@@ -316,6 +316,63 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "动感交互按钮") {
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product__cta {
+        margin: 0 auto;
+        font-size: 1rem;
+        text-decoration: none;
+        color: #FEFCFC;
+        background-image: linear-gradient(to bottom right, #FF8D2D, #EE6D01);
+        padding: 3rem 7rem;
+        display: inline-block;
+        margin: 4rem 5rem;
+        border-radius: 5rem;
+        box-shadow: 0px 20px 10px rgba(118, 54, 1, 0.15);
+        transition: all .2s ease-in;
+    }
+
+    .product__cta:hover {
+        box-shadow: 0px 30px 20px rgba(118, 54, 1, 0.2);
+        transform: scale(1.03);
+    }
+
+    .product__cta:active {
+        transform: translateY(1rem);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <a href="#" class="product__cta">Buy Tomato Rigatoni $ 34.00</a>
+    </div>
+</body>
+</html>
+)
+txtit(Var)
+return
 }
 
 if (v == "打歪对象（平行四边形）：transform: skewX(-15deg)") {
@@ -4379,89 +4436,93 @@ Var =
 code(Var)
 return
 
+::jiantou::
 ::arrow::
 Var = 
 (
-.triangle {
+
+.triangle-top {
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
     border-bottom: 50px solid orange;
     width: 0;
     height: 0;
 }
-)
-code(Var)
-return
-
-::arrow-top::
-::arrow-up::
-::arrow.top::
-::arrow.up::
-::arrowtop::
-::arrowup::
-Var = 
-(
-.triangle {
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 50px solid orange;
-    width: 0;
-    height: 0;
-}
-)
-code(Var)
-return
-
-::arrow-right::
-::arrow.right::
-::arrowright::
-Var = 
-(
-.triangle {
+.triangle-right {
     border-top: 50px solid transparent;
     border-bottom: 50px solid transparent;
     border-left: 50px solid orange;
     width: 0;
     height: 0;
 }
-)
-code(Var)
-return
-
-::arrow-bottom::
-::arrow.bottom::
-::arrowbottom::
-::arrow-down::
-::arrow.down::
-::arrowdown::
-Var = 
-(
-.triangle {
+.triangle-bottom {
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
     border-top: 50px solid orange;
     width: 0;
     height: 0;
 }
-)
-code(Var)
-return
-
-::arrow-left::
-::arrow.left::
-::arrowleft::
-Var = 
-(
-.triangle {
+.triangle-left {
     border-top: 50px solid transparent;
     border-bottom: 50px solid transparent;
     border-right: 50px solid orange;
     width: 0;
     height: 0;
 }
+---
+i.arrow-y {
+  position: absolute;
+  transform: translate(-6px, 0);
+  margin-top: 16px;
+  right: 0;
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    background-color: #ff6873;
+    width: 3px;
+    height: 9px;
+    transition: all 0.25s ease-in-out;
+  }
+
+  &:before { transform: translate(-2px, 0) rotate(45deg); }
+  &:after  { transform: translate(2px, 0) rotate(-45deg); }
+}
+
+i.arrow-y:hover {
+  &:before { transform: translate(2px, 0) rotate(45deg); }
+  &:after  { transform: translate(-2px, 0) rotate(-45deg); }
+}
+---
+i.arrow-x {
+  position: absolute;
+  left: 50`%;
+  top: 50`%;
+  transform: translate(-50`%, -50`%);
+  transform: translate(-6px, 0);
+  margin-top: 16px;
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    background-color: #ff6873;
+    width: 3px;
+    height: 9px;
+    transition: all 0.25s ease-in-out;
+  }
+
+  &:before { transform: translate(0, -2px) rotate(-45deg); }
+  &:after  { transform: translate(0, 2px) rotate(45deg); }
+}
+
+i.arrow-x:hover {
+  &:before { transform: translate(0, 2px) rotate(-45deg); }
+  &:after  { transform: translate(0, -2px) rotate(45deg); }
+}
 )
-code(Var)
+txtit(Var)
 return
+
 
 ::curp::
 Var =
@@ -7195,6 +7256,18 @@ Var =
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+)
+code(Var)
+return
+
+::minicss::
+::yasuocss::
+::yasuo::
+::cssmini::
+Var =
+(
+// 一行代码压缩 css
+const minify = (css = '') => css.replace(/(\W)\s+/g, "$1").replace(/\s(\W+)/g, "$1").replace(/;}/g, "}").replace(/\/\*.*?\*\//g, "")
 )
 code(Var)
 return

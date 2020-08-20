@@ -12693,3 +12693,318 @@ var vue = new Vue({
 RunBy(name)
 run, % name
 return
+
+pubuliugrid:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+  <style>
+      .container div {
+          width: 280px;
+          height: 500px;
+          background-color: antiquewhite;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+      }
+
+      .container .item1 {
+          height: 200px;
+      }
+
+      .container .item4 {
+          height: 800px;
+      }
+
+      .container .item6 {
+          height: 600px;
+      }
+
+      .container .item11 {
+          height: 400px;
+      }
+  </style>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="item1">1</div>
+            <div class="item2">2</div>
+            <div class="item3">3</div>
+            <div class="item4">4</div>
+            <div class="item5">5</div>
+            <div class="item6">6</div>
+            <div class="item7">7</div>
+            <div class="item8">8</div>
+            <div class="item9">9</div>
+            <div class="item10">10</div>
+            <div class="item11">11</div>
+            <div class="item12">12</div>
+            <div class="item13">13</div>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/magic-grid/dist/magic-grid.min.js"></script>
+
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+       cname: null,
+       params: null,
+    },
+    methods: {
+        handleClick () {
+            this.cname = 'abc'
+            this.params = { title: 'Lorem ipsum dolor sit amet', count: 110, list: [1,2,3,4] }
+        }
+    },
+    mounted () {
+        let magicGrid = new MagicGrid({
+            container: '.container',
+            animate: true,
+            gutter: 30,
+            static: true,
+            useMin: true
+        });
+
+        magicGrid.listen();
+    }
+})
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+Accordionhtml:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
+    <style>
+    html {
+      width: 100`%;
+      height: 100`%;
+      perspective: 900;
+      overflow-y: scroll;
+      background-color: #dce7eb;
+      font-family: "Titillium Web", sans-serif;
+      color: rgba(48, 69, 92, 0.8);
+    }
+
+    body {
+      min-height: 0;
+      display: inline-block;
+      position: relative;
+      left: 50`%;
+      margin: 90px 0;
+      transform: translate(-50`%, 0);
+      box-shadow: 0 10px 0 0 #ff6873 inset;
+      background-color: #fefffa;
+      max-width: 450px;
+      padding: 30px;
+    }
+
+    @media (max-width: 550px) {
+      body {
+        box-sizing: border-box;
+        transform: translate(0, 0);
+        max-width: 100`%;
+        min-height: 100`%;
+        margin: 0;
+        left: 0;
+      }
+    }
+    
+    ul li i {
+      &:before, &:after {
+        transition: all 0.25s ease-in-out;
+      }
+    }
+
+    p {
+      transition: all 0.25s ease-in-out;
+    }
+
+    .flipIn, ul li, h1 {
+      animation: flipdown 0.5s ease both;
+    }
+
+    .no-select, h2 {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-touch-callout: none;
+      user-select: none;
+    }
+  
+
+    h1, h2 {
+      color: #ff6873;
+    }
+
+    h1 {
+      text-transform: uppercase;
+      font-size: 36px;
+      line-height: 42px;
+      letter-spacing: 3px;
+      font-weight: 100;
+    }
+
+    h2 {
+      font-size: 26px;
+      line-height: 34px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      display: block;
+      background-color: #fefffa;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    p {
+      color: rgba(48, 69, 92, 0.8);
+      font-size: 17px;
+      line-height: 26px;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      max-height: 800px;
+      opacity: 1;
+      transform: translate(0, 0);
+      margin-top: 14px;
+      z-index: 2;
+    }
+
+    ul {
+      list-style: none;
+      perspective: 900;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        padding-bottom: 4px;
+        padding-top: 18px;
+        border-top: 1px dotted #dce7eb;
+
+        &:nth-of-type(1) { animation-delay: 0.5s; }
+        &:nth-of-type(2) { animation-delay: 0.75s; }
+        &:nth-of-type(3) { animation-delay: 1s; }
+        &:last-of-type   { padding-bottom: 0; }
+
+        i {
+          position: absolute;
+          transform: translate(-6px, 0);
+          margin-top: 16px;
+          right: 0;
+
+          &:before, &:after {
+            content: "";
+            position: absolute;
+            background-color: #ff6873;
+            width: 3px;
+            height: 9px;
+          }
+
+          &:before { transform: translate(-2px, 0) rotate(45deg); }
+          &:after  { transform: translate(2px, 0) rotate(-45deg); }
+        }
+
+        input[type=checkbox] {
+          position: absolute;
+          cursor: pointer;
+          width: 100`%;
+          height: 100`%;
+          z-index: 1;
+          opacity: 0;
+
+          &:checked ~ {
+            p {
+              margin-top: 0;
+              max-height: 0;
+              opacity: 0;
+              transform: translate(0, 50`%);
+            }
+
+            i {
+              &:before { transform: translate(2px, 0) rotate(45deg); }
+              &:after  { transform: translate(-2px, 0) rotate(-45deg); }
+            }
+          }
+        }
+      }
+    }
+
+    @keyframes flipdown {
+      0`%   { opacity: 0; transform-origin: top center; transform: rotateX(-90deg); }
+      5`%   { opacity: 1; }
+      80`%  { transform: rotateX(8deg); }
+      83`%  { transform: rotateX(6deg); }
+      92`%  { transform: rotateX(-3deg); }
+      100`% { transform-origin: top center; transform: rotateX(0deg); }
+    }
+    </style>
+</head>
+
+<body style='display: none'>
+    <div id="app">
+      <h1>CSS + HTML only Accordion Element</h1>
+        <ul>
+          <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h2>Languages Used</h2>
+            <p>This page was written in HTML and CSS. The CSS was compiled from SASS. I used Normalize as my CSS reset and -prefix-free to save myself some headaches. I haven't quite gotten the hang of Slim for compiling into HTML, but someday I'll use it since its syntax compliments that of SASS. Regardless, this could all be done in plain HTML and CSS.</p>
+          </li>
+          <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h2>How it Works</h2>
+            <p>Using the sibling and checked selectors, we can determine the styling of sibling elements based on the checked state of the checkbox input element. One use, as demonstrated here, is an entirely CSS and HTML accordion element. Media queries are used to make the element responsive to different screen sizes.</p>
+          </li>
+          <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h2>Points of Interest</h2>
+            <p>By making the open state default for when :checked isn't detected, we can make this system accessable for browsers that don't recognize :checked. The fallback is simply an open accordion. The accordion can be manipulated with Javascript (if needed) by changing the "checked" property of the input element.</p>
+          </li>
+        </ul>
+    </div>
+</body>
+<script>
+    // 获取第一个 <style>
+    const style = document.getElementsByTagName('style')[0]
+    // 获取第一个
+    const scss = style.innerHTML
+    // 开始编译
+    Sass.compile(scss, result => {
+        // 替换为编译好的 css
+        style.innerHTML = result.text
+        // 解析完成以后，再打开 app   
+        document.querySelector('body').style.display = 'block'
+    })
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
