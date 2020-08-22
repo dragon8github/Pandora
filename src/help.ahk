@@ -1826,8 +1826,7 @@ code(Var)
 return
 
 #c::
-    ;run, %A_Desktop%/Cmder.exe.lnk
-    RunByCmder(A_Desktop) ; Clipboard
+    RunByCmder(A_Desktop)
 return
 
 ::@info::

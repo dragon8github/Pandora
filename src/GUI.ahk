@@ -13008,3 +13008,169 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+
+baiduziyouhuizhi:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=c7WF4ji8XvvAadFEyX7zTVRWijpoOwUp"></script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+        width: 100`%;
+        height: 100`%;
+    }
+
+    #draw {
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <div id='draw'></div>
+</body>
+
+<script>
+const map = window.map = new BMap.Map("app")
+
+// 创建地图实例
+var poi = new BMap.Point(113.843319, 22.921901)
+
+// 开启鼠标滚轮缩放
+map.enableScrollWheelZoom(true)
+
+// 创建点坐标（东莞全貌）
+map.centerAndZoom(poi, 12)
+
+// 地图自定义样式
+map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "stylers": { "color": "#044161" } }, { "featureType": "land", "elementType": "all", "stylers": { "color": "#091934" } }, { "featureType": "boundary", "elementType": "geometry", "stylers": { "color": "#064f85" } }, { "featureType": "railway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "highway", "elementType": "geometry", "stylers": { "color": "#004981" } }, { "featureType": "highway", "elementType": "geometry.fill", "stylers": { "color": "#005b96", "lightness": 1 } }, { "featureType": "highway", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "arterial", "elementType": "geometry", "stylers": { "color": "#004981", "lightness": -39 } }, { "featureType": "arterial", "elementType": "geometry.fill", "stylers": { "color": "#00508b" } }, { "featureType": "poi", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "green", "elementType": "all", "stylers": { "color": "#056197", "visibility": "off" } }, { "featureType": "subway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "manmade", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "local", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "arterial", "elementType": "labels", "stylers": { "visibility": "off" } }, { "featureType": "boundary", "elementType": "geometry.fill", "stylers": { "color": "#029fd4" } }, { "featureType": "building", "elementType": "all", "stylers": { "color": "#1a5787" } }, { "featureType": "label", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": { "color": "#ffffff" } }, { "featureType": "poi", "elementType": "labels.text.stroke", "stylers": { "color": "#1e1c1c" } }, { "featureType": "administrative", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "road", "elementType": "labels", "stylers": { "visibility": "off" } }] })
+
+/**
+ * say something ...
+ */
+
+var main_polygon = null
+
+const cpolygon = point => {
+    if (main_polygon) {
+        const path = [...main_polygon.getPath(), point]
+        main_polygon.setPath(path)
+    } else {
+        main_polygon = new BMap.Polyline([point], { strokeColor:"yellow", strokeWeight: 4, strokeOpacity: 0.8 })
+        map.addOverlay(main_polygon)
+    }
+    return main_polygon
+}
+
+const transformationpolygon = points => {  
+    const Polygon = new BMap.Polygon(points, { strokeColor:"yellow", strokeWeight: 4, strokeOpacity: 0.8 })
+    map.addOverlay(Polygon)
+}
+
+draw.onmousedown = function(e) {
+     let points = []
+     const startx = e.clientX - app.offsetLeft
+     const starty = e.clientY - app.offsetTop
+     
+     this.onmousemove = function(ev) {
+        const movex = ev.clientX - app.offsetLeft
+        const movey = ev.clientY - app.offsetTop
+
+        const point = map.pixelToPoint(new BMap.Pixel(movex, movey))
+        cpolygon(point)
+     }
+
+     this.onmouseup = function() {
+         this.onmousemove = null
+         this.onmouseup = null
+
+         const path = main_polygon.getPath()
+         transformationpolygon(path)
+         main_polygon.remove()
+         main_polygon = null
+
+         // ...trigger
+         console.log(20200821171328, path)
+     }
+ }
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+
+canvasDrawBan:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <canvas id="myCanvas" width="1360px" height="640xp"> 
+        </canvas>
+    </div>
+</body>
+<script>
+ window.onload = function() {
+     var myCanvas = document.getElementById('myCanvas')
+     var ctx = myCanvas.getContext('2d')
+     myCanvas.onmousedown = function(ev) {
+         var ev = ev || window.event
+         ctx.moveTo(ev.clientX - myCanvas.offsetLeft, ev.clientY - myCanvas.offsetTop)
+         document.onmousemove = function(ev) {
+             var ev = ev || window.event
+             ctx.lineTo(ev.clientX - myCanvas.offsetLeft, ev.clientY - myCanvas.offsetTop)
+             ctx.stroke()
+         }
+         myCanvas.onmouseup = function() {
+             document.onmousemove = null
+             document.onmouseup = null
+         }
+     }
+ }
+</script>
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

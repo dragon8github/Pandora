@@ -1,4 +1,39 @@
-﻿
+﻿::xiazai::
+::daochu::
+Var =
+(
+function base64ToArrayBuffer(base64) {
+  var binary_string = window.atob(base64)
+  var len = binary_string.length
+  var bytes = new Uint8Array( len )
+  for (var i = 0; i < len; i++) { bytes[i] = binary_string.charCodeAt(i) }
+  return bytes.buffer
+}
+
+// your base64 code => window.btoa(JSON.stringify({ password: 123456 }))
+var file ='eyJwYXNzd29yZCI6MTIzNDU2fQ=='
+var data = base64ToArrayBuffer(file)
+var blob = new Blob([data], {type: 'octet/stream'})
+var fileName = 'fuckyou.js' // => .doc 也是可以的
+
+// microsoft ie
+if (window.navigator.msSaveOrOpenBlob) {
+   window.navigator.msSaveBlob(blob,fileName)
+} else {
+    var a = document.createElement('a')
+    document.body.appendChild(a)
+    a.style = 'display: none'
+    var url = window.URL.createObjectURL(blob)
+    a.href = url
+    a.download = fileName
+    a.click()
+    window.URL.revokeObjectURL(url)
+}
+)
+code(Var)
+return
+
+
 ::shengshou::
 ::sifang::
 ::dgzhenjie::

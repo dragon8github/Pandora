@@ -378,6 +378,8 @@
     Menu, utilswebpack, Add, vue动态加载组件和资源, utilsHandler
     
     
+    ; @2
+    Menu, utils2, Add, 纯js导出前端数据（.json/.doc/.js）, utilsHandler    
     Menu, utils2, Add, debug 黑魔法神器, utilsHandler    
     Menu, utils2, Add, pm: 回调地狱转promise解决方案, utilsHandler    
     Menu, utils2, Add, uuid 超简易版, utilsHandler
@@ -502,6 +504,39 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "纯js导出前端数据（.json/.doc/.js）") {
+Var =
+(
+function base64ToArrayBuffer(base64) {
+  var binary_string = window.atob(base64)
+  var len = binary_string.length
+  var bytes = new Uint8Array( len )
+  for (var i = 0; i < len; i++) { bytes[i] = binary_string.charCodeAt(i) }
+  return bytes.buffer
+}
+
+// your base64 code => window.btoa(JSON.stringify({ password: 123456 }))
+var file ='eyJwYXNzd29yZCI6MTIzNDU2fQ=='
+var data = base64ToArrayBuffer(file)
+var blob = new Blob([data], {type: 'octet/stream'})
+var fileName = 'fuckyou.js' // => .doc 也是可以的
+
+// microsoft ie
+if (window.navigator.msSaveOrOpenBlob) {
+   window.navigator.msSaveBlob(blob,fileName)
+} else {
+    var a = document.createElement('a')
+    document.body.appendChild(a)
+    a.style = 'display: none'
+    var url = window.URL.createObjectURL(blob)
+    a.href = url
+    a.download = fileName
+    a.click()
+    window.URL.revokeObjectURL(url)
+}
 )
 }
 
@@ -3288,7 +3323,12 @@ new Promise((resolve, reject) => {
 if (v == "JOJO - 砸瓦鲁多：浏览器暂停术 —— 直接在控制台输入debugger;") {
 Var = 
 (
-debugger;
+window.addEventListener('keydown', function (event) {
+    // / 监听 Ctrl + a
+    if (event.ctrlKey && event.keyCode == 68) {
+        debugger;
+    }
+})
 )
 }
 
@@ -8961,7 +9001,9 @@ txtit(Var)
 return
 
 ::github::
-::code::
+::githubcode::
+::github-code::
+::github.code::
 Var =
 (
 /**
@@ -9089,6 +9131,19 @@ http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=219.242.98.111
 <script type="text/javascript">  
     console.log(returnCitySN["cip"]+','+returnCitySN["cname"])  
 </script>
+)
+code(Var)
+return
+
+::dio::
+Var =
+(
+window.addEventListener('keydown', function (event) {
+    // / 监听 Ctrl + d
+    if (event.ctrlKey && event.keyCode == 68) {
+        debugger;
+    }
+})
 )
 code(Var)
 return

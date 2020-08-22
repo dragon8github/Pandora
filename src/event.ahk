@@ -2500,6 +2500,9 @@ window.addEventListener('keydown', function (event) {
 code(Var)
 return
 
+
+::code::
+::eventcode::
 ::keycode::
 Var =
 (

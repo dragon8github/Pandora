@@ -309,6 +309,7 @@ Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a
 Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
 Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客收录</a>
 Gui, Pandora:Add, Link,, <a href="https://regex101.com/">regex101</a>
+Gui, Pandora:Add, Link,, <a href="https://outflank.nl/blog/2018/08/14/html-smuggling-explained/">黑客思维</a>
 
 
 
@@ -431,7 +432,7 @@ Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建复杂table.html
 
 
 Gui, Pandora:Add, Text, gvueecharts W140 , 新建纯v-chart.html
-Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+50,新建.echartsDemo.html（官方demo）
+Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+60,新建.echartsDemo.html（官方demo）
 Gui, Pandora:Add, Text, gNewEchartsPinHtml, 新建.pin.html(玫瑰饼图)
 Gui, Pandora:Add, Text, gNewEchartsLineHtml ,新建.Line.html（折线图）
 Gui, Pandora:Add, Text, gNewEchartsBarHtml ,新建.Bar.html（柱状图）
@@ -454,7 +455,7 @@ Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
 Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
 
 
-Gui, Pandora:Add, Text, gNodeHttp W140 ys x+50, 新建nodejs http
+Gui, Pandora:Add, Text, gNodeHttp W140 ys x+60, 新建nodejs http
 Gui, Pandora:Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板
 Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
 Gui, Pandora:Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
@@ -480,9 +481,10 @@ Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 Gui, Pandora:Add, Text, gyanzhengzuobiaodian1 W180, 验证坐标点是否在多边形内
 Gui, Pandora:Add, Text, gyanzhengzuobiaodian2 W180, 验证两个多边形是否相交
 Gui, Pandora:Add, Text, gbaidunidili W160,百度坐标转地理位置.html
+Gui, Pandora:Add, Text, gbaiduziyouhuizhi W160,百度地图自由绘制模式.html
 
 
-Gui, Pandora:Add, Text, gimgSearchhtml W160 ys x+50, 图片搜索imageSearch
+Gui, Pandora:Add, Text, gimgSearchhtml W160 ys x+60, 图片搜索imageSearch
 Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索
 Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 Gui, Pandora:Add, Text, gcssskeletonHtml W140,新建css骨骼图.skeleton
@@ -505,6 +507,7 @@ Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog
 Gui, Pandora:Add, Text, gwebsocketHTML W140,新建WebSocket
 Gui, Pandora:Add, Text, gsocketHtml W160,新建socket.html
 Gui, Pandora:Add, Text, gEventSource W180,EventSource（类socket）
+Gui, Pandora:Add, Text, gcanvasDrawBan W180,canvas自由绘制画板
 
 
 Gui, Pandora:Tab, 3

@@ -160,7 +160,7 @@ arrincludes(myarr, v) {
 }
 
 RunByCmder(name) {
-    myIdea := "C:\Users\Lee\cmder\Cmder.exe"
+    myIdea := A_Desktop . "\cmder\Cmder.exe"
     Run, %myIdea% %name%,, max
 }
 
