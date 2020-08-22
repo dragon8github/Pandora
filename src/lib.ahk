@@ -200,8 +200,11 @@ RunBy(name) {
     myIdea := "C:\Program Files\Sublime Text 3\sublime_text3.exe"
     if (!FileExist(myIdea)) {
         myIdea := "C:\Program Files\Sublime Text 3\sublime_text.exe"
-         if (!FileExist(myIdea)) {
-            myIdea := "notepad"
+          if (!FileExist(myIdea)) {
+            myIdea := "C:\Program Files (x86)\Sublime Text 3\sublime_text.exe"
+             if (!FileExist(myIdea)) {
+                myIdea := "notepad"
+             }
          }
     }
     Run, %myIdea% %name%
