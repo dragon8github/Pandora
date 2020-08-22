@@ -189,7 +189,7 @@ Gui, Pandora:Add, Button, w260 h30 gFuck Section xs h30 yp+120 Default, FUCK
 
 
 ; Tab 选项卡 w830 h570 
-Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1050, 常用 | 工作坊 | 创慧教育 | Nodejs 与 Npm | Vue | React | 库 | 奇妙工具 | 地图 与 chart | CSS | Serverless | 微信  | 爬虫 | 移动开发 | Python | PHP | 剪切板 
+Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1280, 常用 | 工作坊 | 创慧教育 | Nodejs 与 Npm | Vue | React | 库 | 奇妙工具 | 地图 与 chart | CSS | Serverless | 微信  | 爬虫 | 移动开发 | Python | PHP | 剪切板 
 
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:

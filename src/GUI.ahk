@@ -1,6 +1,6 @@
 ﻿
 !space::
-	Gui, Pandora:Show, W1350, Pandora
+	Gui, Pandora:Show, W1380, Pandora
 return 
 
 PandoraGuiEscape:
