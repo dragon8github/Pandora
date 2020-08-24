@@ -682,6 +682,17 @@ return
 ; return
 
 
+
+>!F3::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+; 获取最新截图的base64
+base64 := getBase64(latestImageName) 
+path := post("https://service-ci0uhfl2-1255983702.gz.apigw.tencentcs.com/release/", { "img": base64 }, true)
+Clipboard := "![" . t . "](" . path . ")"
+tip2(path)
+return
+
+
 >!F2::
 ; http://upload.likeyunba.com/
 ; 名字
@@ -2373,7 +2384,7 @@ return
 ::sz::
 Var =
 (
-/*━━━━━┒   ⚡⚡⚡⚡⚡
+━━━━━┒   ⚡⚡⚡⚡⚡
    ┓┏┓┏┓   
    ┛┗┛┗┛┃  改你mb的需求！！
    ┓┏┓┏┓┃    ＼○／
@@ -2455,9 +2466,9 @@ return
 
 
 
-#p::
-run, powershell.exe
-return
+; #p::
+; run, powershell.exe
+; return
 
 ::dgcenter::
 ::dg.center::
@@ -2644,7 +2655,7 @@ Var =
 //////////////////////////////////////////////
 初始化 Book GUI 的代码逻辑
 //////////////////////////////////////////////
- */
+ 
 GUI, Card:Default
 
 

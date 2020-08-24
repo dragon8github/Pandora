@@ -27,8 +27,6 @@ global todoList := ""
 global __ALTCTRL__ := []
 
 
-
-
 /**
 //////////////////////////////////////////////
 说明一下： GUI的初始化必须置顶 
@@ -131,12 +129,53 @@ class SecondCounter {
 ; counter.Stop()
 ; return
 
+wh(img, PicPath = "bg.png") {
+fuck_w2 := img.Width
+fuck_h2 := img.Height
 
->!F3::
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-; 获取最新截图的base64
-base64 := getBase64(latestImageName) 
-path := post("https://service-ci0uhfl2-1255983702.gz.apigw.tencentcs.com/release/", { "img": base64 }, true)
-Clipboard := "![" . t . "](" . path . ")"
-tip2(path)
+fuck_wem := img.Width / 16
+fuck_hem := img.Height / 16
+
+; 找到最后一个/的位置
+index := InStr(PicPath, "\", false, 0) + 1
+; zip名字
+zipname := SubStr(PicPath, index)
+
+Var = 
+(
+width: %fuck_w2%px;
+height: %fuck_h2%px;
+
+width: rem(%fuck_w2%);
+height: rem(%fuck_h2%);
+
+width: %fuck_wem%em;
+height: %fuck_hem%em;
+
+@include bg('@/assets/%zipname%', rem(%fuck_w2%), rem(%fuck_h2%));
+)
+txtit(Var)
+}
+
+#z::
+if (latestImageName) {
+    img := getPicWH(latestImageName)
+    wh(img, latestImageName)
+} else {
+    tip2("未找到图片，请重新截图")
+}
+return
+
+#p::
+Send, ^c
+ClipWait, 2
+if (clipboard) {
+    PicPath := WinClip.GetFiles()
+    if (!InStr(PicPath, ".webp")) {
+        img := getPicWH(PicPath)
+        wh(img, PicPath)
+    }
+} else {
+    tip2("未找到图片，请重新截图")
+}
 return
