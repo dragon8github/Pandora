@@ -7456,6 +7456,8 @@ code(Var)
 return
 
 
+::vueapi::
+::vue.api::
 ::vue3::
 ::vue3.init::
 ::vue.init2::

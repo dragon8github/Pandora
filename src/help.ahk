@@ -1,4 +1,14 @@
-﻿::py::
+﻿::pikaqiu::
+::baokemeng::
+::baokem::
+Var =
+(
+Pokemon
+)
+code(Var)
+return
+
+::py::
 ::quyu::
 Var =
 (
@@ -975,7 +985,7 @@ return
 ::dgxy::
 Var =
 (
-lngLat: [113.843319, 22.921901],
+lngLat: [113.76210332995126, 23.02792876378438],
 )
 code(Var)
 Return
@@ -1267,10 +1277,13 @@ return
 ::safe::
 Var =
 (
- --args --disable-web-security --user-data-dir
+--args --disable-web-security --user-data-dir
+---
+--args --disable-web-security --user-data-dir="C:\Users\1\Desktop\.pandora"
 )
-Send, % Var
+txtit(Var)
 return
+
 
 ::macnosafe::
 ::iosodesafe::
