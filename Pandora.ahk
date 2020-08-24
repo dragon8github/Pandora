@@ -143,6 +143,8 @@ zipname := SubStr(PicPath, index)
 
 Var = 
 (
+width="%fuck_w2%" height="%fuck_h2%"
+
 width: %fuck_w2%px;
 height: %fuck_h2%px;
 
