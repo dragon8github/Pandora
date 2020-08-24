@@ -175,6 +175,12 @@ Gui, Pandora:Add, Checkbox, vkongzi, 孔夫子二手书
 Gui, Pandora:Add, Checkbox, vtmao, 天猫
 Gui, Pandora:Add, Checkbox, vpdd, 拼多多
 
+Gui, Pandora:Add, Text, gAllSearchG W90 Section xs y+20, 图片类:
+Gui, Pandora:Add, Checkbox, vGIFSEARCH, Gif 搜索引擎
+Gui, Pandora:Add, Checkbox, vYandex, Yandex
+Gui, Pandora:Add, Checkbox, vSVGRepo, SVGRepo
+
+
 ; 搜索框
 Gui, Pandora:Add, Edit, vSearchContent gSearchContent w260 H100 Limit150 yp+40 Section xs, dragon8github/Pandora
 
@@ -220,7 +226,6 @@ Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
 Gui, Pandora:Add, Link,, <a href="http://www.fengchedm.com/">风车动漫</a>
 Gui, Pandora:Add, Link,, <a href="https://www.novipnoad.com/">不负好时光</a>
 Gui, Pandora:Add, Link,, <a href="https://www.youtube.com/channel/UCKiWll5qSb4oaEtZhYDtjyw">channel ASMR</a>
-
 
 
 Gui, Pandora:Add, Text, W160 ys, 常用工具：
@@ -329,8 +334,6 @@ Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
 Gui, Pandora:Add, Link,, <a href="https://feathericons.com/?query=close">feathericons</a>
 
 
-
-
 Gui, Pandora:Add, Text,  W160 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
 Gui, Pandora:Add, Link,, <a href="https://designkiki.com/colordoo/?ref=producthunt">颜色搭配神器</a>
@@ -344,6 +347,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">API大
 Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
 Gui, Pandora:Add, Link,, <a href="https://css2js.dotenv.dev/">css2js</a>
+Gui, Pandora:Add, Link,, <a href="https://creator.nightcafe.studio/">世界名画生成器</a>
 
 
 Gui, Pandora:Add, Text,  W120 ys, 不可放过：

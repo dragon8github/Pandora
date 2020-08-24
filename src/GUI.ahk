@@ -19,58 +19,52 @@ CancelSelect:
 	; 清空搜索框
 	; GuiControl,, SearchContent, 
     
-    GuiControl,, duckduckgo, 0
-	GuiControl,, bd, 0
-	GuiControl,, google, 0
-    GuiControl,, npm, 0
-    GuiControl,, cnpm, 0
-	GuiControl,, so, 0
-	GuiControl,, github, 0
-	GuiControl,, segmentfault, 0
-	GuiControl,, cylee, 0
-    GuiControl,, toutiao, 0
-    GuiControl,, toutiao2, 0
-    GuiControl,, codepen, 0
-    GuiControl,, dasheng, 0
-    GuiControl,, bind, 0
-	
-
-    GuiControl,, deepL, 0
-	GuiControl,, bdfy, 0
-	GuiControl,, youdaofy, 0
-	GuiControl,, googlefanyi, 0
-	GuiControl,, jinshanciba, 0
-	
-
-	GuiControl,, wy, 0
-	GuiControl,, qq, 0
-	GuiControl,, dog, 0
-	GuiControl,, xiami, 0
-    GuiControl,, kuwo, 0 
-	GuiControl,, bilibili, 0 
-
-
-	GuiControl,, juejin, 0
-	GuiControl,, jianshu, 0
-	GuiControl,, csdn, 0
-	GuiControl,, zhihu, 0
-
-	GuiControl,, taobao, 0
-	GuiControl,, tianmao, 0
-	GuiControl,, jingdong, 0
-	GuiControl,, dangdang, 0
-	GuiControl,, amazon, 0 
-	GuiControl,, suning, 0
-    GuiControl,, kongzi, 0
-    GuiControl,, tmao, 0
-    GuiControl,, pdd, 0
-
+    GuiControl,, Yandex, 0
+    GuiControl,, SVGRepo, 0
     GuiControl,, shuxingtianxia, 0
     GuiControl,, jiumo, 0
     GuiControl,, dianzishuwang, 0
     GuiControl,, oushu, 0
     GuiControl,, zhiqi, 0
-
+    GuiControl,, duckduckgo, 0
+    GuiControl,, bd, 0
+    GuiControl,, google, 0
+    GuiControl,, npm, 0
+    GuiControl,, cnpm, 0
+    GuiControl,, so, 0
+    GuiControl,, github, 0
+    GuiControl,, toutiao, 0
+    GuiControl,, toutiao2, 0
+    GuiControl,, codepen, 0
+    GuiControl,, dasheng, 0
+    GuiControl,, bind, 0
+    GuiControl,, deepL, 0
+    GuiControl,, bdfy, 0
+    GuiControl,, youdaofy, 0
+    GuiControl,, googlefanyi, 0
+    GuiControl,, jinshanciba, 0
+    GuiControl,, wy, 0
+    GuiControl,, qq, 0
+    GuiControl,, dog, 0
+    GuiControl,, xiami, 0
+    GuiControl,, kuwo, 0 
+    GuiControl,, bilibili, 0
+    GuiControl,, juejin, 0
+    GuiControl,, jianshu, 0
+    GuiControl,, csdn, 0
+    GuiControl,, zhihu, 0
+    GuiControl,, cylee, 0
+    GuiControl,, segmentfault, 0
+    GuiControl,, taobao, 0
+    GuiControl,, tianmao, 0
+    GuiControl,, jingdong, 0
+    GuiControl,, dangdang, 0
+    GuiControl,, amazon, 0 
+    GuiControl,, suning, 0
+    GuiControl,, kongzi, 0
+    GuiControl,, tmao, 0
+    GuiControl,, pdd, 0
+    GuiControl,, GIFSEARCH, 0
 
 	
 return
@@ -86,6 +80,20 @@ return
 Inspect:
 	Var = chrome://inspect/#devices
 	Clipboard := Var
+return
+
+AllSearchG := false
+AllSearchG:
+    AllSearchG := !AllSearchG
+    if (AllSearchG) {
+        GuiControl,, Yandex, 1
+        GuiControl,, SVGRepo, 1
+        GuiControl,, GIFSEARCH, 1
+    } else {
+        GuiControl,, Yandex, 0
+        GuiControl,, SVGRepo, 0
+        GuiControl,, GIFSEARCH, 0
+    }
 return
 
 isAllSearchF := false
@@ -117,7 +125,6 @@ AllSearchA:
         GuiControl,, cnpm, 1 
 		GuiControl,, so, 1 
 		GuiControl,, github, 1 
-		GuiControl,, segmentfault, 1 
         GuiControl,, toutiao, 1
         GuiControl,, toutiao2, 1
         GuiControl,, codepen, 1
@@ -125,13 +132,13 @@ AllSearchA:
         GuiControl,, bind, 1
 
 	} else {
+        GuiControl,, duckduckgo, 0
 		GuiControl,, bd, 0
 		GuiControl,, google, 0
         GuiControl,, npm, 0
         GuiControl,, cnpm, 0
 		GuiControl,, so, 0
 		GuiControl,, github, 0
-		GuiControl,, segmentfault, 0
         GuiControl,, toutiao, 0
         GuiControl,, toutiao2, 0
         GuiControl,, codepen, 0
@@ -154,6 +161,7 @@ AllSearchB:
         GuiControl,, bdfy, 0
 		GuiControl,, youdaofy, 0
 		GuiControl,, googlefanyi, 0
+        GuiControl,, jinshanciba, 0
 	}
 return
 
@@ -186,12 +194,14 @@ AllSearchD:
 		GuiControl,, csdn, 1 
 		GuiControl,, zhihu, 1 
         GuiControl,, cylee, 1 
+        GuiControl,, segmentfault, 1 
 	} else {
 		GuiControl,, juejin, 0
 		GuiControl,, jianshu, 0
 		GuiControl,, csdn, 0
 		GuiControl,, zhihu, 0
         GuiControl,, cylee, 0
+        GuiControl,, segmentfault, 0
 	}
 return
 
@@ -224,7 +234,22 @@ return
 
 Fuck:
 	; 保存用户的输入到每个控件的关联变量中.
-	Gui, Submit, NoHide 
+	Gui, Submit, NoHide
+    
+    ; GifSearch
+    if (GIFSEARCH == 1) {
+        RUN, https://giphy.com/search/%SearchContent%
+    } 
+    
+    ; Yandex
+    if (Yandex == 1) {
+        RUN, https://yandex.com/images/search?text=%SearchContent%
+    }
+    
+    ; SVGRepo
+    if (SVGRepo == 1) {
+        RUN, https://www.svgrepo.com/vectors/%SearchContent%
+    }    
 
     ; pdd
     if (pdd == 1) {
