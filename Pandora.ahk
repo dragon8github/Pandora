@@ -97,9 +97,6 @@ global __ALTCTRL__ := []
 return
 
 
-
-
-
 ; 一个记录秒数的示例类...
 class SecondCounter {
     __New() {
@@ -135,9 +132,11 @@ class SecondCounter {
 ; return
 
 
-; ^n::
-; t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-; InputBox, OutputVar, title, enter a name?,,,,,,,,test%t%
-; Msgbox, % OutputVar
-
-; return
+>!F3::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+; 获取最新截图的base64
+base64 := getBase64(latestImageName) 
+path := post("https://service-ci0uhfl2-1255983702.gz.apigw.tencentcs.com/release/", { "img": base64 }, true)
+Clipboard := "![" . t . "](" . path . ")"
+tip2(path)
+return

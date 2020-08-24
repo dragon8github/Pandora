@@ -2436,3 +2436,77 @@ sass.render({ file: './index.sass', }, function(err, result) {
 )
 txtit(Var)
 return
+
+::node.render::
+Var =
+(
+const fs = require('fs')
+const path = require('path')
+const render = require('./render')
+
+exports.main_handler = async (event, context,callback ) => {
+  let html = fs.readFileSync(path.resolve(__dirname, './demo.html'), {
+    encoding: 'utf-8'
+  })
+  html = render(html, {
+    master: '腾讯云云函数团队', // Your name 您的名称
+    centralCouplet: '年年有余', // centralCouplet 横批
+    upCouplet: '千年迎新春', // upCouplet 上联
+    downCouplet: '瑞雪兆丰年' // downCouplet 下联
+  })
+  return {
+    isBase64Encoded: false,
+    statusCode: 200,
+    headers: { 'Content-Type': 'text/html' },
+    body: html
+  }
+}
+---
+// render.js
+module.exports = function(tpl,variables) {
+  for (let key in variables) {
+    const reg = new RegExp('\\$\\{' + key + '\\}', 'g')
+    tpl = tpl.replace(reg, variables[key])
+  }
+  return tpl
+}
+)
+txtit(Var)
+return
+
+::saveimg::
+::save.img::
+::saveimage::
+Var =
+(
+const { join } = require('path')
+const { readFileSync, writeFileSync } = require('fs')
+const readChunk = require('read-chunk')
+const imageType = require('image-type')
+
+// 根据文件流 stream 获取文件后缀
+const getExt = FilePath => {
+  // 将文件流转换为 Buffer
+  let buffer = readChunk.sync(FilePath, 0, FilePath.length)
+  // 获取文件类型
+  let image_type = imageType(buffer)
+  // 返回文件后缀
+  return image_type.ext
+}
+
+// （可选）解析 base64 图片：
+// const dataBuffer = Buffer.from(base64, 'base64') 
+// const ext = imageType(dataBuffer).exe
+
+
+// 读取文件流
+const dataBuffer = readFileSync(files.path.path)
+
+// 文件路径 => 文件流 => 后缀
+const ext = getExt(files.path.path)
+
+// 保存到本地
+writeFileSync(join(__dirname, `public/${new_name}.${ext}`), dataBuffer)
+)
+code(Var)
+return

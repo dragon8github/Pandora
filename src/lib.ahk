@@ -59,6 +59,11 @@ toUpFir(v) {
     return f . SubStr(v, 2)
 }
 
+tip2(title="") {
+    ToolTip, % title
+    SetTimer, RemoveToolTip, -1500
+}
+
 tip(title=" ", content=" ") {
     TrayTip, %title%, %content%, 20 ,16
     SetTimer, _HideTrayTip, 1500
@@ -265,15 +270,14 @@ delete(url)
     return  whr.ResponseText
 }
 
-
-
 ; 下载内容
 post(url, data, q:=false, text:="正在为你下载代码，请保持网络顺畅")
 {
     whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
     whr.Open("POST", url, true)
     whr.SetRequestHeader("Content-Type", "application/json;charset=utf-8")
-    whr.Send(data)
+    ; 需要转化为字符串
+    whr.Send(JSON.Dump(data))
     whr.WaitForResponse()
     
     if (q==false) {

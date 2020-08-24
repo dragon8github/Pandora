@@ -1,4 +1,13 @@
-﻿::xiazai::
+﻿::ext::
+::lastpath::
+Var =
+(
+const lastpath = path => path.substr(path.lastIndexOf('.') + 1)
+)
+code(Var)
+return
+
+::xiazai::
 ::daochu::
 Var =
 (

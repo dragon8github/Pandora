@@ -1194,7 +1194,6 @@ Gui, Pandora:Add, Link,, <a href="https://dev.to/sm0ke/free-ui-kit-a-curated-lis
 Gui, Pandora:Add, Link,, <a href="https://github.com/nordicgiant2/awesome-landing-page">很棒的登陆页面</a>
 
 
-
 Gui, Pandora:Add, Text,  W180 ys, 极简库:
 Gui, Pandora:Add, Link,, <a href="https://ajusa.github.io/lit/">极简风格：lit.css</a>
 Gui, Pandora:Add, Link,, <a href="https://nostalgic-css.github.io/NES.css/">马里奥风格：NES.css</a>
@@ -1222,6 +1221,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.9178.work/qianduan.html">前端导
 Gui, Pandora:Add, Link,, <a href="http://css3lib.alloyteam.com/#animation/AnimatedButtons">alloyteam css</a>
 Gui, Pandora:Add, Link,, <a href="http://microjs.com/#">极简js大全：microjs</a>
 
+Gui, Pandora:Add, Text,  W140 ys, 主类UI框架:
+Gui, Pandora:Add, Link,, <a href="https://getuikit.com/docs/accordion">优雅的 uikit</a>
 
 
 ; Serverless
