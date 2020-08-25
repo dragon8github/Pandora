@@ -7462,10 +7462,12 @@ return
 ::vue3.init::
 ::vue.init2::
 ::vue.init3::
+InputBox, OutputVar, title, enter a name?,,,,,,,,test
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
 <template>
-  <div class="hello">
+  <div class="%OutputVar%">
     <h1 ref='el'>{{ msg }}</h1>
     {{ state.count }} doulbe is {{ double }}
     <input type="button" value='+' @click='inc' />
@@ -7473,18 +7475,16 @@ Var =
 </template>
 
 <script>
-/* @vue/composition-api */
-import { useStore } from "vuex"
 import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from 'vue'
 
 export default {
-  name: 'HelloWorld',
-  props: { msg: String },
+  name: '%OutputVar%',
   setup(props) {
     // props
-    console.log(20200814205739, props.msg)
+    console.log(%t%, props.msg)
 
     // data
+    //🔔 请注意，template 中是以 {{ state.count }} 来使用的，如果想直接使用 {{ count }} ，请使用 ref 来创建
     let state = reactive({ count: 0 })
 
     // computed
@@ -7513,22 +7513,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.%OutputVar% {
+    
 }
 </style>
-
 )
 code(Var)
 return

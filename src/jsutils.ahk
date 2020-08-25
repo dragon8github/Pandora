@@ -8115,7 +8115,9 @@ return
 ::$json::
 Var =
 (
-const dongguan = await $.getJSON('./data-dongguan.json')
+;(async function(){
+    const DongGuanGrid = await $.getJSON('./DongGuanGrid.json')
+}())
 )
 code(Var)
 return

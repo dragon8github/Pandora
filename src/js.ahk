@@ -1,4 +1,16 @@
-﻿::ext::
+﻿::https::
+::cdn-https::
+::cdn-http::
+::meta-https::
+::meta-http::
+Var =
+(
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+)
+code(Var)
+return
+
+::ext::
 ::lastpath::
 Var =
 (
@@ -10800,6 +10812,9 @@ Return
 ::rendercolor::
 Var =
 (
+// ['#f21347','#f3243e','#f33736','#f34131','#f34e2b', '#f56321','#f56f1c','#f58414','#f58f0e','#f5a305', '#e7ab0b','#dfae10','#d5b314','#c1bb1f','#b9be23', '#a6c62c','#96cc34','#89d23b','#7ed741','#77d64c', '#71d162','#6bcc75','#65c78b','#5fc2a0','#5abead', '#52b9c7','#4fb6d2','#4ab2e5']
+const color = "#"+("00000"+((Math.random()*16777215+0.5)>>0).toString(16)).slice(-6)
+---
 fillStyle: 'rgba(' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', ' + ~~(Math.random() * 255) + ', 0.8)',
 ---
 // 比较浅色的rgb，适合白色字体
