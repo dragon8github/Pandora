@@ -7827,41 +7827,21 @@ return
 ::iseq::
 Var =
 (
-const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]' 
-
-function looseEqual (a, b) {
-  if (a === b) return true
-  const isObjectA = isObject(a)
-  const isObjectB = isObject(b)
-  if (isObjectA && isObjectB) {
-    try {
-      const isArrayA = Array.isArray(a)
-      const isArrayB = Array.isArray(b)
-      if (isArrayA && isArrayB) {
-        return a.length === b.length && a.every((e, i) => {
-          return looseEqual(e, b[i])
-        })
-      } else if (a instanceof Date && b instanceof Date) {
-        return a.getTime() === b.getTime()
-      } else if (!isArrayA && !isArrayB) {
-        const keysA = Object.keys(a)
-        const keysB = Object.keys(b)
-        return keysA.length === keysB.length && keysA.every(key => {
-          return looseEqual(a[key], b[key])
-        })
-      } else {
-        /* istanbul ignore next */
-        return false
-      }
-    } catch (e) {
-      /* istanbul ignore next */
-      return false
-    }
-  } else if (!isObjectA && !isObjectB) {
-    return String(a) === String(b)
-  } else {
-    return false
+function isEqual(obj1, obj2) {
+  let props1 = Object.getOwnPropertyNames(obj1);
+  let props2 = Object.getOwnPropertyNames(obj2);
+  if (props1.length != props2.length) {
+    return false;
   }
+  for (let i = 0; i < props1.length; i++) {
+    let prop = props1[i];
+    let bothAreObjects = typeof(obj1[prop]) === ‘object’ && typeof(obj2[prop]) === ‘object’;
+    if ((!bothAreObjects && (obj1[prop] !== obj2[prop]))
+    || (bothAreObjects && !isEqual(obj1[prop], obj2[prop]))) {
+      return false;
+    }
+  }
+  return true;
 }
 )
 code(Var)
@@ -8695,6 +8675,7 @@ Var =
 code(Var)
 return
 
+::vuex.help::
 ::store.help::
 ::help::
 ::cs::
@@ -8709,8 +8690,6 @@ Var =
 (
 // @/store/help.js
 import { POST, GET } from '@/utils/request.js'
-
-export { inject } from './inject.js'
 
 // fixbug: 如果直接修改 state 不行的话，能否顺便生成 mutations 。 用 mutations 的 commit 来解决赋值的问题。
 // 而且这样更加规范。那么问题来了，我好像没有办法「自动」拿到 commit
@@ -8849,6 +8828,28 @@ export default createStore({
         },
     }
 })
+---
+// app.vue
+<script>
+import { mapState } from 'vuex'
+
+export default {
+    data () {
+        return {
+
+        }
+    },
+    computed: {
+        ...mapState('driver', ['_fuckgod', ]),
+    },
+    beforeMount () {
+        setTimeout(() => {
+            console.log(20200826212013, this._fuckgod)
+        }, 3000);
+    },
+}
+</script>
+
 )
 txtit(Var)
 return

@@ -3767,27 +3767,27 @@ return
 ::css.scrollbar::
 Var =
 (
-/**
- * 滚动条修饰
- */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
+.list {
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
 
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-corner {
-  background-color: #e2e2e2;
-}
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
 
-::-webkit-scrollbar-thumb {
-  border-radius: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
+    &::-webkit-scrollbar-thumb {
+        border-radius: 0;
+        background-color: rgb(63 115 180);
+        border-radius: 30px;
+    }
 
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-corner {
-  background-color: #e2e2e2;
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
 }
 ---
 overflow-y: auto;
@@ -4440,7 +4440,67 @@ return
 ::arrow::
 Var = 
 (
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
 
+    #app {
+        width: 100`%;
+        height: 100`%;
+        background: radial-gradient(ellipse at bottom, #1B2735 0`%, #090A0F 100`%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon {
+        transform: rotate(180deg);
+        animation: animate 1s linear infinite;
+    }
+
+    @keyframes animate {
+        0`%   { transform: rotate(180deg) translateY(0px); }
+        50`%  { transform: rotate(180deg) translateY(50px);  opacity: .5;}
+        100`% { transform: rotate(180deg) translateY(100px);  opacity: 0;}
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <svg t="1598407766202" class="icon" viewBox="0 0 1331 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19405" width="200" height="200"><path d="M105.0624 37.1712l-36.1984 36.1984 591.5648 447.488 591.616-447.488-36.1984-36.1984-555.4176 402.5344L105.0624 37.1712z m0 460.8l-36.1984 36.1984 591.5648 447.488 591.616-447.488-36.1984-36.1984-555.4176 402.5344L105.0624 497.9712z" p-id="19406" fill="#ffffff"></path></svg>
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: []
+    },
+    methods: {
+        go () {
+
+        }
+    },
+    beforeMount () {
+
+    }
+})
+</script>
+</html>
+---
 .triangle-top {
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
@@ -6619,8 +6679,8 @@ code(Var)
 return
 
 ::css.tip::
-::tip::
-::tooltip::
+::html.tip::
+::html.tooltip::
 ::css.tooltip::
 Var =
 (
@@ -7268,6 +7328,87 @@ Var =
 (
 // 一行代码压缩 css
 const minify = (css = '') => css.replace(/(\W)\s+/g, "$1").replace(/\s(\W+)/g, "$1").replace(/;}/g, "}").replace(/\/\*.*?\*\//g, "")
+)
+code(Var)
+return
+
+::scss.gen::
+::scss.build::
+::gen.css::
+::css.build::
+::scss.gen::
+::scss.build::
+Var =
+(
+$target-colors: (green-color: #789d34, red-color: #ac3d39, blue-color: #236367, );
+
+$tones: 10, 20, 30, 40, 50, 60, 70, 80, 90;
+
+@mixin generate-color-var($key, $value) {
+   --#{$key}: #{$value};
+   --#{$key}-rgb: #{red($value)},#{green($value)},#{blue($value)};
+   @each $tone in $tones {
+       $scale-value: adjust-color($value, $lightness: $tone / 2 * 1`%);
+       --#{$key}-#{$tone}: #{$scale-value};
+       --#{$key}-#{$tone}-rgb: #{red($scale-value)},#{green($scale-value)},#{blue($scale-value)};
+   }
+}
+
+:root {
+   @each $key, $value in $target-colors {
+       @include generate-color-var($key, $value);
+   }
+}
+
+.green {background: var(--green-color); }
+.green-10 {background: var(--green-color-10); }
+.green-20 {background: var(--green-color-20); }
+.green-30 {background: var(--green-color-30); }
+.green-40 {background: var(--green-color-40); }
+.green-50 {background: var(--green-color-50); }
+.green-60 {background: var(--green-color-60); }
+.green-70 {background: var(--green-color-70); }
+.green-80 {background: var(--green-color-80); }   
+.green-80 {background: var(--green-color-90); }   
+
+.red {background: var(--red-color); }
+.red-10 {background: var(--red-color-10); }
+.red-20 {background: var(--red-color-20); }
+.red-30 {background: var(--red-color-30); }
+.red-40 {background: var(--red-color-40); }
+.red-50 {background: var(--red-color-50); }
+.red-60 {background: var(--red-color-60); }
+.red-70 {background: var(--red-color-70); }
+.red-80 {background: var(--red-color-80); }
+.red-80 {background: var(--red-color-90); }
+
+.blue {background: var(--blue-color); }
+.blue-10 {background: var(--blue-color-10); }
+.blue-20 {background: var(--blue-color-20); }
+.blue-30 {background: var(--blue-color-30); }
+.blue-40 {background: var(--blue-color-40); }
+.blue-50 {background: var(--blue-color-50); }
+.blue-60 {background: var(--blue-color-60); }
+.blue-70 {background: var(--blue-color-70); }
+.blue-80 {background: var(--blue-color-80); }
+.blue-80 {background: var(--blue-color-90); }
+)
+code(Var)
+return
+
+::scss.for::
+::scss.each::
+::scss.arr::
+::scss.ary::
+Var =
+(
+$icons: 'arrow-left', 'arrow-right', 'arrow-up', 'arrow-down';
+
+@each $icon in $icons {
+    .icon-#{$icon} {
+      background: url('icons/#{$icon}.svg');
+    }
+}
 )
 code(Var)
 return

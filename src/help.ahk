@@ -227,12 +227,15 @@ Var =
 code(Var)
 return
 
-::Po::
+::vue.chuansongmen::
 ::csm::
-::por::
+::vue3.csm::
+::vue3.chuansongmen::
+::tel::
+::Po::
 Var =
 (
-portal
+teleport(portal)
 )
 code(Var)
 return

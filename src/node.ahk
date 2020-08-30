@@ -2433,6 +2433,59 @@ sass.render({ file: './index.sass', }, function(err, result) {
     @include apply(red, f16, text-white, pl-4);
 }
 </style>
+---
+$target-colors: (green-color: #789d34, red-color: #ac3d39, blue-color: #236367, );
+
+$tones: 10, 20, 30, 40, 50, 60, 70, 80, 90;
+
+@mixin generate-color-var($key, $value) {
+   --#{$key}: #{$value};
+   --#{$key}-rgb: #{red($value)},#{green($value)},#{blue($value)};
+   @each $tone in $tones {
+       $scale-value: adjust-color($value, $lightness: $tone / 2 * 1`%);
+       --#{$key}-#{$tone}: #{$scale-value};
+       --#{$key}-#{$tone}-rgb: #{red($scale-value)},#{green($scale-value)},#{blue($scale-value)};
+   }
+}
+
+:root {
+   @each $key, $value in $target-colors {
+       @include generate-color-var($key, $value);
+   }
+}
+
+.green {background: var(--green-color); }
+.green-10 {background: var(--green-color-10); }
+.green-20 {background: var(--green-color-20); }
+.green-30 {background: var(--green-color-30); }
+.green-40 {background: var(--green-color-40); }
+.green-50 {background: var(--green-color-50); }
+.green-60 {background: var(--green-color-60); }
+.green-70 {background: var(--green-color-70); }
+.green-80 {background: var(--green-color-80); }   
+.green-80 {background: var(--green-color-90); }   
+
+.red {background: var(--red-color); }
+.red-10 {background: var(--red-color-10); }
+.red-20 {background: var(--red-color-20); }
+.red-30 {background: var(--red-color-30); }
+.red-40 {background: var(--red-color-40); }
+.red-50 {background: var(--red-color-50); }
+.red-60 {background: var(--red-color-60); }
+.red-70 {background: var(--red-color-70); }
+.red-80 {background: var(--red-color-80); }
+.red-80 {background: var(--red-color-90); }
+
+.blue {background: var(--blue-color); }
+.blue-10 {background: var(--blue-color-10); }
+.blue-20 {background: var(--blue-color-20); }
+.blue-30 {background: var(--blue-color-30); }
+.blue-40 {background: var(--blue-color-40); }
+.blue-50 {background: var(--blue-color-50); }
+.blue-60 {background: var(--blue-color-60); }
+.blue-70 {background: var(--blue-color-70); }
+.blue-80 {background: var(--blue-color-80); }
+.blue-80 {background: var(--blue-color-90); }
 )
 txtit(Var)
 return

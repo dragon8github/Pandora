@@ -280,8 +280,9 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview/blob/m
 Gui, Pandora:Add, Link,, <a href="https://github.com/ChanceYu/front-end-rss">front-end-rss</a>
 Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
+Gui, Pandora:Add, Link,, <a href="https://www.echojs.com/">echojs.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.smashingmagazine.com/articles/">粉碎杂志</a>
-Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/r/javascript/">reddit</a>
+Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/r/webdev">reddit</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -294,7 +295,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热�
 Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
 Gui, Pandora:Add, Link,, <a href="https://vueschool.io/articles/series/vue-js-performance/">VueSchool</a>
-Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/">Hacker News</a>
+Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/show">Hacker News</a>
 Gui, Pandora:Add, Link,, <a href="https://tympanus.net/codrops/category/tutorials/">Codrops</a>
 Gui, Pandora:Add, Link,, <a href="https://reposhub.com/">reposhub.com</a>
 Gui, Pandora:Add, Link,, <a href="https://web.dev/fast/">web.dev 优化教程</a>
@@ -369,6 +370,7 @@ Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：
+Gui, Pandora:Add, Link,, <a href="https://www.uupoop.com/">在线Photoshop</a>
 Gui, Pandora:Add, Link,, <a href="http://www.lurena.vip/">路人A</a>
 Gui, Pandora:Add, Link,, <a href="https://animate.style/">animate.css</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autodraw.com/">google autodraw</a>
@@ -566,13 +568,23 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12
 Gui, Pandora:Add, Link,, <a href="http://19.104.40.37:8084/">内网预览地址</a>
 
 
-Gui, Pandora:Add, Text,  W140 xs Section yp+100, 数据中心
+Gui, Pandora:Add, Text,  W140 xs Section yp+50, 数据中心
 Gui, Pandora:Add, Link,, <a href="http://datacenter.dgdatav.com:6080/">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/vue-datacenter">源码gitlab</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DateCenter/datacenter">原型gitlab</a>
 Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/DUXBCem1Kd2dQdkNi?opendocxfrom=admin&tdsourcetag=s_pctim_aiomsg&ADUIN=928532756&ADSESSION=1555287968&ADTAG=CLIENT.QQ.5603_.0&ADPUBNO=26882&tab=BB08J2">腾讯文档</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/groups/DateCenter/-/boards">测试敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://dc.dgjy.net:8080/">Jenkins</a>
+
+Gui, Pandora:Add, Text,  W140 yp+50, 跨境司机
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:32727/driver/">预览地址</a>
+Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/cross-border-drivers-ui?tab=history">部署地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/56/interface/api/2435">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/cross-border-drivers">源码地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
+Gui, Pandora:Add, Link,, <a href="https://fangyqgk.dg.cn/driver/#/">正式预览</a>
+Gui, Pandora:Add, Link,, <a href="https://master.feiyan.com:8443/console/project/app/browse/dc/cross-border-drivers-ui?tab=history">正式部署</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
@@ -702,15 +714,16 @@ Gui, Pandora:Add, Link, ys, <a href="https://github.com/remy/nodemon">自动重�
 
 Gui, Pandora:Tab, 5
 Gui, Pandora:Add, Text,  W140 Section, Vue：
+Gui, Pandora:Add, Link,, <a href="https://v3.vuejs.org/guide/introduction.html">vue3</a>
+Gui, Pandora:Add, Link,, <a href="https://vue-composition-api-rfc.netlify.app/api.html#setup">vue composition API</a>
 Gui, Pandora:Add, Link,, <a href="https://cn.vuejs.org/">vue</a>
 Gui, Pandora:Add, Link,, <a href="http://vuex.vuejs.org">vuex</a>
 Gui, Pandora:Add, Link,, <a href="http://router.vuejs.org ">vue-router</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 Gui, Pandora:Add, Link,, <a href="https://cli.vuejs.org/">vue-cli</a>
 Gui, Pandora:Add, Link,, <a href="https://cli.vuejs.org/config/#devserver-proxy">vue-config 文档</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vuepress">vuepress</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vuepress">vuepress文档</a>
 Gui, Pandora:Add, Link,, <a href="https://vue-test-utils.vuejs.org/zh/">vue-test-utils</a>
-Gui, Pandora:Add, Link,, <a href="https://vue-composition-api-rfc.netlify.app/api.html#setup">vue composition API</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/opendigg/awesome-github-vue">vue-awesome</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/kefranabg/awesome-vue-composition-api">vue-awesome composition</a>
 
 Gui, Pandora:Add, Text,  W140 ys, vue ssr nuxt：
@@ -753,7 +766,7 @@ Gui, Pandora:Add, Text,  W160 ys, vue-ant-design
 Gui, Pandora:Add, Link,, <a href="https://github.com/vueComponent/ant-design-vue">github</a>
 Gui, Pandora:Add, Link,, <a href="https://vue.ant.design/docs/vue/introduce/">docs</a>
 
-Gui, Pandora:Add, Text, W140 Section xs yp+300, vue动画钩子：
+Gui, Pandora:Add, Text, W140 Section xs yp+350, vue动画钩子：
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes">vue-transition</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/guide/transitions.html#JavaScript-Hooks">JavaScript-Hooks</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejs.org/v2/api/#transition-group">transition-group</a>

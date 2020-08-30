@@ -1,4 +1,188 @@
-﻿::https::
+﻿::map.px::
+::mappx::
+::pxtopoint::
+::pointtopx::
+::px2point::
+::point2px::
+Var =
+(
+// 页面坐标转经纬度
+const { lng, lat } = map.pixelToPoint(new BMap.Pixel(movex, movey))
+
+// 经纬度转页面坐标
+let {x, y} = this.myMap.pointToPixel(new BMap.Point(...point))
+)
+code(Var)
+return
+
+::deepEQ::
+Var =
+(
+export const deepEQ = function (x, y) {
+  // 指向同一内存时
+  if (x === y) 
+    return true
+
+  else if ((typeof x == "object" && x != null) && (typeof y == "object" && y != null)) {
+    if (Object.keys(x).length != Object.keys(y).length)
+      return false
+ 
+    for (var prop in x) {
+      if (y.hasOwnProperty(prop))
+      {  
+        if (! deepEQ(x[prop], y[prop]))
+          return false
+      }
+      else
+        return false
+    }
+ 
+    return true
+  }
+  else 
+    return false
+}
+)
+code(Var)
+return
+
+::nginx::
+Var =
+(
+events {
+    worker_connections 1024;
+}
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include    
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+    client_max_body_size 50m;
+    
+    map $http_upgrade $connection_upgrade {
+        default upgrade;
+        '' close;
+    }
+    server {
+        listen 8080;
+        # gzip config
+        gzip on;
+        gzip_min_length 2k;
+        gzip_comp_level 9;
+        gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gifimage/png;
+        gzip_vary on;
+        gzip_disable "MSIE [1-6]\.";
+        client_max_body_size 200m;
+
+        location ^~ /driver {
+                  alias  /usr/share/nginx/html/;
+                  index  index.html index.htm;
+                  try_files $uri $uri/ /driver/index.html;
+                }
+    
+        location ^~ /driver/visual {
+            proxy_pass http://ioc-visual-svc:8080/;
+            proxy_set_header   X-Forwarded-Proto $scheme;
+            proxy_set_header   X-Forwarded-For $remote_addr;
+            proxy_set_header   Host              $http_host;
+            proxy_set_header   X-Real-IP         $remote_addr;
+            #配置---------websocket--------
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $connection_upgrade;
+            proxy_connect_timeout 10s; 
+            proxy_read_timeout 7200s; 
+            proxy_send_timeout 20s; 
+        }
+        location ^~ /driver/admin {
+            proxy_pass http://ioc-admin-svc:8080/admin;
+            proxy_set_header   X-Forwarded-Proto $scheme;
+            proxy_set_header   X-Forwarded-For $remote_addr;
+            proxy_set_header   Host              $http_host;
+            proxy_set_header   X-Real-IP         $remote_addr;
+        }
+        location ^~ /driver/ljdp {
+            proxy_pass http://ioc-admin-svc:8080/ljdp;
+            proxy_set_header   X-Forwarded-Proto $scheme;
+            proxy_set_header   X-Forwarded-For $remote_addr;
+            proxy_set_header   Host              $http_host;
+            proxy_set_header   X-Real-IP         $remote_addr;
+        }
+        location ^~ /driver/framework {
+            proxy_pass http://ioc-admin-svc:8080/framework;
+            proxy_set_header   X-Forwarded-Proto $scheme;
+            proxy_set_header   X-Forwarded-For $remote_addr;
+            proxy_set_header   Host              $http_host;
+            proxy_set_header   X-Real-IP         $remote_addr;
+        }
+
+    }
+}
+)
+txtit(Var, "@@@")
+return
+
+::baidu.zidingyi::
+::bdzidingyi::
+::bd.create::
+::bdfugaiwu::
+::fugaiwu::
+Var =
+(
+function CustomOverlay(point) {
+  this._point = point
+}
+
+CustomOverlay.prototype = new BMap.Overlay()
+
+CustomOverlay.prototype.initialize = function(map){
+  var div = this._div = document.createElement("div")
+  div.style.position = "absolute"
+  div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat)
+  div.style.top = 0
+  div.style.left = 0
+  div.style.transform = "scale(0.5)"
+ 
+  div.onmouseover = e => console.log('onmouseover', e)
+  div.onmouseout = e => console.log('onmouseout', e)
+  div.onclick = e => console.log('onclick', e)
+
+  map.getPanes().labelPane.appendChild(div)
+  
+  return div
+}
+
+CustomOverlay.prototype.draw = function(){
+  var map = this._map
+  var pixel = map.pointToOverlayPixel(this._point)
+  this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px"
+  this._div.style.top  = pixel.y - 30 + "px"
+}
+    
+var myCompOverlay = new CustomOverlay(new BMap.Point(116.407845,39.914101))
+
+map.addOverlay(myCompOverlay)
+)
+code(Var)
+return
+
+::https::
 ::cdn-https::
 ::cdn-http::
 ::meta-https::
@@ -7536,23 +7720,6 @@ code(Var)
 return
 
 
-::cimp::
-Var =
-(
-import card from '@/components/card'
-)
-code(Var)
-return
-
-::uimp::
-Var =
-(
-import { shortcuts } from '@/utils/utils'
-)
-code(Var)
-return
-
-
 
 ::is-wx::
 ::iswx::
@@ -8619,6 +8786,31 @@ function deepCopy(obj, cache = []) {
 
     return copy
 }
+---
+export const deepEQ = function (x, y) {
+  // 指向同一内存时
+  if (x === y)
+    return true
+
+  else if ((typeof x == "object" && x != null) && (typeof y == "object" && y != null)) {
+    if (Object.keys(x).length != Object.keys(y).length)
+      return false
+
+    for (var prop in x) {
+      if (y.hasOwnProperty(prop))
+      {
+        if (! deepEQ(x[prop], y[prop]))
+          return false
+      }
+      else
+        return false
+    }
+
+    return true
+  }
+  else
+    return false
+}
 )
 txtit(Var)
 return
@@ -9228,13 +9420,22 @@ return
 ::js.meiju::
 Var = 
 (
-var Color;
-(function (Color) {
-    Color[Color["Red"] = 1] = "Red";
-    Color[Color["Green"] = 2] = "Green";
-    Color[Color["Blue"] = 4] = "Blue";
-})(Color || (Color = {}));
-console.log(Color);
+const Status = () => Object.create({})
+
+function StatusInner(name, index, desc) {
+    this.name = name
+    this.index = index
+    this.desc = desc
+    this.toJSON = () => this.name
+}
+
+Object.defineProperties(Status, {
+    NOT_STARTED:  { enumerable: true, value: Object.freeze(new StatusInner('NOT_STARTED', 0, 'This task is waiting to be started!')) },
+    IN_PROGRESS:  { enumerable: true, value: Object.freeze(new StatusInner('IN_PROGRESS', 1, 'This task is underway!')) },
+    COMPLETED:    { enumerable: true, value: Object.freeze(new StatusInner('COMPLETED', 2, 'This task is completed. Good job!')) },
+    CANCELLED:    { enumerable: true, value: Object.freeze(new StatusInner('CANCELLED', 3, 'Something went wrong, and this task was cancelled.')) },
+    NEEDS_UPDATE: { enumerable: true, value: Object.freeze(new StatusInner('NEEDS_UPDATE', 4, 'This task was completed, but something needs fixing.')) },
+})
 )
 code(Var)
 return
@@ -9649,8 +9850,15 @@ return
 Var =
 (
 e.removeEventListener('click', _copyToClipboard);
+---
+<script src='https://cdn.jsdelivr.net/gh/colxi/getEventListeners/src/getEventListeners.min.js'></script>
+el.getEventListeners()
+
+const el = document.querySelector('#myMap > div');
+const movefn = el.getEventListeners().mousemove[0].listener;
+el.removeEventListener('mousemove', movefn);
 )
-code(Var)
+txtit(Var)
 return
 
 ::addevent::
@@ -11191,8 +11399,18 @@ const scrollToTop = () => {
     window.scrollTo(0, c - c / 8);
   }
 };
+---const controler = document.querySelector('.active').parentElement.parentElement
+
+// es6
+const scrollToTop = () => {
+  const c = document.querySelector('.active').offsetTop
+  if (c > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    controler.scrollTo(0, c - c / 8);
+  }
+}
 )
-code(Var)
+txtit(Var)
 Return
 
 ::randary::

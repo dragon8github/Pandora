@@ -1,4 +1,12 @@
-﻿::cdn-listen::
+﻿::cdn-mapv::
+Var =
+(
+<script src="http://mapv.baidu.com/build/mapv.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-listen::
 ::cdn-event::
 ::cdn-remove::
 ::cdn-addevent::
@@ -9,6 +17,10 @@ Var =
 (
 <script src='https://cdn.jsdelivr.net/gh/colxi/getEventListeners/src/getEventListeners.min.js'></script>
 el.getEventListeners()
+
+const el = document.querySelector('#myMap > div');
+const movefn = el.getEventListeners().mousemove[0].listener;
+el.removeEventListener('mousemove', movefn);
 )
 code(Var)
 return

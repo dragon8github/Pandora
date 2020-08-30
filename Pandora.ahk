@@ -154,7 +154,7 @@ height: rem(%fuck_h2%);
 width: %fuck_wem%em;
 height: %fuck_hem%em;
 
-@include bg('@/assets/%zipname%', rem(%fuck_w2%), rem(%fuck_h2%));
+@include bg(rem(%fuck_w2%), rem(%fuck_h2%), '~@/assets/%zipname%.png');
 )
 txtit(Var)
 }

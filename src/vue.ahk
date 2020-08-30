@@ -188,6 +188,8 @@
   Menu, vuesolution, DeleteAll
   Menu, vuecognition, DeleteAll
   Menu, VueMenu, DeleteAll
+  Menu, vuetranstion, DeleteAll
+
 return
 
 VueHandler:
@@ -264,25 +266,87 @@ return
 if (v == "vue 官方列表动画 <transition-group>") {
 Var =
 (
-<transition-group name="list" tag='div'>
-  <div v-for='(item, index) in myItems' :key='item.id' class='item py-1 pl-4 pr-2' @mouseenter="Stop" @mouseleave="Up">
-    祝贺 <div class="highlight">{{ item._serverData.cmd }}</div> 团购成功
-  </div>
-</transition-group>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- element -->
+    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <!-- mockjs -->
+    <script src="https://cdn.staticfile.org/Mock.js/1.0.0/mock-min.js"></script>
+    <!-- axios -->
+    <script src="https://libs.cdnjs.net/axios/0.19.2/axios.min.js"></script>
+    <!-- tailwind：https://tailwindcss.com/docs/width -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%; /* 注意，应该是html和body同时设置才可以 */
+    }
 
+    #app {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.list-item {
-  display: inline-block;
-  margin-right: 10px;
-}
-.list-enter-active, .list-leave-active {
-  transition: all 1s;
-}
-.list-enter, .list-leave-to
-/* .list-leave-active for below version 2.1.8 */ {
-  opacity: 0;
-  transform: translateY(-30px);
-}
+    .list-item {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .list-enter-active, .list-leave-active {
+      transition: all 1s;
+    }
+    .list-enter, .list-leave-to
+    /* .list-leave-active for below version 2.1.8 */ {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+       <transition-group name="list" tag='div'>
+          <div v-for='(item, index) in items' :key='item.book_id' class='item py-2 pl-4 pr-2 flex'>
+            祝贺 <div class="highlight">{{ item.book_name }}</div> 团购成功
+          </div>
+        </transition-group>
+    </div>
+</body>
+<script>
+Mock.mock("/book/list", "get", {
+    "booklist|10": [
+        {"book_id|+1": 101, "book_name": "@ctitle", "book_price|50-100.1-2": 0, "book_time": "@date('yyyy-mm-dd')"}
+    ]
+})
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: [],
+        text: '',
+        obj: {},
+    },
+    beforeMount () {
+        axios.get("/book/list").then(res => {
+            this.items = res.data.booklist
+        })
+
+        setInterval(() => {
+            const data = [{ book_name: Math.random(), book_id: Math.random() }, { book_name: Math.random(), book_id: Math.random() }, { book_name: Math.random(), book_id: Math.random() }, { book_name: Math.random(), book_id: Math.random() }]
+            this.items.unshift(...data)
+        }, 2500)
+    }
+})
+</script>
+</html>
 )
 }
 
@@ -5426,6 +5490,8 @@ return
 ::vuezhiling::
 ::vuez::
 ::v-tip::
+::vtip::
+::v-tooltip::
 Var = 
 (
   // <div id='box' v-drag='{ warp: "#app", tap: tapHandler, longTap: longTapHandler }'></div>
@@ -5585,6 +5651,12 @@ Vue.directive('loader', {
     },     
 })
 ---
+/**
+ * 
+ import tip from '@/directive/tip/index.js'
+ Vue.use(tip)
+ <div v-tip="`<div> <p class='mb-1'>预申报今天来莞的跨境司机统计人数，掌握我市跨境运货司机预期来莞情况。</p> 更新周期：实时</div>`"></div>
+ */
 const useDiv = (setDiv) => {
     let div = document.createElement('div')
     setDiv(div)
@@ -5592,34 +5664,53 @@ const useDiv = (setDiv) => {
     return [div, () => div.remove()]
 }
 
-// 创建一个容器
-const [div, remove] = useDiv(e => {
-    e.style.position = 'absolute'
-    e.style.background = 'rgba(0, 0, 0, .5)'
-    e.style.color = 'white'
-    e.style.fontSize = '1em'
-    e.style.left = 0
-    e.style.top = 0
-    e.style.padding = '1em'
-    e.style.display = 'none'
-})
+export default {
+    install(Vue) {
+        Vue.directive('tip', {
+            bind(el, { value = '' }) {
+                // 创建一个容器
+                const [div, remove] = useDiv(e => {
+                    e.style.position = 'absolute'
+                    e.style.background = 'rgba(0, 0, 0, .5)'
+                    e.style.color = 'white'
+                    e.style.fontSize = '1.5em'
+                    e.style.left = 0
+                    e.style.top = 0
+                    e.style.maxWidth = '26em'
+                    e.style.padding = '1.2em'
+                    e.style.letterSpacing = "0.1em"
+                    e.style.display = 'none'
+                    e.style.lineHeight = '1.5'
+                    e.style.zIndex ='1993100337'
+                })
 
+                div.innerHTML = value
 
-Vue.directive('tip', {
-    bind(el, { value = '' }) {
-        div.textContent = value
-        el.addEventListener('mousemove', (event) => {
-            const { clientX, clientY } = event
-            div.style.display = 'block'
-            div.style.top = clientY + 10 + 'px'
-            div.style.left = clientX + 10 + 'px'
+                el.addEventListener('mousemove', (event) => {
+                    const { pageX, pageY } = event
+                    div.style.display = 'block'
+                    div.style.top = pageY + 20 + 'px'
+                    div.style.left = pageX + 20 + 'px'
+                })
+
+                el.addEventListener('mouseleave', (event) => {
+                    div.style.display = 'none'
+                })
+            }
         })
+    } 
+}
+---
+/* npm install --save v-tooltip */
+import Vue from 'vue'
+import VTooltip from 'v-tooltip'
 
-        el.addEventListener('mouseleave', (event) => {
-            div.style.display = 'none'
-        })
-    }
-})
+Vue.use(VTooltip)
+
+
+/* app.vue */
+/* https://akryum.github.io/v-tooltip/ */
+<button v-tooltip="'You have a new messages.'">
 )
 txtit(Var)
 return
@@ -6857,6 +6948,9 @@ module.exports = function(tpl,variables) {
 txtit(Var)
 return
 
+::kuaijie::
+::lujing::
+::chuansongmen::
 ::chuansongmen::
 ::kuaijielianjie::
 ::pop::
@@ -7435,26 +7529,6 @@ txtit(Var)
 return
 
 
-::v-tip::
-::vtip::
-::v-tooltip::
-::vtooltip::
-Var =
-(
-/* npm install --save v-tooltip */
-import Vue from 'vue'
-import VTooltip from 'v-tooltip'
-
-Vue.use(VTooltip)
-
-
-/* app.vue */
-/* https://akryum.github.io/v-tooltip/ */
-<button v-tooltip="'You have a new messages.'">
-)
-code(Var)
-return
-
 
 ::vueapi::
 ::vue.api::
@@ -7485,6 +7559,7 @@ export default {
 
     // data
     //🔔 请注意，template 中是以 {{ state.count }} 来使用的，如果想直接使用 {{ count }} ，请使用 ref 来创建
+    // 同时又要注意，ref 创建的状态，在 JavaScript 访问时，必须使用 count.value 多一层。
     let state = reactive({ count: 0 })
 
     // computed
