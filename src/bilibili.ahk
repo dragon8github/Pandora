@@ -28,13 +28,12 @@
 
 
 	Menu, bilibiliMenu, Add, map 地图, :DITUMAP
-	Menu, bilibiliMenu, Add, 卡罗牌, :KALUOPAI
 	Menu, bilibiliMenu, Add, 🔴, bilibiliHandler2	
+	Menu, bilibiliMenu, Add, ✅, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ▶, bilibiliHandler2	
 	Menu, bilibiliMenu, Add, ❓, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ✈️, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🚀, bilibiliHandler2
-	Menu, bilibiliMenu, Add, ✅, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🦄 , bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🐤 , bilibiliHandler2
 	Menu, bilibiliMenu, Add, ☀️ , bilibiliHandler2
@@ -57,6 +56,7 @@
 	Menu, bilibiliMenu, Add, ⭐️, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ✔, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ✖️, bilibiliHandler2
+	Menu, bilibiliMenu, Add, 🎉, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ·, bilibiliHandler2
 	
 	Menu, bilibiliMenu, Add,,
@@ -77,6 +77,7 @@
 	Menu, bilibiliMenu, Add, ╰(‵□′)╯砸瓦鲁多, bilibiliHandler2
 	; Menu, bilibiliMenu, Add, ด้้้้้็้้้็็็็็้้้้้็็็็็้้้้้้็็็็็้้้้้็็็็็้้้้้้็็็็็้้้้้็็็็็้้้้้้็็็็็้้้้้็็็็็้้้้้้็็็็็, bilibiliHandler2
 	; Menu, bilibiliMenu, Add, 遍҈布互҈联网҈的҈神҈秘҈电波҈是҈如何҈制作҈出҈来的？, bilibiliHandler2
+	Menu, bilibiliMenu, Add, 卡罗牌, :KALUOPAI
 	
 	
 	Menu, bilibiliMenu, Show
@@ -113,6 +114,8 @@ if (v == "验证坐标点是否在多边形内") {
 Var =
 (
 /**
+ * 百度地图其实也有官方工具支持：http://api.map.baidu.com/library/DrawingManager/1.4/docs/symbols/BMapLib.html
+ * BMapLib.GeoUtils.isPointInPolygon(new BMap.Point(113.843319, 22.921901), map.getOverlays().filter(_ => _.city)[0])
  * Verify if point of coordinates (longitude, latitude) is polygon of coordinates
  * https://github.com/substack/point-in-polygon/blob/master/index.js
  * @param {number} latitude Latitude

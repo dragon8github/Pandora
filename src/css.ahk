@@ -5703,46 +5703,158 @@ return
 ::css.point::
 Var =
 (
-.point {
-    display: inline-block;
-    position: relative;
-    vertical-align: baseline;
-}
-
-.point:after {
-    display: block;
-    position: absolute;
-    content: "";
-    width: 80px;
-    height: 80px;
-    border-radius: 50`%;
-    background: #3cb371;
-    top: calc(50`% - 40px);
-    left: calc(50`% - 40px);
-    transform: scale(0);
-    will-change: transform, opacity;
-    opacity: 0
-}
-
-.point.changing:after {
-    animation: emph 1.25s;
-}
-
-@keyframes emph {
-    20`% {
-        transform: none;
-        opacity: .5
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
     }
 
-    to {
-        opacity: 0;
-        transform: scale(1.2)
+    #app {
+        width: 100`%;
+        height: 100`%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-})
 
+
+    @function rem($px) {
+        @return $px + px
+    }
+
+
+    .u-icon-red {
+        position: relative;
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            right: rem(-5);
+            top: rem(-5);
+            width: rem(10);
+            height: rem(10);
+            border-radius: 50`%;
+            background-color: #b62323;
+            border: rem(1) solid rgba(255, 255, 255, .4);
+        }
+
+        &::before {
+            width: rem(20);
+            height: rem(20);
+            right: rem(-10);
+            top: rem(-10);
+            transform: scale(0);
+            will-change: transform, opacity;
+            animation: emph 1.25s infinite;
+            z-index: 199307100337;
+        }
+    }
+
+    @keyframes emph {
+        20`% { transform: none; opacity: .5; }
+
+        to { opacity: 0; transform: scale(2); }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button class='u-icon-red'>button</button>
+    </div>
+</body>
+<script>
+    // 获取第一个 <style>
+    const style = document.getElementsByTagName('style')[0]
+    // 获取第一个
+    const scss = style.innerHTML
+    // 开始编译
+    Sass.compile(scss, result => {
+        // 替换为编译好的 css
+        style.innerHTML = result.text
+    })
+</script>
+</html>
 ---
+<!DOCTYPE html>
+<html lang="en">
 
-export const addClass = (el, cls) => {
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+        width: 100`%;
+        height: 100`%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .point {
+        display: inline-block;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+    .point:after {
+        display: block;
+        position: absolute;
+        content: "";
+        width: 80px;
+        height: 80px;
+        border-radius: 50`%;
+        background: #3cb371;
+        top: calc(50`% - 40px);
+        left: calc(50`% - 40px);
+        transform: scale(0);
+        will-change: transform, opacity;
+        opacity: 0
+    }
+
+    .point.changing:after {
+        animation: emph 1.25s;
+    }
+
+    @keyframes emph {
+        20`% {
+            transform: none;
+            opacity: .5
+        }
+
+        to {
+            opacity: 0;
+            transform: scale(1.2)
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button id='button'>button</button>
+    </div>
+</body>
+<script>
+const addClass = (el, cls) => {
     if (el.classList) {
         el.classList.add(cls)
     } else {
@@ -5753,18 +5865,18 @@ export const addClass = (el, cls) => {
     }
 }
 
-export const hasClass = (el, className) => {
-  if (el.classList)
-    el.classList.contains(className);
-  else
-    new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+const hasClass = (el, className) => {
+    if (el.classList)
+        el.classList.contains(className);
+    else
+        new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
 }
 
-export const getClassName = (el) => {
+const getClassName = (el) => {
     return (el.className instanceof SVGAnimatedString ? el.className.baseVal : el.className)
 }
 
-export const removeClass = (el, cls) => {
+const removeClass = (el, cls) => {
     if (el.classList) {
         el.classList.remove(cls)
     } else {
@@ -5777,23 +5889,25 @@ export const removeClass = (el, cls) => {
     }
 }
 
----
-
-import { addClass, hasClass, removeClass } from '@/utils/utils.js'
-
-point (dom) {
-// 设置高亮
-if (hasClass(dom, 'changing')) {
-  removeClass(dom, 'changing')
-} else {
-  addClass(dom, 'changing')
-  addClass(dom, 'point')
-  dom.addEventListener("webkitAnimationEnd", function() {
-      removeClass(dom, 'changing')
-  })
+const point = dom => {
+    // 设置高亮
+    if (hasClass(dom, 'changing')) {
+        removeClass(dom, 'changing')
+    } else {
+        addClass(dom, 'changing')
+        addClass(dom, 'point')
+        dom.addEventListener("webkitAnimationEnd", function() {
+            removeClass(dom, 'changing')
+        })
+    }
 }
-},
 
+button.addEventListener('click', (event) => {
+    point(button)
+})
+</script>
+
+</html>
 )
 txtit(Var)
 return
@@ -7409,6 +7523,18 @@ $icons: 'arrow-left', 'arrow-right', 'arrow-up', 'arrow-down';
       background: url('icons/#{$icon}.svg');
     }
 }
+)
+code(Var)
+return
+
+:?:css.mask::
+Var =
+(
+--mask-url: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZQAAAJ8BAMAAAArFErhAAAAFVBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAASAQCkAAAABnRSTlMKPam81se4yTyxAAADc0lEQVR42uzYMUqDQRRG0SSC9R8La0WwFgWX4DqM4Ox/CbZaOGnvJOfs4FaP7+3+OrytY9tNHcY6Hq4m5Was40zK7VjHy+WkfM5T7sc6zqQ8j3Wc5invYx1f85SxkmnJfqxku5Sz8t9h+RgL+5YSJKVISpGUIilFUoqkFP1O2a806Scb7Hj3NFb3+njcb0u9i6ZOUoKkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpRVKKpBRJKZJSJKVISpGUIilFUoqkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpRVKKpBRJKZJSJKVISpGUIilFUoqkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpRVKKpBRJKZJSJKVISpGUIilFUoqkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpRVKKpBRJKZJSJKVISpGUIilFUoqkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpRVKKpBRJKZJSJKVISpGUIilFUoqkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpP+zPsQAAAADAIH/raXQsg0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0S1Yy8nDAMxEIZnE8h53YFJIOeQIlJH/FL/JRjfjA06z6zn6+C/SEhOYeQURk2loHSvUPftKio25R3K5oqdXwhb4BQ+TmHkFEZOYeQURk5h5BRGC3B2DyU9EiWUVGRCyISU0mU8tpMyICP1Svoj9QgduxT1afxpJ6VH6hY6LpTy1HFc9isiYS/oBPlGYwAAAABJRU5ErkJggg==);
+-webkit-mask-image: var(--mask-url);
+mask-image: var(--mask-url);
+-webkit-mask-size: 300px;
+mask-size: 300px;
 )
 code(Var)
 return

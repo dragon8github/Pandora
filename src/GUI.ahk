@@ -25,7 +25,7 @@ CancelSelect:
     GuiControl,, jiumo, 0
     GuiControl,, dianzishuwang, 0
     GuiControl,, oushu, 0
-    GuiControl,, zhiqi, 0
+    GuiControl,, sobooks, 0
     GuiControl,, duckduckgo, 0
     GuiControl,, bd, 0
     GuiControl,, google, 0
@@ -104,13 +104,13 @@ AllSearchF:
         GuiControl,, jiumo, 1
         GuiControl,, dianzishuwang, 1
         GuiControl,, oushu, 1
-        GuiControl,, zhiqi, 1
+        GuiControl,, sobooks, 1
     } else {
         GuiControl,, shuxingtianxia, 0
         GuiControl,, jiumo, 0
         GuiControl,, dianzishuwang, 0
         GuiControl,, oushu, 0
-        GuiControl,, zhiqi, 0
+        GuiControl,, sobooks, 0
     }
 return
 
@@ -376,11 +376,13 @@ Fuck:
     if (dianzishuwang == 1) {
         RUN, https://www.bookresource.net/search/%SearchContent%/
     }
+    
     if (oushu == 1) {
         RUN, https://obook.cc/
     }
-    if (zhiqi == 1) {
-        RUN, https://www.zqbook.top/search
+
+    if (sobooks == 1) {
+        RUN, https://sobooks.cc/search/%SearchContent%/
     }
 
 	; 网易云音乐   
@@ -4474,21 +4476,20 @@ Var =
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Worker.js</title>
+    <title>webworker 基本示例</title>
 </head>
+
 <body>
-    <div id="app"></div>
 </body>
 <script>
-var worker = new Worker("worker.js")
-var num = 1000
-worker.postMessage(num)
+    const worker = new Worker('fuck.js')
+    worker.onmessage = event => document.body.innerHTML += `${ event.data }<br/>`
 </script>
 </html>
 ---
-// http://localhost/worker.js
-onmessage = function (event) {
-    console.log(event.data)
+// http://localhost/fuck.js
+while (true) {
+    postMessage(Math.random())
 }
 )
 txtit(Var)

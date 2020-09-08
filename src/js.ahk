@@ -1,4 +1,172 @@
-﻿::map.px::
+﻿::jsdom::
+Var =
+(
+const jsdom = require("jsdom")
+const { JSDOM } = jsdom
+
+
+const { window } = new JSDOM(``, { runScripts: "outside-only" })
+
+const DOMParser = window.DOMParser
+
+// string html
+const html = `<div>test</div>`
+// DOM 解析器
+const parser = new DOMParser()
+// 将字符串解析为 DOM 元素（cool）
+const doc = parser.parseFromString(html, 'text/html' )
+// 解析出来的结果，类似一个 document 网页对象
+console.log(doc, doc.body.innerHTML)
+)
+code(Var)
+return
+
+::webworker::
+::worker.js::
+::work.js::
+::worker::
+::worker.js::
+::duoxianc::
+::duoxiancheng::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webworker 基本示例</title>
+</head>
+
+<body>
+</body>
+<script>
+    const worker = new Worker('fuck.js')
+    worker.onmessage = event => document.body.innerHTML += `${ event.data }<br/>`
+</script>
+</html>
+---
+// http://localhost/fuck.js
+while (true) {
+    postMessage(Math.random())
+}
+)
+txtit(Var)
+return
+
+::pollpost::
+::poll_post::
+::post_poll::
+::postpoll::
+Var =
+(
+const isFunction = input => input instanceof Function || Object.prototype.toString.call(input) === '[object Function]'
+const isNumber = input => (typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]') && input === input
+
+/**
+ * 轮询POST请求 ...
+ *
+ */
+const POLL_POST = opts => {
+    // 获取核心参数
+    const { url = '', data = {}, time = 1000, success = () => {}, error = () => {} } = opts
+
+    // 轮询开关
+    let isPoll = true
+
+    // 轮询间隔只支持函数或者 number
+    const timer = isFunction(time) ? time() : isNumber(time) ? time : 1000
+
+    // 轮询任务
+    async function poll () {
+        // 开始请求
+        await axios({ method: 'POST', url, data }).then(success).catch(error)
+
+        // 是否继续轮询
+        if (isPoll) {
+            // isPoll 还作为定时器存在
+            isPoll = setTimeout(poll, timer)
+        }
+    }
+
+    // 开始轮询
+    poll()
+
+    // 返回开关 
+    return () => {
+        // 关闭开关
+        clearTimeout(isPoll)
+        // 关闭逻辑
+        isPoll = null
+    }
+
+}
+
+const cancel = POLL_POST({
+    url: '/',
+    data: {},
+    success (data) {
+        console.log(20200905113649, data)
+    },
+    error(err) {
+        console.log(20200905113651, err)
+    }
+})
+)
+code(Var)
+return
+
+
+::isfn::
+Var =
+(
+export const isFunction = input => input instanceof Function || Object.prototype.toString.call(input) === '[object Function]'
+)
+code(Var)
+return
+
+::isnum::
+Var =
+(
+export const isNumber = input => (typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]') && input === input
+)
+code(Var)
+return
+
+
+::express::
+::express.init::
+Var =
+(
+const express = require('express')
+const cors = require('cors')
+
+let app = express()
+app.use(cors())
+app.use(express.json())
+
+app.all('/', (req, res) => {
+  const { method,  url, headers, body, query /* ,params */ } = req
+
+  console.log('🦄🦄🦄🦄', body)
+
+  res.send({ msg: 'hello world!' })
+})
+
+app.listen(8080, () => console.log("Server is running on port http://localhost:8080"))
+)
+txtit(Var)
+return
+
+::js.media::
+::media.js::
+Var =
+(
+var mediaQuery = window.matchMedia('(max-width: 500px)');
+)
+code(Var)
+return
+
+::map.px::
 ::mappx::
 ::pxtopoint::
 ::pointtopx::
@@ -721,6 +889,7 @@ console.log(20200730192750, groupby(data, 'TOWN_NAME'))
 code(Var)
 return
 
+::rule::
 ::allow::
 ::allow.js::
 ::validate::
@@ -3240,9 +3409,12 @@ return
 ::shuzubaohan::
 ::jiaoji::
 ::baohan::
+::include::
 Var =
 (
 /**
+ * 百度地图其实也有官方工具支持：http://api.map.baidu.com/library/DrawingManager/1.4/docs/symbols/BMapLib.html
+ * BMapLib.GeoUtils.isPointInPolygon(new BMap.Point(113.843319, 22.921901), map.getOverlays().filter(_ => _.city)[0])
  [JS]如何验证坐标点是否在多边形内
  * Verify if point of coordinates (longitude, latitude) is polygon of coordinates
  * https://github.com/substack/point-in-polygon/blob/master/index.js
@@ -7216,6 +7388,24 @@ const poll = (conditionFn, callback, wait = 4, maxTimeout = 10, timeout = 0) => 
 poll(() => document.querySelector('path[fill]'), e => {
   e.setAttribute('fill', "rgb(0,0,0)");
 })
+
+
+//////////////////////////////////////////////
+// say something...
+//////////////////////////////////////////////
+
+function loop(fn, delay) {
+    let stamp = Date.now();
+
+    function _loop() {
+        if (Date.now() - stamp >= delay) {
+            fn();
+            stamp = Date.now();
+        }
+        requestAnimationFrame(_loop);
+    }
+    requestAnimationFrame(_loop);
+}
 ---
 // async/await 版本的 poll
 // 串行请求纯散点数据
@@ -7345,18 +7535,58 @@ run(taskList, (data, index) => {
     pool.push(...data)
 })
 ---
-function loop(fn, delay) {
-    let stamp = Date.now();
+const isFunction = input => input instanceof Function || Object.prototype.toString.call(input) === '[object Function]'
+const isNumber = input => (typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]') && input === input
 
-    function _loop() {
-        if (Date.now() - stamp >= delay) {
-            fn();
-            stamp = Date.now();
+/**
+ * 轮询POST请求 ...
+ *
+ */
+const POLL_POST = opts => {
+    // 获取核心参数
+    const { url = '', data = {}, time = 1000, success = () => {}, error = () => {} } = opts
+
+    // 轮询开关
+    let isPoll = true
+
+    // 轮询间隔只支持函数或者 number
+    const timer = isFunction(time) ? time() : isNumber(time) ? time : 1000
+
+    // 轮询任务
+    async function poll () {
+        // 开始请求
+        await axios({ method: 'POST', url, data }).then(success).catch(error)
+
+        // 是否继续轮询
+        if (isPoll) {
+            // isPoll 还作为定时器存在
+            isPoll = setTimeout(poll, timer)
         }
-        requestAnimationFrame(_loop);
     }
-    requestAnimationFrame(_loop);
+
+    // 开始轮询
+    poll()
+
+    // 返回开关 
+    return () => {
+        // 关闭开关
+        clearTimeout(isPoll)
+        // 关闭逻辑
+        isPoll = null
+    }
+
 }
+
+const cancel = POLL_POST({
+    url: '/',
+    data: {},
+    success (data) {
+        console.log(20200905113649, data)
+    },
+    error(err) {
+        console.log(20200905113651, err)
+    }
+})
 )
 txtit(Var)
 return

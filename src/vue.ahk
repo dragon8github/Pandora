@@ -3268,8 +3268,60 @@ export default {
 	show,
 	close,
 }
+---
+import { createVNode, render, isVNode } from 'vue'
+import Constructor from './index.vue'
+
+const Loading = function (options = {}) {
+    const container = document.createElement('div')
+
+    // createVNode 的第三个参数，可以嵌套一个子 VNode
+    // 譬如这样：isVNode(options.message) ? { default: () => options.message } : null
+    // 但我也不知道如何使用，先记录一下稍后再试。有可能只是 slot。
+    const vm = createVNode(Constructor, options, null)
+
+    // 挂载到 DOM
+    render(vm, container)
+
+    // 熟悉味道，插入 DOM 中
+    document.body.appendChild(container)
+
+    // 由于我组件中的方法是使用 setup 暴漏的，所以采用 vm.component.setupState 的方式访问。
+    const setupState = vm.component.setupState
+
+    return { 
+        show: () => setupState.show(), 
+        hide: () => setupState.hide(),
+        setText: v => setupState.setText(v),
+    }
+}
+
+/**
+ * 注册方法：
+ * import Loading from "@/components/Loading"
+ * app.use(Loading)
+ * 
+ * 使用方法：
+ * this.$loading.show()
+ * this.$loading.hide()
+ */
+export default (app) => {
+    // 如果你希望你的组件是像 toast 类，执行一次就往页面插入一个的场景（类似工厂函数）
+    // 那你应该暴漏一个工厂方法给全局去使用，譬如： 
+    // app.config.globalProperties.$loading = Loading
+    // this.$loading({ ... }) // ▶ 插入第 1 个 loading...
+    // this.$loading({ ... }) // ▶ 插入第 2 个 loading...
+    // this.$loading({ ... }) // ▶ 插入第 3 个 loading...
+    // 最佳实践，参考地址：https://github.com/element-plus/element-plus/blob/dev/packages/notification/src/notify.ts
+
+    // 创建一个 loading 全局组件
+    const $loading = Loading()
+    
+    // 将对象挂载到全局
+    app.config.globalProperties.$loading = $loading
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::sfc::
@@ -7553,7 +7605,9 @@ import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, comp
 
 export default {
   name: '%OutputVar%',
-  setup(props) {
+
+  // 注意：setup 没有 this
+  setup(props, { attrs, slots, emit }) {
     // props
     console.log(%t%, props.msg)
 
@@ -7611,4 +7665,597 @@ Var =
 import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from '@vue/composition-api'
 )
 code(Var)
+return
+
+::vue3.extend::
+::vue3.loading::
+::vue3.msg::
+::vue3.message::
+::vue3.msgbox::
+Var =
+(
+import { createVNode, render, isVNode } from 'vue'
+import Constructor from './index.vue'
+
+const Loading = function (options = {}) {
+    const container = document.createElement('div')
+
+    // createVNode 的第三个参数，可以嵌套一个子 VNode
+    // 譬如这样：isVNode(options.message) ? { default: () => options.message } : null
+    // 但我也不知道如何使用，先记录一下稍后再试。有可能只是 slot。
+    const vm = createVNode(Constructor, options, null)
+
+    // 挂载到 DOM
+    render(vm, container)
+
+    // 熟悉味道，插入 DOM 中
+    document.body.appendChild(container)
+
+    // 由于我组件中的方法是使用 setup 暴漏的，所以采用 vm.component.setupState 的方式访问。
+    const setupState = vm.component.setupState
+
+    return { 
+        show: () => setupState.show(), 
+        hide: () => setupState.hide(),
+        setText: v => setupState.setText(v),
+    }
+}
+
+/**
+ * 注册方法：
+ * import Loading from "@/components/Loading"
+ * app.use(Loading)
+ * 
+ * 使用方法：
+ * this.$loading.show()
+ * this.$loading.hide()
+ */
+export default (app) => {
+    // 如果你希望你的组件是像 toast 类，执行一次就往页面插入一个的场景（类似工厂函数）
+    // 那你应该暴漏一个工厂方法给全局去使用，譬如： 
+    // app.config.globalProperties.$loading = Loading
+    // this.$loading({ ... }) // ▶ 插入第 1 个 loading...
+    // this.$loading({ ... }) // ▶ 插入第 2 个 loading...
+    // this.$loading({ ... }) // ▶ 插入第 3 个 loading...
+    // 最佳实践，参考地址：https://github.com/element-plus/element-plus/blob/dev/packages/notification/src/notify.ts
+
+    // 创建一个 loading 全局组件
+    const $loading = Loading()
+    
+    // 将对象挂载到全局
+    app.config.globalProperties.$loading = $loading
+}
+---
+<template>
+    <div class="loading" v-if='state.isShow'>
+        <div class='loading__img'><img src="@/assets/loading.svg" alt="loading..."></div>
+        <div class='loading__text'>{{ state.txt }}</div>
+    </div>
+</template>
+
+<script>
+import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from 'vue'
+
+export default {
+  name: 'test',
+  props: {
+    text: {type: String, default: 'loading...'},
+  },
+  setup(props) {
+    let state = reactive({ isShow: true, txt: props.text })
+    let show = () => state.isShow = true
+    let hide = () => state.isShow = false
+    let setText = txt => state.txt = txt
+    return { state, show, hide, setText }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.loading {
+    @include flex(c, c, c);
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0; 
+    z-index: 1993100337;
+    background: rgba(0, 0, 0, .3);
+
+    &__text {
+        color: #fff;
+        font-size: 1.5em;
+    }
+
+    &__img {
+        width: 118px;
+        height: 128px;
+    }
+}
+</style>
+)
+txtit(Var)
+return
+
+::keep::
+::keep-alive::
+Var =
+(
+<keep-alive include="overallSituation,townStreet">
+    <router-view class='view' />
+</keep-alive>
+)
+code(Var)
+return
+
+::vue-prop::
+::vue.type::
+::vue-type::
+::props.type::
+::prop.type::
+::props-type::
+::prop-type::
+::prop.vue::
+::props-vue::
+::props.vue::
+Var =
+(
+import isPlainObject from 'lodash-es/isPlainObject';
+import { toType, getType, isFunction, validateType, isInteger, isArray, warn } from './utils';
+
+const VuePropTypes = {
+  get any() {
+    return toType('any', {
+      type: null,
+    });
+  },
+
+  get func() {
+    return toType('function', {
+      type: Function,
+    }).def(currentDefaults.func);
+  },
+
+  get bool() {
+    return toType('boolean', {
+      type: Boolean,
+    }).def(currentDefaults.bool);
+  },
+
+  get string() {
+    return toType('string', {
+      type: String,
+    }).def(currentDefaults.string);
+  },
+
+  get number() {
+    return toType('number', {
+      type: Number,
+    }).def(currentDefaults.number);
+  },
+
+  get array() {
+    return toType('array', {
+      type: Array,
+    }).def(currentDefaults.array);
+  },
+
+  get object() {
+    return toType('object', {
+      type: Object,
+    }).def(currentDefaults.object);
+  },
+
+  get integer() {
+    return toType('integer', {
+      type: Number,
+      validator(value) {
+        return isInteger(value);
+      },
+    }).def(currentDefaults.integer);
+  },
+
+  get symbol() {
+    return toType('symbol', {
+      type: null,
+      validator(value) {
+        return typeof value === 'symbol';
+      },
+    });
+  },
+
+  custom(validatorFn, warnMsg = 'custom validation failed') {
+    if (typeof validatorFn !== 'function') {
+      throw new TypeError('[VueTypes error]: You must provide a function as argument');
+    }
+
+    return toType(validatorFn.name || '<<anonymous function>>', {
+      validator(...args) {
+        const valid = validatorFn(...args);
+        if (!valid) warn(`${this._vueTypes_name} - ${warnMsg}`);
+        return valid;
+      },
+    });
+  },
+
+  oneOf(arr) {
+    if (!isArray(arr)) {
+      throw new TypeError('[VueTypes error]: You must provide an array as argument');
+    }
+    const msg = `oneOf - value should be one of "${arr.join('", "')}"`;
+    const allowedTypes = arr.reduce((ret, v) => {
+      if (v !== null && v !== undefined) {
+        ret.indexOf(v.constructor) === -1 && ret.push(v.constructor);
+      }
+      return ret;
+    }, []);
+
+    return toType('oneOf', {
+      type: allowedTypes.length > 0 ? allowedTypes : null,
+      validator(value) {
+        const valid = arr.indexOf(value) !== -1;
+        if (!valid) warn(msg);
+        return valid;
+      },
+    });
+  },
+
+  instanceOf(instanceConstructor) {
+    return toType('instanceOf', {
+      type: instanceConstructor,
+    });
+  },
+
+  oneOfType(arr) {
+    if (!isArray(arr)) {
+      throw new TypeError('[VueTypes error]: You must provide an array as argument');
+    }
+
+    let hasCustomValidators = false;
+
+    const nativeChecks = arr.reduce((ret, type) => {
+      if (isPlainObject(type)) {
+        if (type._vueTypes_name === 'oneOf') {
+          return ret.concat(type.type || []);
+        }
+        if (type.type && !isFunction(type.validator)) {
+          if (isArray(type.type)) return ret.concat(type.type);
+          ret.push(type.type);
+        } else if (isFunction(type.validator)) {
+          hasCustomValidators = true;
+        }
+        return ret;
+      }
+      ret.push(type);
+      return ret;
+    }, []);
+
+    if (!hasCustomValidators) {
+      // we got just native objects (ie: Array, Object)
+      // delegate to Vue native prop check
+      return toType('oneOfType', {
+        type: nativeChecks,
+      }).def(undefined);
+    }
+
+    const typesStr = arr
+      .map(type => {
+        if (type && isArray(type.type)) {
+          return type.type.map(getType);
+        }
+        return getType(type);
+      })
+      .reduce((ret, type) => ret.concat(isArray(type) ? type : [type]), [])
+      .join('", "');
+
+    return this.custom(function oneOfType(value) {
+      const valid = arr.some(type => {
+        if (type._vueTypes_name === 'oneOf') {
+          return type.type ? validateType(type.type, value, true) : true;
+        }
+        return validateType(type, value, true);
+      });
+      if (!valid) warn(`oneOfType - value type should be one of "${typesStr}"`);
+      return valid;
+    }).def(undefined);
+  },
+
+  arrayOf(type) {
+    return toType('arrayOf', {
+      type: Array,
+      validator(values) {
+        const valid = values.every(value => validateType(type, value));
+        if (!valid) warn(`arrayOf - value must be an array of "${getType(type)}"`);
+        return valid;
+      },
+    });
+  },
+
+  objectOf(type) {
+    return toType('objectOf', {
+      type: Object,
+      validator(obj) {
+        const valid = Object.keys(obj).every(key => validateType(type, obj[key]));
+        if (!valid) warn(`objectOf - value must be an object of "${getType(type)}"`);
+        return valid;
+      },
+    });
+  },
+
+  shape(obj) {
+    const keys = Object.keys(obj);
+    const requiredKeys = keys.filter(key => obj[key] && obj[key].required === true);
+
+    const type = toType('shape', {
+      type: Object,
+      validator(value) {
+        if (!isPlainObject(value)) {
+          return false;
+        }
+        const valueKeys = Object.keys(value);
+
+        // check for required keys (if any)
+        if (requiredKeys.length > 0 && requiredKeys.some(req => valueKeys.indexOf(req) === -1)) {
+          warn(`shape - at least one of required properties "${requiredKeys.join('", "', )}" is not present`);
+          return false;
+        }
+
+        return valueKeys.every(key => {
+          if (keys.indexOf(key) === -1) {
+            if (this._vueTypes_isLoose === true) return true;
+            warn(`shape - object is missing "${key}" property`);
+            return false;
+          }
+          const type = obj[key];
+          return validateType(type, value[key]);
+        });
+      },
+    });
+
+    Object.defineProperty(type, '_vueTypes_isLoose', {
+      enumerable: false,
+      writable: true,
+      value: false,
+    });
+
+    Object.defineProperty(type, 'loose', {
+      get() {
+        this._vueTypes_isLoose = true;
+        return this;
+      },
+      enumerable: false,
+    });
+
+    return type;
+  },
+};
+
+const typeDefaults = () => ({
+  func: undefined,
+  bool: undefined,
+  string: undefined,
+  number: undefined,
+  array: undefined,
+  object: undefined,
+  integer: undefined,
+});
+
+let currentDefaults = typeDefaults();
+
+Object.defineProperty(VuePropTypes, 'sensibleDefaults', {
+  enumerable: false,
+  set(value) {
+    if (value === false) {
+      currentDefaults = {};
+    } else if (value === true) {
+      currentDefaults = typeDefaults();
+    } else if (isPlainObject(value)) {
+      currentDefaults = value;
+    }
+  },
+  get() {
+    return currentDefaults;
+  },
+});
+
+export default VuePropTypes;
+---
+import isPlainObject from 'lodash-es/isPlainObject';
+
+const ObjProto = Object.prototype;
+const toString = ObjProto.toString;
+export const hasOwn = ObjProto.hasOwnProperty;
+
+const FN_MATCH_REGEXP = /^\s*function (\w+)/;
+
+// https://github.com/vuejs/vue/blob/dev/src/core/util/props.js#L159
+export const getType = fn => {
+  const type = fn !== null && fn !== undefined ? (fn.type ? fn.type : fn) : null;
+  const match = type && type.toString().match(FN_MATCH_REGEXP);
+  return match && match[1];
+};
+
+export const getNativeType = value => {
+  if (value === null || value === undefined) return null;
+  const match = value.constructor.toString().match(FN_MATCH_REGEXP);
+  return match && match[1];
+};
+
+/**
+ * No-op function
+ */
+export const noop = () => {};
+
+/**
+ * Checks for a own property in an object
+ *
+ * @param {object} obj - Object
+ * @param {string} prop - Property to check
+ */
+export const has = (obj, prop) => hasOwn.call(obj, prop);
+
+/**
+ * Determines whether the passed value is an integer. Uses `Number.isInteger` if available
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger
+ * @param {*} value - The value to be tested for being an integer.
+ * @returns {boolean}
+ */
+export const isInteger =
+  Number.isInteger ||
+  function(value) {
+    return typeof value === 'number' && isFinite(value) && Math.floor(value) === value;
+  };
+
+/**
+ * Determines whether the passed value is an Array.
+ *
+ * @param {*} value - The value to be tested for being an array.
+ * @returns {boolean}
+ */
+export const isArray =
+  Array.isArray ||
+  function(value) {
+    return toString.call(value) === '[object Array]';
+  };
+
+/**
+ * Checks if a value is a function
+ *
+ * @param {any} value - Value to check
+ * @returns {boolean}
+ */
+export const isFunction = value => toString.call(value) === '[object Function]';
+
+/**
+ * Adds a `def` method to the object returning a new object with passed in argument as `default` property
+ *
+ * @param {object} type - Object to enhance
+ */
+export const withDefault = function(type) {
+  Object.defineProperty(type, 'def', {
+    value(def) {
+      if (def === undefined && this.default === undefined) {
+        this.default = undefined;
+        return this;
+      }
+      if (!isFunction(def) && !validateType(this, def)) {
+        warn(`${this._vueTypes_name} - invalid default value: "${def}"`, def);
+        return this;
+      }
+      this.default =
+        isArray(def) || isPlainObject(def)
+          ? function() {
+              return def;
+            }
+          : def;
+
+      return this;
+    },
+    enumerable: false,
+    writable: false,
+  });
+};
+
+/**
+ * Adds a `isRequired` getter returning a new object with `required: true` key-value
+ *
+ * @param {object} type - Object to enhance
+ */
+export const withRequired = function(type) {
+  Object.defineProperty(type, 'isRequired', {
+    get() {
+      this.required = true;
+      return this;
+    },
+    enumerable: false,
+  });
+};
+
+/**
+ * Adds `isRequired` and `def` modifiers to an object
+ *
+ * @param {string} name - Type internal name
+ * @param {object} obj - Object to enhance
+ * @returns {object}
+ */
+export const toType = (name, obj) => {
+  Object.defineProperty(obj, '_vueTypes_name', {
+    enumerable: false,
+    writable: false,
+    value: name,
+  });
+  withRequired(obj);
+  withDefault(obj);
+
+  if (isFunction(obj.validator)) {
+    obj.validator = obj.validator.bind(obj);
+  }
+  return obj;
+};
+
+/**
+ * Validates a given value against a prop type object
+ *
+ * @param {Object|*} type - Type to use for validation. Either a type object or a constructor
+ * @param {*} value - Value to check
+ * @param {boolean} silent - Silence warnings
+ * @returns {boolean}
+ */
+export const validateType = (type, value, silent = false) => {
+  let typeToCheck = type;
+  let valid = true;
+  let expectedType;
+  if (!isPlainObject(type)) {
+    typeToCheck = { type };
+  }
+  const namePrefix = typeToCheck._vueTypes_name ? typeToCheck._vueTypes_name + ' - ' : '';
+
+  if (hasOwn.call(typeToCheck, 'type') && typeToCheck.type !== null) {
+    if (isArray(typeToCheck.type)) {
+      valid = typeToCheck.type.some(type => validateType(type, value, true));
+      expectedType = typeToCheck.type.map(type => getType(type)).join(' or ');
+    } else {
+      expectedType = getType(typeToCheck);
+
+      if (expectedType === 'Array') {
+        valid = isArray(value);
+      } else if (expectedType === 'Object') {
+        valid = isPlainObject(value);
+      } else if (
+        expectedType === 'String' ||
+        expectedType === 'Number' ||
+        expectedType === 'Boolean' ||
+        expectedType === 'Function'
+      `) {
+        valid = getNativeType(value) === expectedType;
+      } else {
+        valid = value instanceof typeToCheck.type;
+      }
+    }
+  }
+
+  if (!valid) {
+    silent === false && warn(`${namePrefix}value "${value}" should be of type "${expectedType}"`);
+    return false;
+  }
+
+  if (hasOwn.call(typeToCheck, 'validator') && isFunction(typeToCheck.validator)) {
+    valid = typeToCheck.validator(value);
+    if (!valid && silent === false) warn(`${namePrefix}custom validation failed`);
+    return valid;
+  }
+  return valid;
+};
+
+let warn = noop;
+
+if (process.env.NODE_ENV !== 'production') {
+  const hasConsole = typeof console !== 'undefined';
+  warn = msg => {
+    if (hasConsole) {
+      console.warn(`[VueTypes warn]: ${msg}`);
+    }
+  };
+}
+
+export { warn };
+)
+txtit(Var)
 return

@@ -207,6 +207,7 @@
 	Menu, EventMenu, Add, js 组合键监听 ctrl + enter, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + click, EventHandler
 	Menu, EventMenu, Add, js 组合键监听 ctrl + shift + p, EventHandler
+	Menu, EventMenu, Add, js 组合键监听 shift + 1, EventHandler
 	Menu, EventMenu, Add, js esc键监听, EventHandler
 	Menu, EventMenu, Add, window.addEventListener('load'), EventHandler
 	
@@ -252,6 +253,19 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "js 组合键监听 shift + 1") {
+Var =
+(
+window.addEventListener("keydown", (e) => {
+	const { shiftKey, keyCode } = e
+
+	if (shiftKey && keyCode === 49) {
+	    this.openfy()
+	}
+}
 )
 }
 

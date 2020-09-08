@@ -45,7 +45,7 @@ height: rem(%fuck_h2%);
 width: %fuck_wem%em;
 height: %fuck_hem%em;
 
-@include bg(rem(%fuck_w2%), rem(%fuck_h2%), '~@/assets/%zipname%.png');
+@include bg(rem(%fuck_w2%), rem(%fuck_h2%), '~@/assets/%zipname%');
 )
 txtit(Var)
 }
@@ -2700,7 +2700,40 @@ return
 ::sw::
 Var =
 (
-Swagger
+// SwaggerApi.json
+const data = {"swagger": "2.0"}
+
+const maybe = (fn, n = '') => {
+   try {
+      const result = fn()
+      return (result && result === result && result !== 'NaN' && result !== 'Invalid date') ? result : n
+   } catch (err) {
+      return n
+   }
+}
+
+const getProperties = target => Object.entries(target).reduce((obj, [key, val]) => {
+  obj[key] = val.properties 
+      ? getProperties(val.properties) 
+      : maybe(_ => val.type === 'number' ? +val.mock.mock : val.mock.mock)
+
+  return obj
+}, {})
+
+const result = Object.entries(data.paths).reduce((ary, [k, v]) => {
+  const { summary, parameters } = v.post
+  const properties = parameters[0].schema.properties
+  const newObj = properties ? getProperties(properties) : null
+
+  const url = k
+  const name = summary
+  const params = newObj
+
+  const obj = { url, name, params }
+  return [...ary, obj]
+}, [])
+
+console.log(20200907171041, result)
 )
 code(Var)
 return

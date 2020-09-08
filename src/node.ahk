@@ -1443,23 +1443,38 @@ return
 ::fs.rm::
 Var = 
 (
-var fs = require('fs');
-var path = require('path');
-function deleteall(path) {  
-    var files = [];  
-    if(fs.existsSync(path)) {  
-        files = fs.readdirSync(path);  
-        files.forEach(function(file, index) {  
-            var curPath = path + "/" + file;  
-            if(fs.statSync(curPath).isDirectory()) { // recurse  
-                deleteall(curPath);  
-            } else { // delete file  
-                fs.unlinkSync(curPath);  
-            }  
-        });  
-        fs.rmdirSync(path);  
-    }  
-};  
+const fs = require('fs')
+const path = require('path')
+
+function deleteall(path) {
+    const files = []
+
+    if (fs.existsSync(path)) {
+
+        fs.stat(path, (err, stats) => {
+          const isFile = stats.isFile()
+          const isDirectory = stats.isDirectory()
+
+          if (isFile) {
+            fs.unlinkSync(path)
+          }
+
+          if (isDirectory) {
+            files = fs.readdirSync(path)
+
+            files.forEach(function(file, index) {
+                const curPath = path + '/' + file
+
+                if(fs.statSync(curPath).isDirectory()) {
+                    deleteall(curPath)
+                } else {
+                    fs.unlinkSync(curPath)
+                }
+            })
+          } 
+        })
+    }
+}
 )
 code(Var)
 return
@@ -1498,11 +1513,12 @@ return
 ::fs.write::
 Var = 
 (
-var fs = require('fs');
-var path = require('path');
-fs.writeFile(path.join(__dirname,'/test.json'), '这是追加的数据', { flag:"a" }, function (err) {
-    if(err) console.error("文件写入失败");
-    else console.log("文件写入成功");
+var fs = require('fs')
+var path = require('path')
+
+fs.writeFile(path.join(__dirname,'/test.txt'), 'hello world', { flag: 'a' }, err => {
+    if (err) console.error('文件写入失败')
+    else console.log('文件写入成功')
 })
 )
 code(Var)
