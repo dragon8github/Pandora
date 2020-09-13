@@ -7875,16 +7875,14 @@ let scrollHandle = (el) => {
 		console.log(123)
 	}
 }
-
-// 懒加载优化：滚动节流策略
-let __SCROLLTIMER__ = null
-// 绑定滚动事件
-$('.dgtable__warp').scroll(e => {
-    clearTimeout(__SCROLLTIMER__);
-    __SCROLLTIMER__ = setTimeout(_ => scrollHandle(e), 150);
-})
+---
+// 判断滚动到底了的最佳实践
+// 这里的 + 1 是我加入了，以防万一一些微小的细节，我觉得以防万一 + 10 更好
+if ( element.getBoundingClientRect().bottom < window.innerHeight + 1 ) {
+    loadMorePosts()
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::es5.class::

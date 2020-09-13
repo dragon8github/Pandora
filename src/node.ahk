@@ -1598,14 +1598,6 @@ http.createServer((req, res) => {
 code(Var)
 Return
 
-::cnpmm::
-::npm cnpm::
-::cnpm2::
-::cnpm::
-SendInput, npm install cnpm -g --registry=https://registry.npm.taobao.org 
-return
-
-
 
 ::nest.c::
 Var =
@@ -2160,7 +2152,12 @@ txtit(Var)
 return
 
 ::cnpm::
-_sendInput("npm install cnpm -g --registry=https://registry.npm.taobao.org")
+Var =
+(
+npm install cnpm -g --registry=https://registry.npm.taobao.org 
+npm set registry https://registry.npm.taobao.org/
+)
+code(Var)
 return
 
 ::egg::

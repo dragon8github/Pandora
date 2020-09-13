@@ -1,8 +1,6 @@
 ﻿>+b::
 	; 显示
 	Gui, Book:Show,, Book
-	
-	
 	; 康奈尔专用数组
 	global cornellAry := {}
 
@@ -96,7 +94,6 @@ initbook() {
 	TV_Add("超简单的currying与理财花销实例", M)
 }
 
-
 SwitchBook:
 
 ; 删除所有树
@@ -119,11 +116,6 @@ if (currentBook == "《Vue.js 深入浅出》") {
   cornell("Array的变化侦测")
 }
 
-
-if (currentBook == "《Python》") {
-	
-}
-
 if (currentBook == "《JavaScript 设计模式》") {
 	initbook()
 }
@@ -137,13 +129,19 @@ if (currentBook == "《康奈尔笔记》") {
 	cornell("想少干活就要多思考")	
 }
 
+if (currentBook == "《Vue单元测试》") {
+   cornell("基本语法")
+   cornell("间谍函数")
+   cornell("mock依赖")
+   cornell("测试vuex")
+}
+
 
 ;获取节点信息
 _top := TV_GetSelection()
 
 ; 展开所有节点
 var_dump(expandallchild(_top))
-
 return
 
 
@@ -156,6 +154,165 @@ Var =
 (
 )
 }
+
+
+if (v == "基本语法") {
+Var = 
+(
+// src/components/__tests__/Item.spec.js
+import { shallowMount } from '@vue/test-utils'
+import Item from '../Item.vue'
+
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+
+test('base test', () => {
+    const item = { url: 'http://www.baidu.com', title: 'baidu' }
+
+    const wrapper = shallowMount(Item, {
+        propsData: { item }
+    })
+
+    // @@ find()
+    const a = wrapper.find('a')
+
+    // @@ text()
+    expect(a.text()).toContain(item.title)
+
+    // @@ attributes()
+    expect(a.attributes().href).toBe(item.url)
+
+    // @@ props()
+    expect(wrapper.props().item.url).toBe(item.url)
+
+    // @@ classes()
+    expect(wrapper.classes()).toContain('Item')
+
+    // @@ element.style（必须是内敛样式而不是 css）
+    expect(wrapper.element.style.width).toBe('100`%')
+
+    // @@ not
+    expect(wrapper.classes()).not.toContain('hide')
+
+    // @@ 结合 jest.useFakeTimers() 推进 timer
+    jest.runTimersToTime(1000)
+
+    // @@ 测试 @onClick 与 this.$emit('onClick')
+    expect(wrapper.emitted('onClick')).toHaveLength(1)
+})
+
+// @@ findAllComponents(Item)
+test('base test', () => {
+    const items = [{}, {}, {}]
+
+    const wrapper = shallowMount(Items, {
+        props: { items }
+    })
+
+    // or: expect(wrapper.findAllComponents(Item)).toHaveLength(items.length)
+    expect(wrapper.findAllComponents(Item).length).toBe(items.length)
+})
+)
+}
+
+if (v == "间谍函数") {
+Var = 
+(
+describe('Item.vue', () => {
+    test('base test', () => {
+        const item = { url: 'http://www.baidu.com', title: 'baidu' }
+
+        // 间谍函数
+        const $bar = { start: jest.fn() }
+
+        const wrapper = shallowMount(Item, {
+            propsData: { item },
+            // 通过 mocks 定义组件的上下文，通常是 $route、 $store 这些重要的内容
+            mocks: { $bar }
+        })
+
+        // trigger 触发 DOM 事件
+        wrapper.find('a').trigger('click')
+
+        // toHaveBeenCalledTimes(n) / toHaveBeenCalled()
+        expect($bar.start).toHaveBeenCalledTimes(1)
+    })
+})
+)
+}
+
+if (v == "mock依赖") {
+Var = 
+(
+// https://vue-test-utils.vuejs.org/zh/api/wrapper/#contains
+// https://jestjs.io/docs/en/expect
+import flushPromises from "flush-promises"
+import { shallowMount } from '@vue/test-utils'
+import Items from "../Items.vue"
+import Item from "../Item.vue"
+import { fetchData } from "@/apis/apis"
+
+// src/apis/__mocks__/apis.js
+jest.mock('@/apis/apis.js')
+
+describe('Items.vue', () => {
+    test('base test', async () => {
+        const items = [{}, {}, {}]
+        // mock
+        fetchData.mockResolvedValueOnce(items)
+
+        const wrapper = shallowMount(Items)
+        await flushPromises()
+
+        const lists = wrapper.findAllComponents(Item)
+        expect(lists).toHaveLength(items.length)
+    })
+})
+)
+}
+
+if (v == "测试vuex") {
+Var = 
+(
+import Vuex from "vuex"
+import { createLocalVue, shallowMount } from '@vue/test-utils'
+import Item from "../Item.vue";
+
+const localVue = createLocalVue()
+localVue.use(Vuex)
+
+describe('Item.vue', () => {
+    let store;
+
+    beforeEach(() => {
+        store = new Vuex.Store()
+        store.dispatch = jest.fn()
+    })
+
+    afterEach(() => {
+        store = null
+    })
+
+    test('base test', () => {
+        const item = { url: 'http://www.baidu.com', title: 'baidu' }
+
+        const wrapper = shallowMount(Item, {
+            store,
+            localVue,
+            propsData: { item }
+        })
+
+        wrapper.find('a').trigger('click')
+
+        // ...mapActions(['addPost'])
+        // this.addPost(item)
+        expect(store.dispatch).toHaveBeenCalledWith('addPost', item)
+    })
+})
+)
+}
+
 
 if (v == "Array的变化侦测") {
 Var =
@@ -687,8 +844,6 @@ data.a.b.c.d = '321'
 }
 
 
-
-
 if (v == "想少干活就要多思考") {
 Var = 
 (
@@ -716,13 +871,13 @@ Var =
 if (v == "见微知著的认知能力") {
 Var = 
 (
-@什么是认知能力
+@@什么是认知能力
 认知能力 = (见微知著 + 抽象 + 逻辑演绎) * 知识储备
 
-@什么是见微知著的能力
+@@什么是见微知著的能力
 通过微小的变化，预见将来的趋势。能从微小的问题发现更大的问题。
 
-@如何提高认知能力
+@@如何提高认知能力
 持续的知识输入，不断延伸自己的知识边界。
 
 1. 明确自己的知识结构
@@ -732,18 +887,18 @@ Var =
 
 知识的深度决定你的知识边界。
 
-@必须掌握的知识筛选工具
+@@必须掌握的知识筛选工具
 知识过滤器 + 知识匹配器 + 是否有利于个人目标的达成？
 
-@什么是抽象能力？
+@@什么是抽象能力？
 抽象能力指对于概念的处理能力。 目的是将复杂的事物简化。
 将复杂的问题拆解为一个个简单的问题。
 把复杂的问题抽象出问题的特征。 再去大脑中经验知识库匹配解决方法。
 
-@抽象的缺陷
+@@抽象的缺陷
 抽象的代价就损失很多细节实现和信息。抽象层次越高，越无法直接使用。
 
-@不要把抽象的任务交给下属
+@@不要把抽象的任务交给下属
 如果在真正中你对一个士兵下达一个抽象笼统的，没有明确执行步骤的知识战略概念。
 士兵肯定一头雾水无法执行。 —— 李云龙
 )
@@ -753,7 +908,7 @@ Var =
 if (v == "成就感") {
 Var = 
 (
-@什么是成就感
+@@什么是成就感
 成就感是愿望与现实达到平衡的一种心理感受。
 
 一个人的愿望和现实差距越大，就会没有成就感。失去内在动力，带来负面情绪（沮丧和焦虑）。
@@ -763,12 +918,12 @@ Var =
 修正为 —— 通过自身努力，实践有一定难度的愿望，并且与现实达到平衡，产生的一种心理感受。
 
 
-@成就感与驱动力的关系
+@@成就感与驱动力的关系
 自我驱动最重要。外在激励不如内在激励。
 
 要做到内在驱动，首要的是以让人获得成就感呢。
 
-@做好事情的关键
+@@做好事情的关键
 假如你需要完成的这件事，大多数人都能完成，显然这是一件没什么成就感的事情。
 
 人们认为有兴趣才能把事情做好，但兴趣是把事情做好的充分不必要条件。
@@ -780,17 +935,17 @@ Var =
 if (v == "打破认知天花板") {
 Var = 
 (
-@什么是认知
+@@什么是认知
 认知能力也有很多别的名称： “格局”、 “境界”
 
 认知是人类认识事物的过程，对外界事物进行信息加工的过程。
 
 认知是大脑对输入进行加工后的高级处理。
 
-@哲学的三大问题
+@@哲学的三大问题
 我从哪里来？我要到去哪里去？我是谁？
 
-@高级认知能力和低级认知能力
+@@高级认知能力和低级认知能力
 
 基本认知能力：识记 -> 理解 -> 应用
 
@@ -801,20 +956,20 @@ Var =
 if (v == "方法论") {
 Var = 
 (
-@什么是方法论
+@@什么是方法论
 方法论主要解决“怎么办”的问题
 方法论 = 知识储备 + 思维工具 + 利益分配
 认知能力（程序） = 学习方法 + 知识储备（数据） + 思维方式（算法）
 
-@为什么说自嘲是个好习惯？
+@@为什么说自嘲是个好习惯？
 找别人的问题很容易，找自身的问题很难，但如果不去找，就会失去一次成长的机会。
 
-@什么是正确的思考方式和方向？
+@@什么是正确的思考方式和方向？
 1、在企业中，我们判断事情的价值都应该都应该从能否为企业盈利角度出发。
 2、在生活中，我们判断事情的价值应该从能否促进完成个人目标出发。
 『如果你有一个目标，那么所有事情应该围绕目标来判断是否有价值。』
 
-@静不下心怎么办？
+@@静不下心怎么办？
 找到产生私欲的根源。
 人只有积极的时候，才会去寻找问题的解决办法。
 )
@@ -823,19 +978,19 @@ Var =
 if (v == "焦虑专题") {
 Var = 
 (
-@什么是焦虑？
+@@什么是焦虑？
 焦虑是对未来不确定性产生的应急反应。
 本质是一种缺乏安全感的表现。
 知识焦虑的原因在于个体掌握的知识量不够，同时缺乏存储方法，导致面对大量知识迷茫不知所措，产生焦虑。
 
-@为什么会焦虑？
+@@为什么会焦虑？
 知识焦虑源于人类的规避损失心理，类似"不看就落后"、"别人都再学我也要学"、加之媒体推波助澜，社会媒体导向，人为制造的焦虑。
 
-@焦虑的来源？
+@@焦虑的来源？
 焦虑来源于不之所从，要做的事情很多，每件事看上去都很有价值，正因如此，我们变得难以抉择，从而焦虑。
 因为我们没有一个标准来判断一件事的价值。这个标准就算我们的目标、我们的愿望。
 
-@知识焦虑的解药
+@@知识焦虑的解药
 知识付费其实和小时候花钱请学霸写作业的行为没什么区别。
 如何缓解知识焦虑，并不是一个难解的问题，首先你要知道：
 1. 不是所有知识都是我们需要的。
@@ -2454,7 +2609,7 @@ getDec(txt, top) {
 cornellTop := TV_Add("@" . top)
 
 ; 分割 @ 符号
-ary := StrSplit(txt, "@")
+ary := StrSplit(txt, "@@")
 
 For key, value in ary
 	; 如果是第一条的话，那么直接加入全体把

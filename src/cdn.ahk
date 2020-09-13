@@ -1,4 +1,14 @@
-﻿::cdn-mapv::
+﻿::cdn-bu::
+::cdn-buma::
+::cdn-woerma::
+Var =
+(
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+)
+code(Var)
+return
+
+::cdn-mapv::
 Var =
 (
 <script src="http://mapv.baidu.com/build/mapv.min.js"></script>

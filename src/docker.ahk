@@ -267,3 +267,44 @@ nginx:1.17.4-alpine
 )
 code(Var)
 return
+
+::docker::
+Var =
+(
+### 运行容器
+docker run -it -p 8888:80 --name <新建容器名> -v $(pwd):/usr/share/nginx/html <镜像id> bash
+
+### 进入容器
+docker exec -it <容器id> bash
+
+### 删除容器
+docker stop <容器id> && docker rm <容器id>
+
+
+### 容器打包为镜像
+docker commit -a "lee" -m "node-nginx" <容器id> node-nginx:v1.0
+
+### 一键运行 nginx
+docker run --rm -p 80:80 nginx
+
+### nginx 启动服务
+nginx -t
+nginx -c /etc/nginx/nginx.conf
+nginx -s reload
+ps -ef | grep nginx
+
+### nginx 设置启动 /etc/nginx/sites-available/default
+vim /etc/nginx/sites-available/default
+/var/www/html 修改为 /usr/share/nginx/html
+---
+
+docker run -itd -p 8888:80 -p 8080:8080 --name node-nginx110 -v $(pwd):/usr/share/nginx/html 582b2bac91af bash
+
+docker run -itd -p 8888:80 --name node-nginx110 f8fbdcd0d9e6 bash
+
+docker stop 19e077a22987 && docker rm 19e077a22987
+
+docker exec -it f8fbdcd0d9e6 bash
+)
+txtit(Var)
+return

@@ -28,6 +28,7 @@
 
 
 	Menu, bilibiliMenu, Add, map 地图, :DITUMAP
+	Menu, bilibiliMenu, Add, ✍️, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🔴, bilibiliHandler2	
 	Menu, bilibiliMenu, Add, ✅, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ▶, bilibiliHandler2	
@@ -38,7 +39,6 @@
 	Menu, bilibiliMenu, Add, 🐤 , bilibiliHandler2
 	Menu, bilibiliMenu, Add, ☀️ , bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🐳, bilibiliHandler2
-	Menu, bilibiliMenu, Add, 🐉, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🌵 , bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🦋 , bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🔥, bilibiliHandler2
@@ -58,6 +58,8 @@
 	Menu, bilibiliMenu, Add, ✖️, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🎉, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ·, bilibiliHandler2
+	Menu, bilibiliMenu, Add, ↓ ↓ ↓ ↓ ↓ ↓, bilibiliHandler2
+	
 	
 	Menu, bilibiliMenu, Add,,
 	Menu, bilibiliMenu, Add,,
@@ -77,7 +79,9 @@
 	Menu, bilibiliMenu, Add, ╰(‵□′)╯砸瓦鲁多, bilibiliHandler2
 	; Menu, bilibiliMenu, Add, ด้้้้้็้้้็็็็็้้้้้็็็็็้้้้้้็็็็็้้้้้็็็็็้้้้้้็็็็็้้้้้็็็็็้้้้้้็็็็็้้้้้็็็็็้้้้้้็็็็็, bilibiliHandler2
 	; Menu, bilibiliMenu, Add, 遍҈布互҈联网҈的҈神҈秘҈电波҈是҈如何҈制作҈出҈来的？, bilibiliHandler2
-	Menu, bilibiliMenu, Add, 卡罗牌, :KALUOPAI
+	; Menu, bilibiliMenu, Add, 卡罗牌, :KALUOPAI
+	; Menu, bilibiliMenu, Add, 卡罗牌, :KALUOPAI
+
 	
 	
 	Menu, bilibiliMenu, Show

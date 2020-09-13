@@ -130,8 +130,6 @@ class SecondCounter {
 ; return
 
 
-
-
 #b::
 clipboard := 
 Send, ^c

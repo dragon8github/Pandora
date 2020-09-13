@@ -1,14 +1,16 @@
 ﻿
 getBase64(imgpath) {	
+	Random, rand, 1, 100
+
 	; 当前时间
-	t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+	t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . rand
 	
 	; 存储 txt 路径
 	txtPath :=  A_Desktop . "\.pandora\" . t . ".txt"
 	
 	; certutil.exe -encode C:\Users\Lee\Desktop\.pandora\20200527120330.png C:\Users\Lee\Desktop\abcd.txt
-	cmd := "certutil.exe -encode " . imgpath . " " . txtPath
-	
+	cmd := "certutil.exe -encode """ . imgpath . """ " . txtPath
+
 	; 等待执行完成
 	RunWait, % cmd
 	

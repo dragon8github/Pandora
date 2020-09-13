@@ -217,6 +217,9 @@ RunBy(name) {
 
 RunByVsCode(name) {
     myIdea := "C:\Program Files\Microsoft VS Code\Code.exe"
+    if (!FileExist(myIdea)) {
+        myIdea := A_Temp . "\..\Programs\Microsoft VS Code\Code.exe"
+    }
     Run, %myIdea% %name%
 }
 

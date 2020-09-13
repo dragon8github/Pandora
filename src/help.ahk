@@ -1,4 +1,62 @@
-﻿::ahk.post::
+﻿
+#t::
+t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+dirpath := A_Desktop . "/tmp-" . t
+
+; 新建文件夹
+FileCreateDir, % dirpath
+
+; 新建 app.js
+name :=  dirpath . "\app.js"
+FileAppend,
+(
+console.log(%t%, )
+),  %name%
+
+
+; 新建 package.js
+name :=  dirpath . "\package.json"
+FileAppend,
+(
+{
+  "name": "test-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node app.js",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}
+),  %name%
+
+; 打开目录
+RunByVsCode(dirpath)
+return
+
+::rm::
+Var =
+(
+rm -rf node_modules/ && cnpm cache clean -f
+)
+code(Var)
+return
+
+!+d::
+t := A_YYYY . "/" . A_MM . "/" . A_DD . " " . A_Hour . ":" . A_Min . ":" . A_Sec
+code(t)
+return
+
+::ahk.post::
 ::ahkpost::
 Var =
 (
@@ -20,7 +78,7 @@ code(Var)
 return
 
 
-wh(img, PicPath = "bg.png") {
+wh(img, PicPath = "bg.png", base64="") {
 fuck_w2 := img.Width
 fuck_h2 := img.Height
 
@@ -46,6 +104,8 @@ width: %fuck_wem%em;
 height: %fuck_hem%em;
 
 @include bg(rem(%fuck_w2%), rem(%fuck_h2%), '~@/assets/%zipname%');
+---
+%base64%
 )
 txtit(Var)
 }
@@ -65,8 +125,15 @@ ClipWait, 2
 if (clipboard) {
     PicPath := WinClip.GetFiles()
     if (!InStr(PicPath, ".webp")) {
+        fuck_base64 := getBase64(PicPath)
+
+        if (StrLen(fuck_base64) > 10000) {
+          fuck_base64 := ""
+          tip2("图片base64长度大于1W，不显示出来，也不应该被 base64")
+        }
+
         img := getPicWH(PicPath)
-        wh(img, PicPath)
+        wh(img, PicPath, fuck_base64)
     }
 } else {
     tip2("未找到图片，请重新截图")
@@ -2363,7 +2430,8 @@ Send, {Right 7}
 Send, +{right 4}
 return
 
-
+::txtit::
+::vartxt::
 ::ahktxt::
 ::ahktxtit::
 Var =

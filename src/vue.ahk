@@ -40,6 +40,7 @@
 
   
 
+  Menu, VueMenu, Add, vue.test, VueHandler
   Menu, VueMenu, Add, vue.router, :Vuerouter
   Menu, VueMenu, Add, vuex 必知必会基本功, :vuexmenubasic
   Menu, VueMenu, Add, vue-cli 安装与预览单文件, VueHandler
@@ -201,6 +202,152 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "vue.test") {
+Var =
+(
+// src/components/__tests__/Item.spec.js
+
+import { shallowMount } from '@vue/test-utils'
+import Item from '../Item.vue'
+
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+
+
+test('base test', () => {
+    const item = { url: 'http://www.baidu.com', title: 'baidu' }
+
+    const wrapper = shallowMount(Item, {
+        propsData: { item }
+    })
+
+    // # find()
+    const a = wrapper.find('a')
+
+    // # text()
+    expect(a.text()).toContain(item.title)
+
+    // # attributes()
+    expect(a.attributes().href).toBe(item.url)
+
+    // # props()
+    expect(wrapper.props().item.url).toBe(item.url)
+
+    // # classes()
+    expect(wrapper.classes()).toContain('Item')
+
+    // # element.style（必须是内敛样式而不是 css）
+    expect(wrapper.element.style.width).toBe('100`%')
+
+    // # not
+    expect(wrapper.classes()).not.toContain('hide')
+
+    // # 结合 jest.useFakeTimers() 推进 timer
+    jest.runTimersToTime(1000)
+
+    // # 测试 @onClick 与 this.$emit('onClick')
+    expect(wrapper.emitted('onClick')).toHaveLength(1)
+})
+
+test('base test', () => {
+    const items = [{}, {}, {}]
+
+    const wrapper = shallowMount(Items, {
+        props: { items }
+    })
+
+    // # findAllComponents(Item)
+    // or: expect(wrapper.findAllComponents(Item)).toHaveLength(items.length)
+    expect(wrapper.findAllComponents(Item).length).toBe(items.length)
+})
+---
+describe('Item.vue', () => {
+    test('base test', () => {
+        const item = { url: 'http://www.baidu.com', title: 'baidu' }
+
+        // 间谍函数
+        const $bar = { start: jest.fn() }
+
+        const wrapper = shallowMount(Item, {
+            propsData: { item },
+            // 通过 mocks 定义组件的上下文，通常是 $route、 $store 这些重要的内容
+            mocks: { $bar }
+        })
+
+        // trigger 触发 DOM 事件
+        wrapper.find('a').trigger('click')
+
+        // toHaveBeenCalledTimes(n) / toHaveBeenCalled()
+        expect($bar.start).toHaveBeenCalledTimes(1)
+    })
+})
+---
+// https://vue-test-utils.vuejs.org/zh/api/wrapper/#contains
+// https://jestjs.io/docs/en/expect
+import flushPromises from "flush-promises"
+import { shallowMount } from '@vue/test-utils'
+import Items from "../Items.vue"
+import Item from "../Item.vue"
+import { fetchData } from "@/apis/apis"
+
+// src/apis/__mocks__/apis.js
+jest.mock('@/apis/apis.js')
+
+describe('Items.vue', () => {
+    test('base test', async () => {
+        const items = [{}, {}, {}]
+        // mock
+        fetchData.mockResolvedValueOnce(items)
+
+        const wrapper = shallowMount(Items)
+        await flushPromises()
+
+        const lists = wrapper.findAllComponents(Item)
+        expect(lists).toHaveLength(items.length)
+    })
+})
+---
+import Vuex from "vuex"
+import { createLocalVue, shallowMount } from '@vue/test-utils'
+import Item from "../Item.vue";
+
+const localVue = createLocalVue()
+localVue.use(Vuex)
+
+describe('Item.vue', () => {
+    let store;
+    
+    beforeEach(() => {
+        store = new Vuex.Store()
+        store.dispatch = jest.fn()
+    })
+    
+    afterEach(() => {
+        store = null
+    })
+
+    test('base test', () => {
+        const item = { url: 'http://www.baidu.com', title: 'baidu' }
+
+        const wrapper = shallowMount(Item, {
+            store, 
+            localVue,
+            propsData: { item }
+        })
+
+        wrapper.find('a').trigger('click')
+
+        // ...mapActions(['addPost'])
+        // this.addPost(item)
+        expect(store.dispatch).toHaveBeenCalledWith('addPost', item)
+    })
+})
+)
+txtit(Var)
+return
 }
 
 if (v == "render 无渲染组件（状态组件）") {
@@ -5849,8 +5996,6 @@ txtit(Var)
 return
 return
 
-:?:vue.test::
-:?:vue.tests::
 :?:vue.rule::
 :?:vue.rules::
 Var =
@@ -6268,7 +6413,6 @@ txtit(Var)
 return
 
 ::test.vue::
-::vue.test::
 Var =
 (
   <template>
@@ -8256,6 +8400,211 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export { warn };
+)
+txtit(Var)
+return
+
+::vue.state::
+::vue.setstate::
+::setstate::
+Var =
+(
+export default {
+    methods: {
+      async setState(state, callback) {
+        // 支持第一个参数为函数形式
+        let newState = typeof state === 'function' ? state(this, this.$props) : state
+        // 更新状态
+        Object.assign(this, newState)
+        // 强制更新不存在的状态，类似 this.$set 的作用
+        this.$forceUpdate()
+        // 等待渲染帧
+        await this.$nextTick()
+        // 兼容函数和promise的回调
+        return callback ? callback(this.$data) : Promise.resolve(this.$data)
+      },
+    },
+}
+---
+import baseMixins from '@/mixins/baseMixins'
+
+// app.vue
+export default {
+    name: 'app',
+    mixins: [baseMixins],
+}
+)
+txtit(Var)  
+return
+
+::vuetest::
+Var =
+(
+// https://vue-test-utils.vuejs.org/zh/api/wrapper/#contains
+// https://jestjs.io/docs/en/expect
+import { shallowMount } from '@vue/test-utils'
+import Item from "@/components/Item.vue"
+
+beforeEach(() => {
+    console.log = () => {}
+})
+
+describe('Item.vue', () => {
+    test('base test', () => {
+        const wrapper = shallowMount(Item)
+        expect(wrapper.text()).toContain('Item')
+    })
+})
+
+
+)
+txtit(Var)
+return
+
+
+
+:?:vue.t::
+:?:vue.test::
+Var =
+(
+// src/components/__tests__/Item.spec.js
+
+import { shallowMount } from '@vue/test-utils'
+import Item from '../Item.vue'
+
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+
+
+test('base test', () => {
+    const item = { url: 'http://www.baidu.com', title: 'baidu' }
+
+    const wrapper = shallowMount(Item, {
+        propsData: { item }
+    })
+
+    // # find()
+    const a = wrapper.find('a')
+
+    // # text()
+    expect(a.text()).toContain(item.title)
+
+    // # attributes()
+    expect(a.attributes().href).toBe(item.url)
+
+    // # props()
+    expect(wrapper.props().item.url).toBe(item.url)
+
+    // # classes()
+    expect(wrapper.classes()).toContain('Item')
+
+    // # element.style（必须是内敛样式而不是 css）
+    expect(wrapper.element.style.width).toBe('100`%')
+
+    // # not
+    expect(wrapper.classes()).not.toContain('hide')
+
+    // # 结合 jest.useFakeTimers() 推进 timer
+    jest.runTimersToTime(1000)
+
+    // # 测试 @onClick 与 this.$emit('onClick')
+    expect(wrapper.emitted('onClick')).toHaveLength(1)
+})
+
+test('base test', () => {
+    const items = [{}, {}, {}]
+
+    const wrapper = shallowMount(Items, {
+        props: {items }
+    })
+
+    // # findAllComponents(Item)
+    // or: expect(wrapper.findAllComponents(Item)).toHaveLength(items.length)
+    expect(wrapper.findAllComponents(Item).length).toBe(items.length)
+})
+---
+describe('Item.vue', () => {
+    test('base test', () => {
+        const item = { url: 'http://www.baidu.com', title: 'baidu' }
+
+        // 间谍函数
+        const $bar = { start: jest.fn() }
+
+        const wrapper = shallowMount(Item, {
+            propsData: { item },
+            // 通过 mocks 定义组件的上下文，通常是 $route、 $store 这些重要的内容
+            mocks: { $bar }
+        })
+
+        // trigger 触发 DOM 事件
+        wrapper.find('a').trigger('click')
+
+        // toHaveBeenCalledTimes(n) / toHaveBeenCalled()
+        expect($bar.start).toHaveBeenCalledTimes(1)
+    })
+})
+---
+// https://vue-test-utils.vuejs.org/zh/api/wrapper/#contains
+// https://jestjs.io/docs/en/expect
+import flushPromises from "flush-promises"
+import { shallowMount } from '@vue/test-utils'
+import Items from "../Items.vue"
+import Item from "../Item.vue"
+import { fetchData } from "@/apis/apis"
+
+// src/apis/__mocks__/apis.js
+jest.mock('@/apis/apis.js')
+
+describe('Items.vue', () => {
+    test('base test', async () => {
+        const items = [{}, {}, {}]
+        // mock
+        fetchData.mockResolvedValueOnce(items)
+
+        const wrapper = shallowMount(Items)
+        await flushPromises()
+
+        const lists = wrapper.findAllComponents(Item)
+        expect(lists).toHaveLength(items.length)
+    })
+})
+---
+import Vuex from "vuex"
+import { createLocalVue, shallowMount } from '@vue/test-utils'
+import Item from "../Item.vue";
+
+const localVue = createLocalVue()
+localVue.use(Vuex)
+
+describe('Item.vue', () => {
+    let store;
+    
+    beforeEach(() => {
+        store = new Vuex.Store()
+        store.dispatch = jest.fn()
+    })
+    
+    afterEach(() => {
+        store = null
+    })
+
+    test('base test', () => {
+        const item = { url: 'http://www.baidu.com', title: 'baidu' }
+
+        const wrapper = shallowMount(Item, {
+            store, 
+            localVue,
+            propsData: { item }
+        })
+
+        wrapper.find('a').trigger('click')
+
+        // ...mapActions(['addPost'])
+        // this.addPost(item)
+        expect(store.dispatch).toHaveBeenCalledWith('addPost', item)
+    })
+})
 )
 txtit(Var)
 return

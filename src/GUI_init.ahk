@@ -30,7 +30,7 @@ var_dump(expandallchild(top))
 Gui, Book:Add, Edit, ys vBookContent w890 H700 Limit199307100337 ReadOnly  
 
 ; Tab 选项卡
-Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Python》|《Vue.js 深入浅出》
+Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Vue单元测试》|《Vue.js 深入浅出》
 
 
 
@@ -162,10 +162,11 @@ Gui, Pandora:Add, Checkbox, vbilibili, bilibili
 Gui, Pandora:Add, Text, gAllSearchD W60 ys, 社区类:
 Gui, Pandora:Add, Checkbox, vjuejin, 掘金
 Gui, Pandora:Add, Checkbox, vjianshu, 简书
-Gui, Pandora:Add, Checkbox, vcsdn, CSDN
+; Gui, Pandora:Add, Checkbox, vcsdn, CSDN
 Gui, Pandora:Add, Checkbox, vzhihu, 知乎
-Gui, Pandora:Add, Checkbox, vcylee, 博客园
 Gui, Pandora:Add, Checkbox, vsegmentfault, 思否
+Gui, Pandora:Add, Checkbox, vcylee, 博客园
+Gui, Pandora:Add, Checkbox, vyuque, 羽雀
 
 Gui, Pandora:Add, Text, gAllSearchE W120 ys, 购物类:
 Gui, Pandora:Add, Checkbox, vtaobao, 淘宝
@@ -292,15 +293,17 @@ Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/">阮一峰的�
 Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly/issues">阮一峰issue</a>
 Gui, Pandora:Add, Link,, <a href="https://wangdoc.com/bash/expansion.html#start-end-%E6%89%A9%E5%B1%95">阮一峰的bash</a>
 Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.html">前端日报</a>
-Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
+; Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
 Gui, Pandora:Add, Link,, <a href="https://vueschool.io/articles/series/vue-js-performance/">VueSchool</a>
 Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/show">Hacker News</a>
 Gui, Pandora:Add, Link,, <a href="https://tympanus.net/codrops/category/tutorials/">Codrops</a>
-Gui, Pandora:Add, Link,, <a href="https://reposhub.com/">reposhub.com</a>
+; Gui, Pandora:Add, Link,, <a href="https://reposhub.com/">reposhub.com</a>
+Gui, Pandora:Add, Link,, <a href="https://hackernoon.com/">hackernoon</a>
 Gui, Pandora:Add, Link,, <a href="https://hashnode.com/">oshogunle.com</a>
-Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/http`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fhackernews-daily">hacker News Top10</a>
+Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/http`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fhackernews-daily">hackerNews Top10日刊</a>
+Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/https`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fhackernews-monthly">hackerNews Top10月刊</a>
 
 
 
@@ -318,7 +321,6 @@ Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a
 Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
 Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客收录</a>
 Gui, Pandora:Add, Link,, <a href="https://outflank.nl/blog/2018/08/14/html-smuggling-explained/">黑客思维</a>
-Gui, Pandora:Add, Link,, <a href="https://hackernoon.com/">hackernoon</a>
 Gui, Pandora:Add, Link,, <a href="https://web.dev/fast/">web.dev 优化教程</a>
 
 
@@ -341,10 +343,12 @@ Gui, Pandora:Add, Link,, <a href="https://css2js.dotenv.dev/">css2js</a>
 
 
 Gui, Pandora:Add, Text,  W160 ys, 宁可错过：
+Gui, Pandora:Add, Link,, <a href="https://skeletonreact.com/">骨架图Sketch生成器</a>
+Gui, Pandora:Add, Link,, <a href="https://nginxconfig.io/">生成器nginxconfig.io</a>
+Gui, Pandora:Add, Link,, <a href="https://contrast-ratio.com/">颜色对比度</a>
 Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
 Gui, Pandora:Add, Link,, <a href="https://designkiki.com/colordoo/?ref=producthunt">颜色搭配神器</a>
 Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
-Gui, Pandora:Add, Link,, <a href="https://nginxconfig.io/">生成器nginxconfig.io</a>
 Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub 镜像仓库</a>
 Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux-command 命令搜索</a>
 Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer</a>
@@ -367,6 +371,7 @@ Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">picjumbo山景</a>
 Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
+Gui, Pandora:Add, Text, gsuopingtupian, window 锁屏图片
 
 
 
@@ -410,7 +415,8 @@ Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
 Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
 Gui, Pandora:Add, Text, ganimjquery W160,新建animate.css与jquery
 Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
-Gui, Pandora:Add, Text, gfullpagepurecss W180,纯css实现swiper全屏fullpage
+; Gui, Pandora:Add, Text, gfullpagepurecss W180,纯css实现swiper全屏fullpage
+Gui, Pandora:Add, Text, gvuesuijixipai W180,vue随机播放一副纸牌
 Gui, Pandora:Add, Text, gvuedroptest W180,vue-drop-拖拽示例
 Gui, Pandora:Add, Text, gpubuliugrid W180,magic-grid瀑布流
 Gui, Pandora:Add, Text, gAccordionhtml W180,手风琴Accordion.html
@@ -586,6 +592,7 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/cros
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
 Gui, Pandora:Add, Link,, <a href="https://fangyqgk.dg.cn/driver/#/">正式预览</a>
 Gui, Pandora:Add, Link,, <a href="https://master.feiyan.com:8443/console/project/app/browse/dc/cross-border-drivers-ui?tab=history">正式部署</a>
+Gui, Pandora:Add, Link,, <a href="https://19.104.40.10:8080/ ">后台管理系统</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
