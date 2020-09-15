@@ -8121,30 +8121,42 @@ Var =
  * 推荐使用 qs： 
  * $ cnpm install qs
  * const params = qs.stringify({ 'a': 123 })
+ *
+ * cdn 方式使用：
+ * <script src="https://cdn.bootcss.com/qs/6.5.2/qs.min.js"></script>
  */
-const params = new URLSearchParams();
-params.append('a', '123');
-axios.post('http://192.168.31.97/index.php', params, {
-    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
-}).then(response => {
-    console.log(20181021221338, response)
-})
+  axios({
+    method: 'post',
+    url: 'https://19.104.40.10:8080/eventManager/api/External/updateHCGKEvent',
+    data: Qs.stringify({ 
+        infoContent: '处置内容aaaaaaaaa',
+        address: '事发地址aaaaaaaaaaaaa',
+        lon: '113.76210332995126',
+        lat: '23.02792876378438',
+        userId: '13713332652',
+    }),
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
+  }).then(response => {
+      console.log(20181021225057, response.data)
+  })
+---
+const params = new URLSearchParams()
+params.append("infoContent", "处置内容aaaaaaaaa")
+params.append("address", "事发地址aaaaaaaaaaaaa")
+params.append("lon", "113.76210332995126")
+params.append("lat", "23.02792876378438")
+params.append("userId", "13713332652")
 
-//////////////////////////////////////////////
-
-const params2 = new URLSearchParams();
-params2.append('firstName', 'Fred');
-params2.append('lastName', 'Flintstone');
 axios({
   method: 'post',
-  url: 'http://192.168.31.97/index.php',
-  data: params2,
+  url: 'https://19.104.40.10:8080/eventManager/api/External/updateHCGKEvent',
+  data: params,
   headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
 }).then(response => {
-	console.log(20181021225057, response)
+    console.log(20181021225057, response.data)
 })
 )
-code(Var)
+txtit(Var)
 return
 
 ::momentt::
@@ -11361,7 +11373,7 @@ var singeFn = function (fn, maxPollTime = 20) {
     }
   }
 }
-
+---
 var random = function (min, max) {
   if (max == null) {
     max = min;
@@ -11384,7 +11396,7 @@ console.log(20200818165019, singeRangeRadom())
 console.log(20200818165019, singeRangeRadom())
 console.log(20200818165019, singeRangeRadom())
 */
-
+---
  /*
 // 范围选择如 -100 ~ 100 强烈推荐这个函数
 var random = function(min, max) {
@@ -11407,7 +11419,7 @@ function shuffle(target) {
 // const isChecked = () => Math.random() >= .5
 parseInt(Math.random() * 10 + 1);  // 获取 1 - 10 到随机数
 )
-code(Var)
+txtit(Var)
 Return
 
 ::repeat::
@@ -12790,23 +12802,6 @@ var test = () => new Promise((resolve, reject) => setTimeout(_ => reject('fail')
 code(Var)
 return
 
-::omit::
-Var = 
-(
-// omit({ name: 'Benjy', age: 18 }, [ 'name' ]); // => { age: 18 }
-function omit(obj, fields) {
-  const shallowCopy = {
-    ...obj,
-  };
-  for (let i = 0; i < fields.length; i++) {
-    const key = fields[i];
-    delete shallowCopy[key];
-  }
-  return shallowCopy;
-}
-)
-code(Var)
-return
 
 ::rem::
 ::fuckrem::
@@ -15116,4 +15111,32 @@ Var =
 })();
 )
 code(Var)
+return
+
+::slim::
+::omit::
+::shoushenduix::
+::shoushen::
+Var =
+(
+// 瘦身对象（只留部分） ▶ slim({ name: 'Benjy', age: 18 }, ['age']) // => { age: 18 }
+// export const slim = (obj, properties = []) => properties.reduce((p, c) => (p[c] = obj[c], p), {})
+
+
+// 瘦身对象（排除异己） ▶ omit({ name: 'Benjy', age: 18 }, ['age']) // => {name: "Benjy"}
+const omit = (obj, properties = []) => Object.entries(obj).reduce((p, [k, v]) => !properties.includes(k) ? (p[k] = v, p) : p, {})
+---
+// omit({ name: 'Benjy', age: 18 }, [ 'name' ]); // => { age: 18 }
+function omit(obj, fields) {
+  const shallowCopy = {
+    ...obj,
+  };
+  for (let i = 0; i < fields.length; i++) {
+    const key = fields[i];
+    delete shallowCopy[key];
+  }
+  return shallowCopy;
+}
+)
+txtit(Var)
 return

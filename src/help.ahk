@@ -10,7 +10,32 @@ FileCreateDir, % dirpath
 name :=  dirpath . "\app.js"
 FileAppend,
 (
-console.log(%t%, )
+const httpProxy = require('http-proxy')
+  
+//创建一个代理服务
+const proxy = httpProxy.createProxyServer({
+    target: 'https://fangyqgk.dg.cn/driver/visual/',
+    // fixbug: Error: self signed certificate
+    // https://github.com/http-party/node-http-proxy/issues/1083
+    secure: false,
+})
+
+// 监听代理服务错误
+proxy.on('error', function (err) {
+    console.log('监听代理服务错误', err)
+    res.writeHead(500, { 'Content-Type': 'text/plain' })
+    res.end('监听代理服务错误')
+})
+
+proxy.on('proxyRes' , function (proxyRes, req, res) {
+    console.log('RAW Response from the target', JSON.stringify(proxyRes.headers, true, 2))
+})
+
+proxy.on('proxyReq' , function (proxyReq, req, res) {
+    console.log('RAW Request from the target', JSON.stringify(req.headers, true, 2))
+})
+
+proxy.listen(8888)
 ),  %name%
 
 
@@ -24,7 +49,7 @@ FileAppend,
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node app.js",
+    "dev": "nodemon app.js",
     "start": "node app.js"
   },
   "keywords": [],
@@ -34,6 +59,7 @@ FileAppend,
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "http-proxy": "^1.18.1",
     "lodash": "^4.17.20"
   }
 }

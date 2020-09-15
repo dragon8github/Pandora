@@ -175,6 +175,12 @@
     Menu, utilsObject, Add, Object.getOwnPropertyDescriptor({a: 123}`, 'a') 获取属性的配置, utilsHandler
     Menu, utilsObject, Add, getter / setter , utilsHandler
 
+    Menu, utilsObject, Add,, utilsHandler
+    Menu, utilsObject, Add,, utilsHandler
+
+    Menu, utilsObject, Add, 对象瘦身：omit , utilsHandler
+
+
     Menu, utilsSolution, Add, setTitle: 解决微信、QQ、闪银等内置浏览器单页应用无法刷新title的问题, utilsHandler
     Menu, utilsSolution, Add, cookie 库, utilsHandler
     Menu, utilsSolution, Add, Model 类, utilsHandler
@@ -505,6 +511,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "对象瘦身：omit") {
+_send("omit", true, true)
+return
 }
 
 if (v == "纯js导出前端数据（.json/.doc/.js）") {
@@ -1212,7 +1223,28 @@ const killerQueen = (fn = () => {}, cancel = () => {}, time = 10000) => {
         cancel()
     }
 }
+---
+/**
+ * 简单的超时关闭函数 ...
+ *
+ * const result = await killerQueen(
+ *     () => store.dispatch('SET_LOADING', true),
+ *     () => fetchDetails(params),
+ *     () => store.dispatch('SET_LOADING', false),
+ *     5000,
+ * )
+ */
+ */
+const killerQueen = async (showLoading = () => {}, fn = () => {} closeLoading = () => {}, time = 10000) => {
+  showLoading()
+  const timer = setTimeout(closeLoading, time)
+  const result = await fn()
+  clearTimeout(timer)
+  closeLoading()
+  return result
+}
 )
+txtit(Var)
 }
 
 if (v == "toggleClass") {
@@ -9108,4 +9140,66 @@ window.addEventListener('keydown', function (event) {
 })
 )
 code(Var)
+return
+
+::killer::
+::kill::
+::killerq::
+::killq::
+Var =
+(
+/**
+ * 简单的超时关闭函数 ...
+ *
+ * @param  {Function} 
+ * @param  {Function} 
+ * @param  {Number}   
+ *
+ * const close = killerQueen(
+ *   () => console.log('开启打火机'),
+ *   () => console.log('熄灭打火机'),
+ *   10000,
+ * )
+ */
+export const killerQueen = (fn = () => {}, cancel = () => {}, time = 10000) => {
+    // 先执行操作
+    fn()
+
+    // 定时炸弹
+    const timer = setTimeout(() => {
+        // 败者食尘！
+        cancel()
+        // 消除痕迹
+        cancel = () => console.warn(``Bite The Dust``)
+    }, time)
+
+    return () => {
+        // 取消炸弹
+        clearTimeout(timer)
+        // 正常调用
+        cancel()
+    }
+}
+---
+/**
+ * 简单的超时关闭函数 ...
+ *
+ * const result = await killerQueen(
+ *     () => store.dispatch('SET_LOADING', true),
+ *     () => fetchDetails(params),
+ *     () => store.dispatch('SET_LOADING', false),
+ *     5000,
+ * )
+ */
+ */
+const killerQueen = async (showLoading = () => {}, fn = () => {} closeLoading = () => {}, time = 10000) => {
+  showLoading()
+  const timer = setTimeout(closeLoading, time)
+  const result = await fn()
+  clearTimeout(timer)
+  closeLoading()
+  return result
+}
+)
+txtit(Var)
 return

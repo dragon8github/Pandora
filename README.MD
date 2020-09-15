@@ -1,7 +1,7 @@
 <p align="center">
-  <a href="http://wx3.sinaimg.cn/large/006ar8zggy1g24gjfm9m7j313f0h5wr3.jpg">
+  <a href="http://ioc-demo.biubiuonline.com/006ar8zggy1g24gjfm9m7j313f0h5wr3.jpg">
     <img
-      src="http://wx3.sinaimg.cn/large/006ar8zggy1g24gjfm9m7j313f0h5wr3.jpg"
+      src="http://ioc-demo.biubiuonline.com/006ar8zggy1g24gjfm9m7j313f0h5wr3.jpg"
       width="100%"
       height="390"
     />
@@ -30,13 +30,12 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
 将ahk编译成exe：[http://ahkcn.sourceforge.net/docs/Scripts.htm\#ahk2exe](http://ahkcn.sourceforge.net/docs/Scripts.htm#ahk2exe)
 
 
-
 ## Demo
 <p>一、通过快捷键呼出常用代码，分别演示了 右ctrl + c、 右ctrl + d、 右ctrl + a、</p>
 <p>
-  <a href="http://wx4.sinaimg.cn/large/006ar8zggy1g24gkdbzbag30ff083u0x.gif">
+  <a href="http://ioc-demo.biubiuonline.com/006ar8zggy1g24gkdbzbag30ff083u0x.gif">
     <img
-      src="http://wx4.sinaimg.cn/large/006ar8zggy1g24gkdbzbag30ff083u0x.gif"
+      src="http://ioc-demo.biubiuonline.com/006ar8zggy1g24gkdbzbag30ff083u0x.gif"
     />
   </a>
 </p>
@@ -50,11 +49,11 @@ AHK脚本编辑器推荐： [https://wyagd001.github.io/zh-cn/docs/commands/Edit
   </a>
 </p>
 
-<p>三、云代码，将代码部署在github上，该功能有利于团队效率开发。建立真正意义上的云代码库</p>
+<p>三、图片&截图转自定义代码</p>
 <p>
-  <a href="http://wx3.sinaimg.cn/large/006ar8zggy1g24gkgljh2g30f50fdqv6.gif">
+  <a href="http://ioc-demo.biubiuonline.com/pic.gif">
     <img
-      src="http://wx3.sinaimg.cn/large/006ar8zggy1g24gkgljh2g30f50fdqv6.gif"
+      src="http://ioc-demo.biubiuonline.com/pic.gif"
     />
   </a>
 </p>

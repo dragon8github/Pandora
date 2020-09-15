@@ -7538,3 +7538,130 @@ mask-size: 300px;
 )
 code(Var)
 return
+
+
+:?:css.bodong::
+:?:css.bowen::
+:?:css.wave::
+:?:css.waves::
+::bodong::
+::bowen::
+::wave::
+::waves::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+        width: 100`%;
+        height: 100`%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    // 波纹样式开始
+    $singleCenter1: 3em;
+    $singleCenter2: 6em;
+
+    .single_center {
+        width: 0px;
+        height: 0px;
+        border-radius: 100`%;
+        display: block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .single_center:after {
+        content: '';
+        position: absolute;
+        top: 50`%;
+        left: 50`%;
+        width: $singleCenter1;
+        height: $singleCenter1;
+        margin-top: - $singleCenter1 / 2;
+        margin-left: - $singleCenter1 / 2;
+        z-index: 4;
+        opacity: 0;
+        border-radius: 100`%;
+        background: rgba(15, 139, 255, 0.6);
+        -webkit-animation: halo 2s 1.5s infinite ease;
+        -moz-animation: halo 2s 1.5s infinite ease;
+        animation: halo 2s 1.5s infinite ease;
+    }
+
+    .single_center:before {
+        content: '';
+        position: absolute;
+        top: 50`%;
+        left: 50`%;
+
+        width: $singleCenter2;
+        height: $singleCenter2;
+
+        margin-top: - $singleCenter2 / 2;
+        margin-left: - $singleCenter2 / 2;
+        
+        z-index: 3;
+        opacity: 0;
+        border-radius: 100`%;
+        background: rgba(0, 132, 255, 0.3);
+        -webkit-animation: halos 2s 1s infinite ease;
+        -moz-animation: halos 2s 1s infinite ease;
+        animation: halos 2s 1s infinite ease;
+    }
+
+    @keyframes halos{
+        0`% {opacity:0;transform:scale(0.1)}
+        50`% {opacity:1}
+        100`% {opacity:0;transform:scale(1.2)}
+    }
+
+    @keyframes halo{
+        0`% {opacity:0;transform:scale(0.1)}
+        50`% {opacity:1}
+        100`% {opacity:0;transform:scale(1.2)}
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="single">
+            <div class="single_center"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // 获取第一个 <style>
+    const style = document.getElementsByTagName('style')[0]
+    // 获取第一个
+    const scss = style.innerHTML
+    // 开始编译
+    Sass.compile(scss, result => {
+        // 替换为编译好的 css
+        style.innerHTML = result.text
+    })
+</script>
+</html>
+)
+code(Var)
+return

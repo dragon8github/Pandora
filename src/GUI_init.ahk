@@ -322,7 +322,7 @@ Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
 Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客收录</a>
 Gui, Pandora:Add, Link,, <a href="https://outflank.nl/blog/2018/08/14/html-smuggling-explained/">黑客思维</a>
 Gui, Pandora:Add, Link,, <a href="https://web.dev/fast/">web.dev 优化教程</a>
-
+Gui, Pandora:Add, Link,, <a href="https://www.getrevue.co/profile/tailwind-weekly">tailwind-weekly</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
@@ -1214,6 +1214,7 @@ Gui, Pandora:Add, Link,, <a href="https://mertjf.github.io/tailblocks/">tailbloc
 Gui, Pandora:Add, Link,, <a href="https://tailwindtemplates.io/cards/">template</a>
 Gui, Pandora:Add, Link,, <a href="https://merakiui.com/headers/">merakiui</a>
 Gui, Pandora:Add, Link,, <a href="https://javisperez.github.io/tailwindcolorshades/#/?Valencia=E24E42&tv=1">tailwind 颜色生成器</a>
+Gui, Pandora:Add, Link,, <a href="https://stitches.hyperyolo.com/">tailwind 界面生成器</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, bootstrap:
