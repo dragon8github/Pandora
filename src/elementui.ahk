@@ -1,4 +1,48 @@
-﻿::el-color::
+﻿::el-time::
+::el-date::
+Var =
+(
+import {  DatePicker } from 'element-ui'
+Vue.component(DatePicker.name, DatePicker)
+---
+<template>
+<el-date-picker v-model="time" type="date" placeholder="选择日期"> </el-date-picker>
+</template>
+
+<script>
+
+const dateYYYYMMDDHHmmss =  t => {
+    const date = new Date(t)
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const hours = date.getHours()
+    const minu = date.getMinutes()
+    const second = date.getSeconds()
+    const arr = [month, day, hours, minu, second].map((item, index) => item < 10 ? '0' + item : item)
+    return year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4]
+}
+
+export default {
+  data() {
+    return {
+          time: dateYYYYMM(),
+      }
+  },
+  watch: {
+      time: {
+          async handler(newV, oldV) {
+              this.time = newV ? dateYYYYMM(newV) : dateYYYYMM()
+          }
+      }
+  },
+}
+</script>
+)
+code(Var)
+return
+
+::el-color::
 Var =
 (
 <el-color-picker v-model="master.option.backgroundColor" @change='changeHandler' @active-change='activeChange' show-alpha></el-color-picker>

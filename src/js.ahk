@@ -7677,6 +7677,7 @@ destroyed () {
     document.addEventListener('mouseup', _clickOutSide)
 }
 ---
+
 /**
  * 示例:
  * 
@@ -7686,11 +7687,22 @@ destroyed () {
  *     // 取消事件本身
  *     cancel()
  * })
+ * 
+ *  clickOutSide('.pctable1', cancel => {
+ *    this.close()
+ *    this.cancel = cancel
+ *  }, (e) => {
+ *      // 是否点击了「时间选择器」相关的按钮？
+ *      const isClickDate = e.path.map(_ => _.className).some(_ => _ && _.includes('el-date'))
+ *      // 只有不是的情况下，才允许关闭。
+ *      return isClickDate === false
+ *  })
  */
-export const clickOutSide = (className, fn) => {
+export const clickOutSide = (className, fn, shouldCloseRule = () => true) => {
   const _clickOutSide = e => {
+    const el = document.querySelector(className)
     // 如果点击的不是指定的元素，那么执行回调，并且取消这个事件本身
-    if (document.querySelector(className).contains(e.target) === false) {
+    if (el && el.contains(e.target) === false && shouldCloseRule(e)) {
        // 执行函数，并且注入取消的回调
        fn(() => document.removeEventListener('mouseup', _clickOutSide))
     }
@@ -10194,7 +10206,13 @@ Appskey & d::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
-debugger;
+try {
+    console.log(%t%, )
+    debugger
+} catch(e) {
+    console.log(%t%, e)
+    debugger
+}
 )
 code(Var)
 return
@@ -11050,6 +11068,8 @@ return
 ::getDate::
 ::date::
 ::today::
+::yyyy::
+::yyyymmmdd::
 Var = 
 (
 08:30：
@@ -11207,6 +11227,15 @@ const getDate = (function () {
 
   return () => ({ date, year, month, day })
 }())
+---
+const dateYYYYMM = (t = +new Date) => {
+  const date = new Date(t)
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const arr = [month, day].map((item, index) => item < 10 ? '0' + item : item)
+  return year + '-' + arr[0] + '-' + arr[1]
+}
 )
 txtit(Var, "|||")
 return

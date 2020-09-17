@@ -8274,7 +8274,7 @@ const iframe = document.querySelector('iframe')
 const iframeDoc = iframe.contentWindow.document
 
 // content
-const HTML = `<div class="frame-root">123</div>`
+const HTML = ``<div class="frame-root">123</div>``
 
 // 经典的 iframe 修改三部曲，更新 iframe 的内容为当前页面内容
 iframeDoc.open(); iframeDoc.write(html); iframeDoc.close();
@@ -9149,7 +9149,7 @@ return
 Var =
 (
 /**
- * 简单的超时关闭函数 ...
+ * 第一炸弹：启动一个loading，超时自动关闭。
  *
  * @param  {Function} 
  * @param  {Function} 
@@ -9182,23 +9182,24 @@ export const killerQueen = (fn = () => {}, cancel = () => {}, time = 10000) => {
 }
 ---
 /**
- * 简单的超时关闭函数 ...
+ * 杀手皇后第二炸弹：自动关闭，超时关闭，报错关闭
  *
- * const result = await killerQueen(
+ * const result = await killerQueen2(
  *     () => store.dispatch('SET_LOADING', true),
  *     () => fetchDetails(params),
  *     () => store.dispatch('SET_LOADING', false),
  *     5000,
  * )
  */
- */
-const killerQueen = async (showLoading = () => {}, fn = () => {} closeLoading = () => {}, time = 10000) => {
-  showLoading()
-  const timer = setTimeout(closeLoading, time)
-  const result = await fn()
-  clearTimeout(timer)
-  closeLoading()
-  return result
+export const killerQueen2 = async (showLoading = () => {}, fn = () => {}, closeLoading = () => {}, time = 10000) => {
+    try {
+        showLoading()
+        const timer = setTimeout(closeLoading, time)
+        const result = await fn()
+        clearTimeout(timer)
+        closeLoading()
+        return result
+    } catch (err) {}
 }
 )
 txtit(Var)

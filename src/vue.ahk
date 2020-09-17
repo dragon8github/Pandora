@@ -4214,6 +4214,8 @@ props: {
 code(Var)
 return
 
+::eleui::
+::ele::
 ::element::
 ::elementui::
 Var =
@@ -4223,6 +4225,8 @@ import ElementUI from 'element-ui'
 
 Vue.use(ElementUI)
 import 'element-ui/lib/theme-chalk/index.css'
+
+---
 
 1、需要安装
 
@@ -4248,7 +4252,7 @@ cnpm install babel-plugin-component -D
     }]
    ]
 }
-
+---
 3、使用教程：
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -4274,8 +4278,10 @@ Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$prompt = MessageBox.prompt
+---
+electron
 )
-code(Var)
+txtit(Var)
 return
 
 ::window.back::

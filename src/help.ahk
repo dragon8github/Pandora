@@ -131,7 +131,7 @@ height: %fuck_hem%em;
 
 @include bg(rem(%fuck_w2%), rem(%fuck_h2%), '~@/assets/%zipname%');
 ---
-%base64%
+<img src="data:image/png;base64,%base64% />
 )
 txtit(Var)
 }
@@ -801,14 +801,14 @@ jetbrains
 code(Var)
 return
 
-::el::
-::ele::
-Var =
-(
-electron
-)
-cs(Var)
-return
+; ::el::
+; ::ele::
+; Var =
+; (
+; electron
+; )
+; cs(Var)
+; return
 
 ; 屏蔽半角符
 +Space::
@@ -1058,8 +1058,36 @@ return
 Var =
 (
 Sketch
+---
+<svg role="img" aria-labelledby="loading-aria" viewBox="0 0" preserveAspectRatio="none">
+    <title id="loading-aria">Loading...</title>
+    <rect x="0" y="0" width="100`%" height="100`%" clip-path="url(#clip-path)" style='fill: url("#fill");'></rect>
+    <defs>
+        <clipPath id="clip-path">
+            <circle cx="10" cy="20" r="8" />
+            <rect x="25" y="15" rx="5" ry="5" width="80`%" height="10" />
+            <circle cx="10" cy="50" r="8" />
+            <rect x="25" y="45" rx="5" ry="5" width="80`%" height="10" />
+            <circle cx="10" cy="80" r="8" />
+            <rect x="25" y="75" rx="5" ry="5" width="80`%" height="10" />
+            <circle cx="10" cy="110" r="8" />
+            <rect x="25" y="105" rx="5" ry="5" width="80`%" height="10" />
+        </clipPath>
+        <linearGradient id="fill">
+            <stop offset="0.599964" stop-color="#f3f3f3" stop-opacity="1">
+                <animate attributeName="offset" values="-2; -2; 1" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+            <stop offset="1.59996" stop-color="#ecebeb" stop-opacity="1">
+                <animate attributeName="offset" values="-1; -1; 2" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+            <stop offset="2.59996" stop-color="#f3f3f3" stop-opacity="1">
+                <animate attributeName="offset" values="0; 0; 3" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+        </linearGradient>
+    </defs>
+</svg>
 )
-code(Var)
+txtit(Var)
 return
 
 ::wancheng::
@@ -2696,6 +2724,7 @@ cs("Typescript")
 return
 
 ::0-9::
+::1-9::
 cs("0123456789")
 return
 
