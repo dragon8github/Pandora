@@ -1,4 +1,210 @@
-﻿::jsdom::
+﻿::pachong::
+Var =
+(
+// npm i request cheerio
+const request = require('request');
+const cheerio = require('cheerio');
+
+request('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?range=10', function (err, response, body) {
+  if (err) throw new Error(err.message);
+  let $ = cheerio.load(response.body)
+  let trs = $("#ContentPlaceHolder1_resultrows tr");
+  let myarr = [];
+  trs.each(function (i, tr) {
+      var td = $(tr).find('td')
+      let Rank = td.eq(0).text();
+      let Address = td.eq(1).text();
+      let Quantity = td.eq(2).text();
+      let Percentage = td.eq(3).text();
+      myarr.push({Rank, Address, Quantity, Percentage});
+  });
+  console.log("简单成狗了:", myarr);
+});
+---
+// npm i request cheerio iconv-lite
+const request = require('request');
+const cheerio = require('cheerio');
+const iconv = require('iconv-lite');
+
+request({
+  url: 'http://roll.mil.news.sina.com.cn/col/zgjq/index.shtml',
+  encoding : null // raw buffer
+}, function (err, response, body) {
+  if (err) throw new Error(err.message);
+  var buffer = response.body;
+  var str = iconv.decode(buffer, 'GBK').toString();
+  let $ = cheerio.load(str)
+  let lis = $(".linkNews li");
+  let myarr = [];
+  lis.each(function (i, li) {
+      var a = $(li).find('a')
+      var title = a.text()
+      myarr.push({ title });
+  });
+  console.log("简单成狗了:", myarr);
+});
+---
+// npm i request cheerio iconv-lite
+const request = require('request');
+const cheerio = require('cheerio');
+const iconv = require('iconv-lite');
+
+const _request = (url, cb, charset = 'utf8') => {
+  request({ url: url, encoding : null }, function (err, response, body) {
+    if (err) throw new Error(err.message);
+    var buffer = response.body;
+    var str = iconv.decode(buffer, charset).toString();
+    let $ = cheerio.load(str)
+    cb && cb($);
+  });
+}
+
+_request('http://roll.mil.news.sina.com.cn/col/zgjq/index.shtml', function ($) {
+  let lis = $(".linkNews li");
+  let myarr = [];
+  lis.each(function (i, li) {
+      var a = $(li).find('a')
+      var title = a.text()
+      myarr.push({ title });
+  });
+  console.log(myarr);
+}, 'GBK')
+---
+# python 3.x 开始自带了pip，如果没有请自信百度安装。
+# pip install beautifulsoup4 requests
+from bs4 import BeautifulSoup
+import requests
+
+res = requests.get('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?range=10')
+res.encoding = 'gbk'
+soup = BeautifulSoup(res.text, 'html.parser')
+table = soup.select('#ContentPlaceHolder1_resultrows table tr')
+myarr = []
+for tr in table:
+  td = tr.select('td')
+  if len(td) > 0:
+    Rank = td[0].text;
+    Address = td[1].text;
+    Quantity = td[2].text;
+    Percentage = td[3].text;
+    myarr.append({"Rank": Rank, "Address": Address, "Quantity": Quantity, "Percentage": Percentage})
+print(myarr)
+)
+txtit(Var)
+return
+
+::waiguan::
+::waiguanzhemoshi::
+::module::
+::__module__::
+::__module::
+Var =
+(
+const __module__ = (function() {
+    const _private = {
+        i: 5,
+        get() {
+            console.log("current value:" + this.i)
+        },
+        set(val) {
+            this.i = val
+        },
+        run() {
+            console.log("running")
+        },
+        jump() {
+            console.log("jumping")
+        }
+    }
+
+    return {
+        facade(args) {
+            _private.set(args.val)
+
+            _private.get()
+
+            if (args.run) {
+                _private.run()
+            }
+        }
+    }
+}())
+
+
+// Outputs: "current value: 10" and "running"
+__module__.facade({ run: true, val: 10 })
+---
+const __module__ = (function() {
+    const __private = {
+        run(...args) {
+            console.log('running', ...args)
+        },
+        jump(...args) {
+            console.log('jumping', ...args)
+        },
+        attack(...args) {
+            console.log('attack', ...args)
+        },
+        defense (...args) {
+            console.log('defense', ...args)
+        },
+    }
+
+    return {
+        facade(commander, ...args) {
+            __private[commander](...args)
+        }
+    }
+}())
+
+
+__module__.facade('run', { val: 10 })
+__module__.facade('jump', { val: 2 })
+__module__.facade('attack', { val: 20 })
+__module__.facade('defense', { val: 5 })
+)
+txtit(Var)
+return
+
+::chain::
+::chai::
+::kexuanlian::
+Var =
+(
+// https://twitter.com/jchiatt/status/1140603584914055168
+function Calculator(val = 0) {
+  this.val = val
+}
+
+Calculator.prototype.add = function (x) {
+  this.val += x
+  return this
+}
+
+Calculator.prototype.multiply = function (x) {
+  this.val *= x
+  return this
+}
+
+Calculator.prototype.divide = function (x) {
+  this.val /= x
+  return this
+}
+
+Calculator.prototype.result = function (x) {
+  return this.val
+}
+
+var calc = new Calculator()
+
+const result = calc.add(5).multiply(5).add(5).multiply(5).divide(3).result()
+
+console.log(20200919211223, result)
+)
+txtit(Var)
+return
+
+::jsdom::
 Var =
 (
 const jsdom = require("jsdom")
@@ -3013,6 +3219,59 @@ function colorReverse(oldColor){
    return str.substring(str.length - 6, str.length);
 }
 colorReverse('#000000') // #ffffff
+---
+$target-colors: (green-color: #789d34, red-color: #ac3d39, blue-color: #236367, );
+
+$tones: 10, 20, 30, 40, 50, 60, 70, 80, 90;
+
+@mixin generate-color-var($key, $value) {
+   --#{$key}: #{$value};
+   --#{$key}-rgb: #{red($value)},#{green($value)},#{blue($value)};
+   @each $tone in $tones {
+       $scale-value: adjust-color($value, $lightness: $tone / 2 * 1`%);
+       --#{$key}-#{$tone}: #{$scale-value};
+       --#{$key}-#{$tone}-rgb: #{red($scale-value)},#{green($scale-value)},#{blue($scale-value)};
+   }
+}
+
+:root {
+   @each $key, $value in $target-colors {
+       @include generate-color-var($key, $value);
+   }
+}
+
+.green {background: var(--green-color); }
+.green-10 {background: var(--green-color-10); }
+.green-20 {background: var(--green-color-20); }
+.green-30 {background: var(--green-color-30); }
+.green-40 {background: var(--green-color-40); }
+.green-50 {background: var(--green-color-50); }
+.green-60 {background: var(--green-color-60); }
+.green-70 {background: var(--green-color-70); }
+.green-80 {background: var(--green-color-80); }
+.green-80 {background: var(--green-color-90); }
+
+.red {background: var(--red-color); }
+.red-10 {background: var(--red-color-10); }
+.red-20 {background: var(--red-color-20); }
+.red-30 {background: var(--red-color-30); }
+.red-40 {background: var(--red-color-40); }
+.red-50 {background: var(--red-color-50); }
+.red-60 {background: var(--red-color-60); }
+.red-70 {background: var(--red-color-70); }
+.red-80 {background: var(--red-color-80); }
+.red-80 {background: var(--red-color-90); }
+
+.blue {background: var(--blue-color); }
+.blue-10 {background: var(--blue-color-10); }
+.blue-20 {background: var(--blue-color-20); }
+.blue-30 {background: var(--blue-color-30); }
+.blue-40 {background: var(--blue-color-40); }
+.blue-50 {background: var(--blue-color-50); }
+.blue-60 {background: var(--blue-color-60); }
+.blue-70 {background: var(--blue-color-70); }
+.blue-80 {background: var(--blue-color-80); }
+.blue-80 {background: var(--blue-color-90); }
 )
 txtit(Var)
 return
@@ -3499,6 +3758,8 @@ return
 ::is-mobile::
 Var =
 (
+const isMobile = () => navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+---
 function isMobile (ua) {
   if (!ua && typeof navigator != 'undefined') ua = navigator.userAgent;
   if (ua && ua.headers && typeof ua.headers['user-agent'] == 'string') {
@@ -10459,6 +10720,16 @@ export const wait = async (fn, t = 0) => {
     // 返回
     return new Promise((resolve, reject) => setTimeout(() => resolve(result), intervalTime))
 }
+---
+/**
+ * 延迟工具，必须配合 async/await使用 ...
+ *
+    (async function(){
+        await delay(1000)
+        console.log('test')
+    }())
+ */
+export const delay = t => new Promise((resolve, reject) => setTimeout(() => resolve(t), t))
 )
 txtit(Var)
 return
@@ -10501,9 +10772,9 @@ Return
 ::()()2::
 Var = 
 (
-;(async function(){
+;(async () => {
   
-}())
+})();
 )
 code(Var)
 SendInput, {up}{tab}
@@ -11910,8 +12181,70 @@ Var =
 for (const a of gen) {
     console.log(a);
 }
+---
+class RandomNumberGenerator {
+  [Symbol.iterator]() {
+    return {
+      next: () => {
+        return { value: Math.random() };
+      },
+    };
+  }
+}
+
+const rand = new RandomNumberGenerator();
+
+for (const random of rand) {
+  console.log(random);
+  if (random < 0.1) break;
+}
+---
+const simulateDelay = (val, delay) =>
+  new Promise((resolve) => setTimeout(() => resolve(val), delay));
+
+class RandomNumberGenerator {
+  [Symbol.asyncIterator]() {
+    return {
+      next: async () => {
+        return simulateDelay({ value: Math.random() }, 200); //return the value after 200ms of delay
+      },
+    };
+  }
+}
+
+const rand = new RandomNumberGenerator();
+
+;(async () => {
+  for await (const random of rand) {
+    console.log(random);
+    if (random < 0.1) break;
+  }
+})();
+---
+// 不管是 class 还是 function ，只要返回一个 [Symbol.iterator] 套路即可
+// https://medium.com/front-end-weekly/thank-u-symbol-iterator-next-aef9f09ff78
+const reverse = arr => ({
+  [Symbol.iterator]() {
+    let i = arr.length;
+    return {
+      next: () => ({
+        value: arr[--i],
+        done: i < 0
+      })
+    }
+  }
+})
+
+let nums = [1, 2, 3, 4, 5]
+
+for (let num of reverse(nums)) {
+  // ...
+}
+
+console.log(nums)               // [1, 2, 3, 4, 5]
+console.log([...reverse(nums)]) // [5, 4, 3, 2, 1]
 )
-code(Var)
+txtit(Var)
 return
 
 ::forin::
@@ -13790,37 +14123,49 @@ return
 ::jsbinary::
 Var =
 (
-// var count = 4000000000
-// var current = 2
-// var time = 0
-// while(!(current >= count)) {
-// 	current = current * 2
-// 	++time
-// }
-// console.log(`使用二分法计算${count}，最多只需要的： ${++time}次` )
+// https://dev.to/seanwelshbrown/writing-a-binary-search-algorithm-in-javascript-5fa6
+function binarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
 
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+
+    if (arr[mid] === target) return mid;
+
+    if (target < arr[mid]) {
+      right = mid - 1;
+    } else {
+      left = mid + 1;
+    }
+  }
+
+  return "Target Not Found"
+  // could also return -1, false, undefined, etc
+}
+---
 // 使用二分法的前提是，必须是有序数组
 var binary_search = function (list, target) {
-	var low = 0
-	var high = list.length
+  var low = 0
+  var high = list.length
 
-	while(!(low > high)) {
-		var mid = parseInt((low + high) / 2)
-		var guess = list[mid]
-		if (guess === target) {
-			return mid
-		} else if (guess > target){
-			high = mid - 1
-		} else {
-			low = mid + 1
-		}
-	}
-	return null
+  while(!(low > high)) {
+    var mid = parseInt((low + high) / 2)
+    var guess = list[mid]
+    if (guess === target) {
+      return mid
+    } else if (guess > target){
+      high = mid - 1
+    } else {
+      low = mid + 1
+    }
+  }
+  return null
 }
 
 console.log(binary_search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5))
 )
-code(Var)
+txtit(Var)
 return
 
 ::jsstack::

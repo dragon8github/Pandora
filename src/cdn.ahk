@@ -1,9 +1,11 @@
-﻿::cdn-bu::
+﻿::cdn-buerma::
+::cdn-bu::
 ::cdn-buma::
 ::cdn-woerma::
 Var =
 (
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+<!-- https://bulma.zcopy.site/documentation/layout/container/ -->
+<link rel="stylesheet" href="https://lib.baomitu.com/bulma/0.9.0/css/bulma.min.css">
 )
 code(Var)
 return

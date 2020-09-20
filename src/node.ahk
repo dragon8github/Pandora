@@ -2326,24 +2326,13 @@ module.exports = app => {
 code(Var)
 return
 
+
+
+::socket::
 ::websocket::
 ::webso::
 Var =
 (
-const WebSocket = require('ws')
-
-const WS = new WebSocket.Server({ port: 1234 })
-
-WS.on('connection', ws => {
-
-    ws.on('message', msg => {
-        ws.send('i received: ' + msg)
-    })
-
-    // 建立连接后，主动发送第一条初始化消息
-    ws.send('server OK')
-})
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2366,6 +2355,152 @@ WS.on('connection', ws => {
     })
 </script>
 </html>
+---
+let ws = new WebSocket('wss://19.104.40.10:8080/ws/ioc/441902')
+
+console.log('这是最初的 websocket 对象', ws)
+
+// 大为接口 - 发送定位事件
+export const showEvent = content => {
+    // fixbug: 大为的 websocket 很容易断，所以每次发送的时候都要验证一下，如果断开了，就要重新连接再发送。
+    if (ws.readyState != ws.OPEN) {
+        console.log('websocket 已断开')
+        ws = new WebSocket('wss://19.104.40.10:8080/ws/ioc/441902')
+        console.log('这是新的 websocket 对象', ws)
+        ws.addEventListener('open', () => {
+            ws.send(JSON.stringify({ userid: '13713332852', unitid: '441902', MethodsName: 'showEvent', content }))
+        })
+    } else {
+        ws.send(JSON.stringify({ userid: '13713332852', unitid: '441902', MethodsName: 'showEvent', content }))
+    }
+}
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {}
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='(item, index) in items' :key='item'>{{ item }}</li>
+        </ul>
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        items: []
+    },
+    methods: {
+        initWebSocket() {
+            this.websock = new WebSocket("ws://api/websocket/total/")
+            this.websock.onopen = this.websocketonopen;
+            this.websock.onerror = this.websocketonerror;
+            this.websock.onmessage = this.websocketonmessage;
+            this.websock.onclose = this.websocketclose;
+        },
+        websocketonopen() {
+            console.log("WebSocket连接成功");
+        },
+        websocketonerror: function(e) {
+            console.log("WebSocket连接发生错误");
+        },
+        websocketonmessage: function(e) {
+            var da = JSON.parse(e.data);
+            console.log(da);
+            this.items.unshift(da);
+        },
+        websocketclose: function(e) {
+            console.log("connection closed (" + e.code + ")");
+        }
+    },
+    created() {
+        this.initWebSocket()
+    },
+    destroyed() {
+        this.websocketclose();
+    },
+})
+
+/* 
+如果是vue 的话，一般地址是会用 proxyTable改写的。所以是这样：
+proxyTable: {
+    '/api': {
+        // 我要请求的地址
+        target: 'http://12345v2.alltosea.com:6080/',  
+        //是否跨域 
+        changeOrigin: true, 
+        pathRewrite: {
+          '^/api': '/api'
+        }
+    }
+},
+
+methods: {
+      initWebSocket() {
+          this.websock = new WebSocket("ws://12345v2.alltosea.com:6080/api/websocket/total/")
+          this.websock.onopen = this.websocketonopen;
+          this.websock.onerror = this.websocketonerror;
+          this.websock.onmessage = this.websocketonmessage;
+          this.websock.onclose = this.websocketclose;
+      },
+      websocketonopen() {
+          console.log("WebSocket连接成功");
+      },
+      websocketonerror: function(e) {
+          console.log("WebSocket连接发生错误");
+      },
+      websocketonmessage: function(e) {
+          var da = JSON.parse(e.data);
+          console.log(da);
+          // this.items.unshift(da);
+      },
+      websocketclose: function(e) {
+          console.log("connection closed (" + e.code + ")");
+      }
+  },
+  created() {
+      this.initWebSocket()
+  },
+  destroyed() {
+      this.websocketclose();
+  },
+ */
+</script>
+</html>
+---
+// 请注意，这里是 nodejs 的语法，html websocket 的语法并不适用。
+// 请注意，这里是 nodejs 的语法，html websocket 的语法并不适用。
+// 请注意，这里是 nodejs 的语法，html websocket 的语法并不适用。
+// 请注意，这里是 nodejs 的语法，html websocket 的语法并不适用。
+const WebSocket = require('ws')
+
+const WS = new WebSocket.Server({ port: 1234 })
+
+WS.on('connection', ws => {
+
+    ws.on('message', msg => {
+        ws.send('i received: ' + msg)
+    })
+
+    // 建立连接后，主动发送第一条初始化消息
+    ws.send('server OK')
+})
 )
 txtit(Var)
 return

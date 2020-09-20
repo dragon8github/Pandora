@@ -2484,37 +2484,6 @@ Send, {Right 7}
 Send, +{right 4}
 return
 
-::txtit::
-::vartxt::
-::ahktxt::
-::ahktxtit::
-Var =
-(
-Var = 
-(
-<template>
-
-</template>
----
-<script>
-  export default {
-    data() {
-      return {
-        
-      };
-    }
-  };
-</script>
----
-<style lang="scss" scoped>
-
-
-</style>
-`)
-txtit(Var)
-)
-code(Var)
-return
 
 ::``````::
 Var =

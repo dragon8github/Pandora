@@ -151,121 +151,6 @@ Var =
 code(Var)
 return
 
-::socket::
-Var =
-(
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
-    <style>
-    html,
-    body {
-        margin: 0;
-        padding: 0;
-    }
-
-    #app {}
-    </style>
-</head>
-
-<body>
-    <div id="app">
-        <ul>
-            <li v-for='(item, index) in items' :key='item'>{{ item }}</li>
-        </ul>
-    </div>
-</body>
-<script>
-var vue = new Vue({
-    el: '#app',
-    data: {
-        items: []
-    },
-    methods: {
-        initWebSocket() {
-            this.websock = new WebSocket("ws://api/websocket/total/")
-            this.websock.onopen = this.websocketonopen;
-            this.websock.onerror = this.websocketonerror;
-            this.websock.onmessage = this.websocketonmessage;
-            this.websock.onclose = this.websocketclose;
-        },
-        websocketonopen() {
-            console.log("WebSocket连接成功");
-        },
-        websocketonerror: function(e) {
-            console.log("WebSocket连接发生错误");
-        },
-        websocketonmessage: function(e) {
-            var da = JSON.parse(e.data);
-            console.log(da);
-            this.items.unshift(da);
-        },
-        websocketclose: function(e) {
-            console.log("connection closed (" + e.code + ")");
-        }
-    },
-    created() {
-        this.initWebSocket()
-    },
-    destroyed() {
-        this.websocketclose();
-    },
-})
-
-/* 
-如果是vue 的话，一般地址是会用 proxyTable改写的。所以是这样：
-proxyTable: {
-    '/api': {
-        // 我要请求的地址
-        target: 'http://12345v2.alltosea.com:6080/',  
-        //是否跨域 
-        changeOrigin: true, 
-        pathRewrite: {
-          '^/api': '/api'
-        }
-    }
-},
-
-methods: {
-      initWebSocket() {
-          this.websock = new WebSocket("ws://12345v2.alltosea.com:6080/api/websocket/total/")
-          this.websock.onopen = this.websocketonopen;
-          this.websock.onerror = this.websocketonerror;
-          this.websock.onmessage = this.websocketonmessage;
-          this.websock.onclose = this.websocketclose;
-      },
-      websocketonopen() {
-          console.log("WebSocket连接成功");
-      },
-      websocketonerror: function(e) {
-          console.log("WebSocket连接发生错误");
-      },
-      websocketonmessage: function(e) {
-          var da = JSON.parse(e.data);
-          console.log(da);
-          // this.items.unshift(da);
-      },
-      websocketclose: function(e) {
-          console.log("connection closed (" + e.code + ")");
-      }
-  },
-  created() {
-      this.initWebSocket()
-  },
-  destroyed() {
-      this.websocketclose();
-  },
- */
-</script>
-</html>
-)
-code(Var)
-return
-
 ::css.table::
 ::table::
 Var =
@@ -739,11 +624,11 @@ Var := ajax("https://raw.githubusercontent.com/cbracco/html5-test-page/master/in
 code(Var)
 return
 
-::div#box::
-::divbox::
-::boxdiv::
-::div.box::
-::box.div::
+:?:div#box::
+:?:divbox::
+:?:boxdiv::
+:?:div.box::
+:?:box.div::
 Var =
 (
 <div id='box' style='position: absolute;top: 0;left: 0;background:red; width: 10px; height: 10px; border-radius:50`%'></div>
@@ -1693,6 +1578,7 @@ code(Var)
 Return
 
 ::nocache::
+Var =
 (
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />  
 <!-- HTTP 1.1 -->  
@@ -1703,6 +1589,7 @@ Return
 <meta http-equiv="expires" content="0">  
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />  
 )
+code(Var)
 Return
 
 ::art::

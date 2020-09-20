@@ -465,38 +465,33 @@ Gui, Pandora:Add, Text, gdataSetBar W190, 新建.dataSet.html（柱状图）
 Gui, Pandora:Add, Text, gdataSetBar2 W190, 新建.dataSet2.html（双柱状图）
 Gui, Pandora:Add, Text, gfunnelhtml W190, 新建.funnel.html（漏斗图）
 Gui, Pandora:Add, Text, gdatasetfunnel W210, 新建.datasetfunnel.html（漏斗图）
-Gui, Pandora:Add, Text, gechartsleidatu W160, echarts雷达图.html
-Gui, Pandora:Add, Text, gechartciyunHTML W160, echarts词云黑科技.html
-Gui, Pandora:Add, Text, gechartsqipaodongtai W180, echarts 气泡动态大小.html
+Gui, Pandora:Add, Text, gechartsleidatu W160, 新建 echarts 雷达图
+Gui, Pandora:Add, Text, gechartciyunHTML W160, 新建 echarts 词云黑科技
+Gui, Pandora:Add, Text, gechartsqipaodongtai W180, 新建 echarts 气泡动态大小
 
 
-Gui, Pandora:Add, Text, gNodeHttp W140 ys x+60, 新建nodejs http
-Gui, Pandora:Add, Text, gNewNodePachong W140, 新建nodejs爬虫模板
-Gui, Pandora:Add, Text, gNewNodegbkPachong W200, 新建nodejs(gbk/gb2312)爬虫模板
-Gui, Pandora:Add, Text, gNewNodefengzhuangPachong W200, 新建nodejs(封装版)爬虫模板
-Gui, Pandora:Add, Text, gNewPyhtonPachong W140, 新建python爬虫模板
-Gui, Pandora:Add, Text, gNewNodejsSequelize W190, 新建nodejs-sequelize-mysql模板
-Gui, Pandora:Add, Text, gNewNodejsRenamechName W190, 新建nodejs批量改名中文模板
-Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
-Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
-Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
-Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
-; Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
-; Gui, Pandora:Add, Text, gtianditujuhetuhtml ,新建天地图聚合图.html
+Gui, Pandora:Add, Text, gbasicbaiduditu W160 ys x+60, 新建基础百度地图.html
 Gui, Pandora:Add, Text, gmapVbaiduhtml W160, 新建百度地图 + mapV.html
+Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
+Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
+Gui, Pandora:Add, Text, gyanzhengzuobiaodian1 W180, 验证坐标点是否在多边形内
+Gui, Pandora:Add, Text, gyanzhengzuobiaodian2 W180, 验证两个多边形是否相交
+Gui, Pandora:Add, Text, gbaidunidili W180,百度地图坐标转地理位置.html
+Gui, Pandora:Add, Text, gbaiduziyouhuizhi W180,百度地图自由绘制模式.html
 Gui, Pandora:Add, Text, gbaidudituSearchInfoWindow W180, 百度地图InfoWindow和Tip.html
 Gui, Pandora:Add, Text, gbaidujuhe110 W180, 百度地图聚合图.html
 Gui, Pandora:Add, Text, gquuyguihua W180, 百度地图区域规划.html
 Gui, Pandora:Add, Text, gmapv2fuckhtml W160, 新建 mapV文本+图形.html
 Gui, Pandora:Add, Text, gmapv2fuckhtml2 W160, 新建 mapV文本+图形2.html
 
+Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
+Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
+Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
+Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 
-Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
-Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
-Gui, Pandora:Add, Text, gyanzhengzuobiaodian1 W180, 验证坐标点是否在多边形内
-Gui, Pandora:Add, Text, gyanzhengzuobiaodian2 W180, 验证两个多边形是否相交
-Gui, Pandora:Add, Text, gbaidunidili W160,百度坐标转地理位置.html
-Gui, Pandora:Add, Text, gbaiduziyouhuizhi W160,百度地图自由绘制模式.html
+
+; Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
+; Gui, Pandora:Add, Text, gtianditujuhetuhtml ,新建天地图聚合图.html
 
 
 Gui, Pandora:Add, Text, gimgSearchhtml W160 ys x+60, 图片搜索imageSearch
@@ -590,7 +585,7 @@ Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/proje
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/56/interface/api/2435">yapi</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/cross-border-drivers">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
-Gui, Pandora:Add, Link,, <a href="https://fangyqgk.dg.cn/driver/#/">正式预览</a>
+Gui, Pandora:Add, Link,, <a href="http://localhost:8080/driver/#/pcDriver">正式预览</a>
 Gui, Pandora:Add, Link,, <a href="https://master.feiyan.com:8443/console/project/app/browse/dc/cross-border-drivers-ui?tab=history">正式部署</a>
 Gui, Pandora:Add, Link,, <a href="https://19.104.40.10:8080/ ">后台管理系统</a>
 

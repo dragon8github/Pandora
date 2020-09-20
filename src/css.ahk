@@ -127,6 +127,7 @@
     Menu, cssknow, Add, Calc()与background-position数学表达式, CssHandler
 
     ; @1
+    Menu, CssMenu, Add, CSS 生成配置配色方案, CssHandler
     Menu, CssMenu, Add, @apply 组合工具, CssHandler
     Menu, CssMenu, Add, @mixins 渐变色字体, CssHandler
     Menu, CssMenu, Add, 极简的页面加载动画：pageload, CssHandler
@@ -316,6 +317,11 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "CSS 生成配置配色方案") {
+_send("css.gen", true, true)
+return
 }
 
 if (v == "动感交互按钮") {
@@ -4716,9 +4722,6 @@ z-index: 199307100337`;
 )
 Return
 
-::box::
-    SendInput,box-sizing: border-box`;
-Return
 
 ::flexw::
 Var = 
@@ -7446,12 +7449,18 @@ const minify = (css = '') => css.replace(/(\W)\s+/g, "$1").replace(/\s(\W+)/g, "
 code(Var)
 return
 
-::scss.gen::
-::scss.build::
-::gen.css::
-::css.build::
-::scss.gen::
-::scss.build::
+::scssgen::
+::cssgen::
+:?:css.gen::
+:?:scss.gen::
+:?:scss.build::
+:?:gen.css::
+:?:css.build::
+:?:scss.gen::
+:?:scss.build::
+:?:scss.color::
+:?:css.color::
+:?:sass.color::
 Var =
 (
 $target-colors: (green-color: #789d34, red-color: #ac3d39, blue-color: #236367, );
@@ -7507,7 +7516,7 @@ $tones: 10, 20, 30, 40, 50, 60, 70, 80, 90;
 .blue-80 {background: var(--blue-color-80); }
 .blue-80 {background: var(--blue-color-90); }
 )
-code(Var)
+txtit(Var)
 return
 
 ::scss.for::

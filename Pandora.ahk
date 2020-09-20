@@ -65,6 +65,7 @@ global __ALTCTRL__ := []
 #Include src/vue.ahk              ; Vue
 #Include src/arr.ahk              ; array
 #Include src/node.ahk             ; nodejs 
+#Include src/html.ahk             ; HTML    
 #Include src/jsutils.ahk          ; jsutils
 #Include src/js.ahk               ; JavaScript  
 #Include src/event.ahk            ; event
@@ -76,7 +77,6 @@ global __ALTCTRL__ := []
 #Include src/TypeScript.ahk       ; TypeScript
 #Include src/wx.ahk               ; wx
 #Include src/nest.ahk             ; nest
-#Include src/html.ahk             ; HTML    
 
 #Include src/mongoose.ahk	      ; mongoose
 

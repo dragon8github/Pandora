@@ -216,6 +216,7 @@
 
     ; @认知 @renzhi
 
+    Menu, utilspractice, Add, 经典的可选链prototype: chain, utilsHandler
     Menu, utilspractice, Add, obj 也有 get/set 的 API 了, utilsHandler
     Menu, utilspractice, Add, navigator.geolocation获取地理位置信息, utilsHandler
     Menu, utilspractice, Add, 使用 combinate 生成所有可能的组合, utilsHandler
@@ -511,6 +512,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "经典的可选链prototype: chain") {
+_send("chain", true, true)
+return
 }
 
 if (v == "对象瘦身：omit") {

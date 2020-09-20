@@ -1904,67 +1904,6 @@ RunBy(name)
 run, % name
 return
 
-NewNodejsRenamechName:
-name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-filename := name . "/index.js"
-FileCreateDir, %name%
-FileAppend,
-(
-const fs      = require('fs-extra')
-const globby  = require('globby')
-const request = require('request')
-
-// 简单的GET请求获取翻译结果
-const _request = (text, cb) => {
-	request({
-	    url: encodeURI(``http://119.23.22.136:6635/baidu_transapi.php?text=${text}&type=tuofeng``),
-	}, function (err, response, body) {
-		// 如果翻译异常那么直接中断
-		if (err)
-			// 抛出异常吧
-			throw new Error(``${err.message} ///////////////// ${text} ///////////////// ${body}``)
-		// 必须有内容返回并且请求码为200才可以回调
-		if (body && response.statusCode === 200)
-			// 回调
-	    	cb && cb(body)
-	})
-}
-
-// 从字符串中区分出名字和后缀
-const get = name => {
-	const len = name.lastIndexOf('.')
-	return { name: name.substr(0, len), ext: name.substr(len) }
-}
-
-// 遍历当前文件夹下所有的文件
-(async () => {
-	// 筛选当前文件夹下的文件类型
-	const names = await globby(['*.png|*.jpg|*.gif'])
-	// 开始遍历改名
-	for (let [index, filename] of names.entries()) {
-		// 获取文件名和前缀
-	    const { name, ext } = get(filename)
-	    // 发送请求
-	    _request(name, ch => {
-	    	// 如果翻译结果不为空并且不为原本的值
-	    	if (ch && ch != name) {
-		    	// 那么修改文件名
-		    	fs.rename(filename, ch + ext, err => {
-		    		// 如果出现异常，那么直接中止
-			    	if (err) 
-			    		// 抛出异常吧
-			    		throw new Error(``${err.message} ///////////////// ${filename} ///////////////// ${ch}``)
-			    })
-			}
-	    })
-	}
-})()
-), %filename%
-RunWaitOne("cd " . name . " && npm init -y && npm i fs-extra globby request -S")
-run, %name%
-RunBy(filename)
-return
-
 NewEchartsmap3dHtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
@@ -2205,62 +2144,6 @@ RunBy(htmlfilename)
 run, % htmlfilename
 return
 
-NewNodejsSequelize:
-name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-filename := name . "/index.js"
-FileCreateDir, %name%
-FileAppend,
-(
-// http://docs.sequelizejs.com/manual/installation/getting-started.html#setting-up-a-connection
-const Sequelize = require('sequelize');
-
-const sequelize = new Sequelize('database', 'username', 'password', {
-    host: 'localhost',
-    port: 3306,
-    dialect: 'mysql',
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    },
-});
-
-sequelize.authenticate().then(() => {
-    console.log('Connection has been established successfully.');
-})
-.catch(err => {
-    console.error('Unable to connect to the database:', err);
-});
-
-// 第一次没有表的时候需要同步来创建
-const User = sequelize.define('user', {
-    firstName: { type: Sequelize.STRING },
-    lastName: { type: Sequelize.STRING },
-}, {
-	// 省略 createdAt 和 updateAt
-	timestamps: false
-});
-
-sequelize.sync({
-    force: true
-}).then(() => {
-	return User.create({
-        firstName: 'John',
-        lastName: 'Hancock'
-    })
-}).then(() => {
-    return User.find({
-        where: {
-            firstName: 'John'
-        }
-    })
-}).then(console.log)
-), %filename%
-RunWaitOne("cd " . name . " && npm init -y && npm i sequelize mysql2 -S")
-run, %name%
-RunBy(filename)
-return
 
 Newcreateareactapp:
 	name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
@@ -2646,139 +2529,7 @@ FileAppend,
 RunBy(name)
 return
 
-NewPyhtonPachong: 
-name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-filename := name . "/index.python"
-FileCreateDir, %name%
-FileAppend,
-(
-# python 3.x 开始自带了pip，如果没有请自信百度安装。
-# pip install beautifulsoup4 requests
-from bs4 import BeautifulSoup
-import requests
 
-res = requests.get('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?range=10')
-res.encoding = 'gbk'
-soup = BeautifulSoup(res.text, 'html.parser')
-table = soup.select('#ContentPlaceHolder1_resultrows table tr')
-myarr = []
-for tr in table:
-	td = tr.select('td')
-	if len(td) > 0:
-		Rank = td[0].text;
-		Address = td[1].text;
-		Quantity = td[2].text;
-		Percentage = td[3].text;
-		myarr.append({"Rank": Rank, "Address": Address, "Quantity": Quantity, "Percentage": Percentage})
-print(myarr)
-});
-), %filename%
-RunWaitOne("pip install beautifulsoup4 requests")
-run, %name%
-RunBy(filename)
-return
-
-NewNodegbkPachong:
-name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-filename := name . "/index.js"
-FileCreateDir, %name%
-FileAppend,
-(
-// npm i request cheerio iconv-lite
-const request = require('request');
-const cheerio = require('cheerio');
-const iconv = require('iconv-lite');
-
-request({
-	url: 'http://roll.mil.news.sina.com.cn/col/zgjq/index.shtml',
-	encoding : null // raw buffer
-}, function (err, response, body) {
-	if (err) throw new Error(err.message);
-	var buffer = response.body;
-	var str = iconv.decode(buffer, 'GBK').toString();
-	let $ = cheerio.load(str)
-	let lis = $(".linkNews li");
-	let myarr = [];
-	lis.each(function (i, li) {
-	    var a = $(li).find('a')
-	    var title = a.text()
-	    myarr.push({ title });
-	});
-	console.log("简单成狗了:", myarr);
-});
-), %filename%
-RunWaitOne("cd " . name . " && npm init -y && npm i request cheerio iconv-lite")
-run, %name%
-RunBy(filename)
-return
-
-NewNodefengzhuangPachong:
-name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-filename := name . "/index.js"
-FileCreateDir, %name%
-FileAppend,
-(
-// npm i request cheerio iconv-lite
-const request = require('request');
-const cheerio = require('cheerio');
-const iconv = require('iconv-lite');
-
-const _request = (url, cb, charset = 'utf8') => {
-	request({ url: url, encoding : null }, function (err, response, body) {
-		if (err) throw new Error(err.message);
-		var buffer = response.body;
-		var str = iconv.decode(buffer, charset).toString();
-		let $ = cheerio.load(str)
-		cb && cb($);
-	});
-}
-
-_request('http://roll.mil.news.sina.com.cn/col/zgjq/index.shtml', function ($) {
-	let lis = $(".linkNews li");
-	let myarr = [];
-	lis.each(function (i, li) {
-	    var a = $(li).find('a')
-	    var title = a.text()
-	    myarr.push({ title });
-	});
-	console.log(myarr);
-}, 'GBK')
-), %filename%
-RunWaitOne("cd " . name . " && npm init -y && npm i request cheerio")
-run, %name%
-RunBy(filename)
-return
-
-NewNodePachong:
-name :=  A_Desktop . "\" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-filename := name . "/index.js"
-FileCreateDir, %name%
-FileAppend,
-(
-// npm i request cheerio
-const request = require('request');
-const cheerio = require('cheerio');
-
-request('https://etherscan.io/token/tokenholderchart/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?range=10', function (err, response, body) {
-	if (err) throw new Error(err.message);
-	let $ = cheerio.load(response.body)
-	let trs = $("#ContentPlaceHolder1_resultrows tr");
-	let myarr = [];
-	trs.each(function (i, tr) {
-	    var td = $(tr).find('td')
-	    let Rank = td.eq(0).text();
-	    let Address = td.eq(1).text();
-	    let Quantity = td.eq(2).text();
-	    let Percentage = td.eq(3).text();
-	    myarr.push({Rank, Address, Quantity, Percentage});
-	});
-	console.log("简单成狗了:", myarr);
-});
-), %filename%
-RunWaitOne("cd " . name . " && npm init -y && npm i request cheerio")
-run, %name%
-RunBy(filename)
-return
 
 NewPureIndexHtml:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
@@ -8602,10 +8353,6 @@ RunBy(name)
 run, % name
 return
 
-NodeHttp:
-psdit("https://raw.githubusercontent.com/dragon8github/Pandora/master/template/nodejs-pure-http.zip", "node app.js")
-return
-
 websocketHTML:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
@@ -13437,4 +13184,68 @@ return
 suopingtupian:
 a_local := StrReplace(A_Temp, "temp", "") . "Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets"
 run, % a_local
+return
+
+basicbaiduditu:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <!-- 百度地图 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <script src='http://api.map.baidu.com/library/GeoUtils/1.2/src/GeoUtils_min.js'></script>
+    <!-- mapv -->
+    <script src="http://mapv.baidu.com/build/mapv.min.js"></script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+        width: 100`%;
+        height: 100`%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+const map = window.map = new BMap.Map("app")
+
+// 创建地图实例
+let point = new BMap.Point(105.403119, 38.028658)
+
+// 开启鼠标滚轮缩放
+map.enableScrollWheelZoom(true);
+
+// 创建点坐标（东莞全貌）
+map.centerAndZoom(new BMap.Point(113.843319, 22.921901), 11)
+
+// 地图自定义样式
+map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "stylers": { "color": "#044161" } }, { "featureType": "land", "elementType": "all", "stylers": { "color": "#091934" } }, { "featureType": "boundary", "elementType": "geometry", "stylers": { "color": "#064f85" } }, { "featureType": "railway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "highway", "elementType": "geometry", "stylers": { "color": "#004981" } }, { "featureType": "highway", "elementType": "geometry.fill", "stylers": { "color": "#005b96", "lightness": 1 } }, { "featureType": "highway", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "arterial", "elementType": "geometry", "stylers": { "color": "#004981", "lightness": -39 } }, { "featureType": "arterial", "elementType": "geometry.fill", "stylers": { "color": "#00508b" } }, { "featureType": "poi", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "green", "elementType": "all", "stylers": { "color": "#056197", "visibility": "off" } }, { "featureType": "subway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "manmade", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "local", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "arterial", "elementType": "labels", "stylers": { "visibility": "off" } }, { "featureType": "boundary", "elementType": "geometry.fill", "stylers": { "color": "#029fd4" } }, { "featureType": "building", "elementType": "all", "stylers": { "color": "#1a5787" } }, { "featureType": "label", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": { "color": "#ffffff" } }, { "featureType": "poi", "elementType": "labels.text.stroke", "stylers": { "color": "#1e1c1c" } }, { "featureType": "administrative", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "road", "elementType": "labels", "stylers": { "visibility": "off" } }] })
+
+map.addEventListener('click', e => {
+    var marker = new BMap.Marker(e.point)
+    map.addOverlay(marker)
+    console.log(20200917160429, marker)
+})
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
 return
