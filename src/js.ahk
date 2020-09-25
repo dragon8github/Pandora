@@ -9322,20 +9322,33 @@ return
 ::ls::
 ::wl::
 ::wls::
-Var =
-(
-window.localStorage.setItem('key', 'value')
-)
-code(Var)
-return
-
+::wg::
 ::lg::
 ::wlg::
 Var =
 (
+window.localStorage.setItem('key', 'value')
 window.localStorage.getItem('key')
+---
+// cnpm i localforage -S
+import localforage from 'localforage'
+
+localforage.config({
+    driver: [localforage.LOCALSTORAGE, localforage.WEBSQL, localforage.INDEXEDDB],
+    name: '__CACHE__',
+    size: 1024 * 1024
+})
+
+// 清空缓存
+export const clearCache = () => localforage.clear()
+
+// 设置缓存数据
+export const setCache = (key, value) => localforage.setItem(key, value)
+
+// 获取缓存数据
+export const getCache = key => localforage.getItem(key)
 )
-code(Var)
+txtit(Var)
 return
 
 
@@ -12972,6 +12985,24 @@ return
 ::paramshuancun::
 Var = 
 (
+// cnpm i localforage -S
+import localforage from 'localforage'
+
+localforage.config({
+    driver: [localforage.LOCALSTORAGE, localforage.WEBSQL, localforage.INDEXEDDB],
+    name: '__CACHE__',
+    size: 1024 * 1024
+})
+
+// 清空缓存
+export const clearCache = () => localforage.clear()
+
+// 设置缓存数据
+export const setCache = (key, value) => localforage.setItem(key, value)
+
+// 获取缓存数据
+export const getCache = key => localforage.getItem(key)
+---
 function cached(fn){
   // Create an object to store the results returned after each function execution.
   const cache = Object.create(null);
