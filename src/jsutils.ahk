@@ -373,11 +373,14 @@
 
     Menu, utilsJstest, Add, 要匹配多个果然还是要用 match, utilsHandler
     Menu, utilsJstest, Add, //g.exec, utilsHandler
+    Menu, utilsJstest, Add, 新认知：match 可以捕获多个变量，但不要使用 /g, utilsHandler
 
     Menu, utilsJstest, Add
     Menu, utilsJstest, Add
 
     Menu, utilsJstest, Add, replace 与 回调函数, utilsHandler
+    Menu, utilsJstest, Add, js 手机号码脱敏 手机号码打码, utilsHandler
+
     
     Menu, utilswebpack, Add, require.context vue, utilsHandler
     Menu, utilswebpack, Add, require.context, utilsHandler
@@ -498,6 +501,7 @@
     Menu, utilses5, DeleteAll
     Menu, utilsSolution, DeleteAll
     Menu, utilsmy, DeleteAll
+    Menu, utilsJstest, DeleteAll
     
 return
 
@@ -511,6 +515,39 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "js 手机号码脱敏 手机号码打码") {
+Var =
+(
+// 查找到字符串中的手机号码，并且脱敏处理
+// https://blog.csdn.net/yeshizhu/article/details/78354058
+// https://blog.csdn.net/u010201575/article/details/90024828
+function matchPhoneNum(str, reg = /(1[3|4|5|7|8][\d]{9}|0[\d]{2,3}-[\d]{7,8}|400[-]?[\d]{3}[-]?[\d]{4})/g) {
+    let phoneNums = str.match(reg)
+
+    // 字符串中如果有多个手机号码，需要批量处理
+    for (let i = 0; i < phoneNums.length; i++) {
+        let phone = phoneNums[i]
+
+        //隐藏手机号中间4位(例如:12300102020,隐藏后为132****2020)
+        const result = phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
+
+        str = str.replace(phone, result)
+    }
+
+    return str
+}
+
+let test1 = '罗兵13825296262'
+var test2 = 'ka13213213211323213213213213213213213213213213213212ndsajkjksad113200102222sdas13500000000adsadsadsa'
+
+let result1 = matchPhoneNum(test1)
+let result2 = matchPhoneNum(test2)
+
+console.log(result1)
+console.log(result2)
 )
 }
 
@@ -6213,13 +6250,24 @@ export const isBoolean = input => Object.prototype.toString.call(input) === '[ob
 if (v == "isZH-Cn") {
 Var = 
 (
+// 测试是否全部是中文？
+if (!/^[\u4e00-\u9fa5]+$/.test('李钊鸿')) {
+      throw new Error('请输入中文汉字')
+}
+
 // 是否包含中文
 const iszh = str => /[\u4e00-\u9fa5]+/.test(str)
 
 // 必须全部是中文
 const isZH = str => /^[\u4e00-\u9fa5]+$/.test(str)
+
+// （推荐）包含多少个中文？
+const str = 'js 统计多少中文多少数字多少字母'
+const reg = /[\u4e00-\u9fa5]/g
+str.match(reg).length // ▶ 14
 )
 }
+
 if (v == "isIp") {
 Var = 
 (
@@ -6256,15 +6304,6 @@ if (!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test('445222199307100337')){
 if (v == "isEmail") {
 Var = 
 (
-)
-}
-
-if (v == "isZH-Cn") {
-Var = 
-(
-if (!/^[\u4e00-\u9fa5]+$/.test('李钊鸿')) {
-      throw new Error('请输入中文汉字')
-}
 )
 }
 
@@ -6948,6 +6987,7 @@ data () {
 code(Var)
 return
 
+::match::
 ::zhengze::
 ::zz::
 Var =
@@ -7110,7 +7150,40 @@ Var =
 
 /* 邮箱地址(email) */
 /^[a-zA-Z0-9.!#$`%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+---
+body.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,4}/g); // 推荐使用exec可以拿到多个数组
+---
+const str = 'js 统计多少中文多少数字多少字母 123'
+const ch_reg = /[\u4e00-\u9fa5]/g
+const en_reg = /[a-zA-Z]/g
+const num_reg = /\d/g
+const space_reg = /\s/g
 
+console.log(20200920223119, str.match(ch_reg).length)
+console.log(20200920223119, str.match(en_reg).length)
+console.log(20200920223119, str.match(num_reg).length)
+console.log(20200920223119, str.match(space_reg).length)
+---
+var gps = [{"lng": "114°134′3536", "lat": "22°430′3132"}, {"lng": "114°034′3536", "lat": "22°530′3132"}, {"lng": "114°134′3536", "lat": "22°330′3132"}, {"lng": "114°034′3536", "lat": "22°430′3132"} ]
+
+function myChangeToDu(d, f, m) {
+    var f = parseFloat(f) + parseFloat(m / 60)
+    var du = parseFloat(f / 60) + parseFloat(d)
+    return du
+}
+
+var _gps = gps.map(_ => ({
+    lng: myChangeToDu(..._.lng.match(/(\d+)°(\d+)′(\d+)/).slice(1)),
+    lat: myChangeToDu(..._.lat.match(/(\d+)°(\d+)′(\d+)/).slice(1)),
+}))
+
+console.log(20200921145849, gps, _gps)
+/**
+http://www.minigps.net/fc.html
+
+[{"lng": "114°134′3536", "lat": "22°430′3132"}, {"lng": "114°034′3536", "lat": "22°530′3132"}, {"lng": "114°134′3536", "lat": "22°330′3132"}, {"lng": "114°034′3536", "lat": "22°430′3132"} ]
+[{ lng: 117.21555555555555, lat: 30.03666666666667 }, { lng: 115.54888888888888, lat: 31.703333333333333 }, { lng: 117.21555555555555, lat: 28.37 }, { lng: 115.54888888888888, lat: 30.03666666666667 } ]
+ */
 )
 txtit(Var)
 return
@@ -9209,4 +9282,27 @@ export const killerQueen2 = async (showLoading = () => {}, fn = () => {}, closeL
 }
 )
 txtit(Var)
+return
+
+::isCN::
+::isch::
+Var =
+(
+// 测试是否全部是中文？
+if (!/^[\u4e00-\u9fa5]+$/.test('李钊鸿')) {
+      throw new Error('请输入中文汉字')
+}
+
+// 是否包含中文
+const iszh = str => /[\u4e00-\u9fa5]+/.test(str)
+
+// 必须全部是中文
+const isZH = str => /^[\u4e00-\u9fa5]+$/.test(str)
+
+// （推荐）包含多少个中文？
+const str = 'js 统计多少中文多少数字多少字母'
+const reg = /[\u4e00-\u9fa5]/g
+str.match(reg).length // ▶ 14
+)
+code(Var)
 return

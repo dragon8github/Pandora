@@ -3656,6 +3656,7 @@ return
 
 :?:vuex.module::
 :?:vuex.m::
+:?:vuexm::
 Var =
 (
 import { request } from '@/utils/request.js'
@@ -8467,12 +8468,80 @@ describe('Item.vue', () => {
 txtit(Var)
 return
 
-
-
+::jest.init::
+::jestinit::
+::initjest::
+::init.jest::
+::jest::
 :?:vue.t::
 :?:vue.test::
 Var =
 (
+describe('base test', () => {
+    test('first test', () => {
+        return
+    })
+})
+
+/* http://caibaojian.com/scb/jest.html */
+// @@Basic expectations
+expect(value)
+  .not
+  .toBe(value)
+  .toEqual(value)
+  .toBeTruthy()
+
+// @@Booleans
+expect(value)
+  .toBeFalsy()
+  .toBeNull()
+  .toBeTruthy()
+  .toBeUndefined()
+  .toBeDefined()
+
+// @@object
+expect(value)
+  .toBeInstanceOf(Class)
+  .toMatchObject(object)
+  .toHaveProperty(keyPath, value)
+
+// @@object
+expect(value)
+  .toContain(item)
+  .toContainEqual(item)
+  .toHaveLength(number)
+
+// @@number 
+ expect(value)
+  .toBeCloseTo(number, numDigits)
+  .toBeGreaterThan(number)
+  .toBeGreaterThanOrEqual(number)
+  .toBeLessThan(number)
+  .toBeLessThanOrEqual(number)
+
+// @@regex
+expect(value)
+  .toMatch(regexpOrString)
+
+// @@setup hook
+beforeEach(() => { ... })
+afterEach(() => { ... })
+beforeAll(() => { ... })
+afterAll(() => { ... })
+---
+import { shallowMount } from '@vue/test-utils'
+import ProgressBar from '../ProgressBar.vue'
+
+describe('ProgressBar.vue', () => {
+    test('init with 0`% width', () => {
+        const wrapper = shallowMount(ProgressBar)
+        // 知识点：验证样式（极少用）
+        expect(wrapper.element.style.width).toBe('0`%')
+        // 知识点：验证类
+        expect(wrapper.classes()).toContain('hidden')
+    })
+})
+---
 // src/components/__tests__/Item.spec.js
 
 import { shallowMount } from '@vue/test-utils'
@@ -8482,52 +8551,53 @@ beforeEach(() => {
   jest.useFakeTimers()
 })
 
+describe('Item.vue', () => {
+  test('base test', () => {
+      const item = { url: 'http://www.baidu.com', title: 'baidu' }
 
-test('base test', () => {
-    const item = { url: 'http://www.baidu.com', title: 'baidu' }
+      const wrapper = shallowMount(Item, {
+          propsData: { item }
+      })
 
-    const wrapper = shallowMount(Item, {
-        propsData: { item }
-    })
+      // # find()
+      const a = wrapper.find('a')
 
-    // # find()
-    const a = wrapper.find('a')
+      // # text()
+      expect(a.text()).toContain(item.title)
 
-    // # text()
-    expect(a.text()).toContain(item.title)
+      // # attributes()
+      expect(a.attributes().href).toBe(item.url)
 
-    // # attributes()
-    expect(a.attributes().href).toBe(item.url)
+      // # props()
+      expect(wrapper.props().item.url).toBe(item.url)
 
-    // # props()
-    expect(wrapper.props().item.url).toBe(item.url)
+      // # classes()
+      expect(wrapper.classes()).toContain('Item')
 
-    // # classes()
-    expect(wrapper.classes()).toContain('Item')
+      // # element.style（必须是内敛样式而不是 css）
+      expect(wrapper.element.style.width).toBe('100`%')
 
-    // # element.style（必须是内敛样式而不是 css）
-    expect(wrapper.element.style.width).toBe('100`%')
+      // # not
+      expect(wrapper.classes()).not.toContain('hide')
 
-    // # not
-    expect(wrapper.classes()).not.toContain('hide')
+      // # 结合 jest.useFakeTimers() 推进 timer
+      jest.runTimersToTime(1000)
 
-    // # 结合 jest.useFakeTimers() 推进 timer
-    jest.runTimersToTime(1000)
+      // # 测试 @onClick 与 this.$emit('onClick')
+      expect(wrapper.emitted('onClick')).toHaveLength(1)
+  })
 
-    // # 测试 @onClick 与 this.$emit('onClick')
-    expect(wrapper.emitted('onClick')).toHaveLength(1)
-})
+  test('base test', () => {
+      const items = [{}, {}, {}]
 
-test('base test', () => {
-    const items = [{}, {}, {}]
+      const wrapper = shallowMount(Items, {
+          props: {items }
+      })
 
-    const wrapper = shallowMount(Items, {
-        props: {items }
-    })
-
-    // # findAllComponents(Item)
-    // or: expect(wrapper.findAllComponents(Item)).toHaveLength(items.length)
-    expect(wrapper.findAllComponents(Item).length).toBe(items.length)
+      // # findAllComponents(Item)
+      // or: expect(wrapper.findAllComponents(Item)).toHaveLength(items.length)
+      expect(wrapper.findAllComponents(Item).length).toBe(items.length)
+  })
 })
 ---
 describe('Item.vue', () => {

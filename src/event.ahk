@@ -265,7 +265,7 @@ window.addEventListener("keydown", (e) => {
 	if (shiftKey && keyCode === 49) {
 	    this.openfy()
 	}
-}
+})
 )
 }
 

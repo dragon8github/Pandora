@@ -30,7 +30,7 @@ var_dump(expandallchild(top))
 Gui, Book:Add, Edit, ys vBookContent w890 H700 Limit199307100337 ReadOnly  
 
 ; Tab 选项卡
-Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Vue单元测试》|《Vue.js 深入浅出》
+Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Vue + Jest单元测试》|《Vue.js 深入浅出》
 
 
 
@@ -106,14 +106,14 @@ LV_ModifyCol(2, "SortDesc")
 
 
 ; 为菜单栏创建子菜单:
-Menu, FileMenu, Add, &New, FileNew
-Menu, FileMenu, Add, &Open, FileOpen
+; Menu, FileMenu, Add, &New, FileNew
+; Menu, FileMenu, Add, &Open, FileOpen
 
-; 创建用来附加子菜单的菜单栏:
-Menu, MyMenuBar, Add, &File, :FileMenu
+; ; 创建用来附加子菜单的菜单栏:
+; Menu, MyMenuBar, Add, &File, :FileMenu
 
-; 添加菜单栏到窗口:
-Gui, Pandora:Menu, MyMenuBar
+; ; 添加菜单栏到窗口:
+; Gui, Pandora:Menu, MyMenuBar
 
 ; 支持拖拽大小
 ; Gui, Pandora:+Resize
@@ -358,6 +358,7 @@ Gui, Pandora:Add, Link,, <a href="https://csslayout.io/patterns">csslayout</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
+Gui, Pandora:Add, Link,, <a href="http://caibaojian.com/scb/jest.html">前端速查表</a>
 Gui, Pandora:Add, Link,, <a href="https://www.checklist.design/">checklist.design</a>
 Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
 Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">Pexels</a>
@@ -585,7 +586,7 @@ Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/proje
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/56/interface/api/2435">yapi</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/cross-border-drivers">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
-Gui, Pandora:Add, Link,, <a href="http://localhost:8080/driver/#/pcDriver">正式预览</a>
+Gui, Pandora:Add, Link,, <a href="https://fangyqgk.dg.cn/driver/#/pcDriver">正式预览</a>
 Gui, Pandora:Add, Link,, <a href="https://master.feiyan.com:8443/console/project/app/browse/dc/cross-border-drivers-ui?tab=history">正式部署</a>
 Gui, Pandora:Add, Link,, <a href="https://19.104.40.10:8080/ ">后台管理系统</a>
 
@@ -1201,6 +1202,7 @@ Gui, Pandora:Tab, 10
 
 
 Gui, Pandora:Add, Text,  W140 Section, tailwindcss:
+Gui, Pandora:Add, Link,, <a href="https://devdojo.com/tails">Tails 模板 + 组件库</a>
 Gui, Pandora:Add, Link,, <a href="https://tailwindcss.com/components">官方组件示例</a>
 Gui, Pandora:Add, Link,, <a href="https://tailwindui.com/components">官方tailwindui市场</a>
 Gui, Pandora:Add, Link,, <a href="https://www.tailwindtoolbox.com/templates/landing-page">tailwind-toolbox</a>
@@ -1460,7 +1462,7 @@ Gui, Card:Tab, 2
 OnClipboardChange("ClipChanged")
 
 ClipChanged(Type) {
-	
+
    ; 图片类
    if (Type == 2) {
 		; 名字
@@ -1479,8 +1481,8 @@ ClipChanged(Type) {
    }
 	
    ; 文本类
-   if (Type == 1) {
-	
+   if (Type == 1 && Clipboard != "") {
+
 		b := Trim(StrReplace(Clipboard, "`r`n"))
 		
 		; 左键是否按紧了

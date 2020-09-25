@@ -1,7 +1,80 @@
-﻿
+﻿::speak::
+::pinyin::
+::yanjiang::
+::shuohua::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
 
+<body>
+    <div id='app'>
+        你好 hello world
+    </div>
 
+    <button id='read'>阅读</button>
+</body>
+<script>
+    function speak(content) {
+        var synth = window.speechSynthesis
+        
+        /**
+         * 可以过滤语言，譬如只阅读中文（zh）或者只阅读英文（en）
+         * let voices = synth.getVoices().filter(voice => voice.lang.startsWith(document.querySelector('html').lang))
+         */
+        let voices = synth.getVoices()
 
+        if (voices.length === 0) 
+            return
+
+        let utterThis = new SpeechSynthesisUtterance(content)
+
+        utterThis.voice = voices[0]
+
+        synth.speak(utterThis)
+    }
+
+    // 只能通过点击调用、或者控制台调用
+    read.addEventListener('click', event => {
+        speak(document.getElementById('app').innerText)
+    })
+</script>
+</html>
+)
+code(Var)
+return
+
+:?:htmlmp3::
+:?:htmlmp4::
+:?:html.mp3::
+:?:html.mp4::
+:?:mp3::
+:?:mp4::
+Var =
+(
+<!-- 如果想要播放器就删除 「controls」 属性 -->
+<!-- 注意，必须是服务器运行才可以获取 mp3 这种文件，除非你的 mp3 是 url 就可以直接播放 -->
+<!-- http://ioc-demo.biubiuonline.com/曾志豪 - 神威千重.mp3 -->
+<!-- http://ioc-demo.biubiuonline.com/曾志豪 - 仗剑 (1).mp3 -->
+<!-- http://ioc-demo.biubiuonline.com/林坤信 - 兵凶战危.mp3 -->
+<!-- http://ioc-demo.biubiuonline.com/林坤信 - 逆天而行 1.mp3 -->
+<!-- http://ioc-demo.biubiuonline.com/林坤信 - 势如破竹.mp3 -->
+<!-- http://ioc-demo.biubiuonline.com/林坤信 - 心急如焚 1.mp3 -->
+<!-- http://ioc-demo.biubiuonline.com/群星 - 会心一击.mp3 -->
+<!-- http://ioc-demo.biubiuonline.com/周志华 - 浣花洗剑·变奏.mp3 -->
+<audio id="bgMusic" src="http://ioc-demo.biubiuonline.com/曾志豪 - 神威千重.mp3" controls autoplay loop></audio>
+
+<script>
+    // 暂停
+    document.querySelector('#bgMusic').pause()
+    // 播放
+    document.querySelector('#bgMusic').play()
+    // 重新播放
+    document.querySelector('#bgMusic').currentTime = 0
+</script>
+)
+code(Var)
+return
 
 ::head-utf8::
 ::headutf::

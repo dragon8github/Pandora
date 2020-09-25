@@ -1,4 +1,161 @@
-﻿::pachong::
+﻿::dufenmiao::
+::dufenm::
+::dfm::
+Var =
+(
+var gps = [{"lng": "114°134′3536", "lat": "22°430′3132"}, {"lng": "114°034′3536", "lat": "22°530′3132"}, {"lng": "114°134′3536", "lat": "22°330′3132"}, {"lng": "114°034′3536", "lat": "22°430′3132"} ]
+
+function myChangeToDu(d, f, m) {
+    var f = parseFloat(f) + parseFloat(m / 60)
+    var du = parseFloat(f / 60) + parseFloat(d)
+    return du
+}
+
+var _gps = gps.map(_ => ({
+    lng: myChangeToDu(..._.lng.match(/(\d+)°(\d+)′(\d+)/).slice(1)),
+    lat: myChangeToDu(..._.lat.match(/(\d+)°(\d+)′(\d+)/).slice(1)),
+}))
+
+console.log(20200921145849, gps, _gps)
+/**
+http://www.minigps.net/fc.html
+
+[{"lng": "114°134′3536", "lat": "22°430′3132"}, {"lng": "114°034′3536", "lat": "22°530′3132"}, {"lng": "114°134′3536", "lat": "22°330′3132"}, {"lng": "114°034′3536", "lat": "22°430′3132"} ]
+[{ lng: 117.21555555555555, lat: 30.03666666666667 }, { lng: 115.54888888888888, lat: 31.703333333333333 }, { lng: 117.21555555555555, lat: 28.37 }, { lng: 115.54888888888888, lat: 30.03666666666667 } ]
+ */
+)
+code(Var)
+return
+
+::isobj::
+Var =
+(
+export const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
+)
+code(Var)
+return
+
+::phone::
+::shoujituomin::
+::tuomin::
+::shouji::
+Var =
+(
+// 查找到字符串中的手机号码，并且脱敏处理
+// https://blog.csdn.net/yeshizhu/article/details/78354058
+// https://blog.csdn.net/u010201575/article/details/90024828
+function matchPhoneNum(str, reg = /(1[3|4|5|7|8][\d]{9}|0[\d]{2,3}-[\d]{7,8}|400[-]?[\d]{3}[-]?[\d]{4})/g) {
+    let phoneNums = str.match(reg)
+
+    // 字符串中如果有多个手机号码，需要批量处理
+    for (let i = 0; i < phoneNums.length; i++) {
+        let phone = phoneNums[i]
+
+        //隐藏手机号中间4位(例如:12300102020,隐藏后为132****2020)
+        const result = phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
+
+        str = str.replace(phone, result)
+    }
+
+    return str
+}
+
+let test1 = '罗兵13825296262'
+var test2 = 'ka13213213211323213213213213213213213213213213213212ndsajkjksad113200102222sdas13500000000adsadsadsa'
+
+let result1 = matchPhoneNum(test1)
+let result2 = matchPhoneNum(test2)
+
+console.log(result1)
+console.log(result2)
+---
+idMask(type, n) {
+    if (type === '内地身份证') {
+        return n.toString().replace(/^(.{6})(?:\d+)(.{4})$/, "$1****$2")
+    } else {
+        const left = n.slice(0, 3)
+        const l = n.slice(3, -3).length
+        const str = l > 3 ? '*'.repeat(l) : '***'
+        const star = n.slice(3, -3).replace(/.+/, str)
+        const right = n.slice(-3)
+        return left + star + right
+    }
+},
+)
+code(Var)
+return
+
+
+::tests::
+::testt::
+::testj::
+::jestt::
+::jest.test::
+::jesttest::
+Var =
+(
+test('first test', () => {
+    expect(2).toBe(2)
+})
+)
+code(Var)
+return
+
+::testd::
+::jestd::
+::jestdesc::
+::jest.d::
+::jest.desc::
+Var =
+(
+import MainTask from '@/MainTask'
+
+describe('任务类', () => {
+  test('任务类 - 任务名', () => {
+    const cfg = { name: '小试牛刀' }
+    const m = new MainTask(cfg)
+    expect(m.name).toBe(cfg.name)
+  })
+})
+
+)
+code(Var)
+return
+
+::wuxing::
+Var =
+(
+// 五行列表
+const wx = a => ['金', '木', '水', '火', '土'].includes(a)
+
+// 五行相克
+const restraint = { '金': '木', '木': '土', '水': '火', '火': '金', '土': '水' }
+
+// 五行相生
+const generation = { '金': '水', '木': '火', '水': '木', '火': '土', '土': '金', }
+
+// 相克验证
+export const isRestraint = (a, b) => (wx(a) && wx(b)) ? restraint[a] === b : false
+
+// 相生验证
+export const isGeneration = (a, b) => (wx(a) && wx(b)) ? generation[a] === b : false
+
+// 获取相克方
+export const getRestraint = a => wx(a) && restraint[a]
+
+// 获取相生方
+export const getGeneration = a => wx(a) && generation[a]
+
+// 获取克我的五行
+export const beRestraint = a => wx(a) && Object.entries(restraint).find(([k, v]) => v === a)[0]
+
+// 获取生我的五行
+export const beGeneration = a => wx(a) && Object.entries(generation).find(([k, v]) => v === a)[0]
+)
+code(Var)
+return
+
+::pachong::
 Var =
 (
 // npm i request cheerio
@@ -1538,27 +1695,6 @@ if (navigator.geolocation) {
 code(Var)
 return
 
-::jest.init::
-::jestinit::
-::initjest::
-::init.jest::
-Var =
-(
-import { shallowMount } from '@vue/test-utils'
-import ProgressBar from '../ProgressBar.vue'
-
-describe('ProgressBar.vue', () => {
-    test('init with 0`% width', () => {
-        const wrapper = shallowMount(ProgressBar)
-        // 知识点：验证样式（极少用）
-        expect(wrapper.element.style.width).toBe('0`%')
-        // 知识点：验证类
-        expect(wrapper.classes()).toContain('hidden')
-    })
-})
-)
-code(Var)
-return
 
 ::gulp::
 Var =
@@ -3929,12 +4065,71 @@ export default class AppSocket {
 code(Var)
 return
 
+::fuck::
+Var =
+(
+/**
+ * 使用方式
+ * const data = { NAME: 'lee' }
+ * const p = fuck(data)
+ * console.log(20200923091805, p.name)
+ */
+const fuck = obj => {
+  // 1、 解决驼峰问题：所有都转换为小写
+  // 2、 解决下划线问题：移除所有下划线
+  const cleanStyle = key => key.replace('_', '').toLocaleLowerCase()
+
+  return new Proxy(data, {
+    get (target, name) {
+      // 精准命中
+      if (name in target) return target[name]
+
+      // 模糊搜索
+      const key = Object.keys(target).find(_ => cleanStyle(_) === cleanStyle(name))
+
+      // target
+      return key ? target[key] : undefined
+    }
+  })
+}
+
+)
+code(Var)
+return
+
+
 ::proxy::
 ::es.proxy::
 ::es6.proxy::
 Var = 
 (
 // 🚀 认知：proxy可以模拟 PHP的 __get 魔术函数
+/**
+ * 使用方式
+ * const data = { NAME: 'lee' }
+ * const p = fuck(data)
+ * console.log(20200923091805, p.name)
+ */
+const fuck = obj => {
+  // 1、 解决驼峰问题：所有都转换为小写
+  // 2、 解决下划线问题：移除所有下划线
+  const cleanStyle = key => key.replace('_', '').toLocaleLowerCase()
+
+  return new Proxy(data, {
+    get (target, name) {
+      // 精准命中
+      if (name in target) return target[name]
+
+      // 模糊搜索
+      const key = Object.keys(target).find(_ => cleanStyle(_) === cleanStyle(name))
+
+      // target
+      return key ? target[key] : undefined
+    }
+  })
+}
+
+
 // Proxy 比 Object.defineProperty 优势
 // 模拟 Vue 配置
 var VueComponent = {
@@ -9879,9 +10074,7 @@ const userAgents = [
 code(Var)
 return
 
-::match::
-    SendInput, body.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,4}/g); // 推荐使用exec可以拿到多个数组
-return
+
 
 ::exec::
 ::regexp::
@@ -9949,8 +10142,20 @@ Object.defineProperties(Status, {
     CANCELLED:    { enumerable: true, value: Object.freeze(new StatusInner('CANCELLED', 3, 'Something went wrong, and this task was cancelled.')) },
     NEEDS_UPDATE: { enumerable: true, value: Object.freeze(new StatusInner('NEEDS_UPDATE', 4, 'This task was completed, but something needs fixing.')) },
 })
+---
+export const BattleStatus = () => Object.create({})
+function StatusInner(value, desc) {
+    this.value = value
+    this.desc = desc
+}
+Object.defineProperties(BattleStatus, {
+    NOT_TSTARTED:  { enumerable: true, value: Object.freeze(new StatusInner('NOT_STARTED', '未开始')) },
+    IN_PROGRESS:   { enumerable: true, value: Object.freeze(new StatusInner('IN_PROGRESS', '战斗中')) },
+    VICTORY:       { enumerable: true, value: Object.freeze(new StatusInner('COMPLETED', '战斗胜利')) },
+    FAIL:          { enumerable: true, value: Object.freeze(new StatusInner('CANCELLED', '战斗失败')) },
+})
 )
-code(Var)
+txtit(Var)
 return
 
 ::$echo::
@@ -10300,8 +10505,9 @@ return
 ::person::
 Var = 
 (
-class Person {
+export default class Person {
 	constructor (name, age) {
+    // 只要你有 extends 必须使用 super()
 		// super();
 		// 建议内置的变量加个_区分，而要访问的变量用get关键词来识别返回
 		this._name = name;
@@ -10630,6 +10836,8 @@ SendInput, {left 1}
 Send, +{left 5}
 return
 
+::jsons2::
+::jsonss2::
 ::jsonss::
 Var =
 (
@@ -15374,14 +15582,6 @@ onscriptload('https://cdn.staticfile.org/ace/1.4.4/ace.js', function () {
 code(Var)
 return
 
-::jsons2::
-::jsonss2::
-Var =
-(
-JSON.stringify(temp1, null, 2)
-)
-code(Var)
-return
 
 ::allcolor::
 Var =

@@ -25,6 +25,7 @@
 
 	Menu, DITUMAP, Add, 验证坐标点是否在多边形内, bilibiliHandler
 	Menu, DITUMAP, Add, 百度地图：地图坐标转换页面坐标, bilibiliHandler
+	Menu, DITUMAP, Add, 度分秒转换经纬度 135°34′3536, bilibiliHandler
 
 
 	Menu, bilibiliMenu, Add, map 地图, :DITUMAP
@@ -104,6 +105,28 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "度分秒转换经纬度 135°34′3536") {
+Var =
+(
+var gps = [{ "lng": "135°34′3536", "lat": "23°30′3132" }, { "lng": "114°134′3536", "lat": "22°330′3132" }, { "lng": "135°34′3536", "lat": "24°30′3132" }, { "lng": "113°534′3536", "lat": "22°330′3132" }, { "lng": "114°134′3536", "lat": "22°430′3132" }, { "lng": "140°34′3536", "lat": "24°30′3132" }, { "lng": "114°034′3536", "lat": "22°530′3132" }, { "lng": "134°34′3536", "lat": "23°30′3132" }, { "lng": "113°434′3536", "lat": "22°430′3132" }, { "lng": "113°534′3536", "lat": "22°230′3132" }, { "lng": "140°34′3536", "lat": "25°30′3132" }, { "lng": "114°034′3536", "lat": "22°430′3132" }]
+
+function myChangeToDu(d, f, m) {
+    var f = parseFloat(f) + parseFloat(m / 60)
+    var du = parseFloat(f / 60) + parseFloat(d)
+    return du
+}
+
+var _gps = gps.map(_ => ({
+    lng: myChangeToDu(..._.lng.match(/(\d+)°(\d+)′(\d+)/).slice(1)),
+    lat: myChangeToDu(..._.lat.match(/(\d+)°(\d+)′(\d+)/).slice(1)),
+}))
+
+console.log(20200921145849, _gps)
+)
+txtit(Var)
+return
 }
 
 if (v == "百度地图：地图坐标转换页面坐标") {
