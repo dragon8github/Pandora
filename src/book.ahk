@@ -45,6 +45,8 @@ SwitchBook:
   }
 
   if (currentBook == "《Vue + Jest单元测试》") {
+     cornell("Vue+jest环境安装")
+     cornell("纯jest安装")
      cornell("基本语法")
      cornell("间谍函数")
      cornell("mock依赖")
@@ -67,6 +69,86 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "Vue+jest环境安装") {
+Var =
+(
+（强烈推荐）官方推荐的安装方式，支持 Vue3，一步到位。
+$ vue add unit-jest
+
+但要注意2点：
+1）官方使用的是npm 安装，如果你没有 fq 工具，请提前设置好镜像源。
+npm set registry https://registry.npm.taobao.org/
+
+2）自动会加入一个 /tests/ 测试用例，它会测试 @/components/HelloWorld.vue，如果不存在或者使用的不是官方脚手架生成的默认组件，很可能测试不通过哦。所以建议直接删除。
+
+3)  默认会加入 "test:unit": "vue-cli-service test:unit"。建议加入一个新的 --watch 进入监听模式
+"test:watch": "vue-cli-service test:unit --watchAll"
+
+@@101
+// components/__tests__/Item.spec.js
+import { shallowMount } from '@vue/test-utils'
+import Item from "../Item.vue"
+
+beforeEach(() => {
+    
+})
+
+describe('Item.vue', () => {
+    test('base test', () => {
+        const wrapper = shallowMount(Item)
+        expect(wrapper.text()).toContain('Item')
+    })
+})
+)
+}
+
+if (v == "纯jest安装") {
+Var =
+(
+@@安装 jest 测试库
+必须安装 babel-core@^7.0.0-bridge.0 版本，否则后果自负。
+$ cnpm i jest babel-jest vue-jest -D
+$ cnpm i babel-core@^7.0.0-bridge.0 @babel/core @babel/preset-env -D
+
+
+@@新建 .babelrc
+{
+    "presets": ["@babel/preset-env"]
+}
+
+
+@@配置 package.json 的 jest
+"scripts": {
+  "serve": "vue-cli-service serve",
+  "dev": "vue-cli-service serve",
+  "build": "vue-cli-service build",
+  "lint": "vue-cli-service lint",
+  "test": "jest --no-cahce",
+  "test:watch": "jest --watchAll",
+  "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cahce --runInBand"
+},
+"jest": {
+  "transform": {
+    "^.+\\.js$": "babel-jest",
+    "^.+\\.vue$": "vue-jest"
+  },
+  "moduleNameMapper": {
+    "@/(.*)$": "<rootDir>/src/$1"
+  },
+  "moduleFileExtensions": ["vue", "js", "json", "jsx", "ts", "tsx"],
+  "modulePathIgnorePatterns": [
+    ".dev_null"
+  ],
+  "testMatch": ["<rootDir>/**/*.spec.js"]
+},
+
+其中的 "testMatch": ["<rootDir>/**/*.spec.js"] 你可以考虑去掉，默认就会。
+
+@@运行测试： 
+$ npm t
 )
 }
 

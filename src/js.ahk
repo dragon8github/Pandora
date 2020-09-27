@@ -35,29 +35,41 @@ export const isObject = input => input != null && Object.prototype.toString.call
 code(Var)
 return
 
+::phonemask::
 ::phone::
 ::shoujituomin::
 ::tuomin::
 ::shouji::
 Var =
 (
-// 查找到字符串中的手机号码，并且脱敏处理
-// https://blog.csdn.net/yeshizhu/article/details/78354058
-// https://blog.csdn.net/u010201575/article/details/90024828
-function matchPhoneNum(str, reg = /(1[3|4|5|7|8][\d]{9}|0[\d]{2,3}-[\d]{7,8}|400[-]?[\d]{3}[-]?[\d]{4})/g) {
-    let phoneNums = str.match(reg)
+// 查找到字符串中的手机号码，并且脱敏处理
+// https://blog.csdn.net/yeshizhu/article/details/78354058
+// https://blog.csdn.net/u010201575/article/details/90024828
+export function matchPhoneNum(str, reg = /(1[3|4|5|7|8|9][\d]{9}|0[\d]{2,3}-[\d]{7,8}|400[-]?[\d]{3}[-]?[\d]{4})/g) {
+    let phoneNums = str.match(reg)
 
-    // 字符串中如果有多个手机号码，需要批量处理
-    for (let i = 0; i < phoneNums.length; i++) {
-        let phone = phoneNums[i]
+    let _str = str
 
-        //隐藏手机号中间4位(例如:12300102020,隐藏后为132****2020)
-        const result = phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
+    // 字符串中如果有多个手机号码，需要批量处理
+    for (let i = 0; i < phoneNums.length; i++) {
+        let phone = phoneNums[i]
 
-        str = str.replace(phone, result)
-    }
+        //隐藏手机号中间4位(例如:12300102020,隐藏后为132****2020)
+        const result = phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
 
-    return str
+        _str = str.replace(phone, result)
+    }
+
+    if (_str === str) {
+      const left = str.slice(0, 3)
+      const l = str.slice(3, -3).length
+      const fstr = l > 3 ? '*'.repeat(l) : '***'
+      const star = str.slice(3, -3).replace(/.+/, fstr)
+      const right = str.slice(-3)
+      _str = left + star + right
+    }
+
+    return _str
 }
 
 let test1 = '罗兵13825296262'
@@ -10683,12 +10695,20 @@ return
 
 Appskey & d::
 >^d::
+Var =
+(
+debugger;
+)
+code(Var)
+return
+
+>#d::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
+debugger
 try {
     console.log(%t%, )
-    debugger
 } catch(e) {
     console.log(%t%, e)
     debugger

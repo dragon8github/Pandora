@@ -1,4 +1,38 @@
-﻿::speak::
+﻿::svg::
+Var =
+(
+<svg role="img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title id="loading-aria">Loading...</title>
+    <rect x="0" y="0" width="100`%" height="100`%" clip-path="url(#clip-path)" style='fill: url("#fill");'></rect>
+    <defs>
+        <clipPath id="clip-path">
+            <circle cx="10" cy="20" r="8" />
+            <rect x="25" y="15" rx="5" ry="5" width="240" height="10" />
+            <circle cx="10" cy="50" r="8" />
+            <rect x="25" y="45" rx="5" ry="5" width="240" height="10" />
+            <circle cx="10" cy="80" r="8" />
+            <rect x="25" y="75" rx="5" ry="5" width="240" height="10" />
+            <circle cx="10" cy="110" r="8" />
+            <rect x="25" y="105" rx="5" ry="5" width="240" height="10" />
+        </clipPath>
+        <linearGradient id="fill">
+            <stop offset="0.599964" stop-color="#f3f3f3" stop-opacity="1">
+                <animate attributeName="offset" values="-2; -2; 1" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+            <stop offset="1.59996" stop-color="#ecebeb" stop-opacity="1">
+                <animate attributeName="offset" values="-1; -1; 2" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+            <stop offset="2.59996" stop-color="#f3f3f3" stop-opacity="1">
+                <animate attributeName="offset" values="0; 0; 3" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+        </linearGradient>
+    </defs>
+</svg>
+)
+txtit(Var)
+return
+
+::speak::
 ::pinyin::
 ::yanjiang::
 ::shuohua::
@@ -1779,6 +1813,34 @@ return
 ::Skeleton::
 Var =
 (
+<svg role="img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title id="loading-aria">Loading...</title>
+    <rect x="0" y="0" width="100`%" height="100`%" clip-path="url(#clip-path)" style='fill: url("#fill");'></rect>
+    <defs>
+        <clipPath id="clip-path">
+            <circle cx="10" cy="20" r="8" />
+            <rect x="25" y="15" rx="5" ry="5" width="240" height="10" />
+            <circle cx="10" cy="50" r="8" />
+            <rect x="25" y="45" rx="5" ry="5" width="240" height="10" />
+            <circle cx="10" cy="80" r="8" />
+            <rect x="25" y="75" rx="5" ry="5" width="240" height="10" />
+            <circle cx="10" cy="110" r="8" />
+            <rect x="25" y="105" rx="5" ry="5" width="240" height="10" />
+        </clipPath>
+        <linearGradient id="fill">
+            <stop offset="0.599964" stop-color="#f3f3f3" stop-opacity="1">
+                <animate attributeName="offset" values="-2; -2; 1" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+            <stop offset="1.59996" stop-color="#ecebeb" stop-opacity="1">
+                <animate attributeName="offset" values="-1; -1; 2" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+            <stop offset="2.59996" stop-color="#f3f3f3" stop-opacity="1">
+                <animate attributeName="offset" values="0; 0; 3" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+        </linearGradient>
+    </defs>
+</svg>
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1975,5 +2037,5 @@ Var =
 </script>
 </html>
 )
-code(Var)
+txtit(Var)
 return
