@@ -164,6 +164,45 @@ arrincludes(myarr, v) {
 	return b
 }
 
+RunByHyper(name) {
+   WinGet, OutputVar, IDLast, Hyper
+
+   if (OutputVar) {
+        WinActivate, ahk_id %OutputVar%
+        ; tip2("Hyper 推荐只开启一个，如果需要多个，请使用 ctrl + shift + t 新建多标签")
+        return 
+   }
+
+    myIdea := "Hyper.exe"
+    RunWait, %myIdea% %name%,, max, pid
+
+    prevHyperPid := pid
+
+    ; 等待窗口出现
+    WinWait, Hyper
+
+    ; 如果出现了
+    if (WinExist("Hyper")) {
+
+       WinGet, OutputVar, IDLast, Hyper
+
+       WinActivate, ahk_id %OutputVar%
+
+       ; 激活窗口
+       ; WinActivate, Hyper
+
+       ; 等待激活窗口
+       WinWaitActive, Hyper,, 100
+
+       ; 如果激活成功了，那么透明化它
+       if (ErrorLevel) {
+           return
+       } else {
+           WinSet, Transparent, 180, ahk_id %OutputVar%
+       }     
+    }
+}
+
 RunByCmder(name) {
     myIdea := A_Desktop . "\cmder\Cmder.exe"
     Run, %myIdea% %name%,, max

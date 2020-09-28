@@ -146,3 +146,8 @@ if (clipboard) {
     tip2("beautify fail!!!")
 }
 return
+
+!z::
+WinGetTitle, Title, A
+MsgBox, % Title
+return
