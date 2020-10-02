@@ -54,6 +54,16 @@ SwitchBook:
      cornell("jest语法")
   }
 
+  if (currentBook == "《Mongodb》") {
+     cornell("mongodb-101")
+     cornell("dbs-数据库相关")
+     cornell("collections-集合相关")
+     cornell("document-文档相关")
+     cornell("玩转几个特殊函数")
+     cornell("使用索引")
+     cornell("备份与恢复")
+  }
+
   ;获取节点信息
   _top := TV_GetSelection()
 
@@ -69,6 +79,200 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+
+if (v == "备份与恢复") {
+Var =
+(
+@@mongodump备份
+// 创建一个文件夹
+$ mkdir dbbak && cd dbbak
+
+// 备份到该文件夹
+$ mongodump -d myBlogs
+
+@@mongorestore恢复
+// 删除所有文章
+db.posts.remove({})
+
+// 恢复(先删除所有数据，然后再恢复)
+mongorestore --drop
+)
+}
+     
+
+if (v == "使用索引") {
+Var = 
+(
+@@查看索引
+默认 mongodb 的索引就是 _id
+db.posts.getIndexes()
+
+@@新建索引（uniqie）
+db.posts.createIndexes({ title: 1 }, { unique: true })
+
+@@删除索引
+db.posts.createIndexes({ title: 1 })
+)
+}
+
+if (v == "玩转几个特殊函数") {
+Var =
+(
+@@$inc - 递增
+db.posts.update({ title: "怪物猎人世界评测" }, { $inc: { rank: 1 } })
+
+@@$mul - 相乘
+db.posts.update({ title: "怪物猎人世界评测" }, { $mul: { rank: 2 } })
+
+@@$rename - 改名
+db.posts.update({ title: "怪物猎人世界评测" }, { $rename: { "rank": "score" } })
+
+@@$set - 新增or修改
+db.posts.update({ title: "怪物猎人世界评测" }, { $set: { "isHot": true } })
+
+@@$unset - 字段删除
+db.posts.update({ title: "怪物猎人世界评测" }, { $unset: { "isHot": true } })
+)
+}
+
+if (v == "dbs-数据库相关") {
+Var = 
+(
+@@显示所有集合
+show collections
+
+@@创建集合
+db.createCollection("posts")
+db.createCollection("tags")
+
+@@重命名集合
+db.users.renameCollection("staff")
+
+@@删除集合
+db.users.drop()
+)
+}
+
+if (v == "collections-集合相关") {
+Var = 
+(
+@@显示所有集合
+show collections
+
+@@创建集合 - createCollection
+db.createCollection("posts")
+db.createCollection("tags")
+
+@@重命名集合 - renameCollection
+db.users.renameCollection("staff")
+
+@@删除集合 - drop
+db.users.drop()
+)
+}
+
+if (v == "document-文档相关") {
+Var = 
+(
+@@插入文档 - insert
+db.posts.insert({
+  title: 'hello world',
+  content: 'Lorem ipsum dolor sit amet'
+})
+
+@@查找文档 - find/findOne
+db.posts.find()
+db.posts.findOne({ "title": "怪物猎人世界评测" })
+
+db.posts.find({ "rank": { $gte: 4 } })
+db.posts.find({ "rank": { $gt:  4 } })
+db.posts.find({ "rank": { $lte: 4 } })
+db.posts.find({ "rank": { $lt:  4 } })
+
+// 文章标题中带 fuck 的文档
+db.posts.find({ "title": /fuck/ })
+// 文章标题以shit开头的文档
+db.posts.find({ "title": /^shit/ })
+
+// （分组）以 tag 字段为分类，查看文章有几种分类
+db.posts.distinct("tag")
+
+@@复杂查找文档 - find
+db.posts.find({ 
+  $or: [
+    { "title": /hello/ },
+    { "rank": { $gte: 4 } }
+  ]
+})
+
+db.posts.find({ "rank": { $in: [3, 4] } })
+db.posts.find({ "isHot": { $exists: true } })
+
+@@查找指定字段 - find
+// 抽出 title 和 rank, 不显示默认的 _id
+db.posts.find({}, { title: true, rank: 1, _id: 0 })
+
+@@文档方法-sork()/limit()/skip()
+// 升序
+db.posts.find({}).sort({ rank: 1 })
+// 降序
+db.posts.find({}).sort({ rank: -1 })
+// limit
+db.posts.find({}).limit(3)
+db.posts.find({}).sort({ rank: -1 }).limit(3)
+db.posts.find({}).skip(3).limit(3)
+
+
+@@查找总数 - count
+db.posts.count()
+
+@@文档更新 - update
+
+基本语法：update(<filter>, <update>, <options>)
+
+// 更新一条（必须加入 $set）
+db.posts.update({ "title": "hello world" }, { $set: { "rank": 10 } })
+
+// 更新多条
+db.posts.update({ "tag": "game" }, { $set: { "rank": 50 } }, { multi: true })
+
+// 有则更新，没有则添加
+db.posts.update({ title: "怪物图鉴" }, { title: "怪物猎人世界图鉴", "rank": 5 }, { upsert: true })
+
+@@删除文档 - remove
+db.posts.remove({})
+)
+}
+
+
+
+if (v == "mongodb-101") {
+Var = 
+(
+const { connect } = require('mongodb')
+
+const MongoClient = require('mongodb').MongoClient
+const uri = 'mongodb+srv://lee:202063sb@cluster0.dqy2h.azure.mongodb.net/<dbname>?retryWrites=true&w=majority'
+const client = new MongoClient(uri, { useNewUrlParser: true })
+client.connect((err) => {
+    if (!err) {
+        console.log('连接成功')
+    }
+
+    const collection = client.db('test').collection('devices')
+
+    collection.insertOne({ devId: 1, 'name': 'hello world', time: '2020-10-01' }, function (err) {
+        if (!err) {
+            console.log('插入成功')
+        }
+    })
+
+  client.close()
+})
 )
 }
 
@@ -2675,7 +2879,9 @@ For key, value in ary
 		; 内容
 		v := SubStr(value, StrLen(title) + 1)
 		; 塞入数组
-		cornellAry["@" . title] := v
+    ; 我觉得假如标题会好一点
+    prefix := "@" . title . "`n_________________________________________________________________`n" 
+		cornellAry["@" . title] := prefix .  v
 		; 并且加入当前的树中， 但需要先找到树
 		TV_Add("@" . title, cornellTop)
 	}

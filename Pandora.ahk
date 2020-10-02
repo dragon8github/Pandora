@@ -147,7 +147,7 @@ if (clipboard) {
 }
 return
 
-!z::
-WinGetTitle, Title, A
-MsgBox, % Title
-return
+; !z::
+; WinGetTitle, Title, A
+; MsgBox, % Title
+; return

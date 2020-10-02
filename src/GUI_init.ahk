@@ -30,7 +30,7 @@ var_dump(expandallchild(top))
 Gui, Book:Add, Edit, ys vBookContent w890 H700 Limit199307100337 ReadOnly  
 
 ; Tab 选项卡
-Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Vue + Jest单元测试》|《Vue.js 深入浅出》
+Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Vue + Jest单元测试》|《Mongodb》|《Vue.js 深入浅出》
 
 
 
@@ -303,7 +303,7 @@ Gui, Pandora:Add, Link,, <a href="https://tympanus.net/codrops/category/tutorial
 Gui, Pandora:Add, Link,, <a href="https://hackernoon.com/">hackernoon</a>
 Gui, Pandora:Add, Link,, <a href="https://hashnode.com/">oshogunle.com</a>
 Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/http`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fhackernews-daily">hackerNews Top10日刊</a>
-Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/https`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fhackernews-monthly">hackerNews Top10月刊</a>
+Gui, Pandora:Add, Link,, <a href="https://vuejsexamples.com/">vuejsexamples</a>
 
 
 
@@ -372,7 +372,6 @@ Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">picjumbo山景</a>
 Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
-Gui, Pandora:Add, Text, gsuopingtupian, window 锁屏图片
 
 
 
@@ -797,6 +796,8 @@ Gui, Pandora:Add, Link,, <a href="https://cssfx.dev/">（神器）效果大全�
 Gui, Pandora:Add, Text, W140 ys, 移动端UI框架：
 Gui, Pandora:Add, Link,, <a href="https://youzan.github.io/vant/#/zh-CN/button">有赞的Vant</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/jdf2e/nutui">nutui</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/didi/mand-mobile">滴滴 mand-mobile</a>
+
 
 Gui, Pandora:Add, Text, W140 ys, CMS内容管理系统：
 Gui, Pandora:Add, Link,, <a href="http://doc.cms.7yue.pro/lin/start/koa/frontend-demo.html#%E5%BB%BA%E7%AB%8B%E9%A1%B5%E9%9D%A2">基于Vue和koa</a>

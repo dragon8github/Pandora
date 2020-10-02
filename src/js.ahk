@@ -1,4 +1,31 @@
-﻿::dufenmiao::
+﻿::mongodb::
+Var =
+(
+const { connect } = require('mongodb')
+
+const MongoClient = require('mongodb').MongoClient
+const uri = 'mongodb+srv://lee:202063sb@cluster0.dqy2h.azure.mongodb.net/<dbname>?retryWrites=true&w=majority'
+const client = new MongoClient(uri, { useNewUrlParser: true })
+client.connect((err) => {
+    if (!err) {
+        console.log('连接成功')
+    }
+
+    const collection = client.db('test').collection('devices')
+
+    collection.insertOne({ devId: 1, 'name': 'hello world', time: '2020-10-01' }, function (err) {
+        if (!err) {
+            console.log('插入成功')
+        }
+    })
+
+  client.close()
+})
+)
+code(Var)
+return
+
+::dufenmiao::
 ::dufenm::
 ::dfm::
 Var =
