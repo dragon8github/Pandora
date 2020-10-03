@@ -23,8 +23,84 @@ client.connect((err) => {
 
   client.close()
 })
+---
+const Joi = require('joi')
+const express = require('express')
+const db = require('monk')(process.env.MONGO_URI)
+
+const router = express.Router()
+const faqs = db.get('faqs')
+
+const schema = Joi.object({
+    question: Joi.string().trim().required(),
+    answer: Joi.string().trim().required(),
+    vedio_url: Joi.string().uri(),
+})
+
+router.get('/', async (req, res, next) => {
+    try {
+        const items = await faqs.find({})
+        res.json(items)
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.get('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const item = await faqs.findOne({ _id: id })
+        if (!item) {
+            return next()
+        }
+
+        res.json(item)
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.post('/', async (req, res, next) => {
+    try {
+        const value = await schema.validateAsync(req.body)
+        const result = await faqs.insert(value)
+        res.json(result)
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.put('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const item = await faqs.findOne({ _id: id })
+        if (!item) {
+            return next()
+        }
+        
+        const value = await schema.validateAsync(req.body)
+
+        const result = await faqs.update({ _id: id }, { $set: value })
+        res.json(result)
+
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const result = await faqs.remove({ _id: id })
+        res.json(result)
+    } catch (error) {
+        next(error)
+    }
+})
+
+module.exports = router;
 )
-code(Var)
+txtit(Var)
 return
 
 ::dufenmiao::
