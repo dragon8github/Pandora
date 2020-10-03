@@ -5,7 +5,7 @@ const { connect } = require('mongodb')
 
 const MongoClient = require('mongodb').MongoClient
 
-// 请注意，将你的<password> 和 <dbname>修改
+// 请注意，将你的 <password>sb 和 <dbname> test 修改
 const uri = 'mongodb+srv://lee:<password>@cluster0.dqy2h.azure.mongodb.net/<dbname>?retryWrites=true&w=majority'
 const client = new MongoClient(uri, { useNewUrlParser: true })
 client.connect((err) => {
