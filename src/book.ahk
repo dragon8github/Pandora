@@ -1,4 +1,5 @@
-﻿>+b::
+﻿
+>+b::
 	; 显示
 	Gui, Book:Show,, Book
 	; 康奈尔专用数组
@@ -56,6 +57,7 @@ SwitchBook:
 
   if (currentBook == "《Mongodb》") {
      cornell("mongodb-101")
+     cornell("mongoose-101")
      cornell("dbs-数据库相关")
      cornell("collections-集合相关")
      cornell("document-文档相关")
@@ -82,6 +84,50 @@ Var =
 )
 }
 
+if (v == "mongoose-101") {
+Var =
+(
+// https://mongoosejs.com/docs/api.html#model_Model.remove
+const mongoose = require('mongoose')
+
+// mongodb: //127.0.0.1:27017/eggcms
+const uri = 'mongodb+srv://lee:202063sb@cluster0.dqy2h.azure.mongodb.net/test?retryWrites=true&w=majority'
+
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, })
+
+// @fake.md
+// 操作 users 表（集合），Schame 里面的对象和数据库里面的字段要对应
+const usersSchame = mongoose.Schema({
+    name: String,
+    age: Number,
+    status: Number,
+})
+
+// 模型映射 「users」 表这个集合（注意映射是复数形式，而且必须是首字母大写），可以通过第三个参数强指定
+const User = mongoose.model('User', usersSchame, 'users')
+
+;(async () => {
+    // @@新增
+    const u = new User({ name: 'Audra', age: 18, status: 0 })
+    u.save()
+
+    // @@更新
+    await User.updateOne({ name: 'Audra' }, { status: 1 })
+
+    // @@查找
+    const userLists = await User.find({})
+    console.log(userLists)
+
+    // @@删除
+    // （deleteMany/deleteOne）
+    const res = await User.deleteMany({ name: 'Audra' })
+    console.log('删除行数', res.deletedCount)
+
+    // 结束进程
+    process.exit(0)
+})();
+)
+}
 
 
 if (v == "备份与恢复") {

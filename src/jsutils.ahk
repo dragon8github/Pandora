@@ -3,6 +3,9 @@
     Menu, utilsworker, Add, 项目名：功能说明, utilsHandler
 
 
+    Menu, utilsTime, Add, Intl.RelativeTimeFormat 相对时间格式化, utilsHandler
+    Menu, utilsTime, Add
+    Menu, utilsTime, Add
     Menu, utilsTime, Add, toLocaleString：获取中文后缀的时间（1月/一月）, utilsHandler
 	Menu, utilsTime, Add, 获取半小时前, utilsHandler
     Menu, utilsTime, Add, 获取当前时间的秒数, utilsHandler
@@ -515,6 +518,33 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "Intl.RelativeTimeFormat 相对时间格式化") {
+Var =
+(
+const rtf = new Intl.RelativeTimeFormat('zh-Hans', { numeric: 'auto' })
+console.log(rtf.format(-1, 'day'))     // ▶ 昨天      
+console.log(rtf.format(-2, 'day'))     // ▶ 前天      
+console.log(rtf.format(2, 'second'))   // ▶ 2秒钟后        
+console.log(rtf.format(-15, 'minute')) // ▶ 15分钟前          
+console.log(rtf.format(8, 'hour'))     // ▶ 8小时后      
+console.log(rtf.format(2, 'week'))     // ▶ 2周后      
+console.log(rtf.format(-5, 'month'))   // ▶ 5个月前        
+console.log(rtf.format(2, 'quarter'))  // ▶ 2个季度后         
+console.log(rtf.format(-10, 'year'))   // ▶ 10年前        
+
+const rtf = new Intl.RelativeTimeFormat('zh-Hans', { numeric: 'always' })
+console.log(rtf.format(-1, 'day'))     // ▶ 1天前      
+console.log(rtf.format(-2, 'day'))     // ▶ 2天前      
+console.log(rtf.format(2, 'second'))   // ▶ 2秒钟后        
+console.log(rtf.format(-15, 'minute')) // ▶ 15分钟前          
+console.log(rtf.format(8, 'hour'))     // ▶ 8小时后      
+console.log(rtf.format(2, 'week'))     // ▶ 2周后      
+console.log(rtf.format(-5, 'month'))   // ▶ 5个月前        
+console.log(rtf.format(2, 'quarter'))  // ▶ 2个季度后         
+console.log(rtf.format(-10, 'year'))   // ▶ 10年前   
 )
 }
 

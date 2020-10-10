@@ -151,3 +151,12 @@ return
 ; WinGetTitle, Title, A
 ; MsgBox, % Title
 ; return
+
+
+; ~+MButton::
+; ~#MButton::
+; ~^MButton::
+; ~!MButton::
+; ~MButton::
+; tip2(GetKeyState("alt", "P"))
+; return

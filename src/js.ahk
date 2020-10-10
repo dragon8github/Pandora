@@ -1,4 +1,6 @@
 ﻿::mongodb::
+::mongo::
+::mongoose::
 Var =
 (
 const { connect } = require('mongodb')
@@ -99,6 +101,54 @@ router.delete('/:id', async (req, res, next) => {
 })
 
 module.exports = router;
+---
+// https://mongoosejs.com/docs/api.html#model_Model.remove
+const mongoose = require('mongoose')
+
+// mongodb: //127.0.0.1:27017/eggcms
+const uri = 'mongodb+srv://lee:202063sb@cluster0.dqy2h.azure.mongodb.net/test?retryWrites=true&w=majority'
+
+const db = mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, })
+
+db.on('error', () => {
+    console.log('> error occurred from the database')
+})
+
+db.once('open', () => {
+    console.log('> successfully opened the database')
+})
+
+// @fake.md
+// 操作 users 表（集合），Schame 里面的对象和数据库里面的字段要对应
+const usersSchame = mongoose.Schema({
+    name: String,
+    age: Number,
+    status: Number,
+})
+
+// 模型映射 「users」 表这个集合（注意映射是复数形式，而且必须是首字母大写），可以通过第三个参数强指定
+const User = mongoose.model('User', usersSchame, 'users')
+
+;(async () => {
+    // @@新增
+    const u = new User({ name: 'Audra', age: 18, status: 0 })
+    u.save()
+
+    // @@更新
+    await User.updateOne({ name: 'Audra' }, { status: 1 })
+
+    // @@查找
+    const userLists = await User.find({})
+    console.log(userLists)
+
+    // @@删除
+    // （deleteMany/deleteOne）
+    const res = await User.deleteMany({ name: 'Audra' })
+    console.log('删除行数', res.deletedCount)
+
+    // 结束进程
+    process.exit(0)
+})();
 )
 txtit(Var)
 return
@@ -838,6 +888,24 @@ return
 Var =
 (
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+---
+proxyTable: {
+    '/api': {
+        secure: false,
+        target: 'https://19.104.40.37:6080',
+        changeOrigin: true, 
+        pathRewrite: {
+          '^/api': '/api'
+        }
+    }
+},
+---
+先请求该 https 地址，让浏览器允许证书通过
+先请求该 https 地址，让浏览器允许证书通过
+先请求该 https 地址，让浏览器允许证书通过
+先请求该 https 地址，让浏览器允许证书通过
+先请求该 https 地址，让浏览器允许证书通过
+先请求该 https 地址，让浏览器允许证书通过
 )
 code(Var)
 return
@@ -8645,6 +8713,23 @@ axios.interceptors.response.use(res => {
     // ...
     return res
 }, reTry(4, 1000))
+---
+// 重试机制！
+const _axios = require('axios') 
+const axiosRetry = require('axios-retry') 
+const axios = _axios.create() 
+// https://github.com/softonic/axios-retry/issues/87 const retryDelay = (retryNumber = 0) => { 
+  const seconds = Math.pow(2, retryNumber) * 1000; 
+  const randomMs = 1000 * Math.random(); 
+  return seconds + randomMs; 
+}; 
+axiosRetry(axios, { 
+  retries: 2, 
+  retryDelay, 
+  // retry on Network Error & 5xx responses 
+  retryCondition: axiosRetry.isRetryableError, 
+}); 
+module.exports = axios;
 )
 txtit(Var)
 return
@@ -10169,8 +10254,61 @@ function getUUID () {
     return (c === 'x' ? (Math.random() * 16 | 0) : ('r&0x3' | '0x8')).toString(16)
   })
 }
+---
+// Both numbers and letters
+function mixedID() {
+  var now = new Date();
+  
+  timestamp = now.getFullYear().toString();
+  timestamp += (now.getMonth < 9 ? '0' : '') + now.getMonth().toString();
+  timestamp += ((now.getDate < 10) ? '0' : '') + now.getDate().toString();
+  timestamp += now.getHours().toString();
+  timestamp += now.getMinutes().toString();
+  timestamp += now.getSeconds().toString();
+  timestamp += now.getMilliseconds().toString();
+  
+  id = 'a';
+  for (var i = 0; i < timestamp.length; i++) {
+    id = id + String.fromCharCode(97 + Number(timestamp[i])) + (Number(timestamp[i]) + 5);
+  }
+  return id
+}
+
+// Letters
+function baseID() {
+  var now = new Date();
+
+  timestamp = now.getFullYear().toString();
+  timestamp += (now.getMonth < 9 ? '0' : '') + now.getMonth().toString();
+  timestamp += ((now.getDate < 10) ? '0' : '') + now.getDate().toString();
+  timestamp += now.getHours().toString();
+  timestamp += now.getMinutes().toString();
+  timestamp += now.getSeconds().toString();
+  timestamp += now.getMilliseconds().toString();
+
+  id = '';
+  for (var i = 0; i < timestamp.length; i++) {
+    id = id + String.fromCharCode(97 + Number(timestamp[i]));
+  }
+  return id
+}
+
+// Numbers
+function numID() {
+  var now = new Date();
+
+  id = now.getFullYear().toString();
+  id += (now.getMonth < 9 ? '0' : '') + now.getMonth().toString();
+  id += ((now.getDate < 10) ? '0' : '') + now.getDate().toString();
+  id += now.getHours().toString();
+  id += now.getMinutes().toString();
+  id += now.getSeconds().toString();
+  id += now.getMilliseconds().toString();
+
+  return Number(id)
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::user-agents::
@@ -12189,18 +12327,6 @@ function isNaN(obj) {
 code(Var)
 return
 
-
-::getuuid::
-Var = 
-(
-function getUUID () {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-    return (c === 'x' ? (Math.random() * 16 | 0) : ('r&0x3' | '0x8')).toString(16)
-  })
-}
-)
-code(Var)
-return
 
 ::gettop::
 Var = 

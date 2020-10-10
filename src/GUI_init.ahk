@@ -284,7 +284,7 @@ Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echojs.com/">echojs.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.smashingmagazine.com/articles/">粉碎杂志</a>
-Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/r/webdev">reddit</a>
+Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/">reddit</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -355,6 +355,7 @@ Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer<
 Gui, Pandora:Add, Link,, <a href="https://animate.style/">animate.css</a>
 Gui, Pandora:Add, Link,, <a href="https://animista.net/play/basic/slide-fwd">animista.css</a>
 Gui, Pandora:Add, Link,, <a href="https://csslayout.io/patterns">csslayout</a>
+Gui, Pandora:Add, Link,, <a href="https://sarthology.github.io/Animatopy/">Animatopy何必全部？</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：

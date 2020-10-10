@@ -1485,6 +1485,7 @@ open -a Google\ Chrome --args --disable-web-security --user-data-dir
 Send, % Var
 return
 
+::nodesafe::
 ::no-safe::
 ::nosafe::
 ::notsafe::

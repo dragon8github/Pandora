@@ -1,4 +1,101 @@
-﻿::svg::
+﻿::shoufengqin::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .panel {
+        width: 480px;
+        min-height: 160px;
+        margin: 50px auto;
+        background: #eee;
+    }
+
+    .panel dt {
+        min-height: 40px;
+        line-height: 40px;
+        background: #f9f9f9;
+        padding-left: 10px;
+        cursor: pointer;
+    }
+
+    .panel dd {
+        padding-left: 10px;
+        height: 0;
+        overflow: hidden;
+        transition: height .5s;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="panel">
+            <dl>
+                <dt>One Item</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+                <dt>two Item</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+                <dt>3 Item</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+                <dt>4 Item</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+            </dl>
+        </div>
+    </div>
+</body>
+
+<script>
+    const dtDoms = document.querySelectorAll('dt')
+
+    Array.from(dtDoms).forEach(dtDom => {
+        dtDom.onclick = e => {
+            // 被点击的dt的下一个dd元素
+            const dd = e.target.nextElementSibling
+            toggle(dd)
+        }
+    })
+
+    function toggle(target) {
+        const ddDoms = document.querySelectorAll('dd')
+
+        // 第一次的时候 height 为 '' 空字符串
+        if (target.style.height === '' || target.style.height === '0px') {
+
+            // 收起其他展开的手风琴
+            for (dd of ddDoms) {
+                dd.style.height = '0px'
+            }
+
+            // 注意这里的套路，是实现动画 height 的核心
+            Object.assign(target.style, { position: 'absolute', left: '-2000px', top: '-2000px', height: 'auto', width: '480px' })
+            const height = target.offsetHeight
+
+            target.style.cssText = 'height: 0px'
+            requestAnimationFrame(() => target.style.cssText = 'height: ' + height + 'px')
+            
+        } else {
+            target.style.height = '0px'
+        }
+    }
+</script>
+</html>
+)
+code(Var)
+return
+
+::svg::
 Var =
 (
 <svg role="img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
