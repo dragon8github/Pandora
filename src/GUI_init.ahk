@@ -368,7 +368,6 @@ Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">Pexels</a>
 ; Gui, Pandora:Add, Link,, <a href="https://www.reshot.com/">reshot</a>
 ; Gui, Pandora:Add, Link,, <a href="https://www.rawpixel.com/">rawpixel</a>
 ; Gui, Pandora:Add, Link,, <a href="https://isorepublic.com/">ISO</a>
-Gui, Pandora:Add, Link,, <a href="http://www.polayoutu.com">泼辣有图</a>
 Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a>
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">picjumbo山景</a>
 Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
@@ -428,12 +427,10 @@ Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
 Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条
 Gui, Pandora:Add, Text, gxuanliyanhua W160,新建点击绚丽烟花效果.html
 Gui, Pandora:Add, Text, gmaoboli W160,新建毛玻璃.html
-Gui, Pandora:Add, Text, gwangyejindutiao W160,新建网页进度条.html
+Gui, Pandora:Add, Text, gwangyejindutiao W160,新建网页阅读进度条.html
 Gui, Pandora:Add, Text, gemphhtml W160,新建更新提示波动图.html
 Gui, Pandora:Add, Text, gautowidth W160,新建input动态宽度.html
 Gui, Pandora:Add, Text, ghuxihtml W160, 新建呼吸变色棱角空间.html
-Gui, Pandora:Add, Text, ghuehtml W160, 新建hue-rotate.html
-Gui, Pandora:Add, Text, glocalForagehtml W180, 新建localForage缓存示例.html
 Gui, Pandora:Add, Text, gquickbianimhtml W180, 新建quickbi的过场动画.html
 Gui, Pandora:Add, Text, gcssbodongsandian W180, 新建css波动散点.html
 Gui, Pandora:Add, Text, ginputyanhua W140,新建input烟花特效
@@ -442,12 +439,13 @@ Gui, Pandora:Add, Text, ghackdiguo  W140,黑客帝国
 Gui, Pandora:Add, Text, gxiexiangougudingli  W140,斜线与勾股定理
 Gui, Pandora:Add, Text, gyoujiancaidanxinjian  W140,新建拦截右键菜单
 Gui, Pandora:Add, Text, gdomshengyin W180,只要 dom 改变就会发出声音
-Gui, Pandora:Add, Text, gcsspinyinHtml W180, css正则匹配选择器实现拼音搜索
 Gui, Pandora:Add, Text, gsinaip W180,新浪接口获取ip地址
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建复杂table.html
-
-
 Gui, Pandora:Add, Text, gvueecharts W140 , 新建纯v-chart.html
+Gui, Pandora:Add, Text, gjstuodongtanchuang W140 , 纯js实现拖动弹窗.html
+Gui, Pandora:Add, Text, gjsshoufengqing W140 , 纯js实现手风琴.html
+
+
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+60,新建.echartsDemo.html（官方demo）
 Gui, Pandora:Add, Text, gNewEchartsPinHtml, 新建.pin.html(玫瑰饼图)
 Gui, Pandora:Add, Text, gNewEchartsLineHtml ,新建.Line.html（折线图）
@@ -496,6 +494,7 @@ Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 
 
 Gui, Pandora:Add, Text, gimgSearchhtml W160 ys x+60, 图片搜索imageSearch
+Gui, Pandora:Add, Text, gcsspinyinHtml W180, css正则匹配选择器实现拼音搜索
 Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索
 Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 Gui, Pandora:Add, Text, gcssskeletonHtml W140,新建css骨骼图.skeleton

@@ -907,7 +907,7 @@ proxyTable: {
 先请求该 https 地址，让浏览器允许证书通过
 先请求该 https 地址，让浏览器允许证书通过
 )
-code(Var)
+txtit(Var)
 return
 
 ::ext::

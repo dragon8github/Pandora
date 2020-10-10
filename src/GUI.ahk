@@ -7623,7 +7623,7 @@ const randcolorA = randomColor({ luminosity: 'light' })
 const randcolorB = randomColor({ luminosity: 'light' })
 
 // 组合
-const color = `linear-gradient(${getRange()}deg, ${randcolorA}, ${randcolorB})`
+const color = ``linear-gradient(${getRange()}deg, ${randcolorA}, ${randcolorB})``
 
 // test
 document.querySelector('body').style = 'background:' + color
@@ -13244,6 +13244,216 @@ map.addEventListener('click', e => {
 })
 </script>
 
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+jstuodongtanchuang:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .dialog {
+        width: 480px;
+        height: 300px;
+        background: #eee;
+        position: absolute;
+    }
+
+    .dialog-header {
+        width: 480px;
+        height: 40px;
+        background: #999;
+        cursor: move;
+        text-align: center;
+        line-height: 40px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;    
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .close {
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="dialog" id="canMove">
+            <div class="dialog-header" id="canDrag">
+                <div>☀️ Title</div>
+                <div class='close' onclick="closeHandler()">✖️</div>
+            </div>
+            <div class="content">
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let timer
+
+    const dragEle = document.querySelector('#canDrag')
+    const canMove = document.querySelector('#canMove')
+
+    const closeHandler = () => window.alert('close dialog')
+
+    // 禁止被选中
+    dragEle.onselectstart = canMove.onselectstart = () => false
+
+    // 记录当前鼠标移动的坐标点
+    const mouse = { x: 0, y: 0 }
+
+    // 鼠标按下时候距离 CanMove 左上角的距离
+    const distance = { topTop: 0, topLeft: 0 }
+
+    // 记录鼠标起始坐标位置
+    document.onmousemove = (e) => {
+        mouse.x = e.pageX
+        mouse.y = e.pageY
+    }
+
+    // 鼠标弹起，清空定时器
+    document.onmouseup = document.ondrag = (e) => {
+        clearInterval(timer)
+        timer = null
+    }
+
+    dragEle.onmousedown = (e) => {
+        distance.topLeft = e.pageX - canMove.offsetLeft
+        distance.topTop = e.pageY - canMove.offsetTop
+
+        // 新思路，如果是我以前会用函数节流，但会比较麻烦。这个方法简单实惠
+        timer = setInterval(setPosition, 10)
+    }
+
+    function setPosition() {
+        const maxX = (document.body.clientWidth || document.documentElement.clientWidth) - canMove.offsetWidth
+        const maxY = (document.body.clientHeight || document.documentElement.clientHeight) - canMove.offsetHeight
+
+        canMove.style.left = Math.max(Math.min((mouse.x - distance.topLeft), maxX), 0) + 'px'
+        canMove.style.top = Math.max(Math.min((mouse.y - distance.topTop), maxY), 0) + 'px'
+    }
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+jsshoufengqing:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .panel {
+        width: 480px;
+        min-height: 160px;
+        margin: 50px auto;
+        background: #eee;
+    }
+
+    .panel dt {
+        min-height: 40px;
+        line-height: 40px;
+        background: #f9f9f9;
+        padding-left: 10px;
+        cursor: pointer;
+    }
+
+    .panel dd {
+        padding-left: 10px;
+        height: 0;
+        overflow: hidden;
+        transition: height .5s;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="panel">
+            <dl>
+                <dt>One Item</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+                <dt>two Item</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+                <dt>3 Item</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+                <dt>4 Item</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+            </dl>
+        </div>
+    </div>
+</body>
+
+<script>
+    const dtDoms = document.querySelectorAll('dt')
+
+    Array.from(dtDoms).forEach(dtDom => {
+        dtDom.onclick = e => {
+            // 被点击的dt的下一个dd元素
+            const dd = e.target.nextElementSibling
+            toggle(dd)
+        }
+    })
+
+    function toggle(target) {
+        const ddDoms = document.querySelectorAll('dd')
+
+        // 第一次的时候 height 为 '' 空字符串
+        if (target.style.height === '' || target.style.height === '0px') {
+
+            // 收起其他展开的手风琴
+            for (dd of ddDoms) {
+                dd.style.height = '0px'
+            }
+
+            // 注意这里的套路，是实现动画 height 的核心
+            Object.assign(target.style, { position: 'absolute', left: '-2000px', top: '-2000px', height: 'auto', width: '480px' })
+            const height = target.offsetHeight
+
+            target.style.cssText = 'height: 0px'
+            requestAnimationFrame(() => target.style.cssText = 'height: ' + height + 'px')
+            
+        } else {
+            target.style.height = '0px'
+        }
+    }
+</script>
 </html>
 ),  %name%
 RunBy(name)
