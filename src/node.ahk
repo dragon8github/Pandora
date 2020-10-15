@@ -1484,11 +1484,14 @@ return
 ::fs.rename::
 Var = 
 (
-var fs = require('fs');
-var files = fs.rename('./test.txt','./test/test.txt',function(err){
-     if(err) console.log("err");
-     console.log("文件操作成功");
+const fs = require('fs')
+
+const files = fs.rename('./test.txt', './test/test.txt', err => {
+     if (err) console.log("err")
+
+     console.log("文件操作成功")
 })
+
 )
 code(Var)
 return
@@ -1498,12 +1501,14 @@ return
 ::fs.read::
 Var = 
 (
-var fs = require('fs');
-var path = require('path');
-fs.readFile(path.join(__dirname,'/data/test.json'), {encoding:'utf-8'} , function (err, data) {
-    if(err) throw err;
-    console.log(data);
-});
+const fs = require('fs')
+const path = require('path')
+
+fs.readFile(path.join(__dirname, '/data/test.json'), { encoding:'utf-8' } , (err, data) => {
+    if(err) throw err
+
+    console.log(data)
+})
 )
 code(Var)
 return

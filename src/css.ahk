@@ -1720,24 +1720,26 @@ Var =
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <style> 
+    <style>
     .link {
         display: inline-block;
         text-decoration: none;
+        position: relative;
     }
-
-        .link::after {
+    
+        .link.active::after, .link::after {
+            position: absolute;
+            bottom: -15`%;
             content: '';
             display: block;
-            height: 5px;
-            margin-top: 10px;
+            height: 2px;
             width: 100`%;
             background-color: #8daa97;
             transition: all 250ms ease;
             transform: scaleX(0);
         }
 
-        .link:hover::after {
+        .link.active::after, .link:hover::after {
             transform: scaleX(1);
         }
     </style>

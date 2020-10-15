@@ -257,6 +257,7 @@ txtit(Var)
 return
 }
 
+
 if (v == "vue.test") {
 Var =
 (
@@ -8791,4 +8792,55 @@ describe('Item.vue', () => {
 })
 )
 code(Var)
+return
+
+::zujian::
+Var =
+(
+import Vue from 'vue'
+import card from './pointCard.vue'
+
+// 活跃作业点: clockIn   
+// 打卡作业点: lively 
+export const cardFactory = (type = 'lively', history = [], item = {}) => {
+    const cardConstructor = Vue.extend(card)
+    return new cardConstructor({
+        el: document.createElement('div'),
+        propsData: { type, history, item }
+    })
+}
+---
+import store from "@/store"
+import { waitWhen } from "@/utils/utils"
+
+import pctable1 from './pctable1.vue'
+import pctable2 from './pctable2.vue'
+import pctable3 from './pctable3.vue'
+
+// 你当然也可以用动态引入来注册 - require.context
+const tables = { pctable1, pctable2, pctable3 }
+
+export const register = Vue => {
+    // 实例大集合
+    const $targets = []
+
+    for (let [key, val] of Object.entries(tables)) {
+        // 挂载组件
+        const $target = new Vue(val).$mount()
+        // 注入 store，如果你想注入 router 也是一样的道理
+        $target.$store = store
+        // 使用 $ 为前缀的命名，譬如 window.$table1、 this.$table1
+        const $name = '$' + key
+        // 注册到全局和 Vue 实例中去
+        window[$name] = Vue.prototype[$name] = $target
+        // 插入到数组中，稍后等时机成熟再插入到 DOM body 中
+        $targets.push($target)
+    }
+
+    waitWhen(() => document.getElementById('pcMap')).then(container => {
+        $targets.map($target => container.appendChild($target.$el))
+    }, 10000)
+}
+)
+txtit(Var)
 return

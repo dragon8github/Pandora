@@ -11,16 +11,26 @@
     Menu, utilsTime, Add, 获取当前时间的秒数, utilsHandler
     Menu, utilsTime, Add, 获取12345的时间选择器, utilsHandler
     Menu, utilsTime, Add, 获取指定时间戳, utilsHandler
-    Menu, utilsTime, Add, 格式化当前时间, utilsHandler
     Menu, utilsTime, Add, 返回指定时间戳之间的时间间隔, utilsHandler
-    Menu, utilsTime, Add, 按类型格式化日期, utilsHandler
-    Menu, utilsTime, Add, 验证一个日期是不是今天, utilsHandler
     Menu, utilsTime, Add, 本月最后一天, utilsHandler
     Menu, utilsTime, Add, 今日最晚时间 23:59:59 的时间戳, utilsHandler
     Menu, utilsTime, Add, 获取当前时间的前一天/后一天的时间戳, utilsHandler
+    Menu, utilsTime, Add, 获取前6个月/前15天数据, utilsHandler
+
+    Menu, utilsTime, Add
+    Menu, utilsTime, Add
+
+    Menu, utilsTime, Add, 如何获得给定毫秒数的可读格式？, utilsHandler
+    Menu, utilsTime, Add, 如何获得两个日期之间的差异（以天为单位）？, utilsHandler
+
+    Menu, utilsTime, Add
+    Menu, utilsTime, Add
+
+    Menu, utilsTime, Add, 格式化当前时间, utilsHandler
+    Menu, utilsTime, Add, 按类型格式化日期, utilsHandler
+    Menu, utilsTime, Add, 验证一个日期是不是今天, utilsHandler
     Menu, utilsTime, Add, 验证日期大小, utilsHandler
     Menu, utilsTime, Add, 设置几天后的日期, utilsHandler
-    Menu, utilsTime, Add, 获取前6个月/前15天数据, utilsHandler
 
 
     Menu, utilsIs, Add, is, utilsHandler
@@ -518,6 +528,42 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+
+if (v == "如何获得给定毫秒数的可读格式？") {
+Var = 
+(
+const formatDuration = ms => {
+  if (ms < 0) ms = -ms;
+  const time = {
+    day: Math.floor(ms / 86400000),
+    hour: Math.floor(ms / 3600000) `% 24,
+    minute: Math.floor(ms / 60000) `% 60,
+    second: Math.floor(ms / 1000) `% 60,
+    millisecond: Math.floor(ms) `% 1000
+  };
+  return Object.entries(time)
+    .filter(val => val[1] !== 0)
+    .map(([key, val]) => `${val} ${key}${val !== 1 ? 's' : ''}`)
+    .join(', ');
+};
+
+// Examples
+formatDuration(1001); // '1 second, 1 millisecond'
+formatDuration(34325055574); // '397 days, 6 hours, 44 minutes, 15 seconds, 574 milliseconds'
+)
+}
+
+if (v == "如何获得两个日期之间的差异（以天为单位）？") {
+Var = 
+(
+const getDaysDiffBetweenDates = (dateInitial, dateFinal) =>
+  (dateFinal - dateInitial) / (1000 * 3600 * 24);
+
+// Example
+getDaysDiffBetweenDates(new Date('2017-12-13'), new Date('2017-12-22')); // 9
 )
 }
 
@@ -7988,6 +8034,7 @@ function isEqual(obj1, obj2) {
 code(Var)
 return
 
+
 ::.tof::
 ::.tofix::
 ::.tonum::
@@ -7999,6 +8046,7 @@ return
 ::fixed::
 Var =
 (
+// toLocaleString('en-US')
 const toNumber = (val, decimal = 0) => {
   const n = parseFloat(val)
   if (isNaN(n)) return val

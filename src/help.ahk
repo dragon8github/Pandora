@@ -2065,8 +2065,8 @@ code(Var)
 return
 
 #c::
-    ; RunByCmder(A_Desktop)
-    RunByHyper(A_Desktop)
+    RunByCmder(A_Desktop)
+    ; RunByHyper(A_Desktop)
 return
 
 ::@info::

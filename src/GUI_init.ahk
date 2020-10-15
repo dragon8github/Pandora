@@ -30,7 +30,7 @@ var_dump(expandallchild(top))
 Gui, Book:Add, Edit, ys vBookContent w890 H700 Limit199307100337 ReadOnly  
 
 ; Tab 选项卡
-Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Vue + Jest单元测试》|《Mongodb》|《Vue.js 深入浅出》
+Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Vue + Jest单元测试》|《Cypress集成测试》|《Mongodb》|《Express+Sequelize+Mysql》|《Vue.js 深入浅出》
 
 
 
@@ -555,6 +555,8 @@ Gui, Pandora:Add, Link,, <a href="http://12345.alltosea.com:6080/#/overallSituat
 Gui, Pandora:Add, Link,, <a href="http://12345v1.dgdatav.com:6080/#/dg/overallSituation">v1</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v2.alltosea.com:6080/#/">v2</a>
 Gui, Pandora:Add, Link,, <a href="http://12345v3.dgdatav.com:6080/">v3</a>
+Gui, Pandora:Add, Link,, <a href="https://19.104.40.37:6080/#/login">正式预览</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys, 知识库
 Gui, Pandora:Add, Link,, <a href="https://confluence.alltosea.com/dashboard.action#all-updates">confluence</a>

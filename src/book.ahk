@@ -1,4 +1,5 @@
 ﻿
+
 >+b::
 	; 显示
 	Gui, Book:Show,, Book
@@ -66,6 +67,29 @@ SwitchBook:
      cornell("备份与恢复")
   }
 
+
+
+  
+   if (currentBook == "《Express+Sequelize+Mysql》") {
+     cornell("sequelize-101")
+     cornell("sequelize-模型关联查询")
+     cornell("express-101")
+     cornell("实现登录注册jwt鉴权")
+  }
+
+
+  if (currentBook == "《Cypress集成测试》") {
+     cornell("Cypress-安装")
+     cornell("Cypress-101")
+     cornell("Cypress-202")
+     cornell("Cypress-invoke调用函数")
+     cornell("Cypress-Viewport切换移动端")
+     cornell("Cypress.$的认知")
+     cornell("Cypress 插件")
+     cornell("Cypress 断言")
+  }
+
+
   ;获取节点信息
   _top := TV_GetSelection()
 
@@ -84,6 +108,768 @@ Var =
 )
 }
 
+if (v == "Cypress 断言") {
+Var =
+(
+// https://docs.cypress.io/guides/references/assertions.html#Chai-jQuery
+
+expect($('.switchTime').text()).to.be.empty
+
+expect($('.single').length).to.be.eq(0)
+
+expect(toNum($nums.eq(4).text())).to.be.gt(0)
+)
+}
+
+if (v == "Cypress 插件") {
+Var =
+(
+https://github.com/NoriSte/cypress-wait-until
+)
+}
+
+if (v == "Cypress.$的认知") {
+Var =
+(
+https://docs.cypress.io/api/utilities/$.html#Syntax
+
+和 cy.get 对比，它不会等待 DOM 出现。它是同步运行，适合调试。
+
+也就是说立刻查立刻返回，不会等待 4000ms。
+
+Cypress.$(selector)
+
+Cypress.$ 的语法和 Jquery 十分相似，但并不完全等同于 jQuery，譬如并没有 .size() 方法，只能通过 .length 属性来判断。
+
+jQuery 元素也可以转化为 cypress 元素，只要通过 cy.wrap($li) 即可。然后就又可以使用 .should 之类的语法了。
+
+const $li = Cypress.$('ul li:first')
+cy.wrap($li)
+  .should('not.have.class', 'active')
+  .click()
+  .should('have.class', 'active')
+)
+}
+
+if (v == "Cypress-202") {
+Var =
+(
+// https://on.cypress.io/should
+// https://docs.cypress.io/guides/references/assertions.html#BDD-Assertions
+
+
+
+@@1、 界面判断 - 元素是否存在、 元素数量是否准确、 元素是否显示/隐藏、 元素是否包含指定文本、 元素是否具备某些样式/属性/类名
+
+// 判断列表长度
+cy.get('ul#list li').its('length').should('be.gt', 1)
+cy.get('.hotCounselling__item').should($items => expect($items.length).to.be.gt(0))
+
+// 将一个 dom 对象转换为 cy 对象
+cy.wrap(el)
+
+// 判断数据是否准确
+cy.contains('应来莞作业').next().find('span').should($num => expect(+$num.html()).to.be.gt(0))
+
+// 根据文本查找元素
+cy.contains('New Post')
+
+// 查找元素的下一个/上一个
+// https://docs.cypress.io/api/commands/next.html#Usage
+cy.get('nav a:first').next()
+
+// 元素是否存在
+cy.get('.popover').should('be.visible')
+
+// 元素数量是否准确
+// greaterThan(value)      gt,  expect(10).to.be.greaterThan(5)
+// least(value)            gte  expect(10).to.be.at.least(10)
+// lessThan(value)         lt,  expect(5).to.be.lessThan(10)
+// most(value)             lte, expect('test').to.have.length.of.at.most(4)
+// within(start, finish)      expect(7).to.be.within(5,10)
+cy.get('.connectors-its-ul>li').its('length').should('be.gt', 2)
+cy.get('.traversal-pagination').find('li').find('a').should('have.length', 7)
+
+
+
+// 元素是否显示/隐藏
+cy.get('#navbar').should('be.visible')
+cy.get('#navbar').should('not.be.visible')
+cy.get('ul li:first').should('have.class', 'active')
+
+// 元素是否包含指定文本
+cy.get('.assertion-table').find('td').first()
+    .should('contain', 'Column content')
+    .should('have.text', 'Column content')
+    .should('have.html', 'Column content')
+    .should('match', /column content/i)
+
+// 元素是否具备某些样式/属性/类名
+cy.get('.assertion-table')  
+    .should('have.attr', 'data-test-id', 'test-example')
+    .should('have.css', 'position', 'static')
+
+
+// https://docs.cypress.io/api/commands/trigger.html#Mouse-Events
+@@2、 鼠标操作 - 如点击、 滚动、 悬停
+// 点击
+cy.get('.btn').click()
+cy.get('.hidden').click({ force: true })
+
+// 滚动
+cy.get('#target').scrollTo('bottom')
+cy.get('#target').scrollTo(250, 250)
+// 滚动到页面中间
+cy.scrollTo('50`%', '50`%')
+
+// 悬停
+cy.get('.menu-item').trigger('mouseover')
+
+@@3、 表单操作 - 输入/清空、 选择/取选/全选、 选项是否禁用、 聚焦/失焦、 提交、 拖动、 是否具备指定内容、 是否选中指定选项
+
+// 输入/清空
+cy.get('.action-email').type('fake@email.com').clear()
+
+// 是否具备指定内容
+cy.get('.action-email').should('have.value', 'fake@email.com')
+
+// 选择
+cy.get('.action-select').select('apples')
+cy.get('.action-multiple-checkboxes [type="checkbox"]').check(['checkbox1', 'checkbox2'])
+cy.get('.action-radios [type="radio"]').check('radio1')
+
+// 取选
+cy.get('.action-check [type="checkbox"]').uncheck(['checkbox1', 'checkbox3'])
+
+// 全选
+cy.get('.action-checkboxes [type="checkbox"]').not('[disabled]').check()
+cy.get('.action-check [type="checkbox"]').uncheck()
+
+// 是否选中指定选项
+cy.get('.action-select').should('have.value', '--Select a fruit--')
+cy.get('.action-radios [type="radio"]').should('be.checked')
+cy.get('.action-multiple-checkboxes [type="checkbox"]').should('be.checked')
+cy.get('.action-check [type="checkbox"]').uncheck().should('not.be.checked')
+
+// 提交
+cy.get('.action-form').submit()
+
+// 拖动（slide）
+cy.get('[data-cy=draggable]')
+  .trigger('mousedown', { which: 1, pageX: 600, pageY: 100 })
+  .trigger('mousemove', { which: 1, pageX: 600, pageY: 600 })
+  .trigger('mouseup')
+
+@@4、 数据判断 - cookie localStore
+
+cy.getCookie('token').should('have.property', 'value', '123ABC')
+cy.clearCookies()
+cy.getCookies().should('be.empty')
+
+cy.clearCookie('token')
+cy.getCookie('token').should('be.null')
+
+cy.get('.ls-btn').click().should(() => {
+  expect(localStorage.getItem('prop1')).to.eq('red')
+  expect(localStorage.getItem('prop2')).to.eq('blue')
+  expect(localStorage.getItem('prop3')).to.eq('magenta')
+})
+
+cy.clearLocalStorage().should((ls) => {
+  expect(ls.getItem('prop1')).to.be.null
+  expect(ls.getItem('prop2')).to.be.null
+  expect(ls.getItem('prop3')).to.be.null
+})
+
+
+@@4、 开发逻辑 - spy、 数组检测、 对象检测、 window/document 
+
+// https://on.cypress.io/window
+cy.window().should('have.property', '$map')
+// https://on.cypress.io/document
+cy.document().should('have.property', 'charset').and('eq', 'UTF-8')
+
+// spy 间谍函数
+const obj = {foo () {}, }
+const spy = cy.spy(obj, 'foo').as('anyArgs')
+obj.foo()
+expect(spy).to.be.called
+
+// 数组检测
+cy.get('.assertions-p')
+.find('p')
+.should(($p) => {
+  // https://on.cypress.io/$
+  const texts = $p.map((i, el) => Cypress.$(el).text())
+
+  // jquery map returns jquery object
+  // and .get() convert this to simple array
+  const paragraphs = texts.get()
+
+  // array should have length of 3
+  // use second argument to expect(...) to provide clear
+  // message with each assertion
+  expect(paragraphs, 'has 3 paragraphs').to.have.length(3)
+
+  expect(paragraphs).to.deep.eq([
+    'Some text from first p',
+    'More text from second p',
+    'And even more text from third p',
+  ])
+})
+
+// 对象检测
+const person = { name: 'Joe', age: 20, }
+assert.isObject(person)
+
+cy.wrap({ foo: 'bar' })
+  .should('have.property', 'foo')
+  .and('include', 'bar')
+
+cy.readFile('test.json').then((json) => {
+  expect(json).to.be.an('object')
+  expect(users[0].name).to.exist
+  expect(users[0].name).to.eq('Jane')
+})
+
+@@5、 辅助调试 - 截图、 打印
+
+// https://on.cypress.io/screenshot
+cy.screenshot('my-image')
+
+// 打印到命令行
+cy.log('Skipping test on CircleCI')
+
+@@6、 测试配置 - 超时时间、 全局变量
+
+// https://on.cypress.io/config
+let myConfig = Cypress.config()
+Cypress.config('pageLoadTimeout', 20000)  
+Cypress.config('defaultCommandTimeout', 4000) 
+Cypress.config('viewportHeight', 660) 
+Cypress.config('viewportWidth', 1000) 
+
+
+
+// https://on.cypress.io/environment-variables
+// https://on.cypress.io/env
+Cypress.env({
+  host: 'veronica.dev.local',
+  api_server: 'http://localhost:8888/v1/',
+})
+
+// useage
+Cypress.env('api_server')
+
+// 从配置文件中获取所有环境变量（cypress.json默认情况下）
+{
+  "env": {
+    "foo": "bar",
+    "baz": "quux"
+  }
+}
+
+Cypress.env() // => {foo: "bar", baz: "quux"}
+)
+}
+
+if (v == "Cypress-Viewport切换移动端") {
+Var =
+(
+
+// 全局配置 cypress.json
+{
+    "viewportWidth": 4320,
+    "viewportHeight": 1080
+}
+
+// 代码设置
+context('Viewport', () => {
+  beforeEach(() => {
+    cy.visit('https://example.cypress.io/commands/viewport')
+  })
+
+  it('cy.viewport() - set the viewport size and dimension', () => {
+    // https://on.cypress.io/viewport
+    // The viewport will be reset back to the default dimensions
+    // in between tests (the  default can be set in cypress.json)
+
+    cy.viewport(320, 480)
+    cy.viewport(2999, 2999)
+    cy.viewport('macbook-15')
+    cy.wait(200)
+    cy.viewport('macbook-13')
+    cy.wait(200)
+    cy.viewport('macbook-11')
+    cy.wait(200)
+    cy.viewport('ipad-2')
+    cy.wait(200)
+    cy.viewport('ipad-mini')
+    cy.wait(200)
+    cy.viewport('iphone-6+')
+    cy.wait(200)
+    cy.viewport('iphone-6')
+    cy.wait(200)
+    cy.viewport('iphone-5')
+    cy.wait(200)
+    cy.viewport('iphone-4')
+    cy.wait(200)
+    cy.viewport('iphone-3')
+    cy.wait(200)
+
+    // 竖向
+    cy.viewport('ipad-2', 'portrait')
+    cy.wait(200)
+    // 横向
+    cy.viewport('iphone-4', 'landscape')
+    cy.wait(200)
+  })
+})
+
+)
+}
+
+if (v == "Cypress-invoke调用函数") {
+Var =
+(
+https://docs.cypress.io/api/commands/invoke.html#Syntax
+
+invoke 是一个理解上的重难点，但说白了其实就是调用函数。常用的两种如下：
+
+// .invoke(functionName)： 调用 “jQuery” 的 show 方法
+cy.get('.modal').invoke('show')            
+
+// .invoke(functionName, args...)： 调用对象的方法
+cy.wrap({ animate: fn }).invoke('animate') 
+)
+}
+
+if (v == "Cypress-101") {
+Var =
+(
+// cypress\integration\examples\actions.spec.js
+// https://on.cypress.io/interacting-with-elements
+context('Actions', () => {
+  beforeEach(() => {
+    cy.visit('https://example.cypress.io/commands/actions')
+  })
+
+  // https://on.cypress.io/interacting-with-elements
+  it('.type() - type into a DOM element', () => {
+    // https://on.cypress.io/type
+    cy.get('.action-email').type('fake@email.com').should('have.value', 'fake@email.com')
+  })
+})
+)
+}
+
+if (v == "Cypress-安装") {
+Var =
+(
+### 管理员模式运行 cmd：
+$ npm i cypress -g
+
+
+cypress 的体积是 193M ，通过 npm 下载要等到后年马月，建议直接官方下载 zip 文件解压，并且加入到环境变量即可
+https://docs.cypress.io/guides/getting-started/installing-cypress.html#Direct-download
+
+
+### 启动 cypress 
+$ cypress open
+
+
+随便选择一个目录，如果检测不到 cypress.json 的话，会自动初始化一些入门示例（cypress\integration\examples），这些示例都适合仔细研读。
+https://example.cypress.io/commands/actions
+
+
+### 安装 Chromium 浏览器驱动
+help => Download Chromium => 选择最新版本 => 选择 chrome-win.zip(Archive)
+
+下载后，必须按照以下目录位置放置浏览器驱动 Chromium 才行
+https://docs.cypress.io/guides/references/troubleshooting.html#Windows
+
+- chrome  C:/Program Files (x86)/Google/Chrome/Application/chrome.exe
+- chromium  C:/Program Files (x86)/Google/chrome-win32/chrome.exe
+- chrome:canary %APPDATA%/../Local/Google/Chrome SxS/Application/chrome.exe
+)
+}
+
+if (v == "实现登录注册jwt鉴权") {
+Var =
+(
+// https://www.bilibili.com/video/BV1fp4y1D7Vb?p=4
+const express = require('express')
+const router = express.Router()
+const models = require('../models')
+
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const secret = 'fuckyou-dolores-voluptatem-quo'
+
+// 注册
+router.post('/reg', async (req, res, next) => {
+  const { username, password } = req.body
+  
+  // 查找用户名是否存在
+  const isFind = await models.User.findOne({ where: { username } })
+
+  if (isFind) {
+    return res.json({ msg: '用户名已存在' })  
+  }
+
+  // 创建用户
+  const user = await models.User.create({ username, password: bcrypt.hashSync(password, 5) })
+
+  res.json({ msg: '创建成功', id: user.id })
+})
+
+router.post('/login', async (req, res, next) => {
+  const { username, password } = req.body
+  // 查找用户名是否存在
+  const user = await models.User.findOne({ where: { username } })
+
+  if (!user) {
+    return res.json({ msg: '用户名或密码错误' })  
+  }
+
+  // 密码校验
+  const passwordValid = bcrypt.compareSync(password, user.dataValues.password)
+
+  // 密码错误
+  if (!passwordValid) {
+    return res.json({ msg: '用户名或密码错误' })  
+  }
+
+  const token = jwt.sign({ username }, secret)
+
+  res.json({ token })
+})
+
+router.post('/auth', async (req, res, next) => {
+  // { Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjkyODUzMjc1NkAzNjAuY29tIiwiaWF0IjoxNjAyMzgzNDQ0fQ.DBgwdgP18dTYUenVpiXtSHd7cUkDHASMcbwqRxDow30' }
+  const token = String(req.headers.authorization).split(' ').pop()
+
+  // 取出加密内容
+  jwt.verify(token, secret, async (err, decode) => {
+    if (err) {
+      return res.json({ msg: '非法请求!' })
+    }
+
+    const { username } = decode
+
+    // 查找用户名是否存在
+    const user = await models.User.findOne({ where: { username } })
+
+    if (!user) {
+      return res.json({ msg: '非法请求!' })
+    }
+
+    res.json({ msg: 'ok' })
+  })
+})
+
+
+module.exports = router
+
+)
+}
+
+if (v == "sequelize-模型关联查询") {
+Var =
+(
+
+### 模型关联
+
+```javascript
+$ sequelize model:generate --name Comment --attributes articleId:integer,content:text
+
+$ sequelize db:migrate
+
+$ sequelize seed:generate --name comment
+
+```
+
+找到并修改 seeders/comment.js 文件
+
+```javascript
+'use strict';
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkInsert('comments', [
+      { createdAt: new Date(), updatedAt: new Date(), articleId: '20', content: 'Qui nesciunt veniam blanditiis quia. Est facilis voluptas voluptas odit qui ad debitis. Et rerum distinctio quas voluptatum debitis aut ut aliquam.' },
+      { createdAt: new Date(), updatedAt: new Date(), articleId: '18', content: 'Et enim eligendi ut ut nulla itaque voluptatem. Nisi architecto reprehenderit earum consequatur.' },
+      { createdAt: new Date(), updatedAt: new Date(), articleId: '15', content: 'Amet aut sed voluptatem sit perferendis numquam ut ut. Odio dolores ut esse accusantium enim consequatur et dolorem voluptas. Omnis aut distinctio. Numquam incidunt alias recusandae aliquid atque. Ex voluptatem dolores et rem.' },
+    ], {});
+  },
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete('comments', null, {});
+  }
+};
+```
+
+### 发送指定的种子数据
+
+如果不指定的话，会将所有种子文件重新执行一遍，这样就会出现重复的数据了。甚至有可能因此报错。
+
+```javascript
+$ sequelize db:seed --seed 20201010100330-comment.js
+```
+
+### 修改 models/article.js
+
+```javascript
+const { Model } = require('sequelize')
+
+module.exports = (sequelize, DataTypes) => {
+  class Article extends Model {
+    static associate(models) {
+      // 一篇文章有很多的评论
+      models.Article.hasMany(models.Comment)
+    }
+  }
+
+  Article.init({ title: DataTypes.STRING, content: DataTypes.TEXT }, { sequelize, modelName: 'Article', })
+
+return Article
+}
+```
+
+### 修改 comment.js
+
+```javascript
+const { Model } = require('sequelize')
+
+module.exports = (sequelize, DataTypes) => {
+  class Comment extends Model {
+
+    static associate(models) {
+      // 每一个评论都属于一篇文章
+      models.Comment.belongsTo(models.Article)    
+    }
+  }
+
+  Comment.init({ articleId: DataTypes.INTEGER, content: DataTypes.TEXT }, { sequelize, modelName: 'Comment', })
+
+  return Comment
+}
+```
+
+### 修改接口 routes/index.js
+
+```javascript
+router.get('/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id
+
+    // const articles = await models.Article.findByPk(id)
+
+    // http://localhost:3000/20
+    const articles = await models.Article.findOne({ where: { id }, include: [models.Comment] })
+
+    res.json({ articles })
+  } catch (err) {
+    next(err)
+  }
+})
+```
+)
+}
+
+if (v == "express-101") {
+Var =
+(
+### 安装全局依赖
+
+记得用 cmd 管理员运行安装
+
+```
+$ cnpm i express-generator -g && express -h
+```
+
+### 初始化 express
+
+```javascript
+$ express --view=ejs myapp
+$ cd myapp & cnpm i
+$ npm start
+```
+
+访问地址：http://localhost:3000/
+)
+}
+
+if (v == "sequelize-101") {
+Var =
+(
+https://www.bilibili.com/video/BV1Zt411J7va?p=9
+
+### 安装全局依赖
+
+记得用 cmd 管理员运行安装
+
+```
+$ cnpm i mysql2 -g
+$ cnpm i sequelize-cli -g
+$ cnpm i express-generator -g && express -h
+```
+
+### 安装项目依赖
+
+```javascript
+$ cnpm i sequelize mysql2 -S
+```
+
+### 初始化 express
+
+```javascript
+$ express --view=ejs myapp
+$ cd myapp & cnpm i
+$ npm start
+```
+
+访问地址：http://localhost:3000/
+
+### 初始化 sequelize 
+
+```javascript
+$ sequelize init
+```
+### 配置 config.json
+
+```javascript
+{
+  "development": { "username": "root", "password": "root", "database": "blogs", "host": "127.0.0.1", "dialect": "mysql" },
+  "test": { "username": "root", "password": "root", "database": "blogs", "host": "127.0.0.1", "dialect": "mysql" },
+  "production": { "username": "root", "password": "root", "database": "blogs", "host": "127.0.0.1", "dialect": "mysql" }
+}
+```
+
+### @@第一步：新建模型
+
+```javascript
+$ sequelize model:generate --name Article --attributes title:string,content:text
+```
+
+检查 migrations 生成的迁移文件
+
+### @@第二步：迁移数据库
+
+```javascript
+$ sequelize db:migrate
+```
+
+### @@第三步：生成种子文件
+
+```javascript
+$ sequelize seed:generate --name article
+```
+
+检查 seeders 文件夹，准备种子数据
+
+```javascript
+'use strict';
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkInsert('Articles', [
+      { createdAt: new Date(), updatedAt: new Date(), title: 'dolores sequi omnis', content: 'Veniam aut rem iure dicta vel modi.' },
+      { createdAt: new Date(), updatedAt: new Date(), title: 'sint aliquid minus', content: 'Dolore et architecto quia nesciunt omnis pariatur vel.' },
+      { createdAt: new Date(), updatedAt: new Date(), title: 'quae ex et', content: 'Quod dolores doloribus fugit magni rem.' },
+      { createdAt: new Date(), updatedAt: new Date(), title: 'non quasi nihil', content: 'Ratione adipisci velit.' },
+      { createdAt: new Date(), updatedAt: new Date(), title: 'rerum perspiciatis magni', content: 'In facilis dolor voluptatem hic repellendus sit est quia ullam.' },
+      { createdAt: new Date(), updatedAt: new Date(), title: 'eum cumque cumque', content: 'Provident quibusdam quo dicta.' },
+    ], {});
+  },
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete('Articles', null, {});
+  }
+};
+
+```
+
+### @@第四步：发送种子数据
+
+```javascript
+$ sequelize db:seed:all
+```
+
+### @@第五步：增删改查
+
+/routes/index.js
+
+```javascript
+const express = require('express')
+const router = express.Router()
+const models = require('../models')
+const Op = models.Sequelize.Op
+
+router.get('/', async (req, res, next) => {
+  try {
+    const where = {}
+    // 按照标题搜索 - http://localhost:3000?title=magnam
+    const title = req.query.title
+
+    if (title) {
+      // 模糊搜索 like
+      where.title = { [Op.like]: '`%' + title + '`%' }
+    }
+
+    const articles = await models.Article.findAll({ where, order: [['id', 'DESC']] })
+    res.json({ articles })
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const articles = await models.Article.findByPk(id)
+    res.json({ articles })
+  } catch (err) {
+    next(err)
+  }
+})
+
+
+router.post('/', async (req, res, next) => {
+  try {
+    // { title: 'consectetur saepe velit', content: 'Qui consequatur eligendi voluptatem similique. Odit nulla optio saepe voluptate fugiat aut temporibus nihil sunt. Est architecto et est hic.' }
+    const articles = await models.Article.create(req.body)
+    res.json({ articles })
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const article = await models.Article.findByPk(id)
+    const new_article = await article.update(req.body)
+    res.json({ article: new_article })
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const article = await models.Article.findByPk(id)
+    await article.destroy()
+    res.json({ msg: '删除成功' })
+  } catch (err) {
+    next(err)
+  }
+})
+
+module.exports = router
+```
+)
+}
+
 if (v == "mongoose-101") {
 Var =
 (
@@ -93,7 +879,13 @@ const mongoose = require('mongoose')
 // mongodb: //127.0.0.1:27017/eggcms
 const uri = 'mongodb+srv://lee:202063sb@cluster0.dqy2h.azure.mongodb.net/test?retryWrites=true&w=majority'
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, })
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, }, err => {
+    if (err) {
+        console.log('> error occurred from the database')
+    } else {
+        console.log('> successfully opened the database')
+    }
+})
 
 // @fake.md
 // 操作 users 表（集合），Schame 里面的对象和数据库里面的字段要对应
@@ -126,6 +918,9 @@ const User = mongoose.model('User', usersSchame, 'users')
     // 结束进程
     process.exit(0)
 })();
+
+// 模块化的话，就将其导出
+module.exports = User
 )
 }
 
