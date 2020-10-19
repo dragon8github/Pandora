@@ -13920,10 +13920,11 @@ Var =
  * @param {String} value
  * @param {Number} expires
  */
-export function setCookie(name, value, expires) {
-    var cookieString = name + "=" + escape(value);
-    //判斷是否設置過期時間,0代表關閉瀏覽器時失效
-    if (expires > 0) {
+export function setCookie(name, value, expires = 0) {
+    var cookieString = name + "=" + escape(value)
+
+    // 如果不做时间设置，那么等關閉瀏覽器時失效
+    if (expires != 0) { 
         var date = new Date();
         date.setTime(date.getTime() + expires * 1000);
         cookieString = cookieString + ";expires=" + date.toUTCString();
@@ -14128,6 +14129,69 @@ return
 ::countdown::
 Var = 
 (
+<template>
+  <div class="getAuth" :class='{ "disable": ok === false }' @click="getAuth">{{ smsText }}</div>
+</template>
+
+<script>
+import { getCookie, editCookie, setCookie } from "@/utils/cookie"
+
+data () {
+  return {
+      ok: true,
+      smsText: '获取验证码',
+  }
+},
+
+methods: {
+  // 点击的时候，切换状态。
+  sendSms() {
+    if (this.ok) {
+      // 发送验证码
+      // ... your api
+
+      // 设置默认时间
+      setCookie('sms', '60', 60)
+
+      // 倒计时开始
+      this.countDown()
+    }
+  },
+  countDown() {
+    // 获取当前倒计时 cookie
+    let countdown = getCookie('sms') ? getCookie('sms') : 0
+
+    // 递归倒计时
+    ;(function settime (ctx) {
+      if (countdown === 0) {
+          ctx.ok = true
+          ctx.smsText('获取验证码')
+          return
+      } else {
+        ctx.ok = false
+          ctx.smsText(countdown + '秒后重发 | Waiting ' + countdown + 's')
+          countdown--
+          editCookie('sms', countdown, countdown + 1)
+      }
+      setTimeout(settime, 1000)
+    })(this)
+  },
+},
+
+beforeMount () {
+  this.countDown()
+},
+</script>
+
+<style>
+  .disable {
+    opacity: .45;
+      user-select: none;
+      color: #333;
+      cursor: no-drop;
+  }
+</style>
+---
 /**
  * 開始倒計時
  * http://candy.dragonvein.io/frontend/web/site/signup
@@ -14171,7 +14235,7 @@ function countDown ($dom) {
 	}());
 }
 )
-code(Var)
+txtit(Var)
 return
 
 ::maybe_::

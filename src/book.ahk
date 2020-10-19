@@ -219,8 +219,8 @@ cy.get('.hidden').click({ force: true })
 // 滚动
 cy.get('#target').scrollTo('bottom')
 cy.get('#target').scrollTo(250, 250)
-// 滚动到页面中间
-cy.scrollTo('50`%', '50`%')
+// 滚动到页面中间（不检验可滚动性，哪怕不滚动，也不会报错）
+cy.scrollTo('50`%', '50`%', { ensureScrollable: false })
 
 // 悬停
 cy.get('.menu-item').trigger('mouseover')

@@ -7918,8 +7918,35 @@ axios.interceptors.response.use(res => {
     // ...
     return res
 }, reTry(4, 1000))
+---
+function fetchWithAutoRetry(fetcher, maximumRetryCount) {
+  return new Promise((resolve, reject) => {
+    let retryCount = 0
+    const callFetcher = () => fetcher().then((data) => {
+      resolve(data)
+    }, (error) => {
+      console.log('AutoRetry') 
+      if (retryCount < maximumRetryCount) {
+        callFetcher()
+        retryCount += 1
+      } else {
+        reject(error)
+      }
+    })
+
+    callFetcher()
+  })
+}
+
+const isChecked = () => Math.random() >= .5
+var test = () => new Promise((resolve, reject) => setTimeout(_ => isChecked() ? resolve('success') : reject('fail'), 500))
+
+;(async () => {
+  const result = await fetchWithAutoRetry(test, 2)
+  console.log(result)
+})();
 )
-code(Var)
+txtit(Var)
 return
 
 ::replace::
@@ -9267,23 +9294,35 @@ return
 ::getip::
 Var =
 (
-教程地址：https://blog.csdn.net/zqian1994/article/details/79222812
-新浪的IP地址查询接口：http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js
-（默认为纯文本格式，根据format的参数定义，还可以返回JS、Json格式）。
+// 教程地址：https://blog.csdn.net/zqian1994/article/details/79222812
+// 新浪的IP地址查询接口：http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js
+// （默认为纯文本格式，根据format的参数定义，还可以返回JS、Json格式）。
 
-新浪多地域测试方法：
-http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=219.242.98.111
-
-搜狐IP地址查询接口（默认GBK）：http://pv.sohu.com/cityjson
-
-搜狐IP地址查询接口（可设置编码）：http://pv.sohu.com/cityjson?ie=utf-8
+// 新浪多地域测试方法：
+// http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=219.242.98.111
+// 搜狐IP地址查询接口（默认GBK）：http://pv.sohu.com/cityjson
+// 搜狐IP地址查询接口（可设置编码）：http://pv.sohu.com/cityjson?ie=utf-8
 
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">  
     console.log(returnCitySN["cip"]+','+returnCitySN["cname"])  
 </script>
+---
+// https://dev.to/brojenuel/get-ip-clients-addresses-6k6
+$.get('https://www.cloudflare.com/cdn-cgi/trace', (data) => console.log(data)
+$.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', (data) => console.log(JSON.stringify(data, null, 2)))
+$.getJSON('https://json.geoiplookup.io/api?callback=?', (data) => console.log(JSON.stringify(data, null, 2)))
+$.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', (data) => console.log(JSON.stringify(data, null, 2)))
+$.getJSON('https://ipapi.co/json/', (data) => console.log(JSON.stringify(data, null, 2)))
+$.getJSON('http://ip-api.com/json?callback=?', (data) => console.log(JSON.stringify(data, null, 2)))
+$.getJSON('https://api.ipdata.co', (data) => console.log(JSON.stringify(data, null, 2)))
+$.getJSON('https://api.ipify.org?format=jsonp&callback=?', (data) => console.log(JSON.stringify(data, null, 2)))
+$.getJSON('https://ipinfo.io/json', (data) => console.log(JSON.stringify(data, null, 2)))
+$.getJSON('https://jsonip.com/?callback=?', (data) => console.log(JSON.stringify(data, null, 2)))
+$.getJSON('http://ip.jsontest.com/?callback=?', (data) => console.log(JSON.stringify(data, null, 2)))
+$.getJSON('https://geoip.nekudo.com/api', (data) => console.log(JSON.stringify(data, null, 2)))
 )
-code(Var)
+txtit(Var)
 return
 
 ::dio::

@@ -285,6 +285,8 @@ Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echojs.com/">echojs.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.smashingmagazine.com/articles/">粉碎杂志</a>
 Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/">reddit</a>
+Gui, Pandora:Add, Link,, <a href="https://medium.com/@frontender_ua/frontend-weekly-digest-180-12-18-october-2020-e90b7dadea91">medium前端周刊</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -304,6 +306,8 @@ Gui, Pandora:Add, Link,, <a href="https://hackernoon.com/">hackernoon</a>
 Gui, Pandora:Add, Link,, <a href="https://hashnode.com/">oshogunle.com</a>
 Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/http`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fhackernews-daily">hackerNews Top10日刊</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejsexamples.com/">vuejsexamples</a>
+Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/https`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fgithub-daily">github-daily</a>
+
 
 
 

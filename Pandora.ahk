@@ -87,7 +87,8 @@ global __ALTCTRL__ := []
 ; #Include src/three.ahk          ; THREE
 ; #Include src/reactNative.ahk    ; ReactNative
 ; #Include src/taro.ahk	          ; taro
-; #Include src/sql.ahk		      ; sql
+; #Include src/sql.ahk            ; sql
+
 
 
 !F12::
@@ -147,10 +148,8 @@ if (clipboard) {
 }
 return
 
-; !z::
-; WinGetTitle, Title, A
-; MsgBox, % Title
-; return
+!z::
+return
 
 
 ; ~+MButton::
