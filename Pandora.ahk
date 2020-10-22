@@ -148,8 +148,15 @@ if (clipboard) {
 }
 return
 
-!z::
+XButton1::
+Send, ^v
 return
+
+
+; ^v::
+; p(clipboard)
+; return
+
 
 
 ; ~+MButton::

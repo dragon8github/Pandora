@@ -13459,3 +13459,132 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+mapvlightrudong:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- jquery -->
+    <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 百度地图 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <!-- mapv -->
+    <script src="http://mapv.baidu.com/build/mapv.min.js"></script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+        width: 100`%;
+        height: 100`%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+var map = new BMap.Map("app", { enableMapClick: false })
+map.centerAndZoom(new BMap.Point(114.321317, 30.598428), 12)
+map.enableScrollWheelZoom(true)
+
+map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "stylers": { "color": "#044161" } }, { "featureType": "land", "elementType": "all", "stylers": { "color": "#091934" } }, { "featureType": "boundary", "elementType": "geometry", "stylers": { "color": "#064f85" } }, { "featureType": "railway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "highway", "elementType": "geometry", "stylers": { "color": "#004981" } }, { "featureType": "highway", "elementType": "geometry.fill", "stylers": { "color": "#005b96", "lightness": 1 } }, { "featureType": "highway", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "arterial", "elementType": "geometry", "stylers": { "color": "#004981", "lightness": -39 } }, { "featureType": "arterial", "elementType": "geometry.fill", "stylers": { "color": "#00508b" } }, { "featureType": "poi", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "green", "elementType": "all", "stylers": { "color": "#056197", "visibility": "off" } }, { "featureType": "subway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "manmade", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "local", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "arterial", "elementType": "labels", "stylers": { "visibility": "off" } }, { "featureType": "boundary", "elementType": "geometry.fill", "stylers": { "color": "#029fd4" } }, { "featureType": "building", "elementType": "all", "stylers": { "color": "#1a5787" } }, { "featureType": "label", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": { "color": "#ffffff" } }, { "featureType": "poi", "elementType": "labels.text.stroke", "stylers": { "color": "#1e1c1c" } }, { "featureType": "administrative", "elementType": "labels", "stylers": { "visibility": "off" } }, { "featureType": "road", "elementType": "labels", "stylers": { "visibility": "off" } }] });
+
+
+// 摩卡托转经纬度
+function mercator2lonLat(merX, merY) {
+    var band = [12890594.86, 8362377.87, 5591021, 3481989.83, 1678043.12, 0];
+    // 多项式系数
+
+    var MC2LL = [[1.410526172116255e-8, 0.00000898305509648872, -1.9939833816331, 200.9824383106796, -187.2403703815547, 91.6087516669843, -23.38765649603339, 2.57121317296198, -0.03801003308653, 17337981.2], [-7.435856389565537e-9, 0.000008983055097726239, -0.78625201886289, 96.32687599759846, -1.85204757529826, -59.36935905485877, 47.40033549296737, -16.50741931063887, 2.28786674699375, 10260144.86], [-3.030883460898826e-8, 0.00000898305509983578, 0.30071316287616, 59.74293618442277, 7.357984074871, -25.38371002664745, 13.45380521110908, -3.29883767235584, 0.32710905363475, 6856817.37], [-1.981981304930552e-8, 0.000008983055099779535, 0.03278182852591, 40.31678527705744, 0.65659298677277, -4.44255534477492, 0.85341911805263, 0.12923347998204, -0.04625736007561, 4482777.06], [3.09191371068437e-9, 0.000008983055096812155, 0.00006995724062, 23.10934304144901, -0.00023663490511, -0.6321817810242, -0.00663494467273, 0.03430082397953, -0.00466043876332, 2555164.4], [2.890871144776878e-9, 0.000008983055095805407, -3.068298e-8, 7.47137025468032, -0.00000353937994, -0.02145144861037, -0.00001234426596, 0.00010322952773, -0.00000323890364, 826088.5]];
+    var params;
+    for (var i = 0; i < band.length; i++) {
+        if (Math.abs(merY) >= band[i]) {
+            params = MC2LL[i];
+            break;
+        }
+    }
+    var lng = params[0] + params[1] * Math.abs(merX);
+    var lat = Math.abs(merY) / params[9];
+    lat = params[2] + params[3] * lat + params[4] * Math.pow(lat, 2) + params[5] * Math.pow(lat, 3) + params[6] * Math.pow(lat, 4) + params[7] * Math.pow(lat, 5) + params[8] * Math.pow(lat, 6);
+    lng *= (merX < 0 ? -1 : 1);
+    lat *= (merY < 0 ? -1 : 1);
+    
+    // 输出 '纬度,经度' 的格式，可调
+    // return lat.toFixed(6) + ',' + lng.toFixed(6);
+    return [lng.toFixed(6), lat.toFixed(6)]
+}
+
+$.get('https://mapv.baidu.com/examples/data/wuhan-car', function(rs) {
+
+    var timeData = [];
+
+    rs = rs.split("\n");
+    console.log(rs.length);
+    var maxLength = 0;
+    for (var i = 0; i < rs.length; i++) {
+        var item = rs[i].split(',');
+        var coordinates = [];
+        if (item.length > maxLength) {
+            maxLength = item.length;
+        }
+        for (j = 0; j < item.length; j += 2) {
+            coordinates.push([item[j], item[j + 1]]);
+
+            console.log(20201021102555, item[j], item[j + 1])
+
+            if (item[j] && item[j + 1]) {
+                timeData.push({
+                    geometry: {
+                        type: 'Point',
+                        coordinates: mercator2lonLat(item[j], item[j + 1])
+                    },
+                    count: 1,
+                    time: j
+                });
+            }
+        }
+    }
+
+    console.log(20201021094649, timeData)
+
+    var dataSet = new mapv.DataSet(timeData);
+
+    var options = {
+        fillStyle: 'rgba(255, 250, 250, 0.2)',
+        // coordType: 'bd09mc',
+        globalCompositeOperation: "lighter",
+        size: 1.5,
+        animation: {
+            stepsRange: {
+                start: 0,
+                end: 100
+            },
+            trails: 3,
+            duration: 5,
+        },
+        draw: 'simple'
+    }
+
+    var mapvLayer = new mapv.baiduMapLayer(map, dataSet, options);
+});
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

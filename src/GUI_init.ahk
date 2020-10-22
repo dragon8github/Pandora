@@ -486,6 +486,7 @@ Gui, Pandora:Add, Text, gbaidujuhe110 W180, 百度地图聚合图.html
 Gui, Pandora:Add, Text, gquuyguihua W180, 百度地图区域规划.html
 Gui, Pandora:Add, Text, gmapv2fuckhtml W160, 新建 mapV文本+图形.html
 Gui, Pandora:Add, Text, gmapv2fuckhtml2 W160, 新建 mapV文本+图形2.html
+Gui, Pandora:Add, Text, gmapvlightrudong W160, 新建 mapV 光线蠕动轨迹
 
 Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
@@ -596,6 +597,7 @@ Gui, Pandora:Add, Link,, <a href="https://master.feiyan.com:8443/console/project
 Gui, Pandora:Add, Link,, <a href="https://19.104.40.10:8080/ ">后台管理系统</a>
 
 
+
 Gui, Pandora:Add, Text,  W140 ys, 东莞课外教育网（nuxt）
 Gui, Pandora:Add, Link,, <a href="http://47.106.185.185:3000/chuanghui-edu/extra-edu">extra-edu git</a>
 Gui, Pandora:Add, Link,, <a href="http://kw.dgjy.net">extra-edu 线上</a>
@@ -603,6 +605,11 @@ Gui, Pandora:Add, Link,, <a href="http://kw.dgjy.net">extra-edu 线上</a>
 
 Gui, Pandora:Add, Text,  W140 yp+50, wxjssdk
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/yqfeiyan/application1-ui/wxjssdk">wxjssdk</a>
+
+
+Gui, Pandora:Add, Text,  W140 yp+50, 数据资产v2
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/60/interface/api">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/data-assets">源码地址</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 私服仓库Nexus

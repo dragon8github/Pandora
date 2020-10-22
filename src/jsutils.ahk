@@ -2641,6 +2641,7 @@ return
 
 if (v == "parents") {
 _send("parents", true, true)
+return
 }
 
 if (v == "HTML打印出一只怪兽") {
@@ -8863,8 +8864,8 @@ return
 ::createstore::
 Var =
 (
-// @/store/help.js
 import { POST, GET } from '@/utils/request.js'
+import { deepCopy } from "@/utils/utils"
 
 // fixbug: 如果直接修改 state 不行的话，能否顺便生成 mutations 。 用 mutations 的 commit 来解决赋值的问题。
 // 而且这样更加规范。那么问题来了，我好像没有办法「自动」拿到 commit
@@ -8892,15 +8893,31 @@ export const createStore = (store = {}) => {
         return obj
     }, __store__.state)
     
+    // fixbug：备份默认 state
+    const init_state = deepCopy(__store__.state)
+    
     // 初始化 store.mutations
     __store__.mutations =  Object.entries(__store__.actions).reduce((obj, [key, action]) => {
         // 同名 mutatios
         obj[key] = function (state, payload) {
-            // 同名 state
-            state[key] = payload
+            // 判断状态是否相等
+            const isSame = JSON.stringify(state[key]) === JSON.stringify(payload)
+            // 只有「不相等」我才重新赋值
+            if (!isSame) {
+                // 同名 state
+                state[key] = payload
+            }
         }
         return obj
-    }, {})
+    }, __store__.mutations || {})
+
+    // fixbug: 重置
+    __store__.mutations['RESET_ALL'] = function (state) {
+        Object.entries(init_state).forEach(val => {
+            const [key, defaultValue] = val
+            state[key] = defaultValue
+        })
+    }
 
     // 初始化 store.actions
     __store__.actions = Object.entries(__store__.actions).reduce((obj, [key, action]) => {
@@ -8911,14 +8928,14 @@ export const createStore = (store = {}) => {
             // 获取返回值
             const result = await action(context, payload)
             // 调用 commit
-            context.commit(key.toUpperCase(), result)
+            context.commit(key, result)
             // 照常返回数据
             return result
         }
 
         // 迭代
         return obj
-    }, {})
+    }, __store__.actions || {})
 
     // 返回最终 store
     return __store__

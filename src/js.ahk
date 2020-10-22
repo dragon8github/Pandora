@@ -1,4 +1,14 @@
-﻿::cyinit::
+﻿::isarr::
+::isarray::
+::isary::
+Var =
+(
+export const isArray = input => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
+)
+code(Var)
+return
+
+::cyinit::
 ::cy.init::
 ::cy::
 Var =
@@ -212,6 +222,9 @@ export const isObject = input => input != null && Object.prototype.toString.call
 code(Var)
 return
 
+::idmasker::
+::idmask::
+::dama::
 ::phonemask::
 ::phone::
 ::shoujituomin::
@@ -265,6 +278,21 @@ idMask(type, n) {
         const left = n.slice(0, 3)
         const l = n.slice(3, -3).length
         const str = l > 3 ? '*'.repeat(l) : '***'
+        const star = n.slice(3, -3).replace(/.+/, str)
+        const right = n.slice(-3)
+        return left + star + right
+    }
+},
+---
+idMask(type, n) {
+    console.log(20201021174323, type, n)
+    if (type === '内地身份证') {
+        return n.toString().replace(/^(.{6})(?:\d+)(.{4})$/, "$1****$2")
+    } else {
+        const left = n.slice(0, 3)
+        const l = n.slice(3, -3).length
+        // const str = l > 3 ? '*'.repeat(l) : '***'
+        const str = '********'
         const star = n.slice(3, -3).replace(/.+/, str)
         const right = n.slice(-3)
         return left + star + right
@@ -4227,6 +4255,7 @@ function isMobile (ua) {
 txtit(Var)
 return
 
+::parent::
 ::parents::
 Var =
 (
@@ -4596,34 +4625,46 @@ revoke()
 
 proxy.a // => Uncaught TypeError
 ---
-// Using the GET trap
-const defaultValueHandler = {
-  get: (obj, property) => property in obj ? obj[property] : 'general kenobi'
+// 代理对象，解决对象大小写问题
+// 1、 解决驼峰问题：所有都转换为小写
+// 2、 解决下划线问题：移除所有下划线
+const cleanStyle = key => key.replace('_', '').toLocaleLowerCase()
+
+// 判断对象
+const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
+
+// 判断数组
+const isArray = input => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
+
+/**
+ * 使用方式
+ * const data = { NAME: 'lee' }
+ * const p = fuck(data)
+ * console.log(20200923091805, p.name)
+ */
+const fuck = obj => {
+  // 递归
+  const newObj = Object.entries(obj).reduce((p, [key, val]) => (p[key] = (isObject(val) || isArray(val)) ? fuck(val) : val, p), {})
+
+  // 代理
+  return new Proxy(newObj, {
+    get (target, name) {
+      // 精准命中
+      if (name in target) return target[name]
+
+      // 模糊搜索
+      const key = Object.keys(target).find(_ => cleanStyle(_) === cleanStyle(name))
+
+      // target
+      return key ? target[key] : undefined
+    }
+  })
 }
 
-const objectWithDefaultValue = new Proxy({}, defaultValueHandler);
-
-objectWithDefaultValue.a = 'b';
-
-console.log(objectWithDefaultValue.a); // b
-console.log(objectWithDefaultValue['hello there']); // general kenobi
-
-
-// Using the SET trap
-const stringValidatorHandler = {
-  set: (obj, key, value) => {
-        if (typeof value !== 'string') {
-          throw new Error('Expected string!')
-        }
-        obj[key] = value.toUpperCase();
-      }
-}
-
-const weirdObject = new Proxy({}, stringValidatorHandler);
-
-weirdObject.a = 5 // Error: Expected string!
-weirdObject.a = 'abacaba';
-console.log(weirdObject.a); // ABACABA
+const data = { NAME: 'lee', type: [{label: '123', id: 1 }] }
+const p = fuck(data)
+console.log(20200923091805, p.name)
+console.log(20200923091805, p.type[0].ID)
 )
 txtit(Var)
 return
@@ -9184,6 +9225,12 @@ return
 ::reduces::
 Var =
 (
+// 强迫症专用语法
+const slim = (obj, properties = []) => properties.reduce((p, c) => (p[c] = obj[c], p), {})
+
+// 强迫症专用语法
+const newObj = Object.entries(obj).reduce((p, [key, val]) => (p[key] = (isObject(val) || isArray(val)) ? fuck(val) : val, p), {})
+---
 // 将数组转化为对象
 var obj = arr.reduce((p, c) => {
     p[c] = c
@@ -13920,16 +13967,15 @@ Var =
  * @param {String} value
  * @param {Number} expires
  */
-export function setCookie(name, value, expires = 0) {
-    var cookieString = name + "=" + escape(value)
-
-    // 如果不做时间设置，那么等關閉瀏覽器時失效
-    if (expires != 0) { 
+export function setCookie(name, value, expires) {
+    var cookieString = name + "=" + escape(value);
+    //判斷是否設置過期時間,0代表關閉瀏覽器時失效
+    if (expires > 0) {
         var date = new Date();
         date.setTime(date.getTime() + expires * 1000);
         cookieString = cookieString + ";expires=" + date.toUTCString();
     }
-    document.cookie = cookieString;
+    document.cookie=cookieString;
 }
 
 /**
@@ -13954,7 +14000,7 @@ export function getCookie(name) {
  * @param  {String} value
  * @param  {Number} expires
  */
-export function editCookie(name, value, expires) {
+export function editCookie(name, value, expires){
     var cookieString = name + "=" + escape(value);
     if (expires > 0) {
         var date = new Date();
@@ -13971,6 +14017,17 @@ export function editCookie(name, value, expires) {
 export function removeCookie(name) {
     // 设置已过期，系统会立刻删除cookie
     setCookie(name, '', -1);
+}
+
+/**
+ * 删除所有cookie
+ */
+export function removeAllCookie() {
+    const cookies = document.cookie.split(';')
+    for(var i = 0; i < cookies.length; i ++) {
+        const [name, value] = cookies[i].split('=')
+        removeCookie(name)
+    }
 }
 ---
 /**
@@ -14125,6 +14182,7 @@ const getToken = () => {
 txtit(Var)
 return
 
+::yanzhengma::
 ::daojishi::
 ::countdown::
 Var = 

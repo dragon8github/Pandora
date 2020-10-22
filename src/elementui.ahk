@@ -4,7 +4,7 @@ Var =
 (
 import {  DatePicker } from 'element-ui'
 Vue.component(DatePicker.name, DatePicker)
----
+
 <template>
 <el-date-picker v-model="time" type="date" placeholder="选择日期"> </el-date-picker>
 </template>
@@ -38,8 +38,220 @@ export default {
   },
 }
 </script>
+---
+<div class="header__report">
+    <el-date-picker class='header__report--picker' v-model="reportDay" :picker-options="pickerOptionsDay" ref='selectDay'></el-date-picker>
+    <a class='header__report--day' :class='{"is-active": reportType === "day"}' @click='switchReportType("day")' v-if="isShowDay">日报 {{ reportDay }}</a>
+    <el-date-picker class='header__report--picker' v-model="reportMonth" :picker-options="pickerOptionsMonth" ref='selectMonth' type="month"></el-date-picker>
+    <a class='header__report--month' :class='{"is-active": reportType === "month" || reportType === "range"  }' @click='switchReportType("month")'>月报 {{ reportType === "month" ? reportMonth : reportType === "range" ? `${reportMonth[0]} 至 ${reportMonth[1]}` : '' }}</a>
+</div>
+
+data() {
+    return {
+        // 日报限制
+        pickerOptionsDay: {
+            // 传入的时间，表示所有的时间单位，你要分别对他们进行对比，如果返回true就禁止，返回false就正常。
+            disabledDate(time) {
+                // 当前时间
+                const date = new Date()
+                // 获取当天
+                const today = new Date().getTime()
+                // 不能选择未来的日期，并且一定要2018年之后。
+                return time.getTime() >= today  || time.getTime() < new Date(2018, 0, 1).getTime()
+            },
+        },
+        // 月报限制
+        pickerOptionsMonth: {
+            // 传入的时间，表示所有的时间单位，你要分别对他们进行对比，如果返回true就禁止，返回false就正常。
+            disabledDate(time) {
+                // 当前时间
+                const date = new Date()
+                // 获取当月
+                const today = new Date(moment().subtract(1, 'month')).getTime()
+                // 本月第一天
+                const monthFirstDay = new Date(date.getFullYear(), date.getMonth(), 1)
+                // 根据业务的需求，如果今天是1号的话，那就只能选上个月的，而且绝对不能选未来的。
+                if (today === 1) {
+                    return time.getTime() > monthFirstDay.getTime()
+                    // 根据业务需求，只有2018年1月开始到这个月,并且依然不能选择未来的月份。
+                } else {
+                    return time.getTime() >= today || time.getTime() < new Date(2018, 0, 1).getTime()
+                }
+            },
+            shortcuts
+        },
+    }
+},
+
+
+// 获取半年，
+export const shortcuts = (function(){
+    let ary = [{
+        text: '第一季度',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const start = new Date(`${year}/01/01`);
+            const end = new Date(`${year}/03/31`);
+
+            // 获取当前的时间
+            const now = moment().format()
+            // fixbug: 如果选择年份大于今年年份，那么取消
+            if ((new Date(now)).getFullYear() < year) {
+                return Message(`未找到 ${year}的数据`)
+            }
+
+            picker.$emit('pick', [start, end]);
+        }
+    }, {
+        text: '第二季度',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const quarter = moment(`${year}0401`).format()
+            // 获取当前的时间
+            const now = moment().format()
+            // fixbug: 如果选择年份大于今年年份，那么取消
+            if ((new Date(now)).getFullYear() < year) {
+                return Message(`未找到 ${year}的数据`)
+            }
+            
+            if (now > quarter) {
+                const start = new Date(`${year}/04/01`);
+                const end = new Date(`${year}/06/30`);
+                picker.$emit('pick', [start, end]);
+            } else {
+                return Message(`未找到 ${year}年的数据`)
+            }
+        }
+    }, {
+        text: '第三季度',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const quarter = moment(`${year}0701`).format()
+            // 获取当前的时间
+            const now = moment().format()
+            // fixbug: 如果选择年份大于今年年份，那么取消
+            if ((new Date(now)).getFullYear() < year) {
+                return Message(`未找到 ${year}的数据`)
+            }
+            
+            if (now > quarter) {
+                const start = new Date(`${year}/07/01`);
+                const end = new Date(`${year}/09/30`);
+                picker.$emit('pick', [start, end]);
+            } else {
+                return Message(`未找到 ${year}年的数据`)
+            }
+        }
+    }, {
+        text: '第四季度',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const quarter = moment(`${year}1001`).format()
+            // 获取当前的时间
+            const now = moment().format()
+            // fixbug: 如果选择年份大于今年年份，那么取消
+            if ((new Date(now)).getFullYear() < year) {
+                return Message(`未找到 ${year}年的数据`)
+            }
+            
+            if (now > quarter) {
+                const start = new Date(`${year}/10/01`);
+                const end = new Date(`${year}/12/31`);
+                picker.$emit('pick', [start, end]);
+            } else {
+                return Message(`未找到 ${year}年第4季度的数据`)
+            }
+        }
+    }, {
+        text: '近三个月',
+        onClick(picker) {
+            // 三个月前的月初
+            const threeMonthsAgo = moment().subtract(2, 'month').format('YYYY/MM/01')
+            // 转换为date类型
+            const start = new Date(threeMonthsAgo)
+            // 当天
+            const end = moment()._d
+
+            // 获取当前的时间
+            const year = moment(picker.date).year()
+            const now = moment().format()
+            // fixbug: 如果选择年份大于今年年份，那么取消
+            if ((new Date(now)).getFullYear() < year) {
+                return Message(`未找到 ${year}年的数据`)
+            }
+
+            picker.$emit('pick', [start, end])
+        }
+    },{
+        text: '上半年',
+        onClick(picker) {
+            // 选择的年限
+            const year = moment(picker.date).year()
+            // 选择的上半年左边界
+            const secondHalf = moment(`${year}0615`).format()
+
+            // 获取当前的时间
+            const now = moment().format()
+            // fixbug: 如果选择年份大于今年年份，那么取消
+            if ((new Date(now)).getFullYear() < year) {
+                return Message(`未找到 ${year}上半年的数据`)
+            }
+
+            // 只有当前时间大于选择的时间，才允许选择上半年
+            if (+new Date(now) > +new Date(secondHalf)) {
+                const start = new Date(`${year}/01/01`)
+                const end = new Date(`${year}/06/30`)
+                picker.$emit('pick', [start, end])
+            // 否则，只允许选择极限月份
+            } else {
+                const start = new Date(`${year}/01/01`)
+                picker.$emit('pick', [start, now])
+            }
+        }
+    }, {
+        text: '下半年',
+        onClick(picker) {
+            // 选择的年限
+            const year = moment(picker.date).year()
+            // 选择的下半年左边界
+            const secondHalf = moment(`${year}0615`).format()
+            // 获取当前的时间
+            const now = moment().format()
+
+            // 如果当前时间还不到半年，说明还不能选
+            if (+new Date(secondHalf) > +new Date(now)) {
+                return Message(`未找到 ${year}下半年的数据`)
+            } else {
+                const start = new Date(`${year}/7/1`)
+                // const end = new Date(`${year}/12/31`)
+                // picker.$emit('pick', [start, end])
+                picker.$emit('pick', [start, now])
+            }
+        }
+    }, {
+        text: '一年',
+        onClick(picker) {
+            const year = moment(picker.date).year()
+            const month = moment().month() + 1
+            const day = moment().endOf('month').format('DD')
+            const start = new Date(`${year}/01/01`)
+
+            const now = moment().format()
+            // fixbug: 如果选择年份大于今年年份，那么取消
+            if ((new Date(now)).getFullYear() < year) {
+                return Message(`未找到 ${year}年的数据`)
+            }
+
+            // 如果选择的年小于当前年，那么就是全年，否则就是直到这个月
+            const end = year < moment().year() ? new Date(`${year}/12/31`) : new Date(`${year}/${month}/${day}`);
+            picker.$emit('pick', [start, end]);
+        }
+    }]
+
+    return ary
+}());
 )
-code(Var)
+txtit(Var)
 return
 
 ::el-color::
