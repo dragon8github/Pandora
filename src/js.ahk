@@ -1,4 +1,15 @@
-﻿::isarr::
+﻿::immer::
+Var =
+(
+const nextState = immer(baseState, draftState => {
+    draftState.push({todo: "Tweet about it"})
+    draftState[1].done = true
+})
+)
+code(Var)
+return
+
+::isarr::
 ::isarray::
 ::isary::
 Var =

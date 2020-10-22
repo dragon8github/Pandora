@@ -49,7 +49,7 @@ SwitchBook:
   if (currentBook == "《Vue + Jest单元测试》") {
      cornell("Vue+jest环境安装")
      cornell("纯jest安装")
-     cornell("基本语法")
+     cornell("基本语法（文档链接）")
      cornell("间谍函数")
      cornell("mock依赖")
      cornell("测试vuex")
@@ -1254,9 +1254,10 @@ afterAll(() => { ... })
 }
 
 
-if (v == "基本语法") {
+if (v == "基本语法（文档链接）") {
 Var = 
 (
+// https://vue-test-utils.vuejs.org/zh/api/wrapper-array/#trigger
 // src/components/__tests__/Item.spec.js
 import { shallowMount } from '@vue/test-utils'
 import Item from '../Item.vue'
@@ -1310,6 +1311,22 @@ test('base test', () => {
 
     // or: expect(wrapper.findAllComponents(Item)).toHaveLength(items.length)
     expect(wrapper.findAllComponents(Item).length).toBe(items.length)
+})
+
+// @@ triiger click 触发事件
+test('click', async () => {
+  const wrwindow.openPDF = jest.fn()
+  apper = shallowMount(news, { props: { items }})
+  const first_item = wrapper.find('.news__item')
+  await first_item.trigger('click')
+  expect(window.openPDF).toBeCalled()
+})
+
+// @@ length 判断
+test('items', () => {
+    const wrapper = shallowMount(news, { props: { items } })
+    const _items = wrapper.findAll('.news__item')
+    expect(_items).toHaveLength(items.length)
 })
 )
 }
