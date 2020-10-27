@@ -3284,6 +3284,37 @@ return
 ::router.vue::
 Var =
 (
+import store from '@/store'
+import { createRouter, createWebHashHistory } from 'vue-router'
+
+const test = () => import(/* webpackChunkName: "test" */ '@/views/test/test.vue')
+const dataAssets = () => import(/* webpackChunkName: "dataAssets" */ '@/views/dataAssets/index.vue')
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [
+    { path: '/', redirect: '/dataAssets' },
+    { path: '/dataAssets', name: 'dataAssets', meta: { title: '首页' }, component: dataAssets },
+    { path: '/test', name: 'Test', meta: { title: '测试页面' }, component: test },
+  ]
+})
+
+// 全局路由钩子
+router.afterEach((to, from) => {
+  // 设置标题
+  document.title = '数据资产－' + to.meta.title
+
+  // 更新 vuex 状态 - 标题
+  store.dispatch('SET_TITLE', to.meta.title)
+})
+
+router.beforeEach((to, from, next) => {
+    // 放行页面
+    next()
+})
+
+export default router
+---
 /**
    // router.js 
   const routes = [
@@ -3295,7 +3326,7 @@ Var =
 
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '../store'
+import store from '@/store'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
@@ -3352,7 +3383,7 @@ router.beforeEach((to, from, next) => {
 
 export default router
 )
-code(Var)
+txtit(Var)
 return
 
 ::vue.w::
@@ -3443,7 +3474,8 @@ let _initInstance;
 
 const initInstance = () => {
   _initInstance = new mapboxConstructor({
-    el: document.createElement('div')
+    el: document.createElement('div'),
+    propsData: { a: '123' }
   });
   document.body.appendChild(_initInstance.$el);
 };
@@ -6407,6 +6439,10 @@ return
 ::vue.charts::
 Var =
 (
+import echarts from 'echarts'
+import VCharts from 'vue-echarts'
+Vue.use(VCharts)
+
 <v-chart class='u-full chart' :options="option"></v-chart>
 ---
 export default {
@@ -6861,6 +6897,7 @@ const __STORE__ = _store.keys().reduce((obj, path) => {
 
 Vue.use(Vuex)
 
+// vue3: export default Vuex.createStore({ state, mutations, actions, modules })
 const store = new Vuex.Store({
     strict: false,
     state: {
@@ -7119,6 +7156,26 @@ const store = new Vuex.Store({
 })
 
 export default store
+---
+// https://github.com/robinvdvleuten/vuex-persistedstate#encrypted-local-storage
+import { Store } from "vuex";
+import createPersistedState from "vuex-persistedstate";
+import * as Cookies from "js-cookie";
+
+const store = new Store({
+  // ...
+  plugins: [
+    createPersistedState({
+      storage: {
+        getItem: (key) => Cookies.get(key),
+        // Please see https://github.com/js-cookie/js-cookie#json, on how to handle JSON.
+        setItem: (key, value) =>
+          Cookies.set(key, value, { expires: 3, secure: true }),
+        removeItem: (key) => Cookies.remove(key),
+      },
+    }),
+  ],
+});
 )
 txtit(Var)
 return
@@ -7239,6 +7296,7 @@ module.exports = function(tpl,variables) {
 txtit(Var)
 return
 
+
 ::kuaijie::
 ::lujing::
 ::chuansongmen::
@@ -7255,7 +7313,7 @@ import { copyToClipboard, waitWhen } from '@/utils/utils'
 const AllComponents = require.context('@', true, /\.vue$/)
 
 // 如果没有传入指定的 Vue 引用集，那就是用项目所有 Vue 引用
-export const portal = (VueComponent = AllComponents) => {
+export const shortcut = (VueComponent = AllComponents) => {
     VueComponent.keys().forEach(path => {
         // 直接获取文件内容的引用
         const output = VueComponent(path).default
@@ -7290,12 +7348,12 @@ export const portal = (VueComponent = AllComponents) => {
                             // 路径
                             const file = this.__file()
                             // 打印
-                            window.alert(``已加入剪切板：${file}``)
+                            window.alert(`已加入剪切板：${file}`)
                             // copy
                             copyToClipboard(file)
+                            // 禁止冒泡
+                            event.preventDefault(); event.stopPropagation();
                         }
-                        // 禁止冒泡
-                        event.preventDefault(); event.stopPropagation();
                     })
                 })();
             }
@@ -7304,10 +7362,12 @@ export const portal = (VueComponent = AllComponents) => {
 }
 ---
 // main.js
+import { shortcut } from '@/utils/shortcut.js'
+
 // 开发环境下，开启传送门辅助开发
 if (process.env.NODE_ENV === 'development') {
   // 注册传送门
-  portal()
+  shortcut()
 }
 )
 txtit(Var)
@@ -7840,6 +7900,7 @@ Var =
 </template>
 
 <script>
+import { useStore } from "vuex"
 import { watch, watchEffect, ref, onMounted, onUnmounted, reactive, toRefs, computed } from 'vue'
 
 export default {
@@ -7849,6 +7910,13 @@ export default {
   setup(props, { attrs, slots, emit }) {
     // props
     console.log(%t%, props.msg)
+
+    // store
+    let store = useStore()
+    // store.state
+    let count = computed(() => store.state.count)
+    // store.commit
+    let inc = () => store.commit('inc')
 
     // data
     //🔔 请注意，template 中是以 {{ state.count }} 来使用的，如果想直接使用 {{ count }} ，请使用 ref 来创建
@@ -7875,7 +7943,7 @@ export default {
       dom.style.color = 'blue'
     })
 
-    return { state, double, inc, el }
+    return { state, double, inc, el, count, inc }
   }
 }
 </script>

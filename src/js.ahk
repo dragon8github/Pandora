@@ -1,4 +1,56 @@
-﻿::immer::
+﻿::yixiaodaida::
+Var =
+(
+// 以大带小
+export const drive = (ary, fn) => {
+    // 数组长度
+    const len = ary.length
+    // 偶数长度
+    const isEven = len `% 2 === 0
+    // 从大到小排序
+    const _ary = ary.sort(fn)
+    // 循环的次数
+    const time = isEven ? len / 2 : Math.floor(len / 2) + 1
+    // 返回新的数组
+    return [...Array(time)].reduce((previousValue, currentValue, index) => {
+        // 是否循环的最后一次
+        const isLastTime = index === time - 1
+        // 如果是奇数的，且最后一次的情况下
+        if (!isEven && isLastTime) {
+            // 没人可带，带我自己就够了
+            return [...previousValue, _ary[index]]
+        // 默认都带一个小弟
+        } else {
+            // 带上小弟
+            return [...previousValue, _ary[index], _ary[len - 1 - index]]
+        }
+    }, [])
+}
+)
+code(Var)
+return
+
+::map100::
+Var =
+(
+[...Array(100)].map((v, index, array) => {
+    return index
+})
+)
+code(Var)
+return
+
+::map10::
+Var =
+(
+[...Array(10)].map((v, index, array) => {
+    return index
+})
+)
+code(Var)
+return
+
+::immer::
 Var =
 (
 const nextState = immer(baseState, draftState => {

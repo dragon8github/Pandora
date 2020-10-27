@@ -1,4 +1,15 @@
-﻿
+﻿!3::
+Send, !{F3}
+return
+
+!4::
+Send, !{F4}
+return
+
++3::
+Send, +{F3}
+return
+
 #t::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 dirpath := A_Desktop . "/tmp-" . t
@@ -841,6 +852,8 @@ html =
 } else {
     p(title)
 }
+
+Send, {ALT UP}
 return
 
 <+v::
@@ -1589,7 +1602,9 @@ _send("%f%", true, true)
 return
 }
 )
-    }
+}
+tip2(Clipboard)
+
 return
 
 
