@@ -8900,10 +8900,13 @@ export const createStore = (store = {}) => {
     __store__.mutations =  Object.entries(__store__.actions).reduce((obj, [key, action]) => {
         // 同名 mutatios
         obj[key] = function (state, payload) {
+            // 新增：如果是 __ 开头，那么无视任何情况，直接赋值
+            const special = key.includes('__')
+
             // 判断状态是否相等
             const isSame = JSON.stringify(state[key]) === JSON.stringify(payload)
             // 只有「不相等」我才重新赋值
-            if (!isSame) {
+            if (!isSame || special) {
                 // 同名 state
                 state[key] = payload
             }

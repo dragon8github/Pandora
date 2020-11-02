@@ -5779,6 +5779,13 @@ return
 
 ::vue.dir::
 ::vue.zhiling::
+::vue-zhiling::
+::vue.chajian::
+::vue-chajian::
+::vue.plugin::
+::vue-plugin::
+::vue.plugins::
+::vue-plugins::
 ::vuezhiling::
 ::vuez::
 ::v-tip::

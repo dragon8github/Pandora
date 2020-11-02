@@ -327,6 +327,7 @@ Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客
 Gui, Pandora:Add, Link,, <a href="https://outflank.nl/blog/2018/08/14/html-smuggling-explained/">黑客思维</a>
 Gui, Pandora:Add, Link,, <a href="https://web.dev/fast/">web.dev 优化教程</a>
 Gui, Pandora:Add, Link,, <a href="https://www.getrevue.co/profile/tailwind-weekly">tailwind-weekly</a>
+Gui, Pandora:Add, Link,, <a href="https://sharkle.com/">随机打开一个有趣</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
@@ -346,6 +347,7 @@ Gui, Pandora:Add, Link,, <a href="http://css2sass.herokuapp.com/">css在线转sc
 Gui, Pandora:Add, Link,, <a href="https://css2js.dotenv.dev/">css2js</a>
 
 
+
 Gui, Pandora:Add, Text,  W160 ys, 宁可错过：
 Gui, Pandora:Add, Link,, <a href="https://skeletonreact.com/">骨架图Sketch生成器</a>
 Gui, Pandora:Add, Link,, <a href="https://nginxconfig.io/">生成器nginxconfig.io</a>
@@ -358,8 +360,9 @@ Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux
 Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer</a>
 Gui, Pandora:Add, Link,, <a href="https://animate.style/">animate.css</a>
 Gui, Pandora:Add, Link,, <a href="https://animista.net/play/basic/slide-fwd">animista.css</a>
-Gui, Pandora:Add, Link,, <a href="https://csslayout.io/patterns">csslayout</a>
+Gui, Pandora:Add, Link,, <a href="https://csslayout.io/">csslayout.io布局大全</a>
 Gui, Pandora:Add, Link,, <a href="https://sarthology.github.io/Animatopy/">Animatopy何必全部？</a>
+Gui, Pandora:Add, Link,, <a href="https://chokcoco.github.io/CSS-Inspiration">css 灵感大全（电子书）</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
@@ -394,6 +397,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.24s.net/">24s付费视频盗版</a
 Gui, Pandora:Add, Link,, <a href="https://mapshaper.org/">旭均 - mapshaper</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">免费 API 大全</a>
 Gui, Pandora:Add, Link,, <a href="https://creator.nightcafe.studio/">世界名画生成器</a>
+Gui, Pandora:Add, Link,, <a href="https://www.piliang.tech/reverse-geocoding">批量转经纬度（刘羲）</a>
 
 
 ;@1
@@ -532,6 +536,8 @@ Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/19/interfac
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui?tab=history">测试部署</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/fyvis/#/planB">测试预览</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/fyvis/#/">正式预览</a>
+Gui, Pandora:Add, Link,, <a href="https://master.feiyan.com:8443/console/project/app/browse/dc/ioc-visual-ui?tab=history">正式部署</a>
+
 
 
 Gui, Pandora:Add, Text,  W150 ys, ioc-basic:
@@ -610,6 +616,11 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/yqfeiyan/applica
 Gui, Pandora:Add, Text,  W140 yp+50, 数据资产v2
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/60/interface/api">yapi</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/data-assets">源码地址</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/dataAssets/">正式预览</a>
+Gui, Pandora:Add, Link,, <a href="https://master.paas.com:8443/console/project/app/browse/dc/ioc-visual-ui-dataassets?tab=history">部署地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
+
+
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 私服仓库Nexus

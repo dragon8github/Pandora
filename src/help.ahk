@@ -1,4 +1,17 @@
-﻿!3::
+﻿^5::
+Send, ^{F5}
+return
+
+>+esc::
+code("~")
+return
+
+
+^+esc::
+Send, ^+{vksc029}
+return
+
+!3::
 Send, !{F3}
 return
 
@@ -6,9 +19,9 @@ return
 Send, !{F4}
 return
 
-+3::
-Send, +{F3}
-return
+; +3::
+; Send, +{F3}
+; return
 
 #t::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
@@ -2859,13 +2872,6 @@ segmentfault
 code(Var)
 return
 
-^5::
-cs("iocadmin3")
-Send, {tab}
-Sleep, 100
-cs("iocadmin")
-Send, {enter}
-return
 
 ::mangzhong::
 Var =
