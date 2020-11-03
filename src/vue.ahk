@@ -5950,6 +5950,17 @@ Vue.directive('loader', {
     },     
 })
 ---
+/* npm install --save v-tooltip */
+import Vue from 'vue'
+import VTooltip from 'v-tooltip'
+
+Vue.use(VTooltip)
+
+
+/* app.vue */
+/* https://akryum.github.io/v-tooltip/ */
+<button v-tooltip="'You have a new messages.'">
+---
 /**
  * 
  import tip from '@/directive/tip/index.js'
@@ -5965,6 +5976,8 @@ const useDiv = (setDiv) => {
 
 export default {
     install(Vue) {
+        Vue.prototype.__tip__ = __tip__
+
         Vue.directive('tip', {
             bind(el, { value = '' }) {
                 // 创建一个容器
@@ -5972,44 +5985,147 @@ export default {
                     e.style.position = 'absolute'
                     e.style.background = 'rgba(0, 0, 0, .5)'
                     e.style.color = 'white'
-                    e.style.fontSize = '1.5em'
+                    e.style.fontSize = '1.2em'
                     e.style.left = 0
                     e.style.top = 0
                     e.style.maxWidth = '26em'
+                    e.style.minWidth = '20em'
                     e.style.padding = '1.2em'
-                    e.style.letterSpacing = "0.1em"
-                    e.style.display = 'none'
-                    e.style.lineHeight = '1.5'
-                    e.style.zIndex ='1993100337'
+                    e.style.zIndex =-1
+                    e.style.opacity = 0
                 })
 
                 div.innerHTML = value
 
                 el.addEventListener('mousemove', (event) => {
                     const { pageX, pageY } = event
-                    div.style.display = 'block'
-                    div.style.top = pageY + 20 + 'px'
-                    div.style.left = pageX + 20 + 'px'
+
+                    const div_top = pageY + 20  
+                    const div_left = pageX + 20 
+
+                    document.title = `${div_top}, ${div_left}`
+
+                    const cur = div.clientWidth + div_left
+                    const bodywidth = document.querySelector('body').scrollWidth
+
+                    div.style.top = div_top + 'px'
+
+                    if (cur > bodywidth) {
+                        div.style.left = div_left - div.clientWidth  + 'px'
+                    } else {
+                        div.style.left = div_left + 'px'
+                    }
+
+                    div.style.opacity = 1
+                    div.style.zIndex = '1993100337'
                 })
 
                 el.addEventListener('mouseleave', (event) => {
-                    div.style.display = 'none'
+                    div.style.zIndex = -1
+                    div.style.opacity = 0
                 })
             }
         })
     } 
 }
 ---
-/* npm install --save v-tooltip */
-import Vue from 'vue'
-import VTooltip from 'v-tooltip'
+import { isDEV } from '@/utils/utils'
 
-Vue.use(VTooltip)
+const useDiv = (setDiv) => {
+    let div = document.createElement('pre')
+    setDiv(div)
+    document.body.append(div)
+    return [div, () => div.remove()]
+}
 
+let divs = []
 
-/* app.vue */
-/* https://akryum.github.io/v-tooltip/ */
-<button v-tooltip="'You have a new messages.'">
+export default {
+    install(Vue) {
+        // 我如何维护不同的 div 
+        Vue.directive('log', {
+            bind(el, { value }) {
+                if (!isDEV) return
+
+                // 创建一个容器
+                const [div, remove] = useDiv(e => {
+                    e.style.position = 'absolute'
+                    e.style.background = 'rgba(0, 0, 0, .5)'
+                    e.style.color = 'white'
+                    e.style.fontSize = '1.2em'
+                    e.style.left = 0
+                    e.style.top = 0
+                    e.style.maxWidth = '90vh'
+                    e.style.maxHeight = '26em'
+                    e.style.overflowY = 'scroll'
+                    e.style.minWidth = '20em'
+                    e.style.padding = '1em'
+                    e.style.zIndex = -1
+                    e.style.opacity = 0
+                })
+
+                divs.push(div)
+                el.div = div
+                el.isStop = false
+                div.innerHTML = `${JSON.stringify(value, null, 2)}`
+
+                // 点击打印日志
+                div.addEventListener('click', (event) => {
+                    try {
+                        console.log('✍️', JSON.parse(div.innerHTML))
+                    } catch (err) {
+                        console.log('✍️', div.innerHTML)
+                    }
+
+                })
+
+                // 按下 esc 的时候，隐藏所有 div
+                document.addEventListener('keydown', (event) => {
+                    if (event.keyCode === 27) {
+                        el.isStop = false
+                        div.style.zIndex = -1
+                        div.style.opacity = 0
+                    }
+                })
+
+                el.addEventListener('mousemove', (event) => {
+                    const { pageX, pageY, shiftKey } = event
+
+                    if (shiftKey && el.isStop === false) {
+                        const div_top = pageY + 20
+                        const div_left = pageX + 20
+
+                        const cur_left = div.clientWidth + div_left
+                        const cur_top = div.clientHeight + div_top
+
+                        const bodywidth = document.querySelector('body').scrollWidth
+                        const bodyheight = document.querySelector('body').scrollHeight
+
+                        const isOverX = cur_left > bodywidth
+                        const isOverY = cur_top > bodyheight
+
+                        div.style.top = isOverX ? div_top - div.clientHeight - 50 + 'px' : div.style.top - div_top + 'px'
+                        div.style.left = isOverX ? div_left - div.clientWidth - 50 + 'px' : div.style.left = div_left + 'px'
+
+                        // 将其他 div 隐藏
+                        divs.forEach((val, key) => {
+                            val.style.zIndex = -1
+                            val.style.opacity = 0
+                        })
+
+                        div.style.zIndex = '1993100337'
+                        div.style.opacity = 1
+                    }
+                })
+            },
+            update(el, { value }) {
+                if (!isDEV) return
+
+                el.div.innerHTML = `${JSON.stringify(value, null, 2)}`
+            },
+        })
+    }
+}
 )
 txtit(Var)
 return

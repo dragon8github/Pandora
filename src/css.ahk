@@ -5426,16 +5426,6 @@ injectCss(``
 code(Var)
 return
 
-::css.debug::
-::cssdebug::
-::cssd::
-::css.debugger::
-Var =
-(
-javascript:/* debug.css | MIT License | zaydek.github.com/debug.css */ if (!("is_debugging" in window)) { is_debugging = false; var debug_el = document.createElement("style"); debug_el.append(document.createTextNode(``*:not(path):not(g) { color: hsla(210, 100`%, 100`%, 0.9) !important; background: hsla(210, 100`%,  50`%, 0.5) !important; outline: solid 0.25rem hsla(210, 100`%, 100`%, 0.5) !important; box-shadow: none !important; filter: none !important; }``)); } function enable_debugger() { if (!is_debugging) { document.head.appendChild(debug_el); is_debugging = true; } } function disable_debugger() { if (is_debugging) { document.head.removeChild(debug_el); is_debugging = false; } } !is_debugging ? enable_debugger() : disable_debugger();
-)
-code(Var)
-return
 
 ::function.scss::
 ::functions.scss::
@@ -7741,3 +7731,45 @@ html[theme='dark-mode'] {
 )
 code(Var)
 return
+
+::css.debug::
+::debug.css::
+::cssdebug::
+::debugcss::
+::css.debug::
+::cssdebug::
+::csssd::
+::cssd::
+::css.debugger::
+Var =
+(
+var injectCss = function (css) {
+    var style = document.createElement('style')
+    style.type = 'text/css'
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css
+    } else {
+        style.appendChild(document.createTextNode(css))
+    }
+    document.getElementsByTagName('head')[0].appendChild(style)
+}
+injectCss(``
+html * {
+  background: rgba(255, 0, 0, .1);
+  box-shadow: 0 0 0 1px red;
+}
+html {
+  background: url("data:image/svg+xml;base64,IDxzdmcgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgPGRlZnM+CiAgICAgIDxwYXR0ZXJuIGlkPSJzbWFsbEdyaWQiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgICAgPHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iZ3JheSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KICAgICAgPC9wYXR0ZXJuPgogICAgICA8cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICAgIDxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI3NtYWxsR3JpZCkiLz4KICAgICAgICA8cGF0aCBkPSJNIDEwMCAwIEwgMCAwIDAgMTAwIiBmaWxsPSJub25lIiBzdHJva2U9ImdyYXkiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgICA8L3BhdHRlcm4+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIiAvPgogIDwvc3ZnPg==");
+}
+html body {
+  opacity: 0.8;
+}
+``)
+
+/* zaydek.github.com/debug.css */ 
+// if (!("is_debugging" in window)) { is_debugging = false; var debug_el = document.createElement("style"); debug_el.append(document.createTextNode(``*:not(path):not(g) { color: hsla(210, 100`%, 100`%, 0.9) !important; background: hsla(210, 100`%,  50`%, 0.5) !important; outline: solid 0.25rem hsla(210, 100`%, 100`%, 0.5) !important; box-shadow: none !important; filter: none !important; }``)); } function enable_debugger() { if (!is_debugging) { document.head.appendChild(debug_el); is_debugging = true; } } function disable_debugger() { if (is_debugging) { document.head.removeChild(debug_el); is_debugging = false; } } !is_debugging ? enable_debugger() : disable_debugger();
+)
+code(Var)
+return
+
+

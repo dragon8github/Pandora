@@ -8080,8 +8080,25 @@ const toNumber = (val, decimal = 0) => {
   if (isNaN(n)) return val
   return decimal ? parseFloat(n.toFixed(decimal)) : n
 }
+---
+const toFixed = (val, decimal) => {
+    const n = parseFloat(val)
+
+    // 非法数字，直接返回原数据
+    if (isNaN(n)) return val
+
+    // 是否具备小数点
+    const hasPoint = n.toString().includes('.')
+
+    // 如果不具备，那么直接返回数字本身，不需要小数点了。多一个 .0 也并不好看
+    if (!hasPoint) return n
+
+    // 最终才返回具备小数点的数字
+    return decimal ? parseFloat(n.toFixed(decimal)) : n
+}
+
 )
-code(Var)
+txtit(Var)
 return
 
 
