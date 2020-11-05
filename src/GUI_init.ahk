@@ -593,14 +593,14 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/groups/DateCente
 Gui, Pandora:Add, Link,, <a href="http://dc.dgjy.net:8080/">Jenkins</a>
 
 Gui, Pandora:Add, Text,  W140 yp+50, 跨境司机
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:32727/driver/">预览地址</a>
-Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/cross-border-drivers-ui?tab=history">部署地址</a>
+; Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:32727/driver/">预览地址</a>
+; Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/cross-border-drivers-ui?tab=history">部署地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/56/interface/api/2435">yapi</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/cross-border-drivers">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
 Gui, Pandora:Add, Link,, <a href="https://fangyqgk.dg.cn/driver/#/pcDriver">正式预览</a>
 Gui, Pandora:Add, Link,, <a href="https://master.feiyan.com:8443/console/project/app/browse/dc/cross-border-drivers-ui?tab=history">正式部署</a>
-Gui, Pandora:Add, Link,, <a href="https://19.104.40.10:8080/ ">后台管理系统</a>
+; Gui, Pandora:Add, Link,, <a href="https://19.104.40.10:8080/ ">后台管理系统</a>
 
 
 
@@ -1174,7 +1174,7 @@ Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/lates
 ; @chart echarts
 
 Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
-Gui, Pandora:Add, Link,, <a href="http://echartsjs.com/option.html#series-map.data.itemStyle.color">echart 配置项手册</a>
+Gui, Pandora:Add, Link,, <a href="https://echarts.apache.org/zh/api.html#echarts">echart 配置项手册</a>
 Gui, Pandora:Add, Link,, <a href="https://echarts.apache.org/examples/zh/index.html">echart 官方示例</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all">ECharts 官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="https://www.oschina.net/translate/geojson-spec#positions">GeoJSON 格式规范</a>

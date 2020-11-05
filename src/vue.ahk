@@ -5790,6 +5790,8 @@ return
 ::vuez::
 ::v-tip::
 ::vtip::
+::vlog::
+::v-log::
 ::v-tooltip::
 Var = 
 (
@@ -6038,51 +6040,45 @@ const useDiv = (setDiv) => {
     return [div, () => div.remove()]
 }
 
-let divs = []
+const [div, remove] = useDiv(e => {
+    e.style.position = 'absolute'
+    e.style.background = 'rgb(13 11 14 / 50`%)'
+    e.style.color = 'white'
+    e.style.fontSize = '1em'
+    e.style.left = 0
+    e.style.top = 0
+    e.style.maxWidth = '90vh'
+    e.style.maxHeight = '26em'
+    e.style.overflowY = 'scroll'
+    e.style.minWidth = '20em'
+    e.style.padding = '1em'
+    e.style.zIndex = -1
+    e.style.opacity = 0
+    e.style.backdropFilter = 'blur(10px)'
+    e.style.boxShadow = '5px 5px 20px #cbcdd3'
+    e.style.borderRadius = '15px'
+})
 
 export default {
     install(Vue) {
-        // 我如何维护不同的 div 
         Vue.directive('log', {
             bind(el, { value }) {
                 if (!isDEV) return
 
-                // 创建一个容器
-                const [div, remove] = useDiv(e => {
-                    e.style.position = 'absolute'
-                    e.style.background = 'rgba(0, 0, 0, .5)'
-                    e.style.color = 'white'
-                    e.style.fontSize = '1.2em'
-                    e.style.left = 0
-                    e.style.top = 0
-                    e.style.maxWidth = '90vh'
-                    e.style.maxHeight = '26em'
-                    e.style.overflowY = 'scroll'
-                    e.style.minWidth = '20em'
-                    e.style.padding = '1em'
-                    e.style.zIndex = -1
-                    e.style.opacity = 0
-                })
-
-                divs.push(div)
-                el.div = div
-                el.isStop = false
-                div.innerHTML = `${JSON.stringify(value, null, 2)}`
+                el.__LOG__ = JSON.stringify(value, null, 2)
 
                 // 点击打印日志
                 div.addEventListener('click', (event) => {
                     try {
-                        console.log('✍️', JSON.parse(div.innerHTML))
+                        console.log('✍️', JSON.parse(el.__LOG__))
                     } catch (err) {
-                        console.log('✍️', div.innerHTML)
+                        console.log('✍️', el.__LOG__)
                     }
-
                 })
 
                 // 按下 esc 的时候，隐藏所有 div
                 document.addEventListener('keydown', (event) => {
                     if (event.keyCode === 27) {
-                        el.isStop = false
                         div.style.zIndex = -1
                         div.style.opacity = 0
                     }
@@ -6091,7 +6087,7 @@ export default {
                 el.addEventListener('mousemove', (event) => {
                     const { pageX, pageY, shiftKey } = event
 
-                    if (shiftKey && el.isStop === false) {
+                    if (shiftKey) {
                         const div_top = pageY + 20
                         const div_left = pageX + 20
 
@@ -6104,24 +6100,19 @@ export default {
                         const isOverX = cur_left > bodywidth
                         const isOverY = cur_top > bodyheight
 
-                        div.style.top = isOverX ? div_top - div.clientHeight - 50 + 'px' : div.style.top - div_top + 'px'
-                        div.style.left = isOverX ? div_left - div.clientWidth - 50 + 'px' : div.style.left = div_left + 'px'
-
-                        // 将其他 div 隐藏
-                        divs.forEach((val, key) => {
-                            val.style.zIndex = -1
-                            val.style.opacity = 0
-                        })
+                        div.style.top = isOverY ? div_top - div.clientHeight - 50 + 'px' : div_top + 'px'
+                        div.style.left = isOverX ? div_left - div.clientWidth - 50 + 'px' : div_left + 'px'
 
                         div.style.zIndex = '1993100337'
                         div.style.opacity = 1
+
+                        div.innerHTML = el.__LOG__
                     }
                 })
             },
             update(el, { value }) {
                 if (!isDEV) return
-
-                el.div.innerHTML = `${JSON.stringify(value, null, 2)}`
+                el.__LOG__ = JSON.stringify(value, null, 2)
             },
         })
     }
@@ -7420,6 +7411,9 @@ txtit(Var)
 return
 
 
+
+::kuaijiefangshi::
+::kuaijiefs::
 ::kuaijie::
 ::lujing::
 ::chuansongmen::
@@ -7433,7 +7427,7 @@ import { copyToClipboard, waitWhen } from '@/utils/utils'
 
 // 重要认知：这里等于直接获取了组件对象本身，当我修改它时，其实等于修改了组件。
 // TODO:干脆一点，直接覆盖整个项目所有的组件，甚至小组件。
-const AllComponents = require.context('@', true, /\.vue$/)
+const AllComponents = require.context('@', true, process.env.NODE_ENV === 'development' ? /\.vue$/ : /NULL/)
 
 // 如果没有传入指定的 Vue 引用集，那就是用项目所有 Vue 引用
 export const shortcut = (VueComponent = AllComponents) => {
