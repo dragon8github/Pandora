@@ -67,10 +67,8 @@ SwitchBook:
      cornell("备份与恢复")
   }
 
-
-
   
-   if (currentBook == "《Express+Sequelize+Mysql》") {
+ if (currentBook == "《Express+Sequelize+Mysql》") {
      cornell("sequelize-101")
      cornell("sequelize-模型关联查询")
      cornell("express-101")
@@ -1121,9 +1119,12 @@ if (v == "Vue+jest环境安装") {
 Var =
 (
 （强烈推荐）官方推荐的安装方式，支持 Vue3，一步到位。
+$ npm set registry https://registry.npm.taobao.org/
 $ vue add unit-jest
 
-但要注意2点：
+但要注意 4 点：
+0）必须 vue-cli 4.x 以上，否则得使用 vue add @vue/unit-jest
+
 1）官方使用的是npm 安装，如果你没有 fq 工具，请提前设置好镜像源。
 npm set registry https://registry.npm.taobao.org/
 
@@ -1192,8 +1193,18 @@ $ cnpm i babel-core@^7.0.0-bridge.0 @babel/core @babel/preset-env -D
 
 其中的 "testMatch": ["<rootDir>/**/*.spec.js"] 你可以考虑去掉，默认就会。
 
-@@运行测试： 
-$ npm t
+@@运行测试： $ npm t
+
+@@debugger 断点调试
+https://www.youtube.com/watch?v=8XXe4Fsvu4k
+
+"scripts": {
+  "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cahce --runInBand",
+}
+
+然后打开 chrome://inspect
+
+也可以查看一下有道云笔记。
 )
 }
 

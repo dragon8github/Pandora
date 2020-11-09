@@ -7410,8 +7410,7 @@ Var =
 // 如何删除元素绑定的事件？
 <script src='https://cdn.jsdelivr.net/gh/colxi/getEventListeners/src/getEventListeners.min.js'></script>
  el.getEventListeners()
-
----
+#################################
 const isPromise = val => val && typeof val.then === 'function'
 
 Promise.allSettled = iterables => new Promise(resolve => {
@@ -7540,6 +7539,11 @@ function changeNumber(n, c) {
    });
    headerTag.dispatchEvent(event);
 }
+#################################
+// JS CustomEvent自定义事件传参小技巧 « 张鑫旭-鑫空间-鑫生活
+document.body.addEventListener('文章勿盗', () => { console.log('文明、公正、法治、诚信'); });
+// 触发
+document.body.dispatchEvent(new CustomEvent('文章勿盗'));
 )
 txtit(Var, "#################################")
 return

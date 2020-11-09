@@ -7465,7 +7465,7 @@ export const shortcut = (VueComponent = AllComponents) => {
                             // 路径
                             const file = this.__file()
                             // 打印
-                            window.alert(`已加入剪切板：${file}`)
+                            window.alert(``已加入剪切板：${file}``)
                             // copy
                             copyToClipboard(file)
                             // 禁止冒泡

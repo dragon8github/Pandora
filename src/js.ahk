@@ -3398,11 +3398,55 @@ return
 ::promiseall::
 ::promise.all::
 ::promise.a::
+::Promise.all2::
 Var =
 (
-// 请注意，a和b都是一个promise对象。而且Promise.all返回的也是一个promise对象，所以它也是可以被await的。
-Promise.all([a, b]).then(args => {
-    const [a, b] = args
+const isPromise = val => val && typeof val.then === 'function'
+
+/**
+ * Promise.all 的升级版本，如果异常也会自动返回
+ *
+ * demo:
+
+   const testA = new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 3000))
+   const testB = new Promise((resolve, reject) => setTimeout(_ => reject('fail'), 3500))
+
+   ;(async function(){
+       // ✖️
+       // const result = await Promise.all([testA, testB])
+
+       // ✔
+       const result = await Promise.allSettled([testA, testB])
+       console.log(20191215005254, result)
+   }())
+ */
+Promise.allSettled = iterables => new Promise(resolve => {
+    let result = []
+
+    const callback = function (i, v) {
+        // 模仿 Promise.all 对号入座原则
+        result[i] = v
+
+        // 是否全部执行完毕？
+        // fixbug: empty 的问题
+        if (result.filter(_ => _ != null).length === iterables.length)
+            // 收工咯~
+            resolve(result)
+    }
+
+    iterables.forEach((p, i) => {
+        // 注入索引
+        const _callback = callback.bind(null, i)
+
+        // 如果是 promise，才执行操作
+        if (isPromise(p)) {
+            // 注入灵魂
+            p.then(_callback).catch(_callback)
+        // 如果是其他，直接调用即可
+        } else {
+            _callback(p)
+        }
+    })
 })
 )
 code(Var)
@@ -5651,53 +5695,7 @@ export const isURL = str => /^(http(s?):)?\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?`%
 code(Var)
 return
 
-::Promise.all2::
-Var =
-(
-const isPromise = val => val && typeof val.then === 'function'
 
-Promise.allSettled = iterables => new Promise(resolve => {
-    let result = []
-
-    const callback = function(i, v) {
-        // 模仿 Promise.all 对号入座原则
-        result[i] = v
-
-        // 是否全部执行完毕？
-        if (result.length === iterables.length)
-            // 收工咯~
-            resolve(result)
-    }
-
-    iterables.forEach((p, i) => {
-        // 注入索引
-        const _callback = callback.bind(null, i)
-        
-        // 如果是 promise，才执行操作
-        if (isPromise(p)) {
-            // 注入灵魂
-            p.then(_callback).catch(_callback)
-        // 如果是其他，直接调用即可
-        } else {
-            _callback(p)
-        }
-    })
-})
-
-const testA = new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 3000))
-const testB = new Promise((resolve, reject) => setTimeout(_ => reject('fail'), 3500))
-
-;(async function(){
-    // ✖️
-    // const result = await Promise.all([testA, testB])
-
-    // ✔
-    const result = await Promise.allSettled([testA, testB])
-    console.log(20191215005254, result)
-}())
-)
-code(Var)
-return
 
 ::maps::
 Var =
