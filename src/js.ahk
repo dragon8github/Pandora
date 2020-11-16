@@ -1,4 +1,163 @@
-﻿::imgerr::
+﻿::table.js::
+::model.js::
+Var =
+(
+/**
+ * 「Event 基础示例」 
+ * const obj = new Event()
+ * obj.$on('fuck', (...args) => console.log('fuck', ...args))
+ * obj.$emit('fuck', 123)
+ * 
+ * 
+ * 「无缝对接 Event 的接口示例」
+ * const obj = { a: 123, b: 321 }
+ * Object.assign(obj, (new Event()).$interface)
+ * obj.$on('fuck', (...args) => console.log('fuck', ...args))
+ * obj.$emit('fuck', 123)
+ */
+export default class Event {
+    constructor(props) {
+        this.$event = []
+    }
+
+    $on(name, fn, id = Date.now()) {
+        this.$event.push({ name, fn, id })
+        
+        return () => {
+            const index = this.$event.findIndex(_ => _.id === id)
+            this.$event.splice(index, 1)
+        }
+    }
+
+    $emit(name, ...args) {
+        // 获取任务
+        const target = this.$event.filter(_ => _.name === name)
+
+        // 是否存在任务
+        if (target) {
+            // 对每个任务进行执行
+            const pendding = target.map(_ => _.fn(...args))
+            // 如果任务返回的是promise，也可以方便外部 await
+            return Promise.allSettled(pendding)
+        }
+    }
+
+    $clear(name = '') {
+        this.$event = this.$event.filter(_ => _.name != name)
+    }
+
+    get $interface() {
+        return { 
+            $on: this.$on.bind(this), 
+            $emit: this.$emit.bind(this), 
+            $clear: this.$clear.bind(this),
+        }
+    }
+}
+---
+import { killerQueen2 } from '@/utils/utils'
+
+const defaultCfg = { loading: false, data: null, ajax: () => {} }
+
+export default class Model {
+  constructor(cfg) {
+      Object.assign(this, defaultCfg, cfg)
+  }
+
+  async getData(...args) {
+    const result = await killerQueen2(
+      () => this.loading = true,
+      () => this.ajax(...args),
+      () => this.loading = false,
+      5000,
+    `)
+
+    return this.data = result
+  } 
+}
+---
+import { POST } from '@/utils/request'
+import Event from './Event'
+import { deepCopy, killerQueen2 } from '@/utils/utils'
+
+// 配置模板
+const defaultCfg = { id: 0, data: null, pageNum: 1, pageSize: 10, totalPage: null, loading: false, url: null }
+
+export default class Table {
+    constructor(cfg = {}) {
+        // 备份初始配置
+        this.initData = Object.assign({}, defaultCfg, cfg)
+
+        // 融合上下文
+    Object.assign(this, this.initData, new Event().$interface)
+    }
+
+    async getData(params) {
+        this.reset()
+
+        // 请求数据
+        const result = await killerQueen2(
+            () => (this.loading = true),
+            () => POST(this.url, { id: this.id, params: Object.assign({}, { pageNum: this.pageNum, pageSize: this.pageSize }, params) }),
+            () => (this.loading = false),
+            5000
+        `)
+
+        if (!result) {
+      this.data = null
+      this.totalPage = null
+      return console.warn('🔥 数据请求异常', result)
+    }
+
+        this.data = result.data
+    this.totalPage = result.totalPage
+    this.$emit('getData', result, params)
+
+        return result
+    }
+
+    // 先冗余，再紧缩
+    async getScrollData(params) {
+        // 是否还有更多可以请求
+        if (this.pageNum < this.totalPage) {
+            // 请求数据
+            const result = await killerQueen2(
+                () => (this.loading = true),
+                () => POST(this.url, { id: this.id, params: Object.assign({}, { pageNum: this.pageNum + 1, pageSize: this.pageSize }, params) }),
+                () => (this.loading = false),
+                5000
+            `)
+
+      if (!result) {
+        this.data = null
+        this.totalPage = null
+        return console.warn('🔥 数据请求异常', result)
+      }
+
+            this.data.push(...result.data)
+            this.totalPage = result.totalPage
+
+            // 只有请求成功了我才加
+            this.pageNum++
+
+            return result
+        }
+
+        console.warn('没有更多数据了')
+    }
+
+    reset() {
+        this.data = deepCopy(this.initData.data)
+        this.pageNum = this.initData.pageNum
+        this.pageSize = this.initData.pageSize
+        this.loading = this.initData.loading
+    }
+}
+)
+code(Var)
+return
+
+::imgerr::
 ::imgerror::
 ::img.err::
 ::img.error::
@@ -5457,6 +5616,90 @@ const __STORE__ = _store.keys().reduce((obj, path) => {
 
     return obj
 }, {})
+---
+import Vue from 'vue'
+
+// ✍️ 请无视这段代码，这是为了修复 jest 测试的补丁
+// fixbug: jest => TypeError: require.context is not a function
+// https://stackoverflow.com/questions/38332094/how-can-i-mock-webpacks-require-context-in-jest
+// This condition actually should detect if it's an Node environment
+if (typeof require.context === 'undefined' && process.env.NODE_ENV === 'test') {
+    const fs = require('fs')
+    const path = require('path')
+
+    require.context = (base = '.', scanSubDirectories = false, regularExpression = /\.js$/) => {
+        const files = {};
+
+        function readDirectory(directory) {
+            fs.readdirSync(directory).forEach((file) => {
+                const fullPath = path.resolve(directory, file);
+
+                if (fs.statSync(fullPath).isDirectory()) {
+                    if (scanSubDirectories) readDirectory(fullPath);
+
+                    return;
+                }
+
+                if (!regularExpression.test(fullPath)) return;
+
+                files[fullPath] = true;
+            });
+        }
+
+        readDirectory(path.resolve(__dirname, base));
+
+        function Module(file) {
+            return require(file);
+        }
+
+        Module.keys = () => Object.keys(files);
+
+        return Module;
+    };
+}
+
+/**
+ * 1、点击的时候异步注册和异步加载。需要有个加载 loading。
+ * 2、只注册一次。并且加入到 body，再次点击的时候需要判断是否已注册过。
+ * 3、关闭不会摧毁。
+ * 4、每一个 module 都有一个自己的 store.js。
+ * 5、启动的时候自动去请求 store.js 里面的规则。所以最好是用 mixins 来使用。
+ * 6、列表使用 class model
+ * 
+ * import modules from '@/modules'
+ * Vue.properties.layer = window.layer = modules
+ * 
+ * layer.open('moduleName')
+ * this.layer.open('moduleName')
+ * window.layer.open('moduleName')
+ */
+
+/**
+ * 1. directory {String} -读取文件的路径
+ * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
+ * 3. regExp {RegExp} -匹配文件的正则
+ */
+const VueComponent = require.context('.', true, /\.vue$/)
+
+// 导出的模块
+let __Material__ = {}
+
+// 1. 必须使用 key() 获取所有路径
+// 2. 使用 VueComponent(path).default 获取真实模块内容
+VueComponent.keys().forEach(path => {
+    // fixbug: window 和 unix 路径符号的区别
+    const p = path.replace(/\\/g, '/')
+
+    // 获取「目录名」
+    const name = p.match(/\/(\w+?)\/\w+.vue/)[1]
+
+    // 目标文件的输出内容
+    const component = VueComponent(p).default
+
+    // 以 『文件名』 为 key
+    __Material__[name] = { component, initInstance: null }
+})
+
 )
 txtit(Var)
 return
@@ -6544,12 +6787,6 @@ code(Var)
 return
 
 >^t::
-::console.time::
-::console.t::
-::ctime::
-::consolet::
-::logtime::
-::logt::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
@@ -6561,9 +6798,30 @@ console.time('20190219153729')
 
 // 停止计时，输出时间
 console.timeEnd('20190219153729')
+---
+const startTime = new Date()
+for (var i = 0; i < 100000; i++) {
+    window.localStorage.setItem('key' + i, 'value' + i)
+}
+const __TIME__ = startTime - (new Date())
+console.log(__TIME__)
+---
+function fuck() {
+    window.performance.mark('fuck-start')
+
+    for (var i = 0; i < 100000; i++) {
+        window.localStorage.setItem('key' + i, 'value' + i)
+    }
+
+    window.performance.mark('fuck-end')
+    window.performance.measure('fuck', 'fuck-start', 'fuck-end')
+}
+
+fuck()
+
+console.log(window.performance.getEntriesByName('fuck'))
 )
-code(Var)
-Send, {UP 3}
+txtit(Var)
 return
 
 ::autof::
@@ -6887,15 +7145,6 @@ Var =
 var img = new Image()
 img.src = "http://wx4.sinaimg.cn/large/006ar8zggy1g24gdwwu8cg300w00wq2p.gif"
 img.style = 'position: absolute; top: 50`%; left: 50`%;'
-)
-code(Var)
-return
-
-::ps::
-::promise.s::
-Var =
-(
-Promise.resolve('Adobe Photoshop')
 )
 code(Var)
 return
@@ -16273,6 +16522,10 @@ return
 ::omit::
 ::shoushenduix::
 ::shoushen::
+::jianfei::
+::chouchu::
+::chouqu::
+::chouli::
 Var =
 (
 // 瘦身对象（只留部分） ▶ slim({ name: 'Benjy', age: 18 }, ['age']) // => { age: 18 }
@@ -16281,6 +16534,9 @@ Var =
 
 // 瘦身对象（排除异己） ▶ omit({ name: 'Benjy', age: 18 }, ['age']) // => {name: "Benjy"}
 const omit = (obj, properties = []) => Object.entries(obj).reduce((p, [k, v]) => !properties.includes(k) ? (p[k] = v, p) : p, {})
+
+// 获取指定属性的对象
+export const get = (properties = [], obj) => properties.reduce((p, c) => (p[c] = obj[c], p), {})
 ---
 // omit({ name: 'Benjy', age: 18 }, [ 'name' ]); // => { age: 18 }
 function omit(obj, fields) {

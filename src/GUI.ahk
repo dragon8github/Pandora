@@ -13588,3 +13588,201 @@ $.get('https://mapv.baidu.com/examples/data/wuhan-car', function(rs) {
 RunBy(name)
 run, % name
 return
+
+NewPureIndexHtmltable2:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <!-- sass -->
+    <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
+    <style>
+
+    #app {}
+
+    .u-table-bordered {
+        width: 100`%;
+        border-spacing: 0;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        font-size: 1.5em;
+
+        td,
+        th {
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #FBF8FB;
+        }
+    }
+    </style>
+    <script>
+    // 获取第一个 <style>
+    const style = document.getElementsByTagName('style')[0]
+    // 获取第一个
+    const scss = style.innerHTML
+    // 开始编译
+    Sass.compile(scss, result => {
+        // 替换为编译好的 css
+        style.innerHTML = result.text
+    })
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <table class='u-table-bordered'>
+            <tbody>
+                <tr>
+                    <td colspan="3">平台1</td>
+                    <td colspan="3">平台2</td>
+                    <td colspan="3">平台3</td>
+                </tr>
+                <tr>
+                    <td>成功件数</td>
+                    <td>失败件数</td>
+                    <td>小计</td>
+
+                    <td>成功件数</td>
+                    <td>失败件数</td>
+                    <td>小计</td>
+
+                    <td>成功件数</td>
+                    <td>失败件数</td>
+                    <td>小计</td>
+
+                </tr>
+                <tr>
+                    <td>2000</td>
+                    <td>500</td>
+                    <td>2500</td>
+
+                    <td>1000</td>
+                    <td>500</td>
+                    <td>1500</td>
+
+                    <td>2900</td>
+                    <td>100</td>
+                    <td>3000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return
+
+NewPureIndexHtmltable3:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- sass -->
+    <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
+    <style>
+    #app {}
+
+    .u-table-bordered {
+        width: 100`%;
+        border-spacing: 0;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        font-size: 1.5em;
+
+        td,
+        th {
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #FBF8FB;
+        }
+    }
+
+    tbody {
+        display: block;
+    }
+
+    thead tr {
+      display: table;
+      width: 100`%;
+      table-layout: fixed;
+    }
+
+    </style>
+    <script>
+    // 获取第一个 <style>
+    const style = document.getElementsByTagName('style')[0]
+    // 获取第一个
+    const scss = style.innerHTML
+    // 开始编译
+    Sass.compile(scss, result => {
+        // 替换为编译好的 css
+        style.innerHTML = result.text
+    })
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <table class='u-table-bordered'>
+            <thead class="dgtable__thead">
+                <tr>
+                    <th rowspan="2">序号</th>
+                    <th rowspan="2">委办局名称</th>
+                    <th rowspan="2">数据量</th>
+                    <th colspan="4">资源项（个）</th>
+                </tr>
+                <tr>
+                    <th>合计</th>
+                    <th>API</th>
+                    <th>非结构化数据项</th>
+                    <th>资源目录</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td> <div>{{ index + 1 }}</div> </td>
+                    <td> <div>{{ item['DEPARTMENT'] }}</div> </td>
+                    <td> <div>{{ item['DATA'] }}</div> </td>
+                    <td> <div>{{ item['ITME'] }}</div> </td>
+                    <td> <div>{{ item['APIITME'] }}</div> </td>
+                    <td> <div>{{ item['UNSTRITME'] }}</div> </td>
+                    <td> <div>{{ item['RESITME'] }}</div> </td>
+                </tr>   
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

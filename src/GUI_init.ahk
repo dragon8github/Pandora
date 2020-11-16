@@ -183,6 +183,7 @@ Gui, Pandora:Add, Checkbox, vYandex, Yandex
 Gui, Pandora:Add, Checkbox, vSVGRepo, SVGRepo
 
 
+
 ; 搜索框
 Gui, Pandora:Add, Edit, vSearchContent gSearchContent w260 H100 Limit150 yp+40 Section xs, dragon8github/Pandora
 
@@ -448,10 +449,12 @@ Gui, Pandora:Add, Text, gxiexiangougudingli  W140,斜线与勾股定理
 Gui, Pandora:Add, Text, gyoujiancaidanxinjian  W140,新建拦截右键菜单
 Gui, Pandora:Add, Text, gdomshengyin W180,只要 dom 改变就会发出声音
 Gui, Pandora:Add, Text, gsinaip W180,新浪接口获取ip地址
-Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建复杂table.html
 Gui, Pandora:Add, Text, gvueecharts W140 , 新建纯v-chart.html
 Gui, Pandora:Add, Text, gjstuodongtanchuang W140 , 纯js实现拖动弹窗.html
 Gui, Pandora:Add, Text, gjsshoufengqing W140 , 纯js实现手风琴.html
+Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建复杂table.html
+Gui, Pandora:Add, Text, gNewPureIndexHtmltable2 W140 , 新建复杂table2.html
+Gui, Pandora:Add, Text, gNewPureIndexHtmltable3 W140 , 新建复杂table3.html
 
 
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+60,新建.echartsDemo.html（官方demo）
@@ -1284,11 +1287,20 @@ Gui, Pandora:Add, Link,, <a href="https://getuikit.com/docs/accordion">优雅的
 ; Serverless
 Gui, Pandora:Tab, 11
 Gui, Pandora:Add, Text,  W140 Section, Serverless:
+Gui, Pandora:Add, Link,, <a href="https://github.com/TencentCloud/serverless">Serverless 最佳实践</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/tencentyun">腾讯云github</a>
 Gui, Pandora:Add, Link,, <a href="https://cloud.tencent.com/document/product/1154/39270">Components</a>
 Gui, Pandora:Add, Link,, <a href="https://serverless.cloud.tencent.com/">serverless控制台</a>
 Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/scf/index?rid=1">云函数控制台</a>
 Gui, Pandora:Add, Link,, <a href="https://serverlesscloud.cn/best-practice">SLS最佳实践</a>
+
+
+Gui, Pandora:Add, Text, W140 ys, 腾讯云:
+Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/cos5/bucket/">存储桶</a>
+Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/beian/history">网站备案</a>
+Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/apigateway/service">API网关</a>
+Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/scf/list?rid=1&ns=default">云函数SCF</a>
+Gui, Pandora:Add, Link,, <a href="https://serverless.cloud.tencent.com/">Serverless</a>
 
 
 

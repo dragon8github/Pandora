@@ -3898,30 +3898,30 @@ overflow-x: hidden;
  * 必须配合 overflow-y: scroll; 使用
  * @include scrollbar()
  */
-@mixin scrollbar {
+@mixin scroller() {
+  overflow-y: scroll;
+
   &::-webkit-scrollbar {
-    width: 14px;
-    height: 14px;
+    width: 0.4em;
+    height: 0.4em;
+    background-color: rgba(0, 0, 0, 0);
+    display: block;
   }
 
-  &::-webkit-scrollbar-track,
-  &::-webkit-scrollbar-thumb {
-    border-radius: 999px;
-    border: 5px solid transparent;
-  }
-
+  /*定义滚动条轨道 内阴影+圆角*/
   &::-webkit-scrollbar-track {
-    box-shadow: 1px 1px 5px rgba(255, 255, 255,.2) inset;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+    border-radius: 0.5em;
+    height: 0.5em;
+    background-color: rgba(0, 0, 0, 0);
   }
 
+  /*定义滑块 内阴影+圆角*/
   &::-webkit-scrollbar-thumb {
-    min-height: 20px;
-    background-clip: content-box;
-    box-shadow: 0 0 0 5px rgba(255, 255, 255,.2) inset;
-  }
-
-  &::-webkit-scrollbar-corner {
-    background: transparent;
+    border-radius: 0.2em;
+    height: 2.5em;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+    background-color: rgb(36 64 168 / 21`%);
   }
 }
 ---
@@ -5958,6 +5958,44 @@ button.addEventListener('click', (event) => {
 </script>
 
 </html>
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    @keyframes spinner-grow {
+        0`% {
+            transform: scale(0);
+        }
+
+        50`% {
+            opacity: 1;
+        }
+    }
+
+    .spinner-grow {
+        color:  #5A6169;
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        vertical-align: text-bottom;
+        background-color: currentColor;
+        border-radius: 50`%;
+        opacity: 0;
+        animation: spinner-grow .75s linear infinite;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="spinner-grow text-secondary" role="status"></div>
+    </div>
+</body>
+</html>
 )
 txtit(Var)
 return
@@ -7773,3 +7811,16 @@ code(Var)
 return
 
 
+
+::thead::
+::css.thead::
+Var =
+(
+thead > tr:first-child th {
+  position: sticky;
+  top: 0;
+  background-color: rgba(64, 64, 233, .2);
+}
+)
+code(Var)
+return

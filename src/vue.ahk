@@ -3467,6 +3467,7 @@ Var =
 (
 import Vue from 'vue';
 import mapbox from './mapbox.vue'
+import store from '@/store'
 
 const mapboxConstructor = Vue.extend(mapbox);
 
@@ -3477,6 +3478,7 @@ const initInstance = () => {
     el: document.createElement('div'),
     propsData: { a: '123' }
   });
+  // _initInstance.$store = store
   document.body.appendChild(_initInstance.$el);
 };
 
@@ -3753,8 +3755,8 @@ let state = {
 }
 
 const actions = {
-  setAppData ({ commit, state, dispatch, rootState, getters, rootGetters }, data) {
-	   commit('SET_APP_DATA', data.userInfo)
+  setAppData ({ commit, state, dispatch, rootState, getters, rootGetters }, payload) {
+	   commit('SET_APP_DATA', payload.userInfo)
   },
   getDepartSecondOverdue ({ commit, state, dispatch, rootState, getters, rootGetters }, departId) {
     return request('/sg/department/sgDepartmentCount/getDepartSecondOverdue?departId=' + departId).then(result => {
@@ -9028,4 +9030,25 @@ export const register = Vue => {
 }
 )
 txtit(Var)
+return
+
+::test101::
+Var =
+(
+// components/__tests__/Item.spec.js
+import { shallowMount } from '@vue/test-utils'
+import Item from "../Item.vue"
+
+beforeEach(() => {
+
+})
+
+describe('Item.vue', () => {
+    test('base test', () => {
+        const wrapper = shallowMount(Item)
+        expect(wrapper.text()).toContain('Item')
+    })
+})
+)
+code(Var)
 return

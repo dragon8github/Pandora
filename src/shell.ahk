@@ -104,6 +104,16 @@
 	
 	Menu, gitShellMenu, Add,
 	Menu, gitShellMenu, Add,	
+
+
+	
+	Menu, gitShellMenu, Add, git checkout 拉取远程分支的最佳实践 , ShellHandler2
+	Menu, gitShellMenu, Add, git fetch origin test , ShellHandler2
+	Menu, gitShellMenu, Add, git checkout -b origin/test , ShellHandler2
+		
+	Menu, gitShellMenu, Add,
+	Menu, gitShellMenu, Add,	
+
 	
 	Menu, gitShellMenu, Add, git branch -a # 查看所有分支 , ShellHandler2
 	Menu, gitShellMenu, Add, git branch -d develop # 删除本地分支 , ShellHandler2

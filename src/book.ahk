@@ -1133,6 +1133,19 @@ npm set registry https://registry.npm.taobao.org/
 3)  默认会加入 "test:unit": "vue-cli-service test:unit"。建议加入一个新的 --watch 进入监听模式
 "test:watch": "vue-cli-service test:unit --watchAll"
 
+4） 默认会生成一个 jest.config.js，改为以下这个代码会舒服一点。
+module.exports = {
+  preset: '@vue/cli-plugin-unit-jest',
+  "moduleNameMapper": {
+    "@/(.*)$": "<rootDir>/src/$1"
+  },
+  "moduleFileExtensions": ["vue", "js", "json", "jsx", "ts", "tsx"],
+  "modulePathIgnorePatterns": [
+    ".dev_null"
+  ],
+  "testMatch": ["<rootDir>/**/*.spec.js"]
+}
+
 @@101
 // components/__tests__/Item.spec.js
 import { shallowMount } from '@vue/test-utils'

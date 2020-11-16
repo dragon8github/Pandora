@@ -7440,7 +7440,58 @@ Promise.allSettled = iterables => new Promise(resolve => {
         }
     })
 })
+#################################
+/**
+ * import VueBus from './vue-bus'
+ * Vue.use(VueBus)
+ * 
+ * this.$bus.emit('add', num)
+ * this.$bus.on('add', num => console.log(num))
+ */
+const install = Vue => {
+    const Bus = new Vue({
+        methods: {
+            emit(event, ...args) {
+                this.$emit(event, ...args)
+            },
+            on(event, cllback) {
+                this.$on(event, cllback)
+            },
+            off(event, callback) {
+                this.$off(event, callback)
+            }
+        }
+    });
 
+    Vue.prototype.$bus = Bus
+}
+
+export default install;
+#################################
+// JS CustomEvent自定义事件传参小技巧 « 张鑫旭-鑫空间-鑫生活
+document.body.addEventListener('文章勿盗', () => { console.log('文明、公正、法治、诚信'); });
+// 触发
+document.body.dispatchEvent(new CustomEvent('文章勿盗'));
+
+-----------------------
+
+const headerTag = document.getElementById('number');
+
+headerTag.addEventListener('numberChanged', function(e) {
+   headerTag.textContent = e.detail.number;
+   headerTag.style.color = e.detail.textColor;
+});
+
+function changeNumber(n, c) {
+   const event = new CustomEvent('numberChanged', {
+      detail: {
+         number: n,
+         textColor: c
+      }
+   });
+   headerTag.dispatchEvent(event);
+}
+#################################
 /**
  * say something ...
  *
@@ -7453,8 +7504,7 @@ Promise.allSettled = iterables => new Promise(resolve => {
      await e.emit('hello', { name: 'Lee' })
      console.log('work finish')
  }())
- ----------------------------------------------------------------
- import Event from './utils/Event'
+import Event from './utils/Event'
  Vue.prototype.$bus = new Event()
  this.$bus.on('onRefresh', this.getData)
  this.$bus.emit('onRefresh')
@@ -7497,53 +7547,56 @@ export default class Event {
 }
 #################################
 /**
- * import VueBus from './vue-bus'
- * Vue.use(VueBus)
+ * 「Event 基础示例」
+ * const obj = new Event()
+ * obj.$on('fuck', (...args) => console.log('fuck', ...args))
+ * obj.$emit('fuck', 123)
  * 
- * this.$bus.emit('add', num)
- * this.$bus.on('add', num => console.log(num))
+ * 「无缝对接 Event 的接口示例」
+ * const obj = { a: 123, b: 321 }
+ * Object.assign(obj, (new Event()).$interface)
+ * obj.$on('fuck', (...args) => console.log('fuck', ...args))
+ * obj.$emit('fuck', 123)
  */
-const install = Vue => {
-    const Bus = new Vue({
-        methods: {
-            emit(event, ...args) {
-                this.$emit(event, ...args)
-            },
-            on(event, cllback) {
-                this.$on(event, cllback)
-            },
-            off(event, callback) {
-                this.$off(event, callback)
-            }
+export default class Event {
+    constructor(props) {
+        this.$event = []
+    }
+
+    $on(name, fn, id = Date.now()) {
+        this.$event.push({ name, fn, id })
+        
+        return () => {
+            const index = this.$event.findIndex(_ => _.id === id)
+            this.$event.splice(index, 1)
         }
-    });
+    }
 
-    Vue.prototype.$bus = Bus
+    $emit(name, ...args) {
+        // 获取任务
+        const target = this.$event.filter(_ => _.name === name)
+
+        // 是否存在任务
+        if (target) {
+            // 对每个任务进行执行
+            const pendding = target.map(_ => _.fn(...args))
+            // 如果任务返回的是promise，也可以方便外部 await
+            return Promise.allSettled(pendding)
+        }
+    }
+
+    $clear(name = '') {
+        this.$event = this.$event.filter(_ => _.name != name)
+    }
+
+    get $interface() {
+        return { 
+            $on: this.$on.bind(this), 
+            $emit: this.$emit.bind(this), 
+            $clear: this.$clear.bind(this),
+        }
+    }
 }
-
-export default install;
-#################################
-const headerTag = document.getElementById('number');
-
-headerTag.addEventListener('numberChanged', function(e) {
-   headerTag.textContent = e.detail.number;
-   headerTag.style.color = e.detail.textColor;
-});
-
-function changeNumber(n, c) {
-   const event = new CustomEvent('numberChanged', {
-      detail: {
-         number: n,
-         textColor: c
-      }
-   });
-   headerTag.dispatchEvent(event);
-}
-#################################
-// JS CustomEvent自定义事件传参小技巧 « 张鑫旭-鑫空间-鑫生活
-document.body.addEventListener('文章勿盗', () => { console.log('文明、公正、法治、诚信'); });
-// 触发
-document.body.dispatchEvent(new CustomEvent('文章勿盗'));
 )
 txtit(Var, "#################################")
 return
@@ -8877,7 +8930,6 @@ return
 ::help::
 ::cs::
 ::creates::
-::store.help::
 ::help.store::
 ::storec::
 ::storecreate::
@@ -9039,8 +9091,8 @@ import { createStore } from '@/store/help'
 
 export default createStore({
     actions: {
-        _fuckgod ({ commit, state, dispatch, rootState, getters, rootGetters, POST, GET }, payload) {
-          return POST('actuator/direct/readModuleRedisData|ffffffffffffffffffffffffffffffffffff', { id: 10 })
+        _data_202010200710 ({ commit, state, dispatch, rootState, getters, rootGetters, POST, GET }, payload) {
+          return POST('actuator/direct/search|【modules】数据治理-明细列表', { id: 202010200710 })
         },
     }
 })
@@ -9089,6 +9141,8 @@ const store = new Store({
 txtit(Var)
 return
 
+::cachevuex::
+::vuex.cache::
 ::store.cache::
 Var =
 (
@@ -9101,6 +9155,8 @@ const store = new Store({
   // ...
   plugins: [
     createPersistedState({
+      // （可选）只缓存部分模块
+      // paths: ['dataAssets'],
       storage: {
         getItem: (key) => Cookies.get(key),
         // Please see https://github.com/js-cookie/js-cookie#json, on how to handle JSON.

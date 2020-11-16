@@ -1,4 +1,31 @@
-﻿^5::
+﻿
+
+::ps::
+Var =
+(
+Adobe Photoshop
+)
+code(Var)
+return
+
+::3d::
+Var =
+(
+Unity3d
+)
+code(Var)
+return
+
+::ax::
+::rp::
+Var =
+(
+Axure RP
+)
+code(Var)
+return
+
+^5::
 Send, ^{F5}
 return
 
@@ -1227,7 +1254,7 @@ return
 ::dgxy::
 Var =
 (
-lngLat: [113.76210332995126, 23.02792876378438],
+lngLat: [113.75867124948216, 23.026719034540488],
 )
 code(Var)
 Return
