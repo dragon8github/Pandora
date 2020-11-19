@@ -396,7 +396,6 @@ Var =
   filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 }
 )
-return
 }
 
 if (v == "提升阅读体验的最佳 css 实践") {

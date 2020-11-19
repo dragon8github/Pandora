@@ -1162,7 +1162,8 @@ return
 ::bashtree::
 ::shell.tree::
 ::shelltree::
-::tree::
+::md.tree::
+::mdtree::
 Var =
 (
 find ./ -maxdepth 2 -name ".git" -prune -o -name ".gitignore" -prune -o -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g' > FUCK.MD

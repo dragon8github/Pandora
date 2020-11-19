@@ -279,14 +279,15 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/azl397985856/leetcode">leet
 Gui, Pandora:Add, Link,, <a href="https://gitee.com/explore">码云逛逛源码</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need">you-dont-need</a>
 Gui, Pandora:Add, Link,, <a href="https://fex.baidu.com/articles/">fex周刊</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview/blob/master/category/history.md">以面为练</a>
+; Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview/blob/master/category/history.md">以面为练</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ChanceYu/front-end-rss">front-end-rss</a>
 Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echojs.com/">echojs.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.smashingmagazine.com/articles/">粉碎杂志</a>
 Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/">reddit</a>
-Gui, Pandora:Add, Link,, <a href="https://medium.com/@frontender_ua/frontend-weekly-digest-180-12-18-october-2020-e90b7dadea91">medium前端周刊</a>
+Gui, Pandora:Add, Link,, <a href="https://chao.fun/f/4">炒饭社区</a>
+Gui, Pandora:Add, Link,, <a href="https://frontender-ua.medium.com/">medium前端周刊</a>
 
 
 

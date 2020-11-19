@@ -1,4 +1,122 @@
-﻿::table.js::
+﻿::jianqieban::
+::fuzhi::
+Var =
+(
+export const copyToClipboard = text => {
+  const el = document.createElement('textarea')
+  el.value = text
+  el.setAttribute('readonly', '')
+  el.style.position = 'absolute'
+  el.style.left = '-9999px'
+  document.body.appendChild(el)
+  const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false
+  el.select()
+  document.execCommand('copy')
+  document.body.removeChild(el)
+  if (selected) {
+    document.getSelection().removeAllRanges()
+    document.getSelection().addRange(selected)
+  }
+}
+)
+code(Var)
+return
+
+::prefetch::
+::perfetch::
+Var =
+(
+<!-- prefetch : https://www.youtube.com/watch?v=R_D0rL094F4-->
+<!-- https://gist.github.com/prof3ssorSt3v3/af591f2ec6666b665f3d266d5ccce8e2-->
+<link rel="preload" as="image" href="./layer/bg.png" type="image/png" crossorigin="anonymous" /> 
+)
+code(Var)
+return
+
+::jianjinshi::
+Var =
+(
+const cache = new Set()
+
+export default {
+    install(Vue) {
+        Vue.directive('progressiveBGImage', {
+            bind(el, { value }) {
+                // 外部传入两个变量，第一个变量是占位图，第二个是真图
+                const [placeholder, src] = value
+
+                // fixbug: 如果已经加载过了，那么不需要重复
+                if (cache.has(src)) {
+                    el.style.backgroundImage = `url(${src})`
+                } else {
+                    // 先用用占位图作背景图
+                    el.style.backgroundImage = `url(${placeholder})`
+
+                    // 老三样
+                    const img = new Image()
+                    img.src = src
+                    img.onload = () => (el.style.backgroundImage = `url(${src})`)
+                }
+                
+                // 加入缓存
+                cache.add(src)
+            },
+        })
+    },
+}
+)
+txtit(Var)
+return
+
+::tree::
+::gentree::
+Var =
+(
+const api_datas = {"id": "202010200704", "remark": "汇聚方式委办局", "data": [{"ID": 0, "DEPARTMENT": "东莞市", "PID": -1 }, {"ID": 1, "DEPARTMENT": "政数局", "PID": 0 }, {"ID": 2, "DEPARTMENT": "卫生局", "PID": 0 }, {"ID": 3, "DEPARTMENT": "交通运输局", "PID": 0 }, {"ID": 4, "DEPARTMENT": "教育局", "PID": 0 }, {"ID": 5, "DEPARTMENT": "生态环境局", "PID": 0 }, {"ID": 6, "DEPARTMENT": "民政局", "PID": 0 } ], "pageSize": 10, "pageNum": 1, "total": 7, "totalPage": 1, "startIndex": 1, "endIndex": 10 }
+const api_datas2 = {"id": "202010200707", "remark": "入湖数据菜单树", "data": [{"ID": 1, "NAME": "分平台", "PID": 0, "CHILDNODE": 6 }, {"ID": 2, "NAME": "租户", "PID": 0, "CHILDNODE": 4 }, {"ID": 101, "NAME": "城管局分平台", "PID": 1, "CHILDNODE": 0 }, {"ID": 102, "NAME": "卫健局分平台", "PID": 1, "CHILDNODE": 0 }, {"ID": 103, "NAME": "教育局分平台", "PID": 1, "CHILDNODE": 0 }, {"ID": 201, "NAME": "工商局租户", "PID": 2, "CHILDNODE": 0 }, {"ID": 202, "NAME": "市监局租户", "PID": 2, "CHILDNODE": 0 } ], "pageSize": 10, "pageNum": 1, "total": 7, "totalPage": 1, "startIndex": 1, "endIndex": 10 }
+
+// 把一维的数据，按照规则转换成树结构
+const genTree = (data = []) => {
+    // 记录当前的数组长度
+    const len = data.length
+
+    data.forEach((val, key) => {
+        // 尝试找到父集引用
+        const father = data.find(_ => _.id === val.pid)
+
+        if (father) {
+            // 父集引用插入数据
+            father.children.push(val)
+            // 标记删除
+            val.KILL = true
+        }
+
+        return father
+    })
+
+    // 杀死标记的数据
+    const newData = data.filter(_ => !_.KILL)
+
+    // 毫无变化，说明所有的一维数组元素，都已经没有父集需要映射了
+    const isEnd = len === newData.length
+
+    // 如果已经结束了，那么返回数据本身，否则
+    return isEnd ? newData : genTree(newData)
+}
+
+let data = api_datas.data.map(_ => ({ id: _.ID, label: _.DEPARTMENT, children: [], pid: _.PID }))
+console.log(1, genTree(data))
+
+
+let data2 = api_datas2.data.map(_ => ({ id: _.ID, label: _.NAME, children: [], pid: _.PID }))
+console.log(2, genTree(data2))
+)
+txtit(Var)
+return
+
+
+
+::table.js::
 ::model.js::
 Var =
 (
@@ -10122,43 +10240,23 @@ var a = function (opt = {a: 1, c: 2}) {
 code(Var)
 return
 
+
+::qiancopy::
+::extend::
+::qiankaobei::
+::inher::
+::inherit::
+::copy::
 ::deepextend::
 ::deepextends::
 ::shenkaobei::
 ::deepcopy::
 ::$.extend::
 ::extend::
+::kaobei::
 ::deep::
 Var =
 (
-var deepExtend = function(out) {
-  out = out || {};
-
-  for (var i = 1; i < arguments.length; i++) {
-    var obj = arguments[i];
-
-    if (!obj)
-      continue;
-
-    for (var key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        if (typeof obj[key] === 'object')
-          out[key] = deepExtend(out[key], obj[key]);
-        else
-          out[key] = obj[key];
-      }
-    }
-  }
-
-  return out;
-};
-
-var objA = {a: 123, b: { fuck: 123 }}
-var objB = { b: { shit: 123 } }
-// 深拷贝最大的好处是，不会覆盖属性。而是迭代
-deepExtend({}, objA, objB); // => { "a":123, "b":{ "fuck": 123, "shit": 123 } }
-
----
 function deepCopy(obj, cache = []) {
     if (obj === null || typeof obj !== 'object') {
         return obj
@@ -10172,13 +10270,11 @@ function deepCopy(obj, cache = []) {
 
     const copy = Array.isArray(obj) ? [] : {}
 
-    cache.push({
-        original: obj,
-        copy
-    })
+    cache.push({ original: obj, copy })
 
     Object.keys(obj).forEach(key => {
-        copy[key] = deepCopy(obj[key], cache)
+        const target = obj[key]
+        copy[key] = deepCopy(target, cache)
     })
 
     return copy
@@ -10208,51 +10304,7 @@ export const deepEQ = function (x, y) {
   else
     return false
 }
-)
-txtit(Var)
-return
-
-
-
-
-::swalert::
-::swa::
-::salert::
-::swal::
-Var =
-(
-// https://sweetalert.js.org/guides/
-swal({
-    title: '干得漂亮！',
-    text: '更新成功！',
-    timer: 3000,
-    icon: 'success', // "warning", "error", "success" and "info".
-    closeOnClickOutside: true,
-    closeOnEsc: true,
-    buttons: {
-        cancel: '取消按钮',
-        confirm: 'OK',
-        buttonFuck: { 
-            value: 'Fuck',
-            // 要使用这个功能先注释 timer 配置。开启这个的时候，点击不会关闭alert, 并且会显示loading。可以通过 swal.stopLoading() 全局关闭
-            closeModal: false,
-        }
-    }
-}).then(_ => {
-    console.log(20190226144843, _)
-})
-)
-code(Var)
-return
-
-
-::extend::
-::qiankaobei::
-::copy::
-::inher::
-::inherit::
-Var =
-(
+---
 // 继承模式中最后的圣杯（Holy Grail）
 function extend(Child, Parent){
     var F = function(){ };
@@ -10301,6 +10353,40 @@ export const copyToClipboard = text => {
 )
 txtit(Var)
 return
+
+
+
+
+::swalert::
+::swa::
+::salert::
+::swal::
+Var =
+(
+// https://sweetalert.js.org/guides/
+swal({
+    title: '干得漂亮！',
+    text: '更新成功！',
+    timer: 3000,
+    icon: 'success', // "warning", "error", "success" and "info".
+    closeOnClickOutside: true,
+    closeOnEsc: true,
+    buttons: {
+        cancel: '取消按钮',
+        confirm: 'OK',
+        buttonFuck: { 
+            value: 'Fuck',
+            // 要使用这个功能先注释 timer 配置。开启这个的时候，点击不会关闭alert, 并且会显示loading。可以通过 swal.stopLoading() 全局关闭
+            closeModal: false,
+        }
+    }
+}).then(_ => {
+    console.log(20190226144843, _)
+})
+)
+code(Var)
+return
+
 
 ::$.fn::
 ::$.plugin::
@@ -13460,6 +13546,35 @@ export default {
 /* main.js */
 import imgLazy from '@/directive/imgLazy.js'
 Vue.directive('imgLazy', imgLazy)
+---
+const cache = new Set()
+
+export default {
+    install(Vue) {
+        Vue.directive('progressiveBGImage', {
+            bind(el, { value }) {
+                // 外部传入两个变量，第一个变量是占位图，第二个是真图
+                const [placeholder, src] = value
+
+                // fixbug: 如果已经加载过了，那么不需要重复
+                if (cache.has(src)) {
+                    el.style.backgroundImage = url(${src})
+                } else {
+                    // 先用用占位图作背景图
+                    el.style.backgroundImage = url(${placeholder})
+
+                    // 老三样
+                    const img = new Image()
+                    img.src = src
+                    img.onload = () => (el.style.backgroundImage = url(${src}))
+                }
+
+                // 加入缓存
+                cache.add(src)
+            },
+        })
+    },
+}
 )
 txtit(Var)
 return
@@ -16519,6 +16634,7 @@ code(Var)
 return
 
 ::slim::
+::shaixuan::
 ::omit::
 ::shoushenduix::
 ::shoushen::
