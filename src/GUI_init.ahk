@@ -222,7 +222,7 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/search?q=followers:`%3E=100
 
 
 Gui, Pandora:Add, Text,  W140 ys, 娱乐:
-Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/">哔哩哔哩</a>
+Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/video/BV1iZ4y137MB">哔哩哔哩</a>
 Gui, Pandora:Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/index.php?m=vod-search">草民电影</a>
 Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
@@ -326,10 +326,13 @@ Gui, Pandora:Add, Link,, <a href="https://youquhome.com/">有趣网址之家</a>
 Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a>
 Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
 Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客收录</a>
-Gui, Pandora:Add, Link,, <a href="https://outflank.nl/blog/2018/08/14/html-smuggling-explained/">黑客思维</a>
 Gui, Pandora:Add, Link,, <a href="https://web.dev/fast/">web.dev 优化教程</a>
 Gui, Pandora:Add, Link,, <a href="https://www.getrevue.co/profile/tailwind-weekly">tailwind-weekly</a>
-Gui, Pandora:Add, Link,, <a href="https://sharkle.com/">随机打开一个有趣</a>
+Gui, Pandora:Add, Link,, <a href="https://daily.dev/categories/weekly-picks">daily.dev</a>
+; Gui, Pandora:Add, Link,, <a href="https://outflank.nl/blog/2018/08/14/html-smuggling-explained/">黑客思维</a>
+Gui, Pandora:Add, Link,, <a href="https://overreacted.io/">Dan大牛的博客</a>
+
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
@@ -365,6 +368,7 @@ Gui, Pandora:Add, Link,, <a href="https://animista.net/play/basic/slide-fwd">ani
 Gui, Pandora:Add, Link,, <a href="https://csslayout.io/">csslayout.io布局大全</a>
 Gui, Pandora:Add, Link,, <a href="https://sarthology.github.io/Animatopy/">Animatopy何必全部？</a>
 Gui, Pandora:Add, Link,, <a href="https://chokcoco.github.io/CSS-Inspiration">css 灵感大全（电子书）</a>
+Gui, Pandora:Add, Link,, <a href="https://sharkle.com/">随机打开一个有趣</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：

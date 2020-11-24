@@ -9324,6 +9324,9 @@ return
 ::githubcode::
 ::github-code::
 ::github.code::
+::gcode::
+::gitcode::
+::git-code::
 Var =
 (
 /**

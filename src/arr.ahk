@@ -1,4 +1,5 @@
 ﻿!a::
+	Menu, arrayMenu, Add, birdAndCicada: 飞鸟与蝉, ForHandler
 	Menu, arrayMenu, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
 	Menu, arrayMenu, Add, findSameByProperty：对比两个数组找出相同特征的成员, utilsHandler
 	Menu, arrayMenu, Add, 数组成员排列：以大带小 drive, utilsHandler
@@ -113,6 +114,11 @@ if (v == "") {
 Var = 
 (
 )
+}
+
+if (v == "birdAndCicada: 飞鸟与蝉") {
+_send("bird", true, true)
+return
 }
 
 if (v == "获取数组的维度") {

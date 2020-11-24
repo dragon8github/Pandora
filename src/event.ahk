@@ -2565,8 +2565,40 @@ Dw Arrow	40
 window.addEventListener("keydown", function(e) {
 	console.log(e.keyCode)
 }, false);
+---
+/**
+ * 移动dom元素到指定目标位置
+ *
+ * @source {DOM} 你要移动的DOM
+ * @target {DOM} 你要移动的位置
+ */
+const mvDOM = function (source, target) {
+    // 深度拷贝（含子元素）
+    let _source = source.cloneNode(true)
+    // 删除本身
+    source.remove()
+    // 默认插入到容器最前面，如果想在后面可以这样处理：target.append(source)
+    target.insertBefore(_source, target.firstChild)
+}
+
+const pre = target => {
+    target && target.querySelectorAll("pre, .gist").forEach(el => {
+        // 新建代码容器
+        const code = document.createElement("code")
+        // 插入父元素
+        el.insertAdjacentElement("beforebegin", code)
+        // 移动到容器内
+        mvDOM(el, code)
+    })
+}
+
+// 当前文本对象
+pre(document)
+
+// 针对所有 iframe 里边的内容
+document.querySelectorAll('iframe').forEach(iframe => pre(iframe.contentDocument))
 )
-code(Var)
+txtit(Var)
 return
 
 

@@ -6296,7 +6296,6 @@ return
 ::box-siz::
 ::box-sizing::
 ::border::
-::bb::
 Var =
 (
 box-sizing: border-box;
@@ -7820,6 +7819,30 @@ thead > tr:first-child th {
   top: 0;
   background-color: rgba(64, 64, 233, .2);
 }
+)
+code(Var)
+return
+
+::field::
+::field.css::
+::css.field::
+Var =
+(
+.field {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+    .field label {
+          flex: 1 0 70px;
+          padding-right: 20px;
+    }
+
+    .field input, .field textarea {
+          flex: 1 1 auto;
+          width: 100`%;
+          padding: 4px;
+    }
 )
 code(Var)
 return

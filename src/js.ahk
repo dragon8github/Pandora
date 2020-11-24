@@ -1,4 +1,292 @@
-﻿::jianqieban::
+﻿::bilibili::
+::blbl::
+::$bb::
+::bb::
+Var =
+(
+/**
+ * 参考资料
+ * https://www.cnblogs.com/yuan-luo/p/8330176.html
+ * https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/Using_HTML5_audio_and_video
+ */
+;(function(){
+  // 检测当前 url 是否为 bilibili
+  const isBilibili = () => new RegExp('http(s)://www.bilibili.com/video/').test(window.location.href)
+
+  // 是否为字符串
+  const isString = input => Object.prototype.toString.call(input) === '[object String]'
+
+  // 是否为数字（支持字符串数字）
+  const isNumber = input => !isNaN(+input)
+
+  // 防错机制
+  const maybe = (fn, n = '') => {
+     try {
+        const result = fn()
+        return (result && result === result && result !== 'NaN' && result !== 'Invalid date') ? result : n
+     } catch (err) { return n }
+  }
+
+  // 将时间转化为秒
+  const time2second = t => {
+    // 如果是数字类型，直接返回
+    if (isNumber(t)) return +t
+
+    // 如果是字符串, 并且字符串中包含 ":"
+    if (isString(t) && t.includes(':')) {
+      // 切割为分秒，并且转化为数字类型
+        const [h, m] = t.split(':').map(n => maybe(_ => parseInt(n), 0))
+        // 转化为秒
+        return h * 60 + m
+    }
+
+    // 啥都不是就返回 0 
+    return 0
+  }
+
+  const bilibili = () => {
+    // 获取页面唯一的播放器
+      const video = document.querySelector('video')
+
+      if (!isBilibili()) return console.warn('🔔 当前页面不是B站播放页')
+
+      if (!video) return console.warn('🔔 找不到播放器')
+
+      // 获取播放时长（有可能获取失败）
+      let timeLength = maybe(_ => video.duration, 0)
+
+      // 存储区间列表
+      let __POLL__ = []
+
+      // 区间轮播功能
+      const poll = (a, b) => {
+          // loop
+        video.loop = true
+
+        // 转化为秒格式
+        let start = time2second(a), end = time2second(b)
+
+        // fix start
+        if (start < 0) start = 0
+
+        // fix end
+        if (end > timeLength) end = timeLength
+
+        // set poll
+        __POLL__ = [ start, end ]
+      }
+
+      // 清空区间轮播
+      const clearPoll = () => __POLL__ = []
+
+      // 监听播放进度
+      video.ontimeupdate = e => {
+        // 获取当前进度
+        const currentTime = e.target.currentTime 
+
+        // 获取轮播区间
+        const [a, b] = __POLL__
+
+        // 如果时间不存在，那么不进行任何操作
+        // 如果结束时间是 0，那么也不进行任何操作
+        if (a == null || b == null || b == 0) return
+
+        // 如果当前进度在区间内，那么无事发生
+        if (currentTime > a && currentTime < b) {
+          // ...
+          return
+        }
+
+        // 否则，将进度条变更为区间起始位置
+        video.currentTime = a
+    }
+
+    // 获取资源成功，这时候肯定能获取播放时长
+    video.onloadedmetadata = e => {
+      timeLength = video.duration
+    }
+
+    // 返回相关辅助方法
+      return { poll, clearPoll }
+  }
+
+  window.$bb = bilibili()
+}());
+
+// 设置轮播区间
+$bb.poll('17:00', '17:50')
+)
+txtit(Var)
+return
+
+::feiniao::
+::bird::
+::feiniaoyuc::
+Var =
+(
+/**
+ * 《飞鸟与蝉》 - 获取数组的第一位和最后一位
+ * 你骄傲地飞远 我栖息的夏天
+ * 听不见的宣言 重复过很多年
+ * 北纬线的思念被季风吹远
+ * 沧海月的想念 羽化我昨天
+ * 吹远默念的侧脸 吹远鸣唱的诗篇
+ * 你骄傲地飞远 我栖息的叶片
+ * 去不同的世界 却从不曾告别
+ * 沧海月的想念羽化我昨天
+ * 在我成熟的笑脸 你却未看过一眼
+ */
+const birdAndCicada = (target, last = target.length - 1) => [target[0], target[last]]
+)
+code(Var)
+return
+
+::getchart::
+::getechart::
+::getcharts::
+::getecharts::
+Var =
+(
+ <script>
+  // 监听 window.echarts 的定义（当 echarts 引入注册时会触发）
+  Object.defineProperty(window, "echarts", {
+      get() {
+        return this.__echarts
+      },
+      set (value) {
+        this.__echarts = value
+
+        // 监听 echarts.init 赋值时
+          Object.defineProperty(this.__echarts, "init", {
+            get() {
+              return this.__init
+            },
+            set (init) {
+              // 代理 init 以及 setOption 
+              this.__init = function (...args) {
+                  // origin function init
+                  const myChart = init(...args)
+
+                  // 复制一份 setOption 引用
+                const setOption = myChart.setOption.bind(myChart)
+
+                // 修改引用、 进行代理
+                myChart.setOption = function(opts, ...args) {
+                    // 备份初代配置
+                    myChart.INIT_OPTS = opts
+
+                    // origin function setOption
+                    return setOption(opts, ...args)
+                }
+
+                // 添加点击事件（放心，不会被覆盖）
+                myChart.on('click', () => {
+                      console.log('🦄', myChart.INIT_OPTS)
+                })
+
+                // 照常返回 charts
+                return myChart
+              }
+          },
+          configurable: true
+        })
+      }
+  })
+</script>
+---
+//////////////////////////////////////////////
+// echarts hack inject
+//////////////////////////////////////////////
+const init = echarts.init.bind(echarts)
+
+echarts.init = function(...args) {
+  const myChart = init(...args)
+
+  const setOption = myChart.setOption.bind(myChart)
+
+  myChart.setOption = function(opts, ...args) {
+
+      myChart.INIT_OPTS = opts
+
+      return setOption(opts, ...args)
+  }
+
+  myChart.on('click', () => console.log('🦄', myChart.INIT_OPTS))
+
+  return myChart
+}
+---
+;(function(chromeCopy) {
+    // 最常用且关注的属性
+    const properties = ['color', 'grid', 'legend', 'series', 'tooltip', 'visualMap', 'xAxis', 'yAxis']
+
+    // 瘦身对象（只留部分） ▶ slim({ name: 'Benjy', age: 18 }, ['age']) // => { age: 18 }
+    const slim = (obj, properties = []) => properties.reduce((p, c) => (p[c] = obj[c], p), {})
+
+    // 是否为函数
+    const isFunction = input => Object.prototype.toString.call(input) === '[object Function]'
+
+    // 深度拷贝对象，如果属性是函数类型，那么尝试 toString 转化为字符串（如果是生产环境则会是加密的代码）
+    // deepCopy({ a: 123, c: () => console.log(123) }) // ▶ {a: 123, c: "() => console.log(123)"}
+    function deepCopyFunction(obj, cache = []) {
+        if (obj === null || typeof obj !== 'object') {
+            return obj
+        }
+
+        const hit = cache.find(c => c.original === obj)
+
+        if (hit) {
+            return hit.copy
+        }
+
+        const copy = Array.isArray(obj) ? [] : {}
+
+        cache.push({ original: obj, copy })
+
+        Object.keys(obj).forEach(key => {
+            const target = isFunction(obj[key]) ? obj[key].toString() : obj[key]
+            copy[key] = deepCopyFunction(target, cache)
+        })
+
+        return copy
+    }
+
+
+    // 1、 判断全局是否有 echarts 存在。
+    if (typeof window.echarts != 'undefined') {
+        // 2、 找到所有的 _echarts_instance_
+        document.querySelectorAll('[_echarts_instance_]').forEach((el, key) => {
+            //  3、 canvas 添加点击事件
+            el.querySelector('canvas').addEventListener('click', (event) => {
+                // 4、 点击的时候，使用父集的 _echarts_instance_ 获取 echarts 实例
+                const myChart = window.echarts.getInstanceByDom(el)
+
+                // 5、获取全部配置
+                const opts = myChart.getOption()
+
+                // 6、 筛选出我关心的样式
+                const myOpts = slim(opts, properties)
+
+                // 7、 打印出所有样式和我关心的样式
+                console.log('🌈', opts, myOpts)
+
+                // 8、 将 formatter 类的函数属性，转化为字符串
+                const _myOpts = deepCopyFunction(myOpts)
+
+                // 9、加入剪切板
+                chromeCopy(myOpts)
+
+                // 10、 阻止冒泡
+                event.preventDefault(); event.stopPropagation();
+            })
+        })
+    }
+}(globalThis.copy));
+)
+txtit(Var)
+return
+
+::jianqieban::
 ::fuzhi::
 Var =
 (

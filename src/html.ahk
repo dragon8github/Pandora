@@ -181,6 +181,7 @@ return
 :?:html.mp4::
 :?:mp3::
 :?:mp4::
+::music::
 Var =
 (
 <!-- 如果想要播放器就删除 「controls」 属性 -->
@@ -203,8 +204,72 @@ Var =
     // 重新播放
     document.querySelector('#bgMusic').currentTime = 0
 </script>
+---
+<style type="text/css">    
+    li:hover {
+        background-color: yellow;
+    }
+</style>
+<div id="app">
+    <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ul>
+
+    <button id='button'>refresh</button>
+</div>
+<script>
+;(function(doc, win) {
+    const createAudio = src => {
+        const audio = doc.createElement('audio')
+        audio.src = src
+        document.body.append(audio)
+        return audio
+    }
+
+    const _click = createAudio('http://ioc-demo.biubiuonline.com/click.mp3')
+    const _tab = createAudio('http://ioc-demo.biubiuonline.com/tab.mp3')
+    const _hover = createAudio('http://ioc-demo.biubiuonline.com/hover.mp3')
+    const _mouseover = createAudio('http://ioc-demo.biubiuonline.com/mouseover.mp3')
+    const _effect = createAudio('http://ioc-demo.biubiuonline.com/effect.mp3')
+
+    win.$music = {
+        click: () => _click.play(),
+        tab: () => _tab.play(),
+        hover: () => _hover.play(),
+        effect: () => _effect.play(),
+        mouseover: () => _mouseover.play(),
+    }
+}(document, window));
+
+document.querySelectorAll('li').forEach((val, key) => {
+    val.addEventListener('click', (event) => {
+        window.$music.click()
+    })
+
+    val.addEventListener('mouseover', (event) => {
+        window.$music.mouseover()
+    })
+})
+
+button.addEventListener('mouseover', (event) => {
+   window.$music.tab()
+})
+
+button.addEventListener('click', (event) => {
+   window.$music.effect()
+})
+</script>
 )
-code(Var)
+txtit(Var)
 return
 
 ::head-utf8::
