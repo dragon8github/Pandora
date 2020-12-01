@@ -5251,6 +5251,15 @@ text-rendering: optimizelegibility;
 html {
     font-family: 'Red Rose', cursive;
 }
+---
+@font-face {
+  font-family: "FlamboyantSansSerif";
+  src: url("flamboyant.woff2");
+}
+
+body {
+  font-family: "FlamboyantSansSerif";
+}
 )
 txtit(Var)
 return
@@ -5437,6 +5446,13 @@ Var =
     position: absolute;
     top: 50`%;
     transform: translateY(-50`%);
+}
+
+// public/layer/bg.png
+$path: '/dataAssets/layer/';
+
+@function getLayerImgPath($img) {
+    @return $path + $img;
 }
 
 @mixin xcenter {

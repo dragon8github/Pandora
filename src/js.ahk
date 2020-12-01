@@ -1,4 +1,394 @@
-﻿::bilibili::
+﻿::lean::
+::leancloud::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-live-query-min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
+---
+// https://leancloud.cn/dashboard/data.html?appid=EdCry9HgfXy7Ao7SKYuFR7dQ-gzGzoHsz#/
+// 监听方
+<script>
+export default {
+  data() {
+    return {
+
+    }
+  },
+  async created() {
+    AV.init({
+      appId: 'EdCry9HgfXy7Ao7SKYuFR7dQ-gzGzoHsz',
+      appKey: 'emqtV9sjggqp5l7GWU8OpOv0',
+      serverURL: 'https://ozewwcws.lc-cn-n1-shared.com',
+    })
+
+    // AV.debug.enable()
+    AV.debug.disable()
+
+    // 需要先去后台创建
+    const query = new AV.Query('cmd')
+
+    query.subscribe().then((liveQuery) => {
+      // 订阅成功
+      console.log('订阅成功')
+
+      // 监听数据创建事件
+      liveQuery.on('create', (newCmd) => {
+        // 获取最新的指令
+        /* console.log('🔔 数据创建触发', newCmd, newCmd.attributes) */
+        console.log('🎉 收到最新的指令', newCmd)
+
+        // 获取约定的数据
+        const name = newCmd.get('name')
+        const type = newCmd.get('type')
+        const cmd = newCmd.get('cmd')
+        
+        // 执行指令
+        if (type === 'code') {
+          try {
+            // 类似 eval 语法
+            Function(cmd)(this)
+          } catch (err) {
+            console.error('🔴 执行指令错误', err)
+          }
+        }
+      })
+    })
+  },
+}
+</script>
+---
+<template>
+  <div class="cmd">
+    <button class="button" @click="go">点击「数据治理」</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'cmd',
+  data() {
+    return {
+      __CMD__: null,
+    }
+  },
+  methods: {
+    go(v) {
+      const _cmd = new this.__CMD__()
+      _cmd.set('type', 'code')
+      _cmd.set('cmd', `document.querySelector('.governmentData_icon').click()`)
+      _cmd.set('name', '点击「数据治理」')
+      _cmd.save().then((result) => console.log('🚀', result))
+    },
+  },
+  async created() {
+    AV.init({
+      appId: 'EdCry9HgfXy7Ao7SKYuFR7dQ-gzGzoHsz',
+      appKey: 'emqtV9sjggqp5l7GWU8OpOv0',
+      serverURL: 'https://ozewwcws.lc-cn-n1-shared.com',
+    })
+
+    // AV.debug.enable()
+    AV.debug.disable()
+
+    // 当前操作的 class
+    this.__CMD__ = AV.Object.extend('cmd')
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+.cmd {
+}
+</style>
+---
+import AV from 'leancloud-storage/live-query'
+
+// 是否初始化过 AV
+let isInit = false
+
+// cmd class 的实体
+let __CMD__ = null
+
+// 初始化 AV（只会进行一次，虽然我觉得进行多次他也会帮我忽略）
+const AVinit = () => {
+    if (isInit === false) {
+        AV.init({ appId: 'EdCry9HgfXy7Ao7SKYuFR7dQ-gzGzoHsz', appKey: 'emqtV9sjggqp5l7GWU8OpOv0', serverURL: 'https://ozewwcws.lc-cn-n1-shared.com', })
+
+        // AV.debug.enable()
+        AV.debug.disable()
+
+        // 单向锁
+        isInit = true
+    }
+}
+
+export const subscribe = () => {
+    // 初始化 AV
+    AVinit()
+
+    // 需要先去后台创建 cmd
+    const query = new AV.Query('cmd')
+
+    query.subscribe().then((liveQuery) => {
+        // 订阅成功
+        console.log('订阅成功')
+
+        // 监听数据创建事件
+        liveQuery.on('create', (newCmd) => {
+            // 获取最新的指令
+            /* console.log('🔔 数据创建触发', newCmd, newCmd.attributes) */
+            console.log('🎉 收到最新的指令', newCmd)
+
+            // 获取约定的数据
+            const name = newCmd.get('name')
+            const type = newCmd.get('type')
+            const cmd = newCmd.get('cmd')
+            
+            // 执行指令
+            if (type === 'code') {
+                try {
+                    // 类似 eval 语法
+                    Function(cmd)(this)
+                } catch (err) {
+                    console.error('🔴 执行指令错误', err)
+                }
+            }
+        })
+    })
+}
+
+export const emit = (type = 'code', cmd = 'console.log', name = 'test') => {
+    // 初始化
+    AVinit()
+
+    // 实例化 cmd class（只进行一次）
+    __CMD__ = __CMD__ || AV.Object.extend('cmd')
+
+    // 插入一条数据
+    const _cmd = new __CMD__()
+    _cmd.set('type', type)
+    _cmd.set('cmd', cmd)
+    _cmd.set('name', name)
+    _cmd.save().then((result) => console.log('🚀', result))
+}
+---
+// cmd 控制台
+import { subscribe } from '@/utils/cmd'
+
+export default {
+    created() {
+        // 订阅控制台的更新
+        subscribe()
+    },
+}
+</script>
+---
+<template>
+    <div class="cmd">
+        <button class="button" @click="go">触发「数据治理」弹窗</button>
+    </div>
+</template>
+
+<script>
+import { emit } from '@/utils/cmd'
+
+export default {
+    name: 'cmd',
+    methods: {
+        go(v) {
+            const type = 'code'
+            const cmd = `document.querySelector('.governmentData_icon').click()`
+            const name = '触发「数据治理」弹窗'
+            emit(type, cmd, name)
+        },
+    },
+}
+</script>
+)
+txtit(Var)
+return
+
+::impq::
+Var =
+(
+const { default: template } = require('@babel/template')
+)
+code(Var)
+return
+
+::ast::
+::yufashu::
+Var =
+(
+// https://www.youtube.com/watch?v=UnSXXorQv1Y
+// https://astexplorer.net
+// cnpm install @babel/{parser,traverse,types,generator}
+const t =  require('@babel/types')
+const parser = require('@babel/parser')
+const { default: traverse } =  require('@babel/traverse')
+const { default: generate } =  require('@babel/generator')
+
+// 编译分为三步：parse + traverse + generate
+function compile(code) {
+    // 1. parse（将代码字符串转化为 AST 语法树）    
+    const ast = parser.parse(code)
+
+    // 2. traverse（遍历语法树的节点，并且进行增删改查）
+    traverse(ast, {
+        // visitor: 访问者
+        CallExpression(path) {
+            // 获取当前节点的信息
+            const { callee } = path.node
+
+            // 判断是否为 console.log
+            const isConsoleLog = callee.object.name === 'console' && callee.property.name === 'log'
+
+            // 如果是的话
+            if (t.isMemberExpression(callee) && isConsoleLog) {
+                // 找到该函数节点的名字
+                const functionName = path.findParent(p => p.isFunctionDeclaration()).node.id.name
+
+                // 对函数的参数 arguments 插入新参数 'foo'
+                const newArgs = t.stringLiteral(functionName)
+                
+                // console.log('bar') => console.log('foo', 'bar')
+                path.node.arguments.unshift(newArgs)
+            }
+        }
+    })
+
+    // 3. generator（将 AST 语法树重新转化为字符串代码）
+    return generate(ast, {}, code)
+}
+
+const code = `
+function foo () {
+    console.log('bar');
+}
+`
+
+const result = compile(code)
+
+console.log(result.code)
+)
+txtit(Var)
+return
+
+::chrometip::
+::chrometongzhi::
+::tongzhi::
+::tixing::
+::chrometixing::
+::chromealert::
+::chromesay::
+Var =
+(
+/**
+ * （推荐）say something ...
+
+ ;(async function(){
+    const a = await waitWhen(_ => document.getElementById('1234'))
+    console.log(20191212102924, a)
+ }())
+ */
+var waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+    (function poll() {
+        // 获取回调结果
+        const result = conditionFn()
+
+        // 获取是否超时
+        const isTimeout = Date.now() - startTime > wait
+
+        // 如果条件成立，那么立刻 resolve
+        if (result) return resolve(result)
+
+        // 如果时间超时，立刻 reject
+        if (isTimeout) return reject(result)
+
+        // 否则继续轮询
+        setTimeout(poll, interval)
+    }())
+})
+
+var chan = (when = () => false, { title = 'New message incoming', body = 'Hi there. How are you doing?', repeat = false } = {}) => {
+  // 获取当前 「通知权限」
+  const permission = Notification.permission
+
+  // 核心函数
+  const showNotification = (title, body) => {
+    // 向系统发送通知
+      const notification = new Notification(title, { body: body })
+
+      // 点击通知栏触发
+      notification.onclick = event => {
+        // 默认只通知一次，repeat的时候可以重复通知，但需要点击通知栏，才会进行下一轮监听
+        repeat && start()
+      }
+  }
+
+  // 任务启动器
+  const start = () => {
+    // 等待条件成立，最多等待 30s，搓搓有余了
+    waitWhen(when, 30 * 1000).then(() => {
+      // 条件完成，开启通知
+      showNotification(title, body)
+    }).catch(err => {
+      // 超时或者报错了，打印错误即可
+      console.wran(err)
+    })
+  }
+  
+  // granted - 如果已经「允许」了，那么直接开始任务
+  if (permission === 'granted') start()
+
+  // default - 如果是默认情况，则需要「询问」才可以知道用户意愿
+  // denied  - 如果拒绝了，那么提示用户必须开启
+  if (permission === 'default' || permission === 'denied') {
+    // 询问权限
+      Notification.requestPermission().then(p => {
+        // 接受
+          if (p === 'granted') start()
+          // 拒绝
+          if (p === 'denied') console.warn('🔴', '只有允许权限才可以使用通知功能，请点击左上角的锁头手动开启通知权限')
+      })
+  }
+}
+
+chan(() => true, { title: 'title', body: 'body' })
+---
+<script>
+   function showNotification() {
+     const notification = new Notification("New message incoming", {
+        body: "Hi there. How are you doing?",
+        icon: "yourimageurl.png"
+     })
+     
+     notification.onclick = (e) => {
+       window.location.href = "https://google.com";
+     };
+  }
+
+   console.log(Notification.permission);
+   if (Notification.permission === "granted") {
+      showNotification()
+   } else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then(permission => {
+         console.log(permission);
+      });
+   }
+</script>
+)
+txtit(Var)
+return
+
+::bilibili::
 ::blbl::
 ::$bb::
 ::bb::
@@ -13062,7 +13452,7 @@ Return
 Var =
 (
 //////////////////////////////////////////////
-// say something...
+// say something... //
 //////////////////////////////////////////////
 )
 code(Var)
@@ -16691,7 +17081,7 @@ export function def (obj, key, val, enumerable) {
     configurable: true
   })
 }
----
+
 const obj = {
   get foo() {
     return this.val
@@ -16705,6 +17095,53 @@ const obj = {
 obj.bar = 'hello world'
 
 console.log(obj.foo) // =>hello world
+---
+<script>
+  // 监听 window.echarts 的定义（当 echarts 引入注册时会触发）
+  Object.defineProperty(window, "echarts", {
+      get() {
+        return this.__echarts
+      },
+      set (value) {
+        this.__echarts = value
+
+        // 监听 echarts.init 赋值时
+          Object.defineProperty(this.__echarts, "init", {
+            get() {
+              return this.__init
+            },
+            set (init) {
+              // 代理 init 以及 setOption
+              this.__init = function (...args) {
+                  // origin function init
+                  const myChart = init(...args)
+
+                  // 复制一份 setOption 引用
+                const setOption = myChart.setOption.bind(myChart)
+
+                // 修改引用、 进行代理
+                myChart.setOption = function(opts, ...args) {
+                    // 备份初代配置
+                    myChart.INIT_OPTS = opts
+
+                    // origin function setOption
+                    return setOption(opts, ...args)
+                }
+
+                // 添加点击事件（放心，不会被覆盖）
+                myChart.on('click', () => {
+                      console.log('🦄', myChart.INIT_OPTS)
+                })
+
+                // 照常返回 charts
+                return myChart
+              }
+          },
+          configurable: true
+        })
+      }
+  })
+</script>
 )
 txtit(Var)
 return

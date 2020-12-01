@@ -2520,6 +2520,7 @@ return
 ::keycode::
 Var =
 (
+// https://keycode.info/
 A	65	J	74	S	83	1	49
 B	66	K	75	T	84	2	50
 C	67	L	76	U	85	3	51

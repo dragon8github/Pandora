@@ -29,8 +29,8 @@ var_dump(expandallchild(top))
 ; 代码容器
 Gui, Book:Add, Edit, ys vBookContent w890 H700 Limit199307100337 ReadOnly  
 
-; Tab 选项卡
-Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《康奈尔笔记》|《Vue + Jest单元测试》|《Cypress集成测试》|《Mongodb》|《Express+Sequelize+Mysql》|《Vue.js 深入浅出》
+; Tab 选项卡 《康奈尔笔记》
+Gui, Book:Add, Tab3, gSwitchBook vBookTab Section xs Choose1 w1250 h25, 《JavaScript 设计模式》|《LeanCloud 入门》|《Vue + Jest单元测试》|《Cypress集成测试》|《Mongodb》|《Express+Sequelize+Mysql》|《Vue.js 深入浅出》
 
 
 
@@ -327,9 +327,10 @@ Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a
 Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
 Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客收录</a>
 Gui, Pandora:Add, Link,, <a href="https://web.dev/fast/">web.dev 优化教程</a>
-Gui, Pandora:Add, Link,, <a href="https://www.getrevue.co/profile/tailwind-weekly">tailwind-weekly</a>
-Gui, Pandora:Add, Link,, <a href="https://daily.dev/categories/weekly-picks">daily.dev</a>
+; Gui, Pandora:Add, Link,, <a href="https://www.getrevue.co/profile/tailwind-weekly">tailwind-weekly</a>
 ; Gui, Pandora:Add, Link,, <a href="https://outflank.nl/blog/2018/08/14/html-smuggling-explained/">黑客思维</a>
+Gui, Pandora:Add, Link,, <a href="https://daily.dev/categories/weekly-picks">daily.dev</a>
+Gui, Pandora:Add, Link,, <a href="https://www.thoughtworks.com/cn/radar">thoughtworks</a>
 Gui, Pandora:Add, Link,, <a href="https://overreacted.io/">Dan大牛的博客</a>
 
 
@@ -342,14 +343,16 @@ Gui, Pandora:Add, Link,, <a href="https://docsmall.com/image-compress">图片压
 Gui, Pandora:Add, Link,, <a href="https://renzhezhilu.gitee.io/webp2jpg-online/">本地图片转换器</a>
 Gui, Pandora:Add, Link,, <a href="http://www.gaitubao.com/">改图宝</a>
 Gui, Pandora:Add, Link,, <a href="https://compresspng.com/zh/">压缩图片</a>
-Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
 Gui, Pandora:Add, Link,, <a href="https://highcompress.com/online-compress">新图片压缩</a>
+Gui, Pandora:Add, Link,, <a href="http://getemoji.com/">getemoji.com</a>
 Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</a>
 Gui, Pandora:Add, Link,, <a href="http://upload.likeyunba.com/">聚合图床</a>
 Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
 Gui, Pandora:Add, Link,, <a href="https://www.sassmeister.com/">sass在线转css</a>
 Gui, Pandora:Add, Link,, <a href="http://css2sass.herokuapp.com/">css在线转scss</a>
 Gui, Pandora:Add, Link,, <a href="https://css2js.dotenv.dev/">css2js</a>
+Gui, Pandora:Add, Link,, <a href="https://1stwebdesigner.com/all-articles/">1stwebdesigner</a>
+
 
 
 

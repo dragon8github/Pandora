@@ -28,6 +28,12 @@ SwitchBook:
   if (currentBook == "") {
   }
 
+  
+  if (currentBook == "《LeanCloud 入门》") {
+    cornell("LiveQuery 实时通信入门")
+    cornell("LiveQuery 封装版本")
+  }
+
   if (currentBook == "《Vue.js 深入浅出》") {
     cornell("Object的变化侦测")
     cornell("Array的变化侦测")
@@ -103,6 +109,236 @@ Var :=
 if (v == "") {
 Var = 
 (
+)
+}
+
+if (v == "LiveQuery 封装版本") {
+Var =
+(
+import AV from 'leancloud-storage/live-query'
+
+// 是否初始化过 AV
+let isInit = false
+
+// cmd class 的实体
+let __CMD__ = null
+
+// 初始化 AV（只会进行一次，虽然我觉得进行多次他也会帮我忽略）
+const AVinit = () => {
+    if (isInit === false) {
+        AV.init({ appId: 'EdCry9HgfXy7Ao7SKYuFR7dQ-gzGzoHsz', appKey: 'emqtV9sjggqp5l7GWU8OpOv0', serverURL: 'https://ozewwcws.lc-cn-n1-shared.com', })
+
+        // AV.debug.enable()
+        AV.debug.disable()
+
+        // 单向锁
+        isInit = true
+    }
+}
+
+export const subscribe = () => {
+    // 初始化 AV
+    AVinit()
+
+    // 需要先去后台创建 cmd
+    const query = new AV.Query('cmd')
+
+    query.subscribe().then((liveQuery) => {
+        // 订阅成功
+        console.log('订阅成功')
+
+        // 监听数据创建事件
+        liveQuery.on('create', (newCmd) => {
+            // 获取最新的指令
+            /* console.log('🔔 数据创建触发', newCmd, newCmd.attributes) */
+            console.log('🎉 收到最新的指令', newCmd)
+
+            // 获取约定的数据
+            const name = newCmd.get('name')
+            const type = newCmd.get('type')
+            const cmd = newCmd.get('cmd')
+            
+            // 执行指令
+            if (type === 'code') {
+                try {
+                    // 类似 eval 语法
+                    Function(cmd)(this)
+                } catch (err) {
+                    console.error('🔴 执行指令错误', err)
+                }
+            }
+        })
+    })
+}
+
+export const emit = (type = 'code', cmd = 'console.log', name = 'test') => {
+    // 初始化
+    AVinit()
+
+    // 实例化 cmd class（只进行一次）
+    __CMD__ = __CMD__ || AV.Object.extend('cmd')
+
+    // 插入一条数据
+    const _cmd = new __CMD__()
+    _cmd.set('type', type)
+    _cmd.set('cmd', cmd)
+    _cmd.set('name', name)
+    _cmd.save().then((result) => console.log('🚀', result))
+}
+---
+// cmd 控制台
+import { subscribe } from '@/utils/cmd'
+
+export default {
+    created() {
+        // 订阅控制台的更新
+        subscribe()
+    },
+}
+</script>
+---
+<template>
+  <div class="cmd">
+    <button class="button" @click="go">触发「数据治理」弹窗</button>
+  </div>
+</template>
+
+<script>
+import { emit } from '@/utils/cmd'
+
+export default {
+  name: 'cmd',
+  data() {
+    return {
+      
+    }
+  },
+  methods: {
+    go(v) {
+      const type = 'code'
+      const cmd = `document.querySelector('.governmentData_icon').click()`
+      const name = '触发「数据治理」弹窗'
+      emit(type, cmd, name)
+    },
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+ .cmd {
+}
+</style>
+)
+}
+
+if (v == "LiveQuery 实时通信入门") {
+Var =
+(
+@@index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-live-query-min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
+
+@@app.vue 监听方
+<script>
+export default {
+  data() {
+    return {
+
+    }
+  },
+  async created() {
+    AV.init({
+      appId: 'EdCry9HgfXy7Ao7SKYuFR7dQ-gzGzoHsz',
+      appKey: 'emqtV9sjggqp5l7GWU8OpOv0',
+      serverURL: 'https://ozewwcws.lc-cn-n1-shared.com',
+    })
+
+    // AV.debug.enable()
+    AV.debug.disable()
+
+    // 需要先去后台创建
+    const query = new AV.Query('cmd')
+
+    query.subscribe().then((liveQuery) => {
+      // 订阅成功
+      console.log('订阅成功')
+
+      // 监听数据创建事件
+      liveQuery.on('create', (newCmd) => {
+        // 获取最新的指令
+        /* console.log('🔔 数据创建触发', newCmd, newCmd.attributes) */
+        console.log('🎉 收到最新的指令', newCmd)
+
+        // 获取约定的数据
+        const name = newCmd.get('name')
+        const type = newCmd.get('type')
+        const cmd = newCmd.get('cmd')
+
+        // 执行指令
+        if (type === 'code') {
+          try {
+            // 类似 eval 语法
+            Function(cmd)(this)
+          } catch (err) {
+            console.error('🔴 执行指令错误', err)
+          }
+        }
+      })
+    })
+  },
+}
+</script>
+
+@@cmd.vue 触发后台
+<template>
+  <div class="cmd">
+    <button class="button" @click="go">点击「数据治理」</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'cmd',
+  data() {
+    return {
+      __CMD__: null,
+    }
+  },
+  methods: {
+    go(v) {
+      const _cmd = new this.__CMD__()
+      _cmd.set('type', 'code')
+      _cmd.set('cmd', document.querySelector('.governmentData_icon').click())
+      _cmd.set('name', '点击「数据治理」')
+      _cmd.save().then((result) => console.log('🚀', result))
+    },
+  },
+  async created() {
+    AV.init({
+      appId: 'EdCry9HgfXy7Ao7SKYuFR7dQ-gzGzoHsz',
+      appKey: 'emqtV9sjggqp5l7GWU8OpOv0',
+      serverURL: 'https://ozewwcws.lc-cn-n1-shared.com',
+    })
+
+    // AV.debug.enable()
+    AV.debug.disable()
+
+    // 当前操作的 class
+    this.__CMD__ = AV.Object.extend('cmd')
+  },
+}
+</script>
+style lang="scss" scoped>
+.cmd {
+}
+</style>
 )
 }
 
