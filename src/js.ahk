@@ -1,4 +1,440 @@
-﻿::lean::
+﻿
+::visi::
+Var =
+(
+vue-observe-visibility
+)
+code(Var)
+return
+
+::io::
+Var =
+(
+const animatedScrollObserver = new IntersectionObserver(
+  (entries, animatedScrollObserver) => {
+    entries.forEach((entry) => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('enter')
+        animatedScrollObserver.unobserve(entry.target)
+      }
+    })
+  }
+`)
+
+export default {
+  bind(el) {
+    el.classList.add('before-enter')
+    animatedScrollObserver.observe(el)
+  }
+}
+---
+// http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
+var io = new IntersectionObserver(elements => {
+  // 所有的监听对象
+  console.log(elements)
+
+  // 打印对象的所处情况
+    elements.forEach(e => {
+        console.log(e.target, e)
+    })
+}, {
+    // 属性决定了什么时候触发回调函数
+    threshold: [0, 0.25, 0.5, 0.75, 1],
+    // 设置相对根节点（其实按照默认即可，除非有特殊情况才需要设置，譬如 iframe 的场景）
+    // root: document.querySelector('#app'),
+})
+
+io.observe(document.querySelector('#a'))
+io.observe(document.querySelector('#b'))
+
+// 停止观察
+// io.unobserve(document.querySelector('#a'));
+
+// 关闭观察器
+// io.disconnect();
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+    img {
+        width: 100`%;
+        height: 100`%;
+    }
+
+    p {
+        height: 500px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+        <p class='lazy-load'><template><img src="https://iph.href.lu/400x400" alt="..." /></template></p>
+    </div>
+</body>
+
+<script>
+const io = new IntersectionObserver(elements => {
+    // 所有的监听对象
+    console.log(elements)
+
+    // 打印对象的所处情况
+    elements.forEach(e => {
+        // 如果显示了
+        if (e.isIntersecting) {
+            // 获取显示的dom
+            const target = e.target;
+            // 获取 dom 下面 <template> 的内容
+            const content = target.querySelector('template').content;
+            // 插入到真实内容
+            target.appendChild(content);
+            // 取消监听
+            io.unobserve(target)
+        }
+    })
+}, {
+    // 属性决定了什么时候触发回调函数
+    threshold: [0, 0.25, 0.5, 0.75, 1],
+})
+
+document.querySelectorAll('.lazy-load').forEach((el, key) => {
+    io.observe(el)
+})
+
+</script>
+</html>
+---
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <!-- mockjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Mock.js/1.0.0/mock-min.js"></script>
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+
+    <style>
+        li { display: block; height: 100px; }
+        footer { height: 100px; background-color: #000; }
+    </style>
+</head>
+
+<body>
+    <ul id='app'>
+        <li>英国发生捅人事件新</li>
+        <li>周琦首次回应指责新</li>
+        <li>北京地铁临时封闭</li>
+        <li>高晓松闹笑话</li>
+        <li>郑州彩虹桥拆除新</li>
+        <li>复盘最强医保谈判</li>
+        <li>北京初雪</li>
+        <li>网曝张亮假离婚</li>
+        <li>滴滴美团严重失信</li>
+        <li>网易又一员工被逼</li>
+        <li>呼伦贝尔五彩光柱</li>
+        <li>悍匪冯学华判死刑</li>
+        <li>曹阳退役</li>
+        <li>网银回应罚2943万</li>
+        <li>苹果设计师离职</li>
+    </ul>
+    <footer></footer>
+</body>
+
+<script>
+Mock.mock("/news/list", "get", {
+    "newslist|10": [
+        { "news_id|+1": 101, "news_name": "@ctitle", "news_price|50-100.1-2": 0, "news_time": "@date('yyyy-mm-dd')" }
+    ]
+}).setup({
+    timeout: '1000-3000'
+})
+
+// loading 装饰器
+var loadingDec = (fn, loading = false) => [_ => loading, async (...args) => {
+    // 开启Loading
+    loading = true
+    // 等待函数执行结果
+    const result = await fn(...args)
+    // 关闭loading
+    loading = false
+    // 返回结果
+    return result
+}]
+
+// 模拟请求后端
+const loadData = () => axios.get("/news/list")
+
+// 装饰函数
+const [isLoading, _loadData] = loadingDec(loadData)
+
+// 渲染列表
+const render = items => items.forEach(item => {
+    let node = document.createElement('li')
+    node.innerText = item.news_name
+    document.getElementById('app').appendChild(node)
+})
+
+const io = new IntersectionObserver(async elements => {
+    // 当前演示只有一个监听对象 footer
+    const footer = elements[0]
+
+    // 如果可见，就插入新的内容
+    if (footer.isIntersecting && !isLoading()) {
+        // 加载十条数据
+        const { data } = await _loadData(10)
+        // 渲染
+        render(data.newslist)
+    }
+}, {
+    /* opts */
+})
+
+// 只监听 footer 是否显示即可
+io.observe(document.querySelector('footer'))
+</script>
+</html>
+---
+/**
+ * MutationObserver： 监听DOM变化的神器
+ * mutations：节点变化记录列表（sequence<MutationRecord>）
+ * observer：构造MutationObserver对象。
+ * 
+ * 『MutationObserver对象的三个方法』
+ * observe：设置观察目标，接受两个参数，target：观察目标，options：通过对象成员来设置观察选项
+ * disconnect：阻止观察者观察任何改变
+ * takeRecords：清空记录队列并返回里面的内容
+ *
+ * 『observe方法中options参数』
+ * childList：设置true，表示观察目标子节点的变化，比如添加或者删除目标子节点，不包括修改子节点以及子节点后代的变化
+ * attributes：设置true，表示观察目标属性的改变
+ * characterData：设置true，表示观察目标数据的改变
+ * subtree：设置为true，目标以及目标的后代改变都会观察
+ * attributeOldValue：如果属性为true或者省略，则相当于设置为true，表示需要记录改变前的目标属性值，设置了attributeOldValue可以省略attributes设置
+ * characterDataOldValue：如果characterData为true或省略，则相当于设置为true,表示需要记录改变之前的目标数据，设置了characterDataOldValue可以省略characterData设置
+ * attributeFilter：如果不是所有的属性改变都需要被观察，并且attributes设置为true或者被忽略，那么设置一个需要观察的属性本地名称（不需要命名空间）的列表
+ */
+const observe = new MutationObserver(function(mutations, observer) {
+  // ⚠️ 只有在全部DOM操作完成之后才会调用callback
+  // 📝 所以就算你进行进行 N 次操作，但实际上也只会执行一次本回调。
+    console.log('hello world')
+})
+
+// 示例 1：观察节点树变化
+observe.observe(target,{ childList: true, subtree: true })
+target.appendChild(docuemnt.createTextNode('1'))
+
+// 示例 2：观察值变化
+observe.observe(target,{ characterData: true, childList: true, subtree: true })
+target.childNodes[0].textContent = '改变文本值'
+
+// 示例 3: 观察属性变化
+observe.observe(target,{ attributeFilter: ['style'], subtree: true })
+target.style = 'color:red'      // 可以观察到
+target.removeAttribute('style') // 删除属性名也会观察到
+
+// 示例 4: 停止监听
+observe.disconnect()
+
+// 示例 5: takeRecords() 获取操作历史
+observe.observe(target, { childList: true })
+target.appendChild(document.createTextNode('新增Text节点1'))
+target.appendChild(document.createTextNode('新增Text节点2'))
+target.appendChild(document.createTextNode('新增Text节点3'))
+const record = observe.takeRecords()
+console.log(record)
+
+/**
+ * 变动记录中的属性如下：
+ *
+ * type：如果是属性变化，返回"attributes"，如果是一个CharacterData节点（Text节点、Comment节点）变化，返回"characterData"，节点树变化返回"childList"
+ * target：返回影响改变的节点
+ * addedNodes：返回添加的节点列表
+ * removedNodes：返回删除的节点列表
+ * previousSibling：返回分别添加或删除的节点的上一个兄弟节点，否则返回null
+ * nextSibling：返回分别添加或删除的节点的下一个兄弟节点，否则返回null
+ * attributeName：返回已更改属性的本地名称，否则返回null
+ * attributeNamespace：返回已更改属性的名称空间，否则返回null
+ * oldValue：返回值取决于type。对于"attributes"，它是更改之前的属性的值。对于"characterData"，它是改变之前节点的数据。对于"childList"，它是null
+ */
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <script src="https://unpkg.com/vue-observe-visibility/dist/vue-observe-visibility.min.js"></script>
+    <style>
+    img { width: 100`%; height: 100`%; }
+    p { height: 500px; }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p class='item' v-observe-visibility="visibilityChanged"><img src="https://iph.href.lu/400x400" alt="..." /></p>
+    </div>
+</body>
+
+<script>
+/*
+Vue.directive('observe-visibility', VueObserveVisibility.ObserveVisibility)
+var vue = new Vue({
+    el: '#app',
+    methods: {
+        visibilityChanged (...args) {
+            console.log(20201203143441, ...args)
+        }
+    },
+})
+*/
+
+const io = new IntersectionObserver(entries => {
+    console.log(`
+        【触发时机】
+        1、 首次
+        2、 隐藏（display:none; v-show）
+        3、 显示（受 threshold 配置影响）
+        4、 删除（v-if）
+    `, entries)
+
+    // https://github.com/Akryum/vue-observe-visibility/blob/master/src/directives/observe-visibility.js#L55
+    const entry = entries.find(e => e.isIntersecting)
+    const isVisibility = !!entry
+    console.log('🌈', isVisibility)
+
+}, {
+    // 属性决定了什么时候触发回调函数
+    // threshold: [0, 0.25, 0.5, 0.75, 1],
+})
+
+document.querySelectorAll('.item').forEach(el => io.observe(el))
+</script>
+</html>
+
+)
+txtit(Var)
+return
+
+::hit::
+::yundong::
+::jianxieyundong::
+Var =
+(
+/**
+ * 间歇性运动
+ * 
+ * @param  {Number} 持续45s
+ * @param  {Number} 休息10s
+ * @param  {Number} 进行10次
+ */
+const hit = (s = 45, m = 10, t = 1) => {
+  // 是否暫停？
+  let isStop = false
+  // 是否結束？
+  let isEnd = false
+
+  // 当前回合
+  let curTime = 1
+  // 当前运动读秒
+  let startTime = s
+  // 当前休息读秒
+  let midfieldTime = m
+
+  // 开始（可传入开始时间，或者使用默认时间）
+  const start = () => {
+    console.log('开始运动!还剩下', t - curTime + '轮')
+
+    // 运动倒计时
+    ;(function poll() {
+      setTimeout(() => {
+        if (isEnd) return console.log('🔔 已终止')
+        if (isStop) return console.log('🔴 暂停中')
+
+        if (startTime) {
+          console.log('☀️di~', startTime)
+          startTime--
+          return poll()
+        } else {
+          console.log('休息时间')
+          return restPoll()
+        }
+      }, 1000);
+    })();
+
+    // 休息倒计时
+    // TODO: 最后一轮休息是不是应该跳过？
+    function restPoll() {
+      setTimeout(() => {
+        if (isEnd) return console.log('🔔 已终止')
+        if (isStop) return console.log('🔴 暂停中')
+
+        if (midfieldTime) {
+          console.log('🐤da~', midfieldTime)
+          midfieldTime--
+          return restPoll()
+        } else {
+          // 消耗回合数
+          curTime++
+
+          // 如果回合还有剩余，重新开始
+          if (curTime <= t) {
+            // 重置运动时间和休息时间
+            startTime = s, midfieldTime = m
+            // 重新开始运动
+            return start()                  
+          }
+
+          // 运动结束
+          return finish()
+        }
+      }, 1000);
+    }
+  }
+
+  // 运动结束
+  const finish = () => {
+    console.log('🎉 运动结束!')
+    // 重置
+    isStop = false, isEnd = false, curTime = 0, startTime = s, midfieldTime = m
+  }
+
+  const end = () => isEnd = true
+  const stop = () => isStop = true
+  const goon = () => { isStop = false; start() }
+
+  return { start, end, stop, goon }
+}
+
+const { start, end, stop, goon } = hit(45, 15, 2)
+start()
+)
+txtit(Var)
+return
+
+::infi::
+::wuxian::
+::wuxianda::
+Var =
+(
+Infinity
+)
+code(Var)
+return
+
+::lean::
 ::leancloud::
 Var =
 (
@@ -298,7 +734,7 @@ Var =
     console.log(20191212102924, a)
  }())
  */
-var waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+var waitWhen = (conditionFn = () => false, wait = Infinity, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
     (function poll() {
         // 获取回调结果
         const result = conditionFn()
@@ -9333,7 +9769,7 @@ const serialPureScatter = async function poll(params, data = []) {
     console.log(20191212102924, a)
  }())
  */
-const waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+const waitWhen = (conditionFn = () => false, wait = Infinity, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
     (function poll() {
         // 获取回调结果
         const result = conditionFn()
@@ -12395,7 +12831,7 @@ Var =
     console.log(20191212102924, a)
  }())
  */
-const waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+const waitWhen = (conditionFn = () => false, wait = Infinity, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
     (function poll() {
         // 获取回调结果
         const result = conditionFn()
@@ -14908,7 +15344,7 @@ return
 ::test::
 Var =
 (
-var test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 3000))
+var test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), Math.random() * 3000))
 )
 code(Var)
 return
@@ -15584,6 +16020,123 @@ return
 ::gen::
 Var =
 (
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    .container {
+        height: 300px;
+        width: 60`%;
+        border: 1px solid #d3d3d3;
+        overflow: auto;
+        margin: 40px;
+        background-color: #F6F7F9;
+        border-radius: 5px;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background-color: #dbdbdb;
+        margin: 10px;
+        float: left;
+        border-radius: 5px;
+        box-shadow: 1px 5px 8px 0px rgba(47, 57, 71, 0.06);
+    }
+
+    .loader {
+        display: flex;
+        width: 100`%;
+        height: 100px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .loader-img {
+        width: 80px;
+        height: 35px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="root" class="container">
+        <div id="loader" class="loader">
+            <img class="loader-img" src='https://i.imgur.com/YwRCROv.gif'>
+        </div>
+    </div>
+</body>
+<script>
+// https://medium.com/@ashishshubham/infinite-scroll-using-generators-bbacbf6cafd9
+// generator + async/await 这个方案最骚的一点是，可以阻止scroll重复触发，我们可以有效控制防止多重触发加载重复数据（虽然方法一大堆）
+// 常用的套路是： while(true) + yield await promise
+function getContent(offset, batchSize) {
+  let arr = []
+  for (var i = offset; i < offset + batchSize; i++) {
+    arr.push(i)
+  }
+  return new Promise((resolve, reject) => setTimeout(() => resolve(arr), Math.random() * 2000));
+}
+
+
+async function* getData(batchSize) {
+  let offset = 0
+  while (true) {
+    yield await getContent(offset, batchSize)
+    offset += batchSize
+  }
+}
+
+async function* events(el, name , condition) {
+  let resolve
+
+  el.addEventListener(name, e => {
+    if (condition(e)) {
+      resolve(e)
+    }
+  })
+
+  while (true) {
+    // 只有执行了 resolve 外部的 await 才可以解放，现在将解放的权利移交给 scrollToBottom
+    yield await new Promise(_resolve => resolve = _resolve)
+  }
+}
+
+
+const container = document.getElementById('root')
+const loader = document.getElementById('loader')
+
+async function init() {
+  let eventIterator = events(container, 'scroll', () => container.scrollHeight <= container.scrollTop + container.clientHeight)
+
+  // for..of 是生成器遍历，等同于不断的执行 next()，由于生成器里面使用了white(true)，所以具备无限个 yield
+  for await (const page of getData(50)) {
+    append(page)
+    // 通过 scroll 来限制逻辑往下走
+    // 这一句等于说要等到下一次触发 scrollToBottom 才会继续往下执行（虽然依然在这个循环里边）
+    await eventIterator.next()
+  }
+}
+
+function append(items) {
+  let dom = items.map(item => `<div class=item>${item}</div>`).join('')
+  container.insertAdjacentHTML('beforeend', dom)
+  container.append(loader)
+}
+
+init()
+</script>
+
+</html>
+---
 const render = data => console.log(data)
 
 function *gen(fn) {
@@ -15673,9 +16226,6 @@ gen = main();
 gen.next();  // {value: undefined, done: false}
 // 1秒后输出： one two
 ---
-const test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 1000))
-
-// 生成器 + async/await 
 async function *gen(...args) {
     console.log('记得创建生成器的时候是可以给参数的', args)
 
@@ -15690,18 +16240,10 @@ const g = gen('abc')
 g.next()
 g.next('fuck')
 setTimeout(() => g.next('god'), 2000)
-
-// 解释一下，由于yield可以理解为暂停器。
-// 当第一次调用 g.next() 时，代码将返回并且暂停于此： const cache = yield
-
-// 有趣的事情发生在第二次调用 g.next('fuck') 时传入了 「值」，将从上一次暂停处恢复，并且 「yield关键词」 将被 「值」 替换并且继续执行。
-// (所以 yield 有点像一个忠诚的影舞者，等待主人并且替换后，继续往下作战)
-
-// 然后继续执行，而又遇到yield处再次暂停： const network = yield
-// 第三次调用 next： g.next('god')
-// 同前面一样，传入的 「值」 将替换 yield，并在赋值完后继续执行。
 )
 txtit(Var)
+tip3("generator")
+
 return
 
 ::curry::

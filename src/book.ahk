@@ -115,6 +115,7 @@ Var =
 if (v == "LiveQuery 封装版本") {
 Var =
 (
+@@utils/cmd.js
 import AV from 'leancloud-storage/live-query'
 
 // 是否初始化过 AV
@@ -185,8 +186,7 @@ export const emit = (type = 'code', cmd = 'console.log', name = 'test') => {
     _cmd.set('name', name)
     _cmd.save().then((result) => console.log('🚀', result))
 }
----
-// cmd 控制台
+@@cmd.vue
 import { subscribe } from '@/utils/cmd'
 
 export default {
@@ -196,7 +196,7 @@ export default {
     },
 }
 </script>
----
+@@app.vue
 <template>
   <div class="cmd">
     <button class="button" @click="go">触发「数据治理」弹窗</button>

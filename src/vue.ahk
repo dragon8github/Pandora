@@ -1,4 +1,5 @@
-﻿!v::
+﻿
+!v::
 
   Menu, vuexmenubasic, Add, vuex.modules, VueHandler
   Menu, vuexmenubasic, Add, vuex.action, VueHandler
@@ -40,6 +41,7 @@
 
   
 
+  Menu, VueMenu, Add, /deep/ 改为 ::v-deep, VueHandler
   Menu, VueMenu, Add, vue.test, VueHandler
   Menu, VueMenu, Add, vue.router, :Vuerouter
   Menu, VueMenu, Add, vuex 必知必会基本功, :vuexmenubasic
@@ -982,7 +984,7 @@ Var =
     console.log(20191212102924, a)
  }())
  */
-const waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+const waitWhen = (conditionFn = () => false, wait = Infinity, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
     (function poll() {
         // 获取回调结果
         const result = conditionFn()
@@ -9049,6 +9051,18 @@ describe('Item.vue', () => {
         expect(wrapper.text()).toContain('Item')
     })
 })
+)
+code(Var)
+return
+
+::/deep/::
+Var =
+(
+::v-deep .username {
+	.label {
+	
+	}
+}
 )
 code(Var)
 return

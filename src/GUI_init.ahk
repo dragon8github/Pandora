@@ -630,8 +630,7 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/data
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/dataAssets/">正式预览</a>
 Gui, Pandora:Add, Link,, <a href="https://master.paas.com:8443/console/project/app/browse/dc/ioc-visual-ui-dataassets?tab=history">部署地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
-
-
+Gui, Pandora:Add, Link,, <a href="https://zeqfus.axshare.com/#id=1inhqq&p=`%E4`%BA`%BA`%E5`%8F`%A3`%E5`%BA`%93-jx`%E8`%AF`%84`%E5`%AE`%A1&g=1">原型地址</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 私服仓库Nexus

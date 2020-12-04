@@ -1,4 +1,5 @@
 ﻿
+
 p(v) 
 {
 ; WinClip.paste(v)
@@ -59,6 +60,8 @@ toUpFir(v) {
     return f . SubStr(v, 2)
 }
 
+
+
 tip2(title="") {
     ToolTip, % title
     SetTimer, RemoveToolTip, -1500
@@ -67,6 +70,11 @@ tip2(title="") {
 tip(title=" ", content=" ") {
     TrayTip, %title%, %content%, 20 ,16
     SetTimer, _HideTrayTip, 1500
+}
+
+tip3(v) {
+clipboard := v
+tip2(v)
 }
 
 _HideTrayTip() {  ; NOTE: For Windows 10, replace this function with the one defined above.

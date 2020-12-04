@@ -65,12 +65,12 @@
 	Menu, bilibiliMenu, Add,,
 	Menu, bilibiliMenu, Add,,
 
+	Menu, bilibiliMenu, Add, \{^_^}/ hi!, bilibiliHandler2
 	Menu, bilibiliMenu, Add, (=・ω・=), bilibiliHandler2
 	Menu, bilibiliMenu, Add, (｀・ω・´), bilibiliHandler2
 	Menu, bilibiliMenu, Add, ╮(￣▽￣)╭, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ～(￣▽￣～), bilibiliHandler2
-	Menu, bilibiliMenu, Add, ←_←, bilibiliHandler2
-	Menu, bilibiliMenu, Add, →_→, bilibiliHandler2
+	Menu, bilibiliMenu, Add, ←_←→_→, bilibiliHandler2
 	Menu, bilibiliMenu, Add, (￣3￣), bilibiliHandler2
 	Menu, bilibiliMenu, Add, Σ(ﾟдﾟ;), bilibiliHandler2
 	Menu, bilibiliMenu, Add, (╯°口°)╯(┴—┴, bilibiliHandler2

@@ -1814,7 +1814,7 @@ var wait = async (fn = () => {}, t = 0) => {
     console.log(20191212102924, a)
  }())
  */
-var waitWhen = (conditionFn = () => false, wait = 4000, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
+var waitWhen = (conditionFn = () => false, wait = Infinity, interval = 10, startTime = Date.now()) => new Promise((resolve, reject) => {
     (function poll() {
         // 获取回调结果
         var result = conditionFn()

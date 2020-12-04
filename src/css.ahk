@@ -7845,19 +7845,21 @@ return
 Var =
 (
 .field {
-  display: flex;
-  margin-bottom: 20px;
+    display: flex;
+    margin-bottom: 1.2em;
 }
 
-    .field label {
-          flex: 1 0 70px;
-          padding-right: 20px;
+   .field__label {
+        flex: 1 0 100px; 
+        padding-right: .5em;
+        color: #c1ceff;
     }
 
-    .field input, .field textarea {
-          flex: 1 1 auto;
-          width: 100`%;
-          padding: 4px;
+    .field__value {
+        flex: 1 1 auto;
+        width: 100`%;
+        color: #ffffff;
+        word-break: break-all;
     }
 )
 code(Var)
