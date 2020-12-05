@@ -238,9 +238,11 @@ if (clipboard) {
 return
 
 ::meihua::
+::pre::
+::per::
 Var =
 (
-beautify
+beautify/prettier(vetur)
 )
 code(Var)
 return
