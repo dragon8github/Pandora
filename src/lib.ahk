@@ -477,9 +477,9 @@ return
 
 
 txtit(code, spliter = "---") {
-
 	; 缩放比 小米0.7 surface 0.45
-	zoom := 0.7
+	zoom := A_ScreenWidth > 2000 ? 0.45 : 0.7
+
 	; GUI 的宽高
 	GUI_width := A_ScreenWidth * zoom
 	GUI_height := A_ScreenHeight * zoom

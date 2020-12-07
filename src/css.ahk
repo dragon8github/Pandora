@@ -5609,8 +5609,20 @@ Var =
 .accent {
     color: var(--primary);
 }
+---
+// CSS 
+:root{
+    --fuck-text: "just some text";
+}
+
+#text:before {
+  content: var(--fuck-text);
+}
+
+// 这是一个 JS 修改::before 的简单方案，通过修改变量来修改
+root.style.setProperty("--fuck-text", `"YAY new text"`);
 )
-code(Var)
+txtit(Var)
 return
 
 ::lf::
