@@ -417,24 +417,109 @@ return
 ::el-form::
 Var =
 (
-<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="125px" class="form">
-  <el-form-item label="任务名称：" prop="taskName">
-     <el-input v-model='form.taskName' class='l-field__value' placeholder="请输入任务名称"></el-input>
-  </el-form-item>
+<!DOCTYPE html>
+<html lang="en">
 
-  <el-form-item label="数据库类型：" prop="databaseType">
-    <el-select v-model="form.databaseType" placeholder="请输入数据库类型" class='l-field__value'>
-       <el-option
-         v-for="item in options"
-         :key="item.value"
-         :label="item.label"
-         :value="item.value">
-       </el-option>
-     </el-select>
-  </el-form-item>
-</el-form>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- element -->
+    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+    <link href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css" rel="stylesheet">
+    <!-- axios -->
+    <script src="https://libs.cdnjs.net/axios/0.19.2/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="用户年龄" prop="userAge">
+                <el-input v-model="ruleForm.userAge"></el-input>
+            </el-form-item>
+
+            <el-form-item label="用户名称" prop="userName">
+                <el-input v-model="ruleForm.userName"></el-input>
+            </el-form-item>
+
+
+            <el-form-item label="活动性质" prop="hobbyList">
+              <el-checkbox-group v-model="ruleForm.hobbyList">
+                <el-checkbox label="餐厅线上活动" name="hobbyList"></el-checkbox>
+                <el-checkbox label="地推活动" name="hobbyList"></el-checkbox>
+                <el-checkbox label="线下主题活动" name="hobbyList"></el-checkbox>
+                <el-checkbox label="单纯品牌曝光" name="hobbyList"></el-checkbox>
+              </el-checkbox-group>
+            </el-form-item>
+
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
+</body>
+<script>
+var vue = new Vue({
+    el: '#app',
+    data() {
+        return {
+            ruleForm: {
+                userAge: '',
+                userName: '',
+                hobbyList: [],
+            },
+            rules: {
+                userAge: [
+                    { required: true, message: '请输入年龄' },
+                ],
+                userName: [
+                    { required: false, message: '请输入名称', trigger: 'blur' },
+                    { min: 2, max: 4, message: '长度在 2 到 4 个字符', trigger: 'blur' }
+                ],
+                hobbyList: [
+                    { type: 'array', required: false, message: '请至少选择2个活动性质', trigger: 'change' },
+                    { 
+                        validator (rule, value, callback) {
+                            if (value.length < 2) {
+                                callback(new Error('请至少选择2个活动性质'))
+                            }
+                            callback()
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    methods: {
+        submitForm(formName) {
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+
+                    const data = { 
+                        userAge: this.ruleForm.userAge, 
+                        userName: this.ruleForm.userName || undefined,
+                        hobbyList: this.ruleForm.hobbyList.length >= 2 ? this.ruleForm.hobbyList : undefined 
+                    }
+
+                    console.log('给后端的数据', data)
+
+                    axios({
+                      method: 'post',
+                      url: 'http://localhost:8080',
+                      data: data,
+                    }).then(response => {
+                        // ...    
+                    })
+                }
+            })
+        }
+    }
+})
+</script>
+
+</html>
 )
-code(Var)
+txtit(Var)
 return
 
 ::el-form-item::

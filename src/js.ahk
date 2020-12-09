@@ -1,4 +1,113 @@
-﻿
+﻿::getpos::
+::getpositon::
+Var =
+(
+// 瘦身对象（只留部分） ▶ slim({ name: 'Benjy', age: 18 }, ['age']) // => { age: 18 }
+const slim = (obj, properties = []) => properties.reduce((p, c) => (p[c] = obj[c], p), {})
+
+const getPosByEvent = e => {
+  const properties = slim(e, ['clientX', 'clientY', 'layerX', 'layerY', 'offsetX', 'offsetY', 'pageX', 'pageY', 'screenX', 'screenY', 'x', 'y'])
+    return Object.assign({}, properties, { rect: e.target.getBoundingClientRect() })
+}
+
+const getPosByDom = el => {
+  const properties = slim(el, ['clientHeight', 'clientLeft', 'clientTop', 'clientWidth', 'offsetHeight', 'offsetLeft', 'offsetTop', 'offsetWidth', 'scrollHeight', 'scrollLeft', 'scrollTop', 'scrollWidth',])
+    return Object.assign({}, properties, { rect: el.getBoundingClientRect() })
+}
+)
+code(Var)
+return
+
+::pdf::
+::pdf.js::
+::pdftoimg::
+::pdf2img::
+::pdf2image::
+Var =
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>PDF文件转图片</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <input id='pdfFile' type='file' accept="application/pdf">
+    </div>
+</body>
+
+<script>
+// https://mozilla.github.io/pdf.js/examples/
+document.getElementById('pdfFile').addEventListener('change', e => {
+    const val = e.target.value
+
+    if (val) {
+        // stream
+        const filesdata = e.target.files
+        // size
+        const fileSize = filesdata[0].size
+        // name
+        const fileName = filesdata[0].name
+
+        const reader = new FileReader()
+
+        // 将文件读取为 DataURL
+        reader.readAsDataURL(filesdata[0])
+
+        reader.onload = e => { 
+          const result = e.target.result
+          // 调用pdf.js获取文件
+            pdfjsLib.getDocument(result).promise.then(pdf => { 
+                if (pdf) {
+                  // 获取pdf文件总页数
+                    const totalPages = pdf.numPages
+
+                    // 遍历动态创建canvas
+                    for (let i = 1; i <= totalPages; i++) {
+                        const canvas = document.createElement('canvas')
+                        canvas.id = 'canvas-' + i
+                        document.getElementById('app').append(canvas)
+                        const ctx = canvas.getContext('2d')
+                        renderImg(pdf, i, ctx)
+                    }
+                }
+            })
+        }
+    }
+})
+
+// 渲染生成图片
+function renderImg(pdfFile, pageNumber, canvasContext) {
+  // 逐页解析PDF
+    pdfFile.getPage(pageNumber).then(page => { 
+      // 页面缩放比例
+        const viewport = page.getViewport({ scale: 1 })
+
+        // 设置 canvas 
+        const newcanvas = canvasContext.canvas
+        newcanvas.width = viewport.width
+        newcanvas.height = viewport.height
+        newcanvas.style.width = '100`%'
+        newcanvas.style.height = '100`%'
+
+        const renderContext = { canvasContext: canvasContext, viewport: viewport }
+
+        // 渲染生成
+        page.render(renderContext)
+    })
+}
+</script>
+</html>
+)
+code(Var)
+return
+
+
 ::visi::
 Var =
 (
@@ -12640,6 +12749,17 @@ addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.keyCode == 13) {
         console.log(123);
     }
+})
+)
+code(Var)
+return
+
+::addev::
+::addec::
+Var = 
+(
+addEventListener('click', e => {
+    
 })
 )
 code(Var)

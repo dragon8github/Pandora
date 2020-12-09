@@ -135,6 +135,7 @@
     Menu, CssMenu, Add, 新毛玻璃backdrop-filter, CssHandler
     Menu, CssMenu, Add, filter blur 背景虚化, CssHandler
     Menu, CssMenu, Add, box-reflect 一行 css 代码实现倒影效果 , CssHandler
+    Menu, CssMenu, Add, Drop-Shadow：被低估的阴影神器, CssHandler
     ; Menu, CssMenu, Add, normalize.css, CssHandler2
     Menu, CssMenu, Add, css.debugger, CssHandler2    
     Menu, CssMenu, Add, px2rem, CssHandler2
@@ -160,7 +161,6 @@
     Menu, CssMenu, Add, checkbox 自定义样式简单, CssHandler
     Menu, CssMenu, Add, 扩大可点击区域的几种方案, CssHandler
     ; Menu, CssMenu, Add, unset 一次性重置所有默认属性, CssHandler
-    Menu, CssMenu, Add, Drop-Shadow：被低估的阴影神器, CssHandler
 
     Menu, CssMenu, Add, pointer-events: none;禁用按钮上的默认指针事件, CssHandler
     Menu, CssMenu, Add, user-select: none;, CssHandler3
@@ -394,6 +394,7 @@ Var =
 // https://css-irl.info/drop-shadow-the-underrated-css-filter/
 .my-element {
   filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  // filter: drop-shadow(5px 5px 4px #b6b6b6);
 }
 )
 }
@@ -2519,8 +2520,10 @@ return
 if (v == "animate的钩子：webkitAnimationEnd") {
 Var =
 (
-dom.addEventListener("webkitAnimationEnd", function() {
-   
+// 监听元素的 「动画结束事件」
+dom.addEventListener("webkitAnimationEnd", e => {
+    // 删除 animate.css class
+    e.target.classList.remove('animate__animated', 'animate__bounce')
 })
 )
 }
@@ -4310,6 +4313,7 @@ return
     Send, opacity
 return
 
+::css.reset::
 ::reset.css::
 ::normalize.css::
 ::normalize::
@@ -5354,6 +5358,7 @@ display: inline-block;
 code(Var)
 return
 
+::box::
 ::redbox::
 ::cssbox::
 ::css.box::
@@ -7873,6 +7878,24 @@ Var =
         color: #ffffff;
         word-break: break-all;
     }
+)
+code(Var)
+return
+
+::attack.css::
+::attack::
+Var =
+(
+.attack {
+    animation: shake .75s;
+}
+
+@keyframes shake {
+  10`%, 90`% { transform: translate3d(-1px, 0, 0); }
+  20`%, 80`% { transform: translate3d(1px, 0, 0); }
+  30`%, 50`%, 70`% { transform: translate3d(-2px, 0, 0); }
+  40`%, 60`% { transform: translate3d(2px, 0, 0); }
+}
 )
 code(Var)
 return

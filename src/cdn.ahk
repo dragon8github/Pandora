@@ -564,9 +564,14 @@ return
 ::cdn-anim::
 Var = 
 (
-<!-- https://github.com/daneden/animate.css | https://daneden.github.io/animate.css/ | <h1 class="bounce animated">Example</h1> -->
+<!-- animate 3.x | <h1 class="bounce animated">Example</h1> -->
 <link href="https://cdn.staticfile.org/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+
+<!-- https://animate.style/ animate 4.x | <h1 class="animate__animated animate__bounce">An animated element</h1> -->
 <link href="https://libs.cdnjs.net/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<!-- https://www.animejs.cn/documentation/#duration | anime({ targets: '#app', translateX: 250, duration: 3000 }) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 )
 code(Var)
 return
