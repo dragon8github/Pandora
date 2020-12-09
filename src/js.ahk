@@ -103,8 +103,87 @@ function renderImg(pdfFile, pageNumber, canvasContext) {
 }
 </script>
 </html>
+---
+<template>
+    <div id="app">
+        <input id="pdfFile" type="file" accept="application/pdf" @change="changeHandler" />
+    </div>
+</template>
+
+<script>
+const pdfjsLib = require('pdfjs-dist/build/pdf.min')
+require('pdfjs-dist/build/pdf.worker.entry.js')
+
+// 渲染生成图片
+function renderImg(pdfFile, pageNumber, canvasContext) {
+  // 逐页解析PDF
+    pdfFile.getPage(pageNumber).then(page => {
+      // 页面缩放比例
+        const viewport = page.getViewport({ scale: 1 })
+
+        // 设置 canvas
+        const newcanvas = canvasContext.canvas
+        newcanvas.width = viewport.width
+        newcanvas.height = viewport.height
+        newcanvas.style.width = '100`%'
+        newcanvas.style.height = '100`%'
+
+        const renderContext = { canvasContext: canvasContext, viewport: viewport }
+
+        // 渲染生成
+        page.render(renderContext)
+    })
+}
+
+export default {
+    data() {
+        return {}
+    },
+    methods: {
+        changeHandler(e) {
+            const val = e.target.value
+
+            console.log(20201209201523, e)
+
+            if (val) {
+                // stream
+                const filesdata = e.target.files
+                // size
+                const fileSize = filesdata[0].size
+                // name
+                const fileName = filesdata[0].name
+
+                const reader = new FileReader()
+
+                // 将文件读取为 DataURL
+                reader.readAsDataURL(filesdata[0])
+
+                reader.onload = e => {
+                    const result = e.target.result
+                    // 调用pdf.js获取文件
+                    pdfjsLib.getDocument(result).promise.then(pdf => {
+                        if (pdf) {
+                            // 获取pdf文件总页数
+                            const totalPages = pdf.numPages
+
+                            // 遍历动态创建canvas
+                            for (let i = 1; i <= totalPages; i++) {
+                                const canvas = document.createElement('canvas')
+                                canvas.id = 'canvas-' + i
+                                document.getElementById('app').append(canvas)
+                                const ctx = canvas.getContext('2d')
+                                renderImg(pdf, i, ctx)
+                            }
+                        }
+                    })
+                }
+            }
+        },
+    },
+}
+</script>
 )
-code(Var)
+txtit(Var)
 return
 
 
