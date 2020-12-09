@@ -1,4 +1,24 @@
-﻿::pdf::
+﻿::getpos::
+::getpositon::
+Var =
+(
+// 瘦身对象（只留部分） ▶ slim({ name: 'Benjy', age: 18 }, ['age']) // => { age: 18 }
+const slim = (obj, properties = []) => properties.reduce((p, c) => (p[c] = obj[c], p), {})
+
+const getPosByEvent = e => {
+  const properties = slim(e, ['clientX', 'clientY', 'layerX', 'layerY', 'offsetX', 'offsetY', 'pageX', 'pageY', 'screenX', 'screenY', 'x', 'y'])
+    return Object.assign({}, properties, { rect: e.target.getBoundingClientRect() })
+}
+
+const getPosByDom = el => {
+  const properties = slim(el, ['clientHeight', 'clientLeft', 'clientTop', 'clientWidth', 'offsetHeight', 'offsetLeft', 'offsetTop', 'offsetWidth', 'scrollHeight', 'scrollLeft', 'scrollTop', 'scrollWidth',])
+    return Object.assign({}, properties, { rect: el.getBoundingClientRect() })
+}
+)
+code(Var)
+return
+
+::pdf::
 ::pdf.js::
 ::pdftoimg::
 ::pdf2img::
@@ -12619,6 +12639,17 @@ addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.keyCode == 13) {
         console.log(123);
     }
+})
+)
+code(Var)
+return
+
+::addev::
+::addec::
+Var = 
+(
+addEventListener('click', e => {
+    
 })
 )
 code(Var)

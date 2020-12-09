@@ -2520,8 +2520,10 @@ return
 if (v == "animate的钩子：webkitAnimationEnd") {
 Var =
 (
-dom.addEventListener("webkitAnimationEnd", function() {
-   
+// 监听元素的 「动画结束事件」
+dom.addEventListener("webkitAnimationEnd", e => {
+    // 删除 animate.css class
+    e.target.classList.remove('animate__animated', 'animate__bounce')
 })
 )
 }
@@ -4311,6 +4313,7 @@ return
     Send, opacity
 return
 
+::css.reset::
 ::reset.css::
 ::normalize.css::
 ::normalize::
@@ -5355,6 +5358,7 @@ display: inline-block;
 code(Var)
 return
 
+::box::
 ::redbox::
 ::cssbox::
 ::css.box::
@@ -7874,6 +7878,24 @@ Var =
         color: #ffffff;
         word-break: break-all;
     }
+)
+code(Var)
+return
+
+::attack.css::
+::attack::
+Var =
+(
+.attack {
+    animation: shake .75s;
+}
+
+@keyframes shake {
+  10`%, 90`% { transform: translate3d(-1px, 0, 0); }
+  20`%, 80`% { transform: translate3d(1px, 0, 0); }
+  30`%, 50`%, 70`% { transform: translate3d(-2px, 0, 0); }
+  40`%, 60`% { transform: translate3d(2px, 0, 0); }
+}
 )
 code(Var)
 return
