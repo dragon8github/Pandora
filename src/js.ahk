@@ -18,6 +18,7 @@ const getPosByDom = el => {
 code(Var)
 return
 
+::pdfjs::
 ::pdf::
 ::pdf.js::
 ::pdftoimg::
@@ -111,6 +112,7 @@ function renderImg(pdfFile, pageNumber, canvasContext) {
 </template>
 
 <script>
+// cnpm i pdfjs-dist -S
 const pdfjsLib = require('pdfjs-dist/build/pdf.min')
 require('pdfjs-dist/build/pdf.worker.entry.js')
 
