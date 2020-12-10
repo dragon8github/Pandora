@@ -4755,15 +4755,6 @@ export const once = fn => {
 txtit(Var)
 return
 
-::!include::
-::!includes::
-Var =
-(
-a.filter(_ => !b.includes(_))
-)
-code(Var)
-return
-
 
 
 
@@ -5878,9 +5869,6 @@ const jiaoji = (a, b, p) => a.reduce((result, c) => {
 // [ { id: 2 }, { id: 3 } ]
 console.log(jiaoji(arr1, arr2, 'id'))
 ---
-// 数组交集
-ary1.filter(_ => ary2.includes(_))
----
 // 对象交集
 const intersection = (O1, O2) => Object.assign(...Object.keys(O1).map(k => {
     let temp
@@ -5904,6 +5892,18 @@ const intersection = (O1, O2) => Object.assign(...Object.keys(O1).map(k => {
 const a = { name: 'Alice', features: { speed: 3, strength: 90, mind: { power: 42 } } }
 const b = { name: 'Bob', features: { speed: 3, stamina: 1, mind: { power: 42, flexibility: 0, telekinesis: 42 } } }
 console.log(intersection(a, b))
+---
+// 数组交集
+ary1.filter(_ => ary2.includes(_))
+
+// 数组差集
+a.filter(_ => !b.includes(_))
+
+---
+// 多字符串包含判断
+if (['after', 'around'].includes(value)) {
+    // ...
+}
 )
 txtit(Var)
 return
@@ -11183,8 +11183,94 @@ func = func.before(function() {
 
 // 执行函数（C）
 func();
+---
+/**
+ * 原文地址：https://blog.bitsrc.io/aspect-oriented-programming-in-javascript-c4cb43f6bfcc
+ * gists: https://gist.githubusercontent.com/deleteman/1b73da25feabf32db33c611674eb1ca6/raw/cee7d652ea4d44220388dc86b13377f981f5fc76/aop.js
+ */
+
+/** 获取 class 中所有的 「函数名」 */
+const getMethods = obj => Object.getOwnPropertyNames(Object.getPrototypeOf(obj)).filter(item => typeof obj[item] === 'function')
+
+/** 核心工具 */
+const replaceMethod = (target, methodName, aspect, advice) => {
+    // 原始函数
+    const originMethod = target[methodName] 
+
+    // 修改函数引用
+    target[methodName] = (...args) => {
+
+        // before hook
+        if (['before', 'around'].includes(advice)) {
+            aspect.apply(target, args)
+        }
+
+        // 执行原函数
+        const returnedValue = originMethod.apply(target, args)
+
+        // after hook
+        if (['after', 'around'].includes(advice)) {
+            aspect.apply(target, args)
+        }
+
+        // retrun hook（⚠️注意⚠️，此处的设计是拦截返回值）
+        if ('return' == advice) {
+            return aspect.apply(target, [returnedValue])
+        }
+
+        // normal return 
+        return returnedValue
+    }
+}
+
+// 入口
+const inject = (target, aspect, advice, type, method = null) => {
+    // 如果是传入的类型是 「method」 ，那就是想注入特定某一个函数，这需要外部手动传入你想注入的 「函数名」
+    if (type == 'method') {
+        if (method != null) {
+            replaceMethod(target, method, aspect, advice)
+        } else {
+            throw new Error('Tryin to add an aspect to a method, but no method specified')
+        }
+    }
+    
+    // 否则就是注入所有函数
+    if (type == 'methods') {
+        getMethods(target).forEach(m => replaceMethod(target, m, aspect, advice))
+    }
+}
+
+//////////
+// demo //
+//////////
+
+class MyBussinessLogic {
+    add(a, b) { return a + b }
+    power(a, b) { return a ** b }
+    concat(a, b) { return a + b }
+}
+
+const o = new MyBussinessLogic()
+
+function loggingAspect(...args) {
+    console.log('Arguments received: ' + args)
+}
+
+function printType(value) {
+    console.log('Returned type: ' + typeof value)
+    
+    // ⚠️注意⚠️，此处的设计的 「return hook」 是会拦截返回值的，所以你必须手动返回
+    return value
+}
+
+inject(o, loggingAspect, 'before', 'methods')
+inject(o, printType, 'return', 'methods')
+
+o.add(2,2)
+o.power(2, 3)
+o.concat('hello', 'goodbye')
 )
-code(Var)
+txtit(Var)
 return
 
 ::eventtarget::
@@ -14013,6 +14099,7 @@ Var =
 )
 code(Var)
 SendInput, {Up}
+Send, {left 3}
 Send, {ShiftDown}{left 16}{ShiftUp}
 Return
 

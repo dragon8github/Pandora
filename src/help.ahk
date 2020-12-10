@@ -1,4 +1,14 @@
-﻿::buding::
+﻿::xinguan::
+::feiyan::
+::yiqing::
+Var =
+(
+COVID-19
+)
+code(Var)
+return
+
+::buding::
 ::xiubujiang::
 ::poly::
 Var =
