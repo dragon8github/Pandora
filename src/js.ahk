@@ -18,6 +18,7 @@ const getPosByDom = el => {
 code(Var)
 return
 
+::pdfjs::
 ::pdf::
 ::pdf.js::
 ::pdftoimg::
@@ -103,8 +104,88 @@ function renderImg(pdfFile, pageNumber, canvasContext) {
 }
 </script>
 </html>
+---
+<template>
+    <div id="app">
+        <input id="pdfFile" type="file" accept="application/pdf" @change="changeHandler" />
+    </div>
+</template>
+
+<script>
+// cnpm i pdfjs-dist -S
+const pdfjsLib = require('pdfjs-dist/build/pdf.min')
+require('pdfjs-dist/build/pdf.worker.entry.js')
+
+// 渲染生成图片
+function renderImg(pdfFile, pageNumber, canvasContext) {
+  // 逐页解析PDF
+    pdfFile.getPage(pageNumber).then(page => {
+      // 页面缩放比例
+        const viewport = page.getViewport({ scale: 1 })
+
+        // 设置 canvas
+        const newcanvas = canvasContext.canvas
+        newcanvas.width = viewport.width
+        newcanvas.height = viewport.height
+        newcanvas.style.width = '100`%'
+        newcanvas.style.height = '100`%'
+
+        const renderContext = { canvasContext: canvasContext, viewport: viewport }
+
+        // 渲染生成
+        page.render(renderContext)
+    })
+}
+
+export default {
+    data() {
+        return {}
+    },
+    methods: {
+        changeHandler(e) {
+            const val = e.target.value
+
+            console.log(20201209201523, e)
+
+            if (val) {
+                // stream
+                const filesdata = e.target.files
+                // size
+                const fileSize = filesdata[0].size
+                // name
+                const fileName = filesdata[0].name
+
+                const reader = new FileReader()
+
+                // 将文件读取为 DataURL
+                reader.readAsDataURL(filesdata[0])
+
+                reader.onload = e => {
+                    const result = e.target.result
+                    // 调用pdf.js获取文件
+                    pdfjsLib.getDocument(result).promise.then(pdf => {
+                        if (pdf) {
+                            // 获取pdf文件总页数
+                            const totalPages = pdf.numPages
+
+                            // 遍历动态创建canvas
+                            for (let i = 1; i <= totalPages; i++) {
+                                const canvas = document.createElement('canvas')
+                                canvas.id = 'canvas-' + i
+                                document.getElementById('app').append(canvas)
+                                const ctx = canvas.getContext('2d')
+                                renderImg(pdf, i, ctx)
+                            }
+                        }
+                    })
+                }
+            }
+        },
+    },
+}
+</script>
 )
-code(Var)
+txtit(Var)
 return
 
 
@@ -9591,8 +9672,118 @@ var link = function(href, fn, cssname){
 var addcss = function(firename, fn, cssname){
 	return link(config.dir + 'css/' + firename, fn, cssname);
 };
+---
+// https://medium.com/swlh/how-to-create-a-linked-list-in-javascript-1bfef32c7722
+const Node = function(value, next = null) {
+    this.value = value,
+        this.next = next
+}
+
+const LinkedList = function() {
+    this.head = null
+    this.size = 0
+}
+
+LinkedList.prototype.addNodeAtHead = function(value) {
+    this.head = new Node(value, this.head)
+    this.size++
+    return
+}
+
+LinkedList.prototype.addNodeAtTail = function(value) {
+    let node = new Node(value)
+    if (!this.head) return this.addNodeAtHead(value)
+    let current = this.head
+    while (current.next) {
+        current = current.next
+    }
+    current.next = node
+    this.size++
+    return
+}
+
+LinkedList.prototype.addNodeAt = function(value, index) {
+    if (index > 0 && index > this.size) return console.log('Index does not exist')
+    if (index === 0) return this.addNodeAtHead(value)
+    const node = new Node(value)
+    let current = this.head
+    let count = 0
+    let previous
+    while (count < index) {
+        count++
+        previous = current
+        current = current.next
+    }
+    previous.next = node
+    node.next = current
+    this.size++
+    return
+}
+
+LinkedList.prototype.getNodeAtIndex = function(index) {
+    if (index > 0 && index >= this.size || !this.head) return console.log('Index does not exist')
+    let current = this.head
+    let count = 0
+    while (current) {
+        if (count === index) return console.log(current.value)
+        count++
+        current = current.next
+    }
+    return null
+}
+
+LinkedList.prototype.removeHeadNode = function() {
+    if (!this.head) return console.log('There is no head')
+    this.head = this.head.next
+    this.size--
+    return
+}
+
+LinkedList.prototype.removeTailNode = function() {
+    if (!this.head) return console.log('There is no head')
+    if (!this.head.next) return this.removeHeadNode()
+    let current = this.head
+    let previous
+    while (current.next) {
+        previous = current
+        current = current.next
+    }
+    previous.next = null
+    this.size--
+    return
+}
+
+LinkedList.prototype.removeNodeAt = function(index) {
+    if (index > 0 && index >= this.size || !this.head) return console.log('Index not found')
+    if (index === 0) return this.removeHeadNode()
+    let current = this.head
+    let count = 0
+    let previous
+    while (count < index) {
+        count++
+        previous = current
+        current = current.next
+    }
+    previous.next = current.next
+    this.size--
+    return
+}
+
+LinkedList.prototype.clearList = function() {
+    this.head = null
+    this.size = 0
+    return
+}
+
+LinkedList.prototype.printValue = function() {
+    let current = this.head
+    while (current) {
+        console.log(current.value)
+        current = current.next
+    }
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::eventstop::
