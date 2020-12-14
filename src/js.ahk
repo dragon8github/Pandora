@@ -15503,6 +15503,9 @@ const memoized = fn => {
 	return arg => lookupTable[arg] || (lookupTable[arg] = fn(arg));
 }
 
+// 参数标记缓存器（该版本只支持「单参数」标记缓存）
+const memoized = (fn, cache = {}) => arg => cache[arg] || (cache[arg] = fn(arg))
+
 // 阶乘的demo
 let fastFactorial = memoized(n => {
 	if (n === 0) {

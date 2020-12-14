@@ -336,7 +336,7 @@ Gui, Pandora:Add, Link,, <a href="https://overreacted.io/">Dan大牛的博客</a
 
 
 
-Gui, Pandora:Add, Text,  W140 ys, 美图秀秀：
+Gui, Pandora:Add, Text,gsuopingtupian W140 ys, 美图秀秀：
 Gui, Pandora:Add, Link,, <a href="https://www.iloveimg.com/zh-cn">图片压缩神器</a>
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng熊猫图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="https://docsmall.com/image-compress">图片压缩工具25M</a>
@@ -371,7 +371,7 @@ Gui, Pandora:Add, Link,, <a href="https://animista.net/play/basic/slide-fwd">ani
 Gui, Pandora:Add, Link,, <a href="https://csslayout.io/">csslayout.io布局大全</a>
 Gui, Pandora:Add, Link,, <a href="https://sarthology.github.io/Animatopy/">Animatopy何必全部？</a>
 Gui, Pandora:Add, Link,, <a href="https://chokcoco.github.io/CSS-Inspiration">css 灵感大全（电子书）</a>
-Gui, Pandora:Add, Link,, <a href="https://sharkle.com/">随机打开一个有趣</a>
+Gui, Pandora:Add, Link,, <a href="https://www.designwithai.com/aigradient">AI生成渐变色Gradients</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
@@ -388,6 +388,7 @@ Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">picjumbo山景</a>
 Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
+Gui, Pandora:Add, Link,, <a href="https://sharkle.com/">随机打开一个有趣</a>
 
 
 
