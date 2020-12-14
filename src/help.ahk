@@ -1,4 +1,14 @@
-﻿::buding::
+﻿::e::
+Var =
+(
+e => {
+    
+}
+)
+code(Var)
+return
+
+::buding::
 ::xiubujiang::
 ::poly::
 Var =

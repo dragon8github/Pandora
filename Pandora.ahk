@@ -167,3 +167,15 @@ return
 ; tip2(GetKeyState("alt", "P"))
 ; return
 
+
+
+#!right::
+WinGet, OutputVar, MinMax, A
+if (OutputVar == 1) {
+    WinRestore, A
+} else {
+    WinMaximize, A
+}
+
+WinMove, A, , A_ScreenWidth / 2, 0, A_ScreenWidth / 2, A_ScreenHeight - 70
+return
