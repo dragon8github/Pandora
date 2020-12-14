@@ -2561,3 +2561,55 @@ writeFileSync(join(__dirname, `public/${new_name}.${ext}`), dataBuffer)
 )
 code(Var)
 return
+
+::node.radis::
+::radis::
+::node.cache::
+::radius::
+Var =
+(
+// https://medium.com/better-programming/the-beginners-guide-to-redis-and-caching-with-node-js-5a48eac0929e
+// https://gist.githubusercontent.com/BetterProgramming/f392f0090a5b019a0f467469f8a72087/raw/5d80e8bdae0784401dbbae1b3dc972ea2b9dd425/fullcode.js
+// npm install axios redis --save
+const express = require('express')
+const axios = require('axios')
+const redis = require('redis')
+const app = express()
+const redisPort = 6379
+const client = redis.createClient(redisPort)
+
+client.on('error', err => {
+    console.log(err)
+})
+
+app.get('/jobs', (req, res) => {
+    const searchTerm = req.query.search
+    try {
+        client.get(searchTerm, async (err, jobs) => {
+            if (err) throw err
+
+            if (jobs) {
+                res.status(200).send({
+                    jobs: JSON.parse(jobs),
+                    message: 'data retrieved from the cache',
+                })
+            } else {
+                const jobs = await axios.get(`https://jobs.github.com/positions.json?search=${searchTerm}`)
+                client.setex(searchTerm, 600, JSON.stringify(jobs.data))
+                res.status(200).send({
+                    jobs: jobs.data,
+                    message: 'cache miss',
+                })
+            }
+        })
+    } catch (err) {
+        res.status(500).send({ message: err.message })
+    }
+})
+app.listen(process.env.PORT || 3000, () => {
+    console.log('Node server started')
+})
+
+)
+code(Var)
+return

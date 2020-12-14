@@ -8,6 +8,67 @@ e => {
 code(Var)
 return
 
+
+::meihua::
+::pre::
+::per::
+::prett::
+Var =
+(
+beautify/prettier(vetur)
+---
+"[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+},
+"[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"prettier.singleQuote": true,
+"prettier.printWidth": 1993100337,
+"prettier.semi": false,
+"prettier.bracketSpacing": true,
+"prettier.endOfLine": "lf",
+"prettier.htmlWhitespaceSensitivity": "css",
+"prettier.insertPragma": false,
+"prettier.jsxBracketSameLine": false,
+"prettier.jsxSingleQuote": false,
+"prettier.proseWrap": "always",
+"prettier.quoteProps": "as-needed",
+"prettier.requirePragma": false,
+"prettier.trailingComma": "es5",
+"prettier.useTabs": false,
+"prettier.tabWidth": 4,
+"prettier.resolveGlobalModules": true,
+"prettier.arrowParens": "avoid",
+"vetur.format.defaultFormatterOptions": {
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "endOfLine": "lf",
+    "htmlWhitespaceSensitivity": "css",
+    "insertPragma": false,
+    "jsxBracketSameLine": false,
+    "jsxSingleQuote": false,
+    "printWidth": 999999,
+    "proseWrap": "always",
+    "quoteProps": "as-needed",
+    "requirePragma": false,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "es5",
+    "useTabs": false,
+    "vueIndentScriptAndStyle": false,
+    "parser": "babel"
+  }
+},
+)
+txtit(Var)
+return
+
 ::buding::
 ::xiubujiang::
 ::poly::

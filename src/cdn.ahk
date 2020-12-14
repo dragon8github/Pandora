@@ -1,4 +1,16 @@
-﻿::cdn-buerma::
+﻿::cdn-ol::
+::cdn-open::
+::cdn-openlayer::
+::cdn-openlayers::
+Var =
+(
+<link href="https://cdn.bootcss.com/openlayers/4.6.5/ol.css" rel="stylesheet" />
+<script src="https://cdn.bootcss.com/openlayers/4.6.5/ol.js"></script>
+)
+code(Var)
+return
+
+::cdn-buerma::
 ::cdn-bu::
 ::cdn-buma::
 ::cdn-woerma::

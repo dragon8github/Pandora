@@ -1018,6 +1018,8 @@ return
 ::blbl::
 ::$bb::
 ::bb::
+::kugou::
+::music::
 Var =
 (
 /**
@@ -1131,6 +1133,113 @@ Var =
 
 // 设置轮播区间
 $bb.poll('17:00', '17:50')
+---
+/**
+ * 参考资料
+ * https://www.cnblogs.com/yuan-luo/p/8330176.html
+ * https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/Using_HTML5_audio_and_video
+ */
+;(function(){
+  // 是否为字符串
+  const isString = input => Object.prototype.toString.call(input) === '[object String]'
+
+  // 是否为数字（支持字符串数字）
+  const isNumber = input => !isNaN(+input)
+
+  // 防错机制
+  const maybe = (fn, n = '') => {
+     try {
+        const result = fn()
+        return (result && result === result && result !== 'NaN' && result !== 'Invalid date') ? result : n
+     } catch (err) { return n }
+  }
+
+  // 将时间转化为秒
+  const time2second = t => {
+    // 如果是数字类型，直接返回
+    if (isNumber(t)) return +t
+
+    // 如果是字符串, 并且字符串中包含 ":"
+    if (isString(t) && t.includes(':')) {
+      // 切割为分秒，并且转化为数字类型
+        const [h, m] = t.split(':').map(n => maybe(_ => parseInt(n), 0))
+        // 转化为秒
+        return h * 60 + m
+    }
+
+    // 啥都不是就返回 0
+    return 0
+  }
+
+  const music = () => {
+    // 获取页面唯一的播放器
+      const video = document.querySelector('audio')
+
+      if (!video) return console.warn('🔔 找不到播放器')
+
+      // 获取播放时长（有可能获取失败）
+      let timeLength = maybe(_ => video.duration, 0)
+
+      // 存储区间列表
+      let __POLL__ = []
+
+      // 区间轮播功能
+      const poll = (a, b) => {
+          // loop
+        video.loop = true
+
+        // 转化为秒格式
+        let start = time2second(a), end = time2second(b)
+
+        // fix start
+        if (start < 0) start = 0
+
+        // fix end
+        if (end > timeLength) end = timeLength
+
+        // set poll
+        __POLL__ = [ start, end ]
+      }
+
+      // 清空区间轮播
+      const clearPoll = () => __POLL__ = []
+
+      // 监听播放进度
+      video.ontimeupdate = e => {
+        // 获取当前进度
+        const currentTime = e.target.currentTime
+
+        // 获取轮播区间
+        const [a, b] = __POLL__
+
+        // 如果时间不存在，那么不进行任何操作
+        // 如果结束时间是 0，那么也不进行任何操作
+        if (a == null || b == null || b == 0) return
+
+        // 如果当前进度在区间内，那么无事发生
+        if (currentTime > a && currentTime < b) {
+          // ...
+          return
+        }
+
+        // 否则，将进度条变更为区间起始位置
+        video.currentTime = a
+    }
+
+    // 获取资源成功，这时候肯定能获取播放时长
+    video.onloadedmetadata = e => {
+      timeLength = video.duration
+    }
+
+    // 返回相关辅助方法
+      return { poll, clearPoll }
+  }
+
+  window.$music = music()
+}());
+
+// 设置轮播区间
+$music.poll('02:54', '03:28')
 )
 txtit(Var)
 return
@@ -4836,15 +4945,6 @@ export const once = fn => {
 txtit(Var)
 return
 
-::!include::
-::!includes::
-Var =
-(
-a.filter(_ => !b.includes(_))
-)
-code(Var)
-return
-
 
 
 
@@ -5959,9 +6059,6 @@ const jiaoji = (a, b, p) => a.reduce((result, c) => {
 // [ { id: 2 }, { id: 3 } ]
 console.log(jiaoji(arr1, arr2, 'id'))
 ---
-// 数组交集
-ary1.filter(_ => ary2.includes(_))
----
 // 对象交集
 const intersection = (O1, O2) => Object.assign(...Object.keys(O1).map(k => {
     let temp
@@ -5985,6 +6082,18 @@ const intersection = (O1, O2) => Object.assign(...Object.keys(O1).map(k => {
 const a = { name: 'Alice', features: { speed: 3, strength: 90, mind: { power: 42 } } }
 const b = { name: 'Bob', features: { speed: 3, stamina: 1, mind: { power: 42, flexibility: 0, telekinesis: 42 } } }
 console.log(intersection(a, b))
+---
+// 数组交集
+ary1.filter(_ => ary2.includes(_))
+
+// 数组差集
+a.filter(_ => !b.includes(_))
+
+---
+// 多字符串包含判断
+if (['after', 'around'].includes(value)) {
+    // ...
+}
 )
 txtit(Var)
 return
@@ -11374,8 +11483,94 @@ func = func.before(function() {
 
 // 执行函数（C）
 func();
+---
+/**
+ * 原文地址：https://blog.bitsrc.io/aspect-oriented-programming-in-javascript-c4cb43f6bfcc
+ * gists: https://gist.githubusercontent.com/deleteman/1b73da25feabf32db33c611674eb1ca6/raw/cee7d652ea4d44220388dc86b13377f981f5fc76/aop.js
+ */
+
+/** 获取 class 中所有的 「函数名」 */
+const getMethods = obj => Object.getOwnPropertyNames(Object.getPrototypeOf(obj)).filter(item => typeof obj[item] === 'function')
+
+/** 核心工具 */
+const replaceMethod = (target, methodName, aspect, advice) => {
+    // 原始函数
+    const originMethod = target[methodName] 
+
+    // 修改函数引用
+    target[methodName] = (...args) => {
+
+        // before hook
+        if (['before', 'around'].includes(advice)) {
+            aspect.apply(target, args)
+        }
+
+        // 执行原函数
+        const returnedValue = originMethod.apply(target, args)
+
+        // after hook
+        if (['after', 'around'].includes(advice)) {
+            aspect.apply(target, args)
+        }
+
+        // retrun hook（⚠️注意⚠️，此处的设计是拦截返回值）
+        if ('return' == advice) {
+            return aspect.apply(target, [returnedValue])
+        }
+
+        // normal return 
+        return returnedValue
+    }
+}
+
+// 入口
+const inject = (target, aspect, advice, type, method = null) => {
+    // 如果是传入的类型是 「method」 ，那就是想注入特定某一个函数，这需要外部手动传入你想注入的 「函数名」
+    if (type == 'method') {
+        if (method != null) {
+            replaceMethod(target, method, aspect, advice)
+        } else {
+            throw new Error('Tryin to add an aspect to a method, but no method specified')
+        }
+    }
+    
+    // 否则就是注入所有函数
+    if (type == 'methods') {
+        getMethods(target).forEach(m => replaceMethod(target, m, aspect, advice))
+    }
+}
+
+//////////
+// demo //
+//////////
+
+class MyBussinessLogic {
+    add(a, b) { return a + b }
+    power(a, b) { return a ** b }
+    concat(a, b) { return a + b }
+}
+
+const o = new MyBussinessLogic()
+
+function loggingAspect(...args) {
+    console.log('Arguments received: ' + args)
+}
+
+function printType(value) {
+    console.log('Returned type: ' + typeof value)
+    
+    // ⚠️注意⚠️，此处的设计的 「return hook」 是会拦截返回值的，所以你必须手动返回
+    return value
+}
+
+inject(o, loggingAspect, 'before', 'methods')
+inject(o, printType, 'return', 'methods')
+
+o.add(2,2)
+o.power(2, 3)
+o.concat('hello', 'goodbye')
 )
-code(Var)
+txtit(Var)
 return
 
 ::eventtarget::
@@ -12214,6 +12409,9 @@ return
 ::uuid::
 Var = 
 (
+var url = URL.createObjectURL(new Blob())
+var uuid = url.substring(url.lastIndexOf('/') + 1)
+---
 // 9位 简易版
 const MdUuid = () => Math.random().toString(36).slice(4)
 MdUuid() // "r1mca5d4z"
@@ -14204,6 +14402,7 @@ Var =
 )
 code(Var)
 SendInput, {Up}
+Send, {left 3}
 Send, {ShiftDown}{left 16}{ShiftUp}
 Return
 
@@ -15303,6 +15502,9 @@ const memoized = fn => {
 	// setInterval( () => console.log(lookupTable) , 1000); // 可以通过解释这个来观察缓存的变化
 	return arg => lookupTable[arg] || (lookupTable[arg] = fn(arg));
 }
+
+// 参数标记缓存器（该版本只支持「单参数」标记缓存）
+const memoized = (fn, cache = {}) => arg => cache[arg] || (cache[arg] = fn(arg))
 
 // 阶乘的demo
 let fastFactorial = memoized(n => {
