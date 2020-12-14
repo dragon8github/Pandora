@@ -167,8 +167,6 @@ return
 ; tip2(GetKeyState("alt", "P"))
 ; return
 
-
-
 #!right::
 WinGet, OutputVar, MinMax, A
 if (OutputVar == 1) {
