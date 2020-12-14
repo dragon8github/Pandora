@@ -13786,3 +13786,57 @@ FileAppend,
 RunBy(name)
 run, % name
 return
+
+bdmapbasicmapv:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>设置地图3D视角</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <!-- http://lbsyun.baidu.com/jsdemo.htm#webgl0_1 -->
+    <script src="https://api.map.baidu.com/api?type=webgl&v=1.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <!-- https://mapv.baidu.com/gl/examples/ -->
+    <script src="https://mapv.baidu.com/build/mapv.min.js"></script>
+    <script src="https://unpkg.com/mapvgl/dist/mapvgl.min.js"></script>
+
+    <style>
+        body, html, #app {
+            width: 100`%;
+            height: 100`%;
+            overflow: hidden;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+</html>
+
+<script>
+    // 创建Map实例
+    var map = new BMapGL.Map("app")
+
+    // 初始化地图,设置中心点坐标和地图级别
+    map.centerAndZoom(new BMapGL.Point(113.75809648803107, 23.026434891551922), 19.5) 
+
+    //开启鼠标滚轮缩放
+    map.enableScrollWheelZoom(true) 
+
+    // 左右角度
+    map.setHeading(-16.2)
+
+    // 上下角度
+    map.setTilt(65.4)
+</script>
+),  %name%
+RunBy(name)
+run, % name
+return

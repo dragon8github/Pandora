@@ -507,6 +507,7 @@ Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
 Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
+Gui, Pandora:Add, Text, gbdmapbasicmapv W160, 新建百度地圖GL+mapv.html
 
 
 ; Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
@@ -1230,6 +1231,9 @@ Gui, Pandora:Add, Link, W140, <a href="http://service.tianditu.gov.cn/">服务�
 Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/server/MapService.html">地图服务-矢量API</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/api/js4.0/examples.html">示例中心：散点、mark</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/api/js4.0/opensource/source.html">集成D3效果</a>
+
+Gui, Pandora:Add, Text, W60 ys, 大为地图:
+Gui, Pandora:Add, Link, W60, <a href="http://19.106.86.238/ktdv/#cesium-docs/examples.html">官网示例</a>
 
 
 ;@css 

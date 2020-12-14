@@ -1,4 +1,12 @@
-﻿::xinguan::
+﻿::ol::
+Var =
+(
+openlayers
+)
+code(Var)
+return
+
+::xinguan::
 ::feiyan::
 ::yiqing::
 Var =
