@@ -1,4 +1,60 @@
-﻿::getpos::
+﻿::ol::
+::ol.html::
+::ol.base::
+::ol.init::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v5.3.0/build/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v5.3.0/css/ol.css" />
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #map {
+        width: 100`%;
+        height: 100`%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+</body>
+<script>
+// ol.Map 三部曲: target/layer/view
+const map = new ol.Map({
+    // 挂載 DOM
+    target: document.getElementById('map'),
+    // layer
+    layers: [
+        new ol.layer.Tile({ 
+            source: new ol.source.OSM()
+        })
+    ],
+    // view
+    view: new ol.View({
+        center: [0, 0],
+        zoom: 2
+    })
+})
+</script>
+</html>
+)
+txtit(Var)
+return
+
+
+::getpos::
 ::getpositon::
 Var =
 (

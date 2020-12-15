@@ -362,9 +362,10 @@ Gui, Pandora:Add, Link,, <a href="https://nginxconfig.io/">生成器nginxconfig.
 Gui, Pandora:Add, Link,, <a href="https://contrast-ratio.com/">颜色对比度</a>
 Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机颜色网</a>
 Gui, Pandora:Add, Link,, <a href="https://designkiki.com/colordoo/?ref=producthunt">颜色搭配神器</a>
-Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
-Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub 镜像仓库</a>
-Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux-command 命令搜索</a>
+
+Gui, Pandora:Add, Link,, <a href="https://www.remove.bg/">删除图像背景神器</a>
+Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
+Gui, Pandora:Add, Link,, <a href="https://www.checklist.design/">checklist.design</a>
 Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer</a>
 Gui, Pandora:Add, Link,, <a href="https://animate.style/">animate.css</a>
 Gui, Pandora:Add, Link,, <a href="https://animista.net/play/basic/slide-fwd">animista.css</a>
@@ -376,8 +377,9 @@ Gui, Pandora:Add, Link,, <a href="https://www.designwithai.com/aigradient">AI生
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 Gui, Pandora:Add, Link,, <a href="http://caibaojian.com/scb/jest.html">前端速查表</a>
-Gui, Pandora:Add, Link,, <a href="https://www.checklist.design/">checklist.design</a>
-Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
+; Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
+Gui, Pandora:Add, Link,, <a href="https://hub.docker.com/_/hello-world?tab=description">dockerhub 镜像仓库</a>
+Gui, Pandora:Add, Link,, <a href="https://wangchujiang.com/linux-command/">linux-command 命令搜索</a>
 Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">Pexels</a>
 ; Gui, Pandora:Add, Link,, <a href="https://pixabay.com/">Pixabay</a>
 ; Gui, Pandora:Add, Link,, <a href="https://www.canva.com/photos/free/">Canva</a>
@@ -388,7 +390,6 @@ Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">picjumbo山景</a>
 Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
-Gui, Pandora:Add, Link,, <a href="https://sharkle.com/">随机打开一个有趣</a>
 
 
 
@@ -403,12 +404,12 @@ Gui, Pandora:Add, Link,, <a href="https://mynoise.net/NoiseMachines/openOfficeNo
 Gui, Pandora:Add, Link,, <a href="https://chrome.google.com/webstore/category/extensions">Chomre商店</a>
 Gui, Pandora:Add, Link,, <a href="http://www.cnplugins.com/">Chomre国内镜像商店</a>
 Gui, Pandora:Add, Link,, <a href="https://es6console.com/k1yivejb/">es6console</a>
-Gui, Pandora:Add, Link,, <a href="https://www.24s.net/">24s付费视频盗版</a>
+; Gui, Pandora:Add, Link,, <a href="https://www.24s.net/">24s付费视频盗版</a>
 Gui, Pandora:Add, Link,, <a href="https://mapshaper.org/">旭均 - mapshaper</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">免费 API 大全</a>
-Gui, Pandora:Add, Link,, <a href="https://creator.nightcafe.studio/">世界名画生成器</a>
+; Gui, Pandora:Add, Link,, <a href="https://github.com/n0shake/Public-APIs">免费 API 大全</a>
+; Gui, Pandora:Add, Link,, <a href="https://creator.nightcafe.studio/">世界名画生成器</a>
 Gui, Pandora:Add, Link,, <a href="https://www.piliang.tech/reverse-geocoding">批量转经纬度（刘羲）</a>
-
+Gui, Pandora:Add, Link,, <a href="https://sharkle.com/">随机打开一个有趣</a>
 
 ;@1
 
@@ -424,7 +425,8 @@ Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建vue-form.html
 Gui, Pandora:Add, Text, gVueAnimateHtml W140, 新建vue-Animate.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
 Gui, Pandora:Add, Text, gNewvuetransitiongroupHtml W180,新建vue-transition-group
-Gui, Pandora:Add, Text, gzhilinghtml W180, 新建vue-directive实现拖拽
+Gui, Pandora:Add, Text, gzhilinghtml W180, 新建v-drag实现拖拽（mobile）
+Gui, Pandora:Add, Text, gzhilinghtmlpc W180, 新建v-drag实现拖拽（pc）
 Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令
 Gui, Pandora:Add, Text, gvtipzhiling W180, 新建v-tip指令
 Gui, Pandora:Add, Text, gvuelistenhtml W180, 新建vue $listen示例.html
