@@ -4,8 +4,8 @@
 ::cdn-openlayers::
 Var =
 (
-<link href="https://cdn.bootcss.com/openlayers/4.6.5/ol.css" rel="stylesheet" />
-<script src="https://cdn.bootcss.com/openlayers/4.6.5/ol.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v5.3.0/build/ol.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v5.3.0/css/ol.css" />
 )
 code(Var)
 return
