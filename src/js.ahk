@@ -10527,9 +10527,9 @@ return
 ::taobao::
 Var =
 (
-//////////////////////////////////////////////
-JavaScript
-//////////////////////////////////////////////
+////////////////
+// JavaScript //
+////////////////
 (function flexible (window, document) {
   var docEl = document.documentElement
   // set 1rem = viewWidth / 10
@@ -10546,9 +10546,10 @@ JavaScript
     }
   })
 }(window, document))
-//////////////////////////////////////////////
-scss
-//////////////////////////////////////////////
+---
+//////////
+// scss //
+//////////
 $root_fontsize: 192; // 因为效果图是1920 / 10
 // $base-font-size: 75px; //design iphone6: 375px * 2 / 10 = 75px; --design
 // $base-font-size: 32px; //design iphone3gs: 320px / 10 = 32px
@@ -10558,7 +10559,7 @@ $root_fontsize: 192; // 因为效果图是1920 / 10
     @return ($px / $root_fontsize ) * 1rem;
 }
 )
-code(Var)
+txtit(Var)
 return
 
 ::setline::
