@@ -393,7 +393,7 @@ Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">picjumbo山景</a>
 Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
-
+Gui, Pandora:Add, Link,, <a href="https://kentcdodds.com/blog/">Kent C. Dodds Blog</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：

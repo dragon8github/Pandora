@@ -1,4 +1,12 @@
-﻿::hover::
+﻿::yaosu::
+Var =
+(
+features
+)
+code(Var)
+return
+
+::hover::
 Var =
 (
 https://emilkowalski.github.io/css-effects-snippets/
@@ -13907,33 +13915,29 @@ code(Var)
 SendInput, {left 2} 
 return
 
+::fetch::
 ::fetch.post::
 ::fetchpost::
-Var =
-(
-fetch('http://127.0.0.1:7001/', {
-method: 'POST',
-mode: 'cors',
-headers: {'Content-Type': 'application/json;charset=utf-8'},
-body: JSON.stringify({ stage: this.stage, member: this.member })
-}).then(response => response.json())
-  .then(data => console.log(20180916201855, data))
-  .catch(err => { Notification.error({ title: 'Sorry...', message: err.message }) })
-  .finally(_ => this.loading = false)
-)
-code(Var)
-Return
-
-::fetch::
 Var =
 (
 fetch('https://api.github.com/users/gaearon/gists')
     .then(response => response.json())
     .then(data => console.log(20180916201855, data))
     .catch(err => { throw new Error(err.message) });
+---
+fetch('http://127.0.0.1:7001/', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {'Content-Type': 'application/json;charset=utf-8'},
+    body: JSON.stringify({ stage: this.stage, member: this.member })
+}).then(response => response.json())
+  .then(data => console.log(20180916201855, data))
+  .catch(err => { Notification.error({ title: 'Sorry...', message: err.message }) })
+  .finally(_ => this.loading = false)
 )
-code(Var)
-return
+txtit(Var)
+Return
+
 
 :?:.t::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec

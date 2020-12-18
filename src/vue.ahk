@@ -4412,6 +4412,7 @@ export default {
 code(Var)
 return
 
+::vuex.mm::
 ::vuex.mu::
 ::vuex.mutation::
 ::vuex.mutations::

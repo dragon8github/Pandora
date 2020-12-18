@@ -1,4 +1,16 @@
-﻿::md.table::
+﻿::mda::
+::mdlink::
+::md.a::
+::md.link::
+Var =
+(
+[文本内容](https://note.youdao.com/)
+)
+code(Var)
+return
+
+
+::md.table::
 ::md.t::
 Var =
 (
