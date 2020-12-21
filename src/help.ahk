@@ -272,6 +272,12 @@ fuck_h2 := img.Height
 fuck_wem := img.Width / 16
 fuck_hem := img.Height / 16
 
+
+
+fuck_wem2 := Floor(img.Width / 16)
+fuck_hem2 := Floor(img.Height / 16)
+
+
 ; 找到最后一个/的位置
 index := InStr(PicPath, "\", false, 0) + 1
 ; zip名字
@@ -279,6 +285,8 @@ zipname := SubStr(PicPath, index)
 
 Var = 
 (
+wem-%fuck_wem2% hem-%fuck_hem2%
+
 width="%fuck_w2%" height="%fuck_h2%"
 
 width: %fuck_w2%px;

@@ -3571,45 +3571,35 @@ t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
 <template>
-    <div class="%OutputVar%">
-        %OutputVar%
-    </div>
+  <div class="%OutputVar%">%OutputVar%</div>
 </template>
 
 <script>
 export default {
   name: '%OutputVar%',
-  data () {
+  data() {
     return {
-        items: [],
-        title: 'HelloWorld'
+      items: [],
+      title: 'HelloWorld',
     }
   },
   methods: {
-      go () {
-          console.log('go')
-      }
+    go() {
+      console.log('go')
+    },
   },
-  components: {
-
-  },
-  computed: {
-  
-  },
-  watch: {
-  
-  },
+  components: {},
+  computed: {},
+  watch: {},
   props: [],
-  beforeMount () {
-      console.log(%t%, '%OutputVar%')
-  }
+  beforeMount() {
+    console.log(20201221155003, '%OutputVar%')
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-
 .%OutputVar% {
-
 }
 </style>
 )
