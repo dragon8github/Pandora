@@ -3587,7 +3587,7 @@ export default {
   },
   methods: {
       go () {
-          console.log('go');
+          console.log('go')
       }
   },
   components: {
@@ -3601,7 +3601,7 @@ export default {
   },
   props: [],
   beforeMount () {
-      console.log(%t%, '%OutputVar%');
+      console.log(%t%, '%OutputVar%')
   }
 }
 </script>
