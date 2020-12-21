@@ -1,8 +1,8 @@
-﻿::zhuangtaiji::
 ::state::
 ::statemodel::
+::zhuangtaiji::
 Var =
-(
+(   
 // https://kentcdodds.com/blog/implementing-a-simple-state-machine-library-in-javascript
 function createMachine(stateMachineDefinition) {
     const machine = {
@@ -75,6 +75,117 @@ console.log(`current state: ${state}`)
 )
 txtit(Var)
 return
+
+
+::hover::
+Var =
+(
+https://emilkowalski.github.io/css-effects-snippets/
+---
+.pulseBtn {
+    padding: 12px 24px;
+    background-color: hsl(222, 100`%, 95`%);
+    color: hsl(243, 80`%, 62`%);
+    border-radius: 6px;
+    box-shadow: 0 0 0 0 rgba(230, 237, 255, 0.7);
+    animation: pulse 1.75s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulse {
+    to {
+      box-shadow: 0 0 0 30px rgba(230, 237, 255, 0);
+    }
+}
+---
+.borderLeftRight {
+    display: inline-block;
+    position: relative;
+    color: hsl(222, 25`%, 14`%);
+  }
+  
+  .borderLeftRight::after {
+    content: '';
+    position: absolute;
+    width: 100`%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: hsl(243, 80`%, 62`%);
+    transform-origin: bottom right;
+    transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+  
+  .borderLeftRight:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+---
+.circleScaleBtn {
+    padding: 12px 24px;
+    background-color: hsl(222, 100`%, 95`%);
+    color: hsl(243, 80`%, 62`%);
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.circleScaleBtn span {
+    z-index: 1;
+    position: relative;
+}
+
+.circleScaleBtn::before {
+    content: '';
+    position: absolute;
+    top: 50`%;
+    left: 50`%;
+    width: 140px;
+    height: 140px;
+    border-radius: 50`%;
+    transform: translate3d(-50`%,-50`%,0) scale3d(0,0,0);
+    transition: opacity .4s cubic-bezier(.19,1,.22,1),transform .75s cubic-bezier(.19,1,.22,1);
+    background-color: hsl(243, 80`%, 62`%);
+    opacity: 0;
+}
+
+.circleScaleBtn:hover span {
+    color: hsl(222, 100`%, 95`%);
+}
+
+.circleScaleBtn:hover::before {
+    opacity: 1;
+    transition-duration: .85s;
+    transform: translate3d(-50`%,-50`%,0) scale3d(1,1,1)
+}
+---
+.pushUpBtn {
+    padding: 12px 24px;
+    background-color: hsl(222, 100`%, 95`%);
+    color: hsl(243, 80`%, 62`%);
+    border-radius: 6px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+}
+
+.pushUpBtn:hover {
+    transform: translate3d(0px,-1px,0px);
+    background-color: hsl(222, 100`%, 92`%);
+    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+}
+)
+txtit(Var)
+return
+
+::yaosu::
+Var =
+(
+features
+)
+code(Var)
+return
+
 
 ::ol::
 ::ol.html::
@@ -13884,33 +13995,29 @@ code(Var)
 SendInput, {left 2} 
 return
 
+::fetch::
 ::fetch.post::
 ::fetchpost::
-Var =
-(
-fetch('http://127.0.0.1:7001/', {
-method: 'POST',
-mode: 'cors',
-headers: {'Content-Type': 'application/json;charset=utf-8'},
-body: JSON.stringify({ stage: this.stage, member: this.member })
-}).then(response => response.json())
-  .then(data => console.log(20180916201855, data))
-  .catch(err => { Notification.error({ title: 'Sorry...', message: err.message }) })
-  .finally(_ => this.loading = false)
-)
-code(Var)
-Return
-
-::fetch::
 Var =
 (
 fetch('https://api.github.com/users/gaearon/gists')
     .then(response => response.json())
     .then(data => console.log(20180916201855, data))
     .catch(err => { throw new Error(err.message) });
+---
+fetch('http://127.0.0.1:7001/', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {'Content-Type': 'application/json;charset=utf-8'},
+    body: JSON.stringify({ stage: this.stage, member: this.member })
+}).then(response => response.json())
+  .then(data => console.log(20180916201855, data))
+  .catch(err => { Notification.error({ title: 'Sorry...', message: err.message }) })
+  .finally(_ => this.loading = false)
 )
-code(Var)
-return
+txtit(Var)
+Return
+
 
 :?:.t::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec

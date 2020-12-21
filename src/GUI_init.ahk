@@ -377,6 +377,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.designwithai.com/aigradient">AI生
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/DZklaSmxaeVJEeWxm?tab=BB08J2">怪物图鉴</a>
+Gui, Pandora:Add, Link,, <a href="https://ruanyf.github.io/sina-news/">新浪实时新闻</a>
 Gui, Pandora:Add, Link,, <a href="http://maps.456ss.com/">世界地图</a>
 Gui, Pandora:Add, Link,, <a href="http://caibaojian.com/scb/jest.html">前端速查表</a>
 ; Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
@@ -392,7 +393,7 @@ Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">picjumbo山景</a>
 Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
-
+Gui, Pandora:Add, Link,, <a href="https://kentcdodds.com/blog/">Kent C. Dodds Blog</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：

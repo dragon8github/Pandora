@@ -1900,6 +1900,7 @@ return
 ::img::
 Var =
 (
+<!-- https://placeholder.com/ -->
 <img src="https://iph.href.lu/400x400" alt="..." />
 )
 code(Var)

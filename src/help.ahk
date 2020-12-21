@@ -1,4 +1,13 @@
-﻿::e::
+﻿::mac::
+Var =
+(
+alfred.Snippets
+)
+code(Var)
+return
+
+
+::e::
 Var =
 (
 e => {

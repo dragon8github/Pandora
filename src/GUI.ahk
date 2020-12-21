@@ -280,7 +280,7 @@ Fuck:
     }
 
     ; bilibili
-    if (cylee == 1) {
+    if (bilibili == 1) {
         RUN, https://search.bilibili.com/all?keyword=%SearchContent%
     }
 
