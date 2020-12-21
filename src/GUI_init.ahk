@@ -640,10 +640,17 @@ Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
 Gui, Pandora:Add, Link,, <a href="https://zeqfus.axshare.com/#id=1inhqq&p=`%E4`%BA`%BA`%E5`%8F`%A3`%E5`%BA`%93-jx`%E8`%AF`%84`%E5`%AE`%A1&g=1">原型地址</a>
 
 
+
 Gui, Pandora:Add, Text,  W140 ys xp+160, 私服仓库Nexus
 Gui, Pandora:Add, Link,, <a href="https://nexus.alltosea.com/">公司的Nexus</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/xueyoucd/p/9538126.html">搭建 npm 私服教程</a>
 Gui, Pandora:Add, Link,, <a href="https://www.sonatype.com/nexus-repository-oss">官方网站</a>
+
+
+Gui, Pandora:Add, Text,  W140 yp+50, 12345热线效能
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-hotline">源码地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/64/interface/api">yapi</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 东莞疫情
 Gui, Pandora:Add, Link,, <a href="http://fangyqgk.dg.cn/h5/#/Index">正式地址</a>

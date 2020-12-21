@@ -1,4 +1,14 @@
-﻿::mac::
+﻿::saibopk::
+::saibo::
+::saibopengke::
+Var =
+(
+cyberpunk（赛博朋克）
+)
+code(Var)
+return
+
+::mac::
 Var =
 (
 alfred.Snippets
