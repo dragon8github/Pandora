@@ -150,6 +150,7 @@
     Menu, CssMenu, Add, css 正则匹配选择器 实现拼音搜索, CssHandler
     Menu, CssMenu, Add, ::scrollbar 滚动条样式, CssHandler
     Menu, CssMenu, Add, 让body高度自适应屏幕, CssHandler
+    Menu, CssMenu, Add, 可以用 flex-basis: 48`% 来设置百分比（也可以 flex + margin）, CssHandler
     Menu, CssMenu, Add, flex + column + flex: 1 全屏高度解决方案, CssHandler
     Menu, CssMenu, Add, chrome-yellow, CssHandler2
     Menu, CssMenu, Add, css.placeholder, CssHandler2    
@@ -4289,8 +4290,7 @@ return
 ::wh::
 Var =
 (
-width: 100`%;
-height: 100`%;
+width: 100`%; height: 100`%;
 )
 code(Var)
 return
@@ -6496,155 +6496,113 @@ return
 ::utils.css::
 Var =
 (
+.debug { border: 1px solid #ccc; background: red; }
+.debug2 { border: 1px solid  #ccc; background: #737327; }
+.cup { cursor: pointer; }
+
+/********************* Margin || Padding *********************/
 @for $i from 0 through 10 {
    $em: $i * .25 + em;
-   .u-m-#{$i}  { margin: #{$em} }
-   .u-p-#{$i}  { padding: #{$em} }
-   .u-mx-#{$i} { margin-left: #{$em}; margin-right: #{$em}; }
-   .u-my-#{$i} { margin-top: #{$em};  margin-bottom: #{$em}; }
-   .u-px-#{$i} { padding-left: #{$em}; padding-right: #{$em}; }
-   .u-py-#{$i} { padding-top: #{$em};  padding-bottom: #{$em}; }
-   .u-mt-#{$i} { margin-top: #{$em} !important; }
-   .u-mr-#{$i} { margin-right: #{$em} !important; }
-   .u-mb-#{$i} { margin-bottom: #{$em} !important; }
-   .u-ml-#{$i} { margin-left: #{$em} !important; }
-   .u-pt-#{$i} { padding-top: #{$em} !important; }
-   .u-pr-#{$i} { padding-right: #{$em} !important; }
-   .u-pb-#{$i} { padding-bottom: #{$em} !important; }
-   .u-pl-#{$i} { padding-left: #{$em} !important; }
+   .m-#{$i}  { margin: #{$em} !important; }
+   .p-#{$i}  { padding: #{$em} !important; }
+   .mx-#{$i} { margin-left: #{$em}; margin-right: #{$em}; }
+   .my-#{$i} { margin-top: #{$em};  margin-bottom: #{$em}; }
+   .px-#{$i} { padding-left: #{$em}; padding-right: #{$em}; }
+   .py-#{$i} { padding-top: #{$em};  padding-bottom: #{$em}; }
+   .mt-#{$i} { margin-top: #{$em} !important; }
+   .mr-#{$i} { margin-right: #{$em} !important; }
+   .mb-#{$i} { margin-bottom: #{$em} !important; }
+   .ml-#{$i} { margin-left: #{$em} !important; }
+   .pt-#{$i} { padding-top: #{$em} !important; }
+   .pr-#{$i} { padding-right: #{$em} !important; }
+   .pb-#{$i} { padding-bottom: #{$em} !important; }
+   .pl-#{$i} { padding-left: #{$em} !important; }
 
-   .u-top-#{$i}    { top: #{$em} }
-   .u-right-#{$i}  { right: #{$em} }
-   .u-bottom-#{$i} { bottom: #{$em} }
-   .u-left-#{$i}   { left: #{$em} }
+   .top-#{$i}    { top: #{$em} }
+   .right-#{$i}  { right: #{$em} }
+   .bottom-#{$i} { bottom: #{$em} }
+   .left-#{$i}   { left: #{$em} }
 }
 
-.u-flex { display: flex; }
-.u-flex-wrap { flex-wrap: wrap; }
-.u-flex-column { flex-direction: column; }
-.u-flex-bs { display: flex; justify-content: space-between; align-items: flex-start; }
-.u-flex-bc { display: flex; justify-content: space-between; align-items: center; }
-.u-flex-be { display: flex; justify-content: space-between; align-items: flex-end; }
-.u-flex-ac { display: flex; justify-content: space-around; align-items: center; }
-.u-flex-sc { display: flex; justify-content: flex-start; align-items: center; }
-.u-flex-ss { display: flex; justify-content: flex-start; align-items: flex-start; }
-.u-flex-se { display: flex; justify-content: flex-start; align-items: flex-end; }
-.u-flex-ec { display: flex; justify-content: flex-end; align-items: center; }
-.u-flex-cc { display: flex; justify-content: center; align-items: center; }
-.u-flex-1 { flex: 1; } 
+/********************* Flex *********************/
+.flex { display: flex; }
+.flex-1 { flex: 1 };
+.flex-wrap { flex-wrap: wrap; }
+.flex-column { flex-direction: column; }
+.flex-bs { display: flex; justify-content: space-between; align-items: flex-start; }
+.flex-bc { display: flex; justify-content: space-between; align-items: center; }
+.flex-be { display: flex; justify-content: space-between; align-items: flex-end; }
+.flex-as { display: flex; justify-content: space-around; align-items: flex-start; }
+.flex-ac { display: flex; justify-content: space-around; align-items: center; }
+.flex-sc { display: flex; justify-content: flex-start; align-items: center; }
+.flex-ss { display: flex; justify-content: flex-start; align-items: flex-start; }
+.flex-se { display: flex; justify-content: flex-start; align-items: flex-end; }
+.flex-cc { display: flex; justify-content: center; align-items: center; }
+.flex-ce { display: flex; justify-content: center; align-items: flex-end; }
 
-.u-tr { text-align: right; }
-.u-tl { text-align: left; }
-.u-tc { text-align: center; }
-.u-nowrap { white-space: nowrap; }
+/********************* Text *********************/
+.tr { text-align: right; }
+.tl { text-align: left; }
+.tc { text-align: center; }
+.nowrap { white-space: nowrap; }
 
-.u-line-height-none    { line-height: 1     !important;  }
-.u-line-height-tight   { line-height: 1.25  !important;  }
-.u-line-height-snug    { line-height: 1.375 !important;  }
-.u-line-height-normal  { line-height: 1.5   !important;  }
-.u-line-height-relaxed { line-height: 1.625 !important;  }
-.u-line-height-loose   { line-height: 2     !important;  }
+/********************* Block *********************/
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.hide   { display: none; }
+.radius { border-radius: 50`%; }
+.radius-8 { border-radius: 8px }
 
-.u-hide   { display: none; }
-.u-radius { border-radius: 50`%; }
-.u-radius-2 { border-radius: rem(2) }
-.u-radius-8 { border-radius: rem(8) }
-.u-rounded { border-radius: rem(30); }
+/********************* Position *********************/
+.posr        { position: relative; }
+.posa        { position: absolute !important; }
+.center  { left:50`%; top:50`%; transform: translate(-50`%,-50`%);}
 
-.u-posr        { position: relative; }
-.u-posa        { position: absolute !important; }
-.u-top-0       { top: 0; }
-.u-left-0      { left: 0; }
-.u-right-0     { right: 0; }
-.u-bottom-0    { bottom: 0; }
-.u-pos-center  { left:50`%; top:50`%; transform: translate(-50`%,-50`%);}
+/********************* Width and Height *********************/
+@for $i from 0 through 100 {
+    .w-#{$i} {  width: $i * 1`%; }
+    .h-#{$i} { height: $i * 1`%; }
+    .wem-#{$i} { width:  $i * 1em; }
+    .hem-#{$i} { height: $i * 1em; }
+}
 
-.u-cup    { cursor: pointer; }
-.u-rotate { transform: rotate(180deg); }
+.full   { width: 100`%; height: 100`%; }
+.full-w { width: 100`% !important; }
+.full-h { height: 100`% !important; }
 
-.u-full   { width: 100`% !important;; height: 100`% !important; }
-.u-full-w { width: 100`% !important; }
-.u-full-h { height: 100`% !important; }
+/********************* Color *********************/
+.text-white { color: #fff; }
+.text-green { color: green; }
+.text-red   { color: #ed6d71; }
+.text-blue   { color: #0481F4; }
+.text-orange   { color: orange; }
+.text-yellow   { color: yellow; }
+.text-gray  { color: #9B9EAD; }
+.bg-white { background-color:#fff; }
 
-.u-w-1\/2 { width: 50`%; }
-.u-w-1\/3 { width: 33.333333`%; }
-.u-w-2\/3 { width: 66.666667`%; }
-.u-w-1\/4 { width: 25`%; }
-.u-w-2\/4 { width: 50`%; }
-.u-w-3\/4 { width: 75`%; }
-.u-w-1\/5 { width: 20`%; }
-.u-w-2\/5 { width: 40`%; }
-.u-w-3\/5 { width: 60`%; }
-.u-w-4\/5 { width: 80`%; }
-.u-w-1\/6 { width: 16.666667`%; }
-.u-w-2\/6 { width: 33.333333`%; }
-.u-w-3\/6 { width: 50`%; }
-.u-w-4\/6 { width: 66.666667`%; }
-.u-w-5\/6 { width: 83.333333`%; }
-.u-w-1\/12 { width: 8.333333`%; }
-.u-w-2\/12 { width: 16.666667`%; }
-.u-w-3\/12 { width: 25`%; }
-.u-w-4\/12 { width: 33.333333`%; }
-.u-w-5\/12 { width: 41.666667`%; }
-.u-w-6\/12 { width: 50`%; }
-.u-w-7\/12 { width: 58.333333`%; }
-.u-w-8\/12 { width: 66.666667`%; }
-.u-w-9\/12 { width: 75`%; }
-.u-w-10\/12 { width: 83.333333`%; }
-.u-w-11\/12 { width: 91.666667`%; }
-.u-w-12\/12 { width: 100`%; }
-
-.u-text-black { color: #000; }
-.u-text-white { color: #ffffff; }
-.u-text-green { color: #fff680; }
-.u-text-red { color: #ed6d71; }
-.u-text-blue { color: #0481F4; }
-.u-text-orange { color: orange; }
-.u-text-yellow { color: yellow; }
-.u-text-gray { color: #9B9EAD; }
-
-.f10 { font-size: rem(10); }
+/********************* Font *********************/
 .f12 { font-size: rem(12); }
-.f13 { font-size: rem(13); }
 .f14 { font-size: rem(14); }
 .f16 { font-size: rem(16); }
 .f18 { font-size: rem(18); }
 .f20 { font-size: rem(20); }
-.f21 { font-size: rem(21); }
 .f22 { font-size: rem(22); }
-.f23 { font-size: rem(23); }
 .f24 { font-size: rem(24); }
 .f26 { font-size: rem(26); }
-.f27 { font-size: rem(27); }
 .f28 { font-size: rem(28); }
 .f30 { font-size: rem(30); }
 .f32 { font-size: rem(32); }
 .f34 { font-size: rem(34); }
 .f36 { font-size: rem(36); }
 
-.u-bold { font-weight: bold; }
-.u-no-bold { font-weight: initial; }
-.u-font-italic { font-style: italic; }
+.bold { font-weight: bold; }
 
-.u-block { display: block; }
-.u-inline { display: inline; }
-.u-inline-block { display: inline-block; }
-
-.u-border-0 { border: none !important; }
-.u-border-4 { border: 4px solid; }
-.u-border-color-pink {  border-color: #174682; }
-.u-border-color-blue {  border-color: #0481F4; }
-.u-border-radius-0 { border-radius: 0 !important; }
-
-.u-bg-black-300 { background-color: rgba(0, 0, 0, .3); }
-.u-bg-black-800 { background-color: rgba(0, 0, 0, .8); }
-.u-bg-purple { background-color: #03265B !important; }
-.u-bg-blue   { background-color: #0481F4 !important; }
-.u-bg-purple-100 { background-color: rgba(5, 14, 52, 0.8) }
-.u-disabled {  opacity: .5;  }
-.u-event-none { pointer-events: none; opacity: .5;  }
-
-.u-hidden {border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+/********************* Block *********************/
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.auto { display: block; margin: 0 auto }
 )
 txtit(Var)
 return
@@ -7896,6 +7854,21 @@ Var =
   30`%, 50`%, 70`% { transform: translate3d(-2px, 0, 0); }
   40`%, 60`% { transform: translate3d(2px, 0, 0); }
 }
+)
+code(Var)
+return
+
+::hidescroll::
+::hiddenscroll::
+Var =
+(
+ @mixin opacityScrollbar {
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+}
+
 )
 code(Var)
 return
