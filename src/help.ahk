@@ -1,4 +1,31 @@
-﻿::saibopk::
+﻿::juhe::
+Var =
+(
+MarkerClusterer
+)
+code(Var)
+return
+
+::zonghe::
+::tongji::
+::zonglan::
+Var =
+(
+overview
+)
+code(Var)
+return
+
+::yiqing::
+::xinguan::
+Var =
+(
+Covid-19
+)
+code(Var)
+return
+
+::saibopk::
 ::saibo::
 ::saibopengke::
 Var =
@@ -299,6 +326,10 @@ width: %fuck_wem%em;
 height: %fuck_hem%em;
 
 @include bg(rem(%fuck_w2%), rem(%fuck_h2%), '~@/assets/%zipname%');
+
+const width = %fuck_w2%
+const height = %fuck_h2%
+
 ---
 <img src="data:image/png;base64,%base64% />
 )
