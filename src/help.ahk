@@ -1,4 +1,15 @@
-﻿::saibopk::
+﻿
+::jiaoc::
+::jiaocheng::
+::rumen::
+Var =
+(
+tutorial
+)
+code(Var)
+return
+
+::saibopk::
 ::saibo::
 ::saibopengke::
 Var =
@@ -299,6 +310,8 @@ width: %fuck_wem%em;
 height: %fuck_hem%em;
 
 @include bg(rem(%fuck_w2%), rem(%fuck_h2%), '~@/assets/%zipname%');
+
+%fuck_w2%, %fuck_h2%
 ---
 <img src="data:image/png;base64,%base64% />
 )

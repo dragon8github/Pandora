@@ -1077,47 +1077,54 @@ Var =
 (
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    html, body{
-        margin: 0;
-        padding: 0;
-        background-color: #ddd;
-    }
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #ddd;
+            }
 
-    #canvas {
-		width: 600px;
-		height: 300px;
-		margin: 20px;
-		background: #fff;
-    }
-    </style>
-</head>
+            #canvas {
+                margin: 20px;
+                background: #fff;
+            }
+        </style>
+    </head>
 
-<body>
-	<!--
-		当设置元素的width/height属性时，是同时修改了该元素本身大小和元素绘图表面的大小。
-		如果是通过 CSS 来设定canvas的大小，那么只会改变元素本身的大小，而不会影响到绘图表面。
-	-->
-	<canvas id='canvas' width='600' height='300'>
-		Canvas not supported
-	</canvas>
-</body>
-<script>
-var canvas = document.getElementById('canvas'),
-	context = canvas.getContext('2d');
+    <body>
+        <canvas id="canvas" width="600" height="300"> Canvas not supported </canvas>
+    </body>
+    <script>
+        const canvas = document.getElementById('canvas'),
+            ctx = canvas.getContext('2d')
 
-context.font = '38pt Arial';
-context.fillStyle = 'cornflowerblue';
-context.strokeStyle = 'blue';
+        const debug = function debug(ctx, x, y) {
+            ctx.clearRect(0, 0, ctx.width, ctx.height)
+            ctx.beginPath()
+            ctx.fillStyle = 'red'
+            ctx.arc(x, y, 5, 0, 2 * Math.PI)
+            ctx.fill()
+        }.bind(null, ctx)
 
-context.fillText('Hello Canvas', canvas.width / 2 - 150, canvas.height / 2 + 15);
-context.strokeText('Hello Canvas', canvas.width / 2 - 150, canvas.height / 2 + 15);
+        canvas.addEventListener('click', e => {
+            const x = e.pageX - canvas.getBoundingClientRect().left
+            const y = e.pageY - canvas.getBoundingClientRect().top
+            debug(x, y)
+            console.log(e, x, y)
+        })
 
-</script>
+        ctx.font = '38pt Arial'
+        ctx.fillStyle = 'cornflowerblue'
+        ctx.strokeStyle = 'blue'
+
+        ctx.fillText('Hello Canvas', canvas.width / 2 - 150, canvas.height / 2 + 15)
+        ctx.strokeText('Hello Canvas', canvas.width / 2 - 150, canvas.height / 2 + 15)
+    </script>
 </html>
 )
 }

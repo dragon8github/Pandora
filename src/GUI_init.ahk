@@ -376,6 +376,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.designwithai.com/aigradient">AI生
 
 
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
+Gui, Pandora:Add, Link,, <a href="https://www.iloveimg.com/zh-cn/crop-image">获取图片xywh</a>
 Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/DZklaSmxaeVJEeWxm?tab=BB08J2">怪物图鉴</a>
 Gui, Pandora:Add, Link,, <a href="https://ruanyf.github.io/sina-news/">新浪实时新闻</a>
 Gui, Pandora:Add, Link,, <a href="http://maps.456ss.com/">世界地图</a>
