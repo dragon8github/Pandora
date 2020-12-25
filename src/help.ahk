@@ -1,3 +1,21 @@
+﻿::chuizhi::
+::shuip::
+::shuiping::
+Var =
+(
+Vertical（垂直Y轴）/Horizontal（水平X轴）
+)
+code(Var)
+return
+
+::jiaoc::
+::jiaocheng::
+::rumen::
+Var =
+(
+tutorial
+return
+
 ﻿::juhe::
 Var =
 (
@@ -299,11 +317,8 @@ fuck_h2 := img.Height
 fuck_wem := img.Width / 16
 fuck_hem := img.Height / 16
 
-
-
 fuck_wem2 := Floor(img.Width / 16)
 fuck_hem2 := Floor(img.Height / 16)
-
 
 ; 找到最后一个/的位置
 index := InStr(PicPath, "\", false, 0) + 1
@@ -327,14 +342,16 @@ height: %fuck_hem%em;
 
 @include bg(rem(%fuck_w2%), rem(%fuck_h2%), '~@/assets/%zipname%');
 
+%fuck_w2%, %fuck_h2%
+
 const width = %fuck_w2%
 const height = %fuck_h2%
-
 ---
 <img src="data:image/png;base64,%base64% />
 )
 txtit(Var)
 }
+return
 
 #z::
 if (latestImageName) {
@@ -365,6 +382,7 @@ if (clipboard) {
     tip2("未找到图片，请重新截图")
 }
 return
+
 
 ::meihua::
 ::pre::
@@ -3186,6 +3204,3 @@ return
 +F12::
 Send, +{Insert}
 return
-
-
-
