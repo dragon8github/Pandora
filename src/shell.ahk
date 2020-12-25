@@ -107,7 +107,7 @@
 
 
 	
-	Menu, gitShellMenu, Add, git checkout 拉取远程分支的最佳实践 , ShellHandler2
+	Menu, gitShellMenu, Add, 📝 git checkout 拉取远程分支的最佳实践如下两步: , ShellHandler2
 	Menu, gitShellMenu, Add, git fetch origin test , ShellHandler2
 	Menu, gitShellMenu, Add, git checkout -b origin/test , ShellHandler2
 		

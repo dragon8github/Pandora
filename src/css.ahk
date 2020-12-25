@@ -128,6 +128,7 @@
 
     ; @1
     Menu, CssMenu, Add, CSS 生成配置配色方案, CssHandler
+    Menu, CssMenu, Add, CSS 黄金分割点 0.618, CssHandler
     Menu, CssMenu, Add, @apply 组合工具, CssHandler
     Menu, CssMenu, Add, @mixins 渐变色字体, CssHandler
     Menu, CssMenu, Add, 极简的页面加载动画：pageload, CssHandler
@@ -318,6 +319,20 @@ if (v == "") {
 Var =
 (
 )
+}
+
+if (v == "CSS 黄金分割点 0.618") {
+Var =
+(
+.layer {
+  background: red;
+  position: absolute;
+  left: 50`%;
+  top: calc((1 - 0.618) * 100`%);
+  transform: translate(-50`%, -50`%);
+}
+)
+return
 }
 
 if (v == "CSS 生成配置配色方案") {
@@ -4987,7 +5002,7 @@ Var =
 (
 position: absolute;
 left: 50`%;
-top: 50`%;
+top: 50`%; /* top: calc((1 - 0.618) * 100`%); */
 transform: translate(-50`%, -50`%);
 )
 code(Var)
