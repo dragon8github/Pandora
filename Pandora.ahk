@@ -178,7 +178,7 @@ if (OutputVar == 1) {
 WinMove, A, , A_ScreenWidth / 2, 0, A_ScreenWidth / 2, A_ScreenHeight - 70
 return
 
-!z::
+~!z::
 
 return
 
