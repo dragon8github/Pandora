@@ -8925,16 +8925,16 @@ Var =
 code(Var)
 return
 
-::vuex.help::
-::store.help::
-::help::
-::cs::
-::creates::
-::help.store::
-::storec::
-::storecreate::
-::create.store::
-::createstore::
+:?:vuex.help::
+:?:store.help::
+:?:help::
+:?:cs::
+:?:creates::
+:?:help.store::
+:?:storec::
+:?:storecreate::
+:?:create.store::
+:?:createstore::
 Var =
 (
 import { POST, GET } from '@/utils/request.js'
@@ -9017,7 +9017,7 @@ export const createStore = (store = {}) => {
     return __store__
 }
 ---
-// @/store/inject.js
+// @/store/inject.js（可选的，只有多目录多store才需要）
 import { maybe, doTry, debug } from '@/utils/utils.js'
 
 // 所有页面组件
@@ -9086,38 +9086,6 @@ export const inject = (VueComponent = AllComponents) => {
     })
 }
 ---
-// @/views/TestPage/store.js
-import { createStore } from '@/store/help'
-
-export default createStore({
-    actions: {
-        _data_202010200710 ({ commit, state, dispatch, rootState, getters, rootGetters, POST, GET }, payload) {
-          return POST('actuator/direct/search|【modules】数据治理-明细列表', { id: 202010200710 })
-        },
-    }
-})
----
-// app.vue
-<script>
-import { mapState } from 'vuex'
-
-export default {
-    data () {
-        return {
-
-        }
-    },
-    computed: {
-        ...mapState('driver', ['_fuckgod', ]),
-    },
-    beforeMount () {
-        setTimeout(() => {
-            console.log(20200826212013, this._fuckgod)
-        }, 3000);
-    },
-}
-</script>
----
 // https://github.com/robinvdvleuten/vuex-persistedstate#encrypted-local-storage
 import { Store } from "vuex";
 import createPersistedState from "vuex-persistedstate";
@@ -9137,6 +9105,75 @@ const store = new Store({
     }),
   ],
 });
+
+---
+// @/views/TestPage/store.js
+import { createStore } from '@/store/help'
+
+export default createStore({
+    actions: {
+        _data_202010200710 ({ commit, state, dispatch, rootState, getters, rootGetters, POST, GET }, payload) {
+          return POST('actuator/direct/search|【modules】数据治理-明细列表', { id: 202010200710 })
+        },
+    }
+})
+---
+// @/mixins/data.js
+import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
+
+export default {
+    computed: {
+        ...mapState('Hotline', [
+            '_data_2020123001',
+            '_data_2020123002',
+            '_data_2020123003',
+            '_data_2020123004',
+            '_data_2020123005',
+            '_data_2020123006',
+            '_data_2020123007',
+            '_data_2020123008',
+            '_data_2020123009',
+            '_data_2020123010',
+        ]),
+    },
+}
+---
+// app.vue
+<script>
+import { mapState } from 'vuex'
+
+export default {
+    data () {
+        return {
+
+        }
+    },
+    computed: {
+        ...mapState('driver', ['_data_2020123010', ]),
+    },
+    beforeMount () {
+        setTimeout(() => {
+            console.log(20200826212013, this._data_2020123010)
+        }, 3000);
+    },
+}
+</script>
+// 通过 mixins fangshi 使用
+<script>
+import dataMixins from '@/mixins/data'
+export default {
+    name: 'app',
+    mixins: [dataMixins],
+    data() {
+        return {}
+    },
+    beforeMount() {
+        setTimeout(() => {
+            console.log(20201231155312, this._data_2020123010)
+        }, 3000);    
+    },
+}
+</script>
 )
 txtit(Var)
 return

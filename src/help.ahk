@@ -1,4 +1,24 @@
-﻿::chuizhi::
+﻿::android::
+::anzhuo::
+Var =
+(
+Android（袁杰）
+)
+code(Var)
+return
+
+
+
+::xiangcao::
+::xiangcaojs::
+Var =
+(
+Vanilla JavaScript
+)
+code(Var)
+return
+
+::chuizhi::
 ::shuip::
 ::shuiping::
 Var =
@@ -766,7 +786,7 @@ return
 	access_token := getBaiDuAccessToken()
 	
 	ToolTip, 正在请求百度 OCR 接口
-    SetTimer, RemoveToolTip, -2500
+  SetTimer, RemoveToolTip, -2500
 	
 	; 开始调用解析
 	content := getBaiDuOcr(base64, access_token)

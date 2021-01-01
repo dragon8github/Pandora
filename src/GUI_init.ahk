@@ -320,19 +320,21 @@ Gui, Pandora:Add, Link,, <a href="https://cloud.minapp.com/">知晓云</a>
 Gui, Pandora:Add, Link,, <a href="https://www.leancloud.cn/">Leancloud</a>
 Gui, Pandora:Add, Link,, <a href="http://www.taokouling.com/index/taobao_tkljm">淘宝口令解密</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ucdrs.superlib.net/">全国图书馆参考联盟</a>
-Gui, Pandora:Add, Link,, <a href="https://itpdf.de">电子书列表</a>
-Gui, Pandora:Add, Link,, <a href="http://www.broadview.com.cn/book">博文视点（找新书）</a>
-Gui, Pandora:Add, Link,, <a href="https://youquhome.com/">有趣网址之家</a>
-Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a>
-Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
+; Gui, Pandora:Add, Link,, <a href="https://itpdf.de">电子书列表</a>
+; Gui, Pandora:Add, Link,, <a href="http://www.broadview.com.cn/book">博文视点（找新书）</a>
+; Gui, Pandora:Add, Link,, <a href="https://youquhome.com/">有趣网址之家</a>
+; Gui, Pandora:Add, Link,, <a href="https://creatorsdaily.com/">创业者日报</a>
+; Gui, Pandora:Add, Link,, <a href="https://fuun.fun/">fuun.fun</a>
 Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客收录</a>
-Gui, Pandora:Add, Link,, <a href="https://web.dev/fast/">web.dev 优化教程</a>
+; Gui, Pandora:Add, Link,, <a href="https://web.dev/fast/">web.dev 优化教程</a>
 ; Gui, Pandora:Add, Link,, <a href="https://www.getrevue.co/profile/tailwind-weekly">tailwind-weekly</a>
 ; Gui, Pandora:Add, Link,, <a href="https://outflank.nl/blog/2018/08/14/html-smuggling-explained/">黑客思维</a>
 Gui, Pandora:Add, Link,, <a href="https://daily.dev/categories/weekly-picks">daily.dev</a>
 Gui, Pandora:Add, Link,, <a href="https://www.thoughtworks.com/cn/radar">thoughtworks</a>
 Gui, Pandora:Add, Link,, <a href="https://overreacted.io/">Dan大牛的博客</a>
-
+Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
+Gui, Pandora:Add, Link,, <a href="https://kentcdodds.com/blog/">Kent C. Dodds Blog</a>
+Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/giserhome/p/13379672.html">博客园 GIS之家</a>
 
 
 
@@ -392,10 +394,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">Pexels</a>
 ; Gui, Pandora:Add, Link,, <a href="https://isorepublic.com/">ISO</a>
 Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a>
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">picjumbo山景</a>
-Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
-Gui, Pandora:Add, Link,, <a href="https://kentcdodds.com/blog/">Kent C. Dodds Blog</a>
-Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/giserhome/p/13379672.html">博客园 GIS之家</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：
@@ -497,7 +497,6 @@ Gui, Pandora:Add, Text, gechartsqipaodongtai W180, 新建 echarts 气泡动态�
 
 
 Gui, Pandora:Add, Text, gbasicbaiduditu W160 ys x+60, 新建基础百度地图.html
-Gui, Pandora:Add, Text, gmapVbaiduhtml W160, 新建百度地图 + mapV.html
 Gui, Pandora:Add, Text, gechartsZGDT W180, echarts中国地图（下沉）.html
 Gui, Pandora:Add, Text, gechartsZGDTchun W180, echarts中国地图（纯）.html
 Gui, Pandora:Add, Text, gyanzhengzuobiaodian1 W180, 验证坐标点是否在多边形内
@@ -510,12 +509,12 @@ Gui, Pandora:Add, Text, gquuyguihua W180, 百度地图区域规划.html
 Gui, Pandora:Add, Text, gmapv2fuckhtml W160, 新建 mapV文本+图形.html
 Gui, Pandora:Add, Text, gmapv2fuckhtml2 W160, 新建 mapV文本+图形2.html
 Gui, Pandora:Add, Text, gmapvlightrudong W160, 新建 mapV 光线蠕动轨迹
-
 Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
 Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
-Gui, Pandora:Add, Text, gbdmapbasicmapv W160, 新建百度地圖GL+mapv.html
+Gui, Pandora:Add, Text, gbdmapbasicmapv W160, 新建百度地图GL+mapv.html
+Gui, Pandora:Add, Text, gmapVbaiduhtml W160, 新建百度地图 + mapV.html
 
 
 ; Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html
@@ -652,6 +651,14 @@ Gui, Pandora:Add, Link,, <a href="https://www.sonatype.com/nexus-repository-oss"
 Gui, Pandora:Add, Text,  W140 yp+50, 12345热线效能
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-hotline">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/64/interface/api">yapi</a>
+
+Gui, Pandora:Add, Text,  W140 yp+50, 疫情地图
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/covid-19">源码地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/68/interface/api">yapi</a>
+
+
+Gui, Pandora:Add, Text,  W140 yp+50, 大屏后台指标管理系统
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/bigscreen-admin">源码地址</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 东莞疫情

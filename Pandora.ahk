@@ -61,6 +61,7 @@ global __ALTCTRL__ := []
 
 #Include src/elementui.ahk	      ; elementUI
 #Include src/echarts.ahk	      ; echarts
+#Include src/openlayer.ahk        ; openlayer  
 #include src/css.ahk              ; css
 #Include src/vue.ahk              ; Vue
 #Include src/arr.ahk              ; array
@@ -177,8 +178,3 @@ if (OutputVar == 1) {
 
 WinMove, A, , A_ScreenWidth / 2, 0, A_ScreenWidth / 2, A_ScreenHeight - 70
 return
-
-~!z::
-
-return
-
