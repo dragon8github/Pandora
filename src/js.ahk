@@ -1,4 +1,129 @@
-﻿::state::
+﻿::hightchart::
+::3dpin::
+::hichart::
+::highchart::
+::highc::
+Var =
+(
+<template>
+    <highcharts class="effectCircle" :options="options" :highcharts="Highcharts" />
+</template>
+
+<script>
+import { Chart } from 'highcharts-vue'
+import Highcharts3D from 'highcharts/highcharts-3d'
+import Highcharts from 'highcharts'
+import { adaptaWall } from '@/utils/utils'
+
+Highcharts3D(Highcharts)
+
+export default {
+    name: 'effectCircle',
+    data() {
+        return {
+            options: {
+                chart: {
+                    type: 'pie',
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    options3d: {
+                        enabled: true,
+                        alpha: 55,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}',
+                        },
+                    },
+                },
+                tooltip: {
+                    pointFormat: '<div id="fuckyou">123</div>',
+                },
+                title: {
+                    text: '',
+                },
+                plotOptions: {
+                    pie: {
+                        innerSize: 100,
+                        depth: 65,
+                    },
+                },
+                series: [
+                    {
+                        name: 'Delivered amount',
+                        data: [
+                            ['Bananas', 8],
+                            ['Kiwi', 3],
+                            ['Mixed nuts', 1],
+                            ['Oranges', 6],
+                            ['Apples', 8],
+                            ['Pears', 4],
+                            ['Clementines', 4],
+                            ['Reddish (bag)', 1],
+                            ['Grapes (bunch)', 1],
+                        ],
+                    },
+                ],
+            },
+            Highcharts,
+        }
+    },
+    components: {
+        highcharts: Chart,
+    },
+}
+</script>
+
+<style lang='scss' scoped>
+.effectCircle {
+    background-color: transparent;
+}
+</style>
+---
+Highcharts.chart('container', {
+    chart: {
+        type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45
+        }
+    },
+    title: {
+        text: ''
+    },
+    tooltip: '',
+    plotOptions: {
+        pie: {
+            innerSize: 100,
+            depth: 45,
+        }
+    },
+    series: [{
+        name: 'Delivered amount',
+        events: {
+            mouseOver: function(e) {
+                console.log(20210105152807, e)
+            },
+            mouseOut: function() {
+
+            }
+        },
+        data: [
+            ['Bananas', 8],
+            ['Kiwi', 3],
+            ['Mixed nuts', 1],
+            ['Oranges', 6],
+            ['Apples', 8],
+            ['Pears', 4],
+            ['Clementines', 4],
+            ['Reddish (bag)', 1],
+            ['Grapes (bunch)', 1]
+        ]
+    }]
+});
+)
+txtit(Var)
+return
+
+::state::
 ::statemodel::
 ::zhuangtaiji::
 Var =

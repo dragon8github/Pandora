@@ -651,6 +651,10 @@ Gui, Pandora:Add, Link,, <a href="https://www.sonatype.com/nexus-repository-oss"
 Gui, Pandora:Add, Text,  W140 yp+50, 12345热线效能
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-hotline">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/64/interface/api">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/hotline-12345/">正式预览</a>
+Gui, Pandora:Add, Link,, <a href="https://master.paas.com:8443/console/project/app/browse/dc/hotline-12345?tab=history">部署</a>
+
+
 
 Gui, Pandora:Add, Text,  W140 yp+50, 疫情地图
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/covid-19">源码地址</a>

@@ -5556,13 +5556,15 @@ return
 Var =
 (
 watch: {
-   text: {
-      deep: true,
-      immediate: true,
-      handler(newV, oldV) {
-         this.mytext = newV
+  data_20201229700: {
+    deep: true,
+    immediate: true,
+    handler(newV, oldV) {
+      if (newV) {
+
       }
-   }
+    },
+  },
 },
 )
 code(Var)
@@ -6915,7 +6917,6 @@ export default {
 txtit(Var)
 return
 
-::mapbox::
 ::msgbox::
 ::vuebox::
 ::vue.box::

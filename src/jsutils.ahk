@@ -8938,7 +8938,9 @@ return
 Var =
 (
 import { POST, GET } from '@/utils/request.js'
-import { deepCopy } from "@/utils/utils"
+import { deepCopy, doTryAsync } from '@/utils/utils'
+
+const getStatusKey = key => key + '_status'
 
 // fixbug: 如果直接修改 state 不行的话，能否顺便生成 mutations 。 用 mutations 的 commit 来解决赋值的问题。
 // 而且这样更加规范。那么问题来了，我好像没有办法「自动」拿到 commit
@@ -8962,33 +8964,39 @@ export const createStore = (store = {}) => {
         // 如果还没有注册的话，那就初始化一个
         obj[key] = null
 
+        // news: 迭代一个「状态记录器」，譬如 _data_2020123008 => _data_2020123008_status
+        obj[getStatusKey(key)] = null
+
         // 迭代
         return obj
     }, __store__.state)
-    
+
     // fixbug：备份默认 state
     const init_state = deepCopy(__store__.state)
-    
-    // 初始化 store.mutations
-    __store__.mutations =  Object.entries(__store__.actions).reduce((obj, [key, action]) => {
-        // 同名 mutatios
-        obj[key] = function (state, payload) {
-            // 新增：如果是 __ 开头，那么无视任何情况，直接赋值
-            const special = key.includes('__')
 
+    // 初始化 store.mutations
+    __store__.mutations = Object.entries(__store__.actions).reduce((obj, [key, action]) => {
+        // 同名 mutatios
+        obj[key] = function(state, payload) {
             // 判断状态是否相等
             const isSame = JSON.stringify(state[key]) === JSON.stringify(payload)
             // 只有「不相等」我才重新赋值
-            if (!isSame || special) {
+            if (!isSame) {
                 // 同名 state
                 state[key] = payload
             }
         }
+
+        // news: 状态管理 mutations，譬如 _data_2020123008 => _data_2020123008_status
+        obj[getStatusKey(key)] = function(state, payload) {
+            state[getStatusKey(key)] = payload
+        }
+
         return obj
     }, __store__.mutations || {})
 
     // fixbug: 重置
-    __store__.mutations['RESET_ALL'] = function (state) {
+    __store__.mutations['RESET_ALL'] = function(state) {
         Object.entries(init_state).forEach(val => {
             const [key, defaultValue] = val
             state[key] = defaultValue
@@ -8998,92 +9006,30 @@ export const createStore = (store = {}) => {
     // 初始化 store.actions
     __store__.actions = Object.entries(__store__.actions).reduce((obj, [key, action]) => {
         // 重载
-        obj[key] = async function (context, payload) {
+        obj[key] = async function(context, payload) {
             // inject the POST/GET
             Object.assign(context, { POST, GET })
-            // 获取返回值
-            const result = await action(context, payload)
+
+            // 函数引用
+            const _action = action.bind(null, context, payload)
+
+            // 「捕获执行」 - 获取报错信息和返回值
+            context.commit(getStatusKey(key), 'loading')
+            const [err, result] = await doTryAsync(_action)
+            err ? context.commit(getStatusKey(key), 'error') : context.commit(getStatusKey(key), 'finish')
+
             // 调用 commit
             context.commit(key, result)
+
             // 照常返回数据
             return result
         }
-
         // 迭代
         return obj
     }, __store__.actions || {})
 
     // 返回最终 store
     return __store__
-}
----
-// @/store/inject.js（可选的，只有多目录多store才需要）
-import { maybe, doTry, debug } from '@/utils/utils.js'
-
-// 所有页面组件
-const AllComponents = require.context('@/views', true, /\.vue$/)
-
-// 获取路径
-const getPath = p => p.substr(0, p.lastIndexOf('/')).replace(/src\//, '')
-
-// 获取最后一个路径
-const getLastPath = p => p.substr(p.lastIndexOf('/') + 1)
-
-// 是否具备 store.js 
-const getStore = (function() {
-    // memoized
-    let cache = {}
-    
-    return p => {
-        // 是否存在缓存？
-        if (cache[p]) return cache[p]
-
-        // 用 try 来尝试引入 store.js，如果报错了则表示不存在
-        let [err, result] = doTry(_ => require(`@/${p}/store.js`))
-    
-        // 如果报错返回 False，没报错则返回 store，并且加入缓存
-        return err ? false : cache[p] = result
-    }
-}())
-
-export const inject = (VueComponent = AllComponents) => {
-    VueComponent.keys().forEach(path => {
-        // 直接获取文件内容的引用
-        const output = VueComponent(path).default
-
-        // 获取组件路径
-        const p = getPath(output.__file)
-
-        // 是否包含 store.js 
-        const store = getStore(p)
-
-        // 如果具备 store.js 才进行处理
-        if (store) {
-            // init methods 
-            if (!output.methods) output.methods = {}
-
-            // init computed 
-            if (!output.computed) output.computed = {}
-            
-            // 找到模块名（如果具备 store.js，那么最后一个路径就是 Module 了）
-            const __module = getLastPath(p)
-    
-            // inject __module methods
-            output.methods['__module'] = () => __module
-
-            // state
-            const state = maybe(_ => store.default.state, [])
-
-            // inject store
-            Object.keys(state).forEach(key => {
-                // 这里由于要使用 this 上下文，所以千万别用箭头函数
-                output.computed[key] = function () {
-                    // such as: this.$store.state.Apart.dataAggreData
-                    return this.$store.state[__module][key]
-                }
-            })
-        }
-    })
 }
 ---
 // https://github.com/robinvdvleuten/vuex-persistedstate#encrypted-local-storage

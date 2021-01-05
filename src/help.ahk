@@ -1,4 +1,12 @@
-﻿::android::
+﻿::huayong::
+Var =
+(
+华勇（warrenyon@163.com）
+)
+code(Var)
+return
+
+::android::
 ::anzhuo::
 Var =
 (
@@ -356,6 +364,7 @@ height: %fuck_h2%px;
 
 width: rem(%fuck_w2%);
 height: rem(%fuck_h2%);
+background: transparent url('~@/assets/%zipname%') center center / 100`% 100`%;
 
 width: %fuck_wem%em;
 height: %fuck_hem%em;
