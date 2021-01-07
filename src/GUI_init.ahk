@@ -515,6 +515,7 @@ Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 Gui, Pandora:Add, Text, gbdmapbasicmapv W160, 新建百度地图GL+mapv.html
 Gui, Pandora:Add, Text, gmapVbaiduhtml W160, 新建百度地图 + mapV.html
+Gui, Pandora:Add, Text, gbasicbaidudituquanjingtu W160, 新建百度地图全景图.html
 
 
 ; Gui, Pandora:Add, Text, gtiandituhtml ,新建天地图.html

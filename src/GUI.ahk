@@ -13924,3 +13924,73 @@ new Vue({
 RunBy(name)
 run, % name
 return
+
+basicbaidudituquanjingtu:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <!-- 百度地图 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+        width: 100`%;
+        height: 100`%;
+    }
+
+    #panorama {width:100`%; height: 500px;}
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <div id="panorama"></div>
+</body>
+<script>
+const map = window.map = new BMap.Map("app")
+
+// 创建地图实例
+let point = new BMap.Point(105.403119, 38.028658)
+
+// 开启鼠标滚轮缩放
+map.enableScrollWheelZoom(true);
+
+// 创建点坐标（东莞全貌）
+map.centerAndZoom(new BMap.Point(113.843319, 22.921901), 11)
+
+// 地图自定义样式
+map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "stylers": { "color": "#044161" } }, { "featureType": "land", "elementType": "all", "stylers": { "color": "#091934" } }, { "featureType": "boundary", "elementType": "geometry", "stylers": { "color": "#064f85" } }, { "featureType": "railway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "highway", "elementType": "geometry", "stylers": { "color": "#004981" } }, { "featureType": "highway", "elementType": "geometry.fill", "stylers": { "color": "#005b96", "lightness": 1 } }, { "featureType": "highway", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "arterial", "elementType": "geometry", "stylers": { "color": "#004981", "lightness": -39 } }, { "featureType": "arterial", "elementType": "geometry.fill", "stylers": { "color": "#00508b" } }, { "featureType": "poi", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "green", "elementType": "all", "stylers": { "color": "#056197", "visibility": "off" } }, { "featureType": "subway", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "manmade", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "local", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "arterial", "elementType": "labels", "stylers": { "visibility": "off" } }, { "featureType": "boundary", "elementType": "geometry.fill", "stylers": { "color": "#029fd4" } }, { "featureType": "building", "elementType": "all", "stylers": { "color": "#1a5787" } }, { "featureType": "label", "elementType": "all", "stylers": { "visibility": "off" } }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": { "color": "#ffffff" } }, { "featureType": "poi", "elementType": "labels.text.stroke", "stylers": { "color": "#1e1c1c" } }, { "featureType": "administrative", "elementType": "labels", "stylers": { "visibility": "on" } }, { "featureType": "road", "elementType": "labels", "stylers": { "visibility": "off" } }] })
+
+map.addEventListener('click', e => {
+    var marker = new BMap.Marker(e.point)
+    map.addOverlay(marker)
+    console.log(20200917160429, marker)
+
+    var panorama = new BMap.Panorama('panorama'); 
+    panorama.setPov({heading: -40, pitch: 6});
+    // panorama.setPosition(new BMap.Point(120.320032, 31.589666)); //根据经纬度坐标展示全景图     
+    panorama.setPosition(e.point); //根据经纬度坐标展示全景图     
+})
+</script>
+
+</html>
+),  %name%
+RunBy(name)
+run, % name
+return

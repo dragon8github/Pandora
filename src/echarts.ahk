@@ -1,4 +1,19 @@
-﻿::echarts.heat::
+﻿::echarts.img::
+::echarts.icon::
+::echarts.image::
+Var =
+(
+let spiritA = `image://${require('@/assets/icon-circleA.png')}`;
+
+{
+    symbol: spiritA,
+    symbolSize: [15, 15],
+}
+)
+txtit(Var)
+return
+
+::echarts.heat::
 ::echarts.hot::
 ::echart.heat::
 ::echart.hot::
