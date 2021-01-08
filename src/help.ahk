@@ -1,4 +1,13 @@
-﻿::huayong::
+﻿::fbl::
+::fenibanlv::
+Var =
+(
+Resolution
+)
+code(Var)
+return
+
+::huayong::
 Var =
 (
 华勇（warrenyon@163.com）
