@@ -9015,9 +9015,16 @@ export const createStore = (store = {}) => {
 
             // 「捕获执行」 - 获取报错信息和返回值
             context.commit(getStatusKey(key), 'loading')
-            const [err, result] = await doTryAsync(_action)
-            err ? context.commit(getStatusKey(key), 'error') : context.commit(getStatusKey(key), 'finish')
 
+            const [err, result] = await doTryAsync(_action)
+            
+            if (err) {
+                console.warn(`[store.help Error Message]: ` + err)
+                context.commit(getStatusKey(key), 'error')
+            } else {
+                context.commit(getStatusKey(key), 'finish')
+            }
+            
             // 调用 commit
             context.commit(key, result)
 
@@ -9081,6 +9088,52 @@ export default {
             '_data_2020123009',
             '_data_2020123010',
         ]),
+    },
+}
+---
+import store from '@/store'
+import { mapState, mapActions } from 'vuex'
+
+const data = Object.entries(store.state).reduce((obj, [key, val]) => {
+    // 类似这样：mapState('General', [ '_data_20201229100' ]),
+    const _mapState = mapState(key, Object.keys(val))
+
+    // 合并为一个大对象待会一次性拆分
+    return Object.assign({}, obj, _mapState)
+}, {})
+
+export const getMixins = name => {
+    // fixbug: 兼容大小写问题，仅是为了开发友好
+    const _name = Object.keys(store.state).find(_ => _.toUpperCase() === name.toUpperCase())
+
+    // news: $actions
+    const $actions = Object.entries(store._actions).reduce((p, [key, val]) => {
+        // 按照 / 切割路径
+        const paths = key.split('/')
+
+        // 获取最后一个，也就是我们的 action 名字了
+        const actionsName = paths[paths.length - 1]
+
+        // 设置为 $data_20201229900 的语法
+        // fixbug: 不知道为什么 val 是一个数组，但我们只要第一个
+        p['$' + actionsName] = actionsName
+
+        return p
+    }, {})
+
+    return {
+        computed: {
+            ...mapState(_name, Object.keys(store.state[_name]))
+        },
+        methods: {
+            ...mapActions(_name, $actions),
+        }
+    }
+}
+
+export default {
+    computed: {
+        ...data
     },
 }
 ---
