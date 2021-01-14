@@ -8938,7 +8938,7 @@ return
 Var =
 (
 import { POST, GET } from '@/utils/request.js'
-import { deepCopy, doTryAsync } from '@/utils/utils'
+import { deepCopy, doTryAsync, killerQueen } from '@/utils/utils'
 
 const getStatusKey = key => key + '_status'
 
@@ -8964,7 +8964,7 @@ export const createStore = (store = {}) => {
         // 如果还没有注册的话，那就初始化一个
         obj[key] = null
 
-        // news: 迭代一个「状态记录器」，譬如 _data_2020123008 => _data_2020123008_status
+        // news: 迭代一个「状态记录器」，譬如 __data_2020123008 => __data_2020123008_status
         obj[getStatusKey(key)] = null
 
         // 迭代
@@ -8987,7 +8987,7 @@ export const createStore = (store = {}) => {
             }
         }
 
-        // news: 状态管理 mutations，譬如 _data_2020123008 => _data_2020123008_status
+        // news: 状态管理 mutations，譬如 __data_2020123008 => __data_2020123008_status
         obj[getStatusKey(key)] = function(state, payload) {
             state[getStatusKey(key)] = payload
         }
@@ -9010,13 +9010,21 @@ export const createStore = (store = {}) => {
             // inject the POST/GET
             Object.assign(context, { POST, GET })
 
+            // 打开 loading
+            const close = killerQueen(
+                () => context.commit(getStatusKey(key), 'loading'), 
+                () => context.commit(getStatusKey(key), 'timeout'),
+                10 * 1000
+            `)
+
             // 函数引用
             const _action = action.bind(null, context, payload)
 
             // 「捕获执行」 - 获取报错信息和返回值
-            context.commit(getStatusKey(key), 'loading')
-
             const [err, result] = await doTryAsync(_action)
+            
+            // 关掉倒计时，并且不触发 cancel 函数
+            close(false)
             
             if (err) {
                 console.warn(`[store.help Error Message]: ` + err)
@@ -9024,7 +9032,7 @@ export const createStore = (store = {}) => {
             } else {
                 context.commit(getStatusKey(key), 'finish')
             }
-            
+
             // 调用 commit
             context.commit(key, result)
 
@@ -9525,37 +9533,46 @@ return
 ::killq::
 Var =
 (
+
 /**
- * 第一炸弹：启动一个loading，超时自动关闭。
+ * 简单的超时关闭函数 ...
  *
  * @param  {Function} 
  * @param  {Function} 
  * @param  {Number}   
  *
  * const close = killerQueen(
- *   () => console.log('开启打火机'),
- *   () => console.log('熄灭打火机'),
+ *   () => console.log('showLoading'),
+ *   () => console.log('closeLoading'),
  *   10000,
+ * ）
+ *
+ *  const close = killerQueen(
+ *      () => context.commit(getStatusKey(key), 'loading'), 
+ *      () => context.commit(getStatusKey(key), 'timeout'),
+ *      10 * 1000
+ *  )
  * )
  */
 export const killerQueen = (fn = () => {}, cancel = () => {}, time = 10000) => {
-    // 先执行操作
-    fn()
+  // 先执行操作
+  fn()
 
-    // 定时炸弹
-    const timer = setTimeout(() => {
-        // 败者食尘！
-        cancel()
-        // 消除痕迹
-        cancel = () => console.warn(``Bite The Dust``)
-    }, time)
+  // 定时炸弹
+  const timer = setTimeout(() => {
+    // 败者食尘！
+    cancel()
+    // 消除痕迹
+    cancel = () => console.warn(`Bite The Dust`)
+  }, time)
 
-    return () => {
-        // 取消炸弹
-        clearTimeout(timer)
-        // 正常调用
-        cancel()
-    }
+  // 新参数：isCall ，默认为 true，即调用取消函数，有某些场景下，我仅想取消倒计时，但并不想触发回调函数。
+  return (isCall = true) => {
+    // 取消炸弹
+    clearTimeout(timer)
+    // 正常调用
+    isCall && cancel()
+  }
 }
 ---
 /**
