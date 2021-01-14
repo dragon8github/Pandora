@@ -660,10 +660,9 @@ Gui, Pandora:Add, Link,, <a href="https://master.paas.com:8443/console/project/a
 Gui, Pandora:Add, Text,  W140 yp+50, 疫情地图
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/covid-19">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/68/interface/api">yapi</a>
-
-
-Gui, Pandora:Add, Text,  W140 yp+50, 大屏后台指标管理系统
-Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/bigscreen-admin">源码地址</a>
+Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/covid-19-map?tab=history">部署地址</a>
+Gui, Pandora:Add, Link,, <a href="https://covid.alltosea.com:6443/covid-19-map/#/index">测试预览</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 东莞疫情
@@ -675,6 +674,13 @@ Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:30022/doc.html#/default/%
 
 Gui, Pandora:Add, Link,, <a href="https://lanhuhu.com/web/#/item/project/board/detail?pid=be48ee3e-ad31-43a0-be0c-5fe1a760cf8f&project_id=be48ee3e-ad31-43a0-be0c-5fe1a760cf8f&image_id=71b685be-867b-497a-b7e3-7aa72640f950">蓝湖</a>
 Gui, Pandora:Add, Link,, <a href="https://lanhuapp.com/web/#/item/project/board/detail?pid=cb5dae81-83e7-4acb-8f7e-cfef14dddf7e&see=all&project_id=cb5dae81-83e7-4acb-8f7e-cfef14dddf7e&image_id=f7c27c58-44db-4d18-9494-cd76b5c96ba9">蓝狐领导版</a>
+
+Gui, Pandora:Add, Text,  W140 yp+50, 大屏后台指标管理系统
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/bigscreen-admin">源码地址</a>
+Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443">部署地址</a>
+Gui, Pandora:Add, Link,, <a href="https://219.135.182.2:6443/bigscreen-admin/">测试预览</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 统一门户网站

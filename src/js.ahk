@@ -14326,36 +14326,34 @@ return
 ::yyyymmmdd::
 Var = 
 (
-08:30：
-09:00：
-09:30：
-10:00：
-10:30：
-11:00：
-11:30：
-12:00： 
-12:30： 
-13:00： 
-13:30： 
-14:00： 
-14:30： 
-------------------------------------------------------------------------------------
-15:00：
-15:30：
-16:00：
-16:30：
-17:00：
-17:30：
-18:00： 
-18:30： 
-19:00： 
-19:30：
-20:00：
-20:30：
-21:00：
-21:30：
-22:00：
-22:30： 
+
+/**
+ * 时间格式化  这个方法好像比上面上个更灵活一点
+ * @param  {[type]} date 需要转换的时间
+ * @param  {[type]} fmt  转换后的时间格式   如'yyyy-MM-dd hh:mm:ss'
+ * @demo  
+ * formatDate(_.TIME, 'MM.dd')
+ */
+export function formatDate(time, fmt) {
+  let date = new Date(time)
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+  }
+  let o = {
+    'M+': date.getMonth() + 1,
+    'd+': date.getDate(),
+    'h+': date.getHours(),
+    'm+': date.getMinutes(),
+    's+': date.getSeconds()
+  };
+  for (let k in o) {
+    if (new RegExp(`(${k})`).test(fmt)) {
+      let str = o[k] + '';
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : ('00' + str).substr(str.length));
+    }
+  }
+  return fmt;
+};
 |||
 const time2time =  t => {
   const date = new Date(t)
@@ -14481,7 +14479,7 @@ const getDate = (function () {
 
   return () => ({ date, year, month, day })
 }())
----
+|||
 const dateYYYYMM = (t = +new Date) => {
   const date = new Date(t)
   const year = date.getFullYear()
@@ -17860,7 +17858,7 @@ code(Var)
 return
 
 
-
+::scrolltoview::
 ::scrollintoview::
 ::scrolltoview::
 Var =
