@@ -1,4 +1,143 @@
-﻿::shoufengqin::
+﻿::zhibiao::
+::guangbiao::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style type="text/css">
+    html,
+    body {
+        height: 100`%;
+        width: 100`%;
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(ellipse at bottom, #1B2735 0`%, #090A0F 100`%);
+    }
+
+    *,
+    *::after,
+    *::before {
+        box-sizing: border-box;
+    }
+
+    .cursor {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #c6c6c6;
+        border-radius: 50`%;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        transform: translate(-50`%, -50`%);
+        transition: .1s;
+    }
+
+    .cursor2 {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background-color: #c6c6c6;
+        border-radius: 50`%;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        transform: translate(-50`%, -50`%);
+        transition: .15s;
+    }
+
+    .content:hover~.cursor {
+        transform: translate(-50`%, -50`%) scale(1.5);
+        background-color: #c6c6c6;
+        opacity: .5;
+    }
+
+    .content:hover~.cursor2 {
+        opacity: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="cursor"></div>
+    <div class="cursor2"></div>
+    <script>
+    var cursor = document.querySelector(".cursor");
+    var cursor2 = document.querySelector(".cursor2");
+    document.addEventListener("mousemove", function(e) {
+        cursor.style.cssText = cursor2.style.cssText = "left: " + e.clientX + "px; top: " + e.clientY + "px;";
+    });
+    </script>
+</body>
+
+</html>
+---
+<template>
+    <div class="coolCursor">
+        <div class="cursor" ref="cursor"></div>
+        <div class="cursor2" ref="cursor2"></div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'coolCursor',
+    created() {
+        document.addEventListener('mousemove', e => {
+            this.$refs.cursor.style.cssText = this.$refs.cursor2.style.cssText = 'left: ' + e.clientX + 'px; top: ' + e.clientY + 'px;'
+        })
+    },
+}
+</script>
+
+<style lang="scss" scoped>
+.cursor {
+    position: fixed;
+    width: rem(50);
+    height: rem(50);
+    border: rem(1) solid #c6c6c6;
+    border-radius: 50`%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transform: translate(-50`%, -50`%);
+    z-index: 1993100337;
+}
+
+.cursor2 {
+    position: fixed;
+    width: rem(8);
+    height: rem(8);
+    background-color: #c6c6c6;
+    border-radius: 50`%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transform: translate(-50`%, -50`%);
+    // transition: 0.01s;
+    z-index: 1993100337;
+}
+
+.content:hover ~ .cursor {
+    transform: translate(-50`%, -50`%) scale(1.5);
+    background-color: #c6c6c6;
+    opacity: 0.5;
+}
+
+.content:hover ~ .cursor2 {
+    opacity: 0;
+}
+</style>
+)
+txtit(Var)
+return
+
+::shoufengqin::
 Var =
 (
 <!DOCTYPE html>

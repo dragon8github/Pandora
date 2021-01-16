@@ -3461,50 +3461,114 @@ this.$watch(_ => this.obj['2020-03'], newV => {
 code(Var)
 return
 
+::messagebox::
+::msg::
+::msgbox::
 ::vue.msg::
 ::vue.msgbox::
 ::v.msgbox::
 ::v.msg::
 Var =
 (
-import Vue from 'vue';
-import mapbox from './mapbox.vue'
-import store from '@/store'
+import Vue from 'vue'
+import videoLayer from './videoLayer.vue'
 
-const mapboxConstructor = Vue.extend(mapbox);
+const videoLayerConstructor = Vue.extend(videoLayer)
 
-let _initInstance;
+let _initInstance
 
 const initInstance = () => {
-  _initInstance = new mapboxConstructor({
-    el: document.createElement('div'),
-    propsData: { a: '123' }
-  });
-  // _initInstance.$store = store
-  document.body.appendChild(_initInstance.$el);
-};
+    _initInstance = new videoLayerConstructor({
+        el: document.createElement('div'),
+    })
+    document.getElementById('app').appendChild(_initInstance.$el)
+}
 
-const show = ({ name, list, center }) => {
-	if (!_initInstance) {
-	  initInstance();
-	}
+// 注册一些快捷键
+const shortcutKeyHandler = event => {
+    // 监听esc键退出全屏
+    if (event.keyCode == 27) _initInstance.isOpen = false
+}
 
-	_initInstance.value = true;
-	_initInstance.name = name;
-	_initInstance.list = list;
-	_initInstance.center = center;
+const show = src => {
+    if (!_initInstance) {
+        initInstance()
+    }
+
+    _initInstance.isOpen = true
+    _initInstance.src = src
+    document.addEventListener('keydown', shortcutKeyHandler)
 }
 
 const close = () => {
-	Vue.nextTick(() => {
-		_initInstance && (_initInstance.value = false)
-	});
+    Vue.nextTick(() => {
+        _initInstance && (_initInstance.isOpen = false)
+        document.removeEventListener('keydown', shortcutKeyHandler)
+    })
 }
 
 export default {
-	show,
-	close,
+    show,
+    close,
 }
+---
+<template>
+  <div class="layer" v-if="isOpen">
+    <!-- 蒙版 -->
+    <div class="layer__mask" @click="close"></div>
+    <!-- 视频播放器 -->
+    <div class="layer__content">
+      
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'layer',
+  data() {
+    return {
+      src: '',
+      isOpen: false,
+    }
+  },
+  methods: {
+    go() {
+      console.log('go')
+    },
+    close() {
+      this.isOpen = false
+    },
+  },
+  components: {},
+  computed: {},
+  watch: {},
+  props: [],
+  beforeMount() {
+    console.log(20201221155003, 'layer')
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+.layer {
+  @include pfull();
+  z-index: 1993100337;
+}
+
+.layer__mask {
+  @include pfull();
+  z-index: 1;
+}
+
+.layer__content {
+  @include bg(rem(998), rem(730), '~@/assets/bg.png');
+  position: absolute;
+  right: 50`%;
+  top: 50`%;
+  transform: translate(-50`%, -50`%);
+}
+</style>
 ---
 import { createVNode, render, isVNode } from 'vue'
 import Constructor from './index.vue'
@@ -6917,49 +6981,6 @@ export default {
 txtit(Var)
 return
 
-::msgbox::
-::vuebox::
-::vue.box::
-Var =
-(
-import Vue from 'vue';
-import mapbox from './mapbox.vue'
-
-const mapboxConstructor = Vue.extend(mapbox);
-
-let _initInstance;
-
-const initInstance = () => {
-  _initInstance = new mapboxConstructor({
-    el: document.createElement('div')
-  });
-  document.body.appendChild(_initInstance.$el);
-};
-
-const show = ({ name, list, center }) => {
-  if (!_initInstance) {
-    initInstance();
-  }
-
-  _initInstance.value = true;
-  _initInstance.name = name;
-  _initInstance.list = list;
-  _initInstance.center = center;
-}
-
-const close = () => {
-  Vue.nextTick(() => {
-    _initInstance && (_initInstance.value = false)
-  });
-}
-
-export default {
-  show,
-  close,
-}
-)
-code(Var)
-return
 
 ::store::
 ::store.js::
@@ -7883,7 +7904,6 @@ module.exports = {
     }
 }
 ---
-/* src/service-worker.js */
 /**
  * 哪怕一切顺利正常，用户的首次访问也不会生成缓存？ 这是正常的。官方解释原因如下：
  * 简而言之： 首次 service worker 注册需要一定的时间，如果你为了缓存而在首次加载就等待注册完成，再进行页面再进行缓存的话，那用户体验会非常差。得不偿失。
@@ -7891,7 +7911,6 @@ module.exports = {
  * https://developers.google.com/web/fundamentals/primers/service-workers/registration?hl=zh-cn#用户的首次访问
  */
 
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
 
 // 强制等待中的 Service Worker 被激活
 workbox.core.skipWaiting()
@@ -7901,6 +7920,14 @@ workbox.core.clientsClaim()
 
 // 设置预加载
 workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
+
+self.addEventListener('message', event => {
+    if (event.data.action == 'SKIP_WAITING') {
+        console.log('SKIP_WAITING ✍️✍️✍️✍️✍️✍️')
+        self.registration.unregister()
+        self.skipWaiting()
+    }
+})
 
 /**
  * 以上都是固定套路，我也不是很了解 ...
@@ -7916,11 +7943,14 @@ workbox.routing.registerRoute(
     ({ url, event }) => url.href.includes('newsapi.org'),
     // 策略：网络优先
     new workbox.strategies.NetworkFirst({
-        cacheName: 'newsapi', method: 'GET',
+        cacheName: 'newsapi',
+        method: 'GET',
         // 缓存限制
-        plugins: [ new workbox.expiration.Plugin({ maxEntries: 100 }) ],
-        // 只缓存 200 
-        cacheableResponse: { status: [0, 200] }
+        plugins: [new workbox.expiration.Plugin({ maxEntries: 100 })],
+        // 只缓存 200
+        cacheableResponse: { status: [0, 200] },
+        // 支持跨域（不使用这个似乎也无所谓）
+        fetchOptions: { credentials: 'include' },
     })
 `)
 
@@ -7929,13 +7959,14 @@ workbox.routing.registerRoute(
     ({ url, event }) => url.href.includes('bdimg.com/tile'),
     // 策略：同时从缓存和网络请求资源。如果缓存可用，策略将响应缓存版本，否则等待网络响应。每一次网络请求成功后，会更新缓存。
     new workbox.strategies.StaleWhileRevalidate({
-        cacheName: 'tile', method: 'GET',
+        cacheName: 'tile',
+        method: 'GET',
         // 缓存限制
         plugins: [new workbox.expiration.Plugin({ maxEntries: 1993100337 })],
-        // 只缓存 200 
+        // 只缓存 200
         cacheableResponse: { status: [0, 200] },
         // 支持跨域（不使用这个似乎也无所谓）
-        fetchOptions: { credentials: "include" },
+        fetchOptions: { credentials: 'include' },
     })
 `)
 
@@ -7944,46 +7975,47 @@ workbox.routing.registerRoute(
     ({ url, event }) => url.href.includes('api.map.baidu.com/api'),
     // 策略：同时从缓存和网络请求资源。如果缓存可用，策略将响应缓存版本，否则等待网络响应。每一次网络请求成功后，会更新缓存。
     new workbox.strategies.StaleWhileRevalidate({
-        cacheName: 'baiduAPI', method: 'GET',
+        cacheName: 'baiduAPI',
+        method: 'GET',
         // 缓存限制
         plugins: [new workbox.expiration.Plugin({ maxEntries: 1 })],
-        // 只缓存 200 
+        // 只缓存 200
         cacheableResponse: { status: [0, 200] },
         // 支持跨域（不使用这个似乎也无所谓）
-        fetchOptions: { credentials: "include" },
+        fetchOptions: { credentials: 'include' },
     })
 `)
 ---
-/* src/registerServiceWorker.js */
 import { register } from 'register-service-worker'
 
 if (process.env.NODE_ENV === 'production') {
-  register(`${process.env.BASE_URL}service-worker.js`, {
-    ready () {
-      console.log(
-        'App is being served from cache by a service worker.\n' +
-        'For more details, visit https://goo.gl/AFskqB'
-      `)
-    },
-    registered () {
-      console.log('Service worker has been registered.')
-    },
-    cached () {
-      console.log('Content has been cached for offline use.')
-    },
-    updatefound () {
-      console.log('New content is downloading.')
-    },
-    updated () {
-      console.log('New content is available; please refresh.')
-    },
-    offline () {
-      console.log('No internet connection found. App is running in offline mode.')
-    },
-    error (error) {
-      console.error('Error during service worker registration:', error)
-    }
-  })
+    register(`${process.env.BASE_URL}service-worker.js`, {
+        ready() {
+            console.log('App is being served from cache by a service worker.\n' + 'For more details, visit https://goo.gl/AFskqB')
+        },
+        registered() {
+            console.log('Service worker has been registered.')
+        },
+        cached() {
+            console.log('Content has been cached for offline use.')
+        },
+        updatefound() {
+            console.log('New content is downloading.')
+        },
+        updated(registration) {
+            console.log('☀️☀️updated☀️☀️', 'New content is available; please refresh.')
+            if (window.confirm('A new version is available, update now?')) {
+                const worker = registration.waiting
+                worker.postMessage({ action: 'SKIP_WAITING' })
+            }
+        },
+        offline() {
+            console.log('No internet connection found. App is running in offline mode.')
+        },
+        error(error) {
+            console.error('Error during service worker registration:', error)
+        },
+    })
 }
 ---
 /* main.js */

@@ -1174,8 +1174,30 @@ tooltip: {
 		return ''
    }
 }
+---
+tooltip: {
+    trigger: 'item',
+    // 取消最外层的默认样式
+    backgroundColor: 'transparent', padding: 0, borderWidth: 0, borderColor: 'transparent', extraCssText: 'box-shadow: none !important;',
+    padding: [$adaptaWall(10), $adaptaWall(15)],
+    textStyle: {
+        fontSize: $adaptaWall(20),
+    },
+    // position: (point, params, dom, rect, size) => [point[0] + 20, '0`%'],
+    formatter: params => {
+        const { componentType } = params
+
+        if (componentType === 'series' || componentType === 'effectScatter') {
+            return `<div class="pop" style="display: block">${params.name}</div>`
+        }
+
+        return ''
+    },
+},
+---
+$chart.dispatchAction({ type: 'showTip', seriesIndex: 0, name: '茶山镇茶花广场体育馆', })
 )
-code(Var)
+txtit(Var)
 return
 
 ::echarts.init::
