@@ -5651,7 +5651,7 @@ setTimeout(() => {
 ---
 const fooConstructor = Vue.extend({
     name: 'foo',
-    template: `<div class="test" @click='fooClickHandler'>点我调用bar的barHandler方法</div>`,
+    template: ``<div class="test" @click='fooClickHandler'>点我调用bar的barHandler方法</div>`,
     data () {
        return {
            foo: 'foo',
