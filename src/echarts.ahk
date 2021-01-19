@@ -1029,6 +1029,8 @@ visualMap: {
 code(Var)
 return
 
+::echartstooltip::
+::echartstip::
 ::echarts.tooltip::
 ::echarts.tool::
 ::echarts.tip::
@@ -1073,6 +1075,43 @@ tooltip: {
 },
 ---
 $chart.dispatchAction({ type: 'showTip', seriesIndex: 0, name: '茶山镇茶花广场体育馆', })
+---
+// root
+tooltip: {
+    show: true,
+    // 不可操作
+    triggerOn: 'mousemove|click',
+    // 必须手动触发一次，才会出现。所以需要调用 action
+    alwaysShowContent: true,
+    // 透明化 wrap
+    backgroundColor: 'transparent', padding: 0, borderWidth: 0, borderColor: 'transparent', extraCssText: 'box-shadow: none !important;',
+},
+
+// scatter
+tooltip: {
+    position: (point, params, dom, rect, size) => {
+        // 获取弹窗的大小
+        const [width, height] = size.contentSize
+        // 简单的居中公式
+        return [point[0] - width / 2, point[1] - height]
+    },
+    formatter: params => {
+        const [lng, lat, item] = params.value
+
+        const { componentType } = params
+
+        if (componentType === 'series' || componentType === 'effectScatter') {
+            return `<div class='popregion'>
+                <div class='popregion__content flex-cc flex-column'>
+                    <div class='f12 pt-2'><span class='f24'>${item.value}</span>人</div>
+                    <div class='f14'>${params.name}</div>
+                </div>
+            </div>`
+        }
+
+        return ''
+    },
+},
 )
 txtit(Var)
 return
