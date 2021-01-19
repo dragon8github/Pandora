@@ -661,7 +661,6 @@ Gui, Pandora:Add, Text,  W140 yp+50, 疫情地图
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/covid-19">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/68/interface/api">yapi</a>
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/covid-19-map?tab=history">部署地址</a>
-Gui, Pandora:Add, Link,, <a href="https://covid.alltosea.com:6443/covid-19-map/#/index">测试预览</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
 
 

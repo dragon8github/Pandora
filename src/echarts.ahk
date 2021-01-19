@@ -686,6 +686,7 @@ var myChart = echarts.init(document.getElementById('main'));
 code(Var)
 return
 
+::echart.line::
 ::echarts.line::
 ::echarts.xian::
 Var =
@@ -750,8 +751,130 @@ var myChart = echarts.init(document.getElementById('main'));
         }, ]
     };
     myChart.setOption(option);
+---
+<template>
+    <v-chart class="full medical__chart" :options="option"></v-chart>
+</template>
+
+<script>
+import { getMixins } from '@/mixins/data'
+
+const dateYYYYMMDD = t => {
+    const date = new Date(t)
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    return [month, day].map((item, index) => (item < 10 ? '0' + item : item)).join('-')
+}
+
+export default {
+    name: 'medicalTreatmentButtom',
+    mixins: [getMixins('medicalTreatment')],
+    data() {
+        return {
+                option: {
+                    
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            // 默认为直线，可选为：'line' | 'shadow'
+                            type: 'shadow',
+                        },
+                    },
+                    grid: { left: '4`%', right: '6`%', top: '15`%', bottom: '6`%', containLabel: true },
+                    xAxis: [
+                        {
+                            name: '日期',
+                            type: 'category',
+                            boundaryGap: false,
+                            data: ['12-10', '12-12', '12-14', '12-16', '12-18', '12-20', '12-22', '12-24', '12-26', '12-28', '12-30', '01-01', '01-03', '01-05', '01-07'],
+                            axisLine: {
+                                lineStyle: {
+                                    color: 'rgba(240,199,37,0.5)',
+                                },
+                            },
+                            offset: 10,
+                            axisLabel: { interval: 0, rotate: '45', color: '#c1cadf' },
+                        },
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: '(人数)',
+                            nameTextStyle: {
+                                color: '#c1cadf',
+                                align: 'right',
+                                lineHeight: 10,
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: 'rgba(240,199,37,0.5)',
+                                },
+                            },
+                            axisLabel: {
+                                interval: 0,
+                                color: '#c1cadf',
+                            },
+                            splitLine: {
+                                width: 1,
+                                lineStyle: { color: 'rgba(255, 255, 255, .08)' },
+                            },
+                        },
+                    ],
+                    series: [
+                        {
+                            name: '发热人数',
+                            type: 'line',
+                            symbolSize: 8,
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                    { offset: 0, color: 'rgba(242, 255, 92, 1)' },
+                                    { offset: 1, color: 'rgba(242, 255, 92, 0.01)' },
+                                ]),
+                            },
+                            data: [0, 0, 34, 11, 29, 0, 0, 34, 11, 29, 0, 0, 34, 11, 29],
+                            barWidth: '30`%',
+                            itemStyle: { normal: { color: '#16f892' } },
+                        },
+                        {
+                            name: '购买发烧感冒类药物人数',
+                            type: 'line',
+                            symbolSize: 8,
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                    { offset: 0, color: 'rgba(133, 255, 202, 1)' },
+                                    { offset: 1, color: 'rgba(133, 255, 202, 0.01)' },
+                                ]),
+                            },
+                            data: [5, 1, 19, 42, 13, 5, 1, 19, 42, 13, 5, 1, 19, 42, 13],
+                            barWidth: '30`%',
+                            itemStyle: { normal: { color: '#16f892' } },
+                        },
+                    ],
+                }
+    },
+    watch: {
+        _data_20201229122: {
+            deep: true,
+            immediate: true,
+            handler(newV, oldV) {
+                if (newV) {
+                    const [TIME, COLD_NUM, FEVER_NUM] = newV[1].data.maps(
+                        _ => _.TIME,
+                        _ => _.COLD_NUM,
+                        _ => _.FEVER_NUM,
+                    `)
+                    this.option.series[0].data = FEVER_NUM
+                    this.option.series[1].data = COLD_NUM
+                    this.option.xAxis[0].data = TIME.map(_ => dateYYYYMMDD(_))
+                }
+            },
+        },
+    },
+}
+</script>
 )
-code(Var)
+txtit(Var)
 return
 
 

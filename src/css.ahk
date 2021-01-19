@@ -7855,7 +7855,7 @@ Var =
         word-break: break-all;
     }
 )
-code(Var)
+txtit(Var)
 return
 
 ::attack.css::

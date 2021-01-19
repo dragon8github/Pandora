@@ -2000,7 +2000,7 @@ export default class Table {
     }
 }
 )
-code(Var)
+txtit(Var)
 return
 
 ::imgerr::
