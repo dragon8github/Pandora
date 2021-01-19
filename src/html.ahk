@@ -230,8 +230,143 @@ Var =
     }
 </script>
 </html>
+---
+<template>
+  <div class="mb-2">
+    <div @click="shrink" >
+      <slot name="title">
+        <div class="c__title--head flex-be">
+          <p class="c__title--name full-h">{{textName}}</p>
+          <span :class="['cup icon__run mr-1', maybe(_ => isShow, false) ? 'is-active' : '']"></span>
+        </div>
+      </slot>
+    </div>
+
+    <transition
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
+    >
+      <div v-show="isShow">
+        <slot></slot>
+      </div>
+    </transition>
+  </div>
+</template>
+
+<script>
+const transitionStyle = '0.3s height ease-in-out';
+
+export default {
+  name: 'CollapseItem',
+  components: {},
+  props: {
+    textName: {
+      type: String,
+      default: '标题'
+    }
+  },
+  data() {
+    return {
+      item: {},
+
+      isShow: true
+    }
+  },
+  watch: {},
+  computed: {},
+  created(){},
+  beforeMount(){},
+  methods: {
+    shrink () {
+      this.$parent.changeState(this._uid)
+    },
+
+    // css控制
+    beforeEnter (el) {
+      // 动画之前
+      el.style.transition = transitionStyle
+      if (!el.dataset) el.dataset = {}
+
+      el.style.height = 0
+    },
+    enter (el, done) {
+      if (el.scrollHeight !== 0) {
+        el.style.height = `${el.scrollHeight}px`
+      } else {
+        el.style.height = ''
+      }
+
+      el.style.overflow = 'hidden'
+    },
+    afterEnter (el) {
+      // 动画之后
+      el.style.transition = ''
+      el.style.height = ''
+
+      console.log('展开动画完成')
+    },
+    beforeLeave(el) {
+      if (!el.dataset) el.dataset = {}
+      el.style.height = `${el.scrollHeight}px`
+      el.style.overflow = 'hidden'
+    },
+    leave (el, done) {
+      // 动画过程
+      if (el.scrollHeight !== 0) {
+        el.style.transition = transitionStyle
+        el.style.height = 0
+      }
+    },
+    afterLeave (el) {
+      el.style.transition = ''
+      el.style.height = ''
+
+      console.log('关闭动画完成')
+    }
+  }
+}
+
+</script>
+
+
+<style lang='scss' scoped>
+.c__wrapper {
+
+  .c__title--head {
+    width: rem(608);
+    height: rem(32);
+    background-color: #082C25;
+    
+
+    .c__title--name {
+      border-left: solid rem(3) #32ffee;
+      padding-left: rem(13);
+      color: #32ffee;
+      line-height: rem(32);
+    }
+
+    .icon__run {
+      margin-bottom: rem(8);
+      width: rem(18);
+      height: rem(16);
+      display: inline-block;
+      transition: transform .3s;
+      background: transparent url('~@/assets/Layer/箭头-收起.png') left center / 100`% 100`% no-repeat;
+  
+      &.is-active {
+        transform: rotate(180deg);
+      }
+    }
+
+  }
+}
+</style>
 )
-code(Var)
+txtit(Var)
 return
 
 ::svg::
