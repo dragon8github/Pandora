@@ -669,13 +669,11 @@ if (v == "[金志]很喜欢的列表 animate.css 动画") {
 Var =
 (
 <ul class="w-100 h-100">
-  <li class="w-100 flex flex-center fz-14 animate__animated animate__backInLeft" 
-    :style="{'animation-delay':`${index * 0.05}s`}"
-    v-for="(item, index) in datalist.slice(0,8)" :key="index" style="height:2.6em;line-height:2.6em">
-    <span class="w-15 h-100 text-center order fontStyle"> <span class="fz-12">{{ index + 1 }}</span></span>
-    <span class="w-40 h-100  text-left tx-indent">{{item.NAME}}</span>
-    <span class="w-20 h-100  text-left tx-indent ml-5">{{item.NUM1}}</span>
-    <span class="w-25 h-100  text-left number font-bold tx-indent">{{item.NUM2}}</span>
+  <li class="animate__animated animate__backInLeft" :style="{'animation-delay':``${index * 0.05}s``}" v-for="(item, index) in datalist.slice(0,8)" :key="index">
+      <span>{{ index + 1 }}</span>
+      <span>{{item.NAME}}</span>
+      <span>{{item.NUM1}}</span>
+      <span>{{item.NUM2}}</span>
   </li>
 </ul>
 )
@@ -4253,18 +4251,18 @@ Vue.component('mybutton', mybutton)
 code(Var)
 return
 
-::v-animate::
-::vue-animate::
-::vue-tran::
-::v-tran::
-::vue-trans::
-::v-trans::
-::v.animate::
-::vue.animate::
-::vue.tran::
-::v.tran::
-::vue.trans::
-::v.trans::
+:?:v-animate::
+:?:vue-animate::
+:?:vue-tran::
+:?:v-tran::
+:?:vue-trans::
+:?:v-trans::
+:?:v.animate::
+:?:vue.animate::
+:?:vue.tran::
+:?:v.tran::
+:?:vue.trans::
+:?:v.trans::
 Var =
 (
 <transition-group name="cell" tag="div" class="kitchenBright__list--items transition-group" tag='ul'>
@@ -4291,7 +4289,7 @@ Var =
   transition: transform 1s ease;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
+---
 
 <transition name="msgbox-bounce">
     <div class="msgbox" v-show="value"></div>
@@ -4330,8 +4328,20 @@ watch: {
    opacity: 0;
    transform: translate3d(-50`%, -50`%, 0) scale(0.9);
 }
+---
+<!-- https://animate.style/ animate 4.x | <h1 class="animate__animated animate__bounce">An animated element</h1> -->
+<link href="https://libs.cdnjs.net/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<ul class="w-100 h-100">
+  <li class="animate__animated animate__backInLeft" :style="{'animation-delay':``${index * 0.05}s``}" v-for="(item, index) in datalist.slice(0,8)" :key="index">
+      <span>{{ index + 1 }}</span>
+      <span>{{item.NAME}}</span>
+      <span>{{item.NUM1}}</span>
+      <span>{{item.NUM2}}</span>
+  </li>
+</ul>
 )
-code(Var)
+txtit(Var)
 return
 
 ::`:style::

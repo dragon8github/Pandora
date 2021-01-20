@@ -1999,6 +1999,97 @@ export default class Table {
         this.loading = this.initData.loading
     }
 }
+---
+import { POST } from '@/utils/request'
+import Event from './Event'
+import { deepCopy, killerQueen2 } from '@/utils/utils'
+
+// 配置模板
+const defaultCfg = { id: 0, data: null, pageNum: 1, pageSize: 20, totalPage: null, status: null, url: null }
+
+export default class Table {
+    constructor(cfg = {}) {
+        // 备份初始配置
+        this.initData = Object.assign({}, defaultCfg, cfg)
+
+        // 融合上下文
+        Object.assign(this, this.initData, new Event().$interface)
+    }
+
+    reset() {
+        this.data = deepCopy(this.initData.data)
+        this.pageNum = this.initData.pageNum
+        this.pageSize = this.initData.pageSize
+        this.status = this.initData.status
+    }
+
+    async getData(params) {
+        this.reset()
+
+        // 请求数据
+        const result = await killerQueen2(
+            () => (this.status = 'loading'),
+            () => POST(this.url, { id: this.id, params: Object.assign({}, { pageNum: this.pageNum, pageSize: this.pageSize }, params) }),
+            () => (this.status = 'finish'),
+            5000
+        `)
+
+        // 肯定是报错了
+        if (result == null) {
+            this.data = null
+            this.totalPage = null
+            this.status = 'error'
+            return console.warn('🔥 数据请求异常', result)
+        }
+
+        this.data = result.data
+        
+        // 说明没有数据了
+        if (!this.data || (this.data.length < this.initData.pageSize)) {
+            this.status = 'nomore'
+        }
+        
+        this.$emit('getData', result, params)
+
+        return result
+    }
+
+    // 先冗余，再紧缩
+    async getScrollData(params) {
+        // 是否还有更多可以请求
+        // 一般逻辑是这样：this.pageNum < this.totalPage
+        // 但后端变了逻辑，变成了这样：
+        if (this.status != 'loading' && this.status != 'nomore') {
+            // 请求数据
+            const result = await killerQueen2(
+                () => (this.status = 'loading'),
+                () => POST(this.url, { id: this.id, params: Object.assign({}, { pageNum: this.pageNum + 1, pageSize: this.pageSize }, params) }),
+                () => (this.status = 'finish'),
+                5000
+            `)
+
+            if (result == null) {
+                this.data = null
+                this.totalPage = null
+                this.status = 'error'
+                return console.warn('🔥 数据请求异常', result)
+            }
+
+            // fixbug: result.data 有可能返回 null 导致 ... 解析失败
+            result.data && this.data.push(...result.data)
+
+            // 说明没有数据了
+            if (!result.data || (this.data.length < this.initData.pageSize)) {
+                this.status = 'nomore'
+            }
+
+            // 只有请求成功了我才加
+            this.pageNum++
+
+            return result
+        }
+    }
+}
 )
 txtit(Var)
 return

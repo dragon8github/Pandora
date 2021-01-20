@@ -75,6 +75,10 @@ const map = new ol.Map({
         zoom: 12,
     }),
 })
+
+map.on('click', e => {
+    console.log('当前点击坐标：', ol.proj.toLonLat(e.coordinate))
+})
 </script>
 </html>
 ---

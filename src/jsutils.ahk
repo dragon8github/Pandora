@@ -9008,7 +9008,15 @@ export const createStore = (store = {}) => {
         // 重载
         obj[key] = async function(context, payload) {
             // inject the POST/GET
-            Object.assign(context, { POST, GET })
+            Object.assign(context, { 
+                POST, 
+                GET, 
+                RESET() {
+                    context.commit(key, null)
+                    context.commit(getStatusKey(key), null)
+                }
+            })
+
 
             // 打开 loading
             const close = killerQueen(
