@@ -1,4 +1,12 @@
-﻿::fbl::
+﻿::yaosu::
+Var =
+(
+feature
+)
+code(Var)
+return
+
+::fbl::
 ::fenibanlv::
 Var =
 (
