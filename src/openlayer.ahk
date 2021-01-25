@@ -150,6 +150,52 @@ const vectorLayer = new ol.layer.Vector({
 })
 
 this.map.addLayer(vectorLayer)
+---
+// 缺点是触发很多次。
+map.getView().on('change:resolution', e => {
+    const currentResolution = e.target.values_.resolution
+})
+
+
+// 监听左右上下动作，比起 map.getView().on('change:resolution')，它是等动画结束以后才触发。
+let currentResolution = map.getView().getResolution()
+map.on('moveend', e => {
+    // 获取 zoom
+    const zoom = map.getView().getZoom()
+    
+    // 获取当前分辨率
+    const resolution =  map.getView().getResolution()
+
+    // 分辨率变化了
+    if (resolution != currentResolution) {
+        // 保存当前分辨率
+        currentResolution = resolution
+
+    }
+})
+---
+var feature = new ol.Feature({
+    geometry: new ol.geom.LineString(
+        [ol.proj.fromLonLat([113.92851886081746, 23.038673931857318]), ol.proj.fromLonLat([113.85490232003346, 22.94638020841596])]
+    `)
+})
+
+var lineStyle = new ol.style.Style({
+    stroke: new ol.style.Stroke({
+        color: 'red',
+        width: 7
+    })
+})
+
+feature.setStyle(lineStyle)
+
+var lineLayer = new ol.layer.Vector({
+    source: new ol.source.Vector({
+        features: [feature]
+    })
+})
+
+map.addLayer(lineLayer)
 )
 txtit(Var)
 return

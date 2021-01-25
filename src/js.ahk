@@ -7475,31 +7475,14 @@ VueComponent.keys().filter(exclude).forEach(path => {
 
 export default __Material__
 ---
-import Vue from 'vue'
-/**
- * 1. directory {String} -读取文件的路径
- * 2. useSubdirectories {Boolean} -是否遍历文件的子目录
- * 3. regExp {RegExp} -匹配文件的正则
- */
-const VueComponent = require.context('.', true, /\.vue$/)
-
-// 准备导出的模块
-let __Material__ = {}
-
-// 1. 必须使用 key() 获取所有路径
-// 3. 使用 VueComponent(path).default 获取真实模块内容
-VueComponent.keys().forEach(path => {
-    // 获取 『文件名』 和 『后缀名』
-    const [name, ext] = path.substring(path.lastIndexOf('/') + 1).split('.')
-
-    // 目标文件的输出内容
-    const output = VueComponent(path).default
-
-    // 以 『文件名』 为 key，模块内容为 value
-    __Material__[name] = Vue.extend(output)
-})
-
-export default __Material__
+const dynamicWidth = (min = 0, max = 1, minSize = 1, maxSize = 10) => (v = 0) => {
+    if (v === min && v === max) {
+        return maxSize
+    }
+    const a = (maxSize - minSize) / (max - min)
+    const b = maxSize - a * max
+    return a * v + b
+}
 ---
 /**
  * 1. directory {String} -读取文件的路径 

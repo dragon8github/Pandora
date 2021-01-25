@@ -1164,11 +1164,15 @@ symbolSize: val => {
     return a * val[2] + b;
 },
 
-var dynamicWidth = (min = 0, max = 1, minSize = 1, maxSize = 10) => (v = 0) => {
+const dynamicWidth = (min = 0, max = 1, minSize = 1, maxSize = 10) => (v = 0) => {
+    if (v === min && v === max) {
+		return maxSize
+	}
     const a = (maxSize - minSize) / (max - min)
     const b = maxSize - a * max
     return a * v + b
 }
+
 )
 }
 
