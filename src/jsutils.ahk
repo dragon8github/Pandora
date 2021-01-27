@@ -9123,7 +9123,8 @@ export const getMixins = name => {
     const _name = Object.keys(store.state).find(_ => _.toUpperCase() === name.toUpperCase())
 
     // news: $actions
-    const $actions = Object.entries(store._actions).reduce((p, [key, val]) => {
+    // fixbug: forget filter
+    const $actions = Object.entries(store._actions).filter(_ => _[0].includes(_name)).reduce((p, [key, val]) => {
         // 按照 / 切割路径
         const paths = key.split('/')
 

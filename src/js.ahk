@@ -14392,9 +14392,9 @@ console.log(tiems)
 txtit(Var)
 return
 
+::date::
 ::time::
 ::getDate::
-::date::
 ::today::
 ::yyyy::
 ::yyyymmmdd::
@@ -14562,6 +14562,20 @@ const dateYYYYMM = (t = +new Date) => {
   const arr = [month, day].map((item, index) => item < 10 ? '0' + item : item)
   return year + '-' + arr[0] + '-' + arr[1]
 }
+
+/**
+ * 计算几天后 或 几天前的几日
+ * @param {*} date 今天
+ * @param {*} day 正数代表未来, 负数代表过去
+ */
+export function getNextDate(date = new Date, day = 0) {
+  var dd = new Date(date);
+  dd.setDate(dd.getDate() + day);
+  var y = dd.getFullYear();
+  var m = dd.getMonth() + 1 < 10 ? "0" + (dd.getMonth() + 1) : dd.getMonth() + 1;
+  var d = dd.getDate() < 10 ? "0" + dd.getDate() : dd.getDate();
+  return y + "-" + m + "-" + d;
+};
 )
 txtit(Var, "|||")
 return

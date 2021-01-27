@@ -3478,6 +3478,7 @@ let _initInstance
 const initInstance = () => {
     _initInstance = new videoLayerConstructor({
         el: document.createElement('div'),
+        propsData: { type, history, item }
     })
     document.getElementById('app').appendChild(_initInstance.$el)
 }
@@ -3619,6 +3620,54 @@ export default (app) => {
     // 将对象挂载到全局
     app.config.globalProperties.$loading = $loading
 }
+---
+import store from "@/store"
+import { waitWhen } from "@/utils/utils"
+
+import MapCard from './index.vue'
+
+const MapCards = { MapCard }
+
+export const register = Vue => {
+    // 实例集合
+    const $targets = []
+
+    for (let [key, val] of Object.entries(MapCards)) {
+        // 挂载组件
+        const $target = new Vue(val).$mount()
+        // 注入 store，如果你想注入 router 也是一样的道理
+        $target.$store = store
+        // 使用 $ 为前缀的命名，譬如 window.$MapCard、 this.$MapCard
+        const $name = '$' + key
+        // 注册到全局和 Vue 实例中去
+        window[$name] = Vue.prototype[$name] = $target
+        // 插入到数组中，稍后等时机成熟再插入到 DOM body 中
+        $targets.push($target)
+    }
+    // 插入到地图
+    waitWhen(() => document.getElementById('__map__')).then(container => {
+        $targets.map($target => container.appendChild($target.$el))
+    }, 10000)
+}
+---
+import Vue from 'vue'
+import store from "@/store"
+import mapCard from './index.vue'
+import { waitWhen } from "@/utils/utils"
+
+const mapCardConstructor = Vue.extend(mapCard)
+
+const mount = (dom = '', propsData = {}) => {
+    waitWhen(_ => document.querySelector(dom)).then(el => {
+        // 实例化组件
+        const $vm = new mapCardConstructor({ el, propsData })
+        // 注入 store，如果你想注入 router 也是一样的道理
+        $vm.$store = store
+        // 修改 data 数据：$vm.region = '南城'
+    })
+}
+
+export default { mount }
 )
 txtit(Var)
 return

@@ -1152,6 +1152,8 @@ visualMap: {
 code(Var)
 return
 
+::tip::
+::tooltip::
 ::echartstooltip::
 ::echartstip::
 ::echarts.tooltip::
@@ -1160,9 +1162,36 @@ return
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
+tooltip: {
+    trigger: 'item',
+    enterable: true,
+    confine: true,
+    hideDelay: 1500,
+    appendToBody: true,
+    triggerOn: 'mousemove|click',
+    backgroundColor: 'transparent', padding: 0, borderWidth: 0, borderColor: 'transparent', extraCssText: 'box-shadow: none !important;',
+    padding: [$adaptaWall(10), $adaptaWall(15)],
+    textStyle: { fontSize: $adaptaWall(20), },
+    // position: (point, params, dom, rect, size) => [point[0] + 20, '0`%'],
+    formatter: params => {
+        const { componentType } = params
+        if (componentType === 'series' || componentType === 'effectScatter') {
+            return `<div class='pop' style="display: block">
+                <div class='pop__content'>
+                    ${params.name}
+                </div>
+            </div>`
+        }
+
+        return ''
+    },
+},
+---
 // 根配置，如果formatter返回空则或者干脆不返回，则不会显示，可以用来显示series的数据。也可以通过判断params.componentSubType来进行显示。
 tooltip: {
    trigger: 'item',
+   enterable: true,
+   confine: true,
    padding: [10, 15],
    textStyle: {
 	  fontSize: 20
@@ -1179,6 +1208,8 @@ tooltip: {
 ---
 tooltip: {
     trigger: 'item',
+    enterable: true,
+    confine: true,
     // 取消最外层的默认样式
     backgroundColor: 'transparent', padding: 0, borderWidth: 0, borderColor: 'transparent', extraCssText: 'box-shadow: none !important;',
     padding: [$adaptaWall(10), $adaptaWall(15)],
@@ -1235,6 +1266,63 @@ tooltip: {
         return ''
     },
 },
+---
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
+</head>
+
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+
+    <script>
+    let fetchData = callback => {        
+        // 模拟 ajax
+        setTimeout(() => {
+            callback('<div>hello world</div>')
+        }, 1000)
+    }
+
+    var myChart = echarts.init(document.getElementById('main'))
+
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            enterable: true,
+            confine: true,
+            formatter: function(params, ticket, callback) {
+                // callback 的第一个参数必须是 ticket，第二个参数必须是字符串
+                const cb = callback.bind(null, ticket)
+
+                // 获取数据，并且注入回调 Hook
+                fetchData(cb)
+
+                // 默认返回的
+                return 'loading'
+            }
+        },
+        series: [{
+            name: '访问来源',
+            type: 'pie',
+            radius: ['65`%', '75`%'],
+            center: ['49.5`%', '50.5`%'],
+            color: ['#00a0e9', '#ea7e6f', '#fe8f18', '#f6c272', '#7c77b9'],
+            avoidLabelOverlap: false,
+            label: { show: true, },
+            labelLine: { show: true },
+            data: [{ value: 335, name: '直接访问' }, { value: 310, name: '邮件营销' }, { value: 234, name: '联盟广告' }, { value: 135, name: '视频广告' }, { value: 1548, name: '搜索引擎' }]
+        }]
+    }
+
+    myChart.setOption(option)
+    </script>
+</body>
+
+</html>
 )
 txtit(Var)
 return
