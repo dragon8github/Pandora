@@ -367,6 +367,8 @@ return
 
 
 ::echarts.dian::
+::echarts.point::
+::echarts.points::
 ::echarts.sandian::
 ::echart.sandian::
 ::sandian::
@@ -417,8 +419,67 @@ const createPoints = (name, data) => {
         data: data
     }
 }
+---
+// 尝试渲染 echarts 散点图
+const scatter = {
+    name: 'singlePoint',
+    type: 'scatter',
+    coordinateSystem: 'geo',
+    zlevel: 2,
+    symbol: 'circle',
+    symbolSize: $adaptaWall(15),
+    // label: { normal: { formatter: params => params.value[2].name, distance: $adaptaWall(5), backgroundColor: 'transparent', borderColor: '#fff', borderWidth: $adaptaWall(1), borderRadius: $adaptaWall(5), padding: [$adaptaWall(10), $adaptaWall(20), $adaptaWall(10), $adaptaWall(20)], show: true, position: 'bottom', textStyle: { color: '#fff', fontSize: $adaptaWall(16), textBorderColor: 'transparent' } } },
+    itemStyle: { color: yellowColor, shadowBlur: 10, shadowColor: '#ccc' },
+    emphasis: { scale: true, focus: 'self', itemStyle: { shadowColor: 'rgba(255, 255, 255, 1)', shadowBlur: 10, borderWidth: $adaptaWall(30), borderColor: yellowColor, borderType: 'dotted' }, },
+    data: singlePointsData.map(_ => {
+        // 获取散点「要素」的数据源
+        const obj = _.values_.features[0].getProperties()
+        // fixbug: 这个对象的存在会导致死循环。
+        const pureobj = omit(obj, ['geometry'])
+        // 返回 echarts 所需要格式
+        return { name: obj.name, value: [...obj.lnglat, pureobj] }
+    }),
+}
+---
+const effectScatter = {
+    name: 'sender',
+    type: 'effectScatter',
+    coordinateSystem: 'geo',
+    zlevel: 2,
+    rippleEffect: { brushType: 'stroke' },
+    symbol: 'circle',
+    symbolSize: params => _dynamicWidthSize(params[2]),
+    label: { normal: { show: true, position: 'inside', formatter: params => params.value[2], color: '#fff', fontWeight: 'bold', fontSize: $adaptaWall(20) } },
+    itemStyle: {
+        normal: {
+            color: {
+                type: 'radial',
+                x: 0.5,
+                y: 0.5,
+                r: 0.5,
+                colorStops: [
+                    { offset: 0, color: 'rgba(0, 0, 0, 0.3)' },
+                    { offset: 0.8, color: 'rgba(239, 255, 55, 0.8)' },
+                    { offset: 1, color: 'rgba(239, 255, 55, 0.7)' },
+                ],
+                global: false,
+            },
+        },
+    },
+    data: clustersData.map(_ => {
+        // 获取当前的「聚合要素」
+        const cluster = _.values_
+        // 获取经纬度（转换）
+        const lnglat = ol.proj.toLonLat(cluster.geometry.getCoordinates())
+        // 聚合图的数值就是包含的子要素
+        const val = cluster.features.length
+        // 返回 echarts 所需要格式
+        return { name: null, value: [...lnglat, val], label: { fontSize: _dynamicWidthLabel(val) } }
+    }),
+}
+
 )
-code(Var)
+txtit(Var)
 return
 
 ::echart.pin::
@@ -1228,7 +1289,44 @@ tooltip: {
     },
 },
 ---
-$chart.dispatchAction({ type: 'showTip', seriesIndex: 0, name: '茶山镇茶花广场体育馆', })
+$chart.on('mouseover', params => {
+    $chart.dispatchAction({ type: 'showTip', seriesIndex: params.seriesIndex, name: params.name })
+})
+
+$chart.on('mouseout', params => {
+    $chart.dispatchAction({ type: 'hideTip', seriesIndex: params.seriesIndex, name: params.name })
+})
+
+// showTip 显示
+__echartslayer__.$chart.dispatchAction({ type: 'showTip', seriesIndex: 0, name })
+
+// 修改该点的样式（能否添加点的 hover 样式，然后到时候去 dispatch 它即可）
+__echartslayer__.$chart.dispatchAction({ type: 'highlight', seriesIndex: 0, name })
+
+// 一般要配合一些特殊配置
+tooltip: {
+    // 不在 'mousemove' 或 'click' 时触发，用户可以通过 action.tooltip.showTip 和 action.tooltip.hideTip 来手动触发和隐藏。
+    triggerOn: 'none', 
+    // action.tooltip.hideTip 会受到此参数的影响
+    hideDelay: 0,
+    trigger: 'item',
+    confine: true,
+    appendToBody: true,
+    backgroundColor: 'transparent', padding: 0, borderWidth: 0, borderColor: 'transparent', extraCssText: 'box-shadow: none !important;',
+    padding: [$adaptaWall(10), $adaptaWall(15)],
+    textStyle: { fontSize: $adaptaWall(20), },
+    formatter: (params, ticket, callback) => {
+        // 获取镇街名
+        const name = params.name
+
+        // 返回基础容器
+        return `<div class='popvertical'>
+            <div class='popvertical__wrap'>
+                <div class='popvertical__title'>${name}</div>
+            </div>
+        </div>`
+    },
+},
 ---
 // root
 tooltip: {

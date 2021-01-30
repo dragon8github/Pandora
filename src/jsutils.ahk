@@ -8925,6 +8925,7 @@ Var =
 code(Var)
 return
 
+::help.js::
 :?:vuex.help::
 :?:store.help::
 :?:help::
@@ -9007,23 +9008,28 @@ export const createStore = (store = {}) => {
     __store__.actions = Object.entries(__store__.actions).reduce((obj, [key, action]) => {
         // 重载
         obj[key] = async function(context, payload) {
+            // 开关空函数引用
+            let close = () => {}
+
+            // 调用 POST/GET 这些请求之前，会进行 loading 相关的操作
+            const beforeHander = function() {
+                // 打开 loading
+                close = killerQueen(
+                    () => context.commit(getStatusKey(key), 'loading'),
+                    () => context.commit(getStatusKey(key), 'timeout'),
+                    10 * 1000,
+                `)
+            }
+
             // inject the POST/GET
             Object.assign(context, { 
-                POST, 
-                GET, 
+                POST: POST.before(beforeHander), 
+                GET: GET.before(beforeHander),
                 RESET() {
                     context.commit(key, null)
                     context.commit(getStatusKey(key), null)
                 }
             })
-
-
-            // 打开 loading
-            const close = killerQueen(
-                () => context.commit(getStatusKey(key), 'loading'), 
-                () => context.commit(getStatusKey(key), 'timeout'),
-                10 * 1000
-            `)
 
             // 函数引用
             const _action = action.bind(null, context, payload)
@@ -9054,6 +9060,7 @@ export const createStore = (store = {}) => {
     // 返回最终 store
     return __store__
 }
+
 ---
 // https://github.com/robinvdvleuten/vuex-persistedstate#encrypted-local-storage
 import { Store } from "vuex";

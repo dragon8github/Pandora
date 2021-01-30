@@ -303,15 +303,6 @@ https://emilkowalski.github.io/css-effects-snippets/
 txtit(Var)
 return
 
-::yaosu::
-Var =
-(
-features
-)
-code(Var)
-return
-
-
 
 ::getpos::
 ::getpositon::
@@ -7320,6 +7311,7 @@ flattenObject({ a: { b: { c: 1 } }, d: 1 }); // { 'a.b.c': 1, d: 1 }
 code(Var)
 return
 
+::moni::
 ::mockclick::
 ::fakerclick::
 ::fakeclick::
@@ -7327,6 +7319,48 @@ return
 ::moniclick::
 Var = 
 (
+Js 修改 input value 值后怎么同步修改绑定的v-model值？
+https://www.cnblogs.com/zhoudawei/p/10901752.html
+
+document.querySelector('.search__input').value = '运河'
+document.querySelector('.search__input').dispatchEvent(new Event('input'))
+fireKeyEvent($0, 'keyup', 13)
+
+---
+// https://juejin.cn/post/6844903850336321549
+// fireKeyEvent(el, 'keyup', 13)
+function fireKeyEvent(el, evtType, keyCode) {
+  var evtObj;
+  if (document.createEvent) {
+      if (window.KeyEvent) {//firefox 浏览器下模拟事件
+          evtObj = document.createEvent('KeyEvents');
+          evtObj.initKeyEvent(evtType, true, true, window, true, false, false, false, keyCode, 0);
+      } else {//chrome 浏览器下模拟事件
+          evtObj = document.createEvent('UIEvents');
+          evtObj.initUIEvent(evtType, true, true, window, 1);
+
+          delete evtObj.keyCode;
+          if (typeof evtObj.keyCode === "undefined") {//为了模拟keycode
+              Object.defineProperty(evtObj, "keyCode", { value: keyCode });                       
+          } else {
+              evtObj.key = String.fromCharCode(keyCode);
+          }
+
+          if (typeof evtObj.ctrlKey === 'undefined') {//为了模拟ctrl键
+              Object.defineProperty(evtObj, "ctrlKey", { value: true });
+          } else {
+              evtObj.ctrlKey = true;
+          }
+      }
+      el.dispatchEvent(evtObj);
+
+  } else if (document.createEventObject) {//IE 浏览器下模拟事件
+      evtObj = document.createEventObject();
+      evtObj.keyCode = keyCode
+      el.fireEvent('on' + evtType, evtObj);
+  }
+}
+---
 var evmousedown = document.createEvent('HTMLEvents');
 // evmousedown.clientX = 88
 // evmousedown.clientY = 18
@@ -7359,6 +7393,33 @@ export const clickOutSideByHack = () => {
     var evmouseclick = document.createEvent('HTMLEvents');
     evmouseclick.initEvent('click', false, true);
     document.dispatchEvent(evmouseclick)
+}
+---
+import { waitWhen, fireKeyEvent } from '@/utils/utils.js'
+
+// 模拟手动搜索操作：输入关键词，按下回车，等待搜索结果完成，点击第一条
+export default function imitateSearch (value) {
+    const el = document.querySelector('.search__input')
+    if (el) {
+        // Js 修改 input value 值后怎么同步修改绑定的v-model值？
+        // https://www.cnblogs.com/zhoudawei/p/10901752.html
+        el.value = value; el.dispatchEvent(new Event('input'))
+
+        // 模拟点击、输入、操作
+        // https://juejin.cn/post/6844903850336321549
+        // fireKeyEvent(el, 'keyup', 13)
+        fireKeyEvent(el, 'keyup', 13)
+
+        // 等待搜索结果出现，等待的逻辑是 .search__icon--cancel 再次存在
+        // 因为搜索过程中，.search__icon--cancel 会变成 .search__icon--loading
+        window.requestAnimationFrame(async () => {
+            // 等待 .search__icon--cancel 再次出现，说明加载好了
+            await waitWhen(() => document.querySelector('.search__icon--cancel'), 10 * 1000, 100)
+
+            // 找到第一条数据，进行模拟点击
+            document.querySelector('tbody tr').click()
+        })
+    }
 }
 )
 txtit(Var)
