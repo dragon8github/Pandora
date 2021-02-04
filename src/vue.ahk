@@ -3682,7 +3682,7 @@ t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
 <template>
-  <div class="%OutputVar%">%OutputVar%</div>
+  <div class="%OutputVar%"></div>
 </template>
 
 <script>

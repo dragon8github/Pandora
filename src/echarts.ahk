@@ -1267,27 +1267,32 @@ tooltip: {
    }
 }
 ---
-tooltip: {
-    trigger: 'item',
-    enterable: true,
-    confine: true,
-    // 取消最外层的默认样式
-    backgroundColor: 'transparent', padding: 0, borderWidth: 0, borderColor: 'transparent', extraCssText: 'box-shadow: none !important;',
-    padding: [$adaptaWall(10), $adaptaWall(15)],
-    textStyle: {
-        fontSize: $adaptaWall(20),
+const __echartslayer__ = new ol3Echarts(
+    {
+        tooltip: {
+            // 不在 'mousemove' 或 'click' 时触发，用户可以通过 action.tooltip.showTip 和 action.tooltip.hideTip 来手动触发和隐藏。
+            triggerOn: 'none',
+            // action.tooltip.hideTip 会受到此参数的影响
+            hideDelay: 0,
+            // 这两个核心参数几乎所有 tooltip 都要。
+            confine: true, appendToBody: true,
+            // 重置 tooltip 样式
+            backgroundColor: 'transparent', padding: 0, borderWidth: 0, borderColor: 'transparent', extraCssText: 'box-shadow: none !important;',
+            // 内间距（其实可以 Pop.scss 来代替使用）
+            padding: [$adaptaWall(10), $adaptaWall(15)],
+            // 字体大小（毫无意义，依然可以用 pop.scss 来代替）
+            textStyle: { fontSize: $adaptaWall(20) },
+            formatter: params => {},
+        },
+        series: [scatter, effectScatter],
     },
-    // position: (point, params, dom, rect, size) => [point[0] + 20, '0`%'],
-    formatter: params => {
-        const { componentType } = params
-
-        if (componentType === 'series' || componentType === 'effectScatter') {
-            return `<div class="pop" style="display: block">${params.name}</div>`
-        }
-
-        return ''
-    },
-},
+    {
+        // https://sourcegraph.com/github.com/sakitam-fdd/ol3Echarts/-/blob/docs/guide/api.md
+        // 必须开启这个才可以使用点击事件。被坑了好久。
+        polyfillEvents: true,
+        // 开启能提高性能和用户体验
+        hideOnZooming: true, hideOnMoving: true, hideOnRotating: true, }
+`)
 ---
 $chart.on('mouseover', params => {
     $chart.dispatchAction({ type: 'showTip', seriesIndex: params.seriesIndex, name: params.name })

@@ -1,4 +1,12 @@
-﻿::yaosu::
+﻿::xilie::
+Var =
+(
+series
+)
+code(Var)
+return
+
+::yaosu::
 Var =
 (
 feature
@@ -392,6 +400,9 @@ height: %fuck_hem%em;
 
 const width = %fuck_w2%
 const height = %fuck_h2%
+
+
+[$adaptaWall(%fuck_w2%), $adaptaWall(%fuck_h2%)]
 ---
 <img src="data:image/png;base64,%base64% />
 )

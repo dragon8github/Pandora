@@ -272,14 +272,19 @@ changeHandler (v) {
 txtit(Var)
 Return
 
+::countot::
 ::count-to::
 ::countto::
 Var =
 (
 import countTo from 'vue-count-to';
+
+
 <countTo :startVal='0' :endVal="65491" :duration="1500" class="total-num"></countTo>
+
+<CountTo class='item__number' :endVal='maybe(_ => _data_20201229100[0].data[0].DIAGNOSE, 0)'></CountTo>
 )
-code(Var)
+txtit(Var)
 return
 
 ::el-search::

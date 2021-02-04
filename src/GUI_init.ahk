@@ -662,6 +662,8 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/covid-1
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/68/interface/api">yapi</a>
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/covid-19-map?tab=history">部署地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
+Gui, Pandora:Add, Link,, <a href="https://covid-map.dg.cn/covid-19-map/">正式环境</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.128:8080">正式Jenkins</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 东莞疫情
@@ -1217,7 +1219,7 @@ Gui, Pandora:Add, Link,, <a href="https://developers.arcgis.com/javascript/lates
 ; @chart echarts
 
 Gui, Pandora:Add, Text,  W140  Section xs yp+150, echart:
-Gui, Pandora:Add, Link,, <a href="https://echarts.apache.org/zh/api.html#echarts">echart 配置项手册</a>
+Gui, Pandora:Add, Link,, <a href="https://echarts.apache.org/zh/option.html#series-effectScatter">echart 配置项手册</a>
 Gui, Pandora:Add, Link,, <a href="https://echarts.apache.org/examples/zh/index.html">echart 官方示例</a>
 Gui, Pandora:Add, Link,, <a href="https://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all">ECharts 官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="https://www.oschina.net/translate/geojson-spec#positions">GeoJSON 格式规范</a>

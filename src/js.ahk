@@ -498,7 +498,7 @@ return
 ::visi::
 Var =
 (
-vue-observe-visibility
+vue-observe-visibility（Visible）
 )
 code(Var)
 return
@@ -1996,7 +1996,7 @@ import Event from './Event'
 import { deepCopy, killerQueen2 } from '@/utils/utils'
 
 // 配置模板
-const defaultCfg = { id: 0, data: null, pageNum: 1, pageSize: 20, totalPage: null, status: null, url: null }
+const defaultCfg = { id: 0, data: null, pageNum: 1, pageSize: 20, totalPage: null, status: null, url: null, params: {} }
 
 export default class Table {
     constructor(cfg = {}) {
@@ -2020,9 +2020,9 @@ export default class Table {
         // 请求数据
         const result = await killerQueen2(
             () => (this.status = 'loading'),
-            () => POST(this.url, { id: this.id, params: Object.assign({}, { pageNum: this.pageNum, pageSize: this.pageSize }, params) }),
+            () => POST(this.url, { id: this.id, params: Object.assign({}, { noTotal: 9999, pageNum: this.pageNum, pageSize: this.pageSize, ...this.params }, params) }),
             () => (this.status = 'finish'),
-            5000
+            10 * 1000
         `)
 
         // 肯定是报错了
@@ -2054,9 +2054,9 @@ export default class Table {
             // 请求数据
             const result = await killerQueen2(
                 () => (this.status = 'loading'),
-                () => POST(this.url, { id: this.id, params: Object.assign({}, { pageNum: this.pageNum + 1, pageSize: this.pageSize }, params) }),
+                () => POST(this.url, { id: this.id, params: Object.assign({}, { noTotal: 9999, pageNum: this.pageNum + 1, pageSize: this.pageSize }, params) }),
                 () => (this.status = 'finish'),
-                5000
+                10 * 1000
             `)
 
             if (result == null) {
@@ -2081,6 +2081,7 @@ export default class Table {
         }
     }
 }
+
 )
 txtit(Var)
 return
@@ -16148,6 +16149,16 @@ console.log('demo2：', p2.get('1'))
 // 紧随其后的 2 则被删除了
 // => undefined
 console.log('demo2：', p2.get('2'))
+################################################################
+const memoize = fn => new Proxy(fn, {
+  cache: new Map(),
+  apply (target, thisArg, argsList) {
+    let cacheKey = argsList.toString();
+    if(!this.cache.has(cacheKey))
+      this.cache.set(cacheKey, target.apply(thisArg, argsList));
+    return this.cache.get(cacheKey);
+  }
+});
 )
 txtit(Var, "################################################################")
 return
