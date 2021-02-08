@@ -5897,6 +5897,12 @@ export default {
 txtit(Var)
 return
 
+
+::v-aip::
+::vapi::
+::vuezl::
+::vue-zhiling::
+::v-zhiling::
 ::vue.dir::
 ::vue.zhiling::
 ::vue-zhiling::
@@ -6072,16 +6078,57 @@ Vue.directive('loader', {
     },     
 })
 ---
-/* npm install --save v-tooltip */
-import Vue from 'vue'
-import VTooltip from 'v-tooltip'
+import store from '@/store'
 
-Vue.use(VTooltip)
+// 轮询器
+const polls = {}
 
+export default {
+    install(Vue, options = {}) {
+        Vue.directive('api', {
+            bind(el, { value = {} }) {
+                // 必须是 ‘_’ 开头，是否包含模块（无视大小写）
+                const target = actionName => actionName.includes('_data_') && actionName.toUpperCase().includes(value.toUpperCase() + '/')
 
-/* app.vue */
-/* https://akryum.github.io/v-tooltip/ */
-<button v-tooltip="'You have a new messages.'">
+                // 筛选 actions
+                const _actions = Object.keys(store._actions).filter(target)
+
+                // fixbug: 如果没有任何索引
+                if (!_actions.length) {
+                    // return console.warn(`v-api : 『${value}』 not fount any actions`)
+                }
+
+                // 动态轮询时间
+                const getPollsTime = ((timer = [5, 8, 16, 32, 60], len = timer.length, current = 0) => () => timer[current++ `% len] * 1000)()
+
+                ;(async function poll() {
+                    // 请求队列
+                    const queue = _actions.map(action_name => store.dispatch(action_name))
+
+                    // Promise.all 的升级版本， 等待队列完成
+                    const _queue = await Promise.allSettled([...queue])
+
+                    // 下一次轮询的时间
+                    const nextTime = getPollsTime()
+
+                    // fixbug: 只有登录了才允许请求
+                    if (store.state.AppData.token) {
+                        // 开始轮询请求
+                        const timer = setTimeout(() => window.requestAnimationFrame(poll), nextTime)
+
+                        // fixbug: 可能有多次触发，所以改为数组存储
+                        polls[value] ? polls[value].push(timer) : (polls[value] = [timer])
+                    }
+                })()
+            },
+            unbind(el, { value }) {
+                console.log(value, '断开了轮询机制')
+                // fixbug: 可能有多次触发，所以改为数组存储，批量关闭
+                polls[value].forEach(timer => clearTimeout(timer))
+            },
+        })
+    },
+}
 ---
 /**
  * 
@@ -7562,6 +7609,15 @@ if (process.env.NODE_ENV === 'development') {
   // 注册传送门
   shortcut()
 }
+---
+// npm i portal-vue
+import PortalVue from 'portal-vue'
+Vue.use(PortalVue)
+
+<!-- radio -->
+<MountingPortal mountTo="#map__radio" append>
+    <Radio class='map__radio' v-if='radioValue' v-model="radioValue" @change="handleRadioChange"></Radio>
+</MountingPortal>
 )
 txtit(Var)
 return

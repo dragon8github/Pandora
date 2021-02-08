@@ -7639,7 +7639,7 @@ class Singleton {
     }
 }
 )
-code(Var)
+txtit(Var)
 return
 
 ::like::

@@ -689,18 +689,6 @@ Var =
 code(Var)
 return
 
-::vue.chuansongmen::
-::csm::
-::vue3.csm::
-::vue3.chuansongmen::
-::tel::
-::Po::
-Var =
-(
-teleport(portal)
-)
-code(Var)
-return
 
 ::bool::
 Var =

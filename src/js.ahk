@@ -308,7 +308,7 @@ return
 ::getpositon::
 Var =
 (
-// 瘦身对象（只留部分） ▶ slim({ name: 'Benjy', age: 18 }, ['age']) // => { age: 18 }
+// 瘦身对象（只留部分） ? slim({ name: 'Benjy', age: 18 }, ['age']) // => { age: 18 }
 const slim = (obj, properties = []) => properties.reduce((p, c) => (p[c] = obj[c], p), {})
 
 const getPosByEvent = e => {
@@ -722,8 +722,8 @@ io.observe(document.querySelector('footer'))
  * attributeFilter：如果不是所有的属性改变都需要被观察，并且attributes设置为true或者被忽略，那么设置一个需要观察的属性本地名称（不需要命名空间）的列表
  */
 const observe = new MutationObserver(function(mutations, observer) {
-  // ⚠️ 只有在全部DOM操作完成之后才会调用callback
-  // 📝 所以就算你进行进行 N 次操作，但实际上也只会执行一次本回调。
+  // ?? 只有在全部DOM操作完成之后才会调用callback
+  // ?? 所以就算你进行进行 N 次操作，但实际上也只会执行一次本回调。
     console.log('hello world')
 })
 
@@ -809,7 +809,7 @@ const io = new IntersectionObserver(entries => {
     // https://github.com/Akryum/vue-observe-visibility/blob/master/src/directives/observe-visibility.js#L55
     const entry = entries.find(e => e.isIntersecting)
     const isVisibility = !!entry
-    console.log('🌈', isVisibility)
+    console.log('??', isVisibility)
 
 }, {
     // 属性决定了什么时候触发回调函数
@@ -856,11 +856,11 @@ const hit = (s = 45, m = 10, t = 1) => {
     // 运动倒计时
     ;(function poll() {
       setTimeout(() => {
-        if (isEnd) return console.log('🔔 已终止')
-        if (isStop) return console.log('🔴 暂停中')
+        if (isEnd) return console.log('?? 已终止')
+        if (isStop) return console.log('?? 暂停中')
 
         if (startTime) {
-          console.log('☀️di~', startTime)
+          console.log('??di~', startTime)
           startTime--
           return poll()
         } else {
@@ -874,11 +874,11 @@ const hit = (s = 45, m = 10, t = 1) => {
     // TODO: 最后一轮休息是不是应该跳过？
     function restPoll() {
       setTimeout(() => {
-        if (isEnd) return console.log('🔔 已终止')
-        if (isStop) return console.log('🔴 暂停中')
+        if (isEnd) return console.log('?? 已终止')
+        if (isStop) return console.log('?? 暂停中')
 
         if (midfieldTime) {
-          console.log('🐤da~', midfieldTime)
+          console.log('??da~', midfieldTime)
           midfieldTime--
           return restPoll()
         } else {
@@ -902,7 +902,7 @@ const hit = (s = 45, m = 10, t = 1) => {
 
   // 运动结束
   const finish = () => {
-    console.log('🎉 运动结束!')
+    console.log('?? 运动结束!')
     // 重置
     isStop = false, isEnd = false, curTime = 0, startTime = s, midfieldTime = m
   }
@@ -973,8 +973,8 @@ export default {
       // 监听数据创建事件
       liveQuery.on('create', (newCmd) => {
         // 获取最新的指令
-        /* console.log('🔔 数据创建触发', newCmd, newCmd.attributes) */
-        console.log('🎉 收到最新的指令', newCmd)
+        /* console.log('?? 数据创建触发', newCmd, newCmd.attributes) */
+        console.log('?? 收到最新的指令', newCmd)
 
         // 获取约定的数据
         const name = newCmd.get('name')
@@ -987,7 +987,7 @@ export default {
             // 类似 eval 语法
             Function(cmd)(this)
           } catch (err) {
-            console.error('🔴 执行指令错误', err)
+            console.error('?? 执行指令错误', err)
           }
         }
       })
@@ -1016,7 +1016,7 @@ export default {
       _cmd.set('type', 'code')
       _cmd.set('cmd', `document.querySelector('.governmentData_icon').click()`)
       _cmd.set('name', '点击「数据治理」')
-      _cmd.save().then((result) => console.log('🚀', result))
+      _cmd.save().then((result) => console.log('??', result))
     },
   },
   async created() {
@@ -1075,8 +1075,8 @@ export const subscribe = () => {
         // 监听数据创建事件
         liveQuery.on('create', (newCmd) => {
             // 获取最新的指令
-            /* console.log('🔔 数据创建触发', newCmd, newCmd.attributes) */
-            console.log('🎉 收到最新的指令', newCmd)
+            /* console.log('?? 数据创建触发', newCmd, newCmd.attributes) */
+            console.log('?? 收到最新的指令', newCmd)
 
             // 获取约定的数据
             const name = newCmd.get('name')
@@ -1089,7 +1089,7 @@ export const subscribe = () => {
                     // 类似 eval 语法
                     Function(cmd)(this)
                 } catch (err) {
-                    console.error('🔴 执行指令错误', err)
+                    console.error('?? 执行指令错误', err)
                 }
             }
         })
@@ -1108,7 +1108,7 @@ export const emit = (type = 'code', cmd = 'console.log', name = 'test') => {
     _cmd.set('type', type)
     _cmd.set('cmd', cmd)
     _cmd.set('name', name)
-    _cmd.save().then((result) => console.log('🚀', result))
+    _cmd.save().then((result) => console.log('??', result))
 }
 ---
 // cmd 控制台
@@ -1288,7 +1288,7 @@ var chan = (when = () => false, { title = 'New message incoming', body = 'Hi the
         // 接受
           if (p === 'granted') start()
           // 拒绝
-          if (p === 'denied') console.warn('🔴', '只有允许权限才可以使用通知功能，请点击左上角的锁头手动开启通知权限')
+          if (p === 'denied') console.warn('??', '只有允许权限才可以使用通知功能，请点击左上角的锁头手动开启通知权限')
       })
   }
 }
@@ -1372,9 +1372,9 @@ Var =
     // 获取页面唯一的播放器
       const video = document.querySelector('video')
 
-      if (!isBilibili()) return console.warn('🔔 当前页面不是B站播放页')
+      if (!isBilibili()) return console.warn('?? 当前页面不是B站播放页')
 
-      if (!video) return console.warn('🔔 找不到播放器')
+      if (!video) return console.warn('?? 找不到播放器')
 
       // 获取播放时长（有可能获取失败）
       let timeLength = maybe(_ => video.duration, 0)
@@ -1481,7 +1481,7 @@ $bb.poll('17:00', '17:50')
     // 获取页面唯一的播放器
       const video = document.querySelector('audio')
 
-      if (!video) return console.warn('🔔 找不到播放器')
+      if (!video) return console.warn('?? 找不到播放器')
 
       // 获取播放时长（有可能获取失败）
       let timeLength = maybe(_ => video.duration, 0)
@@ -1612,7 +1612,7 @@ Var =
 
                 // 添加点击事件（放心，不会被覆盖）
                 myChart.on('click', () => {
-                      console.log('🦄', myChart.INIT_OPTS)
+                      console.log('??', myChart.INIT_OPTS)
                 })
 
                 // 照常返回 charts
@@ -1642,7 +1642,7 @@ echarts.init = function(...args) {
       return setOption(opts, ...args)
   }
 
-  myChart.on('click', () => console.log('🦄', myChart.INIT_OPTS))
+  myChart.on('click', () => console.log('??', myChart.INIT_OPTS))
 
   return myChart
 }
@@ -1651,14 +1651,14 @@ echarts.init = function(...args) {
     // 最常用且关注的属性
     const properties = ['color', 'grid', 'legend', 'series', 'tooltip', 'visualMap', 'xAxis', 'yAxis']
 
-    // 瘦身对象（只留部分） ▶ slim({ name: 'Benjy', age: 18 }, ['age']) // => { age: 18 }
+    // 瘦身对象（只留部分） ? slim({ name: 'Benjy', age: 18 }, ['age']) // => { age: 18 }
     const slim = (obj, properties = []) => properties.reduce((p, c) => (p[c] = obj[c], p), {})
 
     // 是否为函数
     const isFunction = input => Object.prototype.toString.call(input) === '[object Function]'
 
     // 深度拷贝对象，如果属性是函数类型，那么尝试 toString 转化为字符串（如果是生产环境则会是加密的代码）
-    // deepCopy({ a: 123, c: () => console.log(123) }) // ▶ {a: 123, c: "() => console.log(123)"}
+    // deepCopy({ a: 123, c: () => console.log(123) }) // ? {a: 123, c: "() => console.log(123)"}
     function deepCopyFunction(obj, cache = []) {
         if (obj === null || typeof obj !== 'object') {
             return obj
@@ -1699,7 +1699,7 @@ echarts.init = function(...args) {
                 const myOpts = slim(opts, properties)
 
                 // 7、 打印出所有样式和我关心的样式
-                console.log('🌈', opts, myOpts)
+                console.log('??', opts, myOpts)
 
                 // 8、 将 formatter 类的函数属性，转化为字符串
                 const _myOpts = deepCopyFunction(myOpts)
@@ -1943,7 +1943,7 @@ export default class Table {
         if (!result) {
       this.data = null
       this.totalPage = null
-      return console.warn('🔥 数据请求异常', result)
+      return console.warn('?? 数据请求异常', result)
     }
 
         this.data = result.data
@@ -1968,7 +1968,7 @@ export default class Table {
       if (!result) {
         this.data = null
         this.totalPage = null
-        return console.warn('🔥 数据请求异常', result)
+        return console.warn('?? 数据请求异常', result)
       }
 
             this.data.push(...result.data)
@@ -2030,7 +2030,7 @@ export default class Table {
             this.data = null
             this.totalPage = null
             this.status = 'error'
-            return console.warn('🔥 数据请求异常', result)
+            return console.warn('?? 数据请求异常', result)
         }
 
         this.data = result.data
@@ -2063,7 +2063,7 @@ export default class Table {
                 this.data = null
                 this.totalPage = null
                 this.status = 'error'
-                return console.warn('🔥 数据请求异常', result)
+                return console.warn('?? 数据请求异常', result)
             }
 
             // fixbug: result.data 有可能返回 null 导致 ... 解析失败
@@ -2452,34 +2452,34 @@ return
 ::shouji::
 Var =
 (
-// 查找到字符串中的手机号码，并且脱敏处理
-// https://blog.csdn.net/yeshizhu/article/details/78354058
-// https://blog.csdn.net/u010201575/article/details/90024828
-export function matchPhoneNum(str, reg = /(1[3|4|5|7|8|9][\d]{9}|0[\d]{2,3}-[\d]{7,8}|400[-]?[\d]{3}[-]?[\d]{4})/g) {
-    let phoneNums = str.match(reg)
+//?查找到字符串中的手机号码，并且脱敏处理
+//?https://blog.csdn.net/yeshizhu/article/details/78354058
+//?https://blog.csdn.net/u010201575/article/details/90024828
+export?function?matchPhoneNum(str,?reg?=?/(1[3|4|5|7|8|9][\d]{9}|0[\d]{2,3}-[\d]{7,8}|400[-]?[\d]{3}[-]?[\d]{4})/g)?{
+????let?phoneNums?=?str.match(reg)
 
-    let _str = str
+????let?_str?=?str
 
-    // 字符串中如果有多个手机号码，需要批量处理
-    for (let i = 0; i < phoneNums.length; i++) {
-        let phone = phoneNums[i]
+????//?字符串中如果有多个手机号码，需要批量处理
+????for?(let?i?=?0;?i?<?phoneNums.length;?i++)?{
+????????let?phone?=?phoneNums[i]
 
-        //隐藏手机号中间4位(例如:12300102020,隐藏后为132****2020)
-        const result = phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
+????????//隐藏手机号中间4位(例如:12300102020,隐藏后为132****2020)
+????????const?result?=?phone.replace(/(\d{3})\d{4}(\d{4})/,?'$1****$2')
 
-        _str = str.replace(phone, result)
-    }
+????????_str?=?str.replace(phone,?result)
+????}
 
-    if (_str === str) {
-      const left = str.slice(0, 3)
-      const l = str.slice(3, -3).length
-      const fstr = l > 3 ? '*'.repeat(l) : '***'
-      const star = str.slice(3, -3).replace(/.+/, fstr)
-      const right = str.slice(-3)
-      _str = left + star + right
-    }
+????if?(_str?===?str)?{
+??????const?left?=?str.slice(0,?3)
+??????const?l?=?str.slice(3,?-3).length
+??????const?fstr?=?l?>?3???'*'.repeat(l)?:?'***'
+??????const?star?=?str.slice(3,?-3).replace(/.+/,?fstr)
+??????const?right?=?str.slice(-3)
+??????_str?=?left?+?star?+?right
+????}
 
-    return _str
+????return?_str
 }
 
 let test1 = '罗兵13825296262'
@@ -2947,7 +2947,7 @@ app.use(express.json())
 app.all('/', (req, res) => {
   const { method,  url, headers, body, query /* ,params */ } = req
 
-  console.log('🦄🦄🦄🦄', body)
+  console.log('????????', body)
 
   res.send({ msg: 'hello world!' })
 })
@@ -3503,11 +3503,11 @@ axios.interceptors.request.use(async config => {
     // 加入 id（用来标识请求的唯一性，用来判断是否重复请求）
     config.id = id
 
-    // 🔴 懒模式 - 10 分钟内等待队列为空才进行，查询的间隔是 100ms 一次，每次只能进行一条。
+    // ?? 懒模式 - 10 分钟内等待队列为空才进行，查询的间隔是 100ms 一次，每次只能进行一条。
     if (lazy) await waitWhen(_ => pending.length === 0, 60 * 10 * 1000, 100)
 
     // （默认开启「去重」）如果需要去重复, 则中止队列中所有相同请求地址的 xhr
-    noRepeat && pending.forEach(_ => _.id === id && _.cancel('⚔️ kill repeat xhr：' + config.noteURL))
+    noRepeat && pending.forEach(_ => _.id === id && _.cancel('?? kill repeat xhr：' + config.noteURL))
 
     // 配置 CancelToken
     config.cancelToken = new axios.CancelToken(cancel => {
@@ -3547,7 +3547,7 @@ axios.interceptors.response.use(res => {
     // token 失效，请求失败 20019
     if (res && res.status === 500 && res.data && res.data.code === 20019) {
         // 取消所有接口的请求
-        pending.forEach(_ => _.cancel('⚠️登录状态失效'))
+        pending.forEach(_ => _.cancel('??登录状态失效'))
         // 清空接口
         pending = []
         // 主动报错，回到登录页
@@ -3998,7 +3998,7 @@ Var =
 const foo = fn => {
   const ctx = {
     log() {
-      console.log('🚀 loging...')
+      console.log('?? loging...')
     }
   }
 
@@ -4305,7 +4305,7 @@ export const maybe = (fn, n = '') => {
  *
     (async function(){
         // 启动计时器
-        console.time('🚀')
+        console.time('??')
         // 测试专用函数
         const test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 1000))
         // wait
@@ -4313,7 +4313,7 @@ export const maybe = (fn, n = '') => {
         // success
         console.log(result)
         // 停止计时，输出时间
-        console.timeEnd('🚀') // => 🚀: 3002.038818359375ms
+        console.timeEnd('??') // => ??: 3002.038818359375ms
     }())
  */
 export const wait = async (fn, t = 0) => {
@@ -4877,7 +4877,7 @@ export const objAssign = (...args) => args.reduce((prev, curr) => {
   for (let key in curr) {
     // 如果包含key，那么这两个属性相加
     if (Object.keys(prev).includes(key)) {
-      // ⚠️ 相加. 这里没有判断是否为Number类型
+      // ?? 相加. 这里没有判断是否为Number类型
       prev[key] += curr[key]
       // 否则直接迭代
     } else {
@@ -4951,7 +4951,7 @@ var deepSet = (obj, path, v) => {
         // 从左往右取出路径
         const k = p.shift()
 
-        // ⚠️ 如果不存在则定义该对象
+        // ?? 如果不存在则定义该对象
         if (!o[k]) o[k] = {}
 
         // 获取当前路径的值
@@ -5495,10 +5495,10 @@ const isPromise = val => val && typeof val.then === 'function'
    const testB = new Promise((resolve, reject) => setTimeout(_ => reject('fail'), 3500))
 
    ;(async function(){
-       // ✖️
+       // ??
        // const result = await Promise.all([testA, testB])
 
-       // ✔
+       // ?
        const result = await Promise.allSettled([testA, testB])
        console.log(20191215005254, result)
    }())
@@ -6258,7 +6258,7 @@ Var =
  *
     (async function(){
         // 启动计时器
-        console.time('🚀')
+        console.time('??')
         // 测试专用函数
         const test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 1000))
         // wait
@@ -6266,7 +6266,7 @@ Var =
         // success
         console.log(result)
         // 停止计时，输出时间
-        console.timeEnd('🚀') // => 🚀: 3002.038818359375ms
+        console.timeEnd('??') // => ??: 3002.038818359375ms
     }())
  */
 export const wait = async (fn, t = 0) => {
@@ -6715,7 +6715,7 @@ return
 ::es6.proxy::
 Var = 
 (
-// 🚀 认知：proxy可以模拟 PHP的 __get 魔术函数
+// ?? 认知：proxy可以模拟 PHP的 __get 魔术函数
 /**
  * 使用方式
  * const data = { NAME: 'lee' }
@@ -6756,7 +6756,7 @@ var VueComponent = {
 // 获取状态
 var data = VueComponent.data()
 
-// 🚀 使用 Proxy 代理 data
+// ?? 使用 Proxy 代理 data
 const p = new Proxy(data, {
   get (target, name) {
     console.log('get', target, name)
@@ -6774,10 +6774,10 @@ const p = new Proxy(data, {
 p.title     // => 触发 get
 p.title = 123 // => 触发 set
 
-// 🚀 这就是 Proxy 比 Object.defineProperty 优势的地方1：哪怕不存在的变量，也可以触发 set 
+// ?? 这就是 Proxy 比 Object.defineProperty 优势的地方1：哪怕不存在的变量，也可以触发 set 
 p.fuck = 'fuck'
 
-// 🚀 这就是 Proxy 比 Object.defineProperty 优势的地方2：数组成员的修改，也可以被监听
+// ?? 这就是 Proxy 比 Object.defineProperty 优势的地方2：数组成员的修改，也可以被监听
 p.items[0] = 123
 ---
 /**
@@ -6829,7 +6829,7 @@ var fproxy = new Proxy(function (x, y) {
 }, hander)
 
 // 触发 apply
-fproxy(1, 2) // =>  [1, 2]
+fproxy(1, 2) // => ?[1, 2]
 
 // 触发 construct
 new fproxy(1, 2) // => {value: Array(2)}
@@ -7063,8 +7063,8 @@ Var =
  * attributeFilter：如果不是所有的属性改变都需要被观察，并且attributes设置为true或者被忽略，那么设置一个需要观察的属性本地名称（不需要命名空间）的列表
  */
 const observe = new MutationObserver(function(mutations, observer) {
-    // ⚠️ 只有在全部DOM操作完成之后才会调用callback
-    // 📝 所以就算你进行进行 N 次操作，但实际上也只会执行一次本回调。
+    // ?? 只有在全部DOM操作完成之后才会调用callback
+    // ?? 所以就算你进行进行 N 次操作，但实际上也只会执行一次本回调。
     console.log('hello world')
 })
 
@@ -7605,7 +7605,7 @@ const __STORE__ = _store.keys().reduce((obj, path) => {
 ---
 import Vue from 'vue'
 
-// ✍️ 请无视这段代码，这是为了修复 jest 测试的补丁
+// ?? 请无视这段代码，这是为了修复 jest 测试的补丁
 // fixbug: jest => TypeError: require.context is not a function
 // https://stackoverflow.com/questions/38332094/how-can-i-mock-webpacks-require-context-in-jest
 // This condition actually should detect if it's an Node environment
@@ -8228,11 +8228,11 @@ axios.interceptors.request.use(async config => {
     // 加入 id（用来标识请求的唯一性，用来判断是否重复请求）
     config.id = id
 
-    // 🔴 懒模式 - 60s 内等待队列为空才进行，查询的间隔是 100ms 一次，每次只能进行一条。
+    // ?? 懒模式 - 60s 内等待队列为空才进行，查询的间隔是 100ms 一次，每次只能进行一条。
     if (lazy) await waitWhen(_ => pending.length === 0, 60 * 1000, 100)
 
     // （默认开启「去重」）如果需要去重复, 则中止队列中所有相同请求地址的 xhr
-    noRepeat && pending.forEach(_ => _.id === id && _.cancel('⚔️ kill repeat xhr：' + config.noteURL))
+    noRepeat && pending.forEach(_ => _.id === id && _.cancel('?? kill repeat xhr：' + config.noteURL))
 
     // 配置 CancelToken
     config.cancelToken = new axios.CancelToken(cancel => {
@@ -8472,7 +8472,7 @@ export const request = async (url, options = {}) => {
             const age = (Date.now() - whenCached) / 1000
             // 如果不过期的话直接返回该内容
             if (age < expirys) {
-                console.log('🚀 use cache')
+                console.log('?? use cache')
                 // fixbug: 就算我使用的是缓存，我也要杀死正在请求的同类。
                 const pureUrl = getPureUrl(url)
                 // 如果需要去重复（默认noRepeat为 'on'，即开启去重复），则中止队列中所有相同请求地址的xhr
@@ -8604,8 +8604,8 @@ axios.interceptors.request.use(config => {
     config.__NOTE__ = note
 
     // （默认开启「去重」）如果需要去重复, 则中止队列中所有相同请求地址的 xhr
-    // 🔔 请注意，我这里故意使用「config.noteURL」，因为我要利用 「"|" 注释」来区分相同的 api
-    noRepeat && pending.forEach(_ => _.url === config.noteURL && _.cancel('⚔️ kill repeat xhr：' + config.noteURL))
+    // ?? 请注意，我这里故意使用「config.noteURL」，因为我要利用 「"|" 注释」来区分相同的 api
+    noRepeat && pending.forEach(_ => _.url === config.noteURL && _.cancel('?? kill repeat xhr：' + config.noteURL))
 
     // 配置 CancelToken
     config.cancelToken = new axios.CancelToken(cancel => {
@@ -9378,7 +9378,7 @@ export const NetworkFirst = async (key, fetchData) => {
 
     // 如果请求失败，返回缓存
     }).catch(err => {
-        // ☀️ 当 __CANCEL__: true 时，说明API是因为「去重机制」被 「kill」，这并不是失败。所以不需要返回缓存。
+        // ?? 当 __CANCEL__: true 时，说明API是因为「去重机制」被 「kill」，这并不是失败。所以不需要返回缓存。
         if (err.__CANCEL__) throw new Error(err.message)
         
         return cacheData
@@ -9729,9 +9729,9 @@ function compose (middleware) {
         // 下一个函数的引用（有点轮询的味道）
         const next = dispatch.bind(null, cursor + 1)
 
-        // 🚀 执行当前函数，并且注入 『上下文』 和 『下一次函数』
-        // ⚠️ 注意，由于这里的 fn 大概率是使用 async/await 之类的异步操作，所以返回 99`% 是 Promise。
-        // 📝 所以 Promise.resolve(result) 返回的依然是一个 Promise 哦
+        // ?? 执行当前函数，并且注入 『上下文』 和 『下一次函数』
+        // ?? 注意，由于这里的 fn 大概率是使用 async/await 之类的异步操作，所以返回 99`% 是 Promise。
+        // ?? 所以 Promise.resolve(result) 返回的依然是一个 Promise 哦
         const result = fn(ctx, next)
 
         // 返回结果
@@ -9780,7 +9780,7 @@ compose([a, b])({ /* ctx, last_next */ })
 // 4
 // 2
 
-// 返回：Promise {<resolved>: "ok"}
+// 返回：Promise?{<resolved>: "ok"}
 )
 txtit(Var)
 return
@@ -10545,7 +10545,7 @@ function poll(page = 0, size = 1) {
 
 // 运行任务，开始轮询
 run(taskList, (data, index) => {
-    console.log(`🚀 task-${index} 已完成`)
+    console.log(`?? task-${index} 已完成`)
     // 如果是第一个，则直接开始
     if (index === 0) { status = 'open'; poll() }
     // 如果是最后一个则关闭
@@ -10731,7 +10731,7 @@ function poll(page = 0, size = 1) {
 
 // 运行任务，开始轮询
 run(taskList, (data, index) => {
-    console.log(`🚀 task-${index} 已完成`)
+    console.log(`?? task-${index} 已完成`)
     // 如果是第一个，则直接开始
     if (index === 0) { status = 'open'; poll() }
     // 如果是最后一个则关闭
@@ -11714,6 +11714,12 @@ var obj = arr.reduce((p, c) => {
 }, {})
 ---
 .reduce((p, c) => p + Number(c.value), 0)
+
+temp1.reduce((p, c, i, a) => {
+    
+    
+    return p
+}, [])
 ---
 .reduce((previousValue, currentValue, index, array) => {
     return previousValue + currentValue
@@ -11969,7 +11975,7 @@ const replaceMethod = (target, methodName, aspect, advice) => {
             aspect.apply(target, args)
         }
 
-        // retrun hook（⚠️注意⚠️，此处的设计是拦截返回值）
+        // retrun hook（??注意??，此处的设计是拦截返回值）
         if ('return' == advice) {
             return aspect.apply(target, [returnedValue])
         }
@@ -12015,7 +12021,7 @@ function loggingAspect(...args) {
 function printType(value) {
     console.log('Returned type: ' + typeof value)
     
-    // ⚠️注意⚠️，此处的设计的 「return hook」 是会拦截返回值的，所以你必须手动返回
+    // ??注意??，此处的设计的 「return hook」 是会拦截返回值的，所以你必须手动返回
     return value
 }
 
@@ -13820,7 +13826,7 @@ const waitWhen = (conditionFn = () => false, wait = Infinity, interval = 10, sta
  *
     (async function(){
         // 启动计时器
-        console.time('🚀')
+        console.time('??')
         // 测试专用函数
         const test = () => new Promise((resolve, reject) => setTimeout(_ => resolve('success'), 1000))
         // wait
@@ -13828,7 +13834,7 @@ const waitWhen = (conditionFn = () => false, wait = Infinity, interval = 10, sta
         // success
         console.log(result)
         // 停止计时，输出时间
-        console.timeEnd('🚀') // => 🚀: 3002.038818359375ms
+        console.timeEnd('??') // => ??: 3002.038818359375ms
     }())
  */
 export const wait = async (fn, t = 0) => {
@@ -14849,6 +14855,8 @@ function shuffle(target) {
 // parseInt(Math.random() * 5)     // 0-4
 // const isChecked = () => Math.random() >= .5
 parseInt(Math.random() * 10 + 1);  // 获取 1 - 10 到随机数
+---
+const randomNumberInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 )
 txtit(Var)
 Return
@@ -16150,15 +16158,15 @@ console.log('demo2：', p2.get('1'))
 // => undefined
 console.log('demo2：', p2.get('2'))
 ################################################################
-const memoize = fn => new Proxy(fn, {
-  cache: new Map(),
-  apply (target, thisArg, argsList) {
-    let cacheKey = argsList.toString();
-    if(!this.cache.has(cacheKey))
-      this.cache.set(cacheKey, target.apply(thisArg, argsList));
-    return this.cache.get(cacheKey);
-  }
-});
+// 缓存器v2版本（强烈推荐，兼容复杂参数和promise返回值）
+export const memoize = fn => new Proxy(fn, {
+    cache: new Map(),
+    apply(target, thisArg, argsList) {
+        let cacheKey = argsList.toString()
+        if (!this.cache.has(cacheKey)) this.cache.set(cacheKey, target.apply(thisArg, argsList))
+        return this.cache.get(cacheKey)
+    },
+})
 )
 txtit(Var, "################################################################")
 return
@@ -16687,17 +16695,17 @@ const http = axios.create({
  * 请求拦截
  */
 http.interceptors.request.use(async request => {
-    // ✖️ 如果是登录是不需要 『Authorization』 或者 『token』 的
+    // ?? 如果是登录是不需要 『Authorization』 或者 『token』 的
     if ('/uaa/auth/login' === request.url) {
         return request
 
-    // 📝 如果是 『重新获取token』，则 『Authorization』 需要设置为 『refreshToken』
+    // ?? 如果是 『重新获取token』，则 『Authorization』 需要设置为 『refreshToken』
     } else if ('/uaa/auth/token' === request.url) {
         const refreshToken = getRefreshToken()
         request.headers['Authorization'] = 'Bearer ' + refreshToken
         return request
 
-    // 🚀 其余 API 的 Authorization 全部都必须用 token
+    // ?? 其余 API 的 Authorization 全部都必须用 token
     } else {
         const refreshToken = getRefreshToken()
         const token = await getToken()
@@ -16981,7 +16989,7 @@ Nothing.of = function (value) {
     return new Nothing(value)
 }
 
-// ⚠️ 核心：不执行任何操作，只是返回函子本身
+// ?? 核心：不执行任何操作，只是返回函子本身
 Nothing.prototype.map = function (f) {
     return this
 }
@@ -18399,17 +18407,17 @@ console.log(data.title)
 data.title = '456'
 
 //////////////////////////////////////////////
-// ⚠️ 注意，js 无法监听对象属性的添加和删除
+// ?? 注意，js 无法监听对象属性的添加和删除
 //////////////////////////////////////////////
 console.log(data.fuck) // => 不会触发 'get hook' 钩子
 
 
 //////////////////////////////////////////////
-// ⚠️ 注意，数组成员的修改也不会触发 set hook，除非整个数组修改
+// ?? 注意，数组成员的修改也不会触发 set hook，除非整个数组修改
 //////////////////////////////////////////////
 
-// ⚠️ 注意，不会触发 set hook
-// ❓ 不会触发set hook，但居然还额外触发了 get hook。 暂时不知道为啥
+// ?? 注意，不会触发 set hook
+// ? 不会触发set hook，但居然还额外触发了 get hook。 暂时不知道为啥
 data.items[0] = '123' 
 
 // 除非整个替换，才会触发 set hook 钩子
@@ -18659,7 +18667,7 @@ console.log(obj.foo) // =>hello world
 
                 // 添加点击事件（放心，不会被覆盖）
                 myChart.on('click', () => {
-                      console.log('🦄', myChart.INIT_OPTS)
+                      console.log('??', myChart.INIT_OPTS)
                 })
 
                 // 照常返回 charts
@@ -18898,11 +18906,11 @@ return
 ::chouli::
 Var =
 (
-// 瘦身对象（只留部分） ▶ slim({ name: 'Benjy', age: 18 }, ['age']) // => { age: 18 }
+// 瘦身对象（只留部分） ? slim({ name: 'Benjy', age: 18 }, ['age']) // => { age: 18 }
 // export const slim = (obj, properties = []) => properties.reduce((p, c) => (p[c] = obj[c], p), {})
 
 
-// 瘦身对象（排除异己） ▶ omit({ name: 'Benjy', age: 18 }, ['age']) // => {name: "Benjy"}
+// 瘦身对象（排除异己） ? omit({ name: 'Benjy', age: 18 }, ['age']) // => {name: "Benjy"}
 const omit = (obj, properties = []) => Object.entries(obj).reduce((p, [k, v]) => !properties.includes(k) ? (p[k] = v, p) : p, {})
 
 // 获取指定属性的对象
