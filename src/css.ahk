@@ -3820,34 +3820,6 @@ return
 ::css.scrollbar::
 Var =
 (
-.card__content {
-    overflow: auto;
-    width: 100`%;
-    height: 100`%;
-}
-
-.card__content::-webkit-scrollbar {
-  width: 0.3em;
-  background-color: rgba(0,0,0,0);
-  display: block;
-}
-
-/*定义滚动条轨道 内阴影+圆角*/
-.card__content::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
-  border-radius: 0.5em;
-  height: 2em;
-  background-color: rgba(0,0,0,0);
-}
-
-/*定义滑块 内阴影+圆角*/
-.card__content::-webkit-scrollbar-thumb {
-  border-radius: 0.2em;
-  height: 2em;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
-  background-color: #dfeaed;
-}
----
 .list {
     &::-webkit-scrollbar {
         width: 5px;
@@ -3875,7 +3847,8 @@ overflow-y: auto;
 overflow-x: hidden;
 
 &::-webkit-scrollbar {
-  width: 0.4em;
+  width: 0.3em;
+  height: 0.3em;
   background-color: rgba(0,0,0,0);
   display: block;
 }
@@ -3916,35 +3889,34 @@ overflow-x: hidden;
  * 必须配合 overflow-y: scroll; 使用
  * @include scrollbar()
  */
-@mixin scroller() {
-  overflow-y: scroll;
+@mixin scrollbar {
+    &::-webkit-scrollbar {
+        width: 0.3em;
+        height: 0.3em;
+        background-color: rgba(0, 0, 0, 0);
+        display: block;
+    }
 
-  &::-webkit-scrollbar {
-    width: 0.4em;
-    height: 0.4em;
-    background-color: rgba(0, 0, 0, 0);
-    display: block;
-  }
+    /*定义滚动条轨道 内阴影+圆角*/
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 0.5em;
+        height: 2em;
+        background-color: rgba(0, 0, 0, 0);
+    }
 
-  /*定义滚动条轨道 内阴影+圆角*/
-  &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-    border-radius: 0.5em;
-    height: 0.5em;
-    background-color: rgba(0, 0, 0, 0);
-  }
-
-  /*定义滑块 内阴影+圆角*/
-  &::-webkit-scrollbar-thumb {
-    border-radius: 0.2em;
-    height: 2.5em;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-    background-color: rgb(36 64 168 / 21`%);
-  }
+    /*定义滑块 内阴影+圆角*/
+    &::-webkit-scrollbar-thumb {
+        border-radius: 0.2em;
+        height: 2em;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: rgb(230 240 243 / 35`%);
+    }
 }
 ---
 .sidebar::-webkit-scrollbar {
-  width: 4px;
+  width: 0.3em;
+  height: 0.3em;
 }
 .sidebar::-webkit-scrollbar-thumb {
   background: transparent;

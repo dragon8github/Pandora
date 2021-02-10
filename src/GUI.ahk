@@ -3740,7 +3740,7 @@ FileAppend,
     <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
     
     <!-- echarts 百度地图扩展插件 -->
-    <script src="http://echartsjs.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+    <script src="https://echarts.apache.org/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
 </head>
 <style>
     html, body {
