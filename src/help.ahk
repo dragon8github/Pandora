@@ -1,4 +1,12 @@
-﻿::xilie::
+﻿::linyi::
+Var =
+(
+林弋
+)
+code(Var)
+return
+
+::xilie::
 Var =
 (
 series
