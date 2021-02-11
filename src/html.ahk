@@ -365,6 +365,103 @@ export default {
   }
 }
 </style>
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    /* 标题样式 */
+        [id^="toggle"] + label {
+      display: block;
+      padding: 0.5em 1em;
+      background: #ACE;
+      cursor: pointer;
+    }
+
+    /* 标题文本 */
+    [id^="toggle"] + label:after {content:"Show Content"; }
+    [id^="toggle"]:checked + label:after {content:"Hide Content"; }
+
+    /* 箭头 */
+    [id^="toggle"] + label:before {float:right; content:"\25BC"; }
+    [id^="toggle"]:checked + label:before {content:"\25B2"; }
+
+    /* 内容区域 */
+    [id^="toggle"] + label + * {overflow: hidden; height: 0; transition:height 0.5s; background: #FFF; }
+
+    /* --calc-height 默认为 auto */
+    [id^="toggle"]:checked + label + * { height:var(--calc-height); }
+
+
+    /* 另一种方案，更加舒服 */
+    #toggle2:checked + label + * > div {
+      bottom: 0;
+    }
+    
+    #toggle2 + label + * > div {
+      position: relative;
+      bottom: var(--calc-height);
+      transition: bottom 0.5s;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <main>
+            <input type="checkbox" id="toggle1" hidden>
+            <label for="toggle1" hidden></label>
+            <div class="calcChildSize">
+                <div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dolor neque, commodo quis leo ut, auctor tincidunt mauris. Nunc fringilla tincidunt metus, non gravida lorem condimentum non. Duis ornare purus nisl, at porta arcu eleifend eget. Integer lorem ante, porta vulputate dui ut, blandit tempor tellus. Proin facilisis bibendum diam, sit amet rutrum est feugiat ut. Mauris rhoncus convallis arcu in condimentum. Donec volutpat dui eu mollis vulputate. Nunc commodo lobortis nunc at ultrices. Suspendisse in lobortis diam. Suspendisse eget vestibulum ex.
+                    </p>
+                </div>
+            </div>
+            <p>Data after show/hide</p>
+            <input type="checkbox" id="toggle2" hidden>
+            <label for="toggle2" hidden></label>
+            <div class="calcChildSize">
+                <div>
+                    <p>
+                        Maecenas laoreet nunc sit amet nulla ultrices auctor. Vivamus sed nisi vitae nibh condimentum pulvinar eu vel lorem. Sed pretium viverra eros ut facilisis. In ut fringilla magna. Sed a tempor libero. Donec sapien libero, lacinia sed aliquet ut, imperdiet finibus tellus. Nunc tellus lectus, rhoncus in posuere quis, tempus sit amet enim. Morbi et erat ac velit fringilla dignissim. Donec commodo, est id accumsan cursus, diam dui hendrerit nisi, vel hendrerit purus dolor ut risus. Phasellus mattis egestas ipsum sed ullamcorper. In diam ligula, rhoncus vel enim et, imperdiet porta justo. Curabitur vulputate hendrerit nisl, et ultricies diam. Maecenas ac leo a diam cursus ornare nec eu quam.
+                    </p>
+                    <p>
+                        Sed non vulputate purus, sed consectetur odio. Sed non nibh fringilla, imperdiet odio nec, efficitur ex. Suspendisse ut dignissim enim. Maecenas felis augue, tempor sit amet sem fringilla, accumsan fringilla nibh. Quisque posuere lacus tortor, quis malesuada magna elementum a. Nullam id purus in ante molestie tincidunt. Morbi luctus orci eu egestas dignissim. Sed tincidunt, libero quis scelerisque bibendum, ligula nisi gravida libero, id lacinia nulla leo in elit.
+                    </p>
+                    <p>
+                        Aenean aliquam risus id consectetur sagittis. Aliquam aliquam nisl eu augue accumsan, vel maximus lorem viverra. Aliquam ipsum dolor, tempor et justo ac, fermentum mattis dui. Etiam at posuere ligula. Vestibulum tortor metus, viverra vitae mi non, laoreet iaculis purus. Praesent vel semper nibh. Curabitur a congue lacus. In et pellentesque lorem. Morbi posuere felis non diam vulputate, non vulputate ex vehicula. Vivamus ultricies, massa id sagittis consequat, sem mauris tincidunt nunc, eu vehicula augue quam ut mauris.
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+<script>
+(function(d, w) {
+    var calcTargets = d.getElementsByClassName("calcChildSize")
+    d.body.style.setProperty("--calc-height", "auto")
+
+    function resize() {
+        for (var target of calcTargets) {
+            var value = target.firstElementChild.offsetHeight + "px"
+            if (target.style.getPropertyValue("--calc-height") !== value) {
+                target.style.setProperty("--calc-height", value)
+            }
+        }
+    }
+    w.addEventListener("resize", resize, false)
+    w.addEventListener("load", resize, false)
+
+})(document, window)
+</script>
+
+</html>
 )
 txtit(Var)
 return

@@ -435,16 +435,17 @@ Gui, Pandora:Add, Text, gzhilinghtmlpc W180, 新建v-drag实现拖拽（pc）
 Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令
 Gui, Pandora:Add, Text, gvtipzhiling W180, 新建v-tip指令
 Gui, Pandora:Add, Text, gvuelistenhtml W180, 新建vue $listen示例.html
-Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
+; Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
 Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
+; Gui, Pandora:Add, Text, gfullpagepurecss W180,纯css实现swiper全屏fullpage
 Gui, Pandora:Add, Text, ganimjquery W160,新建animate.css与jquery
 Gui, Pandora:Add, Text, gajaxuploadhtml W160,新建ajax图片上传.html
-; Gui, Pandora:Add, Text, gfullpagepurecss W180,纯css实现swiper全屏fullpage
 Gui, Pandora:Add, Text, gvuesuijixipai W180,vue随机播放一副纸牌
 Gui, Pandora:Add, Text, gvuedroptest W180,vue-drop-拖拽示例
 Gui, Pandora:Add, Text, gpubuliugrid W180,magic-grid瀑布流
 Gui, Pandora:Add, Text, gAccordionhtml W180,手风琴Accordion.html
+Gui, Pandora:Add, Text, gjsshoufengqing W140 , 纯js实现手风琴.html
 
 Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
@@ -467,7 +468,6 @@ Gui, Pandora:Add, Text, gdomshengyin W180,只要 dom 改变就会发出声音
 Gui, Pandora:Add, Text, gsinaip W180,新浪接口获取ip地址
 Gui, Pandora:Add, Text, gvueecharts W140 , 新建纯v-chart.html
 Gui, Pandora:Add, Text, gjstuodongtanchuang W140 , 纯js实现拖动弹窗.html
-Gui, Pandora:Add, Text, gjsshoufengqing W140 , 纯js实现手风琴.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建复杂table.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable2 W140 , 新建复杂table2.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable3 W140 , 新建复杂table3.html
