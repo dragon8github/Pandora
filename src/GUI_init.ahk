@@ -419,8 +419,8 @@ Gui, Pandora:Add, Link,, <a href="https://sharkle.com/">随机打开一个有趣
 ;@1
 
 Gui, Pandora:Tab, 2
-Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
-Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140 , 新建纯index.html
+; Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
+Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140  Section y+20, 新建纯index.html
 Gui, Pandora:Add, Text, gNewPureVUEIndexHtml W140 , 新建纯vue.html
 Gui, Pandora:Add, Text, gNewcomposition W160 , 新建vue-composition-API
 Gui, Pandora:Add, Text, gVueComponentHtml W140, 新建vueComponent.html
@@ -435,7 +435,7 @@ Gui, Pandora:Add, Text, gzhilinghtmlpc W180, 新建v-drag实现拖拽（pc）
 Gui, Pandora:Add, Text, gdirectivehtml W180, 新建vue-directive指令
 Gui, Pandora:Add, Text, gvtipzhiling W180, 新建v-tip指令
 Gui, Pandora:Add, Text, gvuelistenhtml W180, 新建vue $listen示例.html
-; Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
+Gui, Pandora:Add, Text, gNewAxiosIndexHtml W140,新建axios.html
 Gui, Pandora:Add, Text, gNewnorepeataxiosHtml W160,新建去重复axios.html
 Gui, Pandora:Add, Text, gNewnorepeatajaxsHtml W160,新建去重复ajax.html
 ; Gui, Pandora:Add, Text, gfullpagepurecss W180,纯css实现swiper全屏fullpage

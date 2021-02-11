@@ -11295,6 +11295,79 @@ axiosRetry(axios, {
   retryCondition: axiosRetry.isRetryableError, 
 }); 
 module.exports = axios;
+---
+
+/**
+ * get 请求
+ */
+axios.get('http://192.168.31.97/index.php?a=123').then(response => {
+    console.log(20181203202901, response)
+})
+
+/**
+ * post application/x-www-form-urlencoded;charset=utf-8
+ * https://github.com/axios/axios#browser
+ * 推荐使用 qs：
+ * $ cnpm install qs
+ * const params = qs.stringify({ 'a': 123 })
+ */
+const params = new URLSearchParams();
+params.append('a', '123');
+axios.post('http://192.168.31.97/index.php', params, {
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+}).then(response => {
+    console.log(20181203202901, response)
+})
+
+/**
+ * axios(url, [config]) + qs + application/x-www-form-urlencoded
+ * @param {*} 参数 参数说明
+ */
+ axios('http://120.77.146.174:84/api/admin/user/sysUser/login', {
+       method: 'POST',
+       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
+       data: Qs.stringify({
+           userAccount: 'dgeduc-b',
+           userPwd: '123456',
+           type: 'account',
+        }),
+ }).then(response => {
+     console.log(20181203100805, response)
+     // return response.json()
+ })
+
+
+/**
+ * post application/json;charset=utf-8
+ */
+axios.post('http://192.168.31.97/index.php', {a: 123}).then(response => {
+    console.log(20181203202901, response)
+})
+
+// ajax（默认是application/json;charset=utf-8）
+axios({
+  method: 'post',
+  url: 'http://192.168.31.97/index.php',
+  data: {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  }
+}).then(response => {
+    console.log(20181203202901, response)
+})
+
+// ajax（指定为application/x-www-form-urlencoded;charset=utf-8）
+const params2 = new URLSearchParams();
+params2.append('firstName', 'Fred');
+params2.append('lastName', 'Flintstone');
+axios({
+  method: 'post',
+  url: 'http://192.168.31.97/index.php',
+  data: params2,
+  headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
+}).then(response => {
+    console.log(20181203202901, response)
+})
 )
 txtit(Var)
 return
