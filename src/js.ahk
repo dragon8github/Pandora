@@ -16353,6 +16353,8 @@ code(Var)
 return
 
 
+::pxtorem::
+::px2rem::
 ::rem::
 ::fuckrem::
 Var =
@@ -16452,87 +16454,20 @@ $root_fontsize: 432; // 因为效果图是4320 / 10
 
 
 // rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推
-$vw_fontsize: 75; // iPhone 6尺寸的根元素大小基准值
+$root_fontsize: 75px; //design iphone6: 375px * 2 / 10 = 75px; --design
+// $root_fontsize: 32px; //design iphone3gs: 320px / 10 = 32px
+// $root_fontsize: 64px; //design iphone4/5: 320px * 2 / 10 = 64px
+// $root_fontsize: 124.2px; //design iphone6: 414px * 3 / 10 = 124.2px;
+// $root_fontsize: 192; // 因为效果图是1920 / 10
 @function rem($px) {
-    @return ($px / $vw_fontsize ) * 1rem;
+    @return ($px / $root_fontsize ) * 1rem;
 }
-// 根元素大小使用 vw 单位
-$vw_design: 750;
-html {
-    font-size: ($vw_fontsize / ($vw_design / 2)) * 100vw;
-    // 同时，通过Media Queries 限制根元素最大最小值
-    @media screen and (max-width: 320px) {
-        font-size: 64px;
-    }
-    @media screen and (min-width: 540px) {
-        font-size: 108px;
-    }
-}
+
 // body 也增加最大最小宽度限制，避免默认100`%宽度的 block 元素跟随 body 而过大过小
 body {
     margin: auto;
     max-width: 540px;
     min-width: 320px;
-}
----
-<script>
-  (function flexible (window, document) {
-   var docEl = document.documentElement
-   var dpr = window.devicePixelRatio || 1
-   var rem = docEl.clientWidth / 10
-
-   // adjust body font size
-   function setBodyFontSize () {
-     if (document.body) {
-       document.body.style.fontSize = (12 * dpr) + 'px'
-     }
-     else {
-       document.addEventListener('DOMContentLoaded', setBodyFontSize)
-     }
-   }
-   setBodyFontSize();
-
-   // set 1rem = viewWidth / 10
-   function setRemUnit () {
-     docEl.style.fontSize = rem + 'px'
-   }
-
-   setRemUnit()
-
-   window.px2rem = function (v) {
-      return v / rem
-   }
-
-   // reset rem unit on page resize
-   window.addEventListener('resize', setRemUnit)
-   window.addEventListener('pageshow', function (e) {
-     if (e.persisted) {
-       setRemUnit()
-     }
-   })
-
-   // detect 0.5px supports
-   if (dpr >= 2) {
-     var fakeBody = document.createElement('body')
-     var testElement = document.createElement('div')
-     testElement.style.border = '.5px solid transparent'
-     fakeBody.appendChild(testElement)
-     docEl.appendChild(fakeBody)
-     if (testElement.offsetHeight === 1) {
-       docEl.classList.add('hairlines')
-     }
-     docEl.removeChild(fakeBody)
-   }
-  }(window, document))
-</script>
-
-<!-- scss -->
-
-// iPhone 6尺寸的根元素大小基准值
-$vw_fontsize: 75;
-
-@function rem($px) {
-    @return ($px / $vw_fontsize ) * 1rem;
 }
 ---
 (function (doc, win) {
@@ -16552,6 +16487,102 @@ $vw_fontsize: 75;
   win.addEventListener(resizeEvt, recalc, false);
   doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document, window);
+---
+// vue.config.js
+const path = require('path')
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
+module.exports = {
+    publicPath: './',
+    assetsDir: 'assets',
+    productionSourceMap: false,
+    lintOnSave:false,
+    css: {
+      loaderOptions: {
+        sass: {
+          data: `
+            @import "@/scss/functions.scss";
+          `
+        },
+        postcss: {
+          plugins: [
+            require("autoprefixer")({
+              // 配置使用 autoprefixer
+              overrideBrowserslist: ["last 15 versions"] 
+            }),
+            // 如果是移动端推荐配合 amfe-flexible 插件使用：https://www.cnblogs.com/yifeng555/p/12734032.html
+            require("postcss-pxtorem")({
+              propList: ['*'],
+              // 换算的基数: 移动端通常是 75，如果是 Vant UI 官方根字体大小是 37.5，普通的场景是16
+              rootValue: 16, 
+              // 过滤掉 「.norem」 「.ig」 「.px」 开头的class，不进行rem转换
+              selectorBlackList: ['.norem', '.ig', '.px'],
+              // 是否要过滤 node_modules？如果需要的话开启：exclude: /node_modules/
+            })
+          ]
+        }
+      }
+    },
+    // webpack 配置
+    configureWebpack: (config) => {
+        // 环境变量
+        config.resolve = {
+            extensions: ['.js', '.vue', '.json'],
+            alias: {
+                '@': resolve('src'),
+            },
+        }
+
+        // 开启 source-map 方便调试
+        // if (process.env.NODE_ENV === 'development') {
+        //     config.devtool = 'source-map'
+        // }
+    },
+    devServer: {
+        /**
+         * proxy: {
+         *     '/api': {
+         *         target: 'http://192.168.14.29:31006/xindai/',
+         *         changeOrigin: true,
+         *         ws: true,
+         *         pathRewrite: {
+         *             '^/api': '/',
+         *         }
+         *     }
+         * },
+         */
+    },
+}
+---
+
+$mediaSize: 3000px;
+$wallWidth: 12288px;
+$wallHeight: 3456px;
+
+
+@media screen and (max-width: $mediaSize) {
+    html {
+        width: $wallWidth / 4;
+        height: $wallHeight / 4;
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: $mediaSize + 1px) {
+    html {
+        width: $wallWidth;
+        height: $wallHeight;
+        font-size: 64px; 
+    }
+
+    .el-message {
+        transform: scale(3);
+    }
+}
+
 )
 txtit(Var)
 return

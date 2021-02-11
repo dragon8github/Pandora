@@ -5146,21 +5146,6 @@ input:-webkit-autofill {
 code(Var)
 return
 
-::px2rem::
-Var =
-(
-$root_fontsize: 192; // 因为效果图是1920 / 10
-// $base-font-size: 75px; //design iphone6: 375px * 2 / 10 = 75px; --design
-// $base-font-size: 32px; //design iphone3gs: 320px / 10 = 32px
-// $base-font-size: 64px; //design iphone4/5: 320px * 2 / 10 = 64px
-// $base-font-size: 124.2px; //design iphone6: 414px * 3 / 10 = 124.2px;
-@function rem($px) {
-    @return ($px / $root_fontsize ) * 1rem;
-}
-)
-code(Var)
-return
-
 ::maopaojindutiao::
 ::qishuijindutiao::
 Var =
