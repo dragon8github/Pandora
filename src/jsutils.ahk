@@ -6780,6 +6780,10 @@ txtit(Var)
 return
 
 ::gongyueshu::
+::bili::
+::fenbianl::
+::fenbianlv::
+::fenbianlu::
 Var =
 (
 // 求最大公约数
@@ -6813,7 +6817,7 @@ proportion(12288, 3456)
 "32:9"
 */
 )
-code(Var)
+txtit(Var)
 return
 
 ::webpack::

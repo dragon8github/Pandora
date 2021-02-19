@@ -3668,6 +3668,15 @@ const mount = (dom = '', propsData = {}) => {
 }
 
 export default { mount }
+---
+// main.js
+import ProgressBar from '@/components/ProgressBar.vue'
+
+// 一个简易的 msgbox 注册方法，并不一定每次都要用 el-message 那种大费周章写法。
+// https://github.com/ElemeFE/element/blob/dev/packages/message/src/main.js#L34
+const bar = new Vue(ProgressBar).$mount()
+Vue.prototype.$bar = bar
+document.body.appendChild($bar.$el)
 )
 txtit(Var)
 return

@@ -2548,6 +2548,7 @@ I	73	R	82	0	48	9	57
 			F11	122
 			F12	123
 
+Tab			9
 BackSpace	8
 Shift	    16
 Enter	    13

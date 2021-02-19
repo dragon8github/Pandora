@@ -1,4 +1,29 @@
-﻿::hightchart::
+﻿::say::
+Var =
+(
+/**
+ * say something ...
+ */
+const say = (something = '', i = 0, timer = setInterval(() => console.log(something, ++i + 's'), 1000)) => () => clearInterval(timer)
+)
+code(Var)
+return
+
+::html2dom::
+Var =
+(
+// https://www.zhangxinxu.com/wordpress/2021/02/html-string-dom/
+let html = '文本<span>元素</span>';
+let placeholder = document.createElement('div');
+placeholder.innerHTML = html;
+let nodes = placeholder.childNodes;
+---
+const nodes = new DOMParser().parseFromString(`<div>123</div>`, 'text/html').body.childNodes;
+)
+txtit(Var)
+return
+
+::hightchart::
 ::3dpin::
 ::hichart::
 ::highchart::
@@ -8785,27 +8810,22 @@ console.time('20190219153729')
 // 停止计时，输出时间
 console.timeEnd('20190219153729')
 ---
-const startTime = new Date()
+// UI 阻塞耗时工具1
 for (var i = 0; i < 100000; i++) {
     window.localStorage.setItem('key' + i, 'value' + i)
 }
-const __TIME__ = startTime - (new Date())
-console.log(__TIME__)
----
-function fuck() {
-    window.performance.mark('fuck-start')
 
-    for (var i = 0; i < 100000; i++) {
-        window.localStorage.setItem('key' + i, 'value' + i)
-    }
+// UI 阻塞耗时工具2
+const longRunningFunction = () => {
+  let result = 0;
+  for (let i = 0; i < 1000; i++)
+    for (let j = 0; j < 700; j++)
+      for (let k = 0; k < 300; k++) result = result + i + j + k;
 
-    window.performance.mark('fuck-end')
-    window.performance.measure('fuck', 'fuck-start', 'fuck-end')
-}
+  return result;
+};
 
-fuck()
-
-console.log(window.performance.getEntriesByName('fuck'))
+longRunningFunction()
 )
 txtit(Var)
 return
@@ -12822,8 +12842,112 @@ return
   p("placeholder")
 return
 
+::renou::
+::muou::
+::muouxi::
+::renouxi::
 ::pup::
-  p("puppeteer")
+Var =
+(
+puppeteer
+---
+const puppeteer = require('puppeteer')
+
+;(async () => {
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
+    await page.goto('https://www.baidu.com')
+    await page.screenshot({ path: 'example.png' })
+
+    await browser.close()
+})()
+---
+// 第三方教程：http://www.r9it.com/20171106/puppeteer.html | http://www.r9it.com/20171106/puppeteer.html
+// 中文文档：https://zhaoqize.github.io/puppeteer-api-zh_CN/#?product=Puppeteer&version=v7.1.0&show=api-pagewaitforfunctionpagefunction-options-args
+// page.waitForFunction - 等待条件完成 | page.waitFor((...args) => !!document.querySelector('.foo'), { timeout: 30 * 1000 }, '...') 
+// page.waitForNavigation - 等待页面跳转
+// page.waitForSelector - 等待元素加载
+// page.evaluate - 执行JS
+// page.$eval - 获取元素属性 | page.$eval('.el', el => el.innerHTML)
+// page.$$eval - 获取多个元素属性 | page.$eval('.el', els => els.length)
+const puppeteer = require('puppeteer')
+
+const __name__ = 'Covid-19-map'
+
+;(async () => {
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
+
+    await page.goto('http://219.135.182.2:18080/login')
+    await page.setViewport({ width: 1920, height: 1080 })
+
+    // 使用 page.evaluate 可以在页面执行 JS 代码
+    // 📝 接受的函数应该类似 web Worker 是一个独立的线程、独立上下文进行的（否则怎么可能有document），
+    // 所以无法获取当前上下文（全局变量或局部变量）的引用，譬如无法拿到 __name__, 所以需要从第二个参数注入进去使用
+    const documentSize = await page.evaluate(name => {
+        // 获取当前页面的宽高
+        return { width: document.documentElement.clientWidth, height: document.body.clientHeight, }
+    }, __name__)
+
+    console.log('正在登录...✈️')
+
+    // 「账号」
+    let usernameElement = await page.$('#j_username', input => input)
+    await usernameElement.focus()
+    await page.keyboard.type('iocmanager')
+
+    // 「密码」
+    let passwordElement = await page.$('[name="j_password"]', input => input)
+    await passwordElement.focus()
+    await page.keyboard.type('zaq1@WSX')
+
+    // 「Submit」
+    let button = await page.$('.submit-button', button => button)
+    await button.click()
+    await page.waitForNavigation()
+    
+    console.log('登录成功')
+
+    // 「编译按钮」
+    let buildButton = await page.$(`#projectstatus tbody #job_${__name__} td:nth-child(7)`, button => button)
+    await buildButton.click()
+
+    console.log(`点击了『${__name__}』项目的编译按钮`)
+
+    // 等待进度条提示，说明编译任务开始了
+    await page.waitForFunction(name => {
+        // 找到所有进行中的任务
+        const progress = [...document.querySelectorAll('#executors table.progress-bar')]
+        // 找到指定的任务
+        return !!progress.find(p => p.getAttribute('href').includes(`/job/${name}`))
+        // fixbug: waitForFunction 接受的函数应该类似 web Worker 是一个独立的线程、独立上下文进行的（否则怎么可能有document）
+        // 无法获取当前上下文（全局变量或局部变量）的引用，譬如无法拿到 __name__, 所以需要从第三个参数注入进去使用
+    }, { timeout: 10 * 1000 }, __name__)
+
+    console.log('Jenkins任务开始了，正在等待任务完成... ☀️')
+
+    // 等待进度条消失，说明编译结束了（冗余）
+    await page.waitForFunction(name => {
+        // 找到所有进行中的任务
+        const progress = [...document.querySelectorAll('#executors table.progress-bar')]
+        // 找到指定的任务
+        return !progress.find(p => p.getAttribute('href').includes(`/job/${name}`))
+        // fixbug: waitForFunction 接受的函数应该类似 web Worker 是一个独立的线程、独立上下文进行的（否则怎么可能有document）
+        // 无法获取当前上下文（全局变量或局部变量）的引用，譬如无法拿到 __name__, 所以需要从第三个参数注入进去使用
+    }, { timeout: 0, polling: 1000 }, __name__)
+
+    console.log('Jenkins任务结束')
+
+    // 截图调试、验证
+    await page.screenshot({ path: 'screenshot.png', clip: { x: 0, y: 0, width: documentSize.width, height: documentSize.height } })
+    // （可选）关闭当前页面
+    await browser.close()
+
+    console.log(`finish... ⭐️✨`)
+})()
+
+)
+txtit(Var)
 return
 
 ::gzhs::

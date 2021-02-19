@@ -1398,3 +1398,21 @@ serviceWorker.unregister()
 )
 txtit(Var)
 return
+
+::react.init::
+::rc::
+InputBox, OutputVar, title, enter a name?,,,,,,,,App
+Var =
+(
+import React, { useState, useEffect } from 'react'
+
+export default function %OutputVar%({ children, ...props }) {
+    return (
+        <div className='%OutputVar%'>
+            <h1>%OutputVar%</h1>
+        </div>
+    `)
+}
+)
+code(Var)
+return

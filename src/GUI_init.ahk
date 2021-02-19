@@ -238,7 +238,7 @@ Gui, Pandora:Add, Link,, <a href="https://tool.lu/html/">tool.lu压缩</a>
 Gui, Pandora:Add, Link,, <a href="http://tool.chinaz.com/Tools/urlencode.aspx">Urlencode/Unicode</a>
 Gui, Pandora:Add, Link,, <a href="http://www.bejson.com/">bejson超强工具箱</a>
 Gui, Pandora:Add, Link,, <a href="https://tool.oschina.net/encrypt?type=3">base64解析</a>
-Gui, Pandora:Add, Link,, <a href="https://loading.io/spinner/">Loading 平台</a>
+Gui, Pandora:Add, Link,, <a href="https://www.345tool.com/zh-hans">345tool</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 奇妙工具:
@@ -249,7 +249,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.behance.net/galleries/illustration
 Gui, Pandora:Add, Link,, <a href="http://fontawesome.dashgame.com/">font-awesome</a>
 Gui, Pandora:Add, Link,, <a href="https://akveo.github.io/eva-icons/#/">480个免费的svg</a>
 Gui, Pandora:Add, Link,, <a href="https://iconstore.co">iconstore</a>
-Gui, Pandora:Add, Link,, <a href="https://feathericons.com/?query=close">feathericons</a>
+; Gui, Pandora:Add, Link,, <a href="https://feathericons.com/?query=close">feathericons</a>
+Gui, Pandora:Add, Link,, <a href="https://loading.io/spinner/">Loading 平台</a>
 
 Gui, Pandora:Add, Text, W120 ys, cdn：
 Gui, Pandora:Add, Link,, <a href="https://cdnjs.com/">cdnjs.com</a>
