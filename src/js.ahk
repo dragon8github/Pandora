@@ -2874,6 +2874,29 @@ Var =
 while (true) {
     postMessage(Math.random())
 }
+---
+/*
+  https://www.30secondsofcode.org/js/s/run-async
+  注意：不能使用上下文、函数内部变量以外的变量(但这并不是什么问题)
+  NOTE: Since the function is running in a different context, closures are not supported.
+  The function supplied to `runAsync` gets stringified, so everything becomes literal.
+  All variables and functions must be defined inside.
+*/
+const runAsync = fn => {
+  const worker = new Worker(
+    URL.createObjectURL(new Blob([``postMessage((${fn})());``]), {
+      type: 'application/javascript; charset=utf-8'
+    })
+  `);
+  return new Promise((res, rej) => {
+    worker.onmessage = ({ data }) => {
+      res(data), worker.terminate();
+    };
+    worker.onerror = err => {
+      rej(err), worker.terminate();
+    };
+  });
+};
 )
 txtit(Var)
 return
@@ -12862,58 +12885,116 @@ const puppeteer = require('puppeteer')
     await browser.close()
 })()
 ---
-// 第三方教程：http://www.r9it.com/20171106/puppeteer.html | http://www.r9it.com/20171106/puppeteer.html
-// 中文文档：https://zhaoqize.github.io/puppeteer-api-zh_CN/#?product=Puppeteer&version=v7.1.0&show=api-pagewaitforfunctionpagefunction-options-args
-// page.waitForFunction - 等待条件完成 | page.waitFor((...args) => !!document.querySelector('.foo'), { timeout: 30 * 1000 }, '...') 
-// page.waitForNavigation - 等待页面跳转
-// page.waitForSelector - 等待元素加载
-// page.evaluate - 执行JS
-// page.$eval - 获取元素属性 | page.$eval('.el', el => el.innerHTML)
-// page.$$eval - 获取多个元素属性 | page.$eval('.el', els => els.length)
-const puppeteer = require('puppeteer')
+## useage
+```bash
+$ cnpm i puppeteer -S
+$ node app.js
+```
 
-const __name__ = 'Covid-19-map'
+## docs
+- 第三方教程：http://www.r9it.com/20171106/puppeteer.html | http://www.r9it.com/20171106/puppeteer.html
+- 中文文档：https://zhaoqize.github.io/puppeteer-api-zh_CN/#?product=Puppeteer&version=v7.1.0&show=api-pagewaitforfunctionpagefunction-options-args
+
+## 常用API
+- page.waitForFunction - 等待条件完成 | page.waitFor((...args) => !!document.querySelector('.foo'), { timeout: 30 * 1000 }, '...') 
+- page.waitForNavigation - 等待页面跳转
+- page.waitForSelector - 等待元素加载
+- page.evaluate - 执行JS
+- page.$eval - 获取元素属性 | page.$eval('.el', el => el.innerHTML)
+- page.$$eval - 获取多个元素属性 | page.$eval('.el', els => els.length)
+---
+const puppeteer = require('puppeteer')
+const { sleep, loginJenkins, buildJenkins, screenshot } = require('./helper')
 
 ;(async () => {
+    // 启动 chrome 无头浏览器
     const browser = await puppeteer.launch()
+
+    // 打开一个新页面
     const page = await browser.newPage()
 
-    await page.goto('http://219.135.182.2:18080/login')
+    // 设置页面的视口宽高
     await page.setViewport({ width: 1920, height: 1080 })
 
-    // 使用 page.evaluate 可以在页面执行 JS 代码
-    // 📝 接受的函数应该类似 web Worker 是一个独立的线程、独立上下文进行的（否则怎么可能有document），
-    // 所以无法获取当前上下文（全局变量或局部变量）的引用，譬如无法拿到 __name__, 所以需要从第二个参数注入进去使用
-    const documentSize = await page.evaluate(name => {
-        // 获取当前页面的宽高
-        return { width: document.documentElement.clientWidth, height: document.body.clientHeight, }
-    }, __name__)
+    /////////////// 
+    // 测试环境  // 
+    /////////////// 
 
+    // 登录到 Jenkins 测试环境
+    await loginJenkins(page, 'http://219.135.182.2:18080/login', 'iocmanager', 'zaq1@WSX')
+
+    // 点击编译部署按钮
+    await buildJenkins(page, 'Covid-19-map')
+
+    // 截图调试、测试、验证
+    await screenshot(page, './screenshot_dev.png')
+
+    ////////////// 
+    // 正式环境 // 
+    ////////////// 
+
+    // 登录到 Jenkins 生成环境
+    await loginJenkins(page, 'http://19.104.50.128:8080/login', 'fangyi', 'cL92aSHOo2CGekXP')
+
+    // 点击编译部署按钮
+    await buildJenkins(page, 'prod-ioc-rancher-apps_covid-19-map')
+
+    // 截图调试、测试、验证
+    await screenshot(page, './screenshot_prod.png')
+
+    // （可选）关闭当前页面
+    await browser.close()
+
+    console.log(`finish... ⭐️✨`)
+})()
+---
+const path = require('path')
+
+/**
+ * 休眠
+ */
+const sleep = time => new Promise(resolve => setTimeout(resolve, time))
+
+/**
+ * say something ...
+ */
+const say = (something = '', i = 0, timer = setInterval(() => console.log(something, ++i + 's'), 1000)) => () => clearInterval(timer)
+
+/**
+ * 登录
+ */
+const loginJenkins = async (page, url = 'http://219.135.182.2:18080/login', username = 'iocmanager', password = 'zaq1@WSX') => {
+    await page.goto(url)
     console.log('正在登录...✈️')
 
     // 「账号」
     let usernameElement = await page.$('#j_username', input => input)
     await usernameElement.focus()
-    await page.keyboard.type('iocmanager')
+    await page.keyboard.type(username)
 
     // 「密码」
     let passwordElement = await page.$('[name="j_password"]', input => input)
     await passwordElement.focus()
-    await page.keyboard.type('zaq1@WSX')
+    await page.keyboard.type(password)
 
     // 「Submit」
     let button = await page.$('.submit-button', button => button)
     await button.click()
     await page.waitForNavigation()
     
-    console.log('登录成功')
+    console.log('登录成功...')
+}
 
-    // 「编译按钮」
-    let buildButton = await page.$(`#projectstatus tbody #job_${__name__} td:nth-child(7)`, button => button)
+/**
+ * 点击编译
+ */
+const buildJenkins = async (page, name = 'covid-19-map') => {
+    let buildButton = await page.$(`#projectstatus tbody #job_${name} td:nth-child(7)`, button => button)
+
     await buildButton.click()
 
-    console.log(`点击了『${__name__}』项目的编译按钮`)
-
+    console.log(`点击了『${name}』项目的编译按钮`)
+    
     // 等待进度条提示，说明编译任务开始了
     await page.waitForFunction(name => {
         // 找到所有进行中的任务
@@ -12921,10 +13002,10 @@ const __name__ = 'Covid-19-map'
         // 找到指定的任务
         return !!progress.find(p => p.getAttribute('href').includes(`/job/${name}`))
         // fixbug: waitForFunction 接受的函数应该类似 web Worker 是一个独立的线程、独立上下文进行的（否则怎么可能有document）
-        // 无法获取当前上下文（全局变量或局部变量）的引用，譬如无法拿到 __name__, 所以需要从第三个参数注入进去使用
-    }, { timeout: 10 * 1000 }, __name__)
-
-    console.log('Jenkins任务开始了，正在等待任务完成... ☀️')
+        // 无法获取当前上下文（全局变量或局部变量）的引用，譬如无法拿到 name, 所以需要从第三个参数注入进去使用
+    }, { timeout: 10 * 1000 }, name)
+    
+    const shutUp = say('Jenkins任务开始了，正在等待任务完成... ☀️')
 
     // 等待进度条消失，说明编译结束了（冗余）
     await page.waitForFunction(name => {
@@ -12933,19 +13014,30 @@ const __name__ = 'Covid-19-map'
         // 找到指定的任务
         return !progress.find(p => p.getAttribute('href').includes(`/job/${name}`))
         // fixbug: waitForFunction 接受的函数应该类似 web Worker 是一个独立的线程、独立上下文进行的（否则怎么可能有document）
-        // 无法获取当前上下文（全局变量或局部变量）的引用，譬如无法拿到 __name__, 所以需要从第三个参数注入进去使用
-    }, { timeout: 0, polling: 1000 }, __name__)
+        // 无法获取当前上下文（全局变量或局部变量）的引用，譬如无法拿到 name, 所以需要从第三个参数注入进去使用
+    }, { timeout: 0, polling: 1000 }, name)
 
+    shutUp()
+    
     console.log('Jenkins任务结束')
+}
+
+const screenshot = async (page, name = 'screenshot.png') => {
+    // 使用 page.evaluate 可以在页面执行 JS 代码
+    // 📝 接受的函数应该类似 web Worker 是一个独立的线程、独立上下文进行的（否则怎么可能有document），
+    // 所以无法获取当前上下文（全局变量或局部变量）的引用，譬如无法拿到 __name__, 所以需要从第二个参数注入进去使用
+    const documentSize = await page.evaluate(args => {
+        // 获取当前页面的宽高
+        return { width: document.documentElement.clientWidth, height: document.body.clientHeight, }
+    }, '...')
 
     // 截图调试、验证
-    await page.screenshot({ path: 'screenshot.png', clip: { x: 0, y: 0, width: documentSize.width, height: documentSize.height } })
-    // （可选）关闭当前页面
-    await browser.close()
+    await page.screenshot({ path: path.join(__dirname, name), clip: { x: 0, y: 0, width: documentSize.width, height: documentSize.height } })
+}
 
-    console.log(`finish... ⭐️✨`)
-})()
-
+module.exports = {
+    sleep, loginJenkins, buildJenkins, screenshot
+}
 )
 txtit(Var)
 return
