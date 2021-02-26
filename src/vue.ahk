@@ -3696,25 +3696,24 @@ Var =
 
 <script>
 export default {
-  name: '%OutputVar%',
-  data() {
-    return {
-      items: [],
-      title: 'HelloWorld',
-    }
-  },
-  methods: {
-    go() {
-      console.log('go')
+    name: ''%OutputVar%'',
+    data() {
+      return {
+        items: [],
+        keyword: '',
+        active: -1,
+      }
     },
-  },
-  components: {},
-  computed: {},
-  watch: {},
-  props: [],
-  beforeMount() {
-    console.log(20201221155003, '%OutputVar%')
-  },
+    methods: {
+      go() {
+        console.log('go')
+      },
+    },
+    components: {},
+    computed: {},
+    watch: {},
+    props: [],
+    beforeMount() {},
 }
 </script>
 
@@ -4702,8 +4701,37 @@ module.exports = {
        },
     },
 }
+---
+css: {
+  loaderOptions: {
+    sass: {
+      data: `
+        @import "@/scss/functions.scss";
+      `
+    },
+    postcss: {
+      plugins: [
+        require("autoprefixer")({
+          // 配置使用 autoprefixer
+          overrideBrowserslist: ["last 15 versions"] 
+        }),
+        // 如果是移动端推荐配合 amfe-flexible 插件使用：https://www.cnblogs.com/yifeng555/p/12734032.html
+        // 由于viewport单位得到众多浏览器的兼容，lib-flexible这个过渡方案已经可以放弃使用，不管是现在的版本还是以前的版本，都存有一定的问题。建议大家开始使用viewport来替代此方
+        // cnpm i postcss-pxtorem -S
+        require("postcss-pxtorem")({
+          propList: ['*'],
+          // 换算的基数: 移动端通常是 75，如果是 Vant UI 官方根字体大小是 37.5，普通的场景是16
+          rootValue: 16, 
+          // 过滤掉 「.norem」 「.ig」 「.px」 开头的class，不进行rem转换
+          selectorBlackList: ['.norem', '.ig', '.px'],
+          // 是否要过滤 node_modules？如果需要的话开启：exclude: /node_modules/
+        })
+      ]
+    }
+  }
+},
 )
-code(Var)
+txtit(Var)
 return
 
 ::router.404::

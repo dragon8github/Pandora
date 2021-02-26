@@ -13995,104 +13995,167 @@ RunBy(name)
 run, % name
 return
 
-gjsshoufengqing2:
+dgmap3Dhtmlhailiangsandian:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
 (
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>海量点</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
     <style>
-        /* 标题样式 */
-        [id^="toggle"] + label {
-            display: block;
-            padding: 0.5em 1em;
-            background: #ACE;
-            cursor: pointer;
+        html, body, #container {
+            height: 100`%;
+            width: 100`%;
+        }
+        #map-styles .input-item {
+          height: 2rem;
         }
 
-        /* 标题文本 */
-        [id^="toggle"] + label:after {content:"Show Content"; }
-        [id^="toggle"]:checked + label:after {content:"Hide Content"; }
-
-        /* 箭头 */
-        [id^="toggle"] + label:before {float:right; content:"\25BC"; }
-        [id^="toggle"]:checked + label:before {content:"\25B2"; }
-
-        /* 内容区域 */
-        [id^="toggle"] + label + * {overflow: hidden; height: 0; transition:height 0.5s; background: #FFF; }
-
-        /* --calc-height 默认为 auto */
-        [id^="toggle"]:checked + label + * { height:var(--calc-height); }
-
-
-        /* 另一种方案，更加舒服 */
-        #toggle2:checked + label + * > div {
-            bottom: 0;
+        #map-styles .input-item span{
+          display: inline-block;
+          width: 4rem;
         }
-        
-        #toggle2 + label + * > div {
-            position: relative;
-            bottom: var(--calc-height);
-            transition: bottom 0.5s;
+
+        #map-styles .input-item .input-text {
+          color: #0288d1;
+          margin-left: 1rem;
+          margin-right: 0rem;
+          width: 6rem;
+        }
+        #info {
+            display: none;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            background: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.2em;
         }
     </style>
 </head>
 
 <body>
-    <div id="app">
-        <main>
-            <input type="checkbox" id="toggle1" hidden>
-            <label for="toggle1" hidden></label>
-            <div class="calcChildSize">
-                <div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dolor neque, commodo quis leo ut, auctor tincidunt mauris. Nunc fringilla tincidunt metus, non gravida lorem condimentum non. Duis ornare purus nisl, at porta arcu eleifend eget. Integer lorem ante, porta vulputate dui ut, blandit tempor tellus. Proin facilisis bibendum diam, sit amet rutrum est feugiat ut. Mauris rhoncus convallis arcu in condimentum. Donec volutpat dui eu mollis vulputate. Nunc commodo lobortis nunc at ultrices. Suspendisse in lobortis diam. Suspendisse eget vestibulum ex.
-                    </p>
-                </div>
-            </div>
-            <p>Data after show/hide</p>
-            <input type="checkbox" id="toggle2" hidden>
-            <label for="toggle2" hidden></label>
-            <div class="calcChildSize">
-                <div>
-                    <p>
-                        Maecenas laoreet nunc sit amet nulla ultrices auctor. Vivamus sed nisi vitae nibh condimentum pulvinar eu vel lorem. Sed pretium viverra eros ut facilisis. In ut fringilla magna. Sed a tempor libero. Donec sapien libero, lacinia sed aliquet ut, imperdiet finibus tellus. Nunc tellus lectus, rhoncus in posuere quis, tempus sit amet enim. Morbi et erat ac velit fringilla dignissim. Donec commodo, est id accumsan cursus, diam dui hendrerit nisi, vel hendrerit purus dolor ut risus. Phasellus mattis egestas ipsum sed ullamcorper. In diam ligula, rhoncus vel enim et, imperdiet porta justo. Curabitur vulputate hendrerit nisl, et ultricies diam. Maecenas ac leo a diam cursus ornare nec eu quam.
-                    </p>
-                    <p>
-                        Sed non vulputate purus, sed consectetur odio. Sed non nibh fringilla, imperdiet odio nec, efficitur ex. Suspendisse ut dignissim enim. Maecenas felis augue, tempor sit amet sem fringilla, accumsan fringilla nibh. Quisque posuere lacus tortor, quis malesuada magna elementum a. Nullam id purus in ante molestie tincidunt. Morbi luctus orci eu egestas dignissim. Sed tincidunt, libero quis scelerisque bibendum, ligula nisi gravida libero, id lacinia nulla leo in elit.
-                    </p>
-                    <p>
-                        Aenean aliquam risus id consectetur sagittis. Aliquam aliquam nisl eu augue accumsan, vel maximus lorem viverra. Aliquam ipsum dolor, tempor et justo ac, fermentum mattis dui. Etiam at posuere ligula. Vestibulum tortor metus, viverra vitae mi non, laoreet iaculis purus. Praesent vel semper nibh. Curabitur a congue lacus. In et pellentesque lorem. Morbi posuere felis non diam vulputate, non vulputate ex vehicula. Vivamus ultricies, massa id sagittis consequat, sem mauris tincidunt nunc, eu vehicula augue quam ut mauris.
-                    </p>
-                </div>
-            </div>
-        </main>
+    <div id="container" class="map" tabindex="0"></div>
+    <div id="info"> </div>
+    <div class="input-card" style="width:16rem">
+        <h4>官方默认自定义样式</h4>
+        <div id="map-styles">
+            <div class="input-item"><input type='radio' name='mapStyle' value='normal'> <span>标准</span> <span class="input-text">normal</span></div>
+            <div class="input-item"><input type='radio' name='mapStyle' value='dark'><span>幻影黑</span><span class="input-text">dark</span></div>
+            <div class="input-item"><input type='radio' name='mapStyle' value='light'><span>月光银</span><span class="input-text">light</span></div>
+            <div class="input-item"><input type='radio' name='mapStyle' value='whitesmoke'><span>远山黛</span><span class="input-text">whitesmoke</span></div>
+            <div class="input-item"><input type='radio' name='mapStyle' value='fresh'><span>草色青</span><span class="input-text">fresh</span></div>
+            <div class="input-item"><input type='radio' name='mapStyle' value='grey'><span>雅士灰</span><span class="input-text">grey</span></div>
+            <div class="input-item"><input type='radio' name='mapStyle' value='graffiti'><span>涂鸦</span><span class="input-text">graffiti</span></div>
+            <div class="input-item"><input type='radio' name='mapStyle' value='macaron'><span>马卡龙</span><span class="input-text">macaron</span></div>
+            <div class="input-item"><input type='radio' name='mapStyle' value='blue' ><span>靛青蓝</span><span class="input-text">blue</span></div>
+            <div class="input-item"><input type='radio' name='mapStyle' value='darkblue' checked><span>极夜蓝</span><span class="input-text">darkblue</span></div>
+            <div class="input-item"><input type='radio' name='mapStyle' value='wine'><span>酱籽</span><span class="input-text">wine</span></div>
+        </div>
     </div>
-</body>
-<script>
-(function(d, w) {
-    var calcTargets = d.getElementsByClassName("calcChildSize")
-    d.body.style.setProperty("--calc-height", "auto")
+    <!-- <script type="text/javascript" src='https://a.amap.com/jsapi_demos/static/citys.js'></script> -->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=02b84c6bb891ece41093dc5f4d9c5868"></script>
+    <script type="text/javascript">
+    var map = new AMap.Map('container', {
+        viewMode: '3D',
+        zoom: 11,
+        center: [113.88787257537251, 22.874911273560393],
+        pitch: 23.060941828254855,
+    });
 
-    function resize() {
-        for (var target of calcTargets) {
-            var value = target.firstElementChild.offsetHeight + "px"
-            if (target.style.getPropertyValue("--calc-height") !== value) {
-                target.style.setProperty("--calc-height", value)
-            }
+    var style = [{
+        url: 'https://a.amap.com/jsapi_demos/static/images/mass1.png',
+        anchor: new AMap.Pixel(0, 0),
+        size: new AMap.Size(10, 10)
+    }];
+
+    const citys = [
+        { "name": "东莞伟森塑化材料有限公司", "lnglat": [113.906241, 23.045465] },
+        { "name": "东莞联桥电子有限公司", "lnglat": [113.886986, 23.058561] },
+        { "name": "东莞鹏裕制衣有限公司", "lnglat": [113.857359, 23.056757] },
+        { "name": "东莞朗兴幕墙铝门窗有限公司", "lnglat": [113.881702, 23.072545] },
+        { "name": "康加塑胶五金电子（东莞）有限公司", "lnglat": [113.864783, 23.055716] },
+        { "name": "奥托仑光电子（东莞）有限公司", "lnglat": [113.903808, 23.053335] },
+        { "name": "东莞志美手袋制品有限公司", "lnglat": [113.853437, 23.039303] },
+        { "name": "东莞百轩机电实业有限公司", "lnglat": [113.879572, 23.072944] },
+        { "name": "东莞利保迅电子有限公司", "lnglat": [113.895925, 23.051925] },
+        { "name": "长盈制衣（东莞）有限公司", "lnglat": [113.8534, 23.040936] },
+        { "name": "东莞井上高分子材料有限公司", "lnglat": [113.912736, 23.041406] },
+        { "name": "东莞立丰音响有限公司", "lnglat": [113.867522, 23.074283] },
+    ]
+
+    // https://lbs.amap.com/api/javascript-api/guide/overlays/massmarker
+    // https://lbs.amap.com/api/javascript-api/reference/layer#MassMarks
+    var mass = new AMap.MassMarks(citys, {
+        opacity: 0.8,
+        zIndex: 111,
+        cursor: 'pointer',
+        style: style
+    });
+
+    mass.on('mouseover', function(e) {
+        console.log(20210223093940, e)
+        if (e.data.lnglat) {
+            info.style.display = 'block'
+            info.innerHTML = `${e.data.name} （${e.data.lnglat}）`
+        } else {
+            info.style.display = ''
         }
-    }
-    w.addEventListener("resize", resize, false)
-    w.addEventListener("load", resize, false)
+    })
 
-})(document, window)
-</script>
+    mass.setMap(map);
+
+    const citys2 = [
+        { lnglat: [113.6686, 22.846117], name: 'unknow' },
+        { lnglat: [113.912133, 22.8691], name: 'unknow' },
+        { lnglat: [113.609783, 22.905317], name: 'unknow' },
+        { lnglat: [113.667933, 22.845833], name: 'unknow' },
+        { lnglat: [113.920933, 22.8985], name: 'unknow' },
+        { lnglat: [113.6678, 22.845883], name: 'unknow' },
+        { lnglat: [113.668633, 22.846133], name: 'unknow' },
+        { lnglat: [113.668483, 22.845867], name: 'unknow' },
+        { lnglat: [113.609767, 22.905383], name: 'unknow' },
+        { lnglat: [113.920933, 22.8985], name: 'unknow' },
+        { lnglat: [113.6686, 22.846117], name: 'unknow' },
+        { lnglat: [113.912133, 22.8691], name: 'unknow' },
+    ]
+
+    var mass2 = new AMap.MassMarks(citys2, {
+        opacity: 0.8,
+        zIndex: 111,
+        cursor: 'pointer',
+        style: [{
+            url: 'https://a.amap.com/jsapi_demos/static/images/mass0.png',
+            anchor: new AMap.Pixel(6, 6),
+            size: new AMap.Size(20, 20)
+        }, ]
+    });
+
+    mass2.setMap(map);
+
+    map.setMapStyle("amap://styles/darkblue");
+
+    //绑定radio点击事件
+    var radios = document.querySelectorAll("#map-styles input");
+    radios.forEach(function(ratio) {
+        ratio.onclick = setMapStyle;
+    });
+
+    function setMapStyle() {
+        var styleName = "amap://styles/" + this.value;
+        map.setMapStyle(styleName);
+    }
+    </script>
+</body>
 
 </html>
 ),  %name%

@@ -179,6 +179,17 @@ if (OutputVar == 1) {
 WinMove, A, , A_ScreenWidth / 2, 0, A_ScreenWidth / 2, A_ScreenHeight - 70
 return
 
+#!left::
+WinGet, OutputVar, MinMax, A
+if (OutputVar == 1) {
+    WinRestore, A
+} else {
+    WinMaximize, A
+}
+
+WinMove, A, , 0, 0, A_ScreenWidth / 2, A_ScreenHeight - 70
+return
+
 ^!a::
 WinGetTitle, Title, A
 MsgBox, The active window is "%Title%".
@@ -219,5 +230,6 @@ return
     ;     WinRestore, A
     ; } 
 
-    ; WinMove, A, , 0, -150, A_ScreenWidth, A_ScreenHeight + 1000
+
+    WinMove, A, , 0, 0, 680, 380
 return

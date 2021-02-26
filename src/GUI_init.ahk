@@ -512,6 +512,7 @@ Gui, Pandora:Add, Text, gmapv2fuckhtml2 W160, 新建 mapV文本+图形2.html
 Gui, Pandora:Add, Text, gmapvlightrudong W160, 新建 mapV 光线蠕动轨迹
 Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
+Gui, Pandora:Add, Text, gdgmap3Dhtmlhailiangsandian W160, 高德地图3D海量散点.html
 Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 Gui, Pandora:Add, Text, gbdmapbasicmapv W160, 新建百度地图GL+mapv.html
@@ -653,8 +654,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.sonatype.com/nexus-repository-oss"
 Gui, Pandora:Add, Text,  W140 yp+50, 12345热线效能
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-hotline">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/64/interface/api">yapi</a>
-Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/hotline-12345/">正式预览</a>
-Gui, Pandora:Add, Link,, <a href="https://master.paas.com:8443/console/project/app/browse/dc/hotline-12345?tab=history">部署</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.124/hotline-12345/#/Hotline">正式预览</a>
+Gui, Pandora:Add, Link,, <a href="https://rancher.ioc.com/p/local:p-486kn/workloads">部署</a>
 
 
 

@@ -386,7 +386,6 @@
 
     Menu, utilsJstest, Add, 要匹配多个果然还是要用 match, utilsHandler
     Menu, utilsJstest, Add, //g.exec, utilsHandler
-    Menu, utilsJstest, Add, 新认知：match 可以捕获多个变量，但不要使用 /g, utilsHandler
 
     Menu, utilsJstest, Add
     Menu, utilsJstest, Add
@@ -2351,7 +2350,12 @@ var getColor = str => {
 
 console.log(20191118171701, getColor(str))
 console.log(20191118171701, getColor(str2))
+---
+var str = ``跨境司机:2021-02-09 14:38:25</br></br>港口码头从业人员:2021-01-01 00:00:00</br></br>进口冷链食品相关场所从业人员:2021-02-25 14:55:38.087000</br></br>内地接驳司机:2021-02-09 14:31:53</br></br>货物作业点从业人员:2021-02-09 17:20:36</br></br>集中隔离点从业人员:2021-02-20 00:00:00</br></br>交通节点从业人员:2021-01-01 00:00:00``
+
+console.log(20210226091843, str.match(/:(\w{4}-\w{2}-\w{2} \w{2}:\w{2}:\w{2})/g))
 )
+txtit(Var)
 return
 }
 
@@ -7073,6 +7077,11 @@ return
 ::zz::
 Var =
 (
+// 匹配多个地方
+var str = ``跨境司机:2021-02-09 14:38:25</br></br>港口码头从业人员:2021-01-01 00:00:00</br></br>进口冷链食品相关场所从业人员:2021-02-25 14:55:38.087000</br></br>内地接驳司机:2021-02-09 14:31:53</br></br>货物作业点从业人员:2021-02-09 17:20:36</br></br>集中隔离点从业人员:2021-02-20 00:00:00</br></br>交通节点从业人员:2021-01-01 00:00:00``
+
+console.log(20210226091843, str.match(/:(\w{4}-\w{2}-\w{2} \w{2}:\w{2}:\w{2})/g))
+---
 /* 手机机身码(IMEI) */
 /^\d{15,17}$/
 
@@ -7129,7 +7138,7 @@ Var =
 
 /* 16进制颜色 */
 /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
----
+
 /* ip-v4 */
 /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
 
@@ -8983,10 +8992,16 @@ export const createStore = (store = {}) => {
     __store__.mutations = Object.entries(__store__.actions).reduce((obj, [key, action]) => {
         // 同名 mutatios
         obj[key] = function(state, payload) {
-            // 判断状态是否相等
-            const isSame = JSON.stringify(state[key]) === JSON.stringify(payload)
+            const _payload = JSON.stringify(payload)
+
+            // fixbug: null 的情况，一般是重复请求API被kill了然后返回的，实际情况下，后端返回的数据结构不可能是纯粹的null。
+            const notNull =  _payload != 'null'
+
+            // 判断数据是否不相等
+            const different = JSON.stringify(state[key]) != _payload
+
             // 只有「不相等」我才重新赋值
-            if (!isSame) {
+            if (notNull && different) {
                 // 同名 state
                 state[key] = payload
             }
@@ -9021,7 +9036,7 @@ export const createStore = (store = {}) => {
                 close = killerQueen(
                     () => context.commit(getStatusKey(key), 'loading'),
                     () => context.commit(getStatusKey(key), 'timeout'),
-                    10 * 1000,
+                    60 * 1000,
                 `)
             }
 
@@ -9064,7 +9079,6 @@ export const createStore = (store = {}) => {
     // 返回最终 store
     return __store__
 }
-
 ---
 // https://github.com/robinvdvleuten/vuex-persistedstate#encrypted-local-storage
 import { Store } from "vuex";
@@ -9453,6 +9467,9 @@ return
 ::usediv::
 Var =
 (
+// 生成 div
+var useDiv = (config, div = document.createElement('div')) => Object.assign(div, config) 
+---
 const useDiv = () => {
     let div = document.createElement('div')
     div.style.display = 'none'

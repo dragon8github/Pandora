@@ -225,6 +225,8 @@ code(Var)
 return
 
 ::3d::
+::c#::
+::.net::
 Var =
 (
 Unity3d
@@ -582,7 +584,6 @@ return
 ::nodeer::
 ::noder::
 ::nodegod::
-::sin::
 Var =
 (
 sindresorhus
