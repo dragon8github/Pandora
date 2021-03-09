@@ -3696,7 +3696,7 @@ Var =
 
 <script>
 export default {
-    name: ''%OutputVar%'',
+    name: '%OutputVar%',
     data() {
       return {
         items: [],
@@ -5775,6 +5775,8 @@ Var =
 code(Var)
 return
 
+
+::vuec::
 ::vue.c::
 ::vue.extend::
 ::vue.extends::
@@ -5930,6 +5932,36 @@ export default {
    */
   ...components,
 }
+---
+<template>
+  <div class="SevenWatch">
+    <dgTable></dgTable>
+  </div>
+</template>
+
+<script>
+import Vue from 'vue'
+import { deepExtend } from '@/utils/utils'
+import { getMixins } from '@/mixins/data.js'
+import table from '../table/_table.vue'
+import detail from '../table/_detail.vue'
+import config from './config'
+
+const dataMixins = getMixins('sevenWatch')
+
+// 准备好「详情组件」, 注入 mixins 上下文
+const itemDetail = Vue.extend(deepExtend({}, detail, dataMixins, config))
+
+// 注册「table」组件，并且为它设置 itemDetail
+const dgTable = Vue.extend(deepExtend({}, table, dataMixins, config, { components: { itemDetail } }))
+
+export default {
+  name: 'SevenWatch',
+  components: {
+    dgTable,
+  },
+}
+</script>
 )
 txtit(Var)
 return

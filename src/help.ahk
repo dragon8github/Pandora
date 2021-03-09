@@ -647,14 +647,14 @@ microSD
 code(Var)
 return
 
-LAlt & RAlt::
-Var =
-(
-()
-)
-code(Var)
-SendInput, {left}
-return
+; LAlt & RAlt::
+; Var =
+; (
+; ()
+; )
+; code(Var)
+; SendInput, {left}
+; return
 
 ::xujun::
 ::junxu::
@@ -1688,7 +1688,7 @@ FileAppend,
 </body>
 </html>
 `),  `%name`%
-RunBy(name) 
+RunByVsCode(name) 
 run, `% name
 )
 code(Var)

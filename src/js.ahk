@@ -12504,6 +12504,34 @@ return
 ::deep::
 Var =
 (
+// http://youmightnotneedjquery.com/#extend
+// extend({}, objA, objB);
+export var deepExtend = function(out) {
+  out = out || {};
+
+  for (var i = 1; i < arguments.length; i++) {
+    var obj = arguments[i];
+
+    if (!obj)
+      continue;
+
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === 'object'){
+          if(obj[key] instanceof Array == true)
+            out[key] = obj[key].slice(0);
+          else
+            out[key] = deepExtend(out[key], obj[key]);
+        }
+        else
+          out[key] = obj[key];
+      }
+    }
+  }
+
+  return out;
+};
+---
 function deepCopy(obj, cache = []) {
     if (obj === null || typeof obj !== 'object') {
         return obj
@@ -12560,7 +12588,6 @@ function extend(Child, Parent){
     Child.prototype.constructor = Child;
     Child.parent = Parent.prototype
 }
----
 // 用IIFE优化桥梁F，不需要每次都创建
 var inherit = (function(){
   var F = function () {}

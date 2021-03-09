@@ -527,7 +527,7 @@ main::before {
 </body>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -692,7 +692,7 @@ if (canvasEl) {
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -728,7 +728,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -810,7 +810,7 @@ scrollText1();
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -893,7 +893,7 @@ FileAppend,
 </html>
 
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -958,7 +958,7 @@ window.onload = function() {
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -1058,7 +1058,7 @@ var vue = new Vue({
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -1172,7 +1172,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -1240,7 +1240,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -1327,7 +1327,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -1381,7 +1381,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -1477,7 +1477,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)	
+RunByVsCode(name)	
 run, % name
 return
 
@@ -1550,7 +1550,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)	
+RunByVsCode(name)	
 run, % name
 return
 
@@ -1632,7 +1632,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)	
+RunByVsCode(name)	
 run, % name
 return
 
@@ -1753,7 +1753,7 @@ FileAppend,
 </script>
 </html>
 ),  %name%
-RunBy(name)	
+RunByVsCode(name)	
 run, % name
 return
 
@@ -1846,7 +1846,7 @@ $('#app').mouseover(e => {
 </html>
 
 ),  %name%
-RunBy(name)	
+RunByVsCode(name)	
 run, % name
 return
 
@@ -1900,7 +1900,7 @@ context.strokeText('Hello Canvas', canvas.width / 2 - 150, canvas.height / 2 + 1
 </script>
 </html>
 ),  %name%
-RunBy(name)	
+RunByVsCode(name)	
 run, % name
 return
 
@@ -1984,7 +1984,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)	
+RunByVsCode(name)	
 run, % name
 return
 
@@ -2024,7 +2024,7 @@ FileAppend,
     .subscribe(count => console.log(``Clicked ${count} times``));
 </script>
 ),  %name%
-RunBy(name)	
+RunByVsCode(name)	
 run, % name
 return
 
@@ -2140,7 +2140,7 @@ var_dump($GLOBALS['HTTP_RAW_POST_DATA']);
 
 ),  %phpfilename%
 
-RunBy(htmlfilename)	
+RunByVsCode(htmlfilename)	
 run, % htmlfilename
 return
 
@@ -2208,7 +2208,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)	
+RunByVsCode(name)	
 run, % name
 return
 
@@ -2300,7 +2300,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)	
+RunByVsCode(name)	
 run, % name
 return
 
@@ -2388,7 +2388,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)	
+RunByVsCode(name)	
 run, % name
 return
 
@@ -2453,7 +2453,7 @@ myChart.setOption(option);
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -2526,7 +2526,7 @@ FileAppend,
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 return
 
 
@@ -2559,8 +2559,7 @@ FileAppend,
     <script src="https://cdn.staticfile.org/moment.js/2.22.1/locale/zh-cn.js"></script>
     <!-- sass -->
     <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
-    <!-- tailwind：https://tailwindcss.com/docs/width -->
-    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
+
     <style>
     html, body{
         margin: 0;
@@ -2633,7 +2632,7 @@ var vue = new Vue({
 </html>
 ),  %name%
 run, % name
-RunBy(name)
+RunByVsCode(name)
 return
 
 NewIndexHtml:
@@ -2731,7 +2730,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -2797,7 +2796,7 @@ for (var i = 0; i < 10; i++) {
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -2870,7 +2869,7 @@ for (var i = 0; i < 10; i++) {
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -2934,7 +2933,7 @@ FileAppend,
 </body>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -2998,7 +2997,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -3049,7 +3048,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -3252,7 +3251,7 @@ function render() {
 }
 </script>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -3355,7 +3354,7 @@ $(function() {
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -3480,7 +3479,7 @@ export const removeClass = (el, cls) => {
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -3539,7 +3538,7 @@ autoWidth(target)
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -3592,7 +3591,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -3713,7 +3712,7 @@ $(function() {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -3782,7 +3781,7 @@ myChart.setOption(option);
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -3843,7 +3842,7 @@ window.onload = function () {
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -3890,7 +3889,7 @@ map.setStyle('indigo')
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -3949,7 +3948,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4131,7 +4130,7 @@ window.onload = (e) => {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4224,7 +4223,7 @@ function setPosition() {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4289,7 +4288,7 @@ localforage.clear()
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4320,7 +4319,7 @@ culpa qui officia deserunt mollit anim id est laborum.
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4391,7 +4390,7 @@ onscriptload('https://cdn.staticfile.org/ace/1.4.4/ace.js', function () {
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4436,7 +4435,7 @@ document.getElementById('file').addEventListener('change', function(e) {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4484,7 +4483,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4532,7 +4531,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4570,7 +4569,7 @@ console.log(20190614144338, mergejson)
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4638,7 +4637,7 @@ FileAppend,
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4691,7 +4690,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -4762,7 +4761,7 @@ window.onresize = function() {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -5173,7 +5172,7 @@ $.getJSON(zhongguo, function(geoJson) {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -5286,7 +5285,7 @@ $.getJSON("https://gallery.echartsjs.com/asset/get/s/data-1528971808162-BkOXf61W
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -5353,7 +5352,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -5493,7 +5492,7 @@ myChart.setOption(option);
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -5732,7 +5731,7 @@ myChart.setOption(option);
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -6122,7 +6121,7 @@ ReactDOM.render(
 `);
 ),  %jsname%
 
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -6277,7 +6276,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -6869,7 +6868,7 @@ FileAppend,
 </body>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -6955,7 +6954,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -7062,7 +7061,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -7229,7 +7228,7 @@ for (let i = 0; i < 50; ++i) {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -7309,7 +7308,7 @@ Vue.use(maxNumber)
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -7357,7 +7356,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -7463,7 +7462,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -7581,7 +7580,7 @@ methods: {
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -7631,7 +7630,7 @@ document.querySelector('body').style = 'background:' + color
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -7715,7 +7714,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -7985,7 +7984,7 @@ document.body.addEventListener("input", POWERMODE);
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -8054,7 +8053,7 @@ FileAppend,
 </body>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -8284,7 +8283,7 @@ myChart.setOption(option);
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -8349,7 +8348,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -8395,7 +8394,7 @@ WS.on('connection', ws => {
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -8593,7 +8592,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -8665,7 +8664,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -8697,7 +8696,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -8824,7 +8823,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -8923,7 +8922,7 @@ myChart.setOption(option);
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -8992,7 +8991,7 @@ var vue = new Vue({
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -9061,7 +9060,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -9155,7 +9154,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -9269,7 +9268,7 @@ myChart.setOption(option);
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -9460,7 +9459,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -9476,7 +9475,7 @@ FileAppend,
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
+    
     <style>
     html, body{
         margin: 0;
@@ -9513,7 +9512,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -9625,7 +9624,7 @@ FileAppend,
 
     </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -9741,7 +9740,7 @@ var vue = new Vue({
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -9891,7 +9890,7 @@ rollOut
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -9972,7 +9971,7 @@ FileAppend,
 
     </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -10080,7 +10079,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -10162,7 +10161,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -10248,7 +10247,7 @@ FileAppend,
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -10321,7 +10320,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -10380,7 +10379,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -10436,7 +10435,7 @@ source.onmessage = e => {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -10604,7 +10603,7 @@ document.onclick = function() {
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -10706,7 +10705,7 @@ var vue = new Vue({
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -10817,7 +10816,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -10849,7 +10848,7 @@ FileAppend,
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -10897,7 +10896,7 @@ function isPointInPolygon (latitude, longitude, polygon) {
 }
 </script>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 yanzhengzuobiaodian2:
@@ -11204,7 +11203,7 @@ console.log(20200709152745, result)
 console.timeEnd('20190219153729')
 </script>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -11228,7 +11227,7 @@ http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=219.242.98.111
     console.log(returnCitySN["cip"]+','+returnCitySN["cname"])  
 </script>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -11347,7 +11346,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -11595,7 +11594,7 @@ map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "s
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -11758,7 +11757,7 @@ var mapvLayer = new mapv.baiduMapLayer(map, dataSet, options);
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -11911,7 +11910,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -12086,7 +12085,7 @@ btnhideMarkers.addEventListener('click', e => {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -12182,7 +12181,7 @@ map.setMapStyle({ styleJson: [{ "featureType": "water", "elementType": "all", "s
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -12278,7 +12277,7 @@ var vue = new Vue({
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -12405,7 +12404,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -12471,7 +12470,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -12563,7 +12562,7 @@ var vue = new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -12786,7 +12785,7 @@ FileAppend,
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -12896,7 +12895,7 @@ draw.onmousedown = function(e) {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -12952,7 +12951,7 @@ FileAppend,
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -13177,7 +13176,7 @@ new Vue({
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -13246,7 +13245,7 @@ map.addEventListener('click', e => {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -13357,7 +13356,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -13456,7 +13455,7 @@ FileAppend,
 </script>
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -13585,7 +13584,7 @@ $.get('https://mapv.baidu.com/examples/data/wuhan-car', function(rs) {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -13683,7 +13682,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -13783,7 +13782,7 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -13837,7 +13836,7 @@ FileAppend,
     map.setTilt(65.4)
 </script>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -13921,7 +13920,7 @@ new Vue({
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -13991,7 +13990,7 @@ map.addEventListener('click', e => {
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
 
@@ -14159,6 +14158,6 @@ FileAppend,
 
 </html>
 ),  %name%
-RunBy(name)
+RunByVsCode(name)
 run, % name
 return
