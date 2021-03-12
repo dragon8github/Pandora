@@ -1,4 +1,20 @@
-﻿::sin::
+﻿::findl::
+::findleft::
+Var =
+(
+// 向左查询
+var findLeft = (ary = [], exp = () => false) => {
+    // 从后往前查询
+    for (var i = ary.length - 1; i >= 0; i--) {
+        if (exp(ary[i])) return ary[i]
+    }
+    return null
+}
+)
+txtit(Var)
+return
+
+::sin::
 ::tab::
 ::cos::
 ::sjx::
@@ -8187,7 +8203,7 @@ Return
 Var =
 (
 methods: {
-    handler (v) {
+    go (v) {
       console.log(20190627160125, v)
     }
 },

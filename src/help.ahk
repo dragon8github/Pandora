@@ -1,4 +1,22 @@
-﻿::linyi::
+﻿::vue.ob::
+Var =
+(
+vue.Observable
+)
+code(Var)
+return
+
+::wd::
+::wenda::
+Var =
+(
+问：死海在哪里？
+答：以色列和约旦之间的边界上。
+)
+code(Var)
+return
+
+::linyi::
 Var =
 (
 林弋
@@ -1120,7 +1138,7 @@ Send, {ALT UP}
 return
 
 <+v::
-Clipboard := StrReplace(Clipboard, "`r`n", ", ")  
+Clipboard := StrReplace(Clipboard, "`n", ", ")  
 Send, ^v
 return
 

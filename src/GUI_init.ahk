@@ -335,7 +335,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.thoughtworks.com/cn/radar">thought
 Gui, Pandora:Add, Link,, <a href="https://overreacted.io/">Dan大牛的博客</a>
 Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 Gui, Pandora:Add, Link,, <a href="https://kentcdodds.com/blog/">Kent C. Dodds Blog</a>
-Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/giserhome/p/13379672.html">博客园 GIS之家</a>
+; Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/giserhome/p/13379672.html">博客园 GIS之家</a>
+Gui, Pandora:Add, Link,, <a href="http://www.appcome.com/forum.php?mod=forumdisplay&fid=93&filter=typeid&typeid=112">appcome</a>
 
 
 
@@ -416,6 +417,8 @@ Gui, Pandora:Add, Link,, <a href="https://mapshaper.org/">旭均 - mapshaper</a>
 ; Gui, Pandora:Add, Link,, <a href="https://creator.nightcafe.studio/">世界名画生成器</a>
 Gui, Pandora:Add, Link,, <a href="https://www.piliang.tech/reverse-geocoding">批量转经纬度（刘羲）</a>
 Gui, Pandora:Add, Link,, <a href="https://sharkle.com/">随机打开一个有趣</a>
+Gui, Pandora:Add, Link,, <a href="http://imissmybar.com/">酒吧白噪音</a>
+
 
 ;@1
 

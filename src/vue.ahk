@@ -5417,6 +5417,61 @@ Var =
     <p>Here's some contact info</p>
   </template>
 </base-layout>
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <test>
+          <!-- https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots -->
+          <!-- 注意，外层必须用 template 包裹 -->
+          <template v-slot:default='slotProps'>
+            <div class='firstname'>{{ slotProps.user.firstName }}</div>
+          </template>
+
+          <!-- 推荐直接解构使用 -->
+          <template v-slot:footer='{ user }'>
+            <div class='lastname'>{{ user.lastName }}</div>
+          </template>
+
+
+          <!-- 如果不担心「过时」语法，也可以采用以下这种方式，更加简洁，只是 vue2.6 以后不推荐了。 slot='default' 可以省略 -->
+          <!-- <div class='lastname' slot="default" slot-scope='{ user }'>{{ user.lastName }}</div> -->
+        </test>
+    </div>
+</body>
+<script>
+
+const testConstructor = Vue.extend({
+    template: ``
+    <div class="test">
+      <slot v-bind:user='user'></slot>
+
+      <slot name='footer' v-bind:user='user'></slot>
+    </div>
+    ``,
+    data () {
+       return {
+         user: {
+          firstName: 'lee',
+          lastName: 'mp',
+         }
+       }
+    }
+})
+
+Vue.component('test', testConstructor)
+
+var vue = new Vue({
+    el: '#app',
+})
+</script>
+</html>
 )
 txtit(Var)
 return
@@ -6791,6 +6846,8 @@ Var =
 (
 import echarts from 'echarts'
 import VCharts from 'vue-echarts'
+
+window.echarts = echarts
 Vue.use(VCharts)
 
 <v-chart class='u-full chart' :options="option"></v-chart>
@@ -9319,6 +9376,55 @@ export default draggable
 <template>
   <div class="el-dialog" v-draggable></div>
 </template>
+)
+txtit(Var)
+return
+
+::v-model::
+::vmodel::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <test v-model='title'></test>
+        {{ title }}
+    </div>
+</body>
+<script>
+
+const testConstructor = Vue.extend({
+    template: `
+      <div class="test">
+        <button @click='go'>go</button>
+      </div>
+    `,
+    props: ['value'],
+    methods: {
+      go (v) {
+        this.$emit('input', this.value + 1)
+      }
+  },
+})
+
+Vue.component('test', testConstructor)
+
+var vue = new Vue({
+    el: '#app',
+    data () {
+    return {
+        title: 'HelloWorld'
+    }
+  },
+})
+</script>
+</html>
 )
 txtit(Var)
 return
