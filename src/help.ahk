@@ -1,4 +1,73 @@
-﻿::vue.ob::
+﻿; 驼峰，其实只将首字母小写而已。 毕竟没有分词器。 将 ProductI => productId
+to_tuo(str) {
+  firststr := SubStr(str, 1, 1)
+  StringLower, OutputVar, firststr
+  newstr := OutputVar . SubStr(str, 2, -1)
+  return newstr
+}
+
+; 将 ProductId => product_id
+to_str(str) {
+  ; 拆分所有的文字
+  strary := StrSplit(str, "")
+
+  newstr := ""
+
+  ; 遍历
+  For key, value in strary {
+    StringUpper, OutputVar, value
+    ; 是否大写？
+    if (value == OutputVar) {
+      StringLower, OutputVar2, value
+      newstr .= key == 1 ? OutputVar2 : "_" . OutputVar2
+    } else {
+      newstr .= value
+    }
+  }
+
+  return newstr
+}
+
+^!t::
+    tmp := Clipboard
+    Clipboard = 
+    WinClip.copy()
+    ClipWait 2
+    if (StrLen(Clipboard) > 0) {
+      newstr := ""
+      strary := StrSplit(Clipboard, "`r`n")
+      For key, value in strary {
+          isLast := key == strary.Length()
+          mx := isLast ? "" : "`r`n"
+          newstr .= to_tuo(value) . mx
+      }
+      code(newstr)
+   }
+
+   Clipboard := tmp
+return
+
+
+^!-::
+    tmp := Clipboard
+    Clipboard = 
+    WinClip.copy()
+    ClipWait 2
+    if (StrLen(Clipboard) > 0) {
+      newstr := ""
+      strary := StrSplit(Clipboard, "`r`n")
+      For key, value in strary {
+          isLast := key == strary.Length()
+          mx := isLast ? "" : "`r`n"
+          newstr .= to_str(value) . mx
+      }
+      code(newstr)
+   }
+
+   Clipboard := tmp
+return
+
+::vue.ob::
 Var =
 (
 vue.Observable
