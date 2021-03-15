@@ -1066,13 +1066,6 @@ Var =
 p(Var)
 return
 
-::jet::
-Var =
-(
-jetbrains
-)
-code(Var)
-return
 
 ; ::el::
 ; ::ele::

@@ -1,4 +1,4 @@
-﻿#IfWinNotActive 神武3
+﻿#IfWinNotActive 神武4
 
 ; 强制无条件安装键盘钩子.
 #InstallKeybdHook 
@@ -78,6 +78,7 @@ global __ALTCTRL__ := []
 #Include src/TypeScript.ahk       ; TypeScript
 #Include src/wx.ahk               ; wx
 #Include src/nest.ahk             ; nest
+#Include src/go.ahk             ; nest
 
 #Include src/mongoose.ahk	      ; mongoose
 
@@ -191,6 +192,8 @@ return
 !z::
     ; ; 获取当前 chrome OutputVar浏览器的进程id
     ; WinGet, v, PID, , Chrome
+
+    ; MsgBox, % v
     
     ; ; 如果id存在的话
     ; if (v) {

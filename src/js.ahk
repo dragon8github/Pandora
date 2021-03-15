@@ -849,6 +849,7 @@ document.querySelectorAll('.item').forEach(el => io.observe(el))
 txtit(Var)
 return
 
+::jianxie::
 ::hit::
 ::yundong::
 ::jianxieyundong::
@@ -856,7 +857,7 @@ Var =
 (
 /**
  * 间歇性运动
- * 
+ *
  * @param  {Number} 持续45s
  * @param  {Number} 休息10s
  * @param  {Number} 进行10次
@@ -881,11 +882,11 @@ const hit = (s = 45, m = 10, t = 1) => {
     // 运动倒计时
     ;(function poll() {
       setTimeout(() => {
-        if (isEnd) return console.log('?? 已终止')
-        if (isStop) return console.log('?? 暂停中')
+        if (isEnd) return console.log(' 已终止')
+        if (isStop) return console.log(' 暂停中')
 
         if (startTime) {
-          console.log('??di~', startTime)
+          console.log('di~', startTime)
           startTime--
           return poll()
         } else {
@@ -899,11 +900,11 @@ const hit = (s = 45, m = 10, t = 1) => {
     // TODO: 最后一轮休息是不是应该跳过？
     function restPoll() {
       setTimeout(() => {
-        if (isEnd) return console.log('?? 已终止')
-        if (isStop) return console.log('?? 暂停中')
+        if (isEnd) return console.log(' 已终止')
+        if (isStop) return console.log(' 暂停中')
 
         if (midfieldTime) {
-          console.log('??da~', midfieldTime)
+          console.log('da~', midfieldTime)
           midfieldTime--
           return restPoll()
         } else {
@@ -915,7 +916,7 @@ const hit = (s = 45, m = 10, t = 1) => {
             // 重置运动时间和休息时间
             startTime = s, midfieldTime = m
             // 重新开始运动
-            return start()                  
+            return start()
           }
 
           // 运动结束
@@ -927,7 +928,7 @@ const hit = (s = 45, m = 10, t = 1) => {
 
   // 运动结束
   const finish = () => {
-    console.log('?? 运动结束!')
+    console.log(' 运动结束!')
     // 重置
     isStop = false, isEnd = false, curTime = 0, startTime = s, midfieldTime = m
   }
@@ -939,7 +940,7 @@ const hit = (s = 45, m = 10, t = 1) => {
   return { start, end, stop, goon }
 }
 
-const { start, end, stop, goon } = hit(45, 15, 2)
+const { start, end, stop, goon } = hit(30, 15, 40)
 start()
 )
 txtit(Var)
@@ -19058,6 +19059,8 @@ return
 ::iide::
 Var =
 (
+jetbrains（interlij IDEA）(goland)
+---
 /**
  * 加载script并且执行回调
  * @param {String} url 资源地址
@@ -19107,7 +19110,7 @@ onscriptload('https://cdn.staticfile.org/ace/1.4.4/ace.js', function () {
 	})
 })
 )
-code(Var)
+txtit(Var)
 return
 
 
