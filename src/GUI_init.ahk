@@ -335,17 +335,12 @@ Gui, Pandora:Add, Link,, <a href="https://www.thoughtworks.com/cn/radar">thought
 Gui, Pandora:Add, Link,, <a href="https://overreacted.io/">Dan大牛的博客</a>
 Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 Gui, Pandora:Add, Link,, <a href="https://kentcdodds.com/blog/">Kent C. Dodds Blog</a>
-<<<<<<< HEAD
-Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/giserhome/p/13379672.html">博客园 GIS之家</a>
 Gui, Pandora:Add, Link,, <a href="https://www.tmtpost.com/base/data/investment">投资事件和项目</a>
 Gui, Pandora:Add, Link,, <a href="https://www.tmtpost.com/#js_recommend_other_page">钛媒体</a>
 Gui, Pandora:Add, Link,, <a href="https://www.w3cplus.com/JavaScript">w3cplus高质量文章</a>
 Gui, Pandora:Add, Link,, <a href="https://css-tricks.com/">css-tricks</a>
-
-=======
 ; Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/giserhome/p/13379672.html">博客园 GIS之家</a>
 Gui, Pandora:Add, Link,, <a href="http://www.appcome.com/forum.php?mod=forumdisplay&fid=93&filter=typeid&typeid=112">appcome</a>
->>>>>>> 9e3de5b4f37e8da60fc914f5c36570e9b1bd4fe4
 
 
 
