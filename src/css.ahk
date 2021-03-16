@@ -5142,6 +5142,7 @@ Var =
 // box-shadow: 0px 0px 300px 300px rgba(13, 36, 105, .7) inset;
 // box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+box-shadow: 0 0 0.625rem 0.3125rem #bae7ff;
 )
 code(Var)
 return

@@ -1,4 +1,131 @@
-﻿::say::
+﻿::findl::
+::findleft::
+Var =
+(
+// 向左查询
+var findLeft = (ary = [], exp = () => false) => {
+    // 从后往前查询
+    for (var i = ary.length - 1; i >= 0; i--) {
+        if (exp(ary[i])) return ary[i]
+    }
+    return null
+}
+)
+txtit(Var)
+return
+
+::sin::
+::tab::
+::cos::
+::sjx::
+::sanjiaox::
+::ggdl::
+::sanjiao::
+::goududingli::
+::sanjiaohanshu::
+::hudu::
+Var =
+(
+// 计算机默认使用的是弧度制，为了方便我们继续使用生活中习惯的角度，这里用公式将角度转换为弧度： 
+// 弧度 = 角度 * Math.PI / 180
+// 角度 = 弧度 * 180 / PI
+const sin = angle => Math.sin((angle * Math.PI) / 180)
+const cos = angle => Math.cos((angle * Math.PI) / 180)
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .box {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+
+        /* 重要 */
+        transform-origin: 0 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class='box'></div>
+    </div>
+</body>
+<script>
+// 勾股定理：a^2 + b^2 = c^2
+var get_c = (a, b) => Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))
+
+window.addEventListener('mousemove', e => {
+    const { pageX, pageY } = e
+
+    // 使用勾股定理，获取斜边的长度
+    const c = get_c(pageX, pageY)
+
+    document.querySelector('.box').style.width = c + 'px'
+
+    // 最常用的最重要的API，通过（tan）对边和临边获取角度（由于返回的是弧度，需要用公式转换为角度）
+    const rotate = Math.atan2(pageY, pageX) * 180 / Math.PI
+
+    // 需要结合这个：transform-origin: 0 0
+    document.querySelector('.box').style.transform = `rotate(${rotate}deg)`
+})
+</script>
+
+</html>
+---
+/**
+ * 正弦：对边/斜边 Math.sin(-30 * Math.PI / 180)
+ * 余弦：邻边/斜边 Math.cos(-30 * Math.PI / 180)
+ * 正切：对边/邻边 Math.tan(-30 * Math.PI / 180)
+ */
+
+// 角度转弧度
+// 弧度 = 角度 * pi / 180
+var radians = degrees * Math.PI / 180
+
+// 弧度转角度
+// 角度 = 弧度 * 180 / PI
+var degrees = radians * 180 / Math.PI
+
+// 勾股定理：a^2 + b^2 = c^2
+var ggdl = (a, b) => Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))
+
+// 勾股定理：c^2 - b^2 = a^2
+var ggdl2 = (c, b) => Math.sqrt(Math.pow(c, 2) - Math.pow(b, 2))
+
+// 通过a,b算出弧度，再转角度
+var rotate = Math.atan2(b, a) * 180 / Math.PI
+
+/* 
+getWidthAndRotation (left, right) {
+    const left_rect = left.getBoundingClientRect()
+    const right_rect = right.getBoundingClientRect()
+
+    const x1 = left_rect.x + left_rect.width,
+          y1 = left_rect.y + left_rect.height / 2;
+
+    const x2 = right_rect.x,
+          y2 = right_rect.y + right_rect.height / 2;
+
+    const a = x2 - x1
+    const b = y2 - y1
+    const c = pythagoreanTheorem(a, b)
+    const rotate = Math.atan2(b, a) * 180 / Math.PI
+
+    return { c, rotate }
+},
+*/
+)
+txtit(Var)
+return
+
+::say::
 Var =
 (
 /**
@@ -7269,57 +7396,6 @@ color.colorRgb()
 code(Var)
 return
 
-::sjx::
-::sanjiaox::
-::ggdl::
-::sanjiao::
-Var =
-(
-/**
- * 正弦：对边/斜边 Math.sin(-30 * Math.PI / 180)
- * 余弦：邻边/斜边 Math.cos(-30 * Math.PI / 180)
- * 正切：对边/邻边 Math.tan(-30 * Math.PI / 180)
- */
-
-// 角度转弧度
-// 弧度 = 角度 * pi / 180
-var radians = degrees * Math.PI / 180
-
-// 弧度转角度
-// 角度 = 弧度 * 180 / PI
-var degrees = radians * 180 / Math.PI
-
-// 勾股定理：a^2 + b^2 = c^2
-var ggdl = (a, b) => Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))
-
-// 勾股定理：c^2 - b^2 = a^2
-var ggdl2 = (c, b) => Math.sqrt(Math.pow(c, 2) - Math.pow(b, 2))
-
-// 通过a,b算出弧度，再转角度
-var rotate = Math.atan2(b, a) * 180 / Math.PI
-
-/* 
-getWidthAndRotation (left, right) {
-    const left_rect = left.getBoundingClientRect()
-    const right_rect = right.getBoundingClientRect()
-
-    const x1 = left_rect.x + left_rect.width,
-          y1 = left_rect.y + left_rect.height / 2;
-
-    const x2 = right_rect.x,
-          y2 = right_rect.y + right_rect.height / 2;
-
-    const a = x2 - x1
-    const b = y2 - y1
-    const c = pythagoreanTheorem(a, b)
-    const rotate = Math.atan2(b, a) * 180 / Math.PI
-
-    return { c, rotate }
-},
-*/
-)
-code(Var)
-return
 
 ::babel::
 ::babel-cli::
@@ -8128,7 +8204,7 @@ Return
 Var =
 (
 methods: {
-    handler (v) {
+    go (v) {
       console.log(20190627160125, v)
     }
 },
@@ -12445,6 +12521,34 @@ return
 ::deep::
 Var =
 (
+// http://youmightnotneedjquery.com/#extend
+// extend({}, objA, objB);
+export var deepExtend = function(out) {
+  out = out || {};
+
+  for (var i = 1; i < arguments.length; i++) {
+    var obj = arguments[i];
+
+    if (!obj)
+      continue;
+
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === 'object'){
+          if(obj[key] instanceof Array == true)
+            out[key] = obj[key].slice(0);
+          else
+            out[key] = deepExtend(out[key], obj[key]);
+        }
+        else
+          out[key] = obj[key];
+      }
+    }
+  }
+
+  return out;
+};
+---
 function deepCopy(obj, cache = []) {
     if (obj === null || typeof obj !== 'object') {
         return obj
@@ -12501,7 +12605,6 @@ function extend(Child, Parent){
     Child.prototype.constructor = Child;
     Child.parent = Parent.prototype
 }
----
 // 用IIFE优化桥梁F，不需要每次都创建
 var inherit = (function(){
   var F = function () {}
@@ -12878,7 +12981,11 @@ puppeteer
 const puppeteer = require('puppeteer')
 
 ;(async () => {
-    const browser = await puppeteer.launch()
+    // 启动 chrome 无头浏览器
+    const browser = await puppeteer.launch({
+        args: [ '--ignore-certificate-errors' ]
+    })
+
     const page = await browser.newPage()
     await page.goto('https://www.baidu.com')
     await page.screenshot({ path: 'example.png' })
@@ -12909,7 +13016,10 @@ const { sleep, loginJenkins, buildJenkins, screenshot } = require('./helper')
 
 ;(async () => {
     // 启动 chrome 无头浏览器
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+        args: [ '--ignore-certificate-errors' ]
+    })
+
 
     // 打开一个新页面
     const page = await browser.newPage()

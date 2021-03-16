@@ -3673,25 +3673,24 @@ Var =
 
 <script>
 export default {
-  name: '%OutputVar%',
-  data() {
-    return {
-      items: [],
-      title: 'HelloWorld',
-    }
-  },
-  methods: {
-    go() {
-      console.log('go')
+    name: '%OutputVar%',
+    data() {
+      return {
+        items: [],
+        keyword: '',
+        active: -1,
+      }
     },
-  },
-  components: {},
-  computed: {},
-  watch: {},
-  props: [],
-  beforeMount() {
-    console.log(20201221155003, '%OutputVar%')
-  },
+    methods: {
+      go() {
+        console.log('go')
+      },
+    },
+    components: {},
+    computed: {},
+    watch: {},
+    props: [],
+    beforeMount() {},
 }
 </script>
 
@@ -4679,8 +4678,37 @@ module.exports = {
        },
     },
 }
+---
+css: {
+  loaderOptions: {
+    sass: {
+      data: `
+        @import "@/scss/functions.scss";
+      `
+    },
+    postcss: {
+      plugins: [
+        require("autoprefixer")({
+          // 配置使用 autoprefixer
+          overrideBrowserslist: ["last 15 versions"] 
+        }),
+        // 如果是移动端推荐配合 amfe-flexible 插件使用：https://www.cnblogs.com/yifeng555/p/12734032.html
+        // 由于viewport单位得到众多浏览器的兼容，lib-flexible这个过渡方案已经可以放弃使用，不管是现在的版本还是以前的版本，都存有一定的问题。建议大家开始使用viewport来替代此方
+        // cnpm i postcss-pxtorem -S
+        require("postcss-pxtorem")({
+          propList: ['*'],
+          // 换算的基数: 移动端通常是 75，如果是 Vant UI 官方根字体大小是 37.5，普通的场景是16
+          rootValue: 16, 
+          // 过滤掉 「.norem」 「.ig」 「.px」 开头的class，不进行rem转换
+          selectorBlackList: ['.norem', '.ig', '.px'],
+          // 是否要过滤 node_modules？如果需要的话开启：exclude: /node_modules/
+        })
+      ]
+    }
+  }
+},
 )
-code(Var)
+txtit(Var)
 return
 
 ::router.404::
@@ -5366,6 +5394,61 @@ Var =
     <p>Here's some contact info</p>
   </template>
 </base-layout>
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <test>
+          <!-- https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots -->
+          <!-- 注意，外层必须用 template 包裹 -->
+          <template v-slot:default='slotProps'>
+            <div class='firstname'>{{ slotProps.user.firstName }}</div>
+          </template>
+
+          <!-- 推荐直接解构使用 -->
+          <template v-slot:footer='{ user }'>
+            <div class='lastname'>{{ user.lastName }}</div>
+          </template>
+
+
+          <!-- 如果不担心「过时」语法，也可以采用以下这种方式，更加简洁，只是 vue2.6 以后不推荐了。 slot='default' 可以省略 -->
+          <!-- <div class='lastname' slot="default" slot-scope='{ user }'>{{ user.lastName }}</div> -->
+        </test>
+    </div>
+</body>
+<script>
+
+const testConstructor = Vue.extend({
+    template: ``
+    <div class="test">
+      <slot v-bind:user='user'></slot>
+
+      <slot name='footer' v-bind:user='user'></slot>
+    </div>
+    ``,
+    data () {
+       return {
+         user: {
+          firstName: 'lee',
+          lastName: 'mp',
+         }
+       }
+    }
+})
+
+Vue.component('test', testConstructor)
+
+var vue = new Vue({
+    el: '#app',
+})
+</script>
+</html>
 )
 txtit(Var)
 return
@@ -5724,6 +5807,8 @@ Var =
 code(Var)
 return
 
+
+::vuec::
 ::vue.c::
 ::vue.extend::
 ::vue.extends::
@@ -5879,6 +5964,36 @@ export default {
    */
   ...components,
 }
+---
+<template>
+  <div class="SevenWatch">
+    <dgTable></dgTable>
+  </div>
+</template>
+
+<script>
+import Vue from 'vue'
+import { deepExtend } from '@/utils/utils'
+import { getMixins } from '@/mixins/data.js'
+import table from '../table/_table.vue'
+import detail from '../table/_detail.vue'
+import config from './config'
+
+const dataMixins = getMixins('sevenWatch')
+
+// 准备好「详情组件」, 注入 mixins 上下文
+const itemDetail = Vue.extend(deepExtend({}, detail, dataMixins, config))
+
+// 注册「table」组件，并且为它设置 itemDetail
+const dgTable = Vue.extend(deepExtend({}, table, dataMixins, config, { components: { itemDetail } }))
+
+export default {
+  name: 'SevenWatch',
+  components: {
+    dgTable,
+  },
+}
+</script>
 )
 txtit(Var)
 return
@@ -6708,6 +6823,8 @@ Var =
 (
 import echarts from 'echarts'
 import VCharts from 'vue-echarts'
+
+window.echarts = echarts
 Vue.use(VCharts)
 
 <v-chart class='u-full chart' :options="option"></v-chart>
@@ -9238,6 +9355,55 @@ export default draggable
 <template>
   <div class="el-dialog" v-draggable></div>
 </template>
+)
+txtit(Var)
+return
+
+::v-model::
+::vmodel::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <test v-model='title'></test>
+        {{ title }}
+    </div>
+</body>
+<script>
+
+const testConstructor = Vue.extend({
+    template: `
+      <div class="test">
+        <button @click='go'>go</button>
+      </div>
+    `,
+    props: ['value'],
+    methods: {
+      go (v) {
+        this.$emit('input', this.value + 1)
+      }
+  },
+})
+
+Vue.component('test', testConstructor)
+
+var vue = new Vue({
+    el: '#app',
+    data () {
+    return {
+        title: 'HelloWorld'
+    }
+  },
+})
+</script>
+</html>
 )
 txtit(Var)
 return

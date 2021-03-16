@@ -1446,33 +1446,24 @@ Var =
 const fs = require('fs')
 const path = require('path')
 
-function deleteall(path) {
-    const files = []
-
+function delFile(path, reservePath) {
     if (fs.existsSync(path)) {
-
-        fs.stat(path, (err, stats) => {
-          const isFile = stats.isFile()
-          const isDirectory = stats.isDirectory()
-
-          if (isFile) {
-            fs.unlinkSync(path)
-          }
-
-          if (isDirectory) {
-            files = fs.readdirSync(path)
-
-            files.forEach(function(file, index) {
-                const curPath = path + '/' + file
-
-                if(fs.statSync(curPath).isDirectory()) {
-                    deleteall(curPath)
+        if (fs.statSync(path).isDirectory()) {
+            let files = fs.readdirSync(path)
+            files.forEach((file, index) => {
+                let currentPath = path + '/' + file
+                if (fs.statSync(currentPath).isDirectory()) {
+                    delFile(currentPath, reservePath)
                 } else {
-                    fs.unlinkSync(curPath)
+                    fs.unlinkSync(currentPath)
                 }
             })
-          } 
-        })
+            if (path != reservePath) {
+                fs.rmdirSync(path)
+            }
+        } else {
+            fs.unlinkSync(path)
+        }
     }
 }
 )

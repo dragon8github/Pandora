@@ -335,12 +335,17 @@ Gui, Pandora:Add, Link,, <a href="https://www.thoughtworks.com/cn/radar">thought
 Gui, Pandora:Add, Link,, <a href="https://overreacted.io/">Dan大牛的博客</a>
 Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
 Gui, Pandora:Add, Link,, <a href="https://kentcdodds.com/blog/">Kent C. Dodds Blog</a>
+<<<<<<< HEAD
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/giserhome/p/13379672.html">博客园 GIS之家</a>
 Gui, Pandora:Add, Link,, <a href="https://www.tmtpost.com/base/data/investment">投资事件和项目</a>
 Gui, Pandora:Add, Link,, <a href="https://www.tmtpost.com/#js_recommend_other_page">钛媒体</a>
 Gui, Pandora:Add, Link,, <a href="https://www.w3cplus.com/JavaScript">w3cplus高质量文章</a>
 Gui, Pandora:Add, Link,, <a href="https://css-tricks.com/">css-tricks</a>
 
+=======
+; Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/giserhome/p/13379672.html">博客园 GIS之家</a>
+Gui, Pandora:Add, Link,, <a href="http://www.appcome.com/forum.php?mod=forumdisplay&fid=93&filter=typeid&typeid=112">appcome</a>
+>>>>>>> 9e3de5b4f37e8da60fc914f5c36570e9b1bd4fe4
 
 
 
@@ -421,6 +426,8 @@ Gui, Pandora:Add, Link,, <a href="https://mapshaper.org/">旭均 - mapshaper</a>
 ; Gui, Pandora:Add, Link,, <a href="https://creator.nightcafe.studio/">世界名画生成器</a>
 Gui, Pandora:Add, Link,, <a href="https://www.piliang.tech/reverse-geocoding">批量转经纬度（刘羲）</a>
 Gui, Pandora:Add, Link,, <a href="https://sharkle.com/">随机打开一个有趣</a>
+Gui, Pandora:Add, Link,, <a href="http://imissmybar.com/">酒吧白噪音</a>
+
 
 ;@1
 
@@ -517,6 +524,7 @@ Gui, Pandora:Add, Text, gmapv2fuckhtml2 W160, 新建 mapV文本+图形2.html
 Gui, Pandora:Add, Text, gmapvlightrudong W160, 新建 mapV 光线蠕动轨迹
 Gui, Pandora:Add, Text, gNewgdmapHtml W160,新建高德地图天气测试.html
 Gui, Pandora:Add, Text, gdgmap3Dhtml W160, 新建高德地图3D倾斜.html
+Gui, Pandora:Add, Text, gdgmap3Dhtmlhailiangsandian W160, 高德地图3D海量散点.html
 Gui, Pandora:Add, Text, gdgmap3DhtmlWMTS W160, 新建高德地图WMTS.html
 Gui, Pandora:Add, Text, gdgmap3DZOOMhtml W160, 新建高德地图监听ZOOM.html
 Gui, Pandora:Add, Text, gbdmapbasicmapv W160, 新建百度地图GL+mapv.html
@@ -658,8 +666,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.sonatype.com/nexus-repository-oss"
 Gui, Pandora:Add, Text,  W140 yp+50, 12345热线效能
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-hotline">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/64/interface/api">yapi</a>
-Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/hotline-12345/">正式预览</a>
-Gui, Pandora:Add, Link,, <a href="https://master.paas.com:8443/console/project/app/browse/dc/hotline-12345?tab=history">部署</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.124/hotline-12345/#/Hotline">正式预览</a>
+Gui, Pandora:Add, Link,, <a href="https://rancher.ioc.com/p/local:p-486kn/workloads">部署</a>
 
 
 
