@@ -78,6 +78,7 @@ global __ALTCTRL__ := []
 #Include src/TypeScript.ahk       ; TypeScript
 #Include src/wx.ahk               ; wx
 #Include src/nest.ahk             ; nest
+#Include src/go.ahk             ; go
 
 #Include src/mongoose.ahk	      ; mongoose
 
@@ -169,6 +170,7 @@ return
 ; return
 
 #!right::
+^!right::
 WinGet, OutputVar, MinMax, A
 if (OutputVar == 1) {
     WinRestore, A
@@ -180,6 +182,7 @@ WinMove, A, , A_ScreenWidth / 2, 0, A_ScreenWidth / 2, A_ScreenHeight - 70
 return
 
 #!left::
+^!left::
 WinGet, OutputVar, MinMax, A
 if (OutputVar == 1) {
     WinRestore, A

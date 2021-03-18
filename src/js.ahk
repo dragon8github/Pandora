@@ -1,4 +1,12 @@
-﻿::findl::
+﻿::design::
+Var =
+(
+document.designMode = 'on'
+)
+code(Var)
+return
+
+::findl::
 ::findleft::
 Var =
 (
@@ -5879,25 +5887,27 @@ return
 ::color::
 Var =
 (
-/*
-    If color has the following format:
-    const rgbColor = { r: 100, g: 100, b: 100 }
-*/
+// https://vis4.net/chromajs/
+const chroma = require('chroma-js')
 
-// Extracted from Polished
-// Code is licensed with an MIT license
-function getLuminance(rgbColor) {
- const [r, g, b] = Object.keys(rgbColor).map(key => {
-    // Our color numbers represent a 8bit channel.
-        // The formula requires a sRGB channel which is defined by
-        // ColorChannelIn8bit / 255
-    const channel = rgbColor[key] / 255
-    return channel <= 0.03928
-      ? channel / 12.92
-      : ((channel + 0.055) / 1.055) ** 2.4
-  })
-  return parseFloat((0.2126 * r + 0.7152 * g + 0.0722 * b).toFixed(3))
-}
+// 生成范围颜色
+const colors = chroma.scale(['rgba(0, 0, 0, .5)','#2A4858']).colors(6)
+
+// 转换为 css 类型的（rgb、rgba）
+const _colors = colors.map(color => chroma(color).css())
+
+/**
+ * 
+ * [
+ *   'rgba(0,0,0,0.5)',
+ *   'rgba(8,14,18,0.6)',
+ *   'rgba(17,29,35,0.7)',
+ *   'rgba(25,43,53,0.8)',
+ *   'rgba(34,58,70,0.9)',
+ *   'rgb(42,72,88)'
+ *  ]
+ */
+console.log(_colors)
 ---
 const colorRange = (colorList, min, max) => {
     // 初始化透明度 rgba
@@ -5997,6 +6007,26 @@ const finalData = data.map(item => Object.assign({}, item, { color: make(item.co
 // ...
 console.log(finalData)
 ---
+/*
+    If color has the following format:
+    const rgbColor = { r: 100, g: 100, b: 100 }
+*/
+
+// Extracted from Polished
+// Code is licensed with an MIT license
+function getLuminance(rgbColor) {
+ const [r, g, b] = Object.keys(rgbColor).map(key => {
+    // Our color numbers represent a 8bit channel.
+        // The formula requires a sRGB channel which is defined by
+        // ColorChannelIn8bit / 255
+    const channel = rgbColor[key] / 255
+    return channel <= 0.03928
+      ? channel / 12.92
+      : ((channel + 0.055) / 1.055) ** 2.4
+  })
+  return parseFloat((0.2126 * r + 0.7152 * g + 0.0722 * b).toFixed(3))
+}
+---
 String.prototype.colorRgb = function() {
     var sColor = this.toLowerCase();
     if (sColor && /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/.test(sColor)) {
@@ -6035,7 +6065,8 @@ function colorHex(value) {
 
 var obj = { red: 255, green: 255, blue: 255, alpha: null }
 colorHex(obj) // #ffffff
----
+
+
 function colorReverse(oldColor){
     var oldColor = '0x' + oldColor.replace(/#/g, '');
     var str = '000000' + (0xFFFFFF - oldColor).toString(16);

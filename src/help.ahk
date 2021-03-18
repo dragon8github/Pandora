@@ -1,8 +1,8 @@
-﻿; 驼峰，其实只将首字母小写而已。 毕竟没有分词器。 将 ProductI => productId
+﻿; 驼峰，其实只将首字母小写而已。 毕竟没有分词器。 将 productId => productId
 to_tuo(str) {
   firststr := SubStr(str, 1, 1)
   StringLower, OutputVar, firststr
-  newstr := OutputVar . SubStr(str, 2, -1)
+  newstr := OutputVar . SubStr(str, 2)
   return newstr
 }
 
