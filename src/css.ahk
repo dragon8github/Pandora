@@ -3946,9 +3946,22 @@ return
 ::border::
 Var =
 (
-border:1px solid #ccc;
+div:hover {
+    transition: .3s all ease;
+    border: 5px solid;
+    --angle: 0deg;
+    /* … */
+    border-image: linear-gradient(var(--angle), green, yellow) 1;
+    animation: 10s rotate linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::@import::

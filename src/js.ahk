@@ -984,6 +984,7 @@ document.querySelectorAll('.item').forEach(el => io.observe(el))
 txtit(Var)
 return
 
+::jianxie::
 ::hit::
 ::yundong::
 ::jianxieyundong::
@@ -991,7 +992,7 @@ Var =
 (
 /**
  * 间歇性运动
- * 
+ *
  * @param  {Number} 持续45s
  * @param  {Number} 休息10s
  * @param  {Number} 进行10次
@@ -1016,11 +1017,11 @@ const hit = (s = 45, m = 10, t = 1) => {
     // 运动倒计时
     ;(function poll() {
       setTimeout(() => {
-        if (isEnd) return console.log('?? 已终止')
-        if (isStop) return console.log('?? 暂停中')
+        if (isEnd) return console.log(' 已终止')
+        if (isStop) return console.log(' 暂停中')
 
         if (startTime) {
-          console.log('??di~', startTime)
+          console.log('di~', startTime)
           startTime--
           return poll()
         } else {
@@ -1034,11 +1035,11 @@ const hit = (s = 45, m = 10, t = 1) => {
     // TODO: 最后一轮休息是不是应该跳过？
     function restPoll() {
       setTimeout(() => {
-        if (isEnd) return console.log('?? 已终止')
-        if (isStop) return console.log('?? 暂停中')
+        if (isEnd) return console.log(' 已终止')
+        if (isStop) return console.log(' 暂停中')
 
         if (midfieldTime) {
-          console.log('??da~', midfieldTime)
+          console.log('da~', midfieldTime)
           midfieldTime--
           return restPoll()
         } else {
@@ -1050,7 +1051,7 @@ const hit = (s = 45, m = 10, t = 1) => {
             // 重置运动时间和休息时间
             startTime = s, midfieldTime = m
             // 重新开始运动
-            return start()                  
+            return start()
           }
 
           // 运动结束
@@ -1062,7 +1063,7 @@ const hit = (s = 45, m = 10, t = 1) => {
 
   // 运动结束
   const finish = () => {
-    console.log('?? 运动结束!')
+    console.log(' 运动结束!')
     // 重置
     isStop = false, isEnd = false, curTime = 0, startTime = s, midfieldTime = m
   }
@@ -1074,7 +1075,7 @@ const hit = (s = 45, m = 10, t = 1) => {
   return { start, end, stop, goon }
 }
 
-const { start, end, stop, goon } = hit(45, 15, 2)
+const { start, end, stop, goon } = hit(30, 15, 40)
 start()
 )
 txtit(Var)
@@ -4419,6 +4420,7 @@ export default run
 txtit(Var)
 return
 
+::sleep::
 ::delay::
 Var =
 (
@@ -6654,6 +6656,48 @@ export function isPointInPolygon(latitude, longitude, polygon) {
   return inside
 }
 ---
+
+/**
+ * 跟前面的版本一模一样，只是强化了判断：包含边界的点
+ * 百度地图其实也有官方工具支持：http://api.map.baidu.com/library/DrawingManager/1.4/docs/symbols/BMapLib.html
+ * BMapLib.GeoUtils.isPointInPolygon(new BMap.Point(113.843319, 22.921901), map.getOverlays().filter(_ => _.city)[0])
+ [JS]如何验证坐标点是否在多边形内
+ * Verify if point of coordinates (longitude, latitude) is polygon of coordinates
+ * https://github.com/substack/point-in-polygon/blob/master/index.js
+ * @param Latitude   维度：22.921901
+ * @param Longitude 经度：113.843319
+ * @param array<[latitude,Latitude]>
+ （温馨提示：计算消耗的时间有点久，最好是放在 web worker 里边计算）
+ */
+export function isPointInPolygon(latitude, longitude, polygon) {
+  if (typeof latitude !== 'number' || typeof longitude !== 'number') {
+    return false
+    // throw new TypeError('Invalid latitude or longitude. Numbers are expected')
+  } else if (!polygon || !Array.isArray(polygon)) {
+    throw new TypeError('Invalid polygon. Array with locations expected')
+  } else if (polygon.length === 0) {
+    throw new TypeError('Invalid polygon. Non-empty Array expected')
+  }
+
+  const x = latitude
+  const y = longitude
+
+  let inside = false
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i][0]
+    const yi = polygon[i][1]
+    const xj = polygon[j][0]
+    const yj = polygon[j][1]
+
+    // 跟前面的版本一模一样，只是强化了判断：包含边界的点
+    const intersect = ((yi >= y) !== (yj >= y)) &&
+            (x <= (xj - xi) * (y - yi) / (yj - yi) + xi)
+    if (intersect) inside = !inside
+  }
+
+  return inside
+}
+---
 var arr1 = [{ id: 1 }, { id: 2 }, { id: 3 }]
 var arr2 = [{ id: 2 }, { id: 3 }, { id: 4 }]
 // 交集（返回两个数组都拥有的元素）
@@ -7897,6 +7941,9 @@ return
 ::hock::
 Var =
 (
+// 组件销毁时，清空播放列表
+this.$on('hook:destroyed', () => this.$$data_20201229110506({ cmd: '__reset__' }))
+---
 /**
  * https://www.netlify.com/blog/2019/03/11/deep-dive-how-do-react-hooks-really-work/
  * raw: 
@@ -19333,6 +19380,8 @@ return
 ::iide::
 Var =
 (
+jetbrains（interlij IDEA）(goland)
+---
 /**
  * 加载script并且执行回调
  * @param {String} url 资源地址
@@ -19382,7 +19431,7 @@ onscriptload('https://cdn.staticfile.org/ace/1.4.4/ace.js', function () {
 	})
 })
 )
-code(Var)
+txtit(Var)
 return
 
 

@@ -66,7 +66,6 @@
   Menu, vuewatch, Add, vue.watch.deep-$props, VueHandler
   
   
-  Menu, vuebase, Add, css-scoped深度作用选择器：>>>（css） 与 /deep/（sass）, VueHandler
   Menu, vuebase, Add, :style='{}' 表达式, VueHandler
   Menu, vuebase, Add, vue.style, VueHandler
   Menu, vuebase, Add, vue.computed: get/set, VueHandler
@@ -2041,28 +2040,6 @@ Var =
 next({ path: '/' })
 next(`/login?redirect=${to.path}`)
 next({ ...to, replace: true })
-)
-}
-
-if (v == "css-scoped深度作用选择器：>>>（css） 与 /deep/（sass）") {
-Var = 
-(
-<style lang="scss" scoped>
-.select {
-  width: 100px;
-
-  /deep/ .el-input__inner {
-    border: 0;
-    color: #000;
-  }
-}
-
-/deep/.el-select-dropdown__item {
-  padding: 0;
-  height: auto;
-  line-height: 0;
-}
-</style>
 )
 }
 
@@ -9320,6 +9297,8 @@ describe('Item.vue', () => {
 code(Var)
 return
 
+
+::/deep::
 ::/deep/::
 Var =
 (
@@ -9427,4 +9406,22 @@ var vue = new Vue({
 </html>
 )
 txtit(Var)
+return
+
+::vue.ob::
+::ob::
+Var =
+(
+Observable
+vue.Observable
+)
+code(Var)
+return
+
+::v-bind::
+Var =
+(
+ v-bind='{ ...$attrs, ...$props }'
+)
+code(Var)
 return

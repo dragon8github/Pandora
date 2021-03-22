@@ -1,4 +1,4 @@
-﻿#IfWinNotActive 神武3
+﻿#IfWinNotActive 神武4
 
 ; 强制无条件安装键盘钩子.
 #InstallKeybdHook 
@@ -79,7 +79,6 @@ global __ALTCTRL__ := []
 #Include src/wx.ahk               ; wx
 #Include src/nest.ahk             ; nest
 #Include src/go.ahk             ; go
-
 #Include src/mongoose.ahk	      ; mongoose
 
 #Include src/php.ahk              ; php	
@@ -202,37 +201,39 @@ WinGet, v, PID, , Chrome, Chrome
 MsgBox, % v
 return
 
-!z::
-    ; ; 获取当前 chrome OutputVar浏览器的进程id
-    ; WinGet, v, PID, , Chrome
+; !z::
+;     ; ; 获取当前 chrome OutputVar浏览器的进程id
+;     ; WinGet, v, PID, , Chrome
+
+;     ; MsgBox, % v
     
-    ; ; 如果id存在的话
-    ; if (v) {
-    ;     ; kill
-    ;     Process, Close, % v
-    ; }
+;     ; ; 如果id存在的话
+;     ; if (v) {
+;     ;     ; kill
+;     ;     Process, Close, % v
+;     ; }
     
-    ; file := A_Desktop . "\my.lnk"
-    ; run, % file 
+;     ; file := A_Desktop . "\my.lnk"
+;     ; run, % file 
 
 
-    ; WinWait, Chrome
+;     ; WinWait, Chrome
 
 
-    ; ; 获取当前 chrome OutputVar浏览器的进程id
-    ; WinGet, v, PID, , Chrome
+;     ; ; 获取当前 chrome OutputVar浏览器的进程id
+;     ; WinGet, v, PID, , Chrome
 
-    ; MsgBox, % v
-    ; return
+;     ; MsgBox, % v
+;     ; return
 
-    ; WinActivate, ahk_id %v%
+;     ; WinActivate, ahk_id %v%
 
-    ; WinGet, OutputVar, MinMax, A
+;     ; WinGet, OutputVar, MinMax, A
 
-    ; if (OutputVar == 1) {
-    ;     WinRestore, A
-    ; } 
+;     ; if (OutputVar == 1) {
+;     ;     WinRestore, A
+;     ; } 
 
 
-    WinMove, A, , 0, 0, 680, 380
-return
+;     WinMove, A, , 0, 0, 680, 380
+; return

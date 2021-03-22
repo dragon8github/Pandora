@@ -67,13 +67,6 @@ return
    Clipboard := tmp
 return
 
-::vue.ob::
-Var =
-(
-vue.Observable
-)
-code(Var)
-return
 
 ::wd::
 ::wenda::
@@ -1154,13 +1147,6 @@ Var =
 p(Var)
 return
 
-::jet::
-Var =
-(
-jetbrains
-)
-code(Var)
-return
 
 ; ::el::
 ; ::ele::
@@ -1207,7 +1193,7 @@ Send, {ALT UP}
 return
 
 <+v::
-Clipboard := StrReplace(Clipboard, "`n", ", ")  
+Clipboard := StrReplace(Clipboard, "`r`n", ", ")  
 Send, ^v
 return
 
