@@ -4593,7 +4593,7 @@ module.exports = {
     assetsDir: 'assets',
     productionSourceMap: false,
     //  可以模仿线上资源地址，如：process.env.NODE_ENV === 'development' ? '/biweb/' : '/biweb/',
-    publicPath: './',
+    publicPath: '/',
     css: {
       loaderOptions: {
         sass: {
@@ -9406,4 +9406,22 @@ var vue = new Vue({
 </html>
 )
 txtit(Var)
+return
+
+::vue.ob::
+::ob::
+Var =
+(
+Observable
+vue.Observable
+)
+code(Var)
+return
+
+::v-bind::
+Var =
+(
+ v-bind='{ ...$attrs, ...$props }'
+)
+code(Var)
 return

@@ -4439,8 +4439,8 @@ return
 ::@bg::
 Var =
 (
-width: 44px;
-height: 44px;
+min-width: 444px;
+min-height: 444px;
 background: url('https://iph.href.lu/100x100') center / 100`% 100`% no-repeat;
 display: inline-block;
 )

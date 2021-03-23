@@ -78,8 +78,7 @@ global __ALTCTRL__ := []
 #Include src/TypeScript.ahk       ; TypeScript
 #Include src/wx.ahk               ; wx
 #Include src/nest.ahk             ; nest
-#Include src/go.ahk             ; nest
-
+#Include src/go.ahk             ; go
 #Include src/mongoose.ahk	      ; mongoose
 
 #Include src/php.ahk              ; php	
@@ -170,6 +169,7 @@ return
 ; return
 
 #!right::
+^!right::
 WinGet, OutputVar, MinMax, A
 if (OutputVar == 1) {
     WinRestore, A
@@ -181,6 +181,7 @@ WinMove, A, , A_ScreenWidth / 2, 0, A_ScreenWidth / 2, A_ScreenHeight - 70
 return
 
 #!left::
+^!left::
 WinGet, OutputVar, MinMax, A
 if (OutputVar == 1) {
     WinRestore, A
@@ -200,39 +201,39 @@ WinGet, v, PID, , Chrome, Chrome
 MsgBox, % v
 return
 
-!z::
-    ; ; 获取当前 chrome OutputVar浏览器的进程id
-    ; WinGet, v, PID, , Chrome
+; !z::
+;     ; ; 获取当前 chrome OutputVar浏览器的进程id
+;     ; WinGet, v, PID, , Chrome
 
-    ; MsgBox, % v
+;     ; MsgBox, % v
     
-    ; ; 如果id存在的话
-    ; if (v) {
-    ;     ; kill
-    ;     Process, Close, % v
-    ; }
+;     ; ; 如果id存在的话
+;     ; if (v) {
+;     ;     ; kill
+;     ;     Process, Close, % v
+;     ; }
     
-    ; file := A_Desktop . "\my.lnk"
-    ; run, % file 
+;     ; file := A_Desktop . "\my.lnk"
+;     ; run, % file 
 
 
-    ; WinWait, Chrome
+;     ; WinWait, Chrome
 
 
-    ; ; 获取当前 chrome OutputVar浏览器的进程id
-    ; WinGet, v, PID, , Chrome
+;     ; ; 获取当前 chrome OutputVar浏览器的进程id
+;     ; WinGet, v, PID, , Chrome
 
-    ; MsgBox, % v
-    ; return
+;     ; MsgBox, % v
+;     ; return
 
-    ; WinActivate, ahk_id %v%
+;     ; WinActivate, ahk_id %v%
 
-    ; WinGet, OutputVar, MinMax, A
+;     ; WinGet, OutputVar, MinMax, A
 
-    ; if (OutputVar == 1) {
-    ;     WinRestore, A
-    ; } 
+;     ; if (OutputVar == 1) {
+;     ;     WinRestore, A
+;     ; } 
 
 
-    WinMove, A, , 0, 0, 680, 380
-return
+;     WinMove, A, , 0, 0, 680, 380
+; return

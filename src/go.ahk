@@ -1,5 +1,8 @@
-::goinit::
+::ginit::
+::gin.init::
+::gininit::
 ::go.init::
+::goinit::
 Var =
 (
 package main
@@ -11,6 +14,27 @@ func main()  {
 
    fmt.Println(a)
 }
+---
+package main
+
+import (
+	"github.com/gin-gonic/gin"
+`)
+
+
+func main() {
+	// 携带基础中间件：logger
+	r := gin.Default()
+
+	r.POST("/test", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"msg": "success",
+		})
+	})
+
+	// listen and serve on 0.0.0.0:8080
+	r.Run()
+}
 )
-code(Var)
+txtit(Var)
 return

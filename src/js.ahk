@@ -1,4 +1,12 @@
-﻿::findl::
+﻿::design::
+Var =
+(
+document.designMode = 'on'
+)
+code(Var)
+return
+
+::findl::
 ::findleft::
 Var =
 (
@@ -4412,6 +4420,7 @@ export default run
 txtit(Var)
 return
 
+::sleep::
 ::delay::
 Var =
 (
@@ -5880,25 +5889,27 @@ return
 ::color::
 Var =
 (
-/*
-    If color has the following format:
-    const rgbColor = { r: 100, g: 100, b: 100 }
-*/
+// https://vis4.net/chromajs/
+const chroma = require('chroma-js')
 
-// Extracted from Polished
-// Code is licensed with an MIT license
-function getLuminance(rgbColor) {
- const [r, g, b] = Object.keys(rgbColor).map(key => {
-    // Our color numbers represent a 8bit channel.
-        // The formula requires a sRGB channel which is defined by
-        // ColorChannelIn8bit / 255
-    const channel = rgbColor[key] / 255
-    return channel <= 0.03928
-      ? channel / 12.92
-      : ((channel + 0.055) / 1.055) ** 2.4
-  })
-  return parseFloat((0.2126 * r + 0.7152 * g + 0.0722 * b).toFixed(3))
-}
+// 生成范围颜色
+const colors = chroma.scale(['rgba(0, 0, 0, .5)','#2A4858']).colors(6)
+
+// 转换为 css 类型的（rgb、rgba）
+const _colors = colors.map(color => chroma(color).css())
+
+/**
+ * 
+ * [
+ *   'rgba(0,0,0,0.5)',
+ *   'rgba(8,14,18,0.6)',
+ *   'rgba(17,29,35,0.7)',
+ *   'rgba(25,43,53,0.8)',
+ *   'rgba(34,58,70,0.9)',
+ *   'rgb(42,72,88)'
+ *  ]
+ */
+console.log(_colors)
 ---
 const colorRange = (colorList, min, max) => {
     // 初始化透明度 rgba
@@ -5998,6 +6009,26 @@ const finalData = data.map(item => Object.assign({}, item, { color: make(item.co
 // ...
 console.log(finalData)
 ---
+/*
+    If color has the following format:
+    const rgbColor = { r: 100, g: 100, b: 100 }
+*/
+
+// Extracted from Polished
+// Code is licensed with an MIT license
+function getLuminance(rgbColor) {
+ const [r, g, b] = Object.keys(rgbColor).map(key => {
+    // Our color numbers represent a 8bit channel.
+        // The formula requires a sRGB channel which is defined by
+        // ColorChannelIn8bit / 255
+    const channel = rgbColor[key] / 255
+    return channel <= 0.03928
+      ? channel / 12.92
+      : ((channel + 0.055) / 1.055) ** 2.4
+  })
+  return parseFloat((0.2126 * r + 0.7152 * g + 0.0722 * b).toFixed(3))
+}
+---
 String.prototype.colorRgb = function() {
     var sColor = this.toLowerCase();
     if (sColor && /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/.test(sColor)) {
@@ -6036,7 +6067,8 @@ function colorHex(value) {
 
 var obj = { red: 255, green: 255, blue: 255, alpha: null }
 colorHex(obj) // #ffffff
----
+
+
 function colorReverse(oldColor){
     var oldColor = '0x' + oldColor.replace(/#/g, '');
     var str = '000000' + (0xFFFFFF - oldColor).toString(16);
@@ -6618,6 +6650,48 @@ export function isPointInPolygon(latitude, longitude, polygon) {
 
     const intersect = ((yi > y) !== (yj > y)) &&
       (x < (xj - xi) * (y - yi) / (yj - yi) + xi)
+    if (intersect) inside = !inside
+  }
+
+  return inside
+}
+---
+
+/**
+ * 跟前面的版本一模一样，只是强化了判断：包含边界的点
+ * 百度地图其实也有官方工具支持：http://api.map.baidu.com/library/DrawingManager/1.4/docs/symbols/BMapLib.html
+ * BMapLib.GeoUtils.isPointInPolygon(new BMap.Point(113.843319, 22.921901), map.getOverlays().filter(_ => _.city)[0])
+ [JS]如何验证坐标点是否在多边形内
+ * Verify if point of coordinates (longitude, latitude) is polygon of coordinates
+ * https://github.com/substack/point-in-polygon/blob/master/index.js
+ * @param Latitude   维度：22.921901
+ * @param Longitude 经度：113.843319
+ * @param array<[latitude,Latitude]>
+ （温馨提示：计算消耗的时间有点久，最好是放在 web worker 里边计算）
+ */
+export function isPointInPolygon(latitude, longitude, polygon) {
+  if (typeof latitude !== 'number' || typeof longitude !== 'number') {
+    return false
+    // throw new TypeError('Invalid latitude or longitude. Numbers are expected')
+  } else if (!polygon || !Array.isArray(polygon)) {
+    throw new TypeError('Invalid polygon. Array with locations expected')
+  } else if (polygon.length === 0) {
+    throw new TypeError('Invalid polygon. Non-empty Array expected')
+  }
+
+  const x = latitude
+  const y = longitude
+
+  let inside = false
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i][0]
+    const yi = polygon[i][1]
+    const xj = polygon[j][0]
+    const yj = polygon[j][1]
+
+    // 跟前面的版本一模一样，只是强化了判断：包含边界的点
+    const intersect = ((yi >= y) !== (yj >= y)) &&
+            (x <= (xj - xi) * (y - yi) / (yj - yi) + xi)
     if (intersect) inside = !inside
   }
 
@@ -7867,6 +7941,9 @@ return
 ::hock::
 Var =
 (
+// 组件销毁时，清空播放列表
+this.$on('hook:destroyed', () => this.$$data_20201229110506({ cmd: '__reset__' }))
+---
 /**
  * https://www.netlify.com/blog/2019/03/11/deep-dive-how-do-react-hooks-really-work/
  * raw: 
@@ -12983,10 +13060,17 @@ const puppeteer = require('puppeteer')
 ;(async () => {
     // 启动 chrome 无头浏览器
     const browser = await puppeteer.launch({
-        args: [ '--ignore-certificate-errors' ]
+        // ☀️ 重点
+        ignoreHTTPSErrors: true,
+        // 是否无头（调试）
+        headless: true,
     })
 
     const page = await browser.newPage()
+
+    // 设置页面的视口宽高
+    await page.setViewport({ width: 1920, height: 1080 })
+
     await page.goto('https://www.baidu.com')
     await page.screenshot({ path: 'example.png' })
 
@@ -13003,13 +13087,28 @@ $ node app.js
 - 第三方教程：http://www.r9it.com/20171106/puppeteer.html | http://www.r9it.com/20171106/puppeteer.html
 - 中文文档：https://zhaoqize.github.io/puppeteer-api-zh_CN/#?product=Puppeteer&version=v7.1.0&show=api-pagewaitforfunctionpagefunction-options-args
 
-## 常用API
-- page.waitForFunction - 等待条件完成 | page.waitFor((...args) => !!document.querySelector('.foo'), { timeout: 30 * 1000 }, '...') 
+## 常用API（基本上都支持ES6）
+- page.waitForFunction - 等待条件完成 | page.waitForFunction((...args) => !!document.querySelector('.foo'), { timeout: 30 * 1000 }, '...') 
 - page.waitForNavigation - 等待页面跳转
 - page.waitForSelector - 等待元素加载
-- page.evaluate - 执行JS
+- page.$ - document.querySelector('')
+- page.$$ - document.querySelectorAll('')
+- page.evaluate - 执行JS | page.evaluate(args => { /* 注意，尽量返回纯数据譬如字符串和对象，不要返回特殊类型 */ }, '...')
 - page.$eval - 获取元素属性 | page.$eval('.el', el => el.innerHTML)
 - page.$$eval - 获取多个元素属性 | page.$eval('.el', els => els.length)
+
+
+## 技巧心得
+
+跳过 https 错误
+
+https://www.lfhacks.com/tech/puppeteer-browser-options#ignore
+
+```javascript
+const browser = await puppeteer.launch({
+    ignoreHTTPSErrors: true
+})
+```
 ---
 const puppeteer = require('puppeteer')
 const { sleep, loginJenkins, buildJenkins, screenshot } = require('./helper')
@@ -13059,6 +13158,42 @@ const { sleep, loginJenkins, buildJenkins, screenshot } = require('./helper')
     console.log(`finish... ⭐️✨`)
 })()
 ---
+const puppeteer = require('puppeteer')
+const { sleep, loginRancher, screenshot, buildRancher } = require('./helper')
+
+const __name__ = 'hotline-12345'
+
+;(async () => {
+    // 启动 chrome 无头浏览器
+    const browser = await puppeteer.launch({
+        // ☀️ 重点
+        ignoreHTTPSErrors: true,
+        // 是否无头（调试）
+        headless: true,
+    })
+
+    // 打开一个新页面
+    const page = await browser.newPage()
+    
+    // 设置页面的视口宽高
+    await page.setViewport({ width: 1920, height: 1080 })
+
+    ////////////// 
+    // rancher // 
+    ////////////// 
+
+    // 登录
+    await loginRancher(page, 'https://rancher.ioc.com/login', 'dev', 'dev20210119', __name__)
+
+    // 部署
+    await buildRancher(page, __name__)
+
+    // （可选）关闭当前页面
+    await browser.close()
+
+    console.log(`finish... ⭐️✨`)
+})()
+---
 const path = require('path')
 
 /**
@@ -13071,6 +13206,44 @@ const sleep = time => new Promise(resolve => setTimeout(resolve, time))
  */
 const say = (something = '', i = 0, timer = setInterval(() => console.log(something, ++i + 's'), 1000)) => () => clearInterval(timer)
 
+
+/**
+ * 登录 rancher
+ */
+const loginRancher = async (page, url = 'https://rancher.ioc.com/login', username = 'dev', password = 'dev20210119', projectName = 'hotline-12345') => {
+await page.goto(url)
+
+    console.log('正在登录...✈️')
+
+    // fixbug: 等待样式渲染，很奇怪这个网站，需要时间渲染样式。
+    await sleep(2000)
+
+    // 「账号」
+    let usernameElement = await page.$('#login-username-local')
+    await usernameElement.focus()
+    await page.keyboard.type(username)
+
+    // 「密码」
+    let passwordElement = await page.$('#login-password-local')
+    await passwordElement.focus()
+    await page.keyboard.type(password)
+
+    // 「Submit」
+    let button = await page.$('button')
+    await button.click()
+    await page.waitForNavigation()
+
+
+    // 直接跳转页面
+    await page.goto('https://rancher.ioc.com/p/local:p-486kn/workloads')
+    // 等待文本出现
+    await page.waitForFunction(projectName => !![...document.querySelectorAll('.main-row a')].find(el => el.innerText.trim() === projectName), { timeout: 30 * 1000 }, projectName) 
+    // fixbug: 就算文本出现了，但还是会象征性的出现一个傻逼 loading 阻止我的逻辑。估计只是应付式的，我再等待2.5s吧。
+    await sleep(2500)
+
+    console.log('登录成功...')
+}
+
 /**
  * 登录
  */
@@ -13079,17 +13252,17 @@ const loginJenkins = async (page, url = 'http://219.135.182.2:18080/login', user
     console.log('正在登录...✈️')
 
     // 「账号」
-    let usernameElement = await page.$('#j_username', input => input)
+    let usernameElement = await page.$('#j_username')
     await usernameElement.focus()
     await page.keyboard.type(username)
 
     // 「密码」
-    let passwordElement = await page.$('[name="j_password"]', input => input)
+    let passwordElement = await page.$('[name="j_password"]')
     await passwordElement.focus()
     await page.keyboard.type(password)
 
     // 「Submit」
-    let button = await page.$('.submit-button', button => button)
+    let button = await page.$('.submit-button')
     await button.click()
     await page.waitForNavigation()
     
@@ -13100,11 +13273,11 @@ const loginJenkins = async (page, url = 'http://219.135.182.2:18080/login', user
  * 点击编译
  */
 const buildJenkins = async (page, name = 'covid-19-map') => {
-    let buildButton = await page.$(`#projectstatus tbody #job_${name} td:nth-child(7)`, button => button)
+    let buildButton = await page.$(`#projectstatus tbody #job_${name} td:nth-child(7)`)
 
     await buildButton.click()
 
-    console.log(`点击了『${name}』项目的编译按钮`)
+    const unsay = say(`点击了『${name}』项目的编译按钮，正在等待任务进行...`)
     
     // 等待进度条提示，说明编译任务开始了
     await page.waitForFunction(name => {
@@ -13114,7 +13287,9 @@ const buildJenkins = async (page, name = 'covid-19-map') => {
         return !!progress.find(p => p.getAttribute('href').includes(`/job/${name}`))
         // fixbug: waitForFunction 接受的函数应该类似 web Worker 是一个独立的线程、独立上下文进行的（否则怎么可能有document）
         // 无法获取当前上下文（全局变量或局部变量）的引用，譬如无法拿到 name, 所以需要从第三个参数注入进去使用
-    }, { timeout: 10 * 1000 }, name)
+    }, { timeout: 0, polling: 1000  }, name)
+
+    unsay()
     
     const shutUp = say('Jenkins任务开始了，正在等待任务完成... ☀️')
 
@@ -13133,6 +13308,42 @@ const buildJenkins = async (page, name = 'covid-19-map') => {
     console.log('Jenkins任务结束')
 }
 
+const buildRancher = async (page, projectName) => {
+    
+    // 获取 hotline-12345 任务是当前的第几行
+    const rowIndex = await page.evaluate(projectName => [...document.querySelectorAll('.main-row a')].findIndex(el => el.innerText.trim() === projectName), projectName)
+
+    // 获取所有操作按钮 edit[rowIndex]
+    let edit = await page.$$(`[data-title="操作: "]`)
+    
+    // 点击第N个 edit，打开选项表
+    await edit[rowIndex].click() 
+
+    // 等待选项表出现
+    await page.waitForFunction((...args) => !!document.querySelector('.ember-basic-dropdown-content'), { timeout: 30 * 1000 }, '...') 
+
+    // 点击「重新部署」按钮
+    await page.evaluate(args => [...document.querySelectorAll('[data-ember-action]')].find(el => el.innerText.includes('重新部署')).querySelector('a').click(), '...')
+
+    // 等待反应
+    await page.waitForFunction(index => document.querySelectorAll('[data-title="状态: "]')[index].innerText === 'Updating', { timeout: 30 * 1000 }, rowIndex) 
+
+    const unsay = say('任务已经开始... ☀️')
+
+    // 截图调试、测试、验证
+    await screenshot(page, 'screenshot_start.png')    
+
+    // 等待反应结束
+    await page.waitForFunction(index => document.querySelectorAll('[data-title="状态: "]')[index].innerText != 'Updating', { timeout: 30 * 1000 }, rowIndex) 
+
+    unsay()
+
+    console.log('任务已经结束')
+
+    // 截图调试、测试、验证
+    await screenshot(page, 'screenshot_end.png')    
+}
+
 const screenshot = async (page, name = 'screenshot.png') => {
     // 使用 page.evaluate 可以在页面执行 JS 代码
     // 📝 接受的函数应该类似 web Worker 是一个独立的线程、独立上下文进行的（否则怎么可能有document），
@@ -13147,7 +13358,7 @@ const screenshot = async (page, name = 'screenshot.png') => {
 }
 
 module.exports = {
-    sleep, loginJenkins, buildJenkins, screenshot
+    sleep, loginJenkins, buildJenkins, screenshot, loginRancher, buildRancher
 }
 )
 txtit(Var)

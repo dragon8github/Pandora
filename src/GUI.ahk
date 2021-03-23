@@ -19,6 +19,7 @@ CancelSelect:
 	; 清空搜索框
 	; GuiControl,, SearchContent, 
     
+    GuiControl,, duoji, 0
     GuiControl,, Yandex, 0
     GuiControl,, SVGRepo, 0
     GuiControl,, shuxingtianxia, 0
@@ -66,6 +67,8 @@ CancelSelect:
     GuiControl,, tmao, 0
     GuiControl,, pdd, 0
     GuiControl,, GIFSEARCH, 0
+    GuiControl,, mianbaoshu, 0
+
 
 	
 return
@@ -124,6 +127,7 @@ AllSearchA:
 		GuiControl,, google, 1 
         GuiControl,, npm, 1 
         GuiControl,, cnpm, 1 
+        GuiControl,, duoji, 1 
 		GuiControl,, so, 1 
 		GuiControl,, github, 1 
         GuiControl,, toutiao, 1
@@ -131,6 +135,7 @@ AllSearchA:
         GuiControl,, codepen, 1
         GuiControl,, dasheng, 1
         GuiControl,, bind, 1
+        GuiControl,, mianbaoshu, 1
 
 	} else {
         GuiControl,, duckduckgo, 0
@@ -138,6 +143,7 @@ AllSearchA:
 		GuiControl,, google, 0
         GuiControl,, npm, 0
         GuiControl,, cnpm, 0
+        GuiControl,, duoji, 0
 		GuiControl,, so, 0
 		GuiControl,, github, 0
         GuiControl,, toutiao, 0
@@ -145,6 +151,8 @@ AllSearchA:
         GuiControl,, codepen, 0
         GuiControl,, dasheng, 0
         GuiControl,, bind, 0
+        GuiControl,, mianbaoshu, 0
+
 	}
 return
 
@@ -238,6 +246,12 @@ return
 Fuck:
 	; 保存用户的输入到每个控件的关联变量中.
 	Gui, Submit, NoHide
+
+    ; 羽雀
+    if (duoji == 1) {
+        RUN, https://www.dogedoge.com/results?q=%SearchContent%
+    } 
+
     
     ; 羽雀
     if (yuque == 1) {
@@ -267,7 +281,13 @@ Fuck:
     ; codepen
     if (codepen == 1) {
         RUN, https://codepen.io/search/pens?q=%SearchContent%
-    }    
+    }  
+
+
+    ; 必应
+    if (mianbaoshu == 1) {
+        RUN, https://mianbaoshu.cc/search/%SearchContent%
+    }  
     
     ; 必应
     if (bind == 1) {
@@ -9463,6 +9483,80 @@ RunByVsCode(name)
 run, % name
 return
 
+NewPureVUEIndexHtml2:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <!-- element -->
+    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <!-- axios -->
+    <script src="https://cdn.staticfile.org/axios/0.19.0/axios.min.js"></script>
+    <!-- sass -->
+    <script src='https://cdn.staticfile.org/sass.js/0.11.0/sass.sync.min.js'></script>
+
+    <style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100`%;
+    }
+
+    #app {
+        width: 100`%;
+        height: 100`%;
+    }
+    </style>
+
+    <script>
+        // 获取第一个 <style>
+        const style = document.getElementsByTagName('style')[0]
+        // 获取第一个
+        const scss = style.innerHTML
+        // 开始编译
+        Sass.compile(scss, (result, ...args) => {
+            if (result.status === 0) {
+                // 替换为编译好的 css
+                style.innerHTML = result.text
+            } else {
+                console.log('scss 编译异常：', result)
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        
+    </div>
+</body>
+
+<script>
+
+var vue = new Vue({
+    el: '#app',
+    data: {
+      
+    },
+    beforeMount () {
+       
+    }
+})
+</script>
+</html>
+),  %name%
+RunByVsCode(name)
+run, % name
+return
+
 NewPureIndexHtml2:
 name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
 FileAppend,
@@ -9473,9 +9567,9 @@ FileAppend,
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Vue -->
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
-    
+
     <style>
     html, body{
         margin: 0;
@@ -9484,29 +9578,28 @@ FileAppend,
     }
 
     #app {
-
+        width: 100`%;
+        height: 100`%;
     }
     </style>
+
 </head>
 
 <body>
     <div id="app">
-
+        
     </div>
 </body>
+
 <script>
+
 var vue = new Vue({
     el: '#app',
     data: {
-        items: []
-    },
-    methods: {
-        go () {
-
-        }
+      
     },
     beforeMount () {
-
+       
     }
 })
 </script>

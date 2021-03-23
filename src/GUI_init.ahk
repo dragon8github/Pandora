@@ -122,7 +122,9 @@ LV_ModifyCol(2, "SortDesc")
 ; 取消按钮
 Gui, Pandora:Add, Button, gCancelSelect w260 h30, 取消选中
 Gui, Pandora:Add, Text, gAllSearchA W120 Section xs yp+40, 搜索引擎类:
-Gui, Pandora:Add, Checkbox, gMySubroutine HwndMyEditHwnd vbd, 百度
+
+Gui, Pandora:Add, Checkbox, vduoji Checked, dogedoge
+Gui, Pandora:Add, Checkbox, gMySubroutine vbd, 百度
 Gui, Pandora:Add, Checkbox, vduckduckgo, duckduckgo
 Gui, Pandora:Add, Checkbox, vnpm, npm
 Gui, Pandora:Add, Checkbox, vcnpm, cnpm
@@ -134,6 +136,7 @@ Gui, Pandora:Add, Checkbox, vtoutiao, 今日头条
 Gui, Pandora:Add, Checkbox, vcodepen, codepen
 Gui, Pandora:Add, Checkbox, vdasheng, 大圣网盘搜索
 Gui, Pandora:Add, Checkbox, vbind, 必应搜索
+Gui, Pandora:Add, Checkbox, vmianbaoshu, 面包树网盘
 
 
 Gui, Pandora:Add, Text, gAllSearchB W120 ys, 翻译类:
@@ -151,7 +154,7 @@ Gui, Pandora:Add, Checkbox, voushu, 偶书小驻
 ; Gui, Pandora:Add, Checkbox, vzhiqi, 智奇搜书
 Gui, Pandora:Add, Checkbox, vsobooks, sobooks
 
-Gui, Pandora:Add, Text, gAllSearchC W90 Section xs y+20, 音乐类:
+Gui, Pandora:Add, Text, gAllSearchC W90 Section xs y+50, 音乐类:
 Gui, Pandora:Add, Checkbox, vwy, 网易云音乐   
 Gui, Pandora:Add, Checkbox, vqq, QQ音乐
 Gui, Pandora:Add, Checkbox, vdog, 酷狗音乐
@@ -223,12 +226,14 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/search?q=followers:`%3E=100
 
 Gui, Pandora:Add, Text,  W140 ys, 娱乐:
 Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/video/BV1iZ4y137MB">哔哩哔哩</a>
-Gui, Pandora:Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
+; Gui, Pandora:Add, Link,, <a href="http://i.youku.com/u/UNTUzOTAwMzQ0">Ted魔兽</a>
+Gui, Pandora:Add, Link,, <a href="http://www.xsldh6.com/">小森林导航</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/index.php?m=vod-search">草民电影</a>
-Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
-Gui, Pandora:Add, Link,, <a href="http://www.fengchedm.com/">风车动漫</a>
 Gui, Pandora:Add, Link,, <a href="https://www.novipnoad.com/">不负好时光</a>
-Gui, Pandora:Add, Link,, <a href="https://www.youtube.com/channel/UCKiWll5qSb4oaEtZhYDtjyw">channel ASMR</a>
+Gui, Pandora:Add, Link,, <a href="http://www.fengchedm.com/">风车动漫</a>
+Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
+Gui, Pandora:Add, Link,, <a href="http://www.yhdm.io/v/4066-148.html">樱花动漫v2</a>
+; Gui, Pandora:Add, Link,, <a href="https://www.youtube.com/channel/UCKiWll5qSb4oaEtZhYDtjyw">channel ASMR</a>
 
 
 Gui, Pandora:Add, Text, W160 ys, 常用工具：
@@ -332,9 +337,9 @@ Gui, Pandora:Add, Link,, <a href="https://seekbetter.me/?mode=blog">优秀博客
 ; Gui, Pandora:Add, Link,, <a href="https://outflank.nl/blog/2018/08/14/html-smuggling-explained/">黑客思维</a>
 Gui, Pandora:Add, Link,, <a href="https://daily.dev/categories/weekly-picks">daily.dev</a>
 Gui, Pandora:Add, Link,, <a href="https://www.thoughtworks.com/cn/radar">thoughtworks</a>
-Gui, Pandora:Add, Link,, <a href="https://overreacted.io/">Dan大牛的博客</a>
-Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
-Gui, Pandora:Add, Link,, <a href="https://kentcdodds.com/blog/">Kent C. Dodds Blog</a>
+; Gui, Pandora:Add, Link,, <a href="https://overreacted.io/">Dan大牛的博客</a>
+; Gui, Pandora:Add, Link,, <a href="https://wallhaven.cc/">wallhaven.cc</a>
+; Gui, Pandora:Add, Link,, <a href="https://kentcdodds.com/blog/">Kent C. Dodds Blog</a>
 Gui, Pandora:Add, Link,, <a href="https://www.tmtpost.com/base/data/investment">投资事件和项目</a>
 Gui, Pandora:Add, Link,, <a href="https://www.tmtpost.com/#js_recommend_other_page">钛媒体</a>
 Gui, Pandora:Add, Link,, <a href="https://www.w3cplus.com/JavaScript">w3cplus高质量文章</a>
@@ -345,6 +350,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.appcome.com/forum.php?mod=forumdisp
 
 
 Gui, Pandora:Add, Text,gsuopingtupian W140 ys, 美图秀秀：
+Gui, Pandora:Add, Link,, <a href="https://www.picdiet.com/zh-cn">新图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="https://www.iloveimg.com/zh-cn">图片压缩神器</a>
 Gui, Pandora:Add, Link,, <a href="https://tinypng.com/">tinypng熊猫图片压缩</a>
 Gui, Pandora:Add, Link,, <a href="https://docsmall.com/image-compress">图片压缩工具25M</a>
@@ -357,7 +363,7 @@ Gui, Pandora:Add, Link,, <a href="https://imgchr.com/album/QKUpV">路过图床</
 Gui, Pandora:Add, Link,, <a href="http://upload.likeyunba.com/">聚合图床</a>
 Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</a>
 Gui, Pandora:Add, Link,, <a href="https://www.sassmeister.com/">sass在线转css</a>
-Gui, Pandora:Add, Link,, <a href="http://css2sass.herokuapp.com/">css在线转scss</a>
+; Gui, Pandora:Add, Link,, <a href="http://css2sass.herokuapp.com/">css在线转scss</a>
 Gui, Pandora:Add, Link,, <a href="https://css2js.dotenv.dev/">css2js</a>
 Gui, Pandora:Add, Link,, <a href="https://1stwebdesigner.com/all-articles/">1stwebdesigner</a>
 
@@ -429,11 +435,12 @@ Gui, Pandora:Add, Link,, <a href="http://imissmybar.com/">酒吧白噪音</a>
 Gui, Pandora:Tab, 2
 ; Gui, Pandora:Add, Text, gNewPureIndexHtml W140 Section y+20, 新建index.html
 Gui, Pandora:Add, Text, gNewPureIndexHtml2 W140  Section y+20, 新建纯index.html
-Gui, Pandora:Add, Text, gNewPureVUEIndexHtml W140 , 新建纯vue.html
+Gui, Pandora:Add, Text, gNewPureVUEIndexHtml2 W140 , 新建纯vue.html
+Gui, Pandora:Add, Text, gNewPureVUEIndexHtml W140 , 新建不纯vue.html
 Gui, Pandora:Add, Text, gNewcomposition W160 , 新建vue-composition-API
 Gui, Pandora:Add, Text, gVueComponentHtml W140, 新建vueComponent.html
 Gui, Pandora:Add, Text, gVueComponentHtml2 W140, 新建vueComponent2.html
-Gui, Pandora:Add, Text, gNewVueRules W140 , 新建vue.rules.html
+; Gui, Pandora:Add, Text, gNewVueRules W140 , 新建vue.rules.html
 Gui, Pandora:Add, Text, gNewIndexHtml W140, 新建vue-form.html
 Gui, Pandora:Add, Text, gVueAnimateHtml W140, 新建vue-Animate.html
 Gui, Pandora:Add, Text, gNewvuetransitionHtml W160,新建vue-transition.html
