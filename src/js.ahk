@@ -989,7 +989,7 @@ Var =
  * @param  {Number} 休息10s
  * @param  {Number} 进行10次
  */
-const hit = (s = 45, m = 10, t = 1) => {
+var hit = (s = 45, m = 10, t = 1) => {
   // 是否暫停？
   let isStop = false
   // 是否結束？
@@ -1003,7 +1003,7 @@ const hit = (s = 45, m = 10, t = 1) => {
   let midfieldTime = m
 
   // 开始（可传入开始时间，或者使用默认时间）
-  const start = () => {
+  var start = () => {
     console.log('开始运动!还剩下', t - curTime + '轮')
 
     // 运动倒计时
@@ -1013,7 +1013,7 @@ const hit = (s = 45, m = 10, t = 1) => {
         if (isStop) return console.log(' 暂停中')
 
         if (startTime) {
-          console.log('di~', startTime)
+          console.log('运动吧！di~', startTime)
           startTime--
           return poll()
         } else {
@@ -1031,7 +1031,7 @@ const hit = (s = 45, m = 10, t = 1) => {
         if (isStop) return console.log(' 暂停中')
 
         if (midfieldTime) {
-          console.log('da~', midfieldTime)
+          console.log('休息吧！da~', midfieldTime)
           midfieldTime--
           return restPoll()
         } else {
@@ -1054,20 +1054,20 @@ const hit = (s = 45, m = 10, t = 1) => {
   }
 
   // 运动结束
-  const finish = () => {
+  var finish = () => {
     console.log(' 运动结束!')
     // 重置
     isStop = false, isEnd = false, curTime = 0, startTime = s, midfieldTime = m
   }
 
-  const end = () => isEnd = true
-  const stop = () => isStop = true
-  const goon = () => { isStop = false; start() }
+  var end = () => isEnd = true
+  var stop = () => isStop = true
+  var goon = () => { isStop = false; start() }
 
   return { start, end, stop, goon }
 }
 
-const { start, end, stop, goon } = hit(30, 15, 40)
+var { start, end, stop, goon } = hit(30, 15, 40)
 start()
 )
 txtit(Var)
