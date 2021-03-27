@@ -367,6 +367,9 @@ return
 
 
 ::echarts.dian::
+::echarts.san::
+::echarts.sd::
+::echarts.dian::
 ::echarts.point::
 ::echarts.points::
 ::echarts.sandian::
@@ -374,7 +377,11 @@ return
 ::sandian::
 Var =
 (
+// 小散点（旧版 'image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAEfklEQVRIiZWWy2/cVBTGf7avx/NI0iEzSSakCVQCQVUoFBCFVkiwQXTJhl2L2HQDEhsWIBZVV/0HWHUFYskOFtAVQqItSK2QClUpQmqakKRoJu+MM7avfdFxPIPjpq8zGsnyvef77nfOuefYqp75hgfYFPA6cASYAUay7RvAHPAbcBlYuB+Mus/a88BJ4NA91kez/4vAB8B14Gvg94clKgGngXcA60FycyYHOgf8AJwHwvyiXdg8nG0+8YgkfbMy33MZ1p6KPOAs8EzRW9WqDVWrTTqe17RspyzvTBL34iDo6G53SXf95YLLsxnWZ0AgLxz3zff6ix8CR3fJ9UpDlYnxI+7IyNO26+6zbNvF2vnJs7xTtdp+Va2OxmG4buI4H64mUAd+zSuSxL+9S0W1Oloea76CZaV71NxSyoBjYywLEoNl4nRvND3ZqLZax3rtzhXt+ys5GMH8UQqkn6OT+ZyIEi8jUfNLKUlSLqMnx9D7J7L/OLrZJHFd1Nwisld8xLeQs5NkxXCgWMLlZvOwJSSiwoBu1NEzkwTDVdrGoa1h1VFE9RFRQ1KrpWTiI76FfAn2ASE6Xkh803bdenocyyIeqpKMN9jWMXGoeWuiyqmnRnlhXxk/DAlsm3hqHOOVEfXiKxgFsuOqqEaqq/8suYjHmmwHmhHL4qPDk7z75GOMeoq/17c5e3WBy8s+vVKJSqOOu/TvAEN3/U4O9jlRtD9P5Hheo598PJfIsbGShBNP7OPjQxMcrJeZqCiOt4b5/KUpDtfLhDomKZdAubswcjZl53rXTvaye5Iqcl3CxFBVNsoYau7u+/1Ga5gRZWOZhNiyMI5zF0ZmI8XOIPDJgNQYpJJjY9gM9V07g9gQGzA7hQ/G3A2XmZ114f9p4ji9yVJlBCGe49DVhtmtkOsr/i7nL/9qs9jTadE4cYKldXbUuFfg2ZBi+CfrwqklUbTmKFVLFUUaZ7tHuVLmxnrA6Z9neXWsxtHxIb6bXeXGZsDtrZBKuYS1sgnJTjCSMFwtEC2orL0Paj/a6i46lcoUWSjUnTbmwBS65PLnesCcH/Ht/AY9HePHBrfioXoBankNg+ljFGfTHxK6i/k3uttti6rUYWYSO4pwZxdQYYRV9tg0Fh2d0LUVdqmE2tjCnV9MD6Xl8kbRmu52OwWii6LoVqZqcJ96nc61Sqt1TG66kLnzS5RuL2C8EmqoAraThtX2tyEM06KJZh7HGKODzvK1Aolg3+pXnUzGQckkQbgVtDtXMCbNrrQZPd3CDkKczhpOexlndR0rCFMVQiJ7xScOgq18bWXYg+4t4/dCNlV3Quj7K/6dO5ekd/VbUjTdYi+TcEkU5ICF5Qv90Z4ffOezBjsYfOLoLyxeUrVaU9WqMvgalu1UpIBNHG/HYbiqu/7SHjkRu5lhUiSS+3NmrykrQPcAu5fdzLCC/nqxM2wCnwLf53P2CCY+4isjXLAGttdXkIzjL4CfgPeBgw/JcwP46lE+t/omDp9k3f014GVgOvd1IyeeB64Cv2QdZm8D/gOkV87XV2/tuwAAAABJRU5ErkJggg=='）
+let effectScattersymbol = `image://${require('@/assets/地图/symbol5.png')}`
+
 const colorMap = ["#E83035", "#E88234", "#ECED08", "#01F1C4"]
+
 // 创建散点配置项
 const createPoints = (name, data) => {
 	// 返回的这个配置对象，直接插入到series即可

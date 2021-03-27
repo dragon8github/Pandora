@@ -1,4 +1,175 @@
-﻿::design::
+﻿::xiangsidu::
+::juli::
+Var =
+(
+// 获取最小编辑距离
+// JS 求字符串 文本 相似度 最小编辑距离算法
+// https://blog.csdn.net/chichoxian/article/details/53944188
+// https://www.jianshu.com/p/90af98493661
+// 进阶版（中文同音字）：http://jverson.com/thinking-in-java/algorithm/edit-distance.html
+function minDistance(s1, s2) {
+    const matrix = []
+    const len1 = s1.length
+    const len2 = s2.length
+
+    for (let i = 0; i <= len1; i++) {
+        // 构造二维数组
+        matrix[i] = new Array()
+
+        for (let j = 0; j <= len2; j++) {
+            /* 「初始化矩阵 - 基础形态」 
+                  i v a n f
+                0 1 2 3 4 5
+              i 1 - - - - -
+              v 2 - - - - -
+              a 3 - - - - -
+              n 4 - - - - -
+              x 5 - - - - -
+            */
+            if (i == 0) { matrix[i][j] = j; continue }
+            if (j == 0) { matrix[i][j] = i; continue }
+
+
+            // 字母对比，相同为 「0」，不同为 「1」
+            const cost = s1[i - 1] === s2[j - 1] ? 0 : 1
+
+            // 铁三角
+            // https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTYxMjMxMjExNjA3Njc2
+            const x = matrix[i - 1][j] + 1
+            const y = matrix[i][j - 1] + 1
+            const o = matrix[i - 1][j - 1] + cost
+
+            // 取三个值中的最小值
+            matrix[i][j] = Math.min(x, y, o)
+        }
+    }
+
+    // 打印出矩阵
+    console.log(matrix) 
+
+    // 返回右下角的值
+    return matrix[len1][len2] 
+}
+
+const str1 = 'ivanf'
+const str2 = 'ivanx'
+
+// 获取最小编辑距离
+const d = minDistance(str1, str2)
+
+// 获取相似度
+const result = 1 - d / Math.max(str1.length, str2.length)
+
+console.log(20210325163225, d, result)
+)
+txtit(Var)
+return
+
+::excel::
+::xsls::
+::xslx::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+        <script src="https://libs.cdnjs.net/xlsx/0.10.0/xlsx.core.min.js"></script>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100`%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <button @click="go">导出</button>
+        </div>
+    </body>
+    <script>
+        // 字符串转 ArrayBuffer
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length)
+            var view = new Uint8Array(buf)
+            for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xff
+            return buf
+        }
+
+        // sheet 转成 blob对象
+        function sheet2blob(workbook) {
+            // 生成excel的配置项
+            var wopts = {
+                type: 'binary',
+                // 要生成的文件类型
+                bookType: 'xlsx',
+                // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+                bookSST: false,
+            }
+            var wbout = XLSX.write(workbook, wopts)
+            var blob = new Blob([s2ab(wbout)], { type: 'application/octet-stream', })
+            return blob
+        }
+
+        /**
+         * 通用的打开下载对话框方法，没有测试过具体兼容性
+         * @param url 下载地址，也可以是一个blob对象，必选
+         * @param saveName 保存文件名，可选
+         */
+        function openDownloadDialog(url, saveName) {
+            if (typeof url == 'object' && url instanceof Blob) {
+                url = URL.createObjectURL(url) // 创建blob地址
+            }
+            var aLink = document.createElement('a')
+            aLink.href = url
+            // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+            aLink.download = saveName || ''
+            var event
+            if (window.MouseEvent) event = new MouseEvent('click')
+            else {
+                event = document.createEvent('MouseEvents')
+                event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+            }
+            aLink.dispatchEvent(event)
+        }
+
+        var vue = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                go() {
+                    // sheet
+                    var sheet = XLSX.utils.aoa_to_sheet([
+                        ['姓名', '性别', '年龄', '注册时间'],
+                        ['张三', '男', 18, new Date()],
+                        ['李四', '女', 22, new Date()],
+                    ])
+
+                    // workbook
+                    var workbook = {
+                        SheetNames: ['sheet1', 'sheet2', 'sheet3'],
+                        Sheets: { 'sheet1': sheet, 'sheet2': sheet, 'sheet3': sheet, },
+                    }
+
+                    // 将一个sheet转成最终的excel文件的blob对象，然后利用URL.createObjectURL下载
+                    openDownloadDialog(sheet2blob(workbook), '导出.xlsx')
+                },
+            },
+        })
+    </script>
+</html>
+)
+txtit(Var)
+return
+
+::design::
 Var =
 (
 document.designMode = 'on'
@@ -2982,6 +3153,10 @@ console.log(doc, doc.body.innerHTML)
 code(Var)
 return
 
+::webwork::
+::work::
+::worker::
+::webwork::
 ::webworker::
 ::worker.js::
 ::work.js::
@@ -3033,6 +3208,45 @@ const runAsync = fn => {
     };
   });
 };
+---
+// https://www.30secondsofcode.org/js/s/run-async
+const runAsync = fn => {
+  const worker = new Worker(
+    URL.createObjectURL(new Blob([``postMessage((${fn})());``]), {
+      type: 'application/javascript; charset=utf-8'
+    })
+  `);
+  return new Promise((res, rej) => {
+    worker.onmessage = ({ data }) => {
+      res(data), worker.terminate();
+    };
+    worker.onerror = err => {
+      rej(err), worker.terminate();
+    };
+  });
+};
+
+const longRunningFunction = () => {
+  let result = 0;
+  for (let i = 0; i < 1000; i++)
+    for (let j = 0; j < 700; j++)
+      for (let k = 0; k < 300; k++) result = result + i + j + k;
+
+  return result;
+};
+
+runAsync(longRunningFunction).then(console.log); // 209685000000
+
+/*
+  注意：不能使用上下文、函数内部变量以外的变量(但这并不是什么问题)
+  NOTE: Since the function is running in a different context, closures are not supported.
+  The function supplied to `runAsync` gets stringified, so everything becomes literal.
+  All variables and functions must be defined inside.
+*/
+let outsideVariable = 50;
+
+
+runAsync(() => typeof outsideVariable).then(console.log); // 'undefined'
 )
 txtit(Var)
 return
@@ -5213,6 +5427,8 @@ export const $deepSet = function (ref, path, value) {
 txtit(Var)
 return
 
+::fenge::
+::fenlie::
 ::chunk::
 Var =
 (
@@ -11983,17 +12199,14 @@ var obj = arr.reduce((p, c) => {
     return p
 }, {})
 ---
-.reduce((p, c) => p + Number(c.value), 0)
-
 temp1.reduce((p, c, i, a) => {
-    
     
     return p
 }, [])
 ---
-.reduce((previousValue, currentValue, index, array) => {
-    return previousValue + currentValue
-}, 0)
+.reduce((p, c) => p + c.value, 0)
+
+.reduce((p, c) => p + Number(c.value), 0)
 ---
 // 初始化为数组的示例
 children.reduce((previousValue, currentValue) => {

@@ -4222,7 +4222,7 @@ Return
 ::vuefor::
 ::vue.for::
 ::v.for::
-    SendInput, v-for='(item, index) in items' :key='item'
+    SendInput, v-for='(item, index) in items' :key='index'
 Return
 
 
@@ -5068,6 +5068,8 @@ const getters = {
 code(Var)
 return
 
+::v-foro::
+::v-for2::
 ::v-for-obj::
 Var =
 (

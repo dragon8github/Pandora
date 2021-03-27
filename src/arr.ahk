@@ -775,6 +775,13 @@ Var =
 code(Var)
 return
 
+:?:.map2::
+Var =
+(
+.map(_ => ({  }))
+)
+code(Var)
+return
 
 :?:.mo::
 :?:.ma::

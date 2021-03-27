@@ -4463,8 +4463,13 @@ Return
 Var =
 (
 background: transparent url('https://iph.href.lu/100x100') center center / 100`% 100`%  no-repeat content-box; /* 100`% 100`% 可以换成 background-size: cover */
+---
+min-width: 328px;
+min-height: 178px;
+background: transparent url('~@/assets/地图/driver_box.png') center center / 100`% 100`% no-repeat;
+padding: 35px 50px 50px 50px;
 )
-p(Var)
+txtit(Var)
 Return
 
 ::bgc::

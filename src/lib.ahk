@@ -86,6 +86,7 @@ pandoraFolderInit() {
 	AttributeString := FileExist(DIRECTORY)
 	; 如果没有目录，则创建
 	if (AttributeString != "D") {
+        ; 创建文件夹
 		FileCreateDir, % DIRECTORY
 	}
     return DIRECTORY

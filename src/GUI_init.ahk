@@ -346,6 +346,9 @@ Gui, Pandora:Add, Link,, <a href="https://www.w3cplus.com/JavaScript">w3cplus高
 Gui, Pandora:Add, Link,, <a href="https://css-tricks.com/">css-tricks</a>
 ; Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/giserhome/p/13379672.html">博客园 GIS之家</a>
 Gui, Pandora:Add, Link,, <a href="http://www.appcome.com/forum.php?mod=forumdisplay&fid=93&filter=typeid&typeid=112">appcome</a>
+Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/liuxianan/default.html?page=2">小茗同学的博客园</a>
+Gui, Pandora:Add, Link,, <a href="https://ruanyf.github.io/sina-news/">新浪实时新闻</a>
+
 
 
 
@@ -392,7 +395,6 @@ Gui, Pandora:Add, Link,, <a href="https://www.designwithai.com/aigradient">AI生
 Gui, Pandora:Add, Text,  W140 ys, 不可放过：
 Gui, Pandora:Add, Link,, <a href="https://www.iloveimg.com/zh-cn/crop-image">获取图片xywh</a>
 Gui, Pandora:Add, Link,, <a href="https://docs.qq.com/sheet/DZklaSmxaeVJEeWxm?tab=BB08J2">怪物图鉴</a>
-Gui, Pandora:Add, Link,, <a href="https://ruanyf.github.io/sina-news/">新浪实时新闻</a>
 Gui, Pandora:Add, Link,, <a href="http://maps.456ss.com/">世界地图</a>
 Gui, Pandora:Add, Link,, <a href="http://caibaojian.com/scb/jest.html">前端速查表</a>
 ; Gui, Pandora:Add, Link,, <a href="https://ponyorm.org/">python在线建模UML</a>
@@ -680,6 +682,7 @@ Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/proje
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
 Gui, Pandora:Add, Link,, <a href="https://covid-map.dg.cn/covid-19-map/">正式环境</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.128:8080">正式Jenkins</a>
+Gui, Pandora:Add, Link,, <a href="http://covid-map.dg.cn/covid-19-map/">正式环境http</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 东莞疫情

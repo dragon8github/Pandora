@@ -1547,6 +1547,9 @@ return
 cs("directive")
 return
 
+
+::xy::
+::lnglat::
 ::dgxy::
 Var =
 (
