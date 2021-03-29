@@ -1,6 +1,4 @@
-﻿#IfWinNotActive 神武4
-
-; 强制无条件安装键盘钩子.
+﻿; 强制无条件安装键盘钩子.
 #InstallKeybdHook 
 
 ; 决定当脚本已经运行时是否允许它再次运行. Force: 跳过对话框并自动替换旧实例, 效果类似于 Reload 命令.
@@ -25,7 +23,6 @@ FileDelete, .\src\*.bak
 global latestImageName := ""
 global todoList := ""
 global __ALTCTRL__ := []
-
 
 /**
 //////////////////////////////////////////////
@@ -83,6 +80,7 @@ global __ALTCTRL__ := []
 
 #Include src/php.ahk              ; php	
 #Include src/help.ahk             ; 辅助功能
+#Include src/ten.ahk              ; Tensorflow.js
 
 ; #Include src/flutter.ahk	      ; flutter
 ; #Include src/three.ahk          ; THREE
@@ -199,6 +197,8 @@ MsgBox, The active window is "%Title%".
 ; 获取当前 chrome OutputVar浏览器的进程id
 WinGet, v, PID, , Chrome, Chrome
 MsgBox, % v
+
+clipboard := Title
 return
 
 ; !z::

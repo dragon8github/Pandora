@@ -1,4 +1,15 @@
-﻿::xiangsidu::
+﻿::jiqixuexi::
+::jiqi::
+::ten::
+::tenjs::
+Var =
+(
+Tensorflow.js
+)
+code(Var)
+return
+
+::xiangsidu::
 ::juli::
 Var =
 (
@@ -1192,7 +1203,7 @@ const hit = (s = 45, m = 10, t = 1) => {
         if (isStop) return console.log(' 暂停中')
 
         if (startTime) {
-          console.log('di~', startTime)
+          console.log('运动吧 di~', startTime)
           startTime--
           return poll()
         } else {
@@ -1210,7 +1221,7 @@ const hit = (s = 45, m = 10, t = 1) => {
         if (isStop) return console.log(' 暂停中')
 
         if (midfieldTime) {
-          console.log('da~', midfieldTime)
+          console.log('休息吧 da~', midfieldTime)
           midfieldTime--
           return restPoll()
         } else {
@@ -5608,8 +5619,112 @@ const diff = (a, b) => {
 
     return true
 }
+---
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Diff</title>
+    <style>
+        #app {
+            letter-spacing: 1px;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .container {
+            width: 960px;
+            margin: auto;
+        }
+
+        #a, #b {
+            height: 10em;
+            border: 1px solid #ccc;
+            padding: 1rem;
+            flex: 1;
+        }
+
+        #a {
+            margin-right: 1em;
+        }
+
+        #result {
+            margin-top: 1em;
+            background: radial-gradient(ellipse at bottom, #1B2735 0`%, #090A0F 100`%);
+            color: gold;
+            padding: 1em;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app' class='container'>
+        <div class='flex'>
+            <div contenteditable="true" id="a">莞市嘉荣超市有限公司东泰嘉荣购物商场</div>
+            <div contenteditable="true" id="b">东莞市嘉荣超市有限公司东泰嘉荣购物商场</div>
+        </div>
+        <pre id="result"></pre>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.0.0/diff.min.js"></script>
+    <script>
+    var a = document.getElementById('a')
+    var b = document.getElementById('b')
+    var result = document.getElementById('result')
+
+    function changed() {
+        var diff = Diff.diffChars(a.textContent, b.textContent)
+        var fragment = document.createDocumentFragment()
+
+        for (var i = 0; i < diff.length; i++) {
+
+            if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
+                var swap = diff[i]
+                diff[i] = diff[i + 1]
+                diff[i + 1] = swap
+            }
+
+            var node
+
+            if (diff[i].removed) {
+                node = document.createElement('del')
+                node.appendChild(document.createTextNode(diff[i].value))
+            } else if (diff[i].added) {
+                node = document.createElement('ins')
+                node.appendChild(document.createTextNode(diff[i].value))
+            } else {
+                node = document.createTextNode(diff[i].value)
+            }
+            
+            fragment.appendChild(node)
+        }
+
+        result.textContent = ''
+        result.appendChild(fragment)
+    }
+
+    window.onload = function() {
+        changed()
+    }
+
+    a.onpaste = a.onchange = b.onpaste = b.onchange = changed
+
+    if ('oninput' in a) {
+        a.oninput = b.oninput = changed
+    } else {
+        a.onkeyup = b.onkeyup = changed
+    }
+    </script>
+</body>
+
+</html>
 )
-code(Var)
+txtit(Var)
 return
 
 ::fixpos::
