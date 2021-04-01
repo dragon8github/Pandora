@@ -1,0 +1,67 @@
+
+; 一个记录秒数的示例类...
+class SecondCounter {
+    __New() {
+        this.interval := 1000
+        this.count := 0
+        this.cb := ObjBindMethod(this, "Fuck")
+    }
+    Start() {
+        ; SetTimer 需要一个纯变量引用
+        cb := this.cb
+        SetTimer % cb, % this.interval
+        ToolTip % "Counter started"
+    }
+    Stop() {
+		; SetTimer 需要一个纯变量引用
+        cb := this.cb
+        SetTimer % cb, Off
+			
+        ToolTip % "Counter stopped at " this.count
+		SetTimer, RemoveToolTip, -1000
+    }
+    ; 本例中,定时器调用了以下方法:
+    Fuck() {
+        ToolTip % ++this.count
+    }
+}
+
+
+
+
+; !z::
+;     ; ; 获取当前 chrome OutputVar浏览器的进程id
+;     ; WinGet, v, PID, , Chrome
+
+;     ; MsgBox, % v
+    
+;     ; ; 如果id存在的话
+;     ; if (v) {
+;     ;     ; kill
+;     ;     Process, Close, % v
+;     ; }
+    
+;     ; file := A_Desktop . "\my.lnk"
+;     ; run, % file 
+
+
+;     ; WinWait, Chrome
+
+
+;     ; ; 获取当前 chrome OutputVar浏览器的进程id
+;     ; WinGet, v, PID, , Chrome
+
+;     ; MsgBox, % v
+;     ; return
+
+;     ; WinActivate, ahk_id %v%
+
+;     ; WinGet, OutputVar, MinMax, A
+
+;     ; if (OutputVar == 1) {
+;     ;     WinRestore, A
+;     ; } 
+
+
+;     WinMove, A, , 0, 0, 680, 380
+; return

@@ -368,8 +368,8 @@ Gui, Pandora:Add, Link,, <a href="https://jsrun.net/app/scss">scss在线转css</
 Gui, Pandora:Add, Link,, <a href="https://www.sassmeister.com/">sass在线转css</a>
 ; Gui, Pandora:Add, Link,, <a href="http://css2sass.herokuapp.com/">css在线转scss</a>
 Gui, Pandora:Add, Link,, <a href="https://css2js.dotenv.dev/">css2js</a>
-; Gui, Pandora:Add, Link,, <a href="https://1stwebdesigner.com/all-articles/">1stwebdesigner</a>
-Gui, Pandora:Add, Link,, <a href="https://www.chouke.vip/forum.php">筹课网</a>
+Gui, Pandora:Add, Link,, <a href="https://1stwebdesigner.com/all-articles/">1stwebdesigner</a>
+
 
 
 
@@ -411,6 +411,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.pexels.com/">Pexels</a>
 Gui, Pandora:Add, Link,, <a href="https://illustrationhunt.com/">插画大全</a>
 Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">picjumbo山景</a>
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
+Gui, Pandora:Add, Link,, <a href="https://www.chouke.vip/forum.php">筹课网</a>
+Gui, Pandora:Add, Link,, <a href="https://www.chouke.vip/">盗版课</a>
 
 
 
@@ -684,7 +686,7 @@ Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/proje
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
 Gui, Pandora:Add, Link,, <a href="https://covid-map.dg.cn/covid-19-map/">正式环境</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.128:8080">正式Jenkins</a>
-Gui, Pandora:Add, Link,, <a href="http://covid-map.dg.cn/covid-19-map/">正式环境http</a>
+Gui, Pandora:Add, Link,, <a href="https://19.104.50.124/covid-19-map/">正式环境http</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 东莞疫情

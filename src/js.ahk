@@ -1,14 +1,4 @@
-﻿::jiqixuexi::
-::jiqi::
-::ten::
-::tenjs::
-Var =
-(
-Tensorflow.js
-)
-code(Var)
-return
-
+﻿
 ::xiangsidu::
 ::juli::
 Var =
@@ -8722,6 +8712,7 @@ const timer = (function(fn, t) {
 code(Var)
 return
 
+
 ::request.js::
 ::req.js::
 ::requestjs::
@@ -8729,22 +8720,49 @@ return
 Var =
 (
 import Qs from 'qs'
+import store from '@/store'
+import router from "@/router"
 import axios from 'axios'
-import { dateYYYYMMDDHHmmss, logs, waitWhen, encryption } from './utils.js'
-import isEqual from 'lodash/isEqual'
 
-const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/fyvis/visual/'
+import { dateYYYYMMDDHHmmss, logs, maybe, throttle, isString } from './utils.js'
+import { removeCookie } from "@/utils/cookie"
+import { Message } from 'element-ui'
+
+const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/covid-19-map/visual/'
 
 // 请求队列
 let pending = []
 
-// 添加请求拦截器，动态设置参数
-axios.interceptors.request.use(async config => {
-    // 获取参数详情
-    const { method, params, data, lazy, noRepeat = true } = config
+// 登陆状态失效，弹出错误提示并且跳转到登陆页面
+const tokenError = (message = '请先登录') => {
+    store.state.AppData.token = null
+    removeCookie('token')
+    Message(message)
+    router.push('/login')
+    throw new Error(message)
+}
 
-    // 加密（url + params + data）（用来标识请求的唯一性，用来判断是否重复请求）
-    const id = encryption({ url, params, data })
+// 函数节流，3秒之内只会执行一次。不会重复执行。
+// leading 为 true时，第一次执行立即触发，这比setTimeout好多了
+// trailing 为 fasle时，不会触发最后一次。这样比较符合直觉。
+const _tokenError = throttle(tokenError, 3000, { leading: true, trailing: false })
+
+// 添加请求拦截器，动态设置参数
+axios.interceptors.request.use(config => {
+    // 判断是否登录（登录接口本身除外）
+    if (!config.url.includes('login') && !store.state.AppData.token) {
+        // 登陆状态失效，弹出错误提示并且跳转到登陆页面
+        _tokenError()
+    }
+
+    // 合并请求头 authority-token
+    config.headers = Object.assign({}, config.headers, { 'authority-token': store.state.AppData.token || '' })
+
+    // 获取参数详情
+    const { method, params, data, noRepeat = true } = config
+    
+    // fixbug: 由于设计失误「也为了友好」，noRepeat 可以从第三个参数进来，也可以在 data 里边一起进来
+    const _noRepeat = data.noRepeat || noRepeat
 
     // 获取索引
     const [url, note] = config.url.split('|')
@@ -8753,25 +8771,20 @@ axios.interceptors.request.use(async config => {
     config.noteURL = config.url
 
     // 过滤url的文本注释
-    config.url = url
+    config.url = url + '?id=' + config.data.id
 
     // 加入备注
-    config.note = note
-
-    // 加入 id（用来标识请求的唯一性，用来判断是否重复请求）
-    config.id = id
-
-    // ?? 懒模式 - 60s 内等待队列为空才进行，查询的间隔是 100ms 一次，每次只能进行一条。
-    if (lazy) await waitWhen(_ => pending.length === 0, 60 * 1000, 100)
+    config.__NOTE__ = note
 
     // （默认开启「去重」）如果需要去重复, 则中止队列中所有相同请求地址的 xhr
-    noRepeat && pending.forEach(_ => _.id === id && _.cancel('?? kill repeat xhr：' + config.noteURL))
+    // 🔔 请注意，我这里故意使用「config.noteURL」，因为我要利用 「"|" 注释」来区分相同的 api
+    // 「新认知」取消以后，接口的数据返回 null。所以逻辑依然会继续往下走。
+    _noRepeat === true && pending.forEach(_ => _.url === config.noteURL && _.cancel('⚔️ kill repeat xhr：' + config.noteURL))
 
     // 配置 CancelToken
     config.cancelToken = new axios.CancelToken(cancel => {
-        const newPeding = { id, cancel }
         // 移除所有中止的请求，并且将新的请求推入缓存
-        pending = [...pending.filter(_ => _.id != id), newPeding]
+        pending = [...pending.filter(_ => _.url != config.noteURL), { url: config.noteURL, cancel }]
     })
 
     // 返回最终配置
@@ -8779,42 +8792,88 @@ axios.interceptors.request.use(async config => {
 })
 
 // 响应拦截器
-axios.interceptors.response.use(res => {
-    // 获取请求配置
-    const { method, url, params, data, status, note, noteURL, id } = res.config
+axios.interceptors.response.use(
+    res => {
+        // 如果需要打印日志的话
+        if (true) {
+            // 获取请求配置
+            const { method, url, params, data, status, __NOTE__ } = res.config
+            // 获取参数
+            const p = JSON.stringify(method === 'get' ? params : data)
+            // 获取请求时间
+            const date = dateYYYYMMDDHHmmss(Date.now())
+            // 打印请求结果和详情
+            logs(``${__NOTE__}${method.toUpperCase()}：${url}``, res.data, JSON.stringify({ params: method === 'get' ? params : data, result: res.data, status }, null, '\t'))
+        }
 
-    // 如果需要打印日志的话
-    if (true) {
-        // 获取参数
-        const p = JSON.stringify(method === 'get' ? params : data)
-        // 获取请求时间
-        const date = dateYYYYMMDDHHmmss(Date.now())
-        // 打印请求结果和详情
-        logs(``${note}${method.toUpperCase()}：${url}``, res.data, JSON.stringify({params: method === 'get' ? params : data , result: data, status }, null, '\t'))
+        // 成功响应之后清空队列中所有相同Url的请求
+        pending = pending.filter(_ => _.url != res.config.noteURL)
+
+        // 只返回 data 即可
+        return res.data
+    },
+    error => {
+        // 获取报文
+        const res = error.response
+
+        // token 失效，请求失败 20019
+        if (res && res.status === 500 && res.data && res.data.code === 20019) {
+            // 取消所有接口的请求
+            pending.forEach(_ => _.cancel('⚠️登录状态失效'))
+            // 清空接口
+            pending = []
+            // 主动报错，回到登录页
+            return _tokenError(res.data.message)
+        }
+
+        // 如果存在报文，才进行清空。
+        if (res) {
+            // 直接清空列表
+            pending = pending.filter(_ => _.id != res.config.id)
+        }
+
+        // 可以输出：error.response
+        return Promise.reject(error)
+    }
+`)
+
+const __CACHE__ = new Map()
+
+const cache_axios = async function (config, cacheKey = '') {
+    // 获取缓存时间，如果没有则为 0
+    const cacheTime = maybe(_ => Math.floor(config.cache), 0)
+
+    if (cacheTime) {
+        // 序列化参数作为 key
+        cacheKey = JSON.stringify(config)
+        // 尝试获取缓存
+        const cache = __CACHE__.get(cacheKey)
+        // 是否具备缓存？（检查缓存健康性）
+        if (cache && cache.expirys && cache.data) {
+            // 是否过期？
+            const age = Date.now() - cache.expirys >= cacheTime
+            // 🚀 如果还没过期，直接返回结果
+            if (!age) {
+                // fixbug: 消除「data」的引用，否则外部修改，也会影响缓存的结果。非常危险
+                return JSON.parse(cache.data)
+            }
+        }
     }
 
-    // 成功响应之后清空队列中所有相同 Url 的请求
-    pending = pending.filter(_ => _.id != id)
+    // ☀️ 正式使用 axios
+    const data = await axios(config)
 
-    // 只返回 data 即可
-    return res.data
-}, error => {
-    // 获取报文
-    const res = error.response
-    // 如果存在报文，才进行清空。
-    if (res) {
-        // 直接清空列表
-        pending = pending.filter(_ => _.id != res.config.id)
-    }
-    // 可以输出：error.response
-    return Promise.reject(error)
-})
+    // 如果具备「cacheTime」, 则说明想要使用缓存，加入到缓存中
+    // fixbug: 消除「data」的引用，否则外部修改，也会影响缓存的结果。非常危险
+    cacheTime && __CACHE__.set(cacheKey, { data: JSON.stringify(data), expirys: Date.now() + cacheTime })
 
-export const GET = (url = '', params = {}, config = {}) => axios({ method: 'GET', url: __API__ + url, params, ...config })
+    return data
+}
 
-export const POST = (url = '', data = {}, config = {}) => axios({ method: 'POST', url: __API__ + url, data, ...config })
-
-export const FORM_POST = (url = '', data = {}, config = {}) => axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}, ...config })
+export const GET = (url = '', params = {}, config = {}) => cache_axios({ method: 'GET', url: __API__ + url, params, ...config })
+export const POST = (url = '', data = {}, config = {}) => cache_axios({ method: 'POST', url: __API__ + url, data, ...config })
+export const FORM_POST = (url = '', data = {}, config = {}) => cache_axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }, ...config })
+export const PURE_FORM_POST = (url = '', data = {}, config = {}) => cache_axios({ method: 'POST', url: url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }, ...config })
 ---
 import axios from 'axios'
 import store from '../store'
@@ -8933,7 +8992,7 @@ axios.interceptors.response.use(res => {
     return res
 }, error => {
     return Promise.reject(error)
-});
+})
 
 // 错误处理
 const _catchErr = err => {
@@ -9026,182 +9085,11 @@ export const request = async (url, options = {}) => {
     // 正式开始请求
     return axios(url, options).then(checkStatus).then(_cachedSave).catch(_catchErr)
 }
----
-import Qs from 'qs'
-import axios from 'axios'
-import router from '@/router'
-import store from '@/store'
-import { Notify } from 'vant'
-import { dateYYYYMMDDHHmmss, logs, throttle } from './utils.js'
-
-// 是否需要打印请求日志
-const LOG = true
-
-const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/h5/'
-
-const __ADMIN__ = process.env.NODE_ENV === 'development' ? '/admin/' : '/h5/'
-
-const isAdmin = () =>  window.location.href.includes('admin')
-
-const isLogin = () =>  window.location.href.includes('login')
-
-// 登陆状态失效，弹出错误提示并且跳转到登陆页面
-const tokenError = () => {
-    // 只有非登录页才需要这样提示
-    if (isLogin() === false) {
-        router.push('/login')
-        Notify('请先登录')
-        store.dispatch('REMOVE_TOKEN')
-        throw new Error('请先登录')
-    }
-}
-
-const _tokenError = throttle(tokenError, 500, { leading: true, trailing: false })
-
-// 响应拦截器
-axios.interceptors.response.use(res => {
-    // 如果需要打印日志的话
-    if (LOG) {
-        // 获取请求配置
-        const { method, url, params, data, status } = res.config
-        // 获取请求时间
-        const date = dateYYYYMMDDHHmmss(Date.now())
-        // 打印请求结果和详情
-        logs(`${method.toUpperCase()}：${url}`, res.data, JSON.stringify({ params: method === 'get' ? params : data, result: res.data, status }, null, '\t'))
-    }
-    // 只返回 data 即可
-    return res.data
-}, error => {
-    const { status, data } = error.response
-
-    // 登陆失效
-    if (status === 500 && data.code === 20019) {
-        _tokenError()
-    }
-
-    return Promise.reject(error.response)
-})
-
-// 添加请求拦截器，动态设置参数
-axios.interceptors.request.use(config => {
-    // 判断是否登录（登录接口本身除外）
-    // fixbug: 只有 admin 页面才需要进行这个判断
-    if (isAdmin() && !config.url.includes('login') && !store.state.tokenId) {
-        // 登陆状态失效，弹出错误提示并且跳转到登陆页面
-        _tokenError()
-    }
-
-    // 合并请求头 authority-token
-    config.headers = Object.assign({}, config.headers, { 'authority-token': store.state.tokenId || '' })
-
-    // 返回最终配置
-    return config
-})
-
-export const POST = (url = '', data = {}) => axios({ method: 'POST', url: __API__ + url, data})
-
-export const FORM_POST = (url = '', data = {}) => axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'} })
-
-export const GET = (url = '', params = {}) => axios({ method: 'GET', url: __API__ + url, params})
-
-export const POST_ADMIN = (url = '', data = {}) => axios({ method: 'POST', url: __ADMIN__ + url, data})
-
-export const FORM_POST_ADMIN = (url = '', data = {}) => axios({ method: 'POST', url: __ADMIN__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'} })
-
-export const GET_ADMIN = (url = '', params = {}) => axios({ method: 'GET', url: __ADMIN__ + url, params})
----
-import Qs from 'qs'
-import axios from 'axios'
-import { dateYYYYMMDDHHmmss, logs, diffSet } from './utils.js'
-
-const __API__ = process.env.NODE_ENV === 'development' ? '/api/' : '/fyvis/visual/'
-
-// 请求队列
-let pending = []
-
-// 添加请求拦截器，动态设置参数
-axios.interceptors.request.use(config => {
-    // 获取参数详情
-    const { method, params, data, noRepeat = true } = config
-    
-    // 获取索引
-    const [url, note] = config.url.split('|')
-
-    // 以防万一，记录一下带有注释的 url
-    config.noteURL = config.url
-
-    // 过滤url的文本注释
-    config.url = url
-
-    // 加入备注
-    config.__NOTE__ = note
-
-    // （默认开启「去重」）如果需要去重复, 则中止队列中所有相同请求地址的 xhr
-    // ?? 请注意，我这里故意使用「config.noteURL」，因为我要利用 「"|" 注释」来区分相同的 api
-    noRepeat && pending.forEach(_ => _.url === config.noteURL && _.cancel('?? kill repeat xhr：' + config.noteURL))
-
-    // 配置 CancelToken
-    config.cancelToken = new axios.CancelToken(cancel => {
-        // 移除所有中止的请求，并且将新的请求推入缓存
-        pending = [...pending.filter(_ => _.url != config.noteURL), { url: config.noteURL, cancel }]
-    })
-
-    // 返回最终配置
-    return config
-})
-
-// 响应拦截器
-axios.interceptors.response.use(res => {
-    // 如果需要打印日志的话
-    if (true) {
-        // 获取请求配置
-        const { method, url, params, data, status, __NOTE__ } = res.config
-        // 获取参数
-        const p = JSON.stringify(method === 'get' ? params : data)
-        // 获取请求时间
-        const date = dateYYYYMMDDHHmmss(Date.now())
-        // 打印请求结果和详情
-        logs(`${__NOTE__}${method.toUpperCase()}：${url}`, res.data, JSON.stringify({params: method === 'get' ? params : data , result: res.data, status }, null, '\t'))
-    }
-
-    // 成功响应之后清空队列中所有相同Url的请求
-    pending = pending.filter(_ => _.url != res.config.noteURL)
-
-    // 只返回 data 即可
-    return res.data
-}, error => {
-    // 可以输出：error.response
-    return Promise.reject(error)
-})
-
-export const GET = (url = '', params = {}, config = {}) => axios({ method: 'GET', url: __API__ + url, params, ...config })
-
-export const POST = (url = '', data = {}, config = {}) => axios({ method: 'POST', url: __API__ + url, data, ...config })
-
-export const FORM_POST = (url = '', data = {}, config = {}) => axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}, ...config })
-
-export const SET = diffSet
----
-export const dateYYYYMMDDHHmmss =  t => {
-    const date = new Date(t)
-    const year = date.getFullYear()
-    const month = date.getMonth() + 1
-    const day = date.getDate()
-    const hours = date.getHours()
-    const minu = date.getMinutes()
-    const second = date.getSeconds()
-    const arr = [month, day, hours, minu, second].map((item, index) => item < 10 ? '0' + item : item)
-    return year + '-' + arr[0] + '-' + arr[1] + ' ' + arr[2] + ':' + arr[3] + ':' + arr[4]
-}
-// 折叠日志
-export const logs = (info = '', ...args) => {
-    console.groupCollapsed(info)
-    args.forEach(_ => console.log(_))
-    console.groupEnd()
-}
 )
 txtit(Var)
 return
+
+
 
 ::showerr::
 ::showerror::
@@ -16897,6 +16785,25 @@ function cached(fn){
   }
 }
 ################################################################
+// 缓存器v2版本（强烈推荐，兼容复杂参数和promise返回值）
+export const memoize = fn => new Proxy(fn, {
+    cache: new Map(),
+    apply(target, thisArg, argsList) {
+        let cacheKey = argsList.toString()
+        if (!this.cache.has(cacheKey)) this.cache.set(cacheKey, target.apply(thisArg, argsList))
+        return this.cache.get(cacheKey)
+    },
+})
+
+// 参数标记缓存器（该版本只支持「单参数」标记缓存）
+const memoized = (fn, cache = {}) => arg => cache[arg] || (cache[arg] = fn(arg))
+
+const memoized = fn => {
+    const lookupTable = {};
+    // setInterval( () => console.log(lookupTable) , 1000); // 可以通过解释这个来观察缓存的变化
+    return arg => lookupTable[arg] || (lookupTable[arg] = fn(arg));
+}
+
 // 参数标记缓存器
 var memoized = function (fn) {
       var cache = {};
@@ -16907,26 +16814,6 @@ var memoized = function (fn) {
         return cache[__KEY__] || (cache[__KEY__] = fn.apply(this, arguments));
       };
 };
-
-const memoized = fn => {
-	const lookupTable = {};
-	// setInterval( () => console.log(lookupTable) , 1000); // 可以通过解释这个来观察缓存的变化
-	return arg => lookupTable[arg] || (lookupTable[arg] = fn(arg));
-}
-
-// 参数标记缓存器（该版本只支持「单参数」标记缓存）
-const memoized = (fn, cache = {}) => arg => cache[arg] || (cache[arg] = fn(arg))
-
-// 阶乘的demo
-let fastFactorial = memoized(n => {
-	if (n === 0) {
-		return 1;
-	}
-	// 这是一个递归，并且每一次递归都具有缓存过程
-	return n * fastFactorial(n -1);
-});
-
-fastFactorial(5)
 ################################################################
 /**
  * @func
@@ -17097,15 +16984,99 @@ console.log('demo2：', p2.get('1'))
 // => undefined
 console.log('demo2：', p2.get('2'))
 ################################################################
-// 缓存器v2版本（强烈推荐，兼容复杂参数和promise返回值）
-export const memoize = fn => new Proxy(fn, {
+// 实用的 axios 缓存装饰器
+const __CACHE__ = new Map()
+
+const cache_axios = async function (config, cacheKey = '') {
+    // 获取缓存时间，如果没有则为 0
+    const cacheTime = maybe(_ => Math.floor(config.cache), 0)
+
+    if (cacheTime) {
+        // 序列化参数作为 key
+        cacheKey = JSON.stringify(config)
+        // 尝试获取缓存
+        const cache = __CACHE__.get(cacheKey)
+        // 是否具备缓存？（检查缓存健康性）
+        if (cache && cache.expirys && cache.data) {
+            // 是否过期？
+            const age = Date.now() - cache.expirys >= cacheTime
+            // 🚀 如果还没过期，直接返回结果
+            if (!age) {
+                // fixbug: 消除「data」的引用，否则外部修改，也会影响缓存的结果。非常危险
+                return JSON.parse(cache.data)
+            }
+        }
+    }
+
+    // ☀️ 正式使用 axios
+    const data = await axios(config)
+
+    // 如果具备「cacheTime」, 则说明想要使用缓存，加入到缓存中
+    // fixbug: 消除「data」的引用，否则外部修改，也会影响缓存的结果。非常危险
+    cacheTime && __CACHE__.set(cacheKey, { data: JSON.stringify(data), expirys: Date.now() + cacheTime })
+
+    return data
+}
+
+export const GET = (url = '', params = {}, config = {}) => cache_axios({ method: 'GET', url: __API__ + url, params, ...config })
+export const POST = (url = '', data = {}, config = {}) => cache_axios({ method: 'POST', url: __API__ + url, data, ...config })
+export const FORM_POST = (url = '', data = {}, config = {}) => cache_axios({ method: 'POST', url: __API__ + url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }, ...config })
+export const PURE_FORM_POST = (url = '', data = {}, config = {}) => cache_axios({ method: 'POST', url: url, data: Qs.stringify(data), headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }, ...config })
+################################################################
+// 有限时间缓存器（默认为0）
+var memoizeAtTime = (fn, time = 0) => new Proxy(fn, {
     cache: new Map(),
     apply(target, thisArg, argsList) {
-        let cacheKey = argsList.toString()
-        if (!this.cache.has(cacheKey)) this.cache.set(cacheKey, target.apply(thisArg, argsList))
-        return this.cache.get(cacheKey)
+        // 将函数参数序列化
+        var cacheKey = argsList.toString()
+
+        // 当前时间戳
+        var date = +new Date()
+
+        // 设置缓存
+        var setCache = () => {
+            // 函数结果
+            var result = target.apply(thisArg, argsList)
+            // 缓存函数结果
+            this.cache.set(cacheKey, { result, date })
+        }
+
+        // 缓存不存在
+        if (!this.cache.has(cacheKey)) {
+            console.log('☀️ first setCache')
+            setCache()
+        } else {
+            // 如果缓存存在，获取缓存开始时间
+            var cacheDate = this.cache.get(cacheKey).date
+
+            // 如果当前时间 - 缓存时间 > 过期时间（time），那么说明需要超时了，需要重新存储，否则说明还没过期，依然使用缓存的
+            if (date - cacheDate >= time) {
+                console.log('🔔 setCache again')
+                setCache()
+            } else {
+                console.log('⭐️✨ use cache')
+            }
+        }
+
+        return this.cache.get(cacheKey).result
     },
 })
+
+
+// 认知：没想到吧，promise 也可以缓存的。
+// var test = n => new Promise((resolve, reject) => setTimeout(_ => resolve('success' + n), Math.random() * 3000))
+
+function test(n) {
+    return n + 1
+}
+
+var t = memoizeAtTime(test, 30 * 1000)
+
+console.log(20210331154815, t(123))
+console.log(20210331154815, t(124))
+console.log(20210331154815, t(125))
+console.log(20210331154815, t(126))
+console.log(20210331154815, t(127))
 )
 txtit(Var, "################################################################")
 return

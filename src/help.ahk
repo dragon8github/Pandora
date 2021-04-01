@@ -1,4 +1,101 @@
-﻿; 驼峰，其实只将首字母小写而已。 毕竟没有分词器。 将 productId => productId
+﻿::mokatuo::
+::touying::
+Var =
+(
+墨卡托投影（mercator projection）
+)
+code(Var)
+return
+
+::jiqixuexi::
+::jiqi::
+::ten::
+Var =
+(
+Tensorflow.js
+)
+code(Var)
+return
+
+
+::kuayu::
+Var =
+(
+ crossOrigin
+)
+code(Var)
+return
+
+; （能用，但废弃）
+#b::
+clipboard := 
+Send, ^c
+ClipWait, 2
+if (clipboard) {
+    InputBox, OutputVar, title, enter a name?,,,,,,,,js
+    tip2("beautifying...")
+    result := post("https://service-pp0d4lbc-1255983702.gz.apigw.tencentcs.com/release/", { "code": clipboard, "type": OutputVar }, true)
+    json := JSON.Load(result)
+    _result := StrReplace(json.code, "\r\n", "`r`n")
+    code(_result)
+    tip2("beautify success!!!")
+} else {
+    tip2("beautify fail!!!")
+}
+return
+
+#!up::
+WinGetTitle, Title, A
+WinGetPos, X, Y, W, H, %Title%
+
+_w_ := W * 1 / 5
+_h_ := H * 1 / 5
+
+w := W + _w_
+h := H + _h_
+
+WinMove, %Title%,, %X%, %Y%, %w%, %h%
+return
+
+#!down::
+WinGetTitle, Title, A
+WinGetPos, X, Y, W, H, %Title%
+
+_w_ := W * 1 / 5
+_h_ := H * 1 / 5
+
+w := W - _w_
+h := H - _h_
+
+WinMove, %Title%,, %X%, %Y%, %w%, %h%
+return
+
+#!right::
+^!right::
+WinGet, OutputVar, MinMax, A
+if (OutputVar == 1) {
+    WinRestore, A
+} else {
+    WinMaximize, A
+}
+
+WinMove, A, , A_ScreenWidth / 2, 0, A_ScreenWidth / 2, A_ScreenHeight - 70
+return
+
+#!left::
+^!left::
+WinGet, OutputVar, MinMax, A
+if (OutputVar == 1) {
+    WinRestore, A
+} else {
+    WinMaximize, A
+}
+
+WinMove, A, , 0, 0, A_ScreenWidth / 2, A_ScreenHeight - 70
+return
+
+
+; 驼峰，其实只将首字母小写而已。 毕竟没有分词器。 将 productId => productId
 to_tuo(str) {
   firststr := SubStr(str, 1, 1)
   StringLower, OutputVar, firststr
