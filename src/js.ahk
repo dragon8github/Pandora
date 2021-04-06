@@ -3391,10 +3391,38 @@ const lastpath = path => path.substr(path.lastIndexOf('.') + 1)
 code(Var)
 return
 
+::export::
+::exports::
 ::xiazai::
 ::daochu::
 Var =
 (
+function base64ToArrayBuffer(base64) {
+    var binary_string = window.atob(base64)
+    var len = binary_string.length
+    var bytes = new Uint8Array( len )
+    for (var i = 0; i < len; i++) { bytes[i] = binary_string.charCodeAt(i) }
+    return bytes.buffer
+}
+
+function toFile(str, fileName = 'diff.txt') {
+    var file = btoa(unescape(encodeURIComponent(str)))
+    var data = base64ToArrayBuffer(file)
+    var blob = new Blob([data], {type: 'octet/stream'})
+    var fileName = fileName
+    
+    var a = document.createElement('a')
+    document.body.appendChild(a)
+    a.style = 'display: none'
+    var url = window.URL.createObjectURL(blob)
+    a.href = url
+    a.download = fileName
+    a.click()
+    window.URL.revokeObjectURL(url)
+}
+
+toFile('hello world', 'hello.txt')
+---
 function base64ToArrayBuffer(base64) {
   var binary_string = window.atob(base64)
   var len = binary_string.length
@@ -3423,7 +3451,7 @@ if (window.navigator.msSaveOrOpenBlob) {
     window.URL.revokeObjectURL(url)
 }
 )
-code(Var)
+txtit(Var)
 return
 
 
