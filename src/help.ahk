@@ -1,4 +1,21 @@
-﻿::mokatuo::
+﻿::xy::
+::lnglat::
+::dgxy::
+::zuobiao::
+::coor::
+::jingweidu::
+::jingwei::
+::jwd::
+Var =
+(
+coordinate
+---
+lngLat: [113.75867124948216, 23.026719034540488],
+)
+txtit(Var)
+return
+
+::mokatuo::
 ::touying::
 Var =
 (
@@ -1645,15 +1662,7 @@ cs("directive")
 return
 
 
-::xy::
-::lnglat::
-::dgxy::
-Var =
-(
-lngLat: [113.75867124948216, 23.026719034540488],
-)
-code(Var)
-Return
+
 
 ::vpwd::
 SendRaw, R+m3{]H]m11D1e!h

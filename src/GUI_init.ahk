@@ -686,7 +686,7 @@ Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/proje
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
 Gui, Pandora:Add, Link,, <a href="https://covid-map.dg.cn/covid-19-map/">正式环境</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.128:8080">正式Jenkins</a>
-Gui, Pandora:Add, Link,, <a href="https://19.104.50.124/covid-19-map/">正式环境http</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.124/covid-19-map/">正式环境http</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 东莞疫情
@@ -1292,6 +1292,8 @@ Gui, Pandora:Add, Link, W140, <a href="http://lbs.tianditu.gov.cn/api/js4.0/open
 Gui, Pandora:Add, Text, W60 ys, 大为地图:
 Gui, Pandora:Add, Link, W60, <a href="http://19.106.86.238/ktdv/#cesium-docs/examples.html">官网示例</a>
 
+Gui, Pandora:Add, Text,  W140  Section xs yp+260, Turf.js中文网:
+Gui, Pandora:Add, Link,, <a href="https://turfjs.fenxianglu.cn/category/measurement/distance.html">Turf.js中文网</a>
 
 ;@css 
 Gui, Pandora:Tab, 10
