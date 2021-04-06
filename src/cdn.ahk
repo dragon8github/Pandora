@@ -1,4 +1,14 @@
-﻿::cdn-ol::
+﻿::cdn-jiqi::
+::cdn-ten::
+Var =
+(
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+)
+code(Var)
+return
+
+::cdn-ol::
 ::cdn-open::
 ::cdn-openlayer::
 ::cdn-openlayers::

@@ -765,6 +765,8 @@ $('.img').each(function (index, domEle) {
 code(Var)
 return
 
+
+
 :?:.map::
 Var =
 (
@@ -775,6 +777,15 @@ Var =
 code(Var)
 return
 
+:?:.m::
+:?:.map2::
+Var =
+(
+.map(_ => ({  }))
+)
+code(Var)
+Send, {left 4}
+return
 
 :?:.mo::
 :?:.ma::

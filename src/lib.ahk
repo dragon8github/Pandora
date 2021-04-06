@@ -1,4 +1,9 @@
-﻿
+﻿htmlit() 
+{
+    dir := A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+    FileCreateDir, % dir
+    return  dir . "\index.html"
+}
 
 p(v) 
 {
@@ -86,6 +91,7 @@ pandoraFolderInit() {
 	AttributeString := FileExist(DIRECTORY)
 	; 如果没有目录，则创建
 	if (AttributeString != "D") {
+        ; 创建文件夹
 		FileCreateDir, % DIRECTORY
 	}
     return DIRECTORY
@@ -263,7 +269,16 @@ RunBy(name) {
 }
 
 RunByVsCode(name) {
+    ; 如果包含 index.html，那么打开文件夹而不是文件。
+    if (InStr(name, "index.html")) {
+        ; 截取文件夹的字符串（从右边开始搜索）
+        StringGetPos, pos, name, index.html, R1
+        ; 文件夹地址
+        name := SubStr(name, 1, pos)
+    }
+
     myIdea := "C:\Program Files\Microsoft VS Code\Code.exe"
+
     if (!FileExist(myIdea)) {
         myIdea := A_Temp . "\..\Programs\Microsoft VS Code\Code.exe"
     }

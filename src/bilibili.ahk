@@ -29,18 +29,18 @@
 
 
 	Menu, bilibiliMenu, Add, map 地图, :DITUMAP
-	Menu, bilibiliMenu, Add, ✍️, bilibiliHandler2
-	Menu, bilibiliMenu, Add, 🔴, bilibiliHandler2	
-	Menu, bilibiliMenu, Add, ✅, bilibiliHandler2
-	Menu, bilibiliMenu, Add, ▶, bilibiliHandler2	
+	Menu, bilibiliMenu, Add, ☀️ , bilibiliHandler2
 	Menu, bilibiliMenu, Add, ❓, bilibiliHandler2
 	Menu, bilibiliMenu, Add, ✈️, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🚀, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🦄 , bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🐤 , bilibiliHandler2
-	Menu, bilibiliMenu, Add, ☀️ , bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🐳, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🌵 , bilibiliHandler2
+	Menu, bilibiliMenu, Add, ✍️, bilibiliHandler2
+	Menu, bilibiliMenu, Add, 🔴, bilibiliHandler2	
+	Menu, bilibiliMenu, Add, ✅, bilibiliHandler2
+	Menu, bilibiliMenu, Add, ▶, bilibiliHandler2	
 	Menu, bilibiliMenu, Add, 🦋 , bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🔥, bilibiliHandler2
 	Menu, bilibiliMenu, Add, 🔆, bilibiliHandler2

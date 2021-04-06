@@ -2760,21 +2760,23 @@ return
 
 
 
+::rich::
 ::ehcarts.rich::
 Var =
 (
 formatter: (value) => {
-    return ``
-        {a|${value}} 
-        \n
-        {b|${value}}
-    ``
+    return ``{a|${value}}\n{b|${value}}``
 },
 rich: {
     a: {
         color: 'red',
         height:100,
         fontSize: 40,
+        backgroundColor: { image: './1.png', },
+		padding: [0, 8, 10, 8],
+		color: 'gold',
+		width: 84,
+		height: 84,
     },  
     b: {
         color: 'yellow',

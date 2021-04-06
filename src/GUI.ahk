@@ -501,7 +501,7 @@ return
 
 
 maoboli:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -552,7 +552,7 @@ run, % name
 return
 
 xuanliyanhua:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -717,7 +717,7 @@ run, % name
 return
 
 liveHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -761,7 +761,7 @@ run, %name%
 return
 
 scrollTextHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -835,7 +835,7 @@ run, % name
 return
 
 NewAsyncassertHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <html>
@@ -918,7 +918,7 @@ run, % name
 return
 
 NewassertHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -983,7 +983,7 @@ run, % name
 return
 
 NewgdmapHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -1083,7 +1083,7 @@ run, % name
 return
 
 NewEchartdoulecolorHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -1197,7 +1197,7 @@ run, % name
 return
 
 NewEchartraduisHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -1265,7 +1265,7 @@ run, % name
 return
 
 NewEchartPinBoderHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -1352,7 +1352,7 @@ run, % name
 return
 
 NewEchartsareaStyleHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -1406,7 +1406,7 @@ run, % name
 return
 
 NewEchartssmoothHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -1502,7 +1502,7 @@ run, % name
 return
 
 NewEchartstwoBarHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -1575,7 +1575,7 @@ run, % name
 return
 
 NewvuetransitionHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -1658,7 +1658,7 @@ return
 
 
 NewautoscrollHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -1778,7 +1778,7 @@ run, % name
 return
 
 NewscrollforeveryHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -1872,7 +1872,7 @@ return
 
 
 NewCanvasHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -1925,7 +1925,7 @@ run, % name
 return
 
 NewEchartsmap3dHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2009,7 +2009,7 @@ run, % name
 return
 
 NewRxjsIndexHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2172,7 +2172,7 @@ Newcreateareactapp:
 return
 
 NewEchartsPurePinHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2233,7 +2233,7 @@ run, % name
 return
 
 NewEchartsBarHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2325,7 +2325,7 @@ run, % name
 return
 
 NewEchartsLineHtml: 
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2413,7 +2413,7 @@ run, % name
 return
 
 NewEchartsPinHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2479,7 +2479,7 @@ return
 
 
 NewreduxIndexHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2552,7 +2552,7 @@ return
 
 
 NewPureIndexHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2656,7 +2656,7 @@ RunByVsCode(name)
 return
 
 NewIndexHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2756,7 +2756,7 @@ return
 
 
 NewnorepeataxiosHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2821,7 +2821,7 @@ run, % name
 return
 
 NewnorepeatajaxsHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2894,7 +2894,7 @@ run, % name
 return
 
 NewjointjsHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -2958,7 +2958,7 @@ run, % name
 return
 
 NewuploadHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3022,7 +3022,7 @@ run, % name
 return
 
 Newlshtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3074,7 +3074,7 @@ return
 
 
 Waterhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3276,7 +3276,7 @@ run, % name
 return
 
 wangyejindutiao:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3379,7 +3379,7 @@ run, % name
 return
 
 emphhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3504,7 +3504,7 @@ run, % name
 return
 
 autowidth:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3563,7 +3563,7 @@ run, % name
 return
 
 huxihtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3616,7 +3616,7 @@ run, % name
 return
 
 huehtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3737,7 +3737,7 @@ run, % name
 return
 
 NewEchartDemoHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3748,18 +3748,18 @@ FileAppend,
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- echarts -->
-    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
-    <script src="http://echartsjs.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
-    <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/5.0.0/echarts.min.js"></script>
+    <script src="https://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src="https://www.makeapie.com/dep/echarts/map/js/china.js"></script>
 
-	<!-- 百度地图插件 -->
+    <!-- 百度地图插件 -->
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
     <!-- 百度地图 - 聚合图相关的插件 -->
     <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
-    
+
     <!-- echarts 百度地图扩展插件 -->
-    <script src="https://echarts.apache.org/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+    <!-- <script src="https://echarts.apache.org/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script> -->
 </head>
 <style>
     html, body {
@@ -3806,7 +3806,7 @@ run, % name
 return
 
 csssearchtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3874,7 +3874,7 @@ return
 
 
 tiandituhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3945,7 +3945,7 @@ code(Var)
 return
 
 videohtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -3974,7 +3974,7 @@ return
 
 
 rightmenuhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -4155,7 +4155,7 @@ run, % name
 return
 
 dropdivhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -4274,7 +4274,7 @@ txtit(Var)
 return
 
 localForagehtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -4313,7 +4313,7 @@ run, % name
 return
 
 html2mdhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -4344,7 +4344,7 @@ run, % name
 return
 
 webidehtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -4415,7 +4415,7 @@ run, % name
 return
 
 ajaxuploadhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -4460,7 +4460,7 @@ run, % name
 return
 
 dgmap3Dhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!doctype html>
@@ -4508,7 +4508,7 @@ run, % name
 return
 
 prismhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -4556,7 +4556,7 @@ run, % name
 return
 
 deepmergehtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -4594,7 +4594,7 @@ run, % name
 return
 
 dom2imghtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -4662,7 +4662,7 @@ run, % name
 return
 
 dgmap3DZOOMhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!doctype html>
@@ -4715,7 +4715,7 @@ run, % name
 return
 
 echartciyunHTML:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -4786,7 +4786,7 @@ run, % name
 return
 
 echartsZGDT:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -5197,7 +5197,7 @@ run, % name
 return
 
 echartsZGDTchun:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -5310,7 +5310,7 @@ run, % name
 return
 
 skeletonHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -5377,7 +5377,7 @@ run, % name
 return
 
 sandianchart:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -5517,7 +5517,7 @@ run, % name
 return
 
 yibiaopan:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -5756,7 +5756,7 @@ run, % name
 return
 
 reactHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -6146,7 +6146,7 @@ run, % name
 return
 
 dialogHTML:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -6301,7 +6301,7 @@ run, % name
 return
 
 quickbianimhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 
 CSS =
 (
@@ -6893,7 +6893,7 @@ run, % name
 return
 
 dataSetBar2:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -6979,7 +6979,7 @@ run, % name
 return
 
 dataSetBar:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -7086,7 +7086,7 @@ run, % name
 return
 
 hackdiguo:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -7253,7 +7253,7 @@ run, % name
 return
 
 directivehtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -7333,7 +7333,7 @@ run, % name
 return
 
 fakerHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -7381,7 +7381,7 @@ run, % name
 return
 
 NewvuetransitiongroupHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -7488,7 +7488,7 @@ return
 
 
 socketHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -7605,7 +7605,7 @@ run, % name
 return
 
 randcolorHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -7655,7 +7655,7 @@ run, % name
 return
 
 cssskeletonHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -7741,7 +7741,7 @@ return
 
 
 inputyanhua:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -8009,7 +8009,7 @@ run, % name
 return
 
 test17280:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -8196,7 +8196,7 @@ code(Var)
 return
 
 datasetfunnel:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -8308,7 +8308,7 @@ run, % name
 return
 
 dgmap3DhtmlWMTS:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!doctype html>
@@ -8373,7 +8373,7 @@ run, % name
 return
 
 websocketHTML:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!-- 
@@ -8419,7 +8419,7 @@ run, % name
 return
 
 xiexianhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -8617,7 +8617,7 @@ run, % name
 return
 
 tianditujuhetuhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -8689,7 +8689,7 @@ run, % name
 return
 
 scriptzhuruhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -8721,7 +8721,7 @@ run, % name
 return
 
 word2HTML:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -8849,7 +8849,7 @@ return
 
 
 echartsqipaodongtai:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -8948,7 +8948,7 @@ return
 
 
 vueDeepSethtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -9016,7 +9016,7 @@ run, % name
 return
 
 VueComponentHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -9085,7 +9085,7 @@ run, % name
 return
 
 vuelistenhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!doctype html>
@@ -9179,7 +9179,7 @@ run, % name
 return
 
 echartsleidatu:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -9293,7 +9293,7 @@ run, % name
 return
 
 cssbodongsandian:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -9484,7 +9484,7 @@ run, % name
 return
 
 NewPureVUEIndexHtml2:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -9558,7 +9558,7 @@ run, % name
 return
 
 NewPureIndexHtml2:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -9610,7 +9610,7 @@ run, % name
 return
 
 zhilinghtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
     <!DOCTYPE html>
@@ -9722,7 +9722,7 @@ run, % name
 return
 
 VueAnimateHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -9840,7 +9840,7 @@ return
 ::animate.html::
 ::anim.html::
 animjquery:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -9988,7 +9988,7 @@ run, % name
 return
 
 mapVbaiduhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
     <!DOCTYPE html>
@@ -10070,7 +10070,7 @@ return
 
 
 NewPureIndexHtmltable:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -10177,7 +10177,7 @@ run, % name
 return
 
 NewVueRules:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -10312,7 +10312,7 @@ code(Var)
 return
 
 csspinyinHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <div id="app">
@@ -10345,7 +10345,7 @@ run, % name
 return
 
 VueComponentHtml2:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -10418,7 +10418,7 @@ run, % name
 return
 
 domshengyin:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -10477,7 +10477,7 @@ run, % name
 return
 
 EventSource:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!-- 
@@ -10620,7 +10620,7 @@ code(Var)
 return
 
 youjiancaidanxinjian:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -10701,7 +10701,7 @@ run, % name
 return
 
 vueecharts:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -10803,7 +10803,7 @@ run, % name
 return
 
 NewPureVUEIndexHtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -10914,7 +10914,7 @@ run, % name
 return
 
 baidunidili:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -10947,7 +10947,7 @@ return
 
 
 yanzhengzuobiaodian1:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <script>    
@@ -10993,7 +10993,7 @@ RunByVsCode(name)
 run, % name
 return
 yanzhengzuobiaodian2:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <script>
@@ -11301,7 +11301,7 @@ run, % name
 return
 
 sinaip:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 教程地址：https://blog.csdn.net/zqian1994/article/details/79222812
@@ -11325,7 +11325,7 @@ run, % name
 return
 
 fullpagepurecss:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -11444,7 +11444,7 @@ run, % name
 return
 
 mapv2fuckhtml2:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -11692,7 +11692,7 @@ run, % name
 return
 
 mapv2fuckhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -11855,7 +11855,7 @@ run, % name
 return
 
 baidudituSearchInfoWindow:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -12009,7 +12009,7 @@ return
 
 
 baidujuhe110:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE>
@@ -12184,7 +12184,7 @@ return
 
 
 quuyguihua:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -12280,7 +12280,7 @@ return
 
 
 vtipzhiling:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -12375,7 +12375,7 @@ run, % name
 return
 
 vuedroptest:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -12502,7 +12502,7 @@ run, % name
 return
 
 imgSearchhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -12568,7 +12568,7 @@ run, % name
 return
 
 pubuliugrid:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -12660,7 +12660,7 @@ run, % name
 return
 
 Accordionhtml:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -12884,7 +12884,7 @@ return
 
 
 baiduziyouhuizhi:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -12994,7 +12994,7 @@ return
 
 
 canvasDrawBan:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -13049,7 +13049,7 @@ run, % name
 return
 
 vuesuijixipai:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -13279,7 +13279,7 @@ run, % a_local
 return
 
 basicbaiduditu:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -13343,7 +13343,7 @@ run, % name
 return
 
 jstuodongtanchuang:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -13454,7 +13454,7 @@ run, % name
 return
 
 jsshoufengqing:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -13553,7 +13553,7 @@ run, % name
 return
 
 mapvlightrudong:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -13682,7 +13682,7 @@ run, % name
 return
 
 NewPureIndexHtmltable2:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -13780,7 +13780,7 @@ run, % name
 return
 
 NewPureIndexHtmltable3:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -13880,7 +13880,7 @@ run, % name
 return
 
 bdmapbasicmapv:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -13934,7 +13934,7 @@ run, % name
 return
 
 zhilinghtmlpc:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -14018,7 +14018,7 @@ run, % name
 return
 
 basicbaidudituquanjingtu:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!DOCTYPE html>
@@ -14088,7 +14088,7 @@ run, % name
 return
 
 dgmap3Dhtmlhailiangsandian:
-name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+name :=  htmlit()
 FileAppend,
 (
 <!doctype html>
