@@ -1169,7 +1169,7 @@ Var =
  * @param  {Number} 休息10s
  * @param  {Number} 进行10次
  */
-const hit = (s = 45, m = 10, t = 1) => {
+var hit = (s = 45, m = 10, t = 1) => {
   // 是否暫停？
   let isStop = false
   // 是否結束？
@@ -1183,7 +1183,7 @@ const hit = (s = 45, m = 10, t = 1) => {
   let midfieldTime = m
 
   // 开始（可传入开始时间，或者使用默认时间）
-  const start = () => {
+  var start = () => {
     console.log('开始运动!还剩下', t - curTime + '轮')
 
     // 运动倒计时
@@ -1193,7 +1193,7 @@ const hit = (s = 45, m = 10, t = 1) => {
         if (isStop) return console.log(' 暂停中')
 
         if (startTime) {
-          console.log('运动吧 di~', startTime)
+          console.log('运动吧！di~', startTime)
           startTime--
           return poll()
         } else {
@@ -1211,7 +1211,7 @@ const hit = (s = 45, m = 10, t = 1) => {
         if (isStop) return console.log(' 暂停中')
 
         if (midfieldTime) {
-          console.log('休息吧 da~', midfieldTime)
+          console.log('休息吧！da~', midfieldTime)
           midfieldTime--
           return restPoll()
         } else {
@@ -1234,20 +1234,20 @@ const hit = (s = 45, m = 10, t = 1) => {
   }
 
   // 运动结束
-  const finish = () => {
+  var finish = () => {
     console.log(' 运动结束!')
     // 重置
     isStop = false, isEnd = false, curTime = 0, startTime = s, midfieldTime = m
   }
 
-  const end = () => isEnd = true
-  const stop = () => isStop = true
-  const goon = () => { isStop = false; start() }
+  var end = () => isEnd = true
+  var stop = () => isStop = true
+  var goon = () => { isStop = false; start() }
 
   return { start, end, stop, goon }
 }
 
-const { start, end, stop, goon } = hit(30, 15, 40)
+var { start, end, stop, goon } = hit(30, 15, 40)
 start()
 )
 txtit(Var)
@@ -3606,10 +3606,38 @@ const lastpath = path => path.substr(path.lastIndexOf('.') + 1)
 code(Var)
 return
 
+::export::
+::exports::
 ::xiazai::
 ::daochu::
 Var =
 (
+function base64ToArrayBuffer(base64) {
+    var binary_string = window.atob(base64)
+    var len = binary_string.length
+    var bytes = new Uint8Array( len )
+    for (var i = 0; i < len; i++) { bytes[i] = binary_string.charCodeAt(i) }
+    return bytes.buffer
+}
+
+function toFile(str, fileName = 'diff.txt') {
+    var file = btoa(unescape(encodeURIComponent(str)))
+    var data = base64ToArrayBuffer(file)
+    var blob = new Blob([data], {type: 'octet/stream'})
+    var fileName = fileName
+    
+    var a = document.createElement('a')
+    document.body.appendChild(a)
+    a.style = 'display: none'
+    var url = window.URL.createObjectURL(blob)
+    a.href = url
+    a.download = fileName
+    a.click()
+    window.URL.revokeObjectURL(url)
+}
+
+toFile('hello world', 'hello.txt')
+---
 function base64ToArrayBuffer(base64) {
   var binary_string = window.atob(base64)
   var len = binary_string.length
@@ -3638,7 +3666,7 @@ if (window.navigator.msSaveOrOpenBlob) {
     window.URL.revokeObjectURL(url)
 }
 )
-code(Var)
+txtit(Var)
 return
 
 
