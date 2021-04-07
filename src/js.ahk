@@ -4652,6 +4652,8 @@ export const delay = t => new Promise((resolve, reject) => {
         resolve(t)
    }, t)
 })
+
+const sleep = t => new Promise((resolve, reject) => setTimeout(() => window.requestAnimationFrame(() => resolve(t)), t))
 )
 code(Var)
 return
@@ -16378,9 +16380,53 @@ return
 ::lazyload::
 ::lazyimg::
 ::lazyimage::
+::lazydo::
+::lazyfor::
+::lazyfordo::
 Var = 
 (
+// 懒遍历执事（不返回任何数据，只负责执行）
+const lazyForDo = async (ary = [], n = 1, fn = () => {}, timer = 0) => {
+    // 数组切片分组
+    const division = (ary, num, container = {}) => {
+        for (let page = 0; page < Math.ceil(ary.length / num); page++) {
+            container[page] = ary.slice(page * num, (page + 1) * num)
+        }
+        return container
+    }
 
+    // 切割为 n 组
+    const slice = division(ary, ary.length / n, [])
+
+    // 开始递归
+    return (async function poll(index = 0, prevResult = null) {
+        // 本次切片数据
+        const data = slice[index]
+
+        // 执行本次函数
+        const result = await fn(data, prevResult)
+
+        // 延迟工具
+        const sleep = t => new Promise((resolve, reject) => setTimeout(() => window.requestAnimationFrame(() => resolve(t)), t))
+
+        if (index < n - 1) {
+            // 休眠
+            await sleep(timer)
+
+            // 下一次轮询
+            return poll(++index, result)
+        }
+    })(0)
+}
+
+;(async () => {
+  const data = [1, 2, 3, 4, 5, 6]
+  const num = 3
+  const render = data => console.log(data)
+  await lazyForDo(data, num, render)
+  console.log('finish')
+})();
+---
 /**
  * 图片懒加载
  * https://www.liaoxuefeng.com/article/00151045553343934ba3bb4ed684623b1bf00488231d88d000

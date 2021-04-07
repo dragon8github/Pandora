@@ -340,8 +340,9 @@ scene.add(ambient)
 txtit(Var)
 return
 
-::three.map::
-::threemap::
+:?:threem::
+:?:three.map::
+:?:threemap::
 Var =
 (
 <!DOCTYPE html>
@@ -464,10 +465,10 @@ Var =
         var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000)
 
         // 设置相机位置
-        camera.position.set(104, -105, 200)
+        camera.position.set(104, -100, 200)
 
         // 设置相机方向(指向的场景对象)
-        camera.lookAt(104, 35, 0)
+        camera.lookAt(104, 38, 0)
 
         /* 创建渲染器对象 */
         var renderer = new THREE.WebGLRenderer({ 
@@ -500,7 +501,7 @@ Var =
 
         // 修复控件与 camera.lookAt 的问题
         // 只需要设置跟 camera.lookAt 保持一致即可
-        controls.target.set(104, 35, 0)
+        controls.target.set(104, 38, 0)
 
         controls.update()
 
@@ -633,5 +634,5 @@ Var =
     </script>
 </html>
 )
-code(Var)
+txtit(Var)
 return

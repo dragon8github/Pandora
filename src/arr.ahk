@@ -1039,3 +1039,79 @@ function getDeepth(array) {
 )
 code(Var)
 return
+
+::fenzu::
+Var =
+(
+// 就像分页一样。
+// 1、页码 page：从 0 开始
+// 2、数量 num：3
+// 3、次数：Math.ceil
+// 4、使用Array.prototype.slice切割。不会改变原数组
+// 公式：a.slice(page * num, page + 1 * num)
+
+/*
+var ary = [1,2,3,4,5,6,7,8,9,10]
+var num = 3
+var count = Math.ceil(ary.length / num)
+for (var page = 0; page < count; page++) {
+    console.log(ary.slice(page * num, (page + 1) * num))
+}
+*/
+
+const ary = [1,2,3,4,5,6,7,8,9,10]
+const num = 3
+// 如果你的需求是：要分成N组，那么第二个参数可以换成： ary.length / N
+const division = (ary, num, container = {}) => {
+    for (let page = 0; page < Math.ceil(ary.length / num); page++) {
+      container[page] = ary.slice(page * num, (page + 1) * num)
+    }
+    return container
+}
+// demo
+division(ary, num, {}) // or division(ary, num, [])
+---
+// 懒遍历执事（不返回任何数据，只负责执行）
+const lazyForDo = async (ary = [], n = 1, fn = () => {}, timer = 0) => {
+    // 数组切片分组
+    const division = (ary, num, container = {}) => {
+        for (let page = 0; page < Math.ceil(ary.length / num); page++) {
+            container[page] = ary.slice(page * num, (page + 1) * num)
+        }
+        return container
+    }
+
+    // 切割为 n 组
+    const slice = division(ary, ary.length / n, [])
+
+    // 开始递归
+    return (async function poll(index = 0, prevResult = null) {
+        // 本次切片数据
+        const data = slice[index]
+
+        // 执行本次函数
+        const result = await fn(data, prevResult)
+
+        // 延迟工具
+        const sleep = t => new Promise((resolve, reject) => setTimeout(() => window.requestAnimationFrame(() => resolve(t)), t))
+
+        if (index < n - 1) {
+            // 休眠
+            await sleep(timer)
+
+            // 下一次轮询
+            return poll(++index, result)
+        }
+    })(0)
+}
+
+;(async () => {
+  const data = [1, 2, 3, 4, 5, 6]
+  const num = 3
+  const render = data => console.log(data)
+  await lazyForDo(data, num, render)
+  console.log('finish')
+})();
+)
+txtit(Var)
+return

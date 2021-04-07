@@ -1,4 +1,8 @@
-﻿; 强制无条件安装键盘钩子.
+﻿; news: 注意，如果下面的代码中如果处在 #IfWinNotActive 系列的 API ，那这个会失效。也就是覆盖了这个语法，譬如 jietu.ahk 那个
+; 所以，要检查一下 「#ifWin」 关键词，如果存在的话，要移到最下边引用。
+#IfWinNotActive, 神武
+
+; 强制无条件安装键盘钩子.
 #InstallKeybdHook 
 
 ; 决定当脚本已经运行时是否允许它再次运行. Force: 跳过对话框并自动替换旧实例, 效果类似于 Reload 命令.
@@ -9,6 +13,7 @@
 
 ; 允许每个变量使用 256 MB.
 #MaxMem 256
+
 
 ; 设置为tab键作为终止符（也可以加入回车键）`n
 Hotstring("EndChars", "`t")  
@@ -24,6 +29,7 @@ global latestImageName := ""
 global todoList := ""
 global __ALTCTRL__ := []
 
+
 /**
 //////////////////////////////////////////////
 说明一下： GUI的初始化必须置顶 
@@ -35,6 +41,9 @@ global __ALTCTRL__ := []
 #Include src/Card.ahk	      ; card
 /**//////////////////////////////////////////////
 */
+
+
+
 #Include src/WinClip/WinClipAPI.ahk
 #Include src/WinClip/WinClip.ahk
 
@@ -46,9 +55,10 @@ global __ALTCTRL__ := []
 #Include src/Lua.ahk              ; secondkey_board 
 #Include src/OCR.ahk              ; OCR
 #Include src/local.ahk            ; LOCAL
-#Include src/jietu.ahk			  ; 截图：https://www.autoahk.com/archives/28754 （依赖 Gdip.ahk，源码中被我删除了大量的重复代码）
 
 
+
+#Include src/three2.ahk           ; THREE
 #Include src/bilibili.ahk	      ; bilibili
 #Include src/makedown.ahk         ; makedown
 #Include src/cdn.ahk              ; CDN
@@ -81,13 +91,12 @@ global __ALTCTRL__ := []
 #Include src/php.ahk              ; php	
 #Include src/help.ahk             ; 辅助功能
 #Include src/ten.ahk              ; Tensorflow.js
+#Include src/jietu.ahk			  ; 截图：https://www.autoahk.com/archives/28754 （依赖 Gdip.ahk，源码中被我删除了大量的重复代码）
 
 ; #Include src/flutter.ahk	      ; flutter
-#Include src/three2.ahk          ; THREE
 ; #Include src/reactNative.ahk    ; ReactNative
 ; #Include src/taro.ahk	          ; taro
 ; #Include src/sql.ahk            ; sql
-
 
 
 !F12::
@@ -107,4 +116,7 @@ clipboard := Title
 
 WinGetPos, X, Y, W, H, %Title%
 MsgBox, %X% , %Y% | %W% x %H%
+
+WinGetClass, class, A
+MsgBox, The active window's class is "%class%".
 return
