@@ -4,6 +4,100 @@
 ::three.js::
 Var =
 (
+<template>
+    <div class="space" ref="space"></div>
+</template>
+
+<script>
+import * as THREE from 'three'
+import { MapControls } from 'three/examples/jsm/controls/OrbitControls.js'
+export default {
+    name: 'index',
+    data() {
+        return {
+            scene: null,
+            camera: null,
+            renderer: null,
+            controls: null,
+        }
+    },
+    methods: {
+        Awake(v) {
+            const space = this.$refs.space
+
+            // init scene
+            this.scene = new THREE.Scene()
+            this.scene.background = new THREE.Color(0x222222)
+
+            // Init Camera
+            this.camera = new THREE.PerspectiveCamera(25, window.clientWidth / window.clientHeight, 1, 100)
+            this.camera.position.set(8, 4, 0)
+
+            // init Light
+            let light0 = new THREE.AmbientLight(0xfafafa, 0.25)
+            let light1 = new THREE.PointLight(0xfafafa, 0.4)
+            light1.position.set(200, 90, 40)
+            let light2 = new THREE.PointLight(0xfafafa, 0.4)
+            light2.position.set(200, 90, -40)
+
+            this.scene.add(light0)
+            this.scene.add(light1)
+            this.scene.add(light2)
+
+            let grid = new THREE.GridHelper(60, 160, new THREE.Color(0x555555), new THREE.Color(0x333333))
+            this.scene.add(grid)
+
+            let geometry = new THREE.BoxGeometry(1, 1, 1)
+            let material = new THREE.MeshLambertMaterial({ color: 0x00ff00 })
+            let cube = new THREE.Mesh(geometry, material)
+            this.scene.add(cube)
+
+            // Init Renderer
+            this.renderer = new THREE.WebGLRenderer({ antialias: true, })
+            this.renderer.setPixelRatio(window.devicePixelRatio)
+            this.renderer.setSize(window.innerHeight, window.innerHeight)
+
+            space.appendChild(this.renderer.domElement)
+
+            // 旋转控件
+            this.controls = new MapControls(this.camera, this.renderer.domElement)
+            this.controls.enableDamping = true
+            this.controls.dampingFactor = 0.25
+            this.controls.screenSpacePanning = false
+            this.controls.maxDistance = 800
+
+            this.controls.update()
+
+            this.Update()
+        },
+        Update() {
+            window.requestAnimationFrame(this.Update)
+
+            this.renderer.render(this.scene, this.camera)
+            this.controls.update()
+        }
+    },
+    mounted() {
+        this.Awake()
+
+        const resizeHandler = () => {
+            this.camera.aspect = window.innerWidth / window.innerHeight
+            this.camera.updateProjectionMatrix()
+            this.renderer.setSize(window.innerWidth, window.innerHeight)
+        }
+
+        window.addEventListener('resize', resizeHandler)
+
+        resizeHandler()
+    },
+}
+</script>
+
+<style lang="scss" scoped>
+.index {
+}
+</style>
+---
 <!DOCTYPE html>
 <html lang="en">
     <head>
