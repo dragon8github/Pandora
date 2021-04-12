@@ -2604,3 +2604,31 @@ app.listen(process.env.PORT || 3000, () => {
 )
 code(Var)
 return
+
+:?:node.git::
+Var =
+(
+const { getLastCommit } = require('git-last-commit')
+
+const getGitCommit = () => new Promise((resolve, reject) => getLastCommit((err, commit) => {
+    if (err) reject(err)
+    return resolve(commit)
+}))
+
+;(async () => {
+    const { subject } = await getGitCommit() 
+
+    // TODO: 
+    // 1、只有 # 的情况
+    // 2、没有任何东西的情况？会显示 Merge branch 'master' of 
+    if (subject.includes('#')) {
+        console.log(20210409180745, subject)
+    } 
+    
+    if (subject.includes(`Merge branch 'master' of`)) {
+        console.log(20210409180749, '')
+    }
+})();
+)
+txtit(Var)
+return

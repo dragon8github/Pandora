@@ -97,7 +97,10 @@ global __ALTCTRL__ := []
 ; #Include src/reactNative.ahk    ; ReactNative
 ; #Include src/taro.ahk	          ; taro
 ; #Include src/sql.ahk            ; sql
+#IfWinNotActive
 
+; 神武专用（没准以后可以写点脚本）
+#include src/sw.ahk
 
 !F12::
 	Suspend
@@ -119,4 +122,9 @@ MsgBox, %X% , %Y% | %W% x %H%
 
 WinGetClass, class, A
 MsgBox, The active window's class is "%class%".
+return
+
+
+!z::
+
 return

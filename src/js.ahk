@@ -1,4 +1,16 @@
-﻿
+﻿>^/::
+>^+/::
+Var =
+(
+/**
+ * say something ...
+ */
+)
+code(Var)
+Send, {up}
+Send, +{End}
+return
+
 ::xiangsidu::
 ::juli::
 Var =
@@ -8581,16 +8593,6 @@ Var =
 code(Var)
 return
 
->^/::
-Var = 
-(
-/**
- * say something ...
- *
- */
-)
-code(Var)
-return
 
 ::lstest::
 ::lgtest::
