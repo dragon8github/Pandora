@@ -683,11 +683,11 @@ Gui, Pandora:Add, Link,, <a href="https://rancher.ioc.com/p/local:p-486kn/worklo
 Gui, Pandora:Add, Text,  W140 yp+50, 疫情地图
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/covid-19">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/68/interface/api">yapi</a>
-Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/covid-19-map?tab=history">部署地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
-Gui, Pandora:Add, Link,, <a href="https://covid-map.dg.cn/covid-19-map/">正式环境</a>
-Gui, Pandora:Add, Link,, <a href="http://19.104.50.128:8080">正式Jenkins</a>
-Gui, Pandora:Add, Link,, <a href="http://19.104.50.124/covid-19-map/#/login">正式环境http</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins打包</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.128:8080/login">Jenkins部署</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.124/covid-19-map/#/index">正式环境http</a>
+Gui, Pandora:Add, Link,, <a href="https://19.104.50.124/covid-19-pc/#/index">PC正式环境http</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 东莞疫情

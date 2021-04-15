@@ -3253,6 +3253,7 @@ watch: {
 code(Var)
 return
 
+::vue3.router::
 ::router.init::
 ::route.init::
 ::vue.router::
