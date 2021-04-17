@@ -423,9 +423,12 @@ return
 ::.net::
 Var =
 (
-Unity3d
+Unity3d、虚幻引擎
+我了解到模型的格式是 GLTF
+我了解到 3dmax 、 blender、Maya
+建筑模型数据可以是：geoJSON、KML
 )
-code(Var)
+txtit(Var)
 return
 
 ::ax::
