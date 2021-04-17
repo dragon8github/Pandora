@@ -218,7 +218,7 @@ const mesh1 = new THREE.Mesh(geometry1, material1)
 mesh.position.set(0, 0, 0)
 scene.add(mesh1)
 
-// 球体
+// 球体（第一个参数是 radis，第二第三个参数保持40即可圆形，否则会变成棱角）
 const geometry2 = new THREE.SphereGeometry(60, 40, 40)
 const material2 = new THREE.MeshLambertMaterial({ color: 0xff00ff, })
 const mesh2 = new THREE.Mesh(geometry2, material2)
@@ -344,16 +344,21 @@ controls.addEventListener('change', render)
 scene.add(new THREE.AxesHelper(300))
 // 辅助网格线
 scene.add(new THREE.GridHelper(300, 25, 0x004444, 0x004444))
----
+
+
+// 更好看的网格
+let grid = new THREE.GridHelper(60, 160, new THREE.Color(0x555555), new THREE.Color(0x333333))
+this.scene.add(grid)
+
 // debug(scene, 400, 200, 300)
 export function debug(scene, x = 0, y = 0, z = 0, size = 10) {
-    const geometry1 = new THREE.SphereGeometry(size, size, size)
-    const material1 = new THREE.MeshLambertMaterial({ color: 0x0000ff })
-    const mesh = new THREE.Mesh(geometry1, material1)
+    const geometry = new THREE.SphereGeometry(size, 40, 40)
+    const material = new THREE.MeshLambertMaterial({ color: 0xff0000 })
+    const mesh = new THREE.Mesh(geometry, material)
     mesh.position.set(x, y, z)
     scene.add(mesh)
 }
-
+---
 // （☀️）本节课重点：地图 mapGroup 的包围盒计算
 // 创建一个包围盒
 var box3 = new THREE.Box3()

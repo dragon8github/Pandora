@@ -677,6 +677,7 @@ Pokemon
 code(Var)
 return
 
+::lunkuo::
 ::py::
 ::quyu::
 Var =
@@ -996,6 +997,8 @@ if (!OutVar|| OutVar != 255) {
 	WinSet, Transparent, 180, A
 }
 return
+
+
 
 >^z::
 ; 获取最新截图的base64
@@ -3104,6 +3107,7 @@ Var =
 code(Var)
 return
 
+::caizhi::
 ::sucai::
 ::cailiao::
 ::m::

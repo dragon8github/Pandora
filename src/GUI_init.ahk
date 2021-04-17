@@ -208,9 +208,9 @@ Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1280, 常用 | 工作坊 | 创慧
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/Pandora">Lastest Pandora</a>
+Gui, Pandora:Add, Link,, <a href="https://gen-vue-1255983702.cos-website.ap-guangzhou.myqcloud.com/">布局生成器</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com">github</a>
-Gui, Pandora:Add, Link,, <a href="https://app.gitbook.com/">gitbook</a>
 Gui, Pandora:Add, Link,, <a href="https://cylee.top/">cylee.top</a>
 Gui, Pandora:Add, Link,, <a href="https://ecs.console.aliyun.com/#/home">阿里云控制台</a>
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/lizhaohong/bpigt2/uk0pkf">一动也不动</a>
@@ -683,11 +683,11 @@ Gui, Pandora:Add, Link,, <a href="https://rancher.ioc.com/p/local:p-486kn/worklo
 Gui, Pandora:Add, Text,  W140 yp+50, 疫情地图
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/covid-19">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/68/interface/api">yapi</a>
-Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/covid-19-map?tab=history">部署地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
-Gui, Pandora:Add, Link,, <a href="https://covid-map.dg.cn/covid-19-map/">正式环境</a>
-Gui, Pandora:Add, Link,, <a href="http://19.104.50.128:8080">正式Jenkins</a>
-Gui, Pandora:Add, Link,, <a href="http://19.104.50.124/covid-19-map/#/login">正式环境http</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins打包</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.128:8080/login">Jenkins部署</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.124/covid-19-map/#/index">正式环境http</a>
+Gui, Pandora:Add, Link,, <a href="https://19.104.50.124/covid-19-pc/#/index">PC正式环境http</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, 东莞疫情
@@ -1066,6 +1066,8 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/gbrian/grafana-echart-panel
 Gui, Pandora:Add, Text, W140 ys, 地图辅助库：
 Gui, Pandora:Add, Link,, <a href="http://turfjs.org/docs/#bearing">turfjs</a>
 
+
+
 Gui, Pandora:Add, Text,  W140 yp+50, 顺眼测试框架：
 Gui, Pandora:Add, Link,, <a href="https://github.com/avajs/ava">ava</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/avajs/ava-docs/blob/master/zh_CN/readme.md">ava 中文文档</a>
@@ -1295,6 +1297,11 @@ Gui, Pandora:Add, Link, W60, <a href="http://19.106.86.238/ktdv/#cesium-docs/exa
 
 Gui, Pandora:Add, Text,  W140  Section xs yp+260, Turf.js中文网:
 Gui, Pandora:Add, Link,, <a href="https://turfjs.fenxianglu.cn/category/measurement/distance.html">Turf.js中文网</a>
+
+
+Gui, Pandora:Add, Text,  W140 ys, three.js：
+Gui, Pandora:Add, Link,, <a href="https://threejs.org/docs/">中文文档</a>
+
 
 ;@css 
 Gui, Pandora:Tab, 10

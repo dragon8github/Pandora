@@ -1,4 +1,16 @@
-﻿
+﻿>^/::
+>^+/::
+Var =
+(
+/**
+ * say something ...
+ */
+)
+code(Var)
+Send, {up}
+Send, +{End}
+return
+
 ::xiangsidu::
 ::juli::
 Var =
@@ -178,11 +190,14 @@ document.designMode = 'on'
 code(Var)
 return
 
+::find::
 ::findl::
+::findr::
 ::findleft::
+::findright::
 Var =
 (
-// 向左查询
+// 自右往左查询
 var findLeft = (ary = [], exp = () => false) => {
     // 从后往前查询
     for (var i = ary.length - 1; i >= 0; i--) {
@@ -190,10 +205,23 @@ var findLeft = (ary = [], exp = () => false) => {
     }
     return null
 }
+
+// 自右往左查询（索引）
+var findLeftIndex = (ary = [], exp = () => false) => {
+    // 从后往前查询
+    for (var i = ary.length - 1; i >= 0; i--) {
+        if (exp(ary[i])) return i
+    }
+
+    return -1
+}
 )
 txtit(Var)
 return
 
+
+::juzhen::
+::sanj::
 ::sin::
 ::tab::
 ::cos::
@@ -204,6 +232,7 @@ return
 ::goududingli::
 ::sanjiaohanshu::
 ::hudu::
+::sj::
 Var =
 (
 // 计算机默认使用的是弧度制，为了方便我们继续使用生活中习惯的角度，这里用公式将角度转换为弧度： 
@@ -211,6 +240,19 @@ Var =
 // 角度 = 弧度 * 180 / PI
 const sin = angle => Math.sin((angle * Math.PI) / 180)
 const cos = angle => Math.cos((angle * Math.PI) / 180)
+
+// 角度转弧度
+// 弧度 = 角度 * pi / 180
+var radians = degrees * Math.PI / 180
+
+// 弧度转角度
+// 角度 = 弧度 * 180 / PI
+var degrees = radians * 180 / Math.PI
+
+
+const 角度转弧度 = 角度 => 角度 * Math.PI / 180
+const 弧度转角度 = 弧度 => 弧度 * Math.PI / 180
+
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -301,9 +343,654 @@ getWidthAndRotation (left, right) {
     return { c, rotate }
 },
 */
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100`%;
+                background: radial-gradient(ellipse at bottom, #1b2735 0`%, #090a0f 100`%);
+                overflow: hidden;
+            }
+
+            .container {
+                position: relative;
+                width: 1000px;
+                height: 700px;
+                margin: 0 auto;
+            }
+
+            .box {
+                position: absolute;
+                width: 2rem;
+                height: 2rem;
+                background-color: yellow;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app" class="container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </body>
+    <script>
+        // 容器
+        const container = document.querySelector('.container')
+
+        // 获取容器下所有元素
+        const elements = container.querySelectorAll('.box')
+
+        //中心点横坐标
+        const dotLeft = container.clientWidth / 2
+
+        //中心点纵坐标
+        const dotTop = container.clientHeight / 2
+
+        //起始角度
+        let stard = 0
+
+        //半径
+        let radius = 200
+
+        //每一个BOX对应的角度;
+        const angle = 360 / elements.length
+
+        // 计算机默认使用的是弧度制，为了方便我们继续使用生活中习惯的角度，这里用公式将角度转换为弧度：
+        // 弧度 = 角度 * Math.PI / 180
+        // 角度 = 弧度 * 180 / PI
+        const sin = angle => Math.sin((angle * Math.PI) / 180)
+        const cos = angle => Math.cos((angle * Math.PI) / 180)
+
+        elements.forEach((ele, index) => {
+            const x = sin(angle * index) * radius + dotLeft
+            const y = cos(angle * index) * radius + dotTop
+
+            // ele.style.left = x + 'px'
+            // ele.style.top = y + 'px'
+            ele.style.transform = `translate3d(${x}px, ${y}px, 0)`
+        })
+    </script>
+</html>
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100`%;
+                background: #000;
+                overflow: hidden;
+            }
+
+            .container {
+                position: relative;
+                width: 1000px;
+                height: 700px;
+                margin: 0 auto;
+            }
+
+            .box {
+                position: absolute;
+                width: 2rem;
+                height: 2rem;
+                background-color: yellow;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app" class="container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </body>
+    <script>
+        // 容器
+        const container = document.querySelector('.container')
+
+        // 获取容器下所有元素
+        const elements = container.querySelectorAll('.box')
+
+        //中心点横坐标
+        const dotLeft = container.clientWidth / 2
+
+        //中心点纵坐标
+        const dotTop = container.clientHeight / 2
+
+        //起始角度
+        let stard = 0
+
+        //半径
+        let radius = 200
+
+        //每一个BOX对应的角度;
+        const angle = 360 / elements.length
+
+        // 计算机默认使用的是弧度制，为了方便我们继续使用生活中习惯的角度，这里用公式将角度转换为弧度：
+        // 弧度 = 角度 * Math.PI / 180
+        // 角度 = 弧度 * 180 / PI
+        const sin = angle => Math.sin((angle * Math.PI) / 180)
+        const cos = angle => Math.cos((angle * Math.PI) / 180)
+
+        // 当前旋转的进度
+        let progress = 0
+
+        // 步进的速度
+        const step = 0.5
+
+        function render() {
+            // 步进进度（单位：角度）
+            progress = (progress += step) `% 360
+
+            // 按速度来定位DIV元素
+            elements.forEach((ele, index) => {
+                // 元素当前的位置 = 初始位置 + 步进进度
+                const position = (angle * index) + progress
+
+                // 椭圆与三角函数：x=acosθ, y=bsinθ（a 椭圆长边, b 椭圆短边）
+                const x = cos(position) * radius + dotLeft
+                const y = sin(position) * radius + dotTop
+
+                // ele.style.left = x + 'px'
+                // ele.style.top = y + 'px'
+                ele.style.transform = `translate3d(${x}px, ${y}px, 0)`
+            })
+
+            // 类似 window.requestAnimationFrame
+            setTimeout(render, 1000 / 40)
+        }
+
+        render()
+    </script>
+</html>
+---
+输入快捷键：juzhen2
 )
 txtit(Var)
 return
+
+::juzhen2::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background: #000000;
+                width: 100`%;
+                height: 100`%;
+                overflow: hidden;
+            }
+
+            .container {
+                position: relative;
+                width: 1000px;
+                height: 800px;
+                margin: 0 auto;
+            }
+
+            .container img {
+                position: absolute;
+                width: 293px;
+                height: 144px;
+                background: #000;
+                color: #ffffff;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <img class='box' src="images/img001.jpg" />
+            <img class='box' src="images/img002.jpg" />
+            <img class='box' src="images/img003.jpg" />
+            <img class='box' src="images/img004.jpg" />
+            <img class='box' src="images/img005.jpg" />
+            <img class='box' src="images/img006.jpg" />
+            <img class='box' src="images/img007.jpg" />
+            <img class='box' src="images/img008.jpg" />
+            <img class='box' src="images/img009.png" />
+            <img class='box' src="images/img010.jpg" />
+        </div>
+    </body>
+    <script>
+        // 容器
+        const container = document.querySelector('.container')
+        // 获取容器下所有元素
+        const elements = container.querySelectorAll('.box')
+
+        // （这里减去100是为了视觉居中）可以尝试改为 0 看看效果。
+        const offset = 100
+        // 中心点（O）横坐标 x （这里减去100是为了视觉居中）
+        const dotLeft = container.clientWidth / 2 - offset
+        // 中心点（O）纵坐标 y （这里减去100是为了视觉居中）
+        const dotTop = container.clientHeight / 2 - offset
+
+        // 椭圆长半径
+        const a = 460
+        // 椭圆短半径
+        const b = 120
+      
+        // 计算机默认使用的是「弧度制」，为了方便我们继续使用生活中习惯的角度，这里用公式将「角度转换为弧度」： 
+        // 弧度 = 角度 * Math.PI / 180
+        // 角度 = 弧度 * 180 / PI
+        const sin = angle => Math.sin(angle * Math.PI / 180)
+        const cos = angle => Math.cos(angle * Math.PI / 180)
+
+        // 每一个 BOX 对应的「角度」
+        const angle = 360 / elements.length
+
+        // 图片的宽高（通过 css 固定了每个元素的宽高，所以取第一个即可）
+        const width = elements[0].clientWidth
+        const height = elements[0].clientHeight
+
+        // 最高点/最远点
+        const __TOP__ = dotTop + offset
+
+        // 当前旋转的进度
+        let progress = 0
+
+        // 步进的速度
+        const step = 0.5
+
+        function render() {
+            // 步进进度（单位：角度）
+            progress = (progress += step) `% 360
+
+            // 按速度来定位DIV元素
+            elements.forEach((ele, index) => {
+                // 元素当前的位置 = 初始位置 + 步进进度
+                const position = (angle * index) + progress
+
+                // 椭圆与三角函数：x=acosθ, y=bsinθ（a 椭圆长边, b 椭圆短边）
+                const x = cos(position) * a + dotLeft
+                const y = sin(position) * b + dotTop
+
+                // 当前元素top / 总体 TOP
+                const proportion = y / __TOP__
+
+                // ele.style.left = x + 'px'
+                // ele.style.top = y + 'px'
+                ele.style.transform = `translate3d(${x}px, ${y}px, 0)`
+                
+                //「y 轴越往上，大小比例和透明比例越少」
+                ele.style.width = proportion * width + 'px'
+                ele.style.height = proportion * height + 'px'
+                ele.style.opacity = proportion
+                ele.style.zIndex = Math.ceil(proportion * 10)
+                
+
+                // 是否为 90° 站在舞台 MVP 位置？
+                // fixbug: 虽然理论上是90°，但实际上还要加上 box 宽度的一半（类似 css 居中方案）。所以这里多增加 N°
+                ele.__MVP__ = position `% 360 === 93
+            })
+
+            // 是否有一个元素站在舞台 MVP 位置
+            const hasMVP = [...elements].find(ele => ele.__MVP__)
+
+            // 类似 window.requestAnimationFrame
+            setTimeout(render, 1000 / 40)
+        }
+
+        render()
+    </script>
+</html>
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background: #000000;
+                width: 100`%;
+                height: 100`%;
+                overflow: hidden;
+            }
+
+            .container {
+                position: relative;
+                width: 1000px;
+                height: 800px;
+                margin: 0 auto;
+            }
+
+            .container img {
+                position: absolute;
+                width: 293px;
+                height: 144px;
+                background: #000;
+                color: #ffffff;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <img src="images/img001.jpg" />
+            <img src="images/img002.jpg" />
+            <img src="images/img003.jpg" />
+            <img src="images/img004.jpg" />
+            <img src="images/img005.jpg" />
+            <img src="images/img006.jpg" />
+            <img src="images/img007.jpg" />
+            <img src="images/img008.jpg" />
+            <img src="images/img009.png" />
+            <img src="images/img010.jpg" />
+        </div>
+    </body>
+    <script>
+        // 容器
+        const container = document.querySelector('.container')
+        // 获取容器下所有元素
+        const elements = container.querySelectorAll('img')
+
+        // （这里减去100是为了视觉居中）可以尝试改为 0 看看效果。
+        const offset = 100
+        // 中心点（O）横坐标 x （这里减去100是为了视觉居中）
+        const dotLeft = container.clientWidth / 2 - offset
+        // 中心点（O）纵坐标 y （这里减去100是为了视觉居中）
+        const dotTop = container.clientHeight / 2 - offset
+
+        // 椭圆长半径
+        const a = 460
+        // 椭圆短半径
+        const b = 120
+      
+        // 计算机默认使用的是「弧度制」，为了方便我们继续使用生活中习惯的角度，这里用公式将「角度转换为弧度」： 
+        // 弧度 = 角度 * Math.PI / 180
+        // 角度 = 弧度 * 180 / PI
+        const sin = angle => Math.sin(angle * Math.PI / 180)
+        const cos = angle => Math.cos(angle * Math.PI / 180)
+
+        // 每一个 BOX 对应的「角度」
+        const angle = 360 / elements.length
+
+        // 图片的宽高（通过 css 固定了每个元素的宽高，所以取第一个即可）
+        const width = elements[0].clientWidth
+        const height = elements[0].clientHeight
+
+        // 最高点/最远点
+        const __TOP__ = dotTop + offset
+
+        // 当前旋转的进度
+        let progress = 0
+
+        // 步进的速度
+        const step = 0.5
+
+        // 轮询器
+        let __timer__ = null
+
+        function render() {
+            // 步进进度（单位：角度）
+            progress = (progress += step) `% 360
+
+            // 按速度来定位DIV元素
+            elements.forEach((ele, index) => {
+                // 元素当前的位置 = 初始位置 + 步进进度
+                const position = (angle * index) + progress
+
+                // 椭圆与三角函数：x=acosθ, y=bsinθ（a 椭圆长边, b 椭圆短边）
+                const x = cos(position) * a + dotLeft
+                const y = sin(position) * b + dotTop
+
+                // 当前元素top / 总体 TOP
+                const proportion = y / __TOP__
+
+                // ele.style.left = x + 'px'
+                // ele.style.top = y + 'px'
+                ele.style.transform = `translate3d(${x}px, ${y}px, 0)`
+                
+                //「y 轴越往上，大小比例和透明比例越少」
+                ele.style.width = proportion * width + 'px'
+                ele.style.height = proportion * height + 'px'
+                ele.style.opacity = proportion
+                ele.style.zIndex = Math.ceil(proportion * 10)                
+
+                // 是否为 90° 站在舞台 MVP 位置？
+                // fixbug: 虽然理论上是90°，但实际上还要加上 box 宽度的一半（类似 css 居中方案）。所以这里多增加 N°
+                ele.__MVP__ = position `% 360 === 93
+            })
+
+            // 是否有一个元素站在舞台 MVP 位置
+            const hasMVP = [...elements].find(ele => ele.__MVP__)
+
+            // 类似 window.requestAnimationFrame
+            __timer__ = setTimeout(render, hasMVP ? 3000 : 1000 / 40)
+        }
+
+        render()
+
+        // 添加鼠标事件控制暂停/开启
+        ;[...elements].forEach((element, index) => {
+            element.addEventListener('mouseleave', () => {
+                __timer__ === null && render()
+            })
+
+            element.addEventListener('mouseover', () => {
+                __timer__ && clearTimeout(__timer__)
+                __timer__ = null
+            })
+        })
+    </script>
+</html>
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background: #000000;
+                width: 100`%;
+                height: 100`%;
+                overflow: hidden;
+            }
+
+            .container {
+                position: relative;
+                width: 1000px;
+                height: 700px;
+                margin: 0 auto;
+            }
+
+            .container .box {
+                position: absolute;
+                width: 14rem;
+                height: 14rem;
+                background: url('./images/card.png') center / 100`% 100`% no-repeat;
+                color: #ffffff;
+                text-align: center;
+                font-size: 1.4rem;
+                transform-origin: 0`% 0`%;
+            }
+
+            /* box */
+            .box__name { font-size: 1.5rem; padding-top: .15em; }
+            .box__title { font-size: 1.3rem; }
+            .box__content { margin-top: 1.7rem; }
+            .box__item { color:skyblue; }
+            .box__count { color: yellow; }
+            .mt-1 { margin-top: .5em; }
+        </style>
+    </head>
+
+    <body>
+        <div id='app' class="container">
+            <div class='box' v-for='(item, index) in items' :key='index'>
+                <div class='box__name'>{{ item.name }}</div>
+                <div class='box__content'>
+                    <div class='box__title'>数据项（个）</div>
+                    <div class='box__item mt-1'>{{ item.item }}</div>
+                    <div class='box__title'>数据量（万条）</div>
+                    <div class='box__count mt-1'>{{ item.count }}</div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        /* 仅仅为了渲染数据列表才使用 「vue」，没有别的作用 */
+        new Vue({
+            el: '#app',
+            data: { items: [ { name: '商务部', item: 8, count: 2355 }, { name: '商务部', item: 8, count: 2355 }, { name: '商务部', item: 8, count: 2355 }, { name: '商务部', item: 8, count: 2355 }, { name: '商务部', item: 8, count: 2355 }, { name: '商务部', item: 8, count: 2355 }, { name: '商务部', item: 8, count: 2355 }, { name: '商务部', item: 8, count: 2355 }, { name: '商务部', item: 8, count: 2355 }, { name: '商务部', item: 8, count: 2355 }, ] }
+        })
+
+        ////////////// 
+        // 核心代码 // 
+        ////////////// 
+
+        // 容器
+        const container = document.querySelector('.container')
+        // 获取容器下所有元素
+        const elements = container.querySelectorAll('.box')
+
+        // 这里减去100是为了视觉居中，可以尝试改为 0 看看效果。当然，这也受 container 本身的宽高影响
+        const offset = 100
+        // 中心点（O）横坐标 x （这里减去100是为了视觉居中）
+        const dotLeft = container.clientWidth / 2 - offset
+        // 中心点（O）纵坐标 y （这里减去100是为了视觉居中）
+        const dotTop = container.clientHeight / 2 - offset
+
+        // 椭圆长半径
+        const a = 460
+        // 椭圆短半径
+        const b = 120
+
+        // 计算机默认使用的是「弧度制」，为了方便我们继续使用生活中习惯的角度，这里用公式将「角度转换为弧度」： 
+        // 弧度 = 角度 * Math.PI / 180
+        // 角度 = 弧度 * 180 / PI
+        const sin = angle => Math.sin(angle * Math.PI / 180)
+        const cos = angle => Math.cos(angle * Math.PI / 180)
+
+        // 每一个 BOX 对应的「角度」
+        const angle = 360 / elements.length
+
+        // 图片的宽高（通过 css 固定了每个元素的宽高，所以取第一个即可）
+        const width = elements[0].clientWidth
+        const height = elements[0].clientHeight
+
+        // 最高点/最远点
+        const __TOP__ = dotTop + offset
+
+        // 当前旋转的进度
+        let progress = 0
+
+        // 步进的速度
+        const step = 0.5
+
+        // 轮询器
+        let __timer__ = null
+
+        function render() {
+            // 步进进度（单位：角度）
+            progress = (progress += step) `% 360
+
+            // 按速度来定位DIV元素
+            elements.forEach((ele, index) => {
+                // 元素当前的位置 = 初始位置 + 步进进度
+                const position = (angle * index) + progress
+
+                // 椭圆与三角函数：x=acosθ, y=bsinθ（a 椭圆长边, b 椭圆短边）
+                const x = cos(position) * a + dotLeft
+                const y = sin(position) * b + dotTop
+
+                // 当前元素top / 总体 TOP
+                const proportion = y / __TOP__
+
+                ele.style.left = x + 'px'
+                ele.style.top = y + 'px'
+                
+                //「y 轴越往上，大小比例和透明比例越少」
+                ele.style.transform = `scale(${proportion})`
+                ele.style.opacity = proportion
+                ele.style.zIndex = Math.ceil(proportion * 10)
+                
+                /* （已废弃）只控制宽高会影响 box 内的字体，所以还是整体缩放吧 */
+                // ele.style.width = proportion * width + 'px'
+                // ele.style.height = proportion * height + 'px'
+
+                // 是否为 90° 站在舞台 MVP 位置？
+                // fixbug: 虽然理论上是90°，但实际上还要加上 box 宽度的一半（类似 css 居中方案）。所以这里多增加 N°
+                ele.__MVP__ = position `% 360 === 93
+            })
+
+            // 是否有一个元素站在舞台 MVP 位置
+            const hasMVP = [...elements].find(ele => ele.__MVP__)
+
+            // 类似 window.requestAnimationFrame
+            __timer__ = setTimeout(render, hasMVP ? 3000 : 1000 / 40)
+        }
+
+        render()
+
+        // 添加鼠标事件控制暂停/开启
+        ;[...elements].forEach((element, index) => {
+            element.addEventListener('mouseleave', () => {
+                __timer__ === null && render()
+            })
+
+            element.addEventListener('mouseover', () => {
+                __timer__ && clearTimeout(__timer__)
+                __timer__ = null
+            })
+        })
+    </script>
+</html>
+)
+txtit(Var)
+return
+
 
 ::say::
 Var =
@@ -8581,16 +9268,6 @@ Var =
 code(Var)
 return
 
->^/::
-Var = 
-(
-/**
- * say something ...
- *
- */
-)
-code(Var)
-return
 
 ::lstest::
 ::lgtest::
