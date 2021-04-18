@@ -418,14 +418,31 @@ Adobe Photoshop
 code(Var)
 return
 
+::3u::
+::u3::
+::u3d::
+::un3d::
+::un::
+Var =
+(
+Unity3d
+)
+code(Var)
+return
+
 ::3d::
 ::c#::
 ::.net::
 Var =
 (
-Unity3d、虚幻引擎
-我了解到模型的格式是 GLTF
-我了解到 3dmax 、 blender、Maya
+Unity3d
+虚幻引擎
+
+three.js 支持的格式：(大约50+种)
+「https://threejs.org/docs/#examples/zh/loaders/DRACOLoader」
+「https://threejs.org/examples/#webgl_loader_3dm」
+我了解到模型的格式是 GLTF、 MMD、 MTL、 STL 、OBJ、 PCD、 PDB、 PRWM、 SVG、 TGA、
+我了解到 3dmax 、 blender、 Maya、 substence、Solidworks
 建筑模型数据可以是：geoJSON、KML
 )
 txtit(Var)
