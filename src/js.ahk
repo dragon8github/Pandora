@@ -14617,6 +14617,20 @@ return
 ::js.meiju::
 Var = 
 (
+function getTranslationMap(rhyme) {
+  const rhymes = {
+    "apples and pears": "Stairs",
+    "hampstead heath": "Teeth",
+    "loaf of bread": "Head",
+    "pork pies": "Lies",
+    "whistle and flute": "Suit",
+  };
+  
+  return rhymes[rhyme.toLowerCase()] ?? "Rhyme not found";
+}
+
+getTranslationMap("apples and pears") // => Stairs
+---
 const Status = () => Object.create({})
 
 function StatusInner(name, index, desc) {
