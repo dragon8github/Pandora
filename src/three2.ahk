@@ -316,6 +316,13 @@ import { OrbitControls } from 'https://threejsfundamentals.org/threejs/resources
 import { CSS2DObject, CSS2DRenderer } from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/renderers/CSS2DRenderer.js'
 import { CSS3DObject, CSS3DRenderer } from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/renderers/CSS3DRenderer.js'
 
+<!--引入three.js三维引擎-->
+<script src="https://threejsfundamentals.org/threejs/resources/threejs/r115/build/three.min.js"></script>
+<!-- 引入threejs扩展控件OrbitControls.js -->
+<script src="https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/js/controls/OrbitControls.js"></script>
+<!-- 引入threejs扩展控件stats.min.js -->
+<script src="https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/js/libs/stats.min.js"></script>
+
 // 旋转控件
 var controls = new OrbitControls(camera, renderer.domElement)
 

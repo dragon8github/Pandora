@@ -3059,8 +3059,19 @@ Clipboard :=
 Send, ^x
 ClipWait, 2
 if (Clipboard != "") {
-  a := "『" . Clipboard . "』"
-  code(a)
+    ; 以换行符为分隔符切割为數組
+  array := StrSplit(Clipboard, "`r`n")
+
+  result := ""
+
+  ; 遍历数组
+  For key, value in array
+      if (key >= 1) {
+        ext := array.Length() == key ? "" : "`r`n"
+        result .= "『" . Trim(StrReplace(value, "`r`n")) . "』" . ext
+      }
+
+  code(result)
 }
 Clipboard := tmp
 return
@@ -3071,12 +3082,22 @@ Clipboard :=
 Send, ^x
 ClipWait, 2
 if (Clipboard != "") {
-  a := "「" . Clipboard . "」"
-  code(a)
+    ; 以换行符为分隔符切割为數組
+  array := StrSplit(Clipboard, "`r`n")
+
+  result := ""
+
+  ; 遍历数组
+  For key, value in array
+      if (key >= 1) {
+        ext := array.Length() == key ? "" : "`r`n"
+        result .= "「" . Trim(StrReplace(value, "`r`n")) . "」" . ext
+      }
+
+  code(result)
 }
 Clipboard := tmp
 return
-
 
 ::zyx::
 Var =

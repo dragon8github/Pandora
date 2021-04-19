@@ -473,7 +473,7 @@ Gui, Pandora:Add, Text, gNewautoscrollHtml W140 ys ,新建autoscroll.html
 Gui, Pandora:Add, Text, gNewscrollforeveryHtml W160,新建scrollforevery.html
 Gui, Pandora:Add, Text, gscrollTextHtml W160,新建scrollText.html
 Gui, Pandora:Add, Text, gWaterhtml W160,新建水球波纹带进度条
-Gui, Pandora:Add, Text, gxuanliyanhua W160,新建点击绚丽烟花效果.html
+; Gui, Pandora:Add, Text, gxuanliyanhua W160,新建点击绚丽烟花效果.html
 Gui, Pandora:Add, Text, gmaoboli W160,新建毛玻璃.html
 Gui, Pandora:Add, Text, gwangyejindutiao W160,新建网页阅读进度条.html
 Gui, Pandora:Add, Text, gemphhtml W160,新建更新提示波动图.html
@@ -485,17 +485,17 @@ Gui, Pandora:Add, Text, ginputyanhua W140,新建input烟花特效
 Gui, Pandora:Add, Text, grandcolorHtml W160,新建随机渐变色.html
 Gui, Pandora:Add, Text, ghackdiguo  W140,黑客帝国
 Gui, Pandora:Add, Text, gxiexiangougudingli  W140,斜线与勾股定理
-Gui, Pandora:Add, Text, gyoujiancaidanxinjian  W140,新建拦截右键菜单
 Gui, Pandora:Add, Text, gdomshengyin W180,只要 dom 改变就会发出声音
 Gui, Pandora:Add, Text, gsinaip W180,新浪接口获取ip地址
-Gui, Pandora:Add, Text, gvueecharts W140 , 新建纯v-chart.html
 Gui, Pandora:Add, Text, gjstuodongtanchuang W140 , 纯js实现拖动弹窗.html
+Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建复杂table.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable2 W140 , 新建复杂table2.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable3 W140 , 新建复杂table3.html
 
 
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+60,新建.echartsDemo.html（官方demo）
+Gui, Pandora:Add, Text, gvueecharts W140 , 新建纯v-chart.html
 Gui, Pandora:Add, Text, gNewEchartsPinHtml, 新建.pin.html(玫瑰饼图)
 Gui, Pandora:Add, Text, gNewEchartsLineHtml ,新建.Line.html（折线图）
 Gui, Pandora:Add, Text, gNewEchartsBarHtml ,新建.Bar.html（柱状图）
@@ -550,20 +550,19 @@ Gui, Pandora:Add, Text, gcsspinyinHtml W180, css正则匹配选择器实现拼�
 Gui, Pandora:Add, Text, gcsssearchtml W160, 新建简单CSS也能做搜索
 Gui, Pandora:Add, Text, gskeletonHtml W140,新建骨骼图.skeleton
 Gui, Pandora:Add, Text, gcssskeletonHtml W140,新建css骨骼图.skeleton
-Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
 Gui, Pandora:Add, Text, gscriptzhuruhtml W180, 新建书签栏脚本注入.html
 Gui, Pandora:Add, Text, gxiexianhtml W180, 新建勾股定理画斜线.html
-Gui, Pandora:Add, Text, gNewuploadHtml W160,新建读取本地目录/文件内容
-Gui, Pandora:Add, Text, gNewlshtml W160,新建读取本地目录列表
+; Gui, Pandora:Add, Text, gNewuploadHtml W160,新建读取本地目录/文件内容
+; Gui, Pandora:Add, Text, gNewlshtml W160,新建读取本地目录列表
 Gui, Pandora:Add, Text, ghtml2mdhtml W160,新建HTML2Markdown
 Gui, Pandora:Add, Text, gwebidehtml W160,新建在线编辑器webide
 Gui, Pandora:Add, Text, gprismhtml W160,prism代码高亮.html
 Gui, Pandora:Add, Text, gdom2imghtml W160,网页截图dom-to-image
 Gui, Pandora:Add, Text, gliveHtml W160,新建调用摄像头.html
 Gui, Pandora:Add, Text, grightmenuhtml W160, 新建右键菜单拦截.html
-Gui, Pandora:Add, Text, gworkerhtml W180, 新建worker.js.html
-Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
-Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建assert.html
+Gui, Pandora:Add, Text, gyoujiancaidanxinjian  W140,新建拦截右键菜单
+; Gui, Pandora:Add, Text, gNewCanvasHtml W140,新建Canvas.html
+; Gui, Pandora:Add, Text, gNewAsyncassertHtml W160,新建assert.html
 Gui, Pandora:Add, Text, gvideohtml W160, 新建video视频.html
 Gui, Pandora:Add, Text, gdialogHTML W140,新建HTML5.2 Dialog
 Gui, Pandora:Add, Text, gwebsocketHTML W140,新建WebSocket
@@ -705,6 +704,9 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/bigscre
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443">部署地址</a>
 Gui, Pandora:Add, Link,, <a href="https://219.135.182.2:6443/bigscreen-admin/">测试预览</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
+
+Gui, Pandora:Add, Text,  W140 yp+50, UI资源
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/ui">源码地址</a>
 
 
 
@@ -1301,6 +1303,7 @@ Gui, Pandora:Add, Link,, <a href="https://turfjs.fenxianglu.cn/category/measurem
 
 Gui, Pandora:Add, Text,  W140 ys, three.js：
 Gui, Pandora:Add, Link,, <a href="https://threejs.org/docs/">中文文档</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/mrdoob/three.js">github</a>
 
 
 ;@css 

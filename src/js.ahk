@@ -1,4 +1,62 @@
-﻿>^/::
+﻿::gui::
+Var =
+(
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.js"></script>
+    </head>
+
+    <body>
+    </body>
+
+    <script>
+        const gui = new dat.GUI()
+
+        // gui 会根据你的类型自动生成 UI（但是颜色需要使用 addColor）
+        var opts = {
+            field_color1: 0xffffff,
+            field_color2: "#ffae23",
+            field_color3: [ 0, 128, 255 ],
+            field_color4: [ 0, 128, 255, 0.3 ],
+            field_color5: { h: 350, s: 0.9, v: 0.3 },
+            
+            field_text: 'hello gui',
+            field_boolean: false,
+            field_range: 50,
+
+            field_minmax_step: 10,
+            field_select: 'foo',
+            field_select2: 1,
+
+            field_listen: 0,
+        }
+
+        gui.addColor(opts, 'field_color1').listen().onChange(console.log)
+        gui.addColor(opts, 'field_color2').listen().onChange(console.log)
+        gui.addColor(opts, 'field_color3').listen().onChange(console.log)
+        gui.addColor(opts, 'field_color4').listen().onChange(console.log)
+        gui.addColor(opts, 'field_color5').listen().onChange(console.log)
+
+        gui.add(opts, 'field_text').onChange(console.log)
+        gui.add(opts, 'field_boolean').onChange(console.log)
+        gui.add(opts, 'field_range', 1, 100).onChange(console.log)
+
+        gui.add(opts, 'field_minmax_step', 1, 30).min(1).max(30).step(1).onChange(console.log)
+        gui.add(opts, 'field_select', [ 'foo', 'bar', 'biu' ]).onChange(console.log)
+        gui.add(opts, 'field_select2', { 'apple': 1, 'banana': 2, 'watermelon': 3 }).onChange(console.log)
+
+        // listen() 动态配置
+        gui.add(opts, 'field_listen', 0, 10).listen().onChange(console.log)
+        setInterval(() => opts.field_listen = Math.random() * 10, 500)
+    </script>
+</html>
+)
+txtit(Var)
+return
+
+>^/::
 >^+/::
 Var =
 (
@@ -16100,7 +16158,7 @@ function timeFormat(time) {
   }
   return timeStr;
 }
-|||
+
 function getDateDiff(dateTimeStamp) {
     var minute = 1000 * 60
     var hour = minute * 60
@@ -16131,6 +16189,13 @@ function getDateDiff(dateTimeStamp) {
     } else result = '刚刚'
     return result
 }  
+|||
+// 获取两个时间之间的距离（天）
+const getDaysDiffBetweenDates = (dateInitial, dateFinal) =>
+  (dateFinal - dateInitial) / (1000 * 3600 * 24);
+
+// Example
+getDaysDiffBetweenDates(new Date('2017-12-13'), new Date('2017-12-22')); // 9
 |||
 // dateYYYYMMDDHHmmss('2019/1/22 12:11:11')
 const dateYYYYMMDDHHmmss =  t => {
