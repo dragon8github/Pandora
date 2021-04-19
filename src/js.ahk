@@ -53,6 +53,63 @@ Var =
     </script>
 </html>
 )
+code(Var)
+return
+
+
+
+::gongchang::
+::gongc::
+Var =
+(
+// Factory Pattern
+function createFruit(name) {
+    const obj = new Object(); 
+    obj.name = name; 
+    obj.showName = function () {
+        console.log("I'm " + obj.name); 
+    }
+    return obj; 
+}
+const fruitOne = createFruit('Apple'); 
+const fruitTwo = createFruit('Orange'); 
+fruitOne.showName(); // I'm Apple
+fruitTwo.showName(); // I'm Orange
+---
+// Constructor Pattern
+function createFruit(name) {
+    this.name = name; 
+    this.showName = function () {
+        console.log("I'm " + this.name); 
+    }
+}
+const fruitOne = new createFruit('Apple'); 
+const fruitTwo = new createFruit('Orange'); 
+fruitOne.showName(); // I'm Apple
+fruitTwo.showName(); // I'm orage
+---
+// Prototype Pattern
+function Fruit(name) {
+    this.name = none; 
+}
+Fruit.prototype.showName = function() {
+    console.log("I'm " + this.name); 
+}
+const fruitOne = new Fruit('Apple'); 
+fruitOne.showName(); // I'm Apple
+const fruitTwo = new Fruit('Orange'); 
+fruitTwo.showName(); // I'm Orange
+---
+// Constructor / Prototype pattern
+function Fruit() { }
+Fruit.prototype.name = name; 
+Fruit.prototype.showName = function () {
+    console.log("I'm " + this.name); 
+}
+const fruit = new Fruit(); 
+fruit.name = 'Apple'; 
+fruit.showName(); // I'm Apple
+)
 txtit(Var)
 return
 
@@ -14620,6 +14677,20 @@ return
 ::js.meiju::
 Var = 
 (
+function getTranslationMap(rhyme) {
+  const rhymes = {
+    "apples and pears": "Stairs",
+    "hampstead heath": "Teeth",
+    "loaf of bread": "Head",
+    "pork pies": "Lies",
+    "whistle and flute": "Suit",
+  };
+  
+  return rhymes[rhyme.toLowerCase()] ?? "Rhyme not found";
+}
+
+getTranslationMap("apples and pears") // => Stairs
+---
 const Status = () => Object.create({})
 
 function StatusInner(name, index, desc) {
