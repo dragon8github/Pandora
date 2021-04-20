@@ -14518,6 +14518,27 @@ code(Var)
 return
 
 ::uuid::
+uuid1 := GUID()
+uuid2 := GUID()
+uuid3 := GUID()
+uuid4 := GUID()
+uuid5 := GUID()
+uuid6 := GUID()
+uuid7 := GUID()
+uuid8 := GUID()
+uuid9 := GUID()
+uuid10 := GUID()
+uuid11 := GUID()
+uuid12 := GUID()
+uuid13 := GUID()
+uuid14 := GUID()
+uuid15 := GUID()
+uuid16 := GUID()
+uuid17 := GUID()
+uuid18 := GUID()
+uuid19 := GUID()
+uuid20 := GUID()
+
 Var = 
 (
 var url = URL.createObjectURL(new Blob())
@@ -14590,6 +14611,46 @@ function numID() {
 
   return Number(id)
 }
+---
+%uuid1%
+
+%uuid2%
+
+%uuid3%
+
+%uuid4%
+
+%uuid5%
+
+%uuid6%
+
+%uuid7%
+
+%uuid8%
+
+%uuid9%
+
+%uuid10%
+
+%uuid11%
+
+%uuid12%
+
+%uuid13%
+
+%uuid14%
+
+%uuid15%
+
+%uuid16%
+
+%uuid17%
+
+%uuid18%
+
+%uuid19%
+
+%uuid20%
 )
 txtit(Var)
 return
