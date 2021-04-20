@@ -2863,7 +2863,9 @@ txtit(Var)
 return
 
 ::tree::
+::cc::
 ::gentree::
+::jialiang::
 Var =
 (
 const api_datas = {"id": "202010200704", "remark": "汇聚方式委办局", "data": [{"ID": 0, "DEPARTMENT": "东莞市", "PID": -1 }, {"ID": 1, "DEPARTMENT": "政数局", "PID": 0 }, {"ID": 2, "DEPARTMENT": "卫生局", "PID": 0 }, {"ID": 3, "DEPARTMENT": "交通运输局", "PID": 0 }, {"ID": 4, "DEPARTMENT": "教育局", "PID": 0 }, {"ID": 5, "DEPARTMENT": "生态环境局", "PID": 0 }, {"ID": 6, "DEPARTMENT": "民政局", "PID": 0 } ], "pageSize": 10, "pageNum": 1, "total": 7, "totalPage": 1, "startIndex": 1, "endIndex": 10 }
@@ -2904,6 +2906,33 @@ console.log(1, genTree(data))
 
 let data2 = api_datas2.data.map(_ => ({ id: _.ID, label: _.NAME, children: [], pid: _.PID }))
 console.log(2, genTree(data2))
+---
+// 数据
+var data = [ { 'channelId': 7005, 'channelName': 'OMO试点', 'param': 'OMO', 'channelChain': 'OMO', 'channelType': 1, 'ownIs': false, 'parentId': 0, 'sons': [ { 'channelId': 7006, 'channelName': '肇庆校区', 'param': 'A01', 'channelChain': 'OMO/A01', 'channelType': 2, 'ownIs': true, 'parentId': 7005, 'sons': [ { 'channelId': 16437, 'channelName': '小火箭引流课', 'param': 'a0101', 'channelChain': 'OMO/A01/a0101', 'channelType': 3, 'ownIs': false, 'parentId': 7006, 'sons': [ ], }, { 'channelId': 16438, 'channelName': '探月引流课', 'param': 'a0102', 'channelChain': 'OMO/A01/a0102', 'channelType': 3, 'ownIs': false, 'parentId': 7006, 'sons': [ ], }, { 'channelId': 20065, 'channelName': '肇庆', 'param': 'zhaoqing', 'channelChain': 'OMO/A01/zhaoqing', 'channelType': 3, 'ownIs': false, 'parentId': 7006, 'sons': [ ], }, { 'channelId': 20659, 'channelName': '肇庆裂变', 'param': 'zhaoqinglb', 'channelChain': 'OMO/A01/zhaoqinglb', 'channelType': 3, 'ownIs': false, 'parentId': 7006, 'sons': [ ], }, ], }, { 'channelId': 16439, 'channelName': '临沂校区', 'param': 'a02', 'channelChain': 'OMO/a02', 'channelType': 2, 'ownIs': false, 'parentId': 7005, 'sons': [ { 'channelId': 16440, 'channelName': '小火箭引流课', 'param': 'a0201', 'channelChain': 'OMO/a02/a0201', 'channelType': 3, 'ownIs': true, 'parentId': 16439, 'sons': [ ], }, { 'channelId': 16441, 'channelName': '探月引流课', 'param': 'a0202', 'channelChain': 'OMO/a02/a0202', 'channelType': 3, 'ownIs': false, 'parentId': 16439, 'sons': [ ], }, { 'channelId': 20064, 'channelName': '临沂', 'param': 'linyi', 'channelChain': 'OMO/a02/linyi', 'channelType': 3, 'ownIs': false, 'parentId': 16439, 'sons': [ ], }, { 'channelId': 20658, 'channelName': '临沂裂变', 'param': 'linyilb', 'channelChain': 'OMO/a02/linyilb', 'channelType': 3, 'ownIs': false, 'parentId': 16439, 'sons': [ ], }, ], }, { 'channelId': 16442, 'channelName': '芜湖校区', 'param': 'a03', 'channelChain': 'OMO/a03', 'channelType': 2, 'ownIs': false, 'parentId': 7005, 'sons': [ { 'channelId': 16443, 'channelName': '小火箭引流课', 'param': 'a0301', 'channelChain': 'OMO/a03/a0301', 'channelType': 3, 'ownIs': false, 'parentId': 16442, 'sons': [ ], }, { 'channelId': 16444, 'channelName': '探月引流课', 'param': 'a0302', 'channelChain': 'OMO/a03/a0302', 'channelType': 3, 'ownIs': false, 'parentId': 16442, 'sons': [ ], }, { 'channelId': 20063, 'channelName': '芜湖公立校', 'param': 'wuhu', 'channelChain': 'OMO/a03/wuhu', 'channelType': 3, 'ownIs': false, 'parentId': 16442, 'sons': [ ], }, { 'channelId': 20511, 'channelName': '芜湖付费推广', 'param': 'wuhufufei', 'channelChain': 'OMO/a03/wuhufufei', 'channelType': 3, 'ownIs': false, 'parentId': 16442, 'sons': [ ], }, { 'channelId': 20657, 'channelName': '芜湖裂变', 'param': 'wuhulb', 'channelChain': 'OMO/a03/wuhulb', 'channelType': 3, 'ownIs': false, 'parentId': 16442, 'sons': [ ], }, ], }, ], }, { 'channelId': 20295, 'channelName': 'OMO卫星店', 'param': 'OMOWX', 'channelChain': 'OMOWX', 'channelType': 1, 'ownIs': false, 'parentId': 0, 'sons': [ { 'channelId': 20300, 'channelName': '清远店', 'param': 'B01', 'channelChain': 'OMOWX/B01', 'channelType': 2, 'ownIs': true, 'parentId': 20295, 'sons': [ { 'channelId': 20301, 'channelName': '探月引流常规', 'param': 'qingyuanty1', 'channelChain': 'OMOWX/B01/qingyuanty1', 'channelType': 3, 'ownIs': true, 'parentId': 20300, 'sons': [ ], }, { 'channelId': 20302, 'channelName': '小火箭引流常规', 'param': 'qingyuanxhj1', 'channelChain': 'OMOWX/B01/qingyuanxhj1', 'channelType': 3, 'ownIs': false, 'parentId': 20300, 'sons': [ ], }, ], }, ], }, { 'channelId': 111100014, 'channelName': 'OMO-常规店', 'param': 'OMO-CG', 'channelChain': 'OMO-CG', 'channelType': 1, 'ownIs': false, 'parentId': 0, 'sons': [ { 'channelId': 111100015, 'channelName': '宝安测试校区', 'param': 'TEST01', 'channelChain': 'OMO-CG/TEST01', 'channelType': 2, 'ownIs': false, 'parentId': 111100014, 'sons': [ { 'channelId': 111100016, 'channelName': '测试引流课', 'param': 'tt01', 'channelChain': 'OMO-CG/TEST01/tt01', 'channelType': 3, 'ownIs': false, 'parentId': 111100015, 'sons': [ ], }, { 'channelId': 111100017, 'channelName': '谷雨引流课', 'param': 'guyu', 'channelChain': 'OMO-CG/TEST01/guyu', 'channelType': 3, 'ownIs': false, 'parentId': 111100015, 'sons': [ ], }, ], }, ], }, { 'channelId': 111100018, 'channelName': 'OMO-市场部', 'param': 'OMO-SCB', 'channelChain': 'OMO-SCB', 'channelType': 1, 'ownIs': false, 'parentId': 0, 'sons': [ ], }, { 'channelId': 111100025, 'channelName': 'OMO-市场1部', 'param': 'OMO-SC1B', 'channelChain': 'OMO-SC1B', 'channelType': 1, 'ownIs': true, 'parentId': 0, 'sons': [ ], }, { 'channelId': 111100026, 'channelName': 'OMO-市场2部 ', 'param': 'OMO-SC2B', 'channelChain': 'OMO-SC2B', 'channelType': 1, 'ownIs': false, 'parentId': 0, 'sons': [ { 'channelId': 111100027, 'channelName': '测试地推', 'param': 'testdt', 'channelChain': 'OMO-SC2B/testdt', 'channelType': 2, 'ownIs': false, 'parentId': 111100026, 'sons': [ { 'channelId': 111100028, 'channelName': '科技园地推', 'param': 'kejiyuandt', 'channelChain': 'OMO-SC2B/testdt/kejiyuandt', 'channelType': 3, 'ownIs': true, 'parentId': 111100027, 'sons': [ ], }, { 'channelId': 111100029, 'channelName': '科技园地推22', 'param': 'kejiyuandt22', 'channelChain': 'OMO-SC2B/testdt/kejiyuandt22', 'channelType': 3, 'ownIs': false, 'parentId': 111100027, 'sons': [ ], }, ], }, ], }, ];
+
+// 启动计时器
+console.time('耗时计算')
+
+
+var checked = data => {
+    // 是否具备下级
+    const hasChildren = data.sons && data.sons.length > 0
+        
+    // 递归
+    if (hasChildren) {
+        data.ownIs = data.sons.every(_data => checked(_data).ownIs === true)
+    }
+    return data
+}
+
+// 停止计时，输出时间
+console.timeEnd('耗时计算')
+
+// 对每个顶级树进行从上到下的递归检查
+var checkedData = data.map(checked)
+
+// 打印出新树
+console.log(20210419203818, checkedData)
 )
 txtit(Var)
 return
