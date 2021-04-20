@@ -1,4 +1,12 @@
-﻿::cdn-jiqi::
+﻿::cdn-gui::
+Var =
+(
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+)
+code(Var)
+return
+
+::cdn-jiqi::
 ::cdn-ten::
 Var =
 (

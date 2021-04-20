@@ -1,4 +1,12 @@
-﻿htmlit() 
+﻿;生成32位UUID
+GUID(){
+    shellobj := ComObjCreate("Scriptlet.TypeLib")
+    ret := shellobj.GUID
+    uuid := RegExReplace(ret,"({|}|-)","") ;去掉花括号和-
+    return uuid
+}
+
+htmlit() 
 {
     dir := A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
     FileCreateDir, % dir

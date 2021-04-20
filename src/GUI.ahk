@@ -4247,31 +4247,6 @@ RunByVsCode(name)
 run, % name
 return
 
-workerhtml:
-Var =
-(
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>webworker 基本示例</title>
-</head>
-
-<body>
-</body>
-<script>
-    const worker = new Worker('fuck.js')
-    worker.onmessage = event => document.body.innerHTML += `${ event.data }<br/>`
-</script>
-</html>
----
-// http://localhost/fuck.js
-while (true) {
-    postMessage(Math.random())
-}
-)
-txtit(Var)
-return
 
 localForagehtml:
 name :=  htmlit()
