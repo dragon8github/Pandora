@@ -8942,7 +8942,6 @@ return
 :?:vuex.help::
 :?:store.help::
 :?:help::
-:?:cs::
 :?:creates::
 :?:help.store::
 :?:storec::

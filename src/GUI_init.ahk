@@ -294,7 +294,9 @@ Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echojs.com/">echojs.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.smashingmagazine.com/articles/">粉碎杂志</a>
 Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/">reddit</a>
-Gui, Pandora:Add, Link,, <a href="https://chao.fun/f/4">炒饭社区</a>
+Gui, Pandora:Add, Link,, <a href="http://www.rensheng5.com/">鸡汤文</a>
+; Gui, Pandora:Add, Link,, <a href="https://chao.fun/f/4">炒饭社区</a>
+
 Gui, Pandora:Add, Link,, <a href="https://frontender-ua.medium.com/">medium前端周刊</a>
 
 
@@ -684,8 +686,9 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/covid-1
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/68/interface/api">yapi</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins打包</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.128:8080/login">Jenkins部署</a>
-Gui, Pandora:Add, Link,, <a href="http://19.104.50.124/covid-19-map/#/index">正式环境http</a>
-Gui, Pandora:Add, Link,, <a href="https://19.104.50.124/covid-19-pc/#/index">PC正式环境http</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.124/covid-19-map/#/index">正式环境</a>
+Gui, Pandora:Add, Link,, <a href="https://19.104.50.124/covid-19-pc/#/index">PC正式环境</a>
+Gui, Pandora:Add, Link,, <a href="https://covid-pc.dg.cn/covid-19-pc/#/index">PC正式环境 - 域名</a>
 
 
 

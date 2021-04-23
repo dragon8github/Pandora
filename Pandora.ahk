@@ -85,8 +85,9 @@ global __ALTCTRL__ := []
 #Include src/TypeScript.ahk       ; TypeScript
 #Include src/wx.ahk               ; wx
 #Include src/nest.ahk             ; nest
-#Include src/go.ahk             ; go
+#Include src/go.ahk               ; go
 #Include src/mongoose.ahk	      ; mongoose
+#Include src/cesium.ahk			  ; cesium
 
 #Include src/php.ahk              ; php	
 #Include src/help.ahk             ; 辅助功能

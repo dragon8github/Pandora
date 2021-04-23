@@ -1,4 +1,12 @@
-﻿::xy::
+﻿::qinxiesy::
+::qinxies::
+::qinxiesheying::
+::qinxieshiy::
+::qinxieshey::
+::qxsy::
+::qinxiesh::
+::qinxieshy::
+::xy::
 ::lnglat::
 ::dgxy::
 ::zuobiao::
@@ -6,22 +14,31 @@
 ::jingweidu::
 ::jingwei::
 ::jwd::
+::mokatuo::
+::touying::
+::epsg::
+::epsg4326::
+::epsg3857::
+::4326::
+::3857::
 Var =
 (
 coordinate
 ---
 lngLat: [113.75867124948216, 23.026719034540488],
+---
+倾斜摄影（Aerometrex Denver Photogrammetry）
+---
+墨卡托投影（mercator projection）
+---
+ol.proj.fromLonLat([113.75867124948216, 23.026719034540488])
+const LonLat = ol.proj.toLonLat([3686588.9267367907, -3295231.3419166896] )
+center: ol.proj.transform([108.938981, 34.375414], 'EPSG:4326', 'EPSG:3857'),
+
+openlayers 默认使用的是 「EPSG: 3857」 单位是米，用的是 xy 坐标系，譬如：[3686588.9267367907, -3295231.3419166896] 
+我们习惯的是 GPS 经纬度坐标系 `「EPSG: 4326」`，譬如：[113.75867124948216, 23.026719034540488]
 )
 txtit(Var)
-return
-
-::mokatuo::
-::touying::
-Var =
-(
-墨卡托投影（mercator projection）
-)
-code(Var)
 return
 
 ::jiqixuexi::
