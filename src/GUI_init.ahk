@@ -387,7 +387,7 @@ Gui, Pandora:Add, Link,, <a href="https://colorhunt.co/palettes/random">随机�
 Gui, Pandora:Add, Link,, <a href="https://designkiki.com/colordoo/?ref=producthunt">颜色搭配神器</a>
 
 Gui, Pandora:Add, Link,, <a href="https://www.remove.bg/">删除图像背景神器</a>
-Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/">站酷特效</a>
+Gui, Pandora:Add, Link,, <a href="https://www.zcool.com.cn/top/index.do">站酷榜单</a>
 Gui, Pandora:Add, Link,, <a href="https://www.checklist.design/">checklist.design</a>
 Gui, Pandora:Add, Link,, <a href="https://autoprefixer.github.io/">autoprefixer</a>
 Gui, Pandora:Add, Link,, <a href="https://animate.style/">animate.css</a>
@@ -574,13 +574,14 @@ Gui, Pandora:Add, Text, gcanvasDrawBan W180,canvas自由绘制画板
 
 
 Gui, Pandora:Tab, 3
-Gui, Pandora:Add, Text,  W130 Section, 疫情可视化:
+Gui, Pandora:Add, Text,  W130 Section, 疫情可视化/数据资产:
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/application/tree/master/ioc-visual-ui">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/19/interface/api">yapi</a>
-Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui?tab=history">测试部署</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/fyvis/#/planB">测试预览</a>
-Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/fyvis/#/">正式预览</a>
+; Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui?tab=history">测试部署</a>
+; Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/fyvis/#/planB">测试预览</a>
 Gui, Pandora:Add, Link,, <a href="https://master.feiyan.com:8443/console/project/app/browse/dc/ioc-visual-ui?tab=history">正式部署</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/fyvis/#/">疫情正式预览</a>
+Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/fyvis/#/dataAssets">数据资产预览</a>
 
 
 
@@ -1225,6 +1226,8 @@ Gui, Pandora:Add, Link, W140, <a href="http://geojson.io/">GeoJSON.io</a>
 Gui, Pandora:Add, Link, W140, <a href="http://api.map.baidu.com/lbsapi/getpoint/">百度拾取坐标系统</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#k0_2">百度地图主题定制</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/custom/">百度地图皮肤制作</a>
+Gui, Pandora:Add, Link, W140, <a href="https://www.openstreetmap.org/search?query=%E5%B9%BF%E5%B7%9E#map=9/23.2286/113.5041">openstreetMap</a>
+
 
 
 Gui, Pandora:Add, Text, W140 ys, 百度mapv：
