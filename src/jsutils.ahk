@@ -9397,43 +9397,6 @@ test() // => foo
 txtit(Var)
 return
 
-::github::
-::githubcode::
-::github-code::
-::github.code::
-::gcode::
-::gitcode::
-::git-code::
-Var =
-(
-/**
- * 移动dom元素到指定目标位置
- *
- * @source {DOM} 你要移动的DOM
- * @target {DOM} 你要移动的位置
- */
-const mvDOM = function (source, target) {
-    // 深度拷贝（含子元素）
-    let _source = source.cloneNode(true)
-    // 删除本身
-    source.remove()
-    // 默认插入到容器最前面，如果想在后面可以这样处理：target.append(source)
-    target.insertBefore(_source, target.firstChild)
-}
-
-document.querySelectorAll('pre, .gist').forEach((el, key) => {
-    // 新建代码容器
-    const code = document.createElement('code')
-
-    // 插入父元素
-    el.insertAdjacentElement('beforebegin', code)
-
-    // 移动到容器内
-    mvDOM(el, code)
-})
-)
-code(Var)
-return
 
 ::matchBy::
 Var =

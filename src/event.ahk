@@ -2521,6 +2521,13 @@ code(Var)
 return
 
 
+::github::
+::githubcode::
+::github-code::
+::github.code::
+::gcode::
+::gitcode::
+::git-code::
 ::code::
 ::eventcode::
 ::keycode::
@@ -2605,6 +2612,12 @@ pre(document)
 
 // 针对所有 iframe 里边的内容
 document.querySelectorAll('iframe').forEach(iframe => pre(iframe.contentDocument))
+---
+// github-code
+javascript:const mvDOM=function(source,target){let _source=source.cloneNode(!0);source.remove(),target.insertBefore(_source,target.firstChild)},pre=target=>{target&&target.querySelectorAll("pre, .gist").forEach(el=>{const code=document.createElement("code");el.insertAdjacentElement("beforebegin",code),mvDOM(el,code)})};pre(document),document.querySelectorAll("iframe").forEach(iframe=>pre(iframe.contentDocument));
+
+// text prettier
+javascript:document.querySelectorAll('p').forEach(el => {el.style.lineHeight = '2.1'; el.style.letterSpacing = '0.45px';})
 )
 txtit(Var)
 return
