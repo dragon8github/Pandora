@@ -21,6 +21,8 @@
 ::epsg3857::
 ::4326::
 ::3857::
+::wgs::
+::wgs84::
 Var =
 (
 coordinate
@@ -37,6 +39,10 @@ center: ol.proj.transform([108.938981, 34.375414], 'EPSG:4326', 'EPSG:3857'),
 
 openlayers 默认使用的是 「EPSG: 3857」 单位是米，用的是 xy 坐标系，譬如：[3686588.9267367907, -3295231.3419166896] 
 我们习惯的是 GPS 经纬度坐标系 `「EPSG: 4326」`，譬如：[113.75867124948216, 23.026719034540488]
+---
+我们常用的 GPS 经纬度就是 「WGs84」 也就是 「epsg:4326」
+
+另一个常用的是 「EPSG:3857」，伪墨卡托投影，也被称为球体墨卡托。
 )
 txtit(Var)
 return
@@ -721,14 +727,7 @@ polygon
 code(Var)
 return
 
-::os::
-::open::
-Var =
-(
-openshift（master.alltosea.com:8443/console/）
-)
-code(Var)
-return
+
 
 ::pq::
 ::psql::
@@ -849,10 +848,20 @@ if (StrLen(tmp)) {
 }
 return
 
+
+::os::
+::open::
 ::bushu::
 ::fabu::
+::ranc::
+::rancheck::
+::ranchun::
+::rac::
+::rancer::
 Var =
 (
+openshift（master.alltosea.com:8443/console/）
+rancher(https://rancher.ioc.com)
 deploy
 )
 code(Var)
@@ -1344,6 +1353,28 @@ html =
 }
 
 Send, {ALT UP}
+return
+
+
+>!<!c::
+WinGetTitle, title, A
+
+title := StrReplace(title, " - Google Chrome", "")
+title := StrReplace(title, "_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili", "")
+title := StrReplace(title, " - Sublime Text (UNREGISTERED)", "")
+
+Clipboard := 
+Send, ^l
+Sleep, 50
+Send, {Esc}
+WinClip.copy()
+ClipWait
+
+
+myhtml := title . "`r`n" . Clipboard
+Clipboard := myhtml
+ToolTip, 复制成功
+SetTimer, RemoveToolTip, -500
 return
 
 <+v::
@@ -2304,7 +2335,9 @@ return
 ::hosts::
 ::host::
 ::vhost::
-    Send, {text}C:\Windows\System32\drivers\etc
+path := "C:\Windows\System32\drivers\etc"
+Run, % path
+clipboard := path
 return
 
 
@@ -3139,9 +3172,15 @@ return
 ::zyx::
 Var =
 (
-张宇烜（740244633@qq.com）
+李钊鸿(928532756@qq.com)
+冯嘉欣(15649142@qq.com)
+刘羲(lx7412@aliyun.com)
+志威(425412301@qq.com)
+耀全(378127444@qq.com)
+润权(604079172@qq.com)
+张宇烜(740244633@qq.com)
 )
-code(Var)
+txtit(Var)
 return
 
 

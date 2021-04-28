@@ -2270,8 +2270,7 @@ return
 ::img::
 Var =
 (
-<!-- https://placeholder.com/ -->
-<img src="https://iph.href.lu/400x400" alt="..." />
+<img src="https://via.placeholder.com/100x100" alt="..." />
 )
 code(Var)
 Return
