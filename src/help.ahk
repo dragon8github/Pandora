@@ -2879,7 +2879,7 @@ return
     }
 return
 
-~!enter::
+!enter::
     WinGetTitle, title, A
     if (!InStr(title, "Android Studio")) {
         WinGet, OutputVar, MinMax, A

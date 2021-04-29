@@ -290,6 +290,140 @@ Building-->
 txtit(Var)
 return
 
+::ce.top::
+::ce.top::
+::ce.louding::
+::ce.yangtai::
+Var =
+(
+# 5-楼顶案例v1.cga
+@StartRule
+
+lot-->
+	extrude(rand(20, 60))
+	_Building
+
+# 「建筑渲染」（略）
+_Building-->
+	# 贴图函数，第一个参数是「建筑四壁」，第二个参数是「建筑楼顶」
+	comp(f) { side : _fourSides | top: _topSurface }
+
+# 「建筑四壁」（略）
+_fourSides-->
+	setupProjection(0, scope.xy, 30, 50)
+	texture("texture/u_f005_t006_Residential_013.jpg")
+	projectUV(0)
+
+# 「建筑楼顶」（重点）
+_topSurface-->
+	# 向内退 0.2 米（可以理解为向内加厚 0.2 米的墙面）
+	offset(-0.2)	
+	# 「border」是四面，『inside』是容器内部面
+	comp(f) { border: _border | inside: _inside }
+
+# 「建筑楼顶 - 四面护墙」
+_border--> 
+	# 四面拉伸高度，形成四面墙
+	extrude(1.5)
+
+#「建筑楼顶 - 地面」
+_inside-->
+	# 参数1：UV 的通道 # 参数2：UV 的方向 # 参数3~4：UV的大小
+	setupProjection(0, scope.xy, 30, 50)
+	texture("texture/541.jpg")
+	projectUV(0)
+---
+# 6-楼顶烟囱案例v2.cga
+@StartRule
+
+lot-->
+	extrude(rand(20, 60))
+	_Building
+
+# 「建筑渲染」（略）
+_Building-->
+	# 贴图函数，第一个参数是「建筑四壁」，第二个参数是「建筑楼顶」
+	comp(f) { side : _fourSides | top: _topSurface }
+
+# 「建筑四壁」（略）
+_fourSides-->
+	# 贴图三件套
+	setupProjection(0, scope.xy, 30, 50)
+	texture("texture/u_f005_t006_Residential_013.jpg")
+	projectUV(0)
+
+# 「建筑楼顶」（重点）
+_topSurface-->
+	# 向内退 0.2 米（可以理解为向内加厚 0.2 米的墙面）
+	offset(-0.2)
+	# 「border」是四面，『inside』是容器内部面
+	comp(f) { border: _topSurface_border | inside: _topSurface_inside }
+
+# 「建筑楼顶 - 四面护墙」
+_topSurface_border-->
+	# 四面拉伸高度，形成四面墙
+	extrude(1.5)
+
+#「建筑楼顶 - 内部地面」
+_topSurface_inside-->
+	# 「屋顶的烟囱」（本节课重点）
+	split(y) { '0.6: _nil | ~1.5: _chimneyPos | '0.25: _nil }
+
+# 「烟囪所在的位置」
+_chimneyPos-->
+	# 「再次切割出烟囪」的位置
+	split(x) { '0.7: _nil | '0.1: _chimney | '0.2: _nil }
+
+# 贴图
+_nil-->
+	setupProjection(0, scope.xy, 30, 50)
+	texture("texture/541.jpg")
+	projectUV(0)
+
+# 「烟囱」
+_chimney-->
+	extrude(5)
+	color("#ffffff")
+---
+# 7-屋顶双向(四向)坡案例v3
+@StartRule
+
+lot-->
+	extrude(rand(20, 60))
+	_Building
+
+# 「建筑渲染」（略）
+_Building-->
+	# 贴图函数，第一个参数是「建筑四壁」，第二个参数是「建筑楼顶」
+	comp(f) { side : _fourSides | top: _topSurface }
+
+# 「建筑四壁」（略）
+_fourSides-->
+	setupProjection(0, scope.xy, 30, 50)
+	texture("texture/u_f005_t006_Residential_013.jpg")
+	projectUV(0)
+
+# 「建筑楼顶」（重点）
+_topSurface-->
+	# roofGable(25, 3)：双向坡屋顶，第一个参数是坡度，第二个参数是宽度 
+	# roofHip(35, 3)：四向坡屋顶，第一个参数是坡度，第二个参数是宽度 
+	# roofPyramid(35)：金字塔屋顶，第一个参数是坡度（金字塔是无法往外延伸屋檐的）
+	roofGable(25, 3)
+	comp(f) { top: _eaves | all: _fourSides }
+
+# 「屋檐」
+_eaves-->
+	setupProjection(0, scope.xy, 5, 5)
+	texture("texture/084.jpg")
+	projectUV(0)
+)
+code(Var)
+return
+
+::ce.i::
+::cei::
+::ceimg::
+::ceimage::
 ::ce.tietu::
 ::ce.img::
 ::ce.image::
