@@ -1,6 +1,4 @@
-﻿
-
-/**
+﻿/**
 //////////////////////////////////////////////
 初始化 Book GUI 的代码逻辑
 //////////////////////////////////////////////
@@ -272,10 +270,12 @@ Gui, Pandora:Add, Link,, <a href="https://www.jsdelivr.com/">jsdelivr</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 好东西：
+
+Gui, Pandora:Add, Link,, <a href="https://www.znzmo.com/software">知末软件 - 破解软件</a>
 Gui, Pandora:Add, Link,, <a href="https://www.ghpym.com/">果核剥壳 - 破解软件</a>
 Gui, Pandora:Add, Link,, <a href="http://www.speedtest.net/#">斗鱼测速工具</a>
 Gui, Pandora:Add, Link,, <a href="https://www.fontke.com/tool/convfont/">字体在线转换工具</a>
-Gui, Pandora:Add, Link,, <a href="https://codesandbox.io/">codesandbox</a>
+; Gui, Pandora:Add, Link,, <a href="https://codesandbox.io/">codesandbox</a>
 Gui, Pandora:Add, Link,, <a href="https://unbug.github.io/codelf">codeif变量神器</a>
 Gui, Pandora:Add, Link,, <a href="www.materialtools.com/">临时接收手机验证码</a>
 Gui, Pandora:Add, Link,, <a href="https://carbon.now.sh/">carbon代码图片</a>

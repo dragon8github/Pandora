@@ -627,6 +627,8 @@ code(Var)
 return
 
 
+::vartxt::
+::txtvar::
 ::txtit::
 ::vartxt::
 ::ahktxt::

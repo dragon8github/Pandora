@@ -1,6 +1,10 @@
-﻿; news: 注意，如果下面的代码中如果处在 #IfWinNotActive 系列的 API ，那这个会失效。也就是覆盖了这个语法，譬如 jietu.ahk 那个
+﻿; IfWinNotActive 多个筛选条件 GroupAdd
+GroupAdd, ESC, 神武
+GroupAdd, ESC, CityEngine
+
+; news: 注意，如果下面的代码中如果处在 #IfWinNotActive 系列的 API ，那这个会失效。也就是覆盖了这个语法，譬如 jietu.ahk 那个
 ; 所以，要检查一下 「#ifWin」 关键词，如果存在的话，要移到最下边引用。
-#IfWinNotActive, 神武
+#IfWinNotActive, ahk_group ESC
 
 ; 强制无条件安装键盘钩子.
 #InstallKeybdHook 
@@ -44,7 +48,6 @@ global __PIC_PATH__ := ""
 */
 
 
-
 #Include src/WinClip/WinClipAPI.ahk
 #Include src/WinClip/WinClip.ahk
 
@@ -52,11 +55,9 @@ global __PIC_PATH__ := ""
 #Include src/Gdip.ahk             ; Gdip
 #Include src/JSON.ahk	          ; JSON Script
 #Include src/ActiveScript.ahk	  ; Microsoft Script
-#Include src/lib.ahk              ; 公共函数
 #Include src/Lua.ahk              ; secondkey_board 
 #Include src/OCR.ahk              ; OCR
 #Include src/local.ahk            ; LOCAL
-
 
 
 #Include src/three2.ahk           ; THREE
@@ -91,7 +92,6 @@ global __PIC_PATH__ := ""
 #Include src/cesium.ahk			  ; cesium
 
 #Include src/php.ahk              ; php	
-#Include src/help.ahk             ; 辅助功能
 #Include src/ten.ahk              ; Tensorflow.js
 #Include src/jietu.ahk			  ; 截图：https://www.autoahk.com/archives/28754 （依赖 Gdip.ahk，源码中被我删除了大量的重复代码）
 
@@ -101,8 +101,10 @@ global __PIC_PATH__ := ""
 ; #Include src/sql.ahk            ; sql
 #IfWinNotActive
 
-; 神武专用（没准以后可以写点脚本）
+#Include src/lib.ahk              ; 公共函数
+#Include src/help.ahk             ; 辅助功能
 #include src/sw.ahk
+#Include src/ce.ahk			  	  ; ce
 
 !F12::
 	Suspend
