@@ -1599,10 +1599,9 @@ ClipChanged(Type) {
 		; .pandora\名字.png
 		path := __PIC_PATH__ ? __PIC_PATH__ : A_Desktop . "\.pandora"
 
-		path .= "\" . t . ".png"
+		name :=  t . ".png"
 
-		tip2(path)
-
+		path .= "\" . name
 		; 在桌面创建一个图片
 		; createPic(path)
 
@@ -1611,6 +1610,11 @@ ClipChanged(Type) {
 		
 		; 将最新的名字加入到全局替换
 		latestImageName := path
+
+		if (__PIC_PATH__) {
+			tip2(path)
+			Clipboard := "[](" . name . ")"
+		}
    }
 	
    ; 文本类
