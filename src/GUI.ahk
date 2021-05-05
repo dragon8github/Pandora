@@ -243,8 +243,15 @@ AllSearchE:
 return
 
 FuckPath:
-	FileSelectFolder, OutputVar
-	__PIC_PATH__ := OutputVar
+	GuiControlGet, OutputVar, Pandora:, SearchContent, Text
+	
+	if (Instr(OutputVar, ":\")) {
+		__PIC_PATH__ := OutputVar
+	} else {
+		FileSelectFolder, OutputVar
+		__PIC_PATH__ := OutputVar
+	}
+
 	Gui, Pandora:Hide
 return
 
