@@ -200,6 +200,8 @@ Gui, Pandora:Margin, 10, 10
 
 ; submit 按钮
 Gui, Pandora:Add, Button, w260 h30 gFuck Section xs h30 yp+120 Default, FUCK
+; path 按钮
+Gui, Pandora:Add, Button, w260 h30 gFuckPath Section xs h30 yp+40, PATH
 
 
 ; Tab 选项卡 w830 h570 
@@ -1589,14 +1591,18 @@ Gui, Card:Tab, 2
 OnClipboardChange("ClipChanged")
 
 ClipChanged(Type) {
-
    ; 图片类
    if (Type == 2) {
 		; 名字
 		t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+
 		; .pandora\名字.png
-		path := A_Desktop . "\.pandora\" . t . ".png"
-		
+		path := __PIC_PATH__ ? __PIC_PATH__ : A_Desktop . "\.pandora"
+
+		path .= "\" . t . ".png"
+
+		tip2(path)
+
 		; 在桌面创建一个图片
 		; createPic(path)
 

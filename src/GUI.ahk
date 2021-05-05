@@ -242,6 +242,11 @@ AllSearchE:
 	}
 return
 
+FuckPath:
+	FileSelectFolder, OutputVar
+	__PIC_PATH__ := OutputVar
+	Gui, Pandora:Hide
+return
 
 Fuck:
 	; 保存用户的输入到每个控件的关联变量中.

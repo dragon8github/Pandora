@@ -28,6 +28,7 @@ FileDelete, .\src\*.bak
 global latestImageName := ""
 global todoList := ""
 global __ALTCTRL__ := []
+global __PIC_PATH__ := ""
 
 
 /**

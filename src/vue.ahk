@@ -6106,7 +6106,11 @@ export default {
 txtit(Var)
 return
 
-
+::vuedir::
+::vue.dir::
+::v-dir::
+::v-zhiling::
+::zhiling::
 ::v-aip::
 ::vapi::
 ::vuezl::
@@ -6339,74 +6343,6 @@ export default {
     },
 }
 ---
-/**
- * 
- import tip from '@/directive/tip/index.js'
- Vue.use(tip)
- <div v-tip="`<div> <p class='mb-1'>预申报今天来莞的跨境司机统计人数，掌握我市跨境运货司机预期来莞情况。</p> 更新周期：实时</div>`"></div>
- */
-const useDiv = (setDiv) => {
-    let div = document.createElement('div')
-    setDiv(div)
-    document.body.append(div)
-    return [div, () => div.remove()]
-}
-
-export default {
-    install(Vue) {
-        Vue.prototype.__tip__ = __tip__
-
-        Vue.directive('tip', {
-            bind(el, { value = '' }) {
-                // 创建一个容器
-                const [div, remove] = useDiv(e => {
-                    e.style.position = 'absolute'
-                    e.style.background = 'rgba(0, 0, 0, .5)'
-                    e.style.color = 'white'
-                    e.style.fontSize = '1.2em'
-                    e.style.left = 0
-                    e.style.top = 0
-                    e.style.maxWidth = '26em'
-                    e.style.minWidth = '20em'
-                    e.style.padding = '1.2em'
-                    e.style.zIndex =-1
-                    e.style.opacity = 0
-                })
-
-                div.innerHTML = value
-
-                el.addEventListener('mousemove', (event) => {
-                    const { pageX, pageY } = event
-
-                    const div_top = pageY + 20  
-                    const div_left = pageX + 20 
-
-                    document.title = `${div_top}, ${div_left}`
-
-                    const cur = div.clientWidth + div_left
-                    const bodywidth = document.querySelector('body').scrollWidth
-
-                    div.style.top = div_top + 'px'
-
-                    if (cur > bodywidth) {
-                        div.style.left = div_left - div.clientWidth  + 'px'
-                    } else {
-                        div.style.left = div_left + 'px'
-                    }
-
-                    div.style.opacity = 1
-                    div.style.zIndex = '1993100337'
-                })
-
-                el.addEventListener('mouseleave', (event) => {
-                    div.style.zIndex = -1
-                    div.style.opacity = 0
-                })
-            }
-        })
-    } 
-}
----
 import { isDEV } from '@/utils/utils'
 
 const useDiv = (setDiv) => {
@@ -6493,6 +6429,119 @@ export default {
         })
     }
 }
+###下面是旧版，用多个DIV的版本
+/**
+ * 
+ import tip from '@/directive/tip/index.js'
+ Vue.use(tip)
+ <div v-tip="`<div> <p class='mb-1'>预申报今天来莞的跨境司机统计人数，掌握我市跨境运货司机预期来莞情况。</p> 更新周期：实时</div>`"></div>
+ */
+const useDiv = (setDiv) => {
+    let div = document.createElement('div')
+    setDiv(div)
+    document.body.append(div)
+    return [div, () => div.remove()]
+}
+
+export default {
+    install(Vue) {
+        Vue.prototype.__tip__ = __tip__
+
+        Vue.directive('tip', {
+            bind(el, { value = '' }) {
+                // 创建一个容器
+                const [div, remove] = useDiv(e => {
+                    e.style.position = 'absolute'
+                    e.style.background = 'rgba(0, 0, 0, .5)'
+                    e.style.color = 'white'
+                    e.style.fontSize = '1.2em'
+                    e.style.left = 0
+                    e.style.top = 0
+                    e.style.maxWidth = '26em'
+                    e.style.minWidth = '20em'
+                    e.style.padding = '1.2em'
+                    e.style.zIndex =-1
+                    e.style.opacity = 0
+                })
+
+                div.innerHTML = value
+
+                el.addEventListener('mousemove', (event) => {
+                    const { pageX, pageY } = event
+
+                    const div_top = pageY + 20  
+                    const div_left = pageX + 20 
+
+                    document.title = `${div_top}, ${div_left}`
+
+                    const cur = div.clientWidth + div_left
+                    const bodywidth = document.querySelector('body').scrollWidth
+
+                    div.style.top = div_top + 'px'
+
+                    if (cur > bodywidth) {
+                        div.style.left = div_left - div.clientWidth  + 'px'
+                    } else {
+                        div.style.left = div_left + 'px'
+                    }
+
+                    div.style.opacity = 1
+                    div.style.zIndex = '1993100337'
+                })
+
+                el.addEventListener('mouseleave', (event) => {
+                    div.style.zIndex = -1
+                    div.style.opacity = 0
+                })
+            }
+        })
+    } 
+}
+---
+const cache = new Set()
+
+/**
+<template>
+    <div class='box-word' v-progressiveBGImage='[placeholder, bg]'></div>
+</template>
+<script>
+export default {
+  data () {
+    return {
+        placeholder: require('@/assets/layer/word-box.small.png'),
+        bg: require('@/assets/layer/word-box.png'),
+    }
+  },
+}
+</script>
+ */
+export default {
+    install(Vue) {
+        Vue.directive('progressiveBGImage', {
+            bind(el, { value }) {
+                // 外部传入两个变量，第一个变量是占位图，第二个是真图
+                const [placeholder, src] = value
+
+                // fixbug: 如果已经加载过了，那么不需要重复
+                if (cache.has(src)) {
+                    el.style.backgroundImage = `url(${src})`
+                } else {
+                    // 先用占位图作背景图
+                    el.style.backgroundImage = `url(${placeholder})`
+
+                    // 老三样
+                    const img = new Image()
+                    img.src = src
+                    img.onload = () => (el.style.backgroundImage = `url(${src})`)
+                }
+                
+                // 加入缓存
+                cache.add(src)
+            },
+        })
+    },
+}
+
 )
 txtit(Var)
 return
