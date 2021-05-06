@@ -1,4 +1,12 @@
-﻿::qinxiesy::
+﻿::suoluetu::
+Var =
+(
+thumbnail
+)
+code(Var)
+return
+
+::qinxiesy::
 ::qinxies::
 ::qinxiesheying::
 ::qinxieshiy::
