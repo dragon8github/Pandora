@@ -17403,6 +17403,7 @@ return
 ::lazydo::
 ::lazyfor::
 ::lazyfordo::
+::image::
 Var = 
 (
 // 懒遍历执事（不返回任何数据，只负责执行）
@@ -17538,6 +17539,21 @@ Vue.directive('imgLazy', imgLazy)
 ---
 const cache = new Set()
 
+/**
+<template>
+    <div class='box-word' v-progressiveBGImage='[placeholder, bg]'></div>
+</template>
+<script>
+export default {
+  data () {
+    return {
+        placeholder: require('@/assets/layer/word-box.small.png'),
+        bg: require('@/assets/layer/word-box.png'),
+    }
+  },
+}
+</script>
+ */
 export default {
     install(Vue) {
         Vue.directive('progressiveBGImage', {
@@ -17549,7 +17565,7 @@ export default {
                 if (cache.has(src)) {
                     el.style.backgroundImage = url(${src})
                 } else {
-                    // 先用用占位图作背景图
+                    // 先用占位图作背景图
                     el.style.backgroundImage = url(${placeholder})
 
                     // 老三样
@@ -17564,6 +17580,7 @@ export default {
         })
     },
 }
+
 )
 txtit(Var)
 return
