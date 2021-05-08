@@ -1424,47 +1424,54 @@ return
 
 
 >!F3::
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 ; 获取最新截图的base64
 base64 := getBase64(latestImageName) 
+tip2("正在上传图片...")
 path := post("https://service-ci0uhfl2-1255983702.gz.apigw.tencentcs.com/release/", { "img": base64 }, true)
-Clipboard := "![" . t . "](" . path . ")"
-tip2(path)
+if (Instr(path, "request entity too large")) {
+  tip2("上传失败, too large")    
+
+} else {
+  Clipboard := "![](http://" . path . ")"
+  tip2(path)    
+}
 return
 
 
 >!F2::
-; http://upload.likeyunba.com/
-; 名字
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
+MsgBox, F2已废弃，请使用F3
 
-; .pandora\名字.png
-path := A_Desktop . "\.pandora\" . t . ".png"
+; ; http://upload.likeyunba.com/
+; ; 名字
+; t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 
-tmpcli := Clipboard
+; ; .pandora\名字.png
+; path := A_Desktop . "\.pandora\" . t . ".png"
 
-isFile := FileExist(tmpcli)
+; tmpcli := Clipboard
 
-; 如果是图片，直接使用图片的路径上传试试
-if (isFile != "" && (InStr(tmpcli, "png") || InStr(tmpcli, "gif") || InStr(tmpcli, "jpg"))) {
-    path := tmpcli
-} else {
-    ; 否则，新建图片
-    createPic(path)
-}
+; isFile := FileExist(tmpcli)
 
-ToolTip, 正在上传
+; ; 如果是图片，直接使用图片的路径上传试试
+; if (isFile != "" && (InStr(tmpcli, "png") || InStr(tmpcli, "gif") || InStr(tmpcli, "jpg"))) {
+;     path := tmpcli
+; } else {
+;     ; 否则，新建图片
+;     createPic(path)
+; }
 
-; 注意，这里的路径必须是数组格式。哪怕只有一个。
-; data := uploadfile({ Filedata: [path], file: "multipart"})
-data := uploadfile({ file: [path] })
+; ToolTip, 正在上传
 
-_data := JSON.Load(data)
-path := _data.path
+; ; 注意，这里的路径必须是数组格式。哪怕只有一个。
+; ; data := uploadfile({ Filedata: [path], file: "multipart"})
+; data := uploadfile({ file: [path] })
 
-Clipboard := "![" . t . "](" . path . ")"
-ToolTip, % path
-SetTimer, RemoveToolTip, -2000
+; _data := JSON.Load(data)
+; path := _data.path
+
+; Clipboard := "![" . t . "](" . path . ")"
+; ToolTip, % path
+; SetTimer, RemoveToolTip, -2000
 return
 
 ::ahktip::

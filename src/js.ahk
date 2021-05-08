@@ -1,4 +1,24 @@
-﻿
+﻿::jsconfig::
+Var =
+(
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "target": "ES6",
+        "module": "commonjs",
+        "allowSyntheticDefaultImports": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}
+)
+code(Var)
+return
+
+
 
 ::gui::
 Var =

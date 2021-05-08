@@ -5269,8 +5269,13 @@ display: -webkit-box;
 
 /*! autoprefixer: off */
 -webkit-box-orient: vertical;
+---
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3; /* Change this line if you want. In this case it trimmed the text to 3 lines. */
+overflow: hidden;
 )
-code(Var)
+txtit(Var)
 return
 
 

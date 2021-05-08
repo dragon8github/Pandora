@@ -30,33 +30,6 @@ http.interceptors.request.use(async request => {
 code(Var)
 return
 
-::ajax::
-AppsKey & a::
->^a::
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
-Var = 
-(
-$.ajax({
-    url: "http://localhost:3000",
-    type: "post",
-    data: JSON.stringify({
-        test: 123
-    }),
-    headers: {
-        token: '123'
-    },
-    dataType: 'json',
-    contentType: 'application/json;charset=utf-8',
-    success: function (data) {
-        console.log(%t%, data);
-    },
-    error: function(e, m){
-       console.log('数据接口请求异常', e, m);
-    }
-})
-)
-code(Var)
-Return
 
 ::xhrajax::
 ::rawajax::
@@ -130,12 +103,41 @@ httpPost('https://jsonplaceholder.typicode.com/posts', data, console.log )
 txtit(Var)
 return
 
+
+::ajax::
+AppsKey & a::
+>^a::
 ::ajax.get::
 ::ajaxget::
 ::getajax::
+::formajax::
+::ajaxform::
+::ajax.form::
+::form.ajax::
+::postform::
+::formdata::
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
+$.ajax({
+    url: "http://localhost:3000",
+    type: "post",
+    data: JSON.stringify({
+        test: 123
+    }),
+    headers: {
+        token: '123'
+    },
+    dataType: 'json',
+    contentType: 'application/json;charset=utf-8',
+    success: function (data) {
+        console.log(%t%, data);
+    },
+    error: function(e, m){
+       console.log('数据接口请求异常', e, m);
+    }
+})
+---
 $.ajax({
     url: getPostUrl('http://192.168.8.199:8080') + "/api/dcfda/catering/fdaCateringOrder/searchDTO",
     type: "get",
@@ -145,19 +147,7 @@ $.ajax({
         console.log(%t%, data)
     }
 })
-)
-code(Var)
-return
-
-
-::formajax::
-::ajaxform::
-::ajax.form::
-::form.ajax::
-::postform::
-::formdata::
-Var =
-(
+---
 // 更多form提交方式，请参考：https://www.cnblogs.com/CyLee/p/9441535.html
 
 // FormData的提交方式
@@ -204,5 +194,5 @@ request.open("POST", "http://fuckyou.com/test.php", true);
 request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 request.send(obj2formdata({a: 'b', c: 'd'}));
 )
-code(Var)
+txtit(Var)
 return

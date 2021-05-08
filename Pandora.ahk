@@ -32,7 +32,7 @@ FileDelete, .\src\*.bak
 global latestImageName := ""
 global todoList := ""
 global __ALTCTRL__ := []
-
+global __PIC_PATH__ := ""
 
 /**
 //////////////////////////////////////////////
@@ -89,6 +89,7 @@ global __ALTCTRL__ := []
 #Include src/go.ahk               ; go
 #Include src/mongoose.ahk	      ; mongoose
 #Include src/cesium.ahk			  ; cesium
+#Include src/mysql.ahk			  ; mysql
 
 #Include src/php.ahk              ; php	
 #Include src/ten.ahk              ; Tensorflow.js

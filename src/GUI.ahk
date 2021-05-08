@@ -242,6 +242,18 @@ AllSearchE:
 	}
 return
 
+FuckPath:
+	GuiControlGet, OutputVar, Pandora:, SearchContent, Text
+	
+	if (Instr(OutputVar, ":\")) {
+		__PIC_PATH__ := OutputVar
+	} else {
+		FileSelectFolder, OutputVar
+		__PIC_PATH__ := OutputVar
+	}
+
+	Gui, Pandora:Hide
+return
 
 Fuck:
 	; 保存用户的输入到每个控件的关联变量中.
