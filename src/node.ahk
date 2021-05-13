@@ -2325,23 +2325,65 @@ methods: {
 </script>
 </html>
 ---
-// 请注意，这里是 nodejs 的语法，html websocket 的语法并不适用。
-// 请注意，这里是 nodejs 的语法，html websocket 的语法并不适用。
-// 请注意，这里是 nodejs 的语法，html websocket 的语法并不适用。
-// 请注意，这里是 nodejs 的语法，html websocket 的语法并不适用。
-const WebSocket = require('ws')
+var ws = require('ws')
 
-const WS = new WebSocket.Server({ port: 1234 })
+// 启动基于websocket的服务器,监听我们的客户端接入进来。
+var server = new ws.Server({ host: '127.0.0.1', port: 6080 })
 
-WS.on('connection', ws => {
-
-    ws.on('message', msg => {
-        ws.send('i received: ' + msg)
+// 监听接入进来的客户端事件
+function websocket_add_listener(client_sock) {
+    client_sock.on('close', () => {
+        console.log('client close')
     })
 
-    // 建立连接后，主动发送第一条初始化消息
-    ws.send('server OK')
+    client_sock.on('error', err => {
+        console.log('client error', err)
+    })
+
+    client_sock.on('message', data => {
+        console.log(data)
+        client_sock.send('Thank you!')
+    })
+}
+
+// connection 事件, 有客户端接入进来
+server.on('connection', client_sock => {
+    console.log('client comming')
+    websocket_add_listener(client_sock)
 })
+
+// error 事件, 表示的我们监听错误
+server.on('error', err => {
+    console.log('on_server_listen_error')
+})
+
+// headers 事件, 回给客户端的字符
+server.on('headers', data => {
+    console.log(data)
+})
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Test</title>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const ws = new WebSocket('ws://localhost:6080')
+
+    ws.addEventListener('open', () => {
+        ws.send('client ok')
+    })
+
+    ws.addEventListener('message', e => {
+        console.log(e.data)
+    })
+</script>
+</html>
 )
 txtit(Var)
 return
@@ -2629,6 +2671,178 @@ const getGitCommit = () => new Promise((resolve, reject) => getLastCommit((err, 
         console.log(20210409180749, '')
     }
 })();
+)
+txtit(Var)
+return
+
+::node.buffer::
+::node-buffer::
+::buffer::
+Var =
+(
+// 创建一个大小为10的空buffer(这个buffer只能承载10个字节的内容)
+const buf1 = Buffer.alloc(10)
+
+// 根据内容直接创建buffer
+const buf2 = Buffer.from("hello buffer")
+
+// 获取Buffer的长度 
+console.log(buf1.length)
+
+// toJSON() 方法可以将数据进行Unicode编码并展示
+console.log(buf1.toJSON()) // => { type: 'Buffer', data: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] }
+
+// toJSON() 方法可以将数据进行Unicode编码并展示
+console.log(buf2.toJSON()) // => { type: 'Buffer',data: [ 104, 101, 108, 108, 111, 32, 98, 117, 102, 102, 101, 114 ] }
+
+// 写入数据到 buffer
+buf1.write("hello world")
+
+// 解码buffer，因为 buf1 只能承载10个字节的内容，所有多处的东西会被截断
+console.log(buf1.toString()) // => 'hello worl'
+)
+txtit(Var)
+return
+
+::redis::
+Var =
+(
+// $ npm i redis --S
+const redis = require('redis')
+const { promisify } = require('util')
+
+const client = redis.createClient('6379', '127.0.0.1', { auth_pass: '123456' })
+
+client.on('ready', res => console.log('ready'))
+client.on('end', err => console.log('end'))
+client.on('error', err => console.log(err))
+client.on('connect', () => console.log('redis connect success!'))
+
+// 基本使用
+client.set('name', 'hello nodejs', function (err, res) {
+    if (err) return console.log(err)
+    console.log(res)
+})
+
+client.get('name', function (err, res) {
+    if (err) return console.log(err)
+    console.log(res)
+})
+
+// promises 
+const getAsync = promisify(client.get).bind(client)
+;(async () => {
+    const name = await getAsync('name')
+    console.log(20210512153636, name)
+})()
+---
+
+## redis client 基本操作
+
+```python
+set name helloredis
+get name
+exists name
+del name
+```
+
+## redis hash（常用）
+
+技巧：可以将利用 hash 将「数据表」保存到 redis 中
+
+譬如我想将 user 表中一个 id 为 15、username 为 zhangsan、password 为 123456 的用户存储到redis。可以用以下方式
+
+```python
+# 发现没有，我们直接以 id 作为 key 了
+hset my_databasename_user_15 username zhangsan password 123456
+
+# 获取所有字段
+hgetall my_databasename_user_15
+
+# 检测字段是否存在
+hexists my_databasename_user_15 username
+
+# 返回所有的 key
+hkeys my_databasename_user_15
+
+# 获取指定字段
+hget my_databasename_user_15 password
+```
+
+## lpush/rpush 列表操作
+
+```python
+lpush my_list foo
+rpush my_list bar
+lrange my_list 0 100
+
+lpop list_name
+rpop list_name
+lrange my_list 0 100
+```
+
+## 有序集合（常用）
+
+技巧：通常用来做排序、「排名榜」
+
+```python
+zadd my_rank 10000 foo
+zadd my_rank 5000 dog
+zadd my_rank 2000 bar
+zadd my_rank 3000 cat
+
+zrange my_rank 0 10000
+```
+)
+txtit(Var)
+return
+
+::process::
+Var =
+(
+process 模块用来与当前进程互动,获取相关操作系统相关信息。
+
+```javascript
+console.log(process.pid)
+console.log(process.version)
+console.log(process.platform)
+console.log(process.title)
+console.log(process.argv)
+console.log(process.execPath)
+console.log(process.stdout)
+console.log(process.stdin)
+console.log(process.stderr)
+console.log(process.env)
+```
+
+## process 重要方法
+
+```javascript
+// 获取当前的工作目录
+progress.cwd()
+// 获取当前进程运行的时间
+progress.uptime()
+// 设置当前的工作目录
+progress.chdir()
+// 下一次循环的时候调用
+progress.nextTick()
+```
+
+## process 重要事件
+
+```javascript
+// 「当node退出的时候」
+process.on('exit', function () {
+    console.log('now node exit!!!!')
+})
+
+// 「当我们发生了一个未知的异常的时候」
+// node 停止处理当前这个事件，继续等待下一个事件的处理，不会整个退出
+// 服务器就不会随意的奔溃，可以把这个错误，保存起来，方便我们去查找
+process.on('uncaughtException', function (err) {
+    console.log('uncaughtException called ', err)
+})
+```
 )
 txtit(Var)
 return

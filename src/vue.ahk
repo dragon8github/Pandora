@@ -9644,3 +9644,242 @@ Var =
 )
 code(Var)
 return
+
+::scrolltext::
+Var =
+(
+<template>
+  <div class="scrollText" ref="scrollText">
+    <slot></slot>
+  </div>
+</template> 
+
+<script>
+export default {
+  name: 'scrollText',
+  mounted() {
+    const el = this.$refs.scrollText
+
+        let timer = null
+
+    function scrollText1() {
+      // 到底了
+      if ((el.scrollWidth - el.scrollLeft).toFixed(0) - el.clientWidth === 0) {
+        timer = setTimeout(scrollText2, 2500)
+      } else {
+        // 滚动
+        el.scrollTo(el.scrollLeft + 1, 0)
+        // 帧动画
+        timer = setTimeout(scrollText1, 1000 / 60)
+      }
+    }
+
+    function scrollText2() {
+      // 到底了
+      if (el.scrollLeft === 0) {
+        timer = setTimeout(scrollText1, 2500)
+      } else {
+        // 滚动
+        el.scrollTo(el.scrollLeft - 1, 0)
+        // 帧动画
+        timer = setTimeout(scrollText2, 1000 / 35)
+      }
+    }
+
+    scrollText1(el)
+
+        // 组件销毁时，清空播放列表
+        this.$on('hook:destroyed', () => clearTimeout(timer))
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+.scrollText {
+    overflow: hidden;
+    white-space: nowrap;
+}
+</style>
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+
+    <style>
+    html, body{
+        margin: 50px;
+        padding: 50px;
+    }
+
+    #app {
+    }
+
+    .text {
+        width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class='text'>国家统计局东莞调查队</div>
+    </div>
+</body>
+<script>
+
+const el = document.querySelector('.text')
+
+function scrollText1() {
+    // 到底了
+    if ((el.scrollWidth - el.scrollLeft).toFixed(0) - el.clientWidth === 0) {
+        setTimeout(scrollText2, 2500);
+    } else {
+        // 滚动
+        el.scrollTo(el.scrollLeft + 1, 0)
+        // 帧动画
+        setTimeout(scrollText1, 1000 / 60);
+    }
+}
+
+function scrollText2() {
+    // 到底了
+    if (el.scrollLeft === 0) {
+        setTimeout(scrollText1, 2500);
+    } else {
+        // 滚动
+        el.scrollTo(el.scrollLeft - 1, 0)
+        // 帧动画
+        setTimeout(scrollText2, 1000 / 35);
+    }
+}
+
+scrollText1();
+
+</script>
+</html>
+---
+<template>
+  <div class="scrollText" ref="scrollText">
+    <slot></slot>
+  </div>
+</template> 
+
+<script>
+export default {
+  name: 'scrollText',
+  mounted() {
+    const el = this.$refs.scrollText
+
+    function scrollText1() {
+      // 到底了
+      if ((el.scrollWidth - el.scrollLeft).toFixed(0) - el.clientWidth === 0) {
+        setTimeout(scrollText2, 2500)
+      } else {
+        // 滚动
+        el.scrollTo(el.scrollLeft + 1, 0)
+        // 帧动画
+        setTimeout(scrollText1, 1000 / 60)
+      }
+    }
+
+    function scrollText2() {
+      // 到底了
+      if (el.scrollLeft === 0) {
+        setTimeout(scrollText1, 2500)
+      } else {
+        // 滚动
+        el.scrollTo(el.scrollLeft - 1, 0)
+        // 帧动画
+        setTimeout(scrollText2, 1000 / 35)
+      }
+    }
+
+    scrollText1(el)
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+.scrollText {
+    overflow: hidden;
+    white-space: nowrap;
+}
+</style>
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Vue -->
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+
+    <style>
+    html, body{
+        margin: 50px;
+        padding: 50px;
+    }
+
+    #app {
+    }
+
+    .text {
+        width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class='text'>国家统计局东莞调查队</div>
+    </div>
+</body>
+<script>
+
+const el = document.querySelector('.text')
+
+function scrollText1() {
+    // 到底了
+    if ((el.scrollWidth - el.scrollLeft).toFixed(0) - el.clientWidth === 0) {
+        setTimeout(scrollText2, 2500);
+    } else {
+        // 滚动
+        el.scrollTo(el.scrollLeft + 1, 0)
+        // 帧动画
+        setTimeout(scrollText1, 1000 / 60);
+    }
+}
+
+function scrollText2() {
+    // 到底了
+    if (el.scrollLeft === 0) {
+        setTimeout(scrollText1, 2500);
+    } else {
+        // 滚动
+        el.scrollTo(el.scrollLeft - 1, 0)
+        // 帧动画
+        setTimeout(scrollText2, 1000 / 35);
+    }
+}
+
+scrollText1();
+
+</script>
+</html>
+)
+code(Var)
+return

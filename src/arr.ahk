@@ -1,4 +1,5 @@
 ﻿!a::
+	Menu, arrayMenu, Add, 伟萍的彩票算法, ForHandler
 	Menu, arrayMenu, Add, birdAndCicada: 飞鸟与蝉, ForHandler
 	Menu, arrayMenu, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
 	Menu, arrayMenu, Add, findSameByProperty：对比两个数组找出相同特征的成员, utilsHandler
@@ -115,6 +116,13 @@ Var =
 (
 )
 }
+
+
+if (v == "伟萍的彩票算法") {
+_send("caipiao", true, true)
+return
+}
+
 
 if (v == "birdAndCicada: 飞鸟与蝉") {
 _send("bird", true, true)
@@ -1114,4 +1122,31 @@ const lazyForDo = async (ary = [], n = 1, fn = () => {}, timer = 0) => {
 })();
 )
 txtit(Var)
+return
+
+::caipiao::
+Var =
+(
+function getRandomArrayElements(arr, count) {
+    var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+    while (i-- > min) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(min);
+}
+
+
+var arr = [...Array(33)].map((v, index, array) => index + 1)
+var a = getRandomArrayElements(arr, 6)
+
+var arr2 = [...Array(16)].map((v, index, array) => index + 1)
+var arr3 = exclude(arr2, a)
+var b = getRandomArrayElements(arr3, 1)
+
+console.log(a, b)
+)
+code(Var)
 return

@@ -1,4 +1,99 @@
-﻿::jsconfig::
+﻿::cron::
+::dingshiqi::
+::dingshirenwu::
+::dingshi::
+::dingshitask::
+Var =
+(
+const schedule = require('node-schedule')
+
+// 每分钟的第3秒会执行
+var job = schedule.scheduleJob({ second: 3 }, () => console.log('The answer to life, the universe, and everything!'))
+
+// 从 0s 开始，每 5s 执行一次（注意，首次不执行）
+var job = schedule.scheduleJob('0/5 * * * * ?', () => console.log('The answer to life, the universe, and everything!'))
+
+// 每 30分钟执行一次
+var job = schedule.scheduleJob('0 0/30 * * * ?', () => console.log('The answer to life, the universe, and everything!'))
+
+console.log('task runing...✈️')
+)
+txtit(Var)
+return
+
+::minglh::
+::minglingh::
+::cmd2::
+Var =
+(
+const os = require('os')
+const util = require('util')
+const { join, resolve }  = require('path')
+const exec = util.promisify(require('child_process').exec)
+
+// C:\Users\1\
+const homedir = os.homedir()
+// C:\Users\1\Desktop
+const desktop = join(homedir, '/Desktop/')
+// C:\Users\1\Desktop\Covid-19
+const projectPath = join(desktop, 'Covid-19')
+
+/**
+ * say something ...
+ */
+ const say = (something = '', i = 0, timer = setInterval(() => console.log(something, ++i + 's'), 1000)) => (...args) => { clearInterval(timer); console.log(...args) }
+
+;(async () => {
+    const unsay = say('task runing...✈️ ')
+    // 执行脚本
+    const result = await exec('ls', { cwd: projectPath })
+    // 反馈执行结果
+    unsay('task finish...')
+})()
+---
+// npm install --save shelljs
+var shell = require("shelljs")
+
+shell.exec("echo hello " + 123)
+---
+
+const path = require('path')
+const util = require('util')
+const exec = util.promisify(require('child_process').exec)
+
+const rootDir = path.join(__dirname, '..')
+const apiDir = path.join(rootDir, 'api')
+const frontendDir = path.join(rootDir, 'frontend')
+
+async function installDependencies(dir) {
+    await exec('npm install', { cwd: dir, })
+}
+
+async function bootstrap() {
+    console.log('Start install dependencies...\n')
+
+    await installDependencies(rootDir)
+    console.log('Root dependencies installed success.')
+
+    await installDependencies(apiDir)
+    console.log('Api dependencies installed success.')
+
+    await installDependencies(frontendDir)
+    console.log('Frontend dependencies installed success.')
+
+    console.log('All dependencies installed.')
+}
+
+bootstrap()
+
+process.on('unhandledRejection', e => {
+    throw e
+})
+)
+txtit(Var)
+return
+
+::jsconfig::
 Var =
 (
 {
@@ -4522,7 +4617,8 @@ if (window.navigator.msSaveOrOpenBlob) {
 txtit(Var)
 return
 
-
+::dgstreet::
+::dongguanstreet::
 ::shengshou::
 ::sifang::
 ::dgzhenjie::
@@ -4530,6 +4626,7 @@ return
 ::city::
 ::dg33::
 ::dgcity::
+::dongguancity::
 ::city33::
 ::dgrect::
 ::cityrect::
@@ -4544,6 +4641,40 @@ return
 Var =
 (
 export const filterCity = (v = '') => v.replace(/街道|镇/g, '')
+
+东城
+莞城
+虎门
+长安
+厚街
+南城
+寮步
+塘厦
+常平
+凤岗
+清溪
+大朗
+万江
+大岭山
+沙田
+石碣
+横沥
+黄江
+松山湖
+樟木头
+企石
+麻涌
+茶山
+中堂
+高埗
+桥头
+东坑
+道滘
+石排
+谢岗
+石龙
+望牛墩
+洪梅
 ---
 {
   "东城":[113.781803,23.018795],
@@ -9141,6 +9272,10 @@ const pm = api => (options, ...params) => new Promise((resolve, reject) => api({
 code(Var)
 return
 
+
+::ondesk::
+::onkill::
+::ondest::
 ::hook::
 ::hock::
 Var =
@@ -14201,29 +14336,7 @@ return
 Var =
 (
 puppeteer
----
-const puppeteer = require('puppeteer')
 
-;(async () => {
-    // 启动 chrome 无头浏览器
-    const browser = await puppeteer.launch({
-        // ☀️ 重点
-        ignoreHTTPSErrors: true,
-        // 是否无头（调试）
-        headless: true,
-    })
-
-    const page = await browser.newPage()
-
-    // 设置页面的视口宽高
-    await page.setViewport({ width: 1920, height: 1080 })
-
-    await page.goto('https://www.baidu.com')
-    await page.screenshot({ path: 'example.png' })
-
-    await browser.close()
-})()
----
 ## useage
 ```bash
 $ cnpm i puppeteer -S
@@ -14256,6 +14369,67 @@ const browser = await puppeteer.launch({
     ignoreHTTPSErrors: true
 })
 ```
+---
+const puppeteer = require('puppeteer')
+
+;(async () => {
+    // 启动 chrome 无头浏览器
+    const browser = await puppeteer.launch({
+        // ☀️ 重点
+        ignoreHTTPSErrors: true,
+        // 是否无头（调试）
+        headless: true,
+    })
+
+    const page = await browser.newPage()
+
+    // 设置页面的视口宽高
+    await page.setViewport({ width: 1920, height: 1080 })
+
+    await page.goto('https://www.baidu.com')
+    await page.screenshot({ path: 'example.png' })
+
+    await browser.close()
+})()
+---
+const puppeteer = require('puppeteer')
+const { run } = require('./cache')
+
+;(async () => {
+    // 启动 chrome 无头浏览器
+    const browser = await puppeteer.launch({
+        ignoreHTTPSErrors: true,
+        // 是否无头（调试）
+        headless: true,
+        // 超时设置长一点
+        timeout: 150 * 1000,
+        // https://stackoverflow.com/questions/54527982/why-is-puppeteer-reporting-unhandledpromiserejectionwarning-error-navigation
+        devtools:false
+    })
+
+    // 打开一个新页面
+    const page = await browser.newPage()
+
+    // 设置页面的视口宽高
+    await page.setViewport({ width: 1920, height: 1080 })
+
+    // 设置不需要等待「网页跳转超时」
+    await page.setDefaultNavigationTimeout(0)
+
+    // fixbug: 地图加载太久了。我还是用另一种方式监听吧
+    page.goto('http://19.104.50.124/covid-19-map/#/index')
+
+    // 我选择通过「等待头部出现」判断界面是否加载完成
+    await page.waitForSelector('#header')
+
+    // 进行缓存一系列操作
+    await run(page)
+
+    // （可选）关闭当前页面
+    await browser.close()
+
+    console.log(`finish... ⭐️✨`)
+})()
 ---
 const puppeteer = require('puppeteer')
 const { sleep, loginJenkins, buildJenkins, screenshot } = require('./helper')
@@ -16440,6 +16614,9 @@ function getDateDiff(dateTimeStamp) {
     return result
 }  
 |||
+// 内置本地化时间，不好用但能应急："2021/5/13下午2:01:26"
+new Date().toLocaleString() 
+
 // 获取两个时间之间的距离（天）
 const getDaysDiffBetweenDates = (dateInitial, dateFinal) =>
   (dateFinal - dateInitial) / (1000 * 3600 * 24);

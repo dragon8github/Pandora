@@ -154,6 +154,8 @@ $.ajax({
 var formData = new FormData();
 formData.append("username", "Groucho");
 formData.append("accountnum", 123456);
+// input:file 上传图片
+formData.append("img", document.querySelector('input[type=file]').files[0])
 
 // 如果是一个对象需要转化成FormData也可以使用这种
 const obj2formdata = (json) => {

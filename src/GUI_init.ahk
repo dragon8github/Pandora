@@ -208,7 +208,7 @@ Gui, Pandora:Add, Tab3, Section ys ym Choose1 w1280, 常用 | 工作坊 | 创慧
 Gui, Pandora:Tab, 1
 Gui, Pandora:Add, Text,  W140 Section xs yp+30 xp+20, 常用导航:
 Gui, Pandora:Add, Link,, <a href="https://github.com/dragon8github/Pandora">Lastest Pandora</a>
-Gui, Pandora:Add, Link,, <a href="https://service-nie897s6-1255983702.gz.apigw.tencentcs.com/release/">私人图床</a>
+Gui, Pandora:Add, Link,, <a href="https://sls.iochub.cn/">私人图床</a>
 Gui, Pandora:Add, Link,, <a href="https://gen-vue-1255983702.cos-website.ap-guangzhou.myqcloud.com/">布局生成器</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/cylee">博客园</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com">github</a>
@@ -306,9 +306,10 @@ Gui, Pandora:Add, Link,, <a href="https://frontender-ua.medium.com/">medium前�
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
 Gui, Pandora:Add, Link,, <a href="http://obkoro1.com/web_accumulate/algorithm/">前端算法题</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/">阮一峰的博客</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly/issues">阮一峰issue</a>
-Gui, Pandora:Add, Link,, <a href="https://wangdoc.com/bash/expansion.html#start-end-%E6%89%A9%E5%B1%95">阮一峰的bash</a>
+; Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly/issues">阮一峰issue</a>
+; Gui, Pandora:Add, Link,, <a href="https://wangdoc.com/bash/expansion.html#start-end-%E6%89%A9%E5%B1%95">阮一峰的bash</a>
 Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.html">前端日报</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/sorrycc/weekly">前端周刊2</a>
 ; Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
@@ -1517,6 +1518,7 @@ Gui, Pandora:Add, Link, W140, <a href="https://docs.python.org/zh-cn/3.7/library
 ; 剪切框
 Gui, Pandora:Tab, 17
 Gui, Pandora:Add, Edit, vClipHistory w1020 H660 Limit199307100337
+; Gui, Pandora:Add, ActiveX, w1020  H360, http://localhost:3001
 ; Gui, Pandora:Add, Button, gSaveClipHistory w870 h30, 保存到桌面
 
 
