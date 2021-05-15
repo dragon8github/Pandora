@@ -420,6 +420,7 @@ Gui, Pandora:Add, Link,, <a href="https://picjumbo.com/free-photos/mountain/">pi
 Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icons-freebie/">psdrepo 天气图片资源</a>
 Gui, Pandora:Add, Link,, <a href="https://www.chouke.vip/forum.php">筹课网/盗版课</a>
 Gui, Pandora:Add, Link,, <a href="https://bigjpg.com/">AI图片放大高清</a>
+Gui, Pandora:Add, Link,, <a href="https://www.qingting.fm/channels/327421/">文化有限电台</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：
@@ -1393,7 +1394,7 @@ Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/cos5/bucket/
 Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/beian/history">网站备案</a>
 Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/apigateway/service">API网关</a>
 Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/scf/list?rid=1&ns=default">云函数SCF</a>
-Gui, Pandora:Add, Link,, <a href="https://serverless.cloud.tencent.com/">Serverless</a>
+Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/sls">Serverless</a>
 Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/cynosdb">mysql</a>
 
 

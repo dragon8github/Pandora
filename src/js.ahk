@@ -2973,6 +2973,10 @@ return
 ::fuzhi::
 Var =
 (
+const copyTextToClipboard = async (text) => {
+  await navigator.clipboard.writeText(text);
+};
+
 export const copyToClipboard = text => {
   const el = document.createElement('textarea')
   el.value = text
@@ -11003,6 +11007,8 @@ code(Var)
 return
 
 
+::kenengx::
+::kenenegxing::
 ::zuhe::
 ::combi::
 Var =
@@ -11047,8 +11053,48 @@ console.log(combinations)
   {'admin': false, 'color': 'green', 'mode': 'dark'}
 ]
 */
+---
+const combinate = obj => {
+    let combos = []
+    for (var key in obj) {
+        const values = obj[key]
+        const all = [];
+        for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < (combos.length || 1); j++) {
+            const newCombo = { ...combos[j], [key]: values[i] }
+            all.push(newCombo)
+        }
+        }
+        combos = all
+    }
+    return combos
+}
+
+const options = {
+  1: ['钊鸿', '嘉欣', '刘羲', '志威', '耀全'],
+  2: ['钊鸿', '嘉欣', '刘羲', '志威', '耀全'],
+}
+
+const combinations = combinate(options)
+console.log(combinations, combinations.length)
+/*
+[
+  {'admin': true, 'color': 'red', 'mode': 'light'},
+  {'admin': true, 'color': 'blue', 'mode': 'light'},
+  {'admin': true, 'color': 'green', 'mode': 'light'},
+  {'admin': false, 'color': 'red', 'mode': 'light'},
+  {'admin': false, 'color': 'blue', 'mode': 'light'},
+  {'admin': false, 'color': 'green', 'mode': 'light'},
+  {'admin': true, 'color': 'red', 'mode': 'dark'},
+  {'admin': true, 'color': 'blue', 'mode': 'dark'},
+  {'admin': true, 'color': 'green', 'mode': 'dark'},
+  {'admin': false, 'color': 'red', 'mode': 'dark'},
+  {'admin': false, 'color': 'blue', 'mode': 'dark'},
+  {'admin': false, 'color': 'green', 'mode': 'dark'}
+]
+*/
 )
-code(Var)
+txtit(Var)
 return
 
 ::pipe::
@@ -13984,6 +14030,10 @@ function extend(to, _from) {
   return to;
 };
 ---
+const copyTextToClipboard = async (text) => {
+  await navigator.clipboard.writeText(text);
+};
+
 export const copyToClipboard = text => {
   const el = document.createElement('textarea')
   el.value = text
@@ -14369,29 +14419,6 @@ const browser = await puppeteer.launch({
     ignoreHTTPSErrors: true
 })
 ```
----
-const puppeteer = require('puppeteer')
-
-;(async () => {
-    // 启动 chrome 无头浏览器
-    const browser = await puppeteer.launch({
-        // ☀️ 重点
-        ignoreHTTPSErrors: true,
-        // 是否无头（调试）
-        headless: true,
-    })
-
-    const page = await browser.newPage()
-
-    // 设置页面的视口宽高
-    await page.setViewport({ width: 1920, height: 1080 })
-
-    await page.goto('https://www.baidu.com')
-    await page.screenshot({ path: 'example.png' })
-
-    await browser.close()
-})()
----
 const puppeteer = require('puppeteer')
 const { run } = require('./cache')
 
@@ -14404,7 +14431,7 @@ const { run } = require('./cache')
         // 超时设置长一点
         timeout: 150 * 1000,
         // https://stackoverflow.com/questions/54527982/why-is-puppeteer-reporting-unhandledpromiserejectionwarning-error-navigation
-        devtools:false
+        devtools: false
     })
 
     // 打开一个新页面
@@ -14417,7 +14444,7 @@ const { run } = require('./cache')
     await page.setDefaultNavigationTimeout(0)
 
     // fixbug: 地图加载太久了。我还是用另一种方式监听吧
-    page.goto('http://19.104.50.124/covid-19-map/#/index')
+    page.goto('http://19.104.50.124/covid-19-map/#/index').then(() => {})
 
     // 我选择通过「等待头部出现」判断界面是否加载完成
     await page.waitForSelector('#header')
@@ -14430,6 +14457,63 @@ const { run } = require('./cache')
 
     console.log(`finish... ⭐️✨`)
 })()
+---
+const { sleep } = require('./helper')
+
+const time = 5 * 1000
+
+// 注入的 page 核心对象
+let page = null
+
+// 自定义点击事件，加入日志
+let click = dom => {
+    page.click(dom)
+    console.log('click ☀️ ', dom)
+}
+
+/**
+ * 「综合态势」 5 大模块
+ */
+const clickTop = async () => {
+    await click('.General__nav--item:nth-child(2)')
+    await sleep(time)
+    await click('.General__nav--item:nth-child(3)')
+    await sleep(time)
+    await click('.General__nav--item:nth-child(4)')
+    await sleep(time)
+    await click('.General__nav--item:nth-child(5)')
+    await sleep(time)
+}
+
+// 其实这才是最顶层的4个模块、「综合态势」、「组织领导」、「重点人群」、「重点场所」
+const clickModule = async () => {
+    await sleep(time)
+    await click('.Overview__nav--item:nth-child(2)')
+    await sleep(time)
+    await click('.Overview__nav--item:nth-child(3)')
+    await sleep(time)
+    await click('.Overview__nav--item:nth-child(4)')
+    await sleep(time)
+}
+
+// 重点人群 - 跨境司机 - 申报来莞
+const clickDriver = async () => {
+    await click('.Overview__nav--item:nth-child(3)')
+    await page.waitForFunction(index => document.querySelector('._click').innerText.includes('申报来莞'), { timeout: 30 * 1000 }, 0)
+    await click('._click:nth-child(1)')
+    await sleep(time)
+}
+
+const run = async (__page__) => {
+    page = __page__
+    await clickTop()
+    await clickModule()
+    await clickDriver()
+}
+
+module.exports = {
+    run
+}
 ---
 const puppeteer = require('puppeteer')
 const { sleep, loginJenkins, buildJenkins, screenshot } = require('./helper')
@@ -14756,6 +14840,31 @@ return
 ::is::
 Var = 
 (
+const trueTypeOf = obj => Object.prototype.toString.call(obj).slice(8, -1).toLowerCase()
+// string
+console.log(trueTypeOf(''))
+
+// number
+console.log(trueTypeOf(0))
+
+// undefined
+console.log(trueTypeOf())
+
+// null
+console.log(trueTypeOf(null))
+
+// object
+console.log(trueTypeOf({}))
+
+// array
+console.log(trueTypeOf([]))
+
+// number
+console.log(trueTypeOf(0))
+
+// function
+console.log(trueTypeOf(() => {}))
+---
 // https://github.com/Chalarangelo/30-seconds-of-code/blob/master/snippets/curry.md
 const is = (type, val) => ![, null].includes(val) && val.constructor === type;
 is(Array, [1]); // true
@@ -14771,19 +14880,14 @@ is(Number, 1); // true
 is(Number, new Number(1)); // true
 is(Boolean, true); // true
 is(Boolean, new Boolean(true)); // true
-
+---
 export const isString = input => Object.prototype.toString.call(input) === '[object String]'
-
 export const isNumber = input => (typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]') && input === input
-
 export const isBoolean = input => Object.prototype.toString.call(input) === '[object Boolean]'
-
 export const isArray = input => input instanceof Array || Object.prototype.toString.call(input) === '[object Array]'
-
 export const isObject = input => input != null && Object.prototype.toString.call(input) === '[object Object]'
-
 export const isFunction = input => input instanceof Function || Object.prototype.toString.call(input) === '[object Function]'
-
+---
 const inBrowser = typeof window !== 'undefined'
 const inWeex = typeof WXEnvironment !== 'undefined' && !!WXEnvironment.platform
 const weexPlatform = inWeex && WXEnvironment.platform.toLowerCase()
@@ -14797,7 +14901,7 @@ const isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge
 const isPhantomJS = UA && /phantomjs/.test(UA)
 const isFF = UA && UA.match(/firefox\/(\d+)/)
 )
-code(Var)
+txtit(Var)
 return
 
 ::uuid::

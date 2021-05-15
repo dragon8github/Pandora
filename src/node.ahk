@@ -2680,6 +2680,21 @@ return
 ::buffer::
 Var =
 (
+// hello, world!
+console.log(Buffer.from('hello, world!').toString())
+
+// 转换成 base64 字符串：aGVsbG8sIHdvcmxkIQ==
+console.log(Buffer.from('hello, world!').toString('base64'))
+
+// 还原 base64 字符串：hello, world! 
+console.log(Buffer.from('aGVsbG8sIHdvcmxkIQ==', 'base64').toString())
+
+// 转换成十六进制字符串：68656c6c6f2c20776f726c6421 
+console.log(Buffer.from('hello, world!').toString('hex'))
+ 
+// 还原十六进制字符串：hello, world!
+console.log(Buffer.from('68656c6c6f2c20776f726c6421', 'hex').toString())
+---
 // 创建一个大小为10的空buffer(这个buffer只能承载10个字节的内容)
 const buf1 = Buffer.alloc(10)
 

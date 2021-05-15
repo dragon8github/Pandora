@@ -8849,52 +8849,6 @@ const purifyObject = o => Object.entries(o).reduce((obj, [key, value]) => value 
 code(Var)
 return
 
-::combi::
-Var =
-(
-const combinate = obj => {
-    let combos = []
-    for (var key in obj) {
-        const values = obj[key]
-        const all = [];
-        for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < (combos.length || 1); j++) {
-            const newCombo = { ...combos[j], [key]: values[i] }
-            all.push(newCombo)
-        }
-        }
-        combos = all
-    }
-    return combos
-}
-
-const options = {
-  color: ['red', 'blue', 'green'],
-  admin: [true, false],
-  mode:  ['light', 'dark'],
-}
-
-const combinations = combinate(options)
-console.log(combinations)
-/*
-[
-  {'admin': true, 'color': 'red', 'mode': 'light'},
-  {'admin': true, 'color': 'blue', 'mode': 'light'},
-  {'admin': true, 'color': 'green', 'mode': 'light'},
-  {'admin': false, 'color': 'red', 'mode': 'light'},
-  {'admin': false, 'color': 'blue', 'mode': 'light'},
-  {'admin': false, 'color': 'green', 'mode': 'light'},
-  {'admin': true, 'color': 'red', 'mode': 'dark'},
-  {'admin': true, 'color': 'blue', 'mode': 'dark'},
-  {'admin': true, 'color': 'green', 'mode': 'dark'},
-  {'admin': false, 'color': 'red', 'mode': 'dark'},
-  {'admin': false, 'color': 'blue', 'mode': 'dark'},
-  {'admin': false, 'color': 'green', 'mode': 'dark'}
-]
-*/
-)
-code(Var)
-return
 
 ::shehuizhuyi::
 ::shehui::

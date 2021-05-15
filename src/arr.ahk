@@ -1,4 +1,5 @@
 ﻿!a::
+	Menu, arrayMenu, Add, 列举所有可能性的算法, ForHandler
 	Menu, arrayMenu, Add, 伟萍的彩票算法, ForHandler
 	Menu, arrayMenu, Add, birdAndCicada: 飞鸟与蝉, ForHandler
 	Menu, arrayMenu, Add, ObjectSearch:深度搜索对象/数组, utilsHandler
@@ -117,6 +118,11 @@ Var =
 )
 }
 
+
+if (v == "列举所有可能性的算法") {
+_send("kenengx", true, true)
+return
+}
 
 if (v == "伟萍的彩票算法") {
 _send("caipiao", true, true)

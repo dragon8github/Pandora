@@ -581,24 +581,24 @@ name :=  dirpath . "\package.json"
 FileAppend,
 (
 {
-  "name": "test-node",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  },
-  "dependencies": {
-    "http-proxy": "^1.18.1",
-    "lodash": "^4.17.20"
-  }
+    "name": "test-node",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon app.js",
+        "start": "node app.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.4"
+    },
+    "dependencies": {
+        "http-proxy": "^1.18.1",
+        "lodash": "^4.17.20"
+    }
 }
 ),  %name%
 
@@ -1068,7 +1068,7 @@ WinGet, OutVar, Transparent, A
 if (!OutVar|| OutVar != 255) {
 	WinSet, Transparent, 255, A
 } else {
-	WinSet, Transparent, 180, A
+	WinSet, Transparent, 50, A
 }
 return
 
