@@ -7405,6 +7405,73 @@ export default {
         return { ...toRefs(event), increaseCapacity }
     }
 }
+---
+<template>
+    <button @click="inc">+</button>
+    <HelloWorld ref='baz' :count="count" @fuck='fuckHandler'></HelloWorld>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import HelloWorld from '@/components/HelloWorld'
+
+ref: count = 1
+
+// 用来挂载组件的实例
+ref: baz = null
+
+function inc() {
+  count++
+  console.log(baz)
+}
+
+function fuckHandler(...args) {
+    console.log(...args)
+}
+
+// access the raw ref object by prefixing with $
+console.log($count.value)
+
+</script>
+
+
+<style lang="scss">
+</style>
+---
+<template>
+    <div class="hello" @click="clickHandler">
+      hello world {{ count }}
+    </div>
+</template>
+
+<script setup>
+import { useContext, defineProps, defineEmit } from 'vue'
+
+// props
+const props = defineProps({
+    count: Number,
+})
+console.log(20210506220542, props)
+
+
+// emit
+const emits = defineEmit(['fuck'])
+const clickHandler = () => {
+    emits('fuck', 'shit')
+}
+
+// ctx 知识点：用于暴露组件的属性和方法，不像以前全部无死角暴露
+const ctx = useContext()
+ctx.expose({
+  getName() {
+    return 'hello Lee'
+  }
+})
+</script>
+
+<style scoped lang="scss">
+</style>
+
 )
 txtit(Var)
 return
