@@ -1,4 +1,24 @@
-﻿::suoluetu::
+﻿::mianbao::
+::mianbaox::
+::mianbaoxue::
+::mianbaoxie::
+Var =
+(
+Breadcrumb
+)
+code(Var)
+return
+
+::lichi::
+::liqi::
+Var =
+(
+罗丽琪
+)
+code(Var)
+return
+
+::suoluetu::
 Var =
 (
 thumbnail
@@ -2824,7 +2844,11 @@ p("git push")
 Return
 
 ::auth::
-    Send, Authorization
+Var =
+(
+config.headers['Authorization'] = 'Bearer <your token...>'
+)
+txtit(Var)
 return
 
 >+a::

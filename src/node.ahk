@@ -1417,8 +1417,26 @@ request({
 }, function (err, response, body) {
     console.log(body);
 })
+---
+// https://github.com/request/request
+const request = require('request')
+
+const address = encodeURI('广东省东莞市虎门镇仁中岗中墩二巷26号403房')
+const AK = 'wow7Yj5HNlVgKs1rt15X2eewiGMG9AdK'
+const ret_coordtype = 'WGS84'
+const url = `http://api.map.baidu.com/geocoding/v3/?address=${address}&ret_coordtype=${ret_coordtype}&output=json&ak=${AK}`
+
+request(url, (err, response, body) => {
+    if (err) {
+        return console.log(err)
+    }
+
+    if (response.statusCode === 200) {
+        console.log(body)
+    }
+})
 )
-code(Var)
+txtit(Var)
 return
 
 ::node.mkdir::

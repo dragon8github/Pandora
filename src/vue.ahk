@@ -9950,3 +9950,18 @@ scrollText1();
 )
 code(Var)
 return
+
+
+::vue.model::
+::vue-model::
+::vue-input::
+::vue.input::
+::vueinput::
+Var =
+(
+// Js 修改 input value 值后怎么同步修改绑定的v-model值？
+// https://www.cnblogs.com/zhoudawei/p/10901752.html
+el.value = value; el.dispatchEvent(new Event('input'))
+)
+txtit(Var)
+return

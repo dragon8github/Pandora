@@ -3114,6 +3114,102 @@ var checkedData = data.map(checked)
 
 // 打印出新树
 console.log(20210419203818, checkedData)
+---
+// const fuck = [{"label": "占用道路问题", "value": 31, "children": [{"label": "经营占道", "value": 35, "children": [{"label": "店外经营占道", "value": 40, "children": null }, {"label": "流动摊贩占道", "value": 41, "children": null } ] }, {"label": "垃圾占道", "value": 36, "children": [{"label": "生活垃圾", "value": 42, "children": null }, {"label": "建筑垃圾", "value": 43, "children": null }, {"label": "工业垃圾", "value": 44, "children": null } ] }, {"label": "车辆占道", "value": 37, "children": [{"label": "机动车占道", "value": 45, "children": null }, {"label": "非机动车占道", "value": 46, "children": null } ] }, {"label": "霸占车位", "value": 38, "children": [] }, {"label": "其他占道", "value": 39, "children": [] } ]}, {"label": "“两违”问题", "value": 32, "children": [{"label": "违法建筑", "value": 58, "children": [{"label": "房屋违建", "value": 61, "children": null }, {"label": "小区违建", "value": 62, "children": null }, {"label": "违建棚架", "value": 63, "children": null } ] }, {"label": "违法用地", "value": 59, "children": [] }, {"label": "其他违建", "value": 60, "children": [] } ] }, {"label": "市容设施管理问题", "value": 33, "children": [{"label": "道路损坏", "value": 47, "children": [] }, {"label": "垃圾桶损坏", "value": 48, "children": [] }, {"label": "下水道堵塞", "value": 49, "children": [] }, {"label": "井盖损坏", "value": 50, "children": [] }, {"label": "路灯损坏", "value": 51, "children": [] }, {"label": "树木修剪", "value": 52, "children": [] }, {"label": "水电气", "value": 53, "children": [] }, {"label": "户外广告牌", "value": 54, "children": [] }, {"label": "隔音屏损坏", "value": 55, "children": [] }, {"label": "洒水车问题", "value": 56, "children": [] }, {"label": "其他", "value": 57, "children": [] } ] }, {"label": "其他问题", "value": 34, "children": [] } ]
+const fuck = [{ id: 1, label: '一级 1', children: [{ id: 4, label: '二级 1-1', children: [{ id: 9, label: '三级 1-1-1' }, { id: 10, label: '三级 1-1-2' }] }] }, { id: 2, label: '一级 2', children: [{ id: 5, label: '二级 2-1' }, { id: 6, label: '二级 2-2' }] }, { id: 3, label: '一级 3', children: [{ id: 7, label: '二级 3-1' }, { id: 8, label: '二级 3-2' }] }]
+
+/**
+ * 深度递归搜索
+ * @param {Array} arr 你要搜索的数组
+ * @param {Function} condition 回调函数，必须返回谓词，判断是否找到了。会传入(item, index, level)三个参数
+ * @param {String} children 子数组的key
+ */
+const deepFind = (arr, condition, children) => {
+    // 即将返回的数组
+    let main = []
+
+    // 用try方案方便直接中止所有递归的程序
+    try {
+        // 开始轮询
+        (function poll(arr, level, cb) {
+            // 如果传入非数组
+            if (!Array.isArray(arr)) return
+
+            // 遍历数组
+            for (let i = 0; i < arr.length; i++) {
+                // 获取当前项
+                const item = arr[i]
+
+                // 先占位预设值
+                main[level] = item
+
+                // 扩展：如果是一个对象的话，添加一些标记属性
+                if (Object.prototype.toString.call(item) === '[object Object]') {
+                  item.__INDEX__ = i
+                  item.__LEVEL__ = level
+                }
+
+                // 检验是否已经找到了
+                const isFind = condition && condition(item, i, level) || false
+
+                // 自杀函数
+                const kill = () => {
+                // 删除占位预设值
+                  main.length = main.length - 1
+                  // 触发回调
+                  cb && cb()
+                }
+
+                // 如果已经找到了
+                if (isFind) {
+                    // 直接抛出错误中断所有轮询
+                    throw Error
+                // 如果存在children，那么深入递归
+                } else if (children && item[children] && item[children].length) {
+                    poll(item[children], level + 1,
+                      // 如果本函数被触发，说明children还是找不到。
+                      () => {
+                      // 那么如果我是最后一条，那么我也自杀吧
+                      if (i === arr.length - 1) {
+                        kill()
+                      }
+                    })
+                // 如果是最后一个且没有找到值，那么通过修改数组长度来删除当前项
+                } else if (i === arr.length - 1) {
+                  // 找不到，羞愧自杀
+                  kill()
+                }
+            }
+        })(arr, 0)
+    // 使用try/catch是为了中止所有轮询中的任务
+    } catch (err) {}
+
+    // 返回最终数组
+    return main
+}
+
+let myarr = deepFind(fuck, (item, index, level) => item.label === '二级 2-2', 'children')
+console.log(20181115092957, myarr)  // [{…}, {…}, {…}]
+console.log(20181115092957, myarr.map(_ => _.value)) // [32, 58, 63]
+---
+var treeData = [{id: 1, label: '一级 1', children: [{id: 4, label: '二级 1-1', children: [{id: 9, label: '三级 1-1-1'}, {id: 10, label: '三级 1-1-2'}] }] }, {id: 2, label: '一级 2', children: [{id: 5, label: '二级 2-1'}, {id: 6, label: '二级 2-2'}] }, {id: 3, label: '一级 3', children: [{id: 7, label: '二级 3-1'}, {id: 8, label: '二级 3-2'}] }]
+
+var getKey = (data, key, childrenName = 'children') => {
+    // 先获取当前所有的 id
+    let result = [data[key]]
+
+    // 是否具备下级
+    if (data[childrenName]) {
+        // 递归
+        result = [...result, ...data[childrenName].map(_data => getKey(_data, key, childrenName)) ]
+    }
+
+    return result
+}
+
+var getKeyData = treeData.map(d => getKey(d, 'id', 'children')).flat(10)
+
+console.log(20210520145908, JSON.stringify(getKeyData))
 )
 txtit(Var)
 return

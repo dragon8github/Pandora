@@ -421,6 +421,27 @@ _eaves-->
 code(Var)
 return
 
+::ce.case::
+Var =
+(
+# 「根据建筑高度，渲染建筑颜色」
+_BuildingColor-->
+	case Floor < 3  : color(_BuildingColor1)
+	case Floor < 5  : color(_BuildingColor2)
+	case Floor < 7  : color(_BuildingColor3)
+	case Floor < 10 : color(_BuildingColor4)
+	case Floor < 12 : color(_BuildingColor5)
+	case Floor < 14 : color(_BuildingColor6)
+	case Floor < 16 : color(_BuildingColor7)
+	case Floor < 18 : color(_BuildingColor8)
+	case Floor < 24 : color(_BuildingColor9)
+	case Floor < 30 : color(_BuildingColor10)
+	else            : color(_BuildingColorDefault)
+)
+code(Var)
+return
+
+::tietu::
 ::ce.i::
 ::cei::
 ::ceimg::
@@ -430,12 +451,39 @@ return
 ::ce.image::
 Var =
 (
-# 参数1：UV 的通道 # 参数2：UV 的方向 # 参数3~4：UV的大小 
+# 参数1：UV 的通道 # 参数2：UV 的方向 # 参数3~4：UV的大小  
+# comp(f) { top: _top | side: _side }
 setupProjection(0, scope.xy, 30, 50)
 texture("texture/u_f005_t006_Residential_013.jpg")
 projectUV(0)
+---
+@StartRule
+
+# 链接属性
+attr Floor = 10
+
+# 使用链接属性
+height = Floor * 3
+
+# 链接属性 + 随机图片
+@group("墙面贴图")
+attr texture = fileRandom("assets/texture/u_f002_t002_Residential_*.jpg")
+
+lot-->
+	# 动态拉伸
+	extrude(height)
+	
+	# 贴图
+	comp(f) { top: _top | side: _side }	
+
+_side-->
+# 参数1：UV 的通道 # 参数2：UV 的方向 # 参数3~4：UV的大小
+setupProjection(0, scope.xy, 6, 6)
+texture(texture)
+projectUV(0) 
+	
 )
-code(Var)
+txtit(Var)
 return
 
 ::ce.init::
