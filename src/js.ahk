@@ -1,4 +1,60 @@
-﻿::cron::
+﻿::isrunnian::
+::runnian::
+Var =
+(
+readline = () => '2012 12 31'
+
+// 闰年2月29天，平年2月28天；
+function isRunYear(y) {
+    var flag = false
+    // 条件:能被4整除并且不能被100整除，或者被400整除的
+    if (y `% 4 == 0 && y `% 100 !== 0 || y `%400 === 0) {
+        flag = true
+    }
+    return flag
+}
+
+function test(y, m, d) {
+    var run = isRunYear(y)
+    month = { 1: 31, 2: run ? 29 : 28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31 }
+    return +d + ([...Array(m - 1)].reduce((p, c, i) => p + month[i + 1], 0))
+}
+
+var [year, month, day] = readline().split(' ')
+
+console.log(test(year, month, day))
+)
+code(Var)
+return
+
+::qishuip::
+::qishuiping::
+Var =
+(
+function poll(n) {
+  if (n === 0) 
+    return 
+
+  if (n < 2) 
+    return 0
+
+  if (n == 2)
+    return 1
+
+  var s = Math.floor(n / 3)
+  var y = n `% 3
+
+  return s + poll(s + y) 
+}
+
+while(n = readline()) {
+  console.log(poll(n))
+}
+)
+code(Var)
+return
+
+::cron::
 ::dingshiqi::
 ::dingshirenwu::
 ::dingshi::
@@ -3193,7 +3249,6 @@ console.log(20181115092957, myarr)  // [{…}, {…}, {…}]
 console.log(20181115092957, myarr.map(_ => _.value)) // [32, 58, 63]
 ---
 var treeData = [{id: 1, label: '一级 1', children: [{id: 4, label: '二级 1-1', children: [{id: 9, label: '三级 1-1-1'}, {id: 10, label: '三级 1-1-2'}] }] }, {id: 2, label: '一级 2', children: [{id: 5, label: '二级 2-1'}, {id: 6, label: '二级 2-2'}] }, {id: 3, label: '一级 3', children: [{id: 7, label: '二级 3-1'}, {id: 8, label: '二级 3-2'}] }]
-
 var getKey = (data, key, childrenName = 'children') => {
     // 先获取当前所有的 id
     let result = [data[key]]
@@ -3206,10 +3261,97 @@ var getKey = (data, key, childrenName = 'children') => {
 
     return result
 }
-
 var getKeyData = treeData.map(d => getKey(d, 'id', 'children')).flat(10)
-
 console.log(20210520145908, JSON.stringify(getKeyData))
+
+///////////////
+
+var treeData = [{id: 1, label: '一级 1', children: [{id: 4, label: '二级 1-1', children: [{id: 9, label: '三级 1-1-1'}, {id: 10, label: '三级 1-1-2'}] }] }, {id: 2, label: '一级 2', children: [{id: 5, label: '二级 2-1'}, {id: 6, label: '二级 2-2'}] }, {id: 3, label: '一级 3', children: [{id: 7, label: '二级 3-1'}, {id: 8, label: '二级 3-2'}] }]
+
+var getFlatData = (data, childrenName = 'children') => {
+    // 先获取当前所有的 id
+    let result = [data]
+
+    // 是否具备下级
+    if (data[childrenName]) {
+        // 递归
+        result = [...result, ...data[childrenName].map(_data => getFlatData(_data, childrenName)) ]
+    }
+
+    return result
+}
+
+var Data = treeData.map(d => getFlatData(d, 'children')).flat(10)
+
+console.log(20210520145908, Data)
+
+
+---
+function genTree(data, exp, el_tree, isdisabled = () => false) {
+    // 数据清洗
+    el_tree.children = data.filter(exp).map(_ => ({ id: _.resourcecatalogname, label: _.resourcecatalogname, children: [], disabled: isdisabled(_) }))
+    // 递归
+    el_tree.children.forEach(el => genTree(data, _ => _.resourcecatalogparentpath === el.label, el, isdisabled))
+    // 返回最终 el-tree 所需要的数据结构
+    return el_tree
+}
+
+function genTree(data, exp, el_tree, realname) {
+    // 数据清洗
+    el_tree.children = data.filter(exp).map(_ => {
+
+        // 如果当前遍历到的文档和当前用户名匹配，取出 isdown 和 isquery 的关键词
+        const p = _.permissions.find(_ => _.realname === realname) || {}
+
+        // 树节点
+        return { 
+            // 约定数据
+            id: _.resourcecatalogname, 
+            label: _.resourcecatalogname, 
+            children: [], 
+
+            // 其他数据
+            isdown: p.isdown || _.isdown,
+            isquery: p.isquery || _.isquery,
+            databasename: p.databasename || _.databasename,
+            resourcecatalogtablename: p.resourcecatalogtablename || _.resourcecatalogtablename,
+        }
+    })
+    // 递归
+    el_tree.children.forEach(el => genTree(data, _ => _.resourcecatalogparentpath === el.label, el, realname))
+    // 返回最终 el-tree 所需要的数据结构
+    return el_tree
+}
+
+// 基础树结构
+const baseTree = { id: '/', label: '/', children: [] }
+
+// 生成树
+genTree(data, _ => _.resourcecatalogparentpath === '/', baseTree, realname)
+
+// 注意，tree 是一个数组结构
+this.treeData = [baseTree]
+---
+var treeData = [{id: 1, label: '一级 1', children: [{id: 4, label: '二级 1-1', children: [{id: 9, label: '三级 1-1-1'}, {id: 10, label: '三级 1-1-2'}] }] }, {id: 2, label: '一级 2', children: [{id: 5, label: '二级 2-1'}, {id: 6, label: '二级 2-2'}] }, {id: 3, label: '一级 3', children: [{id: 7, label: '二级 3-1'}, {id: 8, label: '二级 3-2'}] }]
+
+const everyDo = function (data = [], childrenName = 'children', exp = () => {}) {
+    data.forEach((item, key) => {
+        const children = item[childrenName]
+
+        exp(item)
+
+        if (children) {
+            everyDo(children, childrenName, exp)
+        }
+    })
+}
+
+everyDo(treeData, 'children', item => {
+    item.path = '/public-data'
+    item.meta = { dbname: '', dbtable: '' }
+})
+
+console.log(20210522183803, JSON.stringify(treeData))
 )
 txtit(Var)
 return
@@ -6877,6 +7019,10 @@ return
 t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var =
 (
+export var log = ((context, index = 100, key) => (...args) => console.log(...args.map(val => ({ [(key = ``temp${index++}``)]: (context[key] = val) }))))(window)
+
+log(1, 2, 3, 4)
+---
 const { log, warn, info, error, assert } = console
 log(%t%, )
 
@@ -6886,8 +7032,12 @@ const logs = (info = '', ...args) => {
     args.forEach(_ => console.log(_))
     console.groupEnd()
 }
+---
+export const debug = (...args) => (console.log(...args), args[args.length - 1])
+
+export const debugfn = (x, fn = y => y) => fn(x)
 )
-code(Var)
+txtit(Var)
 SendInput, {left}
 return
 
@@ -12751,6 +12901,12 @@ var is_weixn = function () {
 code(Var)
 return
 
+::axiosnorepeat::
+::axios-norepeat::
+::axios-repeat::
+::axiosnotrepeat::
+::axiosrepeat::
+::axios-repeat::
 ::axios::
 Var =
 (
@@ -12934,6 +13090,109 @@ axios({
 }).then(response => {
     console.log(20181203202901, response)
 })
+---
+// axios-norepeat.js 不错的 axios 防重复 抽离为.js
+import axios from 'axios'
+import qs from 'qs'
+
+class CachePending {
+    constructor() {
+        this.__store__ = new Map()
+    }
+
+    getKey(config) {
+        return [config.method, config.url, qs.stringify(config.params), qs.stringify(config.data)].join('&')
+    }
+
+    set(config) {
+        const key = this.getKey(config)
+
+        // 如果this.__store__ 中不存在当前请求，则添加进去
+        config.cancelToken = config.cancelToken || new axios.CancelToken(cancel => {
+            if (!this.__store__.has(key)) {
+                this.__store__.set(key, cancel)
+            }
+        })
+
+        return config
+    }
+
+    remove(config) {
+        const key = this.getKey(config)
+
+        // 如果在 this.__store__ 中存在当前请求标识，需要取消当前请求，并且移除
+        if (this.__store__.has(key)) {
+            const cancel = this.__store__.get(key)
+            cancel(key)
+            this.__store__.delete(key)
+            return key
+        }
+    }
+
+    clear() {
+        // 清除所有 this.__store__ 中的请求
+        for (const [url, cancel] of this.__store__) {
+            cancel('repeat abort：' + url)
+        }
+
+        this.__store__.clear()
+    }
+}
+
+export default CachePending
+
+// main.js
+import CachePending from '@/utils/CachePending'
+window.$cachePending = new CachePending()
+
+// request.js
+import axios from 'axios'
+
+const service = axios.create({
+    baseURL: baseURL, 
+    withCredentials: false,
+    timeout: 30 * 1000
+})
+
+// request 拦截器
+service.interceptors.request.use(
+    config => {
+        // 检查重复pending请求
+        window.$cachePending.remove(config)
+        
+        // 设置pending
+        window.$cachePending.set(config)
+        
+        // JWT
+        config.headers['Authorization'] = `Bearer ${store.getters.token}`
+        
+        return config
+    },
+    error => {
+        Promise.reject(error)
+    }
+`)
+
+// response 拦截器
+service.interceptors.response.use(
+        response => {
+            // 请求完成,清除当前请求pending
+            window.$cachePending.remove(response)
+            
+            const { status, data, headers, config } = response
+            
+            return data
+        }
+    },
+    error => {
+        // 处理请求中断
+        if (error.message.includes('repeat abort')) {
+            return console.warn('请求中断', error.message)            
+        }
+
+        return Promise.reject(error.response)
+    }
+`)
 )
 txtit(Var)
 return
@@ -13132,6 +13391,8 @@ setTimeout(() => $('.drapdown__ul').getNiceScroll().resize(), 0);
 code(Var)
 return
 
+::esm::
+::module::
 ::cmd::
 ::command::
 ::umd::

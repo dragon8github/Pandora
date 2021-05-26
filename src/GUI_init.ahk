@@ -295,7 +295,7 @@ Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echojs.com/">echojs.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.smashingmagazine.com/articles/">粉碎杂志</a>
-Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/">reddit</a>
+Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/r/todayilearned/">reddit</a>
 Gui, Pandora:Add, Link,, <a href="http://www.rensheng5.com/">鸡汤文</a>
 ; Gui, Pandora:Add, Link,, <a href="https://chao.fun/f/4">炒饭社区</a>
 
@@ -421,6 +421,7 @@ Gui, Pandora:Add, Link,, <a href="https://psdrepo.com/free-psd/free-weather-icon
 Gui, Pandora:Add, Link,, <a href="https://www.chouke.vip/forum.php">筹课网/盗版课</a>
 Gui, Pandora:Add, Link,, <a href="https://bigjpg.com/">AI图片放大高清</a>
 Gui, Pandora:Add, Link,, <a href="https://www.qingting.fm/channels/327421/">文化有限电台</a>
+Gui, Pandora:Add, Link,, <a href="https://help.kingbase.com.cn/login#id0">人大金仓</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 程序许仙：
@@ -722,6 +723,13 @@ Gui, Pandora:Add, Text,  W140 ys xp+160, 统一门户网站
 Gui, Pandora:Add, Link,, <a href="http://dotnet.alltosea.com:6012/portalui/">入口</a>
 Gui, Pandora:Add, Link,, <a href="http://dotnet.alltosea.com:6012/portalapi/doc.html">API文档</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/unifiedfabric/dgjy/portalui/tree/newdev/vue-education/src">代码地址</a>
+
+Gui, Pandora:Add, Text,  W140 yp+50, 工信局数据底板
+Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DataManagementGroup/datamanagementadmin">源码地址</a>
+Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/71/interface/api">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://demo.onpre.cn:7012/jenkins/view/工信局数据底板系统/">Jenkins</a>
+Gui, Pandora:Add, Link,, <a href="https://demo.onpre.cn:7109/">测试地址</a>
+
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, visual可视化
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:6181/datatransferweb/login">预览地址</a>
@@ -1212,6 +1220,9 @@ Gui, Pandora:Add, Link,, <a href="http://lbsyun.baidu.com/index.php?title=jspopu
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/helloworld">百度地图-快速上手</a>
 Gui, Pandora:Add, Link, W140, <a href="http://bbs.lbsyun.baidu.com/forum.php?mod=viewthread&tid=137156&tdsourcetag=s_pctim_aiomsg&qq-pf-to=pcqq.temporaryc2c">百度地图-论堂</a>
 Gui, Pandora:Add, Link, W140, <a href="http://lbsyun.baidu.com/jsdemo.htm#webgl0_0">百度地图-3D地图</a>
+Gui, Pandora:Add, Link, W140, <a href="https://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding">地理编码文档</a>
+Gui, Pandora:Add, Link, W140, <a href="https://lbsyun.baidu.com/apiconsole/quota#/home">额度说明</a>
+Gui, Pandora:Add, Link, W140, <a href="https://lbsyun.baidu.com/apiconsole/auth#/creat/business">企业认证页面</a>
 
 
 Gui, Pandora:Add, Text, W140 ys, 百度地图教程：

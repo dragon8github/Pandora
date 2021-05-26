@@ -9548,6 +9548,20 @@ export const killerQueen2 = async (showLoading = () => {}, fn = () => {}, closeL
         return result
     } catch (err) {}
 }
+---
+var data = [1, 2 ,3, 4, 5, 6, 7, 8, 9]
+
+var filterkill = (ary, fn) => {
+    for (var i = ary.length - 1; i >= 0; i--) {
+        if (fn(ary[i], i)) {
+            ary.splice(i, 1)
+        }
+    }
+}
+
+filterkill(data, (item, index) => item <= 5)
+
+console.log(data) // => [ 6, 7, 8, 9 ]
 )
 txtit(Var)
 return

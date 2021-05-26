@@ -1,4 +1,15 @@
-﻿::cdn-gui::
+﻿::cdn-katong::
+::cdn-nes::
+::cdn-xiangsu::
+::cdn-px::
+Var =
+(
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nes.css/2.3.0/css/nes.min.css" integrity="sha512-LVdzC5GAu4VEEGcarpj2jruxNUONmGEMdcc6AL7a7nSHR7QAmyLfx3SUPCSSFsNZPuZLQInrUSkqWYHpyOYeRg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+)
+code(Var)
+return
+
+::cdn-gui::
 Var =
 (
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
