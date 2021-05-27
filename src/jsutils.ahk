@@ -8879,6 +8879,14 @@ const newObj = Object.entries(target).reduce((obj, [key, val]) => {
     console.log(obj, key, val)
     return obj
 }, {})
+
+Object.entries(a).forEach([key, value] => {
+    console.log(key, value)
+})
+
+for (let [key, val] of Object.entries(aa)) {
+    console.log(key, val)
+}
 )
 code(Var)
 return
