@@ -1248,7 +1248,7 @@ this.triggerEvent('go')
 code(Var)
 return
 
-::set::
+
 ::wx:set::
 Var =
 (

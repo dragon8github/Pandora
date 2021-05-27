@@ -1,4 +1,14 @@
-﻿::isrunnian::
+﻿
+::new set::
+::set::
+Var =
+(
+[...new Set(arr)]
+)
+code(Var)
+return
+
+::isrunnian::
 ::runnian::
 Var =
 (
@@ -466,6 +476,75 @@ Var =
         })
     </script>
 </html>
+---
+getListExport() {
+    let that = this
+    that.listLoading = true
+
+    let apiUrl = `/api/ResourceCatalog/DataExcel?dbname=${this.params.dbname}&table=${this.params.table}`
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', apiUrl, true)
+    xhr.setRequestHeader('Authorization', 'Bearer ' + this.$store.getters.token)
+    xhr.responseType = 'blob'
+    
+    xhr.onload = function (e) {
+        that.listLoading = false
+        if (this.status === 200) {
+            var blob = new Blob([this.response], { type: 'application/octet-stream', })                 
+            var filename = '导出.xls'
+            var url = URL.createObjectURL(blob)
+            var a = document.createElement('a')
+            a.href = url
+            a.download = filename
+            a.click()
+            window.URL.revokeObjectURL(url)
+        }
+    }
+    xhr.onerror = function (e) {
+        that.$message('导出失败' + e.message)
+    }
+    //发送请求
+    xhr.send()
+},
+---
+<script src="https://libs.cdnjs.net/xlsx/0.10.0/xlsx.core.min.js"></script>
+   
+<script>
+// sheet
+var sheet = XLSX.utils.aoa_to_sheet([
+// theader
+['字段名', '注释', '备注'],
+// tbody
+...this.tableData.map(obj => Object.values(obj)),
+])
+
+// workbook
+var workbook = {
+SheetNames: ['sheet1'],
+Sheets: { sheet1: sheet },
+}
+
+// 将一个sheet转成最终的excel文件的blob对象，然后利用URL.createObjectURL下载
+openDownloadDialog(sheet2blob(workbook), '导出.xlsx')
+</script>
+---
+export function downloadFile(res, name) {
+  const blob = new Blob([res], { type: res.type + ';charset=utf-8', endings: 'transparent' })
+  if ('download' in document.createElement('a')) {
+    const link = document.createElement('a')
+    link.download = name
+    link.style.display = 'none'
+    link.href = URL.createObjectURL(blob)
+    document.body.appendChild(link)
+    link.click()
+    URL.revokeObjectURL(link.href) // 释放URL 对象
+    document.body.removeChild(link)
+    Message.success('下载成功')
+  } else {
+    navigator.msSaveBlob(blob, name)
+    Message.success('下载成功')
+  }
+}
 )
 txtit(Var)
 return
@@ -7155,6 +7234,39 @@ const division = (ary, num, container = {}) => {
 }
 // demo
 division(ary, num, {}) // or division(ary, num, [])
+---
+function split(str, n = 8) {
+    if (str.length > 8) {
+        return str.split('').reduce((p, c, i, ary) => {
+            var index = parseInt(i / 8)
+            p[index] = p[index] ? p[index] + c : c
+            return p
+        }, [])
+    } else {
+        return [str]
+    }
+}
+
+// 自动补全
+function pad(target) {
+    var zero = new Array(8).join('0')
+    var str = target + zero
+    return str.substr(0, 8)
+}
+
+
+function test(target) {
+    split(target).forEach((val, key) => {
+        console.log(pad(val))
+    })
+}
+
+// test('abc')
+// test('123456789')
+
+while(n = readline()) {
+    test(n)
+}
 )
 code(Var)
 return
@@ -13596,6 +13708,19 @@ txtit(Var)
 return
 
 
+:?:.reduce0::
+:?:.reduce2::
+:?:.reducen::
+::reduce0::
+::reduce2::
+::reducen::
+Var =
+(
+.reduce((p, c) => , 0)
+)
+code(Var)
+return
+
 :?:.reduce::
 ::reduce::
 ::reduces::
@@ -17671,14 +17796,22 @@ return
 ::objsort::
 Var = 
 (
-// 正序（从小到大）是a - b ，(倒序)从大到小 -(a-b)
-// 如果是对象的话（从小到大/升序/asc）：data.sort((a, b) => +a.fuck - +b.fuck)
-// 如果是对象的话（从大到小/倒序/desc）：data.sort((a, b) => +b.fuck - +a.fuck)
-// 中文按照拼音排序：['常平', '莞城','茶山', '清溪', '麻涌', '东坑', '万江', '石排', '中堂','黄江', '凤岗', '石龙', '企石', '谢岗', '沙田', '樟木头', '大岭山', '松山湖', '洪梅', '大朗', '横沥', '塘厦', '塘厦', '虎门', '道滘', '石碣', '高埗', '南城', '寮步', '长安', '望牛墩', '桥头', '东城'].sort((a, b) => a.localeCompare(b))
+['常平', '莞城','茶山', '清溪', '麻涌', '东坑', '万江', '石排', '中堂','黄江', '凤岗', '石龙', '企石', '谢岗', '沙田', '樟木头', '大岭山', '松山湖', '洪梅', '大朗', '横沥', '塘厦', '塘厦', '虎门', '道滘', '石碣', '高埗', '南城', '寮步', '长安', '望牛墩', '桥头', '东城']
+    .sort((a, b) => a.localeCompare(b))
+
+// 从大到小(倒序/降序/desc)
+arr.sort((a, b) => { return -(a - b) })
+
+// 对象从小到大(正序/升序/asc)
+data.sort((a, b) => +a.fuck - +b.fuck)
+
+// 从小到大(正序/升序/asc)
 arr.sort((a, b) => { return a - b })
 
----
 
+// 对象从大到小(倒序/降序/desc)
+data.sort((a, b) => +b.fuck - +a.fuck)
+---
 @mixin updown {
     position: relative;
     cursor: pointer;
@@ -17699,7 +17832,6 @@ arr.sort((a, b) => { return a - b })
      &.is-up::after {border-bottom: rem(8) solid #C4B484; }
      &.is-down::before {border-top: rem(8) solid #C4B484; }
 }
-
 )
 txtit(Var)
 return
