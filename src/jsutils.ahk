@@ -6783,6 +6783,29 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAABCCAYAAADzNE40AAAAAXNSR0IArs
 txtit(Var)
 return
 
+::gongbeishu::
+::gongyueshu::
+Var =
+(
+var a = 1920 
+var b = 1080
+
+var r = 1
+var a_ = a
+var b_ = b
+
+while( r!= 0) {
+    r = a `% b
+    a = b
+    b = r
+}
+
+console.log('最大公约数', a)
+console.log('最小公倍数', a_ * b_ / a)
+)
+code(Var)
+return
+
 ::gongyueshu::
 ::bili::
 ::fenbianl::
@@ -6820,6 +6843,22 @@ proportion(17280, 4320)
 proportion(12288, 3456)
 "32:9"
 */
+
+var a = 1920 
+var b = 1080
+
+var r = 1
+var a_ = a
+var b_ = b
+
+while( r!= 0) {
+    r = a `% b
+    a = b
+    b = r
+}
+
+console.log('最大公约数', a)
+console.log('最小公倍数', a_ * b_ / a)
 )
 code(Var)
 return

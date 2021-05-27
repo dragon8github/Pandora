@@ -1,4 +1,27 @@
-﻿
+﻿::ji::
+::maiji::
+::baiyuanmaiji::
+::baiyuanbaiji::
+Var =
+(
+// 百钱买百鸡，100元要买100只
+// 鸡翁一值钱五，鸡母一值钱三，鸡雏三值钱一。百钱买百鸡，问鸡翁、鸡母、鸡雏各几何？
+function test () {
+    for (var x = 0; x <= (100 / 5); x++) {
+        for (var y = 0; y <= parseInt(100 / 3); y++) {
+            for (var z = 0; z <= 100; z++) {
+                if ((x + y + z === 100) && (5 * x + 3 * y + z / 3) == 100) {
+                    console.log(x, y, z)
+                }
+            }
+        }
+    }
+}
+test()
+)
+code(Var)
+return
+
 ::new set::
 ::set::
 Var =
