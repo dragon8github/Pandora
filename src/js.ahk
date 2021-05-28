@@ -1,4 +1,135 @@
 ﻿
+::pwd::
+::mima::
+Var =
+(
+const maybe = (fn, n = '') => {
+   try {
+      const result = fn()
+      return (result && result === result && result !== 'NaN' && result !== 'Invalid date') ? result : n
+   } catch (err) {
+      return n
+   }
+}
+
+// 一、密码长度:
+// 5 分: 小于等于4 个字符
+// 10 分: 5 到 7 字符
+// 25 分: 大于等于8 个字符
+var rule1 = function (str, len = str.length) {
+    if (len <= 4) return 5
+    if (len >= 5 && len <= 7) return 10
+    if (len >= 8) return 25
+} 
+
+// 二、字母:
+// 0 分: 没有字母
+// 10 分: 全都是小（大）写字母
+// 20 分: 大小写混合字母
+var rule2 = function (str, len = str.length) {
+    var len_low = maybe(_ => str.match(/[a-z]/g).length, 0)
+    var len_up = maybe(_ => str.match(/[A-Z]/g).length, 0)
+
+    // news
+    const all = (len_low && len_up === 0) || (len_up && len_low === 0)
+
+    if (len_low && len_up) return 20
+    // if (len_low + len_up == len) return 10
+    if (all) return 10
+    if (len_low + len_up == 0) return 0
+    return 0
+} 
+
+// 三、数字:
+// 0 分: 没有数字
+// 10 分: 1 个数字
+// 20 分: 大于1 个数字
+var rule3 = function (str, len = str.length) {
+    var len_num = maybe(_ => str.match(/[0-9]/g).length, 0)
+    if (len_num > 1) return 20
+    if (len_num == 1) return 10
+    if (len_num == 0) return 0
+} 
+
+// 四、符号:
+// 0 分: 没有符号
+// 10 分: 1 个符号
+// 25 分: 大于1 个符号
+var rule4 = function (str, len = str.length) {
+    // 无符号
+    var str2_len = str.replace(/[0-9]|[a-z]/ig, (...args) => '').length
+
+    if (str2_len == 0) return 0
+    if (str2_len == 1) return 10
+    if (str2_len > 1) return 25
+} 
+
+// 五、奖励:
+// 2 分: 字母和数字
+// 3 分: 字母、数字和符号
+// 5 分: 大小写字母、数字和符号
+var rule5 = function (str, len = str.length) {
+  // 小写
+  var len_low = maybe(_ => str.match(/[a-z]/g).length, 0)
+  // 大写
+  var len_up = maybe(_ => str.match(/[A-Z]/g).length, 0)
+  // 字母
+  var len_en = maybe(_ => str.match(/[a-z]/gi).length, 0)
+  // 数字
+  var len_num = maybe(_ => str.match(/[0-9]/g).length, 0)
+  // 无符号
+  var str2_len = str.replace(/[0-9]|[a-z]/ig, (...args) => '').length
+
+  if (len_low && len_up && len_num && str2_len) return 5
+  if (len_en && len_num && str2_len) return 3
+  if (len_en && len_num) return 2
+  return 0
+} 
+
+// 六、评分标准
+// >= 90: 非常安全 —— VERY_SECURE
+// >= 80: 安全 —— SECURE
+// >= 70: 非常强 —— VERY_STRONG
+// >= 60: 强 —— STRONG
+// >= 50: 一般 —— AVERAGE
+// >= 25: 弱 —— WEAK
+// >= 0:  非常弱 —— VERY_WEAK
+var count = function (n) {
+    if (n >= 90) return 'VERY_SECURE'
+    if (n >= 80) return 'SECURE'
+    if (n >= 70) return 'VERY_STRONG'
+    if (n >= 60) return 'STRONG'
+    if (n >= 50) return 'AVERAGE'
+    if (n >= 25) return 'WEAK'
+    if (n >= 0)  return 'VERY_WEAK'
+}
+
+
+var test = (str) => [rule1(str), rule2(str), rule3(str), rule4(str), rule5(str)].reduce((p, c) => p + c, 0)
+while(n = readline()) {
+    var val = test(n)
+    console.log(count(val))
+}
+
+
+// function test(str) {
+//     var _count1 = rule1(str)
+//     var _count2 = rule2(str)
+//     var _count3 = rule3(str)
+//     var _count4 = rule4(str)
+//     var _count5 = rule5(str)
+//     var c = _count1 + _count2 + _count3 + _count4 + _count5
+//     console.log(_count1, _count2, _count3, _count4, _count5, c, count(c)) 
+// }
+// console.log(test('for(inti=12;i<=n;i++)'))
+// console.log(test('38$@NoNoNo'))
+// console.log(test('123'))
+// console.log(test('12ab'))
+)
+txtit(Var)
+return
+
+
 ::new set::
 ::set::
 Var =
@@ -16911,13 +17042,8 @@ return
 ::for--::
 Var = 
 (
-var Things = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-var arr = []
 for (var i = Things.length - 1; i >= 0; i--) {
-	if (Things[i] `% 2 === 0) {
-		arr.push(...Things.splice(i, 1))	
-		console.log(Things, arr)
-	}
+	Things[i]
 }
 )
 code(Var)
