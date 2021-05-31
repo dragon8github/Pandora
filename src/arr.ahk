@@ -933,6 +933,16 @@ el.insertAdjacentHTML('beforebegin', Node.outerHTML)
 code(Var)
 return
 
+::while2::
+Var =
+(
+while(n = readline()) {
+    console.log(n)
+}
+)
+code(Var)
+return
+
 ::while::
 Var =
 (

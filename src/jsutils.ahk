@@ -381,6 +381,7 @@
     Menu, utilses5, Add, 简写Array.prototype.push.apply的方法：[].push.apply, utilsHandler
     Menu, utilses5, Add, Function.prototype.call：除了参数为数组/类数组以外的都应该使用call，如map/reduce/filter（因为他们的参数都是函数）等, utilsHandler
 
+    Menu, utilsJstest, Add, 是否包含符号, utilsHandler
     Menu, utilsJstest, Add, match 捕获匹配, utilsHandler
     Menu, utilsJstest, Add, 认知：用数组来保存const [`, city`, zipCode] = address.match(cityZipCodeRegex) || [];, utilsHandler
 
@@ -530,6 +531,15 @@ Var =
 )
 }
 
+if (v == "是否包含符号") {
+Var =
+(
+// 是否包含符号
+/[^A-Za-z\d]/.test('@symbol')
+)
+code(Var)
+return
+}
 
 if (v == "如何获得给定毫秒数的可读格式？") {
 Var = 
@@ -6783,6 +6793,29 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAABCCAYAAADzNE40AAAAAXNSR0IArs
 txtit(Var)
 return
 
+::gongbeishu::
+::gongyueshu::
+Var =
+(
+var a = 1920 
+var b = 1080
+
+var r = 1
+var a_ = a
+var b_ = b
+
+while( r!= 0) {
+    r = a `% b
+    a = b
+    b = r
+}
+
+console.log('最大公约数', a)
+console.log('最小公倍数', a_ * b_ / a)
+)
+code(Var)
+return
+
 ::gongyueshu::
 ::bili::
 ::fenbianl::
@@ -6820,8 +6853,24 @@ proportion(17280, 4320)
 proportion(12288, 3456)
 "32:9"
 */
+
+var a = 1920 
+var b = 1080
+
+var r = 1
+var a_ = a
+var b_ = b
+
+while( r!= 0) {
+    r = a `% b
+    a = b
+    b = r
+}
+
+console.log('最大公约数', a)
+console.log('最小公倍数', a_ * b_ / a)
 )
-txtit(Var)
+code(Var)
 return
 
 ::webpack::
@@ -7072,10 +7121,13 @@ data () {
 code(Var)
 return
 
+::dongtaizz::
 ::match::
 ::zhengze::
 ::zz::
 ::dongtaizhengze::
+::dongtaizhengz::
+::dongtaizhenze::
 Var =
 (
 // 匹配多个地方
@@ -7087,7 +7139,7 @@ console.log(20210226091843, str.match(/:(\w{4}-\w{2}-\w{2} \w{2}:\w{2}:\w{2})/g)
 // 动态正则
 function test(input, v) {
     // 返回一个动态正则表达式，类似 /^李/
-    const reg = eval(`/${v}/gi`)
+    const reg = eval(``/${v}/gi``)
 
     return input.match(reg) ? input.match(reg).length : 0
 }
@@ -8840,6 +8892,14 @@ const newObj = Object.entries(target).reduce((obj, [key, val]) => {
     console.log(obj, key, val)
     return obj
 }, {})
+
+Object.entries(a).forEach([key, value] => {
+    console.log(key, value)
+})
+
+for (let [key, val] of Object.entries(aa)) {
+    console.log(key, val)
+}
 )
 code(Var)
 return
@@ -9597,6 +9657,15 @@ const isZH = str => /^[\u4e00-\u9fa5]+$/.test(str)
 const str = 'js 统计多少中文多少数字多少字母'
 const reg = /[\u4e00-\u9fa5]/g
 str.match(reg).length // ▶ 14
+)
+code(Var)
+return
+
+::fuhao::
+Var =
+(
+// 是否包含符号
+/[^A-Za-z\d]/.test('@symbol') 
 )
 code(Var)
 return

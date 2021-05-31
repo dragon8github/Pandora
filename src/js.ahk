@@ -1,4 +1,251 @@
-﻿
+﻿::jqk::
+Var =
+(
+var card = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14, '2': 15, 'joker': 16, 'JOKER': 17, }
+)
+code(Var)
+return
+
+::jingx::
+::jingxiang::
+::huiwen::
+Var =
+(
+var str = 'cdabbacc'
+
+function test(str) {
+    var result = str[0]
+
+    for (let i = 0; i < str.length; i++) {
+        left = i, right = i + 1
+
+        while(left >= 0 && right < str.length && str[left] === str[right]) {
+            left--, right++
+        }
+
+        // 因为上面的条件是贪婪的，所以总是会过界一位，但真正的答案需要 - 1位
+        var length = right - left - 1
+
+        // 找到回文并且长度大于当前回文
+        if (length > result.length) {
+            result = str.substr(left + 1, length)
+        }
+    }        
+
+    return result.length
+}
+
+console.log(test(str))
+
+// console.log(test(readline()))
+)
+code(Var)
+return
+
+::for2::
+Var =
+(
+for (var i = 0; i < min.length; i++) {
+    var str = min.substr(i)
+
+    for (var j = 1; j < str.length + 1; j++) {
+        var str2 = str.substr(0, j)
+
+        
+    }
+}
+)
+code(Var)
+return
+
+::daxiao::
+::minmax::
+::maxmin::
+Var =
+(
+var min = a.length <= b.length ? a : b
+var max = b.length >= a.length ? b : a
+)
+code(Var)
+return
+
+::isshunzi::
+::shunzi::
+::sunzi::
+::issunzi::
+::doudizhu::
+::isdoudizhu::
+Var =
+(
+// var str = '2 9 J 2 3 4 K A 7 9 A 5 6'
+// var str = '2 9 J 2 3 4 K A 7 9 A 5 6'
+var str = '2 9 J 10 3 4 K A 7 Q A 5 6'
+// var str = '2 9 9 9 3 4 K A 10 Q A 5 6'
+
+var dic = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14, '2': 15, }
+
+var isShun = ary => {
+    // 规则：必须不包含2
+    if (ary.includes('2')) {
+        return false
+    }
+
+    var count = 1
+
+    for (var i = 0; i < ary.length - 1; i++) {
+        var a = dic[ary[i]]
+        var b = dic[ary[i + 1]]
+
+        if (b - a === 1) {
+            count++
+        } else {
+            return false
+        }
+    }
+
+    return count >= ary.length
+}
+
+
+function test(str) {
+    var ary = str.split(' ')
+
+    var sort_ary = ary.sort((a, b) => dic[a] - dic[b] )
+
+    var result = []
+
+    for(var i = 0; i <= sort_ary.length - 5; i++) {
+        var slice_ary = sort_ary.slice(i)
+
+        for(var j = 0; j <= slice_ary.length - 5; j++) {
+            var slice_ary2 = slice_ary.slice(0, slice_ary.length - j)
+
+            if (isShun(slice_ary2)) {
+                var r = slice_ary2.join(' ')
+                // 不重复添加「子顺子」
+                if (!result.find(_ => _.includes(r))) {
+                    result.push(r)
+                }
+                break
+            }
+        }
+    }
+
+    if (result.length) {
+        result.forEach((val, key) => console.log(val))
+    } else {
+        console.log('No')
+    }
+}
+
+test(str)
+
+// while(n = readline()) {
+//  test(n)
+// }
+)
+code(Var)
+return
+
+::lianxu::
+Var =
+(
+function lianxu(ary) {
+    var count = 1
+
+    for (var i = 0; i < ary.length - 1; i++) {
+        var a = ary[i]
+        var b = ary[i + 1]
+        if (b - a === 1) {
+            count++
+        } else {
+            break
+        }   
+    }
+
+    return count >= ary.length
+}
+
+console.log(20210529224147, lianxu([1, 2, 3, 4, 5]))
+)
+code(Var)
+return
+
+::niuke::
+Var =
+(
+var str = ''
+
+function test(str) {
+    return str
+}
+
+console.log(test(str))
+)
+code(Var)
+return
+
+::while3::
+Var =
+(
+var readline = require('readline')
+
+var r1 = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
+var data = []
+r1.on('line', (line) => {
+    line = line.trim()
+    data.push(line)
+})
+
+r1.on('close', () => {
+    for (var i = 0; i < data.length; i++) { 
+        process.stdout.write(data[i] + '\r') 
+    }
+})
+)
+code(Var)
+return
+
+::huiwen::
+::123321::
+::zifuc::
+Var =
+(
+回文
+)
+code(Var)
+return
+
+::baiyuanmaiji::
+::maiji::
+::ji::
+Var =
+(
+// 百钱买百鸡，100元要买100只
+// 鸡翁一值钱五，鸡母一值钱三，鸡雏三值钱一。百钱买百鸡，问鸡翁、鸡母、鸡雏各几何？
+function test () {
+	for (var x = 0; x <= (100 / 5); x++) {
+		for (var y = 0; y <= parseInt(100 / 3); y++) {
+			for (var z = 0; z <= 100; z++) {
+				if ((x + y + z === 100) && (5 * x + 3 * y + z / 3) == 100) {
+					console.log(x, y, z)
+				}
+			}
+		}
+	}
+}
+
+test()
+)
+code(Var)
+return
+
+
+::yanzheng::
 ::pwd::
 ::mima::
 Var =
@@ -125,10 +372,20 @@ while(n = readline()) {
 // console.log(test('38$@NoNoNo'))
 // console.log(test('123'))
 // console.log(test('12ab'))
+---
+// 小写
+var len_low = maybe(_ => str.match(/[a-z]/g).length, 0)
+// 大写
+var len_up = maybe(_ => str.match(/[A-Z]/g).length, 0)
+// 字母
+var len_en = maybe(_ => str.match(/[a-z]/gi).length, 0)
+// 数字
+var len_num = maybe(_ => str.match(/[0-9]/g).length, 0)
+// 无符号
+var str2_len = str.replace(/[0-9]|[a-z]/ig, (...args) => '').length
 )
 txtit(Var)
 return
-
 
 ::new set::
 ::set::
@@ -440,6 +697,12 @@ Send, {up}
 Send, +{End}
 return
 
+::edit::
+::minedit::
+::zuixiaobianji::
+::minedit::
+::minbianji::
+::zuixiao::
 ::xiangsidu::
 ::juli::
 Var =
@@ -449,6 +712,14 @@ Var =
 // https://blog.csdn.net/chichoxian/article/details/53944188
 // https://www.jianshu.com/p/90af98493661
 // 进阶版（中文同音字）：http://jverson.com/thinking-in-java/algorithm/edit-distance.html
+
+/**
+ * 我的留言
+ * 1. 先看初始化矩阵，这是固定的套路。当然也可以直接看回作者的博客
+ * 2. 先理解我下面说的 x-z-y 是什么意思。 其实就是初始矩阵中的 101
+ * 3. 如何计算的？首先要计算出 「cost」 这个值：如果 x 和 y 相同时为 0，不同时为1，
+ * 4. 其次，矩阵中任意一个位置的值：「x + 1」、 「y + 1」、 「z + cost」 三个取最小值。
+ */
 function minDistance(s1, s2) {
     const matrix = []
     const len1 = s1.length
@@ -459,7 +730,7 @@ function minDistance(s1, s2) {
         matrix[i] = new Array()
 
         for (let j = 0; j <= len2; j++) {
-            /* 「初始化矩阵 - 基础形态」 
+            /* 「初始化矩阵 - 固定的基础形态」
                   i v a n f
                 0 1 2 3 4 5
               i 1 - - - - -
@@ -478,8 +749,8 @@ function minDistance(s1, s2) {
             // 铁三角
             // https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTYxMjMxMjExNjA3Njc2
             const x = matrix[i - 1][j] + 1
-            const y = matrix[i][j - 1] + 1
             const o = matrix[i - 1][j - 1] + cost
+            const y = matrix[i][j - 1] + 1
 
             // 取三个值中的最小值
             matrix[i][j] = Math.min(x, y, o)
@@ -487,10 +758,18 @@ function minDistance(s1, s2) {
     }
 
     // 打印出矩阵
-    console.log(matrix) 
+    // [
+    //   [ 0, 1, 2, 3, 4, 5 ],
+    //   [ 1, 0, 1, 2, 3, 4 ],
+    //   [ 2, 1, 0, 1, 2, 3 ],
+    //   [ 3, 2, 1, 0, 1, 2 ],
+    //   [ 4, 3, 2, 1, 0, 1 ],
+    //   [ 5, 4, 3, 2, 1, 1 ]
+    // ]
+    console.log(matrix)
 
     // 返回右下角的值
-    return matrix[len1][len2] 
+    return matrix[len1][len2]
 }
 
 const str1 = 'ivanf'
@@ -4726,7 +5005,11 @@ return
 ::isnum::
 Var =
 (
-export const isNumber = input => (typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]') && input === input
+// 哪怕是字符串的数字也可以识别
+const isNumber = input => (typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]') && input === input
+
+// 无论是字符串还是数字都可以识别（推荐）
+const isNumber2 = v => !isNaN(+v)
 )
 code(Var)
 return
@@ -8437,6 +8720,12 @@ const exclude = (a, b) => a.filter(i => !b.includes(i)) // 差
 txtit(Var)
 return
 
+
+::gonggongstr::
+::gonggongchuan::
+::ggchuan::
+::gonggong::
+::zichuan::
 ::arrbaohan::
 ::arybaohan::
 ::shuzubaohan::
@@ -8445,6 +8734,40 @@ return
 ::include::
 Var =
 (
+// jklmnop
+// var a = 'abcdefghijklmnop'
+// var b = 'abcsafjklmnopqrstuvw'
+
+// tsh
+// var a = 'yrtqyfxyrmbasfmkbuudetaahxxgvcpkfhlkfxtjvguizsmwbnwamftshffyzumqfzqvirxgjjuocobvhvgstvrynduavkvntvxgnravjyfjkycguqyrnbnwnoqvhh'
+// var b = 'xxzjrwyqtgzfgxyitvszmltcsdjweeycqgzsazahpqrvlgvwexcfwkusmuyltvtbjftkvwebmjctwbfcxfimoevbquznojlzkxygruhebhostshenguhymzjxhkjstiwzgyudtfeddgqlegxesngnlbubkhzfmspalfajiqsvohghxhswjiimnyazfmgqazdewfptldiilrwkhuntvseohykutjecuhg'
+
+// ki
+// var a = 'msatgfqpleswalkvowbcjllbmtxdjqtxlxoyrobrnpuctrcowegmyjjmgkzibmbplpslbsfawrqmzeckiwctwizhpkthvqaukxmzhyqbhhjbihzoidheibsrfbzaruhlwoiwlexwoaicikadrhcvevcnwxwsskooedipgftdfcmdpdonvjtzsncuylrbfzstplfsnebivzdyhhbajfokqvscrzobdzgnfkeqfhzpugbekegaiidhervdsgc'
+// var b = 'kicndbvtazczllcipodvlrliqargjayiivkuymrusywvotxycdzscogyejpvfmrldueulwijytocrf'
+
+
+while(a = readline(), b = readline()) {
+    var min = a.length <= b.length ? a : b
+    var max = b.length >= a.length ? b : a
+    var result = ''
+
+    for (var i = 0; i < min.length; i++) {
+        var str = min.substr(i)
+
+        for (var j = 1; j < str.length + 1; j++) {
+            var str2 = str.substr(0, j)
+
+            if (max.includes(str2)) {
+                if (str2.length > result.length) {
+                    result = str2
+                }
+            }
+        }
+    }
+    console.log(result)
+}
+---
 /**
  * 百度地图其实也有官方工具支持：http://api.map.baidu.com/library/DrawingManager/1.4/docs/symbols/BMapLib.html
  * BMapLib.GeoUtils.isPointInPolygon(new BMap.Point(113.843319, 22.921901), map.getOverlays().filter(_ => _.city)[0])
@@ -8569,7 +8892,6 @@ ary1.filter(_ => ary2.includes(_))
 // 数组差集
 a.filter(_ => !b.includes(_))
 
----
 // 多字符串包含判断
 if (['after', 'around'].includes(value)) {
     // ...
@@ -13847,7 +14169,7 @@ return
 ::reducen::
 Var =
 (
-.reduce((p, c) => , 0)
+.reduce((p, c, i) => , 0)
 )
 code(Var)
 return
@@ -13862,6 +14184,11 @@ const slim = (obj, properties = []) => properties.reduce((p, c) => (p[c] = obj[c
 
 // 强迫症专用语法
 const newObj = Object.entries(obj).reduce((p, [key, val]) => (p[key] = (isObject(val) || isArray(val)) ? fuck(val) : val, p), {})
+
+// 常用加法
+.reduce((p, c) => p + c.value, 0)
+
+.reduce((p, c) => p + Number(c.value), 0)
 ---
 // 将数组转化为对象
 var obj = arr.reduce((p, c) => {
@@ -13873,10 +14200,17 @@ temp1.reduce((p, c, i, a) => {
     
     return p
 }, [])
----
-.reduce((p, c) => p + c.value, 0)
 
-.reduce((p, c) => p + Number(c.value), 0)
+
+var result = str.split('').reduce((p, c, i) => {
+    if (p[c]) {
+        p[c] += 1
+    } else {
+        p[c] = 1
+    }
+
+    return p
+}, {})
 ---
 // 初始化为数组的示例
 children.reduce((previousValue, currentValue) => {
@@ -14321,7 +14655,7 @@ var unique = function (arr) {
 }
 
 /**
- * es6： return Array.from(new Set(arr));
+ * es6：  return Array.from(new Set(arr));
  * 补充： return [...new Set(arr)]
  */
 function unique(arr) {
@@ -15450,9 +15784,33 @@ orderBy(users, ['name', 'age']); // [{name: 'barney', age: 36}, {name: 'fred', a
 code(Var)
 return
 
+
+
 ::is::
 Var = 
 (
+// 是否包含小写
+var len_low = /[a-z]/.test(str)
+// 是否包含大写
+var len_up = /[A-Z]/.test(str)
+// 是否包含字母
+var len_en = /[a-z]/.test(str)
+// 是否包含数字
+var len_num = /\d/.test(str)
+// 是否包含符号
+var str_len = /[^A-Za-z\d]/.test(str)
+
+// 小写
+var len_low = maybe(_ => str.match(/[a-z]/g).length, 0)
+// 大写
+var len_up = maybe(_ => str.match(/[A-Z]/g).length, 0)
+// 字母
+var len_en = maybe(_ => str.match(/[a-z]/gi).length, 0)
+// 数字
+var len_num = maybe(_ => str.match(/[0-9]/g).length, 0)
+// 无符号
+var str2_len = str.replace(/[0-9]|[a-z]/ig, (...args) => '').length
+---
 const trueTypeOf = obj => Object.prototype.toString.call(obj).slice(8, -1).toLowerCase()
 // string
 console.log(trueTypeOf(''))
@@ -17934,9 +18292,11 @@ data.sort((a, b) => +a.fuck - +b.fuck)
 // 从小到大(正序/升序/asc)
 arr.sort((a, b) => { return a - b })
 
-
 // 对象从大到小(倒序/降序/desc)
 data.sort((a, b) => +b.fuck - +a.fuck)
+
+// 字母对比大小，其实可以直接通过 a.toLocaleLowerCase() > b.toLocaleLowerCase() 来对比
+hit.sort((a, b) => a.toLocaleLowerCase() > b.toLocaleLowerCase() ? 1 : -1)
 ---
 @mixin updown {
     position: relative;
