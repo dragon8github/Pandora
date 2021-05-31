@@ -1,4 +1,30 @@
-﻿::jqk::
+﻿::tuzi::
+Var =
+(
+// 斐波那契数列（Fibonacci sequence）, 又称「黄金分割数列」, 因以兔子繁殖为例子而引入, 故又称为「兔子数列」
+// https://blog.csdn.net/tingzhiyi/article/details/52200307
+// 递推式为：f(n) = f(n-1) + f(n-2) (n>=4)
+function Sum(month) {
+    if (month === 1) return 1
+    if (month === 2) return 1
+    if (month === 3) return 2
+
+    var count = Sum(month - 1) + Sum(month - 2)
+
+    return count
+}
+
+// console.log(Sum(9))
+
+while(n = readline()) {
+    console.log(Sum(n))
+}
+)
+code(Var)
+return
+
+
+::jqk::
 Var =
 (
 var card = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14, '2': 15, 'joker': 16, 'JOKER': 17, }
@@ -12,32 +38,42 @@ return
 Var =
 (
 var str = 'cdabbacc'
+var str = 'qkvmilhdkmjqjzssjufwxvumeogpywxrixvmyvlbyuiykbzflreihurwcsdjkrhoqybjrljvwuwulmssvtrxfsvkicbnwnmzukssbtpwkdvkheeqyxtpojixxbtmbmwmlpxtwsfnltjusjkmnwzoeqvxoftenbgpystjxrjfeblfcomepsmcdkfoporeeqjobmmmsvpjfqxbtkebkwcmjtycisurvxsvttuyhtlewvdcvmlusbpkvubcvtnsduknupkznzfrbstsklcbzltmxovdcgvpycyejlsqoxhluucwocskmwxvcggzyhfcccqmcszniyypeocfkvtwuswcnynkuevgjmlwjutlgzkqsvlphsphligvqnfyrsqsnbooxecprzclqrczjimqcghtbpeovqfngjnyxyeknopsltwvibduwhtxctwqixckxxojegcrugpsqhhmpehsojobvglisylvspkgcyqebmkmohepnizjwttqvnsscgvzpqgfwfhkunpqlvvrfbpxglvnzduzsutixzkhugoixsisodxrpeqbqqwhouimrexktctwqzdspoefeooepctyestcrfxfluwxmjwogubedhdljisfmrboqcihxxjnscxwxgeftrnhvzdyiriivpsixwykydesyursbcuvvoqelyebqbcoutjnehflluqsrpprzktkgdcqnqokdhbwiccfljkukmhszexxgdfwtdonetfkfelxzsrsvbqgxyiykjvprqwfncjvimefetzftfjviiykfwmjsljpszheotouxqlvkbgkkjhecrixhxlgsemtfqfgdyfuivgiptnsmbsnuiiownshvvgdzhljztkvtbofjnpgbqlfbotrlzrdrxownjdkghsubbpzksurplcgxddfxfjiofmwtunqqgxfycoxrvwitvbcffbpimcrrcwrpbdyermztnwssxkzjqrgdmwzxdrmizsqqvdjvhzodhgstfzvktozikbiigkkszyoospiyjcsonjykrtmkcougzcjuodxbndwmwebbxmktqpzkwujedstlvjwnkfxiqgpeiqfhwbqlpprjzeswlyvgkkbwsemmbdmvzumovdqnuzjfbkhbxupwxlzqflyuefzjhdjsqythfjzedznuvqcdenqugzzhnzktrgokmfirdvnqlyxvsefevwpwwdeedogxetuqtqlqownqtojmvyidljsvwbfndssxjtlngqdqrcqlzqcojnphvvwcjmrebkenurdemjoicnquqfzhpwbbqbfisersjpodpvklypjnnwyfeputelulpppuotnepmptxr'
 
 function test(str) {
     var result = str[0]
 
     for (let i = 0; i < str.length; i++) {
-        left = i, right = i + 1
 
-        while(left >= 0 && right < str.length && str[left] === str[right]) {
-            left--, right++
+        // fixbug: oefeo 这种也算回文，所以需要跳一格。
+        for (let j = 1; j <= 2; j++) {
+            left = i, right = i + j
+
+            // console.log(j, str[left], str[right])
+
+            while(left >= 0 && right < str.length && str[left] === str[right]) {
+                // console.log('target', str[left], str[right])
+                left--, right++
+            }
+
+            // 因为上面的条件是贪婪的，所以总是会过界一位，但真正的答案需要 - 1位
+            var length = right - left - 1
+
+            // 找到回文并且长度大于当前回文
+            if (length > result.length) {
+                result = str.substr(left + 1, length)
+            }
         }
+    }
 
-        // 因为上面的条件是贪婪的，所以总是会过界一位，但真正的答案需要 - 1位
-        var length = right - left - 1
-
-        // 找到回文并且长度大于当前回文
-        if (length > result.length) {
-            result = str.substr(left + 1, length)
-        }
-    }        
-
-    return result.length
+    return result
 }
 
 console.log(test(str))
 
-// console.log(test(readline()))
+// while(n = readline()) {
+//     console.log(test(n))
+// }
 )
 code(Var)
 return
@@ -16386,7 +16422,15 @@ return
 return
 
 ::eval::
-    SendRaw, eval('(' + options + ')')
+Var =
+(
+Function('return this')()
+
+// 动态正则
+var rule = 'te?t*.*'
+eval(`/${rule}/`)
+)
+code(Var)
 return
 
 
@@ -18262,22 +18306,15 @@ return
 
 ::desc::
 ::asc::
-Var =
-(
-// 从大到小排序
-const desc = (a, b) => +b.count - +a.count
-
-// 从小到大排序
-const asc = (a, b) => +a.count - +b.count
-)
-code(Var)
-return
-
 ::sort::
 ::sortArr::
 ::Arrsort::
 ::sortobj::
 ::objsort::
+::jiangxu::
+::zhengxu::
+::shengxu::
+::daoxu::
 Var = 
 (
 ['常平', '莞城','茶山', '清溪', '麻涌', '东坑', '万江', '石排', '中堂','黄江', '凤岗', '石龙', '企石', '谢岗', '沙田', '樟木头', '大岭山', '松山湖', '洪梅', '大朗', '横沥', '塘厦', '塘厦', '虎门', '道滘', '石碣', '高埗', '南城', '寮步', '长安', '望牛墩', '桥头', '东城']
@@ -18293,10 +18330,38 @@ data.sort((a, b) => +a.fuck - +b.fuck)
 arr.sort((a, b) => { return a - b })
 
 // 对象从大到小(倒序/降序/desc)
-data.sort((a, b) => +b.fuck - +a.fuck)
+data.sort((a, b) => -(+b.fuck - +a.fuck))
 
 // 字母对比大小，其实可以直接通过 a.toLocaleLowerCase() > b.toLocaleLowerCase() 来对比
 hit.sort((a, b) => a.toLocaleLowerCase() > b.toLocaleLowerCase() ? 1 : -1)
+---
+var str = 'aaddccdc'
+
+while(str = readline()) {
+    var obj = str.split('').reduce((p, c, i) => {
+        if (!p[c]) {
+            p[c] = { count: 1, name: c }
+        } else {
+            p[c].count++
+        }
+        return p
+    }, {})
+
+    var ary = Object.values(obj)
+
+    // 降序（从大到小）
+    ary = ary.sort((a, b) => -(a.count - b.count))
+
+    for (var i = 0; i < ary.length; i++) {
+        var filters = ary.filter(_ => _.count === ary[i].count)
+        // 升序（从小到大）
+        var _filters = filters.sort((a, b) => a.name.charCodeAt() - b.name.charCodeAt())
+        ary.splice(i, _filters.length, ..._filters)
+        i += _filters.length - 1
+    }
+
+    console.log(ary.map(_ => _.name).join(''))
+}
 ---
 @mixin updown {
     position: relative;
@@ -18380,12 +18445,12 @@ return
 Var = 
 (
 // 对象遍历 - 新写法
-Object.entries(a).forEach([key, value] => {
+Object.entries(ary).forEach(([key, value]) => {
     console.log(key, value)
 })
 
 // 对象遍历 - 新写法 reduce 
-const newObj = Object.entries(a).reduce((obj, [key, value]) => {
+const newObj = Object.entries(ary).reduce((obj, [key, value]) => {
     // ...
     console.log(obj, key, value)
     // ...
@@ -18395,7 +18460,7 @@ const newObj = Object.entries(a).reduce((obj, [key, value]) => {
 }, {})
   
 // 对象遍历
-for (let [key, val] of Object.entries(aa)) {
+for (let [key, val] of Object.entries(ary)) {
     console.log(key, val)
 }
 

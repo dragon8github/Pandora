@@ -8829,6 +8829,9 @@ const mockData = (customs = []) => {
 txtit(Var)
 return
 
+::nodecmd::
+::nodeshell::
+::nodebash::
 ::shell::
 ::shelljs::
 ::shell.js::
@@ -8843,9 +8846,11 @@ const isPgk = shell.find(join(deskPath, 'package.json')).code === 0
 // 如果存在，进行 install + dev
 if (isPgk) {
     // 进入目录，然后执行 npm install 测试
-    shell.exec(`cd ${deskPath} && cnpm i && npm run dev`)
+    shell.exec(``cd ${deskPath} && cnpm i && npm run dev``)
 }
 ---
+const shell = require('shelljs')
+
 /**
  * 判断是否安装了某个包
  * @param {string} pkg 包名
@@ -8862,15 +8867,15 @@ const hasPkg = pkg => {
  * @param {string} pkg 包名
  */
 const installPkg = pkg => {
-  console.log(`开始安装 ${pkg}`);
+  console.log(``开始安装 ${pkg}``);
   const npm = shell.which('npm');
   if (!npm) {
     console.log('请先安装 npm');
     return;
   }
-  const { code } = shell.exec(`${npm.stdout} install ${pkg} -S`);
+  const { code } = shell.exec(``${npm.stdout} install ${pkg} -S``);
   if (code) {
-    console.log(`安装 ${pkg} 失败，请手动安装`);
+    console.log(``安装 ${pkg} 失败，请手动安装``);
   }
 };
 
@@ -8878,6 +8883,39 @@ const installPkg = pkg => {
 if (!hasPkg(TARGET_PKG_NAME)) {
   installPkg(TARGET_PKG_NAME);
 }
+---
+const path = require('path')
+const util = require('util')
+const exec = util.promisify(require('child_process').exec)
+
+const rootDir = path.join(__dirname, '..')
+const apiDir = path.join(rootDir, 'api')
+const frontendDir = path.join(rootDir, 'frontend')
+
+async function installDependencies(dir) {
+    await exec('npm install', { cwd: dir, })
+}
+
+async function bootstrap() {
+    console.log('Start install dependencies...\n')
+
+    await installDependencies(rootDir)
+    console.log('Root dependencies installed success.')
+
+    await installDependencies(apiDir)
+    console.log('Api dependencies installed success.')
+
+    await installDependencies(frontendDir)
+    console.log('Frontend dependencies installed success.')
+
+    console.log('All dependencies installed.')
+}
+
+bootstrap()
+
+process.on('unhandledRejection', e => {
+    throw e
+})
 )
 txtit(Var)
 return
@@ -8888,16 +8926,16 @@ return
 ::mapobj::
 Var =
 (
-const newObj = Object.entries(target).reduce((obj, [key, val]) => {
+const newObj = Object.entries(ary).reduce((obj, [key, val]) => {
     console.log(obj, key, val)
     return obj
 }, {})
 
-Object.entries(a).forEach([key, value] => {
+Object.entries(ary).forEach(([key, value]) => {
     console.log(key, value)
 })
 
-for (let [key, val] of Object.entries(aa)) {
+for (let [key, val] of Object.entries(ary)) {
     console.log(key, val)
 }
 )

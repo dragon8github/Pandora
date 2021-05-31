@@ -263,11 +263,11 @@ _sendinput(v, isSendLevel = false) {
 
 
 RunBy(name) {
-    myIdea := "C:\Program Files\Sublime Text 3\sublime_text3.exe"
+    myIdea := "C:\Program Files\Sublime Text\sublime_text.exe"
     if (!FileExist(myIdea)) {
-        myIdea := "C:\Program Files\Sublime Text 3\sublime_text.exe"
+        myIdea := "C:\Program Files\Sublime Text\sublime_text.exe"
           if (!FileExist(myIdea)) {
-            myIdea := "C:\Program Files (x86)\Sublime Text 3\sublime_text.exe"
+            myIdea := "C:\Program Files\Sublime Text\sublime_text.exe"
              if (!FileExist(myIdea)) {
                 myIdea := "notepad"
              }
