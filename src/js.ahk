@@ -1,4 +1,137 @@
-﻿::tuzi::
+﻿::lifang::
+::pingfang::
+Var =
+(
+// 尼科彻斯定理：任何一个整数m的立方都可以写成m个连续奇数之和。
+// 例如：
+// 1^3=1
+// 2^3=3+5
+// 3^3=7+9+11
+// 4^3=13+15+17+19
+// 
+// https://blog.csdn.net/JZevin/article/details/108228903
+// 这里有一个规律：
+// 先取整数的平方为中间值。
+// 当整数为偶数时，左右边扩散出 n/2 个奇数。 譬如 6 => 36 => 31 + 33 + 35 + 37 + 39 + 41
+// 当整数为奇数时，左右边扩散出 (n-1)/2 个奇数。 同时中间值保留平方值。 譬如 7 => 49 => 43 + 45 + 47 + 49 + 51 + 53 + 55
+
+function test(n) {
+    // 注意这里是 「平方」 哦
+    var middle = Math.pow(n, 2)
+
+    var ary = []
+
+    // 偶数的情况
+    if (middle `% 2 === 0) {
+        for (var i = 0; i < n / 2; i++) {
+            // 左边
+            ary.unshift(middle - 1 - i * 2)
+            // 右边
+            ary.push(middle + 1 + i * 2)
+        }
+    } else {
+        // 「当奇数的情况时，中间值保留平方值」
+        ary.push(middle)
+
+        for (var i = 1; i <= (n - 1) / 2; i++) {
+            // 左边
+            ary.unshift(middle - i * 2)
+            // 右边
+            ary.push(middle + i * 2)
+        }
+    }
+
+    console.log(ary.join('+'))
+}
+
+console.log(test(6))
+
+// while(n = readline()) {
+//  test(n)
+// }
+)
+txtit(Var)
+return
+
+::yunwei::
+::wei::
+Var =
+(
+炜垣
+)
+code(Var)
+return
+
+::dengbi::
+::dengcha::
+::qiuhe::
+::sum::
+Var =
+(
+// https://baike.baidu.com/item/数列求和/7318680?fr=aladdin
+// 「等差数列求和」
+// （首项+末项）×项数/2
+// 举例：1+2+3+4+5+6+7+8+9=（1+9）×9/2=45
+var sum = (first = 1, last = 1, len = last - first + 1) => (first + last) * (len / 2)
+
+// 10
+var count = sum(1, 4)
+)
+txtit(Var)
+return
+
+::erwei::
+::erweiarr::
+::erweishuzu::
+::juzhen3::
+Var =
+(
+const matrix = []
+
+for (let i = 0; i <= 4; i++) {
+    matrix[i] = new Array()
+}
+
+console.log(matrix)
+)
+code(Var)
+return
+
+::uplow::
+::daxie::
+::xiaoxie::
+::daxiaoxie::
+::daxiaoxue::
+Var =
+(
+var getUpLow = str => str.toUpperCase() === str ? 'UP' : 'LOW'
+)
+code(Var)
+return
+
+::zhishu::
+::zhishuyinzi::
+Var =
+(
+let num = 180
+let str = ''
+
+for (let i = 2; i * i <= num; i++) {
+    while (num `% i === 0) {
+        str += i + " "
+        num /= i
+    }
+}
+
+if (num > 1) str += num + ' '
+
+console.log(str)
+)
+code(Var)
+return
+
+
+::tuzi::
 Var =
 (
 // 斐波那契数列（Fibonacci sequence）, 又称「黄金分割数列」, 因以兔子繁殖为例子而引入, 故又称为「兔子数列」
@@ -733,6 +866,7 @@ Send, {up}
 Send, +{End}
 return
 
+::bianji::
 ::edit::
 ::minedit::
 ::zuixiaobianji::
@@ -13945,6 +14079,16 @@ return
 ::douhao::
 Var =
 (
+// 小数点6位
+.toFixed(6)
+
+// 保留小數點后2位
+Number((这里是你的值).toString().match(/^\d+(?:\.\d{0,2})?/))
+---
+// 内置做法
+(123456789).toLocaleString('en-US')  // 1,234,567,890
+
+// 手动封装
 function toThousands(num) {
     var result = [],
         counter = 0;
@@ -13956,11 +14100,6 @@ function toThousands(num) {
     }
     return result.join('');
 }
----
-(123456789).toLocaleString('en-US')  // 1,234,567,890
----
-// 保留小數點后2位
-Number((这里是你的值).toString().match(/^\d+(?:\.\d{0,2})?/))
 )
 txtit(Var)
 return
