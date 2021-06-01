@@ -1,4 +1,45 @@
-﻿::lifang::
+﻿::shexing::
+Var =
+(
+// https://baike.baidu.com/item/数列求和/7318680?fr=aladdin
+// 「等差数列求和」 - （首项 + 末项）× (项数 / 2)
+// 举例：1+2+3+4+5+6+7+8+9=（1+9）×9/2=45
+var sum = (first = 1, last = 1, len = last - first + 1) => (first + last) * (len / 2)
+
+function test(n) {
+    // 初始化矩阵
+    const matrix = []
+    for (let i = 0; i < n; i++) {
+        matrix[i] = new Array()
+    }
+
+    // 最大数
+    var count = sum(1, n)
+
+
+    for (let i = 0; i < n; i++) {
+        for (var j = 0; j < n - i; j++) {
+            matrix[j].unshift(count--)
+        }
+    }
+
+    // 输出
+    for (let i = 0, len = matrix.length; i < len; i++) {
+        console.log(matrix[i].join(' '))
+    }
+}
+
+// test(4)
+
+while(n = readline()) {
+    test(Number(n))
+}
+)
+code(Var)
+return
+
+
+::lifang::
 ::pingfang::
 Var =
 (
@@ -16563,13 +16604,13 @@ return
 ::eval::
 Var =
 (
-Function('return this')()
-
+Function(``return this``)()
+---
 // 动态正则
 var rule = 'te?t*.*'
 eval(`/${rule}/`)
 )
-code(Var)
+txtit(Var)
 return
 
 
