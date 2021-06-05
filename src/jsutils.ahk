@@ -3,6 +3,7 @@
     Menu, utilsworker, Add, 项目名：功能说明, utilsHandler
 
 
+    Menu, utilsTime, Add, 返回指定时间戳之间的时间间隔, utilsHandler
     Menu, utilsTime, Add, Intl.RelativeTimeFormat 相对时间格式化, utilsHandler
     Menu, utilsTime, Add
     Menu, utilsTime, Add
@@ -11,7 +12,6 @@
     Menu, utilsTime, Add, 获取当前时间的秒数, utilsHandler
     Menu, utilsTime, Add, 获取12345的时间选择器, utilsHandler
     Menu, utilsTime, Add, 获取指定时间戳, utilsHandler
-    Menu, utilsTime, Add, 返回指定时间戳之间的时间间隔, utilsHandler
     Menu, utilsTime, Add, 本月最后一天, utilsHandler
     Menu, utilsTime, Add, 今日最晚时间 23:59:59 的时间戳, utilsHandler
     Menu, utilsTime, Add, 获取当前时间的前一天/后一天的时间戳, utilsHandler
@@ -515,6 +515,8 @@
     Menu, utilsSolution, DeleteAll
     Menu, utilsmy, DeleteAll
     Menu, utilsJstest, DeleteAll
+    Menu, utilsTime, DeleteAll
+    
     
 return
 
@@ -1499,7 +1501,7 @@ function getdataTimeSec() {
 }
 
 if (v == "返回指定时间戳之间的时间间隔") {
-Var = 
+Var =
 (
 /**
  *  @param {*} startTime 开始时间的时间戳
@@ -1507,41 +1509,63 @@ Var =
  *  @return {string} str 返回时间字符串
  */
 function getTimeInterval(startTime, endTime) {
-    let runTime = parseInt((endTime - startTime) / 1000);
-    let year = Math.floor(runTime / 86400 / 365);
-    runTime = runTime `% (86400 * 365);
-    let month = Math.floor(runTime / 86400 / 30);
-    runTime = runTime `% (86400 * 30);
-    let day = Math.floor(runTime / 86400);
-    runTime = runTime `% 86400;
-    let hour = Math.floor(runTime / 3600);
-    runTime = runTime `% 3600;
-    let minute = Math.floor(runTime / 60);
-    runTime = runTime `% 60;
-    let second = runTime;
-    let str = '';
-    if (year > 0) {
-        str = year + '年';
-    }
-    if (year <= 0 && month > 0) {
-        str = month + '月';
-    }
-    if (year <= 0 && month <= 0 && day > 0) {
-        str = day + '天';
-    }
-    if (year <= 0 && month <= 0 && day <= 0 && hour > 0) {
-        str = hour + '小时';
-    }
-    if (year <= 0 && month <= 0 && day <= 0 && hour <= 0 && minute > 0) {
-        str = minute + '分钟';
-    }
-    if (year <= 0 && month <= 0 && day <= 0 && hour <= 0 && minute <= 0 && second > 0) {
-        str += second + '秒';
-    }
-    str += '前';
-    return str;
+    let runTime = parseInt((+new Date(endTime) - +new Date(startTime)) / 1000)
+    let year = Math.floor(runTime / 86400 / 365)
+    runTime = runTime `% (86400 * 365)
+    let month = Math.floor(runTime / 86400 / 30)
+    runTime = runTime `% (86400 * 30)
+    let day = Math.floor(runTime / 86400)
+    runTime = runTime `% 86400
+    let hour = Math.floor(runTime / 3600)
+    runTime = runTime `% 3600
+    let minute = Math.floor(runTime / 60)
+    runTime = runTime `% 60
+    let second = runTime
+    let str = ''
+    if (year > 0) {str = year + '年'}
+    if (year <= 0 && month > 0) {str = month + '月'}
+    if (year <= 0 && month <= 0 && day > 0) {str = day + '天'}
+    if (year <= 0 && month <= 0 && day <= 0 && hour > 0) {str = hour + '小时'}
+    if (year <= 0 && month <= 0 && day <= 0 && hour <= 0 && minute > 0) {str = minute + '分钟'}
+    if (year <= 0 && month <= 0 && day <= 0 && hour <= 0 && minute <= 0 && second > 0) {str += second + '秒'}
+    str += '前'
+    return str
 }
+
+getTimeInterval('2018-11-1', '2021-6-1')
+---
+/**
+ *  @param {*} startTime 开始时间的时间戳
+ *  @param {*} endTime 结束时间的时间戳
+ *  @return {string} str 返回时间字符串
+ */
+function getTimeInterval(startTime, endTime) {
+    let str = ''
+    let runTime = parseInt((+new Date(endTime) - +new Date(startTime)) / 1000)
+    let year = Math.floor(runTime / 86400 / 365)
+    runTime = runTime `% (86400 * 365)
+    let month = Math.floor(runTime / 86400 / 30)
+    runTime = runTime `% (86400 * 30)
+    let day = Math.floor(runTime / 86400)
+    runTime = runTime `% 86400
+    let hour = Math.floor(runTime / 3600)
+    runTime = runTime `% 3600
+    let minute = Math.floor(runTime / 60)
+    runTime = runTime `% 60
+    let second = runTime
+    str += year + '年'
+    str += month + '月'
+    str += day + '天'
+    str += hour + '小时'
+    str += minute + '分钟'
+    str += second + '秒'
+    str += '前'
+    return str
+}
+getTimeInterval('2018-11-1', '2021-6-1')
 )
+txtit(Var)
+return
 }
 
 if (v == "按类型格式化日期") {
@@ -7145,6 +7169,16 @@ function test(input, v) {
 }
 
 
+// 小写
+var len_low = maybe(_ => str.match(/[a-z]/g).length, 0)
+// 大写
+var len_up = maybe(_ => str.match(/[A-Z]/g).length, 0)
+// 字母
+var len_en = maybe(_ => str.match(/[a-z]/gi).length, 0)
+// 数字
+var len_num = maybe(_ => str.match(/[0-9]/g).length, 0)
+// 无符号
+var str2_len = maybe(_ => str.match(/[^A-Za-z0-9]/g).length, 0)
 ---
 /* 手机机身码(IMEI) */
 /^\d{15,17}$/
@@ -7305,7 +7339,8 @@ function test(input, v) {
 /* 邮箱地址(email) */
 /^[a-zA-Z0-9.!#$`%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 ---
-body.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,4}/g); // 推荐使用exec可以拿到多个数组
+// 推荐使用exec可以拿到多个数组
+body.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,4}/g); 
 ---
 const str = 'js 统计多少中文多少数字多少字母 123'
 const ch_reg = /[\u4e00-\u9fa5]/g

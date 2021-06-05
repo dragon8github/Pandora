@@ -5527,7 +5527,7 @@ computed: {
 code(Var)
 return
 
-::v-slot::
+::#:
 ::vue-slot::
 ::vue.slot::
 ::slot::
@@ -5553,14 +5553,14 @@ Var =
 // 使用组件
 
 <base-layout>
-  <template v-slot:header>
+  <template #header>
     <h1>Here might be a page title</h1>
   </template>
 
   <p>A paragraph for the main content.</p>
   <p>And another one.</p>
 
-  <template v-slot:footer>
+  <template #footer>
     <p>Here's some contact info</p>
   </template>
 </base-layout>
@@ -5577,12 +5577,12 @@ Var =
         <test>
           <!-- https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots -->
           <!-- 注意，外层必须用 template 包裹 -->
-          <template v-slot:default='slotProps'>
+          <template #default='slotProps'>
             <div class='firstname'>{{ slotProps.user.firstName }}</div>
           </template>
 
           <!-- 推荐直接解构使用 -->
-          <template v-slot:footer='{ user }'>
+          <template #footer='{ user }'>
             <div class='lastname'>{{ user.lastName }}</div>
           </template>
 

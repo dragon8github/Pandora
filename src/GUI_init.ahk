@@ -216,7 +216,6 @@ Gui, Pandora:Add, Link,, <a href="https://ecs.console.aliyun.com/#/home">阿里�
 Gui, Pandora:Add, Link,, <a href="https://www.yuque.com/lizhaohong/bpigt2/uk0pkf">一动也不动</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 其他:
-Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need/You-Dont-Need-Momentjs">notMomentjs</a>
 Gui, Pandora:Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</a>
 Gui, Pandora:Add, Link, gInspect ,  <a>安卓调试</a>
 Gui, Pandora:Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
@@ -233,7 +232,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.xsldh6.com/">小森林导航</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cmdy5.com/index.php?m=vod-search">草民电影</a>
 Gui, Pandora:Add, Link,, <a href="https://www.novipnoad.com/">不负好时光</a>
 Gui, Pandora:Add, Link,, <a href="http://www.fengchedm.com/">风车动漫</a>
-Gui, Pandora:Add, Link,, <a href="http://www.imomoe.com/">樱花动漫</a>
+Gui, Pandora:Add, Link,, <a href="http://www.languang.co/">蓝光网</a>
 Gui, Pandora:Add, Link,, <a href="http://www.yhdm.io/v/4066-148.html">樱花动漫v2</a>
 ; Gui, Pandora:Add, Link,, <a href="https://www.youtube.com/channel/UCKiWll5qSb4oaEtZhYDtjyw">channel ASMR</a>
 
@@ -282,44 +281,39 @@ Gui, Pandora:Add, Link,, <a href="https://carbon.now.sh/">carbon代码图片</a>
 
 
 Gui, Pandora:Add, Text,  W140 Section xs yp+50, 最近学习：
-Gui, Pandora:Add, Link,, <a href="https://hellogithub.com/periodical/volume/15/">有趣的github项目</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/vuejs/vue/blob/1.0/src/cache.js">Vue v1源码</a>
-Gui, Pandora:Add, Link,, <a href="https://miyogurt.github.io/nodelover-books">NodeLover 黄金屋</a>
+Gui, Pandora:Add, Link,, <a href="https://www.nowcoder.com/ta/huawei">牛客网</a>
+Gui, Pandora:Add, Link,, <a href="http://obkoro1.com/web_accumulate/algorithm/">前端算法题</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview/blob/master/category/history.md">以面为练</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/azl397985856/leetcode">leetcode JS版本</a>
-Gui, Pandora:Add, Link,, <a href="https://gitee.com/explore">码云逛逛源码</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/you-dont-need">you-dont-need</a>
+Gui, Pandora:Add, Link,, <a href="https://hellogithub.com/periodical/volume/15/">有趣的github项目</a>
 Gui, Pandora:Add, Link,, <a href="https://fex.baidu.com/articles/">fex周刊</a>
-; Gui, Pandora:Add, Link,, <a href="https://github.com/haizlin/fe-interview/blob/master/category/history.md">以面为练</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ChanceYu/front-end-rss">front-end-rss</a>
 Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echojs.com/">echojs.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.smashingmagazine.com/articles/">粉碎杂志</a>
 Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/r/todayilearned/">reddit</a>
-Gui, Pandora:Add, Link,, <a href="http://www.rensheng5.com/">鸡汤文</a>
 ; Gui, Pandora:Add, Link,, <a href="https://chao.fun/f/4">炒饭社区</a>
-
 Gui, Pandora:Add, Link,, <a href="https://frontender-ua.medium.com/">medium前端周刊</a>
-
+Gui, Pandora:Add, Link,, <a href="https://javascriptweekly.com/issues">javascriptweekly</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/ascoders/weekly/tree/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF">weekly/前沿技术</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
-Gui, Pandora:Add, Link,, <a href="http://obkoro1.com/web_accumulate/algorithm/">前端算法题</a>
-Gui, Pandora:Add, Link,, <a href="https://www.nowcoder.com/ta/huawei">牛客网</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/">阮一峰的博客</a>
-; Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly/issues">阮一峰issue</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly/issues">阮一峰issue</a>
 ; Gui, Pandora:Add, Link,, <a href="https://wangdoc.com/bash/expansion.html#start-end-%E6%89%A9%E5%B1%95">阮一峰的bash</a>
 Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.html">前端日报</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/sorrycc/weekly">前端周刊2</a>
-; Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
+Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
 Gui, Pandora:Add, Link,, <a href="https://vueschool.io/articles/series/vue-js-performance/">VueSchool</a>
 Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/show">Hacker News</a>
 Gui, Pandora:Add, Link,, <a href="https://tympanus.net/codrops/category/tutorials/">Codrops</a>
-; Gui, Pandora:Add, Link,, <a href="https://reposhub.com/">reposhub.com</a>
 Gui, Pandora:Add, Link,, <a href="https://hackernoon.com/">hackernoon</a>
 Gui, Pandora:Add, Link,, <a href="https://hashnode.com/">oshogunle.com</a>
+; Gui, Pandora:Add, Link,, <a href="https://reposhub.com/">reposhub.com</a>
 Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/http`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fhackernews-daily">hackerNews Top10日刊</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejsexamples.com/">vuejsexamples</a>
 Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/https`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fgithub-daily">github-daily</a>

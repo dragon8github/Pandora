@@ -1,4 +1,71 @@
-﻿::shexing::
+﻿::jiange::
+Var =
+(
+/**
+ *  @param {*} startTime 开始时间的时间戳
+ *  @param {*} endTime 结束时间的时间戳
+ *  @return {string} str 返回时间字符串
+ */
+function getTimeInterval(startTime, endTime) {
+    let runTime = parseInt((+new Date(endTime) - +new Date(startTime)) / 1000)
+    let year = Math.floor(runTime / 86400 / 365)
+    runTime = runTime `% (86400 * 365)
+    let month = Math.floor(runTime / 86400 / 30)
+    runTime = runTime `% (86400 * 30)
+    let day = Math.floor(runTime / 86400)
+    runTime = runTime `% 86400
+    let hour = Math.floor(runTime / 3600)
+    runTime = runTime `% 3600
+    let minute = Math.floor(runTime / 60)
+    runTime = runTime `% 60
+    let second = runTime
+    let str = ''
+    if (year > 0) {str = year + '年'}
+    if (year <= 0 && month > 0) {str = month + '月'}
+    if (year <= 0 && month <= 0 && day > 0) {str = day + '天'}
+    if (year <= 0 && month <= 0 && day <= 0 && hour > 0) {str = hour + '小时'}
+    if (year <= 0 && month <= 0 && day <= 0 && hour <= 0 && minute > 0) {str = minute + '分钟'}
+    if (year <= 0 && month <= 0 && day <= 0 && hour <= 0 && minute <= 0 && second > 0) {str += second + '秒'}
+    str += '前'
+    return str
+}
+
+getTimeInterval('2018-11-1', '2021-6-1')
+---
+/**
+ *  @param {*} startTime 开始时间的时间戳
+ *  @param {*} endTime 结束时间的时间戳
+ *  @return {string} str 返回时间字符串
+ */
+function getTimeInterval(startTime, endTime) {
+    let str = ''
+    let runTime = parseInt((+new Date(endTime) - +new Date(startTime)) / 1000)
+    let year = Math.floor(runTime / 86400 / 365)
+    runTime = runTime `% (86400 * 365)
+    let month = Math.floor(runTime / 86400 / 30)
+    runTime = runTime `% (86400 * 30)
+    let day = Math.floor(runTime / 86400)
+    runTime = runTime `% 86400
+    let hour = Math.floor(runTime / 3600)
+    runTime = runTime `% 3600
+    let minute = Math.floor(runTime / 60)
+    runTime = runTime `% 60
+    let second = runTime
+    str += year + '年'
+    str += month + '月'
+    str += day + '天'
+    str += hour + '小时'
+    str += minute + '分钟'
+    str += second + '秒'
+    str += '前'
+    return str
+}
+getTimeInterval('2018-11-1', '2021-6-1')
+)
+txtit(Var)
+return
+
+::shexing::
 Var =
 (
 // https://baike.baidu.com/item/数列求和/7318680?fr=aladdin
@@ -103,6 +170,7 @@ Var =
 code(Var)
 return
 
+::count::
 ::dengbi::
 ::dengcha::
 ::qiuhe::
@@ -129,7 +197,7 @@ Var =
 (
 const matrix = []
 
-for (let i = 0; i <= 4; i++) {
+for (let i = 0; i < 4; i++) {
     matrix[i] = new Array()
 }
 
@@ -455,6 +523,9 @@ code(Var)
 return
 
 
+::pipei::
+::isen::
+::tongji::
 ::yanzheng::
 ::pwd::
 ::mima::
@@ -514,7 +585,7 @@ var rule3 = function (str, len = str.length) {
 // 25 分: 大于1 个符号
 var rule4 = function (str, len = str.length) {
     // 无符号
-    var str2_len = str.replace(/[0-9]|[a-z]/ig, (...args) => '').length
+    var str2_len = maybe(_ => str.match(/[^A-Za-z0-9]/g).length, 0)
 
     if (str2_len == 0) return 0
     if (str2_len == 1) return 10
@@ -592,7 +663,7 @@ var len_en = maybe(_ => str.match(/[a-z]/gi).length, 0)
 // 数字
 var len_num = maybe(_ => str.match(/[0-9]/g).length, 0)
 // 无符号
-var str2_len = str.replace(/[0-9]|[a-z]/ig, (...args) => '').length
+var str2_len = maybe(_ => str.match(/[^A-Za-z0-9]/g).length, 0)
 )
 txtit(Var)
 return
@@ -17545,6 +17616,29 @@ fetch('http://127.0.0.1:7001/', {
   .then(data => console.log(20180916201855, data))
   .catch(err => { Notification.error({ title: 'Sorry...', message: err.message }) })
   .finally(_ => this.loading = false)
+---
+// 解析xml
+layerurl = 'http://ktd.dg:18080/dataService-imageMapService1?token=bf786acf-2dae-45d8-9929-1b496d2c299c'
+
+fetch(layerurl)
+  .then(response => response.text())
+  .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+  .then(data => console.log(data))
+
+
+// 获取 xml 值的最佳方式是使用：getElementsByTagName
+;(async () => {
+    var layerurl = 'http://ktd.dg:18080/dataService-imageMapService1?token=bf786acf-2dae-45d8-9929-1b496d2c299c'
+
+    var data = await fetch(layerurl)
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
+
+    var content = data.querySelector('Contents')
+    let layer = content.querySelector('Layer').getElementsByTagName('ows:Title')[0].textContent
+
+    console.log(layer)
+})()
 )
 txtit(Var)
 Return
