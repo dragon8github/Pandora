@@ -5354,37 +5354,6 @@ display: inline-block;
 code(Var)
 return
 
-::box::
-::redbox::
-::cssbox::
-::css.box::
-Var =
-(
-.hello {
-    background: red;
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    left: 50`%;
-    top: 50`%;
-    transform: translate(-50`%, -50`%);
-}
-
-$('#app').click(e => {
-    const x = e.clientX + 'px'
-    const y = e.clientY + 'px'
-    const div = $(`<div style="position: absolute; left: ${x}; top: ${y}; width: 10px; height: 10px; background:red"></div>`)
-    $('body').append(div)
-    layer.open({
-        offset: [y, x],
-        area: ['auto', '305px'],
-        title: `新建便签 —— ${moment(new Date()).format('YYYY/MM/DD HH:mm:ss')}`,
-        content: '<textarea class="note" placeholder="记笔记..."></textarea>',
-    })
-})
-)
-code(Var)
-return
 
 ::icss::
 ::insertcss::

@@ -13866,6 +13866,89 @@ RunByVsCode(name)
 run, % name
 return
 
+NewPureIndexHtmltable4:
+name :=  A_Desktop . "\index" . A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec . ".html"
+FileAppend,
+(
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100`%;
+            }
+
+            #app {
+                width: 100`%;
+                height: 100`%;
+            }
+
+            .table {
+                width: 100`%;
+                color: #333;
+                font-size: 12px;
+                text-align: center;
+                border-collapse: collapse;
+                border-spacing: 0;
+                border: 1px solid #D3D3D3;
+            }
+            
+            td,
+            th {
+                border-left: 1px solid #ccc;
+                border-top: 1px solid #ccc;
+                padding: 20px;
+                text-align: center;
+            }
+
+            th {
+                background-color: rgba(0, 255, 246, .03);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <table class="table" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th colspan="1" rowspan="2"><div>镇街名称</div></th>
+                        <th colspan="3" rowspan="1"><div>第一剂已接种人数</div></th>
+                        <th colspan="3" rowspan="1"><div>第二剂已接种人数</div></th>
+                    </tr>
+                    <tr>
+                        <th colspan="1" rowspan="1"><div>接种任务</div></th>
+                        <th colspan="1" rowspan="1"><div>已完成</div></th>
+                        <th colspan="1" rowspan="1"><div>完成率</div></th>
+
+                        <th colspan="1" rowspan="1"><div>接种任务</div></th>
+                        <th colspan="1" rowspan="1"><div>已完成</div></th>
+                        <th colspan="1" rowspan="1"><div>完成率</div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr> <td><div>1</div></td> <td><div>2</div></td> <td><div>3</div></td> <td><div>4</div></td> <td><div>5</div></td> <td><div>6</div></td> <td><div>7</div></td> </tr>
+                    <tr> <td><div>1</div></td> <td><div>2</div></td> <td><div>3</div></td> <td><div>4</div></td> <td><div>5</div></td> <td><div>6</div></td> <td><div>7</div></td> </tr>
+                    <tr> <td><div>1</div></td> <td><div>2</div></td> <td><div>3</div></td> <td><div>4</div></td> <td><div>5</div></td> <td><div>6</div></td> <td><div>7</div></td> </tr>
+                    <tr> <td><div>1</div></td> <td><div>2</div></td> <td><div>3</div></td> <td><div>4</div></td> <td><div>5</div></td> <td><div>6</div></td> <td><div>7</div></td> </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+
+),  %name%
+RunByVsCode(name)
+run, % name
+return
+
 bdmapbasicmapv:
 name :=  htmlit()
 FileAppend,

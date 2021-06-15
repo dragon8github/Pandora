@@ -220,8 +220,9 @@ Gui, Pandora:Add, Link,, <a href="http://youmightnotneedjquery.com/">notjQuery</
 Gui, Pandora:Add, Link, gInspect ,  <a>安卓调试</a>
 Gui, Pandora:Add, Link,, <a href="http://jquery.cuishifeng.cn/">在线jQuery手册</a>
 Gui, Pandora:Add, Link,, <a href="https://wyagd001.github.io/zh-cn/docs/Tutorial.htm">AutoHotkey官网</a>
-BabelUrl := "https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=FAMwrgdgxgLglgewgAgM4FMYGV0Cc7qoDC6EMeACgqsgBQB0jAhrgOaoCUyA3sAJBQkqBABt09EQlYNmbTsAC-wUJFiIURABYsYAMQS4AtgBF0UOgGt0ATwA0yQ5k0IAJl17JkuTGFwpw0PBIdAAqLKyYRCJMqJw8wJ6ecCB0AIRhbJHRsfQgBoYAsk6ucR6JnhkRMFExqLn5RTDOLjQAvDxK5UoJiZVZtfVGjc2oANpW1gC6yO2OTa49St0AAlo6-kamULQA5GIREC5UxNoQETv2GNh4BMSk5LjHHMBQ2TQUBGu4MB3KghDCMQSKS0ABMAAYAIwATnBADZQQAWCGQgAcoNB9g-6C-MEGhWKLS4wCAA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&timeTravel=false&sourceType=module&lineWrap=false&presets=es2017%2Creact%2Cstage-2%2Ctypescript&prettier=false&targets=&version=7.4.5&externalPlugins="
-Gui, Pandora:Add, Link,, <a href="%BabelUrl%">Babel在线转换</a>
+Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
+; BabelUrl := "https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=FAMwrgdgxgLglgewgAgM4FMYGV0Cc7qoDC6EMeACgqsgBQB0jAhrgOaoCUyA3sAJBQkqBABt09EQlYNmbTsAC-wUJFiIURABYsYAMQS4AtgBF0UOgGt0ATwA0yQ5k0IAJl17JkuTGFwpw0PBIdAAqLKyYRCJMqJw8wJ6ecCB0AIRhbJHRsfQgBoYAsk6ucR6JnhkRMFExqLn5RTDOLjQAvDxK5UoJiZVZtfVGjc2oANpW1gC6yO2OTa49St0AAlo6-kamULQA5GIREC5UxNoQETv2GNh4BMSk5LjHHMBQ2TQUBGu4MB3KghDCMQSKS0ABMAAYAIwATnBADZQQAWCGQgAcoNB9g-6C-MEGhWKLS4wCAA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&timeTravel=false&sourceType=module&lineWrap=false&presets=es2017%2Creact%2Cstage-2%2Ctypescript&prettier=false&targets=&version=7.4.5&externalPlugins="
+; Gui, Pandora:Add, Link,, <a href="%BabelUrl%">Babel在线转换</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/search?q=followers:`%3E=1000&type=Users">Github大神排行榜</a>
 
 
@@ -292,11 +293,11 @@ Gui, Pandora:Add, Link,, <a href="https://dev.to/">dev.to</a>
 Gui, Pandora:Add, Link,, <a href="https://medium.com/">medium.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.echojs.com/">echojs.com</a>
 Gui, Pandora:Add, Link,, <a href="https://www.smashingmagazine.com/articles/">粉碎杂志</a>
-Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/r/todayilearned/">reddit</a>
 ; Gui, Pandora:Add, Link,, <a href="https://chao.fun/f/4">炒饭社区</a>
 Gui, Pandora:Add, Link,, <a href="https://frontender-ua.medium.com/">medium前端周刊</a>
-Gui, Pandora:Add, Link,, <a href="https://javascriptweekly.com/issues">javascriptweekly</a>
-Gui, Pandora:Add, Link,, <a href="https://github.com/ascoders/weekly/tree/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF">weekly/前沿技术</a>
+Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
+Gui, Pandora:Add, Link,, <a href="https://css-tricks.com/">css-tricks</a>
+Gui, Pandora:Add, Link,, <a href="https://www.w3cplus.com/JavaScript">w3cplus高质量文章</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
@@ -304,9 +305,9 @@ Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/">阮一峰的�
 Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly/issues">阮一峰issue</a>
 ; Gui, Pandora:Add, Link,, <a href="https://wangdoc.com/bash/expansion.html#start-end-%E6%89%A9%E5%B1%95">阮一峰的bash</a>
 Gui, Pandora:Add, Link,, <a href="https://wubaiqing.github.io/zaobao/2019/07/31.html">前端日报</a>
+Gui, Pandora:Add, Link,, <a href="https://javascriptweekly.com/issues">javascriptweekly</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/sorrycc/weekly">前端周刊2</a>
-Gui, Pandora:Add, Link,, <a href="https://www.printf520.com/hot.html">每日热搜</a>
-Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.php?f=76&t=66181&hilit=whr+UTF+8">ahk官方论坛</a>
+Gui, Pandora:Add, Link,, <a href="https://github.com/ascoders/weekly/tree/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF">weekly/前沿技术</a>
 Gui, Pandora:Add, Link,, <a href="https://www.autoahk.com/archives/1580">ahk中文网</a>
 Gui, Pandora:Add, Link,, <a href="https://vueschool.io/articles/series/vue-js-performance/">VueSchool</a>
 Gui, Pandora:Add, Link,, <a href="https://news.ycombinator.com/show">Hacker News</a>
@@ -344,12 +345,11 @@ Gui, Pandora:Add, Link,, <a href="https://www.thoughtworks.com/cn/radar">thought
 ; Gui, Pandora:Add, Link,, <a href="https://kentcdodds.com/blog/">Kent C. Dodds Blog</a>
 Gui, Pandora:Add, Link,, <a href="https://www.tmtpost.com/base/data/investment">投资事件和项目</a>
 Gui, Pandora:Add, Link,, <a href="https://www.tmtpost.com/#js_recommend_other_page">钛媒体</a>
-Gui, Pandora:Add, Link,, <a href="https://www.w3cplus.com/JavaScript">w3cplus高质量文章</a>
-Gui, Pandora:Add, Link,, <a href="https://css-tricks.com/">css-tricks</a>
 ; Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/giserhome/p/13379672.html">博客园 GIS之家</a>
 Gui, Pandora:Add, Link,, <a href="http://www.appcome.com/forum.php?mod=forumdisplay&fid=93&filter=typeid&typeid=112">appcome</a>
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/liuxianan/default.html?page=2">小茗同学的博客园</a>
 Gui, Pandora:Add, Link,, <a href="https://ruanyf.github.io/sina-news/">新浪实时新闻</a>
+Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/r/todayilearned/">reddit</a>
 
 
 
@@ -494,6 +494,7 @@ Gui, Pandora:Add, Text, gdropdivhtml W160, 新建拖动DIV元素.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable W140 , 新建复杂table.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable2 W140 , 新建复杂table2.html
 Gui, Pandora:Add, Text, gNewPureIndexHtmltable3 W140 , 新建复杂table3.html
+Gui, Pandora:Add, Text, gNewPureIndexHtmltable4 W140 , 新建复杂table4.html
 
 
 Gui, Pandora:Add, Text, gNewEchartDemoHtml ys x+60,新建.echartsDemo.html（官方demo）
@@ -576,7 +577,7 @@ Gui, Pandora:Add, Text, gcanvasDrawBan W180,canvas自由绘制画板
 Gui, Pandora:Tab, 3
 Gui, Pandora:Add, Text,  W130 Section, 疫情可视化/数据资产:
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/application/tree/master/ioc-visual-ui">源码地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/19/interface/api">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:32202/project/19/interface/api">yapi</a>
 ; Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/builds/ioc-visual-ui?tab=history">测试部署</a>
 ; Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:31681/fyvis/#/planB">测试预览</a>
 Gui, Pandora:Add, Link,, <a href="https://master.feiyan.com:8443/console/project/app/browse/dc/ioc-visual-ui?tab=history">正式部署</a>
@@ -586,10 +587,10 @@ Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/fyvis/#/dataAssets">数�
 
 
 Gui, Pandora:Add, Text,  W150 ys, ioc-basic:
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:31321/mapvis/#/index">预览地址</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:31321/mapvis/#/index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/visual/basic">源码地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/35/interface/api">yapi</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">右哥Jenkins编译</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:32202/project/35/interface/api">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:18080/">右哥Jenkins编译</a>
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/tool-basic-visual-ui?tab=history">openshift 部署</a>
 
 
@@ -623,7 +624,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.tapd.cn/55583740/board/index?board
 
 Gui, Pandora:Add, Text,  W120 ys, hz-12345：
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/hz-12345">hz-12345 源码</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:6083/#/dg/Index">预览地址</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:6083/#/dg/Index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/big-bcreen/boards">敏捷看板</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/12345Platform/12345Platform/blob/master/DOC/东莞市社会治理可视化分析平台/05UIUE文档/大屏UI/">UI资源</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.40.37:8084/">内网预览地址</a>
@@ -638,11 +639,11 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/groups/DateCente
 Gui, Pandora:Add, Link,, <a href="http://dc.dgjy.net:8080/">Jenkins</a>
 
 Gui, Pandora:Add, Text,  W140 yp+50, 跨境司机
-; Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:32727/driver/">预览地址</a>
+; Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:32727/driver/">预览地址</a>
 ; Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/app/browse/dc/cross-border-drivers-ui?tab=history">部署地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/56/interface/api/2435">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:32202/project/56/interface/api/2435">yapi</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/cross-border-drivers">源码地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:18080/">Jenkins</a>
 Gui, Pandora:Add, Link,, <a href="https://fangyqgk.dg.cn/driver/#/pcDriver">正式预览</a>
 Gui, Pandora:Add, Link,, <a href="https://master.feiyan.com:8443/console/project/app/browse/dc/cross-border-drivers-ui?tab=history">正式部署</a>
 ; Gui, Pandora:Add, Link,, <a href="https://19.104.40.10:8080/ ">后台管理系统</a>
@@ -659,11 +660,11 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/yqfeiyan/applica
 
 
 Gui, Pandora:Add, Text,  W140 yp+50, 数据资产v2
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/60/interface/api">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:32202/project/60/interface/api">yapi</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/jinzhi.liao/data-assets">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.204/dataAssets/">正式预览</a>
 Gui, Pandora:Add, Link,, <a href="https://master.paas.com:8443/console/project/app/browse/dc/ioc-visual-ui-dataassets?tab=history">部署地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:18080/">Jenkins</a>
 Gui, Pandora:Add, Link,, <a href="https://zeqfus.axshare.com/#id=1inhqq&p=`%E4`%BA`%BA`%E5`%8F`%A3`%E5`%BA`%93-jx`%E8`%AF`%84`%E5`%AE`%A1&g=1">原型地址</a>
 
 
@@ -676,7 +677,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.sonatype.com/nexus-repository-oss"
 
 Gui, Pandora:Add, Text,  W140 yp+50, 12345热线效能
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/12345-hotline">源码地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/64/interface/api">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:32202/project/64/interface/api">yapi</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.124/hotline-12345/#/Hotline">正式预览</a>
 Gui, Pandora:Add, Link,, <a href="https://rancher.ioc.com/p/local:p-486kn/workloads">部署</a>
 
@@ -684,8 +685,8 @@ Gui, Pandora:Add, Link,, <a href="https://rancher.ioc.com/p/local:p-486kn/worklo
 
 Gui, Pandora:Add, Text,  W140 yp+50, 疫情地图
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/covid-19">源码地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/68/interface/api">yapi</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins打包</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:32202/project/68/interface/api">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:18080/">Jenkins打包</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.128:8080/login">Jenkins部署</a>
 Gui, Pandora:Add, Link,, <a href="http://19.104.50.124/covid-19-map/#/index">正式环境</a>
 Gui, Pandora:Add, Link,, <a href="https://19.104.50.124/covid-19-pc/#/index">PC正式环境</a>
@@ -707,7 +708,7 @@ Gui, Pandora:Add, Text,  W140 yp+50, 大屏后台指标管理系统
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/bigscreen-admin">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443">部署地址</a>
 Gui, Pandora:Add, Link,, <a href="https://219.135.182.2:6443/bigscreen-admin/">测试预览</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:18080/">Jenkins</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:18080/">Jenkins</a>
 
 Gui, Pandora:Add, Text,  W140 yp+50, UI资源
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/frontEnd/ui">源码地址</a>
@@ -721,13 +722,13 @@ Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/unifiedfabric/dg
 
 Gui, Pandora:Add, Text,  W140 yp+50, 工信局数据底板
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/DataManagementGroup/datamanagementadmin">源码地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/71/interface/api">yapi</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:32202/project/71/interface/api">yapi</a>
 Gui, Pandora:Add, Link,, <a href="http://demo.onpre.cn:7012/jenkins/view/工信局数据底板系统/">Jenkins</a>
 Gui, Pandora:Add, Link,, <a href="https://demo.onpre.cn:7109/">测试地址</a>
 
 
 Gui, Pandora:Add, Text,  W140 ys xp+160, visual可视化
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.2:6181/datatransferweb/login">预览地址</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:6181/datatransferweb/login">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual">源码地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/dg-ioc/ioc-visual/issues">issue</a>
 Gui, Pandora:Add, Link,, <a href="https://axhub.im/pro/0259ef6c97abade0/#g=1&p=数据可视化大屏">原型</a>
@@ -740,7 +741,7 @@ Gui, Pandora:Add, Text,  W140 ys xp+160, 城管
 Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32201/#/Index">预览地址</a>
 Gui, Pandora:Add, Link,, <a href="https://master.alltosea.com:8443/console/project/nhc-visual/browse/builds/citymanagement-ui?tab=history">部署地址</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/lizhaohong/citymanagement">代码地址</a>
-Gui, Pandora:Add, Link,, <a href="http://219.135.182.3:32202/project/11/interface/api">yAPI</a>
+Gui, Pandora:Add, Link,, <a href="http://14.18.232.165:32202/project/11/interface/api">yAPI</a>
 Gui, Pandora:Add, Link,, <a href="https://shimo.im/sheets/TCjR8jdTwwwYKjtY/MODOC/">需求文档</a>
 Gui, Pandora:Add, Link,, <a href="https://shimo.im/docs/bab1e94724614258/read">接口文档</a>
 Gui, Pandora:Add, Link,, <a href="http://git.smart-info.cn:8999/visual/citymanagement.git">新城管源码</a>
@@ -1323,6 +1324,9 @@ Gui, Pandora:Add, Link,, <a href="https://github.com/mrdoob/three.js">github</a>
 
 Gui, Pandora:Add, Text,  W140 ys, 虚幻4：
 Gui, Pandora:Add, Link,, <a href="https://docs.unrealengine.com/zh-CN/index.html">中文文档</a>
+Gui, Pandora:Add, Link,, <a href="https://www.unrealengine.com/marketplace/zh-CN/product/cesium-for-unreal#">虚幻商城</a>
+Gui, Pandora:Add, Link,, <a href="https://space.bilibili.com/88835572?spm_id_from=333.788.b_765f7570696e666f.1">真的有奥特曼吗</a>
+Gui, Pandora:Add, Link,, <a href="https://www.bilibili.com/video/BV1sX4y1375v#reply4690140513">常胜将军王胖胖</a>
 
 
 ;@css 

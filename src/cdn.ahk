@@ -1,4 +1,13 @@
-﻿::cdn-katong::
+﻿::cdn-cesium::
+Var =
+(
+<script src="https://cesium.com/downloads/cesiumjs/releases/1.80/Build/Cesium/Cesium.js"></script>
+<link href="https://cesium.com/downloads/cesiumjs/releases/1.80/Build/Cesium/Widgets/widgets.css" rel="stylesheet" />
+)
+code(Var)
+return
+
+::cdn-katong::
 ::cdn-nes::
 ::cdn-xiangsu::
 ::cdn-px::

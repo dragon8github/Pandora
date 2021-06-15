@@ -1,4 +1,18 @@
-﻿::mianbao::
+﻿!F1::
+Send, {F7}
+sleep, 100
+Send, ^s
+return
+
+!F2::
+Send, {F7}
+sleep, 100
+Send, ^s
+sleep, 100
+Send, !p
+return
+
+::mianbao::
 ::mianbaox::
 ::mianbaoxue::
 ::mianbaoxie::

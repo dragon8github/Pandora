@@ -1,4 +1,82 @@
-﻿::jiange::
+﻿::insertpaixu::
+::insertsort::
+::charupaixu::
+::charu::
+Var =
+(
+// 插入排序
+// https://www.jianshu.com/p/2ea239ef36fd
+// 笔记：从左到右遍历数组每一位，拿出来作为标准值，跟它左边所有人比较大小（第一位不需要比较）
+// 当左边的值比我大时，它的位置 + 1，最后，标准值插入左边合适的位置。
+function InsertionSort(originalArray) {
+    const array = [...originalArray]
+    let len = array.length
+    for (let i = 0; i < len; i++) {
+        // 标准参考值
+        let cursor = array[i]
+        // 左边第一位
+        let j = i - 1
+        // 当左边的某一位比标准值大时
+        while (j >= 0 && array[j] > cursor) {
+            // 其实这不算换位，而是为了 「往前进位」
+            // 这样才可以在某个合适位置「插入」。 这就是插入排序的意思。
+            array[j+1] = array[j]
+            j--
+        }
+        array[j+1] = cursor
+    }
+    return array
+}
+
+InsertionSort([3, 5, 6, 7, 1])
+
+)
+code(Var)
+return
+
+::hebingpaixu::
+::guibingpaixu::
+::gbsort::
+::gbpaixu::
+Var =
+(
+// 归并排序
+// https://www.jianshu.com/p/e3cb5423f89c
+// 归并排序（Merge Sort）是一种通用有效的排序算法。通常情况下实现的是稳定的排序队列，
+// 算法      最好情况    平均情况     最坏情况    空间复杂度   稳定性
+// 归并排序  O(n log n)  O(n log n)  O(n log n)  O(n)       稳定
+function MergeSort(array) {
+    let len = array.length;
+    if (len <= 1) {
+      return array;
+    }
+    let num = Math.floor(len / 2);
+    let left = MergeSort(array.slice(0, num));
+    let right = MergeSort(array.slice(num, array.length));
+    return merge(left, right);
+  
+    function merge(left, right) {
+      let [l, r] = [0, 0];
+      let result = [];
+      while (l < left.length && r < right.length) {
+        if (left[l] < right[r]) {
+          result.push(left[l]);
+          l++;
+        } else {
+          result.push(right[r]);
+          r++;
+        }
+      }
+      result = result.concat(left.slice(l, left.length));
+      result = result.concat(right.slice(r, right.length));
+      return result;
+    }
+  }
+)
+code(Var)
+return
+
+::jiange::
 Var =
 (
 /**
@@ -15770,7 +15848,7 @@ const { sleep, loginJenkins, buildJenkins, screenshot } = require('./helper')
     /////////////// 
 
     // 登录到 Jenkins 测试环境
-    await loginJenkins(page, 'http://219.135.182.2:18080/login', 'iocmanager', 'zaq1@WSX')
+    await loginJenkins(page, 'http://14.18.232.165:18080/login', 'iocmanager', 'zaq1@WSX')
 
     // 点击编译部署按钮
     await buildJenkins(page, 'Covid-19-map')
@@ -15886,7 +15964,7 @@ await page.goto(url)
 /**
  * 登录
  */
-const loginJenkins = async (page, url = 'http://219.135.182.2:18080/login', username = 'iocmanager', password = 'zaq1@WSX') => {
+const loginJenkins = async (page, url = 'http://14.18.232.165:18080/login', username = 'iocmanager', password = 'zaq1@WSX') => {
     await page.goto(url)
     console.log('正在登录...✈️')
 
@@ -17729,18 +17807,13 @@ Return
 ::for::
 ::for+::
 ::for++::
-t := A_YYYY . A_MM . A_DD . A_Hour . A_Min . A_Sec
 Var = 
 (
-for (let i = 0, len = Thing.length; i < len; i++) {
-	Thing[i]
+for (let i = 0; i < ary.length; i++) {
+	ary[i]
 }
 )
 code(Var)
-Send, {up}
-Send, {end}
-Send, {left 4}
-Send, !{F3}
 Return
 
 
@@ -21306,6 +21379,7 @@ function baseConverter(decNumber, base) {
 code(Var)
 return
 
+::quick::
 ::kuaisu::
 ::jsquicksort::
 ::jsfastsort::
