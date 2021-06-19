@@ -7840,3 +7840,24 @@ Var =
 )
 code(Var)
 return
+
+::flex1::
+::fullh::
+::flexh::
+Var =
+(
+.studio {
+  width: 100`%;
+  height: 100`%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+    .main {
+      /* full height */
+      flex: 1;
+    }
+)
+txtit(Var)
+return
