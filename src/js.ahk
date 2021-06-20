@@ -4133,53 +4133,49 @@ var getFlatData = (data, childrenName = 'children') => {
 var Data = treeData.map(d => getFlatData(d, 'children')).flat(10)
 
 console.log(20210520145908, Data)
-
-
 ---
-function genTree(data, exp, el_tree, isdisabled = () => false) {
-    // 数据清洗
-    el_tree.children = data.filter(exp).map(_ => ({ id: _.resourcecatalogname, label: _.resourcecatalogname, children: [], disabled: isdisabled(_) }))
-    // 递归
-    el_tree.children.forEach(el => genTree(data, _ => _.resourcecatalogparentpath === el.label, el, isdisabled))
-    // 返回最终 el-tree 所需要的数据结构
-    return el_tree
-}
-
-function genTree(data, exp, el_tree, realname) {
-    // 数据清洗
-    el_tree.children = data.filter(exp).map(_ => {
-
-        // 如果当前遍历到的文档和当前用户名匹配，取出 isdown 和 isquery 的关键词
-        const p = _.permissions.find(_ => _.realname === realname) || {}
-
-        // 树节点
-        return { 
-            // 约定数据
-            id: _.resourcecatalogname, 
-            label: _.resourcecatalogname, 
-            children: [], 
-
-            // 其他数据
-            isdown: p.isdown || _.isdown,
-            isquery: p.isquery || _.isquery,
-            databasename: p.databasename || _.databasename,
-            resourcecatalogtablename: p.resourcecatalogtablename || _.resourcecatalogtablename,
-        }
-    })
-    // 递归
-    el_tree.children.forEach(el => genTree(data, _ => _.resourcecatalogparentpath === el.label, el, realname))
-    // 返回最终 el-tree 所需要的数据结构
-    return el_tree
-}
+// (推荐：一维数据转化为树，非常常见，而且我这种做法非常实用)
+var data1 = [{"databasename": "我是文件夹儿子", "resourcecatalogname": "我是文件夹儿子", "resourcecatalogpath": "/我是文件夹B/我是文件夹儿子", "resourcecatalogparentpath": "我是文件夹", }, {"databasename": "我是文件夹", "resourcecatalogname": "我是文件夹B", "resourcecatalogpath": "/我是文件夹B", "resourcecatalogparentpath": "/", }, {"databasename": "第三级", "resourcecatalogname": "第三级", "resourcecatalogpath": "/我是文件夹B/我是文件夹儿子/第三级", "resourcecatalogparentpath": "我是文件夹儿子", }, {"databasename": "我是四级", "resourcecatalogname": "我是四级", "resourcecatalogpath": "/我是文件夹B/我是文件夹儿子/第三级/我是四级", "resourcecatalogparentpath": "第三级", }, {"databasename": "我是另一个分支", "resourcecatalogname": "我是另一个分支", "resourcecatalogpath": "/我是另一个分支", "resourcecatalogparentpath": "/", } ]
 
 // 基础树结构
-const baseTree = { id: '/', label: '/', children: [] }
+var baseTree = { id: '/', label: '/', children: [] }
 
-// 生成树
-genTree(data, _ => _.resourcecatalogparentpath === '/', baseTree, realname)
+var getTree = (data, childrenName = 'children', exp = (_, parent) => false, excess = () => {}) => {
+    // （可选）是否要保护引用
+    data = JSON.parse(JSON.stringify(data))
 
-// 注意，tree 是一个数组结构
-this.treeData = [baseTree]
+    // 被归属的索引集合
+    var keys = []
+
+    var d = _data.map((val, key, ary) => {
+        val.children = ary.filter((_, _key) => {
+            var isTarget = exp(_, val)
+
+            if (isTarget) {
+                excess(_, val)
+                keys.push(_key)
+            }
+
+            return isTarget
+        })
+
+        return val
+    })
+
+    return d.filter((_, _key) => {
+        var isTarget = !keys.includes(_key)
+
+        if (isTarget) {
+            excess(_, null)
+        }
+
+        return isTarget
+    })
+}
+
+var d = getTree(data1, 'children', (_, parent) => _.resourcecatalogparentpath === parent.databasename, (_, parent) => _.disabled = true)
+
+console.log(20210620223306, data1)
 ---
 var treeData = [{id: 1, label: '一级 1', children: [{id: 4, label: '二级 1-1', children: [{id: 9, label: '三级 1-1-1'}, {id: 10, label: '三级 1-1-2'}] }] }, {id: 2, label: '一级 2', children: [{id: 5, label: '二级 2-1'}, {id: 6, label: '二级 2-2'}] }, {id: 3, label: '一级 3', children: [{id: 7, label: '二级 3-1'}, {id: 8, label: '二级 3-2'}] }]
 
