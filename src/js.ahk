@@ -1,4 +1,104 @@
-﻿::insertpaixu::
+﻿::map::
+::new map::
+Var =
+(
+var m = new Map()
+
+var a = {a: 123}
+m.set(a, 1)
+m.get(a)
+
+m.forEach((val, key, ary) => {
+    console.log(key, val)
+})
+)
+code(Var)
+return
+
+::miniheap::
+::minheap::
+::minidui::
+::dui::
+Var =
+(
+// https://blog.csdn.net/caseywei/article/details/110163237
+class MinHeap {
+    constructor() {
+        this.heap = []
+    }
+    // 替换两个节点值
+    swap(i1, i2) {
+        const temp = this.heap[i1]
+        this.heap[i1] = this.heap[i2]
+        this.heap[i2] = temp
+    }
+    // 获取父节点
+    getParentIndex(i) {
+        return (i - 1) >> 1 //求除2的商
+    }
+    // 获取左节点
+    getLeftIndex(i) {
+        return i * 2 + 1 //求除2的商
+    }
+    // 获取右节点
+    getRightIndex(i) {
+        return i * 2 + 2 //求除2的商
+    }
+    // 上移
+    shiftUp(index) {
+        if (index == 0) { return }
+        const parentIndex = this.getParentIndex(index)
+
+        // 如果进来的比父节点要小
+        if (this.heap[parentIndex] > this.heap[index]) {
+            // 和父节点换数据
+            this.swap(parentIndex, index)
+            // 新数据现在已经是父节点的位置了，继续往上冒泡
+            this.shiftUp(parentIndex)
+        }
+    }
+    // 下移
+    shiftDown() {
+        const leftIndex = this.getLeftIndex(index)
+        const rightIndex = this.getRightIndex(index)
+        if (this.heap[leftIndex] < this.heap[index]) {
+            this.swap(leftIndex, index)
+            this.shiftDown(leftIndex)
+        }
+        if (this.heap[rightIndex] < this.heap[index]) {
+            this.swap(rightIndex, index)
+            this.shiftDown(rightIndex)
+        }
+    }
+    // 插入
+    insert(value) {
+        this.heap.push(value)
+        // 先插入值，再拿这个值所在的索引去对比调整位置
+        this.shiftUp(this.heap.length - 1)
+    }
+    // 删除堆顶
+    pop() {
+        this.heap[0] = this.heap.pop()
+        this.shiftDown(0)
+    }
+    // 获取堆顶
+    peek() {
+        return this.heap[0]
+    }
+    // 获取堆的大小
+    size() {
+        return this.heap.length
+    }
+}
+const h = new MinHeap()
+h.insert(3)
+h.insert(2)
+h.insert(1)
+)
+txtit(Var)
+return
+
+::insertpaixu::
 ::insertsort::
 ::charupaixu::
 ::charu::
@@ -1151,6 +1251,139 @@ return
 ::xslx::
 Var =
 (
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+        <script src="https://libs.cdnjs.net/xlsx/0.10.0/xlsx.core.min.js"></script>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100`%;
+            }
+
+            #app {
+                width: 50`%;
+                margin: 3em auto;
+            }
+
+            #drop {
+                width: 100`%;
+                height: 10em;
+                border: 4px dashed #ccc;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div id="drop">Drop an XLSX / XLSM / XLSB / ODS / XLS / XML file here to see sheet data</div>
+            <p><input type="file" name="xlfile" id="xlf" /> ... or click here to select a file</p>
+
+            <hr />
+
+            <h1>A角</h1>
+
+            <prev>
+                <div class="code"></div>
+            </prev>
+            
+            <hr />
+            
+            <h1>B角</h1>
+
+            <prev>
+                <div class="codeB"></div>
+            </prev>
+        </div>
+    </body>
+    <script>
+        function addLis() {
+            var xlf = document.getElementById('xlf')
+            var drop = document.getElementById('drop')
+            drop.addEventListener('dragenter', handleDragover, false)
+            drop.addEventListener('dragover', handleDragover, false)
+            drop.addEventListener('drop', onDropDown, false)
+            if (xlf.addEventListener) xlf.addEventListener('change', handleFile, false)
+        }
+
+        addLis()
+
+        function handleDragover(e) {
+            e.stopPropagation()
+            e.preventDefault()
+            e.dataTransfer.dropEffect = 'copy'
+        }
+
+        function onDropDown(e) {
+            e.stopPropagation()
+            e.preventDefault()
+            var files = e.dataTransfer.files
+            var f = files[0]
+            readFile(f)
+        }
+
+        function handleFile(e) {
+            var files = e.target.files
+            var f = files[0]
+            readFile(f)
+        }
+
+        function readFile(file) {
+            var name = file.name
+            var reader = new FileReader()
+            reader.onload = function (e) {
+                var data = e.target.result
+                var wb = XLSX.read(data, { type: 'binary' })
+
+                // say someting...
+                console.log(wb)
+
+                var sheet = wb.Sheets.Sheet1
+
+                // 总行数 = 30
+                var count = +sheet['!ref'].match(/:E(\d+)/)[1]
+
+                var data = []
+                var dataB = []
+
+                // 从 3 ~ 30
+                for (var i = 3; i < count + 1; i++) {
+                    // 如果遇到合并的情况，只取第一个，也就是跳过其他的。
+                    if (sheet['A' + i]) {
+                        // A角
+                        data.push({ town: sheet['A' + i].v, concat: sheet['B' + i].v, phone:  sheet['C' + i].v, })
+                        // B角
+                        dataB.push({ town: sheet['A' + i].v, concat: sheet['D' + i].v, phone:  sheet['E' + i].v, })
+                    } else {
+                        var lastIndex = i - 1
+                        var j = i
+                        // 直到找到下一条为止
+                        while(sheet['A' + j] == null) {
+                            // A角
+                            data.push({ town: sheet['A' + lastIndex].v, concat: sheet['B' + j].v, phone: sheet['C' + j].v, })
+                            // B角
+                            dataB.push({ town: sheet['A' + lastIndex].v, concat: sheet['D' + j].v, phone: sheet['E' + j].v, })
+                            j++
+                        }
+                    }
+                }
+                
+                document.querySelector('.code').innerHTML = JSON.stringify(data)
+                document.querySelector('.codeB').innerHTML = JSON.stringify(dataB)
+                console.log(20210622234221, data, dataB)
+            }
+            reader.readAsBinaryString(file)
+        }
+    </script>
+</html>
+---
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12983,6 +13216,32 @@ LinkedList.prototype.printValue = function() {
         current = current.next
     }
 }
+
+LinkedList.prototype.reverse = function () {
+    let prev = null, cur = this.head
+
+    while(cur) {
+        var tmp = cur.next
+        cur.next = prev
+        prev = cur
+        cur = tmp
+    }
+
+    this.head = prev
+
+    return prev
+}
+
+var l = new LinkedList()
+l.addNodeAtTail(1)
+l.addNodeAtTail(2)
+l.addNodeAtTail(3)
+l.addNodeAtTail(4)
+l.addNodeAtTail(5)
+l.addNodeAtTail(null)
+
+l.reverse()
+l.printValue()
 )
 txtit(Var)
 return

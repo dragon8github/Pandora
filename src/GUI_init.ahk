@@ -224,6 +224,8 @@ Gui, Pandora:Add, Link,, <a href="https://www.autohotkey.com/boards/viewtopic.ph
 ; BabelUrl := "https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=FAMwrgdgxgLglgewgAgM4FMYGV0Cc7qoDC6EMeACgqsgBQB0jAhrgOaoCUyA3sAJBQkqBABt09EQlYNmbTsAC-wUJFiIURABYsYAMQS4AtgBF0UOgGt0ATwA0yQ5k0IAJl17JkuTGFwpw0PBIdAAqLKyYRCJMqJw8wJ6ecCB0AIRhbJHRsfQgBoYAsk6ucR6JnhkRMFExqLn5RTDOLjQAvDxK5UoJiZVZtfVGjc2oANpW1gC6yO2OTa49St0AAlo6-kamULQA5GIREC5UxNoQETv2GNh4BMSk5LjHHMBQ2TQUBGu4MB3KghDCMQSKS0ABMAAYAIwATnBADZQQAWCGQgAcoNB9g-6C-MEGhWKLS4wCAA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&timeTravel=false&sourceType=module&lineWrap=false&presets=es2017%2Creact%2Cstage-2%2Ctypescript&prettier=false&targets=&version=7.4.5&externalPlugins="
 ; Gui, Pandora:Add, Link,, <a href="%BabelUrl%">Babel在线转换</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/search?q=followers:`%3E=1000&type=Users">Github大神排行榜</a>
+Gui, Pandora:Add, Link,, <a href="https://naotu.baidu.com/home">百度脑图</a>
+
 
 
 Gui, Pandora:Add, Text,  W140 ys, 娱乐:
@@ -301,6 +303,7 @@ Gui, Pandora:Add, Link,, <a href="https://www.w3cplus.com/JavaScript">w3cplus高
 
 
 Gui, Pandora:Add, Text,  W140 ys, 最近阅读：
+Gui, Pandora:Add, Link, gdashuailaoyuan ,  <a>大帅老猿</a>
 Gui, Pandora:Add, Link,, <a href="http://www.ruanyifeng.com/blog/">阮一峰的博客</a>
 Gui, Pandora:Add, Link,, <a href="https://github.com/ruanyf/weekly/issues">阮一峰issue</a>
 ; Gui, Pandora:Add, Link,, <a href="https://wangdoc.com/bash/expansion.html#start-end-%E6%89%A9%E5%B1%95">阮一峰的bash</a>
@@ -317,7 +320,6 @@ Gui, Pandora:Add, Link,, <a href="https://hashnode.com/">oshogunle.com</a>
 ; Gui, Pandora:Add, Link,, <a href="https://reposhub.com/">reposhub.com</a>
 Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/http`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fhackernews-daily">hackerNews Top10日刊</a>
 Gui, Pandora:Add, Link,, <a href="https://vuejsexamples.com/">vuejsexamples</a>
-Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/https`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fgithub-daily">github-daily</a>
 
 
 
@@ -350,6 +352,7 @@ Gui, Pandora:Add, Link,, <a href="http://www.appcome.com/forum.php?mod=forumdisp
 Gui, Pandora:Add, Link,, <a href="https://www.cnblogs.com/liuxianan/default.html?page=2">小茗同学的博客园</a>
 Gui, Pandora:Add, Link,, <a href="https://ruanyf.github.io/sina-news/">新浪实时新闻</a>
 Gui, Pandora:Add, Link,, <a href="https://www.reddit.com/r/todayilearned/">reddit</a>
+Gui, Pandora:Add, Link,, <a href="https://feeds.pub/feed/https`%3A`%2F`%2Frsshub.app`%2Fgithub`%2Fissue`%2Fheadllines`%2Fgithub-daily">github-daily</a>
 
 
 
@@ -1400,6 +1403,7 @@ Gui, Pandora:Add, Link,, <a href="https://serverlesscloud.cn/best-practice">SLS�
 
 
 Gui, Pandora:Add, Text, W140 ys, 腾讯云:
+Gui, Pandora:Add, Link,, <a href="https://console.dnspod.cn/dns/iochub.cn/record?source=cloud">域名解析</a>
 Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/cos5/bucket/">存储桶</a>
 Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/beian/history">网站备案</a>
 Gui, Pandora:Add, Link,, <a href="https://console.cloud.tencent.com/apigateway/service">API网关</a>

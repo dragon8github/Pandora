@@ -480,7 +480,7 @@
     
     
     Menu, utilssf, Add, 栈（后入先出）: 客栈->酒店->洗盘子->开房->后入->鲜出->压入（push）->弹出（pop）->双p, utilsHandler
-    Menu, utilssf, Add, 堆（先入先出）: 一堆人排队->奈何桥早死早投胎->排队, utilsHandler
+    Menu, utilssf, Add, 队列（先入先出）: 一堆人排队->奈何桥早死早投胎->排队, utilsHandler
     
     Menu, utilssf, Add, 
     Menu, utilssf, Add, 

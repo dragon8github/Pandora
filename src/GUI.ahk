@@ -14324,3 +14324,9 @@ FileAppend,
 RunByVsCode(name)
 run, % name
 return
+
+dashuailaoyuan:
+run, https://juejin.cn/user/2955079655898093
+run, https://www.bilibili.com/video/BV1bf4y1t7QE/
+run, https://juejin.cn/post/6973865268426571784
+return
