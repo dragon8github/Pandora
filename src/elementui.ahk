@@ -430,7 +430,7 @@ Var =
     <title>Document</title>
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
     <!-- element -->
-    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/index.min.js"></script>
     <link href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css" rel="stylesheet">
     <!-- axios -->
     <script src="https://libs.cdnjs.net/axios/0.19.2/axios.min.js"></script>

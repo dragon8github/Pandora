@@ -7901,6 +7901,30 @@ Var =
         color: #ffffff;
         word-break: break-all;
     }
+---
+.field {
+    display: flex;
+    min-height: rem(30);
+    line-height: rem(30);
+    margin-bottom: rem(10);
+    
+    .field__label {
+        width: rem(125);
+        color: #fff;
+        text-align: center;
+        background-color: rgba(37, 116, 125, .5);
+    }
+
+    .field__value {
+        flex: auto;
+        min-width: rem(206);
+        color: #fff;
+        background-color: rgba(18, 76, 83, .5);
+        padding: 0 rem(15);
+    }
+    
+    .is-yellow { color: rgba(239, 255, 55, 1) !important; }
+}
 )
 txtit(Var)
 return

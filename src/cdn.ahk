@@ -287,8 +287,8 @@ return
 Var =
 (
 <!-- element -->
-<script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css" />
 )
 code(Var)
 return

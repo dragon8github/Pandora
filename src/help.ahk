@@ -1,4 +1,12 @@
-﻿!F1::
+﻿Pause::
+Send, #d
+return
+
+>^w::
+Send, #w
+return
+
+!F1::
 Send, {F7}
 sleep, 100
 Send, ^s

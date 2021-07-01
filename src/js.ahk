@@ -851,8 +851,21 @@ return
 Var =
 (
 [...new Set(arr)]
+---
+var noRepeatSet = (data, properties) => {
+    var cache = {}
+    var result = []
+    for (let i = 0; i < data.length; i++) {
+        var p = data[i][properties]
+        if (!cache[p]) {
+            cache[p] = 1
+            result.push(data[i])
+        }
+    }
+    return result
+}
 )
-code(Var)
+txtit(Var)
 return
 
 ::isrunnian::
@@ -9608,8 +9621,111 @@ class Dialog {
 }
 let dialog = new Dialog('Hello')
 dialog.open()
+---
+import Vue from 'vue'
+import videoLayer from './videoLayer.vue'
+
+const videoLayerConstructor = Vue.extend(videoLayer)
+
+let _initInstance
+
+const initInstance = () => {
+    _initInstance = new videoLayerConstructor({
+        el: document.createElement('div'),
+    })
+    document.getElementById('app').appendChild(_initInstance.$el)
+}
+
+// 注册一些快捷键
+const shortcutKeyHandler = event => {
+    // 监听esc键退出全屏
+    if (event.keyCode == 27) _initInstance.isOpen = false
+}
+
+const show = channelId => {
+    if (!_initInstance) {
+        initInstance()
+    }
+
+    _initInstance.isOpen = true
+    _initInstance.channelId = channelId
+    
+    document.addEventListener('keydown', shortcutKeyHandler)
+}
+
+const close = () => {
+    Vue.nextTick(() => {
+        _initInstance && (_initInstance.isOpen = false)
+        document.removeEventListener('keydown', shortcutKeyHandler)
+    })
+}
+
+export default {
+    show,
+    close,
+}
+---
+<template>
+    <div class="layer" v-if="isOpen">
+        <!-- 蒙版 -->
+        <div class="layer__mask" @click="close"></div>
+
+        <!-- 内容区域 -->
+        <div class="layer__content">
+            
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'videoLayer',
+    data() {
+        return {
+            isOpen: false,
+            channelId: '',
+        }
+    },
+    methods: {
+        go() {
+            console.log('go')
+        },
+        close() {
+            this.isOpen = false
+        },
+    },
+}
+</script>
+
+<style lang="scss" scoped>
+.layer {
+    @include pfull();
+    z-index: 1993100337;
+}
+
+.layer__mask {
+    @include pfull();
+    z-index: 1;
+}
+
+.layer__content {
+    @include bg(rem(998), rem(730), '~@/assets/videoLayerbg.png');
+    position: absolute;
+    right: 10`%;
+    top: 50`%;
+    transform: translate(-50`%, -50`%);
+    z-index: 1993100337;
+
+    .layer__videoLayer {
+        @include center;
+        width: rem(880);
+        height: rem(585);
+        background: radial-gradient(ellipse at bottom, #1B2735 0`%, #090A0F 100`%);
+    }
+}
+</style>
 )
-code(Var)
+txtit(Var)
 return
 
 ::socket.js::
@@ -13696,67 +13812,16 @@ return
 ::clickoutside::
 Var =
 (
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-
-export default class ClickOutside extends Component {
-  static propTypes = {
-    onClickOutside: PropTypes.func.isRequired
-  }
-
-  constructor(props) {
-    super(props)
-    this.getContainer = this.getContainer.bind(this)
-    this.isTouch = false
-  }
-
-  getContainer(ref) {
-    this.container = ref
-  }
-
-  render() {
-    const { children, onClickOutside, ...props } = this.props
-    return <div {...props} ref={this.getContainer}>{children}</div>
-  }
-
-  componentDidMount() {
-    document.addEventListener('touchend', this.handle, true)
-    document.addEventListener('click', this.handle, true)
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('touchend', this.handle, true)
-    document.removeEventListener('click', this.handle, true)
-  }
-
-  handle = e => {
-    if (e.type === 'touchend') this.isTouch = true
-    if (e.type === 'click' && this.isTouch) return
-    const { onClickOutside } = this.props
-    const el = this.container
-    // 这一句代码就是核心: el.contains，这种思路是通用的
-    if (el && !el.contains(e.target)) onClickOutside(e)
-  }
-}
----
-beforeMount() {
-    // 绑定监听高亮事件
+created() {
     this.clickOutSide = e => {
         // 如果点击的不是弹窗本身，那么关闭它
-        if (this.$refs.tree.$el.contains(e.target) === false && 
-            this.$refs.ruleFormBox.$el.contains(e.target) == false) 
-        {
-            // 取消显示
-            this.$nextTick(() => {
-                this.ruleForm.tagId = -1;
-                this.showBtn = false;
-                this.$refs.tree.setCurrentKey(null)
-            })
+        if (this.$refs.notionFilter.contains(e.target) === false) {
+            this.hide()
         }
     }
     document.addEventListener('mouseup', this.clickOutSide)
 },
-destroyed () {
+destroyed() {
     document.removeEventListener('mouseup', this.clickOutSide)
 },
 ---
@@ -13809,6 +13874,50 @@ export const clickOutSide = (className, fn, shouldCloseRule = () => true) => {
     }
   }
   document.addEventListener('mouseup', _clickOutSide)
+}
+---
+
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+export default class ClickOutside extends Component {
+  static propTypes = {
+    onClickOutside: PropTypes.func.isRequired
+  }
+
+  constructor(props) {
+    super(props)
+    this.getContainer = this.getContainer.bind(this)
+    this.isTouch = false
+  }
+
+  getContainer(ref) {
+    this.container = ref
+  }
+
+  render() {
+    const { children, onClickOutside, ...props } = this.props
+    return <div {...props} ref={this.getContainer}>{children}</div>
+  }
+
+  componentDidMount() {
+    document.addEventListener('touchend', this.handle, true)
+    document.addEventListener('click', this.handle, true)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('touchend', this.handle, true)
+    document.removeEventListener('click', this.handle, true)
+  }
+
+  handle = e => {
+    if (e.type === 'touchend') this.isTouch = true
+    if (e.type === 'click' && this.isTouch) return
+    const { onClickOutside } = this.props
+    const el = this.container
+    // 这一句代码就是核心: el.contains，这种思路是通用的
+    if (el && !el.contains(e.target)) onClickOutside(e)
+  }
 }
 )
 txtit(Var)

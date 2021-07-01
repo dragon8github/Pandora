@@ -477,8 +477,8 @@ Var =
     <!-- Vue -->
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
     <!-- element -->
-    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css" />
     <!-- mockjs -->
     <script src="https://cdn.staticfile.org/Mock.js/1.0.0/mock-min.js"></script>
     <!-- axios -->
@@ -918,8 +918,8 @@ Var =
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
-    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css" />
 </head>
 
 <body>
@@ -2652,8 +2652,8 @@ Var =
     <!-- Vue -->
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
     <!-- element -->
-    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css" />
     <!-- mockjs -->
     <script src="https://cdn.staticfile.org/Mock.js/1.0.0/mock-min.js"></script>
     <!-- axios -->
@@ -9948,7 +9948,7 @@ scrollText1();
 </script>
 </html>
 )
-code(Var)
+txtit(Var)
 return
 
 

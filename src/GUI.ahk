@@ -2578,8 +2578,8 @@ FileAppend,
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!-- element -->
-    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css" />
     <!-- lodash -->
     <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
     <!-- mockjs -->
@@ -8722,8 +8722,8 @@ FileAppend,
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!-- element -->
-    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css" />
 
     <style>
     html, body{
@@ -9483,8 +9483,8 @@ FileAppend,
     <!-- Vue -->
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
     <!-- element -->
-    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css" />
     <!-- axios -->
     <script src="https://cdn.staticfile.org/axios/0.19.0/axios.min.js"></script>
     <!-- sass -->
@@ -10802,8 +10802,8 @@ FileAppend,
     <!-- Vue -->
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
     <!-- element -->
-    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css" />
     <!-- axios -->
     <script src="https://cdn.staticfile.org/axios/0.19.0/axios.min.js"></script>
     <!-- mockjs -->
@@ -12377,8 +12377,8 @@ FileAppend,
     <!-- tailwind -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/1.1.4/tailwind.min.css">
     <!-- element -->
-    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css" />
 
     <style>
     html, body{

@@ -2178,8 +2178,8 @@ Var =
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!-- element -->
-    <script src='https://cdn.staticfile.org/element-ui/2.10.1/index.js'></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.10.1/theme-chalk/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css" />
     <!-- lodash -->
     <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
     <!-- mockjs -->
